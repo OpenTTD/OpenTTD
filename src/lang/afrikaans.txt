@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moelikheid stellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gevorderde stellings
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI instellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Deursigtigheid opsies
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dorp name vertoon
@@ -1344,7 +1343,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikh
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Stellings
 STR_INTRO_QUIT                                                  :{BLACK}Verlaat
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel
@@ -1364,7 +1362,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Vertoon 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon gevorderde stellings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Wys AI stellings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 # Quit window
@@ -3222,7 +3219,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die AI 
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Konfigurasie
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AIs wat in die volgende spel gelaai gaan word
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
 STR_AI_CONFIG_RANDOM_AI                                         :Lukraak AI
 
@@ -3231,13 +3227,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Beweeg g
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Beweeg af
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Beweeg gekose AI af in die lys
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Kies AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laai nog 'n AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigureer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigureer die parameters van AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbare AIs
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliek om 'n AI te kies
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Skrywer: {STRING}
@@ -3250,7 +3243,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Kanselee
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Moenie AI verander nie
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -473,7 +473,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Налаштування складності
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Розширені налаштування
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Налаштування AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Нова графіка
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Опції прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показ назви міст
@@ -1493,7 +1492,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Перевірити вміст у Internet
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Параметри AI
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
@@ -1513,7 +1511,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити новий та оновлений вміст для завантаження
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Показати настройки AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 # Quit window
@@ -3444,7 +3441,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вік�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфігурація AI
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Усі AI, які будуть завантажені у наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
 STR_AI_CONFIG_RANDOM_AI                                         :Випадковий AI
 
@@ -3453,13 +3449,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Пере
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Перемістити нижче
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перемістити обраний AI вниз по списку
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Вибір AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Завантажити інший AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Настроїти
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Доступні AI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
@@ -3472,7 +3465,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Відм
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметри AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

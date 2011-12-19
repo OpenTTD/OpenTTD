@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwieregkeetsastellungen
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweidert Astellungen
-STR_SETTINGS_MENU_AI_SETTINGS                                   :KI Astellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stiednimm ugewisen
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Schwiere
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweidert Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt
-STR_INTRO_AI_SETTINGS                                           :{BLACK}KI Astellungen
 STR_INTRO_QUIT                                                  :{BLACK}Eraus
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start en neit Spill. Ctrl+Klick iwwersprengt Kaartenkonfiguratioun
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwiere
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Weist erweidert Astellungen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen uweisen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}KI Astellungen uweisen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Des Iwwersetzung huet {NUM} String{P "" s}. Hëlleft OpenTTD besser ze man andem der ierch als Iwwersetzer mellt!. Liest readme.txt fir d'Detailer.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI Konfiguratioun
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}All KI'en dei am nächsten Spill gelueden ginn
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mënschlechen Spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Zoufälleg KI
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Gewielte
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Erof setzen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Gewielten KI an der Lëscht no ënnen setzen
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Selectionéiert KI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lued eng aner KI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguréieren
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}All Parameter vun der KI konfiguréieren
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbar KI'en
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klickt fir eng KI ze selectéieren
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Ofbriech
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI net wiesselen
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Astellungen
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

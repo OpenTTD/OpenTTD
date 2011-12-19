@@ -332,7 +332,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்ட
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
-STR_SETTINGS_MENU_AI_SETTINGS                                   :செயற்கை அறிவாற்றல் அமைப்பு
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF அமைப்புகள்
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ஒளி அமைப்புகள்
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :நகரத்தின் பெயர்களை காட்டு

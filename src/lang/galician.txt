@@ -1298,7 +1298,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opcións Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Comprobar Contido Online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Configuración IA
 STR_INTRO_QUIT                                                  :{BLACK}Saír
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comezar nova partida. CTRL+Click salta a configuración do mapa
@@ -1318,7 +1317,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Amosa-la
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra as opcións avanzadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra-la configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Buscar contidos novos e actualizados para descargar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra-la configuración da IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Saír 'OpenTTD'
 
 # Quit window
@@ -3147,7 +3145,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A fiest
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración IA
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tódalas IA que se cargarán na próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Xogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatoria
 
@@ -3156,13 +3153,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Baixar
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA seleccionada hacia abaixo na lista
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}IA seleccionada
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar outra IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura-los parámetros da IA
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}IA Dispoñibles
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Pincha para seleccionar unha IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3175,7 +3169,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non cambia-la IA
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Pechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

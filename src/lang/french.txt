@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de Difficulté
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration Avancée
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuration IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres Newgrf
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
@@ -1405,7 +1404,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficul
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options Avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Paramètres IA
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer la configuration du terrain
@@ -1425,7 +1423,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afficher
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Configurer les options avancées
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus à télécharger nouveaux et mis à jour
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afficher la configuration des IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à rendre OpenTTD meilleur en vous inscrivant comme traducteur. Voir readme.txt pour les details.
@@ -3473,7 +3470,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fen�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration IA
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Toutes les IA qui seront chargées pendant la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur Humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 
@@ -3482,13 +3478,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Déplace
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Déplacer vers le bas
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Déplacer l'IA sélectionnée vers le bas
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Sélection IA
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger une autre IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurer les paramètres de l'IA
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}IAs disponibles
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliquer pour sélectionner une IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur{NBSP}: {STRING}
@@ -3501,7 +3494,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Annuler
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas modifier l'IA
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}

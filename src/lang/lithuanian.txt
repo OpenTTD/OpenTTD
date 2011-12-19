@@ -423,7 +423,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Išeiti
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Žaidimo nustatymai
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sunkumo lygio nustatymai
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Sudėtingesni nustatymai
-STR_SETTINGS_MENU_AI_SETTINGS                                   :DI nustatymai
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Papild. grafikos nustatymai (NewGRF)
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Permatomumo nustatymai
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rodyti miestų pavadinimus
@@ -1451,7 +1450,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Sunkumo 
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Sudėtingesni nustatymai
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Papild. grafikos nustatymai
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Patikrinti interneto turinį
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Nustatymai
 STR_INTRO_QUIT                                                  :{BLACK}Išeiti
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Pradėti naują žaidimą. Ctrl+Paspaudimas praleidžia žemėlapio nustatymus
@@ -1471,7 +1469,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Rodyti s
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rodyti sudėtingesnius nustatymus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Atvaizduoti NewGRF nustatymus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Patikrinti dėl naujų ir atnaujintą turinį atsisiuntimui
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Rodyti AI nustatymus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Išeiti iš 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Šiam vertimui trūksta {NUM} eilu{P ė tės čių}. Padėkite OpenTTD užsiregistruodami kaip vertėjas. Daugiau informacijos rasite readme.txt .
@@ -3431,7 +3428,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}DI deri
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Nustatymai
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Visi DI bus įkelti į sekantį žaidimą
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
 STR_AI_CONFIG_RANDOM_AI                                         :Atsitiktinis DI
 
@@ -3440,13 +3436,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Perkelti
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Perkelti žemiau
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Perkelti pasirinktą DI žemiau
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Pasirinkti AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Įkelti kitą AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Derinti
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Suderinti DI nustatymus
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Galimi DI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Paspauskite, kad pasirinkti DI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autorius: {STRING}
@@ -3459,7 +3452,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Atšaukt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nekeisti DI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parametrai
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Uždaryti
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atstatyti
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

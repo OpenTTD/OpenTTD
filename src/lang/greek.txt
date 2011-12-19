@@ -412,7 +412,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Ρυθμίσεις AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -1465,7 +1464,6 @@ STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δ�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Ρυθμίσεις AI
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
@@ -1485,7 +1483,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Εμφάνιση ρυθμίσεων AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
@@ -3433,7 +3430,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το π
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση AI
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Όλα τα AI θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
 
@@ -3442,13 +3438,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετα
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση κάτω
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά του επιλεγμένου AI κάτω στη λίστα
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλόγη AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φορτώστε ένα άλλο AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων ενός AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμο AI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Κάντε κλικ για επιλέξετε ένα AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Συγγραφέας: {STRING}
@@ -3461,7 +3454,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Άκυρ
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μην γίνει αλλάγη AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Παράμετροι AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

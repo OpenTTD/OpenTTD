@@ -632,13 +632,11 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF майлаштару
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI майлаштару
 STR_INTRO_QUIT                                                  :{BLACK}Вӗҫле
 
 
 
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF майлаштару кӑтар
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI майлаштару кӑтар
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' вӗҫле
 
 # Quit window

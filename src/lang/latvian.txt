@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības pakāpes
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildus iestatījumi
-STR_SETTINGS_MENU_AI_SETTINGS                                   :MI iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības opcijas
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
@@ -1376,7 +1375,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtīb
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildus iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešaistes saturu
-STR_INTRO_AI_SETTINGS                                           :{BLACK}MI iestatījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli. Ctrl+klikšķis izlaiž kartes konfigurēšanu
@@ -1396,7 +1394,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Parādī
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Parādīt papildus iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Parādīt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Parādīt mākslīgā intelekta iestatījumus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Iziet no 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Šim tulkojumam trūkst {NUM} virk{P ne nes ņu}. Lūdzu palīdziet OpenTTD veidot labāku piesakoties par tulkotāju. Informācijai skatīt readme.txt.
@@ -3357,7 +3354,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AL Konfigurācija
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Visi MI tiks ielādēti nākamajā spēlē
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs-cilvēks
 STR_AI_CONFIG_RANDOM_AI                                         :Nejaušš MI
 
@@ -3366,13 +3362,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pacelt i
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Nolaist uz leju
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Nolaist izvēlētos MI sarakstā uz leju
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK} Ieslēgt MI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ielādēt citu MI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurēt
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mainīt MI parametrus
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Pieejamie MI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Uzklikšķināt, lai izvēlētos MI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autors: {STRING}
@@ -3385,7 +3378,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainiet MI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI parametri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Pārspiest
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

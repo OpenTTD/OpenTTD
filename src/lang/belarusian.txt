@@ -662,7 +662,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі складанасьцi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Наладки ШI (AI)
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказваць назвы гарадоў
@@ -1721,7 +1720,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Наладкi ШI
 STR_INTRO_QUIT                                                  :{BLACK}Выхад
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Пачаць новую гульню. Ctrl+клік прапускае этап наладак мапы
@@ -1741,7 +1739,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пака
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы і абноўлены кантэнт, каб спампаваць
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Паказаць наладкi ШI/АІ
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі коў}. Вы можаце дапамагчы праекту, калi зарэгіструецеся як перакладнік. Інструкцыі ў файле readme.txt.
@@ -3829,7 +3826,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вак�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Канфігурацыя ШI
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}ШI, якія будуць выкарыстоўвацца ў гульні
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Чалавек
 STR_AI_CONFIG_RANDOM_AI                                         :Выпадковы ШI
 
@@ -3838,13 +3834,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Пера
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Унiз
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перамясьціць гэты модуль ШI ўніз па сьпісе
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Выбар ШI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузiць іншы ШI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Канфігурацыя
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наладзіць парамэтры ШI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Даступныя ШI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Націснуць для выбару ШI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Аўтар: {STRING}
@@ -3857,7 +3850,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Скас
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не выбіраць ШI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Парамэтры штучнага інтэлекту (ШІ/AI)
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

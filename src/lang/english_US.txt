@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Difficulty settings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Advanced settings
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names displayed
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficul
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Advanced Settings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Settings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Content
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI Settings
 STR_INTRO_QUIT                                                  :{BLACK}Quit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start a new game. Ctrl+Click skips map configuration
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Display 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Display advanced settings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Display NewGRF settings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check for new and updated content to download
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Display AI settings
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quit 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}This translation misses {NUM} string{P "" s}. Please help make OpenTTD better by signing up as translator. See readme.txt for details.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuration
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}All AIs that will be loaded in the next game
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Human player
 STR_AI_CONFIG_RANDOM_AI                                         :Random AI
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move sel
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Move Down
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move selected AI down in the list
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Select AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Load another AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configure
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configure the parameters of the AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Available AIs
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click to select an AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Author: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancel
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Don't change AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Close
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

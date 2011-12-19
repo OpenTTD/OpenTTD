@@ -340,7 +340,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gevst
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spæl møguleikar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Sværheidsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Víðka innstilling
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Allar innstilngar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NýggjGRF innstilling
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjøgnumskygnis møguleikar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bygdarnøvn víst

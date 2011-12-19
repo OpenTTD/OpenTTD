@@ -351,7 +351,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Impostazioni difficoltà
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Impostazioni avanzate
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Impostazioni IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Impostazioni NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra nomi città
@@ -1428,7 +1427,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficol
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Impostazioni avanzate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Impostazioni IA
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. CTRL salta la configurazione della mappa.
@@ -1448,7 +1446,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra le impostazioni avanzate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra le impostazioni dell'intelligenza artificiale
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Esci da 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}A questa traduzione mancano {NUM} string{P a he}. Aiutaci a migliorare OpenTTD iscrivendoti come traduttore. Vedi readme.txt per dettagli.
@@ -3500,7 +3497,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fine
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurazione IA
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Lista delle IA che saranno caricate nella prossima partita
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Giocatore umano
 STR_AI_CONFIG_RANDOM_AI                                         :IA casuale
 
@@ -3509,13 +3505,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Sposta l
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Sposta giù
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Sposta l'IA selezionata più in basso nell'elenco
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Scegli IA
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Sceglie un'altra IA da caricare
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura i parametri della IA
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}IA disponibili
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Fare clic per selezionare una IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autore: {STRING}
@@ -3528,7 +3521,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Annulla
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non modifica l'IA utilizzata
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Chiudi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reimposta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

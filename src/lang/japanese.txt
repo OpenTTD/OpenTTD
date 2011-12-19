@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加機能の設定
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AIの設定。
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :町の名前を表示する
@@ -1374,7 +1373,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK} 難易�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}拡張設定(パッチ設定)
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRFの設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}オンラインの項目を確認
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI の設定
 STR_INTRO_QUIT                                                  :{BLACK}終了
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}新規ゲームを開始します。Ctrl＋クリックで地形生成設定をスキップします
@@ -1394,7 +1392,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}難易�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}パッチ･拡張設定を表示
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF の設定を表示
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}コンテンツの新規追加または更新のチェックとダウンロード
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI の設定を表示します
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD を終了します
 
 STR_INTRO_TRANSLATION                                           :{BLACK}この言語セットには{NUM}個{P ""}の未訳があります。翻訳者としてサインアップしOpenTTDをより良くする為に御助力下さい。(詳細はreadme.txtをごらんください)
@@ -3351,7 +3348,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI デ�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI の設定
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}次のゲームに使用するすべての AI を表示します。
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人間のプレーヤー
 STR_AI_CONFIG_RANDOM_AI                                         :ランダムな AI
 
@@ -3360,13 +3356,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下にします
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}AI を選択
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}ほかの AI を開きます
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}AI のパラメータを設定します
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}使用可能の AI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}クリックして AI を選択します。
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}作成者： {STRING}
@@ -3379,7 +3372,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}キャ�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI を変更しません
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

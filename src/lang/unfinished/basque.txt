@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarpenak
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
-STR_SETTINGS_MENU_AI_SETTINGS                                   :IA-ren ezarpenak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia ezarpenak
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izenak erakutsita
@@ -1315,7 +1314,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasu
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ezarpen Aurreratuak
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Edukiak Online Kontsultatu
-STR_INTRO_AI_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
 STR_INTRO_QUIT                                                  :{BLACK}Irten
 
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijokalari joko bat hasi

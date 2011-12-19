@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setări avansate
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Setări IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opţiuni transparenţă
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează numele oraşelor
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Setări Inteligenţă Artificială
 STR_INTRO_QUIT                                                  :{BLACK}Ieşire
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou. Ctrl+Click pentru a sări peste fereastra de configuraţie a harţii
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afişeaz
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afişează setările avansate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Afişează setările pentru Inteligenţa Artificială
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipses{P 0 "te" "c"} {NUM} text{P "" e}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fereast
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuraţie IA
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Toate IA care vor fi încărcate la următorul joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mută IA
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}În jos
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mută IA selectată jos în listă
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Selectează IA
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Încarcă alt IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurază
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurează parametrii IA
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}IA disponibile
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click pentru a selecta o IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Anuleaz�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba IA
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

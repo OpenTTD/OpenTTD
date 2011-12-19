@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập nâng cao
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Tùy chọn AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Thiết lập hiệu ứng trong suốt
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Hiển thị tên thị trấn
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Độ Kh
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Nâng Cao
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
 STR_INTRO_QUIT                                                  :{BLACK}Thoát
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Màn chơi mới.Ctrl+Click để bỏ qua phần điều chỉnh màn
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Hiện t
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Hiển thị tùy chỉnh nâng cao
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kiểm tra những nội dung mới & cập nhật để tải về
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Hiện thị tùy chỉnh AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Thoát 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Bản dịch này thiếu {NUM} chuỗi. Hãy giúp OpenTTD hoàn thiện hơn bằng cách đăng ký làm biên dịch viên. Xem readme.txt để biết thêm chi tiết.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa s
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập AI
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tất cả AI sẽ nạp tại ván chơi kế tiếp
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuy�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di Chuyển Xuống
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuyển AI xuống dưới danh sách
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Chọn AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Nạp một AI khác
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Các AI Sẵn Có
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Chọn một AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Tác giả: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ b�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

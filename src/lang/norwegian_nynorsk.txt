@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinstillingar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskegrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte instillingar
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-instillingar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillingar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gjennomsiktigheitsinnstillingar
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Syne bynamn
@@ -1366,7 +1365,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskegr
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte innstillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sjå etter innhald på nett
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-innstillingar
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start eit nytt spel. CTRL+klikk hoppar over kartkonfigurasjon
@@ -1386,7 +1384,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Syne van
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Syne avanserte innstillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne NewGRF-instillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Syne AI-instillingar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 
@@ -3316,7 +3313,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI-feil
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-konfigurasjonar
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI som vil bli lasta inn i neste spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskeleg spelar
 STR_AI_CONFIG_RANDOM_AI                                         :Tilfeldig AI
 
@@ -3325,13 +3321,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytt va
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytt nedover
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytt valt AI nedover i lista
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vel AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Last inn endå ein AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurere
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurer AI-parametrane
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Tilgjengelege AIar
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikk for å velje ein AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Forfattar: {STRING}
@@ -3344,7 +3337,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikkje endre AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI-parametrar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

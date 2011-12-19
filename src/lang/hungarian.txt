@@ -412,7 +412,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Beállítások
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nehézségi beállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Haladó beállítások
-STR_SETTINGS_MENU_AI_SETTINGS                                   :MI beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Átlátszósági beállítások
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mutatása
@@ -1468,7 +1467,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Nehézs�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
-STR_INTRO_AI_SETTINGS                                           :{BLACK}MI beállítások
 STR_INTRO_QUIT                                                  :{BLACK}Kilépés
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése. Ctrl+Kattintással átugorhatod a térkép beállításokat
@@ -1488,7 +1486,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}A nehéz
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Haladó beállítások megjelenítése
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}A gépi ellenfelek beállításainak megjelenítése
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a fordításból {NUM} sor hiányzik. Segíts Te is jobbá tenni az OpenTTD-t és jelentkezz fordítónak! További részletekért lásd a readme.txt-t.
@@ -3536,7 +3533,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI n
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}MI beállítások
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Az összes MI, ami be lesz töltve a következő játékban
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Játékos
 STR_AI_CONFIG_RANDOM_AI                                         :Véletlenszerűen választott MI
 
@@ -3545,13 +3541,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Kiválas
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mozgatás Le
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Kiválasztott MI mozgatása lefelé a listában
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}MI kiválasztása
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Másik MI betöltése
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Beállítások
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Az MI paramétereinek beállítása
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Elérhető MI-k
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kattints ide az MI kiválasztásához
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Készítő: {STRING}
@@ -3564,7 +3557,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Mégsem
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}MI változtatások visszavonása
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

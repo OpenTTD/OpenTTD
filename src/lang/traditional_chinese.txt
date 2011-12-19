@@ -347,7 +347,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :進階設定
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :顯示市鎮名稱
@@ -1363,7 +1362,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}難易�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}進階設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI 設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲。 按住 Ctrl 點選可跳過地圖設定畫面
@@ -1383,7 +1381,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}顯示�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}顯示進階設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}顯示 AI 設定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
 STR_INTRO_TRANSLATION                                           :{BLACK}此段翻譯缺了{NUM}字串。請成為OpenTTD的翻譯員以讓本遊戲更完整。詳情請參閱readme.txt。
@@ -3318,7 +3315,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 除�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 組態
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}所有 AI 會在下次開始遊戲時載入
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
 STR_AI_CONFIG_RANDOM_AI                                         :隨機 AI
 
@@ -3327,13 +3323,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}向上�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}向下移
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}向下移動所選的 AI
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}選擇 AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}載入其他 AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}組態設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}設定 AI 參數
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}可用 AI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}按一下選擇 AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}作者： {STRING}
@@ -3346,7 +3339,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}取消
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變 AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參數
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

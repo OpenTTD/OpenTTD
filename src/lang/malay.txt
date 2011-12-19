@@ -346,7 +346,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Berhenti
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pilihan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Tetapan kesukaran
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lebih tetapan
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Tetapan AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Tetapan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pilihan penembusan
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Paparkan nama bandar
@@ -1348,7 +1347,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Kesukara
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Tetapan Lanjutan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Tetapan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Periksa Kandungan Atas Talian
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Tetapan AI
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulakan permainan baru. Ctrl+Klik akan melangkaui konfigurasi peta
@@ -1368,7 +1366,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Papar pi
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Papar tetapan lanjutan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Papar tetapan NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Periksa kandungan baru atau yang telah dikemaskini untuk dimuat turun
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Papar tetapan AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Terjemahan ini kekurangan {NUM} string{P "" s}. Sila bantu menjadikan OpenTTD lebih baik dengan mendaftar sebagai penterjemah. Lihat readme.txt untuk maklumat.
@@ -3061,13 +3058,10 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI rawak
 
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat AI yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Aturcara
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Aturcara parameter AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Ai yang tersedia
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk pilih AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Penulis: {STRING}
@@ -3080,7 +3074,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Batal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan ubah AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

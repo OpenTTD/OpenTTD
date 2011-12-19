@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนดระดับความยาก
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
-STR_SETTINGS_MENU_AI_SETTINGS                                   :ตั้งค่า AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ตัวเลือกค่าโปร่งใส
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :แสดงชื่อเมือง
@@ -1374,7 +1373,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}คว�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
-STR_INTRO_AI_SETTINGS                                           :{BLACK}การกำหนดค่า AI
 STR_INTRO_QUIT                                                  :{BLACK}ออก
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่, Ctrl+Click เพื่อข้ามการตั้งค่าแผนที่
@@ -1394,7 +1392,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}แส�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}แสดงการกำหนดค่าขั้นสูง
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แสดงการกำหนดค่า NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}แสดงการกำหนดค่า AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK} การแปลภาษาส่วนนี้หายไป {NUM} string{P ""}. โปรดช่วยทำให้ OpenTTD ดีขึ้นโดยการสมัครเป็นผู้แปล. ดูใน readme.txt สำหรับรายละเอียด.

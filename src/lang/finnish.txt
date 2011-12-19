@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Poistu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Tekoälyn asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusa
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Tekoälyasetukset
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+Klik ohittaa kartan asetukset
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näytä tekoälyasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoäl
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn määritteet
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Kaikki seuraavassa pelissä ladattavat tekoälyt
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
 STR_AI_CONFIG_RANDOM_AI                                         :Sattumanvarainen tekoäly
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Siirrä 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Siirrä alaspäin
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Siirrä valittua tekoälyä alaspäin listalla
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Valitse tekoäly
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lataa toinen tekoäly
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Määritä
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Määritä tekoälyn parametrit
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Valittavissa olevat tekoälyt
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi tekoälyn
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Tekijä: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Peruuta
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda tekoälyä
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions del Joc
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Paràmetres de dificultat
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Paràmetres avançats
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Paràmetres IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
@@ -1405,7 +1404,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres avançats
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Paràmetres IA
 STR_INTRO_QUIT                                                  :{BLACK}Surt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença un joc nou. Ctrl+Clic salta la configuració del mapa
@@ -1425,7 +1423,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra paràmetres avançats
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra els paràmetres NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Mostra els paràmetres IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falta {NUM} string{P "" s}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
@@ -3473,7 +3470,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fine
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració IA
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Totes les IAs que seran carregades en el proper joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatòria
 
@@ -3482,13 +3478,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mou la I
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou Avall
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecciona IA
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega una altra IA
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de la IA
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}IAs Disponibles
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar una IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3501,7 +3494,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canvïis la IA
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :تنظیمات پیشرفته
-STR_SETTINGS_MENU_AI_SETTINGS                                   :تنظیمات AI(هوش مصنوعی)
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :نام شهرها نشان داده شود
@@ -1374,7 +1373,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}سختی
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
-STR_INTRO_AI_SETTINGS                                           :{BLACK}تنظیمات هوش مصنوعی
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید. Ctrl+Click پیش تنظیمات نقشه را رد و از تنظیمات گذشته استفاده می کند.
@@ -1394,7 +1392,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشا�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}نمایش تنظیمات پیشرفته
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}نمایش تنظیمات هوش مصنوعی
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}این ترجمه {NUM} رشته{P ی های}ترجمه نشده دارد. با ثبت نام کردن به عنوان مترجم ما را در بهتر سازی OpenTTD یاری نمایید. فایل readme.txt را برای جزییات بیشتر بخوانید.
@@ -3004,18 +3001,14 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}صفح�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظیمات هوش مصنوعی
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}همه هوشهای مصنوعی که در بازی بعد بازگشایی می شوند
 STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
 STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
 
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب هوش مصنوعی
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}باز گشایی یک هوش مصنوعی دیگر
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}تنظیم
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}تنظبم پارامتر های مربوط به هوش مصنوعی
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}هوش مصنوعی های موجود
 STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخلب هوش مصنوعی کلیک کنید
 
 STR_AI_LIST_VERSION                                             :{BLACK}ویرایش: {NUM}
@@ -3027,7 +3020,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}لغو
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}هوش مصنوعی را تغییر نده
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}پارامترهای هوش مصنوعی
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
 

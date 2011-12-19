@@ -405,7 +405,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu valikud
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Raskusastme seadistused
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Tehismõistuse seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse valikud
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
@@ -1447,7 +1446,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Raskusas
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Tehismõistuse seaded
 STR_INTRO_QUIT                                                  :{BLACK}Välju
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu. Ctrl+klõps jätab kaardi seadistamise vahele
@@ -1467,7 +1465,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Kuva ras
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näidata täpsemaid seadeid
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näita NewGRF-seadeid
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uut ja uuendatud sisu
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Näita tehismõistuse seadeid
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Sellel tõlkel on puudu {NUM} string{P "" i}. Palun aita teha OpenTTD veel paremaks ning registreeru tõlkijaks. Täpsem info asub failis readme.txt.
@@ -3463,7 +3460,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehism�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Tehismõistuse seadistus
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Kõik järgmises mängus laaditavad tehismõistused
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline tehismõistus
 
@@ -3472,13 +3468,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Liigutamine allapoole
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud tehismõistuse liigutamine loendis allapoole
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vali tehismõistus
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laadi teine tehismõistus
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Seadista
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Muuda tehismõistuse parameetreid
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Saadaval tehismõistused
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klõpsa tehismõistuse valimiseks
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3491,7 +3484,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Loobu
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ära muuda tehismõistust
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tehismõistuse parameetrid
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

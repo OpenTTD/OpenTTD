@@ -418,7 +418,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončit
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavení obtížnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pokročilé nastavení
-STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavení AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavení grafik
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazení jmen měst
@@ -1484,7 +1483,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížn
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pokročilé nastavení
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavení AI
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy
@@ -1504,7 +1502,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Nastavit
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit pokročilé nastavení
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ukázat nastavení NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Ukázat nastavení AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tento překlad postrádá {NUM} řetěz{P ec ce ců}. Prosím pomozte OpenTTD udělat lepším a přihlaste se jako překladatel. Pro více informací, čtěte readme.txt.
@@ -3557,7 +3554,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavení AI
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Všechny AI spuštěné v další hře
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lidský hráč
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
 
@@ -3566,13 +3562,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Přesuno
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Přesunout dolů
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Přesunout vybranou AI v seznamu níže
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vybrat AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Nahrát jinou AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavit
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavit parametry AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Dostupné AI
 STR_AI_LIST_TOOLTIP                                             :{BLACK}AI vybereš kliknutím
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3585,7 +3578,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Zrušit
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměnit AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

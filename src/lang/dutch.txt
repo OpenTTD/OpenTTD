@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsnamen
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijk
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel. Ctrl+klik slaat de kaartconfiguratie over
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Toon moe
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Toon AI-instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Compute
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI configuratie
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alle AI's die in het volgende spel geladen zullen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Geselect
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Omlaag verplaatsen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}De geselecteerde AI naar omlaag verplaatsen in de lijst
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecteer AI
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad andere AI
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configureer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configureer de parameters van de AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Beschikbare AI's
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een AI te selecteren
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Annulere
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI niet veranderen
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

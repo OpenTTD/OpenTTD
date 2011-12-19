@@ -349,7 +349,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-inställningar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-inställningar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
@@ -1404,7 +1403,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Svårigh
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera Online-innehåll
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Inställningar för datorspelare
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+klick hoppar över landskapskonfigurationen
@@ -1424,7 +1422,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Visa ins
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Visa avancerade inställningar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Visa inställningar för NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kolla efter nytt och nyuppdaterat innehåll för nedladdning
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Visa inställningar för datorspelare
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avsluta 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Den här översättningen saknar {NUM} sträng{P "" ar}. Hjälp gärna till att förbättra OpenTTD genom att bli översättare. Se readme.txt för mer info.
@@ -3472,7 +3469,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsök
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration av datorspelaren
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Alla datorspelare som kommer laddas nästa spelomgång
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spelare
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
 
@@ -3481,13 +3477,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta u
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytta ner
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytta ner vald datorspelare i listan
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Välj datorspelare
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ladda en annan datorspelare
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurera
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurera datorspelarens parametrar
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Tillgängliga datorspelare
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicka för att välja en datorspelare
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Upphovsman: {STRING}
@@ -3500,7 +3493,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ändra inte datorspelare
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

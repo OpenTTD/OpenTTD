@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Fermu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Ludaj opcioj
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Malfacilec-agordoj
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancitaj agordoj
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI agordoj
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Agordoj de NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Ebloj por travidebleco
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Urbonomoj montriĝas
@@ -1367,7 +1366,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Malfacil
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancitaj agordoj
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Agordoj de NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provu Enretan Enhavon
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI-Agordoj
 STR_INTRO_QUIT                                                  :{BLACK}Fermu
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starti novan ludon. Stir-Klak por preterpasi mapan agordon.
@@ -1387,7 +1385,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Montru m
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Montru avancitajn agordojn
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Montri NewGRF-agordojn
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Serĉi pri nova kaj ĝisdatigita enhavo por elŝuti
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Montri AI-agordojn.
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Fermu 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ĉi tiu traduko ne havas {NUM} teksto{P "" j}. Bonvolu helpu fari OpenTTD pli bona per estigi traduktiston. Vidi readme.txt por detaloj.
@@ -3315,7 +3312,6 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu for
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-agordo
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Ĉiuj AI-oj kiuj ŝarĝitos en la sekva ludo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Homa ludanto
 STR_AI_CONFIG_RANDOM_AI                                         :Hazarda AI
 
@@ -3324,13 +3320,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Movi ele
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Movi suben
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Movi elektitan AI-on suben en la listo
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Elekti AI-on
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ŝarĝi alian AI-on
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Agordi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi parametroj de la AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Disponeblaj AI-oj
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Aŭtoro: {STRING}
@@ -3343,7 +3336,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametroj de la AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

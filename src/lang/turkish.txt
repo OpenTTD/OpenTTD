@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Oyundan Çık
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zorluk Ayarları
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gelişmiş ayarlar
-STR_SETTINGS_MENU_AI_SETTINGS                                   :YZ ayarları
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
@@ -1378,7 +1377,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Zorluk (
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gelişmiş Ayarlar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Ayarları
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Çevrimiçi İçeriği Kontrol Et
-STR_INTRO_AI_SETTINGS                                           :{BLACK}YZ Ayarları
 STR_INTRO_QUIT                                                  :{BLACK}Çıkış
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Yeni oyuna başla. Ctrl+Click harita ayarlamasını atlar.
@@ -1398,7 +1396,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Zorluk a
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Gelişmiş ayarları görüntüle
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF ayarlarını göster
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}YZ ayarlarını göster
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' den çık
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Bu çeviride {NUM} eksik metin var. Çevirmen olarak kaydolarak OpenTTD'nin iyileştirilmesine yardım edin. Ayrıntılar için readme.txt'ye bakın.
@@ -3357,7 +3354,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}YZ Yapılandırması
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Sonraki oyunda yüklenecek tüm YZ'ler
 STR_AI_CONFIG_HUMAN_PLAYER                                      :İnsan oyuncu
 STR_AI_CONFIG_RANDOM_AI                                         :Rastgele YZ
 
@@ -3366,13 +3362,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Seçilen
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Aşağı taşı
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Seçilen YZ'yi listede aşağı taşı
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}YZ Seç
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Başka bir YZ yükle
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Yapılandır
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}YZ parametrelerini yapılandır
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Mevcut YZ'ler
 STR_AI_LIST_TOOLTIP                                             :{BLACK}YZ seçmek için bir tuşa basın
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Yazar: {STRING}
@@ -3385,7 +3378,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}İptal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}YZ'yi değiştirme
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

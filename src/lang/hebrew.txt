@@ -1345,7 +1345,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}({STRING
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}הגדרות מתקדמות
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}(NewGRF)הגדרות שדרוג גראפי
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK} בדוק תוכן מקוון
-STR_INTRO_AI_SETTINGS                                           :{BLACK}הגדרות בינה מלאכותית
 STR_INTRO_QUIT                                                  :{BLACK}צא
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}התחל משחק חדש. Ctrl+לחיצה מדלג על תצורת מפה
@@ -1365,7 +1364,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}הצג �
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}הצג הגדרות מתקדמות
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}הצג הגדרות בינה-מלאכותית
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'- צא מ
 
 # Quit window
@@ -3236,7 +3234,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלו�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}הגדרות בינה מלאכותית
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}כל הבינות המלאכותיות שיוטענו במשחק הבא
 STR_AI_CONFIG_HUMAN_PLAYER                                      :שחקן אנושי
 STR_AI_CONFIG_RANDOM_AI                                         :בינה מלאכותית אקראית
 
@@ -3245,13 +3242,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}הזז �
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}הזז מטה
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}הזז את ה-AI הנבחר למטה ברשימה
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}בחר בינה מלאכותית
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}טען בינה מלאכותית נוספת
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}שנה הגדרות
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}שנה הגדרות בינה מלאכותית
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}בינות מלאכותיות זמינות
 STR_AI_LIST_TOOLTIP                                             :{BLACK} לחץ לבחירת בינה מלאכותית
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}יוצר: {STRING}
@@ -3264,7 +3258,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}בטל
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה בינה מלאכותית
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}פרמטרים של בינה מלאכותית
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
 

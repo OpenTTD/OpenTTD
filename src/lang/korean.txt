@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
-STR_SETTINGS_MENU_AI_SETTINGS                                   :인공지능(AI) 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
@@ -1405,7 +1404,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}난이�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 체크
-STR_INTRO_AI_SETTINGS                                           :{BLACK}인공지능 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다. Ctrl+클릭은 맵설정을 넘어갑니다.
@@ -1425,7 +1423,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 표시
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}인공지능 설정 보기
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
 
 STR_INTRO_TRANSLATION                                           :{BLACK}이 언어는 {NUM}개의 문자열이 번역되지 않았습니다. 번역자로 등록하시어 OpenTTD를 더 나은 게임으로 만들어주십시오. 상세한 정보는 readme.txt를 참고하십시오.
@@ -3473,7 +3470,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 디�
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 설정
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}다음 게임부터 모든 인공지능을 불러옵니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능
 
@@ -3482,13 +3478,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}선택�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}아래로 이동
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}선택된 AI를 항목의 아래로 이동시킴.
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}인공지능 선택
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}다른 인공지능 불러오기
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}설정
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}인공지능 파라미터 설정
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}사용 가능한 인공지능
 STR_AI_LIST_TOOLTIP                                             :{BLACK}클릭하여 AI를 선택하세요
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}저자: {STRING}
@@ -3501,7 +3494,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}취소
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}인공지능을 바꾸지 않습니다
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

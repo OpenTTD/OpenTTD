@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Beenden
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spieleinstellungen
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwierigkeitsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweiterte Einstellungen
-STR_SETTINGS_MENU_AI_SETTINGS                                   :KI - Einstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
@@ -1405,7 +1404,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Schwieri
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweiterte Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
-STR_INTRO_AI_SETTINGS                                           :{BLACK}KI-Einstellungen
 STR_INTRO_QUIT                                                  :{BLACK}Beenden
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neues Spiel beginnen. Strg+Klick überspringt Karteneinstellungen
@@ -1425,7 +1423,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwieri
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Erweiterte Einstellungen anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe auf neue oder aktualisierte Erweiterungen zum Herunterladen
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Einstellungen für KI anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' beenden
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Dieser Übersetzung fehl{P 0 t en} {NUM} String{P "" s}. Bitte hilf, OpenTTD zu verbessern und melde Dich als Übersetzer an. Siehe readme.txt für weitere Details.
@@ -3473,7 +3470,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Liste aller KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
 
@@ -3482,13 +3478,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausg
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Nach unten bewegen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Die ausgewählte KI in der Liste nach unten bewegen
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}KI wählen
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Eine andere KI für diesen Eintrag auswählen
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Einstellungen
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Einstellungen für die KI anzeigen und / oder ändern
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare KIs
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicken, um eine KI auszuwählen
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3501,7 +3494,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Abbreche
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI nicht wechseln
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

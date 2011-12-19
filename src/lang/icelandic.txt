@@ -1339,7 +1339,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Erfiðle
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Þróaðar Stillingar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stillingar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Ná í viðbætur af netinu
-STR_INTRO_AI_SETTINGS                                           :{BLACK}Stillingar gervigreindar
 STR_INTRO_QUIT                                                  :{BLACK}Hætta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hefja nýjan leik. Ctrl+Click sleppir kortastillingum
@@ -1359,7 +1358,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Stilla e
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Birta þróaðar stillingar
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Sýna NewGRF stillingar
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skoða viðbætur sem hægt er að ná í af netinu
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Sýna stillingar gervigreindar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Hætta í OpenTTD
 
 
@@ -3271,7 +3269,6 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsu
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Stilling gervigreindar
-STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Gervigreindir sem notaðar verða í næsta leik
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 
@@ -3280,13 +3277,10 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa va
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Færa niður
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa valda gerfigreind niður listann
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Velja gervigreind
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Velja aðra gervigreind
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Stilla
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu eiginleika gervigreindarinnar
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Tiltækar gervigreindir
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Smelltu til að merkja gervigreind
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Höfundur: {STRING}
@@ -3299,7 +3293,6 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Hætta v
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta við breytingar
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Stillingar gervigreindar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

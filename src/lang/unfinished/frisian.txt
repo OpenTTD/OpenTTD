@@ -348,7 +348,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ofslute
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul opsje
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :wiidweidiche ynstellings
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI ynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsjoch opsjes
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sjen litte
@@ -1362,7 +1361,6 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikh
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avansearre ynstellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF ynstellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sikje online ynhâld
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI ynstellings
 STR_INTRO_QUIT                                                  :{BLACK}Ôfslúte
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begjin in nei spul. Ctrl + klik slaat kaartynstelling oer
@@ -1382,7 +1380,6 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Lit swie
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avansearre ynstellings sjen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Strún ynternet ôf om nije ynhâld del te heljen
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Lit AI ynstellings sjen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Slút 'OpenTTD' ôf
 
 # Quit window
