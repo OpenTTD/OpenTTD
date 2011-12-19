@@ -15,6 +15,7 @@
 #include "../../company_func.h"
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
+#include "../../genworld.h"
 
 #include "../script_storage.hpp"
 #include "../script_instance.hpp"
@@ -233,7 +234,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 #endif
 
 	/* Try to perform the command. */
-	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, _networking ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : NULL, text, false, estimate_only);
+	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : NULL, text, false, estimate_only);
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
@@ -254,7 +255,11 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	SetLastCost(res.GetCost());
 	SetLastCommandRes(true);
 
-	if (_networking) {
+	if (_generating_world) {
+		IncreaseDoCommandCosts(res.GetCost());
+		if (callback != NULL) callback(GetActiveInstance());
+		return true;
+	} else if (_networking) {
 		/* Suspend the AI till the command is really executed. */
 		throw Script_Suspend(-(int)GetDoCommandDelay(), callback);
 	} else {

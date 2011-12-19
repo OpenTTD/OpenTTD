@@ -1169,6 +1169,7 @@ static const StringID _generation_class_table[]  = {
 	STR_GENERATION_TREE_GENERATION,
 	STR_GENERATION_SETTINGUP_GAME,
 	STR_GENERATION_PREPARING_TILELOOP,
+	STR_GENERATION_PREPARING_SCRIPT,
 	STR_GENERATION_PREPARING_GAME
 };
 assert_compile(lengthof(_generation_class_table) == GWP_CLASS_COUNT);
@@ -1272,7 +1273,7 @@ void ShowGenerateWorldProgress()
 
 static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uint total)
 {
-	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 60, 65, 80, 85, 99, 100 };
+	static const int percent_table[] = {0, 5, 14, 17, 20, 40, 60, 65, 80, 85, 95, 99, 100 };
 	assert_compile(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 

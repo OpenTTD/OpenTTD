@@ -159,6 +159,12 @@ public:
 	 */
 	void InsertEvent(class ScriptEvent *event);
 
+	/**
+	 * Check if the instance is sleeping, which either happened because the
+	 *  script executed a DoCommand, or executed this.Sleep().
+	 */
+	bool IsSleeping() { return this->suspend != 0; }
+
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
 

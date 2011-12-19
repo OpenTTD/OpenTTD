@@ -2413,6 +2413,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Object g
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Running script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparing game
 
 # NewGRF settings

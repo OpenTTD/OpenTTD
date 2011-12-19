@@ -658,7 +658,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	 * If we are in network, and the command is not from the network
 	 * send it to the command-queue and abort execution
 	 */
-	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
+	if (_networking && !_generating_world && !(cmd & CMD_NETWORK_COMMAND)) {
 		NetworkSendCommand(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text, _current_company);
 		cur_company.Restore();
 
