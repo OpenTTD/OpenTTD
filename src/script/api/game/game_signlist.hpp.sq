@@ -7,21 +7,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_signlist.hpp List all the signs of your company. */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#ifndef SCRIPT_SIGNLIST_HPP
-#define SCRIPT_SIGNLIST_HPP
+#include "../script_signlist.hpp"
+#include "../template/template_signlist.hpp.sq"
 
-#include "script_list.hpp"
 
-/**
- * Create a list of signs your company has created.
- * @api ai game
- * @ingroup ScriptList
- */
-class ScriptSignList : public ScriptList {
-public:
-	ScriptSignList();
-};
+template <> const char *GetClassName<ScriptSignList, ST_GS>() { return "GSSignList"; }
 
-#endif /* SCRIPT_SIGNLIST_HPP */
+void SQGSSignList_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptSignList, ST_GS> SQGSSignList("GSSignList");
+	SQGSSignList.PreRegister(engine, "GSList");
+	SQGSSignList.AddConstructor<void (ScriptSignList::*)(), 1>(engine, "x");
+
+	SQGSSignList.PostRegister(engine);
+}

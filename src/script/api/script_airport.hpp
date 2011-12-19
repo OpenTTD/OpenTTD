@@ -17,7 +17,7 @@
 
 /**
  * Class that handles all airport related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptAirport : public ScriptObject {
 public:
@@ -150,6 +150,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_LARGE
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);
 
@@ -159,6 +160,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the airport has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveAirport(TileIndex tile);
 

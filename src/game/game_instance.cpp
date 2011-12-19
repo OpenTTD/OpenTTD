@@ -24,13 +24,32 @@
 /* Convert all Game related classes to Squirrel data.
  * Note: this line is a marker in squirrel_export.sh. Do not change! */
 #include "../script/api/game/game_accounting.hpp.sq"
+#include "../script/api/game/game_airport.hpp.sq"
+#include "../script/api/game/game_base.hpp.sq"
+#include "../script/api/game/game_cargo.hpp.sq"
+#include "../script/api/game/game_company.hpp.sq"
 #include "../script/api/game/game_controller.hpp.sq"
+#include "../script/api/game/game_date.hpp.sq"
 #include "../script/api/game/game_error.hpp.sq"
 #include "../script/api/game/game_event.hpp.sq"
 #include "../script/api/game/game_execmode.hpp.sq"
+#include "../script/api/game/game_gamesettings.hpp.sq"
+#include "../script/api/game/game_industry.hpp.sq"
+#include "../script/api/game/game_industrylist.hpp.sq"
+#include "../script/api/game/game_industrytype.hpp.sq"
+#include "../script/api/game/game_industrytypelist.hpp.sq"
+#include "../script/api/game/game_infrastructure.hpp.sq"
 #include "../script/api/game/game_list.hpp.sq"
 #include "../script/api/game/game_log.hpp.sq"
+#include "../script/api/game/game_map.hpp.sq"
+#include "../script/api/game/game_marine.hpp.sq"
+#include "../script/api/game/game_road.hpp.sq"
+#include "../script/api/game/game_signlist.hpp.sq"
 #include "../script/api/game/game_testmode.hpp.sq"
+#include "../script/api/game/game_tile.hpp.sq"
+#include "../script/api/game/game_town.hpp.sq"
+#include "../script/api/game/game_townlist.hpp.sq"
+#include "../script/api/game/game_vehicle.hpp.sq"
 
 
 GameInstance::GameInstance() :
@@ -52,12 +71,34 @@ void GameInstance::RegisterAPI()
 /* Register all classes */
 	SQGSList_Register(this->engine);
 	SQGSAccounting_Register(this->engine);
+	SQGSAirport_Register(this->engine);
+	SQGSBase_Register(this->engine);
+	SQGSCargo_Register(this->engine);
+	SQGSCompany_Register(this->engine);
+	SQGSDate_Register(this->engine);
 	SQGSError_Register(this->engine);
 	SQGSEvent_Register(this->engine);
 	SQGSEventController_Register(this->engine);
 	SQGSExecMode_Register(this->engine);
+	SQGSGameSettings_Register(this->engine);
+	SQGSIndustry_Register(this->engine);
+	SQGSIndustryList_Register(this->engine);
+	SQGSIndustryList_CargoAccepting_Register(this->engine);
+	SQGSIndustryList_CargoProducing_Register(this->engine);
+	SQGSIndustryType_Register(this->engine);
+	SQGSIndustryTypeList_Register(this->engine);
+	SQGSInfrastructure_Register(this->engine);
 	SQGSLog_Register(this->engine);
+	SQGSMap_Register(this->engine);
+	SQGSMarine_Register(this->engine);
+	SQGSRoad_Register(this->engine);
+	SQGSSignList_Register(this->engine);
 	SQGSTestMode_Register(this->engine);
+	SQGSTile_Register(this->engine);
+	SQGSTown_Register(this->engine);
+	SQGSTownEffectList_Register(this->engine);
+	SQGSTownList_Register(this->engine);
+	SQGSVehicle_Register(this->engine);
 
 }
 

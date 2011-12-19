@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all game settings related functions.
- * @api ai
+ * @api ai game
  *
  * @note ScriptGameSettings::IsValid and ScriptGameSettings::GetValue are functions
  *       that rely on the settings as OpenTTD stores them in savegame and
@@ -65,6 +65,7 @@ public:
 	 * Checks whether the given vehicle-type is disabled for AIs.
 	 * @param vehicle_type The vehicle-type to check.
 	 * @return True if the vehicle-type is disabled.
+	 * @api -game
 	 */
 	static bool IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type);
 };

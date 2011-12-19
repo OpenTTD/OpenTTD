@@ -16,7 +16,7 @@
 
 /**
  * Creates a list of industries that are currently on the map.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptIndustryList : public ScriptList {
@@ -26,7 +26,7 @@ public:
 
 /**
  * Creates a list of industries that accepts a given cargo.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptIndustryList_CargoAccepting : public ScriptList {
@@ -40,7 +40,7 @@ public:
 /**
  * Creates a list of industries that can produce a given cargo.
  * @note It also contains industries that currently produces 0 units of the cargo.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptIndustryList_CargoProducing : public ScriptList {

@@ -18,7 +18,7 @@
 
 /**
  * Class that handles all company infrastructure related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptInfrastructure : public ScriptObject {
 public:

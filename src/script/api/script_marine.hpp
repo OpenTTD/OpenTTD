@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all marine related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptMarine : public ScriptObject {
 public:
@@ -105,6 +105,7 @@ public:
 	 * @return Whether the water depot has been/can be build or not.
 	 * @note A WaterDepot is 1 tile in width, and 2 tiles in length.
 	 * @note The depot will be built towards the south from 'tile', not necessarily towards 'front'.
+	 * @api -game
 	 */
 	static bool BuildWaterDepot(TileIndex tile, TileIndex front);
 
@@ -119,6 +120,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @return Whether the dock has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildDock(TileIndex tile, StationID station_id);
 
@@ -130,6 +132,7 @@ public:
 	 * @exception ScriptError::ERR_SITE_UNSUITABLE
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @return Whether the buoy has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildBuoy(TileIndex tile);
 
@@ -140,6 +143,7 @@ public:
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
 	 * @exception ScriptError::ERR_SITE_UNSUITABLE
 	 * @return Whether the lock has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildLock(TileIndex tile);
 
@@ -152,6 +156,7 @@ public:
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @return Whether the canal has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildCanal(TileIndex tile);
 
@@ -161,6 +166,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the water depot has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveWaterDepot(TileIndex tile);
 
@@ -170,6 +176,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the dock has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveDock(TileIndex tile);
 
@@ -179,6 +186,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the buoy has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveBuoy(TileIndex tile);
 
@@ -188,6 +196,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the lock has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveLock(TileIndex tile);
 
@@ -197,6 +206,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the canal has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveCanal(TileIndex tile);
 

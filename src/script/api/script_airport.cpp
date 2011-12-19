@@ -94,7 +94,7 @@
 	if (!::IsTileType(tile, MP_STATION)) return -1;
 
 	const Station *st = ::Station::GetByTile(tile);
-	if (st->owner != _current_company) return -1;
+	if (st->owner != _current_company && _current_company != OWNER_DEITY) return -1;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return -1;
 
 	return st->airport.GetNumHangars();
@@ -107,7 +107,7 @@
 	if (GetNumHangars(tile) < 1) return INVALID_TILE;
 
 	const Station *st = ::Station::GetByTile(tile);
-	if (st->owner != _current_company) return INVALID_TILE;
+	if (st->owner != _current_company && _current_company != OWNER_DEITY) return INVALID_TILE;
 	if ((st->facilities & FACIL_AIRPORT) == 0) return INVALID_TILE;
 
 	return st->airport.GetHangarTile(0);

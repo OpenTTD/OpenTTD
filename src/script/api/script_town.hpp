@@ -18,12 +18,13 @@
 
 /**
  * Class that handles all town related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptTown : public ScriptObject {
 public:
 	/**
 	 * Actions that one can perform on a town.
+	 * @api -game
 	 */
 	enum TownAction {
 		/* Note: these values represent part of the in-game order of the _town_action_proc array */
@@ -248,6 +249,7 @@ public:
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the town has a statue.
+	 * @api -game
 	 */
 	static bool HasStatue(TownID town_id);
 
@@ -275,6 +277,7 @@ public:
 	 * @return The company that has the exclusive rights. The value
 	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
 	 *         exclusive rights given out to anyone.
+	 * @api -game
 	 */
 	static ScriptCompany::CompanyID GetExclusiveRightsCompany(TownID town_id);
 
@@ -294,6 +297,7 @@ public:
 	 * @param town_action The action to perform on the town.
 	 * @pre IsValidTown(town_id).
 	 * @return True if and only if the action can performed.
+	 * @api -game
 	 */
 	static bool IsActionAvailable(TownID town_id, TownAction town_action);
 
@@ -304,6 +308,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @pre IsActionAvailable(town_id, town_action).
 	 * @return True if the action succeeded.
+	 * @api -game
 	 */
 	static bool PerformTownAction(TownID town_id, TownAction town_action);
 

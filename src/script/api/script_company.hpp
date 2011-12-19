@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all company related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptCompany : public ScriptObject {
 public:
@@ -58,6 +58,7 @@ public:
 	 * Check if a CompanyID is your CompanyID, to ease up checks.
 	 * @param company The company index to check.
 	 * @return True if and only if this company is your CompanyID.
+	 * @api -game
 	 */
 	static bool IsMine(CompanyID company);
 
@@ -68,6 +69,7 @@ public:
 	 * @pre 'name' must have at most 30 characters.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
+	 * @api -game
 	 */
 	static bool SetName(const char *name);
 
@@ -85,6 +87,7 @@ public:
 	 * @pre 'name' must have at least one character.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
+	 * @api -game
 	 */
 	static bool SetPresidentName(const char *name);
 
@@ -102,6 +105,7 @@ public:
 	 * @pre GetPresidentGender(ScriptCompany.COMPANY_SELF) != gender.
 	 * @return True if the gender was changed.
 	 * @note When successful a random face will be created.
+	 * @api -game
 	 */
 	static bool SetPresidentGender(Gender gender);
 
@@ -120,6 +124,7 @@ public:
 	 * @pre 'loan' must be below GetMaxLoanAmount().
 	 * @pre 'loan' - GetLoanAmount() + GetBankBalance() must be non-negative.
 	 * @return True if the loan could be set to your requested amount.
+	 * @api -game
 	 */
 	static bool SetLoanAmount(int32 loan);
 
@@ -129,6 +134,7 @@ public:
 	 * @pre 'loan' must be non-negative.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
 	 * @return True if we could allocate a minimum of 'loan' loan.
+	 * @api -game
 	 */
 	static bool SetMinimumLoanAmount(int32 loan);
 
@@ -222,6 +228,7 @@ public:
 	 * @return True if the HQ could be build.
 	 * @note An HQ can not be removed, only by water or rebuilding; If an HQ is
 	 *  build again, the old one is removed.
+	 * @api -game
 	 */
 	static bool BuildCompanyHQ(TileIndex tile);
 
@@ -238,6 +245,7 @@ public:
 	 * Set whether autorenew is enabled for your company.
 	 * @param autorenew The new autorenew status.
 	 * @return True if autorenew status has been modified.
+	 * @api -game
 	 */
 	static bool SetAutoRenewStatus(bool autorenew);
 
@@ -253,6 +261,7 @@ public:
 	 * Set the number of months before/after max age to autorenew an engine for your company.
 	 * @param months The new months between autorenew.
 	 * @return True if autorenew months has been modified.
+	 * @api -game
 	 */
 	static bool SetAutoRenewMonths(int16 months);
 
@@ -268,6 +277,7 @@ public:
 	 * Set the minimum money needed to autorenew an engine for your company.
 	 * @param money The new minimum required money for autorenew to work.
 	 * @return True if autorenew money has been modified.
+	 * @api -game
 	 */
 	static bool SetAutoRenewMoney(uint32 money);
 

@@ -18,7 +18,7 @@
 
 /**
  * Class that handles all cargo related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptCargo : public ScriptObject {
 public:

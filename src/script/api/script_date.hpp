@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all date related (calculation) functions.
- * @api ai
+ * @api ai game
  *
  * @note Months and days of month are 1-based; the first month of the
  *       year is 1 and the first day of the month is also 1.

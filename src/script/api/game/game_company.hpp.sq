@@ -1,0 +1,53 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_company.hpp"
+#include "../template/template_company.hpp.sq"
+
+
+template <> const char *GetClassName<ScriptCompany, ST_GS>() { return "GSCompany"; }
+
+void SQGSCompany_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptCompany, ST_GS> SQGSCompany("GSCompany");
+	SQGSCompany.PreRegister(engine);
+	SQGSCompany.AddConstructor<void (ScriptCompany::*)(), 1>(engine, "x");
+
+	SQGSCompany.DefSQConst(engine, ScriptCompany::CURRENT_QUARTER,  "CURRENT_QUARTER");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::EARLIEST_QUARTER, "EARLIEST_QUARTER");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_FIRST,    "COMPANY_FIRST");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_LAST,     "COMPANY_LAST");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_INVALID,  "COMPANY_INVALID");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::COMPANY_SELF,     "COMPANY_SELF");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_MALE,      "GENDER_MALE");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_FEMALE,    "GENDER_FEMALE");
+	SQGSCompany.DefSQConst(engine, ScriptCompany::GENDER_INVALID,   "GENDER_INVALID");
+
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::ResolveCompanyID,              "ResolveCompanyID",              2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetName,                       "GetName",                       2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentName,              "GetPresidentName",              2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentGender,            "GetPresidentGender",            2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetLoanAmount,                 "GetLoanAmount",                 1, ".");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetMaxLoanAmount,              "GetMaxLoanAmount",              1, ".");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetLoanInterval,               "GetLoanInterval",               1, ".");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetBankBalance,                "GetBankBalance",                2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyIncome,            "GetQuarterlyIncome",            3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyExpenses,          "GetQuarterlyExpenses",          3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyCargoDelivered,    "GetQuarterlyCargoDelivered",    3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyPerformanceRating, "GetQuarterlyPerformanceRating", 3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyCompanyValue,      "GetQuarterlyCompanyValue",      3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetCompanyHQ,                  "GetCompanyHQ",                  2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetAutoRenewStatus,            "GetAutoRenewStatus",            2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetAutoRenewMonths,            "GetAutoRenewMonths",            2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetAutoRenewMoney,             "GetAutoRenewMoney",             2, ".i");
+
+	SQGSCompany.PostRegister(engine);
+}
