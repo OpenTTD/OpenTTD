@@ -2058,6 +2058,9 @@
     <ClInclude Include="..\src\script\api\script_execmode.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_game.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_gamesettings.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2215,6 +2218,9 @@
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_execmode.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_game.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_gamesettings.cpp">

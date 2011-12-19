@@ -943,6 +943,7 @@
     <ClInclude Include="..\src\script\api\script_event.hpp" />
     <ClInclude Include="..\src\script\api\script_event_types.hpp" />
     <ClInclude Include="..\src\script\api\script_execmode.hpp" />
+    <ClInclude Include="..\src\script\api\script_game.hpp" />
     <ClInclude Include="..\src\script\api\script_gamesettings.hpp" />
     <ClInclude Include="..\src\script\api\script_group.hpp" />
     <ClInclude Include="..\src\script\api\script_grouplist.hpp" />
@@ -996,6 +997,7 @@
     <ClCompile Include="..\src\script\api\script_event.cpp" />
     <ClCompile Include="..\src\script\api\script_event_types.cpp" />
     <ClCompile Include="..\src\script\api\script_execmode.cpp" />
+    <ClCompile Include="..\src\script\api\script_game.cpp" />
     <ClCompile Include="..\src\script\api\script_gamesettings.cpp" />
     <ClCompile Include="..\src\script\api\script_group.cpp" />
     <ClCompile Include="..\src\script\api\script_grouplist.cpp" />

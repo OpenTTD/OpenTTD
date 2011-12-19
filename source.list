@@ -721,6 +721,7 @@ script/api/script_error.hpp
 script/api/script_event.hpp
 script/api/script_event_types.hpp
 script/api/script_execmode.hpp
+script/api/script_game.hpp
 script/api/script_gamesettings.hpp
 script/api/script_group.hpp
 script/api/script_grouplist.hpp
@@ -776,6 +777,7 @@ script/api/script_error.cpp
 script/api/script_event.cpp
 script/api/script_event_types.cpp
 script/api/script_execmode.cpp
+script/api/script_game.cpp
 script/api/script_gamesettings.cpp
 script/api/script_group.cpp
 script/api/script_grouplist.cpp

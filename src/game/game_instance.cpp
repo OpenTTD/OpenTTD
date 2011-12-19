@@ -40,6 +40,7 @@
 #include "../script/api/game/game_error.hpp.sq"
 #include "../script/api/game/game_event.hpp.sq"
 #include "../script/api/game/game_execmode.hpp.sq"
+#include "../script/api/game/game_game.hpp.sq"
 #include "../script/api/game/game_gamesettings.hpp.sq"
 #include "../script/api/game/game_industry.hpp.sq"
 #include "../script/api/game/game_industrylist.hpp.sq"
@@ -109,6 +110,7 @@ void GameInstance::RegisterAPI()
 	SQGSEvent_Register(this->engine);
 	SQGSEventController_Register(this->engine);
 	SQGSExecMode_Register(this->engine);
+	SQGSGame_Register(this->engine);
 	SQGSGameSettings_Register(this->engine);
 	SQGSIndustry_Register(this->engine);
 	SQGSIndustryList_Register(this->engine);

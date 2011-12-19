@@ -148,6 +148,7 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 		case PM_PAUSED_SAVELOAD:
 		case PM_PAUSED_ERROR:
 		case PM_PAUSED_NORMAL:
+		case PM_PAUSED_GAME_SCRIPT:
 			break;
 
 #ifdef ENABLE_NETWORK
