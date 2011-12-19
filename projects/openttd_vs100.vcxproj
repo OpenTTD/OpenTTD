@@ -320,6 +320,7 @@
     <ClCompile Include="..\src\genworld.cpp" />
     <ClCompile Include="..\src\gfx.cpp" />
     <ClCompile Include="..\src\gfxinit.cpp" />
+    <ClCompile Include="..\src\goal.cpp" />
     <ClCompile Include="..\src\ground_vehicle.cpp" />
     <ClCompile Include="..\src\heightmap.cpp" />
     <ClCompile Include="..\src\highscore.cpp" />
@@ -439,6 +440,8 @@
     <ClInclude Include="..\src\gfx_func.h" />
     <ClInclude Include="..\src\gfx_type.h" />
     <ClInclude Include="..\src\gfxinit.h" />
+    <ClInclude Include="..\src\goal_base.h" />
+    <ClInclude Include="..\src\goal_type.h" />
     <ClInclude Include="..\src\graph_gui.h" />
     <ClInclude Include="..\src\ground_vehicle.hpp" />
     <ClInclude Include="..\src\group.h" />
@@ -650,6 +653,7 @@
     <ClCompile Include="..\src\error_gui.cpp" />
     <ClCompile Include="..\src\fios_gui.cpp" />
     <ClCompile Include="..\src\genworld_gui.cpp" />
+    <ClCompile Include="..\src\goal_gui.cpp" />
     <ClCompile Include="..\src\graph_gui.cpp" />
     <ClCompile Include="..\src\group_gui.cpp" />
     <ClCompile Include="..\src\highscore_gui.cpp" />
@@ -707,6 +711,7 @@
     <ClInclude Include="..\src\widgets\error_widget.h" />
     <ClInclude Include="..\src\widgets\fios_widget.h" />
     <ClInclude Include="..\src\widgets\genworld_widget.h" />
+    <ClInclude Include="..\src\widgets\goal_widget.h" />
     <ClInclude Include="..\src\widgets\graph_widget.h" />
     <ClInclude Include="..\src\widgets\group_widget.h" />
     <ClInclude Include="..\src\widgets\highscore_widget.h" />
@@ -781,6 +786,7 @@
     <ClCompile Include="..\src\saveload\engine_sl.cpp" />
     <ClCompile Include="..\src\saveload\game_sl.cpp" />
     <ClCompile Include="..\src\saveload\gamelog_sl.cpp" />
+    <ClCompile Include="..\src\saveload\goal_sl.cpp" />
     <ClCompile Include="..\src\saveload\group_sl.cpp" />
     <ClCompile Include="..\src\saveload\industry_sl.cpp" />
     <ClCompile Include="..\src\saveload\labelmaps_sl.cpp" />
@@ -946,6 +952,7 @@
     <ClInclude Include="..\src\script\api\script_execmode.hpp" />
     <ClInclude Include="..\src\script\api\script_game.hpp" />
     <ClInclude Include="..\src\script\api\script_gamesettings.hpp" />
+    <ClInclude Include="..\src\script\api\script_goal.hpp" />
     <ClInclude Include="..\src\script\api\script_group.hpp" />
     <ClInclude Include="..\src\script\api\script_grouplist.hpp" />
     <ClInclude Include="..\src\script\api\script_industry.hpp" />
@@ -1003,6 +1010,7 @@
     <ClCompile Include="..\src\script\api\script_execmode.cpp" />
     <ClCompile Include="..\src\script\api\script_game.cpp" />
     <ClCompile Include="..\src\script\api\script_gamesettings.cpp" />
+    <ClCompile Include="..\src\script\api\script_goal.cpp" />
     <ClCompile Include="..\src\script\api\script_group.cpp" />
     <ClCompile Include="..\src\script\api\script_grouplist.cpp" />
     <ClCompile Include="..\src\script\api\script_industry.cpp" />

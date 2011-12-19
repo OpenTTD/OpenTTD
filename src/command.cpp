@@ -150,6 +150,8 @@ CommandProc CmdBuildLock;
 CommandProc CmdCreateSubsidy;
 CommandProc CmdCompanyCtrl;
 CommandProc CmdCustomNewsItem;
+CommandProc CmdCreateGoal;
+CommandProc CmdRemoveGoal;
 
 CommandProc CmdLevelLand;
 
@@ -286,6 +288,8 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdCreateSubsidy,                          CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_CREATE_SUBSIDY
 	DEF_CMD(CmdCompanyCtrl,        CMD_SPECTATOR | CMD_CLIENT_ID, CMDT_SERVER_SETTING        ), // CMD_COMPANY_CTRL
 	DEF_CMD(CmdCustomNewsItem,                         CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_CUSTOM_NEWS_ITEM
+	DEF_CMD(CmdCreateGoal,                             CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_CREATE_GOAL
+	DEF_CMD(CmdRemoveGoal,                             CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_REMOVE_GOAL
 
 	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 

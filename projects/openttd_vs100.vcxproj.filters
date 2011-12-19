@@ -189,6 +189,9 @@
     <ClCompile Include="..\src\gfxinit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\goal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\ground_vehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -544,6 +547,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gfxinit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\goal_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\goal_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\graph_gui.h">
@@ -1179,6 +1188,9 @@
     <ClCompile Include="..\src\genworld_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\goal_gui.cpp">
+      <Filter>GUI Source Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\graph_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
@@ -1348,6 +1360,9 @@
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\src\widgets\genworld_widget.h">
+      <Filter>Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\widgets\goal_widget.h">
       <Filter>Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\src\widgets\graph_widget.h">
@@ -1570,6 +1585,9 @@
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\saveload\gamelog_sl.cpp">
+      <Filter>Save/Load handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\saveload\goal_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\saveload\group_sl.cpp">
@@ -2067,6 +2085,9 @@
     <ClInclude Include="..\src\script\api\script_gamesettings.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\script\api\script_goal.hpp">
+      <Filter>Script API</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\script\api\script_group.hpp">
       <Filter>Script API</Filter>
     </ClInclude>
@@ -2236,6 +2257,9 @@
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_gamesettings.cpp">
+      <Filter>Script API Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\script\api\script_goal.cpp">
       <Filter>Script API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\script\api\script_group.cpp">

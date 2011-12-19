@@ -16,6 +16,7 @@
 #include "../../network/network.h"
 #include "../../tunnelbridge.h"
 #include "../../genworld.h"
+#include "../../goal_type.h"
 
 #include "../script_storage.hpp"
 #include "../script_instance.hpp"
@@ -142,6 +143,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	SetNewVehicleID(_new_vehicle_id);
 	SetNewSignID(_new_sign_id);
 	SetNewGroupID(_new_group_id);
+	SetNewGoalID(_new_goal_id);
 }
 
 /* static */ bool ScriptObject::GetLastCommandRes()
@@ -177,6 +179,16 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ GroupID ScriptObject::GetNewGroupID()
 {
 	return GetStorage()->new_group_id;
+}
+
+/* static */ void ScriptObject::SetNewGoalID(GoalID goal_id)
+{
+	GetStorage()->new_goal_id = goal_id;
+}
+
+/* static */ GroupID ScriptObject::GetNewGoalID()
+{
+	return GetStorage()->new_goal_id;
 }
 
 /* static */ void ScriptObject::SetAllowDoCommand(bool allow)

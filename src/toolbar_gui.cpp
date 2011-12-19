@@ -475,7 +475,7 @@ static CallBackFunction MenuClickTown(int index)
 
 static CallBackFunction ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, WID_TN_SUBSIDIES, STR_SUBSIDIES_MENU_SUBSIDIES, 2);
 	return CBF_NONE;
 }
 
@@ -487,7 +487,10 @@ static CallBackFunction ToolbarSubsidiesClick(Window *w)
  */
 static CallBackFunction MenuClickSubsidies(int index)
 {
-	ShowSubsidiesList();
+	switch (index) {
+		case 0: ShowSubsidiesList(); break;
+		case 1: ShowGoalsList();     break;
+	}
 	return CBF_NONE;
 }
 

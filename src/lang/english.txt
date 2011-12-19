@@ -382,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Found town
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
+STR_SUBSIDIES_MENU_GOAL                                         :Current goals
 ############ range ends here
 
 ############ range for graph menu starts
@@ -2656,6 +2657,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Build a
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Goals
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global goals:
+STR_GOALS_TEXT                                                  :{ORANGE}{RAW_STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- None -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Company goals:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to centre main view on industry/town/tile. Ctrl+Click opens a new viewport on industry/town/tile location
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies

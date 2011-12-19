@@ -100,6 +100,11 @@ public:
 	static void DoCommandReturnGroupID(ScriptInstance *instance);
 
 	/**
+	 * Return a GoalID reply for a DoCommand.
+	 */
+	static void DoCommandReturnGoalID(ScriptInstance *instance);
+
+	/**
 	 * Get the controller attached to the instance.
 	 */
 	class ScriptController *GetController() { return controller; }

@@ -52,6 +52,7 @@ void ShowBuildTreesToolbar();
 void ShowTownDirectory();
 void ShowIndustryDirectory();
 void ShowSubsidiesList();
+void ShowGoalsList();
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 

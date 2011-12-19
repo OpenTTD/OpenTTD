@@ -161,6 +161,11 @@ protected:
 	static GroupID GetNewGroupID();
 
 	/**
+	 * Get the latest stored new_goal_id.
+	 */
+	static GoalID GetNewGoalID();
+
+	/**
 	 * Store a allow_do_command per company.
 	 * @param allow The new allow.
 	 */
@@ -228,6 +233,12 @@ private:
 	 * @param group_id The new GroupID.
 	 */
 	static void SetNewGroupID(GroupID group_id);
+
+	/**
+	 * Store a new_goal_id per company.
+	 * @param goal_id The new GoalID.
+	 */
+	static void SetNewGoalID(GoalID goal_id);
 };
 
 #endif /* SCRIPT_OBJECT_HPP */

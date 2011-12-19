@@ -44,6 +44,7 @@
 #include "../script/api/game/game_execmode.hpp.sq"
 #include "../script/api/game/game_game.hpp.sq"
 #include "../script/api/game/game_gamesettings.hpp.sq"
+#include "../script/api/game/game_goal.hpp.sq"
 #include "../script/api/game/game_industry.hpp.sq"
 #include "../script/api/game/game_industrylist.hpp.sq"
 #include "../script/api/game/game_industrytype.hpp.sq"
@@ -132,6 +133,7 @@ void GameInstance::RegisterAPI()
 	SQGSExecMode_Register(this->engine);
 	SQGSGame_Register(this->engine);
 	SQGSGameSettings_Register(this->engine);
+	SQGSGoal_Register(this->engine);
 	SQGSIndustry_Register(this->engine);
 	SQGSIndustryList_Register(this->engine);
 	SQGSIndustryList_CargoAccepting_Register(this->engine);

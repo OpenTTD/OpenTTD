@@ -32,6 +32,10 @@
  *                           <td> introduction, preview \ref dynamic_engines "(2)"  </td>
  *                           <td> engines retires \ref dynamic_engines "(2)"        </td>
  *                           <td> no \ref dynamic_engines "(2)"                     </td></tr>
+ * <tr><td>#GoalID      </td><td> goal                                              </td>
+ *                           <td> creation                                          </td>
+ *                           <td> deletion                                          </td>
+ *                           <td> yes                                               </td></tr>
  * <tr><td>#GroupID     </td><td> vehicle group                                     </td>
  *                           <td> creation                                          </td>
  *                           <td> deletion                                          </td>
@@ -87,6 +91,7 @@ typedef uint BridgeType;     ///< Internal name, not of any use for you.
 typedef byte CargoID;        ///< The ID of a cargo.
 class CommandCost;           ///< The cost of a command.
 typedef uint16 EngineID;     ///< The ID of an engine.
+typedef uint16 GoalID;       ///< The ID of a goal.
 typedef uint16 GroupID;      ///< The ID of a group.
 typedef uint16 IndustryID;   ///< The ID of an industry.
 typedef uint8 IndustryType;  ///< The ID of an industry-type.

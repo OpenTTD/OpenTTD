@@ -277,6 +277,12 @@ enum WindowClass {
 	 */
 	WC_AI_LIST,
 
+	/**
+	 * Goals list; Window numbers:
+	 *   - 0 ; #GoalListWidgets
+	 */
+	WC_GOALS_LIST,
+
 
 	/**
 	 * Station list; Window numbers:

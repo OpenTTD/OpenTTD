@@ -1,0 +1,36 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_goal.hpp"
+#include "../template/template_goal.hpp.sq"
+
+
+template <> const char *GetClassName<ScriptGoal, ST_GS>() { return "GSGoal"; }
+
+void SQGSGoal_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptGoal, ST_GS> SQGSGoal("GSGoal");
+	SQGSGoal.PreRegister(engine);
+	SQGSGoal.AddConstructor<void (ScriptGoal::*)(), 1>(engine, "x");
+
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GOAL_INVALID, "GOAL_INVALID");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_NONE,      "GT_NONE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TILE,      "GT_TILE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_INDUSTRY,  "GT_INDUSTRY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TOWN,      "GT_TOWN");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_COMPANY,   "GT_COMPANY");
+
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsValidGoal, "IsValidGoal", 2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::New,         "New",         5, ".i.ii");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Remove,      "Remove",      2, ".i");
+
+	SQGSGoal.PostRegister(engine);
+}
