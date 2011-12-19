@@ -33,6 +33,8 @@ void SQGSIndustryType_Register(Squirrel *engine)
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::GetConstructionCost,   "GetConstructionCost",   2, ".i");
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::CanBuildIndustry,      "CanBuildIndustry",      2, ".i");
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::CanProspectIndustry,   "CanProspectIndustry",   2, ".i");
+	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::BuildIndustry,         "BuildIndustry",         3, ".ii");
+	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::ProspectIndustry,      "ProspectIndustry",      2, ".i");
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::IsBuiltOnWater,        "IsBuiltOnWater",        2, ".i");
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::HasHeliport,           "HasHeliport",           2, ".i");
 	SQGSIndustryType.DefSQStaticMethod(engine, &ScriptIndustryType::HasDock,               "HasDock",               2, ".i");

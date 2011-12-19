@@ -53,9 +53,9 @@ public:
 	 * @pre IsValidBaseStation(station_id).
 	 * @pre 'name' must have at least one character.
 	 * @pre 'name' must have at most 30 characters.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
-	 * @api -game
 	 */
 	static bool SetName(StationID station_id, const char *name);
 

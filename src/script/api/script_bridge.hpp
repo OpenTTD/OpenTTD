@@ -154,9 +154,9 @@ public:
 	 * Removes a bridge, by executing it on either the start or end tile.
 	 * @param tile An end or start tile of the bridge.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the bridge has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveBridge(TileIndex tile);
 

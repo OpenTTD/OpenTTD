@@ -191,6 +191,7 @@
 
 /* static */ bool ScriptCompany::SetLoanAmount(int32 loan)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, loan >= 0);
 	EnforcePrecondition(false, (loan % GetLoanInterval()) == 0);
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
@@ -205,6 +206,7 @@
 
 /* static */ bool ScriptCompany::SetMinimumLoanAmount(int32 loan)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, loan >= 0);
 
 	int32 over_interval = loan % GetLoanInterval();
@@ -219,6 +221,7 @@
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
 	return ScriptObject::DoCommand(tile, OBJECT_HQ, 0, CMD_BUILD_OBJECT);

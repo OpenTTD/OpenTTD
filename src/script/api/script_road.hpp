@@ -117,8 +117,8 @@ public:
 	/**
 	 * Check if a given RoadType is available.
 	 * @param road_type The RoadType to check for.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if this RoadType can be used.
-	 * @api -game
 	 */
 	static bool IsRoadTypeAvailable(RoadType road_type);
 
@@ -186,7 +186,6 @@ public:
 	 * @return 0 when the build parts do not connect, 1 when they do connect once
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
-	 * @api -game
 	 */
 	static int32 CanBuildConnectedRoadParts(ScriptTile::Slope slope, struct Array *existing, TileIndex start, TileIndex end);
 
@@ -208,7 +207,6 @@ public:
 	 * @return 0 when the build parts do not connect, 1 when they do connect once
 	 *         they are build or 2 when building the first part automatically
 	 *         builds the second part. -1 means the preconditions are not met.
-	 * @api -game
 	 */
 	static int32 CanBuildConnectedRoadPartsHere(TileIndex tile, TileIndex start, TileIndex end);
 
@@ -286,6 +284,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -294,7 +293,6 @@ public:
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildOneWayRoad(TileIndex start, TileIndex end);
 
@@ -339,6 +337,7 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @exception ScriptError::ERR_LAND_SLOPED_WRONG
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
@@ -347,7 +346,6 @@ public:
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the road has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildOneWayRoadFull(TileIndex start, TileIndex end);
 
@@ -359,10 +357,10 @@ public:
 	 * @pre ScriptMap::IsValidTile(front).
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return Whether the road depot has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildRoadDepot(TileIndex tile, TileIndex front);
 
@@ -377,6 +375,7 @@ public:
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre GetCurrentRoadType() == ROADTYPE_ROAD.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
@@ -387,7 +386,6 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
 
@@ -402,6 +400,7 @@ public:
 	 * @pre 'tile' is not equal to 'front', but in a straight line of it.
 	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
@@ -412,7 +411,6 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildDriveThroughRoadStation(TileIndex tile, TileIndex front, RoadVehicleType road_veh_type, StationID station_id);
 
@@ -426,11 +424,11 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @return Whether the road has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveRoad(TileIndex start, TileIndex end);
 
@@ -445,11 +443,11 @@ public:
 	 *  ScriptMap::GetTileX(start) == ScriptMap::GetTileX(end) or
 	 *  ScriptMap::GetTileY(start) == ScriptMap::GetTileY(end).
 	 * @pre IsRoadTypeAvailable(GetCurrentRoadType()).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @return Whether the road has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveRoadFull(TileIndex start, TileIndex end);
 
@@ -458,10 +456,10 @@ public:
 	 * @param tile Place to remove the depot from.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road depot.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the road depot has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveRoadDepot(TileIndex tile);
 
@@ -470,10 +468,10 @@ public:
 	 * @param tile Place to remove the station from.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre Tile is a road station.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @return Whether the station has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveRoadStation(TileIndex tile);
 

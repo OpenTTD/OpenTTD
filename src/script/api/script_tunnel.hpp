@@ -105,9 +105,9 @@ public:
 	 * Remove the tunnel whose entrance is located at tile.
 	 * @param tile The tile that is an entrance to a tunnel.
 	 * @pre ScriptMap::IsValidTile(tile) && IsTunnelTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the tunnel has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveTunnel(TileIndex tile);
 };

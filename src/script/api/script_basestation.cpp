@@ -36,6 +36,7 @@
 
 /* static */ bool ScriptBaseStation::SetName(StationID station_id, const char *name)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
 	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_STATION_NAME_CHARS, ScriptError::ERR_PRECONDITION_STRING_TOO_LONG);

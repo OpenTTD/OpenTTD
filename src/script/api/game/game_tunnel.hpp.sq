@@ -40,6 +40,7 @@ void SQGSTunnel_Register(Squirrel *engine)
 	SQGSTunnel.DefSQStaticMethod(engine, &ScriptTunnel::IsTunnelTile,      "IsTunnelTile",      2, ".i");
 	SQGSTunnel.DefSQStaticMethod(engine, &ScriptTunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, ".i");
 	SQGSTunnel.DefSQStaticMethod(engine, &ScriptTunnel::BuildTunnel,       "BuildTunnel",       3, ".ii");
+	SQGSTunnel.DefSQStaticMethod(engine, &ScriptTunnel::RemoveTunnel,      "RemoveTunnel",      2, ".i");
 
 	SQGSTunnel.PostRegister(engine);
 }

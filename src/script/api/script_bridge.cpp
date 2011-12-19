@@ -128,6 +128,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 
 /* static */ bool ScriptBridge::RemoveBridge(TileIndex tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsBridgeTile(tile));
 	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }

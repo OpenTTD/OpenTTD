@@ -372,11 +372,11 @@ public:
 	 * @param tile The tile to raise.
 	 * @param slope Corners to raise (SLOPE_xxx).
 	 * @pre tile < ScriptMap::GetMapSize().
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception ScriptTile::ERR_TILE_TOO_HIGH
 	 * @return 0 means failed, 1 means success.
-	 * @api -game
 	 */
 	static bool RaiseTile(TileIndex tile, int32 slope);
 
@@ -389,11 +389,11 @@ public:
 	 * @param tile The tile to lower.
 	 * @param slope Corners to lower (SLOPE_xxx).
 	 * @pre tile < ScriptMap::GetMapSize().
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception ScriptTile::ERR_TILE_TOO_LOW
 	 * @return 0 means failed, 1 means success.
-	 * @api -game
 	 */
 	static bool LowerTile(TileIndex tile, int32 slope);
 
@@ -405,6 +405,7 @@ public:
 	 * @param end_tile The opposite corner of the rectangle.
 	 * @pre start_tile < ScriptMap::GetMapSize().
 	 * @pre end_tile < ScriptMap::GetMapSize().
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_TOO_CLOSE_TO_EDGE
 	 * @return True if one or more tiles were leveled.
@@ -412,7 +413,6 @@ public:
 	 *  successfully leveled already.
 	 * @note This function may return true in ScriptTestMode, although it fails in
 	 *  ScriptExecMode.
-	 * @api -game
 	 */
 	static bool LevelTiles(TileIndex start_tile, TileIndex end_tile);
 
@@ -420,9 +420,9 @@ public:
 	 * Destroy everything on the given tile.
 	 * @param tile The tile to demolish.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return True if and only if the tile was demolished.
-	 * @api -game
 	 */
 	static bool DemolishTile(TileIndex tile);
 
@@ -430,8 +430,8 @@ public:
 	 * Create a random tree on a tile.
 	 * @param tile The tile to build a tree on.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if and only if a tree was added on the tile.
-	 * @api -game
 	 */
 	static bool PlantTree(TileIndex tile);
 
@@ -443,8 +443,8 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre width >= 1 && width <= 20.
 	 * @pre height >= 1 && height <= 20.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if and only if a tree was added on any of the tiles in the rectangle.
-	 * @api -game
 	 */
 	static bool PlantTreeRectangle(TileIndex tile, uint width, uint height);
 

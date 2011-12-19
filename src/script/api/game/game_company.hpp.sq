@@ -35,6 +35,8 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetName,                       "GetName",                       2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentName,              "GetPresidentName",              2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetPresidentGender,            "GetPresidentGender",            2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetLoanAmount,                 "SetLoanAmount",                 2, ".i");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::SetMinimumLoanAmount,          "SetMinimumLoanAmount",          2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetLoanAmount,                 "GetLoanAmount",                 1, ".");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetMaxLoanAmount,              "GetMaxLoanAmount",              1, ".");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetLoanInterval,               "GetLoanInterval",               1, ".");
@@ -44,6 +46,7 @@ void SQGSCompany_Register(Squirrel *engine)
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyCargoDelivered,    "GetQuarterlyCargoDelivered",    3, ".ii");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyPerformanceRating, "GetQuarterlyPerformanceRating", 3, ".ii");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetQuarterlyCompanyValue,      "GetQuarterlyCompanyValue",      3, ".ii");
+	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::BuildCompanyHQ,                "BuildCompanyHQ",                2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetCompanyHQ,                  "GetCompanyHQ",                  2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetAutoRenewStatus,            "GetAutoRenewStatus",            2, ".i");
 	SQGSCompany.DefSQStaticMethod(engine, &ScriptCompany::GetAutoRenewMonths,            "GetAutoRenewMonths",            2, ".i");

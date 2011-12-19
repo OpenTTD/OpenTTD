@@ -123,8 +123,8 @@ public:
 	 * @pre GetLoanInterval() must be a multiplier of 'loan'.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
 	 * @pre 'loan' - GetLoanAmount() + GetBankBalance() must be non-negative.
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if the loan could be set to your requested amount.
-	 * @api -game
 	 */
 	static bool SetLoanAmount(int32 loan);
 
@@ -133,8 +133,8 @@ public:
 	 * @param loan The amount to loan (any positive number).
 	 * @pre 'loan' must be non-negative.
 	 * @pre 'loan' must be below GetMaxLoanAmount().
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if we could allocate a minimum of 'loan' loan.
-	 * @api -game
 	 */
 	static bool SetMinimumLoanAmount(int32 loan);
 
@@ -223,12 +223,12 @@ public:
 	 * Build your company's HQ on the given tile.
 	 * @param tile The tile to build your HQ on, this tile is the most nothern tile of your HQ.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @return True if the HQ could be build.
 	 * @note An HQ can not be removed, only by water or rebuilding; If an HQ is
 	 *  build again, the old one is removed.
-	 * @api -game
 	 */
 	static bool BuildCompanyHQ(TileIndex tile);
 

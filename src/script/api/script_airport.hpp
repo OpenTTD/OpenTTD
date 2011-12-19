@@ -144,13 +144,13 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @pre AirportAvailable(type).
 	 * @pre station_id == ScriptStation::STATION_NEW || station_id == ScriptStation::STATION_JOIN_ADJACENT || ScriptStation::IsValidStation(station_id).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @exception ScriptError::ERR_LOCAL_AUTHORITY_REFUSES
 	 * @exception ScriptStation::ERR_STATION_TOO_LARGE
 	 * @exception ScriptStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION
 	 * @return Whether the airport has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildAirport(TileIndex tile, AirportType type, StationID station_id);
 
@@ -158,9 +158,9 @@ public:
 	 * Removes an airport.
 	 * @param tile Any tile of the airport.
 	 * @pre ScriptMap::IsValidTile(tile).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the airport has been/can be removed or not.
-	 * @api -game
 	 */
 	static bool RemoveAirport(TileIndex tile);
 

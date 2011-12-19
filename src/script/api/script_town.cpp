@@ -176,6 +176,7 @@
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)
 {
+	if (ScriptObject::GetCompany() == OWNER_DEITY) return false;
 	if (!IsValidTown(town_id)) return false;
 
 	return ::HasBit(::Town::Get(town_id)->statues, ScriptObject::GetCompany());
@@ -197,6 +198,7 @@
 
 /* static */ ScriptCompany::CompanyID ScriptTown::GetExclusiveRightsCompany(TownID town_id)
 {
+	if (ScriptObject::GetCompany() == OWNER_DEITY) return ScriptCompany::COMPANY_INVALID;
 	if (!IsValidTown(town_id)) return ScriptCompany::COMPANY_INVALID;
 
 	return (ScriptCompany::CompanyID)(int8)::Town::Get(town_id)->exclusivity;
@@ -211,6 +213,7 @@
 
 /* static */ bool ScriptTown::IsActionAvailable(TownID town_id, TownAction town_action)
 {
+	if (ScriptObject::GetCompany() == OWNER_DEITY) return false;
 	if (!IsValidTown(town_id)) return false;
 
 	return HasBit(::GetMaskOfTownActions(NULL, ScriptObject::GetCompany(), ::Town::Get(town_id)), town_action);
@@ -218,6 +221,7 @@
 
 /* static */ bool ScriptTown::PerformTownAction(TownID town_id, TownAction town_action)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, IsActionAvailable(town_id, town_action));
 
@@ -226,6 +230,7 @@
 
 /* static */ bool ScriptTown::ExpandTown(TownID town_id, int houses)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(false, IsValidTown(town_id));
 	EnforcePrecondition(false, houses > 0);
 

@@ -43,6 +43,7 @@ void SQGSBridge_Register(Squirrel *engine)
 	SQGSBridge.DefSQStaticMethod(engine, &ScriptBridge::GetMaxLength,      "GetMaxLength",      2, ".i");
 	SQGSBridge.DefSQStaticMethod(engine, &ScriptBridge::GetMinLength,      "GetMinLength",      2, ".i");
 	SQGSBridge.DefSQStaticMethod(engine, &ScriptBridge::BuildBridge,       "BuildBridge",       5, ".iiii");
+	SQGSBridge.DefSQStaticMethod(engine, &ScriptBridge::RemoveBridge,      "RemoveBridge",      2, ".i");
 	SQGSBridge.DefSQStaticMethod(engine, &ScriptBridge::GetOtherBridgeEnd, "GetOtherBridgeEnd", 2, ".i");
 
 	SQGSBridge.PostRegister(engine);

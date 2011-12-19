@@ -144,6 +144,10 @@ BEGIN {
 {
 	if (comment == "true" && !match($0, /@api/))
 	{
+		if (match($0, /@game /) && api != "GS") next;
+		if (match($0, /@ai /) && api != "AI") next;
+		gsub("@game ", "", $0);
+		gsub("@ai ", "", $0);
 		comment_buffer = comment_buffer $0 "\n"; next;
 	}
 }

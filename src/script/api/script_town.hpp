@@ -24,7 +24,6 @@ class ScriptTown : public ScriptObject {
 public:
 	/**
 	 * Actions that one can perform on a town.
-	 * @api -game
 	 */
 	enum TownAction {
 		/* Note: these values represent part of the in-game order of the _town_action_proc array */
@@ -281,8 +280,8 @@ public:
 	 * Find out if this town has a statue for the current company.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if the town has a statue.
-	 * @api -game
 	 */
 	static bool HasStatue(TownID town_id);
 
@@ -307,10 +306,10 @@ public:
 	 * Find out which company currently has the exclusive rights of this town.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return The company that has the exclusive rights. The value
 	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
 	 *         exclusive rights given out to anyone.
-	 * @api -game
 	 */
 	static ScriptCompany::CompanyID GetExclusiveRightsCompany(TownID town_id);
 
@@ -329,8 +328,8 @@ public:
 	 * @param town_id The town to perform the action on.
 	 * @param town_action The action to perform on the town.
 	 * @pre IsValidTown(town_id).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if and only if the action can performed.
-	 * @api -game
 	 */
 	static bool IsActionAvailable(TownID town_id, TownAction town_action);
 
@@ -340,8 +339,8 @@ public:
 	 * @param town_action The action to perform on the town.
 	 * @pre IsValidTown(town_id).
 	 * @pre IsActionAvailable(town_id, town_action).
+	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if the action succeeded.
-	 * @api -game
 	 */
 	static bool PerformTownAction(TownID town_id, TownAction town_action);
 

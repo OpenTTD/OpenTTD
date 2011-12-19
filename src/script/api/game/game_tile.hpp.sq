@@ -101,6 +101,12 @@ void SQGSTile_Register(Squirrel *engine)
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetCargoProduction,         "GetCargoProduction",         6, ".iiiii");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, ".ii");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, ".ii");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::RaiseTile,                  "RaiseTile",                  3, ".ii");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::LowerTile,                  "LowerTile",                  3, ".ii");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::LevelTiles,                 "LevelTiles",                 3, ".ii");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::DemolishTile,               "DemolishTile",               2, ".i");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::PlantTree,                  "PlantTree",                  2, ".i");
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::PlantTreeRectangle,         "PlantTreeRectangle",         4, ".iii");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, ".ii");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetTownAuthority,           "GetTownAuthority",           2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::GetClosestTown,             "GetClosestTown",             2, ".i");

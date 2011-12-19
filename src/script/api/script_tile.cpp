@@ -219,6 +219,7 @@
 
 /* static */ bool ScriptTile::RaiseTile(TileIndex tile, int32 slope)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ::MapSize());
 
 	return ScriptObject::DoCommand(tile, slope, 1, CMD_TERRAFORM_LAND);
@@ -226,6 +227,7 @@
 
 /* static */ bool ScriptTile::LowerTile(TileIndex tile, int32 slope)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, tile < ::MapSize());
 
 	return ScriptObject::DoCommand(tile, slope, 0, CMD_TERRAFORM_LAND);
@@ -233,6 +235,7 @@
 
 /* static */ bool ScriptTile::LevelTiles(TileIndex start_tile, TileIndex end_tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, start_tile < ::MapSize());
 	EnforcePrecondition(false, end_tile < ::MapSize());
 
@@ -241,6 +244,7 @@
 
 /* static */ bool ScriptTile::DemolishTile(TileIndex tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
 	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
@@ -248,6 +252,7 @@
 
 /* static */ bool ScriptTile::PlantTree(TileIndex tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
 	return ScriptObject::DoCommand(tile, TREE_INVALID, tile, CMD_PLANT_TREE);
@@ -255,6 +260,7 @@
 
 /* static */ bool ScriptTile::PlantTreeRectangle(TileIndex tile, uint width, uint height)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, ::IsValidTile(tile));
 	EnforcePrecondition(false, width >= 1 && width <= 20);
 	EnforcePrecondition(false, height >= 1 && height <= 20);

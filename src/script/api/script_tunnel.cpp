@@ -130,6 +130,7 @@ static void _DoCommandReturnBuildTunnel1(class ScriptInstance *instance)
 
 /* static */ bool ScriptTunnel::RemoveTunnel(TileIndex tile)
 {
+	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, IsTunnelTile(tile));
 
 	return ScriptObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
