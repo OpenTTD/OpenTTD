@@ -983,6 +983,7 @@
     <ClInclude Include="..\src\script\api\script_subsidy.hpp" />
     <ClInclude Include="..\src\script\api\script_subsidylist.hpp" />
     <ClInclude Include="..\src\script\api\script_testmode.hpp" />
+    <ClInclude Include="..\src\script\api\script_text.hpp" />
     <ClInclude Include="..\src\script\api\script_tile.hpp" />
     <ClInclude Include="..\src\script\api\script_tilelist.hpp" />
     <ClInclude Include="..\src\script\api\script_town.hpp" />
@@ -1042,6 +1043,7 @@
     <ClCompile Include="..\src\script\api\script_subsidy.cpp" />
     <ClCompile Include="..\src\script\api\script_subsidylist.cpp" />
     <ClCompile Include="..\src\script\api\script_testmode.cpp" />
+    <ClCompile Include="..\src\script\api\script_text.cpp" />
     <ClCompile Include="..\src\script\api\script_tile.cpp" />
     <ClCompile Include="..\src\script\api\script_tilelist.cpp" />
     <ClCompile Include="..\src\script\api\script_town.cpp" />

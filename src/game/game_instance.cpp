@@ -67,6 +67,7 @@
 #include "../script/api/game/game_subsidy.hpp.sq"
 #include "../script/api/game/game_subsidylist.hpp.sq"
 #include "../script/api/game/game_testmode.hpp.sq"
+#include "../script/api/game/game_text.hpp.sq"
 #include "../script/api/game/game_tile.hpp.sq"
 #include "../script/api/game/game_tilelist.hpp.sq"
 #include "../script/api/game/game_town.hpp.sq"
@@ -161,6 +162,7 @@ void GameInstance::RegisterAPI()
 	SQGSSubsidy_Register(this->engine);
 	SQGSSubsidyList_Register(this->engine);
 	SQGSTestMode_Register(this->engine);
+	SQGSText_Register(this->engine);
 	SQGSTile_Register(this->engine);
 	SQGSTileList_Register(this->engine);
 	SQGSTileList_IndustryAccepting_Register(this->engine);

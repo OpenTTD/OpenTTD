@@ -71,6 +71,8 @@ enum StringControlCode {
 	SCC_STRING4,
 	SCC_STRING5,
 
+	SCC_ENCODED,
+
 	SCC_STRING,
 	SCC_COMMA,
 	SCC_DECIMAL,

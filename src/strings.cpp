@@ -733,6 +733,103 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		}
 
 		switch (b) {
+			case SCC_ENCODED: {
+				uint64 sub_args_data[20];
+				WChar sub_args_type[20];
+				bool sub_args_need_free[20];
+				StringParameters sub_args(sub_args_data, 20, sub_args_type);
+
+				sub_args.ClearTypeInformation();
+				memset(sub_args_need_free, 0, sizeof(sub_args_need_free));
+
+				uint16 stringid;
+				const char *s = str;
+				char *p;
+				stringid = strtol(str, &p, 16);
+				if (*p != ':' && *p != '\0') {
+					while (*p != '\0') p++;
+					str = p;
+					buff = strecat(buff, "(invalid SCC_ENCODED)", last);
+					break;
+				}
+				if (stringid >= TAB_SIZE) {
+					while (*p != '\0') p++;
+					str = p;
+					buff = strecat(buff, "(invalid StringID)", last);
+					break;
+				}
+
+				int i = 0;
+				while (*p != '\0') {
+					uint64 param;
+					s = ++p;
+
+					/* Find the next value */
+					bool instring = false;
+					bool escape = false;
+					for (;; p++) {
+						if (*p == '\\') {
+							escape = true;
+							continue;
+						}
+						if (*p == '"' && escape) {
+							escape = false;
+							continue;
+						}
+						escape = false;
+
+						if (*p == '"') {
+							instring = !instring;
+							continue;
+						}
+						if (instring) {
+							continue;
+						}
+
+						if (*p == ':') break;
+						if (*p == '\0') break;
+					}
+
+					if (*s != '"') {
+						/* Check if we want to look up another string */
+						WChar l;
+						size_t len = Utf8Decode(&l, s);
+						bool lookup = (l == SCC_ENCODED);
+						if (lookup) s += len;
+
+						param = strtol(s, &p, 16);
+
+						if (lookup) {
+							if (param >= TAB_SIZE) {
+								while (*p != '\0') p++;
+								str = p;
+								buff = strecat(buff, "(invalid sub-StringID)", last);
+								break;
+							}
+							param = (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + param;
+						}
+
+						sub_args.SetParam(i++, param);
+					} else {
+						char *g = strdup(s);
+						g[p - s] = '\0';
+
+						sub_args_need_free[i] = true;
+						sub_args.SetParam(i++, (uint64)(size_t)g);
+					}
+				}
+				/* We error'd out in the while, to error out in themain too */
+				if (*str == '\0') break;
+
+				str = p;
+				buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last);
+
+				for (int i = 0; i < 20; i++) {
+					if (sub_args_need_free[i]) free((void *)sub_args.GetParam(i));
+				}
+				break;
+			}
+
 			case SCC_NEWGRF_STRINL: {
 				StringID substr = Utf8Consume(&str);
 				str_stack.push(GetStringPtr(substr));

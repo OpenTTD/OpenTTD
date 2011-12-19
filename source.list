@@ -761,6 +761,7 @@ script/api/script_stationlist.hpp
 script/api/script_subsidy.hpp
 script/api/script_subsidylist.hpp
 script/api/script_testmode.hpp
+script/api/script_text.hpp
 script/api/script_tile.hpp
 script/api/script_tilelist.hpp
 script/api/script_town.hpp
@@ -822,6 +823,7 @@ script/api/script_stationlist.cpp
 script/api/script_subsidy.cpp
 script/api/script_subsidylist.cpp
 script/api/script_testmode.cpp
+script/api/script_text.cpp
 script/api/script_tile.cpp
 script/api/script_tilelist.cpp
 script/api/script_town.cpp

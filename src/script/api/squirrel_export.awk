@@ -35,6 +35,17 @@ function dump_class_templates(name)
 	print "	template <> inline const " name " &GetParam(ForceType<const " name " &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(" name " *)instance; }"
 	if (name == "ScriptEvent") {
 		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
+	} else if (name == "ScriptText") {
+		print ""
+		print "	template <> inline Text *GetParam(ForceType<Text *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) {"
+		print "		if (sq_gettype(vm, index) == OT_INSTANCE) {"
+		print "			return GetParam(ForceType<ScriptText *>(), vm, index, ptr);"
+		print "		}"
+		print "		if (sq_gettype(vm, index) == OT_STRING) {"
+		print "			return new RawText(GetParam(ForceType<const char *>(), vm, index, ptr));"
+		print "		}"
+		print "		return NULL;"
+		print "	}"
 	} else {
 		print "	template <> inline int Return<" name " *>(HSQUIRRELVM vm, " name " *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, \"" realname "\", res, NULL, DefSQDestructorCallback<" name ">, true); return 1; }"
 	}
@@ -324,7 +335,7 @@ BEGIN {
 	print "void SQ" api_cls "_Register(Squirrel *engine)"
 	print "{"
 	print "	DefSQClass<" cls ", ST_" toupper(api) "> SQ" api_cls "(\"" api_cls "\");"
-	if (super_cls == "ScriptObject" || super_cls == "AIAbstractList::Valuator") {
+	if (super_cls == "Text" || super_cls == "ScriptObject" || super_cls == "AIAbstractList::Valuator") {
 		print "	SQ" api_cls ".PreRegister(engine);"
 	} else {
 		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");"
@@ -516,6 +527,8 @@ BEGIN {
 				types = types "a"
 			} else if (match(params[len], "^struct Array")) {
 				types = types "a"
+			} else if (match(params[len], "^Text")) {
+				types = types "."
 			} else {
 				types = types "x"
 			}
