@@ -475,7 +475,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		/* We have a file opened, thus are downloading internal content */
 		size_t toRead = (size_t)(p->size - p->pos);
 		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->Close();
 			fclose(this->curFile);
@@ -509,7 +509,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 		const char *filename = GetFullFilename(this->curInfo, true);
 		if (filename == NULL || (this->curFile = fopen(filename, "wb")) == NULL) {
 			/* Unless that fails ofcourse... */
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			return false;
 		}

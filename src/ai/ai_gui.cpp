@@ -149,7 +149,7 @@ struct AIListWindow : public Window {
 			for (int i = 0; i < this->selected; i++) it++;
 			AIConfig::GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
 		}
-		SetWindowDirty(WC_GAME_OPTIONS, 0);
+		SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -583,7 +583,7 @@ struct AIConfigWindow : public Window {
 
 	AIConfigWindow() : Window()
 	{
-		this->InitNested(&_ai_config_desc); // Initializes 'this->line_height' as a side effect.
+		this->InitNested(&_ai_config_desc, WN_GAME_OPTIONS_AI); // Initializes 'this->line_height' as a side effect.
 		this->vscroll = this->GetScrollbar(WID_AIC_SCROLLBAR);
 		this->selected_slot = INVALID_COMPANY;
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_AIC_LIST);
@@ -752,7 +752,7 @@ struct AIConfigWindow : public Window {
 /** Open the AI config window. */
 void ShowAIConfigWindow()
 {
-	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new AIConfigWindow();
 }
 

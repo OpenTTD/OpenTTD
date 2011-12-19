@@ -284,7 +284,7 @@ struct NewGRFParametersWindow : public Window {
 				if (!this->action14present && this->grf_config->num_params > 0) {
 					this->grf_config->num_params--;
 					this->InvalidateData();
-					SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
+					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				}
 				break;
 
@@ -293,7 +293,7 @@ struct NewGRFParametersWindow : public Window {
 				if (!this->action14present && c->num_params < c->num_valid_params) {
 					c->param[c->num_params++] = 0;
 					this->InvalidateData();
-					SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
+					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				}
 				break;
 			}
@@ -349,7 +349,7 @@ struct NewGRFParametersWindow : public Window {
 			case WID_NP_RESET:
 				this->grf_config->SetParameterDefaults();
 				this->InvalidateData();
-				SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
+				SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				break;
 
 			case WID_NP_ACCEPT:
@@ -727,7 +727,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : SZSP_HORIZONTAL);
-		this->FinishInitNested(desc);
+		this->FinishInitNested(desc, WN_GAME_OPTIONS_NEWGRF_STATE);
 
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NS_FILTER);
@@ -1940,7 +1940,7 @@ struct ScanProgressWindow : public Window {
 	/** Create the window. */
 	ScanProgressWindow() : Window(), last_name(NULL), scanned(0)
 	{
-		this->InitNested(&_scan_progress_desc);
+		this->InitNested(&_scan_progress_desc, 1);
 	}
 
 	/** Free the last name buffer. */

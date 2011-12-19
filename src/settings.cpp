@@ -1717,7 +1717,7 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			GamelogStopAction();
 		}
 
-		SetWindowDirty(WC_GAME_OPTIONS, 0);
+		SetWindowClassesDirty(WC_GAME_OPTIONS);
 	}
 
 	return CommandCost();
@@ -1754,7 +1754,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 			return CommandCost();
 		}
 
-		SetWindowDirty(WC_GAME_OPTIONS, 0);
+		SetWindowClassesDirty(WC_GAME_OPTIONS);
 	}
 
 	return CommandCost();
@@ -1783,7 +1783,9 @@ bool SetSettingValue(uint index, int32 value, bool force_newgame)
 			Write_ValidateSetting(var2, sd, value);
 		}
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
-		SetWindowDirty(WC_GAME_OPTIONS, 0);
+
+		SetWindowClassesDirty(WC_GAME_OPTIONS);
+
 		return true;
 	}
 

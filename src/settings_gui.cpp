@@ -130,7 +130,7 @@ struct GameOptionsWindow : Window {
 		this->opt = &GetGameSettings();
 		this->reload = false;
 
-		this->InitNested(desc);
+		this->InitNested(desc, WN_GAME_OPTIONS_GAME_OPTIONS);
 		this->OnInvalidateData(0);
 	}
 
@@ -464,7 +464,7 @@ struct GameOptionsWindow : Window {
 			case WID_GO_TOWNNAME_DROPDOWN: // Town names
 				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
 					this->opt->game_creation.town_name = index;
-					SetWindowDirty(WC_GAME_OPTIONS, 0);
+					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
 				}
 				break;
 
@@ -603,7 +603,7 @@ static const WindowDesc _game_options_desc(
 /** Open the game options window. */
 void ShowGameOptions()
 {
-	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new GameOptionsWindow(&_game_options_desc);
 }
 
@@ -624,7 +624,7 @@ public:
 
 	GameDifficultyWindow(const WindowDesc *desc) : Window()
 	{
-		this->InitNested(desc);
+		this->InitNested(desc, WN_GAME_OPTIONS_GAME_DIFFICULTY);
 
 		/* Setup disabled buttons when creating window
 		 * disable all other difficulty buttons during gameplay except for 'custom' */
@@ -879,7 +879,7 @@ static const WindowDesc _game_difficulty_desc(
 /** Open the game-difficulty window. */
 void ShowGameDifficulty()
 {
-	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new GameDifficultyWindow(&_game_difficulty_desc);
 }
 
@@ -1594,7 +1594,7 @@ struct GameSettingsWindow : Window {
 
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
 
 		this->vscroll->SetCount(_settings_main_page.Length());
 	}
@@ -1793,7 +1793,7 @@ static const WindowDesc _settings_selection_desc(
 /** Open advanced settings window. */
 void ShowGameSettings()
 {
-	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new GameSettingsWindow(&_settings_selection_desc);
 }
 

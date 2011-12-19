@@ -791,7 +791,7 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 
 	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(blocking);
 
-	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	NetworkClose(close_admins);
 

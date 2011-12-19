@@ -74,7 +74,7 @@ void SortNetworkLanguages()
  */
 void UpdateNetworkGameWindow(bool unselect)
 {
-	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect ? 1 : 0);
+	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, unselect ? 1 : 0);
 }
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
@@ -425,7 +425,7 @@ public:
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_NG_SCROLLBAR);
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(desc, WN_NETWORK_WINDOW_GAME);
 
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
@@ -651,7 +651,7 @@ public:
 		this->field = widget;
 		switch (widget) {
 			case WID_NG_CANCEL: // Cancel button
-				DeleteWindowById(WC_NETWORK_WINDOW, 0);
+				DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 				break;
 
 			case WID_NG_CONN_BTN: // 'Connection' droplist
@@ -980,7 +980,8 @@ static const WindowDesc _network_game_window_desc(
 void ShowNetworkGameWindow()
 {
 	static bool first = true;
-	DeleteWindowById(WC_NETWORK_WINDOW, 0);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 
 	/* Only show once */
 	if (first) {
@@ -1000,7 +1001,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH)
 	{
-		this->InitNested(desc, 0);
+		this->InitNested(desc, WN_NETWORK_WINDOW_START);
 
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, this->edit_str_size);
 
@@ -1316,7 +1317,8 @@ static const WindowDesc _network_start_server_window_desc(
 
 static void ShowNetworkStartServerWindow()
 {
-	DeleteWindowById(WC_NETWORK_WINDOW, 0);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
@@ -1332,7 +1334,7 @@ struct NetworkLobbyWindow : public Window {
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_NL_SCROLLBAR);
-		this->FinishInitNested(desc, 0);
+		this->FinishInitNested(desc, WN_NETWORK_WINDOW_LOBBY);
 		this->OnResize();
 	}
 
@@ -1608,7 +1610,8 @@ static const WindowDesc _network_lobby_window_desc(
  */
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
-	DeleteWindowById(WC_NETWORK_WINDOW, 0);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
+	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
 	NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
 	NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
@@ -1623,7 +1626,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
  */
 NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 {
-	NetworkLobbyWindow *lobby = dynamic_cast<NetworkLobbyWindow*>(FindWindowById(WC_NETWORK_WINDOW, 0));
+	NetworkLobbyWindow *lobby = dynamic_cast<NetworkLobbyWindow*>(FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY));
 	return (lobby != NULL && company < MAX_COMPANIES) ? &lobby->company_info[company] : NULL;
 }
 
@@ -1990,8 +1993,8 @@ struct NetworkJoinStatusWindow : Window {
 
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window()
 	{
-		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
-		this->InitNested(desc, 0);
+		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+		this->InitNested(desc, WN_NETWORK_STATUS_WINDOW_JOIN);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -2100,13 +2103,13 @@ static const WindowDesc _network_join_status_window_desc(
 
 void ShowJoinStatusWindow()
 {
-	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
 }
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt)
 {
-	NetworkJoinStatusWindow *w = (NetworkJoinStatusWindow *)FindWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+	NetworkJoinStatusWindow *w = (NetworkJoinStatusWindow *)FindWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 	if (w == NULL) return;
 	w->password_type = npt;
 

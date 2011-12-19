@@ -1089,7 +1089,7 @@ struct MessageOptionsWindow : Window {
 
 	MessageOptionsWindow(const WindowDesc *desc) : Window()
 	{
-		this->InitNested(desc);
+		this->InitNested(desc, WN_GAME_OPTIONS_MESSAGE_OPTION);
 		/* Set up the initial disabled buttons in the case of 'off' or 'full' */
 		NewsDisplay all_val = _news_type_data[0].display;
 		for (int i = 0; i < NT_END; i++) {
@@ -1345,6 +1345,6 @@ static const WindowDesc _message_options_desc(
  */
 void ShowMessageOptions()
 {
-	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
 	new MessageOptionsWindow(&_message_options_desc);
 }

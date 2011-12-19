@@ -13,6 +13,33 @@
 #define WINDOW_TYPE_H
 
 /**
+ * Window numbers.
+ */
+enum WindowNumberEnum {
+	WN_GAME_OPTIONS_AI = 0,          ///< AI settings.
+	WN_GAME_OPTIONS_ABOUT,           ///< About window.
+	WN_GAME_OPTIONS_NEWGRF_STATE,    ///< NewGRF settings.
+	WN_GAME_OPTIONS_MESSAGE_OPTION,  ///< News settings.
+	WN_GAME_OPTIONS_GAME_OPTIONS,    ///< Game options.
+	WN_GAME_OPTIONS_GAME_DIFFICULTY, ///< Game difficulty.
+	WN_GAME_OPTIONS_GAME_SETTINGS,   ///< Game settings.
+
+	WN_QUERY_STRING = 0,  ///< Query string.
+	WN_QUERY_STRING_SIGN, ///< Query string for signs.
+
+	WN_CONFIRM_POPUP_QUERY = 0,       ///< Query popup confirm.
+	WN_CONFIRM_POPUP_QUERY_BOOTSTRAP, ///< Query popup confirm for bootstrap.
+
+	WN_NETWORK_WINDOW_GAME = 0,     ///< Network game window.
+	WN_NETWORK_WINDOW_LOBBY,        ///< Network lobby window.
+	WN_NETWORK_WINDOW_CONTENT_LIST, ///< Network content list.
+	WN_NETWORK_WINDOW_START,        ///< Network start server.
+
+	WN_NETWORK_STATUS_WINDOW_JOIN = 0,         ///< Network join status.
+	WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD, ///< Network content download status.
+};
+
+/**
  * Window classes.
  */
 enum WindowClass {
@@ -39,7 +66,7 @@ enum WindowClass {
 
 	/**
 	 * Build toolbar; Window numbers:
-	 *   - 0 = #RailToolbarWidgets
+	 *   - #TRANSPORT_RAIL = #RailToolbarWidgets
 	 *   - #TRANSPORT_AIR = #AirportToolbarWidgets
 	 *   - #TRANSPORT_WATER = #DockToolbarWidgets
 	 *   - #TRANSPORT_ROAD = #RoadToolbarWidgets
@@ -48,8 +75,8 @@ enum WindowClass {
 
 	/**
 	 * Scenario build toolbar; Window numbers:
-	 *   - 0 = #RoadToolbarWidgets
 	 *   - #TRANSPORT_WATER = #DockToolbarWidgets
+	 *   - #TRANSPORT_ROAD = #RoadToolbarWidgets
 	 */
 	WC_SCEN_BUILD_TOOLBAR,
 
@@ -90,16 +117,16 @@ enum WindowClass {
 	WC_TOOLTIPS,
 
 	/**
-	 * Query string window; Window numbers: (TODO - CONFLICT)
-	 *   - 0 = #QueryStringWidgets
-	 *   - 0 = #QueryEditSignWidgets
+	 * Query string window; Window numbers:
+	 *   - #WN_QUERY_STRING = #QueryStringWidgets
+	 *   - #WN_QUERY_STRING_SIGN = #QueryEditSignWidgets
 	 */
 	WC_QUERY_STRING,
 
 	/**
-	 * Popup with confirm question; Window numbers: (TODO - CONFLICT)
-	 *   - 0 = #BootstrapAskForDownloadWidgets
-	 *   - 0 = #QueryWidgets
+	 * Popup with confirm question; Window numbers:
+	 *   - #WN_CONFIRM_POPUP_QUERY = #QueryWidgets
+	 *   - #WN_CONFIRM_POPUP_QUERY_BOOTSTRAP = #BootstrapAskForDownloadWidgets
 	 */
 	WC_CONFIRM_POPUP_QUERY,
 
@@ -365,13 +392,18 @@ enum WindowClass {
 	WC_TRUCK_STATION,
 
 	/**
-	 * Build depot; Window numbers: (TODO - CONFLICT)
+	 * Build depot; Window numbers:
 	 *   - #TRANSPORT_WATER = #BuildDockDepotWidgets
 	 *   - #TRANSPORT_RAIL = #BuildRailDepotWidgets
-	 *   - #TRANSPORT_RAIL = #BuildRailWaypointWidgets
 	 *   - #TRANSPORT_ROAD = #BuildRoadDepotWidgets
 	 */
 	WC_BUILD_DEPOT,
+
+	/**
+	 * Build waypoint; Window numbers:
+	 *   - #TRANSPORT_RAIL = #BuildRailWaypointWidgets
+	 */
+	WC_BUILD_WAYPOINT,
 
 	/**
 	 * Found a town; Window numbers:
@@ -407,19 +439,19 @@ enum WindowClass {
 	WC_GENERATE_LANDSCAPE,
 
 	/**
-	 * Progress report of landscape generation; Window numbers: (TODO - CONFLICT)
+	 * Progress report of landscape generation; Window numbers:
 	 *   - 0 = #GenerationProgressWidgets
-	 *   - 0 = #ScanProgressWidgets
+	 *   - 1 = #ScanProgressWidgets
 	 */
 	WC_MODAL_PROGRESS,
 
 
 	/**
-	 * Network window; Window numbers: (TODO - CONFLICT)
-	 *   - 0 = #NetworkGameWidgets
-	 *   - 0 = #NetworkLobbyWidgets
-	 *   - 1 = #NetworkContentListWidgets
-	 *   - 1 = #NetworkStartServerWidgets
+	 * Network window; Window numbers:
+	 *   - #WN_NETWORK_WINDOW_GAME = #NetworkGameWidgets
+	 *   - #WN_NETWORK_WINDOW_LOBBY = #NetworkLobbyWidgets
+	 *   - #WN_NETWORK_WINDOW_CONTENT_LIST = #NetworkContentListWidgets
+	 *   - #WN_NETWORK_WINDOW_START = #NetworkStartServerWidgets
 	 */
 	WC_NETWORK_WINDOW,
 
@@ -436,9 +468,9 @@ enum WindowClass {
 	WC_CLIENT_LIST_POPUP,
 
 	/**
-	 * Network status window; Window numbers: (TODO - CONFLICT)
-	 *   - 0 = #NetworkJoinStatusWidgets
-	 *   - 0 = #NetworkContentDownloadStatusWidgets
+	 * Network status window; Window numbers:
+	 *   - #WN_NETWORK_STATUS_WINDOW_JOIN = #NetworkJoinStatusWidgets
+	 *   - #WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD = #NetworkContentDownloadStatusWidgets
 	 */
 	WC_NETWORK_STATUS_WINDOW,
 
@@ -554,14 +586,14 @@ enum WindowClass {
 	WC_MUSIC_TRACK_SELECTION,
 
 	/**
-	 * Game options window; Window numbers: (TODO - CONFLICT)
-	 *   - 0 = #AIConfigWidgets
-	 *   - 0 = #AboutWidgets
-	 *   - 0 = #NewGRFStateWidgets
-	 *   - 0 = #MessageOptionWidgets
-	 *   - 0 = #GameOptionsWidgets
-	 *   - 0 = #GameDifficultyWidgets
-	 *   - 0 = #GameSettingsWidgets
+	 * Game options window; Window numbers:
+	 *   - #WN_GAME_OPTIONS_AI = #AIConfigWidgets
+	 *   - #WN_GAME_OPTIONS_ABOUT = #AboutWidgets
+	 *   - #WN_GAME_OPTIONS_NEWGRF_STATE = #NewGRFStateWidgets
+	 *   - #WN_GAME_OPTIONS_MESSAGE_OPTION = #MessageOptionWidgets
+	 *   - #WN_GAME_OPTIONS_GAME_OPTIONS = #GameOptionsWidgets
+	 *   - #WN_GAME_OPTIONS_GAME_DIFFICULTY = #GameDifficultyWidgets
+	 *   - #WN_GAME_OPTIONS_GAME_SETTINGS = #GameSettingsWidgets
 	 */
 	WC_GAME_OPTIONS,
 

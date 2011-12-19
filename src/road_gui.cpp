@@ -826,7 +826,7 @@ static const WindowDesc _build_road_scen_desc(
 Window *ShowBuildRoadScenToolbar()
 {
 	_cur_roadtype = ROADTYPE_ROAD;
-	return AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, 0);
+	return AllocateWindowDescFront<BuildRoadToolbarWindow>(&_build_road_scen_desc, TRANSPORT_ROAD);
 }
 
 EventState RoadToolbarEditorGlobalHotkeys(uint16 key, uint16 keycode)

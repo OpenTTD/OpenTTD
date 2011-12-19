@@ -479,7 +479,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		this->caption = STR_EDIT_SIGN_CAPTION;
 		this->afilter = CS_ALPHANUMERAL;
 
-		this->InitNested(desc);
+		this->InitNested(desc, WN_QUERY_STRING_SIGN);
 
 		this->LowerWidget(WID_QES_TEXT);
 		UpdateSignEditWindow(si);
@@ -656,7 +656,7 @@ void HandleClickOnSign(const Sign *si)
 void ShowRenameSignWindow(const Sign *si)
 {
 	/* Delete all other edit windows */
-	DeleteWindowById(WC_QUERY_STRING, 0);
+	DeleteWindowByClass(WC_QUERY_STRING);
 
 	new SignWindow(&_query_sign_edit_desc, si);
 }
@@ -667,7 +667,7 @@ void ShowRenameSignWindow(const Sign *si)
  */
 void DeleteRenameSignWindow(SignID sign)
 {
-	SignWindow *w = dynamic_cast<SignWindow *>(FindWindowById(WC_QUERY_STRING, 0));
+	SignWindow *w = dynamic_cast<SignWindow *>(FindWindowById(WC_QUERY_STRING, WN_QUERY_STRING_SIGN));
 
 	if (w != NULL && w->cur_sign == sign) delete w;
 }
