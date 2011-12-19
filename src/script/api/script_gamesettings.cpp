@@ -12,6 +12,7 @@
 #include "../../stdafx.h"
 #include "script_gamesettings.hpp"
 #include "../../settings_internal.h"
+#include "../../command_type.h"
 
 /* static */ bool ScriptGameSettings::IsValid(const char *setting)
 {
@@ -24,13 +25,26 @@
 {
 	if (!IsValid(setting)) return -1;
 
-	uint i;
-	const SettingDesc *sd = GetSettingFromName(setting, &i);
+	uint index;
+	const SettingDesc *sd = GetSettingFromName(setting, &index);
 
 	void *ptr = GetVariableAddress(&_settings_game, &sd->save);
 	if (sd->desc.cmd == SDT_BOOLX) return *(bool*)ptr;
 
 	return (int32)ReadValue(ptr, sd->save.conv);
+}
+
+/* static */ bool ScriptGameSettings::SetValue(const char *setting, int value)
+{
+	if (!IsValid(setting)) return false;
+
+	uint index;
+	const SettingDesc *sd = GetSettingFromName(setting, &index);
+
+	if ((sd->save.conv & SLF_NO_NETWORK_SYNC) != 0) return false;
+	if (sd->desc.cmd != SDT_BOOLX && sd->desc.cmd != SDT_NUMX) return false;
+
+	return ScriptObject::DoCommand(0, index, value, CMD_CHANGE_SETTING);
 }
 
 /* static */ bool ScriptGameSettings::IsDisabledVehicleType(ScriptVehicle::VehicleType vehicle_type)

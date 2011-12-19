@@ -23,6 +23,7 @@ void SQGSGameSettings_Register(Squirrel *engine)
 
 	SQGSGameSettings.DefSQStaticMethod(engine, &ScriptGameSettings::IsValid,  "IsValid",  2, "..");
 	SQGSGameSettings.DefSQStaticMethod(engine, &ScriptGameSettings::GetValue, "GetValue", 2, "..");
+	SQGSGameSettings.DefSQStaticMethod(engine, &ScriptGameSettings::SetValue, "SetValue", 3, "..i");
 
 	SQGSGameSettings.PostRegister(engine);
 }
