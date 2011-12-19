@@ -20,7 +20,7 @@ ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == _current_company && (st->facilities & station_type) != 0) this->AddItem(st->index);
+		if ((st->owner == _current_company || _current_company == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}
 }
 

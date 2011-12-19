@@ -23,7 +23,7 @@
 /* static */ bool ScriptStation::IsValidStation(StationID station_id)
 {
 	const Station *st = ::Station::GetIfValid(station_id);
-	return st != NULL && (st->owner == _current_company || st->owner == OWNER_NONE);
+	return st != NULL && (st->owner == _current_company || _current_company == OWNER_DEITY || st->owner == OWNER_NONE);
 }
 
 /* static */ StationID ScriptStation::GetStationID(TileIndex tile)

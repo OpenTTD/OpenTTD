@@ -7,25 +7,19 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_enginelist.hpp List all the engines. */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
 
-#ifndef SCRIPT_ENGINELIST_HPP
-#define SCRIPT_ENGINELIST_HPP
+#include "../script_enginelist.hpp"
+#include "../template/template_enginelist.hpp.sq"
 
-#include "script_list.hpp"
-#include "script_vehicle.hpp"
 
-/**
- * Create a list of engines based on a vehicle type.
- * @api ai game
- * @ingroup ScriptList
- */
-class ScriptEngineList : public ScriptList {
-public:
-	/**
-	 * @param vehicle_type The type of vehicle to make a list of engines for.
-	 */
-	ScriptEngineList(ScriptVehicle::VehicleType vehicle_type);
-};
+template <> const char *GetClassName<ScriptEngineList, ST_GS>() { return "GSEngineList"; }
 
-#endif /* SCRIPT_ENGINELIST_HPP */
+void SQGSEngineList_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEngineList, ST_GS> SQGSEngineList("GSEngineList");
+	SQGSEngineList.PreRegister(engine, "GSList");
+	SQGSEngineList.AddConstructor<void (ScriptEngineList::*)(ScriptVehicle::VehicleType vehicle_type), 2>(engine, "xi");
+
+	SQGSEngineList.PostRegister(engine);
+}

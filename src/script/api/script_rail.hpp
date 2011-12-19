@@ -18,7 +18,7 @@
 
 /**
  * Class that handles all rail related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptRail : public ScriptObject {
 public:
@@ -205,6 +205,7 @@ public:
 	 * @pre IsRailTypeAvailable(convert_to).
 	 * @exception ScriptRail::ERR_UNSUITABLE_TRACK
 	 * @return Whether at least some rail has been converted successfully.
+	 * @api -game
 	 */
 	static bool ConvertRailType(TileIndex start_tile, TileIndex end_tile, ScriptRail::RailType convert_to);
 
@@ -235,6 +236,7 @@ public:
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @exception ScriptError::ERR_AREA_NOT_CLEAR
 	 * @return Whether the rail depot has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildRailDepot(TileIndex tile, TileIndex front);
 
@@ -258,6 +260,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id);
 
@@ -291,6 +294,7 @@ public:
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS
 	 * @exception ScriptStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN
 	 * @return Whether the station has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildNewGRFRailStation(TileIndex tile, RailTrack direction, uint num_platforms, uint platform_length, StationID station_id, CargoID cargo_id, IndustryType source_industry, IndustryType goal_industry, int distance, bool source_station);
 
@@ -303,6 +307,7 @@ public:
 	 * @pre IsRailTypeAvailable(GetCurrentRailType()).
 	 * @exception ScriptError::ERR_FLAT_LAND_REQUIRED
 	 * @return Whether the rail waypoint has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildRailWaypoint(TileIndex tile);
 
@@ -314,6 +319,7 @@ public:
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).
 	 * @return Whether at least one tile has been/can be cleared or not.
+	 * @api -game
 	 */
 	static bool RemoveRailWaypointTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail);
 
@@ -325,6 +331,7 @@ public:
 	 * @pre IsValidTile(tile).
 	 * @pre IsValidTile(tile2).
 	 * @return Whether at least one tile has been/can be cleared or not.
+	 * @api -game
 	 */
 	static bool RemoveRailStationTileRectangle(TileIndex tile, TileIndex tile2, bool keep_rail);
 
@@ -351,6 +358,7 @@ public:
 	 * @return Whether the rail has been/can be build or not.
 	 * @note You can only build a single track with this function so do not
 	 *   use the values from RailTrack as bitmask.
+	 * @api -game
 	 */
 	static bool BuildRailTrack(TileIndex tile, RailTrack rail_track);
 
@@ -363,6 +371,7 @@ public:
 	 * @return Whether the rail has been/can be removed or not.
 	 * @note You can only remove a single track with this function so do not
 	 *   use the values from RailTrack as bitmask.
+	 * @api -game
 	 */
 	static bool RemoveRailTrack(TileIndex tile, RailTrack rail_track);
 
@@ -398,6 +407,7 @@ public:
 	 * @exception ScriptError::ERR_ALREADY_BUILT
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
 	 * @return Whether the rail has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildRail(TileIndex from, TileIndex tile, TileIndex to);
 
@@ -414,6 +424,7 @@ public:
 	 *      (ScriptMap::GetTileX(from) == ScriptMap::GetTileX(tile) && ScriptMap::GetTileX(tile) == ScriptMap::GetTileX(to)) ||
 	 *      (ScriptMap::GetTileY(from) == ScriptMap::GetTileY(tile) && ScriptMap::GetTileY(tile) == ScriptMap::GetTileY(to)).
 	 * @return Whether the rail has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveRail(TileIndex from, TileIndex tile, TileIndex to);
 
@@ -435,6 +446,7 @@ public:
 	 * @pre IsRailTile(tile) && !IsRailStationTile(tile) && !IsRailWaypointTile(tile).
 	 * @exception ScriptRail::ERR_UNSUITABLE_TRACK
 	 * @return Whether the signal has been/can be build or not.
+	 * @api -game
 	 */
 	static bool BuildSignal(TileIndex tile, TileIndex front, SignalType signal);
 
@@ -445,6 +457,7 @@ public:
 	 * @pre ScriptMap::DistanceManhattan(tile, front) == 1.
 	 * @pre GetSignalType(tile, front) != SIGNALTYPE_NONE.
 	 * @return Whether the signal has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveSignal(TileIndex tile, TileIndex front);
 

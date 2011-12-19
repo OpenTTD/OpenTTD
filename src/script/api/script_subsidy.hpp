@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all subsidy related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptSubsidy : public ScriptObject {
 public:

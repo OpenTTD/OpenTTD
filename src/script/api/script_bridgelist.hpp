@@ -16,7 +16,7 @@
 
 /**
  * Create a list of bridges types.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptBridgeList : public ScriptList {
@@ -26,7 +26,7 @@ public:
 
 /**
  * Create a list of bridges types that can be built on a specific length.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptBridgeList_Length : public ScriptList {

@@ -26,10 +26,17 @@
 #include "../script/api/game/game_accounting.hpp.sq"
 #include "../script/api/game/game_airport.hpp.sq"
 #include "../script/api/game/game_base.hpp.sq"
+#include "../script/api/game/game_basestation.hpp.sq"
+#include "../script/api/game/game_bridge.hpp.sq"
+#include "../script/api/game/game_bridgelist.hpp.sq"
 #include "../script/api/game/game_cargo.hpp.sq"
+#include "../script/api/game/game_cargolist.hpp.sq"
 #include "../script/api/game/game_company.hpp.sq"
 #include "../script/api/game/game_controller.hpp.sq"
 #include "../script/api/game/game_date.hpp.sq"
+#include "../script/api/game/game_depotlist.hpp.sq"
+#include "../script/api/game/game_engine.hpp.sq"
+#include "../script/api/game/game_enginelist.hpp.sq"
 #include "../script/api/game/game_error.hpp.sq"
 #include "../script/api/game/game_event.hpp.sq"
 #include "../script/api/game/game_execmode.hpp.sq"
@@ -43,13 +50,24 @@
 #include "../script/api/game/game_log.hpp.sq"
 #include "../script/api/game/game_map.hpp.sq"
 #include "../script/api/game/game_marine.hpp.sq"
+#include "../script/api/game/game_rail.hpp.sq"
+#include "../script/api/game/game_railtypelist.hpp.sq"
 #include "../script/api/game/game_road.hpp.sq"
 #include "../script/api/game/game_signlist.hpp.sq"
+#include "../script/api/game/game_station.hpp.sq"
+#include "../script/api/game/game_stationlist.hpp.sq"
+#include "../script/api/game/game_subsidy.hpp.sq"
+#include "../script/api/game/game_subsidylist.hpp.sq"
 #include "../script/api/game/game_testmode.hpp.sq"
 #include "../script/api/game/game_tile.hpp.sq"
+#include "../script/api/game/game_tilelist.hpp.sq"
 #include "../script/api/game/game_town.hpp.sq"
 #include "../script/api/game/game_townlist.hpp.sq"
+#include "../script/api/game/game_tunnel.hpp.sq"
 #include "../script/api/game/game_vehicle.hpp.sq"
+#include "../script/api/game/game_vehiclelist.hpp.sq"
+#include "../script/api/game/game_waypoint.hpp.sq"
+#include "../script/api/game/game_waypointlist.hpp.sq"
 
 
 GameInstance::GameInstance() :
@@ -73,9 +91,20 @@ void GameInstance::RegisterAPI()
 	SQGSAccounting_Register(this->engine);
 	SQGSAirport_Register(this->engine);
 	SQGSBase_Register(this->engine);
+	SQGSBaseStation_Register(this->engine);
+	SQGSBridge_Register(this->engine);
+	SQGSBridgeList_Register(this->engine);
+	SQGSBridgeList_Length_Register(this->engine);
 	SQGSCargo_Register(this->engine);
+	SQGSCargoList_Register(this->engine);
+	SQGSCargoList_IndustryAccepting_Register(this->engine);
+	SQGSCargoList_IndustryProducing_Register(this->engine);
+	SQGSCargoList_StationAccepting_Register(this->engine);
 	SQGSCompany_Register(this->engine);
 	SQGSDate_Register(this->engine);
+	SQGSDepotList_Register(this->engine);
+	SQGSEngine_Register(this->engine);
+	SQGSEngineList_Register(this->engine);
 	SQGSError_Register(this->engine);
 	SQGSEvent_Register(this->engine);
 	SQGSEventController_Register(this->engine);
@@ -91,14 +120,33 @@ void GameInstance::RegisterAPI()
 	SQGSLog_Register(this->engine);
 	SQGSMap_Register(this->engine);
 	SQGSMarine_Register(this->engine);
+	SQGSRail_Register(this->engine);
+	SQGSRailTypeList_Register(this->engine);
 	SQGSRoad_Register(this->engine);
 	SQGSSignList_Register(this->engine);
+	SQGSStation_Register(this->engine);
+	SQGSStationList_Register(this->engine);
+	SQGSStationList_Vehicle_Register(this->engine);
+	SQGSSubsidy_Register(this->engine);
+	SQGSSubsidyList_Register(this->engine);
 	SQGSTestMode_Register(this->engine);
 	SQGSTile_Register(this->engine);
+	SQGSTileList_Register(this->engine);
+	SQGSTileList_IndustryAccepting_Register(this->engine);
+	SQGSTileList_IndustryProducing_Register(this->engine);
+	SQGSTileList_StationType_Register(this->engine);
 	SQGSTown_Register(this->engine);
 	SQGSTownEffectList_Register(this->engine);
 	SQGSTownList_Register(this->engine);
+	SQGSTunnel_Register(this->engine);
 	SQGSVehicle_Register(this->engine);
+	SQGSVehicleList_Register(this->engine);
+	SQGSVehicleList_Depot_Register(this->engine);
+	SQGSVehicleList_SharedOrders_Register(this->engine);
+	SQGSVehicleList_Station_Register(this->engine);
+	SQGSWaypoint_Register(this->engine);
+	SQGSWaypointList_Register(this->engine);
+	SQGSWaypointList_Vehicle_Register(this->engine);
 
 }
 

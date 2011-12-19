@@ -1,0 +1,37 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_stationlist.hpp"
+#include "../template/template_stationlist.hpp.sq"
+
+
+template <> const char *GetClassName<ScriptStationList, ST_GS>() { return "GSStationList"; }
+
+void SQGSStationList_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptStationList, ST_GS> SQGSStationList("GSStationList");
+	SQGSStationList.PreRegister(engine, "GSList");
+	SQGSStationList.AddConstructor<void (ScriptStationList::*)(ScriptStation::StationType station_type), 2>(engine, "xi");
+
+	SQGSStationList.PostRegister(engine);
+}
+
+
+template <> const char *GetClassName<ScriptStationList_Vehicle, ST_GS>() { return "GSStationList_Vehicle"; }
+
+void SQGSStationList_Vehicle_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptStationList_Vehicle, ST_GS> SQGSStationList_Vehicle("GSStationList_Vehicle");
+	SQGSStationList_Vehicle.PreRegister(engine, "GSList");
+	SQGSStationList_Vehicle.AddConstructor<void (ScriptStationList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");
+
+	SQGSStationList_Vehicle.PostRegister(engine);
+}

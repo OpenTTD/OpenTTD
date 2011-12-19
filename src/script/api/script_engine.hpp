@@ -18,7 +18,7 @@
 
 /**
  * Class that handles all engine related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptEngine : public ScriptObject {
 public:

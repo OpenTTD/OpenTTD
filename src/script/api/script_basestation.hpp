@@ -16,7 +16,7 @@
 
 /**
  * Base class for stations and waypoints.
- * @api ai
+ * @api ai game
  */
 class ScriptBaseStation : public ScriptObject {
 public:
@@ -55,6 +55,7 @@ public:
 	 * @pre 'name' must have at most 30 characters.
 	 * @exception ScriptError::ERR_NAME_IS_NOT_UNIQUE
 	 * @return True if the name was changed.
+	 * @api -game
 	 */
 	static bool SetName(StationID station_id, const char *name);
 

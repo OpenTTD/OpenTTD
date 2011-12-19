@@ -17,7 +17,7 @@
 
 /**
  * Class that handles all waypoint related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptWaypoint : public ScriptBaseStation {
 public:

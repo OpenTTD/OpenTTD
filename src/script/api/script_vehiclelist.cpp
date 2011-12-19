@@ -22,7 +22,7 @@ ScriptVehicleList::ScriptVehicleList()
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _current_company && v->IsPrimaryVehicle()) this->AddItem(v->index);
+		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle()) this->AddItem(v->index);
 	}
 }
 
@@ -32,7 +32,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _current_company && v->IsPrimaryVehicle()) {
+		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle()) {
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
@@ -83,7 +83,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _current_company && v->IsPrimaryVehicle() && v->type == type) {
+		if ((v->owner == _current_company || _current_company == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {

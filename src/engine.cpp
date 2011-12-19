@@ -996,11 +996,11 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	if (e->type != type) return false;
 
 	/* check if it's available */
-	if (!HasBit(e->company_avail, company)) return false;
+	if (company != OWNER_DEITY && !HasBit(e->company_avail, company)) return false;
 
 	if (!e->IsEnabled()) return false;
 
-	if (type == VEH_TRAIN) {
+	if (type == VEH_TRAIN && company != OWNER_DEITY) {
 		/* Check if the rail type is available to this company */
 		const Company *c = Company::Get(company);
 		if (((GetRailTypeInfo(e->u.rail.railtype))->compatible_railtypes & c->avail_railtypes) == 0) return false;

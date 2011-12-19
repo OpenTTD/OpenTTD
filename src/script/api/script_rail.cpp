@@ -74,7 +74,7 @@
 {
 	if ((::RailType)rail_type < RAILTYPE_BEGIN || (::RailType)rail_type >= RAILTYPE_END) return false;
 
-	return ::HasRailtypeAvail(_current_company, (::RailType)rail_type);
+	return _current_company == OWNER_DEITY || ::HasRailtypeAvail(_current_company, (::RailType)rail_type);
 }
 
 /* static */ ScriptRail::RailType ScriptRail::GetCurrentRailType()

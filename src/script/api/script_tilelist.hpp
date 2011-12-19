@@ -17,7 +17,7 @@
 
 /**
  * Creates an empty list, in which you can add tiles.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptTileList : public ScriptList {
@@ -58,7 +58,7 @@ public:
 /**
  * Creates a list of tiles that will accept cargo for the given industry.
  * @note If a simular industry is close, it might happen that this industry receives the cargo.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptTileList_IndustryAccepting : public ScriptTileList {
@@ -75,7 +75,7 @@ public:
 /**
  * Creates a list of tiles which the industry checks to see if a station is
  *  there to receive cargo produced by this industry.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptTileList_IndustryProducing : public ScriptTileList {
@@ -92,7 +92,7 @@ public:
 /**
  * Creates a list of tiles which have the requested StationType of the
  *  StationID.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptTileList_StationType : public ScriptTileList {

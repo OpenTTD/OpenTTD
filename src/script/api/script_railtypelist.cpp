@@ -17,6 +17,6 @@
 ScriptRailTypeList::ScriptRailTypeList()
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		if (::HasRailtypeAvail(_current_company, rt)) this->AddItem(rt);
+		if (_current_company == OWNER_DEITY || ::HasRailtypeAvail(_current_company, rt)) this->AddItem(rt);
 	}
 }

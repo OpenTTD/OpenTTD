@@ -16,7 +16,7 @@
 
 /**
  * Creates a list of all available railtypes.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptRailTypeList : public ScriptList {

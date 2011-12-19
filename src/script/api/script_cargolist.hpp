@@ -16,7 +16,7 @@
 
 /**
  * Creates a list of cargoes that can be produced in the current game.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptCargoList : public ScriptList {
@@ -28,7 +28,7 @@ public:
  * Creates a list of cargoes that the given industry accepts.
  * @note This list also includes cargoes that are temporarily not accepted
  *   by this industry, @see ScriptIndustry::IsCargoAccepted.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptCargoList_IndustryAccepting : public ScriptList {
@@ -41,7 +41,7 @@ public:
 
 /**
  * Creates a list of cargoes that the given industry can produce.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptCargoList_IndustryProducing : public ScriptList {
@@ -54,7 +54,7 @@ public:
 
 /**
  * Creates a list of cargoes that the given station accepts.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptCargoList_StationAccepting : public ScriptList {

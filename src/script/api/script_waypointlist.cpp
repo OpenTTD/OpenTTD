@@ -21,7 +21,7 @@ ScriptWaypointList::ScriptWaypointList(ScriptWaypoint::WaypointType waypoint_typ
 	const Waypoint *wp;
 	FOR_ALL_WAYPOINTS(wp) {
 		if ((wp->facilities & waypoint_type) &&
-				(wp->owner == _current_company || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
+				(wp->owner == _current_company || _current_company == OWNER_DEITY || wp->owner == OWNER_NONE)) this->AddItem(wp->index);
 	}
 }
 

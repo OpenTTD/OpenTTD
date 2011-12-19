@@ -16,7 +16,7 @@
 
 /**
  * Creates a list of all current subsidies.
- * @api ai
+ * @api ai game
  * @ingroup ScriptList
  */
 class ScriptSubsidyList : public ScriptList {

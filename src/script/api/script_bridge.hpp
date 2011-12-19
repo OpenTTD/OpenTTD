@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all bridge related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptBridge : public ScriptObject {
 public:
@@ -145,6 +145,7 @@ public:
 	 * @return Whether the bridge has been/can be build or not.
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  bridge succeeded, this function returns true.
+	 * @api -game
 	 */
 	static bool BuildBridge(ScriptVehicle::VehicleType vehicle_type, BridgeID bridge_id, TileIndex start, TileIndex end);
 
@@ -154,6 +155,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the bridge has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveBridge(TileIndex tile);
 

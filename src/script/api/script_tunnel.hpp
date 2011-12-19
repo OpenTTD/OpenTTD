@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all tunnel related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptTunnel : public ScriptObject {
 public:
@@ -96,6 +96,7 @@ public:
 	 * @note The slope of a tile can be determined by ScriptTile::GetSlope(TileIndex).
 	 * @note No matter if the road pieces were build or not, if building the
 	 *  tunnel succeeded, this function returns true.
+	 * @api -game
 	 */
 	static bool BuildTunnel(ScriptVehicle::VehicleType vehicle_type, TileIndex start);
 
@@ -105,6 +106,7 @@ public:
 	 * @pre ScriptMap::IsValidTile(tile) && IsTunnelTile(tile).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return Whether the tunnel has been/can be removed or not.
+	 * @api -game
 	 */
 	static bool RemoveTunnel(TileIndex tile);
 };
