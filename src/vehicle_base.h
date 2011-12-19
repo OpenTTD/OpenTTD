@@ -187,9 +187,12 @@ public:
 	DirectionByte direction;            ///< facing
 
 	OwnerByte owner;                    ///< Which company owns the vehicle?
-	byte spritenum;                     ///< currently displayed sprite index
-	                                    ///< 0xfd == custom sprite, 0xfe == custom second head sprite
-	                                    ///< 0xff == reserved for another custom sprite
+	/**
+	 * currently displayed sprite index
+	 * 0xfd == custom sprite, 0xfe == custom second head sprite
+	 * 0xff == reserved for another custom sprite
+	 */
+	byte spritenum;
 	SpriteID cur_image;                 ///< sprite number for this vehicle
 	byte x_extent;                      ///< x-extent of vehicle bounding box
 	byte y_extent;                      ///< y-extent of vehicle bounding box

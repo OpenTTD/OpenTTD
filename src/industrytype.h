@@ -110,9 +110,12 @@ struct IndustrySpec {
 	byte check_proc;                      ///< Index to a procedure to check for conflicting circumstances
 	CargoID produced_cargo[2];
 	byte production_rate[2];
-	byte minimal_cargo;                   ///< minimum amount of cargo transported to the stations
-	                                      ///< If the waiting cargo is less than this number, no cargo is moved to it
-	CargoID accepts_cargo[3];             ///< 3 accepted cargoes
+	/**
+	 * minimum amount of cargo transported to the stations.
+	 * If the waiting cargo is less than this number, no cargo is moved to it.
+	 */
+	byte minimal_cargo;
+	CargoID accepts_cargo[3];             ///< 3 accepted cargoes.
 	uint16 input_cargo_multiplier[3][2];  ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargoes)
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
@@ -149,8 +152,11 @@ struct IndustryTileSpec {
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation
-	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
-	                                      ///< state instead of the construction state
+	/**
+	 * When true, the tile has to be drawn using the animation
+	 * state instead of the construction state
+	 */
+	bool anim_state;
 	/* Newgrf data */
 	uint8 callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
 	AnimationInfo animation;              ///< Information about the animation (is it looping, how many loops etc)
