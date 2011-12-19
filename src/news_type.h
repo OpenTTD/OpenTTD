@@ -80,7 +80,7 @@ enum NewsReferenceType {
 	NR_STATION,   ///< Reference station.  Scroll to station when clicking on the news. Delete news when station is deleted.
 	NR_INDUSTRY,  ///< Reference industry. Scroll to industry when clicking on the news. Delete news when industry is deleted.
 	NR_TOWN,      ///< Reference town.     Scroll to town when clicking on the news.
-	NR_ENGINE     ///< Reference engine.
+	NR_ENGINE,    ///< Reference engine.
 };
 
 /**

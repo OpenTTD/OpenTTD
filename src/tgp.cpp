@@ -228,7 +228,7 @@ static const int8 _max_height[4] = {
 	6,       ///< Very flat
 	9,       ///< Flat
 	12,      ///< Hilly
-	15       ///< Mountainous
+	15,      ///< Mountainous
 };
 
 /**

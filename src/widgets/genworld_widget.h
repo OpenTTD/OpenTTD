@@ -73,7 +73,7 @@ enum CreateScenarioWidgets {
 	WID_CS_START_DATE_UP,          ///< Increase start year (start later).
 	WID_CS_FLAT_LAND_HEIGHT_DOWN,  ///< Decrease flat land height.
 	WID_CS_FLAT_LAND_HEIGHT_TEXT,  ///< Clickable flat land height value.
-	WID_CS_FLAT_LAND_HEIGHT_UP     ///< Increase flat land height.
+	WID_CS_FLAT_LAND_HEIGHT_UP,    ///< Increase flat land height.
 };
 
 /** Widgets of the WC_MODAL_PROGRESS (WC_MODAL_PROGRESS is also used in ScanProgressWidgets). */

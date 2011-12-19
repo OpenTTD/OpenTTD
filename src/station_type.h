@@ -42,7 +42,7 @@ enum StationType {
 /** Types of RoadStops */
 enum RoadStopType {
 	ROADSTOP_BUS,    ///< A standard stop for buses
-	ROADSTOP_TRUCK   ///< A standard stop for trucks
+	ROADSTOP_TRUCK,  ///< A standard stop for trucks
 };
 
 /** The facilities a station might be having */

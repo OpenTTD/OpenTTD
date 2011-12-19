@@ -34,7 +34,7 @@ enum PacketUDPType {
 	PACKET_UDP_CLIENT_GET_NEWGRFS,   ///< Requests the name for a list of GRFs (GRF_ID and MD5)
 	PACKET_UDP_SERVER_NEWGRFS,       ///< Sends the list of NewGRF's requested.
 	PACKET_UDP_MASTER_SESSION_KEY,   ///< Sends a fresh session key to the client
-	PACKET_UDP_END                   ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_UDP_END,                  ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** The types of server lists we can get */
@@ -43,7 +43,7 @@ enum ServerListType {
 	SLT_IPv6 = 1,   ///< Get the IPv6 addresses
 	SLT_AUTODETECT, ///< Autodetect the type based on the connection
 
-	SLT_END = SLT_AUTODETECT ///< End of 'arrays' marker
+	SLT_END = SLT_AUTODETECT, ///< End of 'arrays' marker
 };
 
 /** Base socket handler for all UDP sockets */

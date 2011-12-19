@@ -18,7 +18,7 @@
 enum IConsoleModes {
 	ICONSOLE_FULL,   ///< In-game console is closed.
 	ICONSOLE_OPENED, ///< In-game console is opened, upper 1/3 of the screen.
-	ICONSOLE_CLOSED  ///< In-game console is opened, whole screen.
+	ICONSOLE_CLOSED, ///< In-game console is opened, whole screen.
 };
 
 /* Colours of the console messages. */

@@ -20,11 +20,11 @@
  * @note currently only ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
 enum RoadType {
-	ROADTYPE_BEGIN = 0,     ///< Used for iterations
-	ROADTYPE_ROAD = 0,      ///< Basic road type
-	ROADTYPE_TRAM = 1,      ///< Trams
-	ROADTYPE_END,           ///< Used for iterations
-	INVALID_ROADTYPE = 0xFF ///< flag for invalid roadtype
+	ROADTYPE_BEGIN = 0,      ///< Used for iterations
+	ROADTYPE_ROAD = 0,       ///< Basic road type
+	ROADTYPE_TRAM = 1,       ///< Trams
+	ROADTYPE_END,            ///< Used for iterations
+	INVALID_ROADTYPE = 0xFF, ///< flag for invalid roadtype
 };
 DECLARE_POSTFIX_INCREMENT(RoadType)
 template <> struct EnumPropsT<RoadType> : MakeEnumPropsT<RoadType, byte, ROADTYPE_BEGIN, ROADTYPE_END, INVALID_ROADTYPE, 2> {};
@@ -39,7 +39,7 @@ enum RoadTypes {
 	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,               ///< Trams
 	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM,  ///< Road + trams
 	ROADTYPES_END,                                         ///< Used for iterations?
-	INVALID_ROADTYPES  = 0xFF                              ///< Invalid roadtypes
+	INVALID_ROADTYPES  = 0xFF,                             ///< Invalid roadtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypes)
 template <> struct EnumPropsT<RoadTypes> : MakeEnumPropsT<RoadTypes, byte, ROADTYPES_NONE, ROADTYPES_END, INVALID_ROADTYPES, 2> {};
@@ -68,7 +68,7 @@ enum RoadBits {
 
 	ROAD_ALL  = ROAD_X  | ROAD_Y,    ///< Full 4-way crossing
 
-	ROAD_END  = ROAD_ALL + 1         ///< Out-of-range roadbits, used for iterations
+	ROAD_END  = ROAD_ALL + 1,        ///< Out-of-range roadbits, used for iterations
 };
 DECLARE_ENUM_AS_BIT_SET(RoadBits)
 template <> struct EnumPropsT<RoadBits> : MakeEnumPropsT<RoadBits, byte, ROAD_NONE, ROAD_END, ROAD_NONE, 4> {};

@@ -100,7 +100,7 @@ public:
 		NEWGRF   = 1 << 1, ///< Scan for non-base sets.
 		AI       = 1 << 2, ///< Scan for AIs and its libraries.
 		SCENARIO = 1 << 3, ///< Scan for scenarios and heightmaps.
-		ALL      = BASESET | NEWGRF | AI | SCENARIO ///< Scan for everything.
+		ALL      = BASESET | NEWGRF | AI | SCENARIO, ///< Scan for everything.
 	};
 
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = NULL);

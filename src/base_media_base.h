@@ -194,7 +194,7 @@ enum GraphicsFileType {
 	GFT_TROPICAL, ///< Landscape replacement sprites for tropical
 	GFT_TOYLAND,  ///< Landscape replacement sprites for toyland
 	GFT_EXTRA,    ///< Extra sprites that were not part of the original sprites
-	MAX_GFT       ///< We are looking for this amount of GRFs
+	MAX_GFT,      ///< We are looking for this amount of GRFs
 };
 
 /** Blitter type for base graphics sets. */

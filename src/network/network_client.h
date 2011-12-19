@@ -34,7 +34,7 @@ private:
 		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
 		STATUS_MAP,           ///< The client is downloading the map.
 		STATUS_ACTIVE,        ///< The client is active within in the game.
-		STATUS_END            ///< Must ALWAYS be on the end of this list!! (period)
+		STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
 	};
 
 	ServerStatus status; ///< Status of the connection with the server.

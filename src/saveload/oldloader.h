@@ -78,7 +78,7 @@ enum OldChunkType {
 	 */
 	OC_DEREFERENCE_POINTER = 1 << 31,
 
-	OC_END       = 0 ///< End of the whole chunk, all 32 bits set to zero
+	OC_END       = 0, ///< End of the whole chunk, all 32 bits set to zero
 };
 
 DECLARE_ENUM_AS_BIT_SET(OldChunkType)

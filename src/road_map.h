@@ -23,7 +23,7 @@
 enum RoadTileType {
 	ROAD_TILE_NORMAL,   ///< Normal road
 	ROAD_TILE_CROSSING, ///< Level crossing
-	ROAD_TILE_DEPOT     ///< Depot (one entrance)
+	ROAD_TILE_DEPOT,    ///< Depot (one entrance)
 };
 
 /**
@@ -257,7 +257,7 @@ enum DisallowedRoadDirections {
 	DRD_SOUTHBOUND, ///< All southbound traffic is disallowed
 	DRD_NORTHBOUND, ///< All northbound traffic is disallowed
 	DRD_BOTH,       ///< All directions are disallowed
-	DRD_END
+	DRD_END,        ///< Sentinel
 };
 DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections)
 /** Helper information for extract tool. */
@@ -451,7 +451,7 @@ enum Roadside {
 	ROADSIDE_STREET_LIGHTS    = 3, ///< Road with street lights on paved sidewalks
 	ROADSIDE_TREES            = 5, ///< Road with trees on paved sidewalks
 	ROADSIDE_GRASS_ROAD_WORKS = 6, ///< Road on grass with road works
-	ROADSIDE_PAVED_ROAD_WORKS = 7  ///< Road with sidewalks and road works
+	ROADSIDE_PAVED_ROAD_WORKS = 7, ///< Road with sidewalks and road works
 };
 
 /**

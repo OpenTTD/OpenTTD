@@ -17,7 +17,7 @@
 /** Variant of the signal, i.e. how does the signal look? */
 enum SignalVariant {
 	SIG_ELECTRIC  = 0, ///< Light signal
-	SIG_SEMAPHORE = 1  ///< Old-fashioned semaphore signal
+	SIG_SEMAPHORE = 1, ///< Old-fashioned semaphore signal
 };
 
 
@@ -32,7 +32,7 @@ enum SignalType {
 
 	SIGTYPE_END,
 	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
-	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO
+	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO,
 };
 /** Helper information for extract tool. */
 template <> struct EnumPropsT<SignalType> : MakeEnumPropsT<SignalType, byte, SIGTYPE_NORMAL, SIGTYPE_END, SIGTYPE_END, 3> {};

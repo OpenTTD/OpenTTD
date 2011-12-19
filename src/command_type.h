@@ -293,7 +293,7 @@ enum Commands {
 	CMD_AUTOFILL_TIMETABLE,           ///< autofill the timetable
 	CMD_SET_TIMETABLE_START,          ///< set the date that a timetable should start
 
-	CMD_END                           ///< Must ALWAYS be on the end of this list!! (period)
+	CMD_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /**

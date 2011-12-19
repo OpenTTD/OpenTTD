@@ -65,7 +65,7 @@ public:
 		STATUS_DONE_MAP,      ///< The client has downloaded the map.
 		STATUS_PRE_ACTIVE,    ///< The client is catching up the delayed frames.
 		STATUS_ACTIVE,        ///< The client is active within in the game.
-		STATUS_END            ///< Must ALWAYS be on the end of this list!! (period).
+		STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period).
 	};
 
 	byte lag_test;               ///< Byte used for lag-testing the client

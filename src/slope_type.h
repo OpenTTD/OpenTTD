@@ -112,7 +112,7 @@ enum Foundation {
 	FOUNDATION_RAIL_E,           ///< Foundation for TRACK_BIT_RIGHT, but not a leveled foundation.
 	FOUNDATION_RAIL_N,           ///< Foundation for TRACK_BIT_UPPER, but not a leveled foundation.
 
-	FOUNDATION_INVALID = 0xFF    ///< Used inside "rail_cmd.cpp" to indicate invalid slope/track combination.
+	FOUNDATION_INVALID = 0xFF,   ///< Used inside "rail_cmd.cpp" to indicate invalid slope/track combination.
 };
 
 #endif /* SLOPE_TYPE_H */

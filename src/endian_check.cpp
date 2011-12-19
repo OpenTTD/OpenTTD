@@ -24,7 +24,7 @@
 /** Supported endian types */
 enum Endian {
 	ENDIAN_LITTLE, ///< little endian
-	ENDIAN_BIG     ///< big endian
+	ENDIAN_BIG,    ///< big endian
 };
 
 /**

@@ -44,12 +44,12 @@ enum PacketContentType {
 	PACKET_CONTENT_SERVER_INFO,           ///< Reply of content server with information about content
 	PACKET_CONTENT_CLIENT_CONTENT,        ///< Request a content file given an internal ID
 	PACKET_CONTENT_SERVER_CONTENT,        ///< Reply with the content of the given ID
-	PACKET_CONTENT_END                    ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_CONTENT_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Unique identifier for the content. */
 enum ContentID {
-	INVALID_CONTENT_ID = UINT32_MAX ///< Sentinel for invalid content.
+	INVALID_CONTENT_ID = UINT32_MAX, ///< Sentinel for invalid content.
 };
 
 /** Container for all important information about a piece of content. */
@@ -61,7 +61,7 @@ struct ContentInfo {
 		AUTOSELECTED,   ///< The content has been selected as dependency
 		ALREADY_HERE,   ///< The content is already at the client side
 		DOES_NOT_EXIST, ///< The content does not exist in the content system
-		INVALID         ///< The content's invalid
+		INVALID,        ///< The content's invalid
 	};
 
 	ContentType type;        ///< Type of content

@@ -68,7 +68,7 @@ enum DirDiff {
 	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
 	DIRDIFF_REVERSE = 4,    ///< One direction is the opposit of the other one
 	DIRDIFF_90LEFT  = 6,    ///< Angle of 90 degrees left
-	DIRDIFF_45LEFT  = 7     ///< Angle of 45 degrees left
+	DIRDIFF_45LEFT  = 7,    ///< Angle of 45 degrees left
 };
 
 
@@ -109,7 +109,7 @@ enum DiagDirDiff {
 	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
 	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right
 	DIAGDIRDIFF_REVERSE = 2,        ///< Reverse directions
-	DIAGDIRDIFF_90LEFT  = 3         ///< 90 degrees left
+	DIAGDIRDIFF_90LEFT  = 3,        ///< 90 degrees left
 };
 
 /** Allow incrementing of DiagDirDiff variables */

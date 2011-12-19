@@ -123,7 +123,7 @@ enum PacketGameType {
 	PACKET_CLIENT_ERROR,                 ///< A client reports an error to the server.
 	PACKET_SERVER_ERROR_QUIT,            ///< A server tells that a client has hit an error and did quit.
 
-	PACKET_END                           ///< Must ALWAYS be on the end of this list!! (period)
+	PACKET_END,                          ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Packet that wraps a command */

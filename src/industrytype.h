@@ -57,7 +57,7 @@ enum IndustryConstructionType {
 	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
 	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation process
 	ICT_MAP_GENERATION,   ///< during random map creation
-	ICT_SCENARIO_EDITOR   ///< while editing a scenario
+	ICT_SCENARIO_EDITOR,  ///< while editing a scenario
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */

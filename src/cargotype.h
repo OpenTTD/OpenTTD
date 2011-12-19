@@ -47,7 +47,7 @@ enum CargoClass {
 	CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
 	CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
 	CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
-	CC_SPECIAL      = 1 << 15  ///< Special bit used for livery refit tricks instead of normal cargoes.
+	CC_SPECIAL      = 1 << 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
 static const byte INVALID_CARGO = 0xFF; ///< Constant representing invalid cargo

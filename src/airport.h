@@ -52,7 +52,7 @@ enum AirportMovingDataFlags {
 	AMED_BRAKE      = 1 << 5, ///< Taxiing at the airport.
 	AMED_HELI_RAISE = 1 << 6, ///< Helicopter take-off.
 	AMED_HELI_LOWER = 1 << 7, ///< Helicopter landing.
-	AMED_HOLD       = 1 << 8  ///< Holding pattern movement (above the airport).
+	AMED_HOLD       = 1 << 8, ///< Holding pattern movement (above the airport).
 };
 
 /** Movement States on Airports (headings target) */
@@ -144,7 +144,7 @@ public:
 		AIRPLANES   = 0x1,                     ///< Can planes land on this airport type?
 		HELICOPTERS = 0x2,                     ///< Can helicopters land on this airport type?
 		ALL         = AIRPLANES | HELICOPTERS, ///< Mask to check for both planes and helicopters.
-		SHORT_STRIP = 0x4                      ///< This airport has a short landing strip, dangerous for fast aircraft.
+		SHORT_STRIP = 0x4,                     ///< This airport has a short landing strip, dangerous for fast aircraft.
 	};
 
 	AirportFTAClass(

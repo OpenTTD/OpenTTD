@@ -36,7 +36,7 @@ enum GRFStatus {
 	GCS_DISABLED,     ///< GRF file is disabled
 	GCS_NOT_FOUND,    ///< GRF file was not found in the local cache
 	GCS_INITIALISED,  ///< GRF file has been initialised
-	GCS_ACTIVATED     ///< GRF file has been activated
+	GCS_ACTIVATED,    ///< GRF file has been activated
 };
 
 /** Encountered GRF bugs */
@@ -51,7 +51,7 @@ enum GRFBugs {
 enum GRFListCompatibility {
 	GLC_ALL_GOOD,   ///< All GRF needed by game are present
 	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different chacksum) GRF found in at least one case
-	GLC_NOT_FOUND   ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
+	GLC_NOT_FOUND,  ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
 };
 
 /** Information that can/has to be stored about a GRF's palette. */
@@ -154,7 +154,7 @@ enum TextfileType {
 	TFT_CHANGELOG,           ///< NewGRF changelog
 	TFT_LICENSE,             ///< NewGRF license
 
-	TFT_END
+	TFT_END,
 };
 DECLARE_POSTFIX_INCREMENT(TextfileType)
 

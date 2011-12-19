@@ -55,7 +55,7 @@ enum RoadVehicleStates {
 	RVSB_DRIVE_SIDE              = 1 << RVS_DRIVE_SIDE,       ///< The vehicle is at the opposite side of the road
 
 	RVSB_TRACKDIR_MASK           = 0x0F,                      ///< The mask used to extract track dirs
-	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09                       ///< Only bits 0 and 3 are used to encode the trackdir for road stops
+	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09,                      ///< Only bits 0 and 3 are used to encode the trackdir for road stops
 };
 
 /** State information about the Road Vehicle controller */

@@ -165,7 +165,7 @@ enum TownRatingCheckType {
 enum TownFlags {
 	TOWN_IS_FUNDED      = 0,   ///< Town has received some funds for
 	TOWN_HAS_CHURCH     = 1,   ///< There can be only one church by town.
-	TOWN_HAS_STADIUM    = 2    ///< There can be only one stadium by town.
+	TOWN_HAS_STADIUM    = 2,   ///< There can be only one stadium by town.
 };
 
 CommandCost CheckforTownRating(DoCommandFlag flags, Town *t, TownRatingCheckType type);

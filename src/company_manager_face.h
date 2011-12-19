@@ -28,7 +28,7 @@ enum GenderEthnicity {
 	GE_BF = 1 << ETHNICITY_BLACK | 1 << GENDER_FEMALE, ///< A female of African origin (black)
 	GE_END,
 };
-DECLARE_ENUM_AS_BIT_SET(GenderEthnicity) ///< See GenderRace as a bitset
+DECLARE_ENUM_AS_BIT_SET(GenderEthnicity); ///< See GenderRace as a bitset
 
 /** Bitgroups of the CompanyManagerFace variable */
 enum CompanyManagerFaceVariable {
@@ -50,9 +50,9 @@ enum CompanyManagerFaceVariable {
 	CMFV_COLLAR,
 	CMFV_TIE_EARRING,
 	CMFV_GLASSES,
-	CMFV_END
+	CMFV_END,
 };
-DECLARE_POSTFIX_INCREMENT(CompanyManagerFaceVariable)
+DECLARE_POSTFIX_INCREMENT(CompanyManagerFaceVariable);
 
 /** Information about the valid values of CompanyManagerFace bitgroups as well as the sprites to draw */
 struct CompanyManagerFaceBitsInfo {

@@ -60,7 +60,7 @@ enum CompanyRemoveReason {
 	CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
 	CRR_BANKRUPT,  ///< The company went belly-up.
 
-	CRR_END        ///< Sentinel for end.
+	CRR_END,       ///< Sentinel for end.
 };
 
 #endif /* COMPANY_TYPE_H */

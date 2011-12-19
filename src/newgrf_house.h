@@ -30,8 +30,8 @@
  * need to be persistent; it just needs to keep class ids unique.
  */
 struct HouseClassMapping {
-	uint32 grfid;     ////< The GRF ID of the file this class belongs to
-	uint8  class_id;  ////< The class id within the grf file
+	uint32 grfid;     ///< The GRF ID of the file this class belongs to
+	uint8  class_id;  ///< The class id within the grf file
 };
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);

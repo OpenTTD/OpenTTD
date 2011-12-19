@@ -22,7 +22,7 @@ enum AircraftSubType {
 	AIR_HELICOPTER = 0, ///< an helicopter
 	AIR_AIRCRAFT   = 2, ///< an airplane
 	AIR_SHADOW     = 4, ///< shadow of the aircraft
-	AIR_ROTOR      = 6  ///< rotor of an helicopter
+	AIR_ROTOR      = 6, ///< rotor of an helicopter
 };
 
 /** Aircraft flags. */

@@ -55,7 +55,7 @@ enum RailTypes {
 	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
 	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
 	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
-	INVALID_RAILTYPES  = UINT_MAX                ///< Invalid railtypes
+	INVALID_RAILTYPES  = UINT_MAX,               ///< Invalid railtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypes)
 

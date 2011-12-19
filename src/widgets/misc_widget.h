@@ -34,7 +34,7 @@ enum QueryStringWidgets {
 	WID_QS_TEXT,    ///< Text of the query.
 	WID_QS_DEFAULT, ///< Default button.
 	WID_QS_CANCEL,  ///< Cancel button.
-	WID_QS_OK       ///< OK button.
+	WID_QS_OK,      ///< OK button.
 };
 
 /** Widgets of the WC_CONFIRM_POPUP_QUERY (WC_CONFIRM_POPUP_QUERY is also used in BootstrapAskForDownloadWidgets). */
@@ -42,7 +42,7 @@ enum QueryWidgets {
 	WID_Q_CAPTION, ///< Caption of the window.
 	WID_Q_TEXT,    ///< Text of the query.
 	WID_Q_NO,      ///< Yes button.
-	WID_Q_YES      ///< No button.
+	WID_Q_YES,     ///< No button.
 };
 
 #endif /* WIDGETS_MISC_WIDGET_H */

@@ -84,7 +84,7 @@ enum GrfSpecFeature {
 	GSF_FAKE_TOWNS = GSF_END, ///< Fake town GrfSpecFeature for NewGRF debugging (parent scope)
 	GSF_FAKE_END,             ///< End of the fake features
 
-	GSF_INVALID = 0xFF        ///< An invalid spec feature
+	GSF_INVALID = 0xFF,       ///< An invalid spec feature
 };
 
 static const uint32 INVALID_GRFID = 0xFFFFFFFF;

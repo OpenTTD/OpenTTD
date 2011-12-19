@@ -49,7 +49,7 @@ enum ScoreID {
 	SCORE_TOTAL      = 9,  ///< This must always be the last entry
 	SCORE_END        = 10, ///< How many scores are there..
 
-	SCORE_MAX = 1000       ///< The max score that can be in the performance history
+	SCORE_MAX = 1000,      ///< The max score that can be in the performance history
 	/* the scores together of score_info is allowed to be more! */
 };
 DECLARE_POSTFIX_INCREMENT(ScoreID)

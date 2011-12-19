@@ -43,7 +43,7 @@ enum ToolbarNormalWidgets {
 	WID_TN_MESSAGES,      ///< Messages menu.
 	WID_TN_HELP,          ///< Help menu.
 	WID_TN_SWITCH_BAR,    ///< Only available when toolbar has been split to switch between different subsets.
-	WID_TN_END            ///< Helper for knowing the amount of widgets.
+	WID_TN_END,           ///< Helper for knowing the amount of widgets.
 };
 
 /** Widgets of the WC_MAIN_TOOLBAR, when in scenario editor. */

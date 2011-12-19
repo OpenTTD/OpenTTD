@@ -32,14 +32,14 @@ enum HighLightStyle {
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
 	 * (see ASCII art in table/autorail.h for a visual interpretation) */
-	HT_DIR_X  = 0,    ///< X direction
-	HT_DIR_Y  = 1,    ///< Y direction
-	HT_DIR_HU = 2,    ///< horizontal upper
-	HT_DIR_HL = 3,    ///< horizontal lower
-	HT_DIR_VL = 4,    ///< vertical left
-	HT_DIR_VR = 5,    ///< vertical right
-	HT_DIR_END,       ///< end marker
-	HT_DIR_MASK = 0x7 ///< masks the drag-direction
+	HT_DIR_X  = 0,     ///< X direction
+	HT_DIR_Y  = 1,     ///< Y direction
+	HT_DIR_HU = 2,     ///< horizontal upper
+	HT_DIR_HL = 3,     ///< horizontal lower
+	HT_DIR_VL = 4,     ///< vertical left
+	HT_DIR_VR = 5,     ///< vertical right
+	HT_DIR_END,        ///< end marker
+	HT_DIR_MASK = 0x7, ///< masks the drag-direction
 };
 DECLARE_ENUM_AS_BIT_SET(HighLightStyle)
 

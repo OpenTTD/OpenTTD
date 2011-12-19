@@ -66,7 +66,7 @@ enum PacketAdminType {
 enum AdminStatus {
 	ADMIN_STATUS_INACTIVE,      ///< The admin is not connected nor active.
 	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
-	ADMIN_STATUS_END            ///< Must ALWAYS be on the end of this list!! (period)
+	ADMIN_STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Update types an admin can register a frequency for */
@@ -80,7 +80,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_CONSOLE,         ///< The admin would like to have console messages.
 	ADMIN_UPDATE_CMD_NAMES,       ///< The admin would like a list of all DoCommand names.
 	ADMIN_UPDATE_CMD_LOGGING,     ///< The admin would like to have DoCommand information.
-	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
+	ADMIN_UPDATE_END,             ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /** Update frequencies an admin can register. */
@@ -101,7 +101,7 @@ enum AdminCompanyRemoveReason {
 	ADMIN_CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
 	ADMIN_CRR_BANKRUPT,  ///< The company went belly-up.
 
-	ADMIN_CRR_END        ///< Sentinel for end.
+	ADMIN_CRR_END,       ///< Sentinel for end.
 };
 
 /** Main socket handler for admin related connections. */
