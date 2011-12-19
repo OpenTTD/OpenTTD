@@ -478,6 +478,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
  */
 CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	CompanyID company = _current_company;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	RoadBits existing = ROAD_NONE;
@@ -485,10 +486,19 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-company is building the road */
-	if ((Company::IsValidID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !Town::IsValidID(p2))) return CMD_ERROR;
-	if (_current_company != OWNER_TOWN) {
+	if ((Company::IsValidID(company) && p2 != 0) || (company == OWNER_TOWN && !Town::IsValidID(p2)) || (company == OWNER_DEITY && p2 != 0)) return CMD_ERROR;
+	if (company != OWNER_TOWN) {
 		const Town *town = CalcClosestTownFromTile(tile);
 		p2 = (town != NULL) ? town->index : (TownID)INVALID_TOWN;
+
+		if (company == OWNER_DEITY) {
+			company = OWNER_TOWN;
+
+			/* If we are not within a town, we are not owned by the town */
+			if (town == NULL || DistanceSquare(tile, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+				company = OWNER_NONE;
+			}
+		}
 	}
 
 	RoadBits pieces = Extract<RoadBits, 0, 4>(p1);
@@ -608,11 +618,11 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				Track railtrack = AxisToTrack(OtherAxis(roaddir));
 				YapfNotifyTrackLayoutChange(tile, railtrack);
 				/* Update company infrastructure counts. A level crossing has two road bits. */
-				Company *c = Company::GetIfValid(_current_company);
+				Company *c = Company::GetIfValid(company);
 				if (c != NULL) {
 					c->infrastructure.road[rt] += 2;
 					if (rt != ROADTYPE_ROAD) c->infrastructure.road[ROADTYPE_ROAD] += 2;
-					DirtyCompanyInfrastructureWindows(_current_company);
+					DirtyCompanyInfrastructureWindows(company);
 				}
 				/* Update rail count for level crossings. The plain track is already
 				 * counted, so only add the difference to the level crossing cost. */
@@ -621,7 +631,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 				/* Always add road to the roadtypes (can't draw without it) */
 				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
-				MakeRoadCrossing(tile, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
+				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
 				MarkTileDirtyByTile(tile);
@@ -717,7 +727,7 @@ do_clear:;
 				RoadTileType rtt = GetRoadTileType(tile);
 				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
 					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-					SetRoadOwner(tile, rt, _current_company);
+					SetRoadOwner(tile, rt, company);
 					if (rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
 				}
 				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
@@ -729,8 +739,8 @@ do_clear:;
 
 				SetRoadTypes(other_end, GetRoadTypes(other_end) | RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-				SetRoadOwner(other_end, rt, _current_company);
-				SetRoadOwner(tile, rt, _current_company);
+				SetRoadOwner(other_end, rt, company);
+				SetRoadOwner(tile, rt, company);
 
 				/* Mark tiles dirty that have been repaved */
 				MarkTileDirtyByTile(other_end);
@@ -746,11 +756,11 @@ do_clear:;
 			case MP_STATION:
 				assert(IsDriveThroughStopTile(tile));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-				SetRoadOwner(tile, rt, _current_company);
+				SetRoadOwner(tile, rt, company);
 				break;
 
 			default:
-				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_company, _current_company);
+				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, company, company);
 				break;
 		}
 

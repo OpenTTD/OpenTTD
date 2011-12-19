@@ -130,7 +130,6 @@ public:
 	 *   as you can build tram-rails on road-tiles.
 	 * @note For rail you also might want to check for ScriptRoad::IsRoad(),
 	 *   as in some cases you can build rails on road-tiles.
-	 * @api -game
 	 */
 	static bool IsBuildable(TileIndex tile);
 

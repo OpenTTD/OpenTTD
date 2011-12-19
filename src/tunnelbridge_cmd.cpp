@@ -212,6 +212,8 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
  */
 CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	CompanyID company = _current_company;
+
 	RailType railtype = INVALID_RAILTYPE;
 	RoadTypes roadtypes = ROADTYPES_NONE;
 
@@ -226,7 +228,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
 			roadtypes = Extract<RoadTypes, 8, 2>(p2);
-			if (!HasExactlyOneBit(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
+			if (!HasExactlyOneBit(roadtypes) || !HasRoadTypesAvail(company, roadtypes)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
@@ -243,6 +245,18 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	}
 	TileIndex tile_start = p1;
 	TileIndex tile_end = end_tile;
+
+	if (company == OWNER_DEITY) {
+		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
+		const Town *town = CalcClosestTownFromTile(tile_start);
+
+		company = OWNER_TOWN;
+
+		/* If we are not within a town, we are not owned by the town */
+		if (town == NULL || DistanceSquare(tile_start, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+			company = OWNER_NONE;
+		}
+	}
 
 	if (tile_start == tile_end) {
 		return_cmd_error(STR_ERROR_CAN_T_START_AND_END_ON);
@@ -312,7 +326,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		/* Do not allow replacing another company's bridges. */
-		if (!IsTileOwner(tile_start, _current_company) && !IsTileOwner(tile_start, OWNER_TOWN)) {
+		if (!IsTileOwner(tile_start, company) && !IsTileOwner(tile_start, OWNER_TOWN)) {
 			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
@@ -424,7 +438,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			}
 		}
 
-		owner = _current_company;
+		owner = company;
 	}
 
 	/* do the drill? */
@@ -475,7 +489,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 
 	if ((flags & DC_EXEC) && transport_type == TRANSPORT_RAIL) {
 		Track track = AxisToTrack(direction);
-		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_company);
+		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, company);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -483,7 +497,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	 * It's unnecessary to execute this command every time for every bridge. So it is done only
 	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	 */
-	Company *c = Company::GetIfValid(_current_company);
+	Company *c = Company::GetIfValid(company);
 	if (!(flags & DC_QUERY_COST) || (c != NULL && c->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
@@ -520,6 +534,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
  */
 CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	CompanyID company = _current_company;
+
 	TransportType transport_type = Extract<TransportType, 8, 2>(p1);
 
 	RailType railtype = INVALID_RAILTYPE;
@@ -533,10 +549,22 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 		case TRANSPORT_ROAD:
 			rts = Extract<RoadTypes, 0, 2>(p1);
-			if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
+			if (!HasExactlyOneBit(rts) || !HasRoadTypesAvail(company, rts)) return CMD_ERROR;
 			break;
 
 		default: return CMD_ERROR;
+	}
+
+	if (company == OWNER_DEITY) {
+		if (transport_type != TRANSPORT_ROAD) return CMD_ERROR;
+		const Town *town = CalcClosestTownFromTile(start_tile);
+
+		company = OWNER_TOWN;
+
+		/* If we are not within a town, we are not owned by the town */
+		if (town == NULL || DistanceSquare(start_tile, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+			company = OWNER_NONE;
+		}
 	}
 
 	int start_z;
@@ -640,13 +668,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 	}
 
 	if (flags & DC_EXEC) {
-		Company *c = Company::GetIfValid(_current_company);
+		Company *c = Company::GetIfValid(company);
 		uint num_pieces = (tiles + 2) * TUNNELBRIDGE_TRACKBIT_FACTOR;
 		if (transport_type == TRANSPORT_RAIL) {
 			if (!IsTunnelTile(start_tile) && c != NULL) c->infrastructure.rail[railtype] += num_pieces;
-			MakeRailTunnel(start_tile, _current_company, direction,                 railtype);
-			MakeRailTunnel(end_tile,   _current_company, ReverseDiagDir(direction), railtype);
-			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
+			MakeRailTunnel(start_tile, company, direction,                 railtype);
+			MakeRailTunnel(end_tile,   company, ReverseDiagDir(direction), railtype);
+			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
 			if (c != NULL) {
@@ -655,10 +683,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 					c->infrastructure.road[rt] += num_pieces * 2; // A full diagonal road has two road bits.
 				}
 			}
-			MakeRoadTunnel(start_tile, _current_company, direction,                 rts);
-			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), rts);
+			MakeRoadTunnel(start_tile, company, direction,                 rts);
+			MakeRoadTunnel(end_tile,   company, ReverseDiagDir(direction), rts);
 		}
-		DirtyCompanyInfrastructureWindows(_current_company);
+		DirtyCompanyInfrastructureWindows(company);
 	}
 
 	return cost;

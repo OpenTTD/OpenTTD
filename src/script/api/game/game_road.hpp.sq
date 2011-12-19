@@ -59,6 +59,8 @@ void SQGSRoad_Register(Squirrel *engine)
 	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::GetRoadDepotFrontTile,         "GetRoadDepotFrontTile",         2, ".i");
 	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::GetRoadStationFrontTile,       "GetRoadStationFrontTile",       2, ".i");
 	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::GetDriveThroughBackTile,       "GetDriveThroughBackTile",       2, ".i");
+	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::BuildRoad,                     "BuildRoad",                     3, ".ii");
+	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::BuildRoadFull,                 "BuildRoadFull",                 3, ".ii");
 	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::GetBuildCost,                  "GetBuildCost",                  3, ".ii");
 	SQGSRoad.DefSQStaticMethod(engine, &ScriptRoad::GetMaintenanceCostFactor,      "GetMaintenanceCostFactor",      2, ".i");
 

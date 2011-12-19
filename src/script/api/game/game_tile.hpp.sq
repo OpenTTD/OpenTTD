@@ -77,6 +77,7 @@ void SQGSTile_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMapString(ScriptTile::ERR_AREA_ALREADY_FLAT,       "ERR_AREA_ALREADY_FLAT");
 	ScriptError::RegisterErrorMapString(ScriptTile::ERR_EXCAVATION_WOULD_DAMAGE, "ERR_EXCAVATION_WOULD_DAMAGE");
 
+	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsBuildable,                "IsBuildable",                2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsBuildableRectangle,       "IsBuildableRectangle",       4, ".iii");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsWaterTile,                "IsWaterTile",                2, ".i");
 	SQGSTile.DefSQStaticMethod(engine, &ScriptTile::IsCoastTile,                "IsCoastTile",                2, ".i");

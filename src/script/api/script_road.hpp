@@ -265,8 +265,8 @@ public:
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
+	 * @game @note Building a piece of road (without CompanyMode) results in a piece of road owned by towns.
 	 * @return Whether the road has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildRoad(TileIndex start, TileIndex end);
 
@@ -317,8 +317,8 @@ public:
 	 * @exception ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS
 	 * @exception ScriptError::ERR_VEHICLE_IN_THE_WAY
 	 * @note Construction will fail if an obstacle is found between the start and end tiles.
+	 * @game @note Building a piece of road (without CompanyMode) results in a piece of road owned by towns.
 	 * @return Whether the road has been/can be build or not.
-	 * @api -game
 	 */
 	static bool BuildRoadFull(TileIndex start, TileIndex end);
 
