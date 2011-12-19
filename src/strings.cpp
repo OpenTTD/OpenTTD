@@ -940,7 +940,10 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* Tiny description of cargotypes. Layout:
 				 * param 1: cargo type
 				 * param 2: cargo count */
-				StringID cargo_str = CargoSpec::Get(args->GetInt32(SCC_CARGO_SHORT))->units_volume;
+				CargoID cargo = args->GetInt32(SCC_CARGO_TINY);
+				if (cargo >= CargoSpec::GetArraySize()) break;
+
+				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 				int64 amount = 0;
 				switch (cargo_str) {
 					case STR_TONS:
@@ -965,7 +968,10 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				/* Short description of cargotypes. Layout:
 				 * param 1: cargo type
 				 * param 2: cargo count */
-				StringID cargo_str = CargoSpec::Get(args->GetInt32(SCC_CARGO_SHORT))->units_volume;
+				CargoID cargo = args->GetInt32(SCC_CARGO_SHORT);
+				if (cargo >= CargoSpec::GetArraySize()) break;
+
+				StringID cargo_str = CargoSpec::Get(cargo)->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
 						assert(_settings_game.locale.units < lengthof(_units));
@@ -995,6 +1001,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_CARGO_LONG: { // {CARGO_LONG}
 				/* First parameter is cargo type, second parameter is cargo count */
 				CargoID cargo = args->GetInt32(SCC_CARGO_LONG);
+				if (cargo != CT_INVALID && cargo >= CargoSpec::GetArraySize()) break;
+
 				StringID cargo_str = (cargo == CT_INVALID) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
 				StringParameters tmp_args(*args, 1);
 				buff = GetStringWithArgs(buff, cargo_str, &tmp_args, last);
@@ -1091,7 +1099,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
-				const Company *c = Company::Get((CompanyID)args->GetInt32());
+				const Company *c = Company::GetIfValid(args->GetInt32());
+				if (c == NULL) break;
 
 				if (c->name != NULL) {
 					buff = strecpy(buff, c->name, last);
@@ -1136,10 +1145,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
-				EngineID engine = (EngineID)args->GetInt32(SCC_ENGINE_NAME);
-				const Engine *e = Engine::Get(engine);
-
-				assert(e != NULL);
+				const Engine *e = Engine::GetIfValid(args->GetInt32(SCC_ENGINE_NAME));
+				if (e == NULL) break;
 
 				if (e->name != NULL && e->IsEnabled()) {
 					buff = strecpy(buff, e->name, last);
@@ -1151,9 +1158,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_GROUP_NAME: { // {GROUP}
-				const Group *g = Group::Get(args->GetInt32());
-
-				assert(g != NULL);
+				const Group *g = Group::GetIfValid(args->GetInt32());
+				if (g == NULL) break;
 
 				if (g->name != NULL) {
 					buff = strecpy(buff, g->name, last);
@@ -1167,10 +1173,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_INDUSTRY_NAME: { // {INDUSTRY}
-				const Industry *i = Industry::Get(args->GetInt32(SCC_INDUSTRY_NAME));
-
-				/* industry not valid anymore? */
-				assert(i != NULL);
+				const Industry *i = Industry::GetIfValid(args->GetInt32(SCC_INDUSTRY_NAME));
+				if (i == NULL) break;
 
 				/* First print the town name and the industry type name. */
 				int64 args_array[2] = {i->town->index, GetIndustrySpec(i->type)->name};
@@ -1182,7 +1186,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_PRESIDENT_NAME: { // {PRESIDENT_NAME}
-				const Company *c = Company::Get((CompanyID)args->GetInt32(SCC_PRESIDENT_NAME));
+				const Company *c = Company::GetIfValid(args->GetInt32(SCC_PRESIDENT_NAME));
+				if (c == NULL) break;
 
 				if (c->president_name != NULL) {
 					buff = strecpy(buff, c->president_name, last);
@@ -1231,9 +1236,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_TOWN_NAME: { // {TOWN}
-				const Town *t = Town::Get(args->GetInt32(SCC_TOWN_NAME));
-
-				assert(t != NULL);
+				const Town *t = Town::GetIfValid(args->GetInt32(SCC_TOWN_NAME));
+				if (t == NULL) break;
 
 				if (t->name != NULL) {
 					buff = strecpy(buff, t->name, last);
@@ -1244,9 +1248,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				Waypoint *wp = Waypoint::Get(args->GetInt32(SCC_WAYPOINT_NAME));
-
-				assert(wp != NULL);
+				Waypoint *wp = Waypoint::GetIfValid(args->GetInt32(SCC_WAYPOINT_NAME));
+				if (wp == NULL) break;
 
 				if (wp->name != NULL) {
 					buff = strecpy(buff, wp->name, last);
@@ -1261,9 +1264,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
-				const Vehicle *v = Vehicle::Get(args->GetInt32(SCC_VEHICLE_NAME));
-
-				assert(v != NULL);
+				const Vehicle *v = Vehicle::GetIfValid(args->GetInt32(SCC_VEHICLE_NAME));
+				if (v == NULL) break;
 
 				if (v->name != NULL) {
 					buff = strecpy(buff, v->name, last);
@@ -1286,7 +1288,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_SIGN_NAME: { // {SIGN}
-				const Sign *si = Sign::Get(args->GetInt32());
+				const Sign *si = Sign::GetIfValid(args->GetInt32());
+				if (si == NULL) break;
+
 				if (si->name != NULL) {
 					buff = strecpy(buff, si->name, last);
 				} else {
