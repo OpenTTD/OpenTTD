@@ -253,8 +253,8 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdRenameStation,                                  0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_STATION
 	DEF_CMD(CmdRenameDepot,                                    0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_DEPOT
 
-	DEF_CMD(CmdPlaceSign,                                      0, CMDT_OTHER_MANAGEMENT      ), // CMD_PLACE_SIGN
-	DEF_CMD(CmdRenameSign,                                     0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_SIGN
+	DEF_CMD(CmdPlaceSign,                              CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_PLACE_SIGN
+	DEF_CMD(CmdRenameSign,                             CMD_DEITY, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_SIGN
 
 	DEF_CMD(CmdTurnRoadVeh,                                    0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_TURN_ROADVEH
 

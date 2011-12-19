@@ -54,6 +54,7 @@
 #include "../script/api/game/game_rail.hpp.sq"
 #include "../script/api/game/game_railtypelist.hpp.sq"
 #include "../script/api/game/game_road.hpp.sq"
+#include "../script/api/game/game_sign.hpp.sq"
 #include "../script/api/game/game_signlist.hpp.sq"
 #include "../script/api/game/game_station.hpp.sq"
 #include "../script/api/game/game_stationlist.hpp.sq"
@@ -125,6 +126,7 @@ void GameInstance::RegisterAPI()
 	SQGSRail_Register(this->engine);
 	SQGSRailTypeList_Register(this->engine);
 	SQGSRoad_Register(this->engine);
+	SQGSSign_Register(this->engine);
 	SQGSSignList_Register(this->engine);
 	SQGSStation_Register(this->engine);
 	SQGSStationList_Register(this->engine);

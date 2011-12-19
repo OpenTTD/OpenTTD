@@ -1126,7 +1126,7 @@ static void ViewportAddLandscape()
  * @param string_normal String for normal and 2x zoom level
  * @param string_small String for 4x and 8x zoom level
  * @param string_small_shadow Shadow string for 4x and 8x zoom level; or #STR_NULL if no shadow
- * @param colour colour of the sign background; or 0 if transparent
+ * @param colour colour of the sign background; or INVALID_COLOUR if transparent
  */
 void ViewportAddString(const DrawPixelInfo *dpi, ZoomLevel small_from, const ViewportSign *sign, StringID string_normal, StringID string_small, StringID string_small_shadow, uint64 params_1, uint64 params_2, Colours colour)
 {
@@ -1207,12 +1207,12 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		/* Don't draw if sign is owned by another company and competitor signs should be hidden.
 		 * Note: It is intentional that also signs owned by OWNER_NONE are hidden. Bankrupt
 		 * companies can leave OWNER_NONE signs after them. */
-		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner) continue;
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner && si->owner != OWNER_DEITY) continue;
 
 		ViewportAddString(dpi, ZOOM_LVL_OUT_16X, &si->sign,
 				STR_WHITE_SIGN,
-				IsTransparencySet(TO_SIGNS) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
-				si->index, 0, (si->owner == OWNER_NONE) ? COLOUR_GREY : _company_colours[si->owner]);
+				(IsTransparencySet(TO_SIGNS) || si->owner == OWNER_DEITY) ? STR_VIEWPORT_SIGN_SMALL_WHITE : STR_VIEWPORT_SIGN_SMALL_BLACK, STR_NULL,
+				si->index, 0, (si->owner == OWNER_NONE) ? COLOUR_GREY : (si->owner == OWNER_DEITY ? INVALID_COLOUR : _company_colours[si->owner]));
 	}
 }
 
@@ -1873,6 +1873,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 	FOR_ALL_SIGNS(si) {
 		/* If competitor signs are hidden, don't check signs that aren't owned by local company */
 		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner) continue;
+		if (si->owner == OWNER_DEITY) continue;
 
 		if (CheckClickOnViewportSign(vp, x, y, &si->sign)) {
 			HandleClickOnSign(si);

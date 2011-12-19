@@ -24,7 +24,7 @@
 /* static */ bool ScriptSign::IsValidSign(SignID sign_id)
 {
 	const Sign *si = ::Sign::GetIfValid(sign_id);
-	return si != NULL && si->owner == _current_company;
+	return si != NULL && (si->owner == _current_company || si->owner == OWNER_DEITY);
 }
 
 /* static */ bool ScriptSign::SetName(SignID sign_id, const char *name)

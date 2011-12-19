@@ -16,7 +16,7 @@
 
 /**
  * Class that handles all sign related functions.
- * @api ai
+ * @api ai game
  */
 class ScriptSign : public ScriptObject {
 public:
