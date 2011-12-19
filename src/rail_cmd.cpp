@@ -1532,7 +1532,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				}
 
 				/* Update the company infrastructure counters. */
-				if (IsRailStationTile(tile) && !IsStationTileBlocked(tile)) {
+				if (!IsRailStationTile(tile) || !IsStationTileBlocked(tile)) {
 					Company *c = Company::Get(GetTileOwner(tile));
 					uint num_pieces = IsLevelCrossingTile(tile) ? LEVELCROSSING_TRACKBIT_FACTOR : 1;
 					if (IsPlainRailTile(tile)) {

@@ -377,6 +377,11 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					bool reserved = HasCrossingReservation(tile);
 					MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
 					if (reserved) SetTrackReservation(tile, tracks);
+
+					/* Update rail count for level crossings. The plain track should still be accounted
+					 * for, so only subtract the difference to the level crossing cost. */
+					c = Company::GetIfValid(GetTileOwner(tile));
+					if (c != NULL) c->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR - 1;
 				} else {
 					SetRoadTypes(tile, rts);
 					/* If we ever get HWAY and it is possible without road then we will need to promote ownership and invalidate town index here, too */
@@ -609,6 +614,11 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					if (rt != ROADTYPE_ROAD) c->infrastructure.road[ROADTYPE_ROAD] += 2;
 					DirtyCompanyInfrastructureWindows(_current_company);
 				}
+				/* Update rail count for level crossings. The plain track is already
+				 * counted, so only add the difference to the level crossing cost. */
+				c = Company::GetIfValid(GetTileOwner(tile));
+				if (c != NULL) c->infrastructure.rail[GetRailType(tile)] += LEVELCROSSING_TRACKBIT_FACTOR - 1;
+
 				/* Always add road to the roadtypes (can't draw without it) */
 				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
 				MakeRoadCrossing(tile, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
