@@ -2439,26 +2439,33 @@ const CargoSpec *FindFirstCargoWithTownEffect(TownEffect effect)
  * @param tile Unused.
  * @param flags Type of operation.
  * @param p1 Town ID to expand.
- * @param p2 Unused.
+ * @param p2 Amount to grow, or 0 to grow a random size up to the current amount of houses.
  * @param text Unused.
  * @return Empty cost or an error.
  */
 CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
 	if (t == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* The more houses, the faster we grow */
-		uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
-		t->num_houses += amount;
-		UpdateTownRadius(t);
+		if (p2 == 0) {
+			uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
+			t->num_houses += amount;
+			UpdateTownRadius(t);
 
-		uint n = amount * 10;
-		do GrowTown(t); while (--n);
+			uint n = amount * 10;
+			do GrowTown(t); while (--n);
 
-		t->num_houses -= amount;
+			t->num_houses -= amount;
+		} else {
+			for (; p2 > 0; p2--) {
+				/* Try several times to grow, as we are really suppose to grow */
+				for (uint i = 0; i < 25; i++) if (GrowTown(t)) break;
+			}
+		}
 		UpdateTownRadius(t);
 
 		UpdateTownMaxPass(t);

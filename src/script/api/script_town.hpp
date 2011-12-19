@@ -313,6 +313,17 @@ public:
 	static bool PerformTownAction(TownID town_id, TownAction town_action);
 
 	/**
+	 * Expand the town.
+	 * @param town_id The town to expand.
+	 * @param houses The amount of houses to grow the town with.
+	 * @pre IsValidTown(town_id).
+	 * @pre houses > 0.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool ExpandTown(TownID town_id, int houses);
+
+	/**
 	 * Get the rating of a company within a town.
 	 * @param town_id The town to get the rating for.
 	 * @param company_id The company to get the rating for.

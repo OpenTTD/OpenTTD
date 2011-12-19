@@ -200,6 +200,14 @@
 	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, town_action, CMD_DO_TOWN_ACTION);
 }
 
+/* static */ bool ScriptTown::ExpandTown(TownID town_id, int houses)
+{
+	EnforcePrecondition(false, IsValidTown(town_id));
+	EnforcePrecondition(false, houses > 0);
+
+	return ScriptObject::DoCommand(::Town::Get(town_id)->xy, town_id, houses, CMD_EXPAND_TOWN);
+}
+
 /* static */ ScriptTown::TownRating ScriptTown::GetRating(TownID town_id, ScriptCompany::CompanyID company_id)
 {
 	if (!IsValidTown(town_id)) return TOWN_RATING_INVALID;
