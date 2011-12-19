@@ -182,6 +182,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 		this->RequestContentList(CONTENT_TYPE_HEIGHTMAP);
 		this->RequestContentList(CONTENT_TYPE_AI);
 		this->RequestContentList(CONTENT_TYPE_AI_LIBRARY);
+		this->RequestContentList(CONTENT_TYPE_GAME);
 		this->RequestContentList(CONTENT_TYPE_NEWGRF);
 		return;
 	}
@@ -384,6 +385,7 @@ static char *GetFullFilename(const ContentInfo *ci, bool compressed)
 		case CONTENT_TYPE_AI_LIBRARY:    dir = AI_LIBRARY_DIR; break;
 		case CONTENT_TYPE_SCENARIO:      dir = SCENARIO_DIR;   break;
 		case CONTENT_TYPE_HEIGHTMAP:     dir = HEIGHTMAP_DIR;  break;
+		case CONTENT_TYPE_GAME:          dir = GAME_DIR;       break;
 	}
 
 	static char buf[MAX_PATH];
@@ -544,6 +546,10 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 				case CONTENT_TYPE_AI_LIBRARY:
 					sd = AI_LIBRARY_DIR;
+					break;
+
+				case CONTENT_TYPE_GAME:
+					sd = GAME_DIR;
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:

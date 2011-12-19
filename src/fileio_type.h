@@ -30,6 +30,7 @@ enum Subdirectory {
 	LANG_DIR,      ///< Subdirectory for all translation files
 	AI_DIR,        ///< Subdirectory for all AI files
 	AI_LIBRARY_DIR,///< Subdirectory for all AI libraries
+	GAME_DIR,      ///< Subdirectory for all game scripts
 	NUM_SUBDIRS,   ///< Number of subdirectories
 	NO_DIRECTORY,  ///< A path without any base directory
 };
