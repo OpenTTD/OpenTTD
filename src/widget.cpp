@@ -21,6 +21,7 @@
 
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "table/palettes.h"
 
 static const char *UPARROW   = "\xEE\x8A\xA0"; ///< String containing an upwards pointing arrow.
 static const char *DOWNARROW = "\xEE\x8A\xAA"; ///< String containing a downwards pointing arrow.
@@ -569,6 +570,26 @@ void Window::DrawWidgets() const
 
 	if (this->flags & WF_WHITE_BORDER) {
 		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
+	}
+
+	if (this->flags & WF_HIGHLIGHTED) {
+		extern bool _window_highlight_colour;
+		for (uint i = 0; i < this->nested_array_size; i++) {
+			const NWidgetBase *widget = this->GetWidget<NWidgetBase>(i);
+			if (widget == NULL || !widget->IsHighlighted()) continue;
+
+			int left = widget->pos_x;
+			int top  = widget->pos_y;
+			int right  = left + widget->current_x - 1;
+			int bottom = top  + widget->current_y - 1;
+
+			int colour = _string_colourmap[_window_highlight_colour ? widget->GetHighlightColour() : TC_WHITE];
+
+			GfxFillRect(left,                 top,    left,                   bottom - WD_BEVEL_BOTTOM, colour);
+			GfxFillRect(left + WD_BEVEL_LEFT, top,    right - WD_BEVEL_RIGHT, top,                      colour);
+			GfxFillRect(right,                top,    right,                  bottom - WD_BEVEL_BOTTOM, colour);
+			GfxFillRect(left,                 bottom, right,                  bottom,                   colour);
+		}
 	}
 }
 

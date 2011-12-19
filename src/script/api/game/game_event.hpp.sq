@@ -46,6 +46,7 @@ void SQGSEvent_Register(Squirrel *engine)
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_TOWN_FOUNDED,                "ET_TOWN_FOUNDED");
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_AIRCRAFT_DEST_TOO_FAR,       "ET_AIRCRAFT_DEST_TOO_FAR");
 	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_ADMIN_PORT,                  "ET_ADMIN_PORT");
+	SQGSEvent.DefSQConst(engine, ScriptEvent::ET_WINDOW_WIDGET_CLICK,         "ET_WINDOW_WIDGET_CLICK");
 
 	SQGSEvent.DefSQMethod(engine, &ScriptEvent::GetEventType, "GetEventType", 1, "x");
 

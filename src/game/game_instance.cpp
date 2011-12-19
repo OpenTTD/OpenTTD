@@ -75,6 +75,7 @@
 #include "../script/api/game/game_viewport.hpp.sq"
 #include "../script/api/game/game_waypoint.hpp.sq"
 #include "../script/api/game/game_waypointlist.hpp.sq"
+#include "../script/api/game/game_window.hpp.sq"
 
 
 GameInstance::GameInstance() :
@@ -130,6 +131,7 @@ void GameInstance::RegisterAPI()
 	SQGSEventSubsidyOfferExpired_Register(this->engine);
 	SQGSEventTownFounded_Register(this->engine);
 	SQGSEventVehicleCrashed_Register(this->engine);
+	SQGSEventWindowWidgetClick_Register(this->engine);
 	SQGSExecMode_Register(this->engine);
 	SQGSGame_Register(this->engine);
 	SQGSGameSettings_Register(this->engine);
@@ -174,6 +176,7 @@ void GameInstance::RegisterAPI()
 	SQGSWaypoint_Register(this->engine);
 	SQGSWaypointList_Register(this->engine);
 	SQGSWaypointList_Vehicle_Register(this->engine);
+	SQGSWindow_Register(this->engine);
 
 }
 

@@ -767,6 +767,7 @@ script/api/script_vehiclelist.hpp
 script/api/script_viewport.hpp
 script/api/script_waypoint.hpp
 script/api/script_waypointlist.hpp
+script/api/script_window.hpp
 
 # Script API Implementation
 script/api/script_accounting.cpp
@@ -825,6 +826,7 @@ script/api/script_vehiclelist.cpp
 script/api/script_viewport.cpp
 script/api/script_waypoint.cpp
 script/api/script_waypointlist.cpp
+script/api/script_window.cpp
 
 # Blitters
 #if DEDICATED

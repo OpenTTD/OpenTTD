@@ -14,6 +14,7 @@
 
 #include "script_event.hpp"
 #include "script_company.hpp"
+#include "script_window.hpp"
 
 /**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
@@ -883,6 +884,52 @@ private:
 	 * @param p The (part of the) JSON string reading.
 	 */
 	char *ReadString(HSQUIRRELVM vm, char *p);
+};
+
+/**
+ * Event Window Widget Click, when a user clicks on a highlighted widget.
+ * @api game
+ */
+class ScriptEventWindowWidgetClick : public ScriptEvent {
+public:
+	/**
+	 * @param window The windowclass that was clicked.
+	 * @param number The windownumber that was clicked.
+	 * @param widget The widget in the window that was clicked.
+	 */
+	ScriptEventWindowWidgetClick(ScriptWindow::WindowClass window, uint32 number, uint8 widget) :
+		ScriptEvent(ET_WINDOW_WIDGET_CLICK),
+		window(window),
+		number(number),
+		widget(widget)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventWindowWidgetClick *Convert(ScriptEvent *instance) { return (ScriptEventWindowWidgetClick *)instance; }
+
+	/**
+	 * Get the class of the window that was clicked.
+	 */
+	ScriptWindow::WindowClass GetWindowClass() { return this->window; }
+
+	/**
+	 * Get the number of the window that was clicked.
+	 */
+	uint32 GetWindowNumber() { return this->number; }
+
+	/**
+	 * Get the number of the widget that was clicked.
+	 */
+	uint8 GetWidgetNumber() { return this->widget; }
+
+private:
+	ScriptWindow::WindowClass window; ///< Window of the click.
+	uint32 number;                    ///< Number of the click.
+	uint8 widget;                     ///< Widget of the click.
 };
 
 #endif /* SCRIPT_EVENT_TYPES_HPP */

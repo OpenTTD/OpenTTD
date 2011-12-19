@@ -33,6 +33,7 @@
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
 #include "error.h"
+#include "game/game.hpp"
 
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
@@ -43,6 +44,9 @@ static Window *_last_scroll_window = NULL; ///< Window of the last scroll event.
 Window *_z_front_window = NULL;
 /** List of windows opened at the screen sorted from the back. */
 Window *_z_back_window  = NULL;
+
+/** If false, highlight is white, otherwise the by the widget defined colour. */
+bool _window_highlight_colour = false;
 
 /*
  * Window that currently has focus. - The main purpose is to generate
@@ -96,6 +100,72 @@ int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_hei
 	if (line_height < 0) line_height = wid->resize_y;
 	if (clickpos < (int)wid->pos_y + padding) return INT_MAX;
 	return (clickpos - (int)wid->pos_y - padding) / line_height;
+}
+
+/**
+ * Disable the highlighted status of all widgets.
+ */
+void Window::DisableAllWidgetHighlight()
+{
+	for (uint i = 0; i < this->nested_array_size; i++) {
+		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
+		if (nwid == NULL) continue;
+
+		if (nwid->IsHighlighted()) {
+			nwid->SetHighlighted(TC_INVALID);
+			this->SetWidgetDirty(i);
+		}
+	}
+
+	CLRBITS(this->flags, WF_HIGHLIGHTED);
+}
+
+/**
+ * Sets the highlighted status of a widget.
+ * @param widget_index index of this widget in the window
+ * @param highlighted_colour Colour of highlight, or TC_INVALID to disable.
+ */
+void Window::SetWidgetHighlight(byte widget_index, TextColour highlighted_colour)
+{
+	assert(widget_index < this->nested_array_size);
+
+	NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
+	if (nwid == NULL) return;
+
+	nwid->SetHighlighted(highlighted_colour);
+	this->SetWidgetDirty(widget_index);
+
+	if (highlighted_colour != TC_INVALID) {
+		/* If we set a highlight, the window has a highlight */
+		this->flags |= WF_HIGHLIGHTED;
+	} else {
+		/* If we disable a highlight, check all widgets if anyone still has a highlight */
+		bool valid = false;
+		for (uint i = 0; i < this->nested_array_size; i++) {
+			NWidgetBase *nwid = this->GetWidget<NWidgetBase>(i);
+			if (nwid == NULL) continue;
+			if (!nwid->IsHighlighted()) continue;
+
+			valid = true;
+		}
+		/* If nobody has a highlight, disable the flag on the window */
+		if (!valid) CLRBITS(this->flags, WF_HIGHLIGHTED);
+	}
+}
+
+/**
+ * Gets the highlighted status of a widget.
+ * @param widget_index index of this widget in the window
+ * @return status of the widget ie: highlighted = true, not highlighted = false
+ */
+bool Window::IsWidgetHighlighted(byte widget_index) const
+{
+	assert(widget_index < this->nested_array_size);
+
+	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget_index);
+	if (nwid == NULL) return false;
+
+	return nwid->IsHighlighted();
 }
 
 /**
@@ -383,6 +453,12 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 	/* Widget has no index, so the window is not interested in it. */
 	if (widget_index < 0) return;
+
+	/* Check if the widget is highlighted; if so, disable highlight and dispatch an event to the GameScript */
+	if (w->IsWidgetHighlighted(widget_index)) {
+		w->SetWidgetHighlight(widget_index, TC_INVALID);
+		Game::NewEvent(new ScriptEventWindowWidgetClick((ScriptWindow::WindowClass)w->window_class, w->window_number, widget_index));
+	}
 
 	Point pt = { x, y };
 	w->OnClick(pt, widget_index, click_count);
@@ -2506,8 +2582,15 @@ void UpdateWindows()
 {
 	Window *w;
 
+	static int highlight_timer = 1;
+	if (--highlight_timer == 0) {
+		highlight_timer = 15;
+		_window_highlight_colour = !_window_highlight_colour;
+	}
+
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		w->ProcessScheduledInvalidations();
+		w->ProcessHighlightedInvalidations();
 	}
 
 	static int we4_timer = 0;
@@ -2604,6 +2687,18 @@ void Window::ProcessScheduledInvalidations()
 		this->OnInvalidateData(*data, true);
 	}
 	this->scheduled_invalidation_data.Clear();
+}
+
+/**
+ * Process all invalidation of highlighted widgets.
+ */
+void Window::ProcessHighlightedInvalidations()
+{
+	if ((this->flags & WF_HIGHLIGHTED) == 0) return;
+
+	for (uint i = 0; i < this->nested_array_size; i++) {
+		if (this->IsWidgetHighlighted(i)) this->SetWidgetDirty(i);
+	}
 }
 
 /**

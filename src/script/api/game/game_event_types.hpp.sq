@@ -232,3 +232,20 @@ void SQGSEventAdminPort_Register(Squirrel *engine)
 
 	SQGSEventAdminPort.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventWindowWidgetClick, ST_GS>() { return "GSEventWindowWidgetClick"; }
+
+void SQGSEventWindowWidgetClick_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventWindowWidgetClick, ST_GS> SQGSEventWindowWidgetClick("GSEventWindowWidgetClick");
+	SQGSEventWindowWidgetClick.PreRegister(engine, "GSEvent");
+
+	SQGSEventWindowWidgetClick.DefSQStaticMethod(engine, &ScriptEventWindowWidgetClick::Convert, "Convert", 2, ".x");
+
+	SQGSEventWindowWidgetClick.DefSQMethod(engine, &ScriptEventWindowWidgetClick::GetWindowClass,  "GetWindowClass",  1, "x");
+	SQGSEventWindowWidgetClick.DefSQMethod(engine, &ScriptEventWindowWidgetClick::GetWindowNumber, "GetWindowNumber", 1, "x");
+	SQGSEventWindowWidgetClick.DefSQMethod(engine, &ScriptEventWindowWidgetClick::GetWidgetNumber, "GetWidgetNumber", 1, "x");
+
+	SQGSEventWindowWidgetClick.PostRegister(engine);
+}

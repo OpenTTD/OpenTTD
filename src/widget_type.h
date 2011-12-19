@@ -132,6 +132,10 @@ public:
 	virtual NWidgetCore *GetWidgetFromPos(int x, int y) = 0;
 	virtual NWidgetBase *GetWidgetOfType(WidgetType tp);
 
+	virtual bool IsHighlighted() const { return false; }
+	virtual TextColour GetHighlightColour() const { return TC_INVALID; }
+	virtual void SetHighlighted(TextColour highlight_colour) {}
+
 	/**
 	 * Set additional space (padding) around the widget.
 	 * @param top    Amount of additional space above the widget.
@@ -254,9 +258,12 @@ enum NWidgetDisplay {
 	/* Scrollbar widget. */
 	NDB_SCROLLBAR_UP    = 6, ///< Up-button is lowered bit.
 	NDB_SCROLLBAR_DOWN  = 7, ///< Down-button is lowered bit.
+	/* Generic. */
+	NDB_HIGHLIGHT       = 8, ///< Highlight of widget is on.
 
 	ND_LOWERED  = 1 << NDB_LOWERED,                ///< Bit value of the lowered flag.
 	ND_DISABLED = 1 << NDB_DISABLED,               ///< Bit value of the disabled flag.
+	ND_HIGHLIGHT = 1 << NDB_HIGHLIGHT,             ///< Bit value of the highlight flag.
 	ND_NO_TRANSPARENCY = 1 << NDB_NO_TRANSPARENCY, ///< Bit value of the 'no transparency' flag.
 	ND_SHADE_GREY      = 1 << NDB_SHADE_GREY,      ///< Bit value of the 'shade to grey' flag.
 	ND_SHADE_DIMMED    = 1 << NDB_SHADE_DIMMED,    ///< Bit value of the 'dimmed colours' flag.
@@ -285,6 +292,9 @@ public:
 
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
+	/* virtual */ bool IsHighlighted() const;
+	/* virtual */ TextColour GetHighlightColour() const;
+	/* virtual */ void SetHighlighted(TextColour highlight_colour);
 
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
@@ -292,7 +302,30 @@ public:
 	uint16 widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
+	TextColour highlight_colour; ///< Colour of highlight.
 };
+
+/**
+ * Highlight the widget or not.
+ * @param higlighted Widget must be highlighted (blink).
+ */
+inline void NWidgetCore::SetHighlighted(TextColour highlight_colour)
+{
+	this->disp_flags = highlight_colour != TC_INVALID ? SETBITS(this->disp_flags, ND_HIGHLIGHT) : CLRBITS(this->disp_flags, ND_HIGHLIGHT);
+	this->highlight_colour = highlight_colour;
+}
+
+/** Return whether the widget is highlighted. */
+inline bool NWidgetCore::IsHighlighted() const
+{
+	return HasBit(this->disp_flags, NDB_HIGHLIGHT);
+}
+
+/** Return the colour of the highlight. */
+inline TextColour NWidgetCore::GetHighlightColour() const
+{
+	return this->highlight_colour;
+}
 
 /**
  * Lower or raise the widget.

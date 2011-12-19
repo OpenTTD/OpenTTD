@@ -218,7 +218,7 @@ enum WindowFlags {
 	WF_STICKY            = 1 <<  6, ///< Window is made sticky by user
 	WF_DISABLE_VP_SCROLL = 1 <<  7, ///< Window does not do autoscroll, @see HandleAutoscroll().
 	WF_WHITE_BORDER      = 1 <<  8, ///< Window white border counter bit mask.
-
+	WF_HIGHLIGHTED       = 1 <<  9, ///< Window has a widget that has a highlight.
 	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit.
 };
 DECLARE_ENUM_AS_BIT_SET(WindowFlags)
@@ -337,6 +337,10 @@ public:
 		this->flags |= WF_WHITE_BORDER;
 		this->white_border_timer = WHITE_BORDER_DURATION;
 	}
+
+	void DisableAllWidgetHighlight();
+	void SetWidgetHighlight(byte widget_index, TextColour highlighted_colour);
+	bool IsWidgetHighlighted(byte widget_index) const;
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
@@ -482,6 +486,7 @@ public:
 
 	void InvalidateData(int data = 0, bool gui_scope = true);
 	void ProcessScheduledInvalidations();
+	void ProcessHighlightedInvalidations();
 
 	/*** Event handling ***/
 

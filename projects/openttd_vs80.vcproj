@@ -3290,6 +3290,10 @@
 				RelativePath=".\..\src\script\api\script_waypointlist.hpp"
 				>
 			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_window.hpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Script API Implementation"
@@ -3516,6 +3520,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_waypointlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_window.cpp"
 				>
 			</File>
 		</Filter>
