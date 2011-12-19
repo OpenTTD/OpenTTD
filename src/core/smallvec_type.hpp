@@ -326,6 +326,37 @@ public:
 	}
 };
 
+/**
+ * Simple vector template class, with automatic delete.
+ *
+ * @note There are no asserts in the class so you have
+ *       to care about that you grab an item which is
+ *       inside the list.
+ *
+ * @param T The type of the items stored, must be a pointer
+ * @param S The steps of allocation
+ */
+template <typename T, uint S>
+class AutoDeleteSmallVector : public SmallVector<T, S> {
+public:
+	~AutoDeleteSmallVector()
+	{
+		this->Clear();
+	}
+
+	/**
+	 * Remove all items from the list.
+	 */
+	FORCEINLINE void Clear()
+	{
+		for (uint i = 0; i < this->items; i++) {
+			delete this->data[i];
+		}
+
+		this->items = 0;
+	}
+};
+
 typedef AutoFreeSmallVector<char*, 4> StringList; ///< Type for a list of strings.
 
 #endif /* SMALLVEC_TYPE_HPP */

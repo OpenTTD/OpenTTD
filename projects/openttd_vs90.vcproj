@@ -700,6 +700,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\strgen\strgen_base.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\string.cpp"
 				>
 			</File>
@@ -1509,6 +1513,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\strgen\strgen.h"
 				>
 			</File>
 			<File
@@ -3049,6 +3057,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\game\game_scanner.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_text.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\game\game_text.hpp"
 				>
 			</File>
 		</Filter>

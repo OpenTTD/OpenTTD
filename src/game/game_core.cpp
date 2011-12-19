@@ -22,12 +22,18 @@
 #include "game_scanner.hpp"
 #include "game_config.hpp"
 #include "game_instance.hpp"
+#include "game_info.hpp"
 
 /* static */ uint Game::frame_counter = 0;
 /* static */ GameInfo *Game::info = NULL;
 /* static */ GameInstance *Game::instance = NULL;
 /* static */ GameScannerInfo *Game::scanner_info = NULL;
 /* static */ GameScannerLibrary *Game::scanner_library = NULL;
+
+/* static */ const char *Game::GetMainScript()
+{
+		return Game::info->GetMainScript();
+}
 
 /* static */ void Game::GameLoop()
 {

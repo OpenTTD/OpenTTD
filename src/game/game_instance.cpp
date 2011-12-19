@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "game_info.hpp"
 #include "game_instance.hpp"
+#include "game_text.hpp"
 #include "game.hpp"
 
 /* Convert all Game related classes to Squirrel data.
@@ -180,6 +181,7 @@ void GameInstance::RegisterAPI()
 	SQGSWaypointList_Vehicle_Register(this->engine);
 	SQGSWindow_Register(this->engine);
 
+	RegisterGameTranslation(this->engine);
 }
 
 int GameInstance::GetSetting(const char *name)

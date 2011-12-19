@@ -91,6 +91,11 @@ public:
 	 */
 	static class GameInstance *GetInstance() { return Game::instance; }
 
+	/**
+	 * Get the current active mainscript.
+	 */
+	static const char *GetMainScript();
+
 #if defined(ENABLE_NETWORK)
 	/** Wrapper function for GameScanner::HasGame */
 	static bool HasGame(const struct ContentInfo *ci, bool md5sum);

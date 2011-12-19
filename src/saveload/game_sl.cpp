@@ -19,6 +19,7 @@
 #include "../game/game_config.hpp"
 #include "../network/network.h"
 #include "../game/game_instance.hpp"
+#include "../game/game_text.hpp"
 
 static char _game_saveload_name[64];
 static int  _game_saveload_version;
@@ -111,6 +112,67 @@ static void Save_GSDT()
 	SlAutolength((AutolengthProc *)SaveReal_GSDT, NULL);
 }
 
+extern GameStrings *_current_data;
+
+static const char *_game_saveload_string;
+static uint _game_saveload_strings;
+
+static const SaveLoad _game_language_header[] = {
+	SLEG_STR(_game_saveload_string, SLE_STR),
+	SLEG_VAR(_game_saveload_strings, SLE_UINT32),
+	 SLE_END()
+};
+
+static const SaveLoad _game_language_string[] = {
+	SLEG_STR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
+	 SLE_END()
+};
+
+static void SaveReal_GSTR(LanguageStrings *ls)
+{
+	_game_saveload_string  = ls->language;
+	_game_saveload_strings = ls->lines.Length();
+
+	SlObject(NULL, _game_language_header);
+	for (uint i = 0; i < _game_saveload_strings; i++) {
+		_game_saveload_string = ls->lines[i];
+		SlObject(NULL, _game_language_string);
+	}
+}
+
+static void Load_GSTR()
+{
+	delete _current_data;
+	_current_data = new GameStrings();
+
+	while (SlIterateArray() != -1) {
+		_game_saveload_string = NULL;
+		SlObject(NULL, _game_language_header);
+
+		LanguageStrings *ls = new LanguageStrings(_game_saveload_string);
+		for (uint i = 0; i < _game_saveload_strings; i++) {
+			SlObject(NULL, _game_language_string);
+			*ls->lines.Append() = strdup(_game_saveload_string);
+		}
+
+		*_current_data->raw_strings.Append() = ls;
+	}
+
+	_current_data->Compile();
+	ReconsiderGameScriptLanguage();
+}
+
+static void Save_GSTR()
+{
+	if (_current_data == NULL) return;
+
+	for (uint i = 0; i < _current_data->raw_strings.Length(); i++) {
+		SlSetArrayIndex(i);
+		SlAutolength((AutolengthProc *)SaveReal_GSTR, _current_data->raw_strings[i]);
+	}
+}
+
 extern const ChunkHandler _game_chunk_handlers[] = {
+	{ 'GSTR', Save_GSTR, Load_GSTR, NULL, NULL, CH_ARRAY },
 	{ 'GSDT', Save_GSDT, Load_GSDT, NULL, NULL, CH_ARRAY | CH_LAST},
 };

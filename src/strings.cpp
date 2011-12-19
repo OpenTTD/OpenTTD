@@ -38,6 +38,7 @@
 #include "smallmap_gui.h"
 #include "window_func.h"
 #include "debug.h"
+#include "game/game_text.hpp"
 #include <stack>
 
 #include "table/strings.h"
@@ -140,6 +141,7 @@ static bool _keep_gender_data = false;  ///< Should we retain the gender data in
 const char *GetStringPtr(StringID string)
 {
 	switch (GB(string, TAB_COUNT_OFFSET, TAB_COUNT_BITS)) {
+		case GAME_TEXT_TAB: return GetGameStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
 		/* GetGRFStringPtr doesn't handle 0xD4xx ids, we need to convert those to 0xD0xx. */
 		case 26: return GetStringPtr(GetGRFStringID(0, 0xD000 + GB(string, TAB_SIZE_OFFSET, 10)));
 		case 28: return GetGRFStringPtr(GB(string, TAB_SIZE_OFFSET, TAB_SIZE_BITS));
@@ -181,6 +183,9 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 		case 15:
 			/* Old table for custom names. This is no longer used */
 			error("Incorrect conversion of custom name string.");
+
+		case GAME_TEXT_TAB:
+			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index);
 
 		case 26:
 			/* Include string within newgrf text (format code 81) */
@@ -1611,6 +1616,7 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 #endif /* WITH_ICU */
 
 	/* Some lists need to be sorted again after a language change. */
+	ReconsiderGameScriptLanguage();
 	InitializeSortedCargoSpecs();
 	SortIndustryTypes();
 	BuildIndustriesLegend();
