@@ -1896,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Base sounds
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Base music
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Game script
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS library
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloading content...
