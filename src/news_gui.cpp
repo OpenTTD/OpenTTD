@@ -1037,7 +1037,9 @@ struct MessageHistoryWindow : Window {
 			this->line_height = FONT_HEIGHT_NORMAL + 2;
 			resize->height = this->line_height;
 
-			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 12, 30));
+			/* Months are off-by-one, so it's actually 8. Not using
+			 * month 12 because the 1 is usually less wide. */
+			SetDParam(0, ConvertYMDToDate(ORIGINAL_MAX_YEAR, 7, 30));
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
 
 			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
