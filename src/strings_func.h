@@ -138,7 +138,7 @@ extern StringParameters _global_string_params;
 
 char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
-char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0);
+char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false);
 const char *GetStringPtr(StringID string);
 
 void InjectDParam(uint amount);

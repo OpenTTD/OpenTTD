@@ -125,7 +125,7 @@ static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
 static char *GetSpecialNameString(char *buff, int ind, StringParameters *args, const char *last);
 
-static char *FormatString(char *buff, const char *str, StringParameters *args, const char *last, uint case_index = 0, bool dry_run = false);
+static char *FormatString(char *buff, const char *str, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false, bool dry_run = false);
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
@@ -158,9 +158,10 @@ const char *GetStringPtr(StringID string)
  * @param args   Arguments for the string.
  * @param last   Pointer just past the end of buffr.
  * @param case_index  The "case index". This will only be set when FormatString wants to print the string in a different case.
+ * @param game_script The string is coming directly from a game script.
  * @return       Pointer to the final zero byte of the formatted string.
  */
-char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index)
+char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index, bool game_script)
 {
 	if (string == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 
@@ -169,13 +170,13 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 
 	switch (tab) {
 		case 4:
-			if (index >= 0xC0) {
+			if (index >= 0xC0 && !game_script) {
 				return GetSpecialTownNameString(buffr, index - 0xC0, args->GetInt32(), last);
 			}
 			break;
 
 		case 14:
-			if (index >= 0xE4) {
+			if (index >= 0xE4 && !game_script) {
 				return GetSpecialNameString(buffr, index - 0xE4, args, last);
 			}
 			break;
@@ -185,7 +186,7 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 			error("Incorrect conversion of custom name string.");
 
 		case GAME_TEXT_TAB:
-			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index);
+			return FormatString(buffr, GetGameStringPtr(index), args, last, case_index, true);
 
 		case 26:
 			/* Include string within newgrf text (format code 81) */
@@ -209,6 +210,9 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 	}
 
 	if (index >= _langtab_num[tab]) {
+		if (game_script) {
+			return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
+		}
 		error("String 0x%X is invalid. You are probably using an old version of the .lng file.\n", string);
 	}
 
@@ -690,7 +694,7 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  * @param last  Pointer to just past the end of the buff array.
  * @param dry_run True when the argt array is not yet initialized.
  */
-static char *FormatString(char *buff, const char *str_arg, StringParameters *args, const char *last, uint case_index, bool dry_run)
+static char *FormatString(char *buff, const char *str_arg, StringParameters *args, const char *last, uint case_index, bool game_script, bool dry_run)
 {
 	uint orig_offset = args->offset;
 
@@ -704,10 +708,10 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			 * pass makes sure the argv array is correctly filled and the second
 			 * pass can reference later values without problems. */
 			struct TextRefStack *backup = CreateTextRefStackBackup();
-			FormatString(buff, str_arg, args, last, case_index, true);
+			FormatString(buff, str_arg, args, last, case_index, game_script, true);
 			RestoreTextRefStackBackup(backup);
 		} else {
-			FormatString(buff, str_arg, args, last, case_index, true);
+			FormatString(buff, str_arg, args, last, case_index, game_script, true);
 		}
 		/* We have to restore the original offset here to to read the correct values. */
 		args->offset = orig_offset;
@@ -822,7 +826,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				if (*str == '\0') break;
 
 				str = p;
-				buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last);
+				buff = GetStringWithArgs(buff, (GAME_TEXT_TAB << TAB_COUNT_OFFSET) + stringid, &sub_args, last, true);
 
 				for (int i = 0; i < 20; i++) {
 					if (sub_args_need_free[i]) free((void *)sub_args.GetParam(i));
@@ -944,10 +948,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 
 			case SCC_STRING_ID: // {STRINL}
+				if (game_script) break;
 				buff = GetStringWithArgs(buff, Utf8Consume(&str), args, last);
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
+				if (game_script) break;
 				const char *str = (const char *)(size_t)args->GetInt64(SCC_RAW_STRING_POINTER);
 				buff = FormatString(buff, str, args, last);
 				break;
@@ -955,11 +961,12 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_STRING: {// {STRING}
 				StringID str = args->GetInt32(SCC_STRING);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
 				StringParameters tmp_params(args->GetDataPointer(), args->num_param - args->offset, NULL);
-				buff = GetStringWithArgs(buff, str, &tmp_params, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &tmp_params, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -967,8 +974,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING1: { // {STRING1}
 				/* String that consumes ONE argument */
 				StringID str = args->GetInt32(SCC_STRING1);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				StringParameters sub_args(*args, 1);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -976,8 +984,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING2: { // {STRING2}
 				/* String that consumes TWO arguments */
 				StringID str = args->GetInt32(SCC_STRING2);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				StringParameters sub_args(*args, 2);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -985,8 +994,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING3: { // {STRING3}
 				/* String that consumes THREE arguments */
 				StringID str = args->GetInt32(SCC_STRING3);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				StringParameters sub_args(*args, 3);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -994,8 +1004,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING4: { // {STRING4}
 				/* String that consumes FOUR arguments */
 				StringID str = args->GetInt32(SCC_STRING4);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				StringParameters sub_args(*args, 4);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
@@ -1003,8 +1014,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			case SCC_STRING5: { // {STRING5}
 				/* String that consumes FIVE arguments */
 				StringID str = args->GetInt32(SCC_STRING5);
+				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
 				StringParameters sub_args(*args, 5);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index);
+				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;
 			}
