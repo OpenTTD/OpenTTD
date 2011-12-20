@@ -132,7 +132,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
 	 */
-	FORCEINLINE uint16 GetPower() const
+	inline uint16 GetPower() const
 	{
 		/* Power is not added for articulated parts */
 		if (!this->IsArticulatedPart()) {
@@ -146,7 +146,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Zero, because road vehicles don't have powered parts.
 	 */
-	FORCEINLINE uint16 GetPoweredPartPower(const RoadVehicle *head) const
+	inline uint16 GetPoweredPartPower(const RoadVehicle *head) const
 	{
 		return 0;
 	}
@@ -155,7 +155,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the weight value that this vehicle will use.
 	 * @return Weight value from the engine in tonnes.
 	 */
-	FORCEINLINE uint16 GetWeight() const
+	inline uint16 GetWeight() const
 	{
 		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.Count()) / 16;
 
@@ -172,7 +172,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	FORCEINLINE byte GetTractiveEffort() const
+	inline byte GetTractiveEffort() const
 	{
 		/* The tractive effort coefficient is in units of 1/256.  */
 		return GetVehicleProperty(this, PROP_ROADVEH_TRACTIVE_EFFORT, RoadVehInfo(this->engine_type)->tractive_effort);
@@ -182,7 +182,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	FORCEINLINE byte GetAirDragArea() const
+	inline byte GetAirDragArea() const
 	{
 		return 6;
 	}
@@ -191,7 +191,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	FORCEINLINE byte GetAirDrag() const
+	inline byte GetAirDrag() const
 	{
 		return RoadVehInfo(this->engine_type)->air_drag;
 	}
@@ -200,7 +200,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Checks the current acceleration status of this vehicle.
 	 * @return Acceleration status.
 	 */
-	FORCEINLINE AccelStatus GetAccelerationStatus() const
+	inline AccelStatus GetAccelerationStatus() const
 	{
 		return (this->vehstatus & VS_STOPPED) ? AS_BRAKE : AS_ACCEL;
 	}
@@ -209,7 +209,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the current speed of this vehicle.
 	 * @return Current speed in km/h-ish.
 	 */
-	FORCEINLINE uint16 GetCurrentSpeed() const
+	inline uint16 GetCurrentSpeed() const
 	{
 		return this->cur_speed / 2;
 	}
@@ -218,7 +218,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the rolling friction coefficient of this vehicle.
 	 * @return Rolling friction coefficient in [1e-4].
 	 */
-	FORCEINLINE uint32 GetRollingFriction() const
+	inline uint32 GetRollingFriction() const
 	{
 		/* Trams have a slightly greater friction coefficient than trains.
 		 * The rest of road vehicles have bigger values. */
@@ -232,7 +232,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the acceleration type of a vehicle.
 	 * @return Zero, road vehicles always use a normal acceleration method.
 	 */
-	FORCEINLINE int GetAccelerationType() const
+	inline int GetAccelerationType() const
 	{
 		return 0;
 	}
@@ -241,7 +241,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the slope steepness used by this vehicle.
 	 * @return Slope steepness used by the vehicle.
 	 */
-	FORCEINLINE uint32 GetSlopeSteepness() const
+	inline uint32 GetSlopeSteepness() const
 	{
 		return _settings_game.vehicle.roadveh_slope_steepness;
 	}
@@ -250,7 +250,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Since roads don't limit road vehicle speed, it returns always zero.
 	 */
-	FORCEINLINE uint16 GetMaxTrackSpeed() const
+	inline uint16 GetMaxTrackSpeed() const
 	{
 		return 0;
 	}
@@ -259,7 +259,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Checks if the vehicle is at a tile that can be sloped.
 	 * @return True if the tile can be sloped.
 	 */
-	FORCEINLINE bool TileMayHaveSlopedTrack() const
+	inline bool TileMayHaveSlopedTrack() const
 	{
 		TrackStatus ts = GetTileTrackStatus(this->tile, TRANSPORT_ROAD, this->compatible_roadtypes);
 		TrackBits trackbits = TrackStatusToTrackBits(ts);
@@ -274,7 +274,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * even if it is not reversing.
 	 * @return are we (possibly) reversing?
 	 */
-	FORCEINLINE bool HasToUseGetSlopePixelZ()
+	inline bool HasToUseGetSlopePixelZ()
 	{
 		const RoadVehicle *rv = this->First();
 

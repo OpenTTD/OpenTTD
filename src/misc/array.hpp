@@ -30,7 +30,7 @@ protected:
 	SuperArray data; ///< array of arrays of items
 
 	/** return first sub-array with free space for new item */
-	FORCEINLINE SubArray& FirstFreeSubArray()
+	inline SubArray& FirstFreeSubArray()
 	{
 		uint super_size = data.Length();
 		if (super_size > 0) {
@@ -42,11 +42,11 @@ protected:
 
 public:
 	/** implicit constructor */
-	FORCEINLINE SmallArray() { }
+	inline SmallArray() { }
 	/** Clear (destroy) all items */
-	FORCEINLINE void Clear() {data.Clear();}
+	inline void Clear() {data.Clear();}
 	/** Return actual number of items */
-	FORCEINLINE uint Length() const
+	inline uint Length() const
 	{
 		uint super_size = data.Length();
 		if (super_size == 0) return 0;
@@ -54,22 +54,22 @@ public:
 		return (super_size - 1) * B + sub_size;
 	}
 	/** return true if array is empty */
-	FORCEINLINE bool IsEmpty() { return data.IsEmpty(); }
+	inline bool IsEmpty() { return data.IsEmpty(); }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
+	inline bool IsFull() { return data.IsFull() && data[N - 1].IsFull(); }
 	/** allocate but not construct new item */
-	FORCEINLINE T *Append() { return FirstFreeSubArray().Append(); }
+	inline T *Append() { return FirstFreeSubArray().Append(); }
 	/** allocate and construct new item */
-	FORCEINLINE T *AppendC() { return FirstFreeSubArray().AppendC(); }
+	inline T *AppendC() { return FirstFreeSubArray().AppendC(); }
 	/** indexed access (non-const) */
-	FORCEINLINE T& operator [] (uint index)
+	inline T& operator [] (uint index)
 	{
 		const SubArray& s = data[index / B];
 		T& item = s[index % B];
 		return item;
 	}
 	/** indexed access (const) */
-	FORCEINLINE const T& operator [] (uint index) const
+	inline const T& operator [] (uint index) const
 	{
 		const SubArray& s = data[index / B];
 		const T& item = s[index % B];

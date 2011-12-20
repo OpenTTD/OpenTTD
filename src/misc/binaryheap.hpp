@@ -85,7 +85,7 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	FORCEINLINE uint HeapifyDown(uint gap, T *item)
+	inline uint HeapifyDown(uint gap, T *item)
 	{
 		assert(gap != 0);
 
@@ -121,7 +121,7 @@ protected:
 	 * @param item The proposed item for filling the gap
 	 * @return The (gap)position where the item fits
 	 */
-	FORCEINLINE uint HeapifyUp(uint gap, T *item)
+	inline uint HeapifyUp(uint gap, T *item)
 	{
 		assert(gap != 0);
 
@@ -142,7 +142,7 @@ protected:
 
 #if BINARYHEAP_CHECK
 	/** Verify the heap consistency */
-	FORCEINLINE void CheckConsistency()
+	inline void CheckConsistency()
 	{
 		for (uint child = 2; child <= this->items; child++) {
 			uint parent = child / 2;
@@ -157,28 +157,28 @@ public:
 	 *
 	 *  @return The number of items in the queue
 	 */
-	FORCEINLINE uint Length() const { return this->items; }
+	inline uint Length() const { return this->items; }
 
 	/**
 	 * Test if the priority queue is empty.
 	 *
 	 * @return True if empty
 	 */
-	FORCEINLINE bool IsEmpty() const { return this->items == 0; }
+	inline bool IsEmpty() const { return this->items == 0; }
 
 	/**
 	 * Test if the priority queue is full.
 	 *
 	 * @return True if full.
 	 */
-	FORCEINLINE bool IsFull() const { return this->items >= this->capacity; }
+	inline bool IsFull() const { return this->items >= this->capacity; }
 
 	/**
 	 * Get the smallest item in the binary tree.
 	 *
 	 * @return The smallest item, or throw assert if empty.
 	 */
-	FORCEINLINE T *Begin()
+	inline T *Begin()
 	{
 		assert(!this->IsEmpty());
 		return this->data[1];
@@ -191,7 +191,7 @@ public:
 	 *
 	 * @return The last item
 	 */
-	FORCEINLINE T *End()
+	inline T *End()
 	{
 		return this->data[1 + this->items];
 	}
@@ -201,7 +201,7 @@ public:
 	 *
 	 * @param new_item The pointer to the new item
 	 */
-	FORCEINLINE void Include(T *new_item)
+	inline void Include(T *new_item)
 	{
 		if (this->IsFull()) {
 			assert(this->capacity < UINT_MAX / 2);
@@ -222,7 +222,7 @@ public:
 	 *
 	 * @return The pointer to the removed item
 	 */
-	FORCEINLINE T *Shift()
+	inline T *Shift()
 	{
 		assert(!this->IsEmpty());
 
@@ -244,7 +244,7 @@ public:
 	 *
 	 * @param index The position of the item in the heap
 	 */
-	FORCEINLINE void Remove(uint index)
+	inline void Remove(uint index)
 	{
 		if (index < this->items) {
 			assert(index != 0);
@@ -272,7 +272,7 @@ public:
 	 * @param item The reference to the item
 	 * @return The index of the item or zero if not found
 	 */
-	FORCEINLINE uint FindIndex(const T &item) const
+	inline uint FindIndex(const T &item) const
 	{
 		if (this->IsEmpty()) return 0;
 		for (T **ppI = this->data + 1, **ppLast = ppI + this->items; ppI <= ppLast; ppI++) {
@@ -287,7 +287,7 @@ public:
 	 * Make the priority queue empty.
 	 * All remaining items will remain untouched.
 	 */
-	FORCEINLINE void Clear() { this->items = 0; }
+	inline void Clear() { this->items = 0; }
 };
 
 #endif /* BINARYHEAP_HPP */

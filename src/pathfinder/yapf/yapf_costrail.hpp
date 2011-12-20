@@ -96,14 +96,14 @@ protected:
 	}
 
 public:
-	FORCEINLINE int SlopeCost(TileIndex tile, Trackdir td)
+	inline int SlopeCost(TileIndex tile, Trackdir td)
 	{
 		CPerfStart perf_cost(Yapf().m_perf_slope_cost);
 		if (!stSlopeCost(tile, td)) return 0;
 		return Yapf().PfGetSettings().rail_slope_penalty;
 	}
 
-	FORCEINLINE int CurveCost(Trackdir td1, Trackdir td2)
+	inline int CurveCost(Trackdir td1, Trackdir td2)
 	{
 		assert(IsValidTrackdir(td1));
 		assert(IsValidTrackdir(td2));
@@ -119,7 +119,7 @@ public:
 		return cost;
 	}
 
-	FORCEINLINE int SwitchCost(TileIndex tile1, TileIndex tile2, DiagDirection exitdir)
+	inline int SwitchCost(TileIndex tile1, TileIndex tile2, DiagDirection exitdir)
 	{
 		if (IsPlainRailTile(tile1) && IsPlainRailTile(tile2)) {
 			bool t1 = KillFirstBit(GetTrackBits(tile1) & DiagdirReachesTracks(ReverseDiagDir(exitdir))) != TRACK_BIT_NONE;
@@ -130,7 +130,7 @@ public:
 	}
 
 	/** Return one tile cost (base cost + level crossing penalty). */
-	FORCEINLINE int OneTileCost(TileIndex& tile, Trackdir trackdir)
+	inline int OneTileCost(TileIndex& tile, Trackdir trackdir)
 	{
 		int cost = 0;
 		/* set base cost */
@@ -155,7 +155,7 @@ public:
 	}
 
 	/** Check for a reserved station platform. */
-	FORCEINLINE bool IsAnyStationTileReserved(TileIndex tile, Trackdir trackdir, int skipped)
+	inline bool IsAnyStationTileReserved(TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(trackdir)));
 		for (; skipped >= 0; skipped--, tile += diff) {
@@ -165,7 +165,7 @@ public:
 	}
 
 	/** The cost for reserved tiles, including skipped ones. */
-	FORCEINLINE int ReservationCost(Node& n, TileIndex tile, Trackdir trackdir, int skipped)
+	inline int ReservationCost(Node& n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.Size() / 2) return 0;
 		if (!IsPbsSignal(n.m_last_signal_type)) return 0;
@@ -251,7 +251,7 @@ public:
 		return cost;
 	}
 
-	FORCEINLINE int PlatformLengthPenalty(int platform_length)
+	inline int PlatformLengthPenalty(int platform_length)
 	{
 		int cost = 0;
 		const Train *v = Yapf().GetVehicle();
@@ -270,7 +270,7 @@ public:
 	}
 
 public:
-	FORCEINLINE void SetMaxCost(int max_cost)
+	inline void SetMaxCost(int max_cost)
 	{
 		m_max_cost = max_cost;
 	}
@@ -280,7 +280,7 @@ public:
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member
 	 */
-	FORCEINLINE bool PfCalcCost(Node &n, const TrackFollower *tf)
+	inline bool PfCalcCost(Node &n, const TrackFollower *tf)
 	{
 		assert(!n.flags_u.flags_s.m_targed_seen);
 		assert(tf->m_new_tile == n.m_key.m_tile);
@@ -613,14 +613,14 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 		return true;
 	}
 
-	FORCEINLINE bool CanUseGlobalCache(Node& n) const
+	inline bool CanUseGlobalCache(Node& n) const
 	{
 		return !m_disable_cache
 			&& (n.m_parent != NULL)
 			&& (n.m_parent->m_num_signals_passed >= m_sig_look_ahead_costs.Size());
 	}
 
-	FORCEINLINE void ConnectNodeToCachedData(Node& n, CachedData& ci)
+	inline void ConnectNodeToCachedData(Node& n, CachedData& ci)
 	{
 		n.m_segment = &ci;
 		if (n.m_segment->m_cost < 0) {

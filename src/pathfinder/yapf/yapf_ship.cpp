@@ -27,7 +27,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -47,7 +47,7 @@ public:
 	}
 
 	/** return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const
+	inline char TransportTypeChar() const
 	{
 		return 'w';
 	}
@@ -123,7 +123,7 @@ public:
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member
 	 */
-	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
+	inline bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		/* base tile cost depending on distance */
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? YAPF_TILE_LENGTH : YAPF_TILE_CORNER_LENGTH;

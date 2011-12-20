@@ -297,7 +297,7 @@ struct RefitOption {
 	 * @param other Compare to this #RefitOption.
 	 * @return True if both #RefitOption are different.
 	 */
-	FORCEINLINE bool operator != (const RefitOption &other) const
+	inline bool operator != (const RefitOption &other) const
 	{
 		return other.cargo != this->cargo || other.value != this->value;
 	}
@@ -307,7 +307,7 @@ struct RefitOption {
 	 * @param other Compare to this #RefitOption.
 	 * @return True if both #RefitOption are equal.
 	 */
-	FORCEINLINE bool operator == (const RefitOption &other) const
+	inline bool operator == (const RefitOption &other) const
 	{
 		return other.cargo == this->cargo && other.value == this->value;
 	}

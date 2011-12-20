@@ -21,13 +21,13 @@ struct CHashTableSlotT
 
 	Titem_ *m_pFirst;
 
-	FORCEINLINE CHashTableSlotT() : m_pFirst(NULL) {}
+	inline CHashTableSlotT() : m_pFirst(NULL) {}
 
 	/** hash table slot helper - clears the slot by simple forgetting its items */
-	FORCEINLINE void Clear() {m_pFirst = NULL;}
+	inline void Clear() {m_pFirst = NULL;}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
-	FORCEINLINE const Titem_ *Find(const Key& key) const
+	inline const Titem_ *Find(const Key& key) const
 	{
 		for (const Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
@@ -39,7 +39,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - non-const version */
-	FORCEINLINE Titem_ *Find(const Key& key)
+	inline Titem_ *Find(const Key& key)
 	{
 		for (Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
@@ -51,7 +51,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - add new item to the slot */
-	FORCEINLINE void Attach(Titem_& new_item)
+	inline void Attach(Titem_& new_item)
 	{
 		assert(new_item.GetHashNext() == NULL);
 		new_item.SetHashNext(m_pFirst);
@@ -59,7 +59,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove item from a slot */
-	FORCEINLINE bool Detach(Titem_& item_to_remove)
+	inline bool Detach(Titem_& item_to_remove)
 	{
 		if (m_pFirst == &item_to_remove) {
 			m_pFirst = item_to_remove.GetHashNext();
@@ -81,7 +81,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove and return item from a slot */
-	FORCEINLINE Titem_ *Detach(const Key& key)
+	inline Titem_ *Detach(const Key& key)
 	{
 		/* do we have any items? */
 		if (m_pFirst == NULL) {
@@ -150,13 +150,13 @@ protected:
 
 public:
 	/* default constructor */
-	FORCEINLINE CHashTableT() : m_num_items(0)
+	inline CHashTableT() : m_num_items(0)
 	{
 	}
 
 protected:
 	/** static helper - return hash for the given key modulo number of slots */
-	FORCEINLINE static int CalcHash(const Tkey& key)
+	inline static int CalcHash(const Tkey& key)
 	{
 		int32 hash = key.CalcHash();
 		if ((8 * Thash_bits) < 32) hash ^= hash >> (min(8 * Thash_bits, 31));
@@ -168,14 +168,14 @@ protected:
 	}
 
 	/** static helper - return hash for the given item modulo number of slots */
-	FORCEINLINE static int CalcHash(const Titem_& item) {return CalcHash(item.GetKey());}
+	inline static int CalcHash(const Titem_& item) {return CalcHash(item.GetKey());}
 
 public:
 	/** item count */
-	FORCEINLINE int Count() const {return m_num_items;}
+	inline int Count() const {return m_num_items;}
 
 	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
-	FORCEINLINE void Clear() {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
+	inline void Clear() {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
 
 	/** const item search */
 	const Titem_ *Find(const Tkey& key) const

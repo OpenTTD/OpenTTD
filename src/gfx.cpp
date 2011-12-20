@@ -69,7 +69,7 @@ struct DrawStringParams {
 	 * Switch to new colour \a c.
 	 * @param c New colour to use.
 	 */
-	FORCEINLINE void SetColour(TextColour c)
+	inline void SetColour(TextColour c)
 	{
 		assert(c >=  TC_BLUE && c <= TC_BLACK);
 		this->prev_colour = this->cur_colour;
@@ -77,7 +77,7 @@ struct DrawStringParams {
 	}
 
 	/** Switch to previous colour. */
-	FORCEINLINE void SetPreviousColour()
+	inline void SetPreviousColour()
 	{
 		Swap(this->cur_colour, this->prev_colour);
 	}
@@ -86,7 +86,7 @@ struct DrawStringParams {
 	 * Switch to using a new font \a f.
 	 * @param f New font to use.
 	 */
-	FORCEINLINE void SetFontSize(FontSize f)
+	inline void SetFontSize(FontSize f)
 	{
 		this->fontsize = f;
 	}

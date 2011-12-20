@@ -48,7 +48,7 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE operator T *()
+	inline operator T *()
 	{
 		return data;
 	}
@@ -57,7 +57,7 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE T *operator -> ()
+	inline T *operator -> ()
 	{
 		return data;
 	}
@@ -67,7 +67,7 @@ struct SmallStackSafeStackAlloc {
 	 * @note needed because endof does not work properly for pointers.
 	 * @return the 'endof' pointer.
 	 */
-	FORCEINLINE T *EndOf()
+	inline T *EndOf()
 	{
 #if !defined(__NDS__)
 		return endof(data);
@@ -137,7 +137,7 @@ public:
 	 * Get the currently allocated buffer.
 	 * @return the buffer
 	 */
-	FORCEINLINE const T *GetBuffer() const
+	inline const T *GetBuffer() const
 	{
 		return this->buffer;
 	}
@@ -158,26 +158,26 @@ public:
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	FORCEINLINE void *operator new(size_t size) { return CallocT<byte>(size); }
+	inline void *operator new(size_t size) { return CallocT<byte>(size); }
 
 	/**
 	 * Memory allocator for an array of class instances.
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	FORCEINLINE void *operator new[](size_t size) { return CallocT<byte>(size); }
+	inline void *operator new[](size_t size) { return CallocT<byte>(size); }
 
 	/**
 	 * Memory release for a single class instance.
 	 * @param ptr  the memory to free.
 	 */
-	FORCEINLINE void operator delete(void *ptr) { free(ptr); }
+	inline void operator delete(void *ptr) { free(ptr); }
 
 	/**
 	 * Memory release for an array of class instances.
 	 * @param ptr  the memory to free.
 	 */
-	FORCEINLINE void operator delete[](void *ptr) { free(ptr); }
+	inline void operator delete[](void *ptr) { free(ptr); }
 };
 
 #endif /* ALLOC_TYPE_HPP */

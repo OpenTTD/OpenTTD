@@ -21,27 +21,27 @@ struct CPerformanceTimer
 
 	CPerformanceTimer() : m_start(0), m_acc(0) {}
 
-	FORCEINLINE void Start()
+	inline void Start()
 	{
 		m_start = QueryTime();
 	}
 
-	FORCEINLINE void Stop()
+	inline void Stop()
 	{
 		m_acc += QueryTime() - m_start;
 	}
 
-	FORCEINLINE int Get(int64 coef)
+	inline int Get(int64 coef)
 	{
 		return (int)(m_acc * coef / QueryFrequency());
 	}
 
-	FORCEINLINE int64 QueryTime()
+	inline int64 QueryTime()
 	{
 		return ottd_rdtsc();
 	}
 
-	FORCEINLINE int64 QueryFrequency()
+	inline int64 QueryFrequency()
 	{
 		return ((int64)2200 * 1000000);
 	}
@@ -51,17 +51,17 @@ struct CPerfStartReal
 {
 	CPerformanceTimer *m_pperf;
 
-	FORCEINLINE CPerfStartReal(CPerformanceTimer& perf) : m_pperf(&perf)
+	inline CPerfStartReal(CPerformanceTimer& perf) : m_pperf(&perf)
 	{
 		if (m_pperf != NULL) m_pperf->Start();
 	}
 
-	FORCEINLINE ~CPerfStartReal()
+	inline ~CPerfStartReal()
 	{
 		Stop();
 	}
 
-	FORCEINLINE void Stop()
+	inline void Stop()
 	{
 		if (m_pperf != NULL) {
 			m_pperf->Stop();
@@ -72,9 +72,9 @@ struct CPerfStartReal
 
 struct CPerfStartFake
 {
-	FORCEINLINE CPerfStartFake(CPerformanceTimer& perf) {}
-	FORCEINLINE ~CPerfStartFake() {}
-	FORCEINLINE void Stop() {}
+	inline CPerfStartFake(CPerformanceTimer& perf) {}
+	inline ~CPerfStartFake() {}
+	inline void Stop() {}
 };
 
 typedef CPerfStartFake CPerfStart;

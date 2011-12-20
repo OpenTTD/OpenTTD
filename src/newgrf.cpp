@@ -207,7 +207,7 @@ protected:
 public:
 	ByteReader(byte *data, byte *end) : data(data), end(end) { }
 
-	FORCEINLINE byte ReadByte()
+	inline byte ReadByte()
 	{
 		if (data < end) return *(data)++;
 		throw OTTDByteReaderSignal();
@@ -261,22 +261,22 @@ public:
 		return string;
 	}
 
-	FORCEINLINE size_t Remaining() const
+	inline size_t Remaining() const
 	{
 		return end - data;
 	}
 
-	FORCEINLINE bool HasData(size_t count = 1) const
+	inline bool HasData(size_t count = 1) const
 	{
 		return data + count <= end;
 	}
 
-	FORCEINLINE byte *Data()
+	inline byte *Data()
 	{
 		return data;
 	}
 
-	FORCEINLINE void Skip(size_t len)
+	inline void Skip(size_t len)
 	{
 		data += len;
 		/* It is valid to move the buffer to exactly the end of the data,

@@ -14,13 +14,13 @@
 
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
 #define DECLARE_POSTFIX_INCREMENT(type) \
-	FORCEINLINE type operator ++(type& e, int) \
+	inline type operator ++(type& e, int) \
 	{ \
 		type e_org = e; \
 		e = (type)((int)e + 1); \
 		return e_org; \
 	} \
-	FORCEINLINE type operator --(type& e, int) \
+	inline type operator --(type& e, int) \
 	{ \
 		type e_org = e; \
 		e = (type)((int)e - 1); \
@@ -31,13 +31,13 @@
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 # define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	FORCEINLINE mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((int)m1 | m2);} \
-	FORCEINLINE mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((int)m1 & m2);} \
-	FORCEINLINE mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((int)m1 ^ m2);} \
-	FORCEINLINE mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
-	FORCEINLINE mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
-	FORCEINLINE mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
-	FORCEINLINE mask_t operator ~(mask_t m) {return (mask_t)(~(int)m);}
+	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((int)m1 | m2);} \
+	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((int)m1 & m2);} \
+	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((int)m1 ^ m2);} \
+	inline mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
+	inline mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
+	inline mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
+	inline mask_t operator ~(mask_t m) {return (mask_t)(~(int)m);}
 
 
 /**
@@ -98,27 +98,27 @@ struct TinyEnumT {
 	storage_type m_val;  ///< here we hold the actual value in small (i.e. byte) form
 
 	/** Cast operator - invoked then the value is assigned to the Tenum_t type */
-	FORCEINLINE operator enum_type () const
+	inline operator enum_type () const
 	{
 		return (enum_type)m_val;
 	}
 
 	/** Assignment operator (from Tenum_t type) */
-	FORCEINLINE TinyEnumT& operator = (enum_type e)
+	inline TinyEnumT& operator = (enum_type e)
 	{
 		m_val = (storage_type)e;
 		return *this;
 	}
 
 	/** Assignment operator (from Tenum_t type) */
-	FORCEINLINE TinyEnumT& operator = (uint u)
+	inline TinyEnumT& operator = (uint u)
 	{
 		m_val = (storage_type)u;
 		return *this;
 	}
 
 	/** postfix ++ operator on tiny type */
-	FORCEINLINE TinyEnumT operator ++ (int)
+	inline TinyEnumT operator ++ (int)
 	{
 		TinyEnumT org = *this;
 		if (++m_val >= end) m_val -= (storage_type)(end - begin);
@@ -126,7 +126,7 @@ struct TinyEnumT {
 	}
 
 	/** prefix ++ operator on tiny type */
-	FORCEINLINE TinyEnumT& operator ++ ()
+	inline TinyEnumT& operator ++ ()
 	{
 		if (++m_val >= end) m_val -= (storage_type)(end - begin);
 		return *this;
@@ -140,34 +140,34 @@ struct SimpleTinyEnumT {
 	storage_type m_val;  ///< here we hold the actual value in small (i.e. byte) form
 
 	/** Cast operator - invoked then the value is assigned to the storage_type */
-	FORCEINLINE operator enum_type () const
+	inline operator enum_type () const
 	{
 		return (enum_type)this->m_val;
 	}
 
 	/** Assignment operator (from enum_type) */
-	FORCEINLINE SimpleTinyEnumT &operator = (enum_type e)
+	inline SimpleTinyEnumT &operator = (enum_type e)
 	{
 		this->m_val = (storage_type)e;
 		return *this;
 	}
 
 	/** Assignment operator (from general uint) */
-	FORCEINLINE SimpleTinyEnumT &operator = (uint u)
+	inline SimpleTinyEnumT &operator = (uint u)
 	{
 		this->m_val = (storage_type)u;
 		return *this;
 	}
 
 	/** Bit math (or) assignment operator (from enum_type) */
-	FORCEINLINE SimpleTinyEnumT &operator |= (enum_type e)
+	inline SimpleTinyEnumT &operator |= (enum_type e)
 	{
 		this->m_val = (storage_type)((enum_type)this->m_val | e);
 		return *this;
 	}
 
 	/** Bit math (and) assignment operator (from enum_type) */
-	FORCEINLINE SimpleTinyEnumT &operator &= (enum_type e)
+	inline SimpleTinyEnumT &operator &= (enum_type e)
 	{
 		this->m_val = (storage_type)((enum_type)this->m_val & e);
 		return *this;

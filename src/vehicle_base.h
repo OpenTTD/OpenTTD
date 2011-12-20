@@ -295,7 +295,7 @@ public:
 	 * @param speed Direction-independent unscaled speed.
 	 * @return speed scaled by movement direction. 256 units are required for each movement step.
 	 */
-	FORCEINLINE uint GetOldAdvanceSpeed(uint speed)
+	inline uint GetOldAdvanceSpeed(uint speed)
 	{
 		return (this->direction & 1) ? speed : speed * 3 / 4;
 	}
@@ -312,7 +312,7 @@ public:
 	 * @param speed Direction-independent unscaled speed.
 	 * @return speed, scaled to match #GetAdvanceDistance().
 	 */
-	static FORCEINLINE uint GetAdvanceSpeed(uint speed)
+	static inline uint GetAdvanceSpeed(uint speed)
 	{
 		return speed * 3 / 4;
 	}
@@ -324,7 +324,7 @@ public:
 	 *
 	 * @return distance to drive for a movement step on the map.
 	 */
-	FORCEINLINE uint GetAdvanceDistance()
+	inline uint GetAdvanceDistance()
 	{
 		return (this->direction & 1) ? 192 : 256;
 	}
@@ -361,7 +361,7 @@ public:
 	 * Invalidates cached NewGRF variables
 	 * @see InvalidateNewGRFCacheOfChain
 	 */
-	FORCEINLINE void InvalidateNewGRFCache()
+	inline void InvalidateNewGRFCache()
 	{
 		this->grf_cache.cache_valid = 0;
 	}
@@ -370,7 +370,7 @@ public:
 	 * Invalidates cached NewGRF variables of all vehicles in the chain (after the current vehicle)
 	 * @see InvalidateNewGRFCache
 	 */
-	FORCEINLINE void InvalidateNewGRFCacheOfChain()
+	inline void InvalidateNewGRFCacheOfChain()
 	{
 		for (Vehicle *u = this; u != NULL; u = u->Next()) {
 			u->InvalidateNewGRFCache();
@@ -381,7 +381,7 @@ public:
 	 * Check if the vehicle is a ground vehicle.
 	 * @return True iff the vehicle is a train or a road vehicle.
 	 */
-	FORCEINLINE bool IsGroundVehicle() const
+	inline bool IsGroundVehicle() const
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}
@@ -739,7 +739,7 @@ public:
 	 * Check if the vehicle is a front engine.
 	 * @return Returns true if the vehicle is a front engine.
 	 */
-	FORCEINLINE bool IsFrontEngine() const
+	inline bool IsFrontEngine() const
 	{
 		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_FRONT);
 	}
@@ -748,7 +748,7 @@ public:
 	 * Check if the vehicle is an articulated part of an engine.
 	 * @return Returns true if the vehicle is an articulated part.
 	 */
-	FORCEINLINE bool IsArticulatedPart() const
+	inline bool IsArticulatedPart() const
 	{
 		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_ARTICULATED_PART);
 	}
@@ -757,7 +757,7 @@ public:
 	 * Check if an engine has an articulated part.
 	 * @return True if the engine has an articulated part.
 	 */
-	FORCEINLINE bool HasArticulatedPart() const
+	inline bool HasArticulatedPart() const
 	{
 		return this->Next() != NULL && this->Next()->IsArticulatedPart();
 	}
@@ -767,7 +767,7 @@ public:
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	FORCEINLINE Vehicle *GetNextArticulatedPart() const
+	inline Vehicle *GetNextArticulatedPart() const
 	{
 		assert(this->HasArticulatedPart());
 		return this->Next();
@@ -777,7 +777,7 @@ public:
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	FORCEINLINE Vehicle *GetFirstEnginePart()
+	inline Vehicle *GetFirstEnginePart()
 	{
 		Vehicle *v = this;
 		while (v->IsArticulatedPart()) v = v->Previous();
@@ -788,7 +788,7 @@ public:
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	FORCEINLINE const Vehicle *GetFirstEnginePart() const
+	inline const Vehicle *GetFirstEnginePart() const
 	{
 		const Vehicle *v = this;
 		while (v->IsArticulatedPart()) v = v->Previous();
@@ -799,7 +799,7 @@ public:
 	 * Get the last part of an articulated engine.
 	 * @return Last part of the engine.
 	 */
-	FORCEINLINE Vehicle *GetLastEnginePart()
+	inline Vehicle *GetLastEnginePart()
 	{
 		Vehicle *v = this;
 		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
@@ -810,7 +810,7 @@ public:
 	 * Get the next real (non-articulated part) vehicle in the consist.
 	 * @return Next vehicle in the consist.
 	 */
-	FORCEINLINE Vehicle *GetNextVehicle() const
+	inline Vehicle *GetNextVehicle() const
 	{
 		const Vehicle *v = this;
 		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
@@ -823,7 +823,7 @@ public:
 	 * Get the previous real (non-articulated part) vehicle in the consist.
 	 * @return Previous vehicle in the consist.
 	 */
-	FORCEINLINE Vehicle *GetPrevVehicle() const
+	inline Vehicle *GetPrevVehicle() const
 	{
 		Vehicle *v = this->Previous();
 		while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
@@ -858,88 +858,88 @@ struct SpecializedVehicle : public Vehicle {
 	/**
 	 * Set vehicle type correctly
 	 */
-	FORCEINLINE SpecializedVehicle<T, Type>() : Vehicle(Type) { }
+	inline SpecializedVehicle<T, Type>() : Vehicle(Type) { }
 
 	/**
 	 * Get the first vehicle in the chain
 	 * @return first vehicle in the chain
 	 */
-	FORCEINLINE T *First() const { return (T *)this->Vehicle::First(); }
+	inline T *First() const { return (T *)this->Vehicle::First(); }
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	FORCEINLINE T *Last() { return (T *)this->Vehicle::Last(); }
+	inline T *Last() { return (T *)this->Vehicle::Last(); }
 
 	/**
 	 * Get the last vehicle in the chain
 	 * @return last vehicle in the chain
 	 */
-	FORCEINLINE const T *Last() const { return (const T *)this->Vehicle::Last(); }
+	inline const T *Last() const { return (const T *)this->Vehicle::Last(); }
 
 	/**
 	 * Get next vehicle in the chain
 	 * @return next vehicle in the chain
 	 */
-	FORCEINLINE T *Next() const { return (T *)this->Vehicle::Next(); }
+	inline T *Next() const { return (T *)this->Vehicle::Next(); }
 
 	/**
 	 * Get previous vehicle in the chain
 	 * @return previous vehicle in the chain
 	 */
-	FORCEINLINE T *Previous() const { return (T *)this->Vehicle::Previous(); }
+	inline T *Previous() const { return (T *)this->Vehicle::Previous(); }
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	FORCEINLINE T *GetNextArticulatedPart() { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart() { return (T *)this->Vehicle::GetNextArticulatedPart(); }
 
 	/**
 	 * Get the next part of an articulated engine.
 	 * @return Next part of the articulated engine.
 	 * @pre The vehicle is an articulated engine.
 	 */
-	FORCEINLINE T *GetNextArticulatedPart() const { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+	inline T *GetNextArticulatedPart() const { return (T *)this->Vehicle::GetNextArticulatedPart(); }
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	FORCEINLINE T *GetFirstEnginePart() { return (T *)this->Vehicle::GetFirstEnginePart(); }
+	inline T *GetFirstEnginePart() { return (T *)this->Vehicle::GetFirstEnginePart(); }
 
 	/**
 	 * Get the first part of an articulated engine.
 	 * @return First part of the engine.
 	 */
-	FORCEINLINE const T *GetFirstEnginePart() const { return (const T *)this->Vehicle::GetFirstEnginePart(); }
+	inline const T *GetFirstEnginePart() const { return (const T *)this->Vehicle::GetFirstEnginePart(); }
 
 	/**
 	 * Get the last part of an articulated engine.
 	 * @return Last part of the engine.
 	 */
-	FORCEINLINE T *GetLastEnginePart() { return (T *)this->Vehicle::GetLastEnginePart(); }
+	inline T *GetLastEnginePart() { return (T *)this->Vehicle::GetLastEnginePart(); }
 
 	/**
 	 * Get the next real (non-articulated part) vehicle in the consist.
 	 * @return Next vehicle in the consist.
 	 */
-	FORCEINLINE T *GetNextVehicle() const { return (T *)this->Vehicle::GetNextVehicle(); }
+	inline T *GetNextVehicle() const { return (T *)this->Vehicle::GetNextVehicle(); }
 
 	/**
 	 * Get the previous real (non-articulated part) vehicle in the consist.
 	 * @return Previous vehicle in the consist.
 	 */
-	FORCEINLINE T *GetPrevVehicle() const { return (T *)this->Vehicle::GetPrevVehicle(); }
+	inline T *GetPrevVehicle() const { return (T *)this->Vehicle::GetPrevVehicle(); }
 
 	/**
 	 * Tests whether given index is a valid index for vehicle of this type
 	 * @param index tested index
 	 * @return is this index valid index of T?
 	 */
-	static FORCEINLINE bool IsValidID(size_t index)
+	static inline bool IsValidID(size_t index)
 	{
 		return Vehicle::IsValidID(index) && Vehicle::Get(index)->type == Type;
 	}
@@ -948,7 +948,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * Gets vehicle with given index
 	 * @return pointer to vehicle with given index casted to T *
 	 */
-	static FORCEINLINE T *Get(size_t index)
+	static inline T *Get(size_t index)
 	{
 		return (T *)Vehicle::Get(index);
 	}
@@ -957,7 +957,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * Returns vehicle if the index is a valid index for this vehicle type
 	 * @return pointer to vehicle with given index if it's a vehicle of this type
 	 */
-	static FORCEINLINE T *GetIfValid(size_t index)
+	static inline T *GetIfValid(size_t index)
 	{
 		return IsValidID(index) ? Get(index) : NULL;
 	}
@@ -967,7 +967,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * @param v Vehicle pointer
 	 * @return pointer to SpecializedVehicle
 	 */
-	static FORCEINLINE T *From(Vehicle *v)
+	static inline T *From(Vehicle *v)
 	{
 		assert(v->type == Type);
 		return (T *)v;
@@ -978,7 +978,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * @param v Vehicle pointer
 	 * @return pointer to SpecializedVehicle
 	 */
-	static FORCEINLINE const T *From(const Vehicle *v)
+	static inline const T *From(const Vehicle *v)
 	{
 		assert(v->type == Type);
 		return (const T *)v;
@@ -989,7 +989,7 @@ struct SpecializedVehicle : public Vehicle {
 	 * @param moved Was the vehicle moved?
 	 * @param turned Did the vehicle direction change?
 	 */
-	FORCEINLINE void UpdateViewport(bool moved, bool turned)
+	inline void UpdateViewport(bool moved, bool turned)
 	{
 		extern void VehicleMove(Vehicle *v, bool update_viewport);
 

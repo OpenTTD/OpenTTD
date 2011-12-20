@@ -278,7 +278,7 @@ struct ReadBuffer {
 	{
 	}
 
-	FORCEINLINE byte ReadByte()
+	inline byte ReadByte()
 	{
 		if (this->bufp == this->bufe) {
 			size_t len = this->reader->Read(this->buf, lengthof(this->buf));
@@ -318,7 +318,7 @@ struct MemoryDumper {
 	 * Write a single byte into the dumper.
 	 * @param b The byte to write.
 	 */
-	FORCEINLINE void WriteByte(byte b)
+	inline void WriteByte(byte b)
 	{
 		/* Are we at the end of this chunk? */
 		if (this->buf == this->bufe) {

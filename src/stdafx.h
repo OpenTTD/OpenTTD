@@ -121,7 +121,6 @@
 /* Stuff for GCC */
 #if defined(__GNUC__)
 	#define NORETURN __attribute__ ((noreturn))
-	#define FORCEINLINE inline
 	#define CDECL
 	#define __int64 long long
 	#define GCC_PACK __attribute__((packed))
@@ -137,7 +136,6 @@
 
 #if defined(__WATCOMC__)
 	#define NORETURN
-	#define FORCEINLINE inline
 	#define CDECL
 	#define GCC_PACK
 	#define WARN_FORMAT(string, args)
@@ -185,8 +183,7 @@
 
 	#include <malloc.h> // alloca()
 	#define NORETURN __declspec(noreturn)
-	#define FORCEINLINE __forceinline
-	#define inline _inline
+	#define inline __forceinline
 
 	#if !defined(WINCE)
 		#define CDECL _cdecl
@@ -448,7 +445,7 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
  * Version of the standard free that accepts const pointers.
  * @param ptr The data to free.
  */
-static FORCEINLINE void free(const void *ptr)
+static inline void free(const void *ptr)
 {
 	free(const_cast<void *>(ptr));
 }

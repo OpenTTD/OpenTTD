@@ -41,13 +41,13 @@ protected:
 	T *data;
 
 	/** return reference to the array header (non-const) */
-	FORCEINLINE ArrayHeader& Hdr() { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
+	inline ArrayHeader& Hdr() { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
 	/** return reference to the array header (const) */
-	FORCEINLINE const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
+	inline const ArrayHeader& Hdr() const { return *(ArrayHeader*)(((byte*)data) - HeaderSize); }
 	/** return reference to the block reference counter */
-	FORCEINLINE uint& RefCnt() { return Hdr().reference_count; }
+	inline uint& RefCnt() { return Hdr().reference_count; }
 	/** return reference to number of used items */
-	FORCEINLINE uint& SizeRef() { return Hdr().items; }
+	inline uint& SizeRef() { return Hdr().items; }
 
 public:
 	/** Default constructor. Preallocate space for items and header, then initialize header. */
@@ -83,7 +83,7 @@ public:
 	}
 
 	/** Clear (destroy) all items */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		/* Walk through all allocated items backward and destroy them
 		 * Note: this->Length() can be zero. In that case data[this->Length() - 1] is evaluated unsigned
@@ -96,19 +96,19 @@ public:
 	}
 
 	/** return number of used items */
-	FORCEINLINE uint Length() const { return Hdr().items; }
+	inline uint Length() const { return Hdr().items; }
 	/** return true if array is full */
-	FORCEINLINE bool IsFull() const { return Length() >= C; }
+	inline bool IsFull() const { return Length() >= C; }
 	/** return true if array is empty */
-	FORCEINLINE bool IsEmpty() const { return Length() <= 0; }
+	inline bool IsEmpty() const { return Length() <= 0; }
 	/** add (allocate), but don't construct item */
-	FORCEINLINE T *Append() { assert(!IsFull()); return &data[SizeRef()++]; }
+	inline T *Append() { assert(!IsFull()); return &data[SizeRef()++]; }
 	/** add and construct item using default constructor */
-	FORCEINLINE T *AppendC() { T *item = Append(); new(item)T; return item; }
+	inline T *AppendC() { T *item = Append(); new(item)T; return item; }
 	/** return item by index (non-const version) */
-	FORCEINLINE T& operator [] (uint index) { assert(index < Length()); return data[index]; }
+	inline T& operator [] (uint index) { assert(index < Length()); return data[index]; }
 	/** return item by index (const version) */
-	FORCEINLINE const T& operator [] (uint index) const { assert(index < Length()); return data[index]; }
+	inline const T& operator [] (uint index) const { assert(index < Length()); return data[index]; }
 };
 
 #endif /* FIXEDSIZEARRAY_HPP */

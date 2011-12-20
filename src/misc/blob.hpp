@@ -71,17 +71,17 @@ public:
 	static const size_t header_size = sizeof(BlobHeader);
 
 	/** default constructor - initializes empty blob */
-	FORCEINLINE ByteBlob() { InitEmpty(); }
+	inline ByteBlob() { InitEmpty(); }
 
 	/** copy constructor */
-	FORCEINLINE ByteBlob(const ByteBlob &src)
+	inline ByteBlob(const ByteBlob &src)
 	{
 		InitEmpty();
 		AppendRaw(src);
 	}
 
 	/** move constructor - take ownership of blob data */
-	FORCEINLINE ByteBlob(BlobHeader * const & src)
+	inline ByteBlob(BlobHeader * const & src)
 	{
 		assert(src != NULL);
 		header = src;
@@ -89,14 +89,14 @@ public:
 	}
 
 	/** destructor */
-	FORCEINLINE ~ByteBlob()
+	inline ~ByteBlob()
 	{
 		Free();
 	}
 
 protected:
 	/** all allocation should happen here */
-	static FORCEINLINE BlobHeader *RawAlloc(size_t num_bytes)
+	static inline BlobHeader *RawAlloc(size_t num_bytes)
 	{
 		return (BlobHeader*)MallocT<byte>(num_bytes);
 	}
@@ -105,13 +105,13 @@ protected:
 	 * Return header pointer to the static BlobHeader with
 	 * both items and capacity containing zero
 	 */
-	static FORCEINLINE BlobHeader *Zero()
+	static inline BlobHeader *Zero()
 	{
 		return const_cast<BlobHeader *>(&ByteBlob::hdrEmpty[1]);
 	}
 
 	/** simple allocation policy - can be optimized later */
-	static FORCEINLINE size_t AllocPolicy(size_t min_alloc)
+	static inline size_t AllocPolicy(size_t min_alloc)
 	{
 		if (min_alloc < (1 << 9)) {
 			if (min_alloc < (1 << 5)) return (1 << 5);
@@ -130,7 +130,7 @@ protected:
 	}
 
 	/** all deallocations should happen here */
-	static FORCEINLINE void RawFree(BlobHeader *p)
+	static inline void RawFree(BlobHeader *p)
 	{
 		/* Just to silence an unsilencable GCC 4.4+ warning. */
 		assert(p != ByteBlob::hdrEmpty);
@@ -140,74 +140,74 @@ protected:
 	}
 
 	/** initialize the empty blob */
-	FORCEINLINE void InitEmpty()
+	inline void InitEmpty()
 	{
 		header = Zero();
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
-	FORCEINLINE void Init(BlobHeader *src)
+	inline void Init(BlobHeader *src)
 	{
 		header = &src[1];
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - non-const version */
-	FORCEINLINE BlobHeader& Hdr()
+	inline BlobHeader& Hdr()
 	{
 		return *(header - 1);
 	}
 
 	/** blob header accessor - use it rather than using the pointer arithmetics directly - const version */
-	FORCEINLINE const BlobHeader& Hdr() const
+	inline const BlobHeader& Hdr() const
 	{
 		return *(header - 1);
 	}
 
 	/** return reference to the actual blob size - used when the size needs to be modified */
-	FORCEINLINE size_t& LengthRef()
+	inline size_t& LengthRef()
 	{
 		return Hdr().items;
 	}
 
 public:
 	/** return true if blob doesn't contain valid data */
-	FORCEINLINE bool IsEmpty() const
+	inline bool IsEmpty() const
 	{
 		return Length() == 0;
 	}
 
 	/** return the number of valid data bytes in the blob */
-	FORCEINLINE size_t Length() const
+	inline size_t Length() const
 	{
 		return Hdr().items;
 	}
 
 	/** return the current blob capacity in bytes */
-	FORCEINLINE size_t Capacity() const
+	inline size_t Capacity() const
 	{
 		return Hdr().capacity;
 	}
 
 	/** return pointer to the first byte of data - non-const version */
-	FORCEINLINE byte *Begin()
+	inline byte *Begin()
 	{
 		return data;
 	}
 
 	/** return pointer to the first byte of data - const version */
-	FORCEINLINE const byte *Begin() const
+	inline const byte *Begin() const
 	{
 		return data;
 	}
 
 	/** invalidate blob's data - doesn't free buffer */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		LengthRef() = 0;
 	}
 
 	/** free the blob's memory */
-	FORCEINLINE void Free()
+	inline void Free()
 	{
 		if (Capacity() > 0) {
 			RawFree(&Hdr());
@@ -216,7 +216,7 @@ public:
 	}
 
 	/** append new bytes at the end of existing data bytes - reallocates if necessary */
-	FORCEINLINE void AppendRaw(const void *p, size_t num_bytes)
+	inline void AppendRaw(const void *p, size_t num_bytes)
 	{
 		assert(p != NULL);
 		if (num_bytes > 0) {
@@ -225,7 +225,7 @@ public:
 	}
 
 	/** append bytes from given source blob to the end of existing data bytes - reallocates if necessary */
-	FORCEINLINE void AppendRaw(const ByteBlob& src)
+	inline void AppendRaw(const ByteBlob& src)
 	{
 		if (!src.IsEmpty()) {
 			memcpy(Append(src.Length()), src.Begin(), src.Length());
@@ -236,7 +236,7 @@ public:
 	 * Reallocate if there is no free space for num_bytes bytes.
 	 *  @return pointer to the new data to be added
 	 */
-	FORCEINLINE byte *Prepare(size_t num_bytes)
+	inline byte *Prepare(size_t num_bytes)
 	{
 		size_t new_size = Length() + num_bytes;
 		if (new_size > Capacity()) SmartAlloc(new_size);
@@ -247,7 +247,7 @@ public:
 	 * Increase Length() by num_bytes.
 	 *  @return pointer to the new data added
 	 */
-	FORCEINLINE byte *Append(size_t num_bytes)
+	inline byte *Append(size_t num_bytes)
 	{
 		byte *pNewData = Prepare(num_bytes);
 		LengthRef() += num_bytes;
@@ -281,7 +281,7 @@ public:
 	}
 
 	/** fixing the four bytes at the end of blob data - useful when blob is used to hold string */
-	FORCEINLINE void FixTail() const
+	inline void FixTail() const
 	{
 		if (Capacity() > 0) {
 			byte *p = &data[Length()];
@@ -317,73 +317,73 @@ public:
 	};
 
 	/** Default constructor - makes new Blob ready to accept any data */
-	FORCEINLINE CBlobT()
+	inline CBlobT()
 		: base()
 	{}
 
 	/** Take ownership constructor */
-	FORCEINLINE CBlobT(const OnTransfer& ot)
+	inline CBlobT(const OnTransfer& ot)
 		: base(ot.header)
 	{}
 
 	/** Destructor - ensures that allocated memory (if any) is freed */
-	FORCEINLINE ~CBlobT()
+	inline ~CBlobT()
 	{
 		Free();
 	}
 
 	/** Check the validity of item index (only in debug mode) */
-	FORCEINLINE void CheckIdx(size_t index) const
+	inline void CheckIdx(size_t index) const
 	{
 		assert(index < Size());
 	}
 
 	/** Return pointer to the first data item - non-const version */
-	FORCEINLINE T *Data()
+	inline T *Data()
 	{
 		return (T*)base::Begin();
 	}
 
 	/** Return pointer to the first data item - const version */
-	FORCEINLINE const T *Data() const
+	inline const T *Data() const
 	{
 		return (const T*)base::Begin();
 	}
 
 	/** Return pointer to the index-th data item - non-const version */
-	FORCEINLINE T *Data(size_t index)
+	inline T *Data(size_t index)
 	{
 		CheckIdx(index);
 		return (Data() + index);
 	}
 
 	/** Return pointer to the index-th data item - const version */
-	FORCEINLINE const T *Data(size_t index) const
+	inline const T *Data(size_t index) const
 	{
 		CheckIdx(index);
 		return (Data() + index);
 	}
 
 	/** Return number of items in the Blob */
-	FORCEINLINE size_t Size() const
+	inline size_t Size() const
 	{
 		return (base::Length() / type_size);
 	}
 
 	/** Return total number of items that can fit in the Blob without buffer reallocation */
-	FORCEINLINE size_t MaxSize() const
+	inline size_t MaxSize() const
 	{
 		return (base::Capacity() / type_size);
 	}
 
 	/** Return number of additional items that can fit in the Blob without buffer reallocation */
-	FORCEINLINE size_t GetReserve() const
+	inline size_t GetReserve() const
 	{
 		return ((base::Capacity() - base::Length()) / type_size);
 	}
 
 	/** Grow number of data items in Blob by given number - doesn't construct items */
-	FORCEINLINE T *GrowSizeNC(size_t num_items)
+	inline T *GrowSizeNC(size_t num_items)
 	{
 		return (T*)base::Append(num_items * type_size);
 	}
@@ -392,12 +392,12 @@ public:
 	 * Ensures that given number of items can be added to the end of Blob. Returns pointer to the
 	 *  first free (unused) item
 	 */
-	FORCEINLINE T *MakeFreeSpace(size_t num_items)
+	inline T *MakeFreeSpace(size_t num_items)
 	{
 		return (T*)base::Prepare(num_items * type_size);
 	}
 
-	FORCEINLINE OnTransfer Transfer()
+	inline OnTransfer Transfer()
 	{
 		return OnTransfer(*this);
 	}

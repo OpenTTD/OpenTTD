@@ -839,7 +839,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	 * @param c grf to display.
 	 * @return Palette for the sprite.
 	 */
-	FORCEINLINE PaletteID GetPalette(const GRFConfig *c) const
+	inline PaletteID GetPalette(const GRFConfig *c) const
 	{
 		PaletteID pal;
 

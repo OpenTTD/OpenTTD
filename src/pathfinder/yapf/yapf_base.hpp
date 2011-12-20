@@ -37,11 +37,11 @@ extern int _total_pf_time_us;
  *  Requrements to your pathfinder class derived from CYapfBaseT:
  *  -------------------------------------------------------------
  *  Your pathfinder derived class needs to implement following methods:
- *    FORCEINLINE void PfSetStartupNodes()
- *    FORCEINLINE void PfFollowNode(Node& org)
- *    FORCEINLINE bool PfCalcCost(Node& n)
- *    FORCEINLINE bool PfCalcEstimate(Node& n)
- *    FORCEINLINE bool PfDetectDestination(Node& n)
+ *    inline void PfSetStartupNodes()
+ *    inline void PfFollowNode(Node& org)
+ *    inline bool PfCalcCost(Node& n)
+ *    inline bool PfCalcEstimate(Node& n)
+ *    inline bool PfDetectDestination(Node& n)
  *
  *  For more details about those methods, look at the end of CYapfBaseT
  *  declaration. There are some examples. For another example look at
@@ -80,7 +80,7 @@ public:
 
 public:
 	/** default constructor */
-	FORCEINLINE CYapfBaseT()
+	inline CYapfBaseT()
 		: m_pBestDestNode(NULL)
 		, m_pBestIntermediateNode(NULL)
 		, m_settings(&_settings_game.pf.yapf)
@@ -97,14 +97,14 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
 
 public:
 	/** return current settings (can be custom - company based - but later) */
-	FORCEINLINE const YAPFSettings& PfGetSettings() const
+	inline const YAPFSettings& PfGetSettings() const
 	{
 		return *m_settings;
 	}
@@ -182,7 +182,7 @@ public:
 	 * If path was found return the best node that has reached the destination. Otherwise
 	 *  return the best visited node (which was nearest to the destination).
 	 */
-	FORCEINLINE Node *GetBestNode()
+	inline Node *GetBestNode()
 	{
 		return (m_pBestDestNode != NULL) ? m_pBestDestNode : m_pBestIntermediateNode;
 	}
@@ -191,14 +191,14 @@ public:
 	 * Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
 	 *  as argument for AddStartupNode() or AddNewNode()
 	 */
-	FORCEINLINE Node& CreateNewNode()
+	inline Node& CreateNewNode()
 	{
 		Node& node = *m_nodes.CreateNewNode();
 		return node;
 	}
 
 	/** Add new node (created by CreateNewNode and filled with data) into open list */
-	FORCEINLINE void AddStartupNode(Node& n)
+	inline void AddStartupNode(Node& n)
 	{
 		Yapf().PfNodeCacheFetch(n);
 		/* insert the new node only if it is not there */
@@ -212,7 +212,7 @@ public:
 	}
 
 	/** add multiple nodes - direct children of the given node */
-	FORCEINLINE void AddMultipleNodes(Node *parent, const TrackFollower &tf)
+	inline void AddMultipleNodes(Node *parent, const TrackFollower &tf)
 	{
 		bool is_choice = (KillFirstBit(tf.m_new_td_bits) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits rtds = tf.m_new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
@@ -315,7 +315,7 @@ public:
 
 #if 0
 	/** Example: PfSetStartupNodes() - set source (origin) nodes */
-	FORCEINLINE void PfSetStartupNodes()
+	inline void PfSetStartupNodes()
 	{
 		/* example: */
 		Node& n1 = *base::m_nodes.CreateNewNode();
@@ -326,7 +326,7 @@ public:
 	}
 
 	/** Example: PfFollowNode() - set following (child) nodes of the given node */
-	FORCEINLINE void PfFollowNode(Node& org)
+	inline void PfFollowNode(Node& org)
 	{
 		for (each follower of node org) {
 			Node& n = *base::m_nodes.CreateNewNode();
@@ -339,7 +339,7 @@ public:
 	}
 
 	/** Example: PfCalcCost() - set path cost from origin to the given node */
-	FORCEINLINE bool PfCalcCost(Node& n)
+	inline bool PfCalcCost(Node& n)
 	{
 		/* evaluate last step cost */
 		int cost = ...;
@@ -349,7 +349,7 @@ public:
 	}
 
 	/** Example: PfCalcEstimate() - set path cost estimate from origin to the target through given node */
-	FORCEINLINE bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node& n)
 	{
 		/* evaluate the distance to our destination */
 		int distance = ...;
@@ -359,7 +359,7 @@ public:
 	}
 
 	/** Example: PfDetectDestination() - return true if the given node is our destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		bool bDest = (n.m_key.m_x == m_x2) && (n.m_key.m_y == m_y2);
 		return bDest;

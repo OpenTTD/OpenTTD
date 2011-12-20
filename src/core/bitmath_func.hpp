@@ -29,7 +29,7 @@
  * @return The selected bits, aligned to a LSB.
  */
 template <typename T>
-static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
+static inline uint GB(const T x, const uint8 s, const uint8 n)
 {
 	return (x >> s) & (((T)1U << n) - 1);
 }
@@ -53,7 +53,7 @@ static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
  * @return The new value of \a x
  */
 template <typename T, typename U>
-static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
+static inline T SB(T &x, const uint8 s, const uint8 n, const U d)
 {
 	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -76,7 +76,7 @@ static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
  * @return The new value of x
  */
 template <typename T, typename U>
-static FORCEINLINE T AB(T &x, const uint8 s, const uint8 n, const U i)
+static inline T AB(T &x, const uint8 s, const uint8 n, const U i)
 {
 	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -95,7 +95,7 @@ static FORCEINLINE T AB(T &x, const uint8 s, const uint8 n, const U i)
  * @return True if the bit is set, false else.
  */
 template <typename T>
-static FORCEINLINE bool HasBit(const T x, const uint8 y)
+static inline bool HasBit(const T x, const uint8 y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -112,7 +112,7 @@ static FORCEINLINE bool HasBit(const T x, const uint8 y)
  * @return The new value of the old value with the bit set
  */
 template <typename T>
-static FORCEINLINE T SetBit(T &x, const uint8 y)
+static inline T SetBit(T &x, const uint8 y)
 {
 	return x = (T)(x | ((T)1U << y));
 }
@@ -141,7 +141,7 @@ static FORCEINLINE T SetBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit cleared
  */
 template <typename T>
-static FORCEINLINE T ClrBit(T &x, const uint8 y)
+static inline T ClrBit(T &x, const uint8 y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -170,7 +170,7 @@ static FORCEINLINE T ClrBit(T &x, const uint8 y)
  * @return The new value of the old value with the bit toggled
  */
 template <typename T>
-static FORCEINLINE T ToggleBit(T &x, const uint8 y)
+static inline T ToggleBit(T &x, const uint8 y)
 {
 	return x = (T)(x ^ ((T)1U << y));
 }
@@ -205,7 +205,7 @@ extern const uint8 _ffb_64[64];
  * @return The position of the first bit which is set
  * @see FIND_FIRST_BIT
  */
-static FORCEINLINE uint8 FindFirstBit2x64(const int value)
+static inline uint8 FindFirstBit2x64(const int value)
 {
 	if ((value & 0xFF) == 0) {
 		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
@@ -228,7 +228,7 @@ uint8 FindLastBit(uint64 x);
  * @return The new value with the first bit cleared
  */
 template <typename T>
-static FORCEINLINE T KillFirstBit(T value)
+static inline T KillFirstBit(T value)
 {
 	return value &= (T)(value - 1);
 }
@@ -263,7 +263,7 @@ static inline uint CountBits(T value)
  * @return does \a value have exactly 1 bit set?
  */
 template <typename T>
-static FORCEINLINE bool HasExactlyOneBit(T value)
+static inline bool HasExactlyOneBit(T value)
 {
 	return value != 0 && (value & (value - 1)) == 0;
 }
@@ -275,7 +275,7 @@ static FORCEINLINE bool HasExactlyOneBit(T value)
  * @return does \a value have at most 1 bit set?
  */
 template <typename T>
-static FORCEINLINE bool HasAtMostOneBit(T value)
+static inline bool HasAtMostOneBit(T value)
 {
 	return (value & (value - 1)) == 0;
 }
@@ -289,7 +289,7 @@ static FORCEINLINE bool HasAtMostOneBit(T value)
  * @return A bit rotated number
  */
 template <typename T>
-static FORCEINLINE T ROL(const T x, const uint8 n)
+static inline T ROL(const T x, const uint8 n)
 {
 	return (T)(x << n | x >> (sizeof(x) * 8 - n));
 }
@@ -303,7 +303,7 @@ static FORCEINLINE T ROL(const T x, const uint8 n)
  * @return A bit rotated number
  */
 template <typename T>
-static FORCEINLINE T ROR(const T x, const uint8 n)
+static inline T ROR(const T x, const uint8 n)
 {
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));
 }
@@ -365,7 +365,7 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static FORCEINLINE uint32 BSWAP32(uint32 x)
+	static inline uint32 BSWAP32(uint32 x)
 	{
 #if !defined(__ICC) && defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4)  && __GNUC_MINOR__ >= 3))
 		/* GCC >= 4.3 provides a builtin, resulting in faster code */
@@ -380,7 +380,7 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static FORCEINLINE uint16 BSWAP16(uint16 x)
+	static inline uint16 BSWAP16(uint16 x)
 	{
 		return (x >> 8) | (x << 8);
 	}

@@ -89,7 +89,7 @@ struct GRFIdentifier {
 	 * @param md5sum Expected md5sum, may be \c NULL (in which case, do not check it).
 	 * @return the object has the provided grfid and md5sum.
 	 */
-	FORCEINLINE bool HasGrfIdentifier(uint32 grfid, const uint8 *md5sum) const
+	inline bool HasGrfIdentifier(uint32 grfid, const uint8 *md5sum) const
 	{
 		if (this->grfid != grfid) return false;
 		if (md5sum == NULL) return true;

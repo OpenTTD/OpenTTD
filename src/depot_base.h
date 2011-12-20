@@ -29,7 +29,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();
 
-	static FORCEINLINE Depot *GetByTile(TileIndex tile)
+	static inline Depot *GetByTile(TileIndex tile)
 	{
 		return Depot::Get(GetDepotIndex(tile));
 	}
@@ -40,7 +40,7 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	 * @param d The depot to compare to.
 	 * @return true iff their types are equal.
 	 */
-	FORCEINLINE bool IsOfType(const Depot *d) const
+	inline bool IsOfType(const Depot *d) const
 	{
 		return GetTileType(d->xy) == GetTileType(this->xy);
 	}

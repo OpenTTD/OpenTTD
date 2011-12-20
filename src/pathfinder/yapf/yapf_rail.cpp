@@ -47,7 +47,7 @@ public:
 
 protected:
 	/** to access inherited pathfinder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -197,7 +197,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -217,7 +217,7 @@ public:
 	}
 
 	/** return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const
+	inline char TransportTypeChar() const
 	{
 		return 't';
 	}
@@ -252,7 +252,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool FindNearestDepotTwoWay(const Train *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_penalty, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
+	inline bool FindNearestDepotTwoWay(const Train *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_penalty, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 	{
 		/* set origin and destination nodes */
 		Yapf().SetOrigin(t1, td1, t2, td2, reverse_penalty, true);
@@ -293,7 +293,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -313,7 +313,7 @@ public:
 	}
 
 	/** Return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const
+	inline char TransportTypeChar() const
 	{
 		return 't';
 	}
@@ -376,7 +376,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -396,7 +396,7 @@ public:
 	}
 
 	/** return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const
+	inline char TransportTypeChar() const
 	{
 		return 't';
 	}
@@ -422,7 +422,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE Trackdir ChooseRailTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, PBSTileInfo *target)
+	inline Trackdir ChooseRailTrack(const Train *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found, bool reserve_track, PBSTileInfo *target)
 	{
 		if (target != NULL) target->tile = INVALID_TILE;
 
@@ -480,7 +480,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool CheckReverseTrain(const Train *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
+	inline bool CheckReverseTrain(const Train *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
 	{
 		/* create pathfinder instance
 		 * set origin and destination nodes */

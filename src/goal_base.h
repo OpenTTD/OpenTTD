@@ -30,12 +30,12 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	FORCEINLINE Goal() { }
+	inline Goal() { }
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
 	 */
-	FORCEINLINE ~Goal() { free(this->text); }
+	inline ~Goal() { free(this->text); }
 };
 
 #define FOR_ALL_GOALS_FROM(var, start) FOR_ALL_ITEMS_FROM(Goal, goal_index, var, start)

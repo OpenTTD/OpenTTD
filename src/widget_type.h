@@ -143,7 +143,7 @@ public:
 	 * @param bottom Amount of additional space below the widget.
 	 * @param left   Amount of additional space left of the widget.
 	 */
-	FORCEINLINE void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
+	inline void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
 	{
 		this->padding_top = top;
 		this->padding_right = right;
@@ -151,8 +151,8 @@ public:
 		this->padding_left = left;
 	}
 
-	FORCEINLINE uint GetHorizontalStepSize(SizingType sizing) const;
-	FORCEINLINE uint GetVerticalStepSize(SizingType sizing) const;
+	inline uint GetHorizontalStepSize(SizingType sizing) const;
+	inline uint GetVerticalStepSize(SizingType sizing) const;
 
 	virtual void Draw(const Window *w) = 0;
 	virtual void SetDirty(const Window *w) const;
@@ -183,14 +183,14 @@ public:
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget.
 
 protected:
-	FORCEINLINE void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
+	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
 };
 
 /**
  * Get the horizontal sizing step.
  * @param sizing Type of resize being performed.
  */
-FORCEINLINE uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
+inline uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
 {
 	return (sizing == ST_RESIZE) ? this->resize_x : this->fill_x;
 }
@@ -199,7 +199,7 @@ FORCEINLINE uint NWidgetBase::GetHorizontalStepSize(SizingType sizing) const
  * Get the vertical sizing step.
  * @param sizing Type of resize being performed.
  */
-FORCEINLINE uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
+inline uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
 {
 	return (sizing == ST_RESIZE) ? this->resize_y : this->fill_y;
 }
@@ -212,7 +212,7 @@ FORCEINLINE uint NWidgetBase::GetVerticalStepSize(SizingType sizing) const
  * @param given_width  Width allocated to the widget.
  * @param given_height Height allocated to the widget.
  */
-FORCEINLINE void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height)
+inline void NWidgetBase::StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height)
 {
 	this->pos_x = x;
 	this->pos_y = y;
@@ -607,7 +607,7 @@ public:
 	 * Gets the number of elements in the list
 	 * @return the number of elements
 	 */
-	FORCEINLINE uint16 GetCount() const
+	inline uint16 GetCount() const
 	{
 		return this->count;
 	}
@@ -616,7 +616,7 @@ public:
 	 * Gets the number of visible elements of the scrollbar
 	 * @return the number of visible elements
 	 */
-	FORCEINLINE uint16 GetCapacity() const
+	inline uint16 GetCapacity() const
 	{
 		return this->cap;
 	}
@@ -625,7 +625,7 @@ public:
 	 * Gets the position of the first visible element in the list
 	 * @return the position of the element
 	 */
-	FORCEINLINE uint16 GetPosition() const
+	inline uint16 GetPosition() const
 	{
 		return this->pos;
 	}
@@ -635,7 +635,7 @@ public:
 	 * @param item to check
 	 * @return true iff the item is visible
 	 */
-	FORCEINLINE bool IsVisible(uint16 item) const
+	inline bool IsVisible(uint16 item) const
 	{
 		return IsInsideBS(item, this->GetPosition(), this->GetCapacity());
 	}
@@ -644,7 +644,7 @@ public:
 	 * Is the scrollbar vertical or not?
 	 * @return True iff the scrollbar is vertical.
 	 */
-	FORCEINLINE bool IsVertical() const
+	inline bool IsVertical() const
 	{
 		return this->is_vertical;
 	}
@@ -789,7 +789,7 @@ private:
  * @param step      Stepsize of the widget.
  * @return Biggest possible size of the widget, assuming that \a base may only be incremented by \a step size steps.
  */
-static FORCEINLINE uint ComputeMaxSize(uint base, uint max_space, uint step)
+static inline uint ComputeMaxSize(uint base, uint max_space, uint step)
 {
 	if (base >= max_space || step == 0) return base;
 	if (step == 1) return max_space;

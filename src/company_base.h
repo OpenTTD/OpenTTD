@@ -124,7 +124,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	 * @param index Index in the pool.
 	 * @return \c true if it is a valid, computer controlled company, else \c false.
 	 */
-	static FORCEINLINE bool IsValidAiID(size_t index)
+	static inline bool IsValidAiID(size_t index)
 	{
 		const Company *c = Company::GetIfValid(index);
 		return c != NULL && c->is_ai;
@@ -136,7 +136,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	 * @return \c true if it is a valid, human controlled company, else \c false.
 	 * @note If you know that \a index refers to a valid company, you can use #IsHumanID() instead.
 	 */
-	static FORCEINLINE bool IsValidHumanID(size_t index)
+	static inline bool IsValidHumanID(size_t index)
 	{
 		const Company *c = Company::GetIfValid(index);
 		return c != NULL && !c->is_ai;
@@ -149,7 +149,7 @@ struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
 	 * @pre \a index must be a valid CompanyID.
 	 * @note If you don't know whether \a index refers to a valid company, you should use #IsValidHumanID() instead.
 	 */
-	static FORCEINLINE bool IsHumanID(size_t index)
+	static inline bool IsHumanID(size_t index)
 	{
 		return !Company::Get(index)->is_ai;
 	}

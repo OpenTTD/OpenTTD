@@ -18,15 +18,15 @@ struct CYapfNodeKeyExitDir {
 	Trackdir       m_td;
 	DiagDirection  m_exitdir;
 
-	FORCEINLINE void Set(TileIndex tile, Trackdir td)
+	inline void Set(TileIndex tile, Trackdir td)
 	{
 		m_tile = tile;
 		m_td = td;
 		m_exitdir = (m_td == INVALID_TRACKDIR) ? INVALID_DIAGDIR : TrackdirToExitdir(m_td);
 	}
 
-	FORCEINLINE int CalcHash() const {return m_exitdir | (m_tile << 2);}
-	FORCEINLINE bool operator == (const CYapfNodeKeyExitDir& other) const {return (m_tile == other.m_tile) && (m_exitdir == other.m_exitdir);}
+	inline int CalcHash() const {return m_exitdir | (m_tile << 2);}
+	inline bool operator == (const CYapfNodeKeyExitDir& other) const {return (m_tile == other.m_tile) && (m_exitdir == other.m_exitdir);}
 
 	void Dump(DumpTarget &dmp) const
 	{
@@ -38,8 +38,8 @@ struct CYapfNodeKeyExitDir {
 
 struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
 {
-	FORCEINLINE int CalcHash() const {return m_td | (m_tile << 4);}
-	FORCEINLINE bool operator == (const CYapfNodeKeyTrackDir& other) const {return (m_tile == other.m_tile) && (m_td == other.m_td);}
+	inline int CalcHash() const {return m_td | (m_tile << 4);}
+	inline bool operator == (const CYapfNodeKeyTrackDir& other) const {return (m_tile == other.m_tile) && (m_td == other.m_td);}
 };
 
 /** Yapf Node base */
@@ -54,7 +54,7 @@ struct CYapfNodeT {
 	int         m_cost;
 	int         m_estimate;
 
-	FORCEINLINE void Set(Node *parent, TileIndex tile, Trackdir td, bool is_choice)
+	inline void Set(Node *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		m_key.Set(tile, td);
 		m_hash_next = NULL;
@@ -63,14 +63,14 @@ struct CYapfNodeT {
 		m_estimate = 0;
 	}
 
-	FORCEINLINE Node *GetHashNext() {return m_hash_next;}
-	FORCEINLINE void SetHashNext(Node *pNext) {m_hash_next = pNext;}
-	FORCEINLINE TileIndex GetTile() const {return m_key.m_tile;}
-	FORCEINLINE Trackdir GetTrackdir() const {return m_key.m_td;}
-	FORCEINLINE const Tkey_& GetKey() const {return m_key;}
-	FORCEINLINE int GetCost() const {return m_cost;}
-	FORCEINLINE int GetCostEstimate() const {return m_estimate;}
-	FORCEINLINE bool operator < (const Node& other) const {return m_estimate < other.m_estimate;}
+	inline Node *GetHashNext() {return m_hash_next;}
+	inline void SetHashNext(Node *pNext) {m_hash_next = pNext;}
+	inline TileIndex GetTile() const {return m_key.m_tile;}
+	inline Trackdir GetTrackdir() const {return m_key.m_td;}
+	inline const Tkey_& GetKey() const {return m_key;}
+	inline int GetCost() const {return m_cost;}
+	inline int GetCostEstimate() const {return m_estimate;}
+	inline bool operator < (const Node& other) const {return m_estimate < other.m_estimate;}
 
 	void Dump(DumpTarget &dmp) const
 	{

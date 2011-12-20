@@ -26,7 +26,7 @@ struct SmallPair {
 	U second;
 
 	/** Initializes this Pair with data */
-	FORCEINLINE SmallPair(const T &first, const U &second) : first(first), second(second) { }
+	inline SmallPair(const T &first, const U &second) : first(first), second(second) { }
 };
 
 /**
@@ -45,16 +45,16 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	typedef const Pair *const_iterator;
 
 	/** Creates new SmallMap. Data are initialized in SmallVector constructor */
-	FORCEINLINE SmallMap() { }
+	inline SmallMap() { }
 	/** Data are freed in SmallVector destructor */
-	FORCEINLINE ~SmallMap() { }
+	inline ~SmallMap() { }
 
 	/**
 	 * Finds given key in this map
 	 * @param key key to find
 	 * @return &Pair(key, data) if found, this->End() if not
 	 */
-	FORCEINLINE Pair *Find(const T &key)
+	inline Pair *Find(const T &key)
 	{
 		for (uint i = 0; i < this->items; i++) {
 			if (key == this->data[i].first) return &this->data[i];
@@ -67,7 +67,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param key key to test
 	 * @return true iff the item is present
 	 */
-	FORCEINLINE bool Contains(const T &key)
+	inline bool Contains(const T &key)
 	{
 		return this->Find(key) != this->End();
 	}
@@ -77,7 +77,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param pair pair to remove
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
 	 */
-	FORCEINLINE void Erase(Pair *pair)
+	inline void Erase(Pair *pair)
 	{
 		assert(pair >= this->Begin() && pair < this->End());
 		*pair = this->data[--this->items];
@@ -89,7 +89,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @return true iff the key was found
 	 * @note last item is moved to its place, so don't increase your iterator if true is returned!
 	 */
-	FORCEINLINE bool Erase(const T &key)
+	inline bool Erase(const T &key)
 	{
 		for (uint i = 0; i < this->items; i++) {
 			if (key == this->data[i].first) {
@@ -106,7 +106,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param data data
 	 * @return true iff the key wasn't already present
 	 */
-	FORCEINLINE bool Insert(const T &key, const U &data)
+	inline bool Insert(const T &key, const U &data)
 	{
 		if (this->Contains(key)) return false;
 		Pair *n = this->Append();
@@ -121,7 +121,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @return data belonging to this key
 	 * @note if this key wasn't present, new entry is created
 	 */
-	FORCEINLINE U &operator[](const T &key)
+	inline U &operator[](const T &key)
 	{
 		for (uint i = 0; i < this->items; i++) {
 			if (key == this->data[i].first) return this->data[i].second;
@@ -131,7 +131,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		return n->second;
 	}
 
-	FORCEINLINE void SortByKey()
+	inline void SortByKey()
 	{
 		QSortT(this->Begin(), this->items, KeySorter);
 	}

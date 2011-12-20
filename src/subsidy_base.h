@@ -33,18 +33,18 @@ struct Subsidy : SubsidyPool::PoolItem<&_subsidy_pool> {
 	/**
 	 * We need an (empty) constructor so struct isn't zeroed (as C++ standard states)
 	 */
-	FORCEINLINE Subsidy() { }
+	inline Subsidy() { }
 
 	/**
 	 * (Empty) destructor has to be defined else operator delete might be called with NULL parameter
 	 */
-	FORCEINLINE ~Subsidy() { }
+	inline ~Subsidy() { }
 
 	/**
 	 * Tests whether this subsidy has been awarded to someone
 	 * @return is this subsidy awarded?
 	 */
-	FORCEINLINE bool IsAwarded() const
+	inline bool IsAwarded() const
 	{
 		return this->awarded != INVALID_COMPANY;
 	}

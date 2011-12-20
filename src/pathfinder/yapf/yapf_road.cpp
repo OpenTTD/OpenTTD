@@ -51,7 +51,7 @@ protected:
 	}
 
 	/** return one tile cost */
-	FORCEINLINE int OneTileCost(TileIndex tile, Trackdir trackdir)
+	inline int OneTileCost(TileIndex tile, Trackdir trackdir)
 	{
 		int cost = 0;
 		/* set base cost */
@@ -100,7 +100,7 @@ public:
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member
 	 */
-	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
+	inline bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		int segment_cost = 0;
 		uint tiles = 0;
@@ -181,13 +181,13 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		bool bDest = IsRoadDepotTile(n.m_segment_last_tile);
 		return bDest;
 	}
 
-	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
 		return IsRoadDepotTile(tile);
 	}
@@ -196,7 +196,7 @@ public:
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
 	 */
-	FORCEINLINE bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
 		return true;
@@ -245,12 +245,12 @@ protected:
 
 public:
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestinationTile(n.m_segment_last_tile, n.m_segment_last_td);
 	}
 
-	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	inline bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
 	{
 		if (m_dest_station != INVALID_STATION) {
 			return IsTileType(tile, MP_STATION) &&
@@ -305,7 +305,7 @@ public:
 
 protected:
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -326,7 +326,7 @@ public:
 	}
 
 	/** return debug report character to identify the transportation type */
-	FORCEINLINE char TransportTypeChar() const
+	inline char TransportTypeChar() const
 	{
 		return 'r';
 	}
@@ -337,7 +337,7 @@ public:
 		return pf.ChooseRoadTrack(v, tile, enterdir, path_found);
 	}
 
-	FORCEINLINE Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
+	inline Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
 	{
 		/* Handle special case - when next tile is destination tile.
 		 * However, when going to a station the (initial) destination
@@ -384,7 +384,7 @@ public:
 		return pf.DistanceToTile(v, tile);
 	}
 
-	FORCEINLINE uint DistanceToTile(const RoadVehicle *v, TileIndex dst_tile)
+	inline uint DistanceToTile(const RoadVehicle *v, TileIndex dst_tile)
 	{
 		/* handle special case - when current tile is the destination tile */
 		if (dst_tile == v->tile) {
@@ -414,7 +414,7 @@ public:
 	}
 
 	/** Return true if the valid origin (tile/trackdir) was set from the current vehicle position. */
-	FORCEINLINE bool SetOriginFromVehiclePos(const RoadVehicle *v)
+	inline bool SetOriginFromVehiclePos(const RoadVehicle *v)
 	{
 		/* set origin (tile, trackdir) */
 		TileIndex src_tile = v->tile;
@@ -434,7 +434,7 @@ public:
 		return pf.FindNearestDepot(v, tile, td, max_distance, depot_tile);
 	}
 
-	FORCEINLINE bool FindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance, TileIndex *depot_tile)
+	inline bool FindNearestDepot(const RoadVehicle *v, TileIndex tile, Trackdir td, int max_distance, TileIndex *depot_tile)
 	{
 		/* set origin and destination nodes */
 		Yapf().SetOrigin(tile, TrackdirToTrackdirBits(td));

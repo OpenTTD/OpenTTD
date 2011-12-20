@@ -65,7 +65,7 @@ public:
 	/**
 	 * Remove all items from the list.
 	 */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		/* In fact we just reset the item counter avoiding the need to
 		 * probably reallocate the same amount of memory the list was
@@ -76,7 +76,7 @@ public:
 	/**
 	 * Remove all items from the list and free allocated memory.
 	 */
-	FORCEINLINE void Reset()
+	inline void Reset()
 	{
 		this->items = 0;
 		this->capacity = 0;
@@ -87,7 +87,7 @@ public:
 	/**
 	 * Compact the list down to the smallest block size boundary.
 	 */
-	FORCEINLINE void Compact()
+	inline void Compact()
 	{
 		uint capacity = Align(this->items, S);
 		if (capacity >= this->capacity) return;
@@ -101,7 +101,7 @@ public:
 	 * @param to_add the number of items to append
 	 * @return pointer to newly allocated item
 	 */
-	FORCEINLINE T *Append(uint to_add = 1)
+	inline T *Append(uint to_add = 1)
 	{
 		uint begin = this->items;
 		this->items += to_add;
@@ -120,7 +120,7 @@ public:
 	 * @param item Item to search for
 	 * @return The position of the item, or End() when not present
 	 */
-	FORCEINLINE const T *Find(const T &item) const
+	inline const T *Find(const T &item) const
 	{
 		const T *pos = this->Begin();
 		const T *end = this->End();
@@ -134,7 +134,7 @@ public:
 	 * @param item Item to search for
 	 * @return The position of the item, or End() when not present
 	 */
-	FORCEINLINE T *Find(const T &item)
+	inline T *Find(const T &item)
 	{
 		T *pos = this->Begin();
 		const T *end = this->End();
@@ -148,7 +148,7 @@ public:
 	 * @param item Item to search for
 	 * @return The position of the item, or -1 when not present
 	 */
-	FORCEINLINE int FindIndex(const T &item)
+	inline int FindIndex(const T &item)
 	{
 		int index = 0;
 		T *pos = this->Begin();
@@ -166,7 +166,7 @@ public:
 	 * @param item Item to test for
 	 * @return true iff the item is present
 	 */
-	FORCEINLINE bool Contains(const T &item) const
+	inline bool Contains(const T &item) const
 	{
 		return this->Find(item) != this->End();
 	}
@@ -176,7 +176,7 @@ public:
 	 * @param item item to remove
 	 * @note it has to be pointer to item in this map. It is overwritten by the last item.
 	 */
-	FORCEINLINE void Erase(T *item)
+	inline void Erase(T *item)
 	{
 		assert(item >= this->Begin() && item < this->End());
 		*item = this->data[--this->items];
@@ -188,7 +188,7 @@ public:
 	 * @param item Item to test for
 	 * @return true iff the item is was already present
 	 */
-	FORCEINLINE bool Include(const T &item)
+	inline bool Include(const T &item)
 	{
 		bool is_member = this->Contains(item);
 		if (!is_member) *this->Append() = item;
@@ -198,7 +198,7 @@ public:
 	/**
 	 * Get the number of items in the list.
 	 */
-	FORCEINLINE uint Length() const
+	inline uint Length() const
 	{
 		return this->items;
 	}
@@ -208,7 +208,7 @@ public:
 	 *
 	 * @return the pointer to the first item
 	 */
-	FORCEINLINE const T *Begin() const
+	inline const T *Begin() const
 	{
 		return this->data;
 	}
@@ -218,7 +218,7 @@ public:
 	 *
 	 * @return the pointer to the first item
 	 */
-	FORCEINLINE T *Begin()
+	inline T *Begin()
 	{
 		return this->data;
 	}
@@ -228,7 +228,7 @@ public:
 	 *
 	 * @return the pointer behind the last valid item
 	 */
-	FORCEINLINE const T *End() const
+	inline const T *End() const
 	{
 		return &this->data[this->items];
 	}
@@ -238,7 +238,7 @@ public:
 	 *
 	 * @return the pointer behind the last valid item
 	 */
-	FORCEINLINE T *End()
+	inline T *End()
 	{
 		return &this->data[this->items];
 	}
@@ -249,7 +249,7 @@ public:
 	 * @param index the position of the item
 	 * @return the pointer to the item
 	 */
-	FORCEINLINE const T *Get(uint index) const
+	inline const T *Get(uint index) const
 	{
 		/* Allow access to the 'first invalid' item */
 		assert(index <= this->items);
@@ -262,7 +262,7 @@ public:
 	 * @param index the position of the item
 	 * @return the pointer to the item
 	 */
-	FORCEINLINE T *Get(uint index)
+	inline T *Get(uint index)
 	{
 		/* Allow access to the 'first invalid' item */
 		assert(index <= this->items);
@@ -275,7 +275,7 @@ public:
 	 * @param index the position of the item
 	 * @return the item
 	 */
-	FORCEINLINE const T &operator[](uint index) const
+	inline const T &operator[](uint index) const
 	{
 		assert(index < this->items);
 		return this->data[index];
@@ -287,7 +287,7 @@ public:
 	 * @param index the position of the item
 	 * @return the item
 	 */
-	FORCEINLINE T &operator[](uint index)
+	inline T &operator[](uint index)
 	{
 		assert(index < this->items);
 		return this->data[index];
@@ -316,7 +316,7 @@ public:
 	/**
 	 * Remove all items from the list.
 	 */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		for (uint i = 0; i < this->items; i++) {
 			free(this->data[i]);
@@ -347,7 +347,7 @@ public:
 	/**
 	 * Remove all items from the list.
 	 */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		for (uint i = 0; i < this->items; i++) {
 			delete this->data[i];

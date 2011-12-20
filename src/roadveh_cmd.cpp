@@ -416,7 +416,7 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
  * Calculates the maximum speed of the vehicle under its current conditions.
  * @return Maximum speed of the vehicle.
  */
-FORCEINLINE int RoadVehicle::GetCurrentMaxSpeed() const
+inline int RoadVehicle::GetCurrentMaxSpeed() const
 {
 	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) return this->vcache.cached_max_speed;
 

@@ -77,13 +77,13 @@ private:
 
 public:
 	/** Default constructor. */
-	FORCEINLINE CargoArray()
+	inline CargoArray()
 	{
 		this->Clear();
 	}
 
 	/** Reset all entries. */
-	FORCEINLINE void Clear()
+	inline void Clear()
 	{
 		memset(this->amount, 0, sizeof(this->amount));
 	}
@@ -92,7 +92,7 @@ public:
 	 * Read/write access to an amount of a specific cargo type.
 	 * @param cargo Cargo type to access.
 	 */
-	FORCEINLINE uint &operator[](CargoID cargo)
+	inline uint &operator[](CargoID cargo)
 	{
 		return this->amount[cargo];
 	}
@@ -101,7 +101,7 @@ public:
 	 * Read-only access to an amount of a specific cargo type.
 	 * @param cargo Cargo type to access.
 	 */
-	FORCEINLINE const uint &operator[](CargoID cargo) const
+	inline const uint &operator[](CargoID cargo) const
 	{
 		return this->amount[cargo];
 	}

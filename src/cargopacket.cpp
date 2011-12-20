@@ -82,7 +82,7 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
  * @param new_size Size of the remaining part.
  * @return Split off part, or NULL if no packet could be allocated!
  */
-FORCEINLINE CargoPacket *CargoPacket::Split(uint new_size)
+inline CargoPacket *CargoPacket::Split(uint new_size)
 {
 	if (!CargoPacket::CanAllocateItem()) return NULL;
 
@@ -97,7 +97,7 @@ FORCEINLINE CargoPacket *CargoPacket::Split(uint new_size)
  * Merge another packet into this one.
  * @param cp Packet to be merged in.
  */
-FORCEINLINE void CargoPacket::Merge(CargoPacket *cp)
+inline void CargoPacket::Merge(CargoPacket *cp)
 {
 	this->count += cp->count;
 	this->feeder_share += cp->feeder_share;

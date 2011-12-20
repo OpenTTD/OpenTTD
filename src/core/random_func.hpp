@@ -81,23 +81,23 @@ void SetRandomSeed(uint32 seed);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint32 DoRandomRange(uint32 max, int line, const char *file);
 #else
-	static FORCEINLINE uint32 Random()
+	static inline uint32 Random()
 	{
 		return _random.Next();
 	}
 
-	static FORCEINLINE uint32 RandomRange(uint32 max)
+	static inline uint32 RandomRange(uint32 max)
 	{
 		return _random.Next(max);
 	}
 #endif
 
-static FORCEINLINE uint32 InteractiveRandom()
+static inline uint32 InteractiveRandom()
 {
 	return _interactive_random.Next();
 }
 
-static FORCEINLINE uint32 InteractiveRandomRange(uint32 max)
+static inline uint32 InteractiveRandomRange(uint32 max)
 {
 	return _interactive_random.Next(max);
 }
@@ -117,7 +117,7 @@ static FORCEINLINE uint32 InteractiveRandomRange(uint32 max)
  * @param r The given randomize-number
  * @return True if the probability given by r is less or equal to (a/b)
  */
-static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
+static inline bool Chance16I(const uint a, const uint b, const uint32 r)
 {
 	assert(b != 0);
 	return (((uint16)r * b + b / 2) >> 16) < a;
@@ -136,7 +136,7 @@ static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
 #ifdef RANDOM_DEBUG
 	#define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
 #else
-static FORCEINLINE bool Chance16(const uint a, const uint b)
+static inline bool Chance16(const uint a, const uint b)
 {
 	return Chance16I(a, b, Random());
 }
@@ -160,7 +160,7 @@ static FORCEINLINE bool Chance16(const uint a, const uint b)
 #ifdef RANDOM_DEBUG
 	#define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
 #else
-static FORCEINLINE bool Chance16R(const uint a, const uint b, uint32 &r)
+static inline bool Chance16R(const uint a, const uint b, uint32 &r)
 {
 	r = Random();
 	return Chance16I(a, b, r);

@@ -111,7 +111,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
-	FORCEINLINE int32 GetSlopeResistance() const
+	inline int32 GetSlopeResistance() const
 	{
 		int32 incl = 0;
 
@@ -132,7 +132,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @pre The vehicle has to be at (or near to) a border of the tile,
 	 *      directed towards tile centre
 	 */
-	FORCEINLINE void UpdateZPositionAndInclination()
+	inline void UpdateZPositionAndInclination()
 	{
 		this->z_pos = GetSlopePixelZ(this->x_pos, this->y_pos);
 		ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
@@ -157,7 +157,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * The faster code is used for trains and road vehicles unless they are
 	 * reversing on a sloped tile.
 	 */
-	FORCEINLINE void UpdateZPosition()
+	inline void UpdateZPosition()
 	{
 #if 0
 		/* The following code does this: */
@@ -229,7 +229,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @param turned Indicates if the vehicle has turned.
 	 * @return Old height of the vehicle.
 	 */
-	FORCEINLINE byte UpdateInclination(bool new_tile, bool turned)
+	inline byte UpdateInclination(bool new_tile, bool turned)
 	{
 		byte old_z = this->z_pos;
 
@@ -246,99 +246,99 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	/**
 	 * Set front engine state.
 	 */
-	FORCEINLINE void SetFrontEngine() { SetBit(this->subtype, GVSF_FRONT); }
+	inline void SetFrontEngine() { SetBit(this->subtype, GVSF_FRONT); }
 
 	/**
 	 * Remove the front engine state.
 	 */
-	FORCEINLINE void ClearFrontEngine() { ClrBit(this->subtype, GVSF_FRONT); }
+	inline void ClearFrontEngine() { ClrBit(this->subtype, GVSF_FRONT); }
 
 	/**
 	 * Set a vehicle to be an articulated part.
 	 */
-	FORCEINLINE void SetArticulatedPart() { SetBit(this->subtype, GVSF_ARTICULATED_PART); }
+	inline void SetArticulatedPart() { SetBit(this->subtype, GVSF_ARTICULATED_PART); }
 
 	/**
 	 * Clear a vehicle from being an articulated part.
 	 */
-	FORCEINLINE void ClearArticulatedPart() { ClrBit(this->subtype, GVSF_ARTICULATED_PART); }
+	inline void ClearArticulatedPart() { ClrBit(this->subtype, GVSF_ARTICULATED_PART); }
 
 	/**
 	 * Set a vehicle to be a wagon.
 	 */
-	FORCEINLINE void SetWagon() { SetBit(this->subtype, GVSF_WAGON); }
+	inline void SetWagon() { SetBit(this->subtype, GVSF_WAGON); }
 
 	/**
 	 * Clear wagon property.
 	 */
-	FORCEINLINE void ClearWagon() { ClrBit(this->subtype, GVSF_WAGON); }
+	inline void ClearWagon() { ClrBit(this->subtype, GVSF_WAGON); }
 
 	/**
 	 * Set engine status.
 	 */
-	FORCEINLINE void SetEngine() { SetBit(this->subtype, GVSF_ENGINE); }
+	inline void SetEngine() { SetBit(this->subtype, GVSF_ENGINE); }
 
 	/**
 	 * Clear engine status.
 	 */
-	FORCEINLINE void ClearEngine() { ClrBit(this->subtype, GVSF_ENGINE); }
+	inline void ClearEngine() { ClrBit(this->subtype, GVSF_ENGINE); }
 
 	/**
 	 * Set a vehicle as a free wagon.
 	 */
-	FORCEINLINE void SetFreeWagon() { SetBit(this->subtype, GVSF_FREE_WAGON); }
+	inline void SetFreeWagon() { SetBit(this->subtype, GVSF_FREE_WAGON); }
 
 	/**
 	 * Clear a vehicle from being a free wagon.
 	 */
-	FORCEINLINE void ClearFreeWagon() { ClrBit(this->subtype, GVSF_FREE_WAGON); }
+	inline void ClearFreeWagon() { ClrBit(this->subtype, GVSF_FREE_WAGON); }
 
 	/**
 	 * Set a vehicle as a multiheaded engine.
 	 */
-	FORCEINLINE void SetMultiheaded() { SetBit(this->subtype, GVSF_MULTIHEADED); }
+	inline void SetMultiheaded() { SetBit(this->subtype, GVSF_MULTIHEADED); }
 
 	/**
 	 * Clear multiheaded engine property.
 	 */
-	FORCEINLINE void ClearMultiheaded() { ClrBit(this->subtype, GVSF_MULTIHEADED); }
+	inline void ClearMultiheaded() { ClrBit(this->subtype, GVSF_MULTIHEADED); }
 
 	/**
 	 * Check if the vehicle is a free wagon (got no engine in front of it).
 	 * @return Returns true if the vehicle is a free wagon.
 	 */
-	FORCEINLINE bool IsFreeWagon() const { return HasBit(this->subtype, GVSF_FREE_WAGON); }
+	inline bool IsFreeWagon() const { return HasBit(this->subtype, GVSF_FREE_WAGON); }
 
 	/**
 	 * Check if a vehicle is an engine (can be first in a consist).
 	 * @return Returns true if vehicle is an engine.
 	 */
-	FORCEINLINE bool IsEngine() const { return HasBit(this->subtype, GVSF_ENGINE); }
+	inline bool IsEngine() const { return HasBit(this->subtype, GVSF_ENGINE); }
 
 	/**
 	 * Check if a vehicle is a wagon.
 	 * @return Returns true if vehicle is a wagon.
 	 */
-	FORCEINLINE bool IsWagon() const { return HasBit(this->subtype, GVSF_WAGON); }
+	inline bool IsWagon() const { return HasBit(this->subtype, GVSF_WAGON); }
 
 	/**
 	 * Check if the vehicle is a multiheaded engine.
 	 * @return Returns true if the vehicle is a multiheaded engine.
 	 */
-	FORCEINLINE bool IsMultiheaded() const { return HasBit(this->subtype, GVSF_MULTIHEADED); }
+	inline bool IsMultiheaded() const { return HasBit(this->subtype, GVSF_MULTIHEADED); }
 
 	/**
 	 * Tell if we are dealing with the rear end of a multiheaded engine.
 	 * @return True if the engine is the rear part of a dualheaded engine.
 	 */
-	FORCEINLINE bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
+	inline bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
 
 	/**
 	 * Update the GUI variant of the current speed of the vehicle.
 	 * Also mark the widget dirty when that is needed, i.e. when
 	 * the speed of this vehicle has changed.
 	 */
-	FORCEINLINE void SetLastSpeed()
+	inline void SetLastSpeed()
 	{
 		if (this->cur_speed != this->gcache.last_speed) {
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
@@ -360,7 +360,7 @@ protected:
 	 * @param max_speed The maximum speed here, in vehicle specific units.
 	 * @return Distance to drive.
 	 */
-	FORCEINLINE uint DoUpdateSpeed(uint accel, int min_speed, int max_speed)
+	inline uint DoUpdateSpeed(uint accel, int min_speed, int max_speed)
 	{
 		uint spd = this->subspeed + accel;
 		this->subspeed = (byte)spd;

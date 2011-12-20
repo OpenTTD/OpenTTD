@@ -56,7 +56,7 @@ static inline void CheckAllocationConstraints(size_t num_elements)
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
 template <typename T>
-static FORCEINLINE T *MallocT(size_t num_elements)
+static inline T *MallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -84,7 +84,7 @@ static FORCEINLINE T *MallocT(size_t num_elements)
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
 template <typename T>
-static FORCEINLINE T *CallocT(size_t num_elements)
+static inline T *CallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -110,7 +110,7 @@ static FORCEINLINE T *CallocT(size_t num_elements)
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
 template <typename T>
-static FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
+static inline T *ReallocT(T *t_ptr, size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always

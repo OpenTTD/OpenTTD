@@ -46,7 +46,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		 * Get the length of this drive through stop.
 		 * @return the length in tile units.
 		 */
-		FORCEINLINE int GetLength() const
+		inline int GetLength() const
 		{
 			return this->length;
 		}
@@ -55,7 +55,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 		 * Get the amount of occupied space in this drive through stop.
 		 * @return the occupied space in tile units.
 		 */
-		FORCEINLINE int GetOccupied() const
+		inline int GetOccupied() const
 		{
 			return this->occupied;
 		}
@@ -71,7 +71,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	struct RoadStop *next;  ///< Next stop of the given type at this station
 
 	/** Initializes a RoadStop */
-	FORCEINLINE RoadStop(TileIndex tile = INVALID_TILE) :
+	inline RoadStop(TileIndex tile = INVALID_TILE) :
 		xy(tile),
 		status((1 << RSSFB_BAY_COUNT) - 1)
 	{ }
@@ -82,7 +82,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * Checks whether there is a free bay in this road stop
 	 * @return is at least one bay free?
 	 */
-	FORCEINLINE bool HasFreeBay() const
+	inline bool HasFreeBay() const
 	{
 		return GB(this->status, 0, RSSFB_BAY_COUNT) != 0;
 	}
@@ -92,7 +92,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * @param nr bay to check
 	 * @return is given bay free?
 	 */
-	FORCEINLINE bool IsFreeBay(uint nr) const
+	inline bool IsFreeBay(uint nr) const
 	{
 		assert(nr < RSSFB_BAY_COUNT);
 		return HasBit(this->status, nr);
@@ -102,7 +102,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * Checks whether the entrance of the road stop is occupied by a vehicle
 	 * @return is entrance busy?
 	 */
-	FORCEINLINE bool IsEntranceBusy() const
+	inline bool IsEntranceBusy() const
 	{
 		return HasBit(this->status, RSSFB_ENTRY_BUSY);
 	}
@@ -111,7 +111,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * Makes an entrance occupied or free
 	 * @param busy if true, marks busy; free otherwise
 	 */
-	FORCEINLINE void SetEntranceBusy(bool busy)
+	inline void SetEntranceBusy(bool busy)
 	{
 		SB(this->status, RSSFB_ENTRY_BUSY, 1, busy);
 	}
@@ -121,7 +121,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * @param direction the direciton to get the entry for
 	 * @return the entry
 	 */
-	FORCEINLINE const Entry *GetEntry(DiagDirection dir) const
+	inline const Entry *GetEntry(DiagDirection dir) const
 	{
 		return HasBit((int)dir, 1) ? this->west : this->east;
 	}
@@ -131,7 +131,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 	 * @param direction the direciton to get the entry for
 	 * @return the entry
 	 */
-	FORCEINLINE Entry *GetEntry(DiagDirection dir)
+	inline Entry *GetEntry(DiagDirection dir)
 	{
 		return HasBit((int)dir, 1) ? this->west : this->east;
 	}
@@ -157,7 +157,7 @@ private:
 	 * @return the allocated bay number
 	 * @pre this->HasFreeBay()
 	 */
-	FORCEINLINE uint AllocateBay()
+	inline uint AllocateBay()
 	{
 		assert(this->HasFreeBay());
 
@@ -173,7 +173,7 @@ private:
 	 * Allocates a bay in a drive-through road stop
 	 * @param nr the number of the bay to allocate
 	 */
-	FORCEINLINE void AllocateDriveThroughBay(uint nr)
+	inline void AllocateDriveThroughBay(uint nr)
 	{
 		assert(nr < RSSFB_BAY_COUNT);
 		ClrBit(this->status, nr);
@@ -183,7 +183,7 @@ private:
 	 * Frees the given bay
 	 * @param nr the number of the bay to free
 	 */
-	FORCEINLINE void FreeBay(uint nr)
+	inline void FreeBay(uint nr)
 	{
 		assert(nr < RSSFB_BAY_COUNT);
 		SetBit(this->status, nr);

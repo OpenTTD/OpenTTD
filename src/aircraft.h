@@ -90,7 +90,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	 * @return Returns true if the aircraft is a helicopter/airplane and
 	 * false if it is a shadow or a rotor
 	 */
-	FORCEINLINE bool IsNormalAircraft() const
+	inline bool IsNormalAircraft() const
 	{
 		/* To be fully correct the commented out functionality is the proper one,
 		 * but since value can only be 0 or 2, it is sufficient to only check <= 2

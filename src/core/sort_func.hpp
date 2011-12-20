@@ -25,7 +25,7 @@
  * @param desc Sort descending.
  */
 template <typename T>
-static FORCEINLINE void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
+static inline void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
 {
 	if (num < 2) return;
 

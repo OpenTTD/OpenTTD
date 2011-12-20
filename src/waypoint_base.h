@@ -27,7 +27,7 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 
 	void UpdateVirtCoord();
 
-	/* virtual */ FORCEINLINE bool TileBelongsToRailStation(TileIndex tile) const
+	/* virtual */ inline bool TileBelongsToRailStation(TileIndex tile) const
 	{
 		return IsRailWaypointTile(tile) && GetStationIndex(tile) == this->index;
 	}
@@ -50,7 +50,7 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 	 * Is this a single tile waypoint?
 	 * @return true if it is.
 	 */
-	FORCEINLINE bool IsSingleTile() const
+	inline bool IsSingleTile() const
 	{
 		return (this->facilities & FACIL_TRAIN) != 0 && this->train_station.w == 1 && this->train_station.h == 1;
 	}
@@ -61,7 +61,7 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 	 * @param wp The waypoint to compare to.
 	 * @return true iff their types are equal.
 	 */
-	FORCEINLINE bool IsOfType(const Waypoint *wp) const
+	inline bool IsOfType(const Waypoint *wp) const
 	{
 		return this->string_id == wp->string_id;
 	}

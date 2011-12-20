@@ -116,7 +116,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	 * Check if the engine is a ground vehicle.
 	 * @return True iff the engine is a train or a road vehicle.
 	 */
-	FORCEINLINE bool IsGroundVehicle() const
+	inline bool IsGroundVehicle() const
 	{
 		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
 	}

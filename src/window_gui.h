@@ -263,7 +263,7 @@ public:
 	 * to destruct them all at the same time too, which is kinda hard.
 	 * @param size the amount of space not to allocate
 	 */
-	FORCEINLINE void *operator new[](size_t size)
+	inline void *operator new[](size_t size)
 	{
 		NOT_REACHED();
 	}
@@ -273,7 +273,7 @@ public:
 	 * Don't free the window directly; it corrupts the linked list when iterating
 	 * @param ptr the pointer not to free
 	 */
-	FORCEINLINE void operator delete(void *ptr)
+	inline void operator delete(void *ptr)
 	{
 	}
 

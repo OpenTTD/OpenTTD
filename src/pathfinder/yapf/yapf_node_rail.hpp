@@ -17,39 +17,39 @@ struct CYapfRailSegmentKey
 {
 	uint32    m_value;
 
-	FORCEINLINE CYapfRailSegmentKey(const CYapfRailSegmentKey& src) : m_value(src.m_value) {}
+	inline CYapfRailSegmentKey(const CYapfRailSegmentKey& src) : m_value(src.m_value) {}
 
-	FORCEINLINE CYapfRailSegmentKey(const CYapfNodeKeyTrackDir& node_key)
+	inline CYapfRailSegmentKey(const CYapfNodeKeyTrackDir& node_key)
 	{
 		Set(node_key);
 	}
 
-	FORCEINLINE void Set(const CYapfRailSegmentKey& src)
+	inline void Set(const CYapfRailSegmentKey& src)
 	{
 		m_value = src.m_value;
 	}
 
-	FORCEINLINE void Set(const CYapfNodeKeyTrackDir& node_key)
+	inline void Set(const CYapfNodeKeyTrackDir& node_key)
 	{
 		m_value = (((int)node_key.m_tile) << 4) | node_key.m_td;
 	}
 
-	FORCEINLINE int32 CalcHash() const
+	inline int32 CalcHash() const
 	{
 		return m_value;
 	}
 
-	FORCEINLINE TileIndex GetTile() const
+	inline TileIndex GetTile() const
 	{
 		return (TileIndex)(m_value >> 4);
 	}
 
-	FORCEINLINE Trackdir GetTrackdir() const
+	inline Trackdir GetTrackdir() const
 	{
 		return (Trackdir)(m_value & 0x0F);
 	}
 
-	FORCEINLINE bool operator == (const CYapfRailSegmentKey& other) const
+	inline bool operator == (const CYapfRailSegmentKey& other) const
 	{
 		return m_value == other.m_value;
 	}
@@ -144,7 +144,7 @@ struct CYapfRailSegment
 	EndSegmentReasonBits   m_end_segment_reason;
 	CYapfRailSegment      *m_hash_next;
 
-	FORCEINLINE CYapfRailSegment(const CYapfRailSegmentKey& key)
+	inline CYapfRailSegment(const CYapfRailSegmentKey& key)
 		: m_key(key)
 		, m_last_tile(INVALID_TILE)
 		, m_last_td(INVALID_TRACKDIR)
@@ -155,22 +155,22 @@ struct CYapfRailSegment
 		, m_hash_next(NULL)
 	{}
 
-	FORCEINLINE const Key& GetKey() const
+	inline const Key& GetKey() const
 	{
 		return m_key;
 	}
 
-	FORCEINLINE TileIndex GetTile() const
+	inline TileIndex GetTile() const
 	{
 		return m_key.GetTile();
 	}
 
-	FORCEINLINE CYapfRailSegment *GetHashNext()
+	inline CYapfRailSegment *GetHashNext()
 	{
 		return m_hash_next;
 	}
 
-	FORCEINLINE void SetHashNext(CYapfRailSegment *next)
+	inline void SetHashNext(CYapfRailSegment *next)
 	{
 		m_hash_next = next;
 	}
@@ -208,7 +208,7 @@ struct CYapfRailNodeT
 	SignalType        m_last_red_signal_type;
 	SignalType        m_last_signal_type;
 
-	FORCEINLINE void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
+	inline void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		base::Set(parent, tile, td, is_choice);
 		m_segment = NULL;
@@ -236,19 +236,19 @@ struct CYapfRailNodeT
 		flags_u.flags_s.m_choice_seen |= is_choice;
 	}
 
-	FORCEINLINE TileIndex GetLastTile() const
+	inline TileIndex GetLastTile() const
 	{
 		assert(m_segment != NULL);
 		return m_segment->m_last_tile;
 	}
 
-	FORCEINLINE Trackdir GetLastTrackdir() const
+	inline Trackdir GetLastTrackdir() const
 	{
 		assert(m_segment != NULL);
 		return m_segment->m_last_td;
 	}
 
-	FORCEINLINE void SetLastTileTrackdir(TileIndex tile, Trackdir td)
+	inline void SetLastTileTrackdir(TileIndex tile, Trackdir td)
 	{
 		assert(m_segment != NULL);
 		m_segment->m_last_tile = tile;

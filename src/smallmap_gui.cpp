@@ -598,7 +598,7 @@ class SmallMapWindow : public Window {
 	static const uint8 FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
 	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
 
-	FORCEINLINE Point SmallmapRemapCoords(int x, int y) const
+	inline Point SmallmapRemapCoords(int x, int y) const
 	{
 		Point pt;
 		pt.x = (y - x) * 2;
@@ -612,7 +612,7 @@ class SmallMapWindow : public Window {
 	 * @param tile_y Y coordinate of the tile.
 	 * @return Position to draw on.
 	 */
-	FORCEINLINE Point RemapTile(int tile_x, int tile_y) const
+	inline Point RemapTile(int tile_x, int tile_y) const
 	{
 		int x_offset = tile_x - this->scroll_x / (int)TILE_SIZE;
 		int y_offset = tile_y - this->scroll_y / (int)TILE_SIZE;
@@ -636,7 +636,7 @@ class SmallMapWindow : public Window {
 	 * @return Tile being displayed at the given position relative to #scroll_x and #scroll_y.
 	 * @note The #subscroll offset is already accounted for.
 	 */
-	FORCEINLINE Point PixelToTile(int px, int py, int *sub, bool add_sub = true) const
+	inline Point PixelToTile(int px, int py, int *sub, bool add_sub = true) const
 	{
 		if (add_sub) px += this->subscroll;  // Total horizontal offset.
 

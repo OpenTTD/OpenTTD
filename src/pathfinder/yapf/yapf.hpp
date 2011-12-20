@@ -18,7 +18,7 @@
 #include "yapf.h"
 
 //#undef FORCEINLINE
-//#define FORCEINLINE inline
+//#define inline inline
 
 #include "../../misc/blob.hpp"
 #include "../../misc/str.hpp"

@@ -26,7 +26,7 @@ protected:
 	TrackdirBits m_orgTrackdirs;                  ///< origin trackdir mask
 
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -70,7 +70,7 @@ protected:
 	bool        m_treat_first_red_two_way_signal_as_eol; ///< in some cases (leaving station) we need to handle first two-way signal differently
 
 	/** to access inherited path finder */
-	FORCEINLINE Tpf& Yapf()
+	inline Tpf& Yapf()
 	{
 		return *static_cast<Tpf*>(this);
 	}
@@ -104,7 +104,7 @@ public:
 	}
 
 	/** return true if first two-way signal should be treated as dead end */
-	FORCEINLINE bool TreatFirstRedTwoWaySignalAsEOL()
+	inline bool TreatFirstRedTwoWaySignalAsEOL()
 	{
 		return Yapf().PfGetSettings().rail_firstred_twoway_eol && m_treat_first_red_two_way_signal_as_eol;
 	}
@@ -140,7 +140,7 @@ protected:
 
 public:
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		bool bDest = (n.m_key.m_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.GetTrackdir())) != TRACKDIR_BIT_NONE);
 		return bDest;

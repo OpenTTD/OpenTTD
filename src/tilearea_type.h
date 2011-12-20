@@ -85,7 +85,7 @@ public:
 	 * Get the tile we are currently at.
 	 * @return The tile we are at, or INVALID_TILE when we're done.
 	 */
-	FORCEINLINE operator TileIndex () const
+	inline operator TileIndex () const
 	{
 		return this->tile;
 	}
@@ -120,7 +120,7 @@ public:
 	/**
 	 * Move ourselves to the next tile in the rectange on the map.
 	 */
-	FORCEINLINE TileIterator& operator ++()
+	inline TileIterator& operator ++()
 	{
 		assert(this->tile != INVALID_TILE);
 

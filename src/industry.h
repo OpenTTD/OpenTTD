@@ -93,7 +93,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	 * @pre IsTileType(t, MP_INDUSTRY)
 	 * @return the industry
 	 */
-	static FORCEINLINE Industry *GetByTile(TileIndex tile)
+	static inline Industry *GetByTile(TileIndex tile)
 	{
 		return Industry::Get(GetIndustryIndex(tile));
 	}

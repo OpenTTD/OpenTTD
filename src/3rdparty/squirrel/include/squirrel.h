@@ -35,6 +35,10 @@ to the following restrictions:
 extern "C" {
 #endif
 
+#if defined(_MSC_VER)
+# define inline __forceinline
+#endif /* _MSC_VER */
+
 #if defined(_MSC_VER) && _MSC_VER >= 1400 // MSVC 2005 safety checks
 # pragma warning(disable: 4996)   // '_wfopen' was declared deprecated
 # define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions

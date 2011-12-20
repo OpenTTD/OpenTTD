@@ -35,7 +35,7 @@
  * @return The greater value or a if equals
  */
 template <typename T>
-static FORCEINLINE T max(const T a, const T b)
+static inline T max(const T a, const T b)
 {
 	return (a >= b) ? a : b;
 }
@@ -51,7 +51,7 @@ static FORCEINLINE T max(const T a, const T b)
  * @return The smaller value or b if equals
  */
 template <typename T>
-static FORCEINLINE T min(const T a, const T b)
+static inline T min(const T a, const T b)
 {
 	return (a < b) ? a : b;
 }
@@ -65,7 +65,7 @@ static FORCEINLINE T min(const T a, const T b)
  * @param b The second integer
  * @return The smaller value
  */
-static FORCEINLINE int min(const int a, const int b)
+static inline int min(const int a, const int b)
 {
 	return min<int>(a, b);
 }
@@ -79,7 +79,7 @@ static FORCEINLINE int min(const int a, const int b)
  * @param b The second unsigned integer
  * @return The smaller value
  */
-static FORCEINLINE uint minu(const uint a, const uint b)
+static inline uint minu(const uint a, const uint b)
 {
 	return min<uint>(a, b);
 }
@@ -92,7 +92,7 @@ static FORCEINLINE uint minu(const uint a, const uint b)
  * @return The unsigned value
  */
 template <typename T>
-static FORCEINLINE T abs(const T a)
+static inline T abs(const T a)
 {
 	return (a < (T)0) ? -a : a;
 }
@@ -106,7 +106,7 @@ static FORCEINLINE T abs(const T a)
  * @return The smallest multiple of n equal or greater than x
  */
 template <typename T>
-static FORCEINLINE T Align(const T x, uint n)
+static inline T Align(const T x, uint n)
 {
 	assert((n & (n - 1)) == 0 && n != 0);
 	n--;
@@ -124,7 +124,7 @@ static FORCEINLINE T Align(const T x, uint n)
  * @see Align()
  */
 template <typename T>
-static FORCEINLINE T *AlignPtr(T *x, uint n)
+static inline T *AlignPtr(T *x, uint n)
 {
 	assert_compile(sizeof(size_t) == sizeof(void *));
 	return (T *)Align((size_t)x, n);
@@ -148,7 +148,7 @@ static FORCEINLINE T *AlignPtr(T *x, uint n)
  * @see Clamp(int, int, int)
  */
 template <typename T>
-static FORCEINLINE T Clamp(const T a, const T min, const T max)
+static inline T Clamp(const T a, const T min, const T max)
 {
 	assert(min <= max);
 	if (a <= min) return min;
@@ -172,7 +172,7 @@ static FORCEINLINE T Clamp(const T a, const T min, const T max)
  * @returns A value between min and max which is closest to a.
  * @see ClampU(uint, uint, uint)
  */
-static FORCEINLINE int Clamp(const int a, const int min, const int max)
+static inline int Clamp(const int a, const int min, const int max)
 {
 	return Clamp<int>(a, min, max);
 }
@@ -193,7 +193,7 @@ static FORCEINLINE int Clamp(const int a, const int min, const int max)
  * @returns A value between min and max which is closest to a.
  * @see Clamp(int, int, int)
  */
-static FORCEINLINE uint ClampU(const uint a, const uint min, const uint max)
+static inline uint ClampU(const uint a, const uint min, const uint max)
 {
 	return Clamp<uint>(a, min, max);
 }
@@ -212,7 +212,7 @@ static FORCEINLINE uint ClampU(const uint a, const uint min, const uint max)
  * @return The 64-bit value reduced to a 32-bit value
  * @see Clamp(int, int, int)
  */
-static FORCEINLINE int32 ClampToI32(const int64 a)
+static inline int32 ClampToI32(const int64 a)
 {
 	return (int32)Clamp<int64>(a, INT32_MIN, INT32_MAX);
 }
@@ -224,7 +224,7 @@ static FORCEINLINE int32 ClampToI32(const int64 a)
  * @return The 64-bit value reduced to a 16-bit value
  * @see ClampU(uint, uint, uint)
  */
-static FORCEINLINE uint16 ClampToU16(const uint64 a)
+static inline uint16 ClampToU16(const uint64 a)
 {
 	/* MSVC thinks, in its infinite wisdom, that int min(int, int) is a better
 	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
@@ -241,7 +241,7 @@ static FORCEINLINE uint16 ClampToU16(const uint64 a)
  * @return The absolute difference between the given scalars
  */
 template <typename T>
-static FORCEINLINE T Delta(const T a, const T b)
+static inline T Delta(const T a, const T b)
 {
 	return (a < b) ? b - a : a - b;
 }
@@ -259,7 +259,7 @@ static FORCEINLINE T Delta(const T a, const T b)
  * @return True if the value is in the interval, false else.
  */
 template <typename T>
-static FORCEINLINE bool IsInsideBS(const T x, const uint base, const uint size)
+static inline bool IsInsideBS(const T x, const uint base, const uint size)
 {
 	return (uint)(x - base) < size;
 }
@@ -275,7 +275,7 @@ static FORCEINLINE bool IsInsideBS(const T x, const uint base, const uint size)
  * @see IsInsideBS()
  */
 template <typename T>
-static FORCEINLINE bool IsInsideMM(const T x, const uint min, const uint max)
+static inline bool IsInsideMM(const T x, const uint min, const uint max)
 {
 	return (uint)(x - min) < (max - min);
 }
@@ -286,7 +286,7 @@ static FORCEINLINE bool IsInsideMM(const T x, const uint min, const uint max)
  * @param b variable to swap with a
  */
 template <typename T>
-static FORCEINLINE void Swap(T &a, T &b)
+static inline void Swap(T &a, T &b)
 {
 	T t = a;
 	a = b;
@@ -298,7 +298,7 @@ static FORCEINLINE void Swap(T &a, T &b)
  * @param i value to convert, range 0..255
  * @return value in range 0..100
  */
-static FORCEINLINE uint ToPercent8(uint i)
+static inline uint ToPercent8(uint i)
 {
 	assert(i < 256);
 	return i * 101 >> 8;
@@ -309,7 +309,7 @@ static FORCEINLINE uint ToPercent8(uint i)
  * @param i value to convert, range 0..65535
  * @return value in range 0..100
  */
-static FORCEINLINE uint ToPercent16(uint i)
+static inline uint ToPercent16(uint i)
 {
 	assert(i < 65536);
 	return i * 101 >> 16;
@@ -324,7 +324,7 @@ int GreatestCommonDivisor(int a, int b);
  * @param b Denominator
  * @return Quotient, rounded up
  */
-static FORCEINLINE uint CeilDiv(uint a, uint b)
+static inline uint CeilDiv(uint a, uint b)
 {
 	return (a + b - 1) / b;
 }
@@ -335,7 +335,7 @@ static FORCEINLINE uint CeilDiv(uint a, uint b)
  * @param b Denominator
  * @return a rounded up to the nearest multiple of b.
  */
-static FORCEINLINE uint Ceil(uint a, uint b)
+static inline uint Ceil(uint a, uint b)
 {
 	return CeilDiv(a, b) * b;
 }
@@ -346,7 +346,7 @@ static FORCEINLINE uint Ceil(uint a, uint b)
  * @param b Denominator
  * @return Quotient, rounded to nearest
  */
-static FORCEINLINE int RoundDivSU(int a, uint b)
+static inline int RoundDivSU(int a, uint b)
 {
 	if (a > 0) {
 		/* 0.5 is rounded to 1 */

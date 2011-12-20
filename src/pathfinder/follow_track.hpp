@@ -53,25 +53,25 @@ struct CFollowTrackT
 	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
-	FORCEINLINE CFollowTrackT(const VehicleType *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	inline CFollowTrackT(const VehicleType *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
 		Init(v, railtype_override, pPerf);
 	}
 
-	FORCEINLINE CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
 		m_veh = NULL;
 		Init(o, railtype_override, pPerf);
 	}
 
-	FORCEINLINE void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
 		Init(v != NULL ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
 	}
 
-	FORCEINLINE void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
 		assert((!IsRoadTT() || m_veh != NULL) && (!IsRailTT() || railtype_override != INVALID_RAILTYPES));
 		m_veh_owner = o;
@@ -86,16 +86,16 @@ struct CFollowTrackT
 		m_railtypes = railtype_override;
 	}
 
-	FORCEINLINE static TransportType TT() {return Ttr_type_;}
-	FORCEINLINE static bool IsWaterTT() {return TT() == TRANSPORT_WATER;}
-	FORCEINLINE static bool IsRailTT() {return TT() == TRANSPORT_RAIL;}
-	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(RoadVehicle::From(m_veh)->compatible_roadtypes, ROADTYPE_TRAM);}
-	FORCEINLINE static bool IsRoadTT() {return TT() == TRANSPORT_ROAD;}
-	FORCEINLINE static bool Allow90degTurns() {return T90deg_turns_allowed_;}
-	FORCEINLINE static bool DoTrackMasking() {return IsRailTT() && Tmask_reserved_tracks;}
+	inline static TransportType TT() {return Ttr_type_;}
+	inline static bool IsWaterTT() {return TT() == TRANSPORT_WATER;}
+	inline static bool IsRailTT() {return TT() == TRANSPORT_RAIL;}
+	inline bool IsTram() {return IsRoadTT() && HasBit(RoadVehicle::From(m_veh)->compatible_roadtypes, ROADTYPE_TRAM);}
+	inline static bool IsRoadTT() {return TT() == TRANSPORT_ROAD;}
+	inline static bool Allow90degTurns() {return T90deg_turns_allowed_;}
+	inline static bool DoTrackMasking() {return IsRailTT() && Tmask_reserved_tracks;}
 
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
-	FORCEINLINE DiagDirection GetSingleTramBit(TileIndex tile)
+	inline DiagDirection GetSingleTramBit(TileIndex tile)
 	{
 		assert(IsTram()); // this function shouldn't be called in other cases
 
@@ -189,7 +189,7 @@ struct CFollowTrackT
 
 protected:
 	/** Follow the m_exitdir from m_old_tile and fill m_new_tile and m_tiles_skipped */
-	FORCEINLINE void FollowTileExit()
+	inline void FollowTileExit()
 	{
 		m_is_station = m_is_bridge = m_is_tunnel = false;
 		m_tiles_skipped = 0;
@@ -227,7 +227,7 @@ protected:
 	}
 
 	/** stores track status (available trackdirs) for the new tile into m_new_td_bits */
-	FORCEINLINE bool QueryNewTileTrackStatus()
+	inline bool QueryNewTileTrackStatus()
 	{
 		CPerfStart perf(*m_pPerf);
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
@@ -257,7 +257,7 @@ protected:
 	}
 
 	/** return true if we can leave m_old_tile in m_exitdir */
-	FORCEINLINE bool CanExitOldTile()
+	inline bool CanExitOldTile()
 	{
 		/* road stop can be left at one direction only unless it's a drive-through stop */
 		if (IsRoadTT() && IsStandardRoadStopTile(m_old_tile)) {
@@ -289,7 +289,7 @@ protected:
 	}
 
 	/** return true if we can enter m_new_tile from m_exitdir */
-	FORCEINLINE bool CanEnterNewTile()
+	inline bool CanEnterNewTile()
 	{
 		if (IsRoadTT() && IsStandardRoadStopTile(m_new_tile)) {
 			/* road stop can be entered from one direction only unless it's a drive-through stop */
@@ -386,7 +386,7 @@ protected:
 	}
 
 	/** return true if we must reverse (in depots and single tram bits) */
-	FORCEINLINE bool ForcedReverse()
+	inline bool ForcedReverse()
 	{
 		/* rail and road depots cause reversing */
 		if (!IsWaterTT() && IsDepotTypeTile(m_old_tile, TT())) {
@@ -417,7 +417,7 @@ protected:
 	}
 
 	/** return true if we successfully reversed at end of road/track */
-	FORCEINLINE bool TryReverse()
+	inline bool TryReverse()
 	{
 		if (IsRoadTT() && !IsTram()) {
 			/* if we reached the end of road, we can reverse the RV and continue moving */

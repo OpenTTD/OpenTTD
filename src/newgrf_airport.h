@@ -45,7 +45,7 @@ public:
 	{
 	}
 
-	FORCEINLINE TileIterator& operator ++()
+	inline TileIterator& operator ++()
 	{
 		this->att++;
 		if (this->att->ti.x == -0x80) {

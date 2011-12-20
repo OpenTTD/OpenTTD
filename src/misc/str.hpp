@@ -24,24 +24,24 @@ struct CStrA : public CBlobT<char>
 	typedef CBlobT<char> base;                    ///< base class
 
 	/** Create an empty CStrT */
-	FORCEINLINE CStrA()
+	inline CStrA()
 	{
 	}
 
 	/** Copy constructor */
-	FORCEINLINE CStrA(const CStrA &src) : base(src)
+	inline CStrA(const CStrA &src) : base(src)
 	{
 		base::FixTail();
 	}
 
 	/** Take over ownership constructor */
-	FORCEINLINE CStrA(const OnTransfer& ot)
+	inline CStrA(const OnTransfer& ot)
 		: base(ot)
 	{
 	}
 
 	/** Grow the actual buffer and fix the trailing zero at the end. */
-	FORCEINLINE char *GrowSizeNC(uint count)
+	inline char *GrowSizeNC(uint count)
 	{
 		char *ret = base::GrowSizeNC(count);
 		base::FixTail();
@@ -49,7 +49,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Append zero-ended C string. */
-	FORCEINLINE void AppendStr(const char *str)
+	inline void AppendStr(const char *str)
 	{
 		if (!StrEmpty(str)) {
 			base::AppendRaw(str, strlen(str));
@@ -58,7 +58,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Append another CStrA. */
-	FORCEINLINE void Append(const CStrA &src)
+	inline void Append(const CStrA &src)
 	{
 		if (src.Length() > 0) {
 			base::AppendRaw(src);
@@ -67,7 +67,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Assignment from C string. */
-	FORCEINLINE CStrA &operator = (const char *src)
+	inline CStrA &operator = (const char *src)
 	{
 		base::Clear();
 		AppendStr(src);
@@ -75,7 +75,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Assignment from another CStrA. */
-	FORCEINLINE CStrA &operator = (const CStrA &src)
+	inline CStrA &operator = (const CStrA &src)
 	{
 		if (&src != this) {
 			base::Clear();
@@ -86,7 +86,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Lower-than operator (to support stl collections) */
-	FORCEINLINE bool operator < (const CStrA &other) const
+	inline bool operator < (const CStrA &other) const
 	{
 		return strcmp(base::Data(), other.Data()) < 0;
 	}

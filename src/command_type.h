@@ -58,7 +58,7 @@ public:
 	 * Adds the given cost to the cost of the command.
 	 * @param cost the cost to add
 	 */
-	FORCEINLINE void AddCost(const Money &cost)
+	inline void AddCost(const Money &cost)
 	{
 		this->cost += cost;
 	}
@@ -69,7 +69,7 @@ public:
 	 * Multiplies the cost of the command by the given factor.
 	 * @param factor factor to multiply the costs with
 	 */
-	FORCEINLINE void MultiplyCost(int factor)
+	inline void MultiplyCost(int factor)
 	{
 		this->cost *= factor;
 	}
@@ -78,7 +78,7 @@ public:
 	 * The costs as made up to this moment
 	 * @return the costs
 	 */
-	FORCEINLINE Money GetCost() const
+	inline Money GetCost() const
 	{
 		return this->cost;
 	}
@@ -87,7 +87,7 @@ public:
 	 * The expense type of the cost
 	 * @return the expense type
 	 */
-	FORCEINLINE ExpensesType GetExpensesType() const
+	inline ExpensesType GetExpensesType() const
 	{
 		return this->expense_type;
 	}
@@ -137,7 +137,7 @@ public:
 	 * Did this command succeed?
 	 * @return true if and only if it succeeded
 	 */
-	FORCEINLINE bool Succeeded() const
+	inline bool Succeeded() const
 	{
 		return this->success;
 	}
@@ -146,7 +146,7 @@ public:
 	 * Did this command fail?
 	 * @return true if and only if it failed
 	 */
-	FORCEINLINE bool Failed() const
+	inline bool Failed() const
 	{
 		return !this->success;
 	}

@@ -40,12 +40,12 @@
 	#define TO_LE32X(x)  (x)
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
-static FORCEINLINE uint16 ReadLE16Aligned(const void *x)
+static inline uint16 ReadLE16Aligned(const void *x)
 {
 	return FROM_LE16(*(const uint16*)x);
 }
 
-static FORCEINLINE uint16 ReadLE16Unaligned(const void *x)
+static inline uint16 ReadLE16Unaligned(const void *x)
 {
 #if OTTD_ALIGNMENT == 1
 	return ((const byte*)x)[0] | ((const byte*)x)[1] << 8;

@@ -35,64 +35,64 @@ protected:
 
 public:
 	/** default (NULL) construct or construct from a raw pointer */
-	FORCEINLINE CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj) {AddRef();}
+	inline CCountedPtr(Tcls *pObj = NULL) : m_pT(pObj) {AddRef();}
 
 	/** copy constructor (invoked also when initializing from another smart ptr) */
-	FORCEINLINE CCountedPtr(const CCountedPtr& src) : m_pT(src.m_pT) {AddRef();}
+	inline CCountedPtr(const CCountedPtr& src) : m_pT(src.m_pT) {AddRef();}
 
 	/** destructor releasing the reference */
-	FORCEINLINE ~CCountedPtr() {Release();}
+	inline ~CCountedPtr() {Release();}
 
 protected:
 	/** add one ref to the underlaying object */
-	FORCEINLINE void AddRef() {if (m_pT != NULL) m_pT->AddRef();}
+	inline void AddRef() {if (m_pT != NULL) m_pT->AddRef();}
 
 public:
 	/** release smart pointer (and decrement ref count) if not null */
-	FORCEINLINE void Release() {if (m_pT != NULL) {Tcls *pT = m_pT; m_pT = NULL; pT->Release();}}
+	inline void Release() {if (m_pT != NULL) {Tcls *pT = m_pT; m_pT = NULL; pT->Release();}}
 
 	/** dereference of smart pointer - const way */
-	FORCEINLINE const Tcls *operator -> () const {assert(m_pT != NULL); return m_pT;}
+	inline const Tcls *operator -> () const {assert(m_pT != NULL); return m_pT;}
 
 	/** dereference of smart pointer - non const way */
-	FORCEINLINE Tcls *operator -> () {assert(m_pT != NULL); return m_pT;}
+	inline Tcls *operator -> () {assert(m_pT != NULL); return m_pT;}
 
 	/** raw pointer casting operator - const way */
-	FORCEINLINE operator const Tcls*() const {assert(m_pT == NULL); return m_pT;}
+	inline operator const Tcls*() const {assert(m_pT == NULL); return m_pT;}
 
 	/** raw pointer casting operator - non-const way */
-	FORCEINLINE operator Tcls*() {return m_pT;}
+	inline operator Tcls*() {return m_pT;}
 
 	/** operator & to support output arguments */
-	FORCEINLINE Tcls** operator &() {assert(m_pT == NULL); return &m_pT;}
+	inline Tcls** operator &() {assert(m_pT == NULL); return &m_pT;}
 
 	/** assignment operator from raw ptr */
-	FORCEINLINE CCountedPtr& operator = (Tcls *pT) {Assign(pT); return *this;}
+	inline CCountedPtr& operator = (Tcls *pT) {Assign(pT); return *this;}
 
 	/** assignment operator from another smart ptr */
-	FORCEINLINE CCountedPtr& operator = (const CCountedPtr& src) {Assign(src.m_pT); return *this;}
+	inline CCountedPtr& operator = (const CCountedPtr& src) {Assign(src.m_pT); return *this;}
 
 	/** assignment operator helper */
-	FORCEINLINE void Assign(Tcls *pT);
+	inline void Assign(Tcls *pT);
 
 	/** one way how to test for NULL value */
-	FORCEINLINE bool IsNull() const {return m_pT == NULL;}
+	inline bool IsNull() const {return m_pT == NULL;}
 
 	/** another way how to test for NULL value */
-	//FORCEINLINE bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
+	//inline bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
 
 	/** yet another way how to test for NULL value */
-	//FORCEINLINE bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
+	//inline bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
 
 	/** assign pointer w/o incrementing ref count */
-	FORCEINLINE void Attach(Tcls *pT) {Release(); m_pT = pT;}
+	inline void Attach(Tcls *pT) {Release(); m_pT = pT;}
 
 	/** detach pointer w/o decrementing ref count */
-	FORCEINLINE Tcls *Detach() {Tcls *pT = m_pT; m_pT = NULL; return pT;}
+	inline Tcls *Detach() {Tcls *pT = m_pT; m_pT = NULL; return pT;}
 };
 
 template <class Tcls_>
-FORCEINLINE void CCountedPtr<Tcls_>::Assign(Tcls *pT)
+inline void CCountedPtr<Tcls_>::Assign(Tcls *pT)
 {
 	/* if they are the same, we do nothing */
 	if (pT != m_pT) {

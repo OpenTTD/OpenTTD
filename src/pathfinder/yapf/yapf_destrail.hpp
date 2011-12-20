@@ -51,13 +51,13 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		bool bDest = IsRailDepotTile(tile);
 		return bDest;
@@ -67,7 +67,7 @@ public:
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
 	 */
-	FORCEINLINE bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
 		return true;
@@ -91,13 +91,13 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		return IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns()) &&
 				IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
@@ -107,7 +107,7 @@ public:
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate.
 	 */
-	FORCEINLINE bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
 		return true;
@@ -164,13 +164,13 @@ public:
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(Node& n)
+	inline bool PfDetectDestination(Node& n)
 	{
 		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
 	}
 
 	/** Called by YAPF to detect if node ends in the desired destination */
-	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	inline bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		bool bDest;
 		if (m_dest_station_id != INVALID_STATION) {
@@ -188,7 +188,7 @@ public:
 	 * Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate
 	 */
-	FORCEINLINE bool PfCalcEstimate(Node& n)
+	inline bool PfCalcEstimate(Node& n)
 	{
 		static const int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
 		static const int dg_dir_to_y_offs[] = {0, 1, 0, -1};

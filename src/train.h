@@ -128,7 +128,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	 * Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
 	 * @return Next vehicle in the consist.
 	 */
-	FORCEINLINE Train *GetNextUnit() const
+	inline Train *GetNextUnit() const
 	{
 		Train *v = this->GetNextVehicle();
 		if (v != NULL && v->IsRearDualheaded()) v = v->GetNextVehicle();
@@ -140,7 +140,7 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 	 * Get the previous real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
 	 * @return Previous vehicle in the consist.
 	 */
-	FORCEINLINE Train *GetPrevUnit()
+	inline Train *GetPrevUnit()
 	{
 		Train *v = this->GetPrevVehicle();
 		if (v != NULL && v->IsRearDualheaded()) v = v->GetPrevVehicle();
@@ -167,7 +167,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
 	 */
-	FORCEINLINE uint16 GetPower() const
+	inline uint16 GetPower() const
 	{
 		/* Power is not added for articulated parts */
 		if (!this->IsArticulatedPart() && HasPowerOnRail(this->railtype, GetRailType(this->tile))) {
@@ -184,7 +184,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns a value if this articulated part is powered.
 	 * @return Power value from the articulated part in HP, or zero if it is not powered.
 	 */
-	FORCEINLINE uint16 GetPoweredPartPower(const Train *head) const
+	inline uint16 GetPoweredPartPower(const Train *head) const
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
 		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
@@ -198,7 +198,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the weight value that this vehicle will use.
 	 * @return Weight value from the engine in tonnes.
 	 */
-	FORCEINLINE uint16 GetWeight() const
+	inline uint16 GetWeight() const
 	{
 		uint16 weight = (CargoSpec::Get(this->cargo_type)->weight * this->cargo.Count() * FreightWagonMult(this->cargo_type)) / 16;
 
@@ -219,7 +219,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the tractive effort value that this vehicle will use.
 	 * @return Tractive effort value from the engine.
 	 */
-	FORCEINLINE byte GetTractiveEffort() const
+	inline byte GetTractiveEffort() const
 	{
 		return GetVehicleProperty(this, PROP_TRAIN_TRACTIVE_EFFORT, RailVehInfo(this->engine_type)->tractive_effort);
 	}
@@ -228,7 +228,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine in m^2.
 	 */
-	FORCEINLINE byte GetAirDragArea() const
+	inline byte GetAirDragArea() const
 	{
 		/* Air drag is higher in tunnels due to the limited cross-section. */
 		return (this->track == TRACK_BIT_WORMHOLE && this->vehstatus & VS_HIDDEN) ? 28 : 14;
@@ -238,7 +238,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the air drag coefficient of this vehicle.
 	 * @return Air drag value from the engine.
 	 */
-	FORCEINLINE byte GetAirDrag() const
+	inline byte GetAirDrag() const
 	{
 		return RailVehInfo(this->engine_type)->air_drag;
 	}
@@ -247,7 +247,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Checks the current acceleration status of this vehicle.
 	 * @return Acceleration status.
 	 */
-	FORCEINLINE AccelStatus GetAccelerationStatus() const
+	inline AccelStatus GetAccelerationStatus() const
 	{
 		return (this->vehstatus & VS_STOPPED) || HasBit(this->flags, VRF_REVERSING) || HasBit(this->flags, VRF_TRAIN_STUCK) ? AS_BRAKE : AS_ACCEL;
 	}
@@ -256,7 +256,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Calculates the current speed of this vehicle.
 	 * @return Current speed in km/h-ish.
 	 */
-	FORCEINLINE uint16 GetCurrentSpeed() const
+	inline uint16 GetCurrentSpeed() const
 	{
 		return this->cur_speed;
 	}
@@ -265,7 +265,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the rolling friction coefficient of this vehicle.
 	 * @return Rolling friction coefficient in [1e-4].
 	 */
-	FORCEINLINE uint32 GetRollingFriction() const
+	inline uint32 GetRollingFriction() const
 	{
 		/* Rolling friction for steel on steel is between 0.1% and 0.2%.
 		 * The friction coefficient increases with speed in a way that
@@ -277,7 +277,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Allows to know the acceleration type of a vehicle.
 	 * @return Acceleration type of the vehicle.
 	 */
-	FORCEINLINE int GetAccelerationType() const
+	inline int GetAccelerationType() const
 	{
 		return GetRailTypeInfo(this->railtype)->acceleration_type;
 	}
@@ -286,7 +286,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Returns the slope steepness used by this vehicle.
 	 * @return Slope steepness used by the vehicle.
 	 */
-	FORCEINLINE uint32 GetSlopeSteepness() const
+	inline uint32 GetSlopeSteepness() const
 	{
 		return _settings_game.vehicle.train_slope_steepness;
 	}
@@ -295,7 +295,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Maximum speed allowed.
 	 */
-	FORCEINLINE uint16 GetMaxTrackSpeed() const
+	inline uint16 GetMaxTrackSpeed() const
 	{
 		return GetRailTypeInfo(GetRailType(this->tile))->max_speed;
 	}
@@ -304,7 +304,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * Checks if the vehicle is at a tile that can be sloped.
 	 * @return True if the tile can be sloped.
 	 */
-	FORCEINLINE bool TileMayHaveSlopedTrack() const
+	inline bool TileMayHaveSlopedTrack() const
 	{
 		/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped. */
 		return this->track == TRACK_BIT_X || this->track == TRACK_BIT_Y;
@@ -315,7 +315,7 @@ protected: // These functions should not be called outside acceleration code.
 	 * have always the same direction as the track under them.
 	 * @return false
 	 */
-	FORCEINLINE bool HasToUseGetSlopePixelZ()
+	inline bool HasToUseGetSlopePixelZ()
 	{
 		return false;
 	}

@@ -166,7 +166,7 @@ struct CargoSummaryItem {
 	StationID source; ///< One of the source stations
 
 	/** Used by CargoSummary::Find() and similiar functions */
-	FORCEINLINE bool operator != (const CargoSummaryItem &other) const
+	inline bool operator != (const CargoSummaryItem &other) const
 	{
 		return this->cargo != other.cargo || this->subtype != other.subtype;
 	}

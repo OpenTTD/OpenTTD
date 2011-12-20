@@ -137,7 +137,7 @@ public:
 	}
 
 	/** Array access operator, see #Get. */
-	FORCEINLINE T &operator[](TileIndex tile)
+	inline T &operator[](TileIndex tile)
 	{
 		return *this->Get(tile);
 	}

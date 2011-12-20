@@ -43,7 +43,7 @@ struct BinaryHeap {
 	 * @param i Element to access (starts at offset \c 1).
 	 * @return Value of the element.
 	 */
-	FORCEINLINE BinaryHeapNode &GetElement(uint i)
+	inline BinaryHeapNode &GetElement(uint i)
 	{
 		assert(i > 0);
 		return this->elements[(i - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][(i - 1) & BINARY_HEAP_BLOCKSIZE_MASK];
@@ -96,7 +96,7 @@ struct Hash {
 	/**
 	 * Gets the current size of the hash.
 	 */
-	FORCEINLINE uint GetSize() const
+	inline uint GetSize() const
 	{
 		return this->size;
 	}
