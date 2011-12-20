@@ -350,6 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Beenden
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spieleinstellungen
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwierigkeitsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweiterte Einstellungen
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :KI- / Skripteinstellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
@@ -382,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stadt gründen
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventionen
+STR_SUBSIDIES_MENU_GOAL                                         :Momentane Ziele
 ############ range ends here
 
 ############ range for graph menu starts
@@ -443,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Vergangene Nach
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformationen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
-STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :KI / Skript-Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Standard: Strg+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Hineingezoomter Screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Standard: Strg+G)
@@ -748,6 +750,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Neue Fa
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Änderungen angenommener Fracht
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventionen
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Allgemeine Nachrichten
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Die Einwohner feiern . . .{}Der erste Zug erreicht {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Die Einwohner feiern . . .{}Der erste Bus erreicht {STATION}!
@@ -1404,6 +1408,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Schwieri
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweiterte Einstellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-Einstellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Erweiterungen herunterladen
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}KI- / Skripteinstellungen
 STR_INTRO_QUIT                                                  :{BLACK}Beenden
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neues Spiel beginnen. Strg+Klick überspringt Karteneinstellungen
@@ -1423,6 +1428,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwieri
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Erweiterte Einstellungen anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF-Einstellungen anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Prüfe auf neue oder aktualisierte Erweiterungen zum Herunterladen
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zeige KI- und Skripteinstellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' beenden
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Dieser Übersetzung fehl{P 0 t en} {NUM} String{P "" s}. Bitte hilf, OpenTTD zu verbessern und melde Dich als Übersetzer an. Siehe readme.txt für weitere Details.
@@ -1824,10 +1830,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spiel angehalte
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spiel weiterhin angehalten ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spiel weiterhin angehalten ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spiel weiterhin angehalten ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spiel immer noch angehalten ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spiel fortgesetzt ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Spieleranzahl
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Teilnehmer meldet sich an
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Kontrollskript
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :geht
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ist dem Spiel beigetreten
@@ -2411,6 +2419,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegl
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Raue, felsige Landschaft wird erzeugt
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spiel wird vorbereitet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spielfeld wird belebt
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Führe Skript aus
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wird vorbereitet
 
 # NewGRF settings
@@ -2649,6 +2658,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eine St
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bau von Geschäftsgebäuden im Ort finanzieren.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen. Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}Kosten: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Ziele
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Allgemeine Spielziele:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Keine -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenspezifische Ziele:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Feld. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventionen
@@ -3447,11 +3464,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jahr aus
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}KI Debug
+STR_AI_DEBUG                                                    :{WHITE}Debug des KI- oder Kontrollskripts
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name der KI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Einstellungen
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Einstellungen der KI ändern
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name des Skripts
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Einstellungen
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Einstellungen des Skripts ändern
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}An/Ausschalten des Unterbrechens, wenn eine KI Log-Nachricht dem Unterbrechungs-Text entspricht
@@ -3463,41 +3480,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgaben dieser KI anschauen
+STR_AI_GAME_SCRIPT                                              :{BLACK}Kontrollskript
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Kontrollskripts
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debug-Fenster ist nur auf dem Server verfügbar
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI- oder Kontrollskript ist nur auf dem Server verfügbar
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
+STR_AI_CONFIG_CAPTION                                           :{WHITE}KI / Skripte einstellen
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das im nächsten Spiel zu ladende Kontrollskript
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
+STR_AI_CONFIG_NONE                                              :(keine)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Nach oben bewegen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausgewählte KI in der Liste nach oben bewegen
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Nach unten bewegen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Die ausgewählte KI in der Liste nach unten bewegen
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Kontrollskript
+STR_AI_CONFIG_AI                                                :{SILVER}KIs
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Wähle {STRING} aus
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :KI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Kontrollskript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lade ein anderes Skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Einstellungen
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Einstellungen für die KI anzeigen und / oder ändern
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Einstellungen des Skripts anzeigen oder ändern
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicken, um eine KI auszuwählen
+STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare {STRING}
+STR_AI_LIST_CAPTION_AI                                          :KIs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Kontrollskripte
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicken, um ein Skript auszuwählen
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Anwenden
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Ausgewählte KI verwenden
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Ausgewähltes Skript verwenden
 STR_AI_LIST_CANCEL                                              :{BLACK}Abbrechen
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI nicht wechseln
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript nicht wechseln
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
+STR_AI_SETTINGS_CAPTION_AI                                      :KI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Kontrollskript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Ungefähre Anzahl Tage, die diese KI nach der vorherigen started: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Ungefährer Abstand in Tagen zwischen dem Starten dieser KI und dem der vorherigen : {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

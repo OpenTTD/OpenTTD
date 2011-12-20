@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Poistu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn / Pelin asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
@@ -381,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Perusta kaupunk
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Tuet
+STR_SUBSIDIES_MENU_GOAL                                         :Nykyiset tavoitteet
 ############ range ends here
 
 ############ range for graph menu starts
@@ -442,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Viestihistoria
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tiedot
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
-STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn virheenjäljitys
+STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn / Peliskriptin virheenjäljitys
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Lähennetty kuvakaappaus
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
@@ -747,6 +749,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uudet a
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Rahdin vastaanottamisen muutokset
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tuet
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Yleistä tietoa
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
@@ -1403,6 +1407,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusa
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tekoälyn / Pelin asetukset
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+Klik ohittaa kartan asetukset
@@ -1422,6 +1427,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly- ja peliasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
@@ -1823,10 +1829,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Peli pysäytett
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Peli yhä pysäytetty ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Peli yhä pysäytetty ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Peliä jatketaan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pelaajien määrä
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :yhdistäviä pelaajia
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuaalinen
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :peliskripti
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin
@@ -2410,6 +2418,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Siirtäm
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Karun ja kivisen alueen luominen
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Valmistellaan peliä
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ajetaan tile-loop
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Suoritetaan skriptiä
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Valmistellaan peliä
 
 # NewGRF settings
@@ -2648,6 +2657,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Rakenna
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kulu: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Tavoitteet
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Maailmanlaajuiset tavoitteet:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Ei mitään -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön tavoitteet:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikkaa tavoitetta keskittääksesi päänäkymän teollisuuteen/kaupunkiin/ruutuun. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tuet
@@ -3446,11 +3463,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Valitse 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
+STR_AI_DEBUG                                                    :{WHITE}Tekoälyn / Peliskriptin virheenjäljitys
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tekoälyn nimi
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tekoälyn asetukset
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta tekoälyn asetuksia
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skriptin nimi
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Asetukset
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta skriptin asetuksia
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pysäytetäänkö tekoäly kun tekoälyn lokiviesti on sama kuin pysäytysmerkkijono
@@ -3462,37 +3479,56 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke ki
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot
+STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskripti
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online-sisältö' järjestelmällä
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ilmoita tästä tekoälyn kehittäjälle littäen mukaan kuvankaappaus Tekoälyn virheenjäljitys -ikkunasta
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn virheenjäljitysikkuna on vain palvelimen käytettävissä
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn / Peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn määritteet
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn / Pelin määritteet
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Seuraavassa pelissä ladattava peliskripti
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Seuraavassa pelissä ladattavat tekoälyt
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja
 STR_AI_CONFIG_RANDOM_AI                                         :Sattumanvarainen tekoäly
+STR_AI_CONFIG_NONE                                              :(ei mitään)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Siirrä ylöspäin
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Siirrä valittua tekoälyä ylöspäin listalla
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Siirrä alaspäin
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Siirrä valittua tekoälyä alaspäin listalla
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Peliskripti
+STR_AI_CONFIG_AI                                                :{SILVER}Tekoälyt
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Valitse {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :Tekoäly
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Peliskripti
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lataa toinen skripti
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Määritä
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Määritä tekoälyn parametrit
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Määritä skriptin parametrit
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi tekoälyn
+STR_AI_LIST_CAPTION                                             :{WHITE}Saatavilla {STRING}
+STR_AI_LIST_CAPTION_AI                                          :Tekoälyt
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Peliskriptit
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi skriptin
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Tekijä: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versio: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Hyväksy
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu tekoäly
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu skripti
 STR_AI_LIST_CANCEL                                              :{BLACK}Peruuta
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda tekoälyä
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä vaihda skriptiä
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrit
+STR_AI_SETTINGS_CAPTION_AI                                      :Tekoäly
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Peliskripti
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

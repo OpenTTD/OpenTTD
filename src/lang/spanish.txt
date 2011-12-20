@@ -350,6 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configuración de dificultad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opciones avanzadas
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuración de IA / Juego
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de pueblos
@@ -382,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fundar pueblo
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenciones
+STR_SUBSIDIES_MENU_GOAL                                         :Metas actuales
 ############ range ends here
 
 ############ range for graph menu starts
@@ -443,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de me
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Información sobre terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Activar consola
-STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de IA
+STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de IA / Script de Juego
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
@@ -748,6 +750,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nuevos 
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambios en la aceptación de carga
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvenciones
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Información general
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer autobús llega a {STATION}!
@@ -1404,6 +1408,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Consultar Contenido Online
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuración de IA / Juego
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comenzar nuevo juego. Ctrl+Click omite la configuración del escenario
@@ -1423,6 +1428,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Muestra 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostrar las opciones avanzadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Muestra ajustes de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostrar configuración de IA y Juego
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}A esta traducción le faltan {NUM} cadena{P "" s}. Considera ayudar a mejorar OpenTTD convirtiéndote en traductor. Consulta readme.txt para mas detalles.
@@ -1824,10 +1830,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Juego pausado (
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Juego todavía pausado ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Juego todavía pausado ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Juego todavía pausado ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Juego todavía pausado ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Juego reanudado ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de jugadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectándose
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de juego
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abandonando
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se ha unido al juego
@@ -2411,6 +2419,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generaci
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generación de áreas ásperas o rocosas
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurar juego
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Ejecutar ciclo de casillas
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script en funcionamiento
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando juego
 
 # NewGRF settings
@@ -2649,6 +2658,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Constru
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el pueblo.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este pueblo durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Metas
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la compañía:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Click abre una nueva vista en esa localización
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenciones
@@ -3447,11 +3464,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Depuración de IA
+STR_AI_DEBUG                                                    :{WHITE}Depuración de IA / Script de Juego
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nombre de la IA
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuración de la IA
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración de la IA
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nombre del script
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuración
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración del script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar / desactivar pausa cuando un mensaje de log de la IA coincide con la cadena de parada
@@ -3463,37 +3480,56 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activa/d
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quitar pausa y hacer que la IA continúe
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA
+STR_AI_GAME_SCRIPT                                              :{BLACK}Script de Juego
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comprobar el registro del Script de Juego
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Esta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IAs mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de las IA ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana Depuración de IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de la IA solo está disponible para el servidor
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La ventana de depuración de scripts solo está disponible para el servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de la IA
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de IA / Juego
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script de Juego que será cargado en la próxima partida
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serán cargadas en la próxima partida
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador Humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatoria
+STR_AI_CONFIG_NONE                                              :(ninguna)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Mover hacia arriba
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover la IA seleccionada hacia arriba
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mover hacia abajo
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover la IA seleccionada hacia abajo
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de Juego
+STR_AI_CONFIG_AI                                                :{SILVER}IAs
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Seleccionar {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de Juego
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Cargar otro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura los parámetros de la IA
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura los parámetros del script
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Click para seleccionar la IA
+STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
+STR_AI_LIST_CAPTION_AI                                          :IAs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Juego
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Click para seleccionar un script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versión: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceptar
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Seleccionar la IA resaltada
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Seleccionar el script resaltado
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No cambiar la IA
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No cambiar de script
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parámetros
+STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de Juego
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cerrar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

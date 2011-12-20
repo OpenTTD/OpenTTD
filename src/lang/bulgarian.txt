@@ -167,7 +167,7 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}НЩ
 STR_ABBREV_ALL                                                  :{TINY_FONT}ВЧ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пътници
+STR_PASSENGERS                                                  :{COMMA} пътни{P к ци}
 STR_BAGS                                                        :{COMMA} торби
 STR_TONS                                                        :{COMMA} тона
 STR_LITERS                                                      :{COMMA} литри
@@ -743,6 +743,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Про�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидии
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Обща информация
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
@@ -1049,6 +1050,7 @@ STR_SEA_LEVEL_HIGH                                              :високо
 STR_SEA_LEVEL_CUSTOM                                            :Друго
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Друго ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :без
 STR_DISASTER_REDUCED                                            :намалени
 STR_DISASTER_NORMAL                                             :нормални
@@ -1217,6 +1219,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31s
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Игрите започват в пауза: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}По време на пауза разреши: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :без действия
@@ -1342,6 +1345,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Път�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1377,6 +1382,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Пока
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Покажи NewGRF настройки
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Провери за ново съдържание за сваляне
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Излез от играта 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Изход
@@ -1853,6 +1859,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... вр
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файла е незаписваем
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не може да се декомпресира изтегления файл
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Използвай прозрачност за знаци на гара. Ctrl+Click за заключване
@@ -1898,6 +1905,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Пост
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Строене на жп тунел
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Показва строене/премахване на жп линия, сигнализация, пунктове и гари. Задържането на Ctrl премахва и пунктовете и гарите
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Промяна/обновяване на ЖП линия
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Посока на входа на влаковото депо
@@ -2169,6 +2177,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Заснежена земя
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустиня
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :път
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Асфалтов път с улично осветление
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Асфалтов път с дървета
@@ -2350,6 +2359,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Надо
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Премества избрания NewGRF файл надолу в списъка
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Списък на инсталираните NewGRF файлове. Изберете файл за да промените параметрите му
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Настройване на параметрите
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Превключване на палитрата
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Превключване на палитрата на избрания NewGRF.{}Когато графиката от NewGRF изглежда розова в играта
@@ -2371,7 +2382,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Не е н
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изключен
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Несъвместимо с тази версия на OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промени параметрите на новите графики (NewGRF)
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Затвори
@@ -2380,6 +2390,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Пром
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметър {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Брой параметри: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Инспектирай - {STRING}
@@ -2466,6 +2478,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <�
 STR_NEWGRF_INVALID_ENGINE                                       :<невалидна машина>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невалдна индустрия>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Изчисти филтър
@@ -2533,6 +2547,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Стр
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Финансиране изграждането на нови комерсиални сгради в града.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Покупка на едногодишни специални транспортни права в града. Градските власти ще позволят на пътниците и товара да използват само гарите на вашата компания.{} Цена: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
@@ -2668,6 +2686,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Име на к�
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Име на управителя
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ние търсим транспортна компания, която да поеме нашата компания.{}{}Do you want to purchase {COMPANY} for {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
@@ -3129,6 +3149,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропусни освен ако е необходим ремонт
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент товарене
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост
@@ -3205,9 +3227,12 @@ STR_ORDER_NO_UNLOAD                                             :(Неразто
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоваряй и чакай за пълен товар)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Неразтоваряй и чакай за какъвто и да е пълен товар)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[в близкия край]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[по средата]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[в далечния край]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Премини на заповед {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Премини на заповед {COMMA} когато {STRING} {STRING} {COMMA}
@@ -3284,7 +3309,6 @@ STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Спри
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Когато съобщението от AI съвпадне с този ред, играта се спира.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Покажи прозорец за debug на AI
 
-
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Един от работещите AI се е счупил . Моля съобщете това на автора на AI със скрииншот на AI Debug Прозореца.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Debug прозореца е на разположение само на сървъра
 
@@ -3297,6 +3321,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Прем
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Премести маркирания AI нагоре в списъка
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Премести надолу
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Премести маркирания AI надолу в списъка
+
 
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигуриране
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
@@ -3363,6 +3388,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... не
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да отвориш пейзаж от BMP..
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се промени вида на снимката.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
@@ -4154,6 +4180,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

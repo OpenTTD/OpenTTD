@@ -666,6 +666,7 @@ STR_SORT_BY_INTRO_DATE                                          :Data wprowadzen
 STR_SORT_BY_RUNNING_COST                                        :Koszty użytkowania
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszty użytkowania
 STR_SORT_BY_CARGO_CAPACITY                                      :Pojemność
+STR_SORT_BY_RANGE                                               :Zasięg
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
@@ -727,6 +728,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ustawienia trudności
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ustawienia zaawanasowane
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :SI / Ustawienia gry
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
@@ -759,6 +761,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Załóż miasto
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydia
+STR_SUBSIDIES_MENU_GOAL                                         :Bieżące cele
 ############ range ends here
 
 ############ range for graph menu starts
@@ -820,7 +823,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Poprzednie wiad
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o terenie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
-STR_ABOUT_MENU_AI_DEBUG                                         :Odpluskwianie SI
+STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut powiększenia bez okien
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
@@ -1127,6 +1130,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Zmiany 
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydia
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Ogólne informacje
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwszy autobus przybył do {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Mieszkańcy świętują . . .{}Pierwsza ciężarówka przybyła do {STATION}!
@@ -1201,6 +1206,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} zgubił się
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ jest on poza zasięgiem
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Zaplanowane przeładowanie zatrzymane {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoodnowa zawiodła przy {VEHICLE}{}{STRING}
@@ -1553,6 +1559,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas tr
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Po przytrzymaniu kursora przez {STRING} sekund{P 0:1 ę y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Prawy przycisk myszy
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grubość linii na wykresie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
@@ -1751,6 +1758,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Błąd w pliku konfiguracyjnym
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... błąd w tablicy '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nieprawidłowa wartość '{STRING}' dla '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zbędne znaki na końcu ustawienia '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorowanie NewGRFa '{STRING}': zduplikowany GRF ID z '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... pominięcie nieprawidłowych NewGRFów '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie znaleziono
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :{G=n}niebezpieczne w stałym użyciu
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :systemowe NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niezgodne z tą wersją OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nieznany
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... poziom kompresji '{STRING}' nie jest poprawny
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format zapisu gry '{STRING}' jest niedostępny. Powracanie do '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1767,6 +1787,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Trudnoś
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ustawienia zaawansowane
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ustawienia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Sprawdź dodatki online
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}SI / Ustawienia gry
 STR_INTRO_QUIT                                                  :{BLACK}Wyjście
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Rozpocznij nową grę. Ctrl+klik pomija konfigurowanie mapy
@@ -1786,6 +1807,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Wyświet
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Wyświetl ustawienia zaawansowane
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wyświetl ustawienia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Poszukaj nowych lub zaktualizowanych dodatków do pobrania
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Wyświetla SI oraz ustawienia gry
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Wyjdź z 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tej wersji językowej brakuje jeszcze {NUM} wpis{P "" y ów}. Możesz pomóc ulepszyć nam OpenTTD rejestrując się jako tłumacz. Szczegóły znajdziesz w pliku readme.txt.
@@ -2187,10 +2209,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Gra wstrzymana 
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Gra nadal wstrzymana ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Gra nadal wstrzymana ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Gra nadal wstrzymana ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Gra wciąż wstrzymana ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Gra wznowiona ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ilość graczy
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :łączenie klientów
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ręczny
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skrypt gry
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.
@@ -2219,6 +2243,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wybierz 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Wejdź na stronę
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Wejdź na stronę, by pobrać tę zawartość
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij pobieranie zaznaczonych danych
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Całkowity rozmiar: {WHITE}{BYTES}
@@ -2772,6 +2798,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tworzeni
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ustawianie gry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Uaktywnianie pól
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Uruchamianie skryptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Przygotowywanie gry
 
 # NewGRF settings
@@ -3010,6 +3037,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufundowanie nowych budynków komercyjnych w mieście.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ Swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Cele
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Cele globalne:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Brak -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydia
@@ -3288,6 +3323,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można p
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
 STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista wyboru pojazdów drogowych - kliknij na pojeździe, aby uzyskać więcej informacji
@@ -3414,6 +3450,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszty użytkowania: {4:CURRENCY_LONG}/rok{}Pojemność: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosztuje: {CURRENCY_LONG} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO_LONG}, {CARGO_LONG}{}Koszt używania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {7:COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {7:COMMA} pól{}Ładowność: {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING}
@@ -3528,6 +3566,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. szybkość: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Maksymalna prędkość: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
@@ -3744,6 +3783,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[bliższy konie
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[dalszy koniec]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Kolejny punkt docelowy jest poza zasięgiem)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skocz do rozkazu {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
@@ -3809,11 +3849,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Wybierz 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Odpluskwianie SI
+STR_AI_DEBUG                                                    :{WHITE}Debugowanie SI / GameScript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa SI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawienia SI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia SI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nazwa skryptu
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawienia
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia skryptu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Włącz/wyłącz przerwanie, kiedy wiadomość SI zgadza się z wiadomością przerywającą
@@ -3825,40 +3865,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Przełą
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Kontynuuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzowanie i kontynuuowanie SI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż okno debugowania tej SI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI jest dostępne tylko w serwerze
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / GameScript jest dostępne tylko na serwerze
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI / gry
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrypt gry, który zostanie załadowany podczas kolejnej gry
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}SI, które zostaną załadowane podczas kolejnej gry
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ludzki gracz
 STR_AI_CONFIG_RANDOM_AI                                         :Losowe SI
+STR_AI_CONFIG_NONE                                              :(brak)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Przesuń w górę
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Przesuń wybraną SI w górę listy
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Przesuń w dół
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Przesuń wybraną SI w dół listy
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_AI                                                :{SILVER}SI
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Wybierz {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :SI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skrypt gry
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Wczytaj kolejny skrypt
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguruj
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfiguruj parametry SI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfiguruj parametry skryptu
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać SI
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostępny {STRING}
+STR_AI_LIST_CAPTION_AI                                          :Gracze SI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skrypt gry
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać skrypt
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Wersja: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}Adres: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Zaakceptuj
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz zaznaczoną SI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz zaznaczony skrypt
 STR_AI_LIST_CANCEL                                              :{BLACK}Anuluj
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj SI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj skryptu
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
+STR_AI_SETTINGS_CAPTION_AI                                      :SI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrypt gry
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, które odczekuje SI przed aktywacją po uruchomieniu poprzedniego (zwiększ lub zmniejsz): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -4247,6 +4307,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie moż
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nie można zaprzestać współdzielenia listy poleceń...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nie można skopiować listy poleceń...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zbyt daleko od poprzedniego celu
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... samolot nie ma wystarczającego zasięgu
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...

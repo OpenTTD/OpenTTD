@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :高级设置
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 脚本 设定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名称
@@ -380,6 +381,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :建立城镇
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :财政补贴
+STR_SUBSIDIES_MENU_GOAL                                         :当前目标
 ############ range ends here
 
 ############ range for graph menu starts
@@ -746,6 +748,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新车�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}货物接受情况变更
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}财政补贴
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}综合信息
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
@@ -1357,6 +1361,13 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}遇到�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 
+# Config errors
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 忽略了无效的 NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本OpenTTD不兼容
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 压缩等级 '{STRING}' 无效
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1372,6 +1383,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}难度 (
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}高级设置
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 设置
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}在线查找扩展包
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 脚本 设定
 STR_INTRO_QUIT                                                  :{BLACK}退出
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}开始新游戏. 单击的同时按住Ctrl以跳过地图设置界面
@@ -1391,6 +1403,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}显示�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}显示高级设置
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}显示GRF设定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接服务器并查找扩展包
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}查看AI和脚本设定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}中文语言版本缺失了 {NUM} 条翻译。 请注册成为翻译人员，以帮助OpenTTD发展。详见readme.txt。
@@ -1792,10 +1805,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :游戏暂停 ({
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :游戏仍然暂停 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :游戏仍然暂停 ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :游戏仍然暂停 ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :游戏暂停中 ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :游戏取消暂停 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家数
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :连接客户端
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :手动
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :游戏脚本
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :离开
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 已加入游戏
@@ -1824,6 +1839,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}更新�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}取消全部选择
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}标签/名称过滤器
+STR_CONTENT_OPEN_URL                                            :{BLACK}查看主页
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}打开该扩展包主页
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下载
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}下载选定的内容
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}总计下载大小: {WHITE}{BYTES}
@@ -1870,6 +1887,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 链�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明选项
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}调整标志是否为透明{}CTRL+点击 锁定
@@ -1915,6 +1933,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}列车车库方向
@@ -2184,6 +2203,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :带路灯的公路
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :林荫公路
@@ -2341,6 +2361,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}生成�
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}生成岩石地貌
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}设置游戏
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌细节生成
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}当前脚本
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}准备游戏
 
 # NewGRF settings
@@ -2368,6 +2389,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件向下移动
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经安装的 NewGRF 文件列表{}点击可以改变参数
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换调色板
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色.{}本功能用于游戏使用时GRF呈粉色
@@ -2389,7 +2412,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
@@ -2398,6 +2420,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全部�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}参数数目: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 - {STRING}
@@ -2524,6 +2548,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}地方政府
@@ -2563,6 +2588,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}以公�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}资助市内建设新的商业设施。{}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买该市一年的运输专营权, 其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}目标
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}全球目标:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- 无目标 -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目标:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目
@@ -2698,6 +2731,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名称
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY_LONG}) 吗？
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
@@ -2967,7 +3002,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :单轨列车
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车：{ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动去掉若干挂车以保证列车长度不变
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3021,6 +3056,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}没有电力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待空余轨道
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}距离下一目的地过远
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正在前往 {STATION}，{VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}没有目标，{VELOCITY}
@@ -3123,7 +3159,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}时间表
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}切换到时间表视图
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令可以使之高亮化{}CTRL + 单击{}可以将视点移动到相应的车站
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}调度列表{}单击一个调度指令以选定{}CTRL+左键{}将视点移动到相应的车站
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3154,6 +3190,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}改变�
 
 STR_ORDER_REFIT                                                 :{BLACK}改装
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉改装计划
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用类型
 
 STR_ORDER_SERVICE                                               :{BLACK}保养
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :一直前进
@@ -3199,7 +3236,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
 STR_ORDER_CONDITIONAL                                           :条件性命令跳过
 STR_ORDER_SHARE                                                 :共享调度计划
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在调度列表的结尾或高亮显示项目前面{}增加一条新指令，Ctrl使车站命令为“装满任意货物”{}路点命令为“不停车”{}车库命令为“保养”
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在调度列表的结尾或选定项目前{}增加一条新指令，按住Ctrl使命令为“装满任意货物”{}路点命令为“不停车”{}车库命令为“保养”
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}显示所有共享此调度计划的{}车辆/船只/飞机
 
@@ -3242,9 +3279,13 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸载并
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸货并装满任意货物离开）
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(不卸货也不装货)
 
+
+STR_ORDER_AUTO_REFIT_ANY                                        :可用类型
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[月台近端]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[月台中间]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[月台远端]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳至 {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :跳至 {COMMA} [ 当 {STRING} {STRING} {COMMA} ]
@@ -3257,9 +3298,10 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}命令
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}切换到调度计划视图
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间表 - 单击一个命令可以使其高亮。
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间表 - 单击一个命令以选定。
 
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶 (自动; 时间表按下一手动命令)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
@@ -3309,7 +3351,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}选择�
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI 调试
+STR_AI_DEBUG                                                    :{WHITE}AI/脚本 调试
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI名称
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 设置
@@ -3319,32 +3361,47 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}关闭AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}启用／停用 当 AI 记录信息符合断点字符串时中断执行的功能
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}中断点:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}中断点
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}当 AI 记录信息与字符串相符时暂停游戏
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}当AI记录信息与该字符串相符时暂停游戏
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合大小写
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切换对比AI 记录信息是否与断点字符串相符时是否要符合大小写
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出
+STR_AI_GAME_SCRIPT                                              :{BLACK}游戏脚本
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}查看脚本记录
 
-
-STR_ERROR_AI_NO_AI_FOUND                                        :找不到可使用的AI。{}这个AI只是一个演示而不会有任何动作，{}您可以通过“在线查找扩展包”功能下载AI程序。
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}一个运行中的 AI 崩溃了。请附上一张 AI 调试窗口的截图，将此错误通报 AI 作者。
+STR_ERROR_AI_NO_AI_FOUND                                        :找不到可用的AI。{}本AI是一个演示AI，并不会在游戏中做任何动作，{}您可以通过“在线查找扩展包”功能下载新的AI。
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}您使用的一个AI崩溃了。请附上一张AI调试窗口的截图，将此错误通报AI作者。
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI调试窗口只对服务器可用
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 设置
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}下局游戏将启用这些脚本
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局游戏将启用这些AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :玩家
 STR_AI_CONFIG_RANDOM_AI                                         :随机 AI
+STR_AI_CONFIG_NONE                                              :（无）
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}上移
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}在列表中将选择的AI上移
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下移
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}在列表中将选择的AI下移
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}游戏脚本
+STR_AI_CONFIG_AI                                                :{SILVER}AI
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}选择{STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :游戏脚本
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}装在另一脚本
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}设定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}设定AI特征
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}可用{STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :游戏脚本
 STR_AI_LIST_TOOLTIP                                             :{BLACK}点击选择 AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}作者: {STRING}
@@ -3357,6 +3414,9 @@ STR_AI_LIST_CANCEL                                              :{BLACK}取消
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不修改本 AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 参数
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :游戏脚本
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3400,12 +3460,12 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}生成�
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}当前场景中没有城镇……
 
 STR_ERROR_PNGMAP                                                :{WHITE}无法从 PNG 文件中读取场景……
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}文件未找到。
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}不能转换图像格式{}请使用 8 位或 24 位 PNG 图片
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}似乎出现了一些错误{}(如损坏的文件等)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... 文件未找到。
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... 不能转换图像格式{}请使用8位或24位PNG格式图片
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... 似乎出现了错误{}(可能是损坏的文件等)
 
 STR_ERROR_BMPMAP                                                :{WHITE}无法从 BMP 文件中读取场景……
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}不能转换图像格式。
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 不能转换图像格式。
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 图像太大了
 
@@ -3413,7 +3473,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}缩放�
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一个后备音效库；如果您需要音效，请通过内容下载系统安装音效库
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找到一个备用音效库；若您需要正式版音效，请通过在线扩展包下载安装音效库
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}屏幕截图已经被成功保存为{} '{STRING}'
@@ -3437,6 +3497,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已�
 STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 景观数量限制已达上限
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已达地块清理限制
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}目标位置有 {1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停时不能进行此操作
@@ -3445,6 +3506,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停�
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN}地方政府{}不同意在本市范围内再兴建一座机场
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}您的桥梁修建计划受到了当地投资商的关注
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}不能提高这里的地面……
@@ -3480,7 +3542,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图上没有多余的地方了
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不能建造道路{}你可以在"高级设置->经济->城镇"处{}设置允许城镇建设道路
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不会修建道路{}请在在"高级设置->经济->城镇"处{}设置允许城镇建设道路
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像
@@ -3586,7 +3648,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}当前无车辆更新进行中.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}当前没有进行中的车辆更新计划.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(现金不够)
 
 # Rail construction errors
@@ -3750,7 +3812,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……�
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时间表…
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}车辆只能在站内等候。
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此车辆将不在本站停靠。
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此车辆将不停靠本站。
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}……标志太多了

@@ -442,7 +442,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
-STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh chụp màn hình
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
@@ -747,6 +747,7 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Phươn
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Thay đổi về việc nhận hàng vận chuyển
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Tiền trợ cấp
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Thông tin chung
+
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Tàu hoả đầu tiên đến {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Người dân chào đón . . .{}Xe bus đầu tiên đến {STATION}!
@@ -2649,6 +2650,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Tài tr
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua độc quyền kinh doanh vận tải của đô thị. Chính quyền địa phương sẽ ra luật chỉ cho phép hành khách và hàng hoá vào nhà ga, bến, cảng của công ty.{}Chi phí: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY_LONG}
 
+# Goal window
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
@@ -3468,7 +3471,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có mộ
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập Trò Chơi / AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI ngẫu nhiên
 
@@ -3476,6 +3479,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di Chuy�
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di Chuyển Xuống
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuyển AI xuống dưới danh sách
+
 
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Tham Số
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
@@ -3490,7 +3494,7 @@ STR_AI_LIST_URL                                                 :{BLACK}URL: {ST
 STR_AI_LIST_ACCEPT                                              :{BLACK}Chấp nhận
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp nhận AI đã chọn
 STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi thuật toán AI
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng

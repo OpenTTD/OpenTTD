@@ -412,6 +412,7 @@ STR_SORT_BY_INTRO_DATE                                          :за датою
 STR_SORT_BY_RUNNING_COST                                        :за вартістю експлуатації
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експлуатації
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
+STR_SORT_BY_RANGE                                               :Діапазон
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -871,6 +872,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Змі�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Жителі святкують . . .{}Перша вантажівка з'явилася на {STATION}!
@@ -1179,6 +1182,11 @@ STR_SEA_LEVEL_HIGH                                              :високий
 STR_SEA_LEVEL_CUSTOM                                            :вибірковий
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :вибірковий ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Нема
+STR_RIVERS_FEW                                                  :Кілька
+STR_RIVERS_MODERATE                                             :Середньо
+STR_RIVERS_LOT                                                  :Багато
+
 STR_DISASTER_NONE                                               :відкл.
 STR_DISASTER_REDUCED                                            :знижено
 STR_DISASTER_NORMAL                                             :нормально
@@ -1437,6 +1445,11 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Рад�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}нема
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Швидкість росту міста: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :немає
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :повільна
@@ -1477,6 +1490,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Авт�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Змініть значення
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1512,6 +1527,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Пока
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити новий та оновлений вміст для завантаження
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Вийти
@@ -1988,6 +2004,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... пе
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файл не відкритий для запису
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не можна розпакувати завантажений файл
 
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Так, завантажити графіку
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ні, вийти з OpenTTD
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Опції прозорості
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключити прозорість для знаків станцій. Утримуйте Ctrl, щоб заблокувати
@@ -2033,6 +2052,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Буду
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Будувати тунель. Утримуйте Shift для показу витрат на будівництво
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Будувати/демонтувати колію, сигнали, точки маршруту і станції. Утримання Ctrl також демонтує колію з точок маршрутів і станцій
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Модернізувати колію. Утримуйте Shift для показу витрат на модернізацію
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Орієнтація депо
@@ -2304,6 +2324,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поле
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Засніжена земля
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Пустеля
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Дорога
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Дорога з вуличними ліхтарями
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Дорога з насадженнями
@@ -2410,6 +2431,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ланд
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Насадження дерев:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Рівень моря:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ріки:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкість:
 STR_MAPGEN_VARIETY                                              :{BLACK}Розподіл різноманітності:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генерувати
@@ -2486,6 +2508,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Нижч
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістити вибрані файли вниз по списку
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених NewGRF файлів. Клікніть на файлі, щоб змінити його параметри
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Встановлення параметрів
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключити палітру
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключити палітру обраного NewGRF.{}Зробіть це, якщо графіка з цього NewGRF виглядає рожевою у грі
@@ -2507,7 +2531,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумісне з поточною версією OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрити
@@ -2516,6 +2539,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Вста
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кількість параметрів: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Перегляд - {STRING}
@@ -2606,6 +2631,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <нев
 STR_NEWGRF_INVALID_ENGINE                                       :<невірна модель транспорту>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невірна промисловість>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регістр
@@ -2675,6 +2702,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Збу�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Фінансувати будівництво нових офісів у місті.{}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купити ексклюзивне транспортне право у місті на 1 рік. Міська влада дозволить використовувати лише станції вашої компанії.{}Вартість: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Підкупити місцеву владу для збільшення вашого рейтингу, при викритті загрожує суворим покаранням.{}Вартість: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- нема -
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
@@ -2769,6 +2800,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Пози
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Збільшити розмір позики. Ctrl+клік позичає якнайбільше
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Повернути {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Повернути частину позики. Ctrl+клік повертає якнайбільше
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Інфраструктура
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2784,6 +2816,8 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Немає
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Вартість компанії: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% у власності {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Інфраструктура:
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нема
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Побудувати офіс компанії
@@ -2810,6 +2844,13 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Назва ко
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ім'я керівника
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY_LONG}?
+
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Сигнали
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Канали
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Аеропорти
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/рік ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/рік
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Промисловість
@@ -3272,6 +3313,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Зупинит�
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Пропустити це завдання, доки не буде потрібне обслуговування
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент завантаження
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надійність
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. швидкість
@@ -3349,9 +3392,12 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не розв�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не розвантажуватись і чекати повного завантаження будь-якого виду)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Не розвантажуватись і не завантажуватись)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[ближній кінець]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[середина]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[дальній кінець]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Перейти до наказу {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Перейти до наказу {COMMA}, якщо {STRING} {STRING} {COMMA}
@@ -3434,7 +3480,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Прод
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Відобразити результати дебагу цього АІ
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно Дебаг AI доступно тільки серверу
@@ -3443,12 +3488,15 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вік�
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфігурація AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
 STR_AI_CONFIG_RANDOM_AI                                         :Випадковий AI
+STR_AI_CONFIG_NONE                                              :(нема)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Перемістити вище
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перемістити обраний AI вверх по списку
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Перемістити нижче
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перемістити обраний AI вниз по списку
 
+
+STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Настроїти
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри AI
 
@@ -3465,6 +3513,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Відм
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3514,6 +3563,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... по
 
 STR_ERROR_BMPMAP                                                :{WHITE}Неможливо завантажити ландшафт з BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... неможливо перетворити тип зображення
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Завелике значення
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
@@ -4359,6 +4409,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

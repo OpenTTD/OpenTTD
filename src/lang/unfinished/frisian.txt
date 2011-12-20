@@ -440,7 +440,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskied
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiets ynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
-STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :tichtby helje skermfoto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :skermfoto fan de hiele wrald
@@ -745,6 +745,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Feroari
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydzjes
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemiene ynformaasje
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste trein komt oan yn {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste bus komt oan yn {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste wein komt oan yn {STATION}!
@@ -855,10 +856,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Muntienh
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Munt ienheid seleksje
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pûnen (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Pûnen (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollars (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Australyske Shilling (ASS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgyske Frank (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Switserske Frank (SWF)
@@ -1053,6 +1054,7 @@ STR_SEA_LEVEL_HIGH                                              :Heech
 STR_SEA_LEVEL_CUSTOM                                            :Oanpast
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Oanpast ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Gjin
 STR_DISASTER_REDUCED                                            :Minder
 STR_DISASTER_NORMAL                                             :Gewoan
@@ -1107,8 +1109,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimu
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Utjefte fan steam/fonken by treinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein akselerasje model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Dyk reau akselerasje model: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Ôfskotsgraad foar treinen {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Ôfskotsgraad foar dyk reau {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Ôfskotsgraad foar treinen: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Ôfskotsgraad foar dyk reau: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ferbied treinen en boarten om 90° te swaaien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}stjin it gearfoegje fan stasjons ta diet net oaniensletten binne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}gebrûk it ferbettere algoritme: {ORANGE}{STRING}
@@ -1346,6 +1348,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Omkeare
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}veroarje wearde
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1381,6 +1385,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Lit avan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Lit NewGRF ynstellings sjen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Strún ynternet ôf om nije ynhâld del te heljen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Slút 'OpenTTD' ôf
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ôfslúte
@@ -1661,6 +1666,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ferb
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestân koe net opslein wurde
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kin it delhelle bestân net útpakke
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -1687,6 +1693,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bou spoa
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou in spoarbrêge
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou in spoartunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Set bouen/fuortheljen foar spoaren en stopljochten oan/út
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Treindepot Rjochting
@@ -1871,6 +1878,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fjilden
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snie
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Woastine
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Wei
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Wei mei strjitteljochten
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Wei mei beammen oan 'e siden
@@ -1979,6 +1987,8 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Set sele
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Pleats leger
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Set selektjere NewGRF ûnderoan de list
 
+# Additional textfiles accompanying NewGRFs
+
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Sykje ynhâld op ynternet
 
@@ -1990,12 +2000,13 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}gjin ynf
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Útskeakele
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Dat strykt net mei dizze ferzje fan OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Slút
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Set werom
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set alle ynstellings op normale wearde
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -2033,6 +2044,8 @@ STR_NEWGRF_INVALID_CARGO                                        :<unjildiche fra
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_ENGINE                                       :<unjildiche wein>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<unjildiche yndustry>
+
+# NewGRF scanning window
 
 # Sign list window
 
@@ -2082,6 +2095,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begjin 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begjin in middelgrutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transporttsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin in grutte advertinsjecampanje, om mear passazjiers en fracht nei dyn transport tsjinsten te lûken.{}Kostet: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
+
+# Goal window
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes
@@ -2189,6 +2204,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedriuwsnamme
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namme fan Direkteur
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje in transportbedriuw om ús bedriuw oer te nimmen.{}{}Wolsto {COMPANY} foar {CURRENCY_LONG} keapje?
+
+# Company infrastructure window
 
 # Industry directory
 
@@ -2358,6 +2375,8 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selektea
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -2376,9 +2395,19 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 
-STR_ORDER_IMPLICIT                                              :( Automatysk)
+STR_ORDER_IMPLICIT                                              :(Ymplisyt)
 
+STR_ORDER_FULL_LOAD                                             :(Folle fracht)
+STR_ORDER_FULL_LOAD_ANY                                         :(Folle fracht elke lading)
+STR_ORDER_NO_LOAD                                               :(Gjin lading)
+STR_ORDER_UNLOAD                                                :(Afladen en nim lading
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Afladen en wacht foar folle fracht)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Afladen en wacht foar elke folle fracht)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Oflade en lit leech)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
+
+
+
 
 
 
@@ -2403,14 +2432,14 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reizgje (automa
 
 # AI debug window
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI ynstellings
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ynstellings
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Trjochgean
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lit debug output fan dizze AI sjen
-
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte compjûterspiler fûn.{}Disse compjûterspiler is in dummy en docht neat.{}Jo kinne compjûterspilers delhelje fan 'Online Inhâld' ôf.
 
 # AI configuration window
+
 
 
 
@@ -2444,6 +2473,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden Mi
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<net beskikber>
 
 # Map generation messages
+
 
 
 

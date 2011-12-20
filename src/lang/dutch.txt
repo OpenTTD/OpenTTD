@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / Spel instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsnamen
@@ -381,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Sticht een stad
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidies
+STR_SUBSIDIES_MENU_GOAL                                         :Huidige doelen
 ############ range ends here
 
 ############ range for graph menu starts
@@ -442,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Schakel console aan/uit
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot van hele kaart
@@ -747,6 +749,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nieuwe 
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Verandering van geaccepteerde vrachtsoorten
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidies
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemene informatie
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Inwoners feesten . . .{}Eerste trein arriveert in {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Inwoners feesten . . .{}Eerste bus arriveert in {STATION}!
@@ -1403,6 +1407,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijk
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Spel Instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel. Ctrl+klik slaat de kaartconfiguratie over
@@ -1422,6 +1427,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Toon moe
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Toon AI en spel instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
@@ -1823,10 +1829,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spel gepauzeerd
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds gepauzeerd ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds gepauzeerd ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spel is nog steeds gepauzeerd ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :aantal spelers
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spelers maken verbinding
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :handmatig
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spel script
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
@@ -2410,6 +2418,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikke
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met vlakken
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiden spel
 
 # NewGRF settings
@@ -2648,6 +2657,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bouw ee
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koop 1 jaar exclusieve transportrechten in deze plaats. De gemeenteraad staat passagiers en vracht alleen toe om jouw stations te gebruiken.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen, met het gevaar van een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Doelen
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Algemene doelen:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Geen -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfsdoelen:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om venster te centreren op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op industrie/stad/tegel lokatie
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
@@ -3446,11 +3463,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selectee
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG                                                    :{WHITE}AI / GameScript Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van computerspeler
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI instellingen
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van de AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van het script
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instellingen
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van het script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Afbreken als een AI logbericht overeenstemt met de afbreektekst aan/uitschakelen
@@ -3462,40 +3479,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlet
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon debug gegevens van deze AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het Game Script log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspeler Debugvenster is alleen beschikbaar voor de server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript debugvenster is alleen beschikbaar voor de server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI configuratie
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Spel configuratie
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Het GameScript dat in het volgende spel geladen wordt
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's die in het volgende spel geladen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
+STR_AI_CONFIG_NONE                                              :(geen)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Omhoog verplaatsen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Geselecteerde AI omhoog verplaatsen in de lijst
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Omlaag verplaatsen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}De geselecteerde AI naar omlaag verplaatsen in de lijst
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_AI                                                :{SILVER}AI's
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Kies{STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad een ander script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configureer
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configureer de parameters van de AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configureer de parameters van het script
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een AI te selecteren
+STR_AI_LIST_CAPTION                                             :{WHITE}Beschikbaar {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI's
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een script te selecteren
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versie: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepteer
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecteer gemarkeerde AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecteer gemarkeerd script
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuleren
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI niet veranderen
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script niet veranderen
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Aantal dagen dat deze AI start na de vorige (ongeveer): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

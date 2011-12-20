@@ -378,6 +378,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Bangun Kota
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidi
+STR_SUBSIDIES_MENU_GOAL                                         :Target saat ini
 ############ range ends here
 
 ############ range for graph menu starts
@@ -439,7 +440,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berita Lampau
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area daratan
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
-STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ambil gambar dengan diperbesar
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
@@ -744,6 +745,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Perubah
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidi
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informasi umum
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Kereta pertama tiba di {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
@@ -854,19 +857,19 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Mata uan
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Pilih mata uang
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Poundsterling (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Poundsterling (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen Jepang (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Austria (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Belgia (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Swiss (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Czech (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone Denmark (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta Spanyol (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka Finlandia (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Prancis (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma Yunani (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint Hungaria (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona Islandia (ISK)
@@ -1052,6 +1055,7 @@ STR_SEA_LEVEL_HIGH                                              :Tinggi
 STR_SEA_LEVEL_CUSTOM                                            :Custom
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Tidak pernah
 STR_DISASTER_REDUCED                                            :Dikurangi
 STR_DISASTER_NORMAL                                             :Normal
@@ -1106,8 +1110,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model kendaraan percepatan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Tingkat dataran slope pada kereta {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lereng kecuraman untuk kendaraan {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecuraman dataran pada kereta: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lereng kecuraman untuk kendaraan: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma pengangkutan terbaru : {ORANGE}{STRING}
@@ -1346,6 +1350,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berputa
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1381,6 +1387,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Tampilka
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setting NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
@@ -1779,10 +1786,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Permainan dihen
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih dihentikan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan dilanjutkan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menghubungkan ke klien
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skrip permainan
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :pergi
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah bergabung
@@ -1857,6 +1866,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubu
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapat mengembangkan file terunduh
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pengaturan Transparasi
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci
@@ -1902,6 +1912,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta. Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta, sinyal, waypoint, dan stasiun. Tekan Ctrl juga dapat membongkar rel pada waypoint dan stasiun
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel. Shift untuk menampilkan perkiraan biaya
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Pilihan arah depo
@@ -2173,6 +2184,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Ladang
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Daerah tertutup salju
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Gurun Pasir
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalan
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya dengan lampu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Jalan berbatas pohon
@@ -2327,6 +2339,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Membuat 
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Membersihan area
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mengatur permainan
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Menyiapkan area loop
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Menjalankan skrip
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Menyiapkan permainan
 
 # NewGRF settings
@@ -2352,7 +2365,9 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Keatas
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian atas daftar
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Kebawah
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian bawah daftar
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar berkas NewGRF yang diinstal. Klik satu berkas untuk melakukan perubahan pada parameter-parameternya
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang diinstal.
+
+# Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Atur parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tandai palet
@@ -2375,7 +2390,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Berkas yan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifkan
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Tidak kompatibel dengan versi OpenTTD ini
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
@@ -2384,6 +2398,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalik
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Jumlah parameter: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
@@ -2471,6 +2487,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dari <k
 STR_NEWGRF_INVALID_ENGINE                                       :<model kendaraan tidak valid>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak valid>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Persis besar-kecil
@@ -2540,6 +2558,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bangun 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Biayai pembangunan gedung komersil di kota.{}Biaya: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Beli hak monopoli transportasi di kota ini untuk 1 tahun. Penumpang dan kargo di kota ini hanya akan menggunakan stasiun milik perusahaan anda.{} Biaya: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi dengan pemkot agar naik peringkat, beresiko terkena hukuman jika tertangkap.{}Biaya: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Target
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Target global:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Tidak ada -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Target perusahaan:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada tujuan untuk mengarahkan pandangan pada tengah industri/kota/kotak. Ctrl+klik untuk membuka jendela baru pada lokasi industri/kota/kotak
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
@@ -2675,6 +2701,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
@@ -3137,10 +3165,12 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Lewati pemberhentian ini kecuali jika dibutuhkan perbaikan
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kondisi yang diperiksa
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :% muatan
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Kehandalan
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Kecepatan maks.
-STR_ORDER_CONDITIONAL_AGE                                       :Usia(thn)
+STR_ORDER_CONDITIONAL_AGE                                       :Usia (thn)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Waktunya perbaikan
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Selalu
 
@@ -3214,9 +3244,12 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Jangan bongkar
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Jangan bongkar dan tunggu muat sampai ada yang penuh)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Jangan bongkar dan jangan muat)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[agak belakang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[tengah]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[Tepi terjauh]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Lompat ke perintah {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Lompat ke perintah {COMMA} jika {STRING} {STRING} {COMMA}
@@ -3282,11 +3315,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pilih ta
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG                                                    :{WHITE}Debug skrip AI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (versi {NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengaturan AI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nama skrip AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Pengaturan
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ubah pengaturan skrip AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Muat ulang AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan fitur AI, muat ulang script, dan restart AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}mengaktifkan/mematikan peristirahatan ketika pesan AI sesuai dengan string istirahat
@@ -3299,10 +3332,9 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda bisa mengunduh AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada pembuat AI dengan potongan layar dari Jendela Debug AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Jendela "Debug" hanya tersedia untuk server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela "Debug" skrip AI hanya tersedia untuk server
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
@@ -3314,20 +3346,21 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
 
+
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter skrip AI
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih AI
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih skrip AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Pembuat: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versi: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terapkan
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih AI yg disorot
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip AI yg disorot
 STR_AI_LIST_CANCEL                                              :{BLACK}Batal
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah skrip AI
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
@@ -3379,6 +3412,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... sepe
 
 STR_ERROR_BMPMAP                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Peringatan Skala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ukuran peta terlalu besar dan tidak direkomendasikan. Lanjutkan?

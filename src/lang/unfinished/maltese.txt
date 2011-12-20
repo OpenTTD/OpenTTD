@@ -117,12 +117,12 @@ STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} t
 # Two letter abbreviation of cargo name
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passiġġieri
-STR_BAGS                                                        :{COMMA} bagalji
-STR_TONS                                                        :{COMMA} tunnellati
-STR_LITERS                                                      :{COMMA} litri
-STR_ITEMS                                                       :{COMMA} oġġetti
-STR_CRATES                                                      :{COMMA} kaxxi
+STR_PASSENGERS                                                  :{COMMA} passiġġier{P "" i i i}
+STR_BAGS                                                        :{COMMA} bagalj{P a i i i}
+STR_TONS                                                        :{COMMA} tunnellat{P a i i i}
+STR_LITERS                                                      :{COMMA} litr{P u i i i}
+STR_ITEMS                                                       :{COMMA} oġġett{P "" i i i}
+STR_CRATES                                                      :{COMMA} kaxx{P a i i i}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu Skur
@@ -135,8 +135,9 @@ STR_COLOUR_GREEN                                                :Aħdar
 STR_COLOUR_DARK_GREEN                                           :Aħdar Skur
 STR_COLOUR_BLUE                                                 :Blu
 STR_COLOUR_CREAM                                                :Krema
+STR_COLOUR_MAUVE                                                :Vjola Ċar
 STR_COLOUR_PURPLE                                               :Vjola
-STR_COLOUR_ORANGE                                               :Oranġjo
+STR_COLOUR_ORANGE                                               :Oranġo
 STR_COLOUR_BROWN                                                :Kannella
 STR_COLOUR_GREY                                                 :Griż
 STR_COLOUR_WHITE                                                :Abjad
@@ -153,13 +154,13 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnellata
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tunnellat{P a i i i}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litru
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P u i i i}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -212,6 +213,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Data
 STR_SORT_BY_NAME                                                :Isem
 STR_SORT_BY_PRODUCTION                                          :Produzzjoni
 STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_TRANSPORTED                                         :Trasportati
 STR_SORT_BY_NUMBER                                              :Numru
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Qligħ is-sena l-oħra
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Qligħ din is-sena
@@ -222,12 +224,21 @@ STR_SORT_BY_MAX_SPEED                                           :Veloċita' mass
 STR_SORT_BY_MODEL                                               :Mudell
 STR_SORT_BY_VALUE                                               :Valur
 STR_SORT_BY_LENGTH                                              :Tul
+STR_SORT_BY_LIFE_TIME                                           :Isservi sa
 STR_SORT_BY_TIMETABLE_DELAY                                     :Dewmien fl-iskeda
 STR_SORT_BY_FACILITY                                            :Tip ta' stazzjon
+STR_SORT_BY_WAITING                                             :Valur tal-Kargo
+STR_SORT_BY_RATING_MAX                                          :L-Ogħla livell tal-Kargo
+STR_SORT_BY_RATING_MIN                                          :L-Inqas livell tal-Kargo
+STR_SORT_BY_ENGINE_ID                                           :ID tal-magna (issortjar klassiku)
 STR_SORT_BY_COST                                                :Prezz
 STR_SORT_BY_POWER                                               :Saħħa
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Gbit
 STR_SORT_BY_INTRO_DATE                                          :Data ta' introduzzjoni
+STR_SORT_BY_RUNNING_COST                                        :Kemm Taħli
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Saħħa/Kemm Taħli
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapaċita ta' merkanzija
+STR_SORT_BY_RANGE                                               :Kemm Twassal
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Waqfa temporanja mil-logħba
@@ -347,6 +358,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Uri l-pr
 
 
 
+
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -444,6 +456,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet k
 
 
 
+# Config errors
+
 # Intro window
 
 
@@ -535,6 +549,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -543,6 +558,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -640,13 +656,16 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Żid il-
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Erga' sskanja il-fajls
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorna l-lista tal-fajls NewGRF disponibbli
 
+# Additional textfiles accompanying NewGRFs
+
 
 
 
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux ma din il-verzjoni ta' OpenTTD
 
-
 # NewGRF parameters window
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -687,6 +706,8 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 
 
 
+# Goal window
+
 # Subsidies window
 
 # Station list window
@@ -713,6 +734,8 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 
@@ -851,6 +874,9 @@ STR_ORDER_IMPLICIT                                              :(Awtomatiku)
 
 
 
+
+
+
 # Time table window
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Skeda - agħfas fuq ordni biex tagħzilha.
@@ -873,8 +899,8 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 # AI debug window
 
 
-
 # AI configuration window
+
 
 
 

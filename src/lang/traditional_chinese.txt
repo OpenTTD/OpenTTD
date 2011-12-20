@@ -347,6 +347,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :離開
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :遊戲選項
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :進階設定
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 遊戲 設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度選項
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :顯示市鎮名稱
@@ -378,6 +379,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :興建市鎮
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :補助資訊
+STR_SUBSIDIES_MENU_GOAL                                         :當前目標
 ############ range ends here
 
 ############ range for graph menu starts
@@ -439,7 +441,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
-STR_ABOUT_MENU_AI_DEBUG                                         :AI 除錯
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/遊戲腳本除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :放大截圖
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面
@@ -744,6 +746,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}可接�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}補助資訊
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般資訊
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}市民慶賀 . . .{}首輛公車抵達 {STATION}！
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}市民慶賀 . . .{}首輛貨車抵達 {STATION}！
@@ -854,10 +858,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}幣值�
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}選擇幣值單位
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :英鎊 (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :美元 ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :歐元 (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :日圓 (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :英鎊 (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :美元 (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :歐元 (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :日圓 (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :奧地利先令 (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :比利時法郎 (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :瑞士法郎 (CHF)
@@ -1107,8 +1111,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}最大�
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}列車產生的蒸氣／火花數量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}車輛加速演算模型：{ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度 {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}車輛最大坡度 {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度： {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}車輛最大坡度： {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車及船舶直角轉向：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
@@ -1347,6 +1351,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}在號�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改設定值
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1362,6 +1368,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}難易�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}進階設定
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 設定
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}檢查線上內容
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 遊戲 設定
 STR_INTRO_QUIT                                                  :{BLACK}離開
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}開始新遊戲。 按住 Ctrl 點選可跳過地圖設定畫面
@@ -1381,6 +1388,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}顯示�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}顯示進階設定
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}顯示 NewGRF 設定
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}檢查有無最新或可更新的內容可下載
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}顯示AI和遊戲設定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}離開「OpenTTD」
 
 STR_INTRO_TRANSLATION                                           :{BLACK}此段翻譯缺了{NUM}字串。請成為OpenTTD的翻譯員以讓本遊戲更完整。詳情請參閱readme.txt。
@@ -1782,6 +1790,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :遊戲暫停中
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :遊戲暫停中 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :遊戲暫停中 ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :遊戲暫停中 ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :遊戲暫停中({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :遊戲取消暫停 ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :玩家數量
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :連線用戶端中
@@ -1860,6 +1869,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 失�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 檔案無法寫入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}無法解壓縮已下載的檔案
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明度選項
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換車站標籤是否透明。按住 CTRL 點選可鎖定
@@ -1905,6 +1915,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類。按Shift可切換建築/顯示預估成本。
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}鐵路機廠方向
@@ -2051,9 +2062,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}產生�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}地形
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}下降土地上的一角
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇土地上的一角
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}整平地面
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}下降土地上的一角。以拖曳來下降第一個選定的角落並平面化選定的區域到新角落的高度。Ctrl 以對角線選定區域。Shift切換建造/顯示成本估算。
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇土地上的一角。以拖曳來上昇第一個選定的角落並平面化選定的區域到新角落的高度。Ctrl 以對角線選定區域。Shift切換建造/顯示成本估算。
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}將一片區域正平到首選高度.按Ctrl進行對角選擇.按Shift查看造價預算
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買土地供將來使用。按 Shift 可切換購買／顯示預估的購買費用
 
 # Object construction window
@@ -2175,6 +2186,7 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :草地
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :農場
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :覆雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
+
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :有路燈的公路
@@ -2355,7 +2367,9 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}上移
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}將選定的 NewGRF 檔往清單上方移動
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}將選定的 NewGRF 檔往清單下方移動
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}列出已安裝的 NewGRF 檔案，點選檔 案以修改設定
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已安裝的 NewGRF 檔案列表。
+
+# Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}設定參數
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切換色盤
@@ -2378,7 +2392,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}找不到�
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}關閉
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}與此版本的OpenTTD不相容
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
@@ -2387,6 +2400,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}參數數量：{ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}變數檢查 - {STRING}
@@ -2547,6 +2562,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}在此�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}購買此市鎮一年的專屬運輸權。地方政府將只讓乘客與貨物使用您的運輸服務。{}費用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}冒著被抓到嚴懲的風險，向地方政府行賄以提高評價{}費用：{CURRENCY_LONG}
 
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}目標
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}全局目標:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- 當前無目標 -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目標:
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}補助資訊
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}提供補助的運輸服務：
@@ -2681,6 +2703,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名稱
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :總經理姓名
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我們正在找一間運輸公司收購我們的公司。{}{}您想購買 {COMPANY} 付出 {CURRENCY_LONG} 嗎？
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工業
@@ -3148,7 +3172,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳躍�
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :裝載進度 (%)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :極速
-STR_ORDER_CONDITIONAL_AGE                                       :車輛年齡 (年)
+STR_ORDER_CONDITIONAL_AGE                                       :年齡 (年)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :剩餘年限 (年)
@@ -3205,7 +3229,7 @@ STR_ORDER_STOP_ORDER                                            :(停止)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
-STR_ORDER_IMPLICIT                                              :(自動)
+STR_ORDER_IMPLICIT                                              :(內含)
 
 STR_ORDER_FULL_LOAD                                             :(滿載)
 STR_ORDER_FULL_LOAD_ANY                                         :(滿載任一種類客貨)
@@ -3223,9 +3247,12 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(不卸載且�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(不卸載且等待任一種類滿載)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(沒有卸載也沒有裝載)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[近端]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[遠端]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳到指令 {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :跳到指令 {COMMA} 當符合 {STRING} {STRING} {COMMA}
@@ -3291,11 +3318,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}選擇�
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI 除錯
+STR_AI_DEBUG                                                    :{WHITE}AI/遊戲腳本除錯
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}AI 名稱
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設定
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}修改 AI 設定
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}腳本名稱
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}設定
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}修改腳本設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}啟用／停用當 AI 記錄訊息符合中斷點字串時中斷執行的功能
@@ -3307,38 +3334,50 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切換�
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}檢視此 AI 的除錯輸出資訊
-
+STR_AI_GAME_SCRIPT                                              :{BLACK}遊戲腳本
 
 STR_ERROR_AI_NO_AI_FOUND                                        :找不到適合的 AI 可以載入。{}此 AI 是虛擬 AI，沒有任何效果。{}您可以透過「線上內容」系統下載更多 AI。
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}正在運行中的其中一個 AI 發生錯誤。請打開「AI 除錯」視窗後擷取螢幕圖片，將此問題回報給 AI 作者。
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI 除錯視窗只可於伺服器使用
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/遊戲腳本除錯視窗只可於伺服器使用
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 組態
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI /遊戲的組態
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}下局開始時將啟用AI
 STR_AI_CONFIG_HUMAN_PLAYER                                      :人類玩家
 STR_AI_CONFIG_RANDOM_AI                                         :隨機 AI
+STR_AI_CONFIG_NONE                                              :(無)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}向上移
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}向上移動所選的 AI
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}向下移
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}向下移動所選的 AI
 
+STR_AI_CONFIG_AI                                                :{SILVER}AI
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}選擇 {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}載入另一腳本
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}組態設定
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}設定 AI 參數
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}設定腳本的參數
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}按一下選擇 AI
+STR_AI_LIST_CAPTION                                             :{WHITE}可用{STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_TOOLTIP                                             :{BLACK}點選以選擇腳本
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}作者： {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}版本： {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}接受
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇標示到的 AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇標示到的腳本
 STR_AI_LIST_CANCEL                                              :{BLACK}取消
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變 AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改變腳本
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} 參數
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

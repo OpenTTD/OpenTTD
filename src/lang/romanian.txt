@@ -29,82 +29,82 @@ STR_JUST_NOTHING                                                :Nimic
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Călători
 STR_CARGO_PLURAL_COAL                                           :Cărbune
-STR_CARGO_PLURAL_MAIL                                           :Colete poştale
+STR_CARGO_PLURAL_MAIL                                           :Colete poștale
 STR_CARGO_PLURAL_OIL                                            :Petrol
-STR_CARGO_PLURAL_LIVESTOCK                                      :animale
-STR_CARGO_PLURAL_GOODS                                          :bunuri
-STR_CARGO_PLURAL_GRAIN                                          :cereale
-STR_CARGO_PLURAL_WOOD                                           :lemne
-STR_CARGO_PLURAL_IRON_ORE                                       :minereu de fier
-STR_CARGO_PLURAL_STEEL                                          :oţel
-STR_CARGO_PLURAL_VALUABLES                                      :valori
-STR_CARGO_PLURAL_COPPER_ORE                                     :minereu de cupru
-STR_CARGO_PLURAL_MAIZE                                          :porumb
-STR_CARGO_PLURAL_FRUIT                                          :fructe
-STR_CARGO_PLURAL_DIAMONDS                                       :diamante
-STR_CARGO_PLURAL_FOOD                                           :alimente
-STR_CARGO_PLURAL_PAPER                                          :hârtie
-STR_CARGO_PLURAL_GOLD                                           :aur
-STR_CARGO_PLURAL_WATER                                          :apă
-STR_CARGO_PLURAL_WHEAT                                          :grâu
-STR_CARGO_PLURAL_RUBBER                                         :cauciuc
-STR_CARGO_PLURAL_SUGAR                                          :zahăr
-STR_CARGO_PLURAL_TOYS                                           :jucării
-STR_CARGO_PLURAL_CANDY                                          :bomboane
-STR_CARGO_PLURAL_COLA                                           :cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :vată de zahăr
-STR_CARGO_PLURAL_BUBBLES                                        :balonaşe
-STR_CARGO_PLURAL_TOFFEE                                         :caramel
-STR_CARGO_PLURAL_BATTERIES                                      :baterii
-STR_CARGO_PLURAL_PLASTIC                                        :plastic
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :sucuri
+STR_CARGO_PLURAL_LIVESTOCK                                      :Animale
+STR_CARGO_PLURAL_GOODS                                          :Bunuri
+STR_CARGO_PLURAL_GRAIN                                          :Cereale
+STR_CARGO_PLURAL_WOOD                                           :Lemne
+STR_CARGO_PLURAL_IRON_ORE                                       :Minereu de fier
+STR_CARGO_PLURAL_STEEL                                          :Oțel
+STR_CARGO_PLURAL_VALUABLES                                      :Valori
+STR_CARGO_PLURAL_COPPER_ORE                                     :Minereu de cupru
+STR_CARGO_PLURAL_MAIZE                                          :Porumb
+STR_CARGO_PLURAL_FRUIT                                          :Fructe
+STR_CARGO_PLURAL_DIAMONDS                                       :Diamante
+STR_CARGO_PLURAL_FOOD                                           :Alimente
+STR_CARGO_PLURAL_PAPER                                          :Hârtie
+STR_CARGO_PLURAL_GOLD                                           :Aur
+STR_CARGO_PLURAL_WATER                                          :Apă
+STR_CARGO_PLURAL_WHEAT                                          :Grâu
+STR_CARGO_PLURAL_RUBBER                                         :Cauciuc
+STR_CARGO_PLURAL_SUGAR                                          :Zahăr
+STR_CARGO_PLURAL_TOYS                                           :Jucării
+STR_CARGO_PLURAL_CANDY                                          :Dulciuri
+STR_CARGO_PLURAL_COLA                                           :Cola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Vată de zahăr
+STR_CARGO_PLURAL_BUBBLES                                        :Balonașe
+STR_CARGO_PLURAL_TOFFEE                                         :Caramele
+STR_CARGO_PLURAL_BATTERIES                                      :Baterii
+STR_CARGO_PLURAL_PLASTIC                                        :Plastic
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Sucuri acidulate
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :călător
-STR_CARGO_SINGULAR_COAL                                         :cărbune
-STR_CARGO_SINGULAR_MAIL                                         :colet poştal
-STR_CARGO_SINGULAR_OIL                                          :petrol
-STR_CARGO_SINGULAR_LIVESTOCK                                    :animale
-STR_CARGO_SINGULAR_GOODS                                        :bunuri
-STR_CARGO_SINGULAR_GRAIN                                        :cereale
-STR_CARGO_SINGULAR_WOOD                                         :lemne
-STR_CARGO_SINGULAR_IRON_ORE                                     :minereu de fier
-STR_CARGO_SINGULAR_STEEL                                        :oţel
-STR_CARGO_SINGULAR_VALUABLES                                    :valori
-STR_CARGO_SINGULAR_COPPER_ORE                                   :minereu de cupru
-STR_CARGO_SINGULAR_MAIZE                                        :porumb
-STR_CARGO_SINGULAR_FRUIT                                        :fructe
-STR_CARGO_SINGULAR_DIAMOND                                      :diamante
-STR_CARGO_SINGULAR_FOOD                                         :alimente
-STR_CARGO_SINGULAR_PAPER                                        :hârtie
-STR_CARGO_SINGULAR_GOLD                                         :aur
-STR_CARGO_SINGULAR_WATER                                        :apă
-STR_CARGO_SINGULAR_WHEAT                                        :grâu
-STR_CARGO_SINGULAR_RUBBER                                       :cauciuc
-STR_CARGO_SINGULAR_SUGAR                                        :zahăr
-STR_CARGO_SINGULAR_TOY                                          :jucării
-STR_CARGO_SINGULAR_CANDY                                        :bomboane
-STR_CARGO_SINGULAR_COLA                                         :cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :vată de zahăr
-STR_CARGO_SINGULAR_BUBBLE                                       :balonaşe
-STR_CARGO_SINGULAR_TOFFEE                                       :caramel
-STR_CARGO_SINGULAR_BATTERY                                      :baterii
-STR_CARGO_SINGULAR_PLASTIC                                      :plastic
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :suc
+STR_CARGO_SINGULAR_PASSENGER                                    :Călător
+STR_CARGO_SINGULAR_COAL                                         :Cărbune
+STR_CARGO_SINGULAR_MAIL                                         :Colet poștal
+STR_CARGO_SINGULAR_OIL                                          :Petrol
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Animale
+STR_CARGO_SINGULAR_GOODS                                        :Bunuri
+STR_CARGO_SINGULAR_GRAIN                                        :Cereale
+STR_CARGO_SINGULAR_WOOD                                         :Lemne
+STR_CARGO_SINGULAR_IRON_ORE                                     :Minereu de fier
+STR_CARGO_SINGULAR_STEEL                                        :Oțel
+STR_CARGO_SINGULAR_VALUABLES                                    :Valori
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Minereu de cupru
+STR_CARGO_SINGULAR_MAIZE                                        :Porumb
+STR_CARGO_SINGULAR_FRUIT                                        :Fructe
+STR_CARGO_SINGULAR_DIAMOND                                      :Diamante
+STR_CARGO_SINGULAR_FOOD                                         :Alimente
+STR_CARGO_SINGULAR_PAPER                                        :Hârtie
+STR_CARGO_SINGULAR_GOLD                                         :Aur
+STR_CARGO_SINGULAR_WATER                                        :Apă
+STR_CARGO_SINGULAR_WHEAT                                        :Grâu
+STR_CARGO_SINGULAR_RUBBER                                       :Cauciuc
+STR_CARGO_SINGULAR_SUGAR                                        :Zahăr
+STR_CARGO_SINGULAR_TOY                                          :Jucării
+STR_CARGO_SINGULAR_CANDY                                        :Dulciuri
+STR_CARGO_SINGULAR_COLA                                         :Cola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Vată de zahăr
+STR_CARGO_SINGULAR_BUBBLE                                       :Balonaș
+STR_CARGO_SINGULAR_TOFFEE                                       :Caramea
+STR_CARGO_SINGULAR_BATTERY                                      :Baterie
+STR_CARGO_SINGULAR_PLASTIC                                      :Plastic
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Suc acidulat
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} călător{P "" i}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de cărbune
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete poştale
+STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete poștale
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petrol
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} animal{P "" e}
 STR_QUANTITY_GOODS                                              :{COMMA} pachet{P "" e} de bunuri
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereale
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de lemne
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minereu de fier
-STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de oţel
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de oțel
 STR_QUANTITY_VALUABLES                                          :{COMMA} cuti{P e i} de valori
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minereu de cupru
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de porumb
@@ -121,7 +121,7 @@ STR_QUANTITY_TOYS                                               :{COMMA} sac{P "
 STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" i} cu bomboane
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de vată de zahăr
-STR_QUANTITY_BUBBLES                                            :{COMMA} balonaş{P "" e}
+STR_QUANTITY_BUBBLES                                            :{COMMA} balonaș{P "" e}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastic
@@ -169,7 +169,7 @@ STR_PASSENGERS                                                  :{COMMA} călăt
 STR_BAGS                                                        :{COMMA} sac{P "" i}
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
-STR_ITEMS                                                       :{COMMA} bucăţi
+STR_ITEMS                                                       :{COMMA} bucăți
 STR_CRATES                                                      :{COMMA} pachet{P "" e}
 
 # Colours, do not shuffle
@@ -177,7 +177,7 @@ STR_COLOUR_DARK_BLUE                                            :Albastru închi
 STR_COLOUR_PALE_GREEN                                           :Verde pal
 STR_COLOUR_PINK                                                 :Roz
 STR_COLOUR_YELLOW                                               :Galben
-STR_COLOUR_RED                                                  :Roşu
+STR_COLOUR_RED                                                  :Roșu
 STR_COLOUR_LIGHT_BLUE                                           :Albastru deschis
 STR_COLOUR_GREEN                                                :Verde
 STR_COLOUR_DARK_GREEN                                           :Verde închis
@@ -218,25 +218,25 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Filtru
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceţi un cuvânt-cheie pentru filtrarea listei
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduceți un cuvânt-cheie pentru filtrarea listei
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeţi ordinea de sortare ascendentă/descendentă
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alegeţi criteriul de sortare
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selectaţi criteriul de filtrare
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeți ordinea de sortare (ascendentă/descendentă)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alegeți criteriul de sortare
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Alegeți criteriul de filtrare
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
-STR_BUTTON_LOCATION                                             :{BLACK}Locaţie
+STR_BUTTON_LOCATION                                             :{BLACK}Locație
 STR_BUTTON_RENAME                                               :{BLACK}Nume nou
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
-STR_TOOLTIP_SHADE                                               :{BLACK}Minimizează fereastra - Afişează doar bara de titlu
-STR_TOOLTIP_DEBUG                                               :{BLACK}Arată informaţii depanare NewGRF
+STR_TOOLTIP_SHADE                                               :{BLACK}Minimizează fereastra - Afișează doar bara de titlu
+STR_TOOLTIP_DEBUG                                               :{BLACK}Arată informații depanare NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Previne închiderea acestei ferestre de către tasta 'Închide toate ferestrele'
-STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă şi trage pentru redimensionarea ferestrei
+STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă și trage pentru redimensionarea ferestrei
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - defilează în listă sus/jos
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stânga/dreapta
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren. Ctrl pentru selectare pe diagonală. Shift comută construcție/estimare cost
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrățel de teren. Ctrl pentru selectare pe diagonală. Shift comută construcție/estimare cost
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
@@ -249,8 +249,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Lungime: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Suprafaţa: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferenţa de înălţime: {HEIGHT}
+STR_MEASURE_AREA                                                :{BLACK}Suprafața: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferența de înălțime: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafaţa: {NUM} x {NUM}{}Diferenţa de înălţime: {HEIGHT}
 
 
@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setări avansate
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Setări IA / joc
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opţiuni transparenţă
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează numele oraşelor
@@ -381,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fondează oraş
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvenţii
+STR_SUBSIDIES_MENU_GOAL                                         :Ţinte curente
 ############ range ends here
 
 ############ range for graph menu starts
@@ -442,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii despre teren
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
-STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială
+STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială / Script Joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captură mărită
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta
@@ -603,7 +605,7 @@ STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKG
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
-STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Piesa nr:
+STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Piesa
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titlul
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Aleator
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
@@ -747,6 +749,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Vehicul
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Schimbări ale acceptării mărfurilor
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvenţii
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informaţii generale
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Cetăţenii sărbătoresc . . .{}Soseşte primul tren la {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Cetăţenii sărbătoresc . . .{}Soseşte primul autobuz la {STATION}!
@@ -1267,7 +1271,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezacti
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactivează navele pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite Inteligenţă Artificială în multiplayer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Număr opcodes inainte de suspendarea scripturilor: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Număr opcodes înainte de suspendarea scripturilor: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service în procente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}{STRING} zi{P 0:1 "" le}/%
@@ -1386,7 +1390,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatibil cu această versiune de OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :necunoscut
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivelul de compresie '{STRING}' nu este valid
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formatul salvarilor '{STRING}' nu este disponibil. Revenire la '{STRING}'
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formatul salvărilor '{STRING}' nu este disponibil. Revenire la '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1403,6 +1407,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Setări avansate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Setări NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Resurse online
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Setări IA / joc
 STR_INTRO_QUIT                                                  :{BLACK}Ieşire
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Începere joc nou. Ctrl+Click pentru a sări peste fereastra de configuraţie a harţii
@@ -1422,9 +1427,10 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afişeaz
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afişează setările avansate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afişează setările NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afişează setările pentru IA şi pentru joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipses{P 0 "te" "c"} {NUM} text{P "" e}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
+STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipse{P 0 "şte" "sc"} {NUM} text{P "" e}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
@@ -1823,10 +1829,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Joc în pauză 
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jocul este încă în pauză ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jocul este încă în pauză ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jocul este încă în pauză ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Jocul este încă în pauză ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jocul continuă ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :număr de jucători
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :conectare clienţi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script-ul jocului
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :iese
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a intrat în joc
@@ -1855,8 +1863,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marcheaz
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Deselectează toate resursele selectate
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru nume/etichetă:
-STR_CONTENT_OPEN_URL                                            :{BLACK}Viziteaza site-ul web
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Viziteaza site-ul web al acestei resurse
+STR_CONTENT_OPEN_URL                                            :{BLACK}Vizitează site-ul web
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vizitează site-ul web al acestei resurse
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Porneşte descărcarea resurselor selectate
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total de descărcat: {WHITE}{BYTES}
@@ -1904,7 +1912,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fiş
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Elemente grafice lipsă
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesită elemente grafice pentru a funcționa, dar nici un pachet grafic nu a fost găsit. Permiți ca OpenTTD sa descarce și să instaleze pachetele grafice necesare?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necesită elemente grafice pentru a funcționa, dar niciun pachet grafic nu a fost găsit. Permiteţi ca OpenTTD să descarce și să instaleze pachetele grafice necesare?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, descarcă pachetele grafice
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nu, ieși din OpenTTD
 
@@ -2250,7 +2258,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} cale f
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} cale ferată cu semafoare de ieșire și semafoare direcționale unidirecționale
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} cale ferată cu semafoare combo și semafoare direcționale
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} cale ferată cu semafoare combo și semafoare direcționale unidirecționale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} cale ferată cu semafoare direcționale si semafoare directionale unidirecționale ;-)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} cale ferată cu semafoare direcționale şi semafoare directionale unidirecționale
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depou trenuri
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
@@ -2410,6 +2418,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generare
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură şi pietroasă
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initializez ciclul dalelor
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Se rulează script-ul
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
 # NewGRF settings
@@ -2440,7 +2449,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vezi fișierul readme
 STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Listă modificări
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licențe
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenţă
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
@@ -2474,7 +2483,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Număr 
 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Fișier readme al NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Listă modificări a NewGRF {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Listă modificări NewGRF {STRING}
 STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licența fișierului NewGRF {STRING}
 
 # NewGRF inspect window
@@ -2570,7 +2579,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tip de industr
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} resurs{P 0 "ă" "e"}NewGRF scanat{P "ă" "e"} din aproximativ {NUM} resurs{P "ă" "e"} NewGRF disponibil{P "ă" "e"}
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} resurs{P 0 "ă" "e"} NewGRF scanat{P "ă" "e"} din aproximativ {NUM} resurs{P "ă" "e"} NewGRF disponibil{P "ă" "e"}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru arhive
 
 # Sign list window
@@ -2640,14 +2649,22 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanţează co
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Cumpără drepturi exclusive de transport
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Mituieşte autoritatea locală
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Iniţiază o campanie publicitară mică pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Iniţiază o campanie publicitară medie pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Iniţiază o mare campanie publicitară pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Finanţează reconstrucţia străzilor locale. Acest lucru cauzează perturbări majore ale traficului rutier timp de până la 6 luni.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Construieşte o statuie în cinstea companiei tale.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finanţează construcţia de noi clădiri comerciale în oraş.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Cumpără drepturi exclusive de transport în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniţiază o campanie publicitară mică pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniţiază o campanie publicitară medie pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniţiază o mare campanie publicitară pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finanţează reconstrucţia străzilor locale. Acest lucru cauzează perturbări majore ale traficului rutier timp de până la 6 luni.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construieşte o statuie în cinstea companiei tale.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finanţează construcţia de noi clădiri comerciale în oraş.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Cumpără drepturi exclusive de transport în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mituieşte autorităţile locale pentru a-ţi îmbunătăţi ratingul, dar cu riscul de a fi prins şi de a plăti amenzi serioase.{} Cost: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Ţinte
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Ţinte globale:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Nici unul -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ţintele companiei:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click pe ţintă pentru a centra ecranul principal pe industrie/oraş/zonă. Ctrl+Click deschide o fereastră nouă de vizualizare a industriei/oraşului/zonei
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenţii (F6)
@@ -2919,7 +2936,7 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An apari
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienţă max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Viteza: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabil pentru: {GOLD}
@@ -3044,10 +3061,10 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotivă mon
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotivă pernă magnetică
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preţ: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanţă: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanţă: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {7:COMMA} tiles{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Cost rulare: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {7:COMMA} tiles{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Cost rulare: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {7:COMMA} pătrățele{}Capacitate: {CARGO_LONG}{}Cost de rulare: {CURRENCY_LONG}/yr
 
 # Autoreplace window
@@ -3176,7 +3193,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacita
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacitate: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacitate: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfera Credit: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transferă Credit: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalul pentru întreţinere: {LTBLUE}{COMMA}zile{BLACK}   Ultima întreţinere: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalul de service: {LTBLUE}{COMMA}%{BLACK}   Ultimul service: {LTBLUE}{DATE_LONG}
@@ -3214,7 +3231,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Schimbă marfa)
 STR_REFIT_TITLE                                                 :{GOLD}Alege tipul încărcăturii:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Noua capacitate: {GOLD}{CARGO_LONG}{}{BLACK}Costul transformării: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Costul transformării: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seletează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
 
@@ -3270,9 +3287,9 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Schimbă
 STR_ORDER_REFIT                                                 :{BLACK}Rearanjeaza
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Alege tipul de marfă pentru rearanjarea în comandă. Ctrl+clic pentru a anula rearanjarea
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-modificare
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează tipul de marfă pentru modificare cu acest ordin. Ctrl+click pentru a elimina o instrucțiune de modificare îmcărcătură. Modificarea automată va fi efectuată doar dacă vehiculul permite asta.
-STR_ORDER_DROP_REFIT_AUTO                                       :Tip incărcătură nemodificabil
-STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Incărcătură disponibilă
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selectează tipul de marfă pentru modificare cu acest ordin. Ctrl+click pentru a elimina o instrucțiune de modificare încărcătură. Modificarea automată va fi efectuată doar dacă vehiculul permite asta.
+STR_ORDER_DROP_REFIT_AUTO                                       :Tip încărcătură nemodificabil
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Încărcătură disponibilă
 
 STR_ORDER_SERVICE                                               :{BLACK}Service
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Merge mereu
@@ -3366,7 +3383,7 @@ STR_ORDER_FULL_LOAD_REFIT                                       :(Încărcare co
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Încarcă complet orice tip de marfă cu auto-înlocuire la {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Descarcă și preia marfă cu auto-înlocuire pentru {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Descarcă și așteaptă incărcare completă cu auto-înlocuire pentru {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarcă și așteaptă incărcare completă orice tip cu auto-înlocuire pentru {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Descarcă și așteaptă încărcare completă orice tip cu auto-înlocuire pentru {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Transferă și ia marfă cu auto-înlocuire la {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transferă și așteaptă încărcare completă cu auto-înlocuire la {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transferă și așteaptă încărcare completă orice tip cu auto-înlocuire la {STRING})
@@ -3374,7 +3391,7 @@ STR_ORDER_NO_UNLOAD_REFIT                                       :(Incărcare mar
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Incărcare marfă completă fără descărcare cu auto-înlocuire la {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Incărcare marfă completă orice tip fără descărcare cu auto-înlocuire la {STRING})
 
-STR_ORDER_AUTO_REFIT_ANY                                        :incărcătura disponibilă
+STR_ORDER_AUTO_REFIT_ANY                                        :încărcătura disponibilă
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capătul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
@@ -3446,11 +3463,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Alege an
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Depanare IA
+STR_AI_DEBUG                                                    :{WHITE}Depanare IA / Script Joc
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numele Inteligenţei Artificiale
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Setări IA
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă setările IA
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numele scriptului
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Setări
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Schimbă setările scriptului
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activează/dezactivează suspendarea când un mesaj de la IA se potriveşte cu string-ul de oprire
@@ -3462,41 +3479,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comuntă
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuă
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Continuă execuţia modulului de Inteligenţă Artificială
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vizualizează datele de debug ale acestui modul de IA
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifică log-ul Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nici o IA potrivită a fost găsită{}Această IA este nefuncţională.{}Poţi descărca IA-uri folsind opţiunea "Resurse online" din meniul principal.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}O Inteligentă Artificială s-a oprit în mod eronat. Raportează această problemă autorului împreună cu o captură de ecran a ferestrei Depanare IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fereastra pentru depanare IA este disponibilă doar serverului
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fereastra pentru depanare IA / Script Joc este disponibilă doar serverului
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuraţie IA
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurație IA / Joc
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script Joc de încărcat în jocul următor
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Modulul de IA care va fi încărcat în jocul următor
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
+STR_AI_CONFIG_NONE                                              :(nici unul)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}În sus
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mută IA selectată sus în listă
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}În jos
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mută IA selectată jos în listă
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script Joc
+STR_AI_CONFIG_AI                                                :{SILVER}IA
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Selectare {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Încarcă un alt script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurază
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurează parametrii IA
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurează parametrii scriptului
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Click pentru a selecta o IA
+STR_AI_LIST_CAPTION                                             :{WHITE}Disponibil {STRING}
+STR_AI_LIST_CAPTION_AI                                          :IA
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Click pentru a alege un script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versiune: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptă
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select ează IA marcată
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Alege scriptul marcat
 STR_AI_LIST_CANCEL                                              :{BLACK}Anulează
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba IA
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schimba scriptul
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrii
+STR_AI_SETTINGS_CAPTION_AI                                      :IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Perioada (în zile) după care acastă IA va fi activată, după cea anterioară (valoare aproximativă): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Perioada (în zile) după care această librărie IA va fi activată, după cea anterioară (valoare aproximativă): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
