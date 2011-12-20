@@ -981,6 +981,9 @@ static uint GetWindowZPriority(const Window *w)
 		case WC_STATUS_BAR:
 			++z_priority;
 
+		case WC_OSK:
+			++z_priority;
+
 		case WC_QUERY_STRING:
 			++z_priority;
 
