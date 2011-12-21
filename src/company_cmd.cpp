@@ -695,7 +695,7 @@ void OnTick_Companies()
 	}
 
 	if (_next_competitor_start == 0) {
-		_next_competitor_start = 1; //AI::GetStartNextTime() * DAY_TICKS;
+		_next_competitor_start = AI::GetStartNextTime() * DAY_TICKS;
 	}
 
 	if (AI::CanStartNew() && _game_mode != GM_MENU && --_next_competitor_start == 0) {

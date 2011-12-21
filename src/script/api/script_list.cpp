@@ -818,15 +818,13 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 	sq_push(vm, 2);
 
 	for (ScriptListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
-		int key = (*iter).first;
-
 		/* Check for changing of items. */
 		int previous_modification_count = this->modifications;
 
 		/* Push the root table as instance object, this is what squirrel does for meta-functions. */
 		sq_pushroottable(vm);
 		/* Push all arguments for the valuator function. */
-		sq_pushinteger(vm, key);
+		sq_pushinteger(vm, (*iter).first);
 		for (int i = 0; i < nparam - 1; i++) {
 			sq_push(vm, i + 3);
 		}
@@ -870,7 +868,7 @@ SQInteger ScriptList::Valuate(HSQUIRRELVM vm)
 			return sq_throwerror(vm, _SC("modifying valuated list outside of valuator function"));
 		}
 
-		this->SetValue(key, value);
+		this->SetValue((*iter).first, value);
 
 		/* Pop the return value. */
 		sq_poptop(vm);
