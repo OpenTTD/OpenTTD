@@ -19,7 +19,7 @@ void SQGSText_Register(Squirrel *engine)
 {
 	DefSQClass<ScriptText, ST_GS> SQGSText("GSText");
 	SQGSText.PreRegister(engine);
-	SQGSText.AddConstructor<void (ScriptText::*)(StringID string), 2>(engine, "xi");
+	SQGSText.AddSQAdvancedConstructor(engine);
 
 	SQGSText.DefSQConst(engine, ScriptText::SCRIPT_TEXT_MAX_PARAMETERS, "SCRIPT_TEXT_MAX_PARAMETERS");
 

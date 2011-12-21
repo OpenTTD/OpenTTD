@@ -885,6 +885,28 @@ namespace SQConvert {
 		}
 	}
 
+	/**
+	 * A general template to handle creating of an instance with a complex
+	 *  constructor.
+	 */
+	template <typename Tcls>
+	inline SQInteger DefSQAdvancedConstructorCallback(HSQUIRRELVM vm)
+	{
+		try {
+			/* Find the amount of params we got */
+			int nparam = sq_gettop(vm);
+
+			/* Create the real instance */
+			Tcls *instance = new Tcls(vm);
+			sq_setinstanceup(vm, -nparam, instance);
+			sq_setreleasehook(vm, -nparam, DefSQDestructorCallback<Tcls>);
+			instance->AddRef();
+			return 0;
+		} catch (SQInteger e) {
+			return e;
+		}
+	}
+
 } // namespace SQConvert
 
 #endif /* SQUIRREL_HELPER_HPP */

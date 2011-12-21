@@ -19,7 +19,7 @@ void SQAIText_Register(Squirrel *engine)
 {
 	DefSQClass<ScriptText, ST_AI> SQAIText("AIText");
 	SQAIText.PreRegister(engine);
-	SQAIText.AddConstructor<void (ScriptText::*)(StringID string), 2>(engine, "xi");
+	SQAIText.AddSQAdvancedConstructor(engine);
 
 	SQAIText.DefSQConst(engine, ScriptText::SCRIPT_TEXT_MAX_PARAMETERS, "SCRIPT_TEXT_MAX_PARAMETERS");
 

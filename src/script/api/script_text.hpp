@@ -59,8 +59,11 @@ private:
  *
  * If you use parameters in your strings, you will have to define those
  *  parameters, for example like this:
- * local text = ScriptText(ScriptText.STR_NEWS); text.AddParam(1);
- * This will set the {COMPANY} to the name of Company 1.
+ * \code local text = ScriptText(ScriptText.STR_NEWS);
+ * text.AddParam(1); \endcode
+ * This will set the {COMPANY} to the name of Company 1. Alternatively you
+ *  can directly give those arguments to the ScriptText constructor, like this:
+ * \code local text = ScriptText(ScriptText.STR_NEWS, 1); \endcode
  *
  * @api ai game
  */
@@ -68,12 +71,20 @@ class ScriptText : public Text , public ZeroedMemoryAllocator {
 public:
 	static const int SCRIPT_TEXT_MAX_PARAMETERS = 20; ///< The maximum amount of parameters you can give to one object.
 
+#ifndef DOXYGEN_API
+	/**
+	 * The constructor wrapper from Squirrel.
+	 */
+	ScriptText(HSQUIRRELVM vm);
+#else
 	/**
 	 * Generate a text from string. You can set parameters to the instance which
 	 *  can be required for the string.
 	 * @param string The string of the text.
+	 * @param ... Optional arguments for this string.
 	 */
-	ScriptText(StringID string);
+	ScriptText(StringID string, ...);
+#endif
 	~ScriptText();
 
 #ifndef DOXYGEN_API

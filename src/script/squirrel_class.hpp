@@ -117,6 +117,12 @@ public:
 		engine->AddMethod("constructor", DefSQConstructorCallback<CL, Func, Tnparam>, Tnparam, params);
 	}
 
+	void AddSQAdvancedConstructor(Squirrel *engine)
+	{
+		using namespace SQConvert;
+		engine->AddMethod("constructor", DefSQAdvancedConstructorCallback<CL>, 0, NULL);
+	}
+
 	void PostRegister(Squirrel *engine)
 	{
 		engine->AddClassEnd();

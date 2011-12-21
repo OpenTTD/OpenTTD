@@ -341,7 +341,11 @@ BEGIN {
 		print "	SQ" api_cls ".PreRegister(engine, \"" api_super_cls "\");"
 	}
 	if (virtual_class == "false" && super_cls != "ScriptEvent") {
-		print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
+		if (cls_param[2] == "v") {
+			print "	SQ" api_cls ".AddSQAdvancedConstructor(engine);"
+		} else {
+			print "	SQ" api_cls ".AddConstructor<void (" cls "::*)(" cls_param[0] "), " cls_param[1]">(engine, \"" cls_param[2] "\");"
+		}
 	}
 	print ""
 

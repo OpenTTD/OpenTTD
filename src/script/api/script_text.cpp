@@ -15,10 +15,34 @@
 #include "../squirrel.hpp"
 #include "../../table/control_codes.h"
 
-ScriptText::ScriptText(StringID string) :
-	ZeroedMemoryAllocator(),
-	string(string)
+ScriptText::ScriptText(HSQUIRRELVM vm) :
+	ZeroedMemoryAllocator()
 {
+	int nparam = sq_gettop(vm) - 1;
+	if (nparam < 1) {
+		throw sq_throwerror(vm, _SC("You need to pass at least a StringID to the constructor"));
+	}
+
+	/* First resolve the StringID. */
+	SQInteger sqstring;
+	if (SQ_FAILED(sq_getinteger(vm, 2, &sqstring))) {
+		throw sq_throwerror(vm, _SC("First argument must be a valid StringID"));
+	}
+	this->string = sqstring;
+
+	/* The rest of the parameters must be arguments. */
+	for (int i = 0; i < nparam - 1; i++) {
+		/* Push the parameter to the top of the stack. */
+		sq_push(vm, i + 3);
+
+		if (SQ_FAILED(this->_SetParam(i, vm))) {
+			this->~ScriptText();
+			throw sq_throwerror(vm, _SC("Invalid parameter"));
+		}
+
+		/* Pop the parameter again. */
+		sq_pop(vm, 1);
+	}
 }
 
 ScriptText::~ScriptText()
