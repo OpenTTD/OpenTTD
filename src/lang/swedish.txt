@@ -1896,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Höjdkarta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Ljudpaket
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikpaket
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spelskript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Spelskriptbibliotek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laddar ned innehåll...

@@ -1896,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenariu
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hartă topografică
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Set sunet de bază
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Muzică de bază
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script joc
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Librărie script joc
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarc resursele...

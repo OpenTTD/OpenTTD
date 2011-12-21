@@ -347,9 +347,10 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Desistir
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do jogo
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Definições de dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Definições avançadas
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configurações de IA / Jogo
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições do NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomes de cidades exibidos
@@ -382,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
+STR_SUBSIDIES_MENU_GOAL                                         :{G=m}Objetivos atuais
 ############ range ends here
 
 ############ range for graph menu starts
@@ -748,6 +750,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novos v
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Mudanças à aceitação de carga
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsídios
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informações gerais
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro trem chega a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeiro ônibus chega a {STATION}!
@@ -1404,6 +1408,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificuld
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Configurações avançadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configurar NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Checar conteúdo on-line
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configurações de IA / Jogo
 STR_INTRO_QUIT                                                  :{BLACK}Sair
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Iniciar um novo jogo. Ctrl+Clique para pular a configuração do mapa
@@ -1423,6 +1428,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Exibir o
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as configurações avançadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Exibe configurações de IA e do Jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
@@ -1824,10 +1830,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Jogo pausado ({
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Jogo ainda pausado ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Jogo ainda pausado ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Jogo ainda pausado ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Jogo ainda pausado ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Jogo despausado ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de jogadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectando-se
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :{G=m}script do jogo
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo
@@ -1853,7 +1861,7 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecion
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Seleciona todos para serem baixados
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecionar upgrades
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Seleciona tudo que consistir em upgrades para conteúdo existente para ser baixado
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Descelecionar tudo
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar tudo
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Desceleciona todos
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/nome do filtro:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visitar website
@@ -1889,6 +1897,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfico
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script do jogo
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...
@@ -2411,6 +2420,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Geraçã
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Geração de area rochosa e irregular
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Preparando jogo
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Passando tile-loop
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script em funcionamento
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparando jogo
 
 # NewGRF settings
@@ -2519,7 +2529,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer versão {STRING} ou maior do OpenTTD
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demais NewGRFs estão carregados
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitas NewGRFs estão carregadas
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como um NewGRF estático em conjunto com {4:STRING} pode causar desincronias
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esperado
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
@@ -2650,6 +2660,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financ
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e cargas usem somente estações de sua empresa.{} Preço: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
 
+# Goal window
+STR_GOALS_CAPTION                                               :{G=m}{WHITE}Objetivos
+STR_GOALS_GLOBAL_TITLE                                          :{G=m}{BLACK}Objetivos globais:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{G=m}{ORANGE}- Nenhum -
+STR_GOALS_COMPANY_TITLE                                         :{G=m}{BLACK}Objetivos da empresa:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique num objetivo para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ofertas de transporte subsidiados
@@ -2665,7 +2683,7 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure C
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
+STR_STATION_LIST_NONE                                           :{G=m}{YELLOW}- Nenhum -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Selecionar todas as instalações
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Selecionar todos os tipos de carga (inclusive as que não tem espera)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Não há carga de nenhum tipo aguardando
@@ -2721,10 +2739,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Despesas
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construção
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Novos Veículos
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Circulação de Trens
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Custo de Operação de Trens
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Circulação de Automóveis
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Circulação de Aeronaves
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Circulação de Embarcações
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Custo de Operação de Aeronaves
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Custo de Operação de Embarcações
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manutenção de Propriedades
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Lucros dos Trens
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Lucros dos Automóveis
@@ -3470,18 +3488,29 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debug d
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração da IA
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript que será carregado no próximo jogo
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
+STR_AI_CONFIG_NONE                                              :{G=m}(nenhum)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA selecionada para cima na lista
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Descer
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA selecionada para baixo na lista
 
+STR_AI_CONFIG_AI                                                :{G=f}{SILVER}IAs
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecionar {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :{G=f}IA
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros da IA
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Disponíveis {STRING}
+STR_AI_LIST_CAPTION_AI                                          :{G=f}IAs
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar uma IA
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3494,9 +3523,12 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar IA
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
+STR_AI_SETTINGS_CAPTION_AI                                      :{G=f}IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Número de dias para começar esta IA após a última: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

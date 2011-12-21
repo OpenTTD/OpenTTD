@@ -1897,6 +1897,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Escenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Sonidos base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Música base
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de juego
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Librería SJ
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...

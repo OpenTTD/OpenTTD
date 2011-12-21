@@ -826,7 +826,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verdwaald
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} Kan niet naar de volgende bestemming omdat deze buiten bereik ligt
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan niet naar de volgende bestemming omdat deze buiten bereik ligt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} is gestopt omdat een ombouworder is mislukt
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
@@ -1896,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtekaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basisgeluiden
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismuziek
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spel script
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS-bibliotheek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Content aan het downloaden...
@@ -1913,7 +1915,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon gedo
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Ontbrekende graphics
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD heeft graphics nodig om te kunnen werken, maar er konden er geen gevonden worden. Wilt u toestaan dat OpenTTD graphics downloadt en installeert?
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, downloade de graphics
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, download de graphics
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, OpenTTD afsluiten
 
 # Transparency settings window
@@ -2567,7 +2569,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' heeft een eindeloze loop veroorzaakt in de productie-callback
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} gaf inbekend/ongeldig resultaat {2:HEX}
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} gaf onbekend/ongeldig resultaat {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
@@ -2616,7 +2618,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (nog nodig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (afgeleverd)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK} dag{P "" en}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK} dag{P "" en} (gefinanciert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK} dag{P "" en} (gefinancierd)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stad groeit {RED}niet{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
@@ -2813,9 +2815,9 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We zoeke
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructuur van {COMPANY}
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoor delen:
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoordelen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seinen
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Weg delen:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Wegdelen:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Weg
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramrails
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Water tegels:

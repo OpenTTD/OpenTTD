@@ -1896,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Skenaario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Korkeuskartta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Perusäänet
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Musiikkipaketti
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Peliskripti
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Skriptikirjasto
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ladataan sisältöä...

@@ -1964,6 +1964,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Mapa
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Základné zvuky
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Základná hudba
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Knižnica GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sťahovanie obsahu...

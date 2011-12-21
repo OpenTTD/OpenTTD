@@ -1992,6 +1992,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenarij
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvukovi
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Osnovna glazba
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skripta igre
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS knjižnica
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje sadržaja

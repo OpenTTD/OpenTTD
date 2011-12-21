@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Tanggal Peluncu
 STR_SORT_BY_RUNNING_COST                                        :Biaya Operasional
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Daya/Biaya Ops.
 STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas kargo
+STR_SORT_BY_RANGE                                               :Jangkauan
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hentikan sementara permainan
@@ -347,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan tingkat kesulitan
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Pengaturan AI / Permainan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
@@ -1367,6 +1369,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Tingkat 
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pengaturan lanjutan
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Pengaturan NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Cari konten
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Pengaturan AI / Permainan
 STR_INTRO_QUIT                                                  :{BLACK}Keluar
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Mulai permainan baru. Ctrl-klik untuk melewati pengaturan peta
@@ -1386,6 +1389,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Tampilka
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Tampilkan Pengaturan lanjutan
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Tampilkan setting NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Cari konten baru dan pembaruan untuk diunduh
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Tampilkan pengaturan permainan dan AI
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Keluar OpenTTD
 
 
@@ -1851,6 +1855,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Skenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Peta Ketinggian
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Suara dasar
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Musik dasar
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skrip permainan
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Pustaka SP
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...
@@ -3331,6 +3337,8 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup ma
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Skrip Permainan
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Periksa catatan skrip permainan
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda bisa mengunduh AI melalui sistem 'Konten Online'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada pembuat AI dengan potongan layar dari Jendela Debug AI
@@ -3338,19 +3346,31 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}SkripPermainan yang akan di jalankan di permainan berikutnya
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
+STR_AI_CONFIG_NONE                                              :(tdk ada)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Naikkan
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan AI terpilih dalam daftar
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SkripPermainan
+STR_AI_CONFIG_AI                                                :{SILVER}AI
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkripPermainan
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter skrip AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Tersedia {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkripPermainan
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih skrip AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Pembuat: {STRING}
@@ -3363,9 +3383,13 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Batal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan mengubah skrip AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :SkripPermainan
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Jalankan AI setelah berapa hari : {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

@@ -445,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historique des 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'Inspection
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/cacher la console
-STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA et de scripts de jeu
+STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA et de GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran zoomée
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
@@ -1897,6 +1897,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scénario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Carte d'altitude
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m2}Sons de base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m2}Musiques de base
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jeu
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Bibliothèque GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement du contenu...
@@ -3464,7 +3466,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Sélecti
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA et de script de jeu
+STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA et de GameScript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom du script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuration
@@ -3485,11 +3487,11 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de script de jeu n'est disponible que pour le serveur
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de GameScript n'est disponible que pour le serveur
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de script de jeu
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Les scripts de jeu qui seront chargés dans la prochaine partie
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le GameScript qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur Humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
@@ -3500,13 +3502,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Déplace
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Déplacer vers le bas
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Déplacer l'IA sélectionnée vers le bas
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de jeu
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
 STR_AI_CONFIG_AI                                                :{SILVER}IAs
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Sélectionner {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de jeu
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger un autre script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurer les paramètres du script
@@ -3514,7 +3516,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
 STR_AI_LIST_CAPTION_AI                                          :IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jeu
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliquer pour sélectionner un script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur{NBSP}: {STRING}
@@ -3529,7 +3531,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas m
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramètres
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de jeu
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}

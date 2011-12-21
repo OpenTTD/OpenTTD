@@ -21,6 +21,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(недефиниран стринг)
 STR_JUST_NOTHING                                                :Ништо
 
 # Cargo related strings
@@ -125,6 +126,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} �
 STR_QUANTITY_BATTERIES                                          :{COMMA} батери{P ја и}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} пластика
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} пенлив пијалок
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -163,7 +165,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}НТ
 STR_ABBREV_ALL                                                  :{TINY_FONT}Се`
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :{COMMA} патници{P "" s}
 STR_BAGS                                                        :{COMMA} вреќи
+STR_TONS                                                        :{COMMA} тон{P "" s}
+STR_LITERS                                                      :{COMMA} литар{P "" s}
+STR_ITEMS                                                       :{COMMA} точка{P "" s}
+STR_CRATES                                                      :{COMMA} гајба{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темоно Сина
@@ -206,18 +213,29 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Внесете филтер низа
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Внесете клучни зборови за филтрирање на списокот за
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Изберете начин на сортирање (намалувачки/зголемувачки)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Изберете критериум за сортирање
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Изберете филтрирање критериуми
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортирање според
 STR_BUTTON_LOCATION                                             :{BLACK}Локација
 STR_BUTTON_RENAME                                               :{BLACK}Преименувај
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори го прозорецот
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
+STR_TOOLTIP_SHADE                                               :{BLACK}Сенката прозорец - прикажува само на насловната лента
+STR_TOOLTIP_DEBUG                                               :{BLACK}Прикажи ги новите GRF debug информациите
+STR_TOOLTIP_STICKY                                              :{BLACK}Означи го овој прозорец како unclosable од страна на "Затвори ги сите прозорци" клуч
+STR_TOOLTIP_RESIZE                                              :{BLACK}Кликнете и влечете за да ја намалите големината овој прозорец
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вклучи големи / мали големината на прозорецот
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Поместувач - ја поместува листата нагоре/надолу
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лизгач - свитоци листата лево / десно
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Уривање згради итн. на квадратна област
 
 # Query window
@@ -226,8 +244,14 @@ STR_BUTTON_CANCEL                                               :{BLACK}Отка
 STR_BUTTON_OK                                                   :{BLACK}Во ред
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}должина: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Површина: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Должина: {NUM}{}Висина разлика: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Должина: {NUM} x {NUM}{}Висина разлика: {HEIGHT}
 
 
 # These are used in buttons
@@ -235,6 +259,7 @@ STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Насе
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Име
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Датум
 # These are used in dropdowns
+STR_SORT_BY_NAME                                                :име
 STR_SORT_BY_PRODUCTION                                          :Производство
 STR_SORT_BY_TYPE                                                :Тип
 STR_SORT_BY_TRANSPORTED                                         :Транспортирано
@@ -249,8 +274,11 @@ STR_SORT_BY_MODEL                                               :Модел
 STR_SORT_BY_VALUE                                               :Вредност
 STR_SORT_BY_LENGTH                                              :Должина
 STR_SORT_BY_LIFE_TIME                                           :Преостанат животен век
+STR_SORT_BY_TIMETABLE_DELAY                                     :распоред задоцнување
 STR_SORT_BY_FACILITY                                            :Вид на станица
 STR_SORT_BY_WAITING                                             :Вредност на товарот кој чека
+STR_SORT_BY_RATING_MAX                                          :Највисока товар рејтинг
+STR_SORT_BY_RATING_MIN                                          :Најниска товар рејтинг
 STR_SORT_BY_ENGINE_ID                                           :Идентификација на моторот (класично сортирање)
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Моќност
@@ -259,18 +287,22 @@ STR_SORT_BY_INTRO_DATE                                          :Датум на
 STR_SORT_BY_RUNNING_COST                                        :Потрошувачка
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Моќност/Потрошувачка
 STR_SORT_BY_CARGO_CAPACITY                                      :Капацитет за товар
+STR_SORT_BY_RANGE                                               :опсег
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паузирај ја играта
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Брзо нанапред играта
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Опции
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Зачувај ја играта, напушти, излези
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Прикажи мапа, екстра viewport или листа на знаци
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Прикажи именик на градови
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Покажи субвенции
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Прикажи листа на станиците на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Прикажи информации за финансиите на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Прикажи општи информации за компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Прикажи графици
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Прикажи ја табелата за успешност на компанијата
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Фонд за изградба на нови индустриски или листа на сите индустрии
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Прикажи листа на возови на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Прикажи листа на патни возила на компанијата
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Прикажи листа на бродови на компанијата
@@ -281,24 +313,54 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Град
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Градба на патишта
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Градба на пристаништа
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Градба на аеродроми
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Отворете го уредување алатникот за да се подигне / пониски земјиште, насадат дрвја, итн
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Прикажи го прозорецот за звук и музика
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Прикажи последна порака/вест, прикажи опции за пораки
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информација за земјишна област
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Исклучете алатки
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зачувај сценарио, оптоварување сценарио, сценарио напушти уредник, да престанам
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Сценарио Едитор
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Поместување на датум назад една година
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Поместување на датум напред една година
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Кликни за да влезат на почеток година
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Прикажи мапа, именик на градови
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Генерирање на терен
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Генерирање на градови
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Генерирање на индустрии
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Конструирање на патишта
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Насадат дрвја. Shift опција да изберете објект / покажува проценка на трошоците
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}место знак
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Место објект
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Зачувај сценарио
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Вчитај сценарио
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Зачувај висина сајтот
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Вчитај висина сајтот
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Напушти уредник
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Напушти
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :игра опции
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ниво на тешкотија подесувања
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :напредни поставувања
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :АИ / игри поставувања
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :НовGRF подесувања
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :транспарентност опции
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Место имиња прикажани
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Станица имиња прикажани
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Начин точка имиња прикажани
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :знаци прикажани
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Конкурент знаци и имиња прикажани
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Комплетна анимација
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Комплетна детали
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Транспарентна згради
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Транспарентна станица знаци
 ############ range ends here
 
 ############ range for file menu starts
@@ -309,11 +371,18 @@ STR_FILE_MENU_EXIT                                              :Излез
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа на светот
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :екстра прозорец
+STR_MAP_MENU_SIGN_LIST                                          :Си листа
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Место
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :Резултати градот
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :субвенции
+STR_SUBSIDIES_MENU_GOAL                                         :Сега цели
 ############ range ends here
 
 ############ range for graph menu starts
@@ -327,18 +396,28 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Курс на �
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Табела на вредност на компании
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детален перформанси рејтинг
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :индустрија директориум
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Фонд за нова индустрија
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Железничка изградба
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Електрифицирани железнички изградба
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :монорелса изградба
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Maglev изградба
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :изградба на патишта
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :трамвај изградба
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :патишта изградба
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -346,6 +425,9 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Изградб�
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_LANDSCAPING                                :уредување
+STR_LANDSCAPING_MENU_PLANT_TREES                                :насадат дрвја
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :место знак
 ############ range ends here
 
 ############ range for music menu starts
@@ -355,10 +437,20 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Звук/муз
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Последната порака/вест
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Поставки за пораки
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :порака историјата
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Земјиште во областа
+STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вклучи конзола
+STR_ABOUT_MENU_AI_DEBUG                                         :АИ / игри сценарио де-бубачки
+STR_ABOUT_MENU_SCREENSHOT                                       :Слика од екранот
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Зумира екранот
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Целата сајтот екранот
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'ОтвориTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :самовила усогласат
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вклучи одблеснува кутии
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -409,25 +501,92 @@ STR_MONTH_ABBREV_OCT                                            :Окт
 STR_MONTH_ABBREV_NOV                                            :Ное
 STR_MONTH_ABBREV_DEC                                            :Дек
 
+STR_MONTH_JAN                                                   :јануари
+STR_MONTH_FEB                                                   :Февруари
+STR_MONTH_MAR                                                   :Март
+STR_MONTH_APR                                                   :Април
+STR_MONTH_MAY                                                   :Мај
+STR_MONTH_JUN                                                   :Јуни
+STR_MONTH_JUL                                                   :Јули
+STR_MONTH_AUG                                                   :Август
+STR_MONTH_SEP                                                   :Септември
+STR_MONTH_OCT                                                   :Октомври
+STR_MONTH_NOV                                                   :ноември
+STR_MONTH_DEC                                                   :декември
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Клучни
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Прикажи клуч за графикони
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Добивка График
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Приходи График
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Единиците на товар доставени
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Перформанси на компанијата рејтингот (максимум рејтинг = 1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}компанијата вредности
 
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Карго плаќање цени
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Денови во транзит
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Плаќање за доставување 10 единици (или 10.000 литри) на товар на растојание од 20 квадрати
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}им овозможи на сите
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Оневозможи ги сите
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Приказ на сите Товарот на товар плаќање стапки графикон
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Покажи нема Товарот на товар плаќање стапки графикон
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вклучи графикон за карго тип за вклучување / исклучување
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Прикажи детални перформанси рејтингот
 
 # Graph key window
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Клучни на компанијата графикони
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Кликни тука за да го вклучите влез компанијата на графиконот за вклучување / исклучување
 
 # Company league window
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Компанијата табелата
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :инженер
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Шверц менаџер
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :транспорт координатор
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :пат супервизор
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :директор
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Главниот извршен
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Претседател
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :претседател
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :тајкунот
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Детален перформанси рејтинг
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Детална
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Погледнете ги деталите за оваа компанија
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}возилата:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}станици:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Мин. профит:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Мин. приход:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Макс. приход:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}дадени:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}карго:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}пари:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}кредит:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Вкупно:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Број на возила кои се претвори профит минатата година. Ова вклучува возила, возови, бродови и авиони
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Број на неодамна сервисираат станица делови. Секој дел на станицата (на пример, железничка станица, автобуска станица, аеродром) се смета, дури и ако тие се поврзани како една станица
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Профитот на возилото со најниски примања (само возила постари од две години се смета)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Износ на готовина направени во четврт со најниска добивка на последните 12 четвртини
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Износ на готовина направени во четврт со најголем профит на последните 12 четвртини
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Единиците на товар испорачани во последните четири квартали
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Број на видови на стока донесено во последниот квартал
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Сума на пари оваа компанија ја има во банката
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Количината на пари оваа компанија е донесена на кредитот
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Вкупно поени од можни поени
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Џез Џубокс
@@ -439,6 +598,9 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Свое 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Гласност на музка
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Гласност на ефекти
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}МИН
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -455,11 +617,13 @@ STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Повл
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Избери програм со сите песни
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Избери 'old style music' програм
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Избери програм „нов стил на музика“
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Изберете 'Ezy улица стил музика' програма
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Избери 'Сопствен 1' (кориснички дефиниран) програм
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Избери 'Сопствен 2' (кориснички дефиниран) програм
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Вклучи/исклучи мешање за програм
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Прикажи диалог за избор на песна
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Музички сет без песни е избран. Не песни ќе се одигра
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Избор на музички програм
@@ -469,9 +633,11 @@ STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLA
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Исчисти
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Исчисти го тековниот програм (само Сопствен1 или Сопствен2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликни на песна за да ја додадеш во тековниот програм (само Сопствен1 или Сопствен2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Кликнете на песна за да го отстраните од тековната програма (Прилагодено 1 или 2 Прилагодено само)
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Компанијата табелата во {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Бизнисмен
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Претпријатие
@@ -480,6 +646,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Капитал�
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Магнат
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Могул
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Тајкун на векот
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} постигна статус на '{STRING}'!
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} од {COMPANY} постигна статус на'{STRING}'!
 
@@ -498,6 +666,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Прик
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Прикажи ги транспортните рути на мапа
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Прикажи ја вегетацијата на мапа
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Прикажи сопственици на земјата на мапа
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Кликнете на индустријата тип да го вклучите прикажување на тоа. Ctrl + Кликнете оневозможува сите видови освен избра еден. Ctrl + Кликнете на неа повторно да им овозможи на сите видови индустрија
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Кликнете на една компанија да го вклучите прикажување на својот имот. Ctrl + Кликнете оневозможува сите компании освен избра еден. Ctrl + Кликнете на неа повторно да им овозможи на сите компании
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Патишта
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Пруги
@@ -529,29 +699,69 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Снег
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Вклучи/исклучи имиња на градови на мапа
+STR_SMALLMAP_CENTER                                             :{BLACK}Центар мали мапата на тековната позиција
+STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
+STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Оневозможи ги сите
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}им овозможи на сите
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Прикажи висина
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Покажи нема индустрии на сајтот
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Приказ на сите индустрии на сајтот
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Вклучи приказ на висината сајтот
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Покажи нема компанија сопственост на сајтот
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Приказ на сите компанија сопственост на сајтот
 
 # Status bar messages
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Прикажи ги последните пораки или пријавите вести
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  пауза  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}Автозачувување
+STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ЗАШТЕДА НА ИГРА  *  *
 
 # News message history
+STR_MESSAGE_HISTORY                                             :{WHITE}порака Историја
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Листа на последните вести пораки
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Порака
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Опции за пораки
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Намести сите типови на пораки на: Исклучување / Краток преглед / Целосна
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Пушти звук за сумирани вести пораки
+STR_NEWS_MESSAGES_OFF                                           :исклучен
+STR_NEWS_MESSAGES_SUMMARY                                       :резиме
+STR_NEWS_MESSAGES_FULL                                          :целосна
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Типови на пораки:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Пристигнување на првото возило на станицата на играчот
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Пристигнување на прво возило на конкурентска станица
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Несреќи / хаварии
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Информации за компанијата
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Отворање на индустрии
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Затворање на индустрии
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Промени во економијата
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Производство промени на индустрии сервира од страна на компанијата
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Производство промени на индустрии сервира од страна конкурент(и)
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Други индустрија производство промени
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Совет / информации за возилата на компанијата
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Нови возила
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Промени во прием на товар
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субвенции
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Општи информации
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Првиот воз пристигнува во {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}граѓаните го слават . . .{}Прво автобус пристигнува во {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}граѓаните го слават . . .{}Прво камион пристигнува во {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Прво патнички трамвај пристигнува во {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Прво товарни трамвај пристигнува во {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Граѓаните го слават. . .{}Прво брод ќе пристигне на {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Градска прослава . . .{}Првиот авион пристигна на {STATION}!
 
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Железничка несреќа!{}{COMMA} умре во огнена топка по судир
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Патничко возило несреќа!{}Возач загина во огнена топка по судир со воз
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Авионска несреќа!{}{COMMA} загинати во пожарот на {STATION}
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Цепелинска несреќа на {STATION}!
@@ -573,6 +783,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може да се стигне до следната дестинација, бидејќи тоа е надвор од опсегот
 
 
 
@@ -640,6 +851,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилаго�
 
 
 
+
 # Advanced settings window
 
 
@@ -651,10 +863,12 @@ STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Износ на локомотива чад / искри: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Рамна површина околу индустрии: {ORANGE}{STRING} плочка{P 0:1 "" s}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Инфраструктура за одржување: {ORANGE}{STRING}
 
 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Одложување на поставете настани: {ORANGE}{STRING} втора{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Одложување на поставете настани: {ORANGE}забрането
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Дебелина на линии во графици: {ORANGE}{STRING}
 
 
 
@@ -664,6 +878,8 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Одл�
 
 
 
+
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#ОПкодови пред скрипти се суспендирани: {ORANGE}{STRING}
 
 
 
@@ -671,10 +887,34 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Гра�
 
 
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиција на статусната лента: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максимална зумирате ниво: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максимална одзумирате ниво: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нормално
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}скрипти
 
 
 
 
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Грешка со конфигурациската датотека...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... грешка во низа '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... невалиден вредност '{STRING}' за '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... заостанува карактери на крајот на поставување '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... игнорирање НовGRF '{STRING}': дупликат GRF проект со '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... игнорирање на неправилен НовGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не е најдена
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :небезбедни за статични употреба
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :систем НовиGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :некомпатибилни на оваа верзија на ОтвориTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :непознат
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ниво на компресија '{STRING}' не е валидна
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
 
 # Intro window
 
@@ -685,8 +925,11 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Пове
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Опции на Играта
 STR_INTRO_DIFFICULTY                                            :{BLACK}Тежина ({STRING})
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}АИ / Играта Подесувања
 
 
+
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Покажи АИ и игра поставувања
 
 
 # Quit window
@@ -772,15 +1015,22 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :испраќа 
 
 # Network related errors
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Игра уште пауза ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игра скрипта
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_OPEN_URL                                            :{BLACK}Посетете го веб-
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посетете го веб-сајт за оваа содржина
 
 # Order of these is important!
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :игра скрипта
+STR_CONTENT_TYPE_GS_LIBRARY                                     :ГШ библиотека
 
 # Content downloading progress window
 
 # Content downloading error messages
+
 
 # Transparency settings window
 
@@ -794,6 +1044,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Зали
 # Rail construction toolbar
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгради пруга користејки 'Авто-пруга' мод
+
 
 # Rail depot construction window
 
@@ -956,6 +1207,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Map generation progress
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Цел на генерација
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Вклучување на скрипта
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE} Детални НовGRF информации
@@ -967,11 +1219,12 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Дода
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}повторно да го скенира додадени фајлови
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ажурирање на листата на НоваGRF датотеки
 
+# Additional textfiles accompanying NewGRFs
+
 
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верзија за: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Мин. компатибилна верзија: {SILVER}{NUM}
-
 
 
 # NewGRF parameters window
@@ -982,6 +1235,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Наме
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметар {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Број на параметри: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -1017,6 +1272,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <�
 STR_NEWGRF_INVALID_ENGINE                                       :<валиден возило модел>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<валиден индустрија>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Совпаѓање на
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Исчисти филтер
@@ -1037,6 +1294,14 @@ STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Згол
 # Town local authority window
 
 
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}цели
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобал цели:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Никој -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Фирма цели:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликнете на цел центар главниот приказ на индустријата / град / плочка. Ctrl + Кликнете отвора нов прозорец на индустријата / град / плочка Локација
 
 # Subsidies window
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот
@@ -1064,15 +1329,40 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приф
 
 
 # Finances window
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}инфраструктура
 
 # Company view
 
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} авион
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}инфраструктура:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} железнички парчиња
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} патот парчиња
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} вода плочки
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} станица плочки
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеродроми
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Никој
+
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}детали за
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Погледнете детални точки инфраструктура
 
 
 
 
 
+# Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Инфраструктура на {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}железнички парчиња:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}сигнали
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Патот парчиња:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}патот
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}трамвај
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Вода плочки:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}каналите
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}станици:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}станица плочки
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}аеродроми
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/годишно ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/годишно
 
 # Industry directory
 
@@ -1121,6 +1411,7 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Шински возила
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нов авион
 
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Опсег: {GOLD}{COMMA} плочки
 
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
 
@@ -1140,7 +1431,7 @@ STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Пром
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Преименувај депо
 
 
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авион - кликни на авионот за информации
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Типови на авионите - десен клик на авиони за информации
 
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Повлечи го авионот со глушецот овде за да го продадеш
 
@@ -1149,11 +1440,11 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Повл
 
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Нов авион
 
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Направи нов авион
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купи нови авиони
 
 
 
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Позиционирај го хангарот на центар
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Центар главниот приказ на хангар локација. Ctrl + Кликнете отвора нов прозорец на хангар Локација
 
 
 
@@ -1161,6 +1452,8 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Пози
 
 # Engine preview window
 
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {7:COMMA} плочки{}Капацитет: {CARGO_LONG}, {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {7:COMMA}плочки{}капацитет: {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :Воз
@@ -1175,7 +1468,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летало
 
 # Vehicle view
 
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Прикажи го авионот на средина
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Центар главниот приказ на локација авионот. Ctrl + клик ќе го следат авион во главниот приказ
 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
 
@@ -1184,13 +1477,14 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Прат
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пренамени авион за да може да пренесува друг вид на товар
 
 
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Прикажи ги наредбите на авионот
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Прикажи нарачки авионот. Ctrl + Кликнете да покаже распоред авионот
 
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Прикажи детали за авионот
 
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Моментална активност на авионот - кликни овде за стоп/старт на авионот
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Сега авиони акција - кликни за да се запре / проектот авиони. Ctrl + Кликнете да дојдете до дестинацијата
 
 # Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Премногу далеку за да следната дестинација
 
 
 # Vehicle stopped/started animations
@@ -1204,6 +1498,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Име �
 STR_VEHICLE_INFO_AGE                                            :{COMMA} година{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} година{P "" s} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Макс. брзина: {LTBLUE}{VELOCITY} {BLACK}Опсег: {LTBLUE}{COMMA} плочки
 
 
 
@@ -1250,6 +1545,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1264,6 +1561,10 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 
+
+
+
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Следна дестинација е надвор од опсегот)
 
 
 
@@ -1286,19 +1587,34 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 # AI debug window
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Преглед на излезот од овој Пи
-
+STR_AI_GAME_SCRIPT                                              :{BLACK}игра сценарио
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Проверете играта сценарио Вклучи
 
 
 # AI configuration window
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}На GameScript дека ќе се вчита во следниот натпревар
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Во ЗИС дека ќе се вчита во следниот натпревар
+STR_AI_CONFIG_NONE                                              :(никој)
 
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_AI                                                :{SILVER}ЗИС
+
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :АИ
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
 
 # Available AIs window
+STR_AI_LIST_CAPTION_AI                                          :ЗИС
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
 
 
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :АИ
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Број на денови за да започнете оваа Пи по претходниот (се дава или зема): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 
@@ -1312,7 +1628,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<не се до
 
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да се вчита пејсажот од BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се конвертира типот на слика.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... може да се конвертира типот на сликата
+
 
 
 # Soundset messages
@@ -1373,13 +1690,13 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не м�
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... мора да се запре внатре во депо
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... мора да се запре внатре во депо
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Авионот мора да се сопре во хангар
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... мора да се запре во еден хангар
 
 
 
 
 # Autoreplace related errors
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ниту едно правило за автоматска промена не е применето.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Не авто замени / обнови правила се применуваат
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(лимит на пари)
 
 # Rail construction errors
@@ -1421,7 +1738,7 @@ STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не м�
 
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не може да се прати авионот во гаража...
 
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не може да се направи авионот...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не можат да купат авион...
 
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Не може да се преименува типот на авиони...
 
@@ -1441,7 +1758,8 @@ STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Авио
 
 # Order related errors
 
-STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}..предалеку од претходната дестинација
+STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... премногу далеку од претходните дестинација
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... воздухопловот не е доволно опсег
 
 # Timetable related errors
 
@@ -1528,6 +1846,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}

@@ -357,6 +357,7 @@ STR_SORT_BY_INTRO_DATE                                          :data uvedení n
 STR_SORT_BY_RUNNING_COST                                        :provozních nákladů
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :výkonu/provozních nákladů
 STR_SORT_BY_CARGO_CAPACITY                                      :přepravní kapacity
+STR_SORT_BY_RANGE                                               :dosah
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
@@ -418,6 +419,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončit
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavení obtížnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pokročilé nastavení
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :nastavení AI / hry
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavení grafik
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavení průhlednosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobrazení jmen měst
@@ -450,6 +452,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Založit město
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Dotace
+STR_SUBSIDIES_MENU_GOAL                                         :Současné cíle
 ############ range ends here
 
 ############ range for graph menu starts
@@ -511,7 +514,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historie zpráv
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informace o zemi
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobrazit nebo skrýt konzoli
-STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI
+STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI / herních skriptů
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Přiblíženo na screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot celé mapy
@@ -828,6 +831,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nový d
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Změny příjmu zboží
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Dotace
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Obecné informace
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
@@ -1483,6 +1488,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížn
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pokročilé nastavení
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}nastavení AI / hry
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy
@@ -1502,6 +1508,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Nastavit
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazit pokročilé nastavení
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ukázat nastavení NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobrazit nastavení AI a hry
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončit 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tento překlad postrádá {NUM} řetěz{P ec ce ců}. Prosím pomozte OpenTTD udělat lepším a přihlaste se jako překladatel. Pro více informací, čtěte readme.txt.
@@ -1903,10 +1910,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Hra pozastavena
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Hra stále pozastavena ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Hra stále pozastavena ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Hra stále pozastavena ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Hra je stále pozastavena ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Hra obnovena ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nedostatek hráčů
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :připojují se klienti
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ručně
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :herní skript
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odpojování
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se připojil do hry
@@ -1968,6 +1977,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scénář
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Základní zvuk
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Základní hudba
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Herní skript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Knihovna herních skriptů
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Obsah se stahuje...
@@ -2496,6 +2507,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Výstavb
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tvorba členitého a kamenitého území
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavování hry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spouštění tile-loopu (cyklus na dílcích mapy)
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rozbíhání skriptu
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Připravování hry
 
 # NewGRF settings
@@ -2735,6 +2747,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Dotovat
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Koupit roční výhradní práva k přepravě zboží z tohoto města po dobu jednoho roku. Místní správa dovolí cestujícím a nákladu používat pouze stanice tvé společnosti.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatit místní správu pro zvýšení hodnocení společnosti. Riziko trestu v případě přistižení.{}Cena: {CURRENCY_LONG}
 
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Cíle
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globální cíle:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Žádné -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cíle společnosti:
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotace
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Nabídnuté dotace pro službu:
@@ -2892,8 +2911,8 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Průplav
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Staniční oblasti
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letiště
-STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/yr ({0:COMMA})
-STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/yr
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/rok ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/rok
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Průmysl
@@ -3223,6 +3242,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastaveno
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zastavuje, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Bez proudu
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekám na volnou cestu
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Příliš daleko k příští destinaci
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Míří do {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez příkazů, {VELOCITY}
@@ -3467,6 +3487,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[na začátku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[uprostřed]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[na konci]
 
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skočit na příkaz {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skočit na příkaz {COMMA}, když {STRING.small} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skočit na příkaz {COMMA}, když {STRING.small} {STRING}
@@ -3531,11 +3552,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vybrat r
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Ladění AI
+STR_AI_DEBUG                                                    :{WHITE}Ladění AI / herních skriptů
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Název AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavení AI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Název skriptu
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavení
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení skriptu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Povolit zastavení AI skriptu, když se v AI logu objeví daný řetězec
@@ -3547,37 +3568,56 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Zabývat
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Herní skript
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Zkontroluj log herních skriptů
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí"
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na ladění AI je dostupné pouze na serveru
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na ladění AI / herních skriptů je dostupné pouze na serveru
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavení AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavení AI / hry
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Herní skripty, které budou načteny v příští hře
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI, které budou načteny v příští hře
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Lidský hráč
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
+STR_AI_CONFIG_NONE                                              :(žádný)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Přesunout nahoru
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Přesunout vybranou AI v seznamu výše
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Přesunout dolů
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Přesunout vybranou AI v seznamu níže
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Herní skript
+STR_AI_CONFIG_AI                                                :{SILVER}AI
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Vybrat {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Herní skript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Načíst další skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavit
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavit parametry AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavit parametry skriptu
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}AI vybereš kliknutím
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupný {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AI
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :herní skripty
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Skript vybereš kliknutím
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Verze: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potvrdit
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat označenou AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat označený skript
 STR_AI_LIST_CANCEL                                              :{BLACK}Zrušit
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměnit AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměňte skript
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :herní skript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3976,6 +4016,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nelze sd
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nelze zastavit sdílení seznamu příkazů...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nelze kopírovat seznam příkazů...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... příliš daleko od předcházejícího cíle
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letadlo nemá dostatečný dolet
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...

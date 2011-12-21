@@ -1563,7 +1563,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Слож
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Настройки ИИ / игры
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Настройки ИИ / скрипта
 STR_INTRO_QUIT                                                  :{BLACK}Выход
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Начать новую игру. Ctrl+клик пропускает этап настройки карты
@@ -1583,7 +1583,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Наст
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показать расширенные настройки
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показать настройки ИИ и игры
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ и игрового скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйти из OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На этот язык не переведен{P 0 а ы о} {NUM} строк{P а и ""}. Вы можете помочь проекту, зарегистрировавшись как переводчик. Инструкции в файле readme.txt.
@@ -2068,6 +2068,8 @@ STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :{G=m}набор
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Музыка
 STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :{G=f}музыки
 STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :{G=f}музыку
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Игровой скрипт
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Библиотека ИС
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
@@ -3706,8 +3708,8 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наст
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Доступные {STRING}
-STR_AI_LIST_CAPTION_AI                                          :ИИ
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Игровые скрипты
+STR_AI_LIST_CAPTION_AI                                          :модули ИИ
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :игровые скрипты
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Щёлкните для выбора скрипта
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}

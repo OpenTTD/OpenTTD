@@ -662,6 +662,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выхад
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Наладкі гульні
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Наладкі складанасьцi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Пашыраныя наладкі
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Наладкі ШІ / скрыпту
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Наладкі NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі празрыстасьці
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказваць назвы гарадоў
@@ -694,6 +695,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Заснава�
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсыдыі
+STR_SUBSIDIES_MENU_GOAL                                         :Бягучыя задачы
 ############ range ends here
 
 ############ range for graph menu starts
@@ -755,7 +757,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторы�
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Зьвесткі аб зямлі
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекту (ШІ/AI)
+STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекту (ШІ/AI) / скрыптоў
 STR_ABOUT_MENU_SCREENSHOT                                       :Здымак экрана (Ctrl+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Здымак экрана ў звычайным маштабе
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Здымак усёй мапы (Ctrl+G)
@@ -1060,6 +1062,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Нов�
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зьмены ў сьпісах грузаў, якія прымаюцца станцыямі
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсыдыі
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Агульная інфармацыя
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы цягнік прыбыў на станцыю {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Жыхары сьвяткуюць . . .{}Першы аўтобус прыбыў на прыпынак {STATION}!
@@ -1720,6 +1724,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Пашыраныя наладкі
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Наладкi NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Праверыць анлайн-кантэнт
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Наладкі ШІ / скрыпту
 STR_INTRO_QUIT                                                  :{BLACK}Выхад
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Пачаць новую гульню. Ctrl+клік прапускае этап наладак мапы
@@ -1739,6 +1744,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пака
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы і абноўлены кантэнт, каб спампаваць
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Змяніць наладкі ШІ і гульнёвага скрыпту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі коў}. Вы можаце дапамагчы праекту, калi зарэгіструецеся як перакладнік. Інструкцыі ў файле readme.txt.
@@ -2140,10 +2146,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Гульня п
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Гульня ўсё яшчэ спынена ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Гульня ўсё яшчэ ў паўзе ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Гульня працягнута ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :колькасьць гульцоў
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :злучэньне кліентаў
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :уручную
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :гульнёвы скрыпт
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :выходзіць
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} далучыўся да гульні
@@ -2221,6 +2229,8 @@ STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :набор ба
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Базавая музыка
 STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :набору базавай музыкі
 STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :набор базавай музыкі
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Гульнёвы скрыпт
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Бібліятэка IС
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Запампоўваньне кантэнту...
@@ -2747,6 +2757,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генэ
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстаноўка дэкарацыяў і камянёў
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Наладка гульні
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Падрыхтоўка да запуску...
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Выконваецца скрыпт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Падрыхтоўка гульні
 
 # NewGRF settings
@@ -2985,6 +2996,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Уст�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Прафінансаваць будаўніцтва новых камерцыйных будынкаў у горадзе.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купіць гадавыя эксклюзіўныя правы на транспартныя перавозкі ў горадзе. Адміністрацыя дазволіць карыстацца ТОЛЬКІ вашымі станцыямі.{}Кошт: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадзкой адміністрацыі для павышэньня рэйтынгу. Існуе рызыка санкцыяў, калі факт хабару раскрыецца.{}Кошт: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Задачы
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Агульныя задачы:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Няма -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Задачы кампаніі:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Пстрыкніце па задачы, каб паказаць прадпрыемства/горад/клетку. Ctrl+пстрычка паказвае ў новым акне.
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсыдыі:
@@ -3803,11 +3822,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Выба
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Адладка ШI
+STR_AI_DEBUG                                                    :{WHITE}Адладка ШІ / скрыпту
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Iмя ШI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Наладкi ШI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Зьмяніць наладкі ШI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Імя скрыпту
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Наладкi
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Зьмяніць наладкi скрыпту
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перазагрузіць ШI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Выдаліць ШI, перазагрузіць скрыпт і перазапусьціць ШI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Уключыць/адключыць паўзу пры з'яўленьні ў журнале сыгнальнага радка
@@ -3819,37 +3838,56 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Пера
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Працягнуць
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Працягнуць гульню
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Прагляд зьвестак адладкі модуля ШI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Гульнёвы скрыпт
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Паказаць журнал працы гульнёвага скрыпту
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ня знойдзена прыдатных модуляў ШI,{}таму канкурэнты нічога рабіць не будуць.{}Модулі ШI можна спампаваць праз сістэму анлайн-кантэнту.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI выканаў недапушчальную аперацыю і быў закрыты. Калі ласка, паведаміце аб гэтым аўтару ШI, прыклаўшы здымак вакна адладкі.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШI даступнае толькі для сэрвера
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШІ / скрыпту даступна толькі для сервера
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Канфігурацыя ШI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Канфігурацыя ШІ / скрыпту
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Гульнёвы скрыпт, які будзе загружаны ў наступнай гульні
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Модулі ШІ, якія будуць загружаны ў наступнай гульні
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Чалавек
 STR_AI_CONFIG_RANDOM_AI                                         :Выпадковы ШI
+STR_AI_CONFIG_NONE                                              :(няма)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Уверх
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перамясьціць гэты модуль ШI ўверх па сьпісе
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Унiз
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перамясьціць гэты модуль ШI ўніз па сьпісе
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Гульнёвы скрыпт
+STR_AI_CONFIG_AI                                                :{SILVER}ШI
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Выбраць {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :ШI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Гульнёвы скрыпт
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Загрузіць іншы скрыпт
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Канфігурацыя
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наладзіць парамэтры ШI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наладзіць парамэтры скрыпту
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Націснуць для выбару ШI
+STR_AI_LIST_CAPTION                                             :{WHITE}Даступныя {STRING}
+STR_AI_LIST_CAPTION_AI                                          :модулі ШІ
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :гульнёвыя скрыпты
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Пстрыкніце для выбару скрыпту
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Аўтар: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Вэрсiя: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Выбраць
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбраць падсьвечаны ШI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбраць падсьвечаны скрыпт
 STR_AI_LIST_CANCEL                                              :{BLACK}Скасаваць
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не выбіраць ШI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не змяняць скрыпт
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
+STR_AI_SETTINGS_CAPTION_AI                                      :ШI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Гульнёвы скрыпт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
