@@ -797,6 +797,7 @@ struct AIConfigWindow : public Window {
 				} else {
 #if defined(ENABLE_NETWORK)
 					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
+					_network_content_client.RequestContentList(CONTENT_TYPE_GAME);
 #endif
 				}
 				break;
