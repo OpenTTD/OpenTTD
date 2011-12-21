@@ -1274,6 +1274,23 @@ DEF_CONSOLE_CMD(ConRescanAI)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConRescanGame)
+{
+	if (argc == 0) {
+		IConsoleHelp("Rescan the Game Script dir for scripts. Usage: 'rescan_game'");
+		return true;
+	}
+
+	if (_networking && !_network_server) {
+		IConsoleWarning("Only the server can rescan the Game Script dir for scripts.");
+		return true;
+	}
+
+	Game::Rescan();
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConRescanNewGRF)
 {
 	if (argc == 0) {
@@ -1918,6 +1935,7 @@ void IConsoleStdLibRegister()
 
 	IConsoleCmdRegister("list_game",    ConListGame);
 	IConsoleCmdRegister("list_game_libs", ConListGameLibs);
+	IConsoleCmdRegister("rescan_game",    ConRescanGame);
 
 	/* networking functions */
 #ifdef ENABLE_NETWORK
