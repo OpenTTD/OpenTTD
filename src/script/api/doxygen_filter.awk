@@ -118,8 +118,8 @@ BEGIN {
 /^(	*)private/   { if (cls_level == 1) comment_buffer = ""; public = "false"; next; }
 
 # Ignore special doxygen blocks
-/^#ifndef DOXYGEN_API/          { doxygen_skip = "next"; next; }
-/^#ifdef DOXYGEN_API/           { doxygen_skip = "true"; next; }
+/^#ifndef DOXYGEN_API/          { doxygen_skip = "true"; next; }
+/^#ifdef DOXYGEN_API/           { doxygen_skip = "next"; next; }
 /^#endif \/\* DOXYGEN_API \*\// { doxygen_skip = "false"; next; }
 /^#else/                         {
 	if (doxygen_skip == "next") {
