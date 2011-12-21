@@ -158,6 +158,13 @@ static void Load_GSTR()
 		*_current_data->raw_strings.Append() = ls;
 	}
 
+	/* If there were no strings in the savegame, set GameStrings to NULL */
+	if (_current_data->raw_strings.Length() == 0) {
+		delete _current_data;
+		_current_data = NULL;
+		return;
+	}
+
 	_current_data->Compile();
 	ReconsiderGameScriptLanguage();
 }
