@@ -65,7 +65,7 @@ private:
  *  can directly give those arguments to the ScriptText constructor, like this:
  * \code local text = ScriptText(ScriptText.STR_NEWS, 1); \endcode
  *
- * @api ai game
+ * @api game
  */
 class ScriptText : public Text , public ZeroedMemoryAllocator {
 public:

@@ -26,6 +26,9 @@
 #include "ai_info.hpp"
 #include "ai_instance.hpp"
 
+/* Manually include the Text glue. */
+#include "../script/api/template/template_text.hpp.sq"
+
 /* Convert all AI related classes to Squirrel data.
  * Note: this line is a marker in squirrel_export.sh. Do not change! */
 #include "../script/api/ai/ai_accounting.hpp.sq"
@@ -69,7 +72,6 @@
 #include "../script/api/ai/ai_subsidy.hpp.sq"
 #include "../script/api/ai/ai_subsidylist.hpp.sq"
 #include "../script/api/ai/ai_testmode.hpp.sq"
-#include "../script/api/ai/ai_text.hpp.sq"
 #include "../script/api/ai/ai_tile.hpp.sq"
 #include "../script/api/ai/ai_tilelist.hpp.sq"
 #include "../script/api/ai/ai_town.hpp.sq"
@@ -172,7 +174,6 @@ void AIInstance::RegisterAPI()
 	SQAISubsidy_Register(this->engine);
 	SQAISubsidyList_Register(this->engine);
 	SQAITestMode_Register(this->engine);
-	SQAIText_Register(this->engine);
 	SQAITile_Register(this->engine);
 	SQAITileList_Register(this->engine);
 	SQAITileList_IndustryAccepting_Register(this->engine);
