@@ -51,7 +51,7 @@ public:
 		if (this->att->ti.x == -0x80) {
 			this->tile = INVALID_TILE;
 		} else {
-			this->tile = base_tile + ToTileIndexDiff(att->ti);
+			this->tile = this->base_tile + ToTileIndexDiff(this->att->ti);
 		}
 		return *this;
 	}
