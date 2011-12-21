@@ -16,6 +16,7 @@
 #include "../window_func.h"
 #include "../error.h"
 #include "../ai/ai.hpp"
+#include "../game/game.hpp"
 #include "../base_media_base.h"
 #include "../sortlist_type.h"
 #include "../querystring_gui.h"
@@ -130,6 +131,10 @@ public:
 				case CONTENT_TYPE_AI_LIBRARY:
 					/* AI::Rescan calls the scanner. */
 					break;
+				case CONTENT_TYPE_GAME:
+				case CONTENT_TYPE_GAME_LIBRARY:
+					/* Game::Rescan calls the scanner. */
+					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:
 				case CONTENT_TYPE_BASE_SOUNDS:
@@ -159,6 +164,11 @@ public:
 				case CONTENT_TYPE_AI:
 				case CONTENT_TYPE_AI_LIBRARY:
 					AI::Rescan();
+					break;
+
+				case CONTENT_TYPE_GAME:
+				case CONTENT_TYPE_GAME_LIBRARY:
+					Game::Rescan();
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:

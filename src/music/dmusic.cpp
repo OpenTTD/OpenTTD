@@ -9,7 +9,7 @@
 
 /** @file dmusic.cpp Playing music via DirectMusic. */
 
-#ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
+#ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT_2
 
 #define INITGUID
 #include "../stdafx.h"
