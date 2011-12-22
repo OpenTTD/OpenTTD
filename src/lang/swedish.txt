@@ -322,7 +322,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verk
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spara scenario, öppna scenario, avbryt scenarioeditor, avsluta
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarioeditor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flytta startdatumet 1 år bakåt
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Flytta startdatumet 1 år framåt
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klicka för att mata in startår
@@ -349,8 +349,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för datorspelare/spelskript
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-inställningar
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för AI / skript
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Inställningar för NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamn visas
@@ -444,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av datorspelare/spelskript
+STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av AI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Inzoomad skärmdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
@@ -1398,16 +1398,16 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nytt spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Ladda spel
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Spela scenario
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Kör höjdkarta
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario editor
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spela höjdkarta
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenarioeditor
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera spelare
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
 STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Inställningar
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera Online-innehåll
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Inställningar för datorspelare/spelskript
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Inställningar för AI / skript
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+klick hoppar över landskapskonfigurationen
@@ -3465,7 +3465,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Välj å
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare/spelskript
+STR_AI_DEBUG                                                    :{WHITE}Felsökning av datorspelare / spelskript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namn på datorspelaren
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Inställningar
@@ -3486,7 +3486,7 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa deb
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av datorspelarna har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på 'AI-felsökning'-fönstret
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare/spelskript är bara tillgänglig för servern
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare / spelskript är bara tillgänglig för servern
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration av datorspelaren

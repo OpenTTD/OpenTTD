@@ -1920,6 +1920,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Suoni base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Musica base
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script di gioco
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Libreria script
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Download dei contenuti...
@@ -3534,9 +3536,9 @@ STR_AI_CONFIG_CHANGE                                            :{BLACK}Selezion
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
-STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carica un'altro script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carica un altro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura i parametri della IA
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura i parametri dello script
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibili

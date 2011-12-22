@@ -507,7 +507,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Заснува�
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидії
-STR_SUBSIDIES_MENU_GOAL                                         :Поточні завдання
+STR_SUBSIDIES_MENU_GOAL                                         :Поточні цілі
 ############ range ends here
 
 ############ range for graph menu starts
@@ -1396,6 +1396,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заб�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Дозволити AI у командній грі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Кількість #opcodes перед призупинкою скриптів: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
@@ -1452,7 +1453,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Рад�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Максимальна кількість вікон (що не прилипають): {ORANGE}нема
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максимальний рівень наближення картинки: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максимальний рівень наближення картинки: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Мінімальний рівень наближення картинки: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :нормальний
@@ -1504,6 +1506,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Змін
 STR_CONFIG_ERROR                                                :{WHITE}Помилка у файлі конфігурації...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... помилка в масиві '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... невірне значення '{STRING}' для '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... лишні символи в кінці параметру '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ігнорую NewGRF '{STRING}': дублікат GRF ID з '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ігнорую невірні NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :не знайдено
@@ -1986,7 +1989,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Знят
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Не завантажувати нічого
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтр за назвою:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Відвідати вебсайт
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Відвітати сайт цього контенту
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Відвітати вебсайт цього контенту
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Завантажити
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Почати завантаження обраного вмісту
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Загальний розмір завантажень: {WHITE}{BYTES}
@@ -2542,7 +2545,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Гене
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Розкидати каміння
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Налаштування гри
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Виконуємо цикл
-STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Скрипт виконується
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Виконується скрипт
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Генерується гра
 
 # NewGRF settings
@@ -2739,9 +2742,9 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} доставлено
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (потрібно ще)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (доставлено)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Місто росте кожен {ORANGE}{COMMA}{BLACK} день
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Місто зростає кожен {ORANGE}{COMMA}{BLACK} день
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Місто зростає кожен {ORANGE}{COMMA}{BLACK} день (профінансовано)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Місто {RED}не{BLACK} розширюється
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Місто {RED}не{BLACK} зростає
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто у центрі екрану. Утримання Ctrl відкриє нове вікно з видом на місто
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Місцева влада
@@ -2783,11 +2786,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Куп�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Підкупити місцеву владу для збільшення вашого рейтингу, при викритті загрожує суворим покаранням.{}Вартість: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_CAPTION                                               :{WHITE}Завдання
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобальні завдання:
+STR_GOALS_CAPTION                                               :{WHITE}Цілі
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобальні цілі:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- нема -
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Завдання компанії:
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цілі компанії:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клік мишкою на цілі (меті) відобразить по центру промисловість/місто/клітинку у головному вікні. Ctrl+клік відкриє міні-вікно
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
@@ -3410,6 +3414,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Змін
 STR_ORDER_REFIT                                                 :{BLACK}Переобладнати
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Оберіть, на який тип вантажу переобладнати у цьому завданні. Ctrl+клік для видалення команди переобладнання
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Автоматичне переобладнання
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Вибирає тип вантажу, для якого треба автопереобладнати транспорт в цьому наказі. Ctrl+клік видаляє автопереобладнання. Автопереобладнання буде виконано, тільки якщо транспорт підтримує його
 STR_ORDER_DROP_REFIT_AUTO                                       :Нерухомий вантаж
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Доступний вантаж
 
@@ -3504,6 +3509,14 @@ STR_ORDER_AUTO_REFIT                                            :(Автомат
 STR_ORDER_FULL_LOAD_REFIT                                       :(Завантажити все з автопереобладнанням в {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Повністю завантажити будь-який вид вантажу з автопереобладнанням в {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Розвантажити і взяти вантаж з автопереобладнанням в {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Розвантажити і чекати повного завантаження вантажу з автопереобладнанням в {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Розвантажити і чекати повного завантаження будь-якого вантажу з автопереобладнанням в {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Передати і взяти вантаж з автопереобладнанням в {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Передати і чекати повного завантаження з автопереобладнанням в {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Передати і чекати повного завантаження будь-якого вантажу з автопереобладнанням в {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Не розвантажуватись і взяти вантаж з автопереобладнанням в {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Не розвантажуватись і чекати повного завантаження з автопереобладнанням в {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Не розвантажуватись і чекати повного завантаження будь-якого вантажу з автопереобладнанням в {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :доступний вантаж
 

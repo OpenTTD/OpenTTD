@@ -823,6 +823,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kehilangan arah
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} tidak dapat melanjutkan tujuan karena diluar jangkauan
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti karena proses ubah kargonya gagal
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Peremajaan {VEHICLE} gagal{}{STRING}
@@ -1169,6 +1170,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durasi 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Waktu tunggu tips muncul: {ORANGE}Hover selama {STRING} detik
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Perlihatkan tips: {ORANGE}Klik kanan
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Tampilkan populasi kota di label nama kota: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Ketebalan garis pada grafik: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Pembangkit dataran: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Asli
@@ -1353,6 +1355,11 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berputa
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :tdk kompatibel dengan OpenTTD versi ini
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tdk diketahui
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tingkat kompresi '{STRING}' tidak sah
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format savegame '{STRING}' tidak tersedia. Kembali ke '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1824,6 +1831,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pilih se
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Tandai semua untuk tidak diunduh
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tanda/nama filter:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Kunjungi laman
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Kunjungi laman untuk konten ini
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Mulai unduh konten terpilih
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total ukuran terunduh: {WHITE}{BYTES}
@@ -2825,6 +2834,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo da
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Traksi Maks.: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkauan: {GOLD}{COMMA} kotak
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Daftar pilihan kendaraan - klik pada kendaraan untuk menampilkan informasi
@@ -2945,6 +2955,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Biaya: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Biaya: {CURRENCY_LONG} Berat: {WEIGHT_SHORT}{}Kecepatan: {VELOCITY}  Power: {POWER}  Max. T.E.: {6:FORCE}{}Biaya Operasional: {4:CURRENCY_LONG}/yr{}Kapasitas: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Biaya: {CURRENCY_LONG} Kec. Max: {VELOCITY}{}Kapasitas: {CARGO_LONG}{}Bea Berjalan: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Biaya: {CURRENCY_LONG} Kecepatan Max.: {VELOCITY} Jangkauan: {7:COMMA} kotak{}Kapasitas: {CARGO_LONG}, {CARGO_LONG}{}Biaya Operasi: {CURRENCY_LONG}/thn
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Biaya: {CURRENCY_LONG} Kecepatan Max.: {VELOCITY} Jangkauan: {7:COMMA} kotak{}Kapasitas: {CARGO_LONG}{}Biaya Operasi: {CURRENCY_LONG}/thn
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ganti {STRING}
@@ -3030,6 +3042,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Berhenti
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Akan berhenti, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Tidak ada daya
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Menunggu sampai jalur bebas
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Tujuan berikutnya terlalu jauh
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Belum ada perintah, {VELOCITY}
@@ -3058,6 +3071,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} tahun (
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} tahun ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Kec. Max: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Kecepatan Max.: {LTBLUE}{VELOCITY} {BLACK}Jangkauan: {LTBLUE}{COMMA} kotak
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Berat: {LTBLUE}{WEIGHT_SHORT} {BLACK}Tenaga: {LTBLUE}{POWER}{BLACK} Kec. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3256,6 +3270,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[agak belakang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[tengah]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[Tepi terjauh]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Tujuan berikutnya diluar jangkauan)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Lompat ke perintah {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Lompat ke perintah {COMMA} jika {STRING} {STRING} {COMMA}
@@ -3360,6 +3375,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SkripPermainan
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkripPermainan
@@ -3770,6 +3786,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Tidak da
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Tidak dapat menghentikan pembagian daftar perintah...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Tidak dapat meniru perintah...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terlalu jauh dari tujuan sebelumnya
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... pesawat tidak dapat menjangkau
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...

@@ -1835,7 +1835,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spiel fortgeset
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Spieleranzahl
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Teilnehmer meldet sich an
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Kontrollskript
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Skript
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :geht
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ist dem Spiel beigetreten
@@ -1897,6 +1897,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=n}Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=w}Reliefkarte
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basissound
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Musikset
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Skript - Bibliothek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...
@@ -3464,7 +3466,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jahr aus
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debug des KI- oder Kontrollskripts
+STR_AI_DEBUG                                                    :{WHITE}Debug der KI oder des Skripts
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name des Skripts
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Einstellungen
@@ -3480,16 +3482,16 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgaben dieser KI anschauen
-STR_AI_GAME_SCRIPT                                              :{BLACK}Kontrollskript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Kontrollskripts
+STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Skripts
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI- oder Kontrollskript ist nur auf dem Server verfügbar
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI oder Skripte ist nur auf dem Server verfügbar
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI / Skripte einstellen
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das im nächsten Spiel zu ladende Kontrollskript
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das im nächsten Spiel zu ladende Skript
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
@@ -3500,13 +3502,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Die ausg
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Nach unten bewegen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Die ausgewählte KI in der Liste nach unten bewegen
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Kontrollskript
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skript
 STR_AI_CONFIG_AI                                                :{SILVER}KIs
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Wähle {STRING} aus
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :KI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Kontrollskript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lade ein anderes Skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Einstellungen
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Einstellungen des Skripts anzeigen oder ändern
@@ -3514,7 +3516,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Einstell
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare {STRING}
 STR_AI_LIST_CAPTION_AI                                          :KIs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Kontrollskripte
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicken, um ein Skript auszuwählen
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3529,7 +3531,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript n
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
 STR_AI_SETTINGS_CAPTION_AI                                      :KI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Kontrollskript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Zurücksetzen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
