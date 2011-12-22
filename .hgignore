@@ -11,6 +11,7 @@ config.cache*
 config.log
 config.pwd
 docs/aidocs/*
+docs/gamedocs/*
 docs/source/*
 Makefile
 Makefile.am
