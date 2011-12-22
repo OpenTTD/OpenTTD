@@ -407,3 +407,9 @@ Settings not saved when OpenTTD crashes [FS#4846]:
 	saved, and you need to run a version that crashes regularly, then
 	you can use the 'saveconfig' command in the console to save the
 	settings.
+
+Not all NewGRFs, AIs, game scripts are found [FS#4887]:
+	Under certain situations, where the path for the content within a
+	tar file is the same as other content on the file system or in another
+	tar file, it is possible that content is not found. A more thorough
+	explanation and solutions are described in section 4.4 of readme.txt.

@@ -1,5 +1,5 @@
 OpenTTD readme
-Last updated:    2011-12-05
+Last updated:    2011-12-22
 Release version: 1.1.4
 ------------------------------------------------------------------------
 
@@ -15,6 +15,7 @@ Table of contents
  * 4.1) (Required) 3rd party files
  * 4.2) OpenTTD directories
  * 4.3) Portable installations (portable media)
+ * 4.4) Files in tar (archives)
 5.0) OpenTTD features
  * 5.1) Logging of potentially dangerous actions
 6.0) Configuration file
@@ -323,6 +324,30 @@ allow you to play the game on nearly any computer you can attach the external
 media to.
 As always - additional grf files are stored in the newgrf/ dir (for details,
 again, see section 4.1).
+
+4.4) Files in tar (archives)
+---- -----------------------
+OpenTTD can read files that are in an uncompressed tar (archive), which
+makes it easy to bundle files belonging to the same script, NewGRF or base
+set. Music sets are the only exception as they cannot be stored in a tar
+file due to being played by external applications.
+
+OpenTTD sees each tar archive as the 'root' of its search path. This means
+that having a file with the same path in two different tar files means that
+one cannot be opened, after all only one file will be found first. This is
+done to make it possible to have the large 32bpp zoomed graphics in a separate
+file to the (relatively small) unzoomed 8bpp NewGRF. As such it is advisable
+to put an uniquely named folder in the root of the tar and put all the
+content in that folder. For example, all downloaded content has a path that
+concatenates the name of the content and the version, which makes the path
+unique. For custom tar files it is advised to do this as well.
+
+The normal files are also referred to by their relative path from the search
+directory, this means that also normal files could hide files in a tar as
+long as the relative path from the search path of the normal file is the
+same as the path in the tar file. Again it is advised to have an unique path
+to the normal file so they do not collide with the files from other tar
+files.
 
 
 5.0) OpenTTD features
