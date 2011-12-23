@@ -80,8 +80,6 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		default: return CMD_ERROR;
 	}
 
-	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
-
 	if (flags & DC_EXEC) {
 		Goal *g = new Goal();
 		g->type = type;

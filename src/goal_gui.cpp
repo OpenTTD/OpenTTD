@@ -20,6 +20,7 @@
 #include "gui.h"
 #include "goal_base.h"
 #include "core/geometry_func.hpp"
+#include "company_func.h"
 
 #include "widgets/goal_widget.h"
 
@@ -63,7 +64,7 @@ struct GoalListWindow : Window {
 		if (y < 0) return;
 
 		FOR_ALL_GOALS(s) {
-			if (s->company != INVALID_COMPANY) {
+			if (s->company == _local_company) {
 				y--;
 				if (y == 0) {
 					this->HandleClick(s);
@@ -119,7 +120,7 @@ struct GoalListWindow : Window {
 		FOR_ALL_GOALS(s) {
 			if (s->company == INVALID_COMPANY) {
 				num_global++;
-			} else {
+			} else if (s->company == _local_company) {
 				num_company++;
 			}
 		}
@@ -189,7 +190,7 @@ struct GoalListWindow : Window {
 		num = 0;
 
 		FOR_ALL_GOALS(s) {
-			if (s->company != INVALID_COMPANY) {
+			if (s->company == _local_company) {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Display the goal */
 					SetDParamStr(0, s->text);
