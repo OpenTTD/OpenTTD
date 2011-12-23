@@ -1355,6 +1355,13 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berputa
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Kesalahan pada file konfigurasi...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... kesalahan pada array '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... nilai '{STRING}' tdk sah untuk '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... mengabaikan NewGRF '{STRING}': GRF ID kembar sama '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... mengabaikan NewGRF tidak valid '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :tdk ditemukan
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :tdk aman untuk pemakaian statis
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistem NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :tdk kompatibel dengan OpenTTD versi ini
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tdk diketahui
@@ -2718,6 +2725,8 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/thn ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/thn
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri

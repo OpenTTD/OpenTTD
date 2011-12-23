@@ -412,7 +412,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Beállítások
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nehézségi beállítások
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Haladó beállítások
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI / Játék beállítások
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI / Játékszkript beállítások
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF beállítások
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Átlátszósági beállítások
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Városnevek mutatása
@@ -507,7 +507,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Előző üzenet
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-információ
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
-STR_ABOUT_MENU_AI_DEBUG                                         :MI / JátékSzkript nyomonkövetés
+STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Kinagyított képmentés
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
@@ -1471,7 +1471,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Nehézs�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Haladó beállítások
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF beállítások
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Letölthető tartalmak
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI / Játék beállítások
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI / Játékszkript beállítások
 STR_INTRO_QUIT                                                  :{BLACK}Kilépés
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új játék kezdése. Ctrl+Kattintással átugorhatod a térkép beállításokat
@@ -1491,7 +1491,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}A nehéz
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Haladó beállítások megjelenítése
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF beállítások megjelenítése
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Új és frissített tartalmak megtekintése és letöltése
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}MI és Játék beállításainak megjelenítése
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}MI és játékszkript beállítások megjelenítése
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Kilépés az OpenTTD-ből
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a fordításból {NUM} sor hiányzik. Segíts Te is jobbá tenni az OpenTTD-t és jelentkezz fordítónak! További részletekért lásd a readme.txt-t.
@@ -1898,7 +1898,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :A játék folyt
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :játékosok száma
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kapcsolódó kliensek
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :kézi
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :játék szkript
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :játékszkript
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz
@@ -1960,8 +1960,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Pálya
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Hang alapcsomag
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Zenei alapcsomag
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :Játék szkript
-STR_CONTENT_TYPE_GS_LIBRARY                                     :Mentés könyvtár
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Játékszkript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Játékszkript könyvtár
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...
@@ -2678,9 +2678,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Levélcs
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}A város növekedéséhez szükséges rakomány:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} szükséges
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} szükséges télen
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} elszállítva
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} szállítva
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (több szükséges)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (elszállítva)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (szállítva)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}A település {ORANGE}{COMMA}{BLACK} naponta növekszik
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}A település {ORANGE}{COMMA}{BLACK} naponta növekszik (támogatást kapott)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A település {RED}nem{BLACK} növekszik
@@ -3529,7 +3529,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Válassz
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}MI / JátékSzkript nyomkövetés
+STR_AI_DEBUG                                                    :{WHITE}MI / Játékszkript nyomkövetés
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Szkript neve
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Beállítások
@@ -3545,16 +3545,16 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kis- és
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kimeneti nyomonkövetésének megtekintése
-STR_AI_GAME_SCRIPT                                              :{BLACK}Játék szkript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játék szkript napló ellenőrzése
+STR_AI_GAME_SCRIPT                                              :{BLACK}Játékszkript
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játékszkript napló ellenőrzése
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képernyőmentéssel
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI / JátékSzkript nyomkövetés ablak csak a szerver számára elérhető
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI / Játékszkript nyomkövetés ablak csak a szerver számára elérhető
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}MI / Játék beállítások
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}A következő játékban betöltődő JátékSzkript
+STR_AI_CONFIG_CAPTION                                           :{WHITE}MI / Játékszkript beállítások
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}A következő játékban betöltődő játékszkript
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}A következő játékban betöltődő MI-k
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Játékos
 STR_AI_CONFIG_RANDOM_AI                                         :Véletlenszerűen választott MI
@@ -3565,13 +3565,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Kiválas
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mozgatás Le
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Kiválasztott MI mozgatása lefelé a listában
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}JátékSzkript
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Játékszkript
 STR_AI_CONFIG_AI                                                :{SILVER}MI-k
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Kiválasztás {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :MI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :JátékSzkript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Játékszkript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Másik szkript betöltése
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Beállítások
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}A szkript paramétereinek beállítása
@@ -3579,8 +3579,8 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}A szkrip
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Elérhető {STRING}
 STR_AI_LIST_CAPTION_AI                                          :MI-k
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :JátékSzkriptek
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Kattints ide az szkript kiválasztásához
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Játékszkriptek
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Kattints ide a szkript kiválasztásához
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Készítő: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Verzió: {NUM}
@@ -3594,7 +3594,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne vált
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paraméterek
 STR_AI_SETTINGS_CAPTION_AI                                      :MI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :JátékSzkript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Játékszkript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

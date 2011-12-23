@@ -442,7 +442,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Thông báo cũ
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùng đất
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
+STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh chụp màn hình
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
@@ -1889,6 +1889,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi kị
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ địa hình
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Nhạc chuẩn
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Tập lệnh trò chơi
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Thư viện GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Đang tải nội dung...
@@ -3449,11 +3451,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}chọn n
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Dò lỗi AI
+STR_AI_DEBUG                                                    :{WHITE}Dò lỗi AI / GameScript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tên của AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết lập AI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Tên của tập lệnh
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết lập
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của tập lệnh
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Bật/tắt tạm dừng khi thông điệp AI log trùng với chuỗi đã định
@@ -3468,7 +3470,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thô
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Không có AI phù hợp để nạp.{}AI này là AI giả và sẽ không làm gì cả.{}Bạn có thể tải các AI tại mục 'Nội dung trực tuyến'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có một AI bị treo. Hãy báo cho tác giả AI kèm với màn hình chụp cửa sổ gỡ lỗi AI.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI / GameScript chỉ có trên server
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Thiết Lập Trò Chơi / AI
@@ -3494,7 +3496,7 @@ STR_AI_LIST_URL                                                 :{BLACK}URL: {ST
 STR_AI_LIST_ACCEPT                                              :{BLACK}Chấp nhận
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp nhận AI đã chọn
 STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi thuật toán AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi tập lệnh
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng

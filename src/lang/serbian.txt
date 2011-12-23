@@ -537,6 +537,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :VI / Podešavanja partije
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikazana imena naselja
@@ -569,6 +570,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Osnivanje nasel
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
+STR_SUBSIDIES_MENU_GOAL                                         :Trenutni ciljevi
 ############ range ends here
 
 ############ range for graph menu starts
@@ -942,6 +944,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nova vo
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Promene u prihvatanju tovara
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Opšta obaveštenja
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog voza na stanicu {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Građani proslavljaju . . .{}Dolazak prvog autobusa na stanicu {STATION}!
@@ -1598,6 +1602,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Težina 
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredna Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}VI / Podešavanja Partije
 STR_INTRO_QUIT                                                  :{BLACK}Izađi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju. Ctrl+Klik preskače konfiguraciju mape
@@ -1617,6 +1622,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazuj
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikazuje VI i Podešavanja partije
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prevodu nedostaje {NUM} nisk{P a e i}. Pomozite da OpenTTD bude bolji - prijavite se kao prevodilac. Za detalje pogledajte readme.txt.
@@ -2018,10 +2024,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partija je pauz
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partija je još uvek pauzirana ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partija je još uvek pauzirana ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partija je još uvek pauzirana ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partija je još uvek pauzirana ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partija je nastavljena ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nema dovoljno igrača
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :priključivanje igrača
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ručno
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skripta partije
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :napušta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se priključio partiji
@@ -2083,6 +2091,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Elevaciona karta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvukovi
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Osnovna muzika
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skripta partije
+STR_CONTENT_TYPE_GS_LIBRARY                                     :SP biblioteka
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje dodataka...
@@ -2605,6 +2615,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Postavlj
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Dodavanje grubih i stenovitih područja
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Podešavanje partije
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Razrađivanje pločica
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Pokretanje skripte
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripremanje partije
 
 # NewGRF settings
@@ -2843,6 +2854,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Otkriva
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansiranje izgradnje novih komercijalnih objekata u naselju.{} Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupovina ekskluzivnih prava prevoza od lokalne vlasti na godinu dana, osigurava da će lokalni korisnici prevoza koristiti isključivo usluge vašeg preduzeća.{} Trošak: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Davanje mita lokalnoj vlasti kako bi porastao rejting vašeg preduzeća, uz rizik velike štete ukoliko se otkrije.{} Cena: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Ciljevi
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Opšti ciljevi:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Nema -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciljevi preduzeća:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikom na cilj premešta se glavni pogled na fabriku/naselje/pločicu. Ctrl+Kilk otvara novi pogled na lokaciju fabrike/naselja/pločice
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
@@ -3673,6 +3692,8 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Uključu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuje podatke radi korekcije ove VI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta Partije
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pregled zapisnika Skripte partije
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije
@@ -3680,18 +3701,32 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor 
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}VI Podešavanja
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta parije koja će biti pokrenuta u sledećoj partiji
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštačke inteligencije koje će biti pokrenute u sledećoj partiji
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
 STR_AI_CONFIG_RANDOM_AI                                         :Proizvoljna VI
+STR_AI_CONFIG_NONE                                              :(nijedna)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pomeri Naviše
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pomera obeleženu VI naviše u listi
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Pomeri Naniže
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Pomera obeleženu VI naniže u listi
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SkriptaPartije
+STR_AI_CONFIG_AI                                                :{SILVER}VIe
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Izaberi {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :VI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkriptaPartije
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Podešavanje
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara Veštačke Iteligencije
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupno {STRING}
+STR_AI_LIST_CAPTION_AI                                          :VIe
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkriptePartije
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknite kako biste izabrali Veštačku Inteligenciju
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3704,9 +3739,13 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Otkaži
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja izbor Veštačke Inteligencije
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
+STR_AI_SETTINGS_CAPTION_AI                                      :VI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :SkriptaPartije
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Broj dana za pokretanje ove VI posle prethodne (otprilike): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

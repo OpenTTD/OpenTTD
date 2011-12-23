@@ -2276,6 +2276,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokościowa
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Podstawowe dźwięki
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Podstawowa muzyka
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skrypt gry
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Bilbioteka GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Pobieranie dodatkowej zawartości...
