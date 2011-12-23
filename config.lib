@@ -944,13 +944,11 @@ check_params() {
 	if [ -z "$grfcodec" ] && [ -n "$nforenum" ]; then
 		log 1 "checking nforenum/grfcodec... nforenum needs grfcodec enabled, disabling nforenum"
 		nforenum=""
-		return 0
 	fi
 
 	if [ -z "$nforenum" ] && [ -n "$grfcodec" ]; then
 		log 1 "checking nforenum/grfcodec... grfcodec needs nforenum enabled, disabling grfcodec"
 		grfcodec=""
-		return 0
 	fi
 
 	if [ "$os" = "DOS" ]; then
