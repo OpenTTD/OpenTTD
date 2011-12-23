@@ -792,7 +792,7 @@ STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}새 {STRING}{G 0 "이" "가"} {TOWN} 근처에서 자라나고 있습니다!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING}의 긴급폐쇄를 알립니다!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING}{G "이" "가"} 공급량 문제로 긴급 폐쇄됨을 알립니다!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING}이 공급량 문제로 긴급 폐쇄됨을 알립니다!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}유럽 화폐단위 통일!{}{}국가의 단일 유통 화폐로 유로화가 도입되었습니다!
