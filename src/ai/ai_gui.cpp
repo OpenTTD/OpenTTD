@@ -172,7 +172,7 @@ struct AIListWindow : public Window {
 			for (int i = 0; i < this->selected; i++) it++;
 			GetConfig(slot)->Change((*it).second->GetName(), (*it).second->GetVersion());
 		}
-		SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
+		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
