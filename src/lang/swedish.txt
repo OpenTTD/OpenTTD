@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för AI / skript
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Inställningar för AI / spelskript
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Inställningar för NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas
@@ -444,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meddelandehisto
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Information om mark
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
-STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av AI / skript
+STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av AI / spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Inzoomad skärmdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Förbju
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Förbjud luftfarkoster för datorn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt datorer i flerspelarläge: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt datorspelare i flerspelarläge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes innan skript sätts i viloläge: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Visa serviceintervall i procent: {ORANGE}{STRING}
@@ -1405,9 +1405,9 @@ STR_INTRO_MULTIPLAYER                                           :{BLACK}Flera sp
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spelinställningar
 STR_INTRO_DIFFICULTY                                            :{BLACK}Svårighetsgrad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avancerade inställningar
-STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Inställningar
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-inställningar
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontrollera online-innehåll
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Inställningar för AI / skript
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / spelskript-inställningar
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+klick hoppar över landskapskonfigurationen
@@ -3272,7 +3272,7 @@ STR_ORDER_GO_VIA                                                :Åk via
 STR_ORDER_GO_NON_STOP_VIA                                       :Åk non-stop via
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ändra stoppbeteende för markerad order
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last, vilket gods som helst
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last, någon godstyp
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lasta om möjligt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last alla frakttyper
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last någon frakttyp
@@ -3494,7 +3494,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spelskri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Datorspelare som kommer att läsas in i nästa spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spelare
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
-STR_AI_CONFIG_NONE                                              :(inga)
+STR_AI_CONFIG_NONE                                              :(inget)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytta upp
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta upp vald datorspelare i listan

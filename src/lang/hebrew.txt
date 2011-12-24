@@ -180,7 +180,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}הכ
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} נוסע{P "" ים}
-STR_BAGS                                                        :{COMMA} שקים
+STR_BAGS                                                        :{COMMA} שק{P "" ים}
 STR_TONS                                                        :{COMMA} טונות
 STR_LITERS                                                      :{COMMA} ליטרים
 STR_ITEMS                                                       :{COMMA} פריטים
@@ -750,6 +750,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}שינ�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}סובסידיות
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}מידע כללי
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}רכבת ראשונה הגיעה ל{STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}תושבים חוגגים . . .{}אוטובוס ראשון הגיע ל{STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}התושבים חוגגים . . .{}משאית ראשונה הגיעה ל{STATION}!
@@ -1056,6 +1057,7 @@ STR_SEA_LEVEL_HIGH                                              :גבוה
 STR_SEA_LEVEL_CUSTOM                                            :אחר
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :אחר ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :ללא
 STR_DISASTER_REDUCED                                            :מופחת
 STR_DISASTER_NORMAL                                             :רגיל
@@ -1330,6 +1332,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1365,6 +1369,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}הצג �
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}הצג הגדרות שדרוג גראפי
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK} חפש תוכן חדש/מעודכן להורדה
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'- צא מ
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}צא
@@ -1835,6 +1840,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... הק
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... הקובץ לא ניתן לכתיבה
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}נכשלה פתיחה של קובץ מכווץ
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}הגדרות שקיפות
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK} שנה שקיפות עבור שלטי תחנות
@@ -1880,6 +1886,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}בניי
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}חציבת מנהרות למסילות
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}החלף מצב בנייה/הסרה של פסי רכבת, רמזורים, נקודות ציון ותחנות. החזקת Ctrl מסירה גם פסי רכבת מנקודות ציון ותחנות רכבת
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}שנה/שדרג את המסילה
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}כיוון המוסך
@@ -2137,6 +2144,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :שדות
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :אדמה מכוסה בשלג
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :מדבר
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :כביש
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :כביש עם תאורת רחוב
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :שדירה
@@ -2318,6 +2326,8 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}העבר
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}מעביר את הקובץ שנבחר כלפי מטה ברשימה
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK} רשימת קבצי שדרוג גראפי מותקנים
 
+# Additional textfiles accompanying NewGRFs
+
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}קבע ערכים
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}החלף פלטת צבעים
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}מחליף את פלטת הצבעים עבור קובץ השדרוג הגראפי שנבחר. השתמש באפשרות זו אם הצבעים שהתקבלו אינם די ברורים
@@ -2337,11 +2347,12 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}לא ק�
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}לא נמצא קובץ מתאים
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}אתחל
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}הגדר את כל הפרמטרים לערך ברירת המחדל שלהם
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}מספר הגדרות: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
@@ -2412,6 +2423,8 @@ STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} של <�
 STR_NEWGRF_INVALID_ENGINE                                       :<דגם כלי רכב לא תקין>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<תעשייה לא תקינה>
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}סימניות {COMMA} - רשימת סימניות
 
@@ -2477,6 +2490,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}.ּבנ
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}.ממן בניית מבנים מסחריים חדשים בעיר.{}עלות: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}רכוש זכויות תחבורה בלעדיות למשך שנה אחת בעיר. רשות העירייה תאפשר לנוסעים ומטען להשתמש בתחנות החברה שלך בלבד.{}עלות: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY_LONG}
+
+# Goal window
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
@@ -2612,6 +2627,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :שם החברה
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :שם המנהל
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}.אנו מחפשים אחר קונה לחברה{} ? {NBSP}{1:CURRENCY_LONG} תמורת {NBSP}{0:COMPANY} האם אתה מעוניין לקנות את
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}תעשיות
@@ -3072,6 +3089,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :עצור
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}דלג על היעד שנבחר אלא אם הכלי זקוק לטיפול
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}נתוני כלי הרכב עליהם יתבסס הדילוג
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :אחוז טעינה
 STR_ORDER_CONDITIONAL_RELIABILITY                               :אמינות
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :מהירות מירבית
@@ -3144,9 +3163,12 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(אל תפרו�
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(אל תפרוק, המתן עד להעמסה כוללת ומלאה)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(אל תפרוק ואל תעמיס)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[קצה קרוב]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[אמצע]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[קצה רחוק]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA} :דלג ליעד
 STR_ORDER_CONDITIONAL_NUM                                       :{3:COMMA} {2:STRING} {1:STRING} כאשר {NBSP}{0:COMMA}{NBSP} דלג ליעד
@@ -3227,7 +3249,6 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}בחר �
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}המשך
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}בטל הפסקה והמשך את הבינה המלאכותית
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :לא נמצאה בינה מלאכותית מתאימה לטעינה.{}בינה מלאכותית זו הינה מדומה ולא תעשה כלום.{}באפשרותך להוריד מספר אלגורתמים של בינה מלאכותית בעזרת מערכת 'תוכן מקוון'.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}אחד מאלגורתמי הבינה המלאכותית קרס. אנא דווח זאת ליוצר האלגוריתם וצרף צילום מסך של מסך ה-Debug.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}חלון הדה-באג זמין רק עבור השרת
@@ -3242,6 +3263,7 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}הזז �
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}הזז מטה
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}הזז את ה-AI הנבחר למטה ברשימה
 
+
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}שנה הגדרות
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}שנה הגדרות בינה מלאכותית
 
@@ -3255,7 +3277,7 @@ STR_AI_LIST_URL                                                 :{BLACK}קישו
 STR_AI_LIST_ACCEPT                                              :{BLACK}אשר
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר סוג בינה מלאכותית שהודגש
 STR_AI_LIST_CANCEL                                              :{BLACK}בטל
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה בינה מלאכותית
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל תשנה את התסריט
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
@@ -3306,6 +3328,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... מש
 
 STR_ERROR_BMPMAP                                                :{WHITE}לא יכול לטעון קרקע מתמונת BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... לא יכול להמיר סוג תמונה
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}אזהרת קנה מידה
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}?שינוי גדול של גודל המפה המקורית אינו מומלץ. להמשיך

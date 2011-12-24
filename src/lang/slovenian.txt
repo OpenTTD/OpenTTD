@@ -533,6 +533,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Ustanovi mesto
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subvencije
+STR_SUBSIDIES_MENU_GOAL                                         :Trenutni cilji
 ############ range ends here
 
 ############ range for graph menu starts
@@ -594,7 +595,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporo
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
-STR_ABOUT_MENU_AI_DEBUG                                         :Razhroščevanje UI
+STR_ABOUT_MENU_AI_DEBUG                                         :Razhročevanje UI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približano sliko
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
@@ -899,6 +900,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nova vo
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Spremebe v sprejemanju tovora
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subvencije
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Splošne Informacije
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
@@ -1511,6 +1514,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Avtomat
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1946,10 +1951,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Igra je prekinj
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Igra je še vedno prekinjena ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Igra je še vedno prekinjena ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Igra je še vedno prekinjena ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Igra je še vedno ustavljena ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Igra ponovno teče ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :število igralcev
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :povezujem goste
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ročno
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skripta
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :zapušča
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} pristopa k igri
@@ -2009,6 +2016,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenarij
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Višinska karta
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Osnovni zvoki
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Osnovna glasba
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skripta
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS knjižnica
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Prenos vsebin...
@@ -2023,6 +2032,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Prenos n
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... povezava prekinjena
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka ni zapisljiva
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No mogoče razpakiranje prenešene datoteke
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavitve prozornega pogleda
@@ -2069,6 +2079,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zgradi �
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi žel. predor. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških prog, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov. Shift preklaplja med izgradnjo in predvidenimi stroški
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Smer žel. garaže
@@ -2340,6 +2351,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežen teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Puščava
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta z razsvetljavo
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Drevored
@@ -2522,7 +2534,9 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Premakni
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Premakne izbrano NewGRF gor po seznamu
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Premakni dol
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Premakne izbrano NewGRF dol po seznamu
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam nameščenih NewGRF datotek. Klikni datoteko za spremembo parametrov
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam nameščenih NewGRF datotek.
+
+# Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavi parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Preklop palete
@@ -2545,7 +2559,6 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ujemajo
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogočeno
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilno s to različico OpenTTD
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
@@ -2554,6 +2567,8 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ponastav
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Število parametrov: {ORANGE}{NUM}
+
+# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Preglej - {STRING}
@@ -2720,6 +2735,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financi
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupi enoletno izključno pravico do transporta v mestu. Lokalne oblasti bodo dovolile potnikom in tovoru do uporabe izključno tvojih transportnih storitev.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podkupi lokalno oblast za izboljšavo svojih ocen kljub tveganju resnih kazni ob odkritju.{}Cena: {CURRENCY_LONG}
 
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Cilji
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni cilji:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Brez -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji podjetja:
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponudba subvencije za storitev:
@@ -2854,6 +2876,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime podjetja
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo ime
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Iščemo novega lastnika, ki bi prevzel naše podjetje.{}{}Ali želiš odkupiti podjetje {COMPANY} za ceno {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrije
@@ -3398,9 +3422,12 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne razloži in
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne razloži in počakaj na polno česarkoli)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne razloži in ne naloži)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[začetna stran]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[konec]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skoči na ukaz {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skoči na ukaz {COMMA}, ko je {STRING} {STRING} {COMMA}
@@ -3466,11 +3493,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbeir l
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Razhroščevanje UI
+STR_AI_DEBUG                                                    :{WHITE}Razhroščevanje UI / skripte
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavitve UI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni nastavitve UI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime skripte
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavitve
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Spremeni nastavitve skripte
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Vključi/izključi prelom, ko se sporočilo UI ujema z besedilom preloma
@@ -3483,37 +3510,47 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si razhroščevalni izpis UI
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za razhroščevanje UI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno razhroščevanja UI je na voljo samo za strežnik
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno razhroščevanja UI / skripte je na voljo samo za strežnik
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavljanje UI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavitve UI / igre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Igralec
 STR_AI_CONFIG_RANDOM_AI                                         :Naključni UI
+STR_AI_CONFIG_NONE                                              :(brez)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Premakni višje
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Premakni izbran UI višje po seznamu
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Premakni nižje
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Premakni izbran UI nižje po seznamu
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta
+STR_AI_CONFIG_AI                                                :{SILVER}UI-ji
+
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :UI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavi
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi parametre UI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi parametre Skripte
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni za izbor ene UI
+STR_AI_LIST_CAPTION_AI                                          :UI-ji
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni za izbor skripte
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Avtor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Verzija: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potrdi
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izbere označeno UI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izberi označeno skripto
 STR_AI_LIST_CANCEL                                              :{BLACK}Prekliči
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni UI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni skripte
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :UI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
