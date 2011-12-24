@@ -14,6 +14,7 @@
 
 #include "base.hpp"
 #include "../core/bitmath_func.hpp"
+#include "../core/math_func.hpp"
 #include "../gfx_func.h"
 
 /** Base for all 32bpp blitters. */
@@ -133,6 +134,33 @@ public:
 		colour = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
 
 		return ComposeColour(0xFF, colour, colour, colour);
+	}
+
+	static const int DEFAULT_BRIGHTNESS = 64;
+
+	static inline uint32 AdjustBrightness(uint32 colour, uint8 brightness)
+	{
+		/* Shortcut for normal brightness */
+		if (brightness == DEFAULT_BRIGHTNESS) return colour;
+
+		uint16 ob = 0;
+		uint16 r = GB(colour, 16, 8) * brightness / DEFAULT_BRIGHTNESS;
+		uint16 g = GB(colour, 8,  8) * brightness / DEFAULT_BRIGHTNESS;
+		uint16 b = GB(colour, 0,  8) * brightness / DEFAULT_BRIGHTNESS;
+
+		/* Sum overbright */
+		if (r > 255) ob += r - 255;
+		if (g > 255) ob += g - 255;
+		if (b > 255) ob += b - 255;
+
+		if (ob == 0) return ComposeColour(GB(colour, 24, 8), r, g, b);
+
+		/* Reduce overbright strength */
+		ob /= 2;
+		return ComposeColour(GB(colour, 24, 8),
+		                     r >= 255 ? 255 : min(r + ob * (255 - r) / 256, 255),
+		                     g >= 255 ? 255 : min(g + ob * (255 - g) / 256, 255),
+		                     b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255));
 	}
 };
 

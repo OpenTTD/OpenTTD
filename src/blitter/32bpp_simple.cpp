@@ -20,11 +20,11 @@ static FBlitter_32bppSimple iFBlitter_32bppSimple;
 
 void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const SpriteLoader::CommonPixel *src, *src_line;
+	const Blitter_32bppSimple::Pixel *src, *src_line;
 	uint32 *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
-	src_line = (const SpriteLoader::CommonPixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
 	dst_line = (uint32 *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
@@ -41,7 +41,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					if (src->m == 0) {
 						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
+						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->AdjustBrightness(this->LookupColourInPalette(bp->remap[src->m]), src->v), src->a, *dst);
 					}
 					break;
 
@@ -94,26 +94,42 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 
 Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
-	Sprite *dest_sprite;
-	SpriteLoader::CommonPixel *dst;
-	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sprite->height * sprite->width * sizeof(SpriteLoader::CommonPixel));
+	Blitter_32bppSimple::Pixel *dst;
+	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sprite->height * sprite->width * sizeof(*dst));
 
 	dest_sprite->height = sprite->height;
 	dest_sprite->width  = sprite->width;
 	dest_sprite->x_offs = sprite->x_offs;
 	dest_sprite->y_offs = sprite->y_offs;
 
-	dst = (SpriteLoader::CommonPixel *)dest_sprite->data;
+	dst = (Blitter_32bppSimple::Pixel *)dest_sprite->data;
+	SpriteLoader::CommonPixel *src = (SpriteLoader::CommonPixel *)sprite->data;
 
-	memcpy(dst, sprite->data, sprite->height * sprite->width * sizeof(SpriteLoader::CommonPixel));
 	for (int i = 0; i < sprite->height * sprite->width; i++) {
-		if (dst[i].m != 0) {
+		if (src->m == 0) {
+			dst[i].r = src->r;
+			dst[i].g = src->g;
+			dst[i].b = src->b;
+			dst[i].a = src->a;
+			dst[i].m = 0;
+			dst[i].v = 0;
+		} else {
+			/* Get brightest value */
+			uint8 rgb_max = max(src->r, max(src->g, src->b));
+
+			/* Black pixel (8bpp or old 32bpp image), so use default value */
+			if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;
+			dst[i].v = rgb_max;
+
 			/* Pre-convert the mapping channel to a RGB value */
-			uint colour = this->LookupColourInPalette(dst[i].m);
+			uint colour = this->AdjustBrightness(this->LookupColourInPalette(src[i].m), dst[i].v);
 			dst[i].r = GB(colour, 16, 8);
 			dst[i].g = GB(colour, 8,  8);
 			dst[i].b = GB(colour, 0,  8);
+			dst[i].a = src->a;
+			dst[i].m = src->m;
 		}
+		src++;
 	}
 
 	return dest_sprite;

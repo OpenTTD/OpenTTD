@@ -36,12 +36,12 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 	/* src_n  : each line begins with uint32 n = 'number of bytes in this line',
 	 *          then interleaved stream of 'm' and 'n' channels. 'm' is remap,
 	 *          'n' is number of bytes with the same alpha channel class */
-	const uint8  *src_n  = (const uint8  *)(src->data + src->offset[zoom][1]);
+	const uint16 *src_n  = (const uint16 *)(src->data + src->offset[zoom][1]);
 
 	/* skip upper lines in src_px and src_n */
 	for (uint i = bp->skip_top; i != 0; i--) {
 		src_px = (const Colour *)((const byte *)src_px + *(const uint32 *)src_px);
-		src_n += *(const uint32 *)src_n;
+		src_n = (const uint16 *)((const byte *)src_n + *(const uint32 *)src_n);
 	}
 
 	/* skip lines in dst */
@@ -59,8 +59,8 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 		src_px++;
 
 		/* next src_n line begins here */
-		const uint8 *src_n_ln = src_n + *(const uint32 *)src_n;
-		src_n += 4;
+		const uint16 *src_n_ln = (const uint16 *)((const byte *)src_n + *(const uint32 *)src_n);
+		src_n += 2;
 
 		/* we will end this line when we reach this point */
 		uint32 *dst_end = dst + bp->skip_left;
@@ -119,8 +119,8 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							if (m == 0) {
 								*dst = src_px->data;
 							} else {
-								uint r = remap[m];
-								if (r != 0) *dst = this->LookupColourInPalette(r);
+								uint r = remap[GB(m, 0, 8)];
+								if (r != 0) *dst = this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8));
 							}
 							dst++;
 							src_px++;
@@ -132,8 +132,8 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 							if (m == 0) {
 								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
 							} else {
-								uint r = remap[m];
-								if (r != 0) *dst = ComposeColourPANoCheck(this->LookupColourInPalette(r), src_px->a, *dst);
+								uint r = remap[GB(m, 0, 8)];
+								if (r != 0) *dst = ComposeColourPANoCheck(this->AdjustBrightness(this->LookupColourInPalette(r), GB(m, 8, 8)), src_px->a, *dst);
 							}
 							dst++;
 							src_px++;
@@ -270,7 +270,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	 *
 	 * it has to be stored in one stream so fewer registers are used -
 	 * x86 has problems with register allocation even with this solution */
-	uint8  *dst_n_orig[ZOOM_LVL_COUNT];
+	uint16 *dst_n_orig[ZOOM_LVL_COUNT];
 
 	/* lengths of streams */
 	uint32 lengths[ZOOM_LVL_COUNT][2];
@@ -293,7 +293,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 		uint size = src_orig->height * src_orig->width;
 
 		dst_px_orig[z] = CallocT<Colour>(size + src_orig->height * 2);
-		dst_n_orig[z]  = CallocT<uint8>(size * 2 + src_orig->height * 4 * 2);
+		dst_n_orig[z]  = CallocT<uint16>(size * 2 + src_orig->height * 4 * 2);
 
 		uint32 *dst_px_ln = (uint32 *)dst_px_orig[z];
 		uint32 *dst_n_ln  = (uint32 *)dst_n_orig[z];
@@ -302,9 +302,9 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 
 		for (uint y = src_orig->height; y > 0; y--) {
 			Colour *dst_px = (Colour *)(dst_px_ln + 1);
-			uint8 *dst_n = (uint8 *)(dst_n_ln + 1);
+			uint16 *dst_n = (uint16 *)(dst_n_ln + 1);
 
-			uint8 *dst_len = dst_n++;
+			uint16 *dst_len = dst_n++;
 
 			uint last = 3;
 			int len = 0;
@@ -313,7 +313,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 				uint8 a = src->a;
 				uint t = a > 0 && a < 255 ? 1 : a;
 
-				if (last != t || len == 255) {
+				if (last != t || len == 65535) {
 					if (last != 3) {
 						*dst_len = len;
 						dst_len = dst_n++;
@@ -328,8 +328,15 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 					dst_px->a = a;
 					*dst_n = src->m;
 					if (src->m != 0) {
+						/* Get brightest value */
+						uint8 rgb_max = max(src->r, max(src->g, src->b));
+
+						/* Black pixel (8bpp or old 32bpp image), so use default value */
+						if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;
+						*dst_n |= rgb_max << 8;
+
 						/* Pre-convert the mapping channel to a RGB value */
-						uint32 colour = this->LookupColourInPalette(src->m);
+						uint32 colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
 						dst_px->r = GB(colour, 16, 8);
 						dst_px->g = GB(colour, 8,  8);
 						dst_px->b = GB(colour, 0,  8);
@@ -354,7 +361,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 			}
 
 			dst_px = (Colour *)AlignPtr(dst_px, 4);
-			dst_n  = (uint8 *)AlignPtr(dst_n, 4);
+			dst_n  = (uint16 *)AlignPtr(dst_n, 4);
 
 			*dst_px_ln = (uint8 *)dst_px - (uint8 *)dst_px_ln;
 			*dst_n_ln  = (uint8 *)dst_n  - (uint8 *)dst_n_ln;

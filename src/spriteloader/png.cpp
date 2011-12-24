@@ -186,9 +186,6 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		for (uint x = 0; x < png_get_image_width(png_ptr, info_ptr); x++) {
 			if (mask) {
 				if (row_pointer[x * sizeof(uint8)] != 0) {
-					dst[x].r = 0;
-					dst[x].g = 0;
-					dst[x].b = 0;
 					/* Alpha channel is used from the original image (to allow transparency in remap colours) */
 					extern const byte _palmap_w2d[];
 					byte colour = row_pointer[x * sizeof(uint8)];
