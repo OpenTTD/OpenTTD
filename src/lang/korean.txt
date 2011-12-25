@@ -295,7 +295,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 �
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 고속 진행
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임 저장, 중지, 게임 종료
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}맵 보여주기
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부화면, 팻말 목록 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 목록 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}회사의 역 목록을 보여주기
@@ -327,7 +327,7 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작년도를 1년 앞당깁니다.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}시작년도를 1년 늦춥니다.
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}시작년도를 입력하세요
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}맵, 도시 목록 보여주기
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}지도, 도시 목록 보여주기
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}지형 만들기
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}도시 만들기
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업 시설 만들기
@@ -448,7 +448,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/�
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / 게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :확대된 스크린샷 찍기
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :맵 전체 스크린샷
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :지도 전체 스크린샷
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 토글
@@ -661,12 +661,12 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :산업시설
 STR_SMALLMAP_TYPE_ROUTES                                        :경로
 STR_SMALLMAP_TYPE_VEGETATION                                    :초목
 STR_SMALLMAP_TYPE_OWNERS                                        :소유주
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}맵에 등고선 표시
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}맵에 차량 표시
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}맵에 산업시설 표시
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}맵에 수송경로 표시
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}맵에 초목 표시
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}맵에 부지 소유주 표시
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}높이에 따라 땅을 다르게 색칠
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}차량 표시
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}산업시설 표시
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}수송 기반시설 및 경로 표시
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}초목 표시
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}소유주 표시
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}산업 시설 타입 표시를 전환하려면 클릭하십시오. CTRL+클릭하면 선택한 산업시설을 제외한 모든 종류를 비활성화합니다. 다시 CTRL+클릭하면 모든 산업시설이 활성화됩니다.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}회사 속성의 표시를 전환하려면 회사를 클릭하십시오. CTRL+클릭으로 선택한 회사를 제외한 모든 회사를 비활성화하십시오. 다시 CTRL+클릭하면 다시 모든 회사가 활성화됩니다.
 
@@ -700,7 +700,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}눈
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름 표시/숨기기
-STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치로 이동시킵니다.
+STR_SMALLMAP_CENTER                                             :{BLACK}소형지도 내부창의 위치를 현재 게임 화면 위치로 이동시킵니다.
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -728,7 +728,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}메시지
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}메시지 설정
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}모든 메시지 종류 : 끄기 / 요약 / 전체
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}모든 타입의 메시지를 일괄변경: 끄기 / 요약 / 전체
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
 STR_NEWS_MESSAGES_OFF                                           :끄기
 STR_NEWS_MESSAGES_SUMMARY                                       :요약
@@ -827,7 +827,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}{P "가" "이"} 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} : 항속거리를 벗어나 다음 목적지에 도착할 수 없습니다
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}{G "이" "가"} 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
@@ -842,8 +842,8 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}에서 이제 {STRING}/{STRING}{G 2 "을" "를"} 받을 수 있습니다.
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은{}더이상 보조금을 지급하지 않습니다.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 제공 철회:{}{}지역 당국은 {1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지 {0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 보조금을 받게 될 것입니다!
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 제공 철회:{}{}지역 당국은 {1:STRING}에서 {2:STRING}까지의{}{0:STRING} 수송에 대한 보조금을 철회하였습니다.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지{}{0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 보조금을 받게 될 것입니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
@@ -1097,8 +1097,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행�
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 
-STR_CONFIG_SETTING_OFF                                          :끔
-STR_CONFIG_SETTING_ON                                           :켬
+STR_CONFIG_SETTING_OFF                                          :아니오
+STR_CONFIG_SETTING_ON                                           :예
 STR_CONFIG_SETTING_DISABLED                                     :사용불가
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :끄기
@@ -1113,11 +1113,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :왼쪽
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 위의 건설을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}열차의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}더욱 현실적인 역세권 지정 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}열차의 최대 길이: {ORANGE}{STRING} 타일
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}자동차 가속 모델: {ORANGE}{STRING}
@@ -1125,34 +1125,34 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차�
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}자동차를 위한 경사면의 경사도 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}최대 다리 건설 길이: {ORANGE}{STRING}칸
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션(화폐가치하락) 켬: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}다리의 최대 길이: {ORANGE}{STRING}칸
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (위치 선택 가능, 7배 비용)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :건설 가능 (무작위 위치)
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}산업 시설 주변의 평지: {ORANGE}{STRING}칸
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}한 도시에 비슷한 산업시설을 여러 개 건설할 수 있게 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}신호기를 차량 통행 방향에 설치 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}한 도시에 비슷한 산업시설을 여러 개 건설할 수 있게 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}신호기를 차량이 통행하는 방향에 놓기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}연말에 자동으로 재정 창을 띄움: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 직통 처리: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}새로운 열차 정지 경로는 기본적으로 플랫폼의 {ORANGE}{STRING}{LTBLUE}에서 정지하도록 함
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}획기적인 방법으로 자동차를 대기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}도시의 건물에 투자하는 기능: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}지역 도로 재공사 투자 행위를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행기 속도 인수: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}화물 무게가중치 (무거운 열차를 구현할 때 사용): {ORANGE}{STRING}배
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행기 속도 조절: {ORANGE}(실제속도) x {STRING}분의 1
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}비행기 추락 횟수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
@@ -1162,32 +1162,32 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}경쟁�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}여러 개의 NewGRF 엔진 세트를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}인프라 유지비: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}기반시설 유지비: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}공항이 사라지지 않게 함: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}옛날 공항이 사라지지 않고 계속 만들 수 있게 함: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}차량이 길을 잃으면 경고: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}차량의 경로 검사 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}차량의 경로를 검사: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :아니요
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :예 (모든 차량)
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}차량의 수입이 적자일때 경고하기: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량이 사라지지 않고 계속 만들 수 있게 함 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}교체를 위한 자동 교체 최소 요구 자금 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시 : {ORANGE}{STRING}초 동안
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}자동 교체를 위한 자동 교체 최소 요구 자금: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시: {ORANGE}{STRING}초 동안
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}오른쪽 클릭으로 바로
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}그래프 선의 두께: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}지형 만들기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}석유 정제소 건설 가능 범위 : {ORANGE}맵 가장자리에서 {STRING}칸 이내
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}석유 정제소의 최대 건설 범위: {ORANGE}지도 가장자리에서 {STRING}타일 이내
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}만년설의 높이: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}지형의 거친 정도 ('천지창조' 전용) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}지형의 거친 정도 ('천지창조' 전용): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :부드럽게
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :거칠게
@@ -1199,31 +1199,31 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap 회전: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}맵 가장자리의 지형 변경을 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오의 평지 높이: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}지도 가장자리의 지형 변경을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}북쪽 가장자리에 있는 한 개 이상의 타일이 비어있지 않습니다
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}가장자리에 있는 한 개 이상의 타일이 물이 아닙니다
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}스몰맵에서 사용되는 땅의 색상: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 값을 너무 크게 설정하면 게임이 느려집니다!
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 건설창을 띄울 때 지형 편집창도 같이 띄움: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}소형지도 창에 표시될 땅의 색상: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :어두운 녹색
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :보라색
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 화면 스크롤: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리 툴팁 표시 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}회사 색상 표시 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리 툴팁 표시: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}회사 고유 색상 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :없음
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :내 회사
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :모든 회사
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 같은 팀끼리 채팅 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}엔터(ENTER) 키로 같은 팀끼리 채팅: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}마우스 휠 동작: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :맵 줌
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :맵 스크롤
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :화면 확대/축소
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :지도 스크롤
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :끄기
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}지도 스크롤 속도: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}오른쪽 클릭 매크로: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클릭
@@ -1233,9 +1233,9 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}마우스 왼쪽 버튼으로 스크롤: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}{ORANGE}{STRING}{LTBLUE} 날짜 형식을 세이브 이름으로 사용합니다.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2008년 12월 31일)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2008.12.31)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1월 1일)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}NewGRF에서 자체 설정된 팔레트가 없을 경우 기본으로 설정할 팔레트: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :도스 팔레트
@@ -1266,10 +1266,10 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}최대 
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}최대 항공기 수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}최대 선박 수: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}컴퓨터의 철도 사용을 허가하지 않음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}컴퓨터의 철도 사용을 허가하지 않음: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}컴퓨터의 자동차 사용을 허가하지 않음: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}스크립트가 일시 중지되기 전의 #opcodes: {ORANGE}{STRING}
@@ -1283,23 +1283,23 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}항공�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}항공기 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}선박 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}고장이 나지 않도록 설정되어 있을 때 점검을 비활성화 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}고장이 나지 않도록 설정되어 있으면 점검을 비활성화: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{ORANGE}{STRING}{LTBLUE}년부터 컬러로 된 뉴스가 나옴
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}시작 연도: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화) : {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제(더욱 작은 변화) 옵션 사용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}다른 회사의 지분을 사는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}공장에 원자재투입시 생산되는 물품의 무게 비율: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호기를 매 {ORANGE}{STRING}타일마다 설치
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용 : {ORANGE}{STRING}년 이후에
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 GUI를 사용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용: {ORANGE}{STRING}년 이후에
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 설치시 신호기 선택 창을 띄움: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :경로 신호기
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ctrl+신호기 건설시 바뀌는 신호등 종류: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ctrl+신호기 건설시 바뀌는 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :모두
@@ -1323,11 +1323,11 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :불가능 {RED}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만 가능
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :모든 지역에서 가능
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}상태 바의 위치: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 맞춤 거리 : {ORANGE}{STRING} 픽셀 안에 들어오면 자동 맞춤
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 맞춤 거리 : {ORANGE}사용 안함
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}자동 결합하지 않는 창의 최대 갯수: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 맞춤 거리: {ORANGE}{STRING}픽셀 안에 들어오면 자동 맞춤
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 맞춤 거리: {ORANGE}사용 안함
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}자동 결합하지 않는 창의 최대 갯수: {ORANGE}{STRING}개
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}자동 결합하지 않는 창의 최대 갯수: {ORANGE}사용 안함
 STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}최대 줌 인 배율: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}최대 줌 아웃 배율: {ORANGE}{STRING}
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}경제
 STR_CONFIG_SETTING_AI                                           :{ORANGE}경쟁자
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 옵션
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호등
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 옵션
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동교체
@@ -1374,7 +1374,7 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}차량을 위한 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박을 위한 경로탐색: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}신호기 앞에서 자동 회차: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}신호기 앞에서 회차: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
 
@@ -1411,7 +1411,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라�
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게임 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다. Ctrl+클릭은 맵설정을 넘어갑니다.
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}Ctrl+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}저장한 게임을 불러옵니다
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}사용자 시나리오로 새 게임을 시작합니다
@@ -1462,9 +1462,9 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}체크�
 STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트 기록은 절대로 지워지지 않음을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}제트항공기가 소형 공항에서 (자주) 폭발하지 않게 함 : {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}대형항공기가 소형 공항에서 (자주) 폭발하지 않게 함: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}기후 변경: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :온대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
@@ -1472,7 +1472,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기�
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감 나라
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재의 연도를 변경
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}새 색상
@@ -1582,8 +1582,8 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}클라이언트
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}클라이언트 온라인 / 최대 접속자수{}회사 온라인 / 최대 회사수
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}맵 크기
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}게임의 맵 사이즈{}크기별로 정렬하려면 클릭
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}지도 크기
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}게임의 지도 크기{}크기별로 정렬하려면 클릭
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}날짜
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}현재 날짜
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}진행 년도
@@ -1598,7 +1598,7 @@ STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}게임 
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}클라이언트: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}언어: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}기후: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}맵 크기: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}지도 크기: {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}서버 버전: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}서버 주소: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}시작 날짜: {WHITE}{DATE_SHORT}
@@ -1719,7 +1719,7 @@ STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}접속�
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 접속중...
 STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 권한 부여중...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 기다리는 중...
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 맵 다운로드중...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 지도 다운로드중...
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) 데이터 처리중...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 등록중...
 
@@ -1804,7 +1804,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}당신�
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :일반 오류
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :비동기화 오류
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :맵 불러오기 실패
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :지도 불러오기 실패
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :연결 손실
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :프로토콜 오류
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF 안맞음
@@ -2049,7 +2049,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}터널을 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}전차 터널을 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}도로 제거툴 켜기/끄기
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길/신호등 건설/제거툴 켜기/끄기
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}전찻길 건설/제거 툴 켜기/끄기
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}차고 방향
@@ -2147,7 +2147,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 �
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}무작위로 지형 만들기
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}새 시나리오 만들기
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}지형만 남기기
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}맵에서 모든 플레이어 소유의 자산을 제거
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}지도에서 모든 플레이어 소유의 자산을 제거
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}플레이어 소유물 제거
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}이 작업은 기본 지형(도시 포함) 이외의 모든 플레이어의 소유물(철도,도로 등)을 제거할 것입니다. 계속하시겠습니까?
@@ -2204,8 +2204,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}이 산�
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}이 화물의 공급자와 고객을 보려면 클릭하세요.
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업망 표시
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산되고 소비되는 화물을 보여줍니다.
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}소형맵 열기
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}산업망에 표시된 산업을 소형맵에서 볼 수 있게 합니다.
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}지도에 표시
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}위 산업망에 표시된 산업을 소형지도에서 볼 수 있게 합니다.
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
@@ -2354,7 +2354,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}게임�
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}세계 창조
-STR_MAPGEN_MAPSIZE                                              :{BLACK}맵 크기:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}지도 크기:
 STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
@@ -2376,7 +2376,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}산세 �
 STR_MAPGEN_GENERATE                                             :{WHITE}만들기
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}맵 가장자리:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}지도 가장자리:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}북서
 STR_MAPGEN_NORTHEAST                                            :{BLACK}북동
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}남동
@@ -2667,7 +2667,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}전체 �
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}회사 목표:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}산업시설/마을/맵의 위치로 화면을 이동하려면 클릭하십시오. Ctrl+클릭하면 산업시설/마을/맵을 표시하는 외부화면을 엽니다.
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}산업시설/마을/지도의 위치로 화면을 이동하려면 클릭하십시오. Ctrl+클릭하면 산업시설/마을/지도를 표시하는 외부화면을 엽니다.
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
@@ -2762,7 +2762,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENC
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}돈을 빌립니다. Ctrl+클릭하면 빌릴 수 있는만큼 빌립니다
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG} 갚기
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}돈을 갚습니다. Ctrl+클릭하시면 갚을 수 있는 만큼 갚습니다
-STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}회사 인프라
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}기반시설
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2778,7 +2778,7 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}선박 {
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
-STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}인프라:
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}기반시설:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA}타일의 철도
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA}타일의 도로
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA}타일의 운하
@@ -2793,7 +2793,7 @@ STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 �
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 재위치
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격으로 본사를 다른 위치에 재건축합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}상세한 회사 인프라의 총계 보기
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}회사 기반시설 상세내역 창을 엽니다
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니저의 얼굴을 선택합니다.
@@ -2804,10 +2804,10 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}회사 �
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}매니저 이름
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}매니저의 이름을 변경합니다.
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}회사 주식의 25%를 매입
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}회사 주식의 25%를 매도
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}이 회사 주식의 25%를 매입합니다. SHIFT+클릭으로 예상 매입 가격을 볼 수 있습니다.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회사 주식의 25%를 매도합니다. SHIFT+클릭으로 예상 매도 가격을 볼 수 있습니다.
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}회사 지분의 25%를 매입
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}회사 지분의 25%를 매도
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}이 회사 지분의 25%를 매입합니다. SHIFT+클릭으로 예상 매입 가격을 볼 수 있습니다.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회사 지분의 25%를 매도합니다. SHIFT+클릭으로 예상 매도 가격을 볼 수 있습니다.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :매니저 이름
@@ -2815,15 +2815,15 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :매니저 이�
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY}의 인프라 총계
-STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}철도 인프라:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY}의 기반시설
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}철도 기반시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}신호기
-STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}도로 인프라:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}도로 기반시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}도로
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}전찻길
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}해운 인프라:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}해운 기반시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}운하
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}정거장 인프라:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}정거장 시설:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}정류장, 역
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}공항
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/년 ({0:COMMA})
@@ -3054,8 +3054,8 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}이 격�
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 정말 판매하시겠습니까?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 제조 안내 메시지
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자로부터의 메시지
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :철도 기관차
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :자동차
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :항공기
@@ -3572,7 +3572,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<사용 불가�
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}맵 생성이 중지되었습니다...{}... 도시 위치가 부적절합니다
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}지도 생성이 중지되었습니다...{}... 도시를 건설할 적절한 곳이 존재하지 않습니다
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... 시나리오에 도시가 없습니다.
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG파일로부터 지형을 불러올 수 없습니다...
@@ -3585,14 +3585,14 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... 이�
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... 이미지가 너무 큽니다.
 
-STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}맵 크기 경고
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}지도 크기 경고
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}원본 지도의 크기를 너무 많이 조절하는 것은 좋지 않습니다. 그래도 계속하시겠습니까?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}게임에 대체 사운드만 존재합니다. 다른 사운드를 원하신다면, 컨텐츠 다운로드 시스템에서 사운드 세트를 받아서 설치하세요.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 다음과 같이 저장되었습니다 : '{STRING}'
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 '{STRING}' 로 저장되었습니다.
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}스크린 샷을 찍지 못했습니다!
 
 # Error message titles
@@ -3600,8 +3600,8 @@ STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}알림
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING}{G 0 "이" "가"} 보낸 메시지
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}맵 가장자리에서 너무 멉니다!
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}맵 가장자리와 너무 가깝습니다!
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}지도 가장자리에서 너무 멉니다!
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}지도 가장자리와 너무 가깝습니다!
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}재정이 부족합니다 - {CURRENCY_LONG} 이(가) 필요합니다
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}평지가 필요합니다!
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}잘못된 방향으로 땅이 기울어졌습니다
@@ -3645,19 +3645,19 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출�
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사를 인수할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}본사를 건설할 수 없습니다...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}이 회사 주식의 25%를 매입할 수 없습니다...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}이 회사 주식의 25%를 매도할 수 없습니다...
-STR_ERROR_PROTECTED                                             :{WHITE}이 회사는 주식을 거래할 만큼 오래되지 않았습니다...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}이 회사 지분의 25%를 매입할 수 없습니다...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}이 회사 지분의 25%를 매도할 수 없습니다...
+STR_ERROR_PROTECTED                                             :{WHITE}이 회사는 지분을 거래할 수 있을 만큼 오래되지 않았습니다...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}도시를 만들 수 없습니다!
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}도시 이름을 바꿀 수 없습니다...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}여기에 도시를 건설할 수 없습니다...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}도시를 확장할 수 없습니다...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 맵 가장자리와 너무 가깝습니다!
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 지도 가장자리와 너무 가깝습니다!
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 다른 도시와 너무 가깝습니다!
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도시가 너무 많습니다!
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 맵에 더이상 공간이 없습니다!
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
@@ -3676,7 +3676,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 열�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 사막 지역에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 도시에만 건설할 수 있습니다!
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 낮은 지역에만 건설할 수 있습니다!
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 맵 가장자리에만 위치할 수 있습니다.
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 지도 가장자리에만 위치할 수 있습니다.
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... 만년설 고도 위에만 지을 수 있습니다
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... 만년설 고도 아래에만 지을 수 있습니다
@@ -3769,7 +3769,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 제한)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}불가능한 트랙 조합입니다
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호등을 먼저 제거하십시오
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}신호기를 먼저 제거하십시오
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}알맞지 않은 철로입니다.
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}철로를 먼저 제거하십시오
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}도로가 일방통행이거나 막혔습니다
@@ -3780,7 +3780,7 @@ STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}이곳�
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}이곳의 신호기를 제거할 수 없습니다...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}이곳의 신호기를 변환할 수 없습니다...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 철로가 없습니다.
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 신호등이 없습니다.
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 신호기가 없습니다.
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}이곳의 철로 형식을 바꿀 수 없습니다...
 
@@ -3827,7 +3827,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}여기�
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}터널 입구에 알맞지 않은 장소입니다
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}터널을 먼저 제거하십시오
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중에 다른 터널이 있습니다
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 맵 끝을 통과합니다
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 지도 맨끝을 통과합니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 터널이 너무 깁니다!
 

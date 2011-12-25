@@ -2983,9 +2983,9 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Изме
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Цвет
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Изменить цвет транспортных средств компании
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Название
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Изменение названия компании
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Изменить название компании
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Директор
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Изменение имени директора
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Изменить имя директора
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купить 25% акций компании
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продать 25% акций компании
