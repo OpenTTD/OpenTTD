@@ -827,7 +827,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}{P "가" "이"} 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}{G "이" "가"} 다음 목적지에 도착할 수 없습니다
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
