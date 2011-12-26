@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :تاریخ اح
 STR_SORT_BY_RUNNING_COST                                        :هزینه کارکرد
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :توان/هزینه کارکرد
 STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت محموله
+STR_SORT_BY_RANGE                                               :بازه
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}متوقف کردن بازی
@@ -348,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :خروج
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :تنظیمات بازی
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :تنظیمات سختی
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :تنظیمات پیشرفته
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :هوش مصنوعی / تنظیمات بازی
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :تنظیمات NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :گزینه های شفافیت
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :نام شهرها نشان داده شود
@@ -380,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :ساخت شهر
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :یارانه ها
+STR_SUBSIDIES_MENU_GOAL                                         :اهداف فعلی
 ############ range ends here
 
 ############ range for graph menu starts
@@ -747,6 +750,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغی�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}کمک هزینه
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}توضیهات کلی
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین قطار را به {STATION} تبریک گفتند!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}شهروندان ورود اولین اتوبوس را به . . .{}{STATION} تبریک گفتند!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}شهروندان ورود اولین کامیون را به . . .{}{STATION} تبریک گفتند!
@@ -821,6 +826,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} نمی تواند مسیری برای ادامه دادن پیدا کند
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} گمشده
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :سود سال گذشته {WHITE}{VEHICLE}به مقدار {CURRENCY_LONG} بوده است
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} نمی توان به مقصد بعدی رسید.مقصد دور از دسترس است
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} متوقف گردید چون تغییر کاربرد با شکست مواجه شد
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}نوسازی خودکار {VEHICLE}{}{STRING} با شکست مواجه شده است
@@ -1171,6 +1177,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}مدت 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}نمایش متن کمکی: {ORANGE}بعد از {STRING} ثانیه صبر
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}نمایش متن کمکی: {ORANGE}کلیک راست
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}نمایش جمعیت شهر در عنوان شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}صخامت خط ها در گراف: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}طراح زمین: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
@@ -1358,6 +1365,9 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}برگ�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
+# Config errors
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... قالب ذخیره بازی '{STRING}' در دسترس نیست.برگردان به '{STRING}'
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1373,6 +1383,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}سختی
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}تنظیمات پیشرفته
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}تنظیمات NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}چک کردن محتوی آنلاین
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}هوش مصنوعی / تنظیمات بازی
 STR_INTRO_QUIT                                                  :{BLACK}خروج
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}شروع بازی جدید. Ctrl+Click پیش تنظیمات نقشه را رد و از تنظیمات گذشته استفاده می کند.
@@ -1392,6 +1403,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK} نشا�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}نمایش تنظیمات پیشرفته
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}نمایش هوش مصنوعی و تنظیمات بازی
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} خروج از 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}این ترجمه {NUM} رشته{P ی های}ترجمه نشده دارد. با ثبت نام کردن به عنوان مترجم ما را در بهتر سازی OpenTTD یاری نمایید. فایل readme.txt را برای جزییات بیشتر بخوانید.
@@ -1793,10 +1805,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :بازی متو
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :بازی هنوز متوقف است ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :بازی هنوز متوقف است ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :بازی هنوز متوقف است ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :بازی هنوز متوقف است ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :بازی از توقف بیرون آمد ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :تعداد بازیگران
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :در حال اتصال سرویس گیرنده ها
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :دستی
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :کد بازی
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :می رود
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} به بازی پیوست
@@ -1825,6 +1839,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} نشا�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}پاک کردن تمام انتخاب ها
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}علامت گذاری تمامی موارد برای بارگیری نکردن
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}برچسب/پایش بر اساس نام
+STR_CONTENT_OPEN_URL                                            :{BLACK}مشاهده تارنما
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}برای مشاهده محتویات به تارنمای اینترنتی مراجعه کنید
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}دانلود
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}شروع به دانلود موارد انتخاب شده
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}حجم کل دانلود: {WHITE}{BYTES}
@@ -1851,11 +1867,13 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ام
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :گرافیک پایه
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :هوش مصنوعی
-STR_CONTENT_TYPE_AI_LIBRARY                                     :مجموعه ماخذ AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :کتابخانه AI
 STR_CONTENT_TYPE_SCENARIO                                       :سناریو
 STR_CONTENT_TYPE_HEIGHTMAP                                      :نقشه
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :صداهای پایه
 STR_CONTENT_TYPE_BASE_MUSIC                                     :موسیقی پایه
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :کد بازی
+STR_CONTENT_TYPE_GS_LIBRARY                                     :کتابخانه GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}در حال دانلود...
@@ -1870,6 +1888,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}دانل
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ارتباط از بین رفت
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... فایل قابلیت درج ندارد
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}بازگشایی فایل بارگیری شده ممکن نیست
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}گزینه های شفافیت
@@ -2373,6 +2392,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}ساخت
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}ساختن مناطق ناهموار و صخره ها
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}راه اندازی بازی
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}اجرای حلقه قطعه ها
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}کدهای در حال اجرا
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}آماده سازی بازی
 
 # NewGRF settings
@@ -2399,6 +2419,8 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}NewGRF �
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}حرکت به پایین
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پایین می فرستد
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست فایل های NewGRF نصب شده. روی فایل کلیک کنید تا پارامترها را بتوانید تغییر بدهید
+
+# Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}مشاهده راهنما
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
@@ -2431,7 +2453,7 @@ STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :پارامتر{
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}تعداد پارامتر: {ORANGE}{NUM}
 
-# NewGRF readme window
+# NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}راهنمای NewGRF {STRING}
 
 # NewGRF inspect window
@@ -2599,6 +2621,13 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}پرد�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}خرید انحصاری حقوق حمل و نقل به مدت یک سال. مقامات شهر به مسافران و بارها اجازه استفاده از شرکت حمل و نقل دیگری را نمی دهند{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشوه به فرماندار محلی برای افزایش رده، با احتمال جریمه زیاد در صورت گیر افتادن.{}قیمت: {CURRENCY_LONG}
 
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}هدف ها
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}اهداف جهانی:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- هیچکدام -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}اهداف شرکت:
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}یارانه ها
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}یارانه های پیشنهادی برای انجام سرویس های:
@@ -2678,6 +2707,8 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25% سه
 
 
 
+# Company infrastructure window
+
 # Industry directory
 
 # Industry view
@@ -2745,6 +2776,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :هواپیما�
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}سرعت در اقیانوس: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}سرعت در کانال/رودخانه: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_REFITTABLE                                    :(قابل تعمیر)
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}برد: {GOLD}{COMMA} قطعه
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}لیست انتخاب قطار - برای اطلاعات بیشتر روی وسیله کلیک کنید
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}لیست انتخاب کشتی - برای اطلاعات بیشتر روی کشتی کلیک کنید
@@ -2817,6 +2849,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
 
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {7:COMMA} قطعه{}ظرفیت: {CARGO_LONG}, {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {7:COMMA} قطعه{}ظرفیت: {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
 
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :قطار
@@ -2864,6 +2898,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل �
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}پر / خالی کردن
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف شده
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}برای ایستگاه بعدی خیلی دور است
 
 
 # Vehicle stopped/started animations
@@ -2881,6 +2916,7 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}نامگ
 STR_VEHICLE_INFO_AGE                                            :{COMMA}سال ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} سال ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}بیشینه سرعت: {LTBLUE}{VELOCITY} {BLACK}برد: {LTBLUE}{COMMA} قطعه
 
 
 
@@ -2970,6 +3006,8 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(نه بارگ�
 STR_ORDER_AUTO_REFIT_ANY                                        :بار موجود
 
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (مقصد بعدی خارج از دسترس است)
+
 
 
 # Time table window
@@ -2995,20 +3033,35 @@ STR_AI_DEBUG                                                    :{WHITE}رفع �
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام هوش مصنوعی
 STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
-
+STR_AI_GAME_SCRIPT                                              :{BLACK}کدبازی
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}دیدن گزارش های کد بازی
 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}صفحه رفع اشکال هوش مصنوعی فقط برای سرور قابل دسترس است
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}تنظیمات هوش مصنوعی
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}کد بازی که در بازی بعدی بارگذاری می شود
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}هوش مصنوعی که در بازی بعدی بارگذاری می شود
 STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آدمیزاد
 STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
+STR_AI_CONFIG_NONE                                              :(هیچکدام)
 
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کدبازی
+STR_AI_CONFIG_AI                                                :{SILVER}هوشهای مصنوعی
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}انتخاب {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :هوش مصنوعی(AI)
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :کد بازی
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}بارگزاری کد دیگر
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}تنظیم
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}تنظبم پارامتر های مربوط به هوش مصنوعی
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}در دسترس {STRING}
+STR_AI_LIST_CAPTION_AI                                          :هوش های مصنوعی(AIs)
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :کدهای بازی
 STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخلب هوش مصنوعی کلیک کنید
 
 STR_AI_LIST_VERSION                                             :{BLACK}ویرایش: {NUM}
@@ -3020,6 +3073,9 @@ STR_AI_LIST_CANCEL                                              :{BLACK}لغو
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}هوش مصنوعی را تغییر نده
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} پارامترها
+STR_AI_SETTINGS_CAPTION_AI                                      :هوش مصنوعی(AI)
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :کد بازی
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
 
@@ -3248,6 +3304,7 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}این �
 
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}نمی توان برنامه حرکت را کپی کرد...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از هدف قبلی بسیار دور است...
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... هواپیما برد کافی ندارد
 
 # Timetable related errors
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}وسایل نقلیه فقط در ایستگاه می توانند منتظر بمانند

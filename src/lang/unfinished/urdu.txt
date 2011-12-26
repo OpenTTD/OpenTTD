@@ -350,7 +350,6 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :باہر نکل
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :کھیل کے اختیارات
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :مشکلات چنئے
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعلی اختیارات
-STR_SETTINGS_MENU_AI_SETTINGS                                   :AI اختیارات
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF اختیارات
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency کے اختیارات
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :آبادیوں کے نام دکھائے جائیں
@@ -745,6 +744,7 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}نئی 
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}کارگو کی منظوری میں تبدیلی
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}امداد
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}عمومی معلومات
+
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی ریل گاڑی {STATION} پر پہنچی
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}شہریوں کا جشن ۔ ۔ ۔{}پہلی لاری {STATION} پر پہنچی
@@ -1301,11 +1301,15 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}شہر کے بڑھنے کی رفتار: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :کوئی نہیں
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :آہستہ
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :نارمل
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تیز
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بہت تیز
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}شہروں کے بڑا شہر بننے کی شرح: {ORANGE}{STRING} میں سے ایک
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}شہروں کے بڑا شہر بننے کی شرح: {ORANGE}کوئی نہیں
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}شہر کا شروعاتی ضارب: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}انٹرفیس
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}تعمیرات
@@ -1313,6 +1317,8 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}گاڑ�
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE} اسٹیشن
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}معیشت
 STR_CONFIG_SETTING_AI                                           :{ORANGE}مد مقابل
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}ڈسپلے کے اختیارات
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}چوراہا
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}اشعارے
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}سامان کو سنبھالنا
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}کمپیوٹر کے کھلاڑی
@@ -1328,6 +1334,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}گاڑیوں کا راستہ تلاش کرنے والا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}بحری جہازوں کا راستہ تلاش کرنے والا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}اشاروں پر خودکار ریورس ہونا: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
@@ -1361,19 +1371,25 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}مشکل
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}ایڈوانسڈ سیٹنگ
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF چنئے
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}آن لائن مواد دیکھیں
-STR_INTRO_AI_SETTINGS                                           :{BLACK}AI چنئے
 STR_INTRO_QUIT                                                  :{BLACK}باہر نکلو
 
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}نیا کھیل شروع کریں۔ Ctrl+Click نقشے کی ترتیب کو چھوڑ دے گا
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}بچایا ہوا کھیل لوڈ کریں
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}ایک نیا کھیل شروع کرو، اونچائی کے نقشے کو زمین بنا کر
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}اپنی مرضی کا scenario استعمال کرتے ہوئے نیا کھیل شروع کریں
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}اپنی مرضی کی دنیا/scenario بنائیں
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}زیادہ کھلاڑیوں والا کھیل شروع کریں
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}منظر کشی کا 'temperate' طریقہ چُنئیے
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}منظر کشی کا 'sub-arctic' طریقہ چُنئیے
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}منظر کشی کا 'sub-tropical' طریقہ چُنئیے
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}منظر کشی کا 'toyland' طریقہ چُنئیے
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}کھیل کے اختیارات دکھائیں
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}مشکلات کے اختیارات دیکھیئے
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}ایڈوانسڈ سیتنگز دیکھیئے
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}نئے اور ترمیم شدہ مواد کو ڈاون لوڈ کرنے کے لئے چیک کریں
-STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}AI سیٹنگز دیکھیئے
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' سے باہر نکلو
 
 
@@ -1403,6 +1419,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}دھوکے
 STR_CHEATS_TOOLTIP                                              :{BLACK}چیک باکسز سے ظاہر ہوتا ہے کہ آپ نے یہ دھوکا پہلے بھی کیا یے
+STR_CHEAT_MONEY                                                 :{LTBLUE}رقم کو {CURRENCY_LONG} سے بڑھائیں
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجودہ سال بدلیں
 
 # Livery window
@@ -1799,6 +1816,8 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس ش�
 
 
 
+# Goal window
+
 # Subsidies window
 
 # Station list window
@@ -2033,6 +2052,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 
 
 # AI configuration window
+
 
 
 
