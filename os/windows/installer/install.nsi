@@ -14,7 +14,7 @@
 !define APPURLLINK "http://www.openttd.org"
 !define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
 
-!define OPENGFX_BASE_VERSION "0.7.0"
+!define OPENGFX_BASE_VERSION "1.2.0"
 !define OPENSFX_BASE_VERSION "0.8.0"
 !define OPENMSX_BASE_VERSION "1.0.0"
 

@@ -3,7 +3,7 @@
 set OPENTTD_VERSION=1.2.0-beta1
 set OPENSFX_VERSION=0.8.0
 set NOSOUND_VERSION=0.8.0
-set OPENGFX_VERSION=0.7.0
+set OPENGFX_VERSION=1.2.0
 
 echo To make the installer, you must have the WarpIN compiler (wic) installed and in
 echo your path, as well as wget and unzip. This file will download the various DLLs
