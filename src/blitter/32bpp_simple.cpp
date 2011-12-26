@@ -122,7 +122,7 @@ Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, AllocatorProc 
 			dst[i].v = rgb_max;
 
 			/* Pre-convert the mapping channel to a RGB value */
-			uint colour = this->AdjustBrightness(this->LookupColourInPalette(src[i].m), dst[i].v);
+			uint colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), dst[i].v);
 			dst[i].r = GB(colour, 16, 8);
 			dst[i].g = GB(colour, 8,  8);
 			dst[i].b = GB(colour, 0,  8);
