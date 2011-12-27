@@ -2003,7 +2003,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			/* Update company infrastructure counts. */
 			RoadType rt;
 			FOR_EACH_SET_ROADTYPE(rt, rts) {
-				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
+				Company *c = Company::GetIfValid(GetRoadOwner(cur_tile, rt));
 				if (c != NULL) {
 					c->infrastructure.road[rt] += CountBits(road_bits);
 					DirtyCompanyInfrastructureWindows(c->index);
