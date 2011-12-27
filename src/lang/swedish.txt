@@ -752,9 +752,9 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Övergr
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första lastbilen ankommer till {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första lastbilen ankommer {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första passagerarspårvagnen anländer till {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första godsspårvagnen anländer till {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första fartyget ankommer till {STATION}!
@@ -1328,8 +1328,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönste
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximalt antal icke-klistrade fönster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximalt antal icke-klistrade fönster: {ORANGE}avstängd
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximal inzoomningsgrad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximal utzoomningsgrad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximal inzoomning: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximal utzoomning: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1914,7 +1914,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kund
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunde inte packa upp den nedladdade filen
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Grafik saknas
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD kräver grafik för att fungera, men ingen grafik kunde hittas. Vill du tillåta att OpenTTD laddar ner dessa grafikfiler?
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD kräver grafik för att fungera, men ingen grafik kunde hittas. Tillåter du att OpenTTD laddar ner dessa grafikfiler?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, ladda ner grafiken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nej, avsluta OpenTTD
 
@@ -1932,13 +1932,13 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla g
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markera täckande yta
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Markera upptagningsområde
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Av
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Markera inte täckande yta för stationen
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Markera täckande yta för stationen
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Markera inte upptagningsområde för stationen
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Markera stationens upptagningsområde
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepterar: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Leverar: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Förmedlar: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Slå ihop stationer
@@ -1949,7 +1949,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg et
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg järnväg
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifierad järnvägskonstruktion
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bygg elektrifierad järnväg
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg maglev
 
@@ -1958,7 +1958,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg depå (för konstruktion eller service av tåg). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ändra räls till riktmärke. Ctrl aktiverar sammanfogning av riktmärken. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg järnvägsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+klick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/ljussignaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+klick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
@@ -1997,21 +1997,21 @@ STR_STATION_CLASS_WAYP                                          :Riktmärken
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}För-signal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfarts-signal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Infartssignal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utfartssignal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån (gäller inte avancerade envägs-signaler)
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Avancerad envägs-signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Avancerad envägssignal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normal signal (elektrisk){}Detta är den enklaste typen av signal, som tillåter endast ett tåg per block vid samma tidpunkt
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}För-signal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfarts-signal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Infartssignal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartssignal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägs-signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägssignal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten. SHIFT-klick visar beräknad konverteringskostnad
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dragen signals täthet
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minska dragen signals täthet
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka dragen signals täthet
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Avstånd mellan signaler
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minska avstånd mellan signaler
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka avstånd mellan signaler
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Välj järnvägsbro
@@ -2019,21 +2019,21 @@ STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Välj v�
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Välj bro - klicka på önskad bro för att bygga den
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Upphängd, Stål
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hängbro, Stål
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balkbro, Stål
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Stål
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Upphängd, Betong
-STR_BRIDGE_NAME_WOODEN                                          :Trä
-STR_BRIDGE_NAME_CONCRETE                                        :Betong
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rör, Stål
-STR_BRIDGE_TUBULAR_SILICON                                      :Rör, Silikon
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsolbro, Stål
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Hängbro, Betong
+STR_BRIDGE_NAME_WOODEN                                          :Träbro
+STR_BRIDGE_NAME_CONCRETE                                        :Betongbro
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Rörbro, Stål
+STR_BRIDGE_TUBULAR_SILICON                                      :Rörbro, Kisel
 
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bygg väg
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruktion av spårväg
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bygg spårväg
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bygg väg. Ctrl växlar mellan att bygga/ta bort vägkonstruktion. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bygg spårvagnssektion. Ctrl växlar mellan att bygga/ta bort spårvagnssektion. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bygg spårvägssektion. Ctrl växlar mellan att bygga/ta bort spårvagnssektion. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Använd Automatvägläge för att bygga vägsektion. Ctrl växlar mellan att bygga/ta bort vägkonstruktion. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Använd Automatspårläge för att bygga spårväg. Ctrl växlar mellan bygg/ta bort spårväg. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg bussgarage (för konstruktion eller service av vägfordon). Shift växlar mellan att bygga/visa beräknad kostnad
@@ -2041,14 +2041,14 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg sp�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg busshållplats. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passagerarspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lastbrygga. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg fraktspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Deaktivera enkelriktade vägar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg godsspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Avaktivera enkelriktade vägar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg vägbro. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg spårvagnsbro. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg spårvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg vägtunnel. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg spårvagnstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Växla mellan att bygga/ta bort väg
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Växla byggande/rivande av spårvagnskonstruktion
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg spårvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Växla mellan att bygga/riva väg
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Växla mellan att bygga/riva spårväg
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Riktning för bussgarage
@@ -2057,30 +2057,30 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Spårvag
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Välj spårvagnsdepåns orientering
 
 # Road vehicle station construction window
-STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Busshållplatsriktning
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Riktining för busshållplats
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för busshållplats
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Lastbryggsriktning
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Riktning för lastbrygga
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Välj riktning för lastbrygga
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passagerarspårvagnsriktning
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Riktning för passagerarspårvagn
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Välj passagerarspårvagnsstationens orientering
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Fraktspårvagnsriktning
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj fraktspårvagnsstationens orientering
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Riktning för godsspårvagn
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj godsspårvagnsstationens orientering
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Farledskonstruktion
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Farled
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Shift växlar mellan att bygga/beräkna kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg slussar. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skeppsdepå (för byggnad och service av skepp). Shift växlar mellan att bygga/visa beräknad kostnad
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skeppsvarv (för byggnad och service av skepp). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg hamn. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Positionsboj, som kan som kan användas som riktmärke. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Placera en boj som kan som kan användas som riktmärke. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akvedukt. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definiera vattenyta.{}Skapa en kanal, om inte CTRL är nedhållen vid havsnivå, då den kommer att översvämma närliggande områden istället
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Placera flod
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientering för Skeppsdepå
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Välj skeppsdepåns orientering
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientering för Skeppsvarv
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Välj skeppsvarvets orientering
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hamn
@@ -2113,9 +2113,9 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterplatt
 STR_STATION_BUILD_NOISE                                         :{BLACK}Genererat buller: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsarkitektur
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsplanering
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sänk ett hörn av marken. Vid dragning kommer hörnet och vald yta att sänkas ner till hörnets nya höjd. Ctrl väljer yta diagonalt. Shift växlar mellan att sänka/visa beräknad kostnad
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj upp ett hörn av marken. Vid dragning kommer hörnet och vald yta att höjas upp till hörnets nya höjd. Ctrl väljer yta diagonalt. Shift växlar mellan att höja/visa beräknad kostnad
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj ett hörn av marken. Vid dragning kommer hörnet och vald yta att höjas upp till hörnets nya höjd. Ctrl väljer yta diagonalt. Shift växlar mellan att höja/visa beräknad kostnad
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna land till höjden av det först valda hörnet. Ctrl väljer ytan diagonalt. Shift växlar mellan att utjämna/visa beräknad kostnad
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning. Shift växlar mellan att köpa mark/visa beräknad kostnad
 
@@ -2615,7 +2615,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Fraktgod
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nödvändlig
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krävs under vintern
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levererat
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (krävs fortfarande)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (återstår)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levererat)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orten växer var {ORANGE}{COMMA}{BLACK} dag (bekostad tillväxt)

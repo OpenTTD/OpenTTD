@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :அறிமு
 STR_SORT_BY_RUNNING_COST                                        :நடத்துதல் செலவு
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல்/நடத்துதல் செலவு
 STR_SORT_BY_CARGO_CAPACITY                                      :சரக்கு கொள்ளளவு
+STR_SORT_BY_RANGE                                               :வரையறை
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
@@ -363,6 +364,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :நகரம்
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :உதவித் தொகைகள்
+STR_SUBSIDIES_MENU_GOAL                                         :தற்போதைய குறிக்கோள்கள்
 ############ range ends here
 
 ############ range for graph menu starts
@@ -638,6 +640,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}பு�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}உதவித் தொகைகள்
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 
 
 
@@ -900,6 +904,8 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(ப
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சிக்னல்களில் தானியங்கி மீட்சி: {ORANGE}{STRING}
 
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1109,7 +1115,9 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}கட�
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :விளையாட்டு இடைமறிக்கப்பட்டுள்ளது ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :ஆட்டம் இடை நிறுத்தப்பட்டுள்ளது ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :விளையாடுபவர்களின் எண்ணிக்கை
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :விளையாட்டின் ஸ்கிரிப்ட்
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} விளையாட்டில் சேர்ந்து உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} விளையாட்டில் சேர்ந்து உள்ளார் (Client #{2:NUM})
@@ -1121,6 +1129,7 @@ STR_CONTENT_TITLE                                               :{WHITE}கோ�
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}வகை
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}பெயர்
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}அனைத்தையும் தேர்ந்தெடு
+STR_CONTENT_OPEN_URL                                            :{BLACK}இணையதளத்தினை பார்வையிடு
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}பதிவிறக்கு
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}தேர்ந்தெடுக்கப்பட்டனவை பதிவிறக்க ஆரம்பி
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கவில்லை
@@ -1143,6 +1152,8 @@ STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :அடிப்படை ஒலிகள்
 STR_CONTENT_TYPE_BASE_MUSIC                                     :அடிப்படை இசை
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :விளையாட்டின் ஸ்கிரிப்ட்
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS காப்பகம்
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}பதிவிறக்கமாகிறது...
@@ -1372,6 +1383,13 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடி
 
 
 
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}குறிக்கோள்கள்
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}பூலோக குறிக்கோள்கள்:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
+
 # Subsidies window
 
 # Station list window
@@ -1499,6 +1517,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}செ�
 
 # Engine preview window
 
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} வரையறை: {7:COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}{}இயக்குவதற்கான செலவு: {CURRENCY_LONG}/வரு
 
 # Autoreplace window
 
@@ -1528,6 +1547,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}செ�
 
 # The next two need to stay in this order
 
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}வரையறை: {LTBLUE}{COMMA} கட்டங்கள்
 
 
 
@@ -1582,6 +1602,7 @@ STR_ORDER_AUTO_REFIT_ANY                                        :கிடைக
 
 
 
+
 # Time table window
 
 
@@ -1601,17 +1622,29 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 
 
 # AI debug window
+STR_AI_GAME_SCRIPT                                              :{BLACK}விளையாட்டின் ஸ்கிரிப்ட்
 
 
 # AI configuration window
+STR_AI_CONFIG_NONE                                              :(none)
 
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}விளையாட்டின் ஸ்கிரிப்ட்
+STR_AI_CONFIG_AI                                                :{SILVER}AIகள்
+
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :விளையாட்டின் ஸ்கிரிப்ட்
 
 # Available AIs window
+STR_AI_LIST_CAPTION_AI                                          :AIகள்
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :விளையாட்டின் ஸ்கிரிப்ட்கள்
 
 
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :விளையாட்டின் ஸ்கிரிப்ட்
 
 # Vehicle loading indicators
 
