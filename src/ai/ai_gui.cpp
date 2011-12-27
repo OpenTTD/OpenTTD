@@ -174,6 +174,7 @@ struct AIListWindow : public Window {
 		}
 		InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_AI);
 		InvalidateWindowClassesData(WC_AI_SETTINGS);
+		DeleteWindowByClass(WC_QUERY_STRING);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
