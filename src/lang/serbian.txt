@@ -632,7 +632,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Istorija Obave�
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu
-STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije
+STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije / skripte partije
 STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Sačuvaj sliku približenog terena
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku celog terena
@@ -3676,11 +3676,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbor go
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije
+STR_AI_DEBUG                                                    :{WHITE}Korekcija veštačke inteligencije / skripte partije
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naziv VI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}VI Podešavanja
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promena podešavanja vezanih za VI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naziv skripte
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Podešavanja
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Promena podešavanja vezanih za skriptu
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitavanje
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zaustavlja Veštačku Inteligenciju, ponovo učitava skriptu, i restartuje je
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Uključuje/isključuje prekidanje kada VI ispiše poruku koja se poklapa sa prekidnom niskom
@@ -3697,10 +3697,10 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pregled 
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / SkriptePartije je dostupan samo na serveru
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}VI Podešavanja
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Podešavanja VI / Skripte Partije
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta parije koja će biti pokrenuta u sledećoj partiji
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Veštačke inteligencije koje će biti pokrenute u sledećoj partiji
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudsko biće
@@ -3721,22 +3721,22 @@ STR_AI_CONFIG_CHANGE_AI                                         :VI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkriptaPartije
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Podešavanje
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara Veštačke Iteligencije
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara skripte
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostupno {STRING}
 STR_AI_LIST_CAPTION_AI                                          :VIe
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkriptePartije
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknite kako biste izabrali Veštačku Inteligenciju
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikom se označava skripta
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Izdanje: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Prihvati
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izabira označenu Veštačku Inteligenciju
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izabira označenu skriptu
 STR_AI_LIST_CANCEL                                              :{BLACK}Otkaži
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja izbor Veštačke Inteligencije
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja skriptu
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
