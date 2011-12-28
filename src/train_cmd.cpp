@@ -1200,11 +1200,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Train *original_src_head = src_head;
 	Train *original_dst_head = (dst_head == src_head ? NULL : dst_head);
 
-	if (flags & DC_EXEC) {
-		/* Remove old heads from the statistics */
-		if (original_src_head != NULL && original_src_head->IsFrontEngine()) GroupStatistics::CountVehicle(original_src_head, -1);
-		if (original_dst_head != NULL && original_dst_head->IsFrontEngine()) GroupStatistics::CountVehicle(original_dst_head, -1);
-	}
+	/* We want this information from before the rearrangement, but execute this after the validation. */
+	bool original_src_head_front_engine = original_src_head != NULL && original_src_head->IsFrontEngine();
+	bool original_dst_head_front_engine = original_dst_head != NULL && original_dst_head->IsFrontEngine();
 
 	/* (Re)arrange the trains in the wanted arrangement. */
 	ArrangeTrains(&dst_head, dst, &src_head, src, move_chain);
@@ -1224,6 +1222,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	/* do it? */
 	if (flags & DC_EXEC) {
+		/* Remove old heads from the statistics */
+		if (original_src_head_front_engine) GroupStatistics::CountVehicle(original_src_head, -1);
+		if (original_dst_head_front_engine) GroupStatistics::CountVehicle(original_dst_head, -1);
+
 		/* First normalise the sub types of the chains. */
 		NormaliseSubtypes(src_head);
 		NormaliseSubtypes(dst_head);
