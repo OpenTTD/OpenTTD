@@ -1245,7 +1245,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 		return true;
 	}
 
-	if (Company::IsHumanID(company_id)) {
+	if (Company::IsHumanID(company_id) || company_id == _local_company) {
 		IConsoleWarning("Company is not controlled by an AI.");
 		return true;
 	}
