@@ -384,7 +384,6 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 					if (c != NULL) c->infrastructure.rail[GetRailType(tile)] -= LEVELCROSSING_TRACKBIT_FACTOR - 1;
 				} else {
 					SetRoadTypes(tile, rts);
-					/* If we ever get HWAY and it is possible without road then we will need to promote ownership and invalidate town index here, too */
 				}
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, railtrack);

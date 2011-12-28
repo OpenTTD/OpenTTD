@@ -58,7 +58,6 @@ static inline RoadTypes RoadTypeToRoadTypes(RoadType rt)
  *
  * @param r The given RoadTypes
  * @return The complement of the given RoadTypes
- * @note The unused value ROADTYPES_HWAY will be used, too.
  */
 static inline RoadTypes ComplementRoadTypes(RoadTypes r)
 {
