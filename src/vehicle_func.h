@@ -173,4 +173,6 @@ void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
 typedef SmallVector<VehicleID, 2> VehicleSet;
 void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles);
 
+void CheckCargoCapacity(Vehicle *v);
+
 #endif /* VEHICLE_FUNC_H */

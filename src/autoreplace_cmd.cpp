@@ -90,6 +90,33 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 }
 
 /**
+ * Check the capacity of all vehicles in a chain and spread cargo if needed.
+ * @param v The vehicle to check.
+ */
+void CheckCargoCapacity(Vehicle *v)
+{
+	assert(v == NULL || v->First() == v);
+
+	for (Vehicle *src = v; src != NULL; src = src->Next()) {
+		/* Do we need to more cargo away? */
+		if (src->cargo.Count() <= src->cargo_cap) continue;
+
+		/* We need to move a particular amount. Try that on the other vehicles. */
+		uint to_spread = src->cargo.Count() - src->cargo_cap;
+		for (Vehicle *dest = v; dest != NULL && to_spread != 0; dest = dest->Next()) {
+			if (dest->cargo.Count() >= dest->cargo_cap || dest->cargo_type != src->cargo_type) continue;
+
+			uint amount = min(to_spread, dest->cargo_cap - dest->cargo.Count());
+			src->cargo.MoveTo(&dest->cargo, amount, VehicleCargoList::MTA_UNLOAD, NULL);
+			to_spread -= amount;
+		}
+
+		/* Any left-overs will be thrown away, but not their feeder share. */
+		src->cargo.Truncate(src->cargo_cap);
+	}
+}
+
+/**
  * Transfer cargo from a single (articulated )old vehicle to the new vehicle chain
  * @param old_veh Old vehicle that will be sold
  * @param new_head Head of the completely constructed new vehicle chain
@@ -297,7 +324,7 @@ static inline CommandCost CmdStartStopVehicle(const Vehicle *v, bool evaluate_ca
  */
 static inline CommandCost CmdMoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
 {
-	return DoCommand(0, v->index | (whole_chain ? 1 : 0) << 20, after != NULL ? after->index : INVALID_VEHICLE, flags, CMD_MOVE_RAIL_VEHICLE);
+	return DoCommand(0, v->index | (whole_chain ? 1 : 0) << 20, after != NULL ? after->index : INVALID_VEHICLE, flags | DC_NO_CARGO_CAP_CHECK, CMD_MOVE_RAIL_VEHICLE);
 }
 
 /**
@@ -551,6 +578,8 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 						if (i == 0) old_head = NULL;
 					}
 				}
+
+				if ((flags & DC_EXEC) != 0) CheckCargoCapacity(new_head);
 			}
 
 			/* If we are not in DC_EXEC undo everything, i.e. rearrange old vehicles.

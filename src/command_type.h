@@ -318,9 +318,10 @@ enum DoCommandFlag {
 	DC_NO_TEST_TOWN_RATING   = 0x020, ///< town rating does not disallow you from building
 	DC_BANKRUPT              = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
 	DC_AUTOREPLACE           = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
-	DC_ALL_TILES             = 0x100, ///< allow this command also on MP_VOID tiles
-	DC_NO_MODIFY_TOWN_RATING = 0x200, ///< do not change town rating
-	DC_FORCE_CLEAR_TILE      = 0x400, ///< do not only remove the object on the tile, but also clear any water left on it
+	DC_NO_CARGO_CAP_CHECK    = 0x100, ///< when autoreplace/autorenew is in progress, this shall prevent truncating the amount of cargo in the vehicle to prevent testing the command to remove cargo
+	DC_ALL_TILES             = 0x200, ///< allow this command also on MP_VOID tiles
+	DC_NO_MODIFY_TOWN_RATING = 0x400, ///< do not change town rating
+	DC_FORCE_CLEAR_TILE      = 0x800, ///< do not only remove the object on the tile, but also clear any water left on it
 };
 DECLARE_ENUM_AS_BIT_SET(DoCommandFlag)
 
