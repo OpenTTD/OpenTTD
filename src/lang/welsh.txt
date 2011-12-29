@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Dyddiad Cyflwyn
 STR_SORT_BY_RUNNING_COST                                        :Cost Rhedeg
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Pŵer/Cost Rhedeg
 STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo Llwyth
+STR_SORT_BY_RANGE                                               :Maes teithio
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r gêm
@@ -348,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Dewisiadau Gêm
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Gosodiadau Anhawster
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gosodiadau uwch
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Gosodiadau AI / Gêm
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Gosodiadau NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Dewisiadau tryloywder
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dangos enwau trefi
@@ -380,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Sefydlu tref
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Cymorthdaliadau
+STR_SUBSIDIES_MENU_GOAL                                         :Nodau presennol
 ############ range ends here
 
 ############ range for graph menu starts
@@ -441,7 +444,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Hanes negeseuon
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gwybodaeth ardal tir
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
-STR_ABOUT_MENU_AI_DEBUG                                         :Dadfygio AI
+STR_ABOUT_MENU_AI_DEBUG                                         :Dadnamu AI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Ciplun
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ciplun agos
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun o'r map cyfan
@@ -747,6 +750,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Newidia
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Cymorthdaliadau
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Gwybodaeth Gyffredinol
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r trên cyntaf wedi cyrraedd {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Mae'r trigolion yn dathlu . . .{}Mae'r bws cyntaf wedi cyrraedd {STATION}!
@@ -1403,6 +1407,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Anhawste
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ffurfweddu Addasiadau
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Gosodiadau NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio Cynnwys Ar-lein
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Gosodiadau AI / Gêm
 STR_INTRO_QUIT                                                  :{BLACK}Gadael
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Dechrau gêm newydd. Mae Ctrl+Clicio yn hepgor dewisiadau map
@@ -1422,6 +1427,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Dangos d
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Ffurfweddu'r Addasiadau
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Dangos gosodiadau NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Gwirio am gynnwys newydd neu wedi'i ddiweddaru i'w lwytho i lawr
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Dangos gosodiadau AI a Gêm
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Gadael 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Mae'r cyfieithiad yma'n brin o {NUM} llinyn. Helpwch wella OpenTTD drwy ymaelodi fel cyfieithydd. Gweler readme.txt am fanylion.
@@ -1823,10 +1829,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Gêm wedi'i oed
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Gêm wedi'i oedi o hyd ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Gêm wedi'i oedi o hyd ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Gêm wedi'i oedi o hyd ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Gêm wedi'i oedi o hyd ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Gêm yn rhedeg eto ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nifer chwaraewyr
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :cysylltu gwesteion
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :â llaw
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :sgript gêm
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :wrthi'n gadael
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** Mae {STRING} wedi ymuno â'r gêm
@@ -1888,6 +1896,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Senario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Map Uchder
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Seiniau sylfaenol
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Cerddoriaeth sylfaenol
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Sgript gêm
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Llyfrgell GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Wrthi'n llwytho cynnwys i lawr...
@@ -2410,6 +2420,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cynhyrch
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Cynhyrchu ardaloedd creigiog a chnapiog
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Gosod gêm yn ei le
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rhedeg dolen teiliau
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Rhedeg sgript
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Paratoi gêm
 
 # NewGRF settings
@@ -2650,6 +2661,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Prynu'r
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Nodau
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Nodau bydol:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Dim -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Nodau cwmni:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar nod i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Cymorthdaliadau
@@ -3165,6 +3182,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} blwyddy
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} blwyddyn ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}cyflymder uchaf: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Cyf. uchaf: {LTBLUE}{VELOCITY} {BLACK}Pell. Cyrraedd: {LTBLUE}{COMMA} teil
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Pwys: {LTBLUE}{WEIGHT_SHORT} {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflym. Max: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3381,6 +3399,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[ochr agos]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[canol]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[ochr hir]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Mae'r cyrchfan nesaf allan o gyrraedd y cerbyd)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Neidio i orchymyn {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Neidio i orchymyn {COMMA} pan {STRING} {STRING} {COMMA}
@@ -3446,11 +3465,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Dewis bl
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Dadfygio AI
+STR_AI_DEBUG                                                    :{WHITE}Dadnamu AI / GameScript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Enw'r AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Gosodiadau AI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Newid gosodiadau'r AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Enw'r sgript
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Gosodiadau
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Newid gosodiadau'r sgript
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ail-lwytho AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}lladd yr AI, ail-lwytho'r sgript ac ailgychwyn yr AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Galluogi/analluogi toriadau pan fo neges log AI yn cydweddu a'r llinyn torri
@@ -3462,41 +3481,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toglo cy
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Parhau
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Dadoedi a rhedeg yr AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Gweld allbwn dadnamu'r AI yma
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Gwirio'r log Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni ganfuwyd AI addas i lwytho.{}AI ffug yw hwn na wnai unrhyw beth.{}Gallwch lawrlwytho sawl AI drwy'r system 'Cynnwys Arlein'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Mae AI a oedd yn rhedeg wedi chwalu. A fyddwch cystad ag adrodd am hyn i awdur yr AI ynghyd â sgrin-gipiad o'r Ffenestr Ddadnamu AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r Ffenestr Ddadfygio AI ar gael yn unig ar gyfer y gweinydd
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r Ffenestr Ddadnamu AI / GameScript ar gael ar gyfer y gweinydd yn unig
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Ffurfweddiad AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Ffurfweddiad AI / Gêm
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Y sgriptiau GameScript a lwythir yn y gêm nesaf
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Yr AIau a lwythir yn y gêm nesaf
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Chwaraewr dynol
 STR_AI_CONFIG_RANDOM_AI                                         :AI ar hap
+STR_AI_CONFIG_NONE                                              :(dim)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Symud i Fyny
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Symud yr AI a ddewiswyd i fyny'r rhestr
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Symud i Lawr
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Symud yr AI a ddewiswyd i lawr y rhestr
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_AI                                                :{SILVER}AIau
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Dewis {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Llwytho sgript arall
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ffurfweddu
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}ffurfweddu paramedrau'r AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}ffurfweddu paramedrau'r sgript
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliciwch i ddewis AI
+STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} ar gael
+STR_AI_LIST_CAPTION_AI                                          :AIau
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Sgriptiau GameScript
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliciwch i ddewis sgript
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Awdur: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Fersiwn: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Derbyn
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis yr AI a amlygwyd
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y sgript a amlygwyd
 STR_AI_LIST_CANCEL                                              :{BLACK}Canslo
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid y sgript
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramedrau
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Nifer o ddiwrnodau i aros wedi dechrau AI blaenorol cyn dechrau hon (fwy neu lai): {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -3885,6 +3923,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Does dim
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Methu rhoi'r gorau i rannu rhestr gorchmynion...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... rhy bell o'r gyrchfan flaenorol
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... nid yw o fewn cyrraedd yr awyren
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Methu amserlennu cerbyd...

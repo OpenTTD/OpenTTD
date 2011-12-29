@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikk og
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Veksle mellom stor/liten vindustørrelse
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - ruller listen opp/ned
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rullefelt - ruller listen til venstre/høyre
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygninger o.l. på et landområde. Ctrl velger område diagonalt. Shift slår av og på kostnadsestimat.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Riv bygninger o.l. på et landområde. Ctrl velger område diagonalt. Shift slår av/på kostnadsestimat.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
@@ -332,9 +332,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenerering
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrigenerering
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Veibygging
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trær. Shift slår av og på kostnadsestimat.
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trær. Shift slår av/på kostnadsestimat.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasser skilt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser objekt. Shift slår av og på kostnadsestimat.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser objekt. Shift slår av/på kostnadsestimat.
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
@@ -528,7 +528,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaver
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Varetakster
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dager i transport
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for levering av ti vareenheter (eller 10,000 liter) over en distanse på 20 ruter
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaling for levering av ti vareenheter (eller 10,000 liter) over en avstand på 20 ruter
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Vis alle
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Skjul alle
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vis alle varer på varetakstgrafen
@@ -596,7 +596,7 @@ STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLA
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musikkvolum
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lydeffektvolum
 STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
@@ -762,11 +762,11 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Flystyrt!{}{COMMA} dør i flammehav ved {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Flystyrt!{}{COMMA} dør i flammehav etter at flyet gikk tom for drivstoff!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinerulykke på {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinerulykke ved {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Kjøretøy ødelagt i UFO-kollisjon!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Eksplosjon på oljeraffineri i nærheten av {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrikk ødelagt under mistenkelige omstendigheter i nærheten av {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}«UFO» lander i nærheten av {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO lander i nærheten av {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Gruvegangkollaps fører til store ødeleggelser i nærheten av {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Flom!{}Minst {COMMA} savnet eller antatt død{P "" e} etter voldsom oversvømmelse!
 
@@ -781,7 +781,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har blitt kjøpt opp av {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Sjef)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} grunnla byen {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} sponset grunnleggelsen av den nye byen {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny {STRING} bygges i nærheten av {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Ny{G "" "" tt} {STRING} plantes i nærheten av {TOWN}!
@@ -820,7 +820,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er veldig gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er veldig gammel, og bør byttes ut snarest
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikke finne en rute å fortsette på.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har kjørt seg vill.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} har kjørt seg vill
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s inntekt i fjor var {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi ombyggingsordre feilet
@@ -1056,6 +1056,7 @@ STR_SEA_LEVEL_HIGH                                              :Høyt
 STR_SEA_LEVEL_CUSTOM                                            :Egendefinert
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Egendefinert ({NUM}%)
 
+STR_RIVERS_LOT                                                  :Mange
 
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Redusert
@@ -1138,6 +1139,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Kjøret
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat kjøp av eksklusive transportrettigheter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Tillat finansiering av bygninger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Tillat finansiering av lokal veikonstruksjon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat pengeoverføring til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
@@ -1165,7 +1167,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autofor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny kjøretøy når det er {ORANGE}{STRING}{LTBLUE} måned{P 0:1 "" er} før/etter maksalder.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornyelse av kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varighet for feilmeldinger: {ORANGE}{STRING} sekund{P 0:1 "" er}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vil hjelpetekst: {ORANGE}Pek i {STRING} sekund{P 0:1 "" er}.
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vis hjelpetekst: {ORANGE}Pek i {STRING} sekund{P 0:1 "" er}.
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vis hjelpetekst: {ORANGE}Høyreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers innbyggertall i tittelfeltet: {ORANGE}{STRING}
 
@@ -1417,7 +1419,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juksekoder
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser indikerer om du har brukt denne juksekoden tidligere
-STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er i ferd med å bedra dine motstandere. Vær klar over at en slik skammelig oppførsel vil bli husket i all evighet.
+STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er i ferd med å bedra dine motstandere. Vær klar over at en slik skammelig oppførsel vil bli husket i all evighet
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}
@@ -1723,7 +1725,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Bruk det
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Bli med
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Bli med og spill som dette firmaet
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Passordbeskytt firmaet ditt for å forhindre uautoriserte brukere fra å bli med.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Passordbeskytt firmaet ditt for å forhindre uautoriserte brukere fra å bli med
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Velg firmapassord
 
 # Network chat
@@ -1870,15 +1872,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ik
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Instillinger for gjennomsiktighet
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Gjennomsiktighet for stasjonsskilt. Ctrl-klikk for å låse.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Gjennomsiktighet for trær. Ctrl-klikk for å låse.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Gjennomsiktighet for hus. Ctrl-klikk for å låse.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gjennomsiktighet for industrier. Ctrl-klikk for å låse.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Gjennomsiktighet for stasjoner, garasjer, staller, hangarer, dokker og kontrollpunkt. Ctrl-klikk for å låse.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Gjennomsiktighet for broer. Ctrl-klikk for å låse.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Gjennomsiktighet for bygg som fyrtårn og antenner. Ctrl-klikk for å låse.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Gjennomsiktighet for kjeder. Ctrl-klikk for å låse.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Gjennomsiktighet for lastingsindikatorer. Ctrl-klikk for å låse.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Gjennomsiktighet for stasjonsskilt. Ctrl-klikk for å låse
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Gjennomsiktighet for trær. Ctrl-klikk for å låse
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Gjennomsiktighet for hus. Ctrl-klikk for å låse
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gjennomsiktighet for industrier. Ctrl-klikk for å låse
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Gjennomsiktighet for stasjoner, garasjer, staller, hangarer, dokker og kontrollpunkt. Ctrl-klikk for å låse
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Gjennomsiktighet for broer. Ctrl-klikk for å låse
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Gjennomsiktighet for bygg som fyrtårn og antenner. Ctrl-klikk for å låse
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Gjennomsiktighet for kjeder. Ctrl-klikk for å låse
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Gjennomsiktighet for lastingsindikatorer. Ctrl-klikk for å låse
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gjør objekter usynlige i stedet for gjennomsiktige
 
 # Base for station construction window(s)
@@ -1903,16 +1905,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bygg elektrisk 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg jernbanespor. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jernbane ved hjelp av autobanemodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengs for å kjøpe og vedlikeholde tog). Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjør om jernbane til kontrollpunkt. Ctrl slår sammen kontrollpunkt. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. Ctrl veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. Ctrl bygger signaler til det neste krysset. Ctrl-klikk viser/skjuler signalvalgsvinduet. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel. Shift slår av og på kostnadsestimat.
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne Ctrl for i tillegg å fjerne jernbanespor fra kontrollpunkt og stasjoner.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen. Shift slår av og på kostnadsestimat.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg jernbanespor. Ctrl veksler mellom å bygge/fjerne. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jernbane ved hjelp av autobanemodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg togstall (trengs for å kjøpe og vedlikeholde tog). Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Gjør om jernbane til kontrollpunkt. Ctrl slår sammen kontrollpunkt. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jernbanestasjon. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. Ctrl veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. Ctrl bygger signaler til det neste krysset. Ctrl-klikk viser/skjuler signalvalgsvinduet. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel. Shift slår av/på kostnadsestimat
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne Ctrl for i tillegg å fjerne jernbanespor fra kontrollpunkt og stasjoner
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen. Shift slår av/på kostnadsestimat
 
 
 # Rail depot construction window
@@ -1947,14 +1949,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Inngangs
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Utgangssignal (vingesignal){}Oppfører seg på samme måte som et blokksignal, men er nødvendig for å utløse riktig farge på inngangs- og kombinasjons-forsignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasjonssignal (vingesignal){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge store "grener" med forsignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avansert signal (vingesignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested. Vanlige avanserte signaler kan passeres bakfra.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Enveis avansert signal (vingesignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested. Enveis avanserte signaler kan ikke passeres bakfra.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Enveis avansert signal (vingesignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested. Enveis avanserte signaler kan ikke passeres bakfra
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blokksignal (lyssignal){}Dette er den enkleste typen av signaler som tillater kun ett tog å kjøre om gangen.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Inngangssignal (lyssignal){}Grønt så lenge det er ett eller flere grønne utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangssignal (lyssignal){}Oppfører seg på samme måte som et blokksignal, men er nødvendig for å utløse riktig farge på inngangs- og kombinasjons-forsignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (lyssignal){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge store "grener" med forsignaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avanserte signal (lyssignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested. Vanlige avanserte signaler kan passeres bakfra.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Enveis avansert signal (lyssignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested . Enveis avanserte signaler kan ikke passeres bakfra.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverter signal{}Konverterer signaler til den valgte signaltypen. Ctrl-klikk vil endre eksisterende variant. Shift-klikk viser kostnadsestimat.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverter signal{}Konverterer signaler til den valgte signaltypen. Ctrl-klikk vil endre eksisterende variant. Shift-klikk viser kostnadsestimat
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signaltetthet ved dra-og-slipp
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Senk signaltetthet ved dra-og-slipp
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Øk signaltetthet ved dra-og-slipp
@@ -1978,21 +1980,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Hvelv, Silisium
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Bygg vei
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Bygg trikkespor
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bygg vei. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bygg trikkestasjon. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bygg veiseksjon ved bruk av autoveimodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bygg trikkespor ved bruk av autotrikkespormodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg garasje (nødvendig for kjøp og vedlikehold av kjøretøy). Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg trikkestall (nødvendig for kjøp og vedlikehold av trikker). Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg bussholdeplass. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg trikkestasjon for passasjerer. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lasteterminal. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg trikkestasjon for varer. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bygg vei. Ctrl veksler mellom å bygge/fjerne. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bygg trikkestasjon. Ctrl veksler mellom å bygge/fjerne. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bygg veiseksjon ved bruk av autoveimodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bygg trikkespor ved bruk av autotrikkespormodusen. Ctrl veksler mellom å bygge/fjerne. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bygg garasje (nødvendig for kjøp og vedlikehold av kjøretøy). Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bygg trikkestall (nødvendig for kjøp og vedlikehold av trikker). Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg bussholdeplass. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg trikkestasjon for passasjerer. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lasteterminal. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg trikkestasjon for varer. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Skru av/på enveiskjørte veier
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg veibro. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg trikkesporbro. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg veitunnel. Shift slår av og på kostnadsestimat.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg trikkesportunnel. Shift slår av og på kostnadsestimat.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg veibro. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg trikkesporbro. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg veitunnel. Shift slår av/på kostnadsestimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bygg trikkesportunnel. Shift slår av/på kostnadsestimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Veksle mellom bygging/fjerning for veibygging
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Veksle mellom bygging/fjerning for trikkesporkonstruksjon
 
@@ -2015,13 +2017,13 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Velg var
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygg vannveier
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vannveier
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg sluser. Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skipsdokk (nødvendig for kjøp og vedlikehold av skip). Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg havn. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plasser en bøye, som kan brukes til å danne kontrollpunkter. Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akvedukt. Shift slår av og på kostnadsestimat.
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definer vannområde.{}Lag en kanal, unntatt hvis Ctrl holdes nede på havnivå, hvorpå området rundt vil fylles istedenfor.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bygg kanaler. Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bygg sluser. Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bygg skipsdokk (nødvendig for kjøp og vedlikehold av skip). Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bygg havn. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plasser en bøye, som kan brukes til å danne kontrollpunkter. Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bygg akvedukt. Shift slår av/på kostnadsestimat
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definer vannområde.{}Lag en kanal, unntatt hvis Ctrl holdes nede på havnivå, hvorpå området rundt vil fylles istedenfor
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Plasser elver
 
 # Ship depot construction window
@@ -2033,7 +2035,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Havn
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flyplasser
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg flyplass. Ctrl slår sammen stasjoner. Shift slår av og på kostnadsestimat.
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg flyplass. Ctrl slår sammen stasjoner. Shift slår av/på kostnadsestimat
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Velg flyplasstype
@@ -2060,10 +2062,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Støy ge
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskapsverktøy
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Senk et landområde. Dra for å senke det første valgte området, og jevne resten til samme høyde. Ctrl velger område diagonalt. Shift slår av og på kostnadsestimat.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hev et landområde. Dra for å heve det første valgte området, og jevne resten til samme høyde. Ctrl velger område diagonalt. Shift slår av og på kostnadsestimat.
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jevn ut land til samme høyde som det første valgte området. Ctrl velger området diagonalt. Shift slår av og på kostnadsestimat.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp land for fremtidig bruk. Shift slår av og på kostnadsestimat.
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Senk et hjørne av et landområde. Dra for å senke det første valgte hjørnet, og jevne resten til samme høyde. Ctrl velger område diagonalt. Shift slår av/på kostnadsestimat
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hev et hjørne av et landområde. Dra for å heve det første valgte hjørnet, og jevne resten til samme høyde. Ctrl velger område diagonalt. Shift slår av/på kostnadsestimat
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jevn ut land til samme høyde som det første valgte hjørnet. Ctrl velger området diagonalt. Shift slår av/på kostnadsestimat
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp land for fremtidig bruk. Shift slår av/på kostnadsestimat
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektvalg
@@ -2435,7 +2437,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: 
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}En fatal NewGRF-feil har oppstått: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versjonen som er rapportert av OpenTTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} virker ikke med TTDPatch-versjonen som er rapportert av OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} er for versjon {STRING} av TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} er laget for å bli brukt med {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {1:STRING}: parameter {STRING} ({NUM})
@@ -3123,7 +3125,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rutetabell
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skift til rutetabellvisning
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på en ordre for å markere den. Ctrl-klikk viser ordrens endestasjon.
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ordreliste - klikk på en ordre for å markere den. Ctrl-klikk viser ordrens endestasjon
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3197,7 +3199,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmes
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gå til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrehopp
 STR_ORDER_SHARE                                                 :Del ordre
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den markerte ordren, eller legg til i slutten av listen. Ctrl gir ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstedsordre 'vedlikehold'. 'Del ordrer' eller Ctrl lar dette kjøretøyet dele ordrer med det valgte kjøretøyet. Klikk på et kjøretøy for å kopiere ordrene fra det.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den markerte ordren, eller legg til i slutten av listen. Ctrl gir ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstedsordre 'vedlikehold'. 'Del ordrer' eller Ctrl lar dette kjøretøyet dele ordrer med det valgte kjøretøyet. Klikk på et kjøretøy for å kopiere ordrene fra det
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle kjøretøy som deler denne ruteplanen
 
@@ -3313,7 +3315,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 STR_AI_DEBUG                                                    :{WHITE}AI-feilsøking
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Iinnstillinger
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Innstillinger
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre AI-innstillinger
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
@@ -3402,8 +3404,8 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... det 
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kunne ikke laste landskap fra PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fant ikke filen.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere bildetypen. 8- eller 24-bits PNG-bilde kreves.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noe gikk akkurat galt (sannsynligvis en ødelagt fil).
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere bildetypen. 8- eller 24-bits PNG-bilde kreves
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... noe gikk akkurat galt (sannsynligvis en ødelagt fil)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kunne ikke laste landskap fra BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kunne ikke konvertere bildetype.

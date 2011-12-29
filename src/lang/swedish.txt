@@ -1902,7 +1902,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Spelskriptbibli
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laddar ned innehåll...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Begär filer...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Laddar nu ned {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Laddar nu ned {STRING} ({NUM} av {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedladdning slutförd
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} nedladdat ({NUM} %)
 
@@ -2141,20 +2141,20 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placera stenar i landskapet
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll Ctrl för att ta bort
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek av yta att höja/sänka
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek av yta att höja/sänka
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek på ytan som ska höjas/sänkas
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek på ytan som ska höjas/sänkas
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generera slumpmässig mark
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Skapa ett nytt scenario
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Återställ landskapet
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ta bort alla företagsägda tillgångar från kartan
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Återställ landskap
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ta bort all företagsägd egendom från kartan
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Återställ landskapet
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Är du säker på att du vill ta bort alla företagsägda tillgångar?
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Återställ landskap
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Är du säker på att du vill ta bort all företagsägd egendom?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generera städer
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ny stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grunda ny stad. Shift+klick visar kostnad utan att bygga ny stad
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Grunda ny stad. Shift+klick visar endast beräknad kostnad
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Slumpmässig stad
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grunda stad på slumpmässig plats
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Många slumpmässiga städer
@@ -2175,8 +2175,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Välj st
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stora städer växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Layout på stadens vägnät:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Välj vilken layout vägnätet ska ha i denna stad
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Utformning av stadens vägnät:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Välj vägnätets utformning för denna stad
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bättre vägar
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 rutnät
@@ -2197,12 +2197,12 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grunda
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för {STRING} industrin
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikedja för {STRING} godset
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Accepterande industrier
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Mottagande industrier
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klicka på industrin för att se dess leverantörer och kunder
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klicka på godset för att se dess leverantörer och kunder
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Visa kedja
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och accepterar gods
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Visa industrier som levererar och tar emot gods
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Koppla till minikartan
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Markera visade industrier även på minikartan
 
@@ -2236,7 +2236,7 @@ STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Ojämn mark
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Barmark
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Gräs
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Fält
-STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snötäckt land
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snötäckt mark
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Öken
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} järnvägsspår
@@ -2265,7 +2265,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} järv�
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Väg
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Väg med gatubelysning
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Väg med träd
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Väg kantad av träd
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Bussgarage
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Väg-/Järnvägskorsning
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Spårväg
@@ -2291,25 +2291,25 @@ STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Sluss
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Flod
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Kust eller flodbank
-STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skeppsdepå
+STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Skeppsvarv
 
 # Industries come directly from their industry names
 
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Järnvägstunnel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Vägtunnel
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Upphängd järnvägsbro av stål
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Järnvägsbro med stålbalkar
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stålhängbro för järnväg
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Järnvägsbro av stålbalkstyp
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Järnvägsbro med utskjutande stålstöd
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Järnvägsbro med förstärkt betongupphängning
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hängbro av betong för järnväg
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Järnvägsbro av trä
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Järnvägsbro av betong
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Järnvägsrörbro
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Vägbro med stålupphängning
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Hängbro av stål med vägbana
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Vägbro med stålbalkar
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Vägbro med utskjutande stålstöd
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Vägbro med förstärkt betongupphängning
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Väghängbro av armerad betong
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Vägbro av trä
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Vägbro av betong
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Rörbro
@@ -2322,9 +2322,9 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Företagets huv
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Mark som ägs av företag
 
 # About OpenTTD window
-STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter reserverade
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
+STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprunglig äganderätt {COPYRIGHT} 1995 Chris Sawyer, Alla rättigheter hävdas
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-version {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2011 OpenTTD-teamet
 
 # Save/load game/scenario
@@ -2333,8 +2333,8 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Ladda sp
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Spara scenario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Öppna scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Läs höjdkarta
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spara Höjdkarta
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda.
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Spara höjdkarta
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klicka här för att gå till standardkatalogen för spara/ladda
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ledigt
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Listar enheter, kataloger och sparade spel
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Valt namn för spelet
