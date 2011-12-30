@@ -2448,12 +2448,6 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 	PBSTileInfo   res_dest(tile, INVALID_TRACKDIR, false);
 	DiagDirection dest_enterdir = enterdir;
 	if (do_track_reservation) {
-		/* Check if the train needs service here, so it has a chance to always find a depot.
-		 * Also check if the current order is a service order so we don't reserve a path to
-		 * the destination but instead to the next one if service isn't needed. */
-		CheckIfTrainNeedsService(v);
-		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL) || v->current_order.IsType(OT_GOTO_DEPOT)) ProcessOrders(v);
-
 		res_dest = ExtendTrainReservation(v, &tracks, &dest_enterdir);
 		if (res_dest.tile == INVALID_TILE) {
 			/* Reservation failed? */
@@ -2461,6 +2455,19 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 			if (changed_signal) SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(best_track, enterdir), SIGNAL_STATE_RED);
 			return FindFirstTrack(tracks);
 		}
+		if (res_dest.okay) {
+			/* Got a valid reservation that ends at a safe target, quick exit. */
+			if (got_reservation != NULL) *got_reservation = true;
+			if (changed_signal) MarkTileDirtyByTile(tile);
+			TryReserveRailTrack(v->tile, TrackdirToTrack(v->GetVehicleTrackdir()));
+			return best_track;
+		}
+
+		/* Check if the train needs service here, so it has a chance to always find a depot.
+		 * Also check if the current order is a service order so we don't reserve a path to
+		 * the destination but instead to the next one if service isn't needed. */
+		CheckIfTrainNeedsService(v);
+		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL) || v->current_order.IsType(OT_GOTO_DEPOT)) ProcessOrders(v);
 	}
 
 	/* Save the current train order. The destructor will restore the old order on function exit. */
