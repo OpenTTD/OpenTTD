@@ -1249,18 +1249,18 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Använd lastningsindikatörer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa inkommande och avgående i tidtabeller: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa ankomster och avgångar i tidtabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snabbskapande av fordonsorder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard järnvägsräls (efter nytt/laddat spel): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Första tillgängliga
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Sista tillgängliga
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använd
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Visa reserverad väg: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Håll byggnadsverktyg aktiva efter att de använts: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Visa reserverat spår: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Behåll byggnadsverktyg aktiva efter att de använts: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Gruppera utgifter i företagets finansfönster: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max antal vägfordon per företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max antal luftfarkoster per företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max antal skepp per företag: {ORANGE}{STRING}
@@ -1286,12 +1286,12 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Avaktiv
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Använd hastighetsbegränsningar för tågvagnar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Stäng av elektriska spår: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Nyheter i färg visas efter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startår: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillåt köp av aktier från andra företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Andel av vinsten som betalas till etapper i ett matarsystem: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd signal-GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardsignal-typ: {ORANGE}{STRING}
@@ -1938,7 +1938,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}På
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Markera inte upptagningsområde för stationen
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Markera stationens upptagningsområde
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Accepterar: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Förmedlar: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tillhandahåller: {GOLD}{STRING}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Slå ihop stationer

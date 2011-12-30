@@ -825,6 +825,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 无法找到路线.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} 由于航程过远，航班无法到达。
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
@@ -1145,6 +1146,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}汽车�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允许买断经营权： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}允许新建房屋: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}允许使用资助地方道路修整功能: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允许向其他公司转移资金： {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
@@ -1158,6 +1160,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}允许�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允许建设临近站台： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允许使用多GRF运输工具： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有车辆时，不可能更改此设定。
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}加强版固定资产维护: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}总允许建设小型机场： {ORANGE}{STRING}
 
@@ -1321,6 +1324,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}窗口�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}禁止
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}最大放大倍数: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}最大视角缩小倍数: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :普通
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4倍
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8倍
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}城镇发展速度：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :无
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :慢
@@ -1349,6 +1360,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}经由
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}脚本
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :原始的
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1362,11 +1374,16 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}遇到�
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}配置文件错误...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 函数错误 '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...对 '{STRING}'设置了错误值'{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 忽略了无效的 NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系统NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本OpenTTD不兼容
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 压缩等级 '{STRING}' 无效
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}...存档格式 '{STRING}' 不适用. 请转换成 '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1872,6 +1889,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :场景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
 STR_CONTENT_TYPE_BASE_MUSIC                                     :基本音乐
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :游戏脚本
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载中...
@@ -1887,6 +1905,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 链�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明选项
@@ -3286,6 +3305,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[月台近端]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[月台中间]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[月台远端]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (下一个目的地距离过远)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :跳至 {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :跳至 {COMMA} [ 当 {STRING} {STRING} {COMMA} ]
@@ -3420,6 +3440,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :游戏脚本
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :当前AI在前一个AI运行 {ORANGE}{STRING}天之后开始运行
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -3808,6 +3829,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}不能�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}不能停止共享调度计划……
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}不能复制调度计划……
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}……距离前一目的地太远
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... 飞机航行距离不足
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}不能给车辆编制时间表…
@@ -4277,6 +4299,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
