@@ -447,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Schakel console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd screenshot
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot met standaard zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot van hele kaart
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite uitlijner
