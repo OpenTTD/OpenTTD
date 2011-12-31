@@ -729,12 +729,12 @@ static bool MakeSmallScreenshot()
 }
 
 /** Make a zoomed-in screenshot of the currently visible area. */
-static bool MakeZoomedInScreenshot()
+static bool MakeZoomedInScreenshot(ZoomLevel zl)
 {
 	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 	ViewPort vp;
 
-	vp.zoom = _settings_client.gui.zoom_min;
+	vp.zoom = zl;
 	vp.left = w->viewport->left;
 	vp.top = w->viewport->top;
 	vp.virtual_left = w->viewport->virtual_left;
@@ -845,7 +845,11 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 			break;
 
 		case SC_ZOOMEDIN:
-			ret = MakeZoomedInScreenshot();
+			ret = MakeZoomedInScreenshot(_settings_client.gui.zoom_min);
+			break;
+
+		case SC_DEFAULTZOOM:
+			ret = MakeZoomedInScreenshot(ZOOM_LVL_VIEWPORT);
 			break;
 
 		case SC_WORLD:

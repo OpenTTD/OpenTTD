@@ -953,7 +953,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 8);
+	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 11 : 9);
 	return CBF_NONE;
 }
 
@@ -965,6 +965,11 @@ static void MenuClickSmallScreenshot()
 static void MenuClickZoomedInScreenshot()
 {
 	MakeScreenshot(SC_ZOOMEDIN, NULL);
+}
+
+static void MenuClickDefaultZoomScreenshot()
+{
+	MakeScreenshot(SC_DEFAULTZOOM, NULL);
 }
 
 static void MenuClickWorldScreenshot()
@@ -997,15 +1002,16 @@ void ToggleBoundingBoxes()
 static CallBackFunction MenuClickHelp(int index)
 {
 	switch (index) {
-		case 0: return PlaceLandBlockInfo();
-		case 2: IConsoleSwitch();              break;
-		case 3: ShowAIDebugWindow();           break;
-		case 4: MenuClickSmallScreenshot();    break;
-		case 5: MenuClickZoomedInScreenshot(); break;
-		case 6: MenuClickWorldScreenshot();    break;
-		case 7: ShowAboutWindow();             break;
-		case 8: ShowSpriteAlignerWindow();     break;
-		case 9: ToggleBoundingBoxes();         break;
+		case  0: return PlaceLandBlockInfo();
+		case  2: IConsoleSwitch();                 break;
+		case  3: ShowAIDebugWindow();              break;
+		case  4: MenuClickSmallScreenshot();       break;
+		case  5: MenuClickDefaultZoomScreenshot(); break;
+		case  6: MenuClickZoomedInScreenshot();    break;
+		case  7: MenuClickWorldScreenshot();       break;
+		case  8: ShowAboutWindow();                break;
+		case  9: ShowSpriteAlignerWindow();        break;
+		case 10: ToggleBoundingBoxes();            break;
 	}
 	return CBF_NONE;
 }
@@ -1497,6 +1503,7 @@ enum MainToolbarHotkeys {
 	MTHK_AI_DEBUG,
 	MTHK_SMALL_SCREENSHOT,
 	MTHK_ZOOMEDIN_SCREENSHOT,
+	MTHK_DEFAULTZOOM_SCREENSHOT,
 	MTHK_GIANT_SCREENSHOT,
 	MTHK_CHEATS,
 	MTHK_TERRAFORM,
@@ -1579,6 +1586,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_AI_DEBUG: ShowAIDebugWindow(); break;
 			case MTHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
 			case MTHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
+			case MTHK_DEFAULTZOOM_SCREENSHOT: MenuClickDefaultZoomScreenshot(); break;
 			case MTHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
@@ -1681,6 +1689,7 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>((uint16)0, "ai_debug", MTHK_AI_DEBUG),
 	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
 	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
+	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTHK_DEFAULTZOOM_SCREENSHOT),
 	Hotkey<MainToolbarWindow>((uint16)0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
 	Hotkey<MainToolbarWindow>(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
 	Hotkey<MainToolbarWindow>('L', "terraform", MTHK_TERRAFORM),
@@ -1800,6 +1809,7 @@ enum MainToolbarEditorHotkeys {
 	MTEHK_LANDINFO,
 	MTEHK_SMALL_SCREENSHOT,
 	MTEHK_ZOOMEDIN_SCREENSHOT,
+	MTEHK_DEFAULTZOOM_SCREENSHOT,
 	MTEHK_GIANT_SCREENSHOT,
 	MTEHK_ZOOM_IN,
 	MTEHK_ZOOM_OUT,
@@ -1886,27 +1896,28 @@ struct ScenarioEditorToolbarWindow : Window {
 	{
 		CallBackFunction cbf = CBF_NONE;
 		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode, this)) {
-			case MTEHK_PAUSE:               ToolbarPauseClick(this); break;
-			case MTEHK_FASTFORWARD:         ToolbarFastForwardClick(this); break;
-			case MTEHK_SETTINGS:            ShowGameOptions(); break;
-			case MTEHK_SAVEGAME:            MenuClickSaveLoad(); break;
-			case MTEHK_GENLAND:             ToolbarScenGenLand(this); break;
-			case MTEHK_GENTOWN:             ToolbarScenGenTown(this); break;
-			case MTEHK_GENINDUSTRY:         ToolbarScenGenIndustry(this); break;
-			case MTEHK_BUILD_ROAD:          ToolbarScenBuildRoad(this); break;
-			case MTEHK_BUILD_DOCKS:         ToolbarScenBuildDocks(this); break;
-			case MTEHK_BUILD_TREES:         ToolbarScenPlantTrees(this); break;
-			case MTEHK_SIGN:                cbf = ToolbarScenPlaceSign(this); break;
-			case MTEHK_MUSIC:               ShowMusicWindow(); break;
-			case MTEHK_LANDINFO:            cbf = PlaceLandBlockInfo(); break;
-			case MTEHK_SMALL_SCREENSHOT:    MenuClickSmallScreenshot(); break;
-			case MTEHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
-			case MTEHK_GIANT_SCREENSHOT:    MenuClickWorldScreenshot(); break;
-			case MTEHK_ZOOM_IN:             ToolbarZoomInClick(this); break;
-			case MTEHK_ZOOM_OUT:            ToolbarZoomOutClick(this); break;
-			case MTEHK_TERRAFORM:           ShowEditorTerraformToolbar(); break;
-			case MTEHK_SMALLMAP:            ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT:      ShowExtraViewPortWindowForTileUnderCursor(); break;
+			case MTEHK_PAUSE:                  ToolbarPauseClick(this); break;
+			case MTEHK_FASTFORWARD:            ToolbarFastForwardClick(this); break;
+			case MTEHK_SETTINGS:               ShowGameOptions(); break;
+			case MTEHK_SAVEGAME:               MenuClickSaveLoad(); break;
+			case MTEHK_GENLAND:                ToolbarScenGenLand(this); break;
+			case MTEHK_GENTOWN:                ToolbarScenGenTown(this); break;
+			case MTEHK_GENINDUSTRY:            ToolbarScenGenIndustry(this); break;
+			case MTEHK_BUILD_ROAD:             ToolbarScenBuildRoad(this); break;
+			case MTEHK_BUILD_DOCKS:            ToolbarScenBuildDocks(this); break;
+			case MTEHK_BUILD_TREES:            ToolbarScenPlantTrees(this); break;
+			case MTEHK_SIGN:                   cbf = ToolbarScenPlaceSign(this); break;
+			case MTEHK_MUSIC:                  ShowMusicWindow(); break;
+			case MTEHK_LANDINFO:               cbf = PlaceLandBlockInfo(); break;
+			case MTEHK_SMALL_SCREENSHOT:       MenuClickSmallScreenshot(); break;
+			case MTEHK_ZOOMEDIN_SCREENSHOT:    MenuClickZoomedInScreenshot(); break;
+			case MTEHK_DEFAULTZOOM_SCREENSHOT: MenuClickDefaultZoomScreenshot(); break;
+			case MTEHK_GIANT_SCREENSHOT:       MenuClickWorldScreenshot(); break;
+			case MTEHK_ZOOM_IN:                ToolbarZoomInClick(this); break;
+			case MTEHK_ZOOM_OUT:               ToolbarZoomOutClick(this); break;
+			case MTEHK_TERRAFORM:              ShowEditorTerraformToolbar(); break;
+			case MTEHK_SMALLMAP:               ShowSmallMap(); break;
+			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewPortWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		if (cbf != CBF_NONE) this->last_started_action = cbf;
@@ -1996,6 +2007,7 @@ Hotkey<ScenarioEditorToolbarWindow> ScenarioEditorToolbarWindow::scenedit_mainto
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_F12, "land_info", MTEHK_LANDINFO),
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'D', "defaultzoom_screenshot", MTEHK_DEFAULTZOOM_SCREENSHOT),
 	Hotkey<ScenarioEditorToolbarWindow>((uint16)0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
 	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomin_keys, "zoomin", MTEHK_ZOOM_IN),
 	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomout_keys, "zoomout", MTEHK_ZOOM_OUT),
