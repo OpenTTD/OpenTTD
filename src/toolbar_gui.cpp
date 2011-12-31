@@ -1006,8 +1006,8 @@ static CallBackFunction MenuClickHelp(int index)
 		case  2: IConsoleSwitch();                 break;
 		case  3: ShowAIDebugWindow();              break;
 		case  4: MenuClickSmallScreenshot();       break;
-		case  5: MenuClickDefaultZoomScreenshot(); break;
-		case  6: MenuClickZoomedInScreenshot();    break;
+		case  5: MenuClickZoomedInScreenshot();    break;
+		case  6: MenuClickDefaultZoomScreenshot(); break;
 		case  7: MenuClickWorldScreenshot();       break;
 		case  8: ShowAboutWindow();                break;
 		case  9: ShowSpriteAlignerWindow();        break;
