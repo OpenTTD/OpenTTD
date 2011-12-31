@@ -1759,7 +1759,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 {
 	if (delta_x != 0 || delta_y != 0) {
 		/* Determine the new right/bottom position. If that is outside of the bounds of
-		 * the resolution clamp it in such a manner that it stays within the bounts. */
+		 * the resolution clamp it in such a manner that it stays within the bounds. */
 		int new_right  = w->left + w->width  + delta_x;
 		int new_bottom = w->top  + w->height + delta_y;
 		if (new_right  >= (int)_cur_resolution.width)  delta_x -= Ceil(new_right  - _cur_resolution.width,  max(1U, w->nested_root->resize_x));
