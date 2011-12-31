@@ -634,8 +634,22 @@ bool AfterLoadGame()
 	 * must be done before loading sprites as some newgrfs check it */
 	SetDate(_date, _date_fract);
 
-	/* Force dynamic engines off when loading older savegames */
-	if (IsSavegameVersionBefore(95)) _settings_game.vehicle.dynamic_engines = 0;
+	/*
+	 * Force the old behaviour for compatability reasons with old savegames.
+	 *
+	 * Note that there is no non-stop in here. This is because the setting could have
+	 * either value in TTDPatch. To convert it properly the user has to make sure the
+	 * right value has been chosen in the settings. Otherwise we will be converting
+	 * it incorrectly in half of the times without a means to correct that.
+	 */
+	if (IsSavegameVersionBefore(4, 2)) _settings_game.station.modified_catchment = false;
+	if (IsSavegameVersionBefore(6, 1)) _settings_game.station.forbid_90_deg = false;
+	if (IsSavegameVersionBefore(21))   _settings_game.vehicle.train_acceleration_model = 0;
+	if (IsSavegameVersionBefore(90))   _settings_game.vehicle.plane_speed = 4;
+	if (IsSavegameVersionBefore(95))   _settings_game.vehicle.dynamic_engines = 0;
+	if (IsSavegameVersionBefore(133))  _settings_game.vehicle.roadveh_acceleration_model = 0;
+	if (IsSavegameVersionBefore(159))  _settings_game.vehicle.max_train_length = 50;
+	if (IsSavegameVersionBefore(166))  _settings_game.economy.infrastructure_maintenance = false;
 
 	/* Load the sprites */
 	GfxLoadSprites();
