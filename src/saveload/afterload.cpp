@@ -643,7 +643,7 @@ bool AfterLoadGame()
 	 * it incorrectly in half of the times without a means to correct that.
 	 */
 	if (IsSavegameVersionBefore(4, 2)) _settings_game.station.modified_catchment = false;
-	if (IsSavegameVersionBefore(6, 1)) _settings_game.station.forbid_90_deg = false;
+	if (IsSavegameVersionBefore(6, 1)) _settings_game.pf.forbid_90_deg = false;
 	if (IsSavegameVersionBefore(21))   _settings_game.vehicle.train_acceleration_model = 0;
 	if (IsSavegameVersionBefore(90))   _settings_game.vehicle.plane_speed = 4;
 	if (IsSavegameVersionBefore(95))   _settings_game.vehicle.dynamic_engines = 0;
