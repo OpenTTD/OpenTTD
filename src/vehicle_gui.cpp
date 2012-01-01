@@ -359,7 +359,7 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 /** Refit cargo window. */
 struct RefitWindow : public Window {
 	int sel;                     ///< Index in refit options, \c -1 if nothing is selected.
-	RefitOption *cargo;          ///< Refit option selected by \v sel.
+	RefitOption *cargo;          ///< Refit option selected by #sel.
 	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 	uint information_width;      ///< Width required for correctly displaying all cargoes in the information panel.

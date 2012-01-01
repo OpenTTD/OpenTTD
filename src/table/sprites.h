@@ -13,7 +13,7 @@
  * the sprite numbers and a bunch of masks and macros to handle sprites and to get
  * rid of all the magic numbers in the code.
  *
- * @NOTE:
+ * @note
  * ALL SPRITE NUMBERS BELOW 5126 are in the main files
  *
  * All elements which consist of two elements should

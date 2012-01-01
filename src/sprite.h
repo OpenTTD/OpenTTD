@@ -139,8 +139,8 @@ static inline void DrawNewGRFTileSeqInGUI(int x, int y, const DrawTileSprites *d
 
 /**
  * Applies PALETTE_MODIFIER_TRANSPARENT and PALETTE_MODIFIER_COLOUR to a palette entry of a sprite layout entry
- * @Note for ground sprites use #GroundSpritePaletteTransform
- * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ * @note for ground sprites use #GroundSpritePaletteTransform
+ * @note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
  *       when to use the default palette.
  *
  * @param image The sprite to draw
@@ -159,7 +159,7 @@ static inline PaletteID SpriteLayoutPaletteTransform(SpriteID image, PaletteID p
 
 /**
  * Applies PALETTE_MODIFIER_COLOUR to a palette entry of a ground sprite
- * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ * @note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
  *       when to use the default palette.
  *
  * @param image The sprite to draw

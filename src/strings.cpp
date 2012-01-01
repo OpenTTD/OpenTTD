@@ -1933,7 +1933,7 @@ const char *GetCurrentLanguageIsoCode()
 /**
  * Check whether there are glyphs missing in the current language.
  * @param Pointer to an address for storing the text pointer.
- * @return If glyphs are missing, return \c true, else return \false.
+ * @return If glyphs are missing, return \c true, else return \c false.
  * @post If \c true is returned and str is not NULL, *str points to a string that is found to contain at least one missing glyph.
  */
 bool MissingGlyphSearcher::FindMissingGlyphs(const char **str)

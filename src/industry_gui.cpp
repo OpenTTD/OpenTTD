@@ -1847,7 +1847,7 @@ private:
 	 * @param left  Left-most coordinate to draw.
 	 * @param right Right-most coordinate to draw.
 	 * @param top   Top coordinate of the cargo connection.
-	 * @csp         Cargo to draw.
+	 * @param csp   Cargo to draw.
 	 */
 	static void DrawHorConnection(int left, int right, int top, const CargoSpec *csp)
 	{

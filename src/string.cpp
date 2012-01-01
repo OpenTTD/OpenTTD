@@ -523,7 +523,7 @@ size_t Utf8Encode(char *buf, WChar c)
  * @param s string to check if it needs additional trimming
  * @param maxlen the maximum length the buffer can have.
  * @return the new length in bytes of the string (eg. strlen(new_string))
- * @NOTE maxlen is the string length _INCLUDING_ the terminating '\0'
+ * @note maxlen is the string length _INCLUDING_ the terminating '\0'
  */
 size_t Utf8TrimString(char *s, size_t maxlen)
 {
