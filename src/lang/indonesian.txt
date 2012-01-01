@@ -447,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan L
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug skrip AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ambil gambar dengan diperbesar
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ambil gambar dengan perbesaran normal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
@@ -2258,6 +2259,9 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} lintas
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} lintasan dengan "exit- and combo-signals"
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} lintasan dengan "exit- and path signals"
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} lintasan dengan "exit- and one-way path signals"
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} lintasan dengan "combo- and path signals"
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} lintasan dengan "combo- and one-way path signals"
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} lintasan dengan "path and one-way path signals"
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depo kereta
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalan
@@ -2578,6 +2582,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Memindai NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Memindai NewGRFs. Tergantung banyaknya cukup memakan waktu...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF dipindai dari kira2 {NUM} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Memindai arsip
 
 # Sign list window
@@ -3285,6 +3290,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ubah mod
 STR_ORDER_REFIT                                                 :{BLACK}Pasang
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Mengubah jenis kargo ketika sampai di perintah terpilih. Kontrol klik untuk membatalkan pengubahan kargo
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Auto-refit
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Pilih auto-refit menjadi jenis kargo ke order. Ctrl+Click menghilangkan instruksi. Auto-refitting hanya dilakukan jika gerbong cocok
+STR_ORDER_DROP_REFIT_AUTO                                       :Kargo tetap
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Kargo yang tersedia
 
 STR_ORDER_SERVICE                                               :{BLACK}Perbaikan
@@ -3374,6 +3381,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Jangan bongkar
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Jangan bongkar dan tunggu muat sampai ada yang penuh)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Jangan bongkar dan jangan muat)
 
+STR_ORDER_AUTO_REFIT                                            :(Auto-refit menjadi {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Muat penuh dengan auto-refit ke {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Muat penuh salah satu kargo dengan auto-refit ke {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Bongkar dan ambil kargo dengan auto-refit ke {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Bongkar tunggu sampai penuh dengan auto-refit ke {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Bongkar dan tunggu salah satu kargo penuh dengan auto-refit ke {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Pindahkan dan ambil kargo dengan auto-refit ke {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pindahkan dan tunggu sampai penuh dengan auto-refit ke {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pindahkan dan tunggu sampai penuh semua dengan auto-refit ke {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Tidak membongkar dan ambil kargo dengan auto-refit ke {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Tidak dibongkar dan tunggu sampai penuh semua dengan auto-refit ke {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Tidak dibongkar dan tunggu salah satu kargo penuh dengan auto-refit ke {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :kargo yang tersedia
 

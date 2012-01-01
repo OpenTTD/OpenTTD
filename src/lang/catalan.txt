@@ -446,8 +446,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia al terminal
 STR_ABOUT_MENU_AI_DEBUG                                         :IA / Depuració de l'script del joc
-STR_ABOUT_MENU_SCREENSHOT                                       :Captura de Pantalla
+STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliació en la captura de pantalla
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zoom predeterminat en les captures de pantalla
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla de tot el mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprite
@@ -955,8 +956,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de captures de pantalla
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecciona el format per les captures de pantalla
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de les captures de pantalla
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecciona el format a utilitzar en les captures de pantalla
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
@@ -1139,8 +1140,8 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Zona pl
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permet vàries indústries similars a cada població: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres són 'sense parada' per defecte: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte {ORANGE}{STRING}{LTBLUE} de la plataforma
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres predeterminades són 'sense parada': {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte a {ORANGE}{STRING}{LTBLUE} de la plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
@@ -1275,14 +1276,14 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet 
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes abans dels scripts estan suspesos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de revisions es mostren en percentatges: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval de les revisions dels trens per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de les revisions dels trens per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval de les revisions dels automòbils per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Interval de les revisions dels automòbils per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de les revisions dels avions per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de les revisions dels avions per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval de les revisions dels vaixells per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de les revisions dels vaixells per defecte: {ORANGE}desactivat
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval predeterminat de les revisions dels trens: {ORANGE}{STRING} di{P 0:1 a es}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval predeterminat de les revisions dels trens: {ORANGE}desactivat
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval predeterminat de les revisions dels automòbils: {ORANGE}{STRING} di{P 0:1 a es}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Interval predeterminat de les revisions dels automòbils: {ORANGE}desactivat
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval predeterminat de les revisions dels avions: {ORANGE}{STRING} di{P 0:1 a es}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval predeterminat de les revisions dels avions: {ORANGE}desactivat
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval predeterminat de les revisions dels vaixells: {ORANGE}{STRING} di{P 0:1 a es}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval predeterminat de les revisions dels vaixells: {ORANGE}desactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactiva les revisions quan les avaries s'estableixen a cap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactiva vies electrificades: {ORANGE}{STRING}
@@ -1992,7 +1993,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construe
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona un tipus de estació a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona el tipus de estació a construir
 
-STR_STATION_CLASS_DFLT                                          :Estació per defecte
+STR_STATION_CLASS_DFLT                                          :Estació predeterminada
 STR_STATION_CLASS_WAYP                                          :Punt de pas
 
 # Signal window
@@ -2335,7 +2336,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Desa l'E
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Carrega un Escenari
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carrega un Mapa d'alçades
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Desa Mapa d'alçades
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aquí per anar a la carpeta per defecte actual de desa/carrega
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clica aquí per anar a la carpeta predeterminada de desa/carrega actual
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} lliures
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom actualment seleccionat per joc desat
@@ -2479,7 +2480,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Versió in
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Canvia els paràmetres NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tanca
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reseteja
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Estableix tots els paràmetres al seu valor per defecte
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Estableix tots els paràmetres al seu valor predeterminat
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paràmetre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paràmetres: {ORANGE}{NUM}
@@ -2679,7 +2680,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clica al servei per centrar la vista a la indústria/població. Ctrl+Clic obre una nova vista al lloc de la indústria/població
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica al nom per centrar la vista principal a l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Noms d'estació - clica sobre el nom per centrar la vista principal a l'estació. Ctrl+Clic obre una nova vista al lloc de l'estació
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantingues polsat CTRL per a seleccionar més d'un ítem
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3028,8 +3029,8 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona Av
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Clica aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Clica aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
@@ -3592,8 +3593,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}No es r
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s'ha trobat el conjunt de sons buit. Si vols sons al joc, instal·la un conjunt de sons amb el sistema de descàrregues de continguts en línia
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Còpia de pantalla desada correctament a disc com a '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error a la còpia de pantalla!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla desada correctament com a '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error en la captura de pantalla!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Missatge
