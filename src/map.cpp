@@ -117,12 +117,12 @@ TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 	uint y = TileY(tile) + addy;
 
 	/* Disallow void tiles at the north border. */
-	if (_settings_game.construction.freeform_edges && (x == 0 || y == 0)) return INVALID_TILE;
+	if ((x == 0 || y == 0) && _settings_game.construction.freeform_edges) return INVALID_TILE;
 
 	/* Are we about to wrap? */
-	if (x < MapMaxX() && y < MapMaxY()) return tile + TileDiffXY(addx, addy);
+	if (x >= MapMaxX() || y >= MapMaxY()) return INVALID_TILE;
 
-	return INVALID_TILE;
+	return TileXY(x, y);
 }
 
 /** 'Lookup table' for tile offsets given a DiagDirection */
