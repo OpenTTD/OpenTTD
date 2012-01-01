@@ -17,7 +17,7 @@
 #include "goal_type.h"
 #include "core/pool_type.hpp"
 
-typedef Pool<Goal, GoalID, 1, MAX_COMPANIES> GoalPool;
+typedef Pool<Goal, GoalID, 1, 256> GoalPool;
 extern GoalPool _goal_pool;
 
 /** Struct about subsidies, offered and awarded */
