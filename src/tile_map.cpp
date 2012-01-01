@@ -22,8 +22,11 @@ Slope GetTileSlope(TileIndex tile, int *h)
 {
 	assert(tile < MapSize());
 
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY() ||
-			(_settings_game.construction.freeform_edges && (TileX(tile) == 0 || TileY(tile) == 0))) {
+	uint x = TileX(tile);
+	uint y = TileY(tile);
+
+	if (x == MapMaxX() || y == MapMaxY() ||
+			((x == 0 || y == 0) && _settings_game.construction.freeform_edges)) {
 		if (h != NULL) *h = TileHeight(tile);
 		return SLOPE_FLAT;
 	}
