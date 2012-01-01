@@ -244,10 +244,24 @@ protected:
 		this->vscroll->SetCount(this->servers.Length());
 	}
 
+	/**
+	 * Skip some of the 'garbage' in the string that we don't want to use
+	 * to sort on. This way the alphabetical sorting will work better as
+	 * we would be actually using those characters instead of some other
+	 * characters such as spaces and tildes at the begin of the name.
+	 * @param str The string to skip the initial garbage of.
+	 * @return The string with the garbage skipped.
+	 */
+	static const char *SkipGarbage(const char *str)
+	{
+		while (*str != '\0' && (*str < 'A' || IsInsideMM(*str, '[', '`' + 1) || IsInsideMM(*str, '{', '~' + 1))) str++;
+		return str;
+	}
+
 	/** Sort servers by name. */
 	static int CDECL NGameNameSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
-		int r = strnatcmp((*a)->info.server_name, (*b)->info.server_name); // Sort by name (natural sorting).
+		int r = strnatcmp(SkipGarbage((*a)->info.server_name), SkipGarbage((*b)->info.server_name)); // Sort by name (natural sorting).
 		return r == 0 ? (*a)->address.CompareTo((*b)->address) : r;
 	}
 
