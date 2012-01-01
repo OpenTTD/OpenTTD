@@ -730,8 +730,8 @@ void Window::SetShaded(bool make_shaded)
 /**
  * Find the Window whose parent pointer points to this window
  * @param w parent Window to find child of
- * @param wc Window class of the window to remove; WC_INVALID if class does not matter
- * @return a Window pointer that is the child of w, or NULL otherwise
+ * @param wc Window class of the window to remove; #WC_INVALID if class does not matter
+ * @return a Window pointer that is the child of \a w, or \c NULL otherwise
  */
 static Window *FindChildWindow(const Window *w, WindowClass wc)
 {
@@ -745,7 +745,7 @@ static Window *FindChildWindow(const Window *w, WindowClass wc)
 
 /**
  * Delete all children a window might have in a head-recursive manner
- * @param wc Window class of the window to remove; WC_INVALID if class does not matter
+ * @param wc Window class of the window to remove; #WC_INVALID if class does not matter
  */
 void Window::DeleteChildWindows(WindowClass wc) const
 {
@@ -805,7 +805,7 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 
 /**
  * Find any window by its class. Useful when searching for a window that uses
- * the window number as a WindowType, like WC_SEND_NETWORK_MSG.
+ * the window number as a #WindowType, like #WC_SEND_NETWORK_MSG.
  * @param cls Window class
  * @return Pointer to the found window, or \c NULL if not available
  */
@@ -2532,7 +2532,7 @@ static void CheckSoftLimit()
 			deletable_count++;
 		}
 
-		/* We've ot reached the soft limit yet */
+		/* We've not reached the soft limit yet. */
 		if (deletable_count <= _settings_client.gui.window_soft_limit) break;
 
 		assert(last_deletable != NULL);

@@ -422,14 +422,14 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 /**
  * Show a dropdown menu window near a widget of the parent window.
- * The result code of the items is their index in the #strings list.
+ * The result code of the items is their index in the \a strings list.
  * @param w             Parent window that wants the dropdown menu.
  * @param strings       Menu list, end with #INVALID_STRING_ID
  * @param selected      Index of initial selected item.
- * @param button        Button widget number of the parent window #w that wants the dropdown menu.
+ * @param button        Button widget number of the parent window \a w that wants the dropdown menu.
  * @param disabled_mask Bitmask for diabled items (items with their bit set are not copied to the dropdown list).
  * @param hidden_mask   Bitmask for hidden items (items with their bit set are displayed, but not selectable in the dropdown list).
- * @param width         Width of the dropdown menu. If \c 0, use the width of parent widget #button.
+ * @param width         Width of the dropdown menu. If \c 0, use the width of parent widget \a button.
  */
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
 {

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file tilematrix_type.hpp  */
+/** @file tilematrix_type.hpp Template for storing a value per area of the map. */
 
 #ifndef TILEMATRIX_TYPE_HPP
 #define TILEMATRIX_TYPE_HPP

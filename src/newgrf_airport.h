@@ -118,8 +118,8 @@ struct AirportSpec {
 	SpriteID preview_sprite;               ///< preview sprite for this airport
 	uint16 maintenance_cost;               ///< maintenance cost mulltiplier
 	/* Newgrf data */
-	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
-	struct GRFFileProps grf_prop;          ///< properties related the the grf file
+	bool enabled;                          ///< Entity still available (by default true). Newgrf can disable it, though.
+	struct GRFFileProps grf_prop;          ///< Properties related to the grf file.
 
 	static const AirportSpec *Get(byte type);
 	static AirportSpec *GetWithoutOverride(byte type);

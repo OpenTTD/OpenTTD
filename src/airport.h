@@ -71,7 +71,7 @@ enum AirportMovementStates {
 	STARTTAKEOFF   = 11, ///< Airplane has arrived at a runway for take-off.
 	ENDTAKEOFF     = 12, ///< Airplane has reached end-point of the take-off runway.
 	HELITAKEOFF    = 13, ///< Helicopter wants to leave the airport.
-	FLYING         = 14, ///< Vehicle is flying in the air.
+	FLYING         = 14, ///< %Vehicle is flying in the air.
 	LANDING        = 15, ///< Airplane wants to land.
 	ENDLANDING     = 16, ///< Airplane wants to finish landing.
 	HELILANDING    = 17, ///< Helicopter wants to land.
@@ -172,7 +172,7 @@ public:
 
 	const AirportMovingData *moving_data; ///< Movement data.
 	struct AirportFTA *layout;            ///< state machine for airport
-	const byte *terminals;                ///< Array with the number of terminal groups, followed by the number of terminals in each group.
+	const byte *terminals;                ///< %Array with the number of terminal groups, followed by the number of terminals in each group.
 	const byte num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
 	Flags flags;                          ///< Flags for this airport type.
 	byte nofelements;                     ///< number of positions the airport consists of

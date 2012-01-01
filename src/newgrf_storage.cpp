@@ -40,14 +40,14 @@ void AddChangedStorage(BaseStorageArray *storage)
 }
 
 /**
- * Clear the changes made since the last ClearStorageChanges.
+ * Clear the changes made since the last #ClearStorageChanges.
  * This is done for *all* storages that have been registered to with
- * AddChangedStorage since the previous ClearStorageChanges.
+ * #AddChangedStorage since the previous #ClearStorageChanges.
  *
  * This can be done in two ways:
  *  - saving the changes permanently
  *  - reverting to the previous version
- * @param keep_changes do we save or revert the changes since the last ClearChanges?
+ * @param keep_changes do we save or revert the changes since the last #ClearChanges?
  */
 void ClearStorageChanges(bool keep_changes)
 {

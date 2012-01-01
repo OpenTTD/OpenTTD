@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file townname_func.h Town name generator stuff. */
+/** @file townname_func.h %Town name generator stuff. */
 
 #ifndef TOWNNAME_FUNC_H
 #define TOWNNAME_FUNC_H

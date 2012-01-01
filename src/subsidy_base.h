@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file subsidy_base.h Subsidy base class. */
+/** @file subsidy_base.h %Subsidy base class. */
 
 #ifndef SUBSIDY_BASE_H
 #define SUBSIDY_BASE_H

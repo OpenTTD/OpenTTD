@@ -1087,7 +1087,7 @@ public:
 
 	/**
 	 * Compute height given a number of columns.
-	 * @param Number of columns.
+	 * @param num_columns Number of columns.
 	 * @return Needed height for displaying the smallmap legends in pixels.
 	 */
 	uint GetLegendHeight(uint num_columns) const

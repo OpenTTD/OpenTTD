@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file depot_cmd.cpp Command Handling for depots. */
+/** @file depot_cmd.cpp %Command Handling for depots. */
 
 #include "stdafx.h"
 #include "command_func.h"

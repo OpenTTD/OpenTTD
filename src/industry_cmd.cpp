@@ -1321,8 +1321,8 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
  * @param [out] town Pointer to return town for the new industry, \c NULL is written if no good town can be found.
  * @return Succeeded or failed command.
  *
- * @precond \c *t != NULL
- * @postcon \c *t points to a town on success, and \c NULL on failure.
+ * @pre \c *t != NULL
+ * @post \c *t points to a town on success, and \c NULL on failure.
  */
 static CommandCost FindTownForIndustry(TileIndex tile, int type, Town **t)
 {
@@ -2064,7 +2064,7 @@ void IndustryBuildData::Reset()
 void IndustryBuildData::MonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
-	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // 'no industries' setting,
+	if (_settings_game.difficulty.industry_density == ID_FUND_ONLY) return; // 'no industries' setting.
 
 	/* To prevent running out of unused industries for the player to connect,
 	 * add a fraction of new industries each month, but only if the manager can keep up. */

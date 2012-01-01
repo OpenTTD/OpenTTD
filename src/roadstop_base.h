@@ -109,7 +109,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 
 	/**
 	 * Makes an entrance occupied or free
-	 * @param busy if true, marks busy; free otherwise
+	 * @param busy If true, marks busy; free otherwise.
 	 */
 	inline void SetEntranceBusy(bool busy)
 	{
@@ -118,7 +118,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 
 	/**
 	 * Get the drive through road stop entry struct for the given direction.
-	 * @param direction the direciton to get the entry for
+	 * @param dir The direction to get the entry for.
 	 * @return the entry
 	 */
 	inline const Entry *GetEntry(DiagDirection dir) const
@@ -128,7 +128,7 @@ struct RoadStop : RoadStopPool::PoolItem<&_roadstop_pool> {
 
 	/**
 	 * Get the drive through road stop entry struct for the given direction.
-	 * @param direction the direciton to get the entry for
+	 * @param dir The direction to get the entry for.
 	 * @return the entry
 	 */
 	inline Entry *GetEntry(DiagDirection dir)

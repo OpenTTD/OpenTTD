@@ -419,8 +419,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 		number = -number;
 	}
 
-	/* Add prefix part, folowing symbol_pos specification.
-	 * Here, it can can be either 0 (prefix) or 2 (both prefix anf suffix).
+	/* Add prefix part, following symbol_pos specification.
+	 * Here, it can can be either 0 (prefix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
 	if (spec->symbol_pos != 1) buff = strecpy(buff, spec->prefix, last);
 
@@ -443,8 +443,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);
 
-	/* Add suffix part, folowing symbol_pos specification.
-	 * Here, it can can be either 1 (suffix) or 2 (both prefix anf suffix).
+	/* Add suffix part, following symbol_pos specification.
+	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (prefix), so everything that is not 0 */
 	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix, last);
 
@@ -1818,7 +1818,7 @@ const LanguageMetadata *GetLanguage(byte newgrflangid)
 }
 
 /**
- * Reads the language file header and checks compatability.
+ * Reads the language file header and checks compatibility.
  * @param file the file to read
  * @param hdr  the place to write the header information to
  * @return true if and only if the language file is of a compatible version
@@ -1874,8 +1874,8 @@ static void GetLanguageList(const char *path)
 }
 
 /**
- * Make a list of the available language packs. put the data in
- * _dynlang struct.
+ * Make a list of the available language packs. Put the data in
+ * #_languages list.
  */
 void InitializeLanguagePacks()
 {
@@ -1892,7 +1892,7 @@ void InitializeLanguagePacks()
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
 	if (lang == NULL) lang = "en_GB";
 
-	const LanguageMetadata *chosen_language   = NULL; ///< Matching the language in the configuartion file or the current locale
+	const LanguageMetadata *chosen_language   = NULL; ///< Matching the language in the configuration file or the current locale
 	const LanguageMetadata *language_fallback = NULL; ///< Using pt_PT for pt_BR locale when pt_BR is not available
 	const LanguageMetadata *en_GB_fallback    = _languages.Begin(); ///< Fallback when no locale-matching language has been found
 
@@ -1900,7 +1900,7 @@ void InitializeLanguagePacks()
 	for (const LanguageMetadata *lng = _languages.Begin(); lng != _languages.End(); lng++) {
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
-		 * english. */
+		 * English. */
 		const char *lang_file = strrchr(lng->file, PATHSEPCHAR) + 1;
 		if (strcmp(lang_file, _config_language_file) == 0) {
 			chosen_language = lng;

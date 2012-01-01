@@ -425,6 +425,7 @@ int Train::GetCurrentMaxSpeed() const
 	return min(max_speed, this->gcache.cached_max_track_speed);
 }
 
+/** Update acceleration of the train from the cached power and weight. */
 void Train::UpdateAcceleration()
 {
 	assert(this->IsFrontEngine());
@@ -463,6 +464,12 @@ static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
 	return ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
+/**
+ * Get the sprite to display the train.
+ * @param direction Direction of view/travel.
+ * @param image_type Visualisation context.
+ * @return Sprite to display.
+ */
 SpriteID Train::GetImage(Direction direction, EngineImageType image_type) const
 {
 	uint8 spritenum = this->spritenum;
@@ -740,7 +747,10 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 	return CommandCost();
 }
 
-
+/**
+ * Is the whole consist the in a depot?
+ * @return \c true iff all vehicles of the train are in a depot.
+ */
 bool Train::IsInDepot() const
 {
 	/* Is the front engine stationary in the depot? */
@@ -754,6 +764,10 @@ bool Train::IsInDepot() const
 	return true;
 }
 
+/**
+ * Is the train stopped in a depot?
+ * @return True if the train is stopped in a depot, else false.
+ */
 bool Train::IsStoppedInDepot() const
 {
 	/* Are we stopped? Of course wagons don't really care... */
@@ -1452,7 +1466,10 @@ void Train::UpdateDeltaXY(Direction direction)
 	}
 }
 
-/** Mark a train as stuck and stop it if it isn't stopped right now. */
+/**
+ * Mark a train as stuck and stop it if it isn't stopped right now.
+ * @param v %Train to mark as being stuck.
+ */
 static void MarkTrainAsStuck(Train *v)
 {
 	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) {
@@ -1470,6 +1487,13 @@ static void MarkTrainAsStuck(Train *v)
 	}
 }
 
+/**
+ * Swap the two up/down flags in two ways:
+ * - Swap values of \a swap_flag1 and \a swap_flag2, and
+ * - If going up previously (#GVF_GOINGUP_BIT set), the #GVF_GOINGDOWN_BIT is set, and vice versa.
+ * @param swap_flag1 [inout] First train flag.
+ * @param swap_flag2 [inout] Second train flag.
+ */
 static void SwapTrainFlags(uint16 *swap_flag1, uint16 *swap_flag2)
 {
 	uint16 flag1 = *swap_flag1;
@@ -1527,6 +1551,12 @@ static void UpdateStatusAfterSwap(Train *v)
 	v->UpdateViewport(true, true);
 }
 
+/**
+ * Swap vehicles \a l and \a r in consist \a v, and reverse their direction.
+ * @param v Consist to change.
+ * @param l %Vehicle index in the consist of the first vehicle.
+ * @param r %Vehicle index in the consist of the second vehicle.
+ */
 void ReverseTrainSwapVeh(Train *v, int l, int r)
 {
 	Train *a, *b;
@@ -1745,7 +1775,10 @@ static void AdvanceWagonsAfterSwap(Train *v)
 	}
 }
 
-
+/**
+ * Turn a train around.
+ * @param v %Train to turn around.
+ */
 void ReverseTrainDirection(Train *v)
 {
 	if (IsRailDepotTile(v->tile)) {
@@ -1932,8 +1965,11 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 /**
- * returns the tile of a depot to goto to. The given vehicle must not be
- * crashed!
+ * Try to find a depot nearby.
+ * @param v %Train that wants a depot.
+ * @param max_distance Maximal search distance.
+ * @return Information where the closest train depot is located.
+ * @pre The given vehicle must not be crashed!
  */
 static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 {
@@ -1952,6 +1988,13 @@ static FindDepotData FindClosestTrainDepot(Train *v, int max_distance)
 	}
 }
 
+/**
+ * Locate the closest depot for this consist, and return the information to the caller.
+ * @param location [out]    If not \c NULL and a depot is found, store its location in the given address.
+ * @param destination [out] If not \c NULL and a depot is found, store its index in the given address.
+ * @param reverse [out]     If not \c NULL and a depot is found, store reversal information in the given address.
+ * @return A depot has been found.
+ */
 bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
 	FindDepotData tfdd = FindClosestTrainDepot(this, 0);
@@ -1964,6 +2007,7 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
 	return true;
 }
 
+/** Play a sound for a train leaving the station. */
 void Train::PlayLeaveStationSound() const
 {
 	static const SoundFx sfx[] = {
@@ -1980,7 +2024,10 @@ void Train::PlayLeaveStationSound() const
 	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], this);
 }
 
-/** Check if the train is on the last reserved tile and try to extend the path then. */
+/**
+ * Check if the train is on the last reserved tile and try to extend the path then.
+ * @param v %Train that needs its path extended.
+ */
 static void CheckNextTrainTile(Train *v)
 {
 	/* Don't do any look-ahead if path_backoff_interval is 255. */
@@ -2038,6 +2085,11 @@ static void CheckNextTrainTile(Train *v)
 	}
 }
 
+/**
+ * Will the train stay in the depot the next tick?
+ * @param v %Train to check.
+ * @return True if it stays in the depot, false otherwise.
+ */
 static bool CheckTrainStayInDepot(Train *v)
 {
 	/* bail out if not all wagons are in the same depot or not in a depot at all */
@@ -2113,7 +2165,12 @@ static bool CheckTrainStayInDepot(Train *v)
 	return false;
 }
 
-/** Clear the reservation of a tile that was just left by a wagon on track_dir. */
+/**
+ * Clear the reservation of \a tile that was just left by a wagon on \a track_dir.
+ * @param v %Train owning the reservation.
+ * @param tile Tile with reservation to clear.
+ * @param track_dir Track direction to clear.
+ */
 static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_dir)
 {
 	DiagDirection dir = TrackdirToExitdir(track_dir);
@@ -2147,7 +2204,12 @@ static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_
 	}
 }
 
-/** Free the reserved path in front of a vehicle. */
+/**
+ * Free the reserved path in front of a vehicle.
+ * @param v %Train owning the reserved path.
+ * @param origin %Tile to start clearing (if #INVALID_TILE, use the current tile of \a v).
+ * @param orig_td Track direction (if #INVALID_TRACKDIR, use the track direction of \a v).
+ */
 void FreeTrainTrackReservation(const Train *v, TileIndex origin, Trackdir orig_td)
 {
 	assert(v->IsFrontEngine());
@@ -2335,8 +2397,7 @@ static bool TryReserveSafeTrack(const Train *v, TileIndex tile, Trackdir td, boo
 }
 
 /** This class will save the current order of a vehicle and restore it on destruction. */
-class VehicleOrderSaver
-{
+class VehicleOrderSaver {
 private:
 	Train          *v;
 	Order          old_order;
@@ -2663,6 +2724,11 @@ static bool CheckReverseTrain(const Train *v)
 	}
 }
 
+/**
+ * Get the location of the next station to visit.
+ * @param station Next station to visit.
+ * @return Location of the new station.
+ */
 TileIndex Train::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
@@ -2677,6 +2743,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 	return st->xy;
 }
 
+/** Goods at the consist have changed, update the graphics, cargo, and acceleration. */
 void Train::MarkDirty()
 {
 	Train *v = this;
@@ -2747,12 +2814,15 @@ static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 			(!v->IsFrontEngine() || HasBit(v->compatible_railtypes, GetRailType(tile)));
 }
 
+/** Data structure for storing engine speed changes of a rail type. */
 struct RailtypeSlowdownParams {
-	byte small_turn, large_turn;
-	byte z_up; // fraction to remove when moving up
-	byte z_down; // fraction to remove when moving down
+	byte small_turn; ///< Speed change due to a small turn.
+	byte large_turn; ///< Speed change due to a large turn.
+	byte z_up;       ///< Fraction to remove when moving up.
+	byte z_down;     ///< Fraction to add when moving down.
 };
 
+/** Speed update fractions for each rail type. */
 static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	/* normal accel */
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< normal
@@ -2761,7 +2831,11 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	{0,       256 / 2, 256 / 4, 2}, ///< maglev
 };
 
-/** Modify the speed of the vehicle due to a change in altitude */
+/**
+ * Modify the speed of the vehicle due to a change in altitude.
+ * @param v %Train to update.
+ * @param old_z Previous height.
+ */
 static inline void AffectSpeedByZChange(Train *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
@@ -2790,9 +2864,7 @@ static bool TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 	return false;
 }
 
-/**
- * Tries to reserve track under whole train consist
- */
+/** Tries to reserve track under whole train consist. */
 void Train::ReserveTrackUnderConsist() const
 {
 	for (const Train *u = this; u != NULL; u = u->Next()) {
@@ -2809,6 +2881,12 @@ void Train::ReserveTrackUnderConsist() const
 	}
 }
 
+/**
+ * The train vehicle crashed!
+ * Update its status and other parts around it.
+ * @param flooded Crash was caused by flooding.
+ * @return Number of people killed.
+ */
 uint Train::Crash(bool flooded)
 {
 	uint pass = 0;
@@ -2866,11 +2944,18 @@ static uint TrainCrashed(Train *v)
 	return num;
 }
 
+/** Temporary data storage for testing collisions. */
 struct TrainCollideChecker {
-	Train *v; ///< vehicle we are testing for collision
-	uint num; ///< number of victims if train collided
+	Train *v; ///< %Vehicle we are testing for collision.
+	uint num; ///< Total number of victims if train collided.
 };
 
+/**
+ * Collision test function.
+ * @param v %Train vehicle to test collision with.
+ * @param data %Train being examined.
+ * @return \c NULL (always continue search)
+ */
 static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 {
 	TrainCollideChecker *tcc = (TrainCollideChecker*)data;
@@ -2916,6 +3001,7 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
  * so, destroys this vehicle, and the other vehicle if its subtype has TS_Front.
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
+ * @param v %Train to test.
  */
 static bool CheckTrainCollision(Train *v)
 {
@@ -3759,8 +3845,10 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	return true;
 }
 
-
-
+/**
+ * Get running cost for the train consist.
+ * @return Yearly running costs.
+ */
 Money Train::GetRunningCost() const
 {
 	Money cost = 0;
@@ -3782,7 +3870,10 @@ Money Train::GetRunningCost() const
 	return cost;
 }
 
-
+/**
+ * Update train vehicle data for a tick.
+ * @return True if the vehicle still exists, false if it has ceased to exist (front of consists only).
+ */
 bool Train::Tick()
 {
 	this->tick_counter++;
@@ -3806,6 +3897,10 @@ bool Train::Tick()
 	return true;
 }
 
+/**
+ * Check whether a train needs serivce, and if so, find a depot or service it.
+ * @return v %Train to check.
+ */
 static void CheckIfTrainNeedsService(Train *v)
 {
 	if (Company::Get(v->owner)->settings.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
@@ -3848,6 +3943,7 @@ static void CheckIfTrainNeedsService(Train *v)
 	SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
 }
 
+/** Update day counters of the train vehicle. */
 void Train::OnNewDay()
 {
 	AgeVehicle(this);
@@ -3882,6 +3978,10 @@ void Train::OnNewDay()
 	}
 }
 
+/**
+ * Get the tracks of the train vehicle.
+ * @return Current tracks of the vehicle.
+ */
 Trackdir Train::GetVehicleTrackdir() const
 {
 	if (this->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;

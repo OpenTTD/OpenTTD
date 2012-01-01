@@ -15,25 +15,26 @@
 #include "date_type.h"
 #include "strings_type.h"
 
-static const int CF_NOEURO = 0;
-static const int CF_ISEURO = 1;
-static const uint NUM_CURRENCY = 29;
-static const int CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1;
+static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
+static const int CF_ISEURO = 1; ///< Currency _is_ the Euro.
+static const uint NUM_CURRENCY = 29; ///< Number of currencies.
+static const int CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1; ///< Index of the custom currency.
 
+/** Specification of a currency. */
 struct CurrencySpec {
 	uint16 rate;
 	char separator[8];
-	Year to_euro;
+	Year to_euro;      ///< %Year of switching to the Euro. May also be #CF_NOEURO or #CF_ISEURO.
 	char prefix[16];
 	char suffix[16];
 	/**
 	 * The currency symbol is represented by two possible values, prefix and suffix
-	 * Usage of one or the other is determined by symbol_pos.
+	 * Usage of one or the other is determined by #symbol_pos.
 	 * 0 = prefix
 	 * 1 = suffix
 	 * 2 = both : Special case only for custom currency.
 	 *            It is not a spec from Newgrf,
-	 *            rather a way to let users do what they want with custom curency
+	 *            rather a way to let users do what they want with custom currency
 	 */
 	byte symbol_pos;
 	StringID name;

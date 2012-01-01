@@ -201,7 +201,7 @@ static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 
 /**
  * Get the finite state machine of an airport type.
- * @param airport_type Airport type to query FTA from. @see AirportTypes
+ * @param airport_type %Airport type to query FTA from. @see AirportTypes
  * @return Finite state machine of the airport.
  */
 const AirportFTAClass *GetAirport(const byte airport_type)

@@ -149,13 +149,13 @@ enum Token {
 	TOKEN_ELSE,       ///< (#)else in code
 	TOKEN_ENDIF,      ///< (#)endif in code
 	TOKEN_UNDEF,      ///< (#)undef in code
-	TOKEN_OR,         ///< '||' within #if expression
-	TOKEN_AND,        ///< '&&' within #if expression
-	TOKEN_DEFINED,    ///< 'defined' within #if expression
-	TOKEN_OPEN,       ///< '(' within #if expression
-	TOKEN_CLOSE,      ///< ')' within #if expression
-	TOKEN_NOT,        ///< '!' within #if expression
-	TOKEN_ZERO,       ///< '0' within #if expression
+	TOKEN_OR,         ///< '||' within <tt>#if</tt> expression
+	TOKEN_AND,        ///< '&&' within <tt>#if</tt> expression
+	TOKEN_DEFINED,    ///< 'defined' within <tt>#if</tt> expression
+	TOKEN_OPEN,       ///< '(' within <tt>#if</tt> expression
+	TOKEN_CLOSE,      ///< ')' within <tt>#if</tt> expression
+	TOKEN_NOT,        ///< '!' within <tt>#if</tt> expression
+	TOKEN_ZERO,       ///< '0' within <tt>#if</tt> expression
 	TOKEN_INCLUDE,    ///< (#)include in code
 };
 

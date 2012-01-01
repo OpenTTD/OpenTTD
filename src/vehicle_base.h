@@ -511,7 +511,7 @@ public:
 	}
 
 	/**
-	 * Get the vehicle at offset #n of this vehicle chain.
+	 * Get the vehicle at offset \a n of this vehicle chain.
 	 * @param n Offset from the current vehicle.
 	 * @return The new vehicle or NULL if the offset is out-of-bounds.
 	 */

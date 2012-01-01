@@ -19,16 +19,15 @@
  * Base class for all NewGRF storage arrays. Nothing fancy, only here
  * so we have a generalised class to use.
  */
-struct BaseStorageArray
-{
+struct BaseStorageArray {
 	virtual ~BaseStorageArray();
 
 	/**
-	 * Clear the changes made since the last ClearChanges.
+	 * Clear the changes made since the last #ClearChanges.
 	 * This can be done in two ways:
 	 *  - saving the changes permanently
 	 *  - reverting to the previous version
-	 * @param keep_changes do we save or revert the changes since the last ClearChanges?
+	 * @param keep_changes do we save or revert the changes since the last #ClearChanges?
 	 */
 	virtual void ClearChanges(bool keep_changes) = 0;
 
@@ -42,9 +41,9 @@ struct BaseStorageArray
 
 /**
  * Class for persistent storage of data.
- * On ClearChanges that data is either reverted or saved.
- * @param TYPE the type of variable to store.
- * @param SIZE the size of the array.
+ * On #ClearChanges that data is either reverted or saved.
+ * @tparam TYPE the type of variable to store.
+ * @tparam SIZE the size of the array.
  */
 template <typename TYPE, uint SIZE>
 struct PersistentStorageArray : BaseStorageArray {
@@ -129,9 +128,9 @@ struct PersistentStorageArray : BaseStorageArray {
 
 /**
  * Class for temporary storage of data.
- * On ClearChanges that data is always zero-ed.
- * @param TYPE the type of variable to store.
- * @param SIZE the size of the array.
+ * On #ClearChanges that data is always zero-ed.
+ * @tparam TYPE the type of variable to store.
+ * @tparam SIZE the size of the array.
  */
 template <typename TYPE, uint SIZE>
 struct TemporaryStorageArray : BaseStorageArray {
@@ -191,7 +190,7 @@ extern PersistentStoragePool _persistent_storage_pool;
 
 /**
  * Class for pooled persistent storage of data.
- * On ClearChanges that data is always zero-ed.
+ * On #ClearChanges that data is always zero-ed.
  */
 struct PersistentStorage : PersistentStorageArray<int32, 16>, PersistentStoragePool::PoolItem<&_persistent_storage_pool> {
 	uint32 grfid; ///< GRFID associated to this persistent storage. A value of zero means "default".

@@ -28,7 +28,7 @@
  */
 static inline byte RGBToGrayscale(byte red, byte green, byte blue)
 {
-	/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
+	/* To avoid doubles and stuff, multiply it with a total of 65536 (16bits), then
 	 *  divide by it to normalize the value to a byte again. */
 	return ((red * 19595) + (green * 38470) + (blue * 7471)) / 65536;
 }

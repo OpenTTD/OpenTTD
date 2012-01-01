@@ -17,8 +17,8 @@
 
 /**
  * Simple pair of data. Both types have to be POD ("Plain Old Data")!
- * @tvar T Key type.
- * @tvar U Value type.
+ * @tparam T Key type.
+ * @tparam U Value type.
  */
 template <typename T, typename U>
 struct SmallPair {
@@ -32,9 +32,9 @@ struct SmallPair {
 /**
  * Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
  * It has inherited accessors from SmallVector().
- * @tvar T Key type.
- * @tvar U Value type.
- * @tvar S Unit of allocation.
+ * @tparam T Key type.
+ * @tparam U Value type.
+ * @tparam S Unit of allocation.
  *
  * @see SmallVector
  */

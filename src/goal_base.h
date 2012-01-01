@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file goal_base.h Goal base class. */
+/** @file goal_base.h %Goal base class. */
 
 #ifndef GOAL_BASE_H
 #define GOAL_BASE_H

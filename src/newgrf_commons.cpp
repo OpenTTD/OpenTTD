@@ -8,8 +8,8 @@
  */
 
 /**
- * @file newgrf_commons.cpp Implementation of the class OverrideManagerBase
- * and its descendance, present and futur
+ * @file newgrf_commons.cpp Implementation of the class %OverrideManagerBase
+ * and its descendance, present and future.
  */
 
 #include "stdafx.h"
