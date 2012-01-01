@@ -66,7 +66,7 @@
 static SmallVector<GRFFile *, 16> _grf_files;
 
 /** Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
-static byte _misc_grf_features = 0;
+byte _misc_grf_features = 0;
 
 /** 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
@@ -9061,14 +9061,4 @@ void LoadNewGRF(uint load_index, uint file_index)
 	_date_fract   = date_fract;
 	_tick_counter = tick_counter;
 	_display_opt  = display_opt;
-}
-
-/**
- * Check for grf miscelaneous bits
- * @param bit The bit to check.
- * @return Whether the bit is set.
- */
-bool HasGrfMiscBit(GrfMiscBit bit)
-{
-	return HasBit(_misc_grf_features, bit);
 }

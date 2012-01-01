@@ -15,6 +15,7 @@
 #include "cargotype.h"
 #include "rail_type.h"
 #include "fileio_type.h"
+#include "core/bitmath_func.hpp"
 
 /**
  * List of different canal 'features'.
@@ -162,6 +163,17 @@ struct GRFLoadedFeatures {
 	ShoreReplacement shore;   ///< It which way shore sprites were replaced.
 };
 
+/**
+ * Check for grf miscelaneous bits
+ * @param bit The bit to check.
+ * @return Whether the bit is set.
+ */
+static inline bool HasGrfMiscBit(GrfMiscBit bit)
+{
+	extern byte _misc_grf_features;
+	return HasBit(_misc_grf_features, bit);
+}
+
 /* Indicates which are the newgrf features currently loaded ingame */
 extern GRFLoadedFeatures _loaded_newgrf_features;
 
@@ -173,7 +185,6 @@ void ResetPersistentNewGRFData();
 
 void CDECL grfmsg(int severity, const char *str, ...) WARN_FORMAT(2, 3);
 
-bool HasGrfMiscBit(GrfMiscBit bit);
 bool GetGlobalVariable(byte param, uint32 *value, const GRFFile *grffile);
 
 StringID MapGRFStringID(uint32 grfid, StringID str);
