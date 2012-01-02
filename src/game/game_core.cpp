@@ -178,7 +178,7 @@
 
 	InvalidateWindowData(WC_AI_LIST, 0, 1);
 	SetWindowClassesDirty(WC_AI_DEBUG);
-	SetWindowDirty(WC_AI_SETTINGS, 0);
+	InvalidateWindowClassesData(WC_AI_SETTINGS);
 }
 
 
