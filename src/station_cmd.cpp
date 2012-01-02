@@ -3407,19 +3407,12 @@ void FindStationsAroundTiles(const TileArea &location, StationList *stations)
 	if (max_x >= MapSizeX()) max_x = MapSizeX() - 1;
 	if (max_y >= MapSizeY()) max_y = MapSizeY() - 1;
 
-	StationID last = INVALID_STATION;
-
 	for (uint cy = min_y; cy < max_y; cy++) {
 		for (uint cx = min_x; cx < max_x; cx++) {
 			TileIndex cur_tile = TileXY(cx, cy);
 			if (!IsTileType(cur_tile, MP_STATION)) continue;
 
-			StationID sid = GetStationIndex(cur_tile);
-			/* Stop early if we met the same station again. */
-			if (sid == last) continue;
-			last = sid;
-
-			Station *st = Station::GetIfValid(sid);
+			Station *st = Station::GetByTile(cur_tile);
 			/* st can be NULL in case of waypoints */
 			if (st == NULL) continue;
 
