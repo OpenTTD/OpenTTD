@@ -987,6 +987,7 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 
 	v->x_pos = x;
 	v->y_pos = y;
+	VehicleUpdatePosition(v);
 	v->UpdateInclination(true, true);
 
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1121,6 +1122,7 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 			/* Vehicle has just entered a bridge or tunnel */
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
+			VehicleUpdatePosition(v);
 			v->UpdateInclination(true, true);
 			return true;
 		}
@@ -1277,6 +1279,7 @@ again:
 		}
 		v->x_pos = x;
 		v->y_pos = y;
+		VehicleUpdatePosition(v);
 		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
@@ -1342,6 +1345,7 @@ again:
 
 		v->x_pos = x;
 		v->y_pos = y;
+		VehicleUpdatePosition(v);
 		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
@@ -1430,6 +1434,7 @@ again:
 					v->frame++;
 					v->x_pos = x;
 					v->y_pos = y;
+					VehicleUpdatePosition(v);
 					RoadZPosAffectSpeed(v, v->UpdateInclination(true, false));
 					return true;
 				}
@@ -1478,6 +1483,7 @@ again:
 	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->frame++;
 	v->x_pos = x;
 	v->y_pos = y;
+	VehicleUpdatePosition(v);
 	RoadZPosAffectSpeed(v, v->UpdateInclination(false, true));
 	return true;
 }

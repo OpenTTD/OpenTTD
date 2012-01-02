@@ -1542,12 +1542,14 @@ static void UpdateStatusAfterSwap(Train *v)
 				/* We have just left the wormhole, possibly set the
 				 * "goingdown" bit. UpdateInclination() can be used
 				 * because we are at the border of the tile. */
+				VehicleUpdatePosition(v);
 				v->UpdateInclination(true, true);
 				return;
 			}
 		}
 	}
 
+	VehicleUpdatePosition(v);
 	v->UpdateViewport(true, true);
 }
 
@@ -2155,10 +2157,8 @@ static bool CheckTrainStayInDepot(Train *v)
 	v->vehstatus &= ~VS_HIDDEN;
 	v->cur_speed = 0;
 
-	v->UpdateDeltaXY(v->direction);
-	v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
+	v->UpdateViewport(true, true);
 	VehicleUpdatePosition(v);
-	VehicleUpdateViewport(v, false);
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	v->UpdateAcceleration();
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3321,6 +3321,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
+		VehicleUpdatePosition(v);
 
 		/* update the Z position of the vehicle */
 		int old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
@@ -3488,7 +3489,10 @@ static void ChangeTrainDirRandomly(Train *v)
 			/* Refrain from updating the z position of the vehicle when on
 			 * a bridge, because UpdateInclination() will put the vehicle under
 			 * the bridge in that case */
-			if (v->track != TRACK_BIT_WORMHOLE) v->UpdateInclination(false, false);
+			if (v->track != TRACK_BIT_WORMHOLE) {
+				VehicleUpdatePosition(v);
+				v->UpdateInclination(false, false);
+			}
 		}
 	} while ((v = v->Next()) != NULL);
 }

@@ -226,10 +226,10 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	/**
 	 * Checks if the vehicle is in a slope and sets the required flags in that case.
 	 * @param new_tile True if the vehicle reached a new tile.
-	 * @param turned Indicates if the vehicle has turned.
+	 * @param update_delta Indicates to also update the delta.
 	 * @return Old height of the vehicle.
 	 */
-	inline byte UpdateInclination(bool new_tile, bool turned)
+	inline byte UpdateInclination(bool new_tile, bool update_delta)
 	{
 		byte old_z = this->z_pos;
 
@@ -239,7 +239,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 			this->UpdateZPosition();
 		}
 
-		this->UpdateViewport(true, turned);
+		this->UpdateViewport(true, update_delta);
 		return old_z;
 	}
 

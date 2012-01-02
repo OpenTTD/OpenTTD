@@ -480,6 +480,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	v->y_pos = y;
 	v->z_pos = z;
 
+	VehicleUpdatePosition(v);
 	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v, EIT_ON_MAP);
 

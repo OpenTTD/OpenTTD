@@ -326,7 +326,7 @@ static bool CheckShipLeaveDepot(Ship *v)
 	v->vehstatus &= ~VS_HIDDEN;
 
 	v->cur_speed = 0;
-	v->UpdateViewport(false, true);
+	v->UpdateViewport(true, true);
 	SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 
 	PlayShipSound(v);
@@ -601,6 +601,7 @@ static void ShipController(Ship *v)
 	v->z_pos = GetSlopePixelZ(gp.x, gp.y);
 
 getout:
+	VehicleUpdatePosition(v);
 	v->UpdateViewport(true, true);
 	return;
 

@@ -986,19 +986,19 @@ struct SpecializedVehicle : public Vehicle {
 
 	/**
 	 * Update vehicle sprite- and position caches
-	 * @param moved Was the vehicle moved?
-	 * @param turned Did the vehicle direction change?
+	 * @param force_update Force updating the vehicle on the viewport.
+	 * @param update_delta Also update the delta?
 	 */
-	inline void UpdateViewport(bool moved, bool turned)
+	inline void UpdateViewport(bool force_update, bool update_delta)
 	{
-		extern void VehicleUpdatePositionAndViewport(Vehicle *v);
+		extern void VehicleUpdateViewport(Vehicle *v, bool dirty);
 
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
-		if (turned) ((T *)this)->T::UpdateDeltaXY(this->direction);
+		if (update_delta) ((T *)this)->T::UpdateDeltaXY(this->direction);
 		SpriteID old_image = this->cur_image;
 		this->cur_image = ((T *)this)->T::GetImage(this->direction, EIT_ON_MAP);
-		if (moved || this->cur_image != old_image) VehicleUpdatePositionAndViewport(this);
+		if (force_update || this->cur_image != old_image) VehicleUpdateViewport(this, true);
 	}
 };
 
