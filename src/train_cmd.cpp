@@ -595,7 +595,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		_new_vehicle_id = v->index;
 
-		VehicleMove(v, false);
+		VehicleUpdatePosition(v);
 		v->First()->ConsistChanged(false);
 		UpdateTrainGroupID(v->First());
 
@@ -657,7 +657,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	v->SetMultiheaded();
 	u->SetMultiheaded();
 	v->SetNext(u);
-	VehicleMove(u, false);
+	VehicleUpdatePosition(u);
 
 	/* Now we need to link the front and rear engines together */
 	v->other_multiheaded_part = u;
@@ -726,7 +726,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->SetFrontEngine();
 		v->SetEngine();
 
-		VehicleMove(v, false);
+		VehicleUpdatePosition(v);
 
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
 			AddRearEngineToMultiheadedTrain(v);
@@ -2157,7 +2157,8 @@ static bool CheckTrainStayInDepot(Train *v)
 
 	v->UpdateDeltaXY(v->direction);
 	v->cur_image = v->GetImage(v->direction, EIT_ON_MAP);
-	VehicleMove(v, false);
+	VehicleUpdatePosition(v);
+	VehicleUpdateViewport(v, false);
 	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	v->UpdateAcceleration();
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -3309,7 +3310,8 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
-				VehicleMove(v, !(v->vehstatus & VS_HIDDEN));
+				VehicleUpdatePosition(v);
+				if ((v->vehstatus & VS_HIDDEN) == 0) VehicleUpdateViewport(v, true);
 				continue;
 			}
 		}

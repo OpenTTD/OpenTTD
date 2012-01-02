@@ -588,7 +588,8 @@ static void ShipController(Ship *v)
 		if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			v->x_pos = gp.x;
 			v->y_pos = gp.y;
-			VehicleMove(v, !(v->vehstatus & VS_HIDDEN));
+			VehicleUpdatePosition(v);
+			if ((v->vehstatus & VS_HIDDEN) == 0) VehicleUpdateViewport(v, true);
 			return;
 		}
 	}
@@ -680,7 +681,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 
 		v->InvalidateNewGRFCacheOfChain();
 
-		VehicleMove(v, false);
+		VehicleUpdatePosition(v);
 	}
 
 	return CommandCost();

@@ -442,7 +442,8 @@ void AfterLoadVehicles(bool part_of_load)
 
 		v->UpdateDeltaXY(v->direction);
 		v->coord.left = INVALID_COORD;
-		VehicleMove(v, false);
+		VehicleUpdatePosition(v);
+		VehicleUpdateViewport(v, false);
 	}
 }
 

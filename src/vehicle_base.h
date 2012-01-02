@@ -991,14 +991,14 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	inline void UpdateViewport(bool moved, bool turned)
 	{
-		extern void VehicleMove(Vehicle *v, bool update_viewport);
+		extern void VehicleUpdatePositionAndViewport(Vehicle *v);
 
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
 		if (turned) ((T *)this)->T::UpdateDeltaXY(this->direction);
 		SpriteID old_image = this->cur_image;
 		this->cur_image = ((T *)this)->T::GetImage(this->direction, EIT_ON_MAP);
-		if (moved || this->cur_image != old_image) VehicleMove(this, true);
+		if (moved || this->cur_image != old_image) VehicleUpdatePositionAndViewport(this);
 	}
 };
 

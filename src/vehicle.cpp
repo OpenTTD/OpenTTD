@@ -1386,16 +1386,23 @@ void VehicleEnterDepot(Vehicle *v)
 
 
 /**
- * Move a vehicle in the game state; that is moving its position in
- * the position hashes and marking its location in the viewport dirty
- * if requested.
- * @param v vehicle to move
- * @param update_viewport whether to dirty the viewport
+ * Update the position of the vehicle. This will update the hash that tells
+ *  which vehicles are on a tile.
+ * @param v The vehicle to update.
  */
-void VehicleMove(Vehicle *v, bool update_viewport)
+void VehicleUpdatePosition(Vehicle *v)
 {
 	UpdateVehicleTileHash(v, false);
+}
 
+/**
+ * Update the vehicle on the viewport, updating the right hash and setting the
+ *  new coordinates.
+ * @param v The vehicle to update.
+ * @param dirty Mark the (new and old) coordinates of the vehicle as dirty.
+ */
+void VehicleUpdateViewport(Vehicle *v, bool dirty)
+{
 	int img = v->cur_image;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
 	const Sprite *spr = GetSprite(img, ST_NORMAL);
@@ -1411,7 +1418,7 @@ void VehicleMove(Vehicle *v, bool update_viewport)
 	v->coord.right  = pt.x + spr->width + 2 * ZOOM_LVL_BASE;
 	v->coord.bottom = pt.y + spr->height + 2 * ZOOM_LVL_BASE;
 
-	if (update_viewport) {
+	if (dirty) {
 		MarkAllViewportsDirty(
 			min(old_coord.left,   v->coord.left),
 			min(old_coord.top,    v->coord.top),
@@ -1422,12 +1429,18 @@ void VehicleMove(Vehicle *v, bool update_viewport)
 }
 
 /**
- * Marks viewports dirty where the vehicle's image is
- * In fact, it equals
- *   BeginVehicleMove(v); EndVehicleMove(v);
+ * Update the position of the vehicle, and update the viewport.
+ * @param v The vehicle to update.
+ */
+void VehicleUpdatePositionAndViewport(Vehicle *v)
+{
+	VehicleUpdatePosition(v);
+	VehicleUpdateViewport(v, true);
+}
+
+/**
+ * Marks viewports dirty where the vehicle's image is.
  * @param v vehicle to mark dirty
- * @see BeginVehicleMove()
- * @see EndVehicleMove()
  */
 void MarkSingleVehicleDirty(const Vehicle *v)
 {

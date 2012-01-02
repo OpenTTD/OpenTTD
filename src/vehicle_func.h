@@ -59,7 +59,9 @@ void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void VehicleEnteredDepotThisTick(Vehicle *v);
 
-void VehicleMove(Vehicle *v, bool update_viewport);
+void VehicleUpdatePosition(Vehicle *v);
+void VehicleUpdateViewport(Vehicle *v, bool dirty);
+void VehicleUpdatePositionAndViewport(Vehicle *v);
 void MarkSingleVehicleDirty(const Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);
