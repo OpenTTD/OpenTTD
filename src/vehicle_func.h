@@ -44,7 +44,7 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour);
 void VehicleLengthChanged(const Vehicle *u);
 
 byte VehicleRandomBits();
-void ResetVehiclePosHash();
+void ResetVehicleHash();
 void ResetVehicleColourMap();
 
 byte GetBestFittingSubType(Vehicle *v_from, Vehicle *v_for, CargoID dest_cargo_type);

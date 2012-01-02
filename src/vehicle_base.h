@@ -159,12 +159,12 @@ public:
 
 	Rect coord;                         ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
 
-	Vehicle *next_hash;                 ///< NOSAVE: Next vehicle in the visual location hash.
-	Vehicle **prev_hash;                ///< NOSAVE: Previous vehicle in the visual location hash.
+	Vehicle *hash_viewport_next;        ///< NOSAVE: Next vehicle in the visual location hash.
+	Vehicle **hash_viewport_prev;       ///< NOSAVE: Previous vehicle in the visual location hash.
 
-	Vehicle *next_new_hash;             ///< NOSAVE: Next vehicle in the tile location hash.
-	Vehicle **prev_new_hash;            ///< NOSAVE: Previous vehicle in the tile location hash.
-	Vehicle **old_new_hash;             ///< NOSAVE: Cache of the current hash chain.
+	Vehicle *hash_tile_next;            ///< NOSAVE: Next vehicle in the tile location hash.
+	Vehicle **hash_tile_prev;           ///< NOSAVE: Previous vehicle in the tile location hash.
+	Vehicle **hash_tile_current;        ///< NOSAVE: Cache of the current hash chain.
 
 	SpriteID colourmap;                 ///< NOSAVE: cached colour mapping
 

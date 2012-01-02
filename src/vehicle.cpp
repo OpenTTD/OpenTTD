@@ -286,14 +286,14 @@ const int TOTAL_HASH_MASK = TOTAL_HASH_SIZE - 1;
  * Profiling results show that 0 is fastest. */
 const int HASH_RES = 0;
 
-static Vehicle *_new_vehicle_position_hash[TOTAL_HASH_SIZE];
+static Vehicle *_vehicle_tile_hash[TOTAL_HASH_SIZE];
 
-static Vehicle *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc, bool find_first)
+static Vehicle *VehicleFromTileHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc, bool find_first)
 {
 	for (int y = yl; ; y = (y + (1 << HASH_BITS)) & (HASH_MASK << HASH_BITS)) {
 		for (int x = xl; ; x = (x + 1) & HASH_MASK) {
-			Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
-			for (; v != NULL; v = v->next_new_hash) {
+			Vehicle *v = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+			for (; v != NULL; v = v->hash_tile_next) {
 				Vehicle *a = proc(v, data);
 				if (find_first && a != NULL) return a;
 			}
@@ -327,7 +327,7 @@ static Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *p
 	int yl = GB((y - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
 	int yu = GB((y + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
 
-	return VehicleFromHash(xl, yl, xu, yu, data, proc, find_first);
+	return VehicleFromTileHash(xl, yl, xu, yu, data, proc, find_first);
 }
 
 /**
@@ -380,8 +380,8 @@ static Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *p
 	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
 	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
 
-	Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
-	for (; v != NULL; v = v->next_new_hash) {
+	Vehicle *v = _vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
+	for (; v != NULL; v = v->hash_tile_next) {
 		if (v->tile != tile) continue;
 
 		Vehicle *a = proc(v, data);
@@ -518,9 +518,9 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits)
 	return CommandCost();
 }
 
-static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
+static void UpdateVehicleTileHash(Vehicle *v, bool remove)
 {
-	Vehicle **old_hash = v->old_new_hash;
+	Vehicle **old_hash = v->hash_tile_current;
 	Vehicle **new_hash;
 
 	if (remove) {
@@ -528,63 +528,63 @@ static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 	} else {
 		int x = GB(TileX(v->tile), HASH_RES, HASH_BITS);
 		int y = GB(TileY(v->tile), HASH_RES, HASH_BITS) << HASH_BITS;
-		new_hash = &_new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
+		new_hash = &_vehicle_tile_hash[(x + y) & TOTAL_HASH_MASK];
 	}
 
 	if (old_hash == new_hash) return;
 
 	/* Remove from the old position in the hash table */
 	if (old_hash != NULL) {
-		if (v->next_new_hash != NULL) v->next_new_hash->prev_new_hash = v->prev_new_hash;
-		*v->prev_new_hash = v->next_new_hash;
+		if (v->hash_tile_next != NULL) v->hash_tile_next->hash_tile_prev = v->hash_tile_prev;
+		*v->hash_tile_prev = v->hash_tile_next;
 	}
 
 	/* Insert vehicle at beginning of the new position in the hash table */
 	if (new_hash != NULL) {
-		v->next_new_hash = *new_hash;
-		if (v->next_new_hash != NULL) v->next_new_hash->prev_new_hash = &v->next_new_hash;
-		v->prev_new_hash = new_hash;
+		v->hash_tile_next = *new_hash;
+		if (v->hash_tile_next != NULL) v->hash_tile_next->hash_tile_prev = &v->hash_tile_next;
+		v->hash_tile_prev = new_hash;
 		*new_hash = v;
 	}
 
 	/* Remember current hash position */
-	v->old_new_hash = new_hash;
+	v->hash_tile_current = new_hash;
 }
 
-static Vehicle *_vehicle_position_hash[0x1000];
+static Vehicle *_vehicle_viewport_hash[0x1000];
 
-static void UpdateVehiclePosHash(Vehicle *v, int x, int y)
+static void UpdateVehicleViewportHash(Vehicle *v, int x, int y)
 {
 	Vehicle **old_hash, **new_hash;
 	int old_x = v->coord.left;
 	int old_y = v->coord.top;
 
-	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(x, y)];
-	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_position_hash[GEN_HASH(old_x, old_y)];
+	new_hash = (x == INVALID_COORD) ? NULL : &_vehicle_viewport_hash[GEN_HASH(x, y)];
+	old_hash = (old_x == INVALID_COORD) ? NULL : &_vehicle_viewport_hash[GEN_HASH(old_x, old_y)];
 
 	if (old_hash == new_hash) return;
 
 	/* remove from hash table? */
 	if (old_hash != NULL) {
-		if (v->next_hash != NULL) v->next_hash->prev_hash = v->prev_hash;
-		*v->prev_hash = v->next_hash;
+		if (v->hash_viewport_next != NULL) v->hash_viewport_next->hash_viewport_prev = v->hash_viewport_prev;
+		*v->hash_viewport_prev = v->hash_viewport_next;
 	}
 
 	/* insert into hash table? */
 	if (new_hash != NULL) {
-		v->next_hash = *new_hash;
-		if (v->next_hash != NULL) v->next_hash->prev_hash = &v->next_hash;
-		v->prev_hash = new_hash;
+		v->hash_viewport_next = *new_hash;
+		if (v->hash_viewport_next != NULL) v->hash_viewport_next->hash_viewport_prev = &v->hash_viewport_next;
+		v->hash_viewport_prev = new_hash;
 		*new_hash = v;
 	}
 }
 
-void ResetVehiclePosHash()
+void ResetVehicleHash()
 {
 	Vehicle *v;
-	FOR_ALL_VEHICLES(v) { v->old_new_hash = NULL; }
-	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
-	memset(_new_vehicle_position_hash, 0, sizeof(_new_vehicle_position_hash));
+	FOR_ALL_VEHICLES(v) { v->hash_tile_current = NULL; }
+	memset(_vehicle_viewport_hash, 0, sizeof(_vehicle_viewport_hash));
+	memset(_vehicle_tile_hash, 0, sizeof(_vehicle_tile_hash));
 }
 
 void ResetVehicleColourMap()
@@ -603,7 +603,7 @@ static AutoreplaceMap _vehicles_to_autoreplace;
 void InitializeVehicles()
 {
 	_vehicles_to_autoreplace.Reset();
-	ResetVehiclePosHash();
+	ResetVehicleHash();
 }
 
 uint CountVehiclesInChain(const Vehicle *v)
@@ -791,8 +791,8 @@ Vehicle::~Vehicle()
 
 	delete v;
 
-	UpdateVehiclePosHash(this, INVALID_COORD, 0);
-	UpdateNewVehiclePosHash(this, true);
+	UpdateVehicleTileHash(this, true);
+	UpdateVehicleViewportHash(this, INVALID_COORD, 0);
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
@@ -999,7 +999,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 	for (int y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
 		for (int x = xl;; x = (x + 1) & 0x3F) {
-			const Vehicle *v = _vehicle_position_hash[x + y]; // already masked & 0xFFF
+			const Vehicle *v = _vehicle_viewport_hash[x + y]; // already masked & 0xFFF
 
 			while (v != NULL) {
 				if (!(v->vehstatus & VS_HIDDEN) &&
@@ -1009,7 +1009,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						b >= v->coord.top) {
 					DoDrawVehicle(v);
 				}
-				v = v->next_hash;
+				v = v->hash_viewport_next;
 			}
 
 			if (x == xu) break;
@@ -1394,7 +1394,7 @@ void VehicleEnterDepot(Vehicle *v)
  */
 void VehicleMove(Vehicle *v, bool update_viewport)
 {
-	UpdateNewVehiclePosHash(v, false);
+	UpdateVehicleTileHash(v, false);
 
 	int img = v->cur_image;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
@@ -1403,7 +1403,7 @@ void VehicleMove(Vehicle *v, bool update_viewport)
 	pt.x += spr->x_offs;
 	pt.y += spr->y_offs;
 
-	UpdateVehiclePosHash(v, pt.x, pt.y);
+	UpdateVehicleViewportHash(v, pt.x, pt.y);
 
 	Rect old_coord = v->coord;
 	v->coord.left   = pt.x;

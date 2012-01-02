@@ -2753,7 +2753,7 @@ void ReloadNewGRFData()
 	LoadStringWidthTable();
 	RecomputePrices();
 	/* reload vehicles */
-	ResetVehiclePosHash();
+	ResetVehicleHash();
 	AfterLoadVehicles(false);
 	StartupEngines();
 	GroupStatistics::UpdateAfterLoad();
