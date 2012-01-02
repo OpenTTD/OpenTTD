@@ -327,7 +327,8 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, uint
 			int8 y_offs = GB(GetRegister(0x100), 8, 8);
 			TileIndex testtile = TILE_MASK(tile + TileDiffXY(x_offs, y_offs));
 
-			const StationList *sl = StationFinder(TileArea(testtile, 1, 1)).GetStations();
+			StationFinder stations(TileArea(testtile, 1, 1));
+			const StationList *sl = stations.GetStations();
 
 			/* Collect acceptance stats. */
 			uint32 res = 0;
