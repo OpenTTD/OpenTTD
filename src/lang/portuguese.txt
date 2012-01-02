@@ -447,8 +447,9 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de Jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura ampliada
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura com ampliação máxima
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura com ampliação normal
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Alternar as caixas envolventes
@@ -1272,6 +1273,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desacti
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para o computador: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IAs em multi-jogador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes antes de os scripts serem suspensos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dia{P 0:1 "" s}/%
@@ -1381,6 +1383,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar 
 STR_CONFIG_ERROR                                                :{WHITE}Erro com o ficheiro de configuração...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... erro no array '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... valor inválido '{STRING}' para '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... caracteres no fim da opção '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... a ignorar NewGRF '{STRING}': ID GRF duplicado de '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... a ignorar NewGRF inválido '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :não encontrado
@@ -1895,6 +1898,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jogo
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}A descarregar conteúdo...

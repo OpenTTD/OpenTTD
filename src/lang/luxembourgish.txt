@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Eraus
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spilloptiounen
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Schwieregkeetsastellungen
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Erweidert Astellungen
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :KI / Spill-Astellungen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF Astellungen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenz Optiounen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stiednimm ugewisen
@@ -381,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Stad grënnen
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subventiounen
+STR_SUBSIDIES_MENU_GOAL                                         :Aktuell Zieler
 ############ range ends here
 
 ############ range for graph menu starts
@@ -442,9 +444,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Meldungshistori
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatiounen
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
-STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
+STR_ABOUT_MENU_AI_DEBUG                                         :KI / Spill-Script Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ragezoomten Screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Voll ragezoomten Screenshot
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Default Zoom Screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot vun der ganzer Kaart (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer
@@ -747,6 +750,8 @@ STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nei Gef
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Ännerungen vun acceptéiert Luedungen
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventiounen
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Generel Informatiounen
+
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Zuch kënnt bei {STATION} un!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Bierger feieren . . .{}Éischten Bus kënnt bei {STATION} un!
@@ -1403,6 +1408,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Schwiere
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Erweidert Astellungen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Astellungen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Check Online Inhalt
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}KI / Spill-Astellungen
 STR_INTRO_QUIT                                                  :{BLACK}Eraus
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start en neit Spill. Ctrl+Klick iwwersprengt Kaartenkonfiguratioun
@@ -1422,6 +1428,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwiere
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Weist erweidert Astellungen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF Astellungen uweisen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op neien Inhalt kann downgeload gin
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Weis KI an Spill-Script-Astellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Des Iwwersetzung huet {NUM} String{P "" s}. Hëlleft OpenTTD besser ze man andem der ierch als Iwwersetzer mellt!. Liest readme.txt fir d'Detailer.
@@ -1823,10 +1830,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spill pauséier
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spill nach ëmmer pauséiert ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spill nach ëmmer pauséiert ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spill nach ëmmer pauséiert ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spill nach pauséiert ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spill geet weider ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Unzuel Spiller
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Klienten verbannen
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Spill-Script
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verloossen
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ass dem Spill baigetrueden
@@ -1888,6 +1897,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Héischtenkaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basis Sounds
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basis Musik
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spill-Script
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS Librairie
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloaden Inhalt...
@@ -2410,6 +2421,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegb
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generatioun vun knubblegen an stengegen Land
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spill gëtt opgestallt
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Lafende Script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparéiren Spill
 
 # NewGRF settings
@@ -2648,6 +2660,14 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eng Sta
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Den Bau vun neien Kommerzgebaier finanzéieren.{} Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaft fir 1 Joer exklusiv Transportrechter an dëser Stad. D'Gemeng erlabt den Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{} Käschten: {CURRENCY_LONG}
+
+# Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Zieler
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global Zieler:
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Keng -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenzieler:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick op Ziel fir d'Haptfënster op d'Industrie/Stad/Feld ze zentréiren. Ctrl+Klick mëcht eng nei Fënster op der Industrie/Stad/Feld-Positioun op
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventiounen
@@ -3446,11 +3466,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Joer wie
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}KI Debug
+STR_AI_DEBUG                                                    :{WHITE}KI /Spill-Script Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numm vun der KI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Astellungen
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}KI Astellungen änneren
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Numm vun dem Script
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Astellungen
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Script Astellungen änneren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI nei lueden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}KI stoppen, Skript nei lueden, KI nei starten
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Erlab/Verbidd breaks wann en KI Log Message zum break string passt
@@ -3462,40 +3482,60 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Wiessel 
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Weider
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Entpaus an fuer weider mat der KI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-output fir dës KI uweisen
+STR_AI_GAME_SCRIPT                                              :{BLACK}Spill-Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check den Spill-Scipt-Log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keng passend KI fonnt fir ze lueden.{}Dës KI ass en Dummy an wäert näischt maachen.{}KI'en kënnen iwwert den 'Online Content' System downgeload gin.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eng KI ass ofgestierzt. W.e.g mellt des dem KI Autor mat engem Screenshot vun der KI Debugfënster
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debugfënster ass nëmmen fir Serveren verfügbar
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI / Spill-Script Debugfënster ass nëmmen fir Serveren verfügbar
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}KI Konfiguratioun
+STR_AI_CONFIG_CAPTION                                           :{WHITE}KI /Spill Konfiguratioun
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}D'Spill-Script dat am nächsten Spill gelueden gëtt
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}D'KIën déi am nächsten Spill gelueden ginn
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mënschlechen Spiller
 STR_AI_CONFIG_RANDOM_AI                                         :Zoufälleg KI
+STR_AI_CONFIG_NONE                                              :(keng)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}No uewen setzen
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Gewielten KI an der Lëscht no uewen setzen
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Erof setzen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Gewielten KI an der Lëscht no ënnen setzen
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spill-Script
+STR_AI_CONFIG_AI                                                :{SILVER}KIën
+
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Selectéier {STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :KI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spill-Script
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lued en aneren Script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfiguréieren
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}All Parameter vun der KI konfiguréieren
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}All Parameter vun dem Script konfiguréieren
 
 # Available AIs window
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Klickt fir eng KI ze selectéieren
+STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbar {STRING}
+STR_AI_LIST_CAPTION_AI                                          :KIs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spill-Scripter
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Klickt fir en Script ze selectéieren
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versioun: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptéiert
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selectéiert ungewielte KI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selectéiert ungewielte Script
 STR_AI_LIST_CANCEL                                              :{BLACK}Ofbriechen
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI net wiesselen
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script net änneren
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
+STR_AI_SETTINGS_CAPTION_AI                                      :KI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spill-Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Unzuel vun Deeg wou dës KI gestart gëtt no der leschter: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
