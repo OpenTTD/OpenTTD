@@ -1321,4 +1321,9 @@ void ShowAIDebugWindowIfAIError()
 			break;
 		}
 	}
+
+	GameInstance *g = Game::GetGameInstance();
+	if (g != NULL && g->IsDead()) {
+		ShowAIDebugWindow(OWNER_DEITY);
+	}
 }

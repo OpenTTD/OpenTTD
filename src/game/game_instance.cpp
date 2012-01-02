@@ -11,11 +11,13 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../error.h"
 #include "../saveload/saveload.h"
 
 #include "../script/squirrel_class.hpp"
 
 #include "../script/script_storage.hpp"
+#include "../ai/ai_gui.hpp"
 #include "game_config.hpp"
 #include "game_info.hpp"
 #include "game_instance.hpp"
@@ -194,6 +196,23 @@ int GameInstance::GetSetting(const char *name)
 ScriptInfo *GameInstance::FindLibrary(const char *library, int version)
 {
 	return (ScriptInfo *)Game::FindLibrary(library, version);
+}
+
+void GameInstance::Died()
+{
+	ScriptInstance::Died();
+
+	ShowAIDebugWindow(OWNER_DEITY);
+
+	const GameInfo *info = Game::GetInfo();
+	if (info != NULL) {
+		ShowErrorMessage(STR_ERROR_AI_PLEASE_REPORT_CRASH, INVALID_STRING_ID, WL_WARNING);
+
+		if (info->GetURL() != NULL) {
+			ScriptLog::Info("Please report the error to the following URL:");
+			ScriptLog::Info(info->GetURL());
+		}
+	}
 }
 
 /**
