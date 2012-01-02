@@ -555,8 +555,6 @@ static Vehicle *_vehicle_position_hash[0x1000];
 
 static void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 {
-	UpdateNewVehiclePosHash(v, x == INVALID_COORD);
-
 	Vehicle **old_hash, **new_hash;
 	int old_x = v->coord.left;
 	int old_y = v->coord.top;
@@ -794,6 +792,7 @@ Vehicle::~Vehicle()
 	delete v;
 
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
+	UpdateNewVehiclePosHash(this, true);
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
@@ -1395,6 +1394,8 @@ void VehicleEnterDepot(Vehicle *v)
  */
 void VehicleMove(Vehicle *v, bool update_viewport)
 {
+	UpdateNewVehiclePosHash(v, false);
+
 	int img = v->cur_image;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
 	const Sprite *spr = GetSprite(img, ST_NORMAL);
