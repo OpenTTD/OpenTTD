@@ -51,6 +51,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_TOOLTIPS,                               "WC_TOOLTIPS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_QUERY_STRING,                           "WC_QUERY_STRING");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_CONFIRM_POPUP_QUERY,                    "WC_CONFIRM_POPUP_QUERY");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_GOAL_QUESTION,                          "WC_GOAL_QUESTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SAVELOAD,                               "WC_SAVELOAD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_LAND_INFO,                              "WC_LAND_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_DROPDOWN_MENU,                          "WC_DROPDOWN_MENU");
@@ -494,6 +495,11 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GP_ABORT,                              "WID_GP_ABORT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_PANEL,                              "WID_GL_PANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_SCROLLBAR,                          "WID_GL_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_QUESTION,                           "WID_GQ_QUESTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_BUTTONS,                            "WID_GQ_BUTTONS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_BUTTON_1,                           "WID_GQ_BUTTON_1");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_BUTTON_2,                           "WID_GQ_BUTTON_2");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GQ_BUTTON_3,                           "WID_GQ_BUTTON_3");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_BACKGROUND,                         "WID_GL_BACKGROUND");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_FIRST_COMPANY,                      "WID_GL_FIRST_COMPANY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GL_LAST_COMPANY,                       "WID_GL_LAST_COMPANY");

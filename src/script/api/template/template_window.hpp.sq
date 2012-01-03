@@ -85,6 +85,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::GenerationProgressWidgets>(HSQUIRRELVM vm, ScriptWindow::GenerationProgressWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::GoalListWidgets GetParam(ForceType<ScriptWindow::GoalListWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::GoalListWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::GoalListWidgets>(HSQUIRRELVM vm, ScriptWindow::GoalListWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::GoalQuestionWidgets GetParam(ForceType<ScriptWindow::GoalQuestionWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::GoalQuestionWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::GoalQuestionWidgets>(HSQUIRRELVM vm, ScriptWindow::GoalQuestionWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::GraphLegendWidgets GetParam(ForceType<ScriptWindow::GraphLegendWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::GraphLegendWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::GraphLegendWidgets>(HSQUIRRELVM vm, ScriptWindow::GraphLegendWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::CompanyValueWidgets GetParam(ForceType<ScriptWindow::CompanyValueWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::CompanyValueWidgets)tmp; }

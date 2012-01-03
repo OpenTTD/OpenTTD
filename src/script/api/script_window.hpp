@@ -194,6 +194,14 @@ public:
 		 */
 		WC_CONFIRM_POPUP_QUERY = ::WC_CONFIRM_POPUP_QUERY,
 
+	        /**
+		 * Popup with a set of buttons, designed to ask the user a question
+		 * from a GameScript. %Window numbers:
+		 *    - uniqueid = #GoalQuestionWidgets
+		 */
+	        WC_GOAL_QUESTION,
+
+
 
 		/**
 		 * Saveload window; Window numbers:
@@ -1266,6 +1274,15 @@ public:
 	enum GoalListWidgets {
 		WID_GL_PANEL                         = ::WID_GL_PANEL,                         ///< Panel of the window.
 		WID_GL_SCROLLBAR                     = ::WID_GL_SCROLLBAR,                     ///< Scrollbar of the panel.
+	};
+
+	/** Widgets of the #GoalQuestionWindow class. */
+	enum GoalQuestionWidgets {
+		WID_GQ_QUESTION                      = ::WID_GQ_QUESTION,                      ///< Question text.
+		WID_GQ_BUTTONS                       = ::WID_GQ_BUTTONS,                       ///< Buttons selection (between 1, 2 or 3).
+		WID_GQ_BUTTON_1                      = ::WID_GQ_BUTTON_1,                      ///< First button.
+		WID_GQ_BUTTON_2                      = ::WID_GQ_BUTTON_2,                      ///< Second button.
+		WID_GQ_BUTTON_3                      = ::WID_GQ_BUTTON_3,                      ///< Third button.
 	};
 
 	/** Widgets of the #GraphLegendWindow class. */
