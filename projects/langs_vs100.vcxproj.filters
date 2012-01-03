@@ -37,6 +37,9 @@
     <CustomBuild Include="..\src\lang\dutch.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\src\lang\english_AU.txt">
+      <Filter>Translations</Filter>
+    </CustomBuild>
     <CustomBuild Include="..\src\lang\english_US.txt">
       <Filter>Translations</Filter>
     </CustomBuild>
