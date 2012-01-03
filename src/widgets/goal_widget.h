@@ -19,4 +19,13 @@ enum GoalListWidgets {
 	WID_GL_SCROLLBAR, ///< Scrollbar of the panel.
 };
 
+/** Widgets of the #GoalQuestionWindow class. */
+enum GoalQuestionWidgets {
+	WID_GQ_QUESTION, ///< Question text.
+	WID_GQ_BUTTONS,  ///< Buttons selection (between 2 or 3).
+	WID_GQ_BUTTON_1, ///< First button.
+	WID_GQ_BUTTON_2, ///< Second button.
+	WID_GQ_BUTTON_3, ///< Third button.
+};
+
 #endif /* WIDGETS_GOAL_WIDGET_H */

@@ -14,6 +14,7 @@
 
 #include "script_event.hpp"
 #include "script_company.hpp"
+#include "script_goal.hpp"
 #include "script_window.hpp"
 
 /**
@@ -931,5 +932,54 @@ private:
 	uint32 number;                    ///< Number of the click.
 	uint8 widget;                     ///< Widget of the click.
 };
+
+/**
+ * Event Goal Question Answer, where you receive the answer given to your questions.
+ * @note It is possible that you get more than 1 answer from the same company
+ *  (due to lag). Please keep this in mind while handling this event.
+ * @api game
+ */
+class ScriptEventGoalQuestionAnswer : public ScriptEvent {
+public:
+	/**
+	 * @param uniqueid The uniqueID you have given this question.
+	 * @param company The company that is replying.
+	 * @param button The button the company pressed.
+	 */
+	ScriptEventGoalQuestionAnswer(uint16 uniqueid, ScriptCompany::CompanyID company, ScriptGoal::QuestionButton button) :
+		ScriptEvent(ET_GOAL_QUESTION_ANSWER),
+		uniqueid(uniqueid),
+		company(company),
+		button(button)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventGoalQuestionAnswer *Convert(ScriptEvent *instance) { return (ScriptEventGoalQuestionAnswer *)instance; }
+
+	/**
+	 * Get the unique id of the question.
+	 */
+	uint16 GetUniqueID() { return this->uniqueid; }
+
+	/**
+	 * Get the company that pressed a button.
+	 */
+	ScriptCompany::CompanyID GetCompany() { return this->company; }
+
+	/**
+	 * Get the button that got pressed.
+	 */
+	ScriptGoal::QuestionButton GetButton() { return this->button; }
+
+private:
+	uint16 uniqueid;                   ///< The uniqueid of the question.
+	ScriptCompany::CompanyID company;  ///< The company given the answer.
+	ScriptGoal::QuestionButton button; ///< The button he pressed.
+};
+
 
 #endif /* SCRIPT_EVENT_TYPES_HPP */

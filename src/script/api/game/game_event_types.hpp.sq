@@ -249,3 +249,20 @@ void SQGSEventWindowWidgetClick_Register(Squirrel *engine)
 
 	SQGSEventWindowWidgetClick.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventGoalQuestionAnswer, ST_GS>() { return "GSEventGoalQuestionAnswer"; }
+
+void SQGSEventGoalQuestionAnswer_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventGoalQuestionAnswer, ST_GS> SQGSEventGoalQuestionAnswer("GSEventGoalQuestionAnswer");
+	SQGSEventGoalQuestionAnswer.PreRegister(engine, "GSEvent");
+
+	SQGSEventGoalQuestionAnswer.DefSQStaticMethod(engine, &ScriptEventGoalQuestionAnswer::Convert, "Convert", 2, ".x");
+
+	SQGSEventGoalQuestionAnswer.DefSQMethod(engine, &ScriptEventGoalQuestionAnswer::GetUniqueID, "GetUniqueID", 1, "x");
+	SQGSEventGoalQuestionAnswer.DefSQMethod(engine, &ScriptEventGoalQuestionAnswer::GetCompany,  "GetCompany",  1, "x");
+	SQGSEventGoalQuestionAnswer.DefSQMethod(engine, &ScriptEventGoalQuestionAnswer::GetButton,   "GetButton",   1, "x");
+
+	SQGSEventGoalQuestionAnswer.PostRegister(engine);
+}

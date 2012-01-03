@@ -21,6 +21,7 @@
 #include "goal_base.h"
 #include "core/geometry_func.hpp"
 #include "company_func.h"
+#include "command_func.h"
 
 #include "widgets/goal_widget.h"
 
@@ -247,8 +248,131 @@ static const WindowDesc _goals_list_desc(
 	_nested_goals_list_widgets, lengthof(_nested_goals_list_widgets)
 );
 
-
 void ShowGoalsList()
 {
 	AllocateWindowDescFront<GoalListWindow>(&_goals_list_desc, 0);
+}
+
+
+
+struct GoalQuestionWindow : Window {
+	char *question;
+	int buttons;
+	int button[3];
+
+	GoalQuestionWindow(const WindowDesc *desc, WindowNumber window_number, uint32 button_mask, const char *question) : Window()
+	{
+		this->question = strdup(question);
+
+		/* Figure out which buttons we have to enable */
+		int bit;
+		int n = 0;
+		FOR_EACH_SET_BIT(bit, button_mask) {
+			if (bit >= GOAL_QUESTION_BUTTON_COUNT) break;
+			this->button[n++] = bit;
+			if (n == 3) break;
+		}
+		this->buttons = n;
+		assert(this->buttons > 0 && this->buttons < 4);
+
+		this->CreateNestedTree(desc);
+		this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons - 1);
+		this->FinishInitNested(desc, window_number);
+	}
+
+	~GoalQuestionWindow()
+	{
+		free(this->question);
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case WID_GQ_BUTTON_1:
+				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
+				break;
+
+			case WID_GQ_BUTTON_2:
+				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[1]);
+				break;
+
+			case WID_GQ_BUTTON_3:
+				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[2]);
+				break;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget, int click_count)
+	{
+		switch (widget) {
+			case WID_GQ_BUTTON_1:
+				DoCommandP(0, this->window_number, this->button[0], CMD_GOAL_QUESTION_ANSWER);
+				delete this;
+				break;
+
+			case WID_GQ_BUTTON_2:
+				DoCommandP(0, this->window_number, this->button[1], CMD_GOAL_QUESTION_ANSWER);
+				delete this;
+				break;
+
+			case WID_GQ_BUTTON_3:
+				DoCommandP(0, this->window_number, this->button[2], CMD_GOAL_QUESTION_ANSWER);
+				delete this;
+				break;
+		}
+	}
+
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
+	{
+		if (widget != WID_GQ_QUESTION) return;
+
+		SetDParamStr(0, this->question);
+		size->height = GetStringHeight(STR_JUST_RAW_STRING, size->width) + WD_PAR_VSEP_WIDE;
+	}
+
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		if (widget != WID_GQ_QUESTION) return;
+
+		SetDParamStr(0, this->question);
+		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_HOR_CENTER);
+	}
+};
+
+static const NWidgetPart _nested_goal_question_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_GOAL_QUESTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(65, 10, 65),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(25, 10, 25),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
+static const WindowDesc _goal_question_list_desc(
+	WDP_CENTER, 0, 0,
+	WC_GOAL_QUESTION, WC_NONE,
+	WDF_CONSTRUCTION,
+	_nested_goal_question_widgets, lengthof(_nested_goal_question_widgets)
+);
+
+
+void ShowGoalQuestion(uint16 id, uint32 button_mask, const char *question)
+{
+	new GoalQuestionWindow(&_goal_question_list_desc, id, button_mask, question);
 }

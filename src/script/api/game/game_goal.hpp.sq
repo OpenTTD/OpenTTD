@@ -21,16 +21,36 @@ void SQGSGoal_Register(Squirrel *engine)
 	SQGSGoal.PreRegister(engine);
 	SQGSGoal.AddConstructor<void (ScriptGoal::*)(), 1>(engine, "x");
 
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GOAL_INVALID, "GOAL_INVALID");
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_NONE,      "GT_NONE");
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TILE,      "GT_TILE");
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_INDUSTRY,  "GT_INDUSTRY");
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TOWN,      "GT_TOWN");
-	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_COMPANY,   "GT_COMPANY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GOAL_INVALID,     "GOAL_INVALID");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_NONE,          "GT_NONE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TILE,          "GT_TILE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_INDUSTRY,      "GT_INDUSTRY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_TOWN,          "GT_TOWN");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::GT_COMPANY,       "GT_COMPANY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_CANCEL,    "BUTTON_CANCEL");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_OK,        "BUTTON_OK");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_NO,        "BUTTON_NO");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_YES,       "BUTTON_YES");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_DECLINE,   "BUTTON_DECLINE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_ACCEPT,    "BUTTON_ACCEPT");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_IGNORE,    "BUTTON_IGNORE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_RETRY,     "BUTTON_RETRY");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_PREVIOUS,  "BUTTON_PREVIOUS");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_NEXT,      "BUTTON_NEXT");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_STOP,      "BUTTON_STOP");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_START,     "BUTTON_START");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_GO,        "BUTTON_GO");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_CONTINUE,  "BUTTON_CONTINUE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_RESTART,   "BUTTON_RESTART");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_POSTPONE,  "BUTTON_POSTPONE");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_SURRENDER, "BUTTON_SURRENDER");
+	SQGSGoal.DefSQConst(engine, ScriptGoal::BUTTON_CLOSE,     "BUTTON_CLOSE");
 
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsValidGoal, "IsValidGoal", 2, ".i");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::New,         "New",         5, ".i.ii");
-	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Remove,      "Remove",      2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::IsValidGoal,   "IsValidGoal",   2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::New,           "New",           5, ".i.ii");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Remove,        "Remove",        2, ".i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::Question,      "Question",      5, ".ii.i");
+	SQGSGoal.DefSQStaticMethod(engine, &ScriptGoal::CloseQuestion, "CloseQuestion", 2, ".i");
 
 	SQGSGoal.PostRegister(engine);
 }

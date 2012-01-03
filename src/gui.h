@@ -53,6 +53,7 @@ void ShowTownDirectory();
 void ShowIndustryDirectory();
 void ShowSubsidiesList();
 void ShowGoalsList();
+void ShowGoalQuestion(uint16 id, uint32 button_mask, const char *question);
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 

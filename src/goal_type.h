@@ -12,6 +12,10 @@
 #ifndef GOAL_TYPE_H
 #define GOAL_TYPE_H
 
+enum {
+	GOAL_QUESTION_BUTTON_COUNT = 18, ///< Amount of buttons available.
+};
+
 /** Types of goal destinations */
 enum GoalType {
 	GT_NONE,         ///< Destination is not linked

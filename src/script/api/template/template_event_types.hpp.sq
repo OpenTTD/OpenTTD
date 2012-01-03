@@ -230,3 +230,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventWindowWidgetClick &GetParam(ForceType<const ScriptEventWindowWidgetClick &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventWindowWidgetClick *)instance; }
 	template <> inline int Return<ScriptEventWindowWidgetClick *>(HSQUIRRELVM vm, ScriptEventWindowWidgetClick *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventWindowWidgetClick", res, NULL, DefSQDestructorCallback<ScriptEventWindowWidgetClick>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventGoalQuestionAnswer to be used as Squirrel parameter */
+	template <> inline ScriptEventGoalQuestionAnswer *GetParam(ForceType<ScriptEventGoalQuestionAnswer *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventGoalQuestionAnswer *)instance; }
+	template <> inline ScriptEventGoalQuestionAnswer &GetParam(ForceType<ScriptEventGoalQuestionAnswer &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventGoalQuestionAnswer *)instance; }
+	template <> inline const ScriptEventGoalQuestionAnswer *GetParam(ForceType<const ScriptEventGoalQuestionAnswer *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventGoalQuestionAnswer *)instance; }
+	template <> inline const ScriptEventGoalQuestionAnswer &GetParam(ForceType<const ScriptEventGoalQuestionAnswer &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventGoalQuestionAnswer *)instance; }
+	template <> inline int Return<ScriptEventGoalQuestionAnswer *>(HSQUIRRELVM vm, ScriptEventGoalQuestionAnswer *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventGoalQuestionAnswer", res, NULL, DefSQDestructorCallback<ScriptEventGoalQuestionAnswer>, true); return 1; }
+} // namespace SQConvert
