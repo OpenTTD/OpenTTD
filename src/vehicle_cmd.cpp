@@ -283,6 +283,13 @@ static CommandCost GetRefitCost(const Vehicle *v, EngineID engine_type, CargoID 
 	}
 }
 
+/** Helper structure for RefitVehicle() */
+struct RefitResult {
+	Vehicle *v;         ///< Vehicle to refit
+	uint capacity;      ///< New capacity of vehicle
+	uint mail_capacity; ///< New mail capacity of aircraft
+};
+
 /**
  * Refits a vehicle (chain).
  * This is the vehicle-type independent part of the CmdRefitXXX functions.
@@ -308,6 +315,9 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		/* In this case, we need to check the whole chain. */
 		v = v->First();
 	}
+
+	static SmallVector<RefitResult, 16> refit_result;
+	refit_result.Clear();
 
 	v->InvalidateNewGRFCacheOfChain();
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
@@ -351,19 +361,38 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		}
 		cost.AddCost(refit_cost);
 
-		if (flags & DC_EXEC) {
-			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
-			v->cargo_type = new_cid;
-			v->cargo_cap = amount;
-			v->cargo_subtype = new_subtype;
-			if (v->type == VEH_AIRCRAFT) {
-				Vehicle *u = v->Next();
-				u->cargo_cap = mail_capacity;
-				u->cargo.Truncate(mail_capacity);
+		/* Record the refitting.
+		 * Do not execute the refitting immediately, so DetermineCapacity and GetRefitCost do the same in test and exec run.
+		 * (weird NewGRFs)
+		 * Note:
+		 *  - If the capacity of vehicles depends on other vehicles in the chain, the actual capacity is
+		 *    set after RefitVehicle() via ConsistChanged() and friends. The estimation via _returned_refit_capacity will be wrong.
+		 *  - We have to call the refit cost callback with the pre-refit configuration of the chain because we want refit and
+		 *    autorefit to behave the same, and we need its result for auto_refit_allowed.
+		 */
+		RefitResult *result = refit_result.Append();
+		result->v = v;
+		result->capacity = amount;
+		result->mail_capacity = mail_capacity;
+	}
+
+	if (flags & DC_EXEC) {
+		/* Store the result */
+		for (RefitResult *result = refit_result.Begin(); result != refit_result.End(); result++) {
+			Vehicle *u = result->v;
+			u->cargo.Truncate((u->cargo_type == new_cid) ? result->capacity : 0);
+			u->cargo_type = new_cid;
+			u->cargo_cap = result->capacity;
+			u->cargo_subtype = new_subtype;
+			if (u->type == VEH_AIRCRAFT) {
+				Vehicle *w = u->Next();
+				w->cargo_cap = result->mail_capacity;
+				w->cargo.Truncate(result->mail_capacity);
 			}
 		}
 	}
 
+	refit_result.Clear();
 	_returned_refit_capacity = total_capacity;
 	_returned_mail_refit_capacity = total_mail_capacity;
 	return cost;
