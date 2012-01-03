@@ -104,6 +104,7 @@
 
 	delete c->ai_instance;
 	c->ai_instance = NULL;
+	c->ai_info = NULL;
 
 	cur_company.Restore();
 

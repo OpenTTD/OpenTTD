@@ -94,6 +94,7 @@
 
 	delete Game::instance;
 	Game::instance = NULL;
+	Game::info = NULL;
 
 	cur_company.Restore();
 
