@@ -87,26 +87,6 @@ static int32 ClickSetProdCheat(int32 p1, int32 p2)
 	return _cheats.setup_prod.value;
 }
 
-/**
- * Handle changing of climate.
- * @param p1 New climate.
- * @param p2 Unused.
- * @return New climate.
- */
-static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
-{
-	if (p1 == -1) p1 = 3;
-	if (p1 ==  4) p1 = 0;
-	_settings_game.game_creation.landscape = p1;
-
-	GamelogStartAction(GLAT_CHEAT);
-	GamelogTestMode();
-	ReloadNewGRFData();
-	GamelogStopAction();
-
-	return _settings_game.game_creation.landscape;
-}
-
 extern void EnginesMonthlyLoop();
 
 /**
@@ -140,7 +120,6 @@ enum CheatNumbers {
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
 	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
-	CHT_SWITCH_CLIMATE,  ///< Switch climate.
 	CHT_CHANGE_DATE,     ///< Do time traveling.
 
 	CHT_NUM_CHEATS,      ///< Number of cheats.
@@ -173,7 +152,6 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
-	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
@@ -247,10 +225,6 @@ struct CheatWindow : Window {
 							break;
 						}
 
-						/* Set correct string for switch climate cheat */
-						case STR_CHEAT_SWITCH_CLIMATE: val += STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE;
-							/* FALL THROUGH */
-
 						default: SetDParam(0, val);
 					}
 					break;
@@ -290,14 +264,6 @@ struct CheatWindow : Window {
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParam(0, 15);
 							width = max(width, GetStringBoundingBox(ce->str).width + 10 + 10);
-							break;
-
-						/* Set correct string for switch climate cheat */
-						case STR_CHEAT_SWITCH_CLIMATE:
-							for (StringID i = STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE; i <= STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE; i++) {
-								SetDParam(0, i);
-								width = max(width, GetStringBoundingBox(ce->str).width);
-							}
 							break;
 
 						default:

@@ -32,10 +32,10 @@ struct Cheats {
 	Cheat crossing_tunnels; ///< allow tunnels that cross each other
 	Cheat dummy1;           ///< empty cheat (build while in pause mode)
 	Cheat no_jetcrash;      ///< no jet will crash on small airports anymore
-	Cheat switch_climate;   ///< change the climate of the map
+	Cheat dummy2;           ///< empty cheat (change the climate of the map)
 	Cheat change_date;      ///< changes date ingame
 	Cheat setup_prod;       ///< setup raw-material production in game
-	Cheat dummy2;           ///< empty cheat (enable running el-engines on normal rail)
+	Cheat dummy3;           ///< empty cheat (enable running el-engines on normal rail)
 };
 
 extern Cheats _cheats;
