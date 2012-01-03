@@ -697,8 +697,8 @@ void GenerateObjects()
 				assert(tile < MapSize());
 				break;
 			}
-			tile = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDiagDir(dir));
-			if (tile == INVALID_TILE) break;
+			tile += TileOffsByDiagDir(dir);
+			if (!IsValidTile(tile)) break;
 		}
 	}
 }

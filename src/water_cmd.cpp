@@ -1148,8 +1148,8 @@ void TileLoop_Water(TileIndex tile)
 	switch (GetFloodingBehaviour(tile)) {
 		case FLOOD_ACTIVE:
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
-				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
-				if (dest == INVALID_TILE) continue;
+				TileIndex dest = tile + TileOffsByDir(dir);
+				if (!IsValidTile(dest)) continue;
 				/* do not try to flood water tiles - increases performance a lot */
 				if (IsTileType(dest, MP_WATER)) continue;
 
@@ -1167,8 +1167,8 @@ void TileLoop_Water(TileIndex tile)
 			Slope slope_here = GetFoundationSlope(tile) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			uint dir;
 			FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope_here]) {
-				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir((Direction)dir));
-				if (dest == INVALID_TILE) continue;
+				TileIndex dest = tile + TileOffsByDir(dir);
+				if (!IsValidTile(dest)) continue;
 
 				FloodingBehaviour dest_behaviour = GetFloodingBehaviour(dest);
 				if ((dest_behaviour == FLOOD_ACTIVE) || (dest_behaviour == FLOOD_PASSIVE)) return;
