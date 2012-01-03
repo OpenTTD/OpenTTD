@@ -13,6 +13,7 @@
 #define CMD_HELPER_H
 
 #include "core/enum_type.hpp"
+#include "core/bitmath_func.hpp"
 
 /**
  * Extracts a given type from a value.
