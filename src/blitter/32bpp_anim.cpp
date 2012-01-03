@@ -323,7 +323,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 		 * palette animation, much cheaper though slightly nastier. */
 		for (int i = 0; i < width; i++) {
 			uint colour = GB(*anim_pal, 0, 8);
-			if (IsInsideBS(colour, PALETTE_ANIM_START, PALETTE_ANIM_SIZE)) {
+			if (colour >= PALETTE_ANIM_START) {
 				/* Update this pixel */
 				*dst_pal = this->AdjustBrightness(LookupColourInPalette(colour), GB(*anim_pal, 8, 8));
 			}
@@ -417,11 +417,11 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 	assert(!_screen_disable_anim);
 
 	this->palette = palette;
-	/* Never repaint the transparency pixel */
-	if (this->palette.first_dirty == 0) {
-		this->palette.first_dirty++;
-		this->palette.count_dirty--;
-	}
+	/* If first_dirty is 0, it is for 8bpp indication to send the new
+	 *  palette. As we dont do that for 32bpp, ignore that request
+	 *  completely */
+	if (this->palette.first_dirty == 0) return;
+	assert(this->palette.first_dirty == PALETTE_ANIM_START);
 
 	const uint16 *anim = this->anim_buf;
 	uint32 *dst = (uint32 *)_screen.dst_ptr;
@@ -430,7 +430,7 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 	for (int y = this->anim_buf_height; y != 0 ; y--) {
 		for (int x = this->anim_buf_width; x != 0 ; x--) {
 			uint colour = GB(*anim, 0, 8);
-			if (IsInsideBS(colour, this->palette.first_dirty, this->palette.count_dirty)) {
+			if (colour >= PALETTE_ANIM_START) {
 				/* Update this pixel */
 				*dst = this->AdjustBrightness(LookupColourInPalette(colour), GB(*anim, 8, 8));
 			}
