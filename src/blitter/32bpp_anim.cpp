@@ -423,9 +423,6 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 		this->palette.count_dirty--;
 	}
 
-	this->palette.first_dirty = 1;
-	this->palette.count_dirty = 255;
-
 	const uint16 *anim = this->anim_buf;
 	uint32 *dst = (uint32 *)_screen.dst_ptr;
 
