@@ -15,14 +15,11 @@
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../network/network.h"
-#include "../../tunnelbridge.h"
 #include "../../genworld.h"
-#include "../../goal_type.h"
 
 #include "../script_storage.hpp"
 #include "../script_instance.hpp"
 #include "../script_fatalerror.hpp"
-#include "../script_suspend.hpp"
 #include "script_error.hpp"
 
 /**

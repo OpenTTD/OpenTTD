@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "core/alloc_func.hpp"
-#include "tile_map.h"
 #include "water_map.h"
 
 #if defined(_MSC_VER)

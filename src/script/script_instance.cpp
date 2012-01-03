@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../saveload/saveload.h"
-#include "../gui.h"
 
 #include "../script/squirrel_class.hpp"
 
@@ -28,7 +27,6 @@
 
 #include "../company_base.h"
 #include "../company_func.h"
-#include "../fileio_func.h"
 
 ScriptStorage::~ScriptStorage()
 {

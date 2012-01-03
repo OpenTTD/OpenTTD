@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "../core/random_func.hpp"
 #include "ai.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"

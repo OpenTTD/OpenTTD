@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_enginelist.hpp"
 #include "../../engine_base.h"
-#include "../../core/bitmath_func.hpp"
 
 ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
 {

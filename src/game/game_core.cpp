@@ -10,14 +10,11 @@
 /** @file game_core.cpp Implementation of Game. */
 
 #include "../stdafx.h"
-#include "../command_func.h"
 #include "../core/backup_type.hpp"
-#include "../core/bitmath_func.hpp"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
-#include "../fileio_func.h"
 #include "game.hpp"
 #include "game_scanner.hpp"
 #include "game_config.hpp"

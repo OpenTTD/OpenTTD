@@ -18,10 +18,8 @@
 #include "network/network.h"
 #include "heightmap.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "date_func.h"
 #include "engine_func.h"
-#include "newgrf_storage.h"
 #include "water.h"
 #include "video/video_driver.hpp"
 #include "tilehighlight_func.h"
@@ -36,7 +34,6 @@
 #include "game/game.hpp"
 #include "game/game_instance.hpp"
 
-#include "table/sprites.h"
 
 void GenerateClearTile();
 void GenerateIndustries();

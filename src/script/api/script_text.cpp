@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "../../string_func.h"
 #include "script_text.hpp"
-#include "../squirrel.hpp"
 #include "../../table/control_codes.h"
 
 ScriptText::ScriptText(HSQUIRRELVM vm) :

@@ -12,8 +12,6 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
-#include "vehicle_gui.h"
-#include "window_func.h"
 
 /**
  * Recalculates the cached total power of a vehicle. Should be called when the consist is changed.

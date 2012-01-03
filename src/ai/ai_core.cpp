@@ -16,15 +16,11 @@
 #include "../company_func.h"
 #include "../network/network.h"
 #include "../window_func.h"
-#include "../command_func.h"
-#include "../fileio_func.h"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"
 #include "ai.hpp"
-#include "../script/script_storage.hpp"
-#include "../script/api/script_error.hpp"
 
 /* static */ uint AI::frame_counter = 0;
 /* static */ AIScannerInfo *AI::scanner_info = NULL;

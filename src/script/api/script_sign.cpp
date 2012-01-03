@@ -13,8 +13,6 @@
 #include "script_sign.hpp"
 #include "table/strings.h"
 #include "../script_instance.hpp"
-#include "../../command_func.h"
-#include "../../core/alloc_func.hpp"
 #include "../../signs_base.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"

@@ -11,14 +11,12 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../fileio_func.h"
 #include "../network/network.h"
 #include "../core/random_func.hpp"
 
 #include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
-#include "../script/api/script_controller.hpp"
 
 
 AIScannerInfo::AIScannerInfo() :

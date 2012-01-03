@@ -27,11 +27,9 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "vehicle_func.h"
-#include "sprite.h"
 
 #include "widgets/airport_widget.h"
 
-#include "table/strings.h"
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
 static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1

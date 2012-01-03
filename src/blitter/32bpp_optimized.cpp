@@ -12,7 +12,6 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../settings_type.h"
-#include "../core/math_func.hpp"
 #include "32bpp_optimized.hpp"
 
 /** Instantiation of the optimized 32bpp blitter factory. */

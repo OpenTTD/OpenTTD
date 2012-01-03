@@ -10,7 +10,6 @@
 /** @file company_cmd.cpp Handling of companies. */
 
 #include "stdafx.h"
-#include "engine_base.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -18,8 +17,6 @@
 #include "news_func.h"
 #include "cmd_helper.h"
 #include "command_func.h"
-#include "network/network.h"
-#include "network/network_func.h"
 #include "network/network_base.h"
 #include "network/network_admin.h"
 #include "ai/ai.hpp"
@@ -33,11 +30,9 @@
 #include "settings_func.h"
 #include "vehicle_base.h"
 #include "vehicle_func.h"
-#include "sprite.h"
 #include "smallmap_gui.h"
 #include "game/game.hpp"
 
-#include "table/strings.h"
 
 CompanyByte _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyByte _current_company; ///< Company currently doing an action.

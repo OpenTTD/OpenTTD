@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../saveload/saveload.h"
 #include "../error.h"
 
 #include "../script/squirrel_class.hpp"
@@ -20,8 +19,6 @@
 #include "ai_gui.hpp"
 #include "ai.hpp"
 
-#include "../script/script_fatalerror.hpp"
-#include "../script/script_suspend.hpp"
 #include "../script/script_storage.hpp"
 #include "ai_info.hpp"
 #include "ai_instance.hpp"

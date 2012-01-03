@@ -11,9 +11,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
-#include "core/bitmath_func.hpp"
 
 static uint32 CargoGetRandomBits(const ResolverObject *object)
 {

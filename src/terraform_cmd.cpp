@@ -14,7 +14,6 @@
 #include "tunnel_map.h"
 #include "bridge_map.h"
 #include "viewport_func.h"
-#include "economy_func.h"
 #include "genworld.h"
 #include "object_base.h"
 #include "company_base.h"

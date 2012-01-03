@@ -29,7 +29,6 @@
 #include "../sortlist_type.h"
 #include "../company_func.h"
 #include "../core/geometry_func.hpp"
-#include "../newgrf_text.h"
 #include "../genworld.h"
 
 #include "../widgets/network_widget.h"

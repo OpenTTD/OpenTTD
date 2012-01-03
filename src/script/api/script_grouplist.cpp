@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_grouplist.hpp"
-#include "../../company_func.h"
 #include "../../group.h"
 
 ScriptGroupList::ScriptGroupList()

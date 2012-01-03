@@ -19,8 +19,6 @@
 #include "fontcache.h"
 #include "error.h"
 #include "gui.h"
-#include "sound_func.h"
-#include "window_func.h"
 
 #include "base_media_base.h"
 #include "saveload/saveload.h"
@@ -36,13 +34,11 @@
 #include "screenshot.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "signs_base.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "settings_func.h"
 #include "genworld.h"
 #include "progress.h"
-#include "group.h"
 #include "strings_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
@@ -52,7 +48,6 @@
 #include "elrail_func.h"
 #include "rev.h"
 #include "highscore.h"
-#include "thread/thread.h"
 #include "station_base.h"
 #include "crashlog.h"
 #include "engine_func.h"
@@ -66,12 +61,9 @@
 #include "game/game_config.hpp"
 
 
-#include "town.h"
-#include "industry.h"
 
 #include <stdarg.h>
 
-#include "table/strings.h"
 
 void CallLandscapeTick();
 void IncreaseDate();

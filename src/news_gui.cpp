@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "gui.h"
 #include "viewport_func.h"
-#include "news_type.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"

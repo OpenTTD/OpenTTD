@@ -22,7 +22,6 @@
 #include "train.h"
 #include "ship.h"
 #include "roadveh.h"
-#include "water_map.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
@@ -42,7 +41,6 @@
 #include "water.h"
 #include "company_gui.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 #include "table/bridge_land.h"
 

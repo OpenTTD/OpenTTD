@@ -39,7 +39,6 @@
 #include "../fileio_func.h"
 #include "../gamelog.h"
 #include "../string_func.h"
-#include "../engine_base.h"
 #include "../fios.h"
 #include "../error.h"
 

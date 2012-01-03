@@ -11,15 +11,11 @@
 
 #include "stdafx.h"
 #include "window_gui.h"
-#include "gfx_func.h"
 #include "command_func.h"
-#include "vehicle_gui.h"
 #include "train.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "window_func.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

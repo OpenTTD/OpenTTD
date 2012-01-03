@@ -29,10 +29,8 @@
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "autoslope.h"
 #include "water.h"
-#include "station_gui.h"
 #include "strings_func.h"
 #include "clear_func.h"
-#include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"

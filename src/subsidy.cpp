@@ -16,7 +16,6 @@
 #include "news_func.h"
 #include "ai/ai.hpp"
 #include "station_base.h"
-#include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "subsidy_base.h"

@@ -14,12 +14,10 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../gfx_func.h"
 #include "../strings_func.h"
 #include "../blitter/factory.hpp"
 #include "../console_func.h"
 #include "../video/video_driver.hpp"
-#include "../table/sprites.h"
 #include "../querystring_gui.h"
 #include "../town.h"
 #include "../window_func.h"

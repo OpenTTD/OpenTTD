@@ -21,7 +21,6 @@
 #include "autoslope.h"
 #include "water.h"
 #include "tunnelbridge_map.h"
-#include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"

@@ -12,9 +12,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../string_func.h"
-#include "../fileio_func.h"
 #include "../settings_type.h"
-#include <sys/stat.h>
 
 #include "../script/squirrel.hpp"
 #include "script_scanner.hpp"

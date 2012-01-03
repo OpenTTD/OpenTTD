@@ -14,7 +14,6 @@
 
 #include "../string_func.h"
 #include "../strings_func.h"
-#include "table/strings.h"
 
 /* The reason this exists in C++, is that a user can trash his ai/ or game/ dir,
  *  leaving no Scripts available. The complexity to solve this is insane, and

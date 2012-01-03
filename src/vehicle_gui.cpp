@@ -15,7 +15,6 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
-#include "vehicle_gui.h"
 #include "vehicle_gui_base.h"
 #include "viewport_func.h"
 #include "newgrf_text.h"
@@ -26,7 +25,6 @@
 #include "depot_map.h"
 #include "group_gui.h"
 #include "strings_func.h"
-#include "window_func.h"
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
@@ -41,7 +39,6 @@
 #include "tilehighlight_func.h"
 #include "zoom_func.h"
 
-#include "table/strings.h"
 
 Sorting _sorting;
 

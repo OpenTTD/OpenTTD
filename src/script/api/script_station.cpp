@@ -11,10 +11,8 @@
 
 #include "../../stdafx.h"
 #include "script_station.hpp"
-#include "script_cargo.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
-#include "../../debug.h"
 #include "../../station_base.h"
 #include "../../roadstop_base.h"
 #include "../../town.h"

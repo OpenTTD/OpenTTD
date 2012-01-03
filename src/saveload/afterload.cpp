@@ -13,7 +13,6 @@
 #include "../void_map.h"
 #include "../signs_base.h"
 #include "../depot_base.h"
-#include "../window_func.h"
 #include "../fios.h"
 #include "../gamelog_internal.h"
 #include "../network/network.h"
@@ -52,10 +51,8 @@
 #include "../core/backup_type.hpp"
 #include "../smallmap_gui.h"
 #include "../news_func.h"
-#include "../group.h"
 #include "../error.h"
 
-#include "table/strings.h"
 
 #include "saveload_internal.h"
 

@@ -13,7 +13,6 @@
 #include "command_func.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
-#include "group.h"
 #include "rail.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -28,7 +27,6 @@
 
 #include "widgets/autoreplace_widget.h"
 
-#include "table/strings.h"
 
 uint GetEngineListHeight(VehicleType type);
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);

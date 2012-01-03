@@ -13,15 +13,9 @@
 #include "company_func.h"
 #include "industry.h"
 #include "town.h"
-#include "news_func.h"
-#include "ai/ai.hpp"
-#include "station_base.h"
-#include "cargotype.h"
-#include "strings_func.h"
 #include "window_func.h"
 #include "goal_base.h"
 #include "core/pool_func.hpp"
-#include "core/random_func.hpp"
 #include "game/game.hpp"
 #include "command_func.h"
 #include "company_base.h"
@@ -29,7 +23,6 @@
 #include "gui.h"
 #include "network/network.h"
 
-#include "table/strings.h"
 
 GoalID _new_goal_id;
 

@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_engine.hpp"
 #include "script_cargo.hpp"
-#include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../strings_func.h"
 #include "../../rail.h"

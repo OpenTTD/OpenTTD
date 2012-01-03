@@ -22,13 +22,13 @@
 #include "gfx_func.h"
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
-#include "math.h"
 #include "currency.h"
 
 #include "widgets/graph_widget.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
+#include <math.h>
 
 /* Bitmasks of company and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_companies;

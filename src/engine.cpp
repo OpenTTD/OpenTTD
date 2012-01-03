@@ -16,7 +16,6 @@
 #include "aircraft.h"
 #include "newgrf.h"
 #include "newgrf_engine.h"
-#include "group.h"
 #include "strings_func.h"
 #include "core/random_func.hpp"
 #include "window_func.h"

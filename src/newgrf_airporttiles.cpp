@@ -11,13 +11,11 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "newgrf.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
 #include "station_base.h"
 #include "water.h"
-#include "viewport_func.h"
 #include "landscape.h"
 #include "company_base.h"
 #include "town.h"

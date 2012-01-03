@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "date_func.h"
 #include "depot_base.h"

@@ -10,7 +10,6 @@
 /** @file game_sl.cpp Handles the saveload part of the GameScripts */
 
 #include "../stdafx.h"
-#include "../company_base.h"
 #include "../debug.h"
 #include "saveload.h"
 #include "../string_func.h"

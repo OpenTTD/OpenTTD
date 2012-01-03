@@ -19,7 +19,6 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "map_func.h"
-#include "gfx_func.h"
 #include "viewport_func.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"

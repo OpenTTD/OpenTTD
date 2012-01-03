@@ -14,8 +14,6 @@
 #include "script_rail.hpp"
 #include "../script_instance.hpp"
 #include "../../tunnel_map.h"
-#include "../../command_func.h"
-#include "../../company_func.h"
 
 /* static */ bool ScriptTunnel::IsTunnelTile(TileIndex tile)
 {

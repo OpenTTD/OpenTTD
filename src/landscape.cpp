@@ -29,8 +29,6 @@
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
 #include "object_base.h"
-#include "water_map.h"
-#include "economy_func.h"
 #include "company_func.h"
 #include "pathfinder/npf/aystar.h"
 #include <list>

@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../industry.h"
-#include "../newgrf.h"
 
 #include "saveload.h"
 #include "newgrf_sl.h"

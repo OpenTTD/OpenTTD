@@ -13,15 +13,12 @@
 #include "script_tile.hpp"
 #include "script_map.hpp"
 #include "script_town.hpp"
-#include "script_cargo.hpp"
 #include "../../station_func.h"
-#include "../../company_func.h"
 #include "../../water_map.h"
 #include "../../clear_map.h"
 #include "../../tree_map.h"
 #include "../../town.h"
 #include "../../landscape.h"
-#include "../../economy_func.h"
 
 /* static */ bool ScriptTile::IsBuildable(TileIndex tile)
 {

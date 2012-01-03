@@ -12,13 +12,10 @@
 #include "stdafx.h"
 #include "roadveh.h"
 #include "window_gui.h"
-#include "gfx_func.h"
-#include "vehicle_gui.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

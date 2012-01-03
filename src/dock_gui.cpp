@@ -15,7 +15,6 @@
 #include "station_gui.h"
 #include "command_func.h"
 #include "water.h"
-#include "water_map.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
@@ -25,9 +24,7 @@
 #include "slope_func.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
-#include "station_type.h"
 #include "hotkeys.h"
-#include "bridge.h"
 
 #include "widgets/dock_widget.h"
 

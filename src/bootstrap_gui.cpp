@@ -16,7 +16,6 @@
 #if defined(ENABLE_NETWORK) && defined(WITH_FREETYPE)
 
 #include "core/geometry_func.hpp"
-#include "fileio_func.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "network/network.h"
@@ -25,7 +24,6 @@
 #include "strings_func.h"
 #include "video/video_driver.hpp"
 #include "window_func.h"
-#include "window_gui.h"
 
 #include "widgets/bootstrap_widget.h"
 

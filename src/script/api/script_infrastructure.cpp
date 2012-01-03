@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_infrastructure.hpp"
-#include "../../settings_func.h"
 #include "../../company_base.h"
 #include "../../rail.h"
 #include "../../road_func.h"

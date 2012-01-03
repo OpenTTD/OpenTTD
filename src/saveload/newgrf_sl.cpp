@@ -10,7 +10,6 @@
 /** @file newgrf_sl.cpp Code handling saving and loading of newgrf config */
 
 #include "../stdafx.h"
-#include "../core/bitmath_func.hpp"
 #include "../fios.h"
 
 #include "saveload.h"

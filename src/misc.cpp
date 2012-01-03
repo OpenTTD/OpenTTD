@@ -16,7 +16,6 @@
 #include "ai/ai_gui.hpp"
 #include "newgrf.h"
 #include "newgrf_house.h"
-#include "group.h"
 #include "economy_func.h"
 #include "date_func.h"
 #include "texteff.hpp"

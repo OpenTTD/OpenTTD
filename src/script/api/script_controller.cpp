@@ -18,7 +18,6 @@
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"
 #include "../script_instance.hpp"
-#include "../script_suspend.hpp"
 #include "script_log.hpp"
 
 /* static */ void ScriptController::SetCommandDelay(int ticks)

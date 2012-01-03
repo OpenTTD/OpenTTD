@@ -14,8 +14,6 @@
 #include "viewport_func.h"
 #include "landscape.h"
 #include "spritecache.h"
-#include "core/alloc_func.hpp"
-#include "core/mem_func.hpp"
 #include "zoom_func.h"
 
 

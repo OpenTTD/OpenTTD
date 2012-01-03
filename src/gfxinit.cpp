@@ -23,7 +23,6 @@
 #include "base_media_func.h"
 
 #include "table/sprites.h"
-#include "table/strings.h"
 
 /** Whether the given NewGRFs must get a palette remap from windows to DOS or not. */
 bool _palette_remap_grf[MAX_FILE_SLOTS];

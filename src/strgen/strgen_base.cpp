@@ -12,14 +12,10 @@
 #include "../stdafx.h"
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
-#include "../strings_type.h"
-#include "../language.h"
 #include "../table/control_codes.h"
 
 #include "strgen.h"
 
-#include <stdarg.h>
-#include <exception>
 
 #include "../table/strgen_tables.h"
 

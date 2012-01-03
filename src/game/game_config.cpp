@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../settings_type.h"
-#include "../core/random_func.hpp"
 #include "game.hpp"
 #include "game_config.hpp"
 #include "game_info.hpp"

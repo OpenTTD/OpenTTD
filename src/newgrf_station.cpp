@@ -23,7 +23,6 @@
 #include "newgrf_town.h"
 #include "company_func.h"
 #include "tunnelbridge_map.h"
-#include "newgrf.h"
 #include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
 

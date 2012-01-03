@@ -11,9 +11,7 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "viewport_func.h"
 #include "landscape.h"
-#include "newgrf.h"
 #include "newgrf_house.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
@@ -21,7 +19,6 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "town.h"
-#include "sprite.h"
 #include "genworld.h"
 #include "newgrf_animation_base.h"
 #include "newgrf_cargo.h"

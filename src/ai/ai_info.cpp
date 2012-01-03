@@ -11,14 +11,11 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
-#include "../settings_type.h"
 #include "../debug.h"
 #include "../rev.h"
-#include "ai.hpp"
 
 /**
  * Check if the API version provided by the AI is supported.

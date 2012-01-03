@@ -30,7 +30,6 @@
 
 #include "widgets/newgrf_widget.h"
 
-#include "table/strings.h"
 #include "table/sprites.h"
 
 /**

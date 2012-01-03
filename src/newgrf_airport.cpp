@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "date_func.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"

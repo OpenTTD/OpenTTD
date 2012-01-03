@@ -39,7 +39,6 @@
 
 #include "widgets/rail_widget.h"
 
-#include "table/strings.h"
 
 static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.
 static bool _remove_button_clicked;          ///< Flag whether 'remove' toggle-button is currently enabled

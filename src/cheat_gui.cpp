@@ -18,18 +18,15 @@
 #include "saveload/saveload.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
-#include "newgrf.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "rail_gui.h"
 #include "gui.h"
 #include "company_gui.h"
-#include "gamelog.h"
 
 #include "widgets/cheat_widget.h"
 
-#include "table/strings.h"
 #include "table/sprites.h"
 
 

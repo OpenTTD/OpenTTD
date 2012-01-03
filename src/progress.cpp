@@ -10,7 +10,6 @@
 /** @file progress.cpp Functions for modal progress windows. */
 
 #include "stdafx.h"
-#include "progress.h"
 #include "thread/thread.h"
 
 /** Are we in a modal progress or not? */

@@ -18,7 +18,6 @@
 #include "pathfinder/npf/npf_func.h"
 #include "depot_base.h"
 #include "station_base.h"
-#include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "pathfinder/yapf/yapf.h"
 #include "newgrf_sound.h"

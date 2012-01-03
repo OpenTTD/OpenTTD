@@ -10,7 +10,6 @@
 /** @file game_text.cpp Implementation of handling translated strings. */
 
 #include "../stdafx.h"
-#include "../language.h"
 #include "../strgen/strgen.h"
 #include "../debug.h"
 #include "../fileio_func.h"
@@ -21,7 +20,6 @@
 
 #include "table/strings.h"
 
-#include <exception>
 #include <stdarg.h>
 
 void CDECL strgen_warning(const char *s, ...)

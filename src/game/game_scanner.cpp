@@ -10,15 +10,10 @@
 /** @file game_scanner.cpp allows scanning Game scripts */
 
 #include "../stdafx.h"
-#include "../debug.h"
-#include "../fileio_func.h"
-#include "../network/network.h"
-#include "../core/random_func.hpp"
 
 #include "../script/squirrel_class.hpp"
 #include "game_info.hpp"
 #include "game_scanner.hpp"
-#include "../script/api/script_controller.hpp"
 
 
 void GameScannerInfo::Initialize()

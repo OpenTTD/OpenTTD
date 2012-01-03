@@ -13,8 +13,6 @@
 #include "script_group.hpp"
 #include "script_engine.hpp"
 #include "../script_instance.hpp"
-#include "../../company_func.h"
-#include "../../group.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../autoreplace_func.h"

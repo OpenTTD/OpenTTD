@@ -13,7 +13,7 @@
 #include "clear_map.h"
 #include "industry.h"
 #include "station_base.h"
-#include "train.h"
+#include "landscape.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"

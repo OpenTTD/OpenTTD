@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "cargotype.h"
-#include "core/bitmath_func.hpp"
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"

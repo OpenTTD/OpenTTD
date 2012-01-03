@@ -13,7 +13,6 @@
 #include "script_game.hpp"
 #include "../../command_type.h"
 #include "../../settings_type.h"
-#include "../../openttd.h"
 #include "../../network/network.h"
 
 /* static */ bool ScriptGame::Pause()

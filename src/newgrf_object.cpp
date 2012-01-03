@@ -13,7 +13,6 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "debug.h"
-#include "newgrf.h"
 #include "newgrf_class_func.h"
 #include "newgrf_object.h"
 #include "newgrf_sound.h"
@@ -21,10 +20,8 @@
 #include "newgrf_town.h"
 #include "object_base.h"
 #include "object_map.h"
-#include "sprite.h"
 #include "tile_cmd.h"
 #include "town.h"
-#include "viewport_func.h"
 #include "water.h"
 #include "newgrf_animation_base.h"
 

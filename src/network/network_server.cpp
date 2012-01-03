@@ -27,7 +27,6 @@
 #include "../genworld.h"
 #include "../company_func.h"
 #include "../company_gui.h"
-#include "../window_func.h"
 #include "../roadveh.h"
 #include "../order_backup.h"
 #include "../core/pool_func.hpp"

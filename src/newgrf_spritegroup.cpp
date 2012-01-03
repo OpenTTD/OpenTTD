@@ -10,9 +10,7 @@
 /** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
-#include "sprite.h"
 #include "core/pool_func.hpp"
 
 SpriteGroupPool _spritegroup_pool("SpriteGroup");

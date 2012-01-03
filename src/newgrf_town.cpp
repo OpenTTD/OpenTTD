@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "town.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
 
 /**

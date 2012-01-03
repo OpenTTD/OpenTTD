@@ -14,7 +14,6 @@
 #include "script_log.hpp"
 #include "../../network/network_admin.h"
 #include "../script_instance.hpp"
-#include "../../game/game.hpp"
 
 /* static */ bool ScriptAdmin::MakeJSON(HSQUIRRELVM vm, SQInteger index, int max_depth, std::string &data)
 {

@@ -14,7 +14,6 @@
 #include "command_func.h"
 #include "vehicle_gui.h"
 #include "vehicle_base.h"
-#include "group.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -29,7 +28,6 @@
 
 #include "widgets/group_widget.h"
 
-#include "table/strings.h"
 #include "table/sprites.h"
 
 typedef GUIList<const Group*> GUIGroupList;

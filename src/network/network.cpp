@@ -37,7 +37,6 @@
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
 #include "../error.h"
-#include "table/strings.h"
 
 #ifdef DEBUG_DUMP_COMMANDS
 #include "../fileio_func.h"

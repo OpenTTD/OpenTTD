@@ -22,7 +22,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "terraform_gui.h"
-#include "transparency.h"
 #include "strings_func.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -42,7 +41,6 @@
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "engine_base.h"
-#include "settings_type.h"
 
 #include "widgets/toolbar_widget.h"
 
@@ -50,8 +48,6 @@
 #include "network/network_gui.h"
 #include "network/network_func.h"
 
-#include "table/strings.h"
-#include "table/sprites.h"
 
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;

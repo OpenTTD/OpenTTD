@@ -34,11 +34,7 @@
 #include "ai/ai.hpp"
 #include "language.h"
 
-#include "widgets/settings_widget.h"
 
-#include "table/sprites.h"
-#include "table/strings.h"
-#include <map>
 
 static const StringID _units_dropdown[] = {
 	STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL,

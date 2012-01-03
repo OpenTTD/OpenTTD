@@ -16,10 +16,6 @@
 #include "script_map.hpp"
 #include "script_town.hpp"
 #include "../script_instance.hpp"
-#include "../../command_type.h"
-#include "../../settings_type.h"
-#include "../../openttd.h"
-#include "../../network/network.h"
 #include "../../goal_base.h"
 #include "../../string_func.h"
 

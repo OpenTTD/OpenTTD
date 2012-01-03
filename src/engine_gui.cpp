@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "window_gui.h"
-#include "gfx_func.h"
 #include "engine_base.h"
 #include "command_func.h"
 #include "strings_func.h"

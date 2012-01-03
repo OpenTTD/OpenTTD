@@ -14,8 +14,6 @@
 #include "landscape.h"
 #include "error.h"
 #include "gui.h"
-#include "viewport_func.h"
-#include "gfx_func.h"
 #include "command_func.h"
 #include "company_func.h"
 #include "town.h"

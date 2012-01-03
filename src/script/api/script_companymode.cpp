@@ -11,10 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_companymode.hpp"
-#include "../../company_base.h"
-#include "../../company_func.h"
-#include "../script_instance.hpp"
-#include "../script_fatalerror.hpp"
 
 ScriptCompanyMode::ScriptCompanyMode(int company)
 {

@@ -15,7 +15,6 @@
 #include "../script_instance.hpp"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
-#include "../../economy_func.h"
 #include "../../date_func.h"
 
 /* static */ bool ScriptBridge::IsValidBridge(BridgeID bridge_id)

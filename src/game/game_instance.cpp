@@ -10,9 +10,7 @@
 /** @file game_instance.cpp Implementation of GameInstance. */
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../error.h"
-#include "../saveload/saveload.h"
 
 #include "../script/squirrel_class.hpp"
 

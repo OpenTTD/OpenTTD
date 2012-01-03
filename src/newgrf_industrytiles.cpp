@@ -11,17 +11,13 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "viewport_func.h"
 #include "landscape.h"
-#include "newgrf.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_sound.h"
-#include "newgrf_text.h"
 #include "industry.h"
 #include "town.h"
 #include "command_func.h"
 #include "water.h"
-#include "sprite.h"
 #include "newgrf_animation_base.h"
 
 #include "table/strings.h"

@@ -11,12 +11,9 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "newgrf.h"
 #include "newgrf_spritegroup.h"
 #include "industrytype.h"
-#include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
-#include "tile_map.h"
 #include "newgrf_sound.h"
 #include "water_map.h"
 #include <list>

@@ -17,7 +17,6 @@
 #include "vehicle_func.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
-#include "group.h"
 #include "articulated_vehicles.h"
 #include "core/random_func.hpp"
 

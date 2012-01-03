@@ -14,7 +14,6 @@
 #include "../error.h"
 #include "../gui.h"
 #include "../querystring_gui.h"
-#include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
 #include "../strings_func.h"
@@ -24,7 +23,6 @@
 #include "../network/network.h"
 #include "../settings_func.h"
 #include "../network/network_content.h"
-#include "../core/backup_type.hpp"
 
 #include "ai.hpp"
 #include "../script/api/script_log.hpp"
@@ -36,7 +34,6 @@
 #include "../game/game_info.hpp"
 #include "../game/game_instance.hpp"
 
-#include "../widgets/ai_widget.h"
 
 #include "table/strings.h"
 

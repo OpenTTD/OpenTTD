@@ -17,7 +17,6 @@
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "industry.h"
 #include "town.h"
 #include "cheat_type.h"
@@ -40,7 +39,6 @@
 #include "widgets/industry_widget.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 bool _ignore_restrictions;
 uint64 _displayed_industries; ///< Communication from the industry chain window to the smallmap window about what industries to display.

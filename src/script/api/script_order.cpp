@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_order.hpp"
-#include "script_vehicle.hpp"
 #include "script_cargo.hpp"
 #include "script_map.hpp"
 #include "../script_instance.hpp"

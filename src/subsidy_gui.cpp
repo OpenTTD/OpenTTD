@@ -16,7 +16,6 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "gui.h"
 #include "subsidy_func.h"
 #include "subsidy_base.h"

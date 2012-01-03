@@ -14,7 +14,6 @@
 #include "newgrf.h"
 #include "newgrf_object.h"
 #include "newgrf_text.h"
-#include "sprite.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_gui.h"

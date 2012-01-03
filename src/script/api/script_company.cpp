@@ -12,7 +12,6 @@
 #include "../../stdafx.h"
 #include "script_company.hpp"
 #include "script_error.hpp"
-#include "../../command_func.h"
 #include "../../company_func.h"
 #include "../../company_base.h"
 #include "../../company_manager_face.h"

@@ -13,7 +13,6 @@
 #include "script_event_types.hpp"
 #include "script_vehicle.hpp"
 #include "script_log.hpp"
-#include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../settings_type.h"
 #include "../../engine_base.h"

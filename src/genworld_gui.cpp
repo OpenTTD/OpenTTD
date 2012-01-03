@@ -22,7 +22,6 @@
 #include "string_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
-#include "landscape_type.h"
 #include "querystring_gui.h"
 #include "town.h"
 #include "settings_func.h"
@@ -33,8 +32,6 @@
 
 #include "widgets/genworld_widget.h"
 
-#include "table/strings.h"
-#include "table/sprites.h"
 
 extern void MakeNewgameSettingsLive();
 

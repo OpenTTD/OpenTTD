@@ -20,7 +20,6 @@
 #include "settings_type.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "thread/thread.h"
 #include "window_func.h"
 #include "newgrf_debug.h"
 

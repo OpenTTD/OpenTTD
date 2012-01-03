@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "script_cargo.hpp"
-#include "../../cargotype.h"
 #include "../../economy_func.h"
 #include "../../core/bitmath_func.hpp"
 

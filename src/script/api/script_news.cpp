@@ -12,11 +12,8 @@
 #include "../../stdafx.h"
 #include "script_news.hpp"
 #include "script_error.hpp"
-#include "../../news_func.h"
-#include "../../strings_func.h"
 #include "../../command_type.h"
 #include "../../string_func.h"
-#include "table/strings.h"
 
 /* static */ bool ScriptNews::Create(NewsType type, Text *text, ScriptCompany::CompanyID company)
 {

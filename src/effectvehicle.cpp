@@ -19,7 +19,6 @@
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 
-#include "table/sprites.h"
 
 static void ChimneySmokeInit(EffectVehicle *v)
 {

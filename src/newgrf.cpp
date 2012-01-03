@@ -24,7 +24,6 @@
 #include "fontcache.h"
 #include "currency.h"
 #include "landscape.h"
-#include "newgrf.h"
 #include "newgrf_cargo.h"
 #include "newgrf_house.h"
 #include "newgrf_sound.h"

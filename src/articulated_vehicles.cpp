@@ -18,7 +18,6 @@
 #include "newgrf.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts per vehicle, i.e. when to abort calling the articulated vehicle callback.
 

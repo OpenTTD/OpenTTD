@@ -13,7 +13,6 @@
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
 #include "../strings_type.h"
-#include "../language.h"
 #include "../misc/getoptdata.h"
 #include "../table/control_codes.h"
 

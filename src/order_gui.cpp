@@ -13,11 +13,9 @@
 #include "command_func.h"
 #include "viewport_func.h"
 #include "depot_map.h"
-#include "vehicle_gui.h"
 #include "roadveh.h"
 #include "timetable.h"
 #include "strings_func.h"
-#include "window_func.h"
 #include "company_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
@@ -33,7 +31,6 @@
 
 #include "widgets/order_widget.h"
 
-#include "table/strings.h"
 
 /** Order load types that could be given to station orders. */
 static const StringID _station_load_types[][5][5] = {

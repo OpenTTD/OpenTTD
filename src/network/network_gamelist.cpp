@@ -21,7 +21,6 @@
 #include "network_internal.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
-#include "../newgrf_text.h"
 
 NetworkGameList *_network_game_list = NULL;
 

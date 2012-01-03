@@ -16,7 +16,6 @@
 #include "aircraft.h"
 #include "landscape.h"
 #include "news_func.h"
-#include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "spritecache.h"

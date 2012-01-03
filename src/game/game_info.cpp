@@ -11,14 +11,10 @@
 
 #include "../stdafx.h"
 
-#include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 #include "game_info.hpp"
 #include "game_scanner.hpp"
-#include "../settings_type.h"
 #include "../debug.h"
-#include "../rev.h"
-#include "game.hpp"
 
 /**
  * Check if the API version provided by the Game is supported.

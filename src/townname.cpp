@@ -13,7 +13,6 @@
 #include "string_func.h"
 #include "townname_type.h"
 #include "town.h"
-#include "core/alloc_func.hpp"
 #include "strings_func.h"
 #include "core/random_func.hpp"
 #include "genworld.h"

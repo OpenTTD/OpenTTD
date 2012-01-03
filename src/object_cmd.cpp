@@ -25,7 +25,6 @@
 #include "cheat_type.h"
 #include "object.h"
 #include "cargopacket.h"
-#include "sprite.h"
 #include "core/random_func.hpp"
 #include "core/pool_func.hpp"
 #include "object_map.h"
