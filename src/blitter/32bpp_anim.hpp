@@ -41,7 +41,7 @@ public:
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
 
 	/* virtual */ const char *GetName() { return "32bpp-anim"; }
-	/* virtual */ int GetBytesPerPixel() { return 5; }
+	/* virtual */ int GetBytesPerPixel() { return 6; }
 	/* virtual */ void PostResize();
 
 	/**
