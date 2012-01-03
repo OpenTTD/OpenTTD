@@ -2670,6 +2670,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Aucun
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectifs de la compagnie{NBSP}:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer sur l'objectif pour centrer la vue principale sur l'industrie, la ville ou la case. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie, la ville ou la case
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Question
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuler
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Non
+STR_GOAL_QUESTION_BUTTON_YES                                    :Oui
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Refuser
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepter
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorer
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Réessayer
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Précédent
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Suivant
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Arrêter
+STR_GOAL_QUESTION_BUTTON_START                                  :Démarrer
+STR_GOAL_QUESTION_BUTTON_GO                                     :Aller
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuer
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Redémarrer
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Reporter
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Abandonner
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fermer
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Offres de subvention pour le transport de{NBSP}:
@@ -3487,7 +3510,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le log des scripts de jeu
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'une des IA a rencontré un problème. Merci de rapporter ceci à l'auteur de l'IA avec une capture d'écran de la fenêtre de débogage d'IA
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage d'IA et de GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de GameScript n'est disponible que pour le serveur
 
 # AI configuration window

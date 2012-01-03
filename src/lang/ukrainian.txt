@@ -569,7 +569,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Дебаг AI
+STR_ABOUT_MENU_AI_DEBUG                                         :АІ / Дебаг ІгровогоСкрипту
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану (Ctrl-S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -989,10 +989,10 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Грош
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Виберіть грошову одиницю
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Фунт (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Долар ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Євро (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Ієна (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британський фунт (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Американський долар (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Євро (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Японська ієна (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Австрійський шилінг (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Бельгійський франк (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Швейцарський франк (CHF)
@@ -1001,7 +1001,7 @@ STR_GAME_OPTIONS_CURRENCY_DEM                                   :Німецьк�
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Датська крона (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Іспанська песета (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Фінська марка (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Французький франк (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Грецька драхма (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Угорський форинт (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Ісландська крона (ISK)
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Тов�
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :класичний
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. віддаленість від краю для нафтових свердловин {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. віддаленість від краю для нафтових свердловин: {ORANGE}{STRING} клітинок
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Нерівність землі (лише для TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :дуже гладкий
@@ -1329,7 +1329,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Доз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна або більше клітинок з північного краю не є пустими
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна або більше клітинок на одному з країв - не вода
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} клітинок {RED}Увага! Велике значення гальмує гру
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Приєднати меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Колір поверхні на малій карті: {ORANGE}{STRING}
@@ -2091,7 +2091,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Буду
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Модернізувати колію. Утримуйте Shift для показу витрат на модернізацію
 
 STR_RAIL_NAME_RAILROAD                                          :Залізнична колія
-STR_RAIL_NAME_ELRAIL                                            :Електрифікована залізнична колія
+STR_RAIL_NAME_ELRAIL                                            :Електрифікована колія
 STR_RAIL_NAME_MONORAIL                                          :Монорельс
 STR_RAIL_NAME_MAGLEV                                            :Маглев
 
@@ -2572,7 +2572,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Вище
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перемістити вибрані файли вверх по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Нижче
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістити вибрані файли вниз по списку
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених NewGRF файлів. Клікніть на файлі, щоб змінити його параметри
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених NewGRF файлів.
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Читати документацію (Readme)
@@ -2794,6 +2794,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- не�
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цілі компанії:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клік мишкою на цілі (меті) відобразить по центру промисловість/місто/клітинку у головному вікні. Ctrl+клік відкриє міні-вікно
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Пропонуються субсидії:
@@ -2899,15 +2903,15 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Тран�
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} поїзд{P "" и ів}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} авто
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} літак{P "" и ів}
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P ель лі ів}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} кораб{P ель лі лів}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Немає
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Вартість компанії: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% у власності {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Інфраструктура:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} клітинки з залізничними коліями
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} клітинки з дорогами
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} клітинки з водою
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} клітинки станцій
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} клітин{P ка ки ок} з залізничними коліями
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} клітин{P ка ки ок} з дорогами
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} клітин{P ка ки ок} з водою
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} клітин{P ка ки ок} станцій
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорти
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нема
 
@@ -3431,7 +3435,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент завантаження
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надійність
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. швидкість
-STR_ORDER_CONDITIONAL_AGE                                       :Вік транспорту (роки)
+STR_ORDER_CONDITIONAL_AGE                                       :Вік (роки)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Потребує техогляду
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Завжди
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Залишок строку служби (років)
@@ -3591,11 +3595,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Обер
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
+STR_AI_DEBUG                                                    :{WHITE}АІ / Дебаг ІгровогоСкрипту
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування AI
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування AI
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва скрипту
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Змінити налаштування скрипту
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Увімкнути/вимкнути паузу при появі сигнального рядку в журналі АІ
@@ -3612,10 +3616,10 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Пере
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно Дебаг AI доступно тільки серверу
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}АІ / Вікно Дебагу ІгровогоСкрипту доступне тільки серверу
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфігурація AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Налаштування гри
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}ІгровийСкрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
@@ -3636,22 +3640,22 @@ STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :ІгровийСкрипт
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Завантажити інший скрипт
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Настроїти
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри AI
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри скрипту
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Доступні {STRING}
 STR_AI_LIST_CAPTION_AI                                          :АІ
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :ІгровіСкрипти
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати AI
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати скрипт
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Версія: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Прийняти
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Вибрати виділений AI
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Вибрати виділений скрипт
 STR_AI_LIST_CANCEL                                              :{BLACK}Відміна
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти AI
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не міняти скрипт
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
@@ -3660,7 +3664,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Кількість днів, після яких запускати цей АІ після попереднього: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Кількість днів, після яких запускати цей АІ після попереднього АІ: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

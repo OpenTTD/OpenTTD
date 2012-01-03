@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Прем
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Активирай голям/малък размер на прозореца
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лента за позициониране - превърта списъка нагоре/надолу
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща ивица - превърта списъка на ляво/дясно
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал. Shift показва евентуалната цена на разрушението.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
@@ -332,7 +332,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Създ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Създаване на град
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Създаване на индустрия
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строене на път
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посаждане дърва
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посаждане дърва. Shift показва евентуалната цена на засаждането.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставяне табела
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Постави обект
 
@@ -443,7 +443,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
 STR_ABOUT_MENU_AI_DEBUG                                         :ИИ дебъг
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Увеличен screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Напълно увеличен в кадъра.
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Увеличение по подразбиране
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :За 'OpenTTD'
 ############ range ends here
@@ -1844,6 +1845,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Сценари�
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Карта
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Базови звуци
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Базова музика
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Програмен език на играта
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS библиотека
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Изтегляне на съдържанието...
@@ -2552,6 +2555,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Под
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Субсидии за превоз на:
@@ -3008,7 +3015,7 @@ STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{G=m}{RED}По�
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спрян
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Спира, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма мощност
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Изчакване за свободен път
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Изчакване на свободен път
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без заповеди, {VELOCITY}

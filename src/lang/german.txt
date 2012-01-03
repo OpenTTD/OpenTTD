@@ -2670,6 +2670,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- Keine
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenspezifische Ziele:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Feld. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventionen
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventionsangebot für:
@@ -3487,7 +3491,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Skripts
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder Scripte ist abgestürzt. Es ist nett, den Fehler dem Autor der KI oder des Scripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD und KI- bzw. Script-Versionsnummer zu melden
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI oder Skripte ist nur auf dem Server verfügbar
 
 # AI configuration window

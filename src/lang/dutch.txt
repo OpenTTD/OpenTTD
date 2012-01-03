@@ -2669,6 +2669,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Geen 
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfsdoelen:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om venster te centreren op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op industrie/stad/tegel lokatie
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Vraag
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuleren
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nee
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ja
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Wijs af
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepteer
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Negeren
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Opnieuw proberen
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Vorige
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Volgende
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Ga
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Doorgaan
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Herstart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Stel uit
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Geef op
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sluiten
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Beschikbare subsidies:
@@ -3486,7 +3509,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het Game Script log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve scripts is vastgelopen. Meld dit a.u.b. bij de auteur van dit script met een schermprint van het AI / GameScript Debugscherm
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript debugvenster is alleen beschikbaar voor de server
 
 # AI configuration window

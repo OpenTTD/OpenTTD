@@ -542,7 +542,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Otvori konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugiranje UI-ja / skripte igre
 STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano u slici zaslona
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano do kraja na slici zaslona
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standardno zumiranje slike zaslona
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Slika zaslona cijele mape
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjanje sprite-a
@@ -2764,6 +2765,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- Nijed
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciljevi kompanije:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za centriranje središnjeg pogleda na industriju/grad/pločicu. Ctrl+Klik otvara novi prozor s pogledom na lokaciju industrije/grada/pločice
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponuđene subvencije za pružanje usluga:
@@ -3581,7 +3586,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta 
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Provjeri zapis Skripte Igre
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nema prikladne UI za učitavanje.{}Ova UI je samo model i neće ništa učiniti.{}Možete preuzeti nekoliko umjetnih inteligencija pomoću sustava 'Online sadržaji'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedan od UI igrača se srušio. Molimo vas da prijavite ovo autoru UI sa kopijom slike prozora za debugiranje UI.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti se srušila. Molimo vas da prijavite ovo autoru skripte sa kopijom slike prozora za debugiranje UI/skripte igre.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za debugiranje UI-ja / skripte igre je dopušten samo za poslužitelj
 
 # AI configuration window

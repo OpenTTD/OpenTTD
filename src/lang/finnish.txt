@@ -446,7 +446,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn / Peliskriptin virheenjäljitys
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Lähennetty kuvakaappaus
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Täysin lähennetty kuvakaappaus
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Kuvakaappaus oletuslähennystasolla
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
@@ -2668,6 +2669,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Ei mi
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön tavoitteet:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikkaa tavoitetta keskittääksesi päänäkymän teollisuuteen/kaupunkiin/ruutuun. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Kysymys
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Peruuta
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Ei
+STR_GOAL_QUESTION_BUTTON_YES                                    :Kyllä
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Kieltäydy
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Hyväksy
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Jätä huomiotta
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Yritä uudelleen
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Edellinen
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Seuraava
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Pysäytä
+STR_GOAL_QUESTION_BUTTON_START                                  :Aloita
+STR_GOAL_QUESTION_BUTTON_GO                                     :Mene
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Jatka
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Aloita uudelleen
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Lykkää myöhemmäksi
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Luovuta
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sulje
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tuet
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Tarjotut tuet:
@@ -3485,7 +3509,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online-sisältö' järjestelmällä
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ilmoita tästä tekoälyn kehittäjälle littäen mukaan kuvankaappaus Tekoälyn virheenjäljitys -ikkunasta
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle littäen mukaan kuvankaappaus Tekoälyn/Skriptin virheenjäljitys -ikkunasta
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn / Peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window

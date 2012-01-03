@@ -2047,7 +2047,7 @@ STR_STATION_CLASS_WAYP                                          :Keliarodžiai
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalo Pasirinkimas
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blokavimo signalas (semaforas){}Papraščiausias signalo tipas, leidžiantis tik vieną traukinį viename bloke tuo pačiu laiku.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Įvažiavimo signalas (semaforas){}Žalias tol, kol žaliai šviečia bent vienas išvažiavimo iš sekcijos signalas. Kitu atvėju - raudonas
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Išvažiavimo signalas (semaforas){}Elgiasi taip bat kaip blokavimo signalas, bet yra reikalingas įvažiavimo ir kombinuotam pre signalui.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Išvažiavimo signalas (semaforas){}Elgiasi taip pat kaip blokavimo signalas, bet yra reikalingas įvažiavimo ir kombinuotam pre signalui.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombo-signalas (semaforas){}Kombo signalas veikia kaip įvažiavimo ir išvažiavimo signalai kartu. Leidžia statyti didelius signalų medžius.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Trajektorijos signalas (semaforas){}Ledžia būti dagiau negu vienam traukiniui bloke, jeigu traukiniai važiuoja saugiu stabdymui atstumu. Standartiniai trajektorijos signalai gali buvti pravažiuojami iš galinės pusės.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Vienpusis trajektorijos signalas (semaforas){}Ledžia būti dagiau negu vienam traukiniui bloke, jeigu traukiniai važiuoja saugiu stabdymui atstumu. Vienpusiai trajektorijos signalai negali buti pravažiuojami iš galinės pusės.
@@ -2681,6 +2681,10 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Visuotin
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nieko -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Kompanijos tikslai:
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidijos

@@ -2655,6 +2655,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- Nenhu
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objetivos da empresa:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique no objetivo para centrar a vista principal na indústria/cidade/quadrado. Ctrl+clique abre uma nova vista na localização da indústria/cidade/quadrado
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta de subsídios para os serviços:
@@ -3472,7 +3476,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Verifique o registo do Script de Jogo
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos jogadores computador teve um erro. Por favor reporte isto ao autor do jogador com uma imagem da janela de depuramento de erros.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um erro num script. Por favor reporte isto ao autor do script com uma imagem da janela do depuramento de erros.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela Depuração da IA/Scripts de Jogo está disponível apenas para o servidor
 
 # AI configuration window

@@ -1389,6 +1389,7 @@ STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Syne New
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Sjå etter nytt og oppdatert innhald som kan lastas ned
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Denne nynorsk-oversettelsen mangler {NUM} streng{P "" er}. Vennligst hjelp til å gjøre OpenTTD bedre ved å bli med i oversettergruppen. For detaljer, sjekk readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Avslutt
@@ -2556,6 +2557,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kjøp e
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk bystyret til å forbetre vurderinga av firmaet, du risikerer bøter dersom du vert oppdaga.{}Kostnad: {CURRENCY_LONG}
 
 # Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidiar

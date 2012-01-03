@@ -2669,6 +2669,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- None 
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Company goals:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to center main view on industry/town/tile. Ctrl+Click opens a new viewport on industry/town/tile location
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Question
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :No
+STR_GOAL_QUESTION_BUTTON_YES                                    :Yes
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Decline
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accept
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignore
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Retry
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Previous
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Next
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Go
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continue
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postpone
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Surrender
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Close
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subsidies on offer for services taking:
@@ -3486,7 +3509,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check the Game Script log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No suitable AI found to load.{}This AI is a dummy AI and won't do anything.{}You can download several AIs via the 'Online Content' system
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running AIs crashed. Please report this to the AI author with a screenshot of the AI Debug Window
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}One of the running scripts crashed. Please report this to the script author with a screenshot of the AI / GameScript Debug Window
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript Debug window is only available for the server
 
 # AI configuration window
