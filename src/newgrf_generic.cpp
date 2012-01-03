@@ -235,8 +235,6 @@ void AmbientSoundEffectCallback(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES) || IsTileType(tile, MP_WATER));
 
-	/* Only run callback if enabled. */
-	if (!HasGrfMiscBit(GMB_AMBIENT_SOUND_CALLBACK)) return;
 	/* Only run every 1/200-th time. */
 	uint32 r; // Save for later
 	if (!Chance16R(1, 200, r)) return;

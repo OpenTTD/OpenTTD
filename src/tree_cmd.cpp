@@ -627,7 +627,7 @@ static void TileLoop_Trees(TileIndex tile)
 		}
 	}
 
-	AmbientSoundEffectCallback(tile);
+	AmbientSoundEffect(tile);
 
 	uint treeCounter = GetTreeCounter(tile);
 

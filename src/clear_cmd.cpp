@@ -259,7 +259,7 @@ static void TileLoop_Clear(TileIndex tile)
 			return;
 		}
 	}
-	AmbientSoundEffectCallback(tile);
+	AmbientSoundEffect(tile);
 
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: TileLoopClearDesert(tile); break;
