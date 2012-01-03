@@ -743,8 +743,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		case 0x1D: return GB(v->y_pos, 8, 8);
 		case 0x1E: return v->z_pos;
 		case 0x1F: return object->u.vehicle.info_view ? DIR_W : v->direction;
-		case 0x28: return v->cur_image;
-		case 0x29: return GB(v->cur_image, 8, 8);
+		case 0x28: return 0; // cur_image is a potential desyncer due to Action1 in static NewGRFs.
+		case 0x29: return 0; // cur_image is a potential desyncer due to Action1 in static NewGRFs.
 		case 0x32: return v->vehstatus;
 		case 0x33: return 0; // non-existent high byte of vehstatus
 		case 0x34: return v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed;
