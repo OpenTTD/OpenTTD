@@ -12,12 +12,10 @@
 #ifndef INDUSTRYTYPE_H
 #define INDUSTRYTYPE_H
 
-#include "economy_type.h"
 #include "map_type.h"
 #include "slope_type.h"
 #include "industry_type.h"
 #include "landscape_type.h"
-#include "strings_type.h"
 #include "cargo_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_commons.h"

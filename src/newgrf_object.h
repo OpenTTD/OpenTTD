@@ -14,7 +14,7 @@
 
 #include "newgrf_callbacks.h"
 #include "economy_func.h"
-#include "tile_cmd.h"
+#include "date_type.h"
 #include "object_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_class.h"

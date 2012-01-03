@@ -12,7 +12,6 @@
 #ifndef SCRIPT_INFRASTRUCTURE_HPP
 #define SCRIPT_INFRASTRUCTURE_HPP
 
-#include "script_object.hpp"
 #include "script_road.hpp"
 #include "script_rail.hpp"
 

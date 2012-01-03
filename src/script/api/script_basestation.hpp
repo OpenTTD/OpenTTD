@@ -12,7 +12,6 @@
 #ifndef SCRIPT_BASESTATION_HPP
 #define SCRIPT_BASESTATION_HPP
 
-#include "script_error.hpp"
 #include "script_text.hpp"
 
 /**

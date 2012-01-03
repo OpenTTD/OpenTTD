@@ -14,9 +14,6 @@
 
 #include "core/bitmath_func.hpp"
 #include "road_type.h"
-#include "direction_type.h"
-#include "company_type.h"
-#include "tile_type.h"
 #include "economy_func.h"
 
 /**

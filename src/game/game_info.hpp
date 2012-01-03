@@ -13,7 +13,6 @@
 #define GAME_INFO_HPP
 
 #include "../script/script_info.hpp"
-#include "../script/script_config.hpp"
 
 /** All static information from an Game like name, version, etc. */
 class GameInfo : public ScriptInfo {

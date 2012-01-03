@@ -13,7 +13,6 @@
 #define AI_INFO_HPP
 
 #include "../script/script_info.hpp"
-#include "../script/script_config.hpp"
 
 /** All static information from an AI like name, version, etc. */
 class AIInfo : public ScriptInfo {

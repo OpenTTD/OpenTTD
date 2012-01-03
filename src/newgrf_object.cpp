@@ -22,6 +22,7 @@
 #include "object_base.h"
 #include "object_map.h"
 #include "sprite.h"
+#include "tile_cmd.h"
 #include "town.h"
 #include "viewport_func.h"
 #include "water.h"

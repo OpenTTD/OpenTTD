@@ -12,7 +12,6 @@
 #ifndef GOAL_BASE_H
 #define GOAL_BASE_H
 
-#include "cargo_type.h"
 #include "company_type.h"
 #include "goal_type.h"
 #include "core/pool_type.hpp"

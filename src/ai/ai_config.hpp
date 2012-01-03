@@ -13,6 +13,7 @@
 #define AI_CONFIG_HPP
 
 #include "../script/script_config.hpp"
+#include "../company_type.h"
 
 class AIConfig : public ScriptConfig {
 public:

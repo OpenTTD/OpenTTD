@@ -12,7 +12,6 @@
 #ifndef SCRIPT_GOAL_HPP
 #define SCRIPT_GOAL_HPP
 
-#include "script_object.hpp"
 #include "script_company.hpp"
 #include "../../goal_type.h"
 

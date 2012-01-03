@@ -16,7 +16,6 @@
 #include "gfx_type.h"
 #include "economy_type.h"
 #include "tile_type.h"
-#include "strings_type.h"
 #include "transport_type.h"
 
 struct Window;

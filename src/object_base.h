@@ -17,7 +17,6 @@
 #include "tilearea_type.h"
 #include "town_type.h"
 #include "date_type.h"
-#include "core/smallvec_type.hpp"
 
 typedef Pool<Object, ObjectID, 64, 64000> ObjectPool;
 extern ObjectPool _object_pool;

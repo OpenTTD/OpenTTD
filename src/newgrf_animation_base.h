@@ -17,6 +17,7 @@
 #include "viewport_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
+#include "tile_map.h"
 
 /**
  * Helper class for a unified approach to NewGRF animation.

@@ -15,6 +15,8 @@
 #include <map>
 #include <string>
 
+#include "fileio_type.h"
+
 /** The define of a TarList. */
 struct TarListEntry {
 	const char *filename;

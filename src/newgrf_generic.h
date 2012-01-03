@@ -12,7 +12,6 @@
 #ifndef NEWGRF_GENERIC_H
 #define NEWGRF_GENERIC_H
 
-#include "cargo_type.h"
 #include "industry_type.h"
 #include "newgrf.h"
 #include "tile_type.h"

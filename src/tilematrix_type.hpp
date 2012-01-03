@@ -12,7 +12,7 @@
 #ifndef TILEMATRIX_TYPE_HPP
 #define TILEMATRIX_TYPE_HPP
 
-#include "core/mem_func.hpp"
+#include "core/alloc_func.hpp"
 #include "tilearea_type.h"
 
 /**

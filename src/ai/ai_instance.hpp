@@ -12,7 +12,6 @@
 #ifndef AI_INSTANCE_HPP
 #define AI_INSTANCE_HPP
 
-#include <squirrel.h>
 #include "../script/script_instance.hpp"
 
 /** Runtime information about an AI like a pointer to the squirrel vm and the current state. */

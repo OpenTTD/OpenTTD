@@ -14,7 +14,6 @@
 
 #include "script_cargo.hpp"
 #include "script_company.hpp"
-#include "script_text.hpp"
 #include "../../town_type.h"
 
 /**

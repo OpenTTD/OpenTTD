@@ -38,6 +38,7 @@
 #include "date_func.h"
 #include "company_base.h"
 #include "company_gui.h"
+#include "newgrf_generic.h"
 
 #include "table/strings.h"
 

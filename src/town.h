@@ -12,9 +12,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
-#include "core/pool_type.hpp"
 #include "viewport_type.h"
-#include "command_type.h"
 #include "town_map.h"
 #include "subsidy_type.h"
 #include "newgrf_storage.h"

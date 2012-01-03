@@ -52,6 +52,7 @@
 #include "order_backup.h"
 #include "newgrf_house.h"
 #include "company_gui.h"
+#include "widgets/station_widget.h"
 
 #include "table/strings.h"
 

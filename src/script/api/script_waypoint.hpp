@@ -13,6 +13,7 @@
 #define SCRIPT_WAYPOINT_HPP
 
 #include "script_basestation.hpp"
+#include "script_error.hpp"
 #include "../../station_type.h"
 
 /**

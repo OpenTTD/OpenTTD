@@ -14,7 +14,6 @@
 
 #include "script_object.hpp"
 #include "../../cargotype.h"
-#include "../../cargo_type.h"
 
 /**
  * Class that handles all cargo related functions.

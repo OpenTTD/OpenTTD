@@ -14,7 +14,6 @@
 
 #include "command_type.h"
 #include "company_type.h"
-#include "tile_type.h"
 #include "gfx_type.h"
 
 bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);

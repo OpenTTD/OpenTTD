@@ -16,6 +16,7 @@
 #include "script_suspend.hpp"
 
 #include "../command_type.h"
+#include "../company_type.h"
 
 static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for items stored in the savegame.
 

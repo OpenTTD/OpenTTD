@@ -14,10 +14,8 @@
 
 #include "airport.h"
 #include "date_type.h"
-#include "map_type.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
-#include "gfx_type.h"
 #include "tilearea_type.h"
 
 /** Copy from station_map.h */

@@ -12,10 +12,8 @@
 #ifndef DEPOT_FUNC_H
 #define DEPOT_FUNC_H
 
-#include "tile_type.h"
 #include "vehicle_type.h"
-#include "direction_type.h"
-#include "slope_type.h"
+#include "slope_func.h"
 
 void ShowDepotWindow(TileIndex tile, VehicleType type);
 

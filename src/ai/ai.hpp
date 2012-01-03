@@ -13,7 +13,6 @@
 #define AI_HPP
 
 #include "../script/api/script_event_types.hpp"
-#include "../date_type.h"
 #include "../core/string_compare_type.hpp"
 #include <map>
 

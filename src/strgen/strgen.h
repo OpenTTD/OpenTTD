@@ -12,6 +12,8 @@
 #ifndef STRGEN_H
 #define STRGEN_H
 
+#include "../language.h"
+
 /** Container for the different cases of a string. */
 struct Case {
 	int caseidx;  ///< The index of the case.

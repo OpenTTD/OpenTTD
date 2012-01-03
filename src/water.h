@@ -12,12 +12,8 @@
 #ifndef WATER_H
 #define WATER_H
 
-#include "tile_type.h"
-#include "company_type.h"
-#include "slope_type.h"
 #include "water_map.h"
 #include "economy_func.h"
-#include "core/math_func.hpp"
 
 /**
  * Describes the behaviour of a tile during flooding.

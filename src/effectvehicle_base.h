@@ -13,6 +13,7 @@
 #define EFFECTVEHICLE_BASE_H
 
 #include "vehicle_base.h"
+#include "transparency.h"
 
 /**
  * A special vehicle is one of the following:

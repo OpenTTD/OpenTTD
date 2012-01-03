@@ -20,7 +20,6 @@
 #include "slope_type.h"
 #include "strings_type.h"
 #include "date_type.h"
-#include "core/math_func.hpp"
 
 /** Railtype flags. */
 enum RailTypeFlags {

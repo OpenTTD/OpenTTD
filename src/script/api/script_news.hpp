@@ -13,7 +13,6 @@
 #define SCRIPT_NEWS_HPP
 
 #include "script_company.hpp"
-#include "script_text.hpp"
 #include "../../news_type.h"
 
 /**

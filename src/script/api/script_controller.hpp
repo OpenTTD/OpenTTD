@@ -12,7 +12,7 @@
 #ifndef SCRIPT_CONTROLLER_HPP
 #define SCRIPT_CONTROLLER_HPP
 
-#include "../../company_type.h"
+#include "script_types.hpp"
 #include "../../core/string_compare_type.hpp"
 #include <map>
 

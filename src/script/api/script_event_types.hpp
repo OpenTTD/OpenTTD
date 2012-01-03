@@ -13,7 +13,6 @@
 #define SCRIPT_EVENT_TYPES_HPP
 
 #include "script_event.hpp"
-#include "script_company.hpp"
 #include "script_goal.hpp"
 #include "script_window.hpp"
 

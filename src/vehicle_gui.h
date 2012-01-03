@@ -18,7 +18,6 @@
 #include "station_type.h"
 #include "engine_type.h"
 #include "company_type.h"
-#include "widgets/vehicle_widget.h"
 
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit = false);
 

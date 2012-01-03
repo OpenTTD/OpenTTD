@@ -12,6 +12,8 @@
 #ifndef WIDGETS_AI_WIDGET_H
 #define WIDGETS_AI_WIDGET_H
 
+#include "../company_type.h"
+
 /** Widgets of the #AIListWindow class. */
 enum AIListWidgets {
 	WID_AIL_CAPTION,   ///< Caption of the window.

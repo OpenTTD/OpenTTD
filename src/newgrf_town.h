@@ -17,7 +17,7 @@
 /* Currently there is no direct town resolver; we only need to get town
  * variable results from inside stations, house tiles and industries,
  * and to check the town's persistent storage. */
-uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t, const GRFFile *caller_grffile);
-void TownStorePSA(Town *t, const GRFFile *caller_grffile, uint pos, int32 value);
+uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t, const struct GRFFile *caller_grffile);
+void TownStorePSA(Town *t, const struct GRFFile *caller_grffile, uint pos, int32 value);
 
 #endif /* NEWGRF_TOWN_H */

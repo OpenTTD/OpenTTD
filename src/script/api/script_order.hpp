@@ -12,7 +12,6 @@
 #ifndef SCRIPT_ORDER_HPP
 #define SCRIPT_ORDER_HPP
 
-#include "script_error.hpp"
 #include "script_vehicle.hpp"
 #include "../../order_type.h"
 

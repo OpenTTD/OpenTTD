@@ -15,7 +15,6 @@
 #include "window_type.h"
 #include "string_type.h"
 #include "strings_type.h"
-#include "core/enum_type.hpp"
 
 /** Helper/buffer for input fields. */
 struct Textbuf {

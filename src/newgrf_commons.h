@@ -15,7 +15,6 @@
 #ifndef NEWGRF_COMMONS_H
 #define NEWGRF_COMMONS_H
 
-#include "tile_type.h"
 #include "sprite.h"
 #include "core/alloc_type.hpp"
 #include "core/smallvec_type.hpp"

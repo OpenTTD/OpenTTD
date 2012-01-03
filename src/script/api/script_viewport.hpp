@@ -12,7 +12,6 @@
 #ifndef SCRIPT_VIEWPORT_HPP
 #define SCRIPT_VIEWPORT_HPP
 
-#include <string>
 #include "script_object.hpp"
 
 /**

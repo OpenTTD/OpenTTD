@@ -15,6 +15,7 @@
 #include "engine_type.h"
 #include "sortlist_type.h"
 #include "gfx_type.h"
+#include "vehicle_type.h"
 
 typedef GUIList<EngineID, CargoID> GUIEngineList;
 

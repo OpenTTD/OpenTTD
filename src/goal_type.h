@@ -12,6 +12,8 @@
 #ifndef GOAL_TYPE_H
 #define GOAL_TYPE_H
 
+#include "core/enum_type.hpp"
+
 enum {
 	GOAL_QUESTION_BUTTON_COUNT = 18, ///< Amount of buttons available.
 };

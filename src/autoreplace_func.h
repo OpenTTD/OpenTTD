@@ -14,8 +14,6 @@
 
 #include "command_type.h"
 #include "company_base.h"
-#include "engine_type.h"
-#include "group_type.h"
 
 void RemoveAllEngineReplacement(EngineRenewList *erl);
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group);

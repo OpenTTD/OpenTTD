@@ -12,9 +12,7 @@
 #ifndef HOUSE_H
 #define HOUSE_H
 
-#include "strings_type.h"
 #include "cargo_type.h"
-#include "economy_type.h"
 #include "date_type.h"
 #include "house_type.h"
 #include "newgrf_animation_type.h"

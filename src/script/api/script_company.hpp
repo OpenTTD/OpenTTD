@@ -12,7 +12,6 @@
 #ifndef SCRIPT_COMPANY_HPP
 #define SCRIPT_COMPANY_HPP
 
-#include "script_object.hpp"
 #include "script_text.hpp"
 
 /**

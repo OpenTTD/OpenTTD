@@ -13,6 +13,7 @@
 #define WIDGETS_GRAPH_WIDGET_H
 
 #include "../economy_type.h"
+#include "../company_type.h"
 
 /** Widgets of the #GraphLegendWindow class. */
 enum GraphLegendWidgets {

@@ -12,7 +12,6 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include "core/pool_type.hpp"
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"
