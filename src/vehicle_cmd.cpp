@@ -357,6 +357,12 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 			/* Sorry, auto-refitting not allowed, subtract the cargo amount again from the total. */
 			total_capacity -= amount;
 			total_mail_capacity -= mail_capacity;
+
+			if (v->cargo_type == new_cid) {
+				/* Add the old capacity nevertheless, if the cargo matches */
+				total_capacity += v->cargo_cap;
+				if (v->type == VEH_AIRCRAFT) total_mail_capacity += v->Next()->cargo_cap;
+			}
 			continue;
 		}
 		cost.AddCost(refit_cost);
