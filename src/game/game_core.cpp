@@ -153,6 +153,7 @@
 			if (Game::instance != NULL) {
 				delete Game::instance;
 				Game::instance = NULL;
+				Game::info = NULL;
 			}
 		} else if (Game::instance != NULL) {
 			Game::info = _settings_game.game_config->GetInfo();
