@@ -11,9 +11,12 @@
 
 #include "stdafx.h"
 #include "console_internal.h"
+#include "debug.h"
 #include "engine_func.h"
 #include "landscape.h"
 #include "saveload/saveload.h"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "network/network_base.h"
 #include "network/network_admin.h"
 #include "network/network_client.h"

@@ -17,6 +17,8 @@
 #include "news_func.h"
 #include "cmd_helper.h"
 #include "command_func.h"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "network/network_base.h"
 #include "network/network_admin.h"
 #include "ai/ai.hpp"
@@ -33,6 +35,7 @@
 #include "smallmap_gui.h"
 #include "game/game.hpp"
 
+#include "table/strings.h"
 
 CompanyByte _local_company;   ///< Company controlled by the human player at this client. Can also be #COMPANY_SPECTATOR.
 CompanyByte _current_company; ///< Company currently doing an action.

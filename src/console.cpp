@@ -11,7 +11,10 @@
 
 #include "stdafx.h"
 #include "console_internal.h"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "network/network_admin.h"
+#include "debug.h"
 #include "console_func.h"
 #include "settings_type.h"
 

@@ -13,6 +13,7 @@
 #include "core/alloc_func.hpp"
 #include "core/mem_func.hpp"
 #include "ini_type.h"
+#include "string_func.h"
 
 /**
  * Construct a new in-memory item of an Ini file.
