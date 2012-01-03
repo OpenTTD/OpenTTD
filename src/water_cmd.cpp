@@ -1167,7 +1167,7 @@ void TileLoop_Water(TileIndex tile)
 			Slope slope_here = GetFoundationSlope(tile) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			uint dir;
 			FOR_EACH_SET_BIT(dir, _flood_from_dirs[slope_here]) {
-				TileIndex dest = tile + TileOffsByDir(dir);
+				TileIndex dest = tile + TileOffsByDir((Direction)dir);
 				if (!IsValidTile(dest)) continue;
 
 				FloodingBehaviour dest_behaviour = GetFloodingBehaviour(dest);
