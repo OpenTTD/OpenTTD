@@ -2668,6 +2668,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Dim -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Nodau cwmni:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar nod i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Cwestiwn
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Canslo
+STR_GOAL_QUESTION_BUTTON_OK                                     :Iawn
+STR_GOAL_QUESTION_BUTTON_NO                                     :Na
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ia
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Gwrthod
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Derbyn
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Anwybyddu
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Ail-geisio
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Blaenorol
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nesaf
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Aros
+STR_GOAL_QUESTION_BUTTON_START                                  :Dechrau
+STR_GOAL_QUESTION_BUTTON_GO                                     :Mynd
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Parhau
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Ailddechrau
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Gohirio
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Ildio
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Cau
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Cymorthdaliadau
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Cymorthdaliadau sy'n cael eu cynnig ar gyfer cludo:

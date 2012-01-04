@@ -2667,6 +2667,15 @@ STR_GOALS_NONE                                                  :{ORANGE}- Khôn
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Các mục tiêu của công ty:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ bổ sung tương ứng
 
+# Goal question window
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Tiếp tục
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Làm lại
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Hoãn lại
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Từ bỏ
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Đóng
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:

@@ -3005,6 +3005,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Ня�
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Задачы кампаніі:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Пстрыкніце па задачы, каб паказаць прадпрыемства/горад/клетку. Ctrl+пстрычка паказвае ў новым вакне.
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Пытаньне
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Адмова
+STR_GOAL_QUESTION_BUTTON_OK                                     :Так
+STR_GOAL_QUESTION_BUTTON_NO                                     :Не
+STR_GOAL_QUESTION_BUTTON_YES                                    :Так
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Адхiлiць
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Прыняць
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Iгнараваць
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Спрабаваць iзноў
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Папярэднi
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Наступны
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Спынiць
+STR_GOAL_QUESTION_BUTTON_START                                  :Пачаць
+STR_GOAL_QUESTION_BUTTON_GO                                     :Iсьцi
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Працягнуць
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Пачаць iзноў
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Адкласьцi
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Здацца
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрыць
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсыдыі:
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Прапанаваныя субсыдыі:

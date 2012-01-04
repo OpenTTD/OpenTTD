@@ -447,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomed in screenshot
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Default zoom screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Whole map screenshot
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
@@ -2666,6 +2667,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- None -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Company goals:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to centre main view on industry/town/tile. Ctrl+Click opens a new viewport on industry/town/tile location
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Question
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel
+STR_GOAL_QUESTION_BUTTON_OK                                     :Ok
+STR_GOAL_QUESTION_BUTTON_NO                                     :No
+STR_GOAL_QUESTION_BUTTON_YES                                    :Yes
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Decline
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accept
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignore
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Retry
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Previous
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Next
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Go
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continue
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postpone
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Surrender
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Close
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidies

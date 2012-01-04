@@ -2696,6 +2696,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Nessu
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Obiettivi della compagnia:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o riquadro. CTRL+clic mostra l'industria/città/riquadro in una mini visuale
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Domanda
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annulla
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :No
+STR_GOAL_QUESTION_BUTTON_YES                                    :Sì
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Rifiuta
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accetta
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignora
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Riprova
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Precedente
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Successivo
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Termina
+STR_GOAL_QUESTION_BUTTON_START                                  :Inizia
+STR_GOAL_QUESTION_BUTTON_GO                                     :Vai
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continua
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Ricomincia
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Rimanda
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Rinuncia
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Chiudi
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Sussidi
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Sussidi offerti per la realizzazione di servizi:
@@ -3513,7 +3536,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visualizza il log degli script di gioco
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno degli script in funzione è andato in crash. Si prega di inviare una segnalazione all'autore dello script con uno screenshot della finestra Debug IA / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA / GameScript è disponibile soltanto per il server
 
 # AI configuration window
