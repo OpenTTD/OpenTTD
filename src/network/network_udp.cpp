@@ -675,4 +675,16 @@ void NetworkUDPClose()
 	DEBUG(net, 1, "[udp] closed listeners");
 }
 
+/** Receive the UDP packets. */
+void NetworkBackgroundUDPLoop()
+{
+	if (_network_udp_server) {
+		_udp_server_socket->ReceivePackets();
+		_udp_master_socket->ReceivePackets();
+	} else {
+		_udp_client_socket->ReceivePackets();
+		if (_network_udp_broadcast > 0) _network_udp_broadcast--;
+	}
+}
+
 #endif /* ENABLE_NETWORK */

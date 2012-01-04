@@ -23,6 +23,7 @@ void NetworkUDPQueryServer(NetworkAddress address, bool manually = false);
 void NetworkUDPAdvertise();
 void NetworkUDPRemoveAdvertise(bool blocking);
 void NetworkUDPClose();
+void NetworkBackgroundUDPLoop();
 
 #endif /* ENABLE_NETWORK */
 

@@ -1348,7 +1348,7 @@ void GameLoop()
 	if (_game_mode == GM_BOOTSTRAP) {
 #ifdef ENABLE_NETWORK
 		/* Check for UDP stuff */
-		if (_network_available) NetworkUDPGameLoop();
+		if (_network_available) NetworkBackgroundLoop();
 #endif
 		InputLoop();
 		return;
@@ -1378,7 +1378,7 @@ void GameLoop()
 
 #ifdef ENABLE_NETWORK
 	/* Check for UDP stuff */
-	if (_network_available) NetworkUDPGameLoop();
+	if (_network_available) NetworkBackgroundLoop();
 
 	if (_networking && !HasModalProgress()) {
 		/* Multiplayer */

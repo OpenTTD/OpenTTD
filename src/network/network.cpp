@@ -827,20 +827,18 @@ static void NetworkSend()
 	}
 }
 
-/* We have to do some UDP checking */
-void NetworkUDPGameLoop()
+/**
+ * We have to do some (simple) background stuff that runs normally,
+ * even when we are not in multiplayer. For example stuff needed
+ * for finding servers or downloading content.
+ */
+void NetworkBackgroundLoop()
 {
 	_network_content_client.SendReceive();
 	TCPConnecter::CheckCallbacks();
 	NetworkHTTPSocketHandler::HTTPReceive();
 
-	if (_network_udp_server) {
-		_udp_server_socket->ReceivePackets();
-		_udp_master_socket->ReceivePackets();
-	} else {
-		_udp_client_socket->ReceivePackets();
-		if (_network_udp_broadcast > 0) _network_udp_broadcast--;
-	}
+	NetworkBackgroundUDPLoop();
 }
 
 /* The main loop called from ttd.c
