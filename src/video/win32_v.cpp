@@ -384,6 +384,10 @@ static void PaintWindowThread(void *)
 	_draw_mutex->BeginCritical();
 	_draw_mutex->SendSignal();
 
+	/* Do our best to make sure the main thread is the one that
+	 * gets the signal, and not our wait below. */
+	Sleep(0);
+
 	/* Now wait for the first thing to draw! */
 	_draw_mutex->WaitForSignal();
 
