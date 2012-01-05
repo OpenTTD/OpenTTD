@@ -197,7 +197,7 @@ struct CheatWindow : Window {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawFrameRect(button_left, y + 1, button_left + 20 - 1, y + FONT_HEIGHT_NORMAL - 1, on ? COLOUR_GREEN : COLOUR_RED, on ? FR_LOWERED : FR_NONE);
+					DrawBoolButton(button_left, y, on, true);
 					SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 					break;
 				}
