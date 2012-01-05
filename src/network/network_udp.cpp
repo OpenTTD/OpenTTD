@@ -48,6 +48,70 @@ NetworkUDPSocketHandler *_udp_client_socket = NULL; ///< udp client socket
 NetworkUDPSocketHandler *_udp_server_socket = NULL; ///< udp server socket
 NetworkUDPSocketHandler *_udp_master_socket = NULL; ///< udp master socket
 
+/** Simpler wrapper struct for NetworkUDPQueryServerThread */
+struct NetworkUDPQueryServerInfo : NetworkAddress {
+	bool manually; ///< Did we connect manually or not?
+
+	/**
+	 * Create the structure.
+	 * @param address The address of the server to query.
+	 * @param manually Whether the address was entered manually.
+	 */
+	NetworkUDPQueryServerInfo(const NetworkAddress &address, bool manually) :
+		NetworkAddress(address),
+		manually(manually)
+	{
+	}
+};
+
+/**
+ * Helper function doing the actual work for querying the server.
+ * @param address The address of the server.
+ * @param needs_mutex Whether we need to acquire locks when sending the packet or not.
+ * @param manually Whether the address was entered manually.
+ */
+static void NetworkUDPQueryServer(NetworkAddress *address, bool needs_mutex, bool manually)
+{
+	/* Clear item in gamelist */
+	NetworkGameList *item = CallocT<NetworkGameList>(1);
+	address->GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
+	strecpy(item->info.hostname, address->GetHostname(), lastof(item->info.hostname));
+	item->address = *address;
+	item->manually = manually;
+	NetworkGameListAddItemDelayed(item);
+
+	if (needs_mutex) _network_udp_mutex->BeginCritical();
+	/* Init the packet */
+	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
+	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, address);
+	if (needs_mutex) _network_udp_mutex->EndCritical();
+}
+
+/**
+ * Threaded part for resolving the IP of a server and querying it.
+ * @param pntr the NetworkUDPQueryServerInfo.
+ */
+static void NetworkUDPQueryServerThread(void *pntr)
+{
+	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
+	NetworkUDPQueryServer(info, true, info->manually);
+
+	delete info;
+}
+
+/**
+ * Query a specific server.
+ * @param address The address of the server.
+ * @param manually Whether the address was entered manually.
+ */
+void NetworkUDPQueryServer(NetworkAddress address, bool manually)
+{
+	NetworkUDPQueryServerInfo *info = new NetworkUDPQueryServerInfo(address, manually);
+	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info)) {
+		NetworkUDPQueryServerThread(info);
+	}
+}
+
 ///*** Communication with the masterserver ***/
 
 /** Helper class for connecting to the master server. */
@@ -364,7 +428,7 @@ void ClientNetworkUDPSocketHandler::Receive_MASTER_RESPONSE_LIST(Packet *p, Netw
 			/* Somehow we reached the end of the packet */
 			if (this->HasClientQuit()) return;
 
-			NetworkUDPQueryServer(addr);
+			NetworkUDPQueryServer(&addr, false, false);
 		}
 	}
 }
@@ -466,60 +530,6 @@ void NetworkUDPSearchGame()
 
 	NetworkUDPBroadCast(_udp_client_socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
-}
-
-/** Simpler wrapper struct for NetworkUDPQueryServerThread */
-struct NetworkUDPQueryServerInfo : NetworkAddress {
-	bool manually; ///< Did we connect manually or not?
-
-	/**
-	 * Create the structure.
-	 * @param address The address of the server to query.
-	 * @param manually Whether the address was entered manually.
-	 */
-	NetworkUDPQueryServerInfo(const NetworkAddress &address, bool manually) :
-		NetworkAddress(address),
-		manually(manually)
-	{
-	}
-};
-
-/**
- * Threaded part for resolving the IP of a server and querying it.
- * @param pntr the NetworkUDPQueryServerInfo.
- */
-static void NetworkUDPQueryServerThread(void *pntr)
-{
-	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
-
-	/* Clear item in gamelist */
-	NetworkGameList *item = CallocT<NetworkGameList>(1);
-	info->GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
-	strecpy(item->info.hostname, info->GetHostname(), lastof(item->info.hostname));
-	item->address = *info;
-	item->manually = info->manually;
-	NetworkGameListAddItemDelayed(item);
-
-	_network_udp_mutex->BeginCritical();
-	/* Init the packet */
-	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, info);
-	_network_udp_mutex->EndCritical();
-
-	delete info;
-}
-
-/**
- * Query a specific server.
- * @param address The address of the server.
- * @param manually Whether the address was entered manually.
- */
-void NetworkUDPQueryServer(NetworkAddress address, bool manually)
-{
-	NetworkUDPQueryServerInfo *info = new NetworkUDPQueryServerInfo(address, manually);
-	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info)) {
-		NetworkUDPQueryServerThread(info);
-	}
 }
 
 /**
