@@ -96,6 +96,9 @@ enum RailFenceOffset {
 	RFO_SLOPE_NW,
 };
 
+/** List of rail type labels. */
+typedef SmallVector<RailTypeLabel, 4> RailTypeLabelList;
+
 /**
  * This struct contains all the info that is needed to draw and construct tracks.
  */
@@ -207,6 +210,11 @@ struct RailtypeInfo {
 	 * Unique 32 bit rail type identifier
 	 */
 	RailTypeLabel label;
+
+	/**
+	 * Rail type labels this type provides in addition to the main label.
+	 */
+	RailTypeLabelList alternate_labels;
 
 	/**
 	 * Colour on mini-map
@@ -404,7 +412,7 @@ RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
 RailType GetBestRailtype(const CompanyID company);
 RailTypes GetCompanyRailtypes(const CompanyID c);
 
-RailType GetRailTypeByLabel(RailTypeLabel label);
+RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels = true);
 
 void ResetRailTypes();
 void InitRailTypes();

@@ -93,6 +93,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* rail type label */
 		'RAIL',
 
+		/* alternate labels */
+		RailTypeLabelList(),
+
 		/* map colour */
 		0x0A,
 
@@ -190,6 +193,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* rail type label */
 		'ELRL',
 
+		/* alternate labels */
+		RailTypeLabelList(),
+
 		/* map colour */
 		0x0A,
 
@@ -283,6 +289,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* rail type label */
 		'MONO',
 
+		/* alternate labels */
+		RailTypeLabelList(),
+
 		/* map colour */
 		0x0A,
 
@@ -375,6 +384,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* rail type label */
 		'MGLV',
+
+		/* alternate labels */
+		RailTypeLabelList(),
 
 		/* map colour */
 		0x0A,

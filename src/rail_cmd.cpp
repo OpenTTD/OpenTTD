@@ -99,6 +99,9 @@ RailType AllocateRailType(RailTypeLabel label)
 			/* Set up new rail type */
 			memcpy(rti, &_railtypes[RAILTYPE_RAIL], sizeof(*rti));
 			rti->label = label;
+			/* Clear alternate label list. Can't use Reset() here as that would free
+			 * the data pointer of RAILTYPE_RAIL and not our new rail type. */
+			new (&rti->alternate_labels) RailTypeLabelList;
 
 			/* Make us compatible with ourself. */
 			rti->powered_railtypes    = (RailTypes)(1 << rt);

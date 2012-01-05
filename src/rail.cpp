@@ -277,14 +277,23 @@ RailTypes GetCompanyRailtypes(CompanyID company)
 /**
  * Get the rail type for a given label.
  * @param label the railtype label.
+ * @param allow_alternate_labels Search in the alternate label lists as well.
  * @return the railtype.
  */
-RailType GetRailTypeByLabel(RailTypeLabel label)
+RailType GetRailTypeByLabel(RailTypeLabel label, bool allow_alternate_labels)
 {
 	/* Loop through each rail type until the label is found */
 	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(r);
 		if (rti->label == label) return r;
+	}
+
+	if (allow_alternate_labels) {
+		/* Test if any rail type defines the label as an alternate. */
+		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
+			const RailtypeInfo *rti = GetRailTypeInfo(r);
+			if (rti->alternate_labels.Contains(label)) return r;
+		}
 	}
 
 	/* No matching label was found, so it is invalid */

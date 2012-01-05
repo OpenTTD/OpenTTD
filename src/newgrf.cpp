@@ -3894,7 +3894,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				int n = buf->ReadByte();
 				for (int j = 0; j != n; j++) {
 					RailTypeLabel label = buf->ReadDWord();
-					RailType rt = GetRailTypeByLabel(BSWAP32(label));
+					RailType rt = GetRailTypeByLabel(BSWAP32(label), false);
 					if (rt != INVALID_RAILTYPE) {
 						switch (prop) {
 							case 0x0E: SetBit(rti->compatible_railtypes, rt);            break;
@@ -3952,6 +3952,11 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				rti->maintenance_multiplier = buf->ReadWord();
 				break;
 
+			case 0x1D: // Alternate rail type label list
+				/* Skipped here as this is loaded during reservation stage. */
+				for (int j = buf->ReadByte(); j != 0; j--) buf->ReadDWord();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3965,6 +3970,8 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
 
+	extern RailtypeInfo _railtypes[RAILTYPE_END];
+
 	if (id + numinfo > RAILTYPE_END) {
 		grfmsg(1, "RailTypeReserveInfo: Rail type %u is invalid, max %u, ignoring", id + numinfo, RAILTYPE_END);
 		return CIR_INVALID_ID;
@@ -3977,7 +3984,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 				RailTypeLabel rtl = buf->ReadDWord();
 				rtl = BSWAP32(rtl);
 
-				RailType rt = GetRailTypeByLabel(rtl);
+				RailType rt = GetRailTypeByLabel(rtl, false);
 				if (rt == INVALID_RAILTYPE) {
 					/* Set up new rail type */
 					rt = AllocateRailType(rtl);
@@ -3998,6 +4005,17 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x1C: // Maintenance cost factor
 				buf->ReadWord();
 				break;
+
+			case 0x1D: // Alternate rail type label list
+				if (_cur.grffile->railtype_map[id + i] != INVALID_RAILTYPE) {
+					int n = buf->ReadByte();
+					for (int j = 0; j != n; j++) {
+						*_railtypes[_cur.grffile->railtype_map[id + i]].alternate_labels.Append() = BSWAP32(buf->ReadDWord());
+					}
+					break;
+				}
+				grfmsg(1, "RailTypeReserveInfo: Ignoring property 1D for rail type %u because no label was set", id + i);
+				/* FALL THROUGH */
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
