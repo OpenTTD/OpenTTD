@@ -97,7 +97,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par)
 			GetTownName(buf2, t, lastof(buf2));
 			buf = buf2;
 		}
-		if (strcmp(buf1, buf2) == 0) return false;
+		if (strcmp(buf1, buf) == 0) return false;
 	}
 
 	return true;
