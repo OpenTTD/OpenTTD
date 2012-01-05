@@ -1179,7 +1179,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autofor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny køyretyg når det er {ORANGE}{STRING}{LTBLUE} mnd. før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornying av køyretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varigskap for feilmelding: {ORANGE}{STRING} sekund
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Syne hjelpetekst: {ORANGE}Hald over i {STRING} sekund{P 0:1 "" }
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Syne hjelpetekst: {ORANGE}Hald over i {STRING} sekund
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Syn verktøytips: {ORANGE}Høgreklikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Syne innbyggjartalet til byane i tittel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Bredde på linjer i grafar: {ORANGE}{STRING}
@@ -1822,7 +1822,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sende for mange
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogleg tilkoblingsbrot
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Dei siste {NUM} sekund{P "" s} er ingen data mottatt frå serveren
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Dei siste {NUM} sekund er ingen data mottatt frå serveren
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2619,8 +2619,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (fortsatt naudsynt)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byar veks kvar {ORANGE}{COMMA}{BLACK} dag{P "" }
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byar veks kvar {ORANGE}{COMMA}{BLACK} dag{P "" } (sponsa)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byar veks kvar {ORANGE}{COMMA}{BLACK} dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byar veks kvar {ORANGE}{COMMA}{BLACK} dag (sponsa)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}By veks {RED}ikkje{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Midtstill hovedvisninga på byen. CTRL+klikk syner byen i eit nytt tilleggsvindauge
