@@ -2668,6 +2668,29 @@ STR_GOALS_NONE                                                  :{ORANGE}- Nici 
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ţintele companiei:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click pe ţintă pentru a centra ecranul principal pe industrie/oraş/zonă. Ctrl+Click deschide o fereastră nouă de vizualizare a industriei/oraşului/zonei
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Întrebare
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anulează
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nu
+STR_GOAL_QUESTION_BUTTON_YES                                    :Da
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Refuză
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Acceptă
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignoră
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Încearcă din nou
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anteriorul
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Următorul
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Începe
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuă
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reîncearcă
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Amână
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Renunță
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Închide
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenţii (F6)
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subvenţii disponibile:
@@ -2782,7 +2805,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} pătrățele cu drumuri
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} pătrățele de apă
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} pătrățele stații
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporturi
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeropor{P "" uri}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nici una
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Constr. sediu

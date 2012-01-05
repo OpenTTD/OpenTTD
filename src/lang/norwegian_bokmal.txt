@@ -447,10 +447,10 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / Spillscript feilsøking
-STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Innzoomet skjermdump
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standardzoomet skjermdump
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump
+STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørret skjermbilde
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørra skjermbilde
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skjermbilde av hele kartet
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vis/skjul markeringsramme
@@ -1331,8 +1331,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festera
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindu: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}deaktivert
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maks zoom inn nivå: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maks zoom ut nivå: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimum zoom-inn-nivå: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimum zoom-ut-nivå: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1382,7 +1382,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre ve
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Feil med konfigurasjonsfilen...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... feil i array '{STRING}'
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... feil i liste '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ugyldig verdi '{STRING}' for '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... etterslengende bokstaver i slutten av innstilling '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': duplikat GRF ID med '{STRING}'
@@ -2564,7 +2564,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret lokomotivvogners tilstand for '{1:ENGINE}' når utenfor en togstall.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret lokomotivets tilstand for '{1:ENGINE}' mens det er utenfor en togstall.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
