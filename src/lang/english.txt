@@ -2454,6 +2454,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelo
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}License
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Show parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toggle palette
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Apply changes

@@ -771,6 +771,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_OPEN_URL,                           "WID_NS_OPEN_URL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_NEWGRF_TEXTFILE,                    "WID_NS_NEWGRF_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_SET_PARAMETERS,                     "WID_NS_SET_PARAMETERS");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_VIEW_PARAMETERS,                    "WID_NS_VIEW_PARAMETERS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_TOGGLE_PALETTE,                     "WID_NS_TOGGLE_PALETTE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_APPLY_CHANGES,                      "WID_NS_APPLY_CHANGES");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_RESCAN_FILES,                       "WID_NS_RESCAN_FILES");

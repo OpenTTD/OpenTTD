@@ -151,12 +151,14 @@ struct NewGRFParametersWindow : public Window {
 	int line_height;       ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;
 	bool action14present;  ///< True if action14 information is present.
+	bool editable;         ///< Allow editing parameters.
 
-	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c) : Window(),
+	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c, bool editable) : Window(),
 		grf_config(c),
 		clicked_button(UINT_MAX),
 		timeout(0),
-		clicked_row(UINT_MAX)
+		clicked_row(UINT_MAX),
+		editable(editable)
 	{
 		this->action14present = (c->num_valid_params != lengthof(c->param) || c->param_info.Length() != 0);
 
@@ -165,6 +167,8 @@ struct NewGRFParametersWindow : public Window {
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
 		this->GetWidget<NWidgetStacked>(WID_NP_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc);  // Initializes 'this->line_height' as side effect.
+
+		this->SetWidgetDisabledState(WID_NP_RESET, !this->editable);
 
 		this->InvalidateData();
 	}
@@ -247,10 +251,10 @@ struct NewGRFParametersWindow : public Window {
 			bool selected = (i == this->clicked_row);
 
 			if (par_info->type == PTYPE_BOOL) {
-				DrawBoolButton(buttons_left, y + 2, current_value != 0, true);
+				DrawBoolButton(buttons_left, y + 2, current_value != 0, this->editable);
 				SetDParam(2, par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info->type == PTYPE_UINT_ENUM) {
-				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > par_info->min_value, current_value < par_info->max_value);
+				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
 				if (par_info->value_names.Contains(current_value)) {
@@ -280,7 +284,7 @@ struct NewGRFParametersWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
-				if (!this->action14present && this->grf_config->num_params > 0) {
+				if (this->editable && !this->action14present && this->grf_config->num_params > 0) {
 					this->grf_config->num_params--;
 					this->InvalidateData();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
@@ -289,7 +293,7 @@ struct NewGRFParametersWindow : public Window {
 
 			case WID_NP_NUMPAR_INC: {
 				GRFConfig *c = this->grf_config;
-				if (!this->action14present && c->num_params < c->num_valid_params) {
+				if (this->editable && !this->action14present && c->num_params < c->num_valid_params) {
 					c->param[c->num_params++] = 0;
 					this->InvalidateData();
 					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
@@ -298,6 +302,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_BACKGROUND: {
+				if (!this->editable) break;
 				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
 				if (num >= this->vscroll->GetCount()) break;
 				if (this->clicked_row != num) {
@@ -346,6 +351,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_RESET:
+				if (!this->editable) break;
 				this->grf_config->SetParameterDefaults();
 				this->InvalidateData();
 				SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
@@ -384,8 +390,8 @@ struct NewGRFParametersWindow : public Window {
 	{
 		if (!gui_scope) return;
 		if (!this->action14present) {
-			this->SetWidgetDisabledState(WID_NP_NUMPAR_DEC, this->grf_config->num_params == 0);
-			this->SetWidgetDisabledState(WID_NP_NUMPAR_INC, this->grf_config->num_params >= this->grf_config->num_valid_params);
+			this->SetWidgetDisabledState(WID_NP_NUMPAR_DEC, !this->editable || this->grf_config->num_params == 0);
+			this->SetWidgetDisabledState(WID_NP_NUMPAR_INC, !this->editable || this->grf_config->num_params >= this->grf_config->num_valid_params);
 		}
 
 		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : this->grf_config->num_params);
@@ -445,10 +451,10 @@ static const WindowDesc _newgrf_parameters_desc(
 	_nested_newgrf_parameter_widgets, lengthof(_nested_newgrf_parameter_widgets)
 );
 
-void OpenGRFParameterWindow(GRFConfig *c)
+static void OpenGRFParameterWindow(GRFConfig *c, bool editable)
 {
 	DeleteWindowByClass(WC_GRF_PARAMETERS);
-	new NewGRFParametersWindow(&_newgrf_parameters_desc, c);
+	new NewGRFParametersWindow(&_newgrf_parameters_desc, c, editable);
 }
 
 /** Window for displaying the textfile of a NewGRF. */
@@ -725,7 +731,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->vscroll2 = this->GetScrollbar(WID_NS_SCROLL2BAR);
 
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
-		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : this->show_params ? 1 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_NEWGRF_STATE);
 
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
@@ -1132,10 +1138,11 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
+			case WID_NS_VIEW_PARAMETERS:
 			case WID_NS_SET_PARAMETERS: { // Edit parameters
-				if (this->active_sel == NULL || !this->editable || !this->show_params || this->active_sel->num_valid_params == 0) break;
+				if (this->active_sel == NULL || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
-				OpenGRFParameterWindow(this->active_sel);
+				OpenGRFParameterWindow(this->active_sel, this->editable);
 				break;
 			}
 
@@ -1284,7 +1291,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		}
 		this->SetWidgetDisabledState(WID_NS_OPEN_URL, c == NULL || StrEmpty(c->GetURL()));
 
-		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || disable_all || this->active_sel->num_valid_params == 0);
+		this->SetWidgetDisabledState(WID_NS_SET_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
+		this->SetWidgetDisabledState(WID_NS_VIEW_PARAMETERS, !this->show_params || this->active_sel == NULL || this->active_sel->num_valid_params == 0);
 		this->SetWidgetDisabledState(WID_NS_TOGGLE_PALETTE, disable_all);
 
 		if (!disable_all) {
@@ -1818,6 +1826,8 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
 					SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
 		EndContainer(),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_VIEW_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+			SetDataTip(STR_NEWGRF_SETTINGS_SHOW_PARAMETERS, STR_NULL),
 	EndContainer(),
 };
 
