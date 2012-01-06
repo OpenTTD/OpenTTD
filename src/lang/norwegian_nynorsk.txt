@@ -2456,6 +2456,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Endrings
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisens
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parametrar
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vis parametrar
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Syne/gøym palett
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Syne/gøym paletten til den valde NewGRF.{}Gjer dette når grafikken frå denne NewGRF ser rosa ut i spelet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Bruk forandringane

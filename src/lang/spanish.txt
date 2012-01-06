@@ -2455,6 +2455,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Registro
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencia
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parámetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Seleccionar paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Seleccionar la paleta del NewGRF seleccionado.{}Esto es necesario cuando los gráficos de este NewGRF se vean de color rosa
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar cambios
@@ -2668,6 +2669,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la compañía:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Click abre una nueva vista en esa localización
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pregunta
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
+STR_GOAL_QUESTION_BUTTON_OK                                     :Ok
+STR_GOAL_QUESTION_BUTTON_NO                                     :No
+STR_GOAL_QUESTION_BUTTON_YES                                    :Si
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Rechazar
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceptar
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Reintentar
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Siguiente
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Parar
+STR_GOAL_QUESTION_BUTTON_START                                  :Comenzar
+STR_GOAL_QUESTION_BUTTON_GO                                     :Ir
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuar
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reiniciar
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Posponer
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Rendirse
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Cerrar
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvenciones

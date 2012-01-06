@@ -2455,6 +2455,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Änderun
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizenz
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parameter setzen
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Zeige Parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Farbpalette ändern
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Farbpalette des ausgewählten NewGRF ändern.{}Nutze dieses, wenn die Grafiken des NewGRF im Spiel pink dargestellt werden
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Übernehmen
@@ -2670,8 +2671,27 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmensp
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Feld. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Frage
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Abbruch
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nein
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ja
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Ablehnen
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Akzeptieren
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorieren
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Wiederholen
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Vorhergehendes
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nächstes
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Aufhören
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Weiter
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Fortfahren
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Neustart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Verschieben
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Aufgeben
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Schließen
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventionen

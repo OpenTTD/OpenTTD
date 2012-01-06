@@ -2638,6 +2638,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Спис
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лицензия
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показать параметры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключить палитру
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Используйте переключение, если графика отрисовывается розовым цветом.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Применить изменения

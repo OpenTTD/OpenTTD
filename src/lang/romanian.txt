@@ -2454,6 +2454,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Listă m
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenţă
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Afișează parametrii
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Schimbă paleta pentru NewGRF-ul selectat.{}Efectuează acest lucru când grafica din acest NewGRF este roz în joc
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplică schimbările

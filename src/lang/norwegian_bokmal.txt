@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne landskapsverktøylinjen for å heve/senke land, plante trær, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikkinnstillinger
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om landområde, konsoll, AI-feilsøking, skjermdumper, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om landområde, konsoll, AI-feilsøking, skjermbilder, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift verktøylinjer
 
 # Extra tooltips for the scenario editor toolbar
@@ -449,7 +449,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konso
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / Spillscript feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørret skjermbilde
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørra skjermbilde
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørret skjermbilde
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skjermbilde av hele kartet
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
@@ -957,8 +957,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Velg hvilket format skjermdumpen skal lagres i
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermbilde
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Velg hvilket format skjermbildet skal lagres i
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
@@ -1331,8 +1331,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festera
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindu: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}deaktivert
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimum zoom-inn-nivå: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimum zoom-ut-nivå: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maks zoom-inn nivå: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maks zoom-ut nivå: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1382,7 +1382,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre ve
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Feil med konfigurasjonsfilen...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... feil i liste '{STRING}'
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... feil i matrise '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ugyldig verdi '{STRING}' for '{STRING}'
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... etterslengende bokstaver i slutten av innstilling '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignorerer NewGRF '{STRING}': duplikat GRF ID med '{STRING}'
@@ -2456,6 +2456,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Endrings
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisens
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Sett parametre
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vis parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vis/skjul palett
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Vis/skjul paletten på valgte NewGRF.{}Gjør dette når grafikken fra denne NewGRFen ser rosa ut i spillet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Bruk endringene
@@ -2564,7 +2565,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret lokomotivets tilstand for '{1:ENGINE}' mens det er utenfor en togstall.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret maskinvogn-tilstand for '{1:ENGINE}' mens det er utenfor en togstall.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
@@ -2803,11 +2804,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} jernbanedeler
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} veibiter
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vannruter
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stasjonsruter
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} flyplasser
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} jernbanebit{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} veibit{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vannrute{P "" r}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stasjonsrute{P "" r}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} flyplass{P "" er}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ingen
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg firmaets hovedkontor
@@ -3510,7 +3511,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spillscr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sjekk spillscriptloggen
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI ble funnet.{}Denne AIen er en plassholder og vil ikke gjøre noe.{}Du kan laste ned flere AIer fra nettet med spillets nedlastingssystem.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Et script krasjet. Vennligst rapporter dette til script-forfatteren med en skjermdump av AI / Spillscript feilsøkingsvinduet.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Et script krasjet. Vennligst rapporter dette til script-forfatteren med et skjermbilde av AI / Spillscript feilsøkingsvinduet.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Spillscript-feilsøkingsvindu er kun tilgjengelig for tjeneren
 
 # AI configuration window
@@ -3616,8 +3617,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Å endr
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun et reservelydsett ble funnet. Hvis du vil ha lyder, installer et lydsett via spillets nedlastingssystem.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermdumpen ble lagret som '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermdump mislyktes!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermbildet ble lagret som '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermbilde mislyktes!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Melding

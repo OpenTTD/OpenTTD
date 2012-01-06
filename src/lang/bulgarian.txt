@@ -380,6 +380,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Основи г
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Субсидии
+STR_SUBSIDIES_MENU_GOAL                                         :Настоящи цели
 ############ range ends here
 
 ############ range for graph menu starts
@@ -744,6 +745,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Про�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидии
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Обща информация
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
@@ -855,26 +857,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Пари
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Избор на парична единица
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :британска лира (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :долар ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :евро (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :йена (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Британска лира (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Американски долар ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Евро (€)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Японска йена (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :австрийски шилинг (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :белгийски франк (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :швейцарски франк (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :чешка крона (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :германска марка (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :датска крона (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :песета (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Испанска песета (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :финландска марка (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :френски франк (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Френски франк (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :гръцка драхма (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :унгарски форинт (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :исландска крона (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :италианска лира (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :холандски гулден (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :норвежка крона (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :полска злота (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Полска злота (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :румънска лея (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :руска рубла (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :словенски толар (SIT)
@@ -1107,7 +1109,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
@@ -1356,7 +1358,7 @@ STR_INTRO_LOAD_GAME                                             :{BLACK}Отва
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Играене на сценарий
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Игра височинна карта
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценарии
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Много играчи
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Онлайн играчи
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки
 STR_INTRO_DIFFICULTY                                            :{BLACK}Сложност ({STRING})
@@ -1519,7 +1521,7 @@ STR_FACE_EARRING                                                :Oбица:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмени вратовръзкатa или oбицатa
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Много играчи
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Връзка:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Избор между игра в интернет или локална мрежа (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
@@ -1575,7 +1577,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Въве
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Въведете адреса на хоста
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Започване на нова игра
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Започни нова мрежова игра
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Име на игра:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Името на играта ще се вижда от другите играчи при избор на игра
@@ -1639,7 +1641,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Латвийс�
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Преддверие
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Преддверие на мрежовите игри
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Подготовка за присъединяване: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Списък с всички компании в играта. Можете да се присъедините към някоя или да започнете нова ако има свободно място
@@ -1739,7 +1741,7 @@ STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Сърв
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Не може да се свърже поради различие в NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Синхронизацията на мрежовата игра се провали
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Връзката с мрежовата игра се загуби
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не може да зареди играта
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Не може да отвори запазената игра
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Сървъра не може да бъде стартиран
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не може да се свърже
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Връзка #{NUM} изтече времето
@@ -1781,10 +1783,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Играта е
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Играта все още е временно спряна ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Играта все още е временно спряна ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Играта все още е временно спряна ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Играта все още е в пауза ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Играта продължава ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :няма достатъчно играчи
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :влиза играч
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ръчно
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игрови програмен език
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :напускам
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} се присъедини към играта
@@ -2334,6 +2338,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Гене
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Създаване на твърда и скална повърност
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка на играта
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Изпълняване цикъл на плочките
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Пускане на програмен език
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Подготвяне на играта
 
 # NewGRF settings
@@ -2551,12 +2556,34 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Пок�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Цели
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Основни цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели на компанията:
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Въпрос
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Недобре
+STR_GOAL_QUESTION_BUTTON_OK                                     :Добре
+STR_GOAL_QUESTION_BUTTON_NO                                     :Не
+STR_GOAL_QUESTION_BUTTON_YES                                    :Да
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Откажи
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Приеми
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Пропусни
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Отново
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Предишния
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Следващия
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Спри
+STR_GOAL_QUESTION_BUTTON_START                                  :Започни
+STR_GOAL_QUESTION_BUTTON_GO                                     :Давай
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Продължи
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Рестартирай
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Отложи
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Предай се
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Затвори
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидии
@@ -3230,7 +3257,7 @@ STR_ORDER_TRANSFER_FULL_LOAD                                    :(Смени и 
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Смени и чакай за какъвто и да е пълен товар)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Смени и потегли празен)
 STR_ORDER_NO_UNLOAD                                             :(Неразтоваряй и вземи товар)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоваряй и чакай за пълен товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоварвай и изчакай за пълен товар)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Неразтоваряй и чакай за какъвто и да е пълен товар)
 
 
@@ -3306,8 +3333,8 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Избе
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Име на AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI Настройки
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Промени настройките на AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Настройки
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Промени настройките на програмния език
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Презареждане AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Прекрати AI, презареди скрипта и рестартирай AI
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Спри на:
@@ -3328,11 +3355,16 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Прем
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Премести надолу
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Премести маркирания AI надолу в списъка
 
+STR_AI_CONFIG_AI                                                :{SILVER}AI-та
 
+STR_AI_CONFIG_CHANGE_AI                                         :AI
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Програмен език на играта
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигуриране
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION_AI                                          :AI-та
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Програмни езици на играта
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Кликнете за да изберете AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
@@ -3345,6 +3377,8 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Отме
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не променяй AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Програмен език на играта
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

@@ -2454,6 +2454,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log Newi
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Trwydded
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Dangos paramedrau
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglu palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Toglu palet y NewGRFa ddewiswyd.{}Gwnech hyn pan fo graffegau'r NewGRF yn edrych yn binc yn y gêm
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Gweithredu newidiadau

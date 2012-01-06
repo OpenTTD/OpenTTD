@@ -2454,6 +2454,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muutoslo
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisenssi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näytä parametrit
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Käytä eri palettia
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Käytä valitun NewGRF:n kanssa eri palettia.{}Tee näin, jos tämän NewGRF:n grafiikat näkyvät pelissä vaaleanpunaisina.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ota käyttöön

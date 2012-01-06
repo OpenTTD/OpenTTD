@@ -2791,6 +2791,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Журн
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лiцэнзiя
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Усталяваць парамэтры
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Паказаць парамэтры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Пераключыць палітру
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Пераключыць палітру для выбраных NewGRF файлаў.{}Выкарыстоўвайце пераключэньне, калі графіка ў гульні малюецца ружовым колерам.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ужыць зьмены

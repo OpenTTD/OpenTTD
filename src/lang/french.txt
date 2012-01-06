@@ -2455,6 +2455,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Liste de
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licence
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Afficher les paramètres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Basculer palette
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Basculer la palette du NewGRF sélectionné.{}Faites ceci quand les graphiques de ce NewGRF sont rose dans le jeu
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Appliquer les changements
