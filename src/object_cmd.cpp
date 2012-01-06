@@ -33,6 +33,7 @@
 #include "newgrf_object.h"
 #include "date_func.h"
 #include "newgrf_debug.h"
+#include "vehicle_func.h"
 
 #include "table/strings.h"
 #include "table/object_land.h"
@@ -227,6 +228,9 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					/* Can't build on water owned by another company. */
 					Owner o = GetTileOwner(t);
 					if (o != OWNER_NONE && o != OWNER_WATER) cost.AddCost(CheckOwnership(o, t));
+
+					/* However, the tile has to be clear of vehicles. */
+					cost.AddCost(EnsureNoVehicleOnGround(t));
 				}
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
