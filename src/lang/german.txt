@@ -1800,6 +1800,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sie sind
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sie wurden vom Server hinausgeworfen
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Es wurden zu viele Kommandos an den Server gesendet
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zeit für die Eingabe des Passwortes wurde überschritten
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer brauchte zu lange, dem Spiel beizutreten
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Allgemeiner Fehler

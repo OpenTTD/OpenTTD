@@ -440,6 +440,7 @@ STR_SORT_BY_INTRO_DATE                                          :Datum uvedbe
 STR_SORT_BY_RUNNING_COST                                        :Cena delovanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moč/Cena delovanja
 STR_SORT_BY_CARGO_CAPACITY                                      :Zmogljivost tovora
+STR_SORT_BY_RANGE                                               :Domet
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Premor
@@ -975,7 +976,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} podlega iztrošenosti
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nima več zanesljivosti in nujno potrebuje zamenjavo
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne najde poti za nadaljevanje
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} je izgubljen
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Vozilo {VEHICLE} je izgubljeno
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY_LONG}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspele preureditve
@@ -1515,6 +1516,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Avtomat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznano
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1984,6 +1986,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Označi 
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi vse, da ne bo prenešeno
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Obišči spletno stran
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Prenesi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Požene prenos izbranih vsebin
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Skupna velikost prenosa: {WHITE}{BYTES}
@@ -2508,6 +2511,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarja
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje kvadratkov
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Poganjam skripto
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprave igre
 
 # NewGRF settings
@@ -2538,6 +2542,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam n
 # Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavi parametre
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Prikaži parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Preklop palete
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Preklopi paleto izbranega NewGRF.{}To je potrebno storiti, če grafike iz NewGRF dobijo rožnato barvo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Potrdi spremembe
@@ -2741,6 +2746,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Brez -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji podjetja:
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Vprašanje
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Prekliči
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
+STR_GOAL_QUESTION_BUTTON_YES                                    :Da
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Zavrni
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Potrdi
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Zanemari
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Poskusi znova
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Prejšnji
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Naslednji
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Ustavi
+STR_GOAL_QUESTION_BUTTON_START                                  :Poženi
+STR_GOAL_QUESTION_BUTTON_GO                                     :Pojdi
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Nadaljuj
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Ponovni zagon
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Preloži
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Predaja
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zapri
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencije
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponudba subvencije za storitev:
@@ -2868,8 +2896,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Spremeni
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kupi 25% delnic podjetja
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodaj 25% delnic podjetja
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25% delnic tega podjetja. Shift+Klik prikaže predviden strošek brez nakupa
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja. Shift+Klik prikaže predviden dobiček brez prodaje
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25% delnic tega podjetja. Shift+Klik prikaže predviden strošek brez nakupa delnic
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja. Shift+Klik prikaže predviden dobiček brez prodaje delnic
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime podjetja
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo ime
@@ -2995,6 +3023,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Preuredi
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
 STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Največja vlečna moč: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} polj
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam železniških vozil - klikni na vozilo za informacije
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam cestnih vozil - klikni na vozilo za informacije
@@ -3200,6 +3229,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Ustavljeno
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Se ustavlja, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ni napetosti
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čaka na prosto pot
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Predaleč do naslednjega cilja
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Pelje proti {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Brez ukazov, {VELOCITY}
@@ -3333,6 +3363,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Spremeni
 
 STR_ORDER_REFIT                                                 :{BLACK}Preuredi
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Izberi preureditev za vrsto tovora, ki ga želiš. Ctrl+Klik za odstranitev ukaza preureditve
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tovor na voljo
 
 STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vedno pojdi
@@ -3422,6 +3453,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne razloži in
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne razloži in ne naloži)
 
 
+STR_ORDER_AUTO_REFIT_ANY                                        :tovor na voljo
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[začetna stran]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
@@ -3508,6 +3540,7 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Preklopi
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si razhroščevalni izpis UI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za razhroščevanje UI
@@ -3527,6 +3560,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Premakni
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta
 STR_AI_CONFIG_AI                                                :{SILVER}UI-ji
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Izberi {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :UI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta
@@ -3534,6 +3568,7 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi parametre Skripte
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Na voljo je {STRING}
 STR_AI_LIST_CAPTION_AI                                          :UI-ji
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni za izbor skripte
@@ -3548,6 +3583,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Preklič
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne spremeni skripte
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
@@ -3940,6 +3976,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Ni mogoče prenehati deljenja ukazov...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ni mogoče skopirati urnika...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleč od prejšnjega cilja
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... letalo nima dovolj dometa
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ni mogoče določiti časa vozilu...

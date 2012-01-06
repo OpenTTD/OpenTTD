@@ -1799,6 +1799,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}You are 
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}You were kicked out of the game
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheating is not allowed on this server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}You were sending too many commands to the server
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}You took too long to enter the password
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Your computer took too long to join
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error
@@ -2829,8 +2831,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Change t
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Buy 25% share in company
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sell 25% share in company
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Buy 25% share in this company. Shift+Click shows shows estimated cost without purchasing any share
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sell 25% share in this company. Shift+Click shows shows estimated cost without selling any share
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Buy 25% share in this company. Shift+Click shows estimated cost without purchasing any share
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sell 25% share in this company. Shift+Click shows estimated income without selling any share
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Company Name
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :President's Name
@@ -3050,7 +3052,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clone Sh
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clone Aircraft
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}This will buy a copy of a train including all cars. Click this button and then on a train inside or outside the depot. Ctrl+Click share the orders. Shift+Click shows estimated cost without purchase
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will will share the orders. Shift+Click shows estimated cost without purchase
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}This will buy a copy of a road vehicle. Click this button and then on a road vehicle inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}This will buy a copy of a ship. Click this button and then on a ship inside or outside the depot. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}This will buy a copy of an aircraft. Click this button and then on an aircraft inside or outside the hangar. Ctrl+Click will share the orders. Shift+Click shows estimated cost without purchase
 

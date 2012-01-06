@@ -2858,7 +2858,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambia i
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra il 25% delle azioni
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendi il 25% delle azioni
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra una quota del 25% di questa compagnia. MAIUSC+clic mostra il costo stimato senza comprare azioni
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia. MAIUSC+clic mostra il costo stimato senza vendere azioni
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia. MAIUSC+clic mostra l'incasso stimato senza vendere azioni
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome della compagnia
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presidente

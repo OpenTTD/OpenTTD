@@ -1419,12 +1419,32 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}دھوکے
 STR_CHEATS_TOOLTIP                                              :{BLACK}چیک باکسز سے ظاہر ہوتا ہے کہ آپ نے یہ دھوکا پہلے بھی کیا یے
+STR_CHEATS_WARNING                                              :{BLACK}انتباہ! آپ ساتھی کھلاڑیوں کو دھوکہ دینے جا رہے ہیں
 STR_CHEAT_MONEY                                                 :{LTBLUE}رقم کو {CURRENCY_LONG} سے بڑھائیں
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}اس کمپنی کی طور پر کھیلیں: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}جادوئی دھماکہ خیز (نہ ٹوٹنے والی چیزیں بھی توڑ دے): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}سُرنگیں ایک دوسری میں سے گُزر سکیں: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}ہوائی جہاز چھوٹے ہوائی اڈوں پر تباہ نہ ہوں: {ORANGE}{STRING}
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Temperate منظر کشی
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arctic منظر کشی
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropical منظر کشی
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Toyland منظر کشی
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}تاریخ بدلیں: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}موجودہ سال بدلیں
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}پیداوار میں تبدیلی کو فعال کریں: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}نئے رنگوں کا انتخاب
 
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}رنگوں کا عام انتخاب دکھائیں
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}ریل گاڑیوں کے رنگوں کا انتخاب دکھائیں
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}گاڑیوں کے رنگوں کا انتخاب دکھائیں
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}بحری جہازوں کے رنگوں کا انتخاب دکھائیں
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}ہوائی جہازوں کے رنگوں کا انتخاب دکھائیں
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}اختیار شدہ رنگوں میں سے بنیادی دنگ اختیار کریں
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}اختیار شدہ رنگوں میں سے دوسرا دنگ اختیار کریں
 
+STR_LIVERY_DEFAULT                                              :عمومی رنگ
 STR_LIVERY_STEAM                                                :اسٹیم انجن
 STR_LIVERY_DIESEL                                               :ڈیزل انجن
 STR_LIVERY_ELECTRIC                                             :الیکٹرک انجن
@@ -1465,9 +1485,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}سادہ
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}سادہ چہرہ چنئے
 STR_FACE_LOAD                                                   :{BLACK}لوڈ
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ لوڈ کریں
+STR_FACE_LOAD_DONE                                              :{WHITE}آپ کا پسندیدہ چہرہ OpenTTD configuration file سے لوڈ ہو گیا ہے
 STR_FACE_FACECODE                                               :{BLACK}کھلاڑی کا چہرہ نمبر
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}کمپنی کے مالک کے چہرے کو نمبر لگائیں/دیکھیں
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}مالک کے چہرے کو نمبر لگائیں/دیکھیں
+STR_FACE_FACECODE_SET                                           :{WHITE}نیا نمبر لگا دیا گیا ہے
+STR_FACE_FACECODE_ERR                                           :{WHITE}نمبر نہیں لگایا جا سکا۔ نمبر 0 سے 4,294,967,295 کے درمیان ہونا چاہئیے
 STR_FACE_SAVE                                                   :{BLACK}بچائیں
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}پسندیدہ چہرہ بچائیں
+STR_FACE_SAVE_DONE                                              :{WHITE}یہ چہرہ آپ کے پسندیدہ چہرے کے طور پر OpenTTD configuration file میں محفوظ کر لیا جائے گا
 STR_FACE_EUROPEAN                                               :{BLACK}یورپئین
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}یورپئین چہرہ چنئے
 STR_FACE_AFRICAN                                                :{BLACK}افریقی
@@ -1502,6 +1528,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ٹائی
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}زیادہ کھلاڑی
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}کنکشن:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}انٹرنیٹ یا LAN کھیل میں سے کوئی ایک اختیار کریں
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :انٹرنیٹ
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}کھلاڑی کا نام:
@@ -1509,13 +1536,34 @@ STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}دوسر
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}نام
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}کھیل کا نام
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}کلائینٹس
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}نقشے کا حجم
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}آج کی تاریخ
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}کھیل کو چلتے ہوئے سال
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Language, server version, etc.
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}فہرست میں سے ایک کھیل کو چُننے کے لئے ایک پر کلک کریں
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}آپ کا پچھلی مرتبہ اختیار کیا ہُوا سرور:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}اپنے چھلی مرتبہ اختیار شدہ سرور کو منتخب کرنے کے لئے کلک کریں
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}کھیل کی معلومات
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}زبان: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}منظر کشی: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}نقشے کا سائز: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Server version: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Server address: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}شروعاتی تاریخ: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}موجودہ تاریخ: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}پاس ورڈ سے محفوظ شدہ!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}سرور دستیاب نہیں ہے
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}سرور فُل ہے
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSION MISMATCH
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF MISMATCH
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}کھیل میں شامل ہوں
 
@@ -1817,6 +1865,10 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس ش�
 
 
 # Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 

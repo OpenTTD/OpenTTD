@@ -2419,7 +2419,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaat
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met vlakken
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met tile-loop
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Script loopt
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Voorbereiden spel
 
@@ -2454,6 +2454,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Wijzigin
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licentie
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Laat parameters zien
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Verander het palet van het geselecteerde NewGRF-bestand.{}Gebruik deze mogelijkheid als de afbeeldingen van dit NewGRF-bestand er paars uit zien in het spel
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Wijzigingen doorvoeren
@@ -2801,11 +2802,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Geen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% eigendom van {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructuur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spoor delen
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} weg delen
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} water tegels
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} station tegels
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} vliegvelden
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spoorde{P el len}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} wegde{P el len}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} watertegel{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stationstegel{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} vliegveld{P "" en}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Geen
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bouw bedrijfshoofdkwartier

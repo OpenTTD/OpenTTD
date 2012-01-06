@@ -1800,6 +1800,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vous êt
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vous avez été exclu de la partie
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tricher n'est pas autorisé sur ce serveur
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vous envoyiez trop de commandes au serveur
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vous avez mis trop de temps pour entrer le mot de passe
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erreur générale
@@ -2803,11 +2805,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Aucun
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% détenus par {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructure{NBSP}:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} morceaux de voie ferrée
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} morceaux de route
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} cases d'eau
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} cases de station
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aéroports
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} morceau{P "" x} de voie ferrée
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} morceau{P "" x} de route
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} case{P "" s} d'eau
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} case{P "" s} de station
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aéroport{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Aucun
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Const. siège
@@ -2831,7 +2833,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Changer 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Acheter 25% de la compagnie
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre 25% de la compagnie
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Acheter 25% de la compagnie. Shift-clic pour afficher le coût estimé sans acheter
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 25% de la compagnie. Shift-clic pour afficher le coût estimé sans vendre
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 25% de la compagnie. Shift-clic pour afficher le revenu estimé sans vendre
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la société
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
