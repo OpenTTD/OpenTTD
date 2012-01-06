@@ -173,6 +173,8 @@ struct NetworkSettings {
 	uint16 bytes_per_frame;                               ///< how many bytes may, over a long period, be received per frame?
 	uint16 bytes_per_frame_burst;                         ///< how many bytes may, over a short period, be received?
 	uint16 max_join_time;                                 ///< maximum amount of time, in game ticks, a client may take to join
+	uint16 max_download_time;                             ///< maximum amount of time, in game ticks, a client may take to download the map
+	uint16 max_password_time;                             ///< maximum amount of time, in game ticks, a client may take to enter the password
 	bool   pause_on_join;                                 ///< pause the game when people join
 	uint16 server_port;                                   ///< port the server listens on
 	uint16 server_admin_port;                             ///< port the server listens on for the admin network
