@@ -41,8 +41,8 @@ public:
 	 */
 	enum WaypointType {
 		/* Note: these values represent part of the in-game StationFacility enum */
-		WAYPOINT_RAIL      = ::FACIL_TRAIN, ///< Rail waypoint
-		WAYPOINT_BUOY      = ::FACIL_DOCK,  ///< Buoy
+		WAYPOINT_RAIL      = (int)::FACIL_TRAIN, ///< Rail waypoint
+		WAYPOINT_BUOY      = (int)::FACIL_DOCK,  ///< Buoy
 		WAYPOINT_ANY       = WAYPOINT_RAIL | WAYPOINT_BUOY, ///< All waypoint types
 	};
 
