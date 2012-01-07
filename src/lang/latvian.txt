@@ -23,7 +23,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(nedefinēta rinda)
+STR_UNDEFINED                                                   :(nedefinēta virkne)
 STR_JUST_NOTHING                                                :Nekā
 
 # Cargo related strings
@@ -59,7 +59,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Burbuļi
 STR_CARGO_PLURAL_TOFFEE                                         :Īriss
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijas
 STR_CARGO_PLURAL_PLASTIC                                        :Plastmasa
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Dzirkstošie dzērieni
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Limonādes
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -93,7 +93,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Burbuļi
 STR_CARGO_SINGULAR_TOFFEE                                       :Īriss
 STR_CARGO_SINGULAR_BATTERY                                      :Baterijas
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastmasas
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Dzirkstošais dzēriens
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Limonāde
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -107,7 +107,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} g
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kokmateriālu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} dzelzsrūdas
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} tērauda
-STR_QUANTITY_VALUABLES                                          :{COMMA} mais{P s i u} ar vērtspapīriem
+STR_QUANTITY_VALUABLES                                          :{COMMA} mais{P s i u} ar vērtslietām
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} vara rūdas
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukurūzas
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} augļu
@@ -126,8 +126,8 @@ STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} c
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuļi
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} īrisa konfekšu
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a as u}
-STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastmasu
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} burbuļūdens
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastmasas
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonād{P e s žu}
 STR_QUANTITY_N_A                                                :Nav info
 
 # Two letter abbreviation of cargo name
@@ -142,17 +142,17 @@ STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}KM
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}DZ
 STR_ABBREV_STEEL                                                :{TINY_FONT}TR
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VP
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}VR
 STR_ABBREV_MAIZE                                                :{TINY_FONT}KU
 STR_ABBREV_FRUIT                                                :{TINY_FONT}AU
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
 STR_ABBREV_FOOD                                                 :{TINY_FONT}PP
-STR_ABBREV_PAPER                                                :{TINY_FONT}PS
+STR_ABBREV_PAPER                                                :{TINY_FONT}PR
 STR_ABBREV_GOLD                                                 :{TINY_FONT}ZE
 STR_ABBREV_WATER                                                :{TINY_FONT}ŪD
 STR_ABBREV_WHEAT                                                :{TINY_FONT}KV
-STR_ABBREV_RUBBER                                               :{TINY_FONT}GU
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KČ
 STR_ABBREV_SUGAR                                                :{TINY_FONT}CU
 STR_ABBREV_TOYS                                                 :{TINY_FONT}RT
 STR_ABBREV_SWEETS                                               :{TINY_FONT}SA
@@ -162,7 +162,7 @@ STR_ABBREV_BUBBLES                                              :{TINY_FONT}BB
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}CP
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}BU
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}LM
 STR_ABBREV_NONE                                                 :{TINY_FONT}NAV
 STR_ABBREV_ALL                                                  :{TINY_FONT}VISI
 
@@ -204,7 +204,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna{P "" s ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna{P "" s u}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
@@ -215,30 +215,30 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} p
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pēdas
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Ievadīt filtra rindu
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Ievadiet filtra virkni
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Ievadiet atslēgvārdu, lai filtrētu sarakstu
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izvēlieties kārtošanas secību (dilstošs/augošs)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izvēlieties kārtošanas kritēriju
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izvēlieties atlasīšanas nosacījumus
 STR_BUTTON_SORT_BY                                              :{BLACK}Kārtot pēc
-STR_BUTTON_LOCATION                                             :{BLACK}Izvietojums
+STR_BUTTON_LOCATION                                             :{BLACK}Atrašanās vieta
 STR_BUTTON_RENAME                                               :{BLACK}Pārdēvēt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt logu
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - velc šo, lai pārvietotu logu
-STR_TOOLTIP_SHADE                                               :{BLACK}Aizēnot logu - rādīt tikai nosaukumu
+STR_TOOLTIP_SHADE                                               :{BLACK}Aizēnot logu — rādīt tikai nosaukumu
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rādīt NewGRF atkļūdošanas informāciju
-STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" pogu
-STR_TOOLTIP_RESIZE                                              :{BLACK}Klik un velc, lai mainītu šī loga lielumu
+STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" taustiņu
+STR_TOOLTIP_RESIZE                                              :{BLACK}Klikšķiniet un velciet, lai mainītu šī loga lielumu
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pārslēgties starp lielu/mazu loga izmēru
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla - bīda sarakstu augšup/lejup
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla - bīda sarakstu pa kreisi/labi
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. uz zemes pleķa. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu attēlošanu
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla — ritina sarakstu augšup/lejup
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla — ritina sarakstu pa kreisi/labi
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. objektus no zemes pleķa. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu attēlošanu
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Noklusējums
@@ -251,9 +251,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Garums: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Lauks: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Laukums: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Garums: {NUM}{}Augstuma atšķirība: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Lauks: {NUM} x {NUM}{}Augstuma atšķirība: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Laukums: {NUM} x {NUM}{}Augstuma atšķirība: {HEIGHT}
 
 
 # These are used in buttons
@@ -266,8 +266,8 @@ STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Veida
 STR_SORT_BY_TRANSPORTED                                         :Transportētā
 STR_SORT_BY_NUMBER                                              :Numura
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Ienākumiem pērn
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Ienākumiem šogad
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Peļņas pērn
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Peļņas šogad
 STR_SORT_BY_AGE                                                 :Vecuma
 STR_SORT_BY_RELIABILITY                                         :Uzticamības
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kopējās ietilpības pēc kravas veida
@@ -286,23 +286,23 @@ STR_SORT_BY_COST                                                :Izmaksas
 STR_SORT_BY_POWER                                               :Jaudas
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Vilcējspēka
 STR_SORT_BY_INTRO_DATE                                          :Ieviešanas datuma
-STR_SORT_BY_RUNNING_COST                                        :Lietošanas izmaksas
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Jaudas/lietošanas izmaksas
+STR_SORT_BY_RUNNING_COST                                        :Kārtējās izmaksas
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Jaudas/kārtējās izmaksas
 STR_SORT_BY_CARGO_CAPACITY                                      :Kravnesības
-STR_SORT_BY_RANGE                                               :Apgabals
+STR_SORT_BY_RANGE                                               :Apgabala
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Paātrināta spēle
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcijas
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Saglabāt spēli, pamest spēli, iziet
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rādīt karti, papildus skatvietu vai zīmju sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Parādīt pilsētu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rādīt karti, papildu skatvietu vai zīmju sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Rādīt pilsētu sarakstu
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rādīt subsīdijas
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Parādīt uzņēmuma staciju sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Parādīt uzņēmuma finansiālo stāvokli
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Parādīt uzņēmuma vispārējo informāciju
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Parādīt grafikus
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rādīt uzņēmuma staciju sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finansiālo stāvokli
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt vispārēju informāciju par uzņēmumu
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rādīt diagrammas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Parādīt uzņēmuma rangu sarakstu
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jauna industriāla objekta būvniecību
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Parādīt uzņēmuma vilcienu sarakstu. Ctrl+klikšķis pārslēdz starp grupu/transportlīdzekļu sarakstu
@@ -1325,7 +1325,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(izboj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusmežos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas novietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusa joslas novietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}{STRING} pikse{P 0:1 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
@@ -1801,6 +1801,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jūs esa
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jūs esat izmests no šīs spēles
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Uz šī servera blēdības nav atļautas
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jūs sūtījāt uz serveri pārak daudz rīkojumu
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jūs pārāk ilgi neievadījāt paroli
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Jūsu dators pārāk ilgi mēģināja pievienoties
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :galvenā kļūda
@@ -2587,6 +2589,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nepareiza rūp
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenē NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skenē NewGRF. Atkarībā no apjoma, tas var aizņemt kādu laiciņu...
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF noskanēja apmēram {NUM} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skenē arhīvus
 
 # Sign list window
@@ -2623,6 +2626,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} piegādāts
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (joprojām pieprasīts)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P u s u} {ORANGE}{COMMA}{BLACK} dien{P u s u}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P u s u} {ORANGE}{COMMA}{BLACK} dien{P u s u} (finansēta)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}ne{BLACK}aug
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu limits pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
@@ -2807,6 +2812,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neviens
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Uzņēmuma vērtība: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% piederoši {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktūra:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} sliežu gabal{P s i u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} ceļa gabal{P s i u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} ūdens lauciņ{P š i u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stacijas lauciņ{P š i u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lidosta{P "" s u}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nekas
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Celt biroju
@@ -3079,7 +3089,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Jūs gr
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ziņojums no transporta ražotāja
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jauno {STRING} - vai jūs būtu ieinteresēts iegūt izņēmuma tiesības izmantot šo transportu uz vienu gadu, lai mēs varētu to izmēģināt pirms tas kļūst pieejams visiem?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli — {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportu uz vienu gadu, lai mēs varētu to izmēģināt pirms tas kļūst pieejams visiem?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :dzelzceļa lokomotīve
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidmašīna
@@ -3409,6 +3419,14 @@ STR_ORDER_AUTO_REFIT                                            :(Auto-pielāgot
 STR_ORDER_FULL_LOAD_REFIT                                       :(Pilnībā pielādēt ar auto-pielāgošanu uz {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Pilnībā pielādēt ar jebkuru kravu ar auto-pielāgošanu uz {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Izkraut un paņemt kravu ar auto-pielāgošanu uz {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Izkraut un gaidīt pilnu iekraušanu ar auto-pielāgošanu uz {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Izkraut un gaidīt jebkuru pilnu iekraušanu ar auto-pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Pārsūtīt un paņemt kravu ar automātisko pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pārsūtīt un gaidīt pilnu iekraušanu ar automātisko pielāgošanu uz {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pārsūtīt un gaidīt jebkuru pilnu iekraušanu ar automātisko pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Neizkraut un ņemt kravu ar automātisko pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Neizkraut un gaidīt pilnu iekraušanu ar automātisko pielāgošanu uz {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Neizkraut un gaidīt jebkuru pilnu iekraušanu ar automātisko pielāgošanu uz {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :pieejamā krava
 
@@ -3440,7 +3458,7 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz
 STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P s i u}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Šis saraksts aizņems {STRING} lai pabeigtu
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Šis saraksts aizņems {STRING}, lai pabeigtu
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Šis saraksts aizņems vismaz {STRING} lai pabeigtu (nav viss pēc saraksta)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Šis transportlīdzeklis pašlaik iekļaujas laikā
@@ -3459,7 +3477,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Notīrī
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst laiku atlasītajam norīkojumam
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest kavējuma skaitītāju
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju,lai transportlīdzeklis būtu laikā
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju, lai transportlīdzeklis būtu laikā
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-kikšķis lai mēģinātu paturēt gaidīšanas laikus)
@@ -4028,7 +4046,7 @@ STR_INDUSTRY_NAME_COLA_WELLS                                    :Kolas avoti
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Rotaļlietu veikals
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Rotaļlietu fabrika
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastmasas strūklakas
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Dzirkstošo dzērienu ražotne
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Limonādes ražotne
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Burbuļu ģenerators
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Īrisa lauztuves
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukura raktuve
@@ -4127,7 +4145,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kolas cisterna
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Saldumu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Rotaļlietu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Bateriju vagons
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Dzirkstošo dzērienu vagons
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Limonādes vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastmasas vagons
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektriskā)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektriskā)
@@ -4157,7 +4175,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Kolas cisterna
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Saldumu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Rotaļlietu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Bateriju platforma
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Dzirkstošo dzērienu vagons
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Limonādes kravas automašīna
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastmasas vagons
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektriskā)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektriskā)
@@ -4189,7 +4207,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Kolas vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Saldumu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Rotaļlietu vagons
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Bateriju vagons
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Dzirkstošo dzērienu vagons
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Limonādes kravas automašīna
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Plastmasas vedējs
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal autobuss
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard autobuss
@@ -4270,9 +4288,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow saldum
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover bateriju pārvadātājs
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught bateriju pārvadātājs
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow bateriju pārvadātājs
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover gāzēto dzērienu pārvadātājs
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaughtgāzēto dzērienu pārvadātājs
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow gāzēto dzērienu pārvadātājs
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover limonādes kravas automašīna
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught limonādes kravas automašīna
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow limonādes kravas automašīna
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover plastmasas pārvadātājs
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught plastmasas pārvadātājs
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow plastmasas pārvadātājs

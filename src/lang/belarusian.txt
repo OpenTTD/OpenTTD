@@ -2116,6 +2116,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Дост
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкінулі з гульні
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Махлярства не дазволена на гэтым сэрвэры
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы дасылалi да сэрвэра занадта шмат камандаў
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы задоўга ня можаце ўвесьцi пароль
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш кампутар занадта доўга ня можа далучыцца
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка

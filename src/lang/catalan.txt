@@ -447,7 +447,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia al terminal
 STR_ABOUT_MENU_AI_DEBUG                                         :IA / Depuració de l'script del joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliació en la captura de pantalla
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoom màxim en la captura de pantalla
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zoom predeterminat en les captures de pantalla
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla de tot el mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
@@ -1800,6 +1800,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Estàs e
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}T'han fet fora del joc
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}No es permet fer trampes en aquest servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estaves enviant massa ordres al servidor
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Has tardat massa a introduir la contrasenya
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}El teu ordenador ha tardat massa a unir-se
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
@@ -2455,6 +2457,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Registra
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Llicència
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Estableix paràm.
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostra els paràmetres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Commuta paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Commuta la paleta del NewGRF seleccionat.{}Fes això quan els gràfics del NewGRF en el joc siguin rosats
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplica els canvis
@@ -2668,6 +2671,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectius de la companyia:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clica sobre l'objectiu per centrar la vista principal sobre la indústria/poble/cel·la. Ctrl+clic per obrir una nova vista sobre la indústria/poble/cel·la
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pregunta
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel·la
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :No
+STR_GOAL_QUESTION_BUTTON_YES                                    :Si
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Declina
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepta
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignora
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Reintenta
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Següent
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Para
+STR_GOAL_QUESTION_BUTTON_START                                  :Comença
+STR_GOAL_QUESTION_BUTTON_GO                                     :Ves
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continua
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reinicia
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postposa
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Rendir-se
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tanca
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subvencions

@@ -1955,6 +1955,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас �
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкинули из игры
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Чит-коды не разрешены на этом сервере
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы посылали на сервер слишком много команд
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы не успели ввести пароль
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш компьютер не успел подключиться
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка

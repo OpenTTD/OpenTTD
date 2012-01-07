@@ -1390,6 +1390,10 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 
 # Station list window
@@ -1780,26 +1784,98 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :இரயில
 STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_AIRPORT                                           :{STRING} விமான நிலையம்
+STR_SV_STNAME_OILFIELD                                          :{STRING} எண்ணெய் வயல்
+STR_SV_STNAME_MINES                                             :{STRING} சுரங்கங்கள்
+STR_SV_STNAME_DOCKS                                             :{STRING} துறைமுக மேடைகள்
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_BRANCH                                            :{STRING} பிரிவு
+STR_SV_STNAME_UPPER                                             :மேல் {STRING}
+STR_SV_STNAME_LOWER                                             :கீழ் {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} காடு
 STR_SV_STNAME_FALLBACK                                          :{STRING} நிலையம் #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (டீசல்)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :பிலாடிபுட் சூ-சூ
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :பவர்னாட் சூ-சூ
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :மைட்டிமூவர் சூ-சூ
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :பிலாடிபுட் டீசல்
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :பவர்னாட் டீசல்
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :வில்ஸ் 2-8-0 (நீராவி)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :சனே 'ஜூபிலி' (நீராவி)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :கின்சு 'அ4' (நீராவி)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (நீராவி)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :மேன்லீ-மாரேல் DMU (டீசல்)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'டாஷ்' (டீசல்)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/ஹென்றி '25' (டீசல்)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (டீசல்)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :பயணிகள் பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :நிலக்கரி வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :எண்ணெய் லாரி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :பண்ணை வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :சரக்கு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :தானிய வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :மர வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :இரும்புத் தாது வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :எஃகு வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :உறுதிப்படுத்தப்பட்ட வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :உணவு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :காகித லாரி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :செம்புத் தாது வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :தண்ணீர் லாரி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :பழ வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :ரப்பர் வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :சர்க்கரை வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :பஞ்சு மிட்டாய் வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :இனிப்பு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :மின்கல வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :பிளாஸ்டிக் லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS ரீகல் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :ஹியர்போர்ட் லியோபார்ட் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :ப்பாஸ்டர் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :பாஸ்டர் MkII பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :பிலோடிபுட் MkI பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :பிலோடிபுட் MkII பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :பிலோடிபுட் MkIII பேருந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :பாலாக்ஃ நிலக்கரி வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl நிலக்கரி வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW நிலக்கரி வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :ரேய்னார்டு அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :பெர்ரி அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :மைட்டிமூவர் அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :பவர்நாட் அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :வீஸவொவ் அஞ்சல் வாகனம்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :விட்கோம்ப் எண்ணெய் லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :பாஸ்டர் எண்ணெய் லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :பெர்ரி எண்ணெய் லாரி
+STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :தால்பாட் பண்ணை வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl பண்ணை வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :பாஸ்டர் பண்ணை வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :பாலாக்ஃ சரக்கு வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :க்ரேய்க் சரக்கு வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :கொஸ் சரக்கு வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :ஹியர்போர்ட் தானிய வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :தாமஸ் தானிய வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :கொஸ் தானிய வண்டி
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :விட்கோம்ப் மர ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :பாஸ்டர் மர ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :மோர்லாந்து மர ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS இரும்புத் தாது ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl இரும்புத் தாது ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :சிப்பி இரும்புத் தாது ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :பாலாக்ஃ எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl எஃகு லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :கெல்லிங் எஃகு பாரஊர்தி
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :பாலொகஃ உறுதிப்படுத்தப்பட்ட ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl உறுதிப்படுத்தப்பட்ட ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :பாஸ்டர் உறுதிப்படுத்தப்பட்ட ட்ரக்
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :பாஸ்டர் உணவு வாகனம்
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :பெர்ரி உணவு வாகனம்
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :சிப்பி உணவு வாகனம்
