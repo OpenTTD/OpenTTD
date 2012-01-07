@@ -1797,36 +1797,30 @@ void NetworkServer_Tick(bool send_frame)
 		uint lag = NetworkCalculateLag(cs);
 		switch (cs->status) {
 			case NetworkClientSocket::STATUS_ACTIVE:
-				/* 1 lag-point per day */
-				lag /= DAY_TICKS;
-				if (lag > 0) {
-					if (lag > 3) {
-						/* Client did still not report in after 4 game-day, drop him
-						 *  (that is, the 3 of above, + 1 before any lag is counted) */
-						IConsolePrintF(CC_ERROR, cs->last_packet + 3 * DAY_TICKS * MILLISECONDS_PER_TICK > _realtime_tick ?
-								/* A packet was received in the last three game days, so the client is likely lagging behind. */
-									"Client #%d is dropped because the client's game state is more than 4 game-days behind" :
-								/* No packet was received in the last three game days; sounds like a lost connection. */
-									"Client #%d is dropped because the client did not respond for more than 4 game-days",
-								cs->client_id);
-						cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
-						continue;
-					}
-
-					/* Report once per time we detect the lag, and only when we
-					 * received a packet in the last 2000 milliseconds. If we
-					 * did not receive a packet, then the client is not just
-					 * slow, but the connection is likely severed. Mentioning
-					 * frame_freq is not useful in this case. */
-					if (cs->lag_test == 0 && cs->last_packet + DAY_TICKS * MILLISECONDS_PER_TICK > _realtime_tick) {
-						IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
-						cs->lag_test = 1;
-					}
-				} else {
-					cs->lag_test = 0;
+				if (lag > _settings_client.network.max_lag_time) {
+					/* Client did still not report in within the specififed limit. */
+					IConsolePrintF(CC_ERROR, cs->last_packet + lag * MILLISECONDS_PER_TICK > _realtime_tick ?
+							/* A packet was received in the last three game days, so the client is likely lagging behind. */
+								"Client #%d is dropped because the client's game state is more than %d ticks behind" :
+							/* No packet was received in the last three game days; sounds like a lost connection. */
+								"Client #%d is dropped because the client did not respond for more than %d ticks",
+							cs->client_id, lag);
+					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					continue;
 				}
-				if (cs->last_frame_server - cs->last_token_frame >= 5 * DAY_TICKS) {
-					/* This is a bad client! It didn't send the right token back. */
+
+				/* Report once per time we detect the lag, and only when we
+				 * received a packet in the last 2000 milliseconds. If we
+				 * did not receive a packet, then the client is not just
+				 * slow, but the connection is likely severed. Mentioning
+				 * frame_freq is not useful in this case. */
+				if (lag > (uint)DAY_TICKS && cs->lag_test == 0 && cs->last_packet + 2000 > _realtime_tick) {
+					IConsolePrintF(CC_WARNING, "[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
+					cs->lag_test = 1;
+				}
+
+				if (cs->last_frame_server - cs->last_token_frame >= _settings_client.network.max_lag_time) {
+					/* This is a bad client! It didn't send the right token back within time. */
 					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it fails to send valid acks", cs->client_id);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
@@ -1838,8 +1832,8 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_AUTHORIZED:
 				/* NewGRF check and authorized states should be handled almost instantly.
 				 * So give them some lee-way, likewise for the query with inactive. */
-				if (lag > 4 * DAY_TICKS) {
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
+				if (lag > _settings_client.network.max_init_time) {
+					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, _settings_client.network.max_init_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1848,7 +1842,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_MAP:
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to download the map", cs->client_id, _settings_client.network.max_download_time);
+					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to download the map", cs->client_id, _settings_client.network.max_download_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1858,7 +1852,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_PRE_ACTIVE:
 				/* The map has been sent, so this is for loading the map and syncing up. */
 				if (lag > _settings_client.network.max_join_time) {
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
+					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to join", cs->client_id, _settings_client.network.max_join_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1868,7 +1862,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_AUTH_COMPANY:
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d to enter the password", cs->client_id, _settings_client.network.max_password_time);
+					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to enter the password", cs->client_id, _settings_client.network.max_password_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
 					continue;
 				}
