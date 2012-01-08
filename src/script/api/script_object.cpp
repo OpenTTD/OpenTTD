@@ -239,6 +239,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 {
 	char buffer[64];
 	::GetString(buffer, string, lastof(buffer));
+	::str_validate(buffer, lastof(buffer), SVS_NONE);
 	return ::strdup(buffer);
 }
 
