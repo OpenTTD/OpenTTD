@@ -113,20 +113,6 @@ void CheckTrainsLengths()
 }
 
 /**
- * Update visual effect, power and acceleration caches.
- * Called when a vehicle in the consist enters a different railtype.
- */
-void Train::RailtypeChanged()
-{
-	for (Train *u = this; u != NULL; u = u->Next()) {
-		/* The wagon-is-powered-state should not change, so the weight does not change. */
-		u->UpdateVisualEffect(false);
-	}
-	this->PowerChanged();
-	if (this->IsFrontEngine()) this->UpdateAcceleration();
-}
-
-/**
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
@@ -1589,9 +1575,6 @@ void ReverseTrainSwapVeh(Train *v, int l, int r)
 		SwapTrainFlags(&a->gv_flags, &a->gv_flags);
 		UpdateStatusAfterSwap(a);
 	}
-
-	/* Update power of the train in case tiles were different rail type. */
-	v->RailtypeChanged();
 }
 
 
@@ -3246,7 +3229,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
-						v->First()->RailtypeChanged();
+						v->First()->ConsistChanged(true);
 					}
 
 					v->track = chosen_track;

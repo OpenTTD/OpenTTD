@@ -530,6 +530,9 @@ void FixupTrainLengths()
 					}
 				}
 			}
+
+			/* Update all cached properties after moving the vehicle chain around. */
+			Train::From(v)->ConsistChanged(true);
 		}
 	}
 }

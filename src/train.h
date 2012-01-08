@@ -116,8 +116,6 @@ struct Train FINAL : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void ConsistChanged(bool same_length);
 
-	void RailtypeChanged();
-
 	int UpdateSpeed();
 
 	void UpdateAcceleration();
