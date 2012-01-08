@@ -262,7 +262,7 @@ system:
 		directory if it is your personal directory, i.e. "~/", or when it is the
 		root directory, i.e. "/".
 	2. Your personal directory
-		Windows: C:\My Documents (95, 98, ME)
+		Windows: C:\My Documents\OpenTTD (95, 98, ME)
 		         C:\Documents and Settings\<username>\My Documents\OpenTTD (2000, XP)
 		         C:\Users\<username>\Documents\OpenTTD (Vista, 7)
 		Mac OSX: ~/Documents/OpenTTD
