@@ -14,6 +14,7 @@
 #include "script_map.hpp"
 #include "script_error.hpp"
 #include "../../town.h"
+#include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"
 #include "../../landscape.h"
@@ -32,13 +33,9 @@
 /* static */ char *ScriptTown::GetName(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return NULL;
-	static const int len = 64;
-	char *town_name = MallocT<char>(len);
 
 	::SetDParam(0, town_id);
-	::GetString(town_name, STR_TOWN_NAME, &town_name[len - 1]);
-
-	return town_name;
+	return GetString(STR_TOWN_NAME);
 }
 
 /* static */ bool ScriptTown::SetText(TownID town_id, Text *text)

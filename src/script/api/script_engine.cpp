@@ -36,12 +36,8 @@
 {
 	if (!IsValidEngine(engine_id)) return NULL;
 
-	static const int len = 64;
-	char *engine_name = MallocT<char>(len);
-
 	::SetDParam(0, engine_id);
-	::GetString(engine_name, STR_ENGINE_NAME, &engine_name[len - 1]);
-	return engine_name;
+	return GetString(STR_ENGINE_NAME);
 }
 
 /* static */ CargoID ScriptEngine::GetCargoType(EngineID engine_id)

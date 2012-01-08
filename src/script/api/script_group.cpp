@@ -64,12 +64,8 @@
 {
 	if (!IsValidGroup(group_id)) return NULL;
 
-	static const int len = 64;
-	char *group_name = MallocT<char>(len);
-
 	::SetDParam(0, group_id);
-	::GetString(group_name, STR_GROUP_NAME, &group_name[len - 1]);
-	return group_name;
+	return GetString(STR_GROUP_NAME);
 }
 
 /* static */ bool ScriptGroup::EnableAutoReplaceProtection(GroupID group_id, bool enable)

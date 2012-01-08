@@ -270,12 +270,8 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return NULL;
 
-	static const int len = 64;
-	char *vehicle_name = MallocT<char>(len);
-
 	::SetDParam(0, vehicle_id);
-	::GetString(vehicle_name, STR_VEHICLE_NAME, &vehicle_name[len - 1]);
-	return vehicle_name;
+	return GetString(STR_VEHICLE_NAME);
 }
 
 /* static */ int32 ScriptVehicle::GetAge(VehicleID vehicle_id)

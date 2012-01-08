@@ -16,6 +16,8 @@
 #include "../../company_base.h"
 #include "../../network/network.h"
 #include "../../genworld.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
 
 #include "../script_storage.hpp"
 #include "../script_instance.hpp"
@@ -231,6 +233,13 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ void *&ScriptObject::GetLogPointer()
 {
 	return GetStorage()->log_data;
+}
+
+/* static */ char *ScriptObject::GetString(StringID string)
+{
+	char buffer[64];
+	::GetString(buffer, string, lastof(buffer));
+	return ::strdup(buffer);
 }
 
 /* static */ void ScriptObject::SetCallbackVariable(int index, int value)

@@ -51,12 +51,8 @@
 /* static */ char *ScriptIndustryType::GetName(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return NULL;
-	static const int len = 64;
-	char *industrytype_name = MallocT<char>(len);
 
-	::GetString(industrytype_name, ::GetIndustrySpec(industry_type)->name, &industrytype_name[len - 1]);
-
-	return industrytype_name;
+	return GetString(::GetIndustrySpec(industry_type)->name);
 }
 
 /* static */ ScriptList *ScriptIndustryType::GetProducedCargo(IndustryType industry_type)

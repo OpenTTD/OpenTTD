@@ -48,13 +48,8 @@
 {
 	if (!IsValidSign(sign_id)) return NULL;
 
-	static const int len = 64;
-	char *sign_name = MallocT<char>(len);
-
 	::SetDParam(0, sign_id);
-	::GetString(sign_name, STR_SIGN_NAME, &sign_name[len - 1]);
-
-	return sign_name;
+	return GetString(STR_SIGN_NAME);
 }
 
 /* static */ TileIndex ScriptSign::GetLocation(SignID sign_id)

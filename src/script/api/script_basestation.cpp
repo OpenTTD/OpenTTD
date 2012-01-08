@@ -27,12 +27,8 @@
 {
 	if (!IsValidBaseStation(station_id)) return NULL;
 
-	static const int len = 64;
-	char *name = MallocT<char>(len);
-
 	::SetDParam(0, station_id);
-	::GetString(name, ::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME, &name[len - 1]);
-	return name;
+	return GetString(::Station::IsValidID(station_id) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
 }
 
 /* static */ bool ScriptBaseStation::SetName(StationID station_id, Text *name)

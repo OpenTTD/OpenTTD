@@ -236,6 +236,11 @@ protected:
 	 */
 	static void *&GetLogPointer();
 
+	/**
+	 * Get an allocated string with all control codes stripped off.
+	 */
+	static char *GetString(StringID string);
+
 private:
 	/**
 	 * Store a new_vehicle_id per company.

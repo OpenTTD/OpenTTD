@@ -38,13 +38,9 @@
 /* static */ char *ScriptIndustry::GetName(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return NULL;
-	static const int len = 64;
-	char *industry_name = MallocT<char>(len);
 
 	::SetDParam(0, industry_id);
-	::GetString(industry_name, STR_INDUSTRY_NAME, &industry_name[len - 1]);
-
-	return industry_name;
+	return GetString(STR_INDUSTRY_NAME);
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)

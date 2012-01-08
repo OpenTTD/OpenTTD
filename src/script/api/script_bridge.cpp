@@ -136,11 +136,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 {
 	if (!IsValidBridge(bridge_id)) return NULL;
 
-	static const int len = 64;
-	char *bridge_name = MallocT<char>(len);
-
-	::GetString(bridge_name, ::GetBridgeSpec(bridge_id)->transport_name[0], &bridge_name[len - 1]);
-	return bridge_name;
+	return GetString(::GetBridgeSpec(bridge_id)->transport_name[0]);
 }
 
 /* static */ int32 ScriptBridge::GetMaxSpeed(BridgeID bridge_id)

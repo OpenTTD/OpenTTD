@@ -28,12 +28,9 @@ bool ScriptEventEnginePreview::IsEngineValid() const
 char *ScriptEventEnginePreview::GetName()
 {
 	if (!this->IsEngineValid()) return NULL;
-	static const int len = 64;
-	char *engine_name = MallocT<char>(len);
 
 	::SetDParam(0, this->engine);
-	::GetString(engine_name, STR_ENGINE_NAME, &engine_name[len - 1]);
-	return engine_name;
+	return GetString(STR_ENGINE_NAME);
 }
 
 CargoID ScriptEventEnginePreview::GetCargoType()

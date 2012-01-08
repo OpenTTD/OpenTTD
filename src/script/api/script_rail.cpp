@@ -25,11 +25,7 @@
 {
 	if (!IsRailTypeAvailable(rail_type)) return NULL;
 
-	static const int len = 64;
-	char *railtype_name = MallocT<char>(len);
-
-	::GetString(railtype_name, GetRailTypeInfo((::RailType)rail_type)->strings.menu_text, &railtype_name[len - 1]);
-	return railtype_name;
+	return GetString(GetRailTypeInfo((::RailType)rail_type)->strings.menu_text);
 }
 
 /* static */ bool ScriptRail::IsRailTile(TileIndex tile)
