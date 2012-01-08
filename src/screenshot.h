@@ -15,6 +15,7 @@
 void InitializeScreenshotFormats();
 
 const char *GetScreenshotFormatDesc(int i);
+bool GetScreenshotFormatSupports_32bpp(int i);
 void SetScreenshotFormat(uint i);
 const char *GetCurrentScreenshotExtension();
 

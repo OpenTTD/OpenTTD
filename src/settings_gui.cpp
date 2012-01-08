@@ -32,6 +32,7 @@
 #include "viewport_func.h"
 #include "core/geometry_func.hpp"
 #include "ai/ai.hpp"
+#include "blitter/factory.hpp"
 #include "language.h"
 
 
@@ -260,6 +261,7 @@ struct GameOptionsWindow : Window {
 				list = new DropDownList();
 				*selected_index = _cur_screenshot_format;
 				for (uint i = 0; i < _num_screenshot_formats; i++) {
+					if (!GetScreenshotFormatSupports_32bpp(i) && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) continue;
 					list->push_back(new DropDownListStringItem(SPECSTR_SCREENSHOT_START + i, i, false));
 				}
 				break;
