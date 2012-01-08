@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikšķ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pārslēgties starp lielu/mazu loga izmēru
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla — ritina sarakstu augšup/lejup
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Ritjosla — ritina sarakstu pa kreisi/labi
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. objektus no zemes pleķa. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu attēlošanu
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nojaukt celtnes u.c. objektus no zemes pleķa. Ctrl iezīmē diagonālu laukumu. Shift pārslēdz nojaukšanu/izmaksu tāmes attēlošanu
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Noklusējums
@@ -303,39 +303,39 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rādīt 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finansiālo stāvokli
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt vispārēju informāciju par uzņēmumu
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rādīt diagrammas
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Parādīt uzņēmuma rangu sarakstu
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jauna industriāla objekta būvniecību
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Parādīt uzņēmuma vilcienu sarakstu. Ctrl+klikšķis pārslēdz starp grupu/transportlīdzekļu sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Parādīt uzņēmuma automašīnu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Parādīt uzņēmuma kuģu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Parādīt uzņēmuma lidaparātu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Pietuvināt skatu
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Attālināt skatu
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rādīt uzņēmuma rangu sarakstu
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jaunas ražotnes būvniecību vai uzskaitīt visas ražotnes
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rādīt uzņēmuma vilcienu sarakstu. Ctrl+klikšķis pārslēdz starp grupu/transportlīdzekļu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rādīt uzņēmuma autotransporta sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rādīt uzņēmuma kuģu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rādīt uzņēmuma lidaparātu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Tuvināt skatu
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Tālināt skatu
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Būvēt sliežu posmu
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Būvēt ceļus
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Būvēt dokus
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt lidostas
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atvērt ainavas rīkjoslu, lai paceltu/nolaistu zemes līmeni, stādītu kokus utt.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rādīt skaņas/mūzikas logu
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Parādīt pēdējo ziņojumu/ziņu rādīšanas režīmus
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rādīt pēdējo ziņojumu/ziņu rādīšanas režīmus
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, MI atkļūdošana, ekrānuzņēmumi, par OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslēgt skaidrojumus
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslēgt rīkjoslas
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenārija redaktoru, beigt
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenārija redaktoru, iziet
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenāriju redaktors
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pārvietot sākšanas datumu 1 gadu atpakaļ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pārvietot sākuma datumu 1 gadu uz priekšu
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikšķināt, lai ievadītu sākuma gadu
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Parādīt karti, pilsētu sarakstu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikšķiniet, lai ievadītu sākuma gadu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Rādīt karti, pilsētu sarakstu
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Ainavas radīšana
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pilsētu radīšana
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Rūpniecības radīšana
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Ceļu būvēšana
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Stādīt kokus. Shift pārslēdz būvi/rādīt izmaksu tāmi
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Stādīt kokus. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Novietot zīmi
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Novietot objektu. Shift pārslēdz būvniecību/izmaksu attēlošanu
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Novietot objektu. Shift pārslēdz būvniecību/izmaksu tāmes rādīšanu
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Saglabāt scenāriju
@@ -349,20 +349,20 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības pakāpes
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildus iestatījumi
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības iestatījumi
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildu iestatījumi
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI / spēles iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības opcijas
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rādīt staciju nosaukumus
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rādīt ceļapunktu nosaukumus
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rādīt maršrutu punktu nosaukumus
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rādīt zīmes
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rādīt konkurentu zīmes un nosaukumus
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pilna animācija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visas detaļas
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Caurspīdīgas ēkas
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspidīgas staciju zīmes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspīdīgas staciju zīmes
 ############ range ends here
 
 ############ range for file menu starts
@@ -1963,8 +1963,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Būvēt 
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pārvērst sliedes par ceļapunktu. Ctrl iespējo ceļapunktu apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Būvēt dzelzceļa staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Būvēt dzelzceļa signālus. Ctrl pārslēdz semaforus/luksoforus{}Vilkšana uzbūvē signālus uz taisna sliežu posma. Ctrl uzbūvē signālus līdz nākamajam sazarojumam{}Ctrl+klikšķis pārslēdz signālu izvēles loga atvēršanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Būvēt dzelzceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Būvēt dzelzceļa tuneli. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Pārslēgties starp sliežu, signālierīču, maršruta punktu būvēšanas/nojaukšanas režīmiem.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pārveidot/uzlabot sliežu veidu. Shift pārslēdz būvēšanu/izmaksu novērtējumu rādīšanu
 
@@ -2036,15 +2036,15 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cauruļveida, s
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Ceļa būvēšana
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaju būvēšana
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ceļu būves izvēle. Ctrl pārslēdz ceļa būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvaja sliežu būves izvēle. Ctrl pārslēdz tramvaja sliežu būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu automātiskā ceļa režīmā. Ctrl pārslēdz ceļu būvēšanu/demolēšanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliedes ar Autotram paņēmienu. Ctrl pārslēdz tramvaja sliežu būvēšanu/nojaukšanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt automašīnu depo (automašīnu pirkšanai un apkopei). Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl aktivē staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaja pieturu. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būve/rādīt izmaksu tāmi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ceļu būves izvēle. Ctrl pārslēdz ceļa būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvaja sliežu būves izvēle. Ctrl pārslēdz tramvaja sliežu būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu automātiskā ceļa režīmā. Ctrl pārslēdz ceļu būvēšanu/demolēšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliedes ar Autotram paņēmienu. Ctrl pārslēdz tramvaja sliežu būvēšanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt automašīnu depo (automašīnu pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl aktivē staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaja pieturu. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu staciju. Ctrl iespējo staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaja pieturu. Ctrl aktivē staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt ceļa tiltu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
@@ -2158,7 +2158,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai tie�
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pilsētu radīšana
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Jauna pilsēta
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Dibināt jaunu pilsētu. Shift+klikšķis rāda tikai izmaksu novērtējumu
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Dibināt jaunu pilsētu. Shift+klikšķis rāda tikai izmaksu tāmi
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nejauša pilsēta
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Dibināt pilsētu nejaušā vietā
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Daudz nejauši izveidotu pilsētu

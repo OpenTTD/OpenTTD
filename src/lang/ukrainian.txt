@@ -1158,7 +1158,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Від�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :нема
-STR_FUNDING_ONLY                                                :Тільки фінансування
+STR_FUNDING_ONLY                                                :тільки профінансоване
 STR_MINIMAL                                                     :мінімально
 STR_NUM_VERY_LOW                                                :дуже мало
 STR_NUM_LOW                                                     :мало
@@ -1895,7 +1895,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Вста
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Відправити
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Личное] {STRING}:
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Приватне] {STRING}:
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {WHITE}{STRING}
@@ -1924,6 +1924,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас �
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас відключено від гри
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}На цьому сервері грати нечесно не можна
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ви посилали забагато команд серверу
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Ви занадто довго вводили пароль
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ви дуже довго приєднувалися
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :фатальна помилка
@@ -2579,6 +2581,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Змін
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Ліцензія
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Встановлення параметрів
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показати параметри
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключити палітру
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключити палітру обраного NewGRF.{}Зробіть це, якщо графіка з цього NewGRF виглядає рожевою у грі
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Застосувати зміни
@@ -2794,8 +2797,27 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цілі
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клік мишкою на цілі (меті) відобразить по центру промисловість/місто/клітинку у головному вікні. Ctrl+клік відкриє міні-вікно
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Питання
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Відмінити
+STR_GOAL_QUESTION_BUTTON_OK                                     :Гаразд
+STR_GOAL_QUESTION_BUTTON_NO                                     :Ні
+STR_GOAL_QUESTION_BUTTON_YES                                    :Так
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Відхилити
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Прийняти
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ігнорувати
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Спробувати ще раз
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Попереднє
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Наступне
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Стоп
+STR_GOAL_QUESTION_BUTTON_START                                  :Старт
+STR_GOAL_QUESTION_BUTTON_GO                                     :Вперед
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Продовжити
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Перезапустити
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Відкласти
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Здатися
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрити
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсидії

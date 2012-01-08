@@ -1823,6 +1823,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sei stat
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sei stato espulso dalla partita
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}I trucchi non sono ammessi su questo server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Stavano venendo inviati troppi comandi al server
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Si è impiegato troppo tempo ad inserire la password
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Il computer ha impiegato troppo tempo ad entrare nella partita
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :errore generale

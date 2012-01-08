@@ -983,12 +983,12 @@ STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}amlhau y
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}newid y raddfa gyfnewid o eich arian cyfred i un Punt (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Gwahanydd: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Creu yr ysgar i eich arian Cyfred
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Dewis y nod gwahanu ar gyfer eich arian
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Rhagddodiad: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Creu yr rhagddodiad i eich arian Cyfred
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Dewis y rhagddodiad ar gyfer eich arian
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Olddodiad: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Creu yr olddodiad i eich arian Cyfred
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Dewis yr ôl-lddodiad ar gyfer eich arian
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Newid i'r Ewro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Newid i'r Ewro: {ORANGE}byth
@@ -1799,6 +1799,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Rydych c
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}YCafoch chi eich cicio o'r gêm
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ni chaniateir twyllo ar y gweinydd hwn
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Roeddech yn gyrru gormod o orchmynion i'r gweinydd
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Fe gymeroch ormod o amser i fewnbynnu'r cyfrinair
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Roedd eich cyfrifiadur yn cymeryd gormod o amser i ymuno
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :gwall cyffredinol

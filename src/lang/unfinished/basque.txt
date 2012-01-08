@@ -747,6 +747,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Aldaket
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidioak
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazio generala
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrak ospatzen dute . . .{} {STATION}era heltzen den lehenengo trena!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen del lehenengo autobusa!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Hiritarrek ospatzen dute . . .{} {STATION}era heltzen den lehenengo kamioia!
@@ -1299,6 +1300,8 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gom
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1401,6 +1404,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 # Network messages
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Komandu gehiegi bidaltzen hari zara zerbitzarira
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Luzeegia hartu duzu pasahitza idatzi
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Zure ordenagailua hartu luzeegia join
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :komandu gehiegi bidali dira
@@ -1593,6 +1598,7 @@ STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ikusi "i
 STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Aldaketak
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizentzia
 
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Erakutsi parametroak
 
 
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Bertsioa: {SILVER}{NUM}
@@ -1685,6 +1691,21 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Hurrengoa
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Hasi
+STR_GOAL_QUESTION_BUTTON_GO                                     :joan
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Jarraitu
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Restart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :atzeratzeko
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :errendizioaren
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Itxi
+
 # Subsidies window
 
 # Station list window
@@ -1722,6 +1743,8 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -1886,6 +1909,7 @@ STR_ORDER_IMPLICIT                                              :(Implizitua)
 
 
 
+
 # Time table window
 
 
@@ -1912,11 +1936,11 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Berriz e
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}IA honen depurazio emaitza ikusi
 
 
-
 # AI configuration window
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gora Mugitu
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Behera Mugitu
+
 
 
 # Available AIs window
@@ -2082,6 +2106,12 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 # Vehicle names
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl Altzairu Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling Altzairu Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster Blindatuak Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster Elikadura Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry Elikadura Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy Elikadura Van
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl Paper Kamioia
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh Paper Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss Kobre Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh Fruit Kamioia
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl Fruta Kamioia
