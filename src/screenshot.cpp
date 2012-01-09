@@ -10,6 +10,7 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
+#include "fileio_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "screenshot.h"
