@@ -1843,7 +1843,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
 					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to download the map", cs->client_id, _settings_client.network.max_download_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					cs->SendError(NETWORK_ERROR_TIMEOUT_MAP);
 					continue;
 				}
 				break;
@@ -1853,7 +1853,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* The map has been sent, so this is for loading the map and syncing up. */
 				if (lag > _settings_client.network.max_join_time) {
 					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to join", cs->client_id, _settings_client.network.max_join_time);
-					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
+					cs->SendError(NETWORK_ERROR_TIMEOUT_JOIN);
 					continue;
 				}
 				break;
