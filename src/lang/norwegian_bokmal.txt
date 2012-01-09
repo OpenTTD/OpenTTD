@@ -1801,6 +1801,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er ba
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du ble kastet ut av spillet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Juksing er ikke tillatt på denne tjeneren
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du brukte for lang tid på å skrive inn passordet
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din PC brukte for lang tid på å koble til
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil

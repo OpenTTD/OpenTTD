@@ -1753,6 +1753,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Забр
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Бяхте изхвърлен от играта
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Маменето не е разрешено на този сървър
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти изпращаше прекалено много команди към сървъра
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Отнети твърде дълго време да въведеш паролата
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Отнети твърде дълго време да се свържеш
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :обща грешка
@@ -1817,6 +1819,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Избе
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Премахнете всички
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Размаркирай всичко
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Филтър по таг/име:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Посети уебсайта
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Посети уебсайта за това съдържание
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Сваляне
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Започни свалянето на избраните модули
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Общо за сваляне: {WHITE}{BYTES}
@@ -2369,6 +2373,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Спис
 # Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Настройване на параметрите
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Покажи параметрите
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Превключване на палитрата
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Превключване на палитрата на избрания NewGRF.{}Когато графиката от NewGRF изглежда розова в играта
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Прилагане на промените
@@ -2656,10 +2661,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Разх
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строеж
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нови МПС-та
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Оперативни разходи на влака
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Оперативни разходи на влаковете
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Оперативни разходи на МПС-то
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Оперативни разходи на самолета
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Оперативни разходи на кораба
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Оперативни разходи на самолетите
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Оперативни разходи на корабите
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Разходи по поддръжка
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Приходи от влакове
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Приходи от МПС-та
@@ -3042,6 +3047,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спрян
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Спира, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма мощност
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Изчакване на свободен път
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Прекалено далече до следващата дестинация
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без заповеди, {VELOCITY}
@@ -3357,12 +3363,14 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Прем
 
 STR_AI_CONFIG_AI                                                :{SILVER}AI-та
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Избери {STRING}
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Програмен език на играта
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Конфигуриране
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Конфигурирайте параметрите на AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Налични {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AI-та
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Програмни езици на играта
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Кликнете за да изберете AI
@@ -3377,6 +3385,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Отме
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не променяй AI
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Програмен език на играта
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори

@@ -1800,6 +1800,8 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sunucuya
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oyundan atıldınız
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bu sunucuda hileler kapalı
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sunucuya çok fazla komut gönderiyordunuz
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Şifre girmeniz çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisayarınızın katılması çok uzun sürdü
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
@@ -2240,6 +2242,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Mera
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Karlı arazi
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Çöl
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} blok sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} ön sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} blok ve ön sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} blok ve çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} blok ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} blok ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} blok ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} ön ve çıkış sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} ön ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} ön ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} ön ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} çıkış ve karışık sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} çıkış ve yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} çıkış ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} karışık ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} karışık ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} yol ve tek yön yol sinyalli ray
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} tren deposu
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Yol
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Sokak lambalı yol
@@ -2427,8 +2452,12 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Seçili 
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Yüklü NewGRF dosyalarının listesidir. Seçeneklerini değiştirmek için bir dosyayı tıklayın
 
 # Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Benioku dosyasını göster
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Değişiklik kayıtları
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisans
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametreler
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Parametreleri göster
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet değiştir
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Seçili NewGRF'nin paletini değiştir.{}Bu işlemi bu NewGRF'nin grafikleri oyun içerisinde pembe görünüyorsa yapın.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Uygula
@@ -2459,6 +2488,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametre sayısı: {ORANGE}{NUM}
 
 # NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} adlı NewGRF'nin benioku dosyası
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}{STRING} adlı NewGRF'nin değişiklik kaydı
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}{STRING} adlı NewGRF'nin lisansı
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}İncele - {STRING}
@@ -2541,6 +2573,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICL
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye neden oldu
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}{1:HEX} adlı callback hata ya da geçersiz sonuç döndü {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<geçersiz kargo>
@@ -2585,6 +2618,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Geçen a
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Kasaba büyümesi için gerekli kargo:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} gerekli
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} kışın gerekir
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} taşındı
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (hala ihtiyaç var)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (taşındı)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Kasaba {ORANGE}{COMMA}{BLACK} günde bir büyür
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Kasaba {ORANGE}{COMMA}{BLACK} günde bir büyür (finanse edildiğinde)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Kasaba {RED}büyümüyor{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Kasabadaki gürültü sınırı: {ORANGE}{COMMA}{BLACK}  En fazla: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Ana görüntüyü şehrin üzerine ortala
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Belediye
@@ -2632,6 +2671,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Hiçbiri -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Şirket hedefleri:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Ana görünümü istenen fabrika/kasaba/kareye getirmek için hedefe tıklayın. Ctrl+Tıklama fabrika/kasaba/kare konumunda yeni bir pencerede görünüm açar
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Soru
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :İptal
+STR_GOAL_QUESTION_BUTTON_OK                                     :Tamam
+STR_GOAL_QUESTION_BUTTON_NO                                     :Hayır
+STR_GOAL_QUESTION_BUTTON_YES                                    :Evet
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Reddet
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Kabul et
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Göz ardı et
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Yeniden dene
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Önceki
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Sonraki
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Dur
+STR_GOAL_QUESTION_BUTTON_START                                  :Başla
+STR_GOAL_QUESTION_BUTTON_GO                                     :Git
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Devam et
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Yeniden başlat
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Ertele
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Yenilgiyi kabul et
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Kapat
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Teşvikler
@@ -3253,6 +3315,10 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Seçili 
 
 STR_ORDER_REFIT                                                 :{BLACK}Modifiye
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için Ctrl ile tıklayın
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Otomatik modifiye et
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Bu emirde hangi cargo tipine otomatik modify edileceğini seçin. Ctrl+Tık ile modifye emrini kaldırın. Otomatik modifiye izin verilen araçlarda mümkündür
+STR_ORDER_DROP_REFIT_AUTO                                       :Sabit kargo tipi
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Var olan kargo tipi
 
 STR_ORDER_SERVICE                                               :{BLACK}Bakım
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Her zaman git
@@ -3341,7 +3407,20 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve t
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Boşaltma ve yükleme yok)
 
+STR_ORDER_AUTO_REFIT                                            :({STRING} taşımak için otomatik modifiye et)
+STR_ORDER_FULL_LOAD_REFIT                                       :({STRING} taşımak için otomatik modifiye et ve tam doldur)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :({STRING} taşımak için otomatik modifiye et ve herhangi bir kargoyu tam doldur)
+STR_ORDER_UNLOAD_REFIT                                          :({STRING} taşımak için otomatik modifiye et ve boşalt)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :({STRING} taşımak için otomatik modifiye et, boşalt ve tam doldur)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :({STRING} taşımak için otomatik modifiye et, boşalt ve herhangi bir kargoyu tam doldur)
+STR_ORDER_TRANSFER_REFIT                                        :({STRING} taşımak için otomatik modifiye et, aktar ve kargo al)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :({STRING} taşımak için otomatik modifiye et, aktar ve tam doldur)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :({STRING} taşımak için otomatik modifiye et, aktar ve herhangi bir kargoyu tam doldur)
+STR_ORDER_NO_UNLOAD_REFIT                                       :({STRING} taşımak için otomatik modifiye et, boşaltmadan kargo al)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :({STRING} taşımak için otomatik modifiye et ve boşaltmadan tam doldur)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :({STRING} taşımak için otomatik modifiye et, boşaltmadan herhangi bir kargoyu tam doldur)
 
+STR_ORDER_AUTO_REFIT_ANY                                        :var olan kargo tipi
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[yakın uç]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[orta]
@@ -3569,6 +3648,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Oyun dur
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} belediyesi buna izin vermiyor
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Rüşvet teşebbüsünüz müfettişler tarafından tespit edildi
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Burada arazi yükseltilemez...

@@ -388,7 +388,7 @@ STR_SUBSIDIES_MENU_GOAL                                         :Tekošie mērķ
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Panākumu grafiks
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Darbības peļņas grafiks
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ienākumu grafiks
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Piegādātās kravas grafiks
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Uzņēmējdarbības vēstures grafiks
@@ -828,7 +828,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ir kļuvis ļoti vecs un tam steidzami nepieciešama nomaiņa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nevar atrast ceļu, lai turpinātu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ir apmaldījies
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} iepriekšējā gada ienākumi bija {CURRENCY_LONG}
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} iepriekšējā gada peļņa bija {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nevar doties uz nākamo mērķi, jo tas ir ārpus apgabala
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās tā pielāgošanas rīkojums
@@ -1066,7 +1066,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Cits ({NUM}%)
 
 STR_RIVERS_NONE                                                 :Neviena
 STR_RIVERS_FEW                                                  :Nedaudzas
-STR_RIVERS_MODERATE                                             :Vidējs
+STR_RIVERS_MODERATE                                             :Vidēji
 STR_RIVERS_LOT                                                  :Daudzas
 
 STR_DISASTER_NONE                                               :Nav
@@ -1571,7 +1571,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Savienojums:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izvēlieties starp spēli internetā vai spēli lokālajā tīklā
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Izvēlēties starp spēli internetā vai spēli lokālajā tīklā
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internets
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
@@ -1636,7 +1636,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internets
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internets (reklamēt)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. klientu skaits:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlaties maks. klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} uzņēmum{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maks. uzņēmumu skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ierobežo serveri noteiktam uzņēmumu skaitam
@@ -2153,7 +2153,7 @@ STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Atjaunot
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Novākt visus spēlētājam piederošos īpašumus no kartes
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Atjaunot zemes virsmu
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai tiešām vēlaties novākt visus spēlētājam piederošos īpašumus?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai tiešām vēlaties novākt visus uzņēmumam piederošos īpašumus?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pilsētu radīšana
@@ -2376,7 +2376,7 @@ STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus 
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūras līmenis:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upes:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Gludums:
-STR_MAPGEN_VARIETY                                              :{BLACK}Dažādības izplatība:
+STR_MAPGEN_VARIETY                                              :{BLACK}Dažādības sadalījums:
 STR_MAPGEN_GENERATE                                             :{WHITE}Radīt
 
 # Strings for map borders at game generation
@@ -2552,7 +2552,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Kļūdains/nezi
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uzmanību!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Tas veiks izmaiņas pašreizējai spēlei. Tas var izraisīt OpenTTD avāriju vai salauzt spēles stāvokli. Par šīm problēmām kļūdu ziņojumus nesūtiet{}Vai tu esi par to pilnībā pārliecināts?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Tas veiks izmaiņas pašreizējai spēlei. Tas var izraisīt OpenTTD avāriju vai salauzt spēles stāvokli. Par šīm problēmām kļūdu ziņojumus nesūtiet{}Vai jūs esat par to pilnībā pārliecināts?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nevar pievienot failu: vienādas GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atbilstošs fails nav atrass (savienojams GRF ielādēts)
@@ -2660,9 +2660,9 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansēt jauna
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Pirkt pārvadājumu izņēmuma tiesības
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Dot kukuli pašvaldībai
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savai kompānijai.{}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Uzbūvēt statuju par godu savam uzņēmumam.{}Izmaksas: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansēt jaunu komercēku būvniecību šajā pilsētā.{}Izmaksas: {CURRENCY_LONG}
@@ -2756,7 +2756,7 @@ STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rādīt 
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rādīt lidaparātus, kuru rīkojumu sarakstos ir šī stacija
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rādīt kuģus, kuru rīkojumu sarakstos ir šī stacija
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārsaukt staciju/iekraušanas zonu
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārdēvēt staciju/iekraušanas zonu
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2822,9 +2822,9 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nekas
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Celt biroju
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Būvēt uzņēmuma vadības ēku
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skatīt biroju
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Parādīt kompānijas vadības ēku
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Parādīt uzņēmuma vadības ēku
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pārvietot biroju
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Pārcelt kompānijas centrālo biroju uz citu vietu samaksājot 1% no kompānijas vērtības. Shift+klikšķis parāda izmaksu novērtējumu, nemainot biroja atrašanās vietu
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Pārcelt uzņēmuma centrālo biroju uz citu vietu samaksājot 1% no uzņēmuma vērtības. Shift+klikšķis parāda izmaksu novērtējumu, nemainot biroja atrašanās vietu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Sīkāk
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Skatīt detalizētākus infrastruktūras skaitus
 
@@ -3480,7 +3480,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest k
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju, lai transportlīdzeklis būtu laikā
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (CTRL-kikšķis lai mēģinātu paturēt gaidīšanas laikus)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Aizpildīt sarakstu automātiski ar vērtībām no nākošā ceļojuma (Ctrl+klikšķis lai mēģinātu paturēt gaidīšanas laikus)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Paredzēts
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Ieplānots
@@ -3500,13 +3500,13 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izvēlie
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}MI /GameScript atkļūdošana
+STR_AI_DEBUG                                                    :{WHITE}MI / GameScript atkļūdošana
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripta nosaukums
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Iestatījumi
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mainīt skripta iestatījumus
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Ielādēt Al
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Kill the AI, reload the script, and restart the AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Pārlādēt MI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Apturēt MI, pārlādēt skriptu, un restartēt MI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pārslēgt slēgšanu, kad MI ziņojums saskan ar slēgšanas ziņojumu
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Slēgt, kad:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Slēgt, kad
@@ -3621,10 +3621,10 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... neva
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... attēls ir pārāk liels
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Līmeņa brīdinājums
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pārāk Izmainīt pamatkarti nav ieteicams. Turpināt ģenerēšanu?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Pārāk izmainīt pamatkartes lielumu nav ieteicams. Vai turpināt ģenerēšanu?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Atrasts tikai iestrādātais skaņu komplekts. Ja vēlaties skaņu, lejuplādējiet komplektu no tiešsaistes satura sistēmas
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Atrasts tikai iestrādātais skaņu komplekts. Ja vēlaties skaņas, instalējiet komplektu no satura lejupielādes sistēmas
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrānuzņēmums veiksmīgi saglabāts kā '{STRING}'
@@ -3682,7 +3682,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nevar no
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nevar uzbūvēt uzņēmuma biroju...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nevar nopirkt 25% daļu šajā uzņēmumā...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nevar pārdot 25% daļu šajā uzņēmumā...
-STR_ERROR_PROTECTED                                             :{WHITE}Šī kompānija ir par jaunu, lai tirgotu akcijas...
+STR_ERROR_PROTECTED                                             :{WHITE}Šis uzņēmums ir par jaunu lai tirgotu akcijas...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nevar būvēt pilsētas
@@ -3764,7 +3764,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Pārāk 
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Nevar šeit uzbūvēt vilcienu kontrolpunktu...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Šeit nevar novietot boju...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nevar pārsaukt kontrolpunktu...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nevar pārdēvēt ceļapunktu...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nevar šeit noņemt vilcienu kontrolpunktu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vispirms vajag noņemt dzelzceļa maršruta punktu
