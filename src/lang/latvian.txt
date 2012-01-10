@@ -128,7 +128,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} �
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterij{P a as u}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastmasas
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonād{P e s žu}
-STR_QUANTITY_N_A                                                :Nav info
+STR_QUANTITY_N_A                                                :Nav informācijas
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -259,7 +259,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Laukums:
 # These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Iedzīvotāju skaits
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nosaukums
-STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datuma
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datums
 # These are used in dropdowns
 STR_SORT_BY_NAME                                                :Nosaukuma
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
@@ -384,7 +384,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Dibināt pilsē
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsīdijas
-STR_SUBSIDIES_MENU_GOAL                                         :Tekošie mērķi
+STR_SUBSIDIES_MENU_GOAL                                         :Kārtējie mērķi
 ############ range ends here
 
 ############ range for graph menu starts
@@ -634,7 +634,7 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Celiņa indekss
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programma - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Dzēst
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Dzēst pašreizējo programmu (tikai Pielāgotais 1 vai Pielāgotais 2)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Dzēst pašreizējo programmu (tikai Pielāgoto 1 vai Pielāgoto 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klikšķināt uz mūzikas celiņa, lai to pievienotu pašreizējai programmai (tikai Pielāgotā 1 vai Pielāgotā 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klikšķināt uz mūzikas celiņa, lai to izdzēstu no pašreizējās programmas (tikai Pielāgotā1 un Pielāgotā2)
 
@@ -832,7 +832,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nevar doties uz nākamo mērķi, jo tas ir ārpus apgabala
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās tā pielāgošanas rīkojums
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoatjaunošanas kļūda {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automātiskās atjaunošanas kļūda {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Jauns {STRING} tagad pieejams!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1361,7 +1361,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Saziņa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravas pārvietošana
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Dalībnieks
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Autoatjaunošana
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automātiskā atjaunošana
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Apkopē
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Maršrutējas
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
@@ -1472,7 +1472,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktiskais k
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropiskais klimats
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Rotaļlietu zeme
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Nomainīt datumu: {ORANGE} {DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt tagadējo gadu
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt pašreizējo gadu
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ļauj izmainīt produkcijas vērtības: {ORANGE}{STRING}
 
 # Livery window
@@ -1906,7 +1906,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :GS bibliotēka
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lejupielādē saturu...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Pieprasa failus...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Šobrīd lejupielādē {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Šobrīd lejupielādē {STRING} ({NUM} no {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Lejupielāde pabeigta
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} no {BYTES} lejupielādēts ({NUM} %)
 
@@ -1929,10 +1929,10 @@ STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Pārslē
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Pārslēgt ēku caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Pārslēgt rūpniecības ēku caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Pārslēgt caurspīdību tādām ēkām kā depo, stacijas un ceļapunkti. Ctrl+klikšķis lai slēgtu.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Pārslēgt tiltu caurspīdību. CTRL+klikšķis, lai slēgtu.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām ēkām kā bākas un antenas. CTRL+klikšķis, lai slēgtu.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Pārslēgt piekartroseas caurspīdību. CTRL+klikšķis, lai slēgtu.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt ielādes indikatoru caurspīdību. CTRL+klikšķis, lai slēgtu.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Pārslēgt tiltu caurspīdību. Ctrl+klikšķis, lai slēgtu
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām ēkām kā bākas un antenas. Ctrl+klikšķis, lai slēgtu
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Pārslēgt piekartroses caurspīdību. Ctrl+klikšķis, lai slēgtu
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt ielādes indikatoru caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā padarīt objektus neredzamus
 
 # Base for station construction window(s)
@@ -2761,7 +2761,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārdēvēt sta
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz maršruta punktu. Ctrl+Klikšķis atvērs skatu uz maršruta punktu jaunā skatulaukā
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Pārdēvēt kontrolpunktu
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Pārdēvēt ceļapunktu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatulaukā
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mainīt bojas nosaukumu
 
@@ -3097,7 +3097,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotīve
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}tekošās izmaksas: {CURRENCY_LONG}/yr{}Ietilpība:  {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG}/yr{}Ietilpība:  {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Izmaksas: {4:CURRENCY_LONG}/g{}Ietilpība: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā

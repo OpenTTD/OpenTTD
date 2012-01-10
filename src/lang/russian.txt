@@ -1957,6 +1957,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Чит-�
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы посылали на сервер слишком много команд
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы не успели ввести пароль
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш компьютер не успел подключиться
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Вы не успели загрузить карту
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Вы не успели подключиться к серверу
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка
@@ -1975,6 +1977,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :вас выки
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :попытался применить чит
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер переполнен
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :посылал слишком много команд
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :пароль не получен вовремя
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :время вышло
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :загрузка карты заняла слишком много времени
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :обработка карты заняла слишком много времени
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Подключение утеряно

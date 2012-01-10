@@ -1897,6 +1897,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Na ovome
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Slali ste previše naredbi na server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Trebalo vam je previše vremena za unošenje lozinke
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Vaše računalo je trebalo previše vremena za spajanje
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Trebalo vam je previše vremena za preuzimanje mape
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Trebalo vam je previše vremena za pridruživanje na server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opća greška
@@ -1915,6 +1917,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :izbačen od str
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :je pokušao varati
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :poslužitelj je pun
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :slao je previše naredbi
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :lozinka nije zaprimljena na vrijeme
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :opći istek vremena
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :preuzimanje mape je predugo trajalo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :procesiranje map je predugo trajalo
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
