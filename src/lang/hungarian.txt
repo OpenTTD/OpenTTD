@@ -509,7 +509,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Kinagyított képmentés
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Teljes nagyítású képmentés
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Alapértelmezett nagyítású képmentés
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
@@ -1862,6 +1863,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Ki vagy 
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lettél rúgva a szerverről
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ez a szerver nem engedi a csalást
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Túl sok parancsot küldtél a szervernek
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Túl sokáig tartott a jelszó beírása
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A számítógépednek túl sok időbe tartott csatlakozni
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozás
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba
@@ -1880,6 +1885,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :a szerver kirú
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :csalni próbált
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :a szerver megtelt
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :túl sok parancsot küldött
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nem érkezett jelszó időben
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :általános időtúllépés
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :térkép letöltés túl sokáig tartott
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :térkép feldolgozás túl sokáig tartott
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Lehetséges, hogy elveszett a kapcsolat
@@ -2517,6 +2526,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Változ�
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenc
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Paraméterek beállítása
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Paraméterek megjelenítése
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palettaváltás
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}A kiválasztott NewGRF palettájának váltása.{}Akkor használd, ha a NewGRF-ból származó grafikai elemek rózsaszínként jelennek meg
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Alkalmazás
@@ -2730,6 +2740,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cég céljai:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+Kattintással új látképet nyit a gazdasági épület/település/mező helyéről
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Kérdés
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Mégse
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nem
+STR_GOAL_QUESTION_BUTTON_YES                                    :Igen
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Visszautasít
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Elfogad
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Kihagyás
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Újra
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Előző
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Következő
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Megállj
+STR_GOAL_QUESTION_BUTTON_START                                  :Indít
+STR_GOAL_QUESTION_BUTTON_GO                                     :Megy
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Folytat
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Újrakezd
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Elhalaszt
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Felad
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Bezár
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Támogatások
@@ -3089,7 +3122,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Hajó m�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Repülőgép másolása
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ide kattintva elkészítheted egy teljes vonat másolatát. Kattints ide, majd a másolandó vonatra. Ctrl+Kattintással a menetrendet is megosztod. Shift+Kattintással megmutatja a becsült költséget vásárlás nélkül
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva elkészítheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre. Ctrl+Kattintással a menetrendet is megosztod. Shift+Kattintással megmutatja a becsült költséget vásárlás nélkül
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ide kattintva megveheted egy közúti jármű másolatát. Kattints ide, majd a másolandó járműre a járműtelepen belül vagy kívül. Ctrl+Kattintással a menetrendet is megosztod. Shift+Kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ide kattintva elkészítheted egy hajó másolatát. Kattints ide, majd a másolandó hajóra. Ctrl+Kattintással a menetrendet is megosztod. Shift+Kattintással megmutatja a becsült költséget vásárlás nélkül
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ide kattintva elkészítheted egy repülőgép másolatát. Kattints ide, majd a másolandó repülőgépre. Ctrl+Kattintással a menetrendet is megosztod. Shift+Kattintással megmutatja a becsült költséget vásárlás nélkül
 
@@ -3548,7 +3581,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Játéks
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Játékszkript napló ellenőrzése
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képernyőmentéssel
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó szkript futása közben hiba történt. Kérjük jelezd ezt a szkript készítőjének az MI / Játékzkript nyomkövetés ablakról készített képernyőmentéssel
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI / Játékszkript nyomkövetés ablak csak a szerver számára elérhető
 
 # AI configuration window

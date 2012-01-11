@@ -1801,6 +1801,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ni chani
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Roeddech yn gyrru gormod o orchmynion i'r gweinydd
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Fe gymeroch ormod o amser i fewnbynnu'r cyfrinair
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Roedd eich cyfrifiadur yn cymeryd gormod o amser i ymuno
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Fe gymeroch ormod o amser i lawrlwytho'r map
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Fe gymeroch ormod o amser i ymuno a'r gweinydd
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :gwall cyffredinol
@@ -1819,6 +1821,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :wedi cael cic g
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :yn ceisio twyllo
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :gweinydd llawn
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :yn gyrru gormod o orchmynion
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ni dderbyniwyd cyfrinair mewn amser
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :goramseriad cyffredinol
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :goramseru wrth lawrlwytho'r map
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :goramseru wrth brosesu'r map
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Colled cysylltiad o bosib

@@ -1825,6 +1825,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}I trucch
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Stavano venendo inviati troppi comandi al server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Si è impiegato troppo tempo ad inserire la password
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Il computer ha impiegato troppo tempo ad entrare nella partita
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Il download della mappa ha richiesto troppo tempo
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}L'ingresso al server ha richiesto troppo tempo
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :errore generale
@@ -1843,6 +1845,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :espulso dal ser
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :ha provato a usare un trucco
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server pieno
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :stava inviando troppi comandi
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nessuna password ricevuta in tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :timeout generico
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :il download della mappa ha richiesto troppo tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :l'elaborazione della mappa ha richiesto troppo tempo
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possibile perdita di connessione
@@ -2539,10 +2545,10 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va allo 
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Precedente
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede al precedente sprite normale, saltanto qualsiasi sprite speciale, di ricoloramento o carattere e tornando all'ultimo se viene raggiunto l'inizio
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rappresentazione dello sprite corrente. L'allineamento viene ignorato in questa casella.
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando gli spiazzamenti X e Y
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Spiazzamento X: {NUM}, Y: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Raccogli
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Raccoglie gli sprite da un qualsiasi punto dello schermo
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando i posizionamenti X e Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posizionamento X: {NUM}, Y: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Scegli
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Sceglie uno o più sprite da un qualsiasi punto dello schermo
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Vai a
 

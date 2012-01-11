@@ -245,8 +245,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :º1234567890'¡\qwertyuiop`+asdfghjklñ´ç<zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ª!"·$%&/()=?¿|QWERTYUIOP^*ASDFGHJKLÑ¨Ç>ZXCVBNM;:_ .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Longitud: {NUM}
@@ -554,9 +554,9 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingeniero
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gerente de tráfico
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de transporte
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de ruta
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Director
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Jefe ejecutivo
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director general
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Directivo
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Subdirector
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
@@ -896,12 +896,12 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonio 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Medir unidades
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Medir unidades seleccionadas
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unidades de medida
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Unidades de medida seleccionadas
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métrico
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperiales
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métricas
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
@@ -1521,9 +1521,9 @@ STR_FACE_FEMALE_BUTTON                                          :{BLACK}Mujer
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Selecciona cara femenina
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Cara Nueva
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Generar cara al azar
-STR_FACE_ADVANCED                                               :{BLACK}Avanzado
+STR_FACE_ADVANCED                                               :{BLACK}Avanzada
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selección avanzada de caras
-STR_FACE_SIMPLE                                                 :{BLACK}Simple
+STR_FACE_SIMPLE                                                 :{BLACK}Sencilla
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selección simple de caras
 STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Cargar cara favorita
@@ -1573,7 +1573,7 @@ STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Conexió
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Seleccione entre un juego en Internet o en una Red de Área Local
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
-STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nombre del Jugador:
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nombre del jugador:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Este es el nombre con el que otros jugadores le identificarán
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nombre
@@ -2272,7 +2272,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} con se
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} con señales de ruta y señales de ruta de un solo sentido
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depósito de tren
 
-STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Road
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Carretera
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Carretera con farolas
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Carretera arbolada
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de carretera
@@ -2487,7 +2487,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatib
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Cambiar parámetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Cerrar
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reiniciar
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Fijar todos los parámetros a su valor por defecto
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parámetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -3454,7 +3454,7 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante 
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
