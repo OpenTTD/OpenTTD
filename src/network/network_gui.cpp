@@ -1685,7 +1685,7 @@ static void ClientList_GiveMoney(const NetworkClientInfo *ci)
 
 static void ClientList_SpeakToClient(const NetworkClientInfo *ci)
 {
-	ShowNetworkChatQueryWindow(DESTTYPE_CLIENT,ci->client_id);
+	ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, ci->client_id);
 }
 
 static void ClientList_SpeakToCompany(const NetworkClientInfo *ci)

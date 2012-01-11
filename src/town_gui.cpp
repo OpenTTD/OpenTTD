@@ -309,7 +309,7 @@ public:
 
 		this->FinishInitNested(desc, window_number);
 
-		this->flags|= WF_DISABLE_VP_SCROLL;
+		this->flags |= WF_DISABLE_VP_SCROLL;
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_TV_VIEWPORT);
 		nvp->InitializeViewport(this, this->town->xy, ZOOM_LVL_NEWS);
 
