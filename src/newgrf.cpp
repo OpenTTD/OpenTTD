@@ -6128,9 +6128,6 @@ static void GRFLoadError(ByteReader *buf)
 		STR_NEWGRF_ERROR_MSG_FATAL
 	};
 
-	/* For now we can only show one message per newgrf file. */
-	if (_cur.grfconfig->error != NULL) return;
-
 	byte severity   = buf->ReadByte();
 	byte lang       = buf->ReadByte();
 	byte message_id = buf->ReadByte();
@@ -6153,6 +6150,10 @@ static void GRFLoadError(ByteReader *buf)
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
 		DisableGrf();
+
+		/* Make sure we show fatal errors, instead of silly infos from before */
+		delete _cur.grfconfig->error;
+		_cur.grfconfig->error = NULL;
 	}
 
 	if (message_id >= lengthof(msgstr) && message_id != 0xFF) {
@@ -6164,6 +6165,9 @@ static void GRFLoadError(ByteReader *buf)
 		grfmsg(7, "GRFLoadError: No message data supplied.");
 		return;
 	}
+
+	/* For now we can only show one message per newgrf file. */
+	if (_cur.grfconfig->error != NULL) return;
 
 	GRFError *error = new GRFError(sevstr[severity]);
 
