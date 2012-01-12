@@ -2518,8 +2518,12 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				if (lang == NULL) {
 					grfmsg(1, "GlobalVarChangeInfo: Language %d is not known, ignoring", curidx);
 					/* Skip over the data. */
-					while (buf->ReadByte() != 0) {
-						buf->ReadString();
+					if (prop == 0x15) {
+						buf->ReadByte();
+					} else {
+						while (buf->ReadByte() != 0) {
+							buf->ReadString();
+						}
 					}
 					break;
 				}
