@@ -2117,7 +2117,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас �
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Махлярства не дазволена на гэтым сэрвэры
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы дасылалi да сэрвэра занадта шмат камандаў
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы задоўга ня можаце ўвесьцi пароль
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш кампутар занадта доўга ня можа далучыцца
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш кампутар задоўга ня можа далучыцца
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Вы задоўга пампуеце мапу
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Вы задоўга далучаецеся да сэрвэра
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка
@@ -2136,6 +2138,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :Вас выкі
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :паспрабаваў махляваць
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сэрвэр перапоўнены
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :дасылаў занадта шмат каманд
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :пароль не атрыманы своечасова
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :агульны перапынак
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :мапа пампуецца задоўга
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :апрацоўка мапы iдзе задоўга
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Падключэньне згублена

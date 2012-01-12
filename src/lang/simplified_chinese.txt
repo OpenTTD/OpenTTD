@@ -1234,6 +1234,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}当NewGRF没有指定调色板时，使用: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS调色板
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows调色板
 
@@ -1377,8 +1378,10 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变�
 STR_CONFIG_ERROR                                                :{WHITE}配置文件错误...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 函数错误 '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...对 '{STRING}'设置了错误值'{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... 忽略 NewGRF '{STRING}': 重复的 GRF ID '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 忽略了无效的 NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :未找到
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :静态使用时不安全
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :系统NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :与当前版本OpenTTD不兼容
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :未知
@@ -1423,7 +1426,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}连接�
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}查看AI和脚本设定
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}退出 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}中文语言版本缺失了 {NUM} 条翻译。 请注册成为翻译人员，以帮助OpenTTD发展。详见readme.txt。
+STR_INTRO_TRANSLATION                                           :{BLACK}中文语言版本缺失了 {NUM} 条翻译。 请注册成为翻译人员，以帮助OpenTTD发展。{}详见readme.txt。
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}退出
@@ -1791,6 +1794,9 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您的IP
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此服务器不允许作弊
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您向服务器发送操作指令过于频繁
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}输入密码用时过长
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}下载地图用时过长
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}加入服务器用时过长
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
@@ -1809,6 +1815,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :被服务器踢
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :正在尝试作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :服务器满员
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :操作指令过于频繁
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :没有在规定时间内收到密码
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :超时
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :下载地图用时过长
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :处理地图用时过长
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}失去链接
@@ -1889,6 +1899,7 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :基本音效
 STR_CONTENT_TYPE_BASE_MUSIC                                     :基本音乐
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :游戏脚本
+STR_CONTENT_TYPE_GS_LIBRARY                                     :脚本库
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载中...
@@ -1905,6 +1916,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文�
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 需要基础图形组用以绘制界面。您是否希望 OpenTTD 下载并安装以下图形组？
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是的，下载之
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}不，退出
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明选项
@@ -1952,6 +1966,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设�
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型
 
+STR_RAIL_NAME_RAILROAD                                          :铁路
+STR_RAIL_NAME_ELRAIL                                            :电气化铁路
+STR_RAIL_NAME_MONORAIL                                          :单轨铁路
+STR_RAIL_NAME_MAGLEV                                            :磁悬浮铁路
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}列车车库方向
@@ -2106,6 +2124,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物件预览
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
 
 STR_OBJECT_CLASS_LTHS                                           :灯塔
@@ -2221,6 +2240,8 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :田地
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :雪地
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有信号灯的{STRING}铁轨
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :带路灯的公路
@@ -2410,6 +2431,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经�
 # Additional textfiles accompanying NewGRFs
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}显示参数
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换调色板
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}切换选定GRF的调色.{}本功能用于游戏使用时GRF呈粉色
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}应用
@@ -2566,6 +2588,8 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次(加速中)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}将屏幕中心移动到城镇所在的位置. 单击的同时按住Ctrl会在新视点中显示城镇位置
@@ -2614,6 +2638,12 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- 无目标 -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司目标:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
+
+# Goal question window
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :忽略
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :关闭
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}财政补贴项目
@@ -2708,6 +2738,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}贷款 {
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}贷款{}Ctrl+点击 可贷款最大额度
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}还款 {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}偿还贷款{}Ctrl+点击 可最大额度偿还贷款
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}设施
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2723,6 +2754,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}无
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}公司市值：{WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% 由 {COMPANY} 所有)
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}设施:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 轨道交通
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 道路
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} 水运
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 站台
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} 机场
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}无
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}设立总部
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}建立公司总部
@@ -2730,6 +2768,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}查看�
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}查看公司总部
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}重置总部
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}以公司市值 1% 的代价重建总部，按住 Shift 键单击可以显示所需资金
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}资产细节
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}显示详细的设施情况
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新的头像
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}为总裁选择新头像
@@ -2751,6 +2791,19 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY_LONG}) 吗？
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} 的设施
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}铁路：
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}信号灯
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}道路：
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}普通道路
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}电车线路
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}水运：
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}运河
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}站台：
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}车站
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}机场
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}每年{1:CURRENCY_LONG} ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}每年{CURRENCY_LONG}
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工业设施
@@ -3297,6 +3350,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸载并
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸货并装满任意货物离开）
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(不卸货也不装货)
 
+STR_ORDER_AUTO_REFIT                                            :(自动改装为运载 {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(装满所有货物，允许自动改装为运载 {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :装满任意货物，允许自动改装为运载 {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(卸货且装载，允许自动改装为运载 {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(卸货且装满所有货物，允许自动改装为运载 {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(卸货且装满任意货物，允许自动改装为运载 {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(联运且装载，允许自动改装为运载 {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(联运且装满所有货物，允许自动改装为运载 {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(联运且装满任意货物，允许自动改装为运载 {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(不卸货且装载，允许自动改装为运载 {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(不卸货且装满所有货物，允许自动改装为运载 {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(不卸货且装满任意货物，允许自动改装为运载 {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :可用类型
 

@@ -1994,6 +1994,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vi ste z
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vi ste izbačeni iz ove partije
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Varanja nisu dozvoljena na ovom serveru
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Slali ste previše naredbi na server
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Previše dugo se nije unala lozinka
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Računaru je previše dugo trebalo da se priključi
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Previše dugo je trajalo preuzimanje terena
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Previše dugo je trajalo priključivanje serveru
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opšta greška
@@ -2012,6 +2016,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :izbačen od str
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :pokušaj korišćenja varanja
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je pun
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :je slao previše naredbi
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :lozinka nije primljena na vreme
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :istekao veremnski rok
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :preuzimanje terena je previše dugo trajalo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :obrađivanje terena je previše dugo trajalo
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
