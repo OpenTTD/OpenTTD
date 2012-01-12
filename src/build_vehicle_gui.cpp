@@ -847,9 +847,10 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 		y += FONT_HEIGHT_NORMAL;
 	}
 
+	if (refittable) y = ShowRefitOptionsList(left, right, y, engine_number);
+
 	/* Additional text from NewGRF */
 	y = ShowAdditionalText(left, right, y, engine_number);
-	if (refittable) y = ShowRefitOptionsList(left, right, y, engine_number);
 
 	return y;
 }
