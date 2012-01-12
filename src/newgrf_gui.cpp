@@ -218,7 +218,8 @@ struct NewGRFParametersWindow : public Window {
 					if (par_info == NULL) continue;
 					const char *desc = GetGRFStringFromGRFText(par_info->desc);
 					if (desc == NULL) continue;
-					const Dimension d = GetStringMultiLineBoundingBox(desc, suggestion);
+					Dimension d = GetStringMultiLineBoundingBox(desc, suggestion);
+					d.height += WD_TEXTPANEL_TOP + WD_TEXTPANEL_BOTTOM;
 					suggestion = maxdim(d, suggestion);
 				}
 				size->height = suggestion.height;
