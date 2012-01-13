@@ -645,6 +645,8 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(network.bytes_per_frame,      SLE_UINT16, S, NO,     8,        1,    65535, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.bytes_per_frame_burst,SLE_UINT16, S, NO,   256,        1,    65535, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_join_time,        SLE_UINT16, S, NO,   500,        0,    32000, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_download_time,    SLE_UINT16, S, NO,  1000,        0,    32000, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_password_time,    SLE_UINT16, S, NO,  2000,        0,    32000, 0, STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.pause_on_join,                    S, NO,  true,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.server_port,          SLE_UINT16, S, NO,NETWORK_DEFAULT_PORT,0,65535,0,STR_NULL,                                       NULL),
 	  SDTC_VAR(network.server_admin_port,    SLE_UINT16, S, NO,  NETWORK_ADMIN_PORT,0,65535,0,STR_NULL,                                       NULL),

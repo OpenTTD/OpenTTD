@@ -242,7 +242,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Get random tile bits at offset param */
 		case 0x61:
 			tile = GetNearbyTile(parameter, tile, false);
-			return (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
+			return industry->TileBelongsToIndustry(tile) ? GetIndustryRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
 		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY, false);
@@ -250,7 +250,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Animation stage of nearby tiles */
 		case 0x63:
 			tile = GetNearbyTile(parameter, tile, false);
-			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) {
+			if (industry->TileBelongsToIndustry(tile)) {
 				return GetAnimationFrame(tile);
 			}
 			return 0xFFFFFFFF;

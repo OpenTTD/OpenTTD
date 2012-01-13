@@ -40,7 +40,7 @@ const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *passw
 void NetworkReboot();
 void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
-void NetworkUDPGameLoop();
+void NetworkBackgroundLoop();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
 void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);

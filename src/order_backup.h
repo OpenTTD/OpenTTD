@@ -67,6 +67,7 @@ public:
 
 	static void ClearGroup(GroupID group);
 	static void ClearVehicle(const Vehicle *v);
+	static void RemoveOrder(OrderType type, DestinationID destination);
 };
 
 #define FOR_ALL_ORDER_BACKUPS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderBackup, order_backup_index, var, start)

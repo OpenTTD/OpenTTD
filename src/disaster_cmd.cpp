@@ -376,7 +376,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 static void DestructIndustry(Industry *i)
 {
 	for (TileIndex tile = 0; tile != MapSize(); tile++) {
-		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == i->index) {
+		if (i->TileBelongsToIndustry(tile)) {
 			ResetIndustryConstructionStage(tile);
 			MarkTileDirtyByTile(tile);
 		}
