@@ -1,3 +1,12 @@
+1.1.5 (2012-01-14)
+------------------------------------------------------------------------
+- Fix: Make default timeouts for certain network states lower and configurable [CVE-2012-0049] [FS#4955] (r23764)
+- Fix: Check whether a water tile is really empty when overbuilding it with an object [FS#4956] (r23763)
+- Fix: Missing locking causing crash in extreme case when being in the MP lobby [FS#4938] (r23752)
+- Fix: Clear the backed up orders of a removed station as well, otherwise one could create orders to a station that was never in the original backupped orders. For example a road vehicle trying to go to a buoy [FS#4876] (r23464)
+- Fix: Do not assume all industries that cut trees have tile (0,0) and wait until all tiles of an industry are completed before starting to cut trees (r23458)
+
+
 1.1.4 (2011-12-05)
 ------------------------------------------------------------------------
 - Fix: Savegames made with the Catalan town name generator would trigger a 'savegame corrupt' exception [FS#4866] (r23418)
