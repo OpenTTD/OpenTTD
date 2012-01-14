@@ -1802,6 +1802,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Mogeln i
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Es wurden zu viele Kommandos an den Server gesendet
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zeit für die Eingabe des Passwortes wurde überschritten
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer brauchte zu lange, dem Spiel beizutreten
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Es dauerte zu lange, die Karte herunterzuladen
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Es dauerte zu lange, dem Server beizutreten
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Allgemeiner Fehler
@@ -1820,6 +1822,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :vom Server hina
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :hat versucht zu mogeln
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Server voll
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendete zu viele Kommandos
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :Zeitüberschreitung beim Senden des Passworts
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Allgemeine Zeitüberschreitung
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :Download der Karte dauerte zu lange
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Verarbeitung der Karte dauerte zu lange
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Möglicher Verbindungsabbruch
@@ -2805,7 +2811,7 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Keine
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmenwert: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% Eigentum von {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schienenstücke
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schienenstück{P "" e}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Straßenfelder
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} Wasserfelder
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Bahnhofsfelder

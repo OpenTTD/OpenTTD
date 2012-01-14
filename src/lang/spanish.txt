@@ -4064,7 +4064,7 @@ STR_SV_STNAME_SOUTH                                             :{STRING} Sur
 STR_SV_STNAME_EAST                                              :{STRING} Este
 STR_SV_STNAME_WEST                                              :{STRING} Oeste
 STR_SV_STNAME_CENTRAL                                           :{STRING} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING} Intercambio
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transferencia
 STR_SV_STNAME_HALT                                              :{STRING} Parada
 STR_SV_STNAME_VALLEY                                            :Valle de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Cumbres de {STRING}
