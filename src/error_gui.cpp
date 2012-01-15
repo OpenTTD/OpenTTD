@@ -119,8 +119,10 @@ public:
 	{
 		this->position.x = x;
 		this->position.y = y;
+		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
 		CopyOutDParam(this->decode_params, this->strings, detailed_msg == INVALID_STRING_ID ? summary_msg : detailed_msg, lengthof(this->decode_params));
 		if (textref_stack_size > 0) {
+			StopTextRefStackUsage();
 			MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 		}
 
