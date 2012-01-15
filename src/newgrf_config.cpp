@@ -188,8 +188,7 @@ GRFError::GRFError(const GRFError &error) :
 	custom_message(error.custom_message),
 	data(error.data),
 	message(error.message),
-	severity(error.severity),
-	num_params(error.num_params)
+	severity(error.severity)
 {
 	if (error.custom_message != NULL) this->custom_message = strdup(error.custom_message);
 	if (error.data           != NULL) this->data           = strdup(error.data);

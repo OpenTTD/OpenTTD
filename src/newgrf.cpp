@@ -6195,12 +6195,10 @@ static void GRFLoadError(ByteReader *buf)
 	}
 
 	/* Only two parameter numbers can be used in the string. */
-	uint i = 0;
-	for (; i < 2 && buf->HasData(); i++) {
+	for (uint i = 0; i < lengthof(error->param_value) && buf->HasData(); i++) {
 		uint param_number = buf->ReadByte();
 		error->param_value[i] = _cur.grffile->GetParam(param_number);
 	}
-	error->num_params = i;
 
 	_cur.grfconfig->error = error;
 }
