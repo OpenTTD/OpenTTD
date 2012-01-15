@@ -46,12 +46,10 @@ void ShowNewGRFError()
 
 		SetDParam   (0, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->error->custom_message);
-		SetDParam   (2, STR_JUST_RAW_STRING);
-		SetDParamStr(3, c->filename);
-		SetDParam   (4, STR_JUST_RAW_STRING);
-		SetDParamStr(5, c->error->data);
+		SetDParamStr(2, c->filename);
+		SetDParamStr(3, c->error->data);
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
-			SetDParam(6 + i, c->error->param_value[i]);
+			SetDParam(4 + i, c->error->param_value[i]);
 		}
 		ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
 		break;
@@ -63,12 +61,10 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	if (c->error != NULL) {
 		char message[512];
 		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
-		SetDParam   (1, STR_JUST_RAW_STRING);
-		SetDParamStr(2, c->filename);
-		SetDParam   (3, STR_JUST_RAW_STRING);
-		SetDParamStr(4, c->error->data);
+		SetDParamStr(1, c->filename);
+		SetDParamStr(2, c->error->data);
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
-			SetDParam(5 + i, c->error->param_value[i]);
+			SetDParam(3 + i, c->error->param_value[i]);
 		}
 		GetString(message, c->error->custom_message == NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 

@@ -15,6 +15,7 @@
 #include "string_type.h"
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
+#include "table/control_codes.h"
 
 /** This character, the thorn ('þ'), indicates a unicode string to NFO. */
 static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;
@@ -25,7 +26,7 @@ const char *GetGRFStringFromGRFText(const struct GRFText *text);
 const char *GetGRFStringPtr(uint16 stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(byte language_id);
-char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen = NULL);
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen = NULL, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
 struct GRFText *DuplicateGRFText(struct GRFText *orig);
 void AddGRFTextToList(struct GRFText **list, struct GRFText *text_to_add);
 void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);

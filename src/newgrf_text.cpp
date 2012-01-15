@@ -394,9 +394,10 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
  * @param allow_newlines Whether newlines are allowed in the string or not.
  * @param str            The string to translate.
  * @param [out] olen     The length of the final string.
+ * @param byte80         The control code to use as replacement for the 0x80-value.
  * @return The translated string.
  */
-char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen)
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen, StringControlCode byte80)
 {
 	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
@@ -454,8 +455,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newline
 			case 0x7C:
 			case 0x7D:
 			case 0x7E:
-			case 0x7F:
-			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
+			case 0x7F: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD_SIGNED + c - 0x7B); break;
+			case 0x80: d += Utf8Encode(d, byte80); break;
 			case 0x81: {
 				if (str[0] == '\0' || str[1] == '\0') goto string_end;
 				StringID string;

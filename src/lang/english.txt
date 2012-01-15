@@ -2529,27 +2529,27 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{RAW_ST
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{RAW_STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{RAW_STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{RAW_STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}A fatal NewGRF error has occurred: {}{STRING7}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING1} will not work with the TTDPatch version reported by OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING1} is for the {STRING1} version of TTD
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING1} is designed to be used with {STRING1}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {1:STRING1}: parameter {STRING1} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING1} must be loaded before {STRING1}
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING1} must be loaded after {STRING1}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING1} requires OpenTTD version {STRING1} or better
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}A fatal NewGRF error has occurred: {}{STRING5}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:RAW_STRING} will not work with the TTDPatch version reported by OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:RAW_STRING} is for the {RAW_STRING} version of TTD
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:RAW_STRING} is designed to be used with {RAW_STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {1:RAW_STRING}: parameter {RAW_STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:RAW_STRING} must be loaded before {RAW_STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:RAW_STRING} must be loaded after {RAW_STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:RAW_STRING} requires OpenTTD version {RAW_STRING} or better
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {2:RAW_STRING} as static NewGRF with {4:RAW_STRING} could cause desyncs
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite (sprite {5:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property {6:HEX} (sprite {5:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID (sprite {5:NUM})
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {1:RAW_STRING} as static NewGRF with {RAW_STRING} could cause desyncs
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{RAW_STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {5:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {5:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}The currently used base graphics set is missing a number of sprites.{}Please update the base graphics set
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested GRF resources not available (sprite {5:NUM})
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:RAW_STRING} was disabled by {4:RAW_STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format (sprite {5:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Requested GRF resources not available (sprite {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:RAW_STRING} was disabled by {2:RAW_STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/unknown sprite layout format (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!
