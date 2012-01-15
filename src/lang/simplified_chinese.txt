@@ -2505,10 +2505,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要OpenTTD V {STRING} 或更高版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的NewGRF太多
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {2:STRING} 为静态 NewGRF 与 {4:STRING} 可能造成同步错误
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {1:STRING} 为静态 NewGRF 与 {STRING} 可能造成同步错误
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 被 {4:STRING} 禁用
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！

@@ -2635,10 +2635,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} se m
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} zahtijeva OpenTTD verziju {STRING} ili noviju.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je dizajnirana za prijevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše učitanih NewGRF-ova.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanjem {2:STRING} kao statičnog NewGRF s {4:STRING} može uzrokovati deharmonizaciju
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanjem {1:STRING} kao statičnog NewGRF s {STRING} može uzrokovati deharmonizaciju
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprite. Svi neispravni grafički znakovi bit će pokazani kao crveni upitnik (?).
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Baznom grafičkom setu u uporabi nedostaju neki spriteovi.{}Ažurirajte bazni grafički set
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je isključen od strane {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je isključen od strane {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!

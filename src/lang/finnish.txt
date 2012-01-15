@@ -2539,10 +2539,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} tule
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vaatii OpenTTD:n version {STRING} tai uudemman
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto jonka se muuntaa
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :NewGRF:n {2:STRING} lataaminen staattisena NewGRF:nä {4:STRING}:n kanssa saattaa aiheuttaa nykimistä
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :NewGRF:n {1:STRING} lataaminen staattisena NewGRF:nä {STRING}:n kanssa saattaa aiheuttaa nykimistä
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Käytössä olevasta perusgrafiikkapaketista puuttuu spritejä.{}Ole hyvä ja päivitä perusgrafiikkapaketti
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{4:STRING} poisti käytöstä NewGRF:n {2:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} poisti käytöstä NewGRF:n {1:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!

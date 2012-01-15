@@ -2616,10 +2616,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} je p
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potrebuje OpenTTD različico {STRING} ali boljšo
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {2:STRING} kot statični NewGRF z/s {4:STRING} lahko povzroči desinhronizacijo
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {1:STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je bil izklopljen zaradi {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je bil izklopljen zaradi {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!

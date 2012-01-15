@@ -2540,17 +2540,17 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muss
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Benötigt OpenTTD-Version {STRING} oder höher
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Datei, die es übersetzen soll,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {2:STRING} als statisches NewGRF mit {4:STRING} könnte Synchronisationsfehler hervorrufen
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite (Sprite {5:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action 0 - Property {6:HEX} (Sprite {5:NUM})
-STR_NEWGRF_ERROR_INVALID_ID                                     :Zugriff auf eine ungültige ID (Sprite {5:NUM})
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {1:STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite (Sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action 0 - Property {4:HEX} (Sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Zugriff auf eine ungültige ID (Sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als Fragezeichen (?) dargestellt
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {5:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus (Sprite {5:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus (Sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {5:NUM})
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} wurde von {4:STRING} deaktiviert
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges / Unbekanntes Format für Spritelayout (Sprite {5:NUM})
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges / Unbekanntes Format für Spritelayout (Sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!

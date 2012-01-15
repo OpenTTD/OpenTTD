@@ -2530,10 +2530,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} haru
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Berkas NewGRF telah didesain untuk diterjemahkan
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {2:STRING} secara statis dengan {4:STRING} dapat menyebabkan de-sinkronisasi
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {1:STRING} secara statis dengan {STRING} dapat menyebabkan de-sinkronisasi
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} dinonaktifkan oleh {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} dinonaktifkan oleh {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!

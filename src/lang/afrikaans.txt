@@ -2418,7 +2418,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Die laai van {2:STRING} as statiese NewGRF met {4:STRING} kan desinkroniesasies veroorsaak.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Die laai van {1:STRING} as statiese NewGRF met {STRING} kan desinkroniesasies veroorsaak.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 
 # NewGRF related 'general' warnings

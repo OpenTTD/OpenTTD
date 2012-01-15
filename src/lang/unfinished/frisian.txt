@@ -2023,7 +2023,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gea ny f
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warskôging: {SILVER}{STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} makke om te brûken tegeare my{STRING}
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tevolle NewGRF's binne laden
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} wie útskeakele troch {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wie útskeakele troch {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Warskôging!

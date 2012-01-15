@@ -2597,10 +2597,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mus�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Načítaných priveľa súborov NewGRF.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {2:STRING} ako statického NewGRF s {4:STRING} môže spôsobiť chybné zobrazenie.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {1:STRING} ako statického NewGRF s {STRING} môže spôsobiť chybné zobrazenie.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodený sprite. Všetky poškodené sprajty budú zobrazené ako červený otáznik (?).
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V používanej základnej grafickej sade chýbajú niektoré grafické objekty.{}Aktualizujte prosím základnú grafickú sadu.
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} bol vypnutý {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bol vypnutý {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Upozornenie!

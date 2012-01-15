@@ -1353,7 +1353,7 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோ�
 
 
 # NewGRF (self) generated warnings/errors
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}, {4:STRING}ஆல் செயலிழக்க செய்யப்பட்டது
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}, {STRING}ஆல் செயலிழக்க செய்யப்பட்டது
 
 # NewGRF related 'general' warnings
 

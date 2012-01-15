@@ -2909,10 +2909,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musi
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} wymaga OpenTTD w wersji {STRING} lub nowszej
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano zbyt wiele NewGRF
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {2:STRING} jako statyczne NewGRF z {4:STRING} może spowodować desynchronizacje
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {1:STRING} jako statyczne NewGRF z {STRING} może spowodować desynchronizacje
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} został wyłączony przez {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!

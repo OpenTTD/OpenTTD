@@ -2538,10 +2538,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER.kas                                 :{G=f}{1:STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} ir vajadzīga Open TTD versija {STRING} vai labāka
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ir ielādēti pārāk daudzi NewGRF
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {2:STRING} kā statisks NewGRF {4:STRING} var radīt desinhronizāciju
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {1:STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu gariņu. Visi bojātie gariņi tiks parādīti ar sarkanu jautājuma zīmi (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašreiz lietotajā pamata grafikas pakā iztrūkst daļa materiāla.{}Lūdzu atjaunojiet pamata grafikas paku
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} ar {4:STRING} tikai atspējots
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {STRING} tikai atspējots
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uzmanību!

@@ -2539,10 +2539,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :Rhaid i {1:STRI
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Mae {1:STRING} angen OpenTTD fersiwn {STRING} neu'n well
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :y ffeil GRF y gynllunio i gyfieithu
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Mae gormod o NewGRFau wedi'u llwytho
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {2:STRING} fel NewGRF statig gyda {4:STRING} achosi dadsyncroneiddio
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {1:STRING} fel NewGRF statig gyda {STRING} achosi dadsyncroneiddio
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniau llygredig yn cael eu dynodi gan farc cwestiwn coch (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Mae'r set raffeg sylfaenol a ddefnyddir ar hyn o bryd yn brin o sawl corlun{}Diweddarwch y set raffeg sylfaenol i ddatrys hyn
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {2:STRING} gan {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {1:STRING} gan {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rhybudd!

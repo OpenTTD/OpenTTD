@@ -2876,10 +2876,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} па
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} патрабуе OpenTTD вэрсіі {STRING} або вышэй.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, які ім перакладаецца.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружана занадта шмат новай графікі.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {2:STRING} у якасьці статычнага NewGRF з {4:STRING} можа выклікаць памылку сынхранізацыі.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {1:STRING} у якасьці статычнага NewGRF з {STRING} можа выклікаць памылку сынхранізацыі.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} утрымлiвае пашкоджаны спрайт. Усе пашкоджаныя спрайты будуць паказаны чырвоным знакам пытаньня (?).
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} быў адключаны з-за {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} быў адключаны з-за {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!

@@ -2541,10 +2541,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} må 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krever OpenTTD versjon {STRING} eller nyere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRFer innlastet.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {2:STRING} som statisk NewGRF med {4:STRING} kan forårsake synkroniseringsfeil.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {STRING} kan forårsake synkroniseringsfeil.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder en ødelagt sprite. Alle ødelagte spriter vil bli vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværende grafikksettet mangler en del spriter.{}Vennligst oppdater grafikksettet.
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} ble deaktivert av {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ble deaktivert av {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!

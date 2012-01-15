@@ -2586,10 +2586,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} peab
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD osa {STRING} või uuemat
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {2:STRING} staatilise NewGRF-na koos {4:STRING} võib põhjustada sünkrooni katkemist.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {1:STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Hetkel kasutatavast alus graafikapaketist puuduvad mõned spraidid.{}Palun uuenda alus graafikapaketti
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} blokeeriti {4:STRING} poolt
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blokeeriti {STRING} poolt
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaatust!

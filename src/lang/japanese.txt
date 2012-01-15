@@ -2444,15 +2444,14 @@ STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}はOp
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}はTTDの{STRING}バージョンのみに対応しています。
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}を使用時に、{STRING}を入にしなければなりません
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{2:STRING}を読み込む前、{1:STRING}を読み込まなければなりません。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}は{STRING}の読み込み後のみに読み込めます。
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ NewGRF が多すぎます。
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{4:STRING} を {2:STRING} を含む固定的な NewGRF として開くと、同期エラーを起こす可能性があります。
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} を {1:STRING} を含む固定的な NewGRF として開くと、同期エラーを起こす可能性があります。
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} は壊れたスプライトを含みます。壊れたスプライトは赤疑問符として表示されます。
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}現在を使ってるグラフィックセットが複数のダータが無いです。.{}セットを更新して下さいますよう、お願いします。
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}は{4:STRING}により無効にされました。
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}は{STRING}により無効にされました。
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！

@@ -2495,10 +2495,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} يج
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} يتطلب نسخة {STRING} من النسخة المفتوحة او احدث .
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :تم تصميم ملف GRF بغرض الترجمة
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :العديد من NewGRF تم تحميلها
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :تحميل {2:STRING}كملف ثابت مع NewGRF {4:STRING}قد يتسبب بمشكلة توافق.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :تحميل {1:STRING}كملف ثابت مع NewGRF {STRING}قد يتسبب بمشكلة توافق.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} يحتوي على خصائص غير صالحة. جميع الخصائص الغير صالحة سوف يشار لها بعلامة استفهام حمراء.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}ملف الرسوم المستخدم حاليا يفتقد لبعض الرسوم الاساسية.{}الرجاء حدث ملف الرسوم.
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING}تم تعطيلة بواسطة{4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}تم تعطيلة بواسطة{STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}تحذير!

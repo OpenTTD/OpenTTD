@@ -2619,10 +2619,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mus�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {2:STRING} jako statické grafiky spolu s {4:STRING} může způsobit chybu synchronizace
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {1:STRING} jako statické grafiky spolu s {STRING} může způsobit chybu synchronizace
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} byla vypnuta {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!

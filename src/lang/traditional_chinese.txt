@@ -2439,12 +2439,11 @@ STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} 跟�
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} 只適合用於 TTD 版本 {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} 必須跟 {STRING} 一起使用
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} 的參數無效：參數 {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入 {2:STRING} 前必須先載入 {1:STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必須要在 {STRING} 之後載入
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 OpenTTD 版本 {STRING} 或更新的版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多 NewGRF
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :與{4:STRING} 將 {2:STRING} 載入為靜態 NewGRF 可能會讓遊戲失去同步
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :與{2:STRING} 將 {1:STRING} 載入為靜態 NewGRF 可能會讓遊戲失去同步
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}目前使用的基本圖形集少了某些 sprite。{}請更新基本圖形集。
 

@@ -2529,10 +2529,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} ph�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu cầu phiên bản OpenTTD {STRING} hoặc cao hơn.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF file được thiết kế để phiên dịch
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Quá nhiều NewGRFs đã nạp.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {2:STRING} như là NewGRF tĩnh với {4:STRING} có thể gây mất đồng bộ
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {1:STRING} như là NewGRF tĩnh với {STRING} có thể gây mất đồng bộ
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} bị tắt bởi {4:STRING}
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bị tắt bởi {STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!

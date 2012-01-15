@@ -2603,10 +2603,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musz
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {STRING} vagy újabb verziójú OpenTTD-vel működik
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} betöltése mint statikus NewGRF {4:STRING} mellett ütközést okozhat
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} betöltése mint statikus NewGRF {STRING} mellett ütközést okozhat
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} kikapcsolva {4:STRING} által
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} kikapcsolva {STRING} által
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
