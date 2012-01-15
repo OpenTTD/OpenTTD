@@ -1507,13 +1507,27 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}செ�
 # Depot window
 
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} வாகனம்{P "" கள்}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}பணிமனையில் உள்ள இரயில்களை விற்று விடு
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}பணிமனைஇல உள்ள சாலை வாகனங்களை விற்று விடு
 
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}புதிய வாகனங்கள்
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}புதிய வாகனங்கள்
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}புதிய கப்பல்கள்
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}புதிய விமானங்கள்
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}புதிய இரயில் வாகனத்தை வாங்கு
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}புதிய சாலை வாகனத்தை வாங்கு
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}புதிய கப்பலை வாங்கு
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}புதிய விமானத்தை வாங்கு
 
 
 
@@ -1523,12 +1537,22 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}செ�
 
 
 # Engine preview window
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :சாலை வாகனம்
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :விமானம்
+STR_ENGINE_PREVIEW_SHIP                                         :கப்பல்
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY}  திறன்: {POWER}{}ஓட்டுவதற்கான செலவு: {CURRENCY_LONG}/வரு{}கொள்ளளவு: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY} திறன்: {POWER}  அதி. T.E.: {6:FORCE}{}ஓட்டுவதற்கான செலவு: {4:CURRENCY_LONG}/வரு{}கொள்ளளவு: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} வரையறை: {7:COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}{}இயக்குவதற்கான செலவு: {CURRENCY_LONG}/வரு
 
 # Autoreplace window
+STR_REPLACE_VEHICLE_TRAIN                                       :இரயில்
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :சாலை வாகனம்
+STR_REPLACE_VEHICLE_SHIP                                        :கப்பல்
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :விமானம்
 
 
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}எந்த வாகனமும் தேர்ந்தெடுக்கப்படவில்லை
 
 
 
@@ -1545,7 +1569,11 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}செ�
 
 
 # Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}நின்றுவிட்டது
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}நிறுத்தப்படுகின்றது, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}வழிக்காக காத்துக்கொண்டிருக்கிறது
 
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}எந்த கட்டளைகளும் இல்லை, {VELOCITY}
 
 # Vehicle stopped/started animations
 
@@ -1581,26 +1609,51 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}அத�
 
 
 
+STR_ORDER_DROP_HALT_DEPOT                                       :நிறுத்து
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_RELIABILITY                               :நம்பகத்தன்மை
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :அதிகபட்ச வேகம்
+STR_ORDER_CONDITIONAL_AGE                                       :வயது (வருடங்கள்)
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :எப்போதுமே
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :மீதமிருக்கும் வாழ்நாள் (வருடங்கள்)
 
 
 
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}தாண்டு
 
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}நீக்கு
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}அனைத்து ஆர்டர்களையும் ரத்து செய்
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}பகிர்வதை நிறுத்து
 
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}இங்கே செல்
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :அருகாமையில் உள்ள பணிமனைக்கு செல்
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :அருகாமையில் உள்ள பணிமனைக்கு செல்
+STR_ORDER_SHARE                                                 :கட்டளைகளை பகிரு
 
 
 # String parts to build the order string
+STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT} வழியாக செல்
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :{WAYPOINT} வழியாக எங்கும் நிற்காமல் செல்
 
 
+STR_ORDER_TRAIN_DEPOT                                           :இரயில் பணிமனை
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :சாலை வாகன பணிமனை
+STR_ORDER_SHIP_DEPOT                                            :கப்பல் பணிமனை
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
+STR_ORDER_STOP_ORDER                                            :(நிறுத்து)
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(தானியங்கி)
 
+STR_ORDER_FULL_LOAD                                             :(முழு சுமை)
+STR_ORDER_FULL_LOAD_ANY                                         :(எந்த சரக்கையும் முழுமையாக ஏற்று)
+STR_ORDER_NO_LOAD                                               :(எதையும் ஏற்றாதே)
+STR_ORDER_UNLOAD                                                :(இறக்கிவிட்டு சரக்கை ஏற்று)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(லோடிங் அன்லோடிங் தடைசெய்யப்பட்டுள்ளது)
 
 
@@ -1611,9 +1664,14 @@ STR_ORDER_AUTO_REFIT_ANY                                        :கிடைக
 
 
 # Time table window
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (பயண நேர அட்டவணை)
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}கட்டளைகள்
 
 
+STR_TIMETABLE_NO_TRAVEL                                         :எந்த பயணமும் இல்லை
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம் (தானியங்கி; அடுத்த கால அட்டவணையில் மனிதனால் இயக்க)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :பயணம் (நேர அட்டவணை இடப்படாதது)
+STR_TIMETABLE_DAYS                                              :{COMMA} நாள்{P "" கள்}
 
 
 
@@ -1697,9 +1755,22 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... ப�
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}இங்கே இரயில் நிலையம் கட்ட முடியாது...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}இங்கே விமான நிலையத்தை கட்ட இயலாது...
 
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... நிறுத்தம் மிகவும் விரிந்துள்ளது
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}மிக அதிகமான நிறுத்தங்கள்/ஏற்றும் பகுதிகள்
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}மிக அதிகமான இரயில்வே நிலைய பாகங்கள்
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}மிக அதிகமான பேருந்து நிறுத்தங்கள்
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}மிக அதிகமான லாரி நிலையங்கள்
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}மற்றொரு விமான நிலையத்தின் அருகாமையில் உள்ளது
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}நிறுத்தத்தின் பெயரை மாற்ற இயலாது...
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... இது நகரத்திற்கு சொந்தமான சாலையாகும்
+STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... சாலை தப்பான திசையை நோக்கி உள்ளது
 
 # Station destruction related errors
+STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}நிறுத்தத்தின் பகுதியை நீக்க இயலாது...
+STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}முதலில் இரயில் நிலையம் நீக்கப்பட வேண்டும்
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}பேருந்து நிறுத்தத்தை நீக்க இயலாது...
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...தொடர்வண்டி நிலையம் இல்லை
 
 

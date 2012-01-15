@@ -447,7 +447,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / 게임 스크립트 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :확대된 스크린샷 찍기
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :최대로 확대된 스크린샷 찍기
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :지도 전체 스크린샷
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
@@ -1129,7 +1129,7 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션(화폐가치하락) 켬: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}다리의 최대 길이: {ORANGE}{STRING}칸
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}다리의 최대 길이: {ORANGE}{STRING} 타일
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
@@ -2661,6 +2661,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- 없�
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}회사 목표:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}산업시설/마을/지도의 위치로 화면을 이동하려면 클릭하십시오. Ctrl+클릭하면 산업시설/마을/지도를 표시하는 외부화면을 엽니다.
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}보조금
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}제공되는 보조금:
@@ -3478,7 +3482,7 @@ STR_AI_GAME_SCRIPT                                              :{G=f}{BLACK}게
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록 체크
 
 STR_ERROR_AI_NO_AI_FOUND                                        :불러올 인공지능이 없습니다.{}이 인공지능은 불용품이며 아무 기능도 하지 않을 것입니다.{}'온라인 컨텐츠 체크' 기능으로 다른 인공지능을 다운받으세요.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 인공지능 중 하나가 충돌했습니다. 인공지능 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 스크립트 중 하나가 충돌했습니다. 인공지능 / 게임 스크립트 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / 게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
 
 # AI configuration window

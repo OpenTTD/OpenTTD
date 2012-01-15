@@ -2668,7 +2668,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Algemene
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfsdoelen:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om venster te centreren op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op industrie/stad/tegel lokatie
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om venster te centreren op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op industrie/stad/tegel locatie
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Vraag
@@ -3058,7 +3058,7 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van het treindepot. Ctrl+klik opent een nieuw scherm op de locatie van het treindepot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de garage. Ctrl+klik opent een nieuw scherm op de locatie van de garage
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer hoofdscherm op de locatie van het dok. Ctrl+klik opent een nieuw scherm op de locatie van het dok
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het scherm op de locatie van de hangar. Ctrl+klik opent een nieuw venster op de hangar lokatie
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het scherm op de locatie van de hangar. Ctrl+klik opent een nieuw venster op de hangar locatie
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Geef een lijst van alle treinen met dit depot in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Geef een lijst van alle wegvoertuigen met deze garage in hun orders
@@ -3596,7 +3596,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<niet beschikba
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tram-ondersteuning. Alle trams zijn verwijderd
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartmaken afgebroken...{}... geen geschikte dorpslokaties
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartmaken afgebroken...{}... geen geschikte dorpslocaties
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er is geen stad in dit scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
