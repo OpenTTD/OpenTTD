@@ -968,51 +968,17 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
-			case SCC_STRING1: { // {STRING1}
-				/* String that consumes ONE argument */
-				StringID str = args->GetInt32(SCC_STRING1);
+			case SCC_STRING1:
+			case SCC_STRING2:
+			case SCC_STRING3:
+			case SCC_STRING4:
+			case SCC_STRING5:
+			case SCC_STRING6:
+			case SCC_STRING7: { // {STRING1..7}
+				/* Strings that consume arguments */
+				StringID str = args->GetInt32(b);
 				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, 1);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
-				next_substr_case_index = 0;
-				break;
-			}
-
-			case SCC_STRING2: { // {STRING2}
-				/* String that consumes TWO arguments */
-				StringID str = args->GetInt32(SCC_STRING2);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, 2);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
-				next_substr_case_index = 0;
-				break;
-			}
-
-			case SCC_STRING3: { // {STRING3}
-				/* String that consumes THREE arguments */
-				StringID str = args->GetInt32(SCC_STRING3);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, 3);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
-				next_substr_case_index = 0;
-				break;
-			}
-
-			case SCC_STRING4: { // {STRING4}
-				/* String that consumes FOUR arguments */
-				StringID str = args->GetInt32(SCC_STRING4);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, 4);
-				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
-				next_substr_case_index = 0;
-				break;
-			}
-
-			case SCC_STRING5: { // {STRING5}
-				/* String that consumes FIVE arguments */
-				StringID str = args->GetInt32(SCC_STRING5);
-				if (game_script && GB(str, TAB_COUNT_OFFSET, TAB_COUNT_BITS) != GAME_TEXT_TAB) break;
-				StringParameters sub_args(*args, 5);
+				StringParameters sub_args(*args, b - SCC_STRING1 + 1);
 				buff = GetStringWithArgs(buff, str, &sub_args, last, next_substr_case_index, game_script);
 				next_substr_case_index = 0;
 				break;

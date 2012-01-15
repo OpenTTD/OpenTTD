@@ -65,11 +65,14 @@ enum StringControlCode {
 	SCC_DATE_LONG,
 	SCC_DATE_ISO,
 
+	/* Must be consecutive */
 	SCC_STRING1,
 	SCC_STRING2,
 	SCC_STRING3,
 	SCC_STRING4,
 	SCC_STRING5,
+	SCC_STRING6,
+	SCC_STRING7,
 
 	SCC_ENCODED,
 
