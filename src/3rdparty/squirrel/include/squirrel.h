@@ -183,7 +183,7 @@ typedef char SQChar;
 #define scstrdup	strdup
 #define scstrrchr	strrchr
 #define scstrcat	strcat
-#define MAX_CHAR 0xFF
+#define MAX_CHAR 0xFFFF
 #endif
 
 #define SQUIRREL_VERSION	_SC("Squirrel 2.2.5 stable - With custom OpenTTD modifications")
