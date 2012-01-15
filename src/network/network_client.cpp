@@ -577,7 +577,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Pa
 
 		p->Recv_string(company_info->clients, sizeof(company_info->clients));
 
-		SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+		SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 		return NETWORK_RECV_STATUS_OKAY;
 	}
