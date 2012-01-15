@@ -2529,7 +2529,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{RAW_ST
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{RAW_STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{RAW_STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{RAW_STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}A fatal NewGRF error has occurred: {}{STRING5}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}A fatal NewGRF error has occurred: {}{STRING7}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING1} will not work with the TTDPatch version reported by OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING1} is for the {STRING1} version of TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING1} is designed to be used with {STRING1}
