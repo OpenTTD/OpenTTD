@@ -63,11 +63,17 @@ void SetRandomSeed(uint32 seed)
 #include "../network/network_server.h"
 #include "../network/network_internal.h"
 #include "../company_func.h"
+#include "../fileio_func.h"
+#include "../date_func.h"
 
 uint32 DoRandom(int line, const char *file)
 {
 	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::STATUS_INACTIVE))) {
-		printf("Random [%d/%d] %s:%d\n", _frame_counter, (byte)_current_company, file, line);
+		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
+		if (f != NULL) {
+			fprintf(f, "%08x; %02x; %04x; %02x; %s:%d\n", _date, _date_fract, _frame_counter, (byte)_current_company, file, line);
+			fflush(f);
+		}
 	}
 
 	return _random.Next();
