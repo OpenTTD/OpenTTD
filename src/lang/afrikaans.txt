@@ -2419,14 +2419,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vere
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Die laai van {2:STRING} as statiese NewGRF met {4:STRING} kan desinkroniesasies veroorsaak.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwagte "sprite".
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie 0 waarde.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvoldoende ID te gebruik.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvuldige Aksie 8 inskrywings.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees verby einde van pseudo-sprite.
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF hulpbronne nie beskikbaar nie
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende sprite uitleg formaat
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!

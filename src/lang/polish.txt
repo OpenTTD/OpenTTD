@@ -2910,16 +2910,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} wyma
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano zbyt wiele NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {2:STRING} jako statyczne NewGRF z {4:STRING} może spowodować desynchronizacje
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nieoczekiwany obrazek
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nieznana własność Action 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia nieprawidłowego ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza koniec pseudo obrazków
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Wymagane zasoby GRF są niedostępne
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} został wyłączony przez {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Błędny lub nieznany format układu obrazów
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!

@@ -2530,16 +2530,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krä
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {2:STRING} som statisk NewGRF med {4:STRING} kan orsaka desynkronisering
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oförväntad sprite
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd egenskap för Action 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Försökte att använda ett ogiltigt ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad bild. Alla korrupta bilder kommer att visas som ett rött frågetecken (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutetet av pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är ej tillgängliga
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} har inaktiverats av {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ogiltig/okänd sprite layout format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!

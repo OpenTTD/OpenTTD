@@ -2528,16 +2528,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kræ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {2:STRING} som statisk NewGRF med {4:STRING} kan forårsage de-sykronisering.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikelement.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0 egenskab.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder flere "Action 8" poster.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi enden af pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det brugte basis graftik sæt mangler en række elementer.{}Updater venligst grafik sættet
-STR_NEWGRF_ERROR_GRM_FAILED                                     :De valgte GRF ressourcer er ikke tilgængelige
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} blev deaktiveret af {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukendt sprite layout format
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!

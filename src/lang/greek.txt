@@ -2559,15 +2559,8 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Το {1:STRING}
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {2:STRING} ως στατικό NewGRF με {4:STRING} μπόρει να προκαλέσει αποσυγχρονισμούς
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Αναπάντεχο sprite
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} περιέχει ένα κατεστραμμένο sprite. Όλα τα κατεστραμμένα sprites θα εμφανίζονται ως ένα κόκκινο ερωματικό (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Περιέχει πολλαπλές Action 8
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Διάβασμα τέλους του ψεύδο-sprite
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Δεν είναι διαθέσιμοι οι πόροι του GRF που ζητήσατε
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {2:STRING} απενεργοποιήθηκε από το {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Άκυρη/άγνωστη μορφή διάταξης sprite
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!

@@ -2609,16 +2609,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} reik
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Įkelta per daug NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {2:STRING} kaip statinio NewGRF su {4:STRING} gali sukelti desinchronizacijas
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nenumatytas spraitas
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nenumatytas spraitas
-STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas naudoti netinkamą ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Turi kelis veiksmus (Action 8)
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Įvyko skaitymas už pseudo-spraito pabaigos
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos spraitų.{}Atnaujinkite pagrindinį grafikos rinkinį
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Prašyti GRF ištekliai nėra galimi
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} buvo išjungta: {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas animacinio objekto išdėstymas
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Įspėjimas!

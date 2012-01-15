@@ -1643,7 +1643,6 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Joan "sp
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Eskatutako GRF baliabideak ez daude erabilgarri
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} desgaitua izan da {4:STRING}(en)gatik
 
 # NewGRF related 'general' warnings

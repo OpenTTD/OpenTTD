@@ -2397,12 +2397,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} þar
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {2:STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {4:STRING} gætu orðið hnökrar á keyrslu leiksins.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Óviðbúin hreyfimynd.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Óþekktur „Action 0“ eiginleiki
-STR_NEWGRF_ERROR_INVALID_ID                                     :Reyndi að notast við rangt ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inniheldur gallaða mynd. Allar gallaðar myndir munu birtast sem rauð spurningamerki (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inniheldur margar „Action 8“ færslur
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesa eftir lokin á gerfi-hreyfimynd
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Grunnteiknisafnið sem er í notkun vantar hluta af hreyfimyndunum.{}Vinsamlegast uppfærðu grunnteiknisafnið.
 
 # NewGRF related 'general' warnings

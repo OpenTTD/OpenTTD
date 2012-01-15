@@ -2735,16 +2735,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} zaht
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka nije prilagođena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše učitanih NewGRF-ova
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanje {2:STRING} kao statične NewGRF sa {4:STRING} može da izazove desinhronizacije
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepredviđen sprajt
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojstvo Action 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušano korišćenje nepostojećeg ID-ja
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprajt. Svi neispravni sprajtovi će biti prikazani kao crveni znakovi pitanja (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke Action 8 unose
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle završetka pseudo-sprajta
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Zatraženi GRF resusrsi nisu dostupni
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je isključen od strane {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neispravan/nepoznat format rasporeda sprajta
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!

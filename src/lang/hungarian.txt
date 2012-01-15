@@ -2604,16 +2604,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} betöltése mint statikus NewGRF {4:STRING} mellett ütközést okozhat
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Váratlan sprite
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ismeretlen Action 0 tulajdonság
-STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen ID-használati kisérlet
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Többszörös Action 8 bejegyzést tartalmaz
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
-STR_NEWGRF_ERROR_GRM_FAILED                                     :A kívánt GRF források nem elérhetőek
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} kikapcsolva {4:STRING} által
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Érvénytelen/ismeretlen sprite felépítés formátum
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!

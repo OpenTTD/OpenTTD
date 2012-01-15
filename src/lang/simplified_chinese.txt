@@ -2506,16 +2506,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需�
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的NewGRF太多
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {2:STRING} 为静态 NewGRF 与 {4:STRING} 可能造成同步错误
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未可预料的 sprite 错误。
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的动作属性值： 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用无效配置值
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的 Action 8 入口。
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :读取最后的伪 Sprite 结尾
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
-STR_NEWGRF_ERROR_GRM_FAILED                                     :所必需的GRF资源不可用
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} 被 {4:STRING} 禁用
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :非法的/未知的 sprite 输出格式
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！

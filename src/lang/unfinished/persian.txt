@@ -2498,16 +2498,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} نی
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :فایل GRF برای ترجمه شدن طراحی شده
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :تعداد NewGRF بیشتر از حد می باشد
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :در حال بارگزاری {2:STRING} به عنوان NewGRF ایستا با {4:STRING} مشکل همخوانی دارد
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :تصویر غیر منتظره
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :ویژگی فعالیت 0 ناشناخته است
-STR_NEWGRF_ERROR_INVALID_ID                                     :تلاش برای استفاده از آی دی نا معتبر
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} دارای یک تصویر خراب می باشد. تصویرهای خراب با علامت سوال قرمز (؟) نشان داده شدند.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :دارای چندین ورودی فعالیت 8 می باشد
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :خواندن تصویر از انتها گذشت
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}بسته گرافیک استفاده شده تعدادی از تصاوبر را ندارد.{}لطفا بسته گرافیکی را به روز کنید
-STR_NEWGRF_ERROR_GRM_FAILED                                     :منبع GRF درخواست شده در دسترس نمی باشد.
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} غیر فعال گردیده توسط {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :طرح با قالب ناشناخته/نامعتبر
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطار!

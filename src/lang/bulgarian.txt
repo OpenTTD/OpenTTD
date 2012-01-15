@@ -2447,12 +2447,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} из
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Прекалено много графики (NewGRF) са заредени.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {2:STRING} като статичен NewGRF заедно с {4:STRING} може да доведе до проблеми.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочакван обект.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестна Action 0 собственост.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Опит да се използва невалидно ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} съдържа повреден обект. Вскички повредени обекти ще бъдат показани като червена въпросителна (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Съдържа множество Действие 8 вписвания.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Прочети след края на псевдо sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Текущите основни графики имат празни картинки.{}Моля обновете си основните графики.
 
 # NewGRF related 'general' warnings

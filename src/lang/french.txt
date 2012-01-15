@@ -2535,16 +2535,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} néc
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {2:STRING} comme NewGRF statique avec {4:STRING} peut provoquer des erreurs de synchronisation
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattendu
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriété d'Action 0 inconnue
-STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'utilisation d'un ID invalide
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin d'un pseudo-sprite
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certains sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base
-STR_NEWGRF_ERROR_GRM_FAILED                                     :La ressource GRF demandée n'est pas disponible
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} a été désactivé par {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format d'agencement de sprite invalide/inconnu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!

@@ -2531,16 +2531,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} memb
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Berkas NewGRF telah didesain untuk diterjemahkan
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {2:STRING} secara statis dengan {4:STRING} dapat menyebabkan de-sinkronisasi
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite tidak diharapkan
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Properti 'Action 0' tidak diketahui
-STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID yang tidak sah
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Memiliki banyak entri untuk 'Action 8'
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Batas akhir pseudo-sprite tercapai
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar
-STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF yang diminta tidak tidak tersedia
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} dinonaktifkan oleh {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :format sprite tidak dikenal/salah
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!

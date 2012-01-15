@@ -2617,16 +2617,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potr
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {2:STRING} kot statični NewGRF z/s {4:STRING} lahko povzroči desinhronizacijo
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnosti
-STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?)
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po koncu navidezne sličice
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
-STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevane GRF sestavine niso razpoložljive
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{2:STRING} je bil izklopljen zaradi {4:STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/nepoznan format sistema sličic
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
