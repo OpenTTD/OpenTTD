@@ -178,6 +178,30 @@ char *CDECL str_fmt(const char *str, ...)
 	return p;
 }
 
+/**
+ * Scan the string for old values of SCC_ENCODED and fix it to
+ * it's new, static value.
+ * @param str the string to scan
+ * @param last the last valid character of str
+ */
+void str_fix_scc_encoded(char *str, const char *last)
+{
+	while (str <= last && *str != '\0') {
+		size_t len = Utf8EncodedCharLen(*str);
+		if ((len == 0 && str + 4 > last) || str + len > last) break;
+
+		WChar c;
+		len = Utf8Decode(&c, str);
+		if (c == '\0') break;
+
+		if (c == 0xE028 || c == 0xE02A) {
+			c = SCC_ENCODED;
+		}
+		str += Utf8Encode(str, c);
+	}
+	*str = '\0';
+}
+
 
 /**
  * Scans the string for valid characters and if it finds invalid ones,
@@ -207,7 +231,7 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 		 * characters to be skipped */
 		if (c == '\0') break;
 
-		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && IsInsideMM(c, SCC_CONTROL_START, SCC_CONTROL_END))) {
+		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && c == SCC_ENCODED)) {
 			/* Copy the character back. Even if dst is current the same as str
 			 * (i.e. no characters have been changed) this is quicker than
 			 * moving the pointers ahead by len */

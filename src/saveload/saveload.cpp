@@ -232,8 +232,9 @@
  *  166   23415
  *  167   23504
  *  168   23637
+ *  169   23816
  */
-extern const uint16 SAVEGAME_VERSION = 168; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 169; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
@@ -1096,6 +1097,9 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings = settings | SVS_ALLOW_CONTROL_CODE;
+				if (IsSavegameVersionBefore(169)) {
+					str_fix_scc_encoded((char *)ptr, (char *)ptr + len);
+				}
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;

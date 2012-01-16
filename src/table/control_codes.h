@@ -23,8 +23,11 @@ enum StringControlCode {
 	SCC_SPRITE_START  = 0xE200,
 	SCC_SPRITE_END    = SCC_SPRITE_START + 0xFF,
 
+	/* This must be the first entry. It's encoded in strings that are saved. */
+	SCC_ENCODED = SCC_CONTROL_START,
+
 	/* Display control codes */
-	SCC_SETX = SCC_CONTROL_START,
+	SCC_SETX,
 	SCC_SETXY,
 	SCC_TINYFONT,  ///< Switch to small font
 	SCC_BIGFONT,   ///< Switch to large font
@@ -74,7 +77,6 @@ enum StringControlCode {
 	SCC_STRING6,
 	SCC_STRING7,
 
-	SCC_ENCODED,
 
 	SCC_STRING,
 	SCC_COMMA,
