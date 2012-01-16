@@ -2540,9 +2540,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} heef
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF-bestand die het probeert te vertalen
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn te veel NewGRFs geladen
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden van {1:STRING} als statische NewGRF met {STRING} kan desynchronisatiefouten (desyncs) veroorzaken
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Actie 0 eigenschap {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Poging om ongeldig ID te gebruiken (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere acties 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF middelen niet beschikbaar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekende sprite lay-out-formaat (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!

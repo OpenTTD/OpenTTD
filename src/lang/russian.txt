@@ -2724,9 +2724,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} тр
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружено слишком много модулей NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {1:STRING} в качестве статического NewGRF с {STRING} может вызвать рассинхронизацию.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверный спрайт (спрайт {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство у «Action 0» {4:HEX} (спрайт {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Попытка использования недопустимого идентификатора (спрайт {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит повреждённый спрайт. Все повреждённые спрайты будут показаны красным знаком вопроса (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько блоков «Action 8» (спрайт {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чтение за концом псевдо-спрайта (спрайт {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}В текущем наборе базовой графики отсутствуют изображения некоторых объектов.{}Пожалуйста, обновите модуль базовой графики.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Запрошенные ресурсы GRF недоступны (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} был отключён из-за {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недопустимый/неизвестный формат расположения спрайтов (спрайт {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!

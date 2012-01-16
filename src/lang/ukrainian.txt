@@ -1926,6 +1926,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}На ц�
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ви посилали забагато команд серверу
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Ви занадто довго вводили пароль
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ви дуже довго приєднувалися
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ви дуже довго завантажували мапу
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ви дуже довго приєднувалися до серверу
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :фатальна помилка
@@ -1944,6 +1946,8 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :відключ�
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :спроба грати нечесно
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер переповнений
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :посилав забагато команд
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :вчасно не отримав пароль
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :мапа дуже довго завантажувалась
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Можлива втрата з'єднання

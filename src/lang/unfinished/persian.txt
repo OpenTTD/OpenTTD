@@ -2756,6 +2756,16 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}تغیی
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}ویرایش نام نقطه راه
 
 # Finances window
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}هزینه/دریافتی
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}ساخت و ساز
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}خودرو های جدید
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}هزینه های نگهداری قطار
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}هزینه های نگهداری خودروهای جاده
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}هزینه های نگهداری هواپیما
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}هزینه های نگهداری کشتی
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}هزینه های نگهداری مستغلات
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}درآمد قطارها
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}زیرساخت
 
 # Company view

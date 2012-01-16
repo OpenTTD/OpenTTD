@@ -948,7 +948,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Katrus 6 mēne�
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Katrus 12 mēnešus
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Valoda
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Interfeisa valodas izvēle
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Saskarnes valodas izvēle
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pilnekrāns
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Iezīmējiet ķeksi, lai spēlētu OpenTTD pilnekrāna režīmā
@@ -1089,9 +1089,9 @@ STR_ECONOMY_FLUCTUATING                                         :Pulsējoša
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Līniju beigās un stacijās
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Tikai līniju beigās
 
-STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujams
-STR_CITY_APPROVAL_TOLERANT                                      :Tolerants
-STR_CITY_APPROVAL_HOSTILE                                       :Naidīgs
+STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša
+STR_CITY_APPROVAL_TOLERANT                                      :Iecietīga
+STR_CITY_APPROVAL_HOSTILE                                       :Naidīga
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejamu derīgu MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot 'Tiešsaistes Saturs' sistēmu
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rīcība nomainīja grūtības pakāpi uz pielāgoto
@@ -1888,7 +1888,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Lejupie
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Atlasīts, jo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Atkarības: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Atzīmes: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OPENTTD ir būvēts bez ''zlib'' palīdzības...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ir būvēts bez ''zlib'' palīdzības...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... lejuplādēt saturu nav iespējams!
 
 # Order of these is important!
@@ -1930,7 +1930,7 @@ STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Pārslē
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Pārslēgt rūpniecības ēku caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Pārslēgt caurspīdību tādām ēkām kā depo, stacijas un ceļapunkti. Ctrl+klikšķis lai slēgtu.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Pārslēgt tiltu caurspīdību. Ctrl+klikšķis, lai slēgtu
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām ēkām kā bākas un antenas. Ctrl+klikšķis, lai slēgtu
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām celtnēm kā bākas un antenas. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Pārslēgt piekartroses caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt ielādes indikatoru caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā padarīt objektus neredzamus
@@ -1984,11 +1984,11 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Izvēlie
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Dzelzceļa stacijas izvēle
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Virziens
-STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Izvēlieties dzelzceļa stacijas virzienu
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Izvēlēties dzelzceļa stacijas virzienu
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Platformu skaits
-STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Izvēlieties platformu skaitu dzelzceļa stacijai
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Izvēlēties platformu skaitu dzelzceļa stacijai
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Platformas garums
-STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izvēlieties dzelzceļa stacijas garumu
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izvēlēties dzelzceļa stacijas garumu
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Vilkt un nomest
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt staciju izmantojot "vilkt un nomest"
 
@@ -2064,7 +2064,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlē
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Autoostas virziens
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlieties autoostas virzienu
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Kravas stacijas virziens
-STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlieties kravas iekraušanas laukuma virzienu
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlēties kravas iekraušanas laukuma virzienu
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaja orientācija
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties tramvaja pasažieru pieturas orientāciju
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaja virziens
@@ -3104,15 +3104,15 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransports
 STR_REPLACE_VEHICLE_SHIP                                        :Kuģis
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lidaparāts
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlieties lokomotīves veidu, kuru vēlaties mainīt
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlieties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlēties lokomotīves veidu, kuru vēlaties mainīt
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Sākt transportlīdzekļu nomaiņu
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospiediet, lai sāktu kreisajā pusē atlasītās lokomotīves aizvietošanu
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospiest, lai sāktu kreisajā pusē atlasītās lokomotīves aizvietošanu ar labajā pusē atlasīto lokomotīvi
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Netiks nomainîts
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nav atlasītu transportlīdzekļu
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Pārtraukt transportlīdzekļu nomaiņu
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospiediet, lai apturētu kreisajā pusē atlasītās lokomotīves aizvietošanu
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospiest, lai apturētu kreisajā pusē atlasītās lokomotīves aizvietošanu
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēgties starp lokomotīves un vagona aizvietošanas logiem

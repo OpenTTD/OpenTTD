@@ -1265,13 +1265,24 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}வி�
 
 # Description of land area of different tiles
 
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} இரயில் பணிமனை
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :சாலை
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :தெரு விளக்குகளுடன் சாலை
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :சாலை வாகன பணிமனை
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :ட்ரேம்வே
 
 # Houses come directly from their building names
+STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (கட்டுமானம் நடக்கிறது)
 
+STR_LAI_TREE_NAME_TREES                                         :மரங்கள்
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :கள்ளிச் செடிகள்
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :இரயில் நிலையம்
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :விமான பணிமனை
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :விமான நிலையம்
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :பேருந்து நிலையம்
+STR_LAI_STATION_DESCRIPTION_BUOY                                :காவியக்கட்டை
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :பாதைப்புள்ளி
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :தண்ணீர்
@@ -1282,11 +1293,16 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :கப்பல
 
 # Industries come directly from their industry names
 
+STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :சுரங்க ரயில் பாதை
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :சுரங்கச் சாலை
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :எஃகு தூண் இரயில்வே பாலம்
 
 
 
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :கலங்கரை விளக்கு
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :நிறுவனத்தின் தலைமைச் செயலகம்
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :நிறுவனத்திற்குச் சொந்தமான நிலம்
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD-ஐ பற்றி
@@ -1298,6 +1314,12 @@ STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ஆட�
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}பதிவு செய்த ஆட்டத்தை தொடரு
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}வரைபடத்தினை சேமி
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}அழி
+STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}சேமி
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ஏற்று
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ஆட்டத்தின் விவரங்கள்
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}எந்த தகவலும் கிடைக்கவில்லை
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 
 # World generation
@@ -1365,6 +1387,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}, {ST
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<தவறான தொழிற்சாலை>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRF பதிவுகள் ஆராயப்படுகின்றன
@@ -1574,38 +1597,96 @@ STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}நிற�
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}வழிக்காக காத்துக்கொண்டிருக்கிறது
 
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}எந்த கட்டளைகளும் இல்லை, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {WAYPOINT}-இற்கு செல்கிறது, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} {DEPOT}-இற்கு செல்கிறது, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT}-இல் சர்வீஸ் செய்ய செல்கிறது, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}நிறுத்தப்பட்டுள்ளது
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}நிறுத்தப்பட்டுள்ளது
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}கிளம்பியது
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}கிளம்பியது
 
 # Vehicle details
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (விவரங்கள்)
+STR_VEHICLE_NAME_BUTTON                                         :{BLACK}பெயர்
 
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}இரயிலிற்கு பெயரிடு
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}சாலை வாகனத்திற்கு பெயரிடு
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}கப்பலுக்கு பெயரிடு
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}விமானத்திற்கு பெயரிடு
 
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}வயது: {LTBLUE}{STRING}{BLACK}   ஓட்டுதல் செலவு: {LTBLUE}{CURRENCY_LONG}/வரு
 # The next two need to stay in this order
+STR_VEHICLE_INFO_AGE                                            :{COMMA} வருடம்{P "" கள்} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} வருடம்{P "" கள்} ({COMMA})
 
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}வரையறை: {LTBLUE}{COMMA} கட்டங்கள்
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}அதி. T.E.: {LTBLUE}{FORCE}
+
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG})
+
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}கொள்ளளவு: {LTBLUE}ஒன்றுமில்லை
+STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}{3:STRING}
+STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
+STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 
 
-
-
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}இரயிலிற்கு பெயரிடு
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}சாலை வாகனத்திற்கு பெயரிடு
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}கப்பலுக்கு பெயரிடு
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}விமானத்திற்கு பெயரிடு
 
 # Extra buttons for train details windows
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   மதிப்பு: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Tஇரயிலின் மொத்த சரக்குக் கொள்ளளவு:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}காலி
+STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} {STATION} -இலிருந்து
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} {STATION}-இலிருந்து (x{NUM})
 
+STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}சரக்கு
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}ஏற்றப்பட்டுள்ள சரக்குகள் பற்றிய விவரங்களை காட்டு
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}தகவல்
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}இரயிலின் வாகனங்கள் பற்றிய விவரங்களை காட்டு
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}கொள்ளளவுகள்
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}ஒவ்வொரு வாகனத்தின் கொள்ளளவினை காட்டு
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}மொத்த சரக்கு
 
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}கொள்ளளவு: {LTBLUE}
 
 # Vehicle refit
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (மாற்றியமை)
 
 
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}இரயிலை மாற்றியமை
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}விமானத்தை மாற்றியமை
 
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
+STR_ORDERS_END_OF_ORDERS                                        :- - கட்டளைகளின் பட்டியல் முடிகிறது - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - பகிரப்பட்ட கட்டளைகளின் பட்டியல் முடிகிறது - -
 
 # Order bottom buttons
+STR_ORDER_NON_STOP                                              :{BLACK}எங்கும் நிற்காமல்
+STR_ORDER_GO_TO                                                 :இங்கே செல்
+STR_ORDER_GO_NON_STOP_TO                                        :எங்கும் நிற்காமல் இங்கே செல்
+STR_ORDER_GO_VIA                                                :இதன் வழியாக இங்கே செல்
+STR_ORDER_GO_NON_STOP_VIA                                       :எங்கும் நிற்காமல் இதன் வழியாக செல்
 
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}எந்த சரக்கினையும் முழுமையாக ஏற்று
 
 
 
