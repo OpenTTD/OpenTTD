@@ -2449,11 +2449,11 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adaugă 
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Redetectează fişierele
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualizează lista de fişiere NewGRF disponibile
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimină
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimină fişierul NewGRF ales din listă
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimină fişierul NewGRF selectat din listă
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mută în sus
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fişierul NewGRF ales mai sus în listă
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fişierul NewGRF selectat mai sus în listă
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută în jos
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF ales mai jos în listă
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF selectat mai jos în listă
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate.
 
 # Additional textfiles accompanying NewGRFs
@@ -2540,9 +2540,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nece
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fişierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Sunt încărcate prea multe NewGRF-uri
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Încărcarea {1:STRING} ca un NewGRF static cu {STRING} ar putea cauza desincronizări
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Element grafic neașteptat (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietate necunoscută pentru Acțiunea 0 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de a folosi un ID invalid (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conţine o imagine coruptă. Toate imaginile corupte vor fi afişate ca semne de întrebare (?) roşii
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conține mai multe intrări pentru Acțiunea 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sfîrșitul preudo-elementului grafic (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a fost dezactivat de {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Structură necunoscută/invalidă pentru elementul grafic (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!

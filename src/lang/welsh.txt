@@ -446,7 +446,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
 STR_ABOUT_MENU_AI_DEBUG                                         :Dadnamu AI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Ciplun
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ciplun agos
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ciplun lefel mwyhád uchaf
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ciplun pellter rhagosodedig
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun o'r map cyfan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Gwybodaeth am 'OpenTTD'
@@ -2540,7 +2540,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Mae {1:STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :y ffeil GRF y gynllunio i gyfieithu
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Mae gormod o NewGRFau wedi'u llwytho
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {1:STRING} fel NewGRF statig gyda {STRING} achosi dadsyncroneiddio
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Corlun annisgwyliedig (corlun {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniau llygredig yn cael eu dynodi gan farc cwestiwn coch (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Yn cynnwys sawl cofnod Gweithred 8 (corlun {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Mae'r set raffeg sylfaenol a ddefnyddir ar hyn o bryd yn brin o sawl corlun{}Diweddarwch y set raffeg sylfaenol i ddatrys hyn
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {1:STRING} gan {STRING}
 
@@ -2881,7 +2883,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Cynhyrch
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Cynhyrchu: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch (multiple of 8, up to 2040)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch (lluosrif o 8, hyd at 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Newid y lefel cynhyrchu (canran, hyd at 800%)
 
 # Vehicle lists

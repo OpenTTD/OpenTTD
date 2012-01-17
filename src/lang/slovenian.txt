@@ -502,6 +502,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavitve težavnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne nastavitve
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI/Nastavitve igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
@@ -599,6 +600,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi 
 STR_ABOUT_MENU_AI_DEBUG                                         :Razhročevanje UI / skript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približano sliko
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zajem slike pri privzeti povečavi
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
@@ -978,6 +980,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne najde poti za nadaljevanje
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Vozilo {VEHICLE} je izgubljeno
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne more do naslednjega cilja, ker je predaleč
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspele preureditve
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Samoobnova ni uspela na {VEHICLE}{}{STRING}
@@ -1298,6 +1301,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cestna 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miška na robu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dovoli nakup ekskluzivnih prevoznih dovoljenj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Dovoli naložbe v zgradbe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Dovoli financiranje obnove lokalnih cest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dovoli pošiljanje denarja drugim podjetjem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
@@ -1311,6 +1315,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Omogoči večkratni set NewGRF pogona: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememba teh nastavitev ni mogoča, ko so tam vozila
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Vzdrževanje infrastrukture: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letališča nikoli ne potečejo: {ORANGE}{STRING}
 
@@ -1328,6 +1333,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanj
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaži obvestilo: {ORANGE}Lebdi {STRING} sekund{P o i e ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaži obvestilo: {ORANGE}Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Debelina črt grafov: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1419,6 +1425,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogo
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogoči ladje za računalnik: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dovoli UI v večigralskem načinu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opkode pred skripti so zadržane: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} d{P an neva nevi ni}/%
@@ -1475,6 +1482,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radij l
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Največje število nelepljivih oken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Največje število nelepljivih oken: {ORANGE}izklopljen
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Največji nivo povečave: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Največja oddaljenost pogleda: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normalno
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Hitrost rasti mesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Brez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Počasi
@@ -1503,6 +1518,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Usmerja
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Vlaki
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Mesta
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripti
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1516,7 +1532,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Avtomat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Napaka s konfiguracijsko datoteko...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... napaka v razporeditvi '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... neveljavna vrednost '{STRING}' za '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... zaključnih znakov na koncu nastavitve '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... neskladne NewGRF '{STRING}': podvojitev ID-ja GRF s/z '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... neupoštev neveljavne NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ni najdeno
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :nevarno za statično rabo
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistemski NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nezdružljivo s to različico OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznano
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo stiskanja '{STRING}' ni veljaven
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format shranjevanja igre '{STRING}' ni na voljo. Vračanje na '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1533,6 +1561,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Težavno
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / Nastavitve igre
 STR_INTRO_QUIT                                                  :{BLACK}Izhod
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Začni novo igro. Ctrl+Klik preskoči konfiguracijo sveta
@@ -1552,6 +1581,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazi 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaz naprednih nastavitev
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI in Nastavitve igre
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Temu prevodu manjka {NUM} vnos{P "" a i ov}. Prosimo pomagaj izboljšati OpenTTD in se vpiši za prevajanje. Preveri readme.txt za podrobnosti.
@@ -1922,6 +1952,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Izvrzen/
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Brcnjen/a si bil/a iz igre
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Goljufanje ni dovoljeno na tem strežniku
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Pošiljal si preveč ukazov strežniku
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tvoj čas za vnos gesla je bil predolg
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvoj računalnik se je predolgo povezoval
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvoj prenos ozemlja je trajal predolgo
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Priklop na strežnik je trajal predolgo
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
@@ -1940,6 +1974,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :brcnjen od gost
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :je poskusil/a uporabiti goljufanje
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :gostitelj zaseden
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :je pošiljal preveč ukazov
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ni bilo pravočasno prejetega gesla
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :čas je potekel
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :prenos ozemlja je trajal predolgo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :obdelava ozemlja je trajala predolgo
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Povezava je mogoče prekinjena
@@ -1987,6 +2025,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nobena
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Označi vse, da ne bo prenešeno
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Oznaka/ime filtra:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Obišči spletno stran
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Obišči spletno mesto za to vsebino
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Prenesi
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Požene prenos izbranih vsebin
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Skupna velikost prenosa: {WHITE}{BYTES}
@@ -2035,6 +2074,10 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... pove
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteka ni zapisljiva
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No mogoče razpakiranje prenešene datoteke
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Manjkajoče grafike
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD potrebuje grafike za delovanje, a ni nobenih najdenih. Dovoliš OpenTTD-ju da prenese in namesti te grafike?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, prenesi grafike
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, zapusti OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavitve prozornega pogleda
@@ -2082,6 +2125,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi �
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških prog, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov. Shift preklaplja med izgradnjo in predvidenimi stroški
 
+STR_RAIL_NAME_RAILROAD                                          :Železnica
+STR_RAIL_NAME_ELRAIL                                            :Električna železnica
+STR_RAIL_NAME_MONORAIL                                          :Enotirna železnica
+STR_RAIL_NAME_MAGLEV                                            :Magnetna železnica
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Smer žel. garaže
@@ -2353,6 +2400,29 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Polja
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežen teren
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Puščava
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} tiri
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING}tiri s signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} tiri s pred-signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} tiri z izhodnimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} tiri s kombiniranimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} tiri s signali steze
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} tiri s signali za enosmerno stezo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} tiri z normalnimi in pred-signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} tiri z normalnimi in izhodnimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} tiri z normalnimi in kombiniranimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} tiri z normalnimi in steznimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} tiri z normalnimi in enosmernimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} tiri s pred in izhodnimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} tiri s pred in kombiniranimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} tiri s pred in steznimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} tiri s pred in enosmernimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} tiri z izhodnimi in kombiniranimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} tiri z izhodnimi in steznimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} tiri z izhodnimi in enosmernimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} tiri s kombiniranimi in steznimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} tiri s kombiniranimi in enosmernimi signali
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} tiri s steznimi in enosmernimi signali
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} železniška garaža
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta z razsvetljavo
@@ -2540,6 +2610,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Premakne
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam nameščenih NewGRF datotek.
 
 # Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Prikaži preberi-me datoteko
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Zamenjaj dnevnik
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenca
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavi parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Prikaži parametre
@@ -2573,6 +2646,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Število parametrov: {ORANGE}{NUM}
 
 # NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF preberi-me od {STRING}
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF zamenjaj dnevnik od {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licenca od {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Preglej - {STRING}
@@ -2617,9 +2693,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potr
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {1:STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnost {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje več Ukaz 8 vnosov (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Prebrana datoteka preko meje za sličice (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Zahtevani viri GRF niso na voljo (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} je bil izklopljen zaradi {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neveljaven/neznan format zapisa sličic (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -2648,6 +2731,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Povratni klic {1:HEX} je odgovoril z neznanim/neveljavnim rezultatom {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
@@ -2692,6 +2776,12 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pošte p
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Količina potrebnega tovora za rast mesta:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} potrebno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} je potreben pozimi
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} dostavljeno
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (še potrebno)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostavljeno)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Mesto raste vsak{P "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Mesto raste vsak{P "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni} (z naložbami)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Mesto {RED}ne{BLACK} raste
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meja hrupa v mestu: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Osredotoči pogled na lokacijo mesta. Ctrl+Klik odpre nov pogled na lokaciji mesta
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Mestni svet
@@ -2738,6 +2828,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brez -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji podjetja:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za pogled na industrijo/mesto/ploščo. Ctrl+Klik odpre novo okno na industrijo/mesto/ploščo
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Vprašanje
@@ -2855,6 +2946,7 @@ STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Izposoja
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Povečaj višino posojila. Ctrl+Klik izposodi največ, kar je mogoče
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Vračilo {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Odplačaj del posojila. Ctrl+Klik odplača največ, kar je mogoče
+STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktura
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
@@ -2870,6 +2962,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Brez
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Vrednost podjetja: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% v lasti podjetja {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktura:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} kos{P "" a i ov} tirov
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} odsek{P "" a i ov} ceste
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} plošč{P a i e ""} vode
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} odsek{P "" a i ov} postaj
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} letališč{P e i a ""}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Brez
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Zgradi sedež podjetja
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zgradi sedež podjetja
@@ -2877,6 +2976,8 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Poglej s
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Poglej sedež podjetja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli sedež
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja. Shift+Klik prikaže predviden strošek brez selitve
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Podrobnosti
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Podrobni prikaz količine infrastrukture
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nov obraz
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izberi nov obraz za direktorja
@@ -2898,6 +2999,19 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo im
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Iščemo novega lastnika, ki bi prevzel naše podjetje.{}{}Ali želiš odkupiti podjetje {COMPANY} za ceno {CURRENCY_LONG}?
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktura od {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Kosi tirov:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signali
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Odseki cest:
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Cesta
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvaj
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Plošče vode:
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Postaje:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Odseki postaj
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letališča
+STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/leto ({0:COMMA})
+STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/leto
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrije
@@ -3137,6 +3251,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Teža: {WEIGHT_SHORT}{}Hitrost: {VELOCITY}  Moč: {POWER}  Max. T.E.: {6:FORCE}{}Stroški: {4:CURRENCY_LONG}/yr{}Zmogljivost: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO_LONG}, {CARGO_LONG}{}Cena delovanja: {CURRENCY_LONG}/leto
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO_LONG}{}Cena delovanja: {CURRENCY_LONG}/leto
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} plošč{}Zmogljivost: {CARGO_LONG}, {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} plošč{}Zmogljivost: {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamenjaj {STRING}
@@ -3251,6 +3367,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} let{P o
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} let{P o i a ""} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} plošč
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
@@ -3356,6 +3473,9 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Spremeni
 
 STR_ORDER_REFIT                                                 :{BLACK}Preuredi
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Izberi preureditev za vrsto tovora, ki ga želiš. Ctrl+Klik za odstranitev ukaza preureditve
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Samo-predelava
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Izberi kateri tip tovora se bo uporabil v tem ukazu. Ctrl+Klik za odstranitev ukaza samo-predelave. Samo-predelava bo izvedena le, če vozilo to dovoli
+STR_ORDER_DROP_REFIT_AUTO                                       :Določen tovor
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Tovor na voljo
 
 STR_ORDER_SERVICE                                               :{BLACK}Servis
@@ -3445,6 +3565,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne razloži in
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne razloži in počakaj na polno česarkoli)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne razloži in ne naloži)
 
+STR_ORDER_AUTO_REFIT                                            :(Samo-predelaj za {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Naporni in samo-predelaj za {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Napolni katerikoli tovor s samo-predelavo za {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Raztovori in napolni tovor s samo-predelavo za {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Raztovori in počakaj na polni tovor s samo-predelavo za {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Raztovori in počakaj na katerikoli tovor s samo-predelavo za {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Pretovori in napolni tovor s samo-predelavo za {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Pretovori in počakaj na tovor s samo-predelavo za {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Pretovori in počakaj na katerikoli tovor s samo-predelavo za {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Brez raztovarjanja napolni tovor s samo-predelavo za {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Brez raztovarjanja počakaj na tovor s samo-predelavo za {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Brez raztovarjanja počakaj na katerikoli tovor s samo-predelavo za {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :tovor na voljo
 
@@ -3452,6 +3584,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[začetna stran
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[konec]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Naslednji cilj je izven dosega)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skoči na ukaz {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skoči na ukaz {COMMA}, ko je {STRING} {STRING} {COMMA}
@@ -3534,6 +3667,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si razhroščevalni izpis UI
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Preveri dnevnik skriptov igre
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za razhroščevanje UI
@@ -3541,6 +3675,8 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno ra
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavitve UI / igre
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript igre, ki bo naložen v naslednji igri
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}UI, ki bodo naložene v naslednji igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Igralec
 STR_AI_CONFIG_RANDOM_AI                                         :Naključni UI
 STR_AI_CONFIG_NONE                                              :(brez)
@@ -3557,6 +3693,7 @@ STR_AI_CONFIG_CHANGE                                            :{BLACK}Izberi {
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :UI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Naloži drugi skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi parametre Skripte
 
@@ -3582,6 +3719,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Število dni zamika med zagonom sledeče po predhodni UI: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -3668,6 +3806,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni dovol
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} mestna oblast tega ne dovoli
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} mestni svet prepoveduje gradnjo še enega letališča v tem mestu
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :Lokalne oblasti mesta {WHITE}{TOWN} ne dovolijo gradnje letališča zaradi hrupa
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvoj poskus podkupovanja je odkril regijski preiskovalec
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tukaj ni možen dvig terena...
@@ -4482,6 +4621,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

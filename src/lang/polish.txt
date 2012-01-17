@@ -825,7 +825,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut powiększenia bez okien
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pełne przybliżenie na screenshocie
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot z przybliżeniem domyślnym
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
@@ -2178,6 +2179,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Masz zab
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Zostałeś wyrzucony z serwera
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ułatwienia są niedozwolone na tym serwerze
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Wysyłano zbyt dużo komend na serwer
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zbyt długo wprowadzałeś hasło
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer zbyt długo probował się połączyć
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Pobieranie mapy trwało zbyt długo
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Zbyt długo łączyłeś się do serwera
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :błąd ogólny
@@ -2196,6 +2201,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :wyrzucony przez
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :próbował użyć ułatwień
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serwer jest pełny
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :wysyłał zbyt wiele komend
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nie otrzymano hasła w odpowiednim czasie
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :przekroczono czas
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :pobieranie mapy trwało zbyt długo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :przetwarzanie mapy trwało za długo
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Możliwa utrata połączenia
@@ -2833,6 +2842,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Lista zm
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencja
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ustaw parametry
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Pokaż parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Zmień paletę
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Zmień paletę kolorów wybranego NewGRF.{}Zrób to gdy grafika tego NewGRF jest różowa
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Zastosuj zmiany
@@ -2910,9 +2920,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} wyma
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano zbyt wiele NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {1:STRING} jako statyczne NewGRF z {STRING} może spowodować desynchronizacje
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nieoczekiwany sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nieznana wartość Action 0 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia niepoprawnego ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza obszar pseudo-sprite'u (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Potrzebne źródło GRF nie jest dostępne (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} został wyłączony przez {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Niepoprawny/nieznany format układu sprite'u (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
@@ -3039,6 +3056,29 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Brak -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele firmy:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pytanie
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anuluj
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nie
+STR_GOAL_QUESTION_BUTTON_YES                                    :Tak
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Odrzuć
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Akceptuj
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignoruj
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Spróbuj ponownie
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Poprzedni
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Następny
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Idź
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Kontynuuj
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Restartuj
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odłóż
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Poddaj się
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zamknij
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydia
@@ -3863,7 +3903,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sprawdź log Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z uruchomionych skryptów przestał działać. Prosimy o zgłoszenie tego autorowi skryptu dołączając zrzut ekranu okna debugowania SI / GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI / GameScript jest dostępne tylko na serwerze
 
 # AI configuration window
