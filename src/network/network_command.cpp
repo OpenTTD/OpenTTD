@@ -262,7 +262,12 @@ static void DistributeCommandPacket(CommandPacket cp, const NetworkClientSocket 
  */
 static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owner)
 {
+#ifdef DEBUG_DUMP_COMMANDS
+	/* When replaying we do not want this limitation. */
+	int to_go = MAX_UINT16;
+#else
 	int to_go = _settings_client.network.commands_per_frame;
+#endif
 
 	CommandPacket *cp;
 	while (--to_go >= 0 && (cp = queue->Pop(true)) != NULL) {
