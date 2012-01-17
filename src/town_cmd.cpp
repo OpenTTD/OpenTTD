@@ -1820,6 +1820,8 @@ static TileIndex FindNearestGoodCoastalTownSpot(TileIndex tile, TownLayout layou
 
 static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
+	assert(_game_mode == GM_EDITOR || _generating_world); // These are the preconditions for CMD_DELETE_TOWN
+
 	if (!Town::CanAllocateItem()) return NULL;
 
 	do {
@@ -1844,7 +1846,8 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
 		if (t->population > 0) return t;
-		DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+		assert(rc.Succeeded());
 
 		/* We already know that we can allocate a single town when
 		 * entering this function. However, we create and delete
@@ -2564,7 +2567,7 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 }
 
 /**
- * Delete a town (scenario editor only).
+ * Delete a town (scenario editor or worldgen only).
  * @param tile Unused.
  * @param flags Type of operation.
  * @param p1 Town ID to delete.
@@ -2574,7 +2577,7 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  */
 CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (_game_mode != GM_EDITOR) return CMD_ERROR;
+	if (_game_mode != GM_EDITOR && !_generating_world) return CMD_ERROR;
 	Town *t = Town::GetIfValid(p1);
 	if (t == NULL) return CMD_ERROR;
 
