@@ -856,9 +856,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	char client_revision[NETWORK_REVISION_LENGTH];
 
 	p->Recv_string(client_revision, sizeof(client_revision));
+	uint32 newgrf_version = p->Recv_uint32();
 
 	/* Check if the client has revision control enabled */
-	if (!IsNetworkCompatibleVersion(client_revision)) {
+	if (!IsNetworkCompatibleVersion(client_revision) || _openttd_newgrf_version != newgrf_version) {
 		/* Different revisions!! */
 		return this->SendError(NETWORK_ERROR_WRONG_REVISION);
 	}
@@ -968,26 +969,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *p)
 {
 	NetworkClientSocket *new_cs;
-
-	/* Do an extra version match. We told the client our version already,
-	 * lets confirm that the client isn't lieing to us.
-	 * But only do it for stable releases because of those we are sure
-	 * that everybody has the same NewGRF version. For trunk and the
-	 * branches we make tarballs of the OpenTTDs compiled from tarball
-	 * will have the lower bits set to 0. As such they would become
-	 * incompatible, which we would like to prevent by this. */
-	if (IsReleasedVersion()) {
-		if (_openttd_newgrf_version != p->Recv_uint32()) {
-			/* The version we get from the client differs, it must have the
-			 * wrong version. The client must be wrong. */
-			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
-		}
-	} else if (p->size != 3) {
-		/* We received a packet from a version that claims to be stable.
-		 * That shouldn't happen. The client must be wrong. */
-		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
-	}
-
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (this->status < STATUS_AUTHORIZED || this->HasClientQuit()) {

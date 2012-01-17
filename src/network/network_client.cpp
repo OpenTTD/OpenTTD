@@ -329,6 +329,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 
 	Packet *p = new Packet(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
+	p->Send_uint32(_openttd_newgrf_version);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
@@ -374,13 +375,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 	my_client->status = STATUS_MAP_WAIT;
 
 	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
-	/* Send the OpenTTD version to the server, let it validate it too.
-	 * But only do it for stable releases because of those we are sure
-	 * that everybody has the same NewGRF version. For trunk and the
-	 * branches we make tarballs of the OpenTTDs compiled from tarball
-	 * will have the lower bits set to 0. As such they would become
-	 * incompatible, which we would like to prevent by this. */
-	if (IsReleasedVersion()) p->Send_uint32(_openttd_newgrf_version);
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }

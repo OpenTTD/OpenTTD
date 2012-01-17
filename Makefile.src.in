@@ -37,7 +37,6 @@ STAGE          = !!STAGE!!
 MAKEDEPEND     = !!MAKEDEPEND!!
 CFLAGS_MAKEDEP = !!CFLAGS_MAKEDEP!!
 SORT           = !!SORT!!
-REVISION       = !!REVISION!!
 AWK            = !!AWK!!
 CONFIG_CACHE_COMPILER = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_COMPILER!!
 CONFIG_CACHE_LINKER   = $(SRC_OBJS_DIR)/!!CONFIG_CACHE_LINKER!!
@@ -94,15 +93,9 @@ $(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STR
 VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
 MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 
-ifdef REVISION
-# Use specified revision (which should be of the form "r000").
-REV := $(REVISION)
-REV_NR := $(shell echo $(REVISION) | sed "s@[^0-9]@@g")
-else
 # Use autodetected revisions
 REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 REV_NR   := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
-endif
 
 # Make sure we have something in REV and REV_NR
 ifeq ($(REV),)

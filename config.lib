@@ -32,7 +32,6 @@ set_default() {
 	os="DETECT"
 	endian="AUTO"
 	cpu_type="DETECT"
-	revision=""
 	config_log="config.log"
 	prefix_dir="/usr/local"
 	binary_dir="games"
@@ -107,7 +106,6 @@ set_default() {
 		os
 		endian
 		cpu_type
-		revision
 		config_log
 		prefix_dir
 		binary_dir
@@ -198,8 +196,6 @@ detect_params() {
 
 			--cpu-type)                   prev_p="cpu_type";;
 			--cpu-type=*)                 cpu_type="$optarg";;
-
-			--revision=*)                 revision="$optarg";;
 
 			--cc-build)                   prevp_p="cc_build";;
 			--cc-build=*)                 cc_build="$optarg";;
@@ -1010,31 +1006,15 @@ check_params() {
 		fi
 	fi
 
-	if [ -n "$revision" ]; then
-		log 1 "checking revision... $revision"
-		log 1 "WARNING: we do not advise you to use this setting"
-		log 1 "WARNING: in most cases it is not safe for network use"
-		log 1 "WARNING: USE WITH CAUTION!"
-
-		sleep 5
-	elif [ -f "$ROOT_DIR/version" ]; then
-		revision="`cat $ROOT_DIR/version`"
-
-		log 1 "checking revision... $revision"
-	elif [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
-		revision=""
+	if [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
 		log 1 "checking revision... svn detection"
 	elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help 2>/dev/null`" ]; then
-		revision=""
 		log 1 "checking revision... git detection"
 	elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help 2>/dev/null`" ]; then
-		revision=""
 		log 1 "checking revision... hg detection"
 	elif [ -f "$ROOT_DIR/.ottdrev" ]; then
-		revision=""
 		log 1 "checking revision... source tarball"
 	else
-		revision=""
 		log 1 "checking revision... no detection"
 		log 1 "WARNING: there is no means to determine the version."
 		log 1 "WARNING: please use a subversion, mercurial, or git checkout of OpenTTD."
@@ -3245,7 +3225,6 @@ make_sed() {
 		s@!!SRCS!!@$SRCS@g;
 		s@!!OS!!@$os@g;
 		s@!!CONFIGURE_FILES!!@$CONFIGURE_FILES@g;
-		s@!!REVISION!!@$revision@g;
 		s@!!AWK!!@$awk@g;
 		s@!!DISTCC!!@$distcc@g;
 		s@!!NFORENUM!!@$nforenum@g;
@@ -3468,8 +3447,6 @@ showhelp() {
 	echo "                                 MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/MINGW/OS2/"
 	echo "                                 DOS/WINCE/PSP/HAIKU"
 	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
-	echo "  --revision=rXXXX               overwrite the revision detection."
-	echo "                                 Use with care!"
 	echo ""
 	echo "Paths:"
 	echo "  --prefix-dir=dir               specifies the prefix for all installed"
