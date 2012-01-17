@@ -2779,8 +2779,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} dostavljeno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (še potrebno)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (dostavljeno)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Mesto raste vsak{P "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Mesto raste vsak{P "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni} (z naložbami)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Mesto raste vsak{P 0 "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Mesto raste vsak{P 0 "" a e ih} {ORANGE}{COMMA}{BLACK} d{P an neva ni ni} (z naložbami)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Mesto {RED}ne{BLACK} raste
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Meja hrupa v mestu: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Osredotoči pogled na lokacijo mesta. Ctrl+Klik odpre nov pogled na lokaciji mesta
