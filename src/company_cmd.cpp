@@ -810,7 +810,13 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
+#ifndef DEBUG_DUMP_COMMANDS
+			/* When replaying the client ID is not a valid client; there
+			 * are actually no clients at all. However, the company has to
+			 * be created, otherwise we cannot rerun the game properly.
+			 * So only allow a NULL client info in that case. */
 			if (ci == NULL) return CommandCost();
+#endif /* NOT DEBUG_DUMP_COMMANDS */
 
 			/* Delete multiplayer progress bar */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
@@ -842,13 +848,17 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			if (_network_server) {
-				ci->client_playas = c->index;
-				NetworkUpdateClientInfo(ci->client_id);
+				if (ci != NULL) {
+					/* ci is only NULL when replaying.
+					 * When replaying no client is actually in need of an update. */
+					ci->client_playas = c->index;
+					NetworkUpdateClientInfo(ci->client_id);
+				}
 
-				if (Company::IsValidID(ci->client_playas)) {
+				if (Company::IsValidID(c->index)) {
 					_network_company_states[c->index].months_empty = 0;
 					_network_company_states[c->index].password[0] = '\0';
-					NetworkServerUpdateCompanyPassworded(ci->client_playas, false);
+					NetworkServerUpdateCompanyPassworded(c->index, false);
 
 					/* XXX - When a client joins, we automatically set its name to the
 					 * client's name (for some reason). As it stands now only the server
@@ -861,12 +871,24 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					 * TODO: Perhaps this could be improved by when the client is ready
 					 * with joining to let it send itself the command, and not the server?
 					 * For example in network_client.c:534? */
-					NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, ci->client_playas);
+					if (ci != NULL) {
+						/* ci is only NULL when replaying.
+						 * When replaying, the command to rename the president will
+						 * automatically be ran, so this is not even needed to get
+						 * the exact same state. */
+						NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, c->index);
+					}
 				}
 
 				/* Announce new company on network. */
 				NetworkAdminCompanyInfo(c, true);
-				NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, ci->client_playas + 1);
+
+				if (ci != NULL) {
+					/* ci is only NULL when replaying.
+					 * When replaying, the message that someone started a new company
+					 * is not interesting at all. */
+					NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, c->index + 1);
+				}
 			}
 #endif /* ENABLE_NETWORK */
 			break;
