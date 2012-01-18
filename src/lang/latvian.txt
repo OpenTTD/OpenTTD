@@ -678,7 +678,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Celtnes/ražotnes
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Transporta līdzekļi
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vilcieni
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Ceļu transporta līdzekļi
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Autotransporta līdzekļi
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Kuģi
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Lidaparāti
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transporta maršruti
@@ -748,7 +748,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražoš
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas konkurentu apkalpotajās rūpnīcās
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Citas ražošanas apjomu izmaiņas
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transporta līdzekļiem
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jaunie transporta līdzekļi
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jauni transportlīdzekļi
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Izmaiņas kravu pieņemšanā
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsīdijas
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Vispārējā informācija
@@ -1122,7 +1122,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimālais vilcienu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vilciena paātrinājuma modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ceļu transportlīdzekļu paātrinājuma modelis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Autotransporta līdzekļu paātrinājuma modelis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nogāžu slīpums vilcieniem: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nogāžu slīpums autotransportam {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kuģiem veikt 90 grādu pagriezienus: {ORANGE}{STRING}
@@ -2366,7 +2366,7 @@ STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņ
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
-STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nejaušs sākums
+STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Nejaušs sākums:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Noklikšķiniet,lai ievadītu nejaušu sākumu
 STR_MAPGEN_RANDOM                                               :{BLACK}Nejaušs
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Mainīt apvidus radīšanā izmantoto nejaušo sākumu
@@ -2586,7 +2586,7 @@ STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} Ne
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skenē arhīvus
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts- {COMMA} zīm{P e es ju}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts - {COMMA} zīm{P e es ju}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Saskaņot lielos/mazos burtus
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Notīrīt filtru
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Pārslēgt lielo/mazo burtu ievērošanu, filtrējot zīmju nosaukumus
@@ -2889,7 +2889,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Izmainī
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vilcien{P s i a}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Ceļu transportlīdzek{P lis ļi ļa}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Autotransporta līdzek{P lis ļi ļu}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Kuģ{P is i u}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lidaparāts
 
@@ -3017,16 +3017,16 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} tr
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vilcieni — velciet sastāva daļu, lai pievienotu/atvienotu no vilciena; klikšķiniet uz vilciena, lai iegūtu informāciju. Turiet piespiestu Ctrl, lai attiecinātu abas funkcijas sekojošajai ķēdei
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transportlīdzekļi - klikšķiniet uz tā, lai uzzinātu vairāk
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - uzklikšķini uz kuģa, lai uzzinātu vairāk
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāts - uzklikšķini uz lidaparāta, lai uzzinātu vairāk
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Transportlīdzekļi - uzklikšķināt uz transportlīdzekļa, lai uzzinātu vairāk
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kuģi - uzklikšķināt uz kuģa, lai uzzinātu vairāk
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lidaparāti - uzklikšķināt uz lidaparāta, lai uzzinātu vairāk
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pārvilkt vagonu uz šejieni, lai to pārdotu
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Velc transportl. šeit ,lai to pārdotu
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Pārvilkt vilciena vagonu uz šejieni, lai to pārdotu
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Pārvilkt autotransporta līdzekli uz šejieni, lai to pārdotu
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Pārvilkt kuģi uz šejieni, lai to pārdotu
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Pārvilkt lidaparātu uz šejieni, lai to pārdotu
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Pārvēlciet šeit vilciena lokomotīvi, lai pārdotu visu vilcienu
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Pārvilkt vilciena lokomotīvi uz šejieni, lai pārdotu visu vilcienu
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Pārdot visus vilcienus, kas atrodas depo
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Pārdot visu autotransportu, kas atrodas depo
@@ -3039,7 +3039,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Automāt
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Automātiski nomainīt visus lidaparātus angārā
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Jauni transportlīdzekļi
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Jauni transporta līdzekļi
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Jauni transportlīdzekļi
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Jauni kuģi
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Jauns lidaparāts
 
@@ -3137,12 +3137,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrēt
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrēt galveno skatu uz kuģi. Ctrl+klikšķis sekos kuģim galvenajā skatā
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrēt galveno skatu uz lidaparātu. Ctrl+klikšķis sekos lidaparātam galvenajā skatā
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sūtīt vilcienu uz depo. Ctrl+klik - tikai apkope
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sūtīt transportl. uz depo. Ctrl+klik tikai apkope
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sūtīt kuģi uz depo. Ctrl+klik tikai apkope
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sūtīt lidaparātu un angāru. CTRL + klik veiks tikai apkopi
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sūtīt vilcienu uz depo. Ctrl+klikšķis - izvēlēties tikai apkopi
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sūtīt autotransporta līdzekli uz depo. Ctrl+klikšķis - izvēlēties tikai apkopi
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Sūtīt kuģi uz depo. Ctrl+klikšķis - izvēlēties tikai apkopi
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Sūtīt lidaparātu uz angāru. Ctrl+klikšķis - izvēlēties tikai apkopi
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tas nopirks vilciena kopiju ar visiem vagoniem. Izmantojot Click+klikšķis, vilcieni lietos kopīgus rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tas nopirks vilciena kopiju ar visiem vagoniem. Izmantojot Ctrl+klikšķis, vilcieni lietos kopīgus rīkojumus. Shift+klikšķis rāda izmaksu vērtību, neveicot pirkumu
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tas pirks autotransporta kopiju. Izmantojot Ctrl+klikšķis, autotransporti lietos kopīgus rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tas nopirks kuģa kopiju. Izmantojot CTRL+klikšķis, kuģi kopīgi lietos rīkojumu. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tas nopirks lidaparāta kopiju. Izmantojot CTRL+klik, lidaparāti kopīgi lietos rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
@@ -3150,7 +3150,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tas nopi
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu ignorēt signālu
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pielāgot vilcienu citam kravas veidam
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Nomainīt ceļu transportlīdzekļa kravas veidu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Pielāgot autotransporta līdzekli citam kravas veidam
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pielāgot kuģi citam kravas veidam
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pielāgot lidaparātu citam kravas veidam
 
@@ -3520,8 +3520,8 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI / Ga
 STR_AI_CONFIG_CAPTION                                           :{WHITE}MI / spēles konfigurācija
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}MI, kas tiks ielādēts nākamajā spēlē
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs-cilvēks
-STR_AI_CONFIG_RANDOM_AI                                         :Nejaušš MI
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs (cilvēks)
+STR_AI_CONFIG_RANDOM_AI                                         :Nejaušs MI
 STR_AI_CONFIG_NONE                                              :(nav)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Pacelt uz augšu
@@ -3766,7 +3766,7 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boju
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Šeit nevar būvēt vilcienu depo...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Šeit nevar būvēt automobiļu depo...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Šeit nevar būvēt autotransporta depo...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Šeit nevar būvēt tramvaju depo...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Šeit nevar būvēt kuģu depo...
 
@@ -3877,7 +3877,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pi
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vilciens ceļā
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Ceļu transportl. ceļā
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Autotransporta līdzeklis ir ceļā
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Kuģis ir ceļā
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lidaparāts ceļā
 

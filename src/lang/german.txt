@@ -329,7 +329,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdat
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Startdatum eingeben
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Weltkarte anzeigen, Städteverzeichnis
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landfläche erzeugen
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stadt gründen
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Städte gründen
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrie errichten
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straße bauen
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
@@ -357,7 +357,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen an
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktsnamen anzeigen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schilder anzeigen
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Schilder von Wettbewerbern anzeigen
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Fremde Stationsnamen & Schilder zeigen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Vollständige Animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Vollständige Detailansicht
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparenz für Gebäude
@@ -1149,7 +1149,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fahrzeu
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Den Erwerb exklusiver Transportrechte erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Finazieren von Gebäuden erlaubens: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Finanzieren von Gebäuden erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Finanzierung von Straßenbauarbeiten erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Schenken von Geld an andere Firmen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
@@ -1256,7 +1256,7 @@ STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnell
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Gleistyp bei Spielbeginn/geladenem Spiel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Erster verfügbarer
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Letzter verfügbarer
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutzer
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutzter
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Gleise hervorheben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zwischensummen für Kategorien bei Firmenausgaben:{ORANGE}{STRING}
@@ -1280,9 +1280,9 @@ STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Vorgege
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}abgeschaltet
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tag{P 0:1 "" e}e/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}{STRING} Tag{P 0:1 "" e}e/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
@@ -1416,7 +1416,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neue
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Ein neues Spiel mit Reliefkarte als Landschaft starten
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starte ein neues Spiel basierend auf einem Szenario
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario kreieren
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario erstellen
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mehrspieler-Spiel beginnen
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Landschaft mit gemäßigtem Klima auswählen
@@ -1801,7 +1801,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sie wurd
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Es wurden zu viele Kommandos an den Server gesendet
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zeit für die Eingabe des Passwortes wurde überschritten
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer brauchte zu lange, dem Spiel beizutreten
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer brauchte zu lange, um dem Spiel beizutreten
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Es dauerte zu lange, die Karte herunterzuladen
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Es dauerte zu lange, dem Server beizutreten
 
@@ -1878,12 +1878,12 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunter
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Beginne die ausgewählten Erweiterung(en) herunterzuladen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgröße der ausgewählten Erweiterungen: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Beschreibung der Erweiterung
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese ist nicht zum Herunterladen ausgewählt
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dies ist zum Herunterladen ausgewählt
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese Erweiterung ist nicht zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Diese Erweiterung ist zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Erweiterung wird für eine andere Erweiterung benötigt
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung ist schon vorhanden
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Die Erweiterung ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existiernd{G en e es e} {STRING}
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Diese Erweiterung ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existierend{G en e es e} {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreibung: {WHITE}{STRING}
@@ -1912,19 +1912,19 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :Skript - Biblio
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lade Erweiterungen herunter...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Fordere Dateien an...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Lade momentan herunter: {STRING} ({NUM} von {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunterladen abgeschlossen
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Alle Dateien heruntergeladen
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann keine Verbindung mit dem Inhalts-Server herstellen...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann keine Verbindung zum Server mit den Online-Erweiterungen herstellen...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Herunterladen fehlgeschlagen...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verbindung verloren
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann Datei nicht schreiben
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlende Grafiken
-STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD benötigt Basisgrafiken, um zu funktionieren, es konnten aber keine gefunden werden. Darf OpenTTD diese herunterladen und installieren?
-STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, download die Grafiken
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD benötigt Basisgrafiken um zu funktionieren. Es konnten aber keine gefunden werden. Darf OpenTTD diese herunterladen und installieren?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, Grafiken herunterladen
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nein, OpenTTD beenden
 
 # Transparency settings window
@@ -1936,7 +1936,7 @@ STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transpar
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Bauten wie Bahnhöfe, Depots und Wegpunkte einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekte unsichtbar statt transparent machen
 
@@ -1995,7 +1995,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Anzahl d
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Bahnsteiglänge
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnsteiglänge wählen
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhof durch Klicken, Ziehen und Loslassen bauen
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhofsgröße durch Klicken und Ziehen frei wählbar
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eine Stationsart zum Anzeigen auswählen
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Die Stationsart auswählen, die gebaut werden soll
@@ -2011,7 +2011,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrs
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem. Blocksignale können sowohl als Licht- als auch als Formsignale gebaut werden. Die Funktion bleibt, wie auch bei den anderen Signaltypen, immer gleich
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
@@ -2512,11 +2512,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-V
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Ausrichtung von Sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nächstes Sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gehe zum nächsten normalen Sprite und überspringe alle Pseudo-/Recolour-/Schriftsprites und geht ggf. vom ersten zum letzten Sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gehe zum nächsten normalen Sprite und überspringe alle Pseudo-/Recolour-/Schriftsprites (springt ggf. vom ersten bis zum letzten Sprite)
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gehe zu Sprite
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gehe zum ausgewählten Sprite. Wenn das Sprite kein normales Sprite ist, gehe zum nächsten normalen Sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gehe zum ausgewählten Sprite. Wenn dieses kein normales Sprite ist, gehe zum nächsten normalen Sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorheriges Sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gehe zum vorherigen normalen Sprite (überspring alle Pseudo-/Recolour-/Schrift-Sprites und springt vom letzten zum ersten Sprite)
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gehe zum vorherigen normalen Sprite und überspringe alle Pseudo-/Recolour-/Schrift-Sprites (springt ggf. vom letzten bis zum ersten Sprite)
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Darstellung des aktuellen Sprites. Die Ausrichtung wird beim Zeichnen des Sprites ignoriert
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Bewege die Sprites und ändere dadurch die X- und Y-Offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-Offset: {NUM}, Y-Offset: {NUM}
@@ -2554,7 +2554,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges / U
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem unerwünschten Verhalten führen. Bitte keine diesbezüglichen Bugreports verfassen.{}Trotzdem fortfahren?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem unerwünschten Verhalten führen. Bitte keine diesbezüglichen Fehlerberichte verfassen.{}Trotzdem fortfahren?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: NewGRF-ID bereits vergeben
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible NewGRF geladen)
@@ -2814,7 +2814,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastru
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schienenstück{P "" e}
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Straßenfeld{P "" er}
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} Wasserfeld{P "" er}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Bahnhofsfeld{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Stationsfeld{P "" er}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} Flugh{P afen äfen}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Keine
 
@@ -3343,7 +3343,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Benötigt Inspe
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Verbleibende Laufzeit (Jahre)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Vergleich der Farzeuginformation mit eingegebenen Wert
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Die Bedingung, die erfüllt werden muss
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :gleich
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ungleich
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :kleiner als
@@ -3353,7 +3353,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :größer gleich
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :wahr
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falsch
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert der mit Farzeuginformation verglichen wird
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert, der mit Fahrzeuginformation verglichen wird
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Überspringen
@@ -3498,32 +3498,32 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Jahr aus
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debug der KI oder des Skripts
+STR_AI_DEBUG                                                    :{WHITE}KI- und Skript-Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Name des Skripts
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Einstellungen
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Einstellungen des Skripts ändern
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI erneut laden
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}An/Ausschalten des Unterbrechens, wenn eine KI Log-Nachricht dem Unterbrechungs-Text entspricht
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Unterbrechung bei:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Unterbrechung an
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wenn eine KI Log-Nachricht auf diesen Text paßt, wird das Spiel pausiert
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}KI stoppen, KI-Skript neu laden und KI erneut starten
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Hier lässt sich ein- oder ausschalten, ob die KI beim Auftauchen des Suchtextes in der KI-Log-Ausgabe angehalten wird
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Anhalten bei:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Anhalten bei
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Erscheint dieser Suchtext in der KI-Log-Ausgabe, wird die KI angehalten und das Spiel pausiert
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Groß/Klein beachten
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den Vergleich der KI Log-Nachrichten mit dem Unterbrechungs-Text den passenden Fall umschalten
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Soll bei der Suche auf Groß-/Kleinschreibung geachtet werden?
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgaben dieser KI anschauen
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Ausgabe dieser KI anzeigen
 STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Skripts
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder Scripte ist abgestürzt. Es ist nett, den Fehler dem Autor der KI oder des Scripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD und KI- bzw. Script-Versionsnummer zu melden
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder ein Skript ist abgestürzt. Es wäre nett, den Fehler dem Autor der KI oder des Skripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD- Version und der KI- bzw. Skript-Versionsnummer zu melden
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI oder Skripte ist nur auf dem Server verfügbar
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}KI / Skripte einstellen
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das im nächsten Spiel zu ladende Skript
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Das Skript, das im nächsten Spiel geladen wird
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die KIs, die im nächsten Spiel geladen werden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :menschlicher Spieler
 STR_AI_CONFIG_RANDOM_AI                                         :Zufällige KI
@@ -3621,7 +3621,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalieru
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein Notbehelfs-Soundset wurde gefunden. Sounds können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü)
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein leeres Platzhalter-Soundset wurde gefunden. Soundsets können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü)
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als '{STRING}'

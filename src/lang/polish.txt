@@ -3190,11 +3190,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Brak
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Wartość firmy: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% w posiadaniu przez {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} elementy kolei
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} elementy drogi
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} pola wody
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} pola stacji
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lotniska
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} element{P "" y ów} kolei
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} element{P "" y ów} drogi
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} p{P ole ola ól} wody
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} p{P ole ola ól} stacji
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lotnisk{P o a ""}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Żaden
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Budowa Siedziby

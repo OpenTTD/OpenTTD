@@ -831,7 +831,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Le profi
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ne peut rejoindre la prochaine destination parce qu'elle est hors de portée
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué {}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nouv{G eau el elle} {STRING} disponible{NBSP}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -845,19 +845,19 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple l'année prochaine{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple l'année prochaine{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus pendant un an{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double pendant un an{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple pendant un an{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple pendant un an{NBSP}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copier vers la vue
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copie l'emplacement de la vue principale vers cette vue
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copier l'emplacement de la vue principale vers cette vue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Coller depuis la vue
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colle l'emplacement de cette vue vers la vue principale
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Coller l'emplacement de cette vue vers la vue principale
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Options
@@ -869,56 +869,56 @@ STR_GAME_OPTIONS_CURRENCY_GBP                                   :Livre (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shiling Australien (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc Belge (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc Suisse (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Couronne Tchèque (CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark Allemand (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Couronne Danoise (DKK)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shiling australien (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc belge (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc suisse (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Couronne tchèque (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :Mark allemand (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Couronne danoise (DKK)
 STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Mark Finlandais (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc Français (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachme Grec (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florint Hongrois (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Couronne Islandaise (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lire Italienne (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florint Hollandais (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Courronne Norvégienne (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Nouv. Zloty Polonais (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu Roumain (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rouble Russe (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Slovénien (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Couronne Suédoise (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lire Turque (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Couronne Slovaque (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Réal Brésilien (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Couronne Estonienne (EEK)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Mark finlandais (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc français (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachme grecque (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florin hongrois (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Couronne islandaise (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lire italienne (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florin hollandais (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Courronne norvégienne (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Nouv. Zloty polonais (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu roumain (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rouble russe (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar slovénien (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Couronne suédoise (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lire turque (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Couronne slovaque (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Réal brésilien (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Couronne estonienne (EEK)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personnalisée...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unité de mesure
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Sélectionner l'unité de mesure
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unités de mesure
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Sélectionner les unités de mesure
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Impérial
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métrique
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Système impérial
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Système métrique
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Véhicules routiers
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Choisir le sens de conduite routière
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conduire à gauche
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conduire à droite
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conduite à gauche
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conduite à droite
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nom des villes
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Sélectionner le style des noms de ville
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Sélectionner la nationalité des noms des villes
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglais (Originaux)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglais (originaux)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Français
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Allemand
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglais (Additionels)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Americains
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglais (additionnels)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-américains
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Drôles
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suédois
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandais
@@ -932,7 +932,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Roumains
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Tchèques
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Suisses
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danois
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turques
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcs
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiens
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalans
 ############ end of townname region
@@ -965,11 +965,11 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fich
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les graphiques de base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sons de base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Choisir les sons de base à utiliser
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Sélectionner les sons de base à utiliser
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les sons de base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique de base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Choisir la musique de base à utiliser
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Sélectionner la musique de base à utiliser
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fichier{P "" s} corrompu{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Information additionnelle sur la musique de base
 
@@ -979,27 +979,27 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec d
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change{NBSP}: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire le montant de votre monnaie pour une Livre (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de votre monnaie pour une Livre (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de votre monnaie pour une Livre (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Réduire le montant de votre devise pour une livre (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Augmenter le montant de votre devise pour une livre (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Définir le taux de change de votre devise pour une livre (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur{NBSP}: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Définir le séparateur pour votre monnaie
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Définir le séparateur pour votre devise
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Préfixe{NBSP}: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Définir le préfixe pour votre monnaie
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Définir le préfixe pour votre devise
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffixe{NBSP}: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Définir le suffixe pour votre monnaie
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Définir le suffixe pour votre devise
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'Euro{NBSP}: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passer à l'Euro{NBSP}: {ORANGE}jamais
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Définir la date de passage à l'Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'Euro plus tôt
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'Euro plus tard
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Passer à l'euro{NBSP}: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Passer à l'euro{NBSP}: {ORANGE}jamais
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Définir la date de passage à l'euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'euro plus tôt
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Passer à l'euro plus tard
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisualisation{NBSP}: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10.000 Livres (£) dans votre monnaie
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10{NBSP}000 livres (£) dans votre devise
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de la devise personnalisée
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Niveau de difficulté

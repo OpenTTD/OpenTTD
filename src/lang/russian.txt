@@ -771,7 +771,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Программа - «{STRING}»
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Очистить
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Очистка пользовательской программы
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Кликните по названию трека для добавления в пользовательскую программу
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Щёлкните по названию трека для добавления в пользовательскую программу
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Выберите дорожку для удаления из пользовательского списка
 
 # Highscore window
@@ -1639,7 +1639,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Наст
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Настройка цветовой схемы авиатранспорта
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Настройка основного цвета
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Настройка дополнительного цвета
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с Ctrl. Кликните на чекбокс для использования выбранной схемы.
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с Ctrl. Щёлкните по флажку для использования выбранной схемы.
 
 STR_LIVERY_DEFAULT                                              :Стандарт. раскраска
 STR_LIVERY_STEAM                                                :Паровоз
@@ -2204,7 +2204,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Увел
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберите железнодорожный мост
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберите тип моста
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбор моста - кликните на изображении моста, который вы хотите построить
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбор моста - щёлкните по изображению моста, который вы хотите построить
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}{}{VELOCITY}; {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Висячий стальной
@@ -2526,7 +2526,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Сохр
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Загрузить сценарий
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Загрузить карту
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Сохранить карту высот
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Кликните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Щёлкните, чтобы перейти к текущей папке загрузки/сохранения по умолчанию
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} свободно
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Список дисков, папок и сохранённых игр
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Выбранное название для сохранения игры
@@ -2831,7 +2831,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адми
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рейтинг транспортных компаний
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Доступные действия:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}То, что можно сделать в этом городе - кликните для получения доп. сведений
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Список того, что можно сделать в этом городе - щёлкните для получения доп. сведений
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Применить
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выполнить выделенное действие в списке выше
 
@@ -3081,10 +3081,10 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} корабл{P ь я ей}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} единиц{P а ы ""} авиатранспорта
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - нажмите для получения справки
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - кликните для получения справки
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - щёлкните для получения информации
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - щёлкните для получения информации
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - щёлкните для получения информации
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - щёлкните для получения информации
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
 
@@ -3163,10 +3163,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кро�
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбор вагонов - кликните для справки
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - кликните для получения информации
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список кораблей - нажмите для получения справки
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Авиатранспорт - нажмите для получения справки
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список локомотивов и вагонов - щёлкните для получения информации
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - щёлкните для получения информации
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список кораблей - щёлкните для получения информации
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список авиатранспорта - щёлкните для получения информации
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купить
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купить автомобиль
@@ -3365,10 +3365,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Пока
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показать информацию о корабле
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показать сведения об авиатранспорте.
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущее действие поезда; кликните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущее действие автомобиля; кликните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущее действие корабля; кликните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Текущее действие воздушного судна; кликните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущее действие поезда; щёлкните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущее действие автомобиля; щёлкните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Текущее действие корабля; щёлкните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Текущее действие воздушного судна; щёлкните для его остановки/запуска. Ctrl+щелчок - обзор пункта назначения.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка/Погрузка

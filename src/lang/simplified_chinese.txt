@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :设计日期
 STR_SORT_BY_RUNNING_COST                                        :运行费用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率/运行费用 比值
 STR_SORT_BY_CARGO_CAPACITY                                      :运载能力
+STR_SORT_BY_RANGE                                               :航行距离
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}暂停游戏
@@ -446,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高清截图
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :默认缩放模式下的屏幕截图
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
@@ -1178,6 +1180,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}错误�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}鼠标停留时显示工具提示的延迟时间: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}显示提示： {ORANGE}右击
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}在城镇名称的标签中同时显示人口：{ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}图表曲线宽度: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}生成地形：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
@@ -1795,6 +1798,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已�
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此服务器不允许作弊
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您向服务器发送操作指令过于频繁
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}输入密码用时过长
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}游戏连接时间过长
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}下载地图用时过长
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}加入服务器用时过长
 
@@ -2123,6 +2127,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}选择建设项目. 按住SHIFT键建设可以显示建设费用
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}选择要建造的物件类型
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物件预览
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
@@ -2242,6 +2247,12 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :沙漠
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :有信号灯的{STRING}铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 预信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 出口信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 复合信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 普通信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 单向信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 列车车库
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :带路灯的公路
@@ -2429,6 +2440,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}将选�
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经安装的 NewGRF 文件列表{}点击可以改变参数
 
 # Additional textfiles accompanying NewGRFs
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}查看说明
+STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}更新日志
+STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}版权信息
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}显示参数
@@ -2462,6 +2476,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}参数数目: {ORANGE}{NUM}
 
 # NewGRF textfile window
+STR_NEWGRF_README_CAPTION                                       :{WHITE}NEWGRF {STRING} 的说明
+STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF {STRING} 的更新日志
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF {STRING} 的版权信息
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 - {STRING}
@@ -2506,8 +2523,12 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需�
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的NewGRF太多
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {1:STRING} 为静态 NewGRF 与 {STRING} 可能造成同步错误
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :异常sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的Action 0 属性 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非法ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
+STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
 
 # NewGRF related 'general' warnings
@@ -2581,6 +2602,9 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}上月�
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}城镇发展所必需的货物：
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{RED} 需要： {ORANGE}{STRING}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} 冬季的需求
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}已运输 {GREEN}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (需求总量)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (已运输)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}城镇每 {ORANGE}{COMMA}{BLACK} 天成长一次(加速中)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK} 城镇发展正在 {RED}停滞 {BLACK}！
@@ -2633,9 +2657,25 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司�
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION                                       :{WHITE}帮助索引
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消
+STR_GOAL_QUESTION_BUTTON_OK                                     :确定
+STR_GOAL_QUESTION_BUTTON_NO                                     :取消
+STR_GOAL_QUESTION_BUTTON_YES                                    :确定
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :接受
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :忽略
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :重试
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :上一个
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :下一个
+STR_GOAL_QUESTION_BUTTON_STOP                                   :停止
+STR_GOAL_QUESTION_BUTTON_START                                  :开始
+STR_GOAL_QUESTION_BUTTON_GO                                     :开始
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :继续
+STR_GOAL_QUESTION_BUTTON_RESTART                                :重新开启
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :暂缓
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :放弃
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :关闭
 
 # Subsidies window
@@ -2915,6 +2955,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改�
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有类型
 STR_PURCHASE_INFO_ALL_BUT                                       :除了 {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牵引力：{GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航行距离: {GOLD}{COMMA} 格
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列车选择列表 - 点击可以查看详细信息
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}汽车列表 - 点击可以查看详细信息
@@ -3035,6 +3076,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}售价�
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}售价：{CURRENCY_LONG} 重量：{WEIGHT_SHORT}{}速度：{VELOCITY}  功率：{POWER}  最大牵引力：{6:FORCE}{}运行费用{4:CURRENCY_LONG}/年{}运载能力：{5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}运载能力：{CARGO_LONG}, {CARGO_LONG}{}运行成本：{CURRENCY_LONG} /年
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}售价：{CURRENCY_LONG} 最大速度：{VELOCITY}{}运载能力：{CARGO_LONG}{}运行成本：{CURRENCY_LONG} /年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}费用: {CURRENCY_LONG} 最大速度: {VELOCITY} 航行距离: {7:COMMA} 格{}运载量: {CARGO_LONG}, {CARGO_LONG}{}运营成本: {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}购买费用: {CURRENCY_LONG} 最大速度: {VELOCITY} 航行距离: {7:COMMA} 格{}运载量: {CARGO_LONG}{}运营成本: {CURRENCY_LONG}/年
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING}
@@ -3149,6 +3192,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} 年 ({C
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} 年 ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最大速度：{LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}最大速度: {LTBLUE}{VELOCITY} {BLACK}航行距离: {LTBLUE}{COMMA} 格
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量：{LTBLUE}{WEIGHT_SHORT} {BLACK}功率：{LTBLUE}{POWER}{BLACK} 最大速度：{LTBLUE}{VELOCITY} {BLACK}最大牵引力：{LTBLUE}{FORCE}
 
@@ -3254,6 +3298,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}改变�
 
 STR_ORDER_REFIT                                                 :{BLACK}改装
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉改装计划
+STR_ORDER_REFIT_AUTO                                            :{BLACK}自动改装
+STR_ORDER_DROP_REFIT_AUTO                                       :固定货物
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用类型
 
 STR_ORDER_SERVICE                                               :{BLACK}保养
