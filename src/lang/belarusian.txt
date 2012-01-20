@@ -2984,7 +2984,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адмі
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рэйтынг транспартных кампаніяў
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Даступныя дзеяньні:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Тое, што можна зрабіць у гэтым горадзе - клікніце, каб даведацца больш
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Сьпіс магчымых дзеяньняў у гэтым горадзе - пстрыкніце для атрымання дад. звестак
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Скарыстаць
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выканаць дзеяньне, выбранае ў сьпісе вышэй
 
@@ -3319,7 +3319,7 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Далё
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбар вагонаў - клікніце для даведкі
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпiс аўтатранспарту - націсьніце для атрыманьня даведкі
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Сьпiс караблёў - націсьніце для атрыманьня даведкі
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Авiятранспарт - націсьніце для атрыманьня даведкі
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Сьпіс паветраных судоў - пстрыкніце для атрыманьня інфармацыі
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купiць
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купiць

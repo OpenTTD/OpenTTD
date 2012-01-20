@@ -667,8 +667,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Dangos d
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Dangos llwybrau cludo ar y map
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Dangos llystyfiant ar y map
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Dangos perchnogion tir ar y map
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Cliciwch ar ddiwydiant i doglo ei arddangos. Mae Ctrl+Clicio'n cuddio pob math ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob diwydiant
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliciwch ar gwmni i doglo arddangos ei eiddo. Mae Ctrl+Clicio'n cuddio pob cwmni ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob cwmni
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Cliciwch ar ddiwydiant i doglo ei arddangos. Mae Ctrl+Clic'n cuddio pob math ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob diwydiant
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliciwch ar gwmni i doglo arddangos ei eiddo. Mae Ctrl+Clic yn cuddio pob cwmni ond yr un a ddewiswyd. Ctrl+Cliciwch arno eto i ddangos pob cwmni
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ffyrdd
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Rheilffyrdd
@@ -1411,7 +1411,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Gwirio C
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Gosodiadau AI / Gêm
 STR_INTRO_QUIT                                                  :{BLACK}Gadael
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Dechrau gêm newydd. Mae Ctrl+Clicio yn hepgor dewisiadau map
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Dechrau gêm newydd. Mae Ctrl+Clic yn hepgor dewisiadau map
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Llwytho Gêm sydd wedi'i Gadw
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Dechrau gêm newydd, gan ddefnyddio'r map uchder fel tirwedd
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Dechrau gêm newydd, gan ddefnyddio senario wedi'i haddasu
@@ -2541,10 +2541,15 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :y ffeil GRF y g
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Mae gormod o NewGRFau wedi'u llwytho
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {1:STRING} fel NewGRF statig gyda {STRING} achosi dadsyncroneiddio
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Corlun annisgwyliedig (corlun {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Priodwedd Gweithred 0 anhysbys {4:HEX} (corlun {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Ceisio defnyddio ID annilys (corlun {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Mae'r {STRING} yn cynnwys corlun llygredig. Bydd corluniau llygredig yn cael eu dynodi gan farc cwestiwn coch (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Yn cynnwys sawl cofnod Gweithred 8 (corlun {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Darllen heibio i ddiwedd llid-gorlun (corlun {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Mae'r set raffeg sylfaenol a ddefnyddir ar hyn o bryd yn brin o sawl corlun{}Diweddarwch y set raffeg sylfaenol i ddatrys hyn
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Nid yw'r adnoddau GRF a geisiwyd ar gael (corlun {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Fe analluogwyd {1:STRING} gan {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Fformat cynllun corlun annilys/anhysbys (corlun {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rhybudd!
@@ -2805,11 +2810,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Dim
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Gwerth cwmni: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% yn eiddo {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Tanadeiledd:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} darnau rheilffordd
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} darnau ffordd
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} teiliau dŵr
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} teiliau gorsaf
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} meysydd awyr
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} darn{P "" au} rheilffordd
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} darn{P "" au} ffordd
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} teil{P "" iau} dŵr
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} teil{P "" iau} gorsaf
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} {P maes meysydd} awyr
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Dim
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Adeiladu Pencadlys
@@ -2817,7 +2822,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Adeiladu
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Gweld pencadlys cwmni
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Gweld pencadlys y cwmni
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ail-leoli pencadlys cwmni
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni. Mae Shift+Clicio yn dangos amcangyfrif o'r gost heb adleoli
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ailadeiladu pencadlys cwmni mewn man arall am 1% o werth y cwmni. Mae Shift+Clic yn dangos amcangyfrif o'r gost heb adleoli
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Manylion
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Gweld cyfansymau tanadeiledd manwl
 
@@ -2832,8 +2837,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Newid en
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Prynu cyfran o 25% o'r cwmni
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Gwerthu cyfran o 25% o'r cwmni
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Prynu cyfran o 25% o'r cwmni hwn. Mae Shift+Clicio yn dangos amcangyfrif o'r gost heb brynnu cyfran
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Gwerthu cyfran o 25% o'r cwmni hwn. Mae Shift+Clic yn dangos amcangyfrif o'r gost heb werthu cyfran
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Prynu cyfran o 25% yn y cwmni yma. Mae Shift+Clic yn dangos amcangyfrif o'r gost heb brynnu cyfran
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Gwerthu cyfran o 25% yn y cwmni yma. Mae Shift+Clic yn dangos amcangyfrif o'r elw heb werthu cyfran
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Enw Cwmni
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Enw Rheolwr
@@ -3053,7 +3058,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Dyblygu 
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Dyblygu Awyren
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Bydd hyn yn prynu copi o'r trên gan gynnwys pob cerbyd. Cliciwch ar y botwm hwn ac yna ar drên sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Bydd hyn yn adeiladu copi o a cerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Bydd hyn yn adeiladu copi o gerbyd ffordd. Cliciwch ar y botwm hwn ac yna ar gerbyd sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost heb brynnu
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Bydd hyn yn adeiladu copi o long. Cliciwch ar y botwm hwn ac yna ar long sydd tu fewn neu tu allan i'r depo. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Bydd hyn yn adeiladu copi o awyren. Cliciwch ar y botwm hwn ac yna ar awyren sydd tu fewn neu tu allan i'r awyrendy. Mae Ctrl+Clic yn rhannu'r gorchmynion, tra fo Shift+Clic yn dangos amcangyfrif o'r gost
 
