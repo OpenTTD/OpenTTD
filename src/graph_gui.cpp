@@ -717,7 +717,7 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 
 	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return c->old_economy[j].delivered_cargo;
+		return c->old_economy[j].delivered_cargo.GetSum<OverflowSafeInt64>();
 	}
 };
 

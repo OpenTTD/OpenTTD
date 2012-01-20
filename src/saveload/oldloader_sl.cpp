@@ -887,7 +887,7 @@ static bool LoadOldCompanyYearly(LoadgameState *ls, int num)
 static const OldChunks _company_economy_chunk[] = {
 	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, income ),
 	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, expenses ),
-	OCL_SVAR( OC_INT32,                 CompanyEconomyEntry, delivered_cargo ),
+	OCL_SVAR( OC_INT32,                 CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1] ),
 	OCL_SVAR( OC_INT32,                 CompanyEconomyEntry, performance_history ),
 	OCL_SVAR( OC_TTD | OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, company_value ),
 
@@ -931,8 +931,8 @@ static const OldChunks _company_chunk[] = {
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Company, bankrupt_value ),
 	OCL_SVAR( OC_UINT16, Company, bankrupt_timeout ),
 
-	OCL_SVAR( OC_TTD | OC_UINT32, Company, cargo_types ),
-	OCL_SVAR( OC_TTO | OC_FILE_U16 | OC_VAR_U32, Company, cargo_types ),
+	OCL_CNULL( OC_TTD, 4 ), // cargo_types
+	OCL_CNULL( OC_TTO, 2 ), // cargo_types
 
 	OCL_CHUNK( 3, LoadOldCompanyYearly ),
 	OCL_CHUNK( 1, LoadOldCompanyEconomy ),

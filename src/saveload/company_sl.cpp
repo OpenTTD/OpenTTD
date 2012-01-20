@@ -252,8 +252,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, avail_railtypes,       SLE_UINT8,                   0, 57),
 	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
 
-	SLE_CONDVAR(CompanyProperties, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
-	SLE_CONDVAR(CompanyProperties, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
+	SLE_CONDNULL(2,  0,  93), ///< cargo_types
+	SLE_CONDNULL(4, 94, 169), ///< cargo_types
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
@@ -338,7 +338,8 @@ static const SaveLoad _company_economy_desc[] = {
 	SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
 	SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  2, SL_MAX_VERSION),
 
-	    SLE_VAR(CompanyEconomyEntry, delivered_cargo,     SLE_INT32),
+	SLE_CONDVAR(CompanyEconomyEntry, delivered_cargo[NUM_CARGO - 1], SLE_INT32,       0, 169),
+	SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    170, SL_MAX_VERSION),
 	    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 
 	SLE_END()

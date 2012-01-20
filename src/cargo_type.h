@@ -105,6 +105,33 @@ public:
 	{
 		return this->amount[cargo];
 	}
+
+	/**
+	 * Get the sum of all cargo amounts.
+	 * @return The sum.
+	 */
+	template <typename T>
+	inline const T GetSum() const
+	{
+		T ret = 0;
+		for (size_t i = 0; i < lengthof(this->amount); i++) {
+			ret += this->amount[i];
+		}
+		return ret;
+	}
+
+	/**
+	 * Get the amount of cargos that have an amount.
+	 * @return The amount.
+	 */
+	inline byte GetCount() const
+	{
+		byte count = 0;
+		for (size_t i = 0; i < lengthof(this->amount); i++) {
+			if (this->amount[i] != 0) count++;
+		}
+		return count;
+	}
 };
 
 

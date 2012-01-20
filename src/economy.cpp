@@ -214,27 +214,21 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 
 	/* Generate score depending on amount of transported cargo */
 	{
-		const CompanyEconomyEntry *cee;
-		int numec;
-		uint32 total_delivered;
-
-		numec = min(c->num_valid_stat_ent, 4);
+		int numec = min(c->num_valid_stat_ent, 4);
 		if (numec != 0) {
-			cee = c->old_economy;
-			total_delivered = 0;
+			const CompanyEconomyEntry *cee = c->old_economy;
+			OverflowSafeInt64 total_delivered = 0;
 			do {
-				total_delivered += cee->delivered_cargo;
+				total_delivered += cee->delivered_cargo.GetSum<OverflowSafeInt64>();
 			} while (++cee, --numec);
 
-			_score_part[owner][SCORE_DELIVERED] = total_delivered;
+			_score_part[owner][SCORE_DELIVERED] = ClampToI32(total_delivered);
 		}
 	}
 
 	/* Generate score for variety of cargo */
 	{
-		uint num = CountBits(c->cargo_types);
-		_score_part[owner][SCORE_CARGO] = num;
-		if (update) c->cargo_types = 0;
+		_score_part[owner][SCORE_CARGO] = c->old_economy->delivered_cargo.GetCount();
 	}
 
 	/* Generate score for company's money */
@@ -1007,8 +1001,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 	}
 
 	/* Update company statistics */
-	company->cur_economy.delivered_cargo += accepted;
-	if (accepted > 0) SetBit(company->cargo_types, cargo_type);
+	company->cur_economy.delivered_cargo[cargo_type] += accepted;
 
 	/* Increase town's counter for town effects */
 	const CargoSpec *cs = CargoSpec::Get(cargo_type);
