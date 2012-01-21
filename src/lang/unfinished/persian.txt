@@ -2670,7 +2670,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}اهدا
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}روی هدف کلیک کنید تا نمای اصلی را به مرکز صنایع/شهر/قطعه ببرد. Ctrl+Click یک نمای جدید از محل صنایع/شهر قطعه باز می کند
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}سوال
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :لغو

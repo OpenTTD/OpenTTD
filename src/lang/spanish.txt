@@ -2679,7 +2679,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Click abre una nueva vista en esa localización
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pregunta
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar

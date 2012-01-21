@@ -2679,7 +2679,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmensp
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick auf Ziel zentriert Hauptansicht auf Industrie/Stadt/Feld. Strg+Klick öffnet eine darauf zentrierte Zusatzansicht
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Frage
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Frage
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Abbruch

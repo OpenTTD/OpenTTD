@@ -2563,7 +2563,7 @@ STR_GOALS_NONE                                                  :{ORANGE}- Ни�
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели на компанията:
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Въпрос
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Въпрос
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Недобре

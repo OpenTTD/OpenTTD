@@ -2671,7 +2671,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Uzņēmu
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķiniet uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/flīzi. Ctrl+klikšķis atver jaunu skatu logu uz ražotnes/pilsētas/flīzes vietu.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Jautājums
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Jautājums
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atcelt

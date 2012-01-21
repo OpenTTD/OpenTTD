@@ -41,6 +41,17 @@ public:
 		GT_COMPANY  = ::GT_COMPANY,  ///< Destination is a company.
 	};
 
+	/**
+	 * Types of queries we could do to the user.
+	 * Basically the title of the question window.
+	 */
+	enum QuestionType {
+		QT_QUESTION,    ///< Asking a simple question; title: Question.
+		QT_INFORMATION, ///< Showing an informational message; title: Information.
+		QT_WARNING,     ///< Showing a warning; title: Warning.
+		QT_ERROR,       ///< Showing an error; title: Error.
+	};
+
 	enum QuestionButton {
 		/* Note: these values represent part of the string list starting with STR_GOAL_QUESTION_BUTTON_CANCEL */
 		BUTTON_CANCEL    = (1 << 0),  ///< Cancel button.
@@ -97,6 +108,7 @@ public:
 	 * @param uniqueid Your unique id to distinguish results of multiple questions in the returning event.
 	 * @param company The company to ask the question, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param question The question to ask (can be either a raw string, or a ScriptText object).
+	 * @param type The type of question that is being asked.
 	 * @param buttons Any combinations (at least 1, up to 3) of buttons defined in QuestionButton. Like BUTTON_YES + BUTTON_NO.
 	 * @return True if the action succeeded.
 	 * @pre No ScriptCompanyMode may be in scope.
@@ -106,7 +118,7 @@ public:
 	 * @note Replies to the question are given by you via the event ScriptEvent_GoalQuestionAnswer.
 	 * @note There is no guarantee you ever get a reply on your question.
 	 */
-	static bool Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, int buttons);
+	static bool Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons);
 
 	/**
 	 * Close the question on all clients.

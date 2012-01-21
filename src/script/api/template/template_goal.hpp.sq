@@ -17,6 +17,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptGoal::GoalID>(HSQUIRRELVM vm, ScriptGoal::GoalID res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptGoal::GoalType GetParam(ForceType<ScriptGoal::GoalType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptGoal::GoalType)tmp; }
 	template <> inline int Return<ScriptGoal::GoalType>(HSQUIRRELVM vm, ScriptGoal::GoalType res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptGoal::QuestionType GetParam(ForceType<ScriptGoal::QuestionType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptGoal::QuestionType)tmp; }
+	template <> inline int Return<ScriptGoal::QuestionType>(HSQUIRRELVM vm, ScriptGoal::QuestionType res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptGoal::QuestionButton GetParam(ForceType<ScriptGoal::QuestionButton>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptGoal::QuestionButton)tmp; }
 	template <> inline int Return<ScriptGoal::QuestionButton>(HSQUIRRELVM vm, ScriptGoal::QuestionButton res) { sq_pushinteger(vm, (int32)res); return 1; }
 

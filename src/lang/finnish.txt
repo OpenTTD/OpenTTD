@@ -2678,7 +2678,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön 
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikkaa tavoitetta keskittääksesi päänäkymän teollisuuteen/kaupunkiin/ruutuun. Ctrl+Klik avaa uuden näkymän teollisuuden/kaupungin/ruudun sijaintiin
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Kysymys
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Kysymys
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Peruuta

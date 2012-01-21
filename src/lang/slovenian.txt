@@ -2831,7 +2831,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji po
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za pogled na industrijo/mesto/ploščo. Ctrl+Klik odpre novo okno na industrijo/mesto/ploščo
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Vprašanje
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Vprašanje
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Prekliči

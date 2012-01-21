@@ -130,14 +130,17 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 {
 	uint16 uniqueid = (GoalType)GB(p1, 0, 16);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
+	byte type = GB(p1, 24, 8);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
 	if (CountBits(p2) < 1 || CountBits(p2) > 3) return CMD_ERROR;
+	if (p2 >= (1 << GOAL_QUESTION_BUTTON_COUNT)) return CMD_ERROR;
+	if (type >= GOAL_QUESTION_TYPE_COUNT) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (company == _local_company || (company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowGoalQuestion(uniqueid, p2, text);
+		if (company == _local_company || (company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowGoalQuestion(uniqueid, type, p2, text);
 	}
 
 	return CommandCost();

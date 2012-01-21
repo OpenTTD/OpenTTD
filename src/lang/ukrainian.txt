@@ -2794,7 +2794,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цілі
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клік мишкою на цілі (меті) відобразить по центру промисловість/місто/клітинку у головному вікні. Ctrl+клік відкриє міні-вікно
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Питання
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Питання
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Відмінити

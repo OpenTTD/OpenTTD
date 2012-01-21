@@ -51,7 +51,7 @@
 	return ScriptObject::DoCommand(0, goal_id, 0, CMD_REMOVE_GOAL);
 }
 
-/* static */ bool ScriptGoal::Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, int buttons)
+/* static */ bool ScriptGoal::Question(uint16 uniqueid, ScriptCompany::CompanyID company, Text *question, QuestionType type, int buttons)
 {
 	CCountedPtr<Text> counter(question);
 
@@ -60,11 +60,13 @@
 	EnforcePrecondition(false, !StrEmpty(question->GetEncodedText()));
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 	EnforcePrecondition(false, CountBits(buttons) >= 1 && CountBits(buttons) <= 3);
+	EnforcePrecondition(false, buttons < (1 << ::GOAL_QUESTION_BUTTON_COUNT));
+	EnforcePrecondition(false, type < ::GOAL_QUESTION_TYPE_COUNT);
 
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	return ScriptObject::DoCommand(0, uniqueid | (c << 16), buttons, CMD_GOAL_QUESTION, question->GetEncodedText());
+	return ScriptObject::DoCommand(0, uniqueid | (c << 16) | (type << 24), buttons, CMD_GOAL_QUESTION, question->GetEncodedText());
 }
 
 /* static */ bool ScriptGoal::CloseQuestion(uint16 uniqueid)

@@ -3058,7 +3058,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cele fir
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliknij na celu by wyśrodkować widok na przedsiębiorstwie/mieście/tytule. Ctrl+kliknięcie otwiera nowe okno podglądu lokacji danego przedsiębiorstwa.miasta/tytułu
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pytanie
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pytanie
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anuluj

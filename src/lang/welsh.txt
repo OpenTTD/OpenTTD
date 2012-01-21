@@ -2678,7 +2678,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Nodau cw
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar nod i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Cwestiwn
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Cwestiwn
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Canslo

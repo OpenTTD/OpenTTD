@@ -2657,7 +2657,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}公司�
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}帮助索引
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :帮助索引
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消

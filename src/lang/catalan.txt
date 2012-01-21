@@ -2672,7 +2672,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectiu
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clica sobre l'objectiu per centrar la vista principal sobre la indústria/poble/cel·la. Ctrl+clic per obrir una nova vista sobre la indústria/poble/cel·la
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Pregunta
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancel·la

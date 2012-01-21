@@ -258,13 +258,15 @@ struct GoalQuestionWindow : Window {
 	char *question;
 	int buttons;
 	int button[3];
+	byte type;
 
-	GoalQuestionWindow(const WindowDesc *desc, WindowNumber window_number, uint32 button_mask, const char *question) : Window()
+	GoalQuestionWindow(const WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(), type(type)
 	{
+		assert(type < GOAL_QUESTION_TYPE_COUNT);
 		this->question = strdup(question);
 
 		/* Figure out which buttons we have to enable */
-		int bit;
+		uint bit;
 		int n = 0;
 		FOR_EACH_SET_BIT(bit, button_mask) {
 			if (bit >= GOAL_QUESTION_BUTTON_COUNT) break;
@@ -287,6 +289,10 @@ struct GoalQuestionWindow : Window {
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
+			case WID_GQ_CAPTION:
+				SetDParam(0, STR_GOAL_QUESTION_CAPTION_QUESTION + this->type);
+				break;
+
 			case WID_GQ_BUTTON_1:
 				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
 				break;
@@ -341,7 +347,7 @@ struct GoalQuestionWindow : Window {
 static const NWidgetPart _nested_goal_question_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE), SetDataTip(STR_GOAL_QUESTION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
@@ -371,7 +377,7 @@ static const WindowDesc _goal_question_list_desc(
 );
 
 
-void ShowGoalQuestion(uint16 id, uint32 button_mask, const char *question)
+void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question)
 {
-	new GoalQuestionWindow(&_goal_question_list_desc, id, button_mask, question);
+	new GoalQuestionWindow(&_goal_question_list_desc, id, type, button_mask, question);
 }

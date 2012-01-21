@@ -3015,7 +3015,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Зада
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Пстрыкніце па задачы, каб паказаць прадпрыемства/горад/клетку. Ctrl+пстрычка паказвае ў новым вакне.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION                                       :{WHITE}Пытаньне
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Пытаньне
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Адмова
