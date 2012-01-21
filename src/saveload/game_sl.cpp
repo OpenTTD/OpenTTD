@@ -151,7 +151,7 @@ static void Load_GSTR()
 		LanguageStrings *ls = new LanguageStrings(_game_saveload_string);
 		for (uint i = 0; i < _game_saveload_strings; i++) {
 			SlObject(NULL, _game_language_string);
-			*ls->lines.Append() = strdup(_game_saveload_string);
+			*ls->lines.Append() = strdup(_game_saveload_string != NULL ? _game_saveload_string : "");
 		}
 
 		*_current_data->raw_strings.Append() = ls;
