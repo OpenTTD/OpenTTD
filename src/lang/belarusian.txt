@@ -759,7 +759,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекту (ШІ/AI) / скрыптоў
 STR_ABOUT_MENU_SCREENSHOT                                       :Здымак экрана (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Здымак экрана ў макс. набліжэнні
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Здымак экрана ў макс. набліжэньні
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Павялiчаны здымак экрана па змоўчаньнi
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Здымак усёй мапы (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Аб гульні OpenTTD
@@ -2877,12 +2877,12 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} па
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, які ім перакладаецца.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружана занадта шмат новай графікі.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {1:STRING} у якасьці статычнага NewGRF з {STRING} можа выклікаць памылку сынхранізацыі.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Няверны спрайт (спрайт {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невядомая ўласцівасьць у «Action 0» {4:HEX} (спрайт {3:NUM})
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Нечаканы спрайт (спрайт {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невядомая ўласьцівасьць у «Action 0» {4:HEX} (спрайт {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба выкарыстаньня недапушчальнага ідэнтыфікатара (спрайт {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} утрымлiвае пашкоджаны спрайт. Усе пашкоджаныя спрайты будуць паказаны чырвоным знакам пытаньня (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Утрымоўвае некалькі блокаў «Action 8» (спрайт {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чытанне за канцом псеўда-спрайту (спрайт {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Утрымлiвае некалькі блёкаў «Action 8» (спрайт {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чытаньне па-за канцом псэўда-спрайту (спрайт {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запытаныя рэсурсы GRF недаступныя (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} быў адключаны з-за {2:STRING}
@@ -2984,7 +2984,7 @@ STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адмі
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рэйтынг транспартных кампаніяў
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Даступныя дзеяньні:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Сьпіс магчымых дзеяньняў у гэтым горадзе - пстрыкніце для атрымання дад. звестак
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Сьпіс магчымых дзеяньняў у гэтым горадзе - пстрыкніце для дадатковых зьвестак
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Скарыстаць
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выканаць дзеяньне, выбранае ў сьпісе вышэй
 
@@ -3874,7 +3874,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Гуль
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Паказаць журнал працы гульнёвага скрыпту
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ня знойдзена прыдатных модуляў ШI,{}таму канкурэнты нічога рабіць не будуць.{}Модулі ШI можна спампаваць праз сістэму анлайн-кантэнту.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI / скрыптоў завяршыў сваю працу аварыйна. Калі ласка, паведаміце аб гэтым аўтару скрыпту, прыклаўшы здымак акна адладкі.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI / скрыптоў завяршыў сваю працу аварыйна. Калі ласка, паведаміце аб гэтым аўтару скрыпту, прыклаўшы здымак вакна адладкі.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШІ / скрыпту даступна толькі для сэрвэра
 
 # AI configuration window

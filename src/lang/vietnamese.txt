@@ -446,7 +446,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :Gỡ rối AI / GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh chụp màn hình
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to đầy đủ ảnh chụp màn hình
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Phóng to mặc định ảnh chụp màn hình
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
@@ -1798,6 +1799,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Bạn b�
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn bị đá khỏi ván chơi
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat không được phép ở server này
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Bạn vừa gửi lên máy chủ quá nhiều lệnh
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Bạn nhập mật khẩu quá trễ
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Máy của bạn mất quá nhiều thời gian tham gia
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Thời gian tải bản đồ quá lâu
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Thời gian tham gia máy chủ quá lâu
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :lỗi chung
@@ -1816,6 +1821,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :bí đá bởi 
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :đã cố sử dụng cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server đầy
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :có quá nhiều lệnh được gởi lên
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :không nhận được mật khẩu đúng thời hạn
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :lỗi quá thời gian
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :tải bản đồ quá thời gian
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :xử lý bản đồ quá thời gian
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Kết nối có thể đã bị mất
@@ -2453,6 +2462,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Lịch s
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Giấy phép
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Hiển thị tham số
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Đổi bảng màu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Đổi bảng màu của NewGRF.{}Hãy thực hiện việc này nếu NewGRF bị chuyển màu hồng trong khi chơi
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Áp dụng thay đổi
@@ -2519,7 +2529,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Cảnh báo: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Lỗi: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Lỗi nghiêm trọng: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF gây hư hỏng: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Xảy ra lỗi NewGRF nghiêm trọng: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sẽ không hoạt động với phiên bản TTDPatch version theo như báo cáo của OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} để dành cho phiên bản {STRING} của TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} được thiết kế để xài với {STRING}
@@ -2530,9 +2540,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF file được thiết kế để phiên dịch
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Quá nhiều NewGRFs đã nạp.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {1:STRING} như là NewGRF tĩnh với {STRING} có thể gây mất đồng bộ
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :sprite không hợp lệ (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Thuộc tính thực thi 0 chưa định nghĩa {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng IT không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Có nhiều mục thực thi 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc quá giới hạn của sprite giả (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy cập nhật gói đồ họa lên phiên bản mới.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Dữ liệu GRF theo yêu cầu không hợp lệ (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bị tắt bởi {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Định dạng Sprite không hợp lệ hoặc chưa định nghĩa (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
@@ -2663,6 +2680,19 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click v�
 # Goal question window
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Hủy bỏ
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Không
+STR_GOAL_QUESTION_BUTTON_YES                                    :Có
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Từ chối
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Chấp nhận
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Bỏ qua
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Thử lại
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Trước
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Sau
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Dừng
+STR_GOAL_QUESTION_BUTTON_START                                  :Bắt đầu
+STR_GOAL_QUESTION_BUTTON_GO                                     :Đi
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Tiếp tục
 STR_GOAL_QUESTION_BUTTON_RESTART                                :Làm lại
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Hoãn lại
@@ -2806,8 +2836,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Đổi t
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Mua 25% cổ phần công ty
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Bán 25% cổ phần công ty
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mua 25% cổ phần công ty này. Shift+Click để xem giá mua dự tính
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25% cổ phần công ty này. Shift+Click để xem giá bán dự tính
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mua 25% cổ phần công ty này. Shift+Click để xem giá mua ước tính
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25% cổ phần công ty này. Shift+Click để xem giá bán ước tính
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Tên Công Ty
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đốc
@@ -3027,7 +3057,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Tạo t�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Tạo máy bay giống hệt
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Thao tác này mua một đoàn tàu giống hệt tàu cũ, gồm cả đầu máy và toa xe. Ctrl+Click để tạo tàu mới chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift+Click để xem giá mua ước tính
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Thao tác này mua tàu thuỷ giống hệt tàu thuỷ cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo tàu thuỷ chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Thao tác này mua máy bay giống hệt máy bay cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo máy bay chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
 

@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Yntroduksjedatu
 STR_SORT_BY_RUNNING_COST                                        :Bedriuwskosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Bedriuwskosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Frachtkapasiteit
+STR_SORT_BY_RANGE                                               :Beryk
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausear spul
@@ -442,8 +443,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :tichtby helje skermfoto
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :skermfoto fan de hiele wrald
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Tichtby helje skermfoto
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermfoto fan de hiele wrald
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'IepenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Flakken rjochtsje
 ############ range ends here
@@ -694,7 +695,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Snie
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Set doarpsnammen oan/út op 'e kaart
-STR_SMALLMAP_CENTER                                             :{BLACK} Set dit plak sintraal yn de kaart
+STR_SMALLMAP_CENTER                                             :{BLACK}Set dit plak sintraal yn de kaart
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -745,6 +746,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Feroari
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsydzjes
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Algemiene ynformaasje
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste trein komt oan yn {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Ynwenners fiere feest . . .{}Earste bus komt oan yn {STATION}!
@@ -1308,6 +1310,12 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plak fa
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posysje fan statusbar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximum oantal non-sticky finsters: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximum oantal non-sticky finsters: {ORANGE}ferbean
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Tempo fan stêdsútwreiding: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :gjin
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :langsaam
@@ -1601,6 +1609,8 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Taskôgj
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Bedriuw
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :Skoppe
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Jouw jild
 
 STR_NETWORK_SERVER                                              :Tsjinner
 
@@ -1608,13 +1618,19 @@ STR_NETWORK_SERVER                                              :Tsjinner
 # Network set password
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}Mei spielje
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}Stjoer
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privee] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Yderiin] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Oan {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Privee] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privee] Nei {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Yderiin] {STRING}: {WHITE}{STRING}
 
 # Network messages
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Koe de tsjinner net starte
@@ -1631,6 +1647,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mooglik 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De lêste{NUM} secondes {P "" s} is gjin data oankom fan e server
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} der is ien bykommen(Client #{2:NUM})
@@ -1650,6 +1667,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Bestân
 
 # Order of these is important!
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_SCENARIO                                       :Lânskip
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hichtemap
 
@@ -1720,6 +1738,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selektea
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selektear brêge
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brêge seleksje - klik op de brêge dyst boue wolst
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hingbrêge, Stiel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Brêge mei balken, Stiel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Fakwurkbrêge, Stiel
@@ -1958,12 +1977,14 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 
 # SE Map generation
 
 
 # Map generation progress
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekt meitsje
 
 # NewGRF settings
@@ -2020,6 +2041,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Foarig f
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gea ny flak
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warskôging: {SILVER}{STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} makke om te brûken tegeare my{STRING}
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tevolle NewGRF's binne laden
@@ -2096,6 +2118,11 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begjin 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bou in stânbyld ter eare fan jo bedriuw.{}Kostet: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsydzjes
@@ -2207,6 +2234,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Wy sykje
 # Company infrastructure window
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2222,6 +2250,7 @@ STR_INDUSTRY_VIEW_REQUIRES_CARGO_CARGO_CARGO                    :{BLACK}Nedich: 
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_VIEW_WAITING_STOCKPILE_CARGO                       :{YELLOW}{CARGO_LONG}{STRING}{BLACK}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produseart: {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produseart: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
@@ -2281,6 +2310,9 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}jou nije namme oan depot
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Jou nije namme oan depot
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -2311,6 +2343,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fleanmasine
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -2365,6 +2398,8 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selektea
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -2391,8 +2426,11 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Lâns {WAYPOINT
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns {WAYPOINT}
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Ymplisyt)
 
@@ -2440,9 +2478,13 @@ STR_ERROR_AI_NO_AI_FOUND                                        :Gjin geskikte c
 # AI configuration window
 
 
+STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :AI
 
 # Available AIs window
+STR_AI_LIST_CAPTION_AI                                          :AIs
 
 STR_AI_LIST_VERSION                                             :{BLACK}Ferzje: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
@@ -2451,10 +2493,17 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Akseptea
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulearje
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Slúte
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostet: {CURRENCY_LONG}
@@ -3226,6 +3275,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}

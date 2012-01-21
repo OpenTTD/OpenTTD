@@ -1416,7 +1416,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neue
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Ein neues Spiel mit Reliefkarte als Landschaft starten
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starte ein neues Spiel basierend auf einem Szenario
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Ein neues Szenario erstellen
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario erstellen
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mehrspieler-Spiel beginnen
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Landschaft mit gemäßigtem Klima auswählen
@@ -2680,6 +2680,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick au
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Frage
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Hinweis
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Warnung
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Fehler
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Abbruch
@@ -4175,10 +4178,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Batterietranspo
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Limonadetransporter
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastikwaggon
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Zyklop' (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimäre' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wozzowow Raketenmann
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagierwaggon (Magnetschwebebahn)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kohlewaggon

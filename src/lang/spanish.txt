@@ -2680,6 +2680,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click en
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Información
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Advertencia
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
