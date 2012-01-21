@@ -1,3 +1,27 @@
+1.2.0-beta3 (2012-01-21)
+------------------------------------------------------------------------
+- Feature: [NoGo] Allow to chose the goal question window's title from a (small) set of options [FS#4992] (r23827)
+- Feature: [NewGRF] Enhance some fatal NewGRF errors with the spritenumber that caused the problem (r23809)
+- Fix: Loading empty GS strings/translations failed [FS#4996] (r23829)
+- Fix: Return early from SlString() for empty strings, before doing invalid things which surprisingly do not break everything. (r23828)
+- Fix: The detailed performance rating window showed the cargo count of the current quarter instead of the last quarter like the tooltip says [FS#4972] (r23826)
+- Fix: Removal of towns with 0 population failed during map generation [FS#4951] (r23819)
+- Fix: [Network] Desync due to different NewGRF version at client and server [FS#4962] (r23817)
+- Fix: [NewGRF] Textstack was not properly used when storing parameters for the error message window [FS#4969] (r23803)
+- Fix: Game lobby gui not updated when new company information becomes available [FS#4968] (r23802)
+- Fix: Reading the UTF-8 BOM from AI/GS files on big-endian machines failed (r23801)
+- Fix: Move 'refitable to' text above custom newgrf text in build vehicle gui [FS#4958] (r23792)
+- Fix: [NewGRF] Resize text panel for parameter description if it does not fit in 4 lines [FS#4960] (r23791)
+- Fix: [NewGRF] While we can only show one error per NewGRF, fatal errors should always disable the GRF. Also give those errors precedence over other information (r23789)
+- Fix: [NewGRF] Failure to load newgrf files that use action 0 general prop 15 with a missing language file (r23788)
+- Fix: Crash due to genders used for station name in hangar string of Italian translation [FS#4965] (r23782)
+- Fix: Under certain circumstances, e.g. a single invalid order, trying to determine the next order state could end up in an infinite loop [FS#4964] (r23781)
+- Fix: [Network] Missing naming of some errors[FS#4963] (r23780)
+- Fix: Trim all control codes and the likes from strings being passed into the AI. If the AI would be displaying them later we would be showing those control codes as question marks [FS#4957] (r23778)
+- Fix: Hide the PCX screenshot format from the options window, if a 32bpp blitter is used (r23775)
+- Fix: [NewGRF] Update all cached train properties if a train vehicle enters a new railtype (r23773)
+
+
 1.2.0-beta2 (2012-01-07)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Allow read-only display of NewGRF parameters, if GRF list may not be edited (r23760)
@@ -8,7 +32,7 @@
 - Feature: Add ability to adjust brightness of colour after remapping for 32bpp sprites (r23670)
 - Feature: [GS] GSGoal::Question(), to ask a question to a(ll) company(ies). It can contain random text, and at most 3 buttons from a collection of 17 (r23731)
 - Feature: Australian translation (r23730)
-- Fix: Make default timeouts for certain network states lower and configurable [FS#4955] (r23764)
+- Fix: Make default timeouts for certain network states lower and configurable [CVE-2012-0049] [FS#4955] (r23764)
 - Fix: Check whether a water tile is really empty when overbuilding it with an object [FS#4956] (r23763)
 - Fix: The check for duplicate town names was not really working [FS#4951] (r23759)
 - Fix: Missing locking causing crash is extreme case when being in the MP lobby [FS#4938] (r23752)
@@ -185,6 +209,15 @@
 - Fix: Road vehicle purchase info failed to display vehicles carrying no cargo [FS#4820] (r23334)
 - Fix: Abort building/moving HQ when clicking on the button again, just like when building rail, stations, etc [FS#4851] (r23331)
 - Fix: Change the centre of train vehicles to depend on the vehicle length instead of being fixed at 4/8th of the original vehicle length to make sure shortened vehicles do not block tiles they should not block [FS#2379,FS#3569] (r23290)
+
+
+1.1.5 (2012-01-14)
+------------------------------------------------------------------------
+- Fix: Make default timeouts for certain network states lower and configurable [CVE-2012-0049] [FS#4955] (r23764)
+- Fix: Check whether a water tile is really empty when overbuilding it with an object [FS#4956] (r23763)
+- Fix: Missing locking causing crash in extreme case when being in the MP lobby [FS#4938] (r23752)
+- Fix: Clear the backed up orders of a removed station as well, otherwise one could create orders to a station that was never in the original backupped orders. For example a road vehicle trying to go to a buoy [FS#4876] (r23464)
+- Fix: Do not assume all industries that cut trees have tile (0,0) and wait until all tiles of an industry are completed before starting to cut trees (r23458)
 
 
 1.1.4 (2011-12-05)
