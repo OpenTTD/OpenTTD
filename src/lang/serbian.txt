@@ -2874,6 +2874,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikom n
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pitanje
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Obaveštenje
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Upozorenje
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Greška
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Otkaži
