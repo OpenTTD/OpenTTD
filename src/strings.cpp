@@ -838,7 +838,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			}
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
-				StringID substr = TTDPStringIDToOTTDStringIDMapping(args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID));
+				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
 				str_stack.push(GetStringPtr(substr));
 				case_index = next_substr_case_index;
 				next_substr_case_index = 0;
