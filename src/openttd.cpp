@@ -598,11 +598,11 @@ int ttd_main(int argc, char *argv[])
 				if (mgo.opt != NULL) SetDebugString(mgo.opt);
 				break;
 			}
-		case 'e': _switch_mode = SM_EDITOR; break;
+		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
 		case 'g':
 			if (mgo.opt != NULL) {
 				strecpy(_file_to_saveload.name, mgo.opt, lastof(_file_to_saveload.name));
-				_switch_mode = SM_LOAD_GAME;
+				_switch_mode = (_switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_LOAD_GAME);
 				_file_to_saveload.mode = SL_LOAD;
 
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
