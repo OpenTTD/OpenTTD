@@ -301,7 +301,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Rādīt 
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rādīt subsīdijas
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rādīt uzņēmuma staciju sarakstu
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finansiālo stāvokli
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt vispārēju informāciju par uzņēmumu
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt uzņēmuma vispārējo informāciju
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rādīt diagrammas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rādīt uzņēmuma rangu sarakstu
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jaunas ražotnes būvniecību vai uzskaitīt visas ražotnes
@@ -313,7 +313,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Tuvināt
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Tālināt skatu
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Būvēt sliežu ceļu
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Būvēt ceļus
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Būvēt dokus
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Būvēt kuģu piestātnes
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt lidostas
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atvērt ainavas rīkjoslu, lai paceltu/nolaistu zemes līmeni, stādītu kokus utt.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rādīt skaņas/mūzikas logu
@@ -452,7 +452,7 @@ STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pilnībā tuvin
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Noklusētā mēroga ekrānuzņēmums
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Visas kartes ekrānuzņēmums
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Par 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Objektu izkārtotājs
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Gariņu līdzinātājs
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Pārslēgt saistītās kastes
 ############ range ends here
 
@@ -1208,14 +1208,14 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam v
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. staciju lielums: {ORANGE}{STRING} lauciņ{P 0:1 š i u} {RED}Brīdinājums: Lielas vērt. palēnina spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automātiski apkalpot helikopterus heliportos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sasaitē ainavas rīkjoslu ar celtniecības rīkjoslām: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sasaitēt ainavas rīkjoslu ar sliežu/ceļu/ūdens/lidostu rīkjoslām: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartes zemes krāsa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}Tumši zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}Violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pretējs ritināšanas virziens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plūdena skatvietas ritināšana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot celtniecības rīkus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma livrejas (krāsojumu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nav
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Paša uzņēmums
@@ -1803,6 +1803,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Uz šī 
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jūs sūtījāt uz serveri pārak daudz rīkojumu
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jūs pārāk ilgi neievadījāt paroli
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Jūsu dators pārāk ilgi mēģināja pievienoties
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Jūs pārāk ilgi lejupielādējāt karti
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Jūs pārāk ilgi pievienojāties serverim
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :galvenā kļūda
@@ -1821,6 +1823,9 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris jūs i
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja blēdīties
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilns
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sūtīja pārak daudz rīkojumu
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :vispārējā noildze
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kartes lejupielāde bija pārāk ilga
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartes apstrāde bija pārāk ilga
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Iespējams savienojuma zudums
@@ -2071,7 +2076,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas t
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlēties tramvaja kravas pieturas orientāciju
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu celtniecība
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu būvniecība
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Ūdensceļi
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt slūžas. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
@@ -2287,7 +2292,7 @@ STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Lidaparātu ang
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Lidosta
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Kravas iekraušanas zona
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Autoosta
-STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Osta
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Kuģu piestātne
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boja
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Kontrolpunkts
 
@@ -2506,10 +2511,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Sliežu tips
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF mainīgā 60+x parametrs (heksadecimāls)
 
 # Sprite aligner window
-STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Objekta izkārtošana {COMMA} ({STRING})
-STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nākamais objekts
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Gariņa līdzināšana {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Nākamais gariņš
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Pāriet uz nākamo normālo objektu, izlaižot pseido/pārkrāsotu/fonta objektu
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iet pie objekta
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iet pie gariņa
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Iet pie dotā objekta. Ja tas nav normāls objekts, tad pāriet pie nākamā
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Iepriekšējais objekts
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Iet pie iepriekšējā normālā objekta, izlaižot visus pseido/pārkrāsotus/fonta objektus
@@ -2539,6 +2544,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} ir v
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ir ielādēti pārāk daudzi NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {1:STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neparedzēts gariņš (gariņš {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu gariņu. Visi bojātie gariņi tiks parādīti ar sarkanu jautājuma zīmi (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašreiz lietotajā pamata grafikas pakā iztrūkst daļa materiāla.{}Lūdzu atjaunojiet pamata grafikas paku
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {STRING} tikai atspējots
@@ -2672,6 +2678,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķ
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Jautājums
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informācija
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Brīdinājums
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kļūda
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atcelt

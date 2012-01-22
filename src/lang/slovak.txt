@@ -81,16 +81,16 @@ STR_CARGO_PLURAL_COLA                                           :Kofolu
 STR_CARGO_PLURAL_COLA.g                                         :kofoly
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukrovú vatu
 STR_CARGO_PLURAL_COTTON_CANDY.g                                 :cukrovej vaty
-STR_CARGO_PLURAL_BUBBLES                                        :Bubliniek
+STR_CARGO_PLURAL_BUBBLES                                        :Bublinky
 STR_CARGO_PLURAL_BUBBLES.g                                      :bubliniek
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelky
 STR_CARGO_PLURAL_TOFFEE.g                                       :karameliek
-STR_CARGO_PLURAL_BATTERIES                                      :Batérie
-STR_CARGO_PLURAL_BATTERIES.g                                    :batérií
-STR_CARGO_PLURAL_PLASTIC                                        :Žuvačiek
-STR_CARGO_PLURAL_PLASTIC.g                                      :žuvačiek
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Šumienku
-STR_CARGO_PLURAL_FIZZY_DRINKS.g                                 :šumienky
+STR_CARGO_PLURAL_BATTERIES                                      :Baterky
+STR_CARGO_PLURAL_BATTERIES.g                                    :bateriek
+STR_CARGO_PLURAL_PLASTIC                                        :Umelina
+STR_CARGO_PLURAL_PLASTIC.g                                      :umeliny
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Malinovky
+STR_CARGO_PLURAL_FIZZY_DRINKS.g                                 :Malinoviek
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -146,16 +146,16 @@ STR_CARGO_SINGULAR_COLA                                         :Kofola
 STR_CARGO_SINGULAR_COLA.g                                       :kofoly
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukrová vata
 STR_CARGO_SINGULAR_COTTON_CANDY.g                               :cukrovej vaty
-STR_CARGO_SINGULAR_BUBBLE                                       :Bublina
-STR_CARGO_SINGULAR_BUBBLE.g                                     :bublin
+STR_CARGO_SINGULAR_BUBBLE                                       :Bublinka
+STR_CARGO_SINGULAR_BUBBLE.g                                     :bublinky
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamel
 STR_CARGO_SINGULAR_TOFFEE.g                                     :karamelu
-STR_CARGO_SINGULAR_BATTERY                                      :Batéria
-STR_CARGO_SINGULAR_BATTERY.g                                    :baterii
-STR_CARGO_SINGULAR_PLASTIC                                      :Žuvačka
-STR_CARGO_SINGULAR_PLASTIC.g                                    :zuvaciek
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Šumienka
-STR_CARGO_SINGULAR_FIZZY_DRINK.g                                :sumienky
+STR_CARGO_SINGULAR_BATTERY                                      :Baterka
+STR_CARGO_SINGULAR_BATTERY.g                                    :baterky
+STR_CARGO_SINGULAR_PLASTIC                                      :Umelina
+STR_CARGO_SINGULAR_PLASTIC.g                                    :umeliny
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Malinovka
+STR_CARGO_SINGULAR_FIZZY_DRINK.g                                :malinovky
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -185,11 +185,11 @@ STR_QUANTITY_TOYS                                               :{COMMA} hrač{P
 STR_QUANTITY_SWEETS                                             :{COMMA} deb{P na ny ien} cukrikov
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kofoly
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} cukrovej vaty
-STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
+STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P ka ky iek}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} karamelu
-STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P a e i}
-STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} žuvačiek
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} šumien{P ka ky ok}
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterk{P a y iek}
+STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} umeliny
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} malinov{P ka ky iek}
 STR_QUANTITY_N_A                                                :Nie je
 
 # Two letter abbreviation of cargo name
@@ -223,8 +223,8 @@ STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CV
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}KR
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}ZU
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}SU
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}UM
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MA
 STR_ABBREV_NONE                                                 :{TINY_FONT}NIC
 STR_ABBREV_ALL                                                  :{TINY_FONT}VS.
 
@@ -304,7 +304,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolác
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Štandardné
-STR_BUTTON_CANCEL                                               :{BLACK}Zrušit
+STR_BUTTON_CANCEL                                               :{BLACK}Zrušiť
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
@@ -510,7 +510,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobraziť / skryť konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Umelá inteligencia / Ladenie skriptov
 STR_ABOUT_MENU_SCREENSHOT                                       :Snímka
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Priblížená snímka
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Plne priblížená snímka
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Snímka s predvoleným priblížením
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Veľká snímka celej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O hre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite zarovnávač
@@ -903,10 +904,10 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nové {STRING} dostupné!  -  {ENGINE}
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} uz neprijima {STRING}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} uz neprijima {STRING} alebo {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} teraz prijima {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} teraz prijima {STRING} a {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} už neprijíma {STRING}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} už neprijíma {STRING} alebo {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} teraz prijíma {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} teraz prijíma {STRING} a {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponuka dotácie skončila:{}{}Preprava {STRING.g} z {STRING} do {STRING} už nebude dotovaná
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Dotácie stiahnuté:{}{}Preprava {STRING.g} z {STRING} do {STRING} už nie je dotovaná
@@ -1422,7 +1423,7 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Možnosti zobrazenia
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Styk
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Chovanie
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Počítačový hráči
@@ -1498,7 +1499,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrol
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobraz umelú inteligenciu a nastavenia hry
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť OpenTTD
 
-STR_INTRO_TRANSLATION                                           :{BLACK}V preklade chýba {NUM} {P v "" eta,ety,iet}. Prosím pomôžte urobiť OpenTTD lepším a prihláste sa ako prekladateľ. Viac detailov v readme.txt
+STR_INTRO_TRANSLATION                                           :{BLACK}V preklade chýba {NUM} v{P eta ety iet}. Prosím pomôžte urobiť OpenTTD lepším a prihláste sa ako prekladateľ. Viac detailov v readme.txt
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
@@ -1671,19 +1672,19 @@ STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Počiat
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aktuálny dátum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Heslo:
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER JE OFFLINE
-STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNY
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER JE PLNÝ
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}ROZNE VERZIE
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF Chyba
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pripojit sa
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Obnovit server
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Obnoviť server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Obnovit info o serveri
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Najst server
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Nájsť server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Hladať server po sieti
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridat server
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridať server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pridá server do zoznamu, v ktorom sa vždy budú hľadať prebiehajúce hry
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustit server
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustiť server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustiť vlastný server
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Zadajte vaše meno
@@ -1866,6 +1867,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Si zablo
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bol si vyhodeny z hry
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheatovanie nie je povolene na tomto serveri
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posielali ste priveľa príkazov serveru
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Príliš dlho si zadával heslo
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Počítač vstupoval príliš dlho
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Mapa sa sťahovala príliš dlho
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Príliš dlho si vstupoval na server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generalna chyba
@@ -1880,10 +1885,14 @@ STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :chybna revizia 
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :meno sa uz pouziva
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :nespravne heslo
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :zlá spoločnosť-id in DoCommand
-STR_NETWORK_ERROR_CLIENT_KICKED                                 :vyhodeny zo servera
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :vyhodený zo servera
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :sa pokusal cheatovat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je plny
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :posielal priveľa príkazov
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nebolo včas obdržané heslo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :všeobecný timeout
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :sťahovanie mapy trvalo príliš dlho
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :spracovanie mapy trvalo príliš dlho
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Možná ztráta pripojenia
@@ -2090,7 +2099,7 @@ STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Závesný oceľ
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Pilierový oceľový
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Visutý oceľový
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Závesný betónový
-STR_BRIDGE_NAME_WOODEN                                          :Dreveny
+STR_BRIDGE_NAME_WOODEN                                          :Drevený
 STR_BRIDGE_NAME_CONCRETE                                        :Betónový
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Krytý oceľový
 STR_BRIDGE_TUBULAR_SILICON                                      :Krytý plastový
@@ -2521,6 +2530,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log zmie
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencia
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametre
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Ukázať parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Prepnúť paletu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Prepnúť paletu na zvolené NewGRF.{}Vykonajte to ak grafika z tohoto NewGRF je v hre ružová
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Potvrdit zmeny
@@ -2587,7 +2597,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozornenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kritická chyba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Nastala závažná chyba pri použití NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Nastala závažná chyba NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovať s TTDPatch verziou nahlásenou OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pre verziu {STRING} TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navrhnutý pre použitie s {STRING}
@@ -2598,9 +2608,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyž
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Načítaných priveľa súborov NewGRF.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {1:STRING} ako statického NewGRF s {STRING} môže spôsobiť chybné zobrazenie.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma vlastnosť Action 0 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použitie neplatného ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodený sprite. Všetky poškodené sprajty budú zobrazené ako červený otáznik (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viacnásobné záznamy Action 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čítanie za koncom pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V používanej základnej grafickej sade chýbajú niektoré grafické objekty.{}Aktualizujte prosím základnú grafickú sadu.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované GRF prostriedky nie sú dosupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} bol vypnutý {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nesprávny/neznámy formát rozloženia sprite(ov) (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Upozornenie!
@@ -2654,7 +2671,7 @@ STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Zmazať 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upravit text popisu
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Prejst na dalsiu znacku
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Prejst na predchádzajúcu znacku
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Prejsť na predchádzajúcu značku
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadajte názov pre popis
 
@@ -2728,6 +2745,32 @@ STR_GOALS_NONE                                                  :{ORANGE}- Nič 
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciele spoločnosti:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s priemyslom/mestom/políčkom
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Otázka
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informácie
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Varovanie
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Chyba
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Zrušiť
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nie
+STR_GOAL_QUESTION_BUTTON_YES                                    :Áno
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Odmietnuť
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Prijať
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ingorovať
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Skúsiť znova
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Predchádzajúci
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nasledujúci
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Zastaviť
+STR_GOAL_QUESTION_BUTTON_START                                  :Spustiť
+STR_GOAL_QUESTION_BUTTON_GO                                     :Choď
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Pokračovať
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Spustiť znova
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odložiť
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Vzdať
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zavrieť
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotácie
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Ponúknuté dotácie:
@@ -2754,7 +2797,7 @@ STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Čaká: 
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} na ceste z {STATION})
 
-STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prijima
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prijíma
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zobraziť zoznam prijímaného nákladu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prijíma: {WHITE}{STRING}
 
@@ -2838,11 +2881,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Žiadne
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% vlastní {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraštruktúra:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} políčka železnice
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} políčka cesty
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} políčka vody
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} políčka stanice
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} letiská
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} políč{P ko ka ok} železnice
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} políč{P ko ka ok} cesty
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} políč{P ko ka ok} vody
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} políč{P ko ka ok} stanice
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} let{P isko iská ísk}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Žiadne
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Postaviť sídlo
@@ -2865,8 +2908,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmeniť 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kúpiť 25% podiel v spoločnosti
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Predať 25% podiel v spoločnosti
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kúpiť 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Predať 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kúpiť 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu bez zakúpenia podielu.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Predať 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu bez predaja podielu.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Názov spoločnosti
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Meno prezidenta
@@ -3085,10 +3128,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonova�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonovať loď
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovať lietadlo
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Vytvorí kópiu vlaku vrátane vozňov. Klikni na toto tlačidlo a potom na vlak v depe alebo mimo neho. Stlačením CTRL budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Vytvorí kópiu cestného vozidla. Klikni na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvorí kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Vytvorí kópiu lietadla. Klikni na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. CTRL+Klik budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Zakúpi kópiu vlaku vrátane vozňov. Klikni na toto tlačidlo a potom na vlak v depe alebo mimo neho. Stlačením CTRL budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Zakúpi kópiu cestného vozidla. Klikni na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Zakúpi kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Zakúpi kópiu lietadla. Klikni na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. CTRL+Klik budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Poloha depa uprostred hlavného okna. CTRL+klik otvorí nové okno s pohľadom na depo
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pohoha garáže uprostred hlavného okna. CTRL+klik otvorí nový pohľad na umiestnenie garáže
@@ -3175,9 +3218,9 @@ STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslať 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslať lietadlo do hangáru. CTRL+klik len servis
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Zakúpi kópiu vlaku vrátane vozňov. CTRL+klik bude zdieľať príkazy. Shift+Klik ukáže odhadované náklady bez kúpy
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Vytvorí kópiu cestného vozidla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Vytvorí kópiu lode. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvorí kópiu lietadla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Zakúpi kópiu cestného vozidla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Zakúpi kópiu lode. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Zakúpi kópiu lietadla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Povoliť vlaku pokračovať v ceste bez čakania na zelenú
 
@@ -3545,7 +3588,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pozri log skriptu
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebolo nájdená žiadne použitelné AI.{}Toto AI je hlúpe a nebude nič robiť.{}Môžete si stiahnúť niekoľko AI cez 'Online Obsah' systém.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z AI padla. Prosím nahláste to autorovi AI a priložte screenshot Debugovacej obrazovky AI.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z bežiacich skriptov. Prosím nahláste to autorovi a priložte screenshot Debugovacej obrazovky.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Umelá inteligencia / Okno ladenia je dostupné len pre server
 
 # AI configuration window
@@ -4037,21 +4080,21 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Malá Banka
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Uholná baňa
-STR_INDUSTRY_NAME_POWER_STATION                                 :Elektraren
+STR_INDUSTRY_NAME_COAL_MINE                                     :Uhoľná baňa
+STR_INDUSTRY_NAME_POWER_STATION                                 :Elektráreň
 STR_INDUSTRY_NAME_SAWMILL                                       :Píla
-STR_INDUSTRY_NAME_FOREST                                        :Les
+STR_INDUSTRY_NAME_FOREST                                        :Lesy
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :Ropná rafinéria
-STR_INDUSTRY_NAME_OIL_RIG                                       :Ropny vrt
-STR_INDUSTRY_NAME_FACTORY                                       :Tovaren
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tlaciaren
+STR_INDUSTRY_NAME_OIL_RIG                                       :Ropná plošina
+STR_INDUSTRY_NAME_FACTORY                                       :Továreň
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tlačiareň
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Oceliareň
 STR_INDUSTRY_NAME_FARM                                          :Farma
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Medenná baňa
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Ropná plošina
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Medená baňa
+STR_INDUSTRY_NAME_OIL_WELLS                                     :Ropný vrt
 STR_INDUSTRY_NAME_BANK                                          :Banka
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Potravinársky podnik
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Výroba papiera
+STR_INDUSTRY_NAME_PAPER_MILL                                    :Papierne
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlatá baňa
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantová baňa
@@ -4062,16 +4105,16 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Vodný zdroj
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodojem
 STR_INDUSTRY_NAME_FACTORY_2                                     :Továreň
 STR_INDUSTRY_NAME_FARM_2                                        :Farma
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Pila
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Píla
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrovej vaty
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukrovar
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Výroba batérii
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Výroba kofoly
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Hrackarstvo
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Výroba hračiek
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Žuvačkové fontány
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Výroba šumienky
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Bublifuk
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Cukríkáreň
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :Baterková farma
+STR_INDUSTRY_NAME_COLA_WELLS                                    :Kofolové studne
+STR_INDUSTRY_NAME_TOY_SHOP                                      :Hračkárstvo
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :Továreň na hračky
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Umelinové fontány
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Továreň na malinovku
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generátor bubliniek
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelový lom
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukrová baňa
 
@@ -4164,13 +4207,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón na kauč
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagón na cukrovú vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagón na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón na bublinky
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Vagón na kofolu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagón na cukríky
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagón na hračky
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagón na batérie
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagón na šumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagón na žuvačky
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagón na baterky
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagón na malinovku
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagón na umelinu
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
@@ -4194,13 +4237,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagon na kaucuk
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagon na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagon na cukrovu vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagon na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón na bublinky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagon na kofolu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagon na cukriky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagón na hračky
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagon na baterie
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagon na sumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagón na žuvačky
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagón na baterky
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagón na malinovku
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagón na umelinu
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektricky)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektricky)
@@ -4226,13 +4269,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagon na kaucuk
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagon na cukor
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagon na cukrovu vatu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagon na karamel
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón na bubliny
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón na bublinky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagon na kofolu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagon na cukriky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagón na hračky
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagon na baterie
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagon na sumienku
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagón na žuvačky
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagón na baterky
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagón na malinovku
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Vagón na umelinu
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal Autobus
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard Autobus
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster Autobus
@@ -4309,18 +4352,18 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Wizzowow - Hra�
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover - Cukríky
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught - Cukríky
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow - Cukríky
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover - Baterie
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught - Baterie
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow - Baterie
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover - Sumienka
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught - Sumienka
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow - Sumienka
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover - Žuvačky
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught - Žuvačky
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow - Žuvačky
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover - Bubliny
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught - Bubliny
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow - Bubliny
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover - Baterky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught - Baterky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow - Baterky
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover - Malinovka
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught - Malinovka
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow - Malinovka
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover - Umelina
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught - Umelina
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow - Umelina
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover - Bublinky
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught - Bublinky
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow - Bublinky
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS - Ropa
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. - Ropa
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Trajekt

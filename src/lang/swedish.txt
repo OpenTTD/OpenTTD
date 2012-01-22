@@ -1297,7 +1297,7 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardsignal-typ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avancerad
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avancerad enväga
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avancerad envägssignal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Gå igenom signaltyper: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Endast normala
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Endast avancerade
@@ -2453,6 +2453,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Ändring
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licens
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametrar
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Visa parametrar
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Byt palett
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Ändra palett för markerad NewGRF.{}Gör detta när grafiken från denna NewGRF är rosa i spelet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Spara ändringar
@@ -2530,9 +2531,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} krä
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Att ladda {1:STRING} som statisk NewGRF med {STRING} kan orsaka desynkronisering
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oväntat spriteobjekt (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd Action 0-egenskap {4:HEX} (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Försökt att använda ett ogiltligt ID (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad bild. Alla korrupta bilder kommer att visas som ett rött frågetecken (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller flera Action 8 (spriteobjekt {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läste förbi slutet av pseudo-spriteobjekt (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Efterfrågade GRF-resurser är inte tillgängliga (spriteobjekt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} har inaktiverats av {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Felaktig/okänd layout-format av spriteobjekt (spriteobjekt {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -2661,8 +2669,30 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Företag
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klicka på målet för att centrera huvudvyn på industrin/byn/rutan. Ctrl+klick gör så att ett nytt vyfönster öppnas över platsen för industrin/byn/rutan
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Fråga
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Information
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Varning
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Fel
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Avbryt
+STR_GOAL_QUESTION_BUTTON_OK                                     :Okej
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nej
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ja
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Avböj
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Acceptera
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorera
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Försök igen
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Föregående
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nästa
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stoppa
+STR_GOAL_QUESTION_BUTTON_START                                  :Starta
+STR_GOAL_QUESTION_BUTTON_GO                                     :Gå
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Fortsätt
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Starta om
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Skjut upp
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Ge upp
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Stäng
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventioner
@@ -2802,7 +2832,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt VD:n
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Köp 25% andelar i företaget
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sälj 25% andelar i företaget
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Köp 25% andelar i detta företag. Shift+klick visar kostnad utan att köpa
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sälj 25% andelar i detta företag. Shift+klick visar kostnad utan att köpa
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sälj 25% andelar i detta företag. Shift+klick visar inkomst utan att sälja
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Företagsnamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namn på VD
@@ -3481,7 +3511,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spelskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa debug-utskrifter för spelskript
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av datorspelarna har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på 'AI-felsökning'-fönstret
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av datorspelarna har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på förstret 'Felsökning av datorspelare / spelskript'
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare / spelskript är bara tillgänglig för servern
 
 # AI configuration window

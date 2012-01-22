@@ -2707,6 +2707,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare cli
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Domanda
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informazione
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Avviso
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Errore
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annulla

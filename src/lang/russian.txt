@@ -2629,7 +2629,7 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Назв
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Удалить набор
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Удалить выбранный набор
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Добавить
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Добавить выбранный файл NewGRF в вашу конфигурацию
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Добавить выбранный файл NewGRF в ваш список
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Обновить
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Обновить список доступных файлов NewGRF
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Удалить
@@ -2638,7 +2638,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Ввер
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Переместить выбранный файл NewGRF выше по списку
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Вниз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Переместить выбранный файл NewGRF ниже по списку
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список установленных файлов NewGRF
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список используемых файлов NewGRF
 
 # Additional textfiles accompanying NewGRFs
 STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Посмотреть инструкцию
@@ -2651,14 +2651,14 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Пере
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Используйте переключение, если графика отрисовывается розовым цветом.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Применить изменения
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Найти недостающий контент в сети
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Отметьте, чтобы найти недостающий контент в сети
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Найти отсутствующие файлы в сети
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Попытаться найти отсутствующие файлы в сети
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Версия: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Треб. версия игры не ниже {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Сумма MD5: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Совместимо с версией не ниже: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палитра: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметры: {SILVER}{STRING}
 
@@ -2863,6 +2863,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Щёлк
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Вопрос
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Информация
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Предупреждение
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Ошибка
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Отменить

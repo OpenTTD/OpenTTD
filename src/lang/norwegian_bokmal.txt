@@ -2487,7 +2487,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Inkompatib
 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Forandre NewGRF-parametre
-STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Nær
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Lukk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakestill
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
@@ -2681,6 +2681,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}klikk p�
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spørsmål
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasjon
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Advarsel
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Feil
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Avbryt

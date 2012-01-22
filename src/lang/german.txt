@@ -1882,7 +1882,7 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Diese E
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Diese Erweiterung ist zum Herunterladen ausgewählt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Erweiterung wird für eine andere Erweiterung benötigt
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Diese Erweiterung ist schon vorhanden
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Diese Erweiterung ist nicht auf dem Server für Online-Erweiterungen vorhanden und kann nicht von OpenTTD heruntergeladen werden
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Diese Erweiterung stammt aus einer unbekannten Quelle und kann von OpenTTD nicht heruntergeladen werden
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für {G einen eine ein ""} existierend{G en e es e} {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
