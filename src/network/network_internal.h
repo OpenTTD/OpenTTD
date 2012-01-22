@@ -44,7 +44,7 @@
  * There's basically no need to ever enable this, unless you really know what
  * you are doing, i.e. debugging a desync.
  *
- * NOTE: Define DEBUG_DUMP_COMMANDS in network.h or globally, else it does not
+ * NOTE: Define DEBUG_DUMP_COMMANDS in network_func.h or globally, else it does not
  *       have enough effects. For example CmdCompanyCtrl needs it to be able
  *       to create companies when there are not clients on this server.
  */

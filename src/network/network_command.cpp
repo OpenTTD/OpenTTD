@@ -264,7 +264,7 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 {
 #ifdef DEBUG_DUMP_COMMANDS
 	/* When replaying we do not want this limitation. */
-	int to_go = MAX_UINT16;
+	int to_go = UINT16_MAX;
 #else
 	int to_go = _settings_client.network.commands_per_frame;
 #endif
