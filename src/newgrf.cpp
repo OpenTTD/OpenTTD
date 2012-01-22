@@ -8185,10 +8185,7 @@ static void CalculateRefitMasks()
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) {
-			if (cargo_map_for_first_refittable == NULL) {
-				/* Use first refittable cargo slot */
-				ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
-			} else {
+			if (cargo_map_for_first_refittable != NULL) {
 				/* Use first refittable cargo from cargo translation table */
 				byte best_local_slot = 0xFF;
 				CargoID cargo_type;
@@ -8199,6 +8196,11 @@ static void CalculateRefitMasks()
 						ei->cargo_type = cargo_type;
 					}
 				}
+			}
+
+			if (ei->cargo_type == CT_INVALID) {
+				/* Use first refittable cargo slot */
+				ei->cargo_type = (CargoID)FindFirstBit(ei->refit_mask);
 			}
 		}
 		if (ei->cargo_type == CT_INVALID) ei->climates = 0;
