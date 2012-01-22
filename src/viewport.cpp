@@ -1872,8 +1872,8 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 	const Sign *si;
 	FOR_ALL_SIGNS(si) {
 		/* If competitor signs are hidden, don't check signs that aren't owned by local company */
-		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner) continue;
-		if (si->owner == OWNER_DEITY) continue;
+		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS) && _local_company != si->owner && si->owner != OWNER_DEITY) continue;
+		if (si->owner == OWNER_DEITY && _game_mode != GM_EDITOR) continue;
 
 		if (CheckClickOnViewportSign(vp, x, y, &si->sign)) {
 			HandleClickOnSign(si);

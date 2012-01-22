@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../signs_base.h"
+#include "../fios.h"
 
 #include "saveload.h"
 
@@ -54,6 +55,11 @@ static void Load_SIGN()
 		 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
 		if (IsSavegameVersionBefore(6, 1) || (IsSavegameVersionBefore(83) && si->owner == INVALID_OWNER)) {
 			si->owner = OWNER_NONE;
+		}
+
+		/* Signs placed in scenario editor shall now be OWNER_DEITY */
+		if (IsSavegameVersionBefore(171) && si->owner == OWNER_NONE && _saveload_mode == SLD_LOAD_SCENARIO) {
+			si->owner = OWNER_DEITY;
 		}
 	}
 }

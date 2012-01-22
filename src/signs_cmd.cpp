@@ -45,7 +45,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
-		Sign *si = new Sign(_current_company);
+		Sign *si = new Sign(_game_mode == GM_EDITOR ? OWNER_DEITY : _current_company);
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
@@ -78,7 +78,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 {
 	Sign *si = Sign::GetIfValid(p1);
 	if (si == NULL) return CMD_ERROR;
-	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY) return CMD_ERROR;
+	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */
 	if (!StrEmpty(text)) {
@@ -89,7 +89,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			free(si->name);
 			/* Assign the new one */
 			si->name = strdup(text);
-			si->owner = _current_company;
+			if (_game_mode != GM_EDITOR) si->owner = _current_company;
 
 			si->UpdateVirtCoord();
 			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
