@@ -2555,6 +2555,10 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		 * wander around the world. */
 		Ship *s;
 		FOR_ALL_SHIPS(s) {
+			if (s->current_order.IsType(OT_LOADING) && s->tile == docking_location) {
+				s->LeaveStation();
+			}
+
 			if (s->dest_tile == docking_location) {
 				s->dest_tile = 0;
 				s->current_order.Free();
