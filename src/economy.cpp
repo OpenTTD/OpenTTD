@@ -471,6 +471,9 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		UpdateSignalsInBuffer();
 	}
 
+	/* Add airport infrastructure count of the old company to the new one. */
+	if (new_owner != INVALID_OWNER) Company::Get(new_owner)->infrastructure.airport += Company::Get(old_owner)->infrastructure.airport;
+
 	/* convert owner of stations (including deleted ones, but excluding buoys) */
 	Station *st;
 	FOR_ALL_STATIONS(st) {

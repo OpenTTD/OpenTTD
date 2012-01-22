@@ -139,7 +139,7 @@ void AfterLoadCompanyStats()
 
 			case MP_STATION:
 				c = Company::GetIfValid(GetTileOwner(tile));
-				if (c != NULL && GetStationType(tile) != STATION_AIRPORT) c->infrastructure.station++;
+				if (c != NULL && GetStationType(tile) != STATION_AIRPORT && !IsBuoy(tile)) c->infrastructure.station++;
 
 				switch (GetStationType(tile)) {
 					case STATION_RAIL:

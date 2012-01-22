@@ -3612,16 +3612,41 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 		Company *old_company = Company::Get(old_owner);
 		Company *new_company = Company::Get(new_owner);
 
-		if ((IsRailWaypoint(tile) || IsRailStation(tile)) && !IsStationTileBlocked(tile)) {
-			old_company->infrastructure.rail[GetRailType(tile)]--;
-			new_company->infrastructure.rail[GetRailType(tile)]++;
+		/* Update counts for underlying infrastructure. */
+		switch (GetStationType(tile)) {
+			case STATION_RAIL:
+			case STATION_WAYPOINT:
+				if (!IsStationTileBlocked(tile)) {
+					old_company->infrastructure.rail[GetRailType(tile)]--;
+					new_company->infrastructure.rail[GetRailType(tile)]++;
+				}
+				break;
+
+			case STATION_BUS:
+			case STATION_TRUCK:
+				if (!IsDriveThroughStopTile(tile)) {
+					/* Drive-through stops were already handled above. */
+					old_company->infrastructure.road[FIND_FIRST_BIT(GetRoadTypes(tile))] -= 2;
+					new_company->infrastructure.road[FIND_FIRST_BIT(GetRoadTypes(tile))] += 2;
+				}
+				break;
+
+			case STATION_BUOY:
+			case STATION_DOCK:
+				if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+					old_company->infrastructure.water--;
+					new_company->infrastructure.water++;
+				}
+				break;
+
+			default:
+				break;
 		}
-		if (IsRoadStop(tile) && !IsDriveThroughStopTile(tile)) {
-			RoadType rt;
-			FOR_EACH_SET_ROADTYPE(rt, GetRoadTypes(tile)) {
-				old_company->infrastructure.road[rt] -= 2;
-				new_company->infrastructure.road[rt] += 2;
-			}
+
+		/* Update station tile count. */
+		if (!IsBuoy(tile) && !IsAirport(tile)) {
+			old_company->infrastructure.station--;
+			new_company->infrastructure.station++;
 		}
 
 		/* for buoys, owner of tile is owner of water, st->owner == OWNER_NONE */
