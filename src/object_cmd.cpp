@@ -457,6 +457,9 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
 
+	/* Towns can't remove any objects. */
+	if (_current_company == OWNER_TOWN) return CMD_ERROR;
+
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
 		if ((flags & DC_NO_WATER) && IsTileOnWater(tile)) {
