@@ -1441,6 +1441,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- ஏ�
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :கேள்வி
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :தகவல்
+STR_GOAL_QUESTION_CAPTION_WARNING                               :எச்சரிக்கை
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :பிழை
 
 ### Start of Goal Question button list
 
@@ -1872,18 +1876,35 @@ STR_TIMETABLE_DAYS                                              :{COMMA} நா�
 
 
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}ஆரம்ப தேதி
+
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}நேரத்தை மாற்று
+
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}நேரத்தை நீக்கு
 
 
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}எதிர்ப்பார்க்கப்படுவது
 
-
-
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}தேதியை அமை
+STR_DATE_SET_DATE                                               :{BLACK}தேதியை அமை
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}நாளினைத் தேர்ந்தெடு
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}மாதத்தினை தேர்ந்திடு
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}வருடத்தை தேர்ந்தெடுr
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}ஸ்கிரிப்டின் பெயர்
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}அமைப்புகள்
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}ஸ்க்ரிப்டின் அமைப்புகளை மாற்று
+STR_AI_DEBUG_RELOAD                                             :{BLACK}AI-ஐ மறுபடியும் ஏற்று
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}தொடரு
 STR_AI_GAME_SCRIPT                                              :{BLACK}விளையாட்டின் ஸ்கிரிப்ட்
 
 
@@ -2304,6 +2325,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :ரப்பர
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :சர்க்கரை வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :பஞ்சு மிட்டாய் வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :குமிழி வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :கோலா வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :இனிப்பு வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :மின்கல வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :பிளாஸ்டிக் லாரி

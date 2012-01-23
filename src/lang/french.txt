@@ -1273,7 +1273,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Désact
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Désactiver les navires pour l'ordinateur{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permettre les IA en multi-joueurs{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Nombre d'opcodes avant de suspendre les scripts{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Nombre d'opcodes avant d'interrompre les scripts{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalle d'entretien par défaut pour les trains{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
@@ -1285,51 +1285,51 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interva
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalle d'entretien par défaut pour les navires{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalle d'entretien par défaut pour les navires{NBSP}: {ORANGE}inactif
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Désactiver l'entretien quand les pannes sont inactives{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activer vitesse limite des wagons{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activer la vitesse limite des wagons{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Désactiver les rails électriques{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Les journaux en couleur apparaissent en{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Année de départ{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (plus de petits changements){NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (petits changements plus nombreux){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Pourcentage du profit de branche à payer dans les systèmes multi-modaux{NBSP}: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacement des signaux en mode glisser-déposer{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer le GUI des signaux{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer l'interface graphique pour les signaux{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Type de signaux construit par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signaux de bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signaux de chemin
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signaux de chemin à sens unique
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle de types de signaux{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signaux de bloc uniquement
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signaux de chemin uniquement
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tous
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Sélectionner les signaux parmi{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :les signaux de bloc uniquement
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :les signaux de chemin uniquement
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :tous les signaux
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Agencement des routes pour les nouvelles villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Meilleures routes
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Grille 2x2
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Grille 3x3
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aléatoire
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :meilleures routes
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Autoriser la construction des routes par les villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Autoriser la construction des passages à niveau par les villes{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroports par ville, selon les nuisances sonores{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fonder des villes en cours de jeu{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Interdit
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Autorisé
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Autorisé, agencement des routes personnalisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :interdit
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :autorisé
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :autorisé, y compris l'agencement personnalisé des routes
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plantation des arbres durant la partie{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulle part {RED}(les scieries ne fonctionneront plus)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Seulement dans les forêts tropicales
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Partout
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plantation d'arbres durant la partie{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nulle part {RED}(les scieries ne fonctionneront plus)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :seulement dans les forêts tropicales
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Position de la barre d'état{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}inactif
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre maximum de fenêtres non-ineffaçables{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nombre maximum de fenêtres non-ineffaçables{NBSP}: {ORANGE}désactivé
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre maximum de fenêtres non punaisées{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nombre maximum de fenêtres non punaisées{NBSP}: {ORANGE}désactivé
 STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Zoom avant maximum{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Zoom arrière maximum{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1346,8 +1346,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapide
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Très rapide
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proportion des villes qui deviendront des métropoles{NBSP}: {ORANGE}1 sur {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion des villes qui deviendront des métropoles{NBSP}: {ORANGE}Aucune
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicateur de taille de ville initial{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Retirer les éléments absurdes pendant la reconstruction des routes{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicateur initial pour la taille des métropoles{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Retirer les éléments absurdes lors de la construction des routes{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construction
@@ -2680,6 +2680,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer 
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Question
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Information
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Attention
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erreur
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuler

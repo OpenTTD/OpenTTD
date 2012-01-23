@@ -2678,6 +2678,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Các m�
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click vào mục tiêu để canh giữa cửa sổ lớn chính vào ô/đô thị/nhà máy tương ứng. Ctrl+Click để mở bằng các cửa sổ bổ sung tương ứng
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Câu Hỏi
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Thông Tin
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Cảnh Báo
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Lỗi
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Hủy bỏ
