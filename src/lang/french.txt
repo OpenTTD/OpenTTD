@@ -1359,7 +1359,7 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Options
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaction
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Gestion des cargaisons
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence Artificielle
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Intelligence artificielle
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Renouvellement automatique
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Entretien
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Routage
@@ -1370,14 +1370,14 @@ STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scripts
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
-STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommandé)
+STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(recommandé)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Recherche de chemin des véhicules routiers{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Recherche de chemin des navires{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Demi-tour automatique aux signaux{NBSP}: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Changer valeur du paramètre
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Changer la valeur du paramètre
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Erreur dans le fichier de configuration...
@@ -1397,25 +1397,25 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... le f
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nouvelle Partie
-STR_INTRO_LOAD_GAME                                             :{BLACK}Charger une Partie
+STR_INTRO_NEW_GAME                                              :{BLACK}Nouvelle partie
+STR_INTRO_LOAD_GAME                                             :{BLACK}Charger une partie
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Jouer un scénario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Jouer une carte d'altitude
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Éditeur de scénario
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode Multijoueur
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Mode multijoueurs
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Options
 STR_INTRO_DIFFICULTY                                            :{BLACK}Difficulté ({STRING})
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options Avancées
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration d'IA et de jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer la configuration du terrain
-STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Charger une partie sauvée
-STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Démarrer une nouvelle partie, utilisant une carte d'altitude comme paysage
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Démarrer une nouvelle partie à partir d'un scénario
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain
+STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Charger une partie sauvegardée
+STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Démarrer une nouvelle partie utilisant une carte d'altitude comme paysage
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Démarrer une nouvelle partie à partir d'un scénario personnalisé
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Créer un monde/scénario de jeu personnalisé
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Démarrer une partie multijoueurs
 
@@ -1426,17 +1426,17 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Sélecti
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Afficher les options du jeu
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afficher les options de niveau de difficulté
-STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Configurer les options avancées
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afficher les options avancées
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus à télécharger nouveaux et mis à jour
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afficher la configuration d'IA et de jeu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à rendre OpenTTD meilleur en vous inscrivant comme traducteur. Voir readme.txt pour les details.
+STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à améliorer OpenTTD en vous inscrivant comme traducteur. Voir readme.txt pour les details.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Quitter
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Êtes vous sur de vouloir quitter OpenTTD et retourner à {STRING}{NBSP}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Êtes-vous sûr de vouloir quitter OpenTTD et retourner à {STRING}{NBSP}?
 STR_QUIT_YES                                                    :{BLACK}Oui
 STR_QUIT_NO                                                     :{BLACK}Non
 
@@ -1455,21 +1455,21 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonner la partie
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Êtes-vous sûr de vouloir abandonner cette partie{NBSP}?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Voulez-vous vraiment quitter ce scénario{NBSP}?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-vous sûr de vouloir quitter ce scénario{NBSP}?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
-STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher indiquent que vous avez déjà utilisé cette triche auparavant
+STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher montrent si vous avez déjà utilisé cette triche auparavant
 STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes){NBSP}: {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement des industries et des objets fixes){NBSP}: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tunnels peuvent se croiser{NBSP}: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne s'écrasent plus (fréquemment) sur les petits aéroports{NBSP}: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jets ne s'écraseront plus (aussi fréquemment) sur les petits aéroports{NBSP}: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Environnement 'Tempéré'
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Environnement 'Arctique'
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Environnement 'Tropical'
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Environnement 'Jouets'
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Environnement 'Monde des jouets'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année courante
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
@@ -1568,7 +1568,7 @@ STR_FACE_EARRING                                                :Boucle d'oreill
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Modifier la cravate ou la boucle d'oreille
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueur
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueurs
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Connexion{NBSP}:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choisir entre un jeu sur Internet ou sur le réseau local
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
@@ -1627,7 +1627,7 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Saisir l
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Commencer une nouvelle partie
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nom de la partie{NBSP}:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Les autres joueurs trouveront le nom de la partie dans le menu de sélection d'une partie multijoueurs
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Choisir le mot de passe
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
 

@@ -3016,6 +3016,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Пстр
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Пытаньне
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Інфармацыя
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Папярэджаньне
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Памылка
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Адмова
