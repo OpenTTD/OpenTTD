@@ -253,7 +253,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 			assert(IsDriveThroughStopTile(tile));
 			cost.AddCost(_price[PR_CLEAR_ROAD] * 2);
 			if (flags & DC_EXEC) {
-				Company *c = Company::GetIfValid(GetTileOwner(tile));
+				Company *c = Company::GetIfValid(GetRoadOwner(tile, rt));
 				if (c != NULL) {
 					/* A full diagonal road tile has two road bits. */
 					c->infrastructure.road[rt] -= 2;
