@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file tooltype_widget.h Types related to the toolbar widgets. */
+/** @file toolbar_widget.h Types related to the toolbar widgets. */
 
 #ifndef WIDGETS_TOOLBAR_WIDGET_H
 #define WIDGETS_TOOLBAR_WIDGET_H

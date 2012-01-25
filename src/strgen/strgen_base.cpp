@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file strgen.cpp Tool to create computer readable (stand-alone) translation files. */
+/** @file strgen_base.cpp Tool to create computer readable (stand-alone) translation files. */
 
 #include "../stdafx.h"
 #include "../core/endian_func.hpp"
