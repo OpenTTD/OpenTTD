@@ -1521,9 +1521,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			}
 
 			/* make sure there are orders available */
-			int delta = dst->IsOrderListShared() ? src->GetNumOrders() + 1 : src->GetNumOrders() - dst->GetNumOrders();
-			if (!Order::CanAllocateItem(delta) ||
-					((dst->orders.list == NULL || dst->IsOrderListShared()) && !OrderList::CanAllocateItem())) {
+			if (!Order::CanAllocateItem(src->GetNumOrders()) || !OrderList::CanAllocateItem()) {
 				return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
 			}
 
