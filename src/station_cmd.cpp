@@ -1801,9 +1801,9 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				 * road tile, count only the new road bits needed to get a full diagonal road. */
 				RoadType rt;
 				FOR_EACH_SET_ROADTYPE(rt, cur_rts | rts) {
-					Company *c = Company::GetIfValid(IsNormalRoadTile(cur_tile) && HasBit(cur_rts, rt) ? GetRoadOwner(cur_tile, rt) : _current_company);
+					Company *c = Company::GetIfValid(rt == ROADTYPE_ROAD ? road_owner : tram_owner);
 					if (c != NULL) {
-						c->infrastructure.road[rt] += 2 - (IsNormalRoadTile(cur_tile) ? CountBits(GetRoadBits(cur_tile, rt)) : 0);
+						c->infrastructure.road[rt] += 2 - (IsNormalRoadTile(cur_tile) && HasBit(cur_rts, rt) ? CountBits(GetRoadBits(cur_tile, rt)) : 0);
 						DirtyCompanyInfrastructureWindows(c->index);
 					}
 				}
