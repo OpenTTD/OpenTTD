@@ -1481,7 +1481,7 @@ STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Montrer 
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montrer les livrées de trains
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Montrer les livrées de véhicules routiers
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer les livrées de navires
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées des aéronefs
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case pour en intervertir l'utilisation
@@ -1494,9 +1494,9 @@ STR_LIVERY_MONORAIL                                             :Locomotive Mono
 STR_LIVERY_MAGLEV                                               :Locomotive Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Voiture (Vapeur)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Voiture (vapeur)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Voiture (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Voiture (Electrique)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Voiture (électrique)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Voiture (Monorail)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Voiture (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Wagon
@@ -1520,21 +1520,21 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Choisir 
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Femme
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Choisir un visage féminin
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nouveau visage
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Génère un visage au hasard
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Générer un visage au hasard
 STR_FACE_ADVANCED                                               :{BLACK}Avancé
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Sélection avancée du visage
 STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Sélection simple du visage
 STR_FACE_LOAD                                                   :{BLACK}Charger
-STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Charger visage favori
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Charger le visage favori
 STR_FACE_LOAD_DONE                                              :{WHITE}Votre visage favori a été chargé depuis le fichier de configuration d'OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}No. de visage
+STR_FACE_FACECODE                                               :{BLACK}N° de visage
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le numéro de visage
 STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau numéro de visage a été défini
-STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295{NBSP}!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossible de définir le numéro de visage - doit être un nombre entre 0 et 4{NBSP}294{NBSP}967{NBSP}295{NBSP}!
 STR_FACE_SAVE                                                   :{BLACK}Enregistrer
-STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer visage favori
+STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Enregistrer le visage favori
 STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
 STR_FACE_EUROPEAN                                               :{BLACK}Européen
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Choisir les visages européens
@@ -1546,7 +1546,7 @@ STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activer 
 STR_FACE_HAIR                                                   :Cheveux{NBSP}:
 STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Modifier les cheveux
 STR_FACE_EYEBROWS                                               :Yeux{NBSP}:
-STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Modifier les yeux
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Modifier les yeux et les sourcils
 STR_FACE_EYECOLOUR                                              :Couleur des yeux{NBSP}:
 STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Modifier la couleur des yeux
 STR_FACE_GLASSES                                                :Lunettes{NBSP}:
@@ -1574,13 +1574,13 @@ STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choisir 
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom du joueur{NBSP}:
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ceci est le nom sous lequel vous serez connu des autres joueurs
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Nom
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nom de la partie
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clients
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients en ligne / clients max{}Compagnies en ligne / compagnies max
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients en ligne / clients max.{}Compagnies en ligne / compagnies max.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Taille
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Taille de la carte{}Cliquer pour trier par surface
@@ -1590,9 +1590,9 @@ STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Années
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Nombre d'années{}écoulées dans le jeu
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Langue, version du serveur, etc.
 
-STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliquer sur une partie de la liste pour la sélectionner
-STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Le dernier serveur utilisé{NBSP}:
-STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliquer pour choisir le dernier serveur utilisé
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliquer sur une partie dans la liste pour la sélectionner
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Dernier serveur utilisé{NBSP}:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliquer pour réutiliser le dernier serveur
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFOS SUR LE SERVEUR
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients{NBSP}: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1606,7 +1606,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Date co
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protégée par mot de passe{NBSP}!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVEUR HORS-LIGNE
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVEUR PLEIN
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSION NON CORRESPONDANTE
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSIONS NON IDENTIQUES
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF REQUIS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Rejoindre la partie
@@ -1614,11 +1614,11 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualis
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiser les infos sur le serveur
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trouver un serveur
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cherche sur le réseau un serveur
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Chercher un serveur sur le réseau
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter à la liste un serveur où le jeu cherchera toujours des parties en cours
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter un serveur à la liste de ceux parmi lesquels des parties en cours seront toujours cherchées
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Démarrer le serveur
-STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarre son propre serveur, sur cet ordinateur
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarrer son propre serveur, sur cet ordinateur-ci
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Entrer votre nom
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Saisir l'adresse IP du serveur
@@ -1658,7 +1658,7 @@ STR_NETWORK_LANG_BULGARIAN                                      :Bulgare
 STR_NETWORK_LANG_CHINESE                                        :Chinois
 STR_NETWORK_LANG_CZECH                                          :Tchèque
 STR_NETWORK_LANG_DANISH                                         :Danois
-STR_NETWORK_LANG_DUTCH                                          :Hollandais
+STR_NETWORK_LANG_DUTCH                                          :Néerlandais
 STR_NETWORK_LANG_ESPERANTO                                      :Espéranto
 STR_NETWORK_LANG_FINNISH                                        :Finlandais
 STR_NETWORK_LANG_HUNGARIAN                                      :Hongrois
@@ -1706,9 +1706,9 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Station
 STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Joueurs{NBSP}: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nouvelle compagnie
-STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Crée une nouvelle compagnie
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Créer une nouvelle compagnie
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Observer une partie
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Permet d'observer une partie en tant que spectateur
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Observer une partie en tant que spectateur
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Rejoindre la compagnie
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Aider à gérer cette compagnie
 
@@ -1757,15 +1757,15 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entrer l
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne pas sauver le mot de passe entré
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Donner un nouveau mot de passe à la compagnie
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mot de passe de compagnie
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Mot de passe de compagnie par défaut
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mot de passe de la compagnie
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Mot de passe par défaut de la compagnie
 STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utiliser ce mot de passe de compagnie comme défaut pour les nouvelles compagnies
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Rejoindre
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Rejoindre et jouer dans cette compagnie
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Mot de passe
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Permet de protéger par mot de passe votre compagnie pour empêcher des utilisateurs non-autorisés de rejoindre
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Permet de protéger par mot de passe votre compagnie pour empêcher des utilisateurs non autorisés de rejoindre
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Choisir le mot de passe de la compagnie
 
 # Network chat
@@ -1793,17 +1793,17 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Le serve
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Connexion échouée
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexion #{NUM} a dépassé le temps d'attente
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Une erreur de protocole a été détectée et la connexion a été fermée
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La révision de ce client ne correspond pas à celle du serveur
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}L'identifiant de révision de ce client ne correspond pas à celui du serveur
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Mot de passe incorrect
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Le serveur est complet
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vous êtes bannis de ce serveur
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vous êtes banni de ce serveur
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vous avez été exclu de la partie
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tricher n'est pas autorisé sur ce serveur
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vous envoyiez trop de commandes au serveur
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vous avez mis trop de temps pour entrer le mot de passe
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Le téléchargement de la carte a mis trop de temps
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Vous avez mis trop de temps à rejoindre le serveur
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Vous avez mis trop de temps pour rejoindre le serveur
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erreur générale
@@ -1820,7 +1820,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :mot de passe de
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :mauvais company-id dans DoCommand
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :exclu par le serveur
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a tenté de tricher
-STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Serveur complet
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveur complet
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :envoyait trop de commandes
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :aucun mot de passe reçu dans les temps
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :délai dépassé

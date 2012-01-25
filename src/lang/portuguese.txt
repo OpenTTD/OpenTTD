@@ -219,7 +219,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Insira uma frase para filtrar por
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Insira uma palavra chave para filtrar a lista por
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Insira uma palavra-chave para filtrar a lista por
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione forma de ordenação (descendente/ascendente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccione critério de ordenação
@@ -242,7 +242,7 @@ STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Por Omissão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
-STR_BUTTON_OK                                                   :{BLACK}OK
+STR_BUTTON_OK                                                   :{BLACK}Confirmar
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'« qwertyuiop+´asdfghjklçº~<zxcvbnm,.-
@@ -1603,7 +1603,7 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Versão
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Endereço do servidor: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Data de início: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Data actual: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegido por palavra passe!
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Protegido por palavra-chave!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVIDOR DESLIGADO
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVIDOR CHEIO
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}VERSÃO INCOMPATÍVEL
@@ -1628,7 +1628,7 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Iniciar 
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome do jogo:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de selecção de jogos multi-jogador
-STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir palavra passe
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir palavra-chave
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Rede Local / Internet
@@ -1755,18 +1755,18 @@ STR_NETWORK_SPECTATORS                                          :Espectadores
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Insira a quantidade de dinheiro que pretende dar
 
 # Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não gravar a palavra passe introduzida
-STR_COMPANY_PASSWORD_OK                                         :{BLACK}Atribuir nova palavra passe à empresa
-STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Palavra passe da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Palavra passe predefinida da empresa
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar a palavra passe desta empresa como predefinida para novas empresas
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não gravar a palavra-chave introduzida
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Atribuir nova palavra-chave à empresa
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Palavra-chave da empresa
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Palavra-chave predefinida da empresa
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar a palavra-chave desta empresa como predefinida para novas empresas
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Entrar
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Entrar e jogar por esta empresa
-STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Palavra passe
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Use palavra passe para prevenir utilizadores não autorizados de entrar na sua empresa.
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir palavra passe da empresa
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Palavra-chave
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Use palavra-chave para prevenir utilizadores não autorizados de entrar na sua empresa.
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir palavra-chave da empresa
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Enviar
@@ -1800,6 +1800,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Foi bani
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você foi expulso do jogo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Batotas não são permitidas neste servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estava a enviar demasiados comandos ao servidor
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Demorou demasiado tempo a introduzir a palavra-chave
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}O seu computador demorou demasiado a ligar a rede
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Demorou demasiado a transferir o mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Demorou demasiado a ligar ao servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral
@@ -1818,6 +1822,9 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :avisado pelo se
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar usar batota
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava a enviar demasiados comandos
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :não foi recebida palavra-chave a tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :demorou demasiado a transferir o mapa
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :demorou demasiado a processar o mapa
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possível perda de conexão
@@ -2440,6 +2447,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Lista de
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licença
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parametros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar palete
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna a palete do NewGRF seleccionado.{}Alterne quando os gráficos deste NewGRF aparecerem a cor-de-rosa no jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
@@ -2506,7 +2514,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu um erro fatal no NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu um erro fatal num NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não funciona com a versão do TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versão {STRING} do TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} foi concebido para ser usado com {STRING}
@@ -2517,9 +2525,13 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ficheiro GRF concebido para o traduzir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {STRING} pode causar dessincronização.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inválido (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID Inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem objectos gráficos em falta.{}Por favor faça a sua actualização.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF pedidos não disponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desactivado por {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de Gráfico Inválido ou desconhecido (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
@@ -2648,8 +2660,30 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objetivo
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique no objetivo para centrar a vista principal na indústria/cidade/quadrado. Ctrl+clique abre uma nova vista na localização da indústria/cidade/quadrado
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Questão
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informação
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Aviso
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erro
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
+STR_GOAL_QUESTION_BUTTON_OK                                     :Confirmar
+STR_GOAL_QUESTION_BUTTON_NO                                     :Não
+STR_GOAL_QUESTION_BUTTON_YES                                    :Sim
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Recusar
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceitar
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Repetir
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Próximo
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Parar
+STR_GOAL_QUESTION_BUTTON_START                                  :Iniciar
+STR_GOAL_QUESTION_BUTTON_GO                                     :Partir
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuar
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reiniciar
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Adiar
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Render-se
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fechar
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
@@ -2761,11 +2795,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propriedade de {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} peças de caminho-de-ferro
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} peças de estrada
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} quadrados de água
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} quadrados de estação
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroportos
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} peça{P "" s} de caminho-de-ferro
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} peça{P "" s} de estrada
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} quadrado{P "" s} de água
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} quadrado{P "" s} de estação
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
@@ -2788,8 +2822,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar 25% de acções
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% de acções
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem comprar nenhuma ação
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem vender nenhuma ação
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% das acções nesta empresa. Shift+Clique mostra valor estimado sem comprar nenhuma acção
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem vender nenhuma acção
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
@@ -3009,7 +3043,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar B
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um barco. Clique neste botão e, de seguida, num barco que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
