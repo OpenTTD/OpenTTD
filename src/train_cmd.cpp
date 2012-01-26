@@ -2794,19 +2794,18 @@ static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 			(!v->IsFrontEngine() || HasBit(v->compatible_railtypes, GetRailType(tile)));
 }
 
-/** Data structure for storing engine speed changes of a rail type. */
-struct RailtypeSlowdownParams {
+/** Data structure for storing engine speed changes of an acceleration type. */
+struct AccelerationSlowdownParams {
 	byte small_turn; ///< Speed change due to a small turn.
 	byte large_turn; ///< Speed change due to a large turn.
 	byte z_up;       ///< Fraction to remove when moving up.
 	byte z_down;     ///< Fraction to add when moving down.
 };
 
-/** Speed update fractions for each rail type. */
-static const RailtypeSlowdownParams _railtype_slowdown[] = {
+/** Speed update fractions for each acceleration type. */
+static const AccelerationSlowdownParams _accel_slowdown[] = {
 	/* normal accel */
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< normal
-	{256 / 4, 256 / 2, 256 / 4, 2}, ///< electrified
 	{256 / 4, 256 / 2, 256 / 4, 2}, ///< monorail
 	{0,       256 / 2, 256 / 4, 2}, ///< maglev
 };
@@ -2820,12 +2819,12 @@ static inline void AffectSpeedByZChange(Train *v, int old_z)
 {
 	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != AM_ORIGINAL) return;
 
-	const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
+	const AccelerationSlowdownParams *asp = &_accel_slowdown[GetRailTypeInfo(v->railtype)->acceleration_type];
 
 	if (old_z < v->z_pos) {
-		v->cur_speed -= (v->cur_speed * rsp->z_up >> 8);
+		v->cur_speed -= (v->cur_speed * asp->z_up >> 8);
 	} else {
-		uint16 spd = v->cur_speed + rsp->z_down;
+		uint16 spd = v->cur_speed + asp->z_down;
 		if (spd <= v->gcache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
@@ -3242,9 +3241,9 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 
 				if (chosen_dir != v->direction) {
 					if (prev == NULL && _settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
-						const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->railtype];
+						const AccelerationSlowdownParams *asp = &_accel_slowdown[GetRailTypeInfo(v->railtype)->acceleration_type];
 						DirDiff diff = DirDifference(v->direction, chosen_dir);
-						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? rsp->small_turn : rsp->large_turn) * v->cur_speed >> 8;
+						v->cur_speed -= (diff == DIRDIFF_45RIGHT || diff == DIRDIFF_45LEFT ? asp->small_turn : asp->large_turn) * v->cur_speed >> 8;
 					}
 					direction_changed = true;
 					v->direction = chosen_dir;
