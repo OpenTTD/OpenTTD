@@ -51,8 +51,8 @@ STR_CARGO_PLURAL_STEEL                                          :Oceľ
 STR_CARGO_PLURAL_STEEL.g                                        :ocele
 STR_CARGO_PLURAL_VALUABLES                                      :Cennosti
 STR_CARGO_PLURAL_VALUABLES.g                                    :cennosti
-STR_CARGO_PLURAL_COPPER_ORE                                     :Medenná ruda
-STR_CARGO_PLURAL_COPPER_ORE.g                                   :medennej rudy
+STR_CARGO_PLURAL_COPPER_ORE                                     :Medená ruda
+STR_CARGO_PLURAL_COPPER_ORE.g                                   :medenej rudy
 STR_CARGO_PLURAL_MAIZE                                          :Kukuricu
 STR_CARGO_PLURAL_MAIZE.g                                        :kukurice
 STR_CARGO_PLURAL_FRUIT                                          :Ovocie
@@ -116,8 +116,8 @@ STR_CARGO_SINGULAR_STEEL                                        :Oceľ
 STR_CARGO_SINGULAR_STEEL.g                                      :ocele
 STR_CARGO_SINGULAR_VALUABLES                                    :Cennosti
 STR_CARGO_SINGULAR_VALUABLES.g                                  :cennosti
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Medenná ruda
-STR_CARGO_SINGULAR_COPPER_ORE.g                                 :medennej rudy
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Medená ruda
+STR_CARGO_SINGULAR_COPPER_ORE.g                                 :medenej rudy
 STR_CARGO_SINGULAR_MAIZE                                        :Kukurica
 STR_CARGO_SINGULAR_MAIZE.g                                      :kukurice
 STR_CARGO_SINGULAR_FRUIT                                        :Ovocie
@@ -170,7 +170,7 @@ STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} d
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} železnej rudy
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} ocele
 STR_QUANTITY_VALUABLES                                          :{COMMA} vr{P ece ecia iec} cennosti
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} medennej rudy
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} medenej rudy
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} kukurice
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} ovocia
 STR_QUANTITY_DIAMONDS                                           :{COMMA} deb{P na ny ien} diamantov
@@ -2807,14 +2807,14 @@ STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Hodnoten
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Hrozne
-STR_CARGO_RATING_VERY_POOR                                      :Veľmi zle
-STR_CARGO_RATING_POOR                                           :Zle
-STR_CARGO_RATING_MEDIOCRE                                       :Priemerne
-STR_CARGO_RATING_GOOD                                           :Dobre
+STR_CARGO_RATING_APPALLING                                      :Hrozné
+STR_CARGO_RATING_VERY_POOR                                      :Veľmi zlé
+STR_CARGO_RATING_POOR                                           :Zlé
+STR_CARGO_RATING_MEDIOCRE                                       :Priemerné
+STR_CARGO_RATING_GOOD                                           :Dobré
 STR_CARGO_RATING_VERY_GOOD                                      :Veľmi dobré
-STR_CARGO_RATING_EXCELLENT                                      :Vyborne
-STR_CARGO_RATING_OUTSTANDING                                    :Perfektne
+STR_CARGO_RATING_EXCELLENT                                      :Výborné
+STR_CARGO_RATING_OUTSTANDING                                    :Perfektné
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Vycentrovať pohľad na pozíciu stanice. Ctrl+klik otvorí nové okno s pohľadom na stanicu
@@ -3318,7 +3318,7 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Celkový
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
-STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prazdny
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Prázdny
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} z {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} z {STATION} (x{NUM})
 
@@ -4230,7 +4230,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagon na ocel
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Obrneny vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagon na jedlo
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagon na papier
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Vagon na medennu rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Vagón na medenú rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagon na vodu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagon na ovocie
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagon na kaucuk
@@ -4262,7 +4262,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagon na ocel
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Obrneny vagon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagon na jedlo
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagon na papier
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Vagon na medennu rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Vagón na medenú rudu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagon na vodu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagon na ovocie
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagon na kaucuk
@@ -4307,9 +4307,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss - Obilie
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe - Drevo
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster - Drevo
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland - Drevo
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS - Zelezna ruda
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl - Zelezna ruda
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy - Zelezna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS - Železná ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl - Železná ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy - Železná ruda
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh - Ocel
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl - Ocel
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling - Ocel
@@ -4322,9 +4322,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy - Jedlo
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl - Papier
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Balogh - Papier
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS - Papier
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS - Medenna ruda
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl - Medenna ruda
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss - Medenna ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS - Medená ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl - Medená ruda
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss - Medená ruda
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl - Voda
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh - Voda
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS - Voda

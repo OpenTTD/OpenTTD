@@ -525,11 +525,11 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Betriebsgewinndiagramm
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Einkommensdiagramm
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Betriebsgewinn
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Einkommen
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Beförderte Frachteinheiten
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bewertung der Firmenleistung (Höchstwert: 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwertdiagramm
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmenwert
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbeförderungspreise
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Tage unterwegs

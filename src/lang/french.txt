@@ -1825,11 +1825,11 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :envoyait trop d
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :aucun mot de passe reçu dans les temps
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :délai dépassé
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :télécharger la carte a pris trop de temps
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :traitement de la carte a pris trop de temps
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :le traitement de la carte a pris trop de temps
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible perte de connexion
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Aucune donnée reçue du serveur depuis {NUM} seconde{P "" s}
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Aucunes données reçues du serveur depuis {NUM} seconde{P "" s}
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1839,7 +1839,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partie toujours
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partie toujours suspendue ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :La partie est toujours en pause ({STRING}, {STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partie reprise ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Reprise de la partie ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de joueurs
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connexion de clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuel
@@ -1864,19 +1864,19 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type de contenu
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nom du contenu
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliquer sur une ligne pour voir les détails{}Cocher la case pour le sélectionner pour être télécharger
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliquer sur une ligne pour voir les détails{}Cocher la case comme pré-sélection pour le téléchargement
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Sélectionner tout
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marquer tous les contenus pour être téléchargés
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marquer tous les contenus comme étant à télécharger
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélectionner les mises à jour
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant pour être téléchargés
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant comme étant à télécharger
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus pour ne pas être téléchargés
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur tag/nom{NBSP}:
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus comme étant à ne pas télécharger
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur l'étiquette/le nom{NBSP}:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce contenu
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement du contenu choisi
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille de téléchargement total{NBSP}: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille totale du téléchargement{NBSP}: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATION DE CONTENU
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Vous n'avez pas sélectionné ceci pour être téléchargé
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vous avez sélectionné ceci pour être téléchargé
@@ -1892,7 +1892,7 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type{NB
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Taille{NBSP}: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Sélectionné à cause de{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dépendances{NBSP}: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags{NBSP}: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Étiquettes{NBSP}: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD est compilé sans «{NBSP}zlib{NBSP}»...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible{NBSP}!
 
@@ -1904,7 +1904,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Bibliothè
 STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scénario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Carte d'altitude
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m2}Sons de base
-STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m2}Musiques de base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m2}Musique de base
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jeu
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Bibliothèque GS
 
@@ -1929,16 +1929,16 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, qui
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour vérrouiller
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Basculer transparence/invisibilité
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Basculer entre transparence et invisibilité des objets
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Afficher la zone couverte

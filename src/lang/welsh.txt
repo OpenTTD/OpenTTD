@@ -2679,6 +2679,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Cwestiwn
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Gwybodaeth
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Rhybudd
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Gwall
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Canslo
@@ -3517,7 +3520,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Gwirio'r log Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ni ganfuwyd AI addas i lwytho.{}AI ffug yw hwn na wnai unrhyw beth.{}Gallwch lawrlwytho sawl AI drwy'r system 'Cynnwys Arlein'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Mae AI a oedd yn rhedeg wedi chwalu. A fyddwch cystad ag adrodd am hyn i awdur yr AI ynghyd â sgrin-gipiad o'r Ffenestr Ddadnamu AI
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Mae sgript a oedd yn rhedeg wedi chwalu. A fyddwch cystad ag adrodd am hyn i awdur yr sgript ynghyd â sgrin-gipiad o'r Ffenestr Ddadnamu AI/GameScript
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Mae'r Ffenestr Ddadnamu AI / GameScript ar gael ar gyfer y gweinydd yn unig
 
 # AI configuration window
