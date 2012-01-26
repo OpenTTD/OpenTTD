@@ -17,19 +17,6 @@
 	#define Random OTTD_Random
 #endif /* __APPLE__ */
 
-/**************
- * Warning: DO NOT enable this unless you understand what it does
- *
- * If enabled, in a network game all randoms will be dumped to the
- *  stdout if the first client joins (or if you are a client). This
- *  is to help finding desync problems.
- *
- * Warning: DO NOT enable this unless you understand what it does
- **************/
-
-//#define RANDOM_DEBUG
-
-
 /**
  * Structure to encapsulate the pseudo random number generators.
  */
