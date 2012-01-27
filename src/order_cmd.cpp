@@ -812,7 +812,14 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (++n == sel_ord && prev != NULL) break;
 		}
 		if (prev != NULL) {
-			uint dist = GetOrderDistance(prev, &new_order, v);
+			uint dist;
+			if (new_order.IsType(OT_CONDITIONAL)) {
+				/* The order is not yet inserted, so we have to do the first iteration here. */
+				dist = GetOrderDistance(prev, v->GetOrder(new_order.GetConditionSkipToOrder()), v);
+			} else {
+				dist = GetOrderDistance(prev, &new_order, v);
+			}
+
 			if (dist >= 130) {
 				return_cmd_error(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION);
 			}
