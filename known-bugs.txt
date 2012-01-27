@@ -413,3 +413,17 @@ Not all NewGRFs, AIs, game scripts are found [FS#4887]:
 	tar file is the same as other content on the file system or in another
 	tar file, it is possible that content is not found. A more thorough
 	explanation and solutions are described in section 4.4 of readme.txt.
+
+Mouse cursor going missing with SDL [FS#4997]:
+	Under certain circumstances SDL does not notify OpenTTD of changes
+	with respect to the mouse pointer, specifically whether the mouse
+	pointer is within the bounds of OpenTTD or not. For example, if you
+	Alt-tab to another application the mouse cursor will still be shown
+	in OpenTTD, and when you move the mouse outside of the OpenTTD
+	window so the cursor gets hidden, open/move another application on
+	top of the OpenTTD window and then Alt-tab back into OpenTTD the
+	cursor will not be shown.
+
+	We cannot fix this problem as SDL simply does not provide the
+	required information in these corner cases. This is a bug in SDL
+	and as such there is little that we can do about it.
