@@ -48,7 +48,8 @@
    -1 sprites/chars.png 30 70 01 12 8 0 -1
    -1 * 5	 0A 01 01 BF 00
    -1 sprites/chars.png 70 70 01 12 9 0 -1
-   -1 * 5	 0A 01 04 C2 00
+   -1 * 5	 0A 01 05 C1 00
+   -1 sprites/chars.png 450 70 01 12 8 0 -1
    -1 sprites/chars.png 110 70 01 12 6 0 -1
    -1 sprites/chars.png 120 70 01 12 6 0 -1
    -1 sprites/chars.png 130 70 01 12 6 0 -1
@@ -123,7 +124,7 @@
    -1 sprites/chars.png 380 40 01 21 20 0 -2
    -1 sprites/chars.png 410 40 01 21 20 0 -2
    -1 sprites/chars.png 440 40 01 21 24 0 -2
-   -1 * 5	 0A 01 17 6A 02
+   -1 * 5	 0A 01 18 6A 02
    -1 sprites/chars.png 480 40 01 21 14 0 -2
    -1 sprites/chars.png 500 40 01 21 14 0 -2
    -1 sprites/chars.png 520 40 01 21 14 0 -2
@@ -147,6 +148,7 @@
    -1 sprites/chars.png 50 100 01 21 17 0 -2
    -1 sprites/chars.png 70 100 01 21 14 0 -2
    -1 sprites/chars.png 90 100 01 21 14 0 -2
+   -1 sprites/chars.png 450 100 01 21 14 0 -2
    -1 * 5	 0A 01 01 85 02
    -1 sprites/chars.png 140 100 01 21 12 0 -2
    -1 * 5	 0A 01 01 88 02
@@ -324,7 +326,7 @@
    -1 sprites/chars.png 50 250 01 12 8 0 -1
    -1 sprites/chars.png 70 250 01 12 6 0 -1
    -1 sprites/chars.png 90 250 01 12 9 0 -1
-   -1 sprites/chars.png 110 250 01 12 9 0 -1
+   -1 sprites/chars.png 110 250 01 12 8 0 -1
    -1 sprites/chars.png 130 250 01 12 6 0 -1
    -1 sprites/chars.png 150 250 01 12 9 0 -1
    -1 sprites/chars.png 170 250 01 12 6 0 -1
@@ -578,7 +580,7 @@
    -1 sprites/chars.png 50 280 01 21 18 0 -2
    -1 sprites/chars.png 70 280 01 21 15 0 -2
    -1 sprites/chars.png 90 280 01 21 19 0 -2
-   -1 sprites/chars.png 110 280 01 21 17 0 -2
+   -1 sprites/chars.png 110 280 01 21 18 0 -2
    -1 sprites/chars.png 130 280 01 21 13 0 -2
    -1 sprites/chars.png 150 280 01 21 15 0 -2
    -1 sprites/chars.png 170 280 01 21 11 0 -2
@@ -843,11 +845,16 @@
    -1 sprites/mono.png 175 250 01 13 7 0 0
 
 // U+2013: En Dash
-   -1 * 18	 12 04 00 01 13 20 01 01 13 20 02 01 13 20 03 01 13 20
+// U+2014: Em Dash
+   -1 * 18	 12 04 00 02 13 20 01 02 13 20 02 02 13 20 03 02 13 20
    -1 sprites/chars.png 630 310 01 12 8 0 -1
+   -1 sprites/chars.png 450 370 01 12 11 0 -1
    -1 sprites/chars.png 630 330 01 7 4 0 0
+   -1 sprites/chars.png 450 390 01 7 6 0 0
    -1 sprites/chars.png 630 340 01 21 14 0 -2
+   -1 sprites/chars.png 450 400 01 21 20 0 -2
    -1 sprites/mono.png 190 250 01 13 7 0 0
+   -1 sprites/mono.png 145 270 01 13 7 0 0
 
 // U+2019: Right Single Quotation Mark
    -1 * 18	 12 04 00 01 19 20 01 01 19 20 02 01 19 20 03 01 19 20
