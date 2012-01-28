@@ -49,7 +49,7 @@ static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
  */
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
-	if (GetGroupNumEngines(_local_company, id_g, e) || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0) {
+	if (GetGroupNumEngines(_local_company, id_g, e) == 0 || GetGroupNumEngines(_local_company, ALL_GROUP, e) == 0) {
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */
