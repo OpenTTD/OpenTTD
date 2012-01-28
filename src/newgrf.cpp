@@ -2798,6 +2798,10 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				cs->callback_mask = buf->ReadByte();
 				break;
 
+			case 0x1D: // Vehicle capacity muliplier
+				cs->multiplier = max<uint16>(1u, buf->ReadWord());
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;

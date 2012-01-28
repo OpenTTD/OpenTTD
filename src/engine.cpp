@@ -258,18 +258,9 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 	/* Apply multipliers depending on cargo- and vehicletype.
 	 * Note: This might change to become more consistent/flexible. */
 	if (this->type != VEH_SHIP && default_cargo != cargo_type) {
-		switch (default_cargo) {
-			case CT_PASSENGERS: break;
-			case CT_MAIL:
-			case CT_GOODS: capacity *= 2; break;
-			default:       capacity *= 4; break;
-		}
-		switch (cargo_type) {
-			case CT_PASSENGERS: break;
-			case CT_MAIL:
-			case CT_GOODS: capacity /= 2; break;
-			default:       capacity /= 4; break;
-		}
+		uint16 default_multiplier = CargoSpec::Get(default_cargo)->multiplier;
+		uint16 cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
+		capacity = (capacity * cargo_multiplier + default_multiplier / 2) / default_multiplier;
 	}
 
 	return capacity;
