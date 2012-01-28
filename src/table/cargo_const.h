@@ -124,7 +124,7 @@ static const CargoSpec _default_cargo[] = {
 
 	MK( 20, 'SWET', 194,  5, 6144,  8,  40, true,  TE_GOODS,
 		STR_CARGO_PLURAL_CANDY,          STR_CARGO_SINGULAR_CANDY,          STR_BAGS,       STR_QUANTITY_SWEETS,       STR_ABBREV_SWEETS,
-		SPR_CARGO_CANDY,         CC_EXPRESS,                       0x100),
+		SPR_CARGO_CANDY,         CC_EXPRESS,                       0x200),
 
 	MK( 21, 'TOFF', 191, 16, 4778, 14,  60, true,  TE_NONE,
 		STR_CARGO_PLURAL_TOFFEE,         STR_CARGO_SINGULAR_TOFFEE,         STR_TONS,       STR_QUANTITY_TOFFEE,       STR_ABBREV_TOFFEE,
