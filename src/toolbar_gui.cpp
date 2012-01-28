@@ -146,7 +146,7 @@ public:
 		SetDParam(1, company);
 		TextColour col;
 		if (this->greyed) {
-			col = TC_GREY;
+			col = (sel ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
