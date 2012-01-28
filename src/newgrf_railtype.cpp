@@ -14,6 +14,7 @@
 #include "newgrf_spritegroup.h"
 #include "date_func.h"
 #include "depot_base.h"
+#include "town.h"
 
 static uint32 RailTypeGetRandomBits(const ResolverObject *object)
 {
@@ -41,6 +42,7 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, u
 			case 0x41: return 0;
 			case 0x42: return 0;
 			case 0x43: return _date;
+			case 0x44: return HZB_TOWN_EDGE;
 		}
 	}
 
@@ -51,6 +53,15 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, u
 		case 0x43:
 			if (IsRailDepotTile(tile)) return Depot::GetByTile(tile)->build_date;
 			return _date;
+		case 0x44: {
+			const Town *t = NULL;
+			if (IsRailDepotTile(tile)) {
+				t = Depot::GetByTile(tile)->town;
+			} else if (IsLevelCrossingTile(tile)) {
+				t = ClosestTownFromTile(tile, UINT_MAX);
+			}
+			return t != NULL ? GetTownRadiusGroup(t, tile) : HZB_TOWN_EDGE;
+		}
 	}
 
 	DEBUG(grf, 1, "Unhandled rail type tile variable 0x%X", variable);
