@@ -210,6 +210,7 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 
 	if (!this->CanCarryCargo()) return 0;
 
+	bool new_multipliers = HasBit(this->info.misc_flags, EF_NO_DEFAULT_CARGO_MULTIPLIER);
 	CargoID default_cargo = this->GetDefaultCargoType();
 	CargoID cargo_type = (v != NULL) ? v->cargo_type : default_cargo;
 
@@ -217,16 +218,16 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 		*mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 	}
 
-	/* Check the refit capacity callback if we are not in the default configuration.
-	 * Note: This might change to become more consistent/flexible/sane, esp. when default cargo is first refittable. */
+	/* Check the refit capacity callback if we are not in the default configuration, or if we are using the new multiplier algorithm. */
 	if (HasBit(this->info.callback_mask, CBM_VEHICLE_REFIT_CAPACITY) &&
-			(default_cargo != cargo_type || (v != NULL && v->cargo_subtype != 0))) {
+			(new_multipliers || default_cargo != cargo_type || (v != NULL && v->cargo_subtype != 0))) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, this->index, v);
 		if (callback != CALLBACK_FAILED) return callback;
 	}
 
 	/* Get capacity according to property resp. CB */
 	uint capacity;
+	uint extra_mail_cap = 0;
 	switch (this->type) {
 		case VEH_TRAIN:
 			capacity = GetEngineProperty(this->index, PROP_TRAIN_CARGO_CAPACITY,        this->u.rail.capacity, v);
@@ -246,21 +247,31 @@ uint Engine::DetermineCapacity(const Vehicle *v, uint16 *mail_capacity) const
 		case VEH_AIRCRAFT:
 			capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity, v);
 			if (!IsCargoInClass(cargo_type, CC_PASSENGERS)) {
-				capacity += GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
+				extra_mail_cap = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity, v);
 			}
-			if (cargo_type == CT_MAIL) return capacity;
+			if (!new_multipliers && cargo_type == CT_MAIL) return capacity + extra_mail_cap;
 			default_cargo = CT_PASSENGERS; // Always use 'passengers' wrt. cargo multipliers
 			break;
 
 		default: NOT_REACHED();
 	}
 
-	/* Apply multipliers depending on cargo- and vehicletype.
-	 * Note: This might change to become more consistent/flexible. */
-	if (this->type != VEH_SHIP && default_cargo != cargo_type) {
-		uint16 default_multiplier = CargoSpec::Get(default_cargo)->multiplier;
+	if (!new_multipliers) {
+		/* Use the passenger multiplier for mail as well */
+		capacity += extra_mail_cap;
+		extra_mail_cap = 0;
+	}
+
+	/* Apply multipliers depending on cargo- and vehicletype. */
+	if (new_multipliers || (this->type != VEH_SHIP && default_cargo != cargo_type)) {
+		uint16 default_multiplier = new_multipliers ? 0x100 : CargoSpec::Get(default_cargo)->multiplier;
 		uint16 cargo_multiplier = CargoSpec::Get(cargo_type)->multiplier;
-		capacity = (capacity * cargo_multiplier + default_multiplier / 2) / default_multiplier;
+		capacity *= cargo_multiplier;
+		if (extra_mail_cap > 0) {
+			uint mail_multiplier = CargoSpec::Get(CT_MAIL)->multiplier;
+			capacity += (default_multiplier * extra_mail_cap * cargo_multiplier + mail_multiplier / 2) / mail_multiplier;
+		}
+		capacity = (capacity + default_multiplier / 2) / default_multiplier;
 	}
 
 	return capacity;
