@@ -1398,7 +1398,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 		}
 	} else if (transport_type == TRANSPORT_RAIL) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(rampsouth));
-		if (rti->UsesOverlay()) {
+		if (rti->UsesOverlay() && !IsInvisibilitySet(TO_BRIDGES)) {
 			SpriteID surface = GetCustomRailSprite(rti, rampsouth, RTSG_BRIDGE, TCX_ON_BRIDGE);
 			if (surface != 0) {
 				AddSortableSpriteToDraw(surface + axis, PAL_NONE, x, y, 16, 16, 0, bridge_z, IsTransparencySet(TO_BRIDGES));
