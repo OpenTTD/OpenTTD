@@ -2840,8 +2840,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Đổi t
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Mua 25% cổ phần công ty
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Bán 25% cổ phần công ty
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mua 25% cổ phần công ty này. Shift+Click để xem giá mua ước tính
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25% cổ phần công ty này. Shift+Click để xem giá bán ước tính
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mua 25% cổ phần công ty này. Shift+Click để xem giá mua ước tính khi chưa mua
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25% cổ phần công ty này. Shift+Click để xem giá bán ước tính khi chưa bán
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Tên Công Ty
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đốc
@@ -3061,7 +3061,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Tạo t�
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Tạo máy bay giống hệt
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Thao tác này mua một đoàn tàu giống hệt tàu cũ, gồm cả đầu máy và toa xe. Ctrl+Click để tạo tàu mới chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift+Click để xem giá mua ước tính
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Thao tác này mua ôtô giống hệt ôtô cũ.Click vào nút này để thực hiện thao tác đối với xe trong xưởng hoặc ngoài xưởng. Ctrl+Click để tạo ôtô chia sẻ lộ trình. Shift+Click để xem giá mua ước tính
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Thao tác này mua tàu thuỷ giống hệt tàu thuỷ cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo tàu thuỷ chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Thao tác này mua máy bay giống hệt máy bay cũ, gồm cả loại hàng chuyên chở. Ctrl+Click để tạo máy bay chia sẻ lộ trình. Shift+Click để xem giá mua dự tính
 
