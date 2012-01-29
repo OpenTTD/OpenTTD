@@ -1021,7 +1021,7 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nombre 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Emprunt initial maximum{NBSP}: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taux d'intérêt initial{NBSP}: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Coûts d'entretien{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{G=f}{LTBLUE}Vitesse de développement des concurrents{NBSP}: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Vitesse de développement des concurrents{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Pannes des véhicules{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Multiplicateur de subvention{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Coût des constructions{NBSP}: {ORANGE}{STRING}
@@ -1033,7 +1033,7 @@ STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Désast
 STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Attitude de la municipalité face au repaysagement{NBSP}: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_NONE                                                        :Aucun{G "" "" e}
+STR_NONE                                                        :Aucune
 STR_FUNDING_ONLY                                                :Financement uniquement
 STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Très bas
@@ -1050,9 +1050,9 @@ STR_VARIETY_MEDIUM                                              :Moyenne
 STR_VARIETY_HIGH                                                :Élevée
 STR_VARIETY_VERY_HIGH                                           :Très élevée
 
-STR_AI_SPEED_VERY_SLOW                                          :Très lent{G "" "" e}
-STR_AI_SPEED_SLOW                                               :Lent{G "" "" e}
-STR_AI_SPEED_MEDIUM                                             :Moyen{G "" "" "ne"}
+STR_AI_SPEED_VERY_SLOW                                          :Très lente
+STR_AI_SPEED_SLOW                                               :Lente
+STR_AI_SPEED_MEDIUM                                             :Moyenne
 STR_AI_SPEED_FAST                                               :Rapide
 STR_AI_SPEED_VERY_FAST                                          :Très rapide
 
