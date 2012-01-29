@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Največja dolžina vlakov: {ORANGE}{STRING} plošč{P a i e ""}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Največja dolžina vlakov: {ORANGE}{STRING} polj{P e i a ""}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pospeškov vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model pospeškov cestnih vozil: {ORANGE}{STRING}
@@ -1282,13 +1282,13 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uporabi
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postopno polni vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi tovor postaji le ob povpraševanju: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Največja dolžina mostov: {ORANGE}{STRING} plošč{P a i e ""}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Največja dolžina predorov: {ORANGE}{STRING} plošč{P a i e ""}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Največja dolžina mostov: {ORANGE}{STRING} polj{P e i a ""}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Največja dolžina predorov: {ORANGE}{STRING} polj{P e i a ""}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Glavni ročni način gradnje industrij: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :obetaven
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Izravnan teren okrog industrij: {ORANGE}{STRING} plošč{P a i e ""}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Izravnan teren okrog industrij: {ORANGE}{STRING} polj{P e i a ""}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dovoli več enakih industrij na mesto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikaz signalov na vozni smeri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikaz okna financ na koncu leta: {ORANGE}{STRING}
@@ -1338,7 +1338,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Debelin
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Največja oddaljenost od roba za naftne rafinerije: {ORANGE}{STRING} plošč{P a i e ""}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Največja oddaljenost od roba za naftne rafinerije: {ORANGE}{STRING} polj{P a i e ""}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nadmorska višina snežne odeje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Valovitost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Zelo zglajen
@@ -1445,7 +1445,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Začetn
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Omogoči gladko ekonomijo (več manjših sprememb): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Odstotek profita, ki se plača na prestopnih prevozih: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsak{P 0:1 o i e ih}: {ORANGE}{STRING} ploščic{P 0:1 o i e ""}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsak{P 0:1 o i a ih}: {ORANGE}{STRING} polj{P 0:1 e i a ""}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogoči vmesnik signalov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Privzet tip signalov za gradnjo: {ORANGE}{STRING}
@@ -2285,14 +2285,14 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zg
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izberi vrsto objekta za gradnjo
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} plošč
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} polj
 
 STR_OBJECT_CLASS_LTHS                                           :Svetilniki
 STR_OBJECT_CLASS_TRNS                                           :Oddajniki
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drevesa
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izberi vrsto drevesa za sajenje
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izberi vrsto drevesa za sajenje. Če polje že vsebuje drevesa, bodo dodatna drevesa mešanega tipa neodvisno od izbire
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drevesa naključne vrste
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Postavi drevesa naključne vrste. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Naključna drevesa
@@ -2580,7 +2580,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarja
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje kvadratkov
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje polj
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Poganjam skripto
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprave igre
 
@@ -2828,10 +2828,13 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brez -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji podjetja:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za pogled na industrijo/mesto/ploščo. Ctrl+Klik odpre novo okno na industrijo/mesto/ploščo
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za pogled na industrijo/mesto/polje. Ctrl+Klik odpre novo okno na industrijo/mesto/polje
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Vprašanje
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacije
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Opozorilo
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Napaka
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Prekliči
@@ -2965,8 +2968,8 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktura:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} kos{P "" a i ov} tirov
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} odsek{P "" a i ov} ceste
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} plošč{P a i e ""} vode
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} odsek{P "" a i ov} postaj
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} polj{P e i a ""} vode
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} polj{P e i a ""} postaj
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} letališč{P e i a ""}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Brez
 
@@ -3005,10 +3008,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Signali
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Odseki cest:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Cesta
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tramvaj
-STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Plošče vode:
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Polja vode:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanali
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Postaje:
-STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Odseki postaj
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Polja postaj
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letališča
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/leto ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/leto
@@ -3251,8 +3254,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Teža: {WEIGHT_SHORT}{}Hitrost: {VELOCITY}  Moč: {POWER}  Max. T.E.: {6:FORCE}{}Stroški: {4:CURRENCY_LONG}/yr{}Zmogljivost: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO_LONG}, {CARGO_LONG}{}Cena delovanja: {CURRENCY_LONG}/leto
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Max. hitrost: {VELOCITY}{}Zmogljivost: {CARGO_LONG}{}Cena delovanja: {CURRENCY_LONG}/leto
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} plošč{}Zmogljivost: {CARGO_LONG}, {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} plošč{}Zmogljivost: {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} polj{}Zmogljivost: {CARGO_LONG}, {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {7:COMMA} polj{}Zmogljivost: {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamenjaj {STRING}
@@ -3367,7 +3370,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} let{P o
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} let{P o i a ""} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} plošč
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Domet: {LTBLUE}{COMMA} polj
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Teža: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moč: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 

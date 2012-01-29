@@ -314,7 +314,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala:
 # These are used in buttons
 STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Rahvaarv
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nimi
-STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Daatum
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Kuupäev
 # These are used in dropdowns
 STR_SORT_BY_NAME                                                :Nimi
 STR_SORT_BY_PRODUCTION                                          :Toodang
@@ -366,10 +366,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Kuva ett
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Kuva nimekiri ettevõtte õhusõidukitest. Ctrl+klõpsu abil saab rühma või sõidukinimekirja vahel lülitada
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Suurenda vaadet
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Vähenda vaadet
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Ehita rööbasteed
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Ehita maanteid
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Ehita laevadokke
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Ehita lennuvälju
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Ehita raudtee
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Ehita maantee
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Ehita laevakai
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Ehita lennuväli
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näita heli/muusika akent
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, kuva teadete valikud
@@ -802,7 +802,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ettevõ
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Konkurentide poolt teenindavate tööstuste toodangumuutused
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Ülejäänud tööstuste toodangumuutused
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Teave ja nõuanded ettevõtte sõidukite kohta
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uus veerem
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Uued sõidukid
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Veoste vastuvõtutingimuste muutumine
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Toetused
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Üldine teave
@@ -992,7 +992,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itaalia
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaani
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Isesalvestus
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaatne salvestus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali automaatselt mängu salvestamise vahemik
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Väljas
@@ -2077,7 +2077,7 @@ STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Rippsild, terasest
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Raamistikuga, terasest
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ulgtugi, terasest
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsool, terasest
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Rippsild, betoonist
 STR_BRIDGE_NAME_WOODEN                                          :Puidust
 STR_BRIDGE_NAME_CONCRETE                                        :Betoonist
@@ -2088,11 +2088,11 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Torujas, siliko
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Sõiduteede ehitamine
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Trammiteede ehitamine
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ehita sõidutee blokk. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ehita sõidutee lõik. Ctrl vahetab tee ehitamise/eemaldamise vahel. Shift kuvab ehitamisehinna.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Ehita trammitee blokk. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Ehita autotee osa kasutades Autoroad režiimi. Ctrl valib tee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Ehita trammitee osa kasutades Autotram režiimi. Ctrl valib trammitee ehitamise/eemaldamise. Shift valib ehitamise/hinna kuvamise režiimi
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Depoo ehitamine (veovahendite ehitamiseks ja hooldamiseks). Shift valib ehitamise/hinna kuvamise režiimi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Depoo ehitamine (veovahendite ostmiseks ja hooldamiseks). Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks). Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Ehita bussijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Ehita reisitrammijaam. Ctrl võimaldab jaamasid ühendada. Shift valib ehitamise/hinna kuvamise režiimi
@@ -2717,6 +2717,10 @@ STR_GOALS_NONE                                                  :{ORANGE}- Mitte
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ettevõtte eesmärgid:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliki sihtmärgil et liikuda põhikuvas tööstuse/linna/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/linna/ruudu asukohas
 
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Toetused
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Pakutavad toetused teenusepakkumise eest:
@@ -3066,7 +3070,7 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Uus lenn
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Osta uus rongi veok
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Ehita uus mootorsõiduk
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Ehita uus laev
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Osta uus laev
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Ehita uus lennuk
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Klooni rong
@@ -3128,11 +3132,11 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Õhusõiduk
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali asendatav veduritüüp
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta veovahendite asendamist
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta veokite asendamist
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei asenda praegu
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ühtegi veovahendit pole valitud
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta veovahendite asendamine
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta veokite asendamine
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Asendamisel: {ORANGE}{STRING}
@@ -3311,7 +3315,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Sihtpunktide lõpp - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud sihtpunktide lõpp - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud käskluste lõpp - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Peatusteta
@@ -3323,8 +3327,8 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Valitud 
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laadi üks täis
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Võimalusel laadi
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Laadi kõik täis
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Laadi üks täis
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Täis laadida kogu laadung
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Täis laadida mistahes last
 STR_ORDER_DROP_NO_LOADING                                       :Mitte laadida
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Valitud sihtpunktis pealelaadimise protseduuri muutmine
 

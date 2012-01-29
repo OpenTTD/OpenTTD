@@ -328,6 +328,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}நி�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}நகரம் உருவாக்கு
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}தொழிற்சாலை உருவாக்கு
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}சாலை திருத்த வேலை
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}மரங்களை நடு. Shift toggles கட்டடம்/மொத்த செலவுகள்
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}தகவல் பலகை வை
 
 ############ range for SE file menu starts
@@ -341,6 +342,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்ட
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :கடின அமைப்புகள்
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :அமைப்புகள்
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / ஆட்ட அமைப்புகள்
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF அமைப்புகள்
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ஒளி அமைப்புகள்
@@ -2153,12 +2156,23 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}இந�
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :உயரமான அலுவலுக கட்டம்
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :அலுவலுக கட்டம்
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :ஹோட்டல்
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :சிலை
+STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :ஊற்று
 STR_TOWN_BUILDING_NAME_PARK_1                                   :பூங்கா
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :அலுவலுக கட்டம்
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :கடைகள் மற்றும் அலுவலகங்கள்
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :நவீன அலுவலக கட்டடம்
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :கிடங்கு
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :அலுவலுக கட்டம்
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :மைதானம்
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :பழைய வீடுகள்
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :குடிசைகள்
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :வீடுகள்
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :பிளாட்டுகள்
+STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :உயரமான அலுவலுக கட்டம்
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :கடைகள் மற்றும் அலுவலகங்கள்
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :கடைகள் மற்றும் அலுவலகங்கள்
 STR_TOWN_BUILDING_NAME_THEATER_1                                :திரையரங்கம்
@@ -2166,33 +2180,45 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :மைதான
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :அலுவலகங்கள்
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :வீடுகள்
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :சினிமா
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :வணிக மையம்
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :இக்லூ
 
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :நிலக்கரி சுரங்கம்
+STR_INDUSTRY_NAME_POWER_STATION                                 :மின் உற்பத்தி நிலையம்
 STR_INDUSTRY_NAME_FOREST                                        :காடு
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :எண்ணெய் சுத்திகரிப்பு நிலையம்
 STR_INDUSTRY_NAME_FACTORY                                       :தொழிற்சாலை
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :அச்சகம்
 STR_INDUSTRY_NAME_STEEL_MILL                                    :எஃகு மில்
 STR_INDUSTRY_NAME_FARM                                          :பண்ணை
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :செப்புத் தாது சுரங்கம்
 STR_INDUSTRY_NAME_OIL_WELLS                                     :எண்ணெய்க் கிணறுகள்
 STR_INDUSTRY_NAME_BANK                                          :வங்கி
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :உணவு பதப்படுத்தும் நிலையம்
 STR_INDUSTRY_NAME_PAPER_MILL                                    :காகித மில்
 STR_INDUSTRY_NAME_GOLD_MINE                                     :தங்கச் சுரங்கம்
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :வங்கி
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :வைரச் சுரங்கம்
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :இரும்புத் தாது சுரங்கம்
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :பழம் பயிரிடுதல்
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :ரப்பர் பயிரிடுதல்
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :நீர் உற்பத்தி
 STR_INDUSTRY_NAME_WATER_TOWER                                   :தண்ணீர்த் தொட்டி
 STR_INDUSTRY_NAME_FACTORY_2                                     :தொழிற்சாலை
 STR_INDUSTRY_NAME_FARM_2                                        :பண்ணை
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :மர மில்
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :பஞ்சு மிட்டாய் காடு
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :இனிப்பு தொழிற்சாலை
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :மின்கல பண்ணை
 STR_INDUSTRY_NAME_COLA_WELLS                                    :கோலா கிணறுகள்
 STR_INDUSTRY_NAME_TOY_SHOP                                      :விளையாட்டுப் பொருள் கடை
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :விளையாட்டுப் பொருள் தொழிற்சாலை
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :பிளாஸ்டிக் ஊற்றுகள்
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :குளிர்பான தொழிற்சாலை
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :குமிழி உற்பத்தி
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :மிட்டாய் சுரங்கம்
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :சர்க்கரை சுரங்கம்
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -2212,7 +2238,12 @@ STR_SV_STNAME_EAST                                              :{STRING} கி
 STR_SV_STNAME_WEST                                              :{STRING} மேற்கு
 STR_SV_STNAME_CENTRAL                                           :{STRING} நடு
 STR_SV_STNAME_TRANSFER                                          :{STRING} மாற்றல்
+STR_SV_STNAME_HALT                                              :{STRING} நிறுத்தம்
+STR_SV_STNAME_VALLEY                                            :{STRING} பள்ளத்தாக்கு
+STR_SV_STNAME_HEIGHTS                                           :{STRING} உயரங்கள்
 STR_SV_STNAME_WOODS                                             :{STRING} காடு
+STR_SV_STNAME_LAKESIDE                                          :{STRING} ஏரிக்கரை
+STR_SV_STNAME_EXCHANGE                                          :{STRING} பரிமாற்றம்
 STR_SV_STNAME_AIRPORT                                           :{STRING} விமான நிலையம்
 STR_SV_STNAME_OILFIELD                                          :{STRING} எண்ணெய் வயல்
 STR_SV_STNAME_MINES                                             :{STRING} சுரங்கங்கள்
@@ -2220,9 +2251,12 @@ STR_SV_STNAME_DOCKS                                             :{STRING} து
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_ANNEXE                                            :{STRING} இணைப்பு
+STR_SV_STNAME_SIDINGS                                           :{STRING} சைடிங்குகள்
 STR_SV_STNAME_BRANCH                                            :{STRING} பிரிவு
 STR_SV_STNAME_UPPER                                             :மேல் {STRING}
 STR_SV_STNAME_LOWER                                             :கீழ் {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} ஹெலிபோர்ட்
 STR_SV_STNAME_FOREST                                            :{STRING} காடு
 STR_SV_STNAME_FALLBACK                                          :{STRING} நிலையம் #{NUM}
 ############ end of savegame specific region!
@@ -2275,13 +2309,17 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :பழ பெ�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :ரப்பர் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :சர்க்கரை பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :பஞ்சு மிட்டாய் பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :மிட்டாய் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :குமிழிகள் பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :கோலா பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :இனிப்புப் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :விளையாட்டுப் பொருள் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :மின்கல பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :குளிர்பான பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :பிளாஸ்டிக் பெட்டி
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (மின்சார)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'மில்லேனியம் Z1' (மின்சார)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :வீஸவொவ் Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :பயணிகள் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :அஞ்சல் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :நிலக்கரி பெட்டி
@@ -2301,10 +2339,19 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :பழ வா�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :ரப்பர் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :சர்க்கரைப் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :பஞ்சு மிட்டாய் பெட்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :மிட்டாய் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :குமிழி வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :கோலா பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :இனிப்பு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :விளையாட்டுப்பொருள் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :மின்கல வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :குளிர்பான வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :பிளாஸ்டிக் பெட்டி
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :நிலை1 'லெவியாதன்' (மின்சார)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :நிலை2 'சைக்கலாப்ஸ்' (மின்சார)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :நிலை3 'பெகசஸ்' (மின்சார)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :நிலை4 'கைமேரா' (மின்சார)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :வீஸவொவ் ராக்கெட்டீயர்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :பயணிகள் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :அஞ்சல் வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :நிலக்கரி வண்டி
@@ -2324,10 +2371,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :பழ வண�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :ரப்பர் வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :சர்க்கரை வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :பஞ்சு மிட்டாய் வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :மிட்டாய் பெட்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :குமிழி வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :கோலா வண்டி
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :இனிப்பு வாகனம்
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :விளையாட்டுப்பொருள் வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :மின்கல வண்டி
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :குளிர்பான வாகனம்
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :பிளாஸ்டிக் லாரி
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS ரீகல் பேருந்து
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :ஹியர்போர்ட் லியோபார்ட் பேருந்து

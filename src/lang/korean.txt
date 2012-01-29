@@ -1124,7 +1124,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}자동�
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차를 위한 경사면의 경사도: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}자동차를 위한 경사면의 경사도 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않거나 방향이 달라도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션(화폐가치하락) 켬: {ORANGE}{STRING}
@@ -1158,8 +1158,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}도시 소유의 도로 위에 버스 정류장 건설 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}경쟁자가 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}경쟁자 소유의 도로 위에 버스 정류장 건설 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}역 바로 옆에 역의 건설을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}여러 개의 NewGRF 엔진 세트를 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 차량이 존재하면 이 설정을 변경하실 수 없습니다.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}기반시설 유지비: {ORANGE}{STRING}
@@ -1175,7 +1175,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}차량�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}자동 교체를 위한 자동 교체 최소 요구 자금: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}차량 자동교체시 최소 추가요구 자금: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시: {ORANGE}{STRING}초 동안
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}오른쪽 클릭으로 바로
@@ -1249,9 +1249,9 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}열차 시간표의 1일을 74틱으로 바꿔 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}시간표에서 출발일과 도착일 표시: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}빠른 행선지 설정: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}행선지 설정 후 계속해서 행선지 지정: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/불러온 후): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :최신 기술의 철도
@@ -1271,8 +1271,8 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}컴퓨�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}스크립트가 일시 중지되기 전의 #opcodes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 컴퓨터 플레이어의 참여를 허용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}스크립트가 일시 중지되기 전의 #opcodes (멀티플레이시 느려지면 값을 낮추십시오): {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}시작 
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제(더욱 작은 변화) 옵션 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}다른 회사의 지분을 사는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}공장에 원자재투입시 생산되는 물품의 무게 비율: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호기를 매 {ORANGE}{STRING}타일마다 설치
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}신호기 드래그로 설치시 {ORANGE}{STRING}타일 간격으로 설치
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용: {ORANGE}{STRING}년 이후에
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 설치시 신호기 선택 창을 띄움: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
@@ -1343,7 +1343,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :느림
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :보통
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :빠름
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :매우 빠름
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}대도시가 되는 도시의 비율: {ORANGE}1 대 {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}대도시가 되는 도시의 비율: {ORANGE}{STRING}개 중에 1개
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}대도시가 되는 도시의 비율: {ORANGE}없음
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기의 도시 크기 배수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}도로 건설 중 부조리한 도로 요소를 제거: {ORANGE}{STRING}
@@ -2131,7 +2131,7 @@ STR_OBJECT_CLASS_TRNS                                           :송신기
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심을 나무의 종류 선택
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심고싶은 나무의 종류를 선택합니다. 이미 나무가 심어져있는 경우에는 선택한 나무의 크기를 키웁니다.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}무작위 나무
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. SHIFT를 누르고 나무를 심으면 예상 가격을 볼 수 있습니다.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
@@ -3063,7 +3063,7 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY}{}수송량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격: {CURRENCY_LONG} 최고속력: {VELOCITY} 항속거리: {7:COMMA} 칸{}수용량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {7:COMMA} 칸{}수용량: {CARGO_LONG}, {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {7:COMMA} 칸{}수용량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 
 # Autoreplace window

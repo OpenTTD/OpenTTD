@@ -383,7 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
-STR_SUBSIDIES_MENU_GOAL                                         :Objetivos atuais
+STR_SUBSIDIES_MENU_GOAL                                         :Objetivos actuais
 ############ range ends here
 
 ############ range for graph menu starts
@@ -447,8 +447,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA/Scripts de Jogo
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura com ampliação máxima
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura com ampliação normal
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura com resolução máxima
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura com resolução normal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
@@ -1297,12 +1297,12 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arra
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Usar automaticamente sinais clássicos antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de farol padrão para construir: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Faróis de obstrução
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Faróis de rota
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Faróis para rota de mão única
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Sinais de bloqueio
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Sinais de rota
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sinais de sentido único
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Trocar tipos de faróis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Apenas faróis de obstrução
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Apenas faróis de rota
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Apenas sinais de bloqueio
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Apenas sinais de rota
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Disposição de estradas para novas cidades: {ORANGE}{STRING}
@@ -1823,6 +1823,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava a enviar demasiados comandos
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :não foi recebida palavra-chave a tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :demasiado tempo (geral)
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :demorou demasiado a transferir o mapa
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :demorou demasiado a processar o mapa
 ############ End of leave-in-this-order
@@ -2139,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar. Se o quadrado já tiver uma árvore, serão adicionadas mais árvores de difrentes tipos independentemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árvores de tipo aleatório. Shift alterna contruir/mostrar custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
@@ -2253,13 +2254,28 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} linha 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} linha com sinais de saída
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} linha com sinais combinados
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} linha com sinais de caminho
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} linha com sinais de caminho unico
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} linha com sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} linha com bloqueio e pré-sinais
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} linha com bloqueio e sinais de saida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} linha com bloqueio e sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} linha com bloqueio e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} linha com bloqueio e sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} linha com pré-sinais e sinais de saida
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} linha com pré-sinais e sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} linha com pré-sinais e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} linha com pré-sinais e sinais de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} linha com sinais de saida e sinais combinados
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} linha com sinais de saida e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} linha com sinais de saida e de sentido único
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} linha com sinais combinados e sinais de rota
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} linha com sinais combinados e sentido unico
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} linha com sinais de rota e de sentido unico
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} depósito de comboios
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada com iluminação
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Estrada com árvores
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de veículos de estrada
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Depósito de veículos rodoviários
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Passagem de nível
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Linha de eléctrico
 
@@ -2289,7 +2305,7 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Depósito naval
 # Industries come directly from their industry names
 
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferroviário
-STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de estrada
+STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel rodoviário
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ponte ferroviária suspensa em aço
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ponte ferroviária com vigas em aço
@@ -2297,21 +2313,21 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ponte ferroviá
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Ponte ferroviária suspensa de betão reforçado
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Ponte ferroviária de madeira
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Ponte ferroviária de betão
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ponte de estrada tubular
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Ponte rodoviária tubular
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte de estrada suspensa em aço
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte de estrada com vigas em aço
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ponte de estrada cantilever em aço
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Ponte de estrada suspensa de betão reforçado
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ponte de estrada de madeira
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Ponte de estrada de betão
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Ponte de estrada tubular
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ponte rodoviária suspensa em aço
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ponte rodoviária com vigas em aço
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ponte rodoviária cantilever em aço
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Ponte rodoviária suspensa de betão reforçado
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Ponte rodoviária de madeira
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Ponte rodoviária de betão
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Ponte rodoviária tubular
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aqueduto
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmissor
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Farol
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sede de Empresa
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sede de empresa
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreno propriedade de uma empresa
 
 # About OpenTTD window
@@ -2359,16 +2375,16 @@ STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Clique p
 STR_MAPGEN_RANDOM                                               :{BLACK}Gerar aleatório
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Mudar a semente aleatória para a criação do terreno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Criação do terreno:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Colocação de árvores:
+STR_MAPGEN_TREE_PLACER                                          :{BLACK}Alg. de colocação de árvores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Suavidade:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variedade da distribuição:
-STR_MAPGEN_GENERATE                                             :{WHITE}Criar
+STR_MAPGEN_GENERATE                                             :{WHITE}Gerar
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Cantos do mapa:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Limites do mapa:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Noroeste
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Nordeste
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sudeste
@@ -2379,7 +2395,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleatór
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleatório
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação mapa alt.:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação mapa de alt.:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome mapa de alt.:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
@@ -2526,8 +2542,11 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ficheiro GRF co
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como NewGRF estático com {STRING} pode causar dessincronização.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inválido (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Action 0 desconhecida {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID Inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8 - (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura além dos limites do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem objectos gráficos em falta.{}Por favor faça a sua actualização.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF pedidos não disponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desactivado por {STRING}
@@ -2701,7 +2720,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nenhuma -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todas as acções
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todas as instalações
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar todos os tipos de carga (incluindo carga sem espera)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Nenhuma carga em espera
 
@@ -2762,7 +2781,7 @@ STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Circulaç
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Circulação de Barcos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manutenção de Propriedades
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Lucros dos Comboios
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Lucros dos V. de Estrada
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Lucros dos V. Rodoviários
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Lucros das Aeronaves
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Lucros dos Barcos
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Juros do Empréstimo
@@ -2774,7 +2793,7 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanço
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Empréstimo
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Empréstimo Máximo: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir emprestado {CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Pedir empréstimo {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Aumentar empréstimo. Ctrl+Clique aumenta tanto empréstimo quanto possível
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Pagar empréstimo {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Pagar parte do empréstimo. Ctrl+Clique paga tanto empréstimo quanto possível
@@ -2788,7 +2807,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurad
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} comboio{P "" s}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} veículo{P "" s} de estrada
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} veículo{P "" s} rodoviário{P "" s}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronave{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} barco{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
@@ -2817,13 +2836,13 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Cores
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Alterar cores dos veículos
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Empresa
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Alterar nome da empresa
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nome do Presidente
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar nome do presidente
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar 25% de acções
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% de acções
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar 25% das acções
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% das acções
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% das acções nesta empresa. Shift+Clique mostra valor estimado sem comprar nenhuma acção
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem vender nenhuma acção
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% das acções nesta empresa. Shift+Clique mostra valor estimado sem vender nenhuma acção
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
@@ -2836,7 +2855,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Peças de
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Sinais
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Peças de estrada:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Estrada
-STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Caminho de elétrico
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Via para elétricos
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Quadrados de água:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canais
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estações:
@@ -2878,12 +2897,12 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mudar o 
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Comboio{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Veículo{P "" s} de Estrada
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Veículo{P "" s} Rodoviário{P "" s}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Barco{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave{P "" s}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Comboios - clique num comboio para informações
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Veículos de estrada - clique num veículo para informações
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Veículos rodoviários - clique num veículo para informações
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Barcos - clique num barco para informações
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronaves - clique numa aeronave para informações
 
@@ -2912,12 +2931,12 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens p
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Todos os Comboios
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Todos os veículos de estrada
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Todos os veículos rodoviários
 STR_GROUP_ALL_SHIPS                                             :Todos os barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
 
 STR_GROUP_DEFAULT_TRAINS                                        :Comboios sem grupo
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Veículos sem grupo
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Veículos rodoviários sem grupo
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sem grupo
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem grupo
 
@@ -2939,7 +2958,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Veículos
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Veículos Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Novos Veículos Sobre Carris
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Veículos de Estrada
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Veículos Rodoviários
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos Barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
 
@@ -2958,14 +2977,14 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY_LONG}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões Motorizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reconvertível em: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reconvertível para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. Força de Tracção: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de veículos de estrada - clique num veículo para informações
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de veículos rodoviários - clique num veículo para informações
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de barcos - clique num barco para informações
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de aeronaves - clique na aeronave para informações
 
@@ -2975,7 +2994,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo de estrada seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo rodoviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar barco seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave seleccionada. Shift+Clique mostra estimativa de custo, sem comprar
 
@@ -2985,12 +3004,12 @@ STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Renomear
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Renomear
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renomear tipo de veículo ferroviário
-STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renomear tipo de veículo de estrada
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renomear tipo de veículo rodoviário
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renomear tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renomear tipo de aeronave
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renomear tipo de veículo ferroviário
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomear tipo de veículo de estrada
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renomear tipo de veículo rodoviário
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renomear tipo de barco
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renomear tipo de aeronave
 
@@ -3011,7 +3030,7 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos -
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - faça clique direito na aeronave para informações
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arraste o veículo ferroviário para aqui para o vender
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste o veículo de estrada para aqui para o vender
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arraste o veículo rodoviário para aqui para o vender
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arraste o barco para aqui para o vender
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arraste a aeronave para aqui para a vender
 
@@ -3023,7 +3042,7 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender t
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender todas as aeronaves no hangar
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autosubstituir todos os comboios no depósito
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubstituir todos os veículos de estrada no depósito
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubstituir todos os veículos rodoviários no depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autosubstituir todos os barcos no depósito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstituir todas as aeronaves no hangar
 
@@ -3033,7 +3052,7 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Novos Ba
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nova Aeronave
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar novo veículo ferroviário
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar novo veículo de estrada
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar novo veículo rodoviário
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar novo barco
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar nova aeronave
 
@@ -3043,7 +3062,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar B
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo rodoviário. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora de um depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um barco. Clique neste botão e, de seguida, num barco que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
@@ -3073,7 +3092,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está p
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem de um fabricante de veículos
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projectámos um novo modelo de {STRING} - gostaria de ter um ano de exclusividade de uso deste veículo, de modo a que possamos avaliar o seu desempenho antes de o disponibilizar globalmente?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo de estrada
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :veículo rodoviário
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
 STR_ENGINE_PREVIEW_SHIP                                         :barco
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monocarril
@@ -3089,7 +3108,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Preço: 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Comboio
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Veículo de estrada
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Veículo rodoviário
 STR_REPLACE_VEHICLE_SHIP                                        :Barco
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronave
 
@@ -3152,7 +3171,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Mostrar 
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Mostrar ordens da aeronave. Ctrl+Clique para mostrar o horário da aeronave
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Mostrar detalhes do comboio
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostrar detalhes do veículo de estrada
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostrar detalhes do veículo rodoviário
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostrar detalhes do barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostrar detalhes da aeronave
 
@@ -3189,7 +3208,7 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nome
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Renomear comboio
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear veículo de estrada
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renomear veículo rodoviário
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Renomear barco
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear aeronave
 
@@ -3220,7 +3239,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuir intervalo de serviço por 10. Ctrl+Clique diminui o intervalo de serviço por 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renomear comboio
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear veículo de estrada
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renomear veículo rodoviário
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Renomear barco
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renomear aeronave
 
@@ -3321,7 +3340,7 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentagem de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidade
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máximo
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
 STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
@@ -3591,7 +3610,7 @@ STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}O jogo f
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geração de mapa abortada...{}... não há locais apropriados para cidades
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe nenhuma cidade neste cenário
 
-STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem de PNG...
+STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem do PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ficheiro não encontrado
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem. Necessário PNG de 8 ou 24 bits.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa correu mal (provavelmente um ficheiro corrompido)
@@ -3609,15 +3628,15 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Só foi 
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de ecrã gravada para o disco como '{STRING}' com sucesso
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Captura de ecrã falhada!
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A captura de ecrã falhou!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Mensagem
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Mensagem de {STRING}
 
 # Generic construction errors
-STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora da borda do mapa
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto da borda do mapa
+STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Fora dos limites do mapa
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Muito perto dos limites do mapa
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Dinheiro insuficiente - necessário {CURRENCY_LONG}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}É necessário terreno plano
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Terreno inclinado na direcção incorrecta
@@ -3635,7 +3654,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não permitido durante pausa
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autoriza
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autorizou
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} a autoridade local recusa permitir que outro aeroporto seja construído nesta cidade
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} a autoridade local não permite a construção do aeroporto devido à poluição sonora
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}A sua tentativa de suborno foi descoberta por um investigador regional
@@ -3645,8 +3664,8 @@ STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Não é 
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Não é possível baixar terreno aqui...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Não é possível nivelar o terreno aqui...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A escavação estragaria o túnel
-STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Já está ao nível do mar
-STR_ERROR_TOO_HIGH                                              :{WHITE}Demasiado alto
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... já está ao nível do mar
+STR_ERROR_TOO_HIGH                                              :{WHITE}... demasiado alto
 STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... já plano
 
 # Company related errors
@@ -3661,8 +3680,8 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Não é 
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Não é possível ceder capital proveniente de empréstimo bancário...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Não é possível comprar empresa...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Não é possível construir sede da empresa...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Não é possível comprar 25% de acções nesta empresa...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Não é possível vender 25% de acções nesta empresa...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Não é possível comprar 25% das acções nesta empresa...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Não é possível vender 25% das acções nesta empresa...
 STR_ERROR_PROTECTED                                             :{WHITE}Esta empresa ainda não troca acções...
 
 # Town related errors
@@ -3670,7 +3689,7 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Não é 
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Não é possível renomear cidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Não é possível construir uma cidade aqui...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Não é possível expandir cidade...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto do limite do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas cidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não existe mais espaço no mapa
@@ -3802,7 +3821,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Não é 
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Deverá remover a estrada primeiro
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... estradas de um sentido não podem ter junções
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... estradas de sentido único não podem ter junções
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Não é possível construir estrada aqui...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Não é possível construir carris para eléctricos neste local...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Não é possível remover estrada daqui...
@@ -3895,12 +3914,12 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Não é 
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Não é possível comprar aeronave...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Não é possível renomear tipo de veículo ferroviário...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Não é possível renomear tipo de veículo de estrada...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Não é possível renomear tipo de veículo rodoviário...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Não é possível renomear tipo de barco...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Não é possível renomear tipo de aeronave...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Não é possível vender veículo ferroviário...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Não é possível vender veículo de estrada...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Não é possível vender veículo rodoviário...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Não é possível vender barco...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Não é possível vender aeronave...
 
@@ -3974,7 +3993,7 @@ STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Edifício de es
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Armazém
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Edifício de escritórios
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estádio
-STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas velhas
+STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas antigas
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casas de campo
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
@@ -4038,7 +4057,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de A�
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sem nome
 STR_SV_TRAIN_NAME                                               :Comboio {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Veículo de Estrada {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Veículo Rodoviário {COMMA}
 STR_SV_SHIP_NAME                                                :Barco {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 

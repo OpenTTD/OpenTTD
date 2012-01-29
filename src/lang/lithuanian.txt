@@ -907,7 +907,7 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} sustojo nes nepavyko nurodytas remontas
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Nepavyko atnaujinti {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Naujų{STRING} nėra!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Naujas {STRING} jau yra prieinamas visiems!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Naujas{STRING} -  {ENGINE}
 
@@ -3148,12 +3148,13 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikr
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Automobilių gamintojo žinutė
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonęm, kol dar nepradėta jos serijinė gamyba?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.kas                             :automobilis
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
+STR_ENGINE_PREVIEW_AIRCRAFT.ka                                  :lėktuvą
 STR_ENGINE_PREVIEW_SHIP                                         :laivas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbegis lokomotyvas
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :„Maglev“ lokomotyvas
