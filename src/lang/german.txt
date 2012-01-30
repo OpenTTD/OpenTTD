@@ -1416,7 +1416,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Ein neue
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ein gespeichertes Spiel laden
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Ein neues Spiel mit Reliefkarte als Landschaft starten
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starte ein neues Spiel basierend auf einem Szenario
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Spielwelt / eigenes Szenario erstellen
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Eine eigene Karte oder Szenario erstellen
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mehrspieler-Spiel beginnen
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Landschaft mit gemäßigtem Klima auswählen
@@ -3521,7 +3521,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Überprüfe die Aufzeichnungen des Skripts
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder ein Skript ist abgestürzt. Es wäre nett, den Fehler dem Autor der KI oder des Skripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD- Version und der KI- bzw. Skript-Versionsnummer zu melden
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs oder ein Skript ist abgestürzt. Der Fehler sollte dem Autor der KI oder des Skripts mittels eines Screenshots vom Debug-Fenster unter Angabe der OpenTTD- Version und der KI- bzw. Skript-Versionsnummer gemeldet werden.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debugfenster für KI oder Skripte ist nur auf dem Server verfügbar
 
 # AI configuration window

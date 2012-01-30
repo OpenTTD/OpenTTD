@@ -2167,7 +2167,7 @@ STR_OBJECT_CLASS_TRNS                                           :Trasmettitori
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Alberi
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare. Se nel riquadro sono già presenti alberi, ne aggiunge altri di vari tipi, indipendentemente dal tipo selezionato
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Alberi casuali
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Pianta alberi di specie a caso. MAIUSC alterna fra costruzione e stima dei costi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Alberi casuali

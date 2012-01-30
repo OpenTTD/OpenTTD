@@ -3147,24 +3147,57 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Spragtel
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikrai norite parduoti visas tr. priemones esančias šiame depe?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Automobilių gamintojo žinutė
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Žinutė nuo transporto priemonių gamintojo
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kas                      :lokomotyvas
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ko                       :lokomotyvo
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kam                      :lokomotyvui
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ka                       :lokomotyvą
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kuo                      :lokomotyvu
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kur                      :lokomotyve
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.kas                             :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.ko                              :automobilio
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kam                             :automobiliui
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kuo                             :automobiliu
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.kur                             :automobilyje
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
+STR_ENGINE_PREVIEW_AIRCRAFT.kas                                 :lėktuvas
+STR_ENGINE_PREVIEW_AIRCRAFT.ko                                  :lėktuvo
+STR_ENGINE_PREVIEW_AIRCRAFT.kam                                 :lėktuvui
 STR_ENGINE_PREVIEW_AIRCRAFT.ka                                  :lėktuvą
+STR_ENGINE_PREVIEW_AIRCRAFT.kuo                                 :lėktuvu
+STR_ENGINE_PREVIEW_AIRCRAFT.kur                                 :lėktuve
 STR_ENGINE_PREVIEW_SHIP                                         :laivas
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbegis lokomotyvas
+STR_ENGINE_PREVIEW_SHIP.kas                                     :laivas
+STR_ENGINE_PREVIEW_SHIP.ko                                      :laivo
+STR_ENGINE_PREVIEW_SHIP.kam                                     :laivui
+STR_ENGINE_PREVIEW_SHIP.ka                                      :laivą
+STR_ENGINE_PREVIEW_SHIP.kuo                                     :laivu
+STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbėgis lokomotyvas
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kas                      :vienbėgis lokomotyvas
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.ko                       :vienbėgio lokomotyvo
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kam                      :vienbėgiui lokomotyvui
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.ka                       :vienbėgį lokomotyvą
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kuo                      :vienbėgiu lokomotyvu
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kur                      :vienbėgiame lokomotyve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :„Maglev“ lokomotyvas
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kas                        :„Maglev“ lokomotyvas
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.ko                         :„Maglev“ lokomotyvo
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kam                        :„Maglev“ lokomotyvui
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.ka                         :„Maglev“ lokomotyvą
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kuo                        :„Maglev“ lokomotyvu
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.kur                        :„Maglev“ lokomotyve
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY_LONG}/metus{}Talpa: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/metams{}Talpa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY_LONG}/yr{}Talpa: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kaina: {CURRENCY_LONG} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Važiavimo kaina: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kaina: {CURRENCY_LONG} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}{}Važiavimo kaina: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/m
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/m
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY}{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/metams
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kaina: {CURRENCY_LONG} Didž. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/metams
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG}/metams
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
@@ -4125,32 +4158,32 @@ STR_SV_SHIP_NAME                                                :Laivas {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Lėktuvas {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} Šiaurė
-STR_SV_STNAME_SOUTH                                             :{STRING} Pietūs
-STR_SV_STNAME_EAST                                              :{STRING} Rytai
-STR_SV_STNAME_WEST                                              :{STRING} Vakarai
-STR_SV_STNAME_CENTRAL                                           :{STRING} Centrinė
-STR_SV_STNAME_TRANSFER                                          :{STRING} Perdavimas
-STR_SV_STNAME_HALT                                              :{STRING} Galine
-STR_SV_STNAME_VALLEY                                            :{STRING} Slenio
-STR_SV_STNAME_HEIGHTS                                           :{STRING} Aukštumų
-STR_SV_STNAME_WOODS                                             :{STRING} Giria
-STR_SV_STNAME_LAKESIDE                                          :{STRING} Ežero
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Pusiaukelė
+STR_SV_STNAME_NORTH                                             :{STRING} šiaurinė
+STR_SV_STNAME_SOUTH                                             :{STRING} pietinė
+STR_SV_STNAME_EAST                                              :{STRING} rytinė
+STR_SV_STNAME_WEST                                              :{STRING} vakarinė
+STR_SV_STNAME_CENTRAL                                           :{STRING} centrinė
+STR_SV_STNAME_TRANSFER                                          :{STRING} perdavimo
+STR_SV_STNAME_HALT                                              :{STRING} galinė
+STR_SV_STNAME_VALLEY                                            :{STRING} slėnio
+STR_SV_STNAME_HEIGHTS                                           :{STRING} aukštumų
+STR_SV_STNAME_WOODS                                             :{STRING} giria
+STR_SV_STNAME_LAKESIDE                                          :{STRING} ežero
+STR_SV_STNAME_EXCHANGE                                          :{STRING} pusiaukelės
 STR_SV_STNAME_AIRPORT                                           :{STRING} oro uostas
-STR_SV_STNAME_OILFIELD                                          :{STRING} Naftos Platforma
-STR_SV_STNAME_MINES                                             :{STRING} Kasyklos
-STR_SV_STNAME_DOCKS                                             :{STRING} Dokai
+STR_SV_STNAME_OILFIELD                                          :{STRING} naftos platforma
+STR_SV_STNAME_MINES                                             :{STRING} kasyklos
+STR_SV_STNAME_DOCKS                                             :{STRING} dokai
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Kreivoji
-STR_SV_STNAME_SIDINGS                                           :{STRING} Apylanka
-STR_SV_STNAME_BRANCH                                            :{STRING} Atsaka
+STR_SV_STNAME_ANNEXE                                            :{STRING} kreivoji
+STR_SV_STNAME_SIDINGS                                           :{STRING} apylanka
+STR_SV_STNAME_BRANCH                                            :{STRING} atšaka
 STR_SV_STNAME_UPPER                                             :Aukštutinė {STRING}
 STR_SV_STNAME_LOWER                                             :Žemutinė {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Sraigtasparniu Aikstele
-STR_SV_STNAME_FOREST                                            :{STRING} Miškas
+STR_SV_STNAME_HELIPORT                                          :{STRING} sraigtasparnių aikštelė
+STR_SV_STNAME_FOREST                                            :{STRING} miškas
 STR_SV_STNAME_FALLBACK                                          :{STRING} Stotelė #{NUM}
 ############ end of savegame specific region!
 

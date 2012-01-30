@@ -422,7 +422,7 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construction de
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construction d'aéroport
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construction d'aéroports
 ############ range ends here
 
 ############ range for landscaping menu starts
@@ -855,9 +855,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copier vers la vue
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copier l'emplacement de la vue principale vers cette vue
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copier l'emplacement de la vue principale vers cette vue-ci
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Coller depuis la vue
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Coller l'emplacement de cette vue vers la vue principale
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Coller l'emplacement de cette vue-ci vers la vue principale
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Options
@@ -1484,7 +1484,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer 
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case pour en intervertir l'utilisation
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
 
 STR_LIVERY_DEFAULT                                              :Livrée standard
 STR_LIVERY_STEAM                                                :Locomotive à vapeur
@@ -1929,15 +1929,15 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, qui
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires. Ctrl-clic pour verrouiller
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour verrouiller
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparence des éléments constructibles tels que stations, dépôts et points de contrôle.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparence des ponts.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparence des structures telles que phares et antennes.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparence des caténaires.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparence des indicateurs de chargement.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Alterner entre transparence et invisibilité des objets
 
 # Base for station construction window(s)
@@ -1966,7 +1966,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construire les rails avec le mode Auto-rail.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construire un dépôt ferroviaire (pour acheter et entretenir des trains).{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Construire un point de contrôle sur les rails.{}Ctrl pour joindre des points de contrôle entre eux.{}Shift pour afficher seulement le coût estimé.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare.{}Ctrl pour joindre des stations.{}Shift pour afficher seulement le coût estimé.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construire une gare.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construire des signaux.{}Ctrl pour inverser le type des signaux (sémaphore/lumineux).{}Faire glisser pour construire le long d'une section de voie linéaire.{}Ctrl-glisser pour construire des signaux jusqu'à la prochaine jonction.{}Ctrl-clic pour inverser le mode d'ouverture de la fenêtre de sélection des signaux.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construire un pont ferroviaire.{}Shift pour afficher seulement le coût estimé.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construire un tunnel ferroviaire.{}Shift pour afficher seulement le coût estimé.
@@ -2116,7 +2116,7 @@ STR_AIRPORT_HELISTATION                                         :Hélistation
 
 STR_AIRPORT_CLASS_SMALL                                         :Petits aéroports
 STR_AIRPORT_CLASS_LARGE                                         :Grands aéroports
-STR_AIRPORT_CLASS_HUB                                           :Aéroports Internationaux
+STR_AIRPORT_CLASS_HUB                                           :Aéroports internationaux
 STR_AIRPORT_CLASS_HELIPORTS                                     :Héliports
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Bruit généré{NBSP}: {GOLD}{COMMA}
@@ -2378,7 +2378,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Généra
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ajout des arbres{NBSP}:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Niveau de la mer{NBSP}:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivières{NBSP}:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nb. de rivières{NBSP}:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Lissage{NBSP}:
 STR_MAPGEN_VARIETY                                              :{BLACK}Variété de distribution{NBSP}:
 STR_MAPGEN_GENERATE                                             :{WHITE}Créer
@@ -2715,7 +2715,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - cliquer sur un nom pour centrer la vue principale sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Maintenir Ctrl pour sélectionner plus d'un élément
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl-clic pour sélectionner plus d'un élément
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 1 "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2962,21 +2962,21 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhic
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nouveaux navires
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel Aéronef
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}{BLACK} Puissance{NBSP}: {GOLD}{POWER}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}{BLACK} − Puissance{NBSP}: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Vitesse sur canal/fleuve: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/an
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coûts d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK} − Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} Vitesse{NBSP}: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Vitesse{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons motorisés{NBSP}: {GOLD}+{POWER}{BLACK} Poids{NBSP}: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons motorisés{NBSP}: {GOLD}+{POWER}{BLACK} − Poids{NBSP}: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour{NBSP}: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}

@@ -1041,7 +1041,7 @@ STR_NUM_VERY_LOW                                                :Ļoti zems
 STR_NUM_LOW                                                     :Zems
 STR_NUM_NORMAL                                                  :Normāls
 STR_NUM_HIGH                                                    :Augsts
-STR_NUM_CUSTOM                                                  :Pielāgotie
+STR_NUM_CUSTOM                                                  :Pielāgots
 STR_NUM_CUSTOM_NUMBER                                           :Pielāgots ({NUM})
 
 STR_VARIETY_NONE                                                :Nav

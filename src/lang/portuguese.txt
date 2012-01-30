@@ -305,7 +305,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabela de classificação de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiar a construção de uma nova indústria
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de comboios da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de veículos de estrada da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de veículos rodoviários da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves da empresa. Ctrl+Clique alterna entre abrir a lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ampliar
@@ -579,7 +579,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Empréstimo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que lucraram no último ano. Isto inclui veículos de estrada, comboios, barcos e aeronaves.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que lucraram no último ano. Isto inclui veículos rodoviários, comboios, barcos e aeronaves.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de segmentos de estação recentemente atendidos. Cada parte de uma estação (ex. estação ferroviária, paragem de autocarro, aeroporto) é contabilizada, mesmo se estiverem ligadas como uma só.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o rendimento menor (só são considerados veículos com mais de 2 anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no mês com os lucros mais baixos dos últimos 12 trimestres
@@ -677,7 +677,7 @@ STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Edifícios/Indústrias
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Veículos
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Comboios
-STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Veículos de Estrada
+STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Veículos Rodoviários
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Barcos
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aeronaves
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Rotas de Transporte
@@ -763,13 +763,13 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Acidente de Comboios!{}{COMMA} mortem numa explosão após a colisão!
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio!
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário!{}Condutor morre na explosão após a colisão com um comboio!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Acidente com Veículo Rodoviário{}{COMMA} morrem na explosão após a colisão com um comboio!
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Acidente de Aeronave!{}{COMMA} morrem na explosão em {STATION}!
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Acidente de Aeronave!{}Avião ficou sem combustível, {COMMA} morrem no incêndio!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Acidente de Zepelim em {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo de Estrada destruído em colisão com OVNI!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Veículo rodoviário destruído em colisão com OVNI!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Explosão da Refinaria de Petróleo em {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fábrica destruída em circunstâncias suspeitas em {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}OVNI pousa em {TOWN}!
@@ -905,7 +905,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Métrico
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistema Internacional
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veículos de estrada
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veículos rodoviários
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Seleccione o lado da estrada por onde os veículos circulam
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Circular pela esquerda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Circular pela direita
@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprimento máximo de comboios: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumo/faíscas de veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos de estrada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos rodoviários: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declive das inclinações para v. de estrada: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos fazer curvas de 90º: {ORANGE}{STRING}
@@ -1145,7 +1145,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Ordens 
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de veículos rodoviários (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar exclusivo dos direitos de transportes: {ORANGE}{STRING}
@@ -1263,12 +1263,12 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Desativar construção de infra-estrutura quando não estão disponíveis veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por empresa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de veículos de estrada por empresa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de veículos rodoviários por empresa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por empresa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máximo de barcos por empresa: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactivar comboios para o computador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactivar veículos de estrada para o computador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactivar veículos rodoviários para o computador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactivar aeronaves para o computador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para o computador: {ORANGE}{STRING}
 
@@ -1373,7 +1373,7 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encaminhar comboios: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Sistema de encaminhar veículos de estrada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Sistema de encaminhar veículos rodoviários: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema de encaminhar barcos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Inversão automática nos sinais: {ORANGE}{STRING}
 
@@ -1479,7 +1479,7 @@ STR_LIVERY_CAPTION                                              :{WHITE}Novo Esq
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Exibir esquema de cores geral
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibir esquemas de cores dos comboios
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir esquemas de cores dos veículos de estrada
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir esquemas de cores dos veículos rodoviários
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cores dos barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquema de cores da aeronave
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado
@@ -2024,7 +2024,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccione Ponte Ferroviária
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccionar Ponte de Estrada
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccionar Ponte Rodoviária
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecção de ponte - clique na ponte desejada para a construir
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
@@ -2045,7 +2045,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para eléctricos. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para eléctricos usando o modo automático. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de veículos de estrada (para compra e manutenção de veículos de estrada). Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de veículos rodoviários (para compra e manutenção de veículos rodoviários). Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de eléctricos (para compra e manutenção). Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de eléctricos para passageiros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
@@ -2754,7 +2754,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar 
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Alterar o nome da estação
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar todos os comboios que têm esta estação nas ordens de serviço
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar todos os veículos de estrada que têm esta estação nas ordens de serviço
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar todos os veículos rodoviários que têm esta estação nas ordens de serviço
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar todas as aeronaves que têm esta estação nas ordens de serviço
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar todos os barcos que têm esta estação nas ordens de serviço
 
@@ -3067,7 +3067,7 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta ac�
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização do depósito de veículos de estrada. Ctrl+Clique abre um novo visualizador na localização do depósito de veículos
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização do depósito de veículos rodoviários. Ctrl+Clique abre um novo visualizador na localização do depósito de veículos
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visualização na localização do depósito naval. Ctrl+Clique abre um novo visualizador na localização do depósito naval
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar visualização na localização do hangar. Ctrl+Clique abre um novo visualizador na localização do hangar
 
@@ -3082,7 +3082,7 @@ STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Pression
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Pressione botão esquerdo do rato para imobilizar todas as aeronaves no hangar
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Pressione botão esquerdo do rato para iniciar todos os comboios no depósito
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos de estrada no depósito
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos rodoviários no depósito
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Pressione botão esquerdo do rato para iniciar todos os barcos no depósito
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Pressione botão esquerdo do rato para iniciar todas as aeronaves no hangar
 
@@ -3387,7 +3387,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Serviço sem pa
 STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
 STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
 STR_ORDER_TRAIN_DEPOT                                           :Depósito ferroviário
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de veículos de estrada
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de veículos rodoviários
 STR_ORDER_SHIP_DEPOT                                            :Depósito naval
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -3773,14 +3773,14 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bói
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir depósito aqui...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Não é possível construir depósito de veículos de estrada aqui...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Não é possível construir depósito de veículos rodoviários aqui...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Não é possível construir depósito para eléctricos neste local...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Não é possível construir depósito naval aqui...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Não é possível alterar o nome do depósito...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tem que estar parado dentro do depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado num depósito de veículos de estrada
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado num depósito de veículos rodoviários
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tem que estar parado no depósito
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem que estar parado no hangar
 
@@ -3884,7 +3884,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossí
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Comboio no caminho
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Veículo de estrada no caminho
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Veículo rodoviário no caminho
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Barco no caminho
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave no caminho
 
@@ -3894,12 +3894,12 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Não é 
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Não é possível converter aeronave...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Não é possível renomear comboio...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Não é possível renomear veículo de estrada...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Não é possível renomear veículo rodoviário...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Não é possível renomear barco...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Não é possível renomear aeronave...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Não é possível iniciar/parar comboio...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Não é possível iniciar/parar veículo de estrada...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Não é possível iniciar/parar veículo rodoviário...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Não é possível iniciar/parar barco...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Não é possível iniciar/parar aeronave...
 
@@ -3909,7 +3909,7 @@ STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Não é 
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Não é possível mandar aeronave para o hangar...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Não é possível comprar veículo ferroviário...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Não é possível comprar veículo de estrada...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Não é possível comprar veículo rodoviário...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Não é possível comprar barco...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Não é possível comprar aeronave...
 
@@ -4367,8 +4367,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Ponto de contro
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de Comboios de {TOWN}
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de Comboios de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de Veículos de Estrada de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de Veículos de Estrada de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de Veículos Rodoviários de {TOWN}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de Veículos Rodoviários de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Depósito naval de {TOWN}
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Depósito naval de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
