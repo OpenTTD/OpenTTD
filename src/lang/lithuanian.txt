@@ -3258,7 +3258,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Perkompl
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pertvarkyti laivą kitokio tipo krovinio vežimui
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pakeisti lektuvo pervezamu kroviniu tipa
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Pakeisti traukinio vaziavimo krypti
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Pakeisti traukinio važiavimo kryptį
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Apgrezti automobili
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Parodyti traukinio uzduotis. Ctrl+Paspaudimas rodo traukinio tvarkaraštį
@@ -3269,7 +3269,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Rodyti l
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Rodyti detalia traukinio informacija
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rodyti detalia automobilio informacija
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Rodyti laivo informacija
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Rodyti lektuvo informacija
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Rodyti lėktuvo informaciją
 
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Dabartinė traukinio užduotis - paspausk ęia, jei nori sustabdyti/paleisti traukinį. Ctrl+Paspaudimas nukels į užduoties vietą
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Automobilio užduotis - spustelk čia, jei nori sustabdyti/paleisti automobilį. Ctrl+Paspaudimas nukels į užduoties vietą

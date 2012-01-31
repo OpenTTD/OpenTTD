@@ -2801,7 +2801,7 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}查看�
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}查看公司总部
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}重置总部
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}以公司市值 1% 的代价重建总部，按住 Shift 键单击可以显示所需资金
-STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}资产细节
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}固定资产维护费明细
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}显示详细的设施情况
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}新的头像

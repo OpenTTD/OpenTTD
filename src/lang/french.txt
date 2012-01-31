@@ -192,30 +192,30 @@ STR_COLOUR_GREY                                                 :Gris
 STR_COLOUR_WHITE                                                :Blanc
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ch
+STR_UNITS_POWER_SI                                              :{COMMA}{NBSP}kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}{NBSP}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}{NBSP}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}{NBSP}tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}{NBSP}kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{COMMA}{NBSP}kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP}ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entrer le filtre
@@ -269,7 +269,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit année p
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit cette année
 STR_SORT_BY_AGE                                                 :Âge
 STR_SORT_BY_RELIABILITY                                         :Fiabilité
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacité totale par marchandise
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacité totale par cargo
 STR_SORT_BY_MAX_SPEED                                           :Vitesse maximum
 STR_SORT_BY_MODEL                                               :Modèle
 STR_SORT_BY_VALUE                                               :Valeur
@@ -764,9 +764,9 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLAC
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Accident ferroviaire{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} dans la collision
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Accident routier{NBSP}!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accident routier{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} lors d'une collision avec un train
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Accident de la route{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} lors d'une collision avec un train
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} à {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meurent dans le crash{NBSP}!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meur{P t ent} dans le crash{NBSP}!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Désastre impliquant un Zeppelin à {STATION}{NBSP}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Un véhicule routier est détruit dans une collision avec un OVNI{NBSP}!
@@ -804,10 +804,10 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nouveau filon de charbon trouvé à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nouveaux gisements pétrolifères découverts à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}De nouvelles méthodes d'élevage à {INDUSTRY} devraient permettre de doubler la production{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} augmente de {COMMA}%{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} augmente de {COMMA}{NBSP}%{NBSP}!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{NBSP}: production en baisse de 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Invasion d'insectes à {INDUSTRY}{NBSP}!{}Production en baisse de 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} diminue de {COMMA}%{NBSP}!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} diminue de {COMMA}{NBSP}%{NBSP}!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} est en attente au dépôt
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} est en attente au dépôt
@@ -1019,7 +1019,7 @@ STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Nombre 
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Nombre de villes{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Nombre d'industries{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Emprunt initial maximum{NBSP}: {ORANGE}{CURRENCY_LONG}
-STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taux d'intérêt initial{NBSP}: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Taux d'intérêt initial{NBSP}: {ORANGE}{COMMA}{NBSP}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Coûts d'entretien{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Vitesse de développement des concurrents{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Pannes des véhicules{NBSP}: {ORANGE}{STRING}
@@ -1484,7 +1484,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer 
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier ou plusieurs d'entre elles par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
 
 STR_LIVERY_DEFAULT                                              :Livrée standard
 STR_LIVERY_STEAM                                                :Locomotive à vapeur
@@ -1581,7 +1581,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Nom de l
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Clients
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Clients en ligne / clients max.{}Compagnies en ligne / compagnies max.
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}{NBSP}×{NBSP}{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Taille
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Taille de la carte{}Cliquer pour trier par surface
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Date
@@ -1595,10 +1595,10 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Dernier 
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Cliquer pour réutiliser le dernier serveur
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFOS SUR LE SERVEUR
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients{NBSP}: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clients{NBSP}: {WHITE}{COMMA}/{COMMA} − {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Langue{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Terrain{NBSP}: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Taille de la carte{NBSP}: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Taille de la carte{NBSP}: {WHITE}{COMMA}{NBSP}×{NBSP}{COMMA}
 STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Version du serveur{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Adresse du serveur{NBSP}: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Date de début{NBSP}: {WHITE}{DATE_SHORT}
@@ -2348,9 +2348,9 @@ STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom sélectionné pour la sauvegarde
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Supprimer
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Supprime la sauvegarde sélectionnée
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Supprimer la sauvegarde sélectionnée
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sauvegarder
-STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sauvegarde la partie avec le nom choisi
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sauvegarder la partie avec le nom choisi
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Charger
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Charger la partie sélectionnée
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Détails
@@ -2420,7 +2420,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Créatio
 STR_GENERATION_ABORT                                            :{BLACK}Annuler
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Annuler la génération du terrain
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-vous vraiment annuler la génération{NBSP}?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% réalisés
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% réalisé{P "" s}
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
@@ -2618,9 +2618,9 @@ STR_TOWN_POPULATION                                             :{BLACK}Populati
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Métropole)
-STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population{NBSP}: {ORANGE}{COMMA}{BLACK}  Maisons{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagers le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK}  max{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK}  max{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population{NBSP}: {ORANGE}{COMMA}{BLACK} − Maisons{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagers le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargaison nécessaire à la croissance de la ville{NBSP}:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requis en hiver
@@ -2630,7 +2630,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s} (financé)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La ville {RED}ne croît pas{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de nuisance pour la ville{NBSP}: {ORANGE}{COMMA}{BLACK}  max{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de nuisance pour la ville{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Municipalité
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Afficher des informations sur la municipalité
@@ -2737,7 +2737,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepte{
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Qualité
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la qualité de service de la station
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Qualité du service de transport{NBSP}:
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}{NBSP}: {YELLOW}{STRING} ({COMMA}%)
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}{NBSP}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 
 ############ range for rating starts
 STR_CARGO_RATING_APPALLING                                      :Épouvantable
@@ -2812,8 +2812,8 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} navire{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Aucun
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valeur de la compagnie{NBSP}: {WHITE}{CURRENCY_LONG}
-STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% détenus par {COMPANY})
-STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastructure{NBSP}:
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% détenu{P "" s} par {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{G=f}{GOLD}Infrastructure{NBSP}:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} morceau{P "" x} de voie ferrée
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} morceau{P "" x} de route
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} case{P "" s} d'eau
@@ -2867,17 +2867,17 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Aucune -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transporté)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporté)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% transporté{P "" s})
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms des industries - cliquer sur un nom pour centrer la vue principale sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production le mois dernier{NBSP}:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transporté)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
-STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}%
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Nécessite{NBSP}: {YELLOW}{STRING}{STRING}
@@ -2916,7 +2916,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Voir la 
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gérer la liste
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envoyer les instructions à tous les véhicules de cette liste
-STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer véhicules
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer des véhicules
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer en entretien
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Envoyer au dépôt
@@ -2927,7 +2927,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Envoyer au hang
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Cliquer pour arrêter tous les véhicules de la liste
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Cliquer pour démarrer tous les véhicules de la liste
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordres partagés de {COMMA} véhicule{P "" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordres partagés par {COMMA} véhicule{P "" s}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Tous les trains
@@ -2971,7 +2971,7 @@ STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coûts d
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK} − Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Vitesse{NBSP}: {GOLD}{VELOCITY}
@@ -3003,13 +3003,13 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renommer
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Renommer
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Renommer
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type du véhicule
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type de véhicule
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer le type de véhicule routier
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer le type de navire
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer le type d'aéronef
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de train
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer type de véhicule routier
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer le type de véhicule routier
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renommer type de navire
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renommer type d'aéronef
 
@@ -3089,7 +3089,7 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Cliquer 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vous êtes sur le point de vendre tous les véhicules du dépôt. Êtes-vous sûr{NBSP}?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Communiqué du fabriquant d'engins
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Communiqué du fabriquant de véhicules
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Nous venons juste d'inventer{NBSP}: {STRING} - Voulez-vous l'exclusivité de ce véhicule pendant un an, afin que nous puissions le tester avant sa mise sur le marché{NBSP}?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotive
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}véhicule
@@ -3098,12 +3098,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive magnétique
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY}  Puissance{NBSP}: {POWER}  E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER} − E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY} Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY} Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
@@ -3112,15 +3112,15 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Véhicule routi
 STR_REPLACE_VEHICLE_SHIP                                        :Navire
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aéronef
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir le type des locomotives à remplacer
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de locomotive devant remplacer le type de locomotive sélectionné à gauche
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir le type de véhicule à remplacer
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de véhicule devant remplacer celui sélectionné à gauche
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de locomotive sélectionné à gauche avec le type sélectionné à droite
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de véhicule sélectionné à gauche avec celui sélectionné à droite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Pas en cours de remplacement
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Aucun véhicule sélectionné
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type de locomotive sélectionné à gauche
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type de véhicule sélectionné à gauche
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En remplacement{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterner entre les fenêtres de remplacement des locomotives ou des wagons
@@ -3128,11 +3128,11 @@ STR_REPLACE_ENGINES                                             :Locomotives
 STR_REPLACE_WAGONS                                              :Wagons
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choisir un type de rail pour le remplacement de locomotives
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quelle locomotive celle qui est sélectionnée à gauche sera remplacée, si possible
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci affiche par quel type de véhicule sera remplacé celui sélectionné à gauche, si possible
 STR_REPLACE_RAIL_VEHICLES                                       :Véhicules sur rail
 STR_REPLACE_ELRAIL_VEHICLES                                     :Véhicules électriques sur rail
 STR_REPLACE_MONORAIL_VEHICLES                                   :Véhicules sur monorail
-STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules sur Maglev
+STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules sur MagLev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'autoremplacement de la locomotive provoque un accroissement de la longueur du train, alors sa longueur initiale sera retrouvée en retirant automatiquement des wagons (d'abord par la tête)
@@ -3146,7 +3146,7 @@ STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer 
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer la vue sur l'aéronef. Ctrl-clic pour le suivre dans la vue principale
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envoyer le train au dépôt. Ctrl-clic pour entretien seul
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoie le véhicule au dépôt. Ctrl-clic pour entretien seul
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoyer le véhicule au dépôt.{}Ctrl-clic pour un entretien seul.
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
 
@@ -3163,7 +3163,7 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Réamén
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Réaménager l'aéronef pour transporter une cargaison différente
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Faire faire demi-tour au train
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Force le véhicule à faire demi-tour
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forcer le véhicule à faire demi-tour
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afficher les ordres du train. Ctrl-clic pour afficher son horaire
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afficher les ordres du véhicule routier. Ctrl-clic pour afficher son horaire
@@ -3171,7 +3171,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afficher
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afficher les ordres de l'aéronef. Ctrl-clic pour afficher son horaire
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Afficher les détails du train
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Affiche les détails du véhicule routier
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afficher les détails du véhicule routier
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afficher les détails du navire
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afficher les détails de l'aéronef
 
@@ -3181,7 +3181,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Action c
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action courante de l'aéronef - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/déchargement
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Départ
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashé{NBSP}!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En Panne
@@ -3218,12 +3218,12 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P ""
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}Rayon d'action{NBSP}: {LTBLUE}{COMMA} cases
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT} {BLACK}Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} Vitesse max.{NBSP}: {LTBLUE}{VELOCITY} {BLACK}E.T. max.{NBSP}: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − Rayon d'action{NBSP}: {LTBLUE}{COMMA} cases
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Poids{NBSP}: {LTBLUE}{NBSP}{WEIGHT_SHORT} − {BLACK}Puissance{NBSP}: {LTBLUE}{NBSP}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{NBSP}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NBSP}: {LTBLUE}{WEIGHT_SHORT}{BLACK} − Puissance{NBSP}: {LTBLUE}{POWER}{BLACK} − Vitesse max.{NBSP}: {LTBLUE}{VELOCITY}{BLACK} − E.T. max.{NBSP}: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
-STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacité{NBSP}: {LTBLUE}Aucune
@@ -3233,8 +3233,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Capacit�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits de transfert{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}jours{BLACK}   Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}%{BLACK}   Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA} jours{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenter l'intervalle d'entretien de 10. Ctrl-clic pour l'augmenter de 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer l'intervalle d'entretien de 10. Ctrl-clic pour le diminuer de 5
 
@@ -3360,10 +3360,10 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}La valeu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Entrer la valeur à comparer
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Suivant
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sauter l'ordre courant, et enchaîner sur le suivant. Ctrl-clic pour sauter l'ordre sélectionné
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sauter l'ordre courant et passer au suivant.{}Ctrl-clic pour sauter l'ordre sélectionné.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Supprimer
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Supprime l'ordre sélectionné
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Supprimer l'ordre sélectionné
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Supprimer tous les ordres
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Arrêter le partage
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Arrêter le partage des ordres. Ctrl-clic pour supprimer tous les ordres de ce véhicule
@@ -3478,7 +3478,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler 
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ compteur de retard
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remet à zéro le compteur de retard, le véhicule sera donc à l'heure
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard (le véhicule sera donc à l'heure)
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
@@ -3621,7 +3621,7 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... n'a 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... image trop grande
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertissement de redimensionnement
-STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé. Continuer la génération{NBSP}?
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé.{}Continuer la génération{NBSP}?
 
 # Soundset messages
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seul les effets sonores de secours ont été trouvés. Si vous voulez des effets sonores, installez un pack de sons via le système de téléchargement de contenus
