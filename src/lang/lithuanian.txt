@@ -1876,6 +1876,7 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Sukčiav
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu siuntei per daug komandų į serverį
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jūs per ilgai užtrukote įvedinėdami slaptažodį
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Jūsų kompiuteris užtruko per ilgai prisijungiant
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Per ilgai užtrukote parsisiųsdami žemėlapį
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :klaida
@@ -1894,6 +1895,7 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :išmestas serve
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :bandė sukčiauti
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilnas
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :siuntė per daug komandų
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :žemėlapio parsisiuntimas užtruko per ilgai
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Galimas ryšio praradimas
@@ -2609,6 +2611,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} reik
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Įkelta per daug NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {1:STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacijas
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Netikėtas spruklys (spruklys {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?)
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos spraitų.{}Atnaujinkite pagrindinį grafikos rinkinį
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungta: {STRING}
@@ -2741,6 +2744,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Paspaudu
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Klausimas
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacija
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Perspėjimas
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Klaida
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atšaukti
@@ -2872,11 +2878,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neturi
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompanijos vertė: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% priklauso {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktūra
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} bėgių dalys
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} kelio dalys
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vandens langeliai
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stoties langeliai
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} oro uostai
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} bėgių dal{P 0 is ys}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} kelio dal{P 0 is ys}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vandens langeli{P 0 s ai}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stoties langeli{P 0 s ai}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} oro uosta{P 0 s i}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nieko
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Pastatyti firmos bustinę

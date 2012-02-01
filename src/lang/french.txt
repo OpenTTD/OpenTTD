@@ -2140,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmetteurs
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre. S'il y a déjà un arbre dans la case, plusieurs arbres de types différents vont être ajoutés
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasard
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planter des arbres provenant d'espèces choisies au hasard.{}Shift pour afficher seulement le coût estimé.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ajouter des arbres aléatoires
