@@ -1565,14 +1565,14 @@ STR_LIVERY_STEAM                                                :Garo Variklis
 STR_LIVERY_DIESEL                                               :Dyzelinis Variklis
 STR_LIVERY_ELECTRIC                                             :Elektrinis Variklis
 STR_LIVERY_MONORAIL                                             :Vienbėgis Variklis
-STR_LIVERY_MAGLEV                                               :„Maglev“ Variklis
+STR_LIVERY_MAGLEV                                               :„Maglev“ variklis
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Keleivinis Vagonas (Garinis)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Keleivinis Vagonas (Dyzelinis)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Keleivinis Vagonas (Elektrinis)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Keleivinis vagonas (vienbėgis)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Keleivinis vagonas ("Maglev")
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Keleivinis vagonas („Maglev“)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagonas
 STR_LIVERY_BUS                                                  :Autobusas
 STR_LIVERY_TRUCK                                                :Krovininis
@@ -1877,6 +1877,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu siunt
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jūs per ilgai užtrukote įvedinėdami slaptažodį
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Jūsų kompiuteris užtruko per ilgai prisijungiant
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Per ilgai užtrukote parsisiųsdami žemėlapį
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Per ilgai užtrukote jungdamiesi prie serverio
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :klaida
@@ -1895,7 +1896,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :išmestas serve
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :bandė sukčiauti
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilnas
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :siuntė per daug komandų
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :laiku negavo slaptažodžio
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :pasibaigė laikas
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :žemėlapio parsisiuntimas užtruko per ilgai
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :žemėlapio apdorojimas užtruko per ilgai
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Galimas ryšio praradimas
@@ -2210,7 +2214,7 @@ STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Medžiai
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinkto tipo, medžiai
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodina atsitiktinės rūšies medžius. Shift perjungia tarp kainos parodymo/statymo
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai
@@ -2612,9 +2616,15 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kur
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Įkelta per daug NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {1:STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacijas
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Netikėtas spruklys (spruklys {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nežinoma veiksmo 0 savybė {4:HEX} (spruklys {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas panaudoti neteisingą ID (spruklys {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Susideda iš keleto veiksmo 8 įrašų (spruklys {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už pseudospruklio pabaigos (spruklys {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos spraitų.{}Atnaujinkite pagrindinį grafikos rinkinį
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungta: {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Įspėjimas!
@@ -2878,19 +2888,19 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Neturi
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Kompanijos vertė: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% priklauso {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktūra
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} bėgių dal{P 0 is ys}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} kelio dal{P 0 is ys}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vandens langeli{P 0 s ai}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stoties langeli{P 0 s ai}
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} oro uosta{P 0 s i}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} bėgių dal{P is ys ių}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} kelio dal{P is ys ių}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vandens langeli{P s ai ų}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stoties langeli{P s ai ų}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} oro uost{P as ai ų}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nieko
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Pastatyti firmos bustinę
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Statyi įmonės būstinę
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Statyti įmonės būstinę
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Apžiūrėti būstinę
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Žiūrėti įmonės būstinę
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Perkelti bustinę
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti kompanijos bustinę kitur už 1% kompanijos vertės. Shift+Click parodys kainą neperstatant būstinės
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Perkelti būstinę
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti kompanijos būstinę kitur už 1% kompanijos vertės. Shift+Click parodys kainą neperstatant būstinės
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Smulkmenos
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Peržiūrėti smulkenę infrastrukūrą
 

@@ -1974,9 +1974,9 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Améliorer le type de rail.{}Shift pour afficher seulement le coût estimé.
 
 STR_RAIL_NAME_RAILROAD                                          :Voie normale
-STR_RAIL_NAME_ELRAIL                                            :Voie Electrifiée
-STR_RAIL_NAME_MONORAIL                                          :Mono-rail
-STR_RAIL_NAME_MAGLEV                                            :Maglev
+STR_RAIL_NAME_ELRAIL                                            :Voie électrifiée
+STR_RAIL_NAME_MONORAIL                                          :Monorail
+STR_RAIL_NAME_MAGLEV                                            :MagLev
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientation du dépôt
@@ -1994,8 +1994,8 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nombre d
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Choix du nombre de voies
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longueur du quai
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Choisir la longueur de la gare
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Glisser/déposer
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construire une gare avec le glisser/déposer
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Glisser/Déposer
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construire une gare par glisser/déposer
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Choisir le type de station à afficher
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Choisir le type de station à construire
@@ -2005,46 +2005,46 @@ STR_STATION_CLASS_WAYP                                          :Points de contr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sélection des signaux
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal de bloc (sémaphore){}Ce sont les signaux les plus basiques, autorisant seulement un train à la fois dans un même bloc
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal d'entrée (sémaphore){}Vert tant qu'un ou plusieurs signaux de sortie sont verts dans le bloc. Rouge dans le cas contraire
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal de bloc (sémaphore){}Ce sont les signaux les plus basiques, n'autorisant qu'un seul train à la fois dans un même bloc
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal d'entrée (sémaphore){}Vert tant qu'au moins un signal de sortie du bloc est vert, rouge dans le cas contraire.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal de sortie (sémaphore){}Fonctionne comme un signal de bloc, mais est nécessaire pour commander les signaux d'entrée et combinés
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal combiné (sémaphore){}Le signal combiné est simplement l'unification d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges "arbres" de pré-signaux
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal avancé (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal de chemin à sens unique (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal de bloc (électrique){}Ce sont les signaux les plus basiques, autorisant seulement un train à la fois dans un même bloc
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal d'entrée (électrique){}Vert tant qu'un ou plusieurs signaux de sortie sont verts dans le bloc. Rouge dans le cas contraire
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal combiné (sémaphore){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges arborescences de pré-signaux en cascade.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal de chemin (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal de chemin à sens unique (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal de bloc (électrique){}Ce sont les signaux les plus basiques, n'autorisant qu'un seul train à la fois dans un même bloc.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal d'entrée (électrique){}Vert tant qu'au moins un signal de sortie du bloc est vert, rouge dans le cas contraire.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Signal de sortie (électrique){}Fonctionne comme un signal de bloc, mais est nécessaire pour commander les signaux d'entrée et combinés
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal combiné (électrique){}Le signal combiné est simplement l'unification d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges "arbres" de pré-signaux
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal de chemin (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal de chemin à sens unique (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal combiné (électrique){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges arborescences de pré-signaux en cascade.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal de chemin (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal de chemin à sens unique (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversion de signal.{}Si sélectionné, cliquer sur un signal existant le convertit vers le type et la variante choisis.{}Ctrl-clic pour alterner entre les variantes existantes.{}Shift pour afficher seulement le coût estimé.
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densité de signal
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire la densité de signal
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter la densité de signal
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densité de signaux
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire la densité de signaux
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter la densité de signaux
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Ferroviaire
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Routier
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - cliquer sur le type de pont désiré pour le construire
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont ferroviaire
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont routier
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - Cliquer sur le type de pont désiré pour le construire.
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en Acier
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en acier
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Porte-à-faux en acier
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspendu en béton
-STR_BRIDGE_NAME_WOODEN                                          :En Bois
-STR_BRIDGE_NAME_CONCRETE                                        :Béton
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :À Tubes en Acier
-STR_BRIDGE_TUBULAR_SILICON                                      :À Tubes en Silicone
+STR_BRIDGE_NAME_WOODEN                                          :En bois
+STR_BRIDGE_NAME_CONCRETE                                        :En béton
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :À tubes en acier
+STR_BRIDGE_TUBULAR_SILICON                                      :À tubes en silicone
 
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construction routière
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construction de tramway
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construire une section de route.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construire une section de tramway.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construire une section de voie de tramway.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construire une section de route avec le mode Auto-route.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construire une section de tramway avec le mode Auto-tram.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construire une section de voie de tramway avec le mode Auto-tram.{}Ctrl pour inverser le mode (construire/enlever).{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construire un dépôt routier (pour acheter et entretenir des véhicules).{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construire un dépôt de tramways (pour acheter et entretenir des véhicules).{}Shift pour afficher seulement le coût estimé.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construire un arrêt d'autobus.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
@@ -2061,9 +2061,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alterner
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientation du dépôt
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Choisir orientation du dépôt routier
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Choisir l'orientation du dépôt routier
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientation du dépôt
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Choisir l'orientation du dépôt de tramway
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Choisir l'orientation du dépôt de tramways
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Arrêt d'autobus
@@ -2084,7 +2084,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construire un port.{}Ctrl pour joindre des stations entre elles.{}Shift pour afficher seulement le coût estimé.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Placer une bouée pouvant servir de guide aux navires.{}Shift pour afficher seulement le coût estimé.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construire un aqueduc.{}Shift pour afficher seulement le coût estimé.
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Définir une zone d'eau.{}Construit un canal, si Ctrl est enfoncé au niveau de la mer, le voisinage sera innondé.
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Définir une zone d'eau.{}Construire un canal, sauf si Ctrl est enfoncé au niveau de la mer{NBSP}: dans ce cas, le voisinage sera inondé.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Placer des rivières
 
 # Ship depot construction window
@@ -2100,7 +2100,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Choix de l'aéroport
-STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Choix du type & taille de l'aéroport
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Choix du type et de la taille de l'aéroport
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Type d'aéroport
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Agencement {NUM}
 
@@ -2108,7 +2108,7 @@ STR_AIRPORT_SMALL                                               :Petit
 STR_AIRPORT_CITY                                                :Urbain
 STR_AIRPORT_METRO                                               :Métropolitain
 STR_AIRPORT_INTERNATIONAL                                       :International
-STR_AIRPORT_COMMUTER                                            :de Banlieue
+STR_AIRPORT_COMMUTER                                            :De banlieue
 STR_AIRPORT_INTERCONTINENTAL                                    :Intercontinental
 STR_AIRPORT_HELIPORT                                            :Hélitour
 STR_AIRPORT_HELIDEPOT                                           :Hélidépôt
@@ -2133,25 +2133,25 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Sélecti
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Sélectionner l'objet à construire.{}Shift pour afficher seulement le coût estimé.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Choisir le type d'objet à construire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Aperçu de l'objet
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM} x {NUM} cases
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM}{NBSP}×{NBSP}{NUM} cases
 
 STR_OBJECT_CLASS_LTHS                                           :Phares
 STR_OBJECT_CLASS_TRNS                                           :Transmetteurs
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre. S'il y a déjà un arbre dans la case, plusieurs arbres de types différents vont être ajoutés
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre. S'il y a déjà un arbre dans la case, plusieurs arbres de types différents y seront ajoutés, indépendamment du type sélectionné.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasard
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planter des arbres provenant d'espèces choisies au hasard.{}Shift pour afficher seulement le coût estimé.
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ajouter des arbres aléatoires
-STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer des arbres sur l'ensemble du terrain de façon aléatoire
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ajouter des arbres au hasard
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer des arbres au hasard sur l'ensemble du terrain
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Création du terrain
-STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des endroits rocheux sur le terrain
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Maintenir Ctrl pour retrait
-STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenter la quantité de terre à modifier
-STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer la quantité de terre à modifier
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des zones rocheuses sur le terrain
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Ctrl pour la retirer.
+STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenter la superficie du terrain à modifier
+STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer la superficie du terrain à modifier
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Créer un monde aléatoire
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Nouveau scénario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Réinitialiser le terrain
@@ -2161,13 +2161,13 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Réiniti
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vous sûr de vouloir ôter toutes les propriétés des compagnies{NBSP}?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Créer les villes
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Créer des villes
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nouvelle ville
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fonder une nouvelle ville.{}Shift-clic pour afficher seulement le coût estimé.
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Créer une ville
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonder une ville à un emplacement aléatoire
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Créer une ville au hasard
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonder une ville à un emplacement choisi au hasard
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Beaucoup de villes au hasard
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Couvrir la carte avec des villes placées aléatoirement
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Couvrir la carte de villes placées au hasard
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la ville{NBSP}:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Entrer un nom de ville
@@ -2182,36 +2182,36 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aléatoire
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Sélectionner la taille de la ville
 STR_FOUND_TOWN_CITY                                             :{BLACK}Métropole
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les métropoles se développent plus vite que les villes{}Lors de leur fondation, leur taille dépends de la configuration
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les métropoles se développent plus vite que les villes.{}Leur taille à la création dépend du paramétrage de la configuration.
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Agencement des routes{NBSP}:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Sélectionner l'agencement des routes pour cette ville
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Meilleures routes
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grille 2x2
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grille 3x3
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Grille 2 × 2
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Grille 3 × 3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aléatoire
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financer une nouvelle industrie
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisissez l'industrie appropriée dans cette liste
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Beaucoup d'industries au hasard
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte avec des industries placées au hasard
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte d'industries placées au hasard
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Prix{NBSP}: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecter
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construire
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonder
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaine d'industries pour l'industrie {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaine d'industries pour le type de marchandise {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle pour l'industrie {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne industrielle pour le type de marchandise {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industries fournisseuses
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industries clientes
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Maisons
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer sur l'industrie pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaine
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher les industries fournisseuses et clientes du type de marchandise
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaîne
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne les industries fournisseuses et clientes de ce type de marchandise
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la carte
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la carte
 

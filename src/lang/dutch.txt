@@ -842,7 +842,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} accepteert voortaan {STRING} en {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie teruggetrokken:{}{}{STRING}route van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie ingetrokken:{}{}{STRING}route van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidie aangeboden:{}{}Eerste {STRING}route van {STRING} naar {STRING} krijgt een jaar lang subsidie van de gemeente!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar 50% extra betaald!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar dubbel betaald!
@@ -2139,7 +2139,7 @@ STR_OBJECT_CLASS_TRNS                                           :Zender
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten. Als de tegel al bomen bevat zullen er meer bomen van verschillende types bij komen, onafhankelijk van het geselecteerde type.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort. Shift+klik wisselt tussen bouwen/toont verwachte kosten
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
@@ -2549,7 +2549,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Voorbij het ein
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Gevraagde GRF middelen niet beschikbaar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} is uitgeschakeld door {STRING}
-STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekende sprite lay-out-formaat (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldig/onbekend sprite lay-out-formaat (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
