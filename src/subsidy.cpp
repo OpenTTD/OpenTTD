@@ -504,7 +504,7 @@ void SubsidyMonthlyLoop()
 		int n = 1000;
 
 		do {
-			industry_subsidy = FindSubsidyTownCargoRoute();
+			industry_subsidy = FindSubsidyIndustryCargoRoute();
 		} while (!industry_subsidy && n--);
 	}
 
