@@ -565,7 +565,7 @@ STR_PERFORMANCE_DETAIL                                          :{WHITE}Détail 
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Détail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Afficher les détails sur cette compagnie
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Véhicules{NBSP}:
@@ -805,8 +805,8 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nouveaux gisements pétrolifères découverts à {INDUSTRY}{NBSP}!{}La production devrait doubler{NBSP}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}De nouvelles méthodes d'élevage à {INDUSTRY} devraient permettre de doubler la production{NBSP}!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} augmente de {COMMA}{NBSP}%{NBSP}!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{NBSP}: production en baisse de 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Invasion d'insectes à {INDUSTRY}{NBSP}!{}Production en baisse de 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY}{NBSP}: production en baisse de 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Invasion d'insectes à {INDUSTRY}{NBSP}!{}Production en baisse de 50{NBSP}%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}La production de {STRING} à {INDUSTRY} diminue de {COMMA}{NBSP}%{NBSP}!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} est en attente au dépôt
@@ -845,7 +845,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an{NBSP}!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus pendant un an{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50{NBSP}% de plus pendant un an{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double pendant un an{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple pendant un an{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple pendant un an{NBSP}!
@@ -1061,7 +1061,7 @@ STR_SEA_LEVEL_LOW                                               :Bas
 STR_SEA_LEVEL_MEDIUM                                            :Moyen
 STR_SEA_LEVEL_HIGH                                              :Élevé
 STR_SEA_LEVEL_CUSTOM                                            :Personnalisé
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personnalisé ({NUM}%)
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personnalisé ({NUM}{NBSP}%)
 
 STR_RIVERS_NONE                                                 :Aucune
 STR_RIVERS_FEW                                                  :Peu
@@ -1122,8 +1122,8 @@ STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Longueu
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des véhicules{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modèle d'accélération des véhicules routiers{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinaison des pentes pour les véhicules routiers{NBSP}: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}{NBSP}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinaison des pentes pour les véhicules routiers{NBSP}: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et aux navires les virages à 90°{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre une station non adjacente{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement{NBSP}: {ORANGE}{STRING}
@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Les jou
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Année de départ{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (petits changements plus nombreux){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Pourcentage du profit de branche à payer dans les systèmes multi-modaux{NBSP}: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Pourcentage du profit de branche à payer dans les systèmes multi-modaux{NBSP}: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacement des signaux en mode glisser-déposer{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer l'interface graphique pour les signaux{NBSP}: {ORANGE}{STRING}
@@ -1913,7 +1913,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléch
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demande des fichiers...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Téléchargement de {STRING} ({NUM} sur {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Téléchargement terminé
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM}%)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM}{NBSP}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de contenu impossible...
@@ -2008,13 +2008,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sélecti
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Signal de bloc (sémaphore){}Ce sont les signaux les plus basiques, n'autorisant qu'un seul train à la fois dans un même bloc
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Signal d'entrée (sémaphore){}Vert tant qu'au moins un signal de sortie du bloc est vert, rouge dans le cas contraire.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Signal de sortie (sémaphore){}Fonctionne comme un signal de bloc, mais est nécessaire pour commander les signaux d'entrée et combinés
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal combiné (sémaphore){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges arborescences de pré-signaux en cascade.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Signal combiné (sémaphore){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela permet de construire de larges arborescences de pré-signaux en cascade.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Signal de chemin (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Signal de chemin à sens unique (sémaphore){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Signal de bloc (électrique){}Ce sont les signaux les plus basiques, n'autorisant qu'un seul train à la fois dans un même bloc.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Signal d'entrée (électrique){}Vert tant qu'au moins un signal de sortie du bloc est vert, rouge dans le cas contraire.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Signal de sortie (électrique){}Fonctionne comme un signal de bloc, mais est nécessaire pour commander les signaux d'entrée et combinés
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal combiné (électrique){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges arborescences de pré-signaux en cascade.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Signal combiné (électrique){}Le signal combiné est simplement la réunion d'un signal d'entrée et d'un signal de sortie. Cela permet de construire de larges arborescences de pré-signaux en cascade.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal de chemin (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin peuvent être passés par l'arrière.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal de chemin à sens unique (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversion de signal.{}Si sélectionné, cliquer sur un signal existant le convertit vers le type et la variante choisis.{}Ctrl-clic pour alterner entre les variantes existantes.{}Shift pour afficher seulement le coût estimé.
@@ -2212,11 +2212,11 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer 
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaîne
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne les industries fournisseuses et clientes de ce type de marchandise
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la carte
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la carte
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la mini-carte
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la mini-carte
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Information sur le Terrain
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informations sur le terrain
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coût si démolition{NBSP}: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Coût si démolition{NBSP}: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Gain si démolition{NBSP}: {LTBLUE}{CURRENCY_LONG}
@@ -2227,7 +2227,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprié
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propriétaire des rails{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Municipalité{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Aucune
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonnées{NBSP}: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonnées{NBSP}: {LTBLUE}{NUM} × {NUM} × {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit le{NBSP}: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
@@ -2249,7 +2249,7 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terre enneigée
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Désert
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} voie
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} voie avec signal de bloc
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} voie avec signaux de bloc
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} voie avec pré-signaux
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} voie avec signaux de sortie
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} voie avec signaux combinés
@@ -2270,13 +2270,13 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} voie a
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} voie avec signal combiné et signal de chemin
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} voie avec signal combiné et signal de chemin à sens unique
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} voie avec signal de chemin et signal de chemin à sens unique
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt de train de {STRING}
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dépôt de trains de {STRING}
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Route
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Route avec lampadaires
-STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route avec lignée d'arbustes
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Route bordée d'arbres
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Dépôt de véhicules routiers
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Route/rail Croisement à niveau
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Passage à niveau route/rail
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramway
 
 # Houses come directly from their building names
@@ -2297,7 +2297,7 @@ STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Point de contr�
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Eau
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
-STR_LAI_WATER_DESCRIPTION_LOCK                                  :Ecluse
+STR_LAI_WATER_DESCRIPTION_LOCK                                  :Écluse
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Rivière
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Rivage ou berge
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Dépôt naval
@@ -2310,15 +2310,15 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Tunnel routier
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Pont ferroviaire suspendu en acier
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Pont ferroviaire à poutres en acier
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Pont ferroviaire à porte-à-faux en acier
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Pont ferroviaire suspendu renforcé en béton
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Pont ferroviaire suspendu en béton armé
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Pont ferroviaire en bois
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Pont ferroviaire en béton
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Pont ferroviaire à tubes
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Pont ferroviaire à tubes en acier
 
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Pont routier suspendu en acier
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Pont routier à poutres en acier
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Pont routier à porte-à-faux en acier
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Pont routier suspendu renforcé en béton
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Pont routier suspendu en béton armé
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Pont routier en bois
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Pont routier en béton
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Pont ferroviaire à tubes en acier
@@ -2342,15 +2342,15 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Charger 
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Sauvegarder le scénario
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Charger un scénario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Charger une carte d'altitude
-STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sauver la carte d'altitude
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliquer ici pour passer au répertoire par défaut courant de charge/sauvegarde
+STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Sauvegarder la carte d'altitude
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliquer ici pour passer au répertoire par défaut actuel de charge/sauvegarde
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} libre{P "" s}
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nom sélectionné pour la sauvegarde
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Supprimer
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Supprimer la sauvegarde sélectionnée
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Sauvegarder
-STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sauvegarder la partie avec le nom choisi
+STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sauvegarder la partie en cours avec le nom choisi
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Charger
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Charger la partie sélectionnée
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Détails
@@ -2363,7 +2363,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entrer u
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Création du monde
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Taille de la carte{NBSP}:
-STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
@@ -2398,7 +2398,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuel
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de la carte d'altitude{NBSP}:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}{NBSP}×{NBSP}{NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Entrer une amorce
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifier l'altitude d'enneigement
@@ -2420,12 +2420,12 @@ STR_GENERATION_WORLD                                            :{WHITE}Créatio
 STR_GENERATION_ABORT                                            :{BLACK}Annuler
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Annuler la génération du terrain
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-vous vraiment annuler la génération{NBSP}?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% réalisé{P "" s}
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% réalisé{P "" s}
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Création des rivières
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Création des arbres
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des non-déplacables
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Création des objets inamovibles
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Création des zones rugueuses et rocheuses
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configuration du jeu
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Rafraîchissement du terrain
@@ -2434,7 +2434,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Prépara
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres NewGRF
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Information NewGRF détaillée
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informations NewGRF détaillées
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fichiers NewGRF actifs
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fichiers NewGRF inactifs
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Sélectionner la liste{NBSP}:
@@ -2826,7 +2826,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Voir le siège
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Voir le siège social
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Déménager le QG
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruit le siège de la compagnie ailleurs pour le prix de 1% de la valeur de la compagnie.{}Shift-clic pour afficher seulement le coût estimé.
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruire ailleurs le siège de la compagnie pour le prix de 1{NBSP}% de sa valeur.{}Shift-clic pour afficher seulement le coût estimé.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Détails
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Afficher le détail des calculs d'infrastructure
 
@@ -2839,8 +2839,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Changer 
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom du P.D.G.
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Changer le nom du président directeur général
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Acheter 25% de la compagnie
-STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre 25% de la compagnie
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Acheter 25{NBSP}% de la compagnie
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre 25{NBSP}% de la compagnie
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Acheter 25% de la compagnie.{}Shift-clic pour afficher seulement le coût estimé.
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 25% de la compagnie. Shift-clic pour afficher le revenu estimé sans vendre
 
@@ -2893,7 +2893,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produit{
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production (multiple de 8, max. 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Changer le niveau de production (pourcentage, max. 800%)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Changer le niveau de production (pourcentage, max. 800{NBSP}%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}
@@ -2935,10 +2935,10 @@ STR_GROUP_ALL_ROAD_VEHICLES                                     :Tous les véhic
 STR_GROUP_ALL_SHIPS                                             :Tous les navires
 STR_GROUP_ALL_AIRCRAFTS                                         :Tous les aéronefs
 
-STR_GROUP_DEFAULT_TRAINS                                        :Trains dégroupés
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Véhicules routiers dégroupés
-STR_GROUP_DEFAULT_SHIPS                                         :Navires dégroupés
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aéronefs dégroupés
+STR_GROUP_DEFAULT_TRAINS                                        :Trains non groupés
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Véhicules routiers non groupés
+STR_GROUP_DEFAULT_SHIPS                                         :Navires non groupés
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aéronefs non groupés
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Groupes - Cliquer sur un groupe pour lister tous les véhicules de ce groupe
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Créer un groupe de véhicules
@@ -3099,7 +3099,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive magnétique
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER} − E.T. max.{NBSP}: {6:FORCE}{}Coût d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Effort de traction max.{NBSP}: {6:FORCE}{}Coûts d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
@@ -3175,10 +3175,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afficher
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afficher les détails du navire
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afficher les détails de l'aéronef
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Action courante du véhicule routier - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Action courante du navire - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action courante de l'aéronef - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Action courante du train - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Action courante du véhicule routier - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Action courante du navire - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action courante de l'aéronef - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement
@@ -3573,12 +3573,12 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}:
 STR_AI_SETTINGS_START_DELAY                                     :Nombre de jours avant de démarrer cette IA après la précédente (approximativement){NBSP}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
-STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Coût{NBSP}: {CURRENCY_LONG}
@@ -3680,8 +3680,8 @@ STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossib
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossible d'acheter la compagnie...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossible de construire le siège...
-STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossible d'acheter des parts...
-STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Impossible de vendre des parts...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossible d'acheter 25{NBSP}% des parts...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Impossible de vendre 25{NBSP}% des parts...
 STR_ERROR_PROTECTED                                             :{WHITE}Cette compagnie ne vend pas d'actions pour le moment...
 
 # Town related errors
