@@ -206,8 +206,10 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	return true;
 }
 
-uint8 SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
 {
+	if (!load_32bpp) return 0;
+
 	ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
 
 	const char *filename = FioGetFilename(file_slot);

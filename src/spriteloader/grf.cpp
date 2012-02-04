@@ -61,10 +61,11 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
  * @param num Size of the decompressed sprite.
  * @param type Type of the encoded sprite.
  * @param zoom_lvl Requested zoom level.
+ * @param colour_fmt Colour format of the sprite.
  * @param container_format Container format of the GRF this sprite is in.
  * @return True if the sprite was successfully loaded.
  */
-bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte container_format)
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte colour_fmt, byte container_format)
 {
 	AutoFreePtr<byte> dest_orig(MallocT<byte>(num));
 	byte *dest = dest_orig;
@@ -100,6 +101,12 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 	if (num != 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 
 	sprite->AllocateData(zoom_lvl, sprite->width * sprite->height);
+
+	/* Convert colour depth to pixel size. */
+	int bpp = 0;
+	if (colour_fmt & SCC_RGB)   bpp += 3; // Has RGB data.
+	if (colour_fmt & SCC_ALPHA) bpp++;    // Has alpha data.
+	if (colour_fmt & SCC_PAL)   bpp++;    // Has palette data.
 
 	/* When there are transparency pixels, this format has another trick.. decode it */
 	if (type & 0x08) {
@@ -143,53 +150,74 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 
 				data = &sprite->data[y * sprite->width + skip];
 
-				if (skip + length > sprite->width || dest + length > dest_orig + dest_size) {
+				if (skip + length > sprite->width || dest + length * bpp > dest_orig + dest_size) {
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
 				for (int x = 0; x < length; x++) {
-					switch (sprite_type) {
-						case ST_NORMAL: data->m = _palette_remap_grf[file_slot] ? _palmap_w2d[*dest] : *dest; break;
-						case ST_FONT:   data->m = min(*dest, 2u); break;
-						default:        data->m = *dest; break;
+					if (colour_fmt & SCC_RGB) {
+						data->r = *dest++;
+						data->g = *dest++;
+						data->b = *dest++;
 					}
-					dest++;
+					data->a = (colour_fmt & SCC_ALPHA) ? *dest++ : 0xFF;
+					if (colour_fmt & SCC_PAL) {
+						switch (sprite_type) {
+							case ST_NORMAL: data->m = _palette_remap_grf[file_slot] ? _palmap_w2d[*dest] : *dest; break;
+							case ST_FONT:   data->m = min(*dest, 2u); break;
+							default:        data->m = *dest; break;
+						}
+						/* Magic blue. */
+						if (colour_fmt == SCC_PAL && *dest == 0) data->a = 0x00;
+						dest++;
+					}
 					data++;
 				}
 			} while (!last_item);
 		}
 	} else {
-		if (dest_size < sprite->width * sprite->height) {
+		if (dest_size < sprite->width * sprite->height * bpp) {
 			return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 		}
 
-		if (dest_size > sprite->width * sprite->height) {
+		if (dest_size > sprite->width * sprite->height * bpp) {
 			static byte warning_level = 0;
-			DEBUG(sprite, warning_level, "Ignoring " OTTD_PRINTF64 " unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height, FioGetFilename(file_slot), (int)file_pos);
+			DEBUG(sprite, warning_level, "Ignoring " OTTD_PRINTF64 " unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height * bpp, FioGetFilename(file_slot), (int)file_pos);
 			warning_level = 6;
 		}
 
 		dest = dest_orig;
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {
-			switch (sprite_type) {
-				case ST_NORMAL: sprite->data[i].m = _palette_remap_grf[file_slot] ? _palmap_w2d[dest[i]] : dest[i]; break;
-				case ST_FONT:   sprite->data[i].m = min(dest[i], 2u); break;
-				default:        sprite->data[i].m = dest[i]; break;
+			byte *pixel = &dest[i * bpp];
+
+			if (colour_fmt & SCC_RGB) {
+				sprite->data[i].r = *pixel++;
+				sprite->data[i].g = *pixel++;
+				sprite->data[i].b = *pixel++;
+			}
+			sprite->data[i].a = (colour_fmt & SCC_ALPHA) ? *pixel++ : 0xFF;
+			if (colour_fmt & SCC_PAL) {
+				switch (sprite_type) {
+					case ST_NORMAL: sprite->data[i].m = _palette_remap_grf[file_slot] ? _palmap_w2d[*pixel] : *pixel; break;
+					case ST_FONT:   sprite->data[i].m = min(*pixel, 2u); break;
+					default:        sprite->data[i].m = *pixel; break;
+				}
+				/* Magic blue. */
+				if (colour_fmt == SCC_PAL && *pixel == 0) sprite->data[i].a = 0x00;
+				pixel++;
 			}
 		}
-	}
-
-	/* Make sure to mark all transparent pixels transparent on the alpha channel too */
-	for (int i = 0; i < sprite->width * sprite->height; i++) {
-		if (sprite->data[i].m != 0) sprite->data[i].a = 0xFF;
 	}
 
 	return true;
 }
 
-uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
 {
+	/* Check the requested colour depth. */
+	if (load_32bpp) return 0;
+
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_slot, file_pos);
 
@@ -211,12 +239,12 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
 	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
 
-	if (DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, num, type, zoom_lvl, 1)) return 1 << zoom_lvl;
+	if (DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, num, type, zoom_lvl, SCC_PAL, 1)) return 1 << zoom_lvl;
 
 	return 0;
 }
 
-uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
 {
 	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
 
@@ -240,7 +268,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 		byte colour = type & SCC_MASK;
 		byte zoom = FioReadByte();
 
-		if (colour == SCC_PAL && (sprite_type == ST_NORMAL ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
+		if (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL) && (sprite_type == ST_NORMAL ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
 			ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
 
 			if (HasBit(loaded_sprites, zoom_lvl)) {
@@ -258,11 +286,17 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 			/* Mask out colour information. */
 			type = type & ~SCC_MASK;
 
+			/* Convert colour depth to pixel size. */
+			int bpp = 0;
+			if (colour & SCC_RGB)   bpp += 3; // Has RGB data.
+			if (colour & SCC_ALPHA) bpp++;    // Has alpha data.
+			if (colour & SCC_PAL)   bpp++;    // Has palette data.
+
 			/* For chunked encoding we store the decompressed size in the file,
 			 * otherwise we can calculate it from the image dimensions. */
-			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite[zoom_lvl].width * sprite[zoom_lvl].height;
+			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite[zoom_lvl].width * sprite[zoom_lvl].height * bpp;
 
-			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, decomp_size, type, zoom_lvl, 2);
+			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, decomp_size, type, zoom_lvl, colour, 2);
 			if (FioGetPos() != start_pos + num) {
 				WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				return 0;
@@ -279,11 +313,11 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	return loaded_sprites;
 }
 
-uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, bool load_32bpp)
 {
 	if (this->container_ver >= 2) {
-		return LoadSpriteV2(sprite, file_slot, file_pos, sprite_type);
+		return LoadSpriteV2(sprite, file_slot, file_pos, sprite_type, load_32bpp);
 	} else {
-		return LoadSpriteV1(sprite, file_slot, file_pos, sprite_type);
+		return LoadSpriteV1(sprite, file_slot, file_pos, sprite_type, load_32bpp);
 	}
 }

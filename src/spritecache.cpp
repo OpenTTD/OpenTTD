@@ -391,7 +391,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
 
-		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, sc->id, sprite_type);
+		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, sc->id, sprite_type, true);
 
 		if (sprite_avail != 0) {
 			if (ResizeSprites(sprite, sprite_avail, file_slot, sc->id)) {
@@ -409,7 +409,13 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	}
 
 	SpriteLoaderGrf sprite_loader(sc->container_ver);
-	sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, file_pos, sprite_type);
+	if (sprite_type != ST_MAPGEN && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
+		/* Try for 32bpp sprites first. */
+		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, file_pos, sprite_type, true);
+	}
+	if (sprite_avail == 0) {
+		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, file_pos, sprite_type, false);
+	}
 
 	if (sprite_avail == 0) {
 		if (sprite_type == ST_MAPGEN) return NULL;
