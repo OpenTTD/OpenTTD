@@ -81,6 +81,7 @@ static MemBlock *_spritecache_ptr;
 static int _compact_cache_counter;
 
 static void CompactSpriteCache();
+static void *AllocSprite(size_t mem_req);
 
 /**
  * Skip the given amount of sprite graphics data.
@@ -108,28 +109,6 @@ bool SkipSpriteData(byte type, uint16 num)
 		}
 	}
 	return true;
-}
-
-/**
- * Read the sprite header data and then skip the real payload.
- * @return type of sprite; ST_INVALID if the sprite is a pseudo- or unusable sprite
- */
-static SpriteType ReadSpriteHeaderSkipData()
-{
-	uint16 num = FioReadWord();
-
-	if (num == 0) return ST_INVALID;
-
-	byte type = FioReadByte();
-	if (type == 0xFF) {
-		FioSkipBytes(num);
-		/* Some NewGRF files have "empty" pseudo-sprites which are 1
-		 * byte long. Catch these so the sprites won't be displayed. */
-		return (num == 1) ? ST_INVALID : ST_RECOLOUR;
-	}
-
-	FioSkipBytes(7);
-	return SkipSpriteData(type, num - 8) ? ST_NORMAL : ST_INVALID;
 }
 
 /* Check if the given Sprite ID exists */
@@ -177,6 +156,39 @@ uint GetMaxSpriteID()
 }
 
 /**
+ * Load a recolour sprite into memory.
+ * @param file_slot GRF we're reading from.
+ * @param num Size of the sprite in the GRF.
+ * @return Sprite data.
+ */
+static void *ReadRecolourSprite(uint16 file_slot, uint num)
+{
+	/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
+	 * number of recolour sprites that are 17 bytes that only exist in DOS
+	 * GRFs which are the same as 257 byte recolour sprites, but with the last
+	 * 240 bytes zeroed.  */
+	static const uint RECOLOUR_SPRITE_SIZE = 257;
+	byte *dest = (byte *)AllocSprite(max(RECOLOUR_SPRITE_SIZE, num));
+
+	if (_palette_remap_grf[file_slot]) {
+		byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
+
+		/* Only a few recolour sprites are less than 257 bytes */
+		if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
+		FioReadBlock(dest_tmp, num);
+
+		/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
+		for (uint i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
+			dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
+		}
+	} else {
+		FioReadBlock(dest, num);
+	}
+
+	return dest;
+}
+
+/**
  * Read a sprite from disk.
  * @param sc          Location of sprite.
  * @param id          Sprite number.
@@ -189,6 +201,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
 
+	assert(sprite_type != ST_RECOLOUR);
 	assert(IsMapgenSpriteID(id) == (sprite_type == ST_MAPGEN));
 	assert(sc->type == sprite_type);
 
@@ -220,33 +233,9 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	int num  = FioReadWord();
 	byte type = FioReadByte();
 
-	/* Type 0xFF indicates either a colourmap or some other non-sprite info */
-	assert((type == 0xFF) == (sprite_type == ST_RECOLOUR));
-	if (type == 0xFF) {
-		/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
-		 * number of recolour sprites that are 17 bytes that only exist in DOS
-		 * GRFs which are the same as 257 byte recolour sprites, but with the last
-		 * 240 bytes zeroed.  */
-		static const int RECOLOUR_SPRITE_SIZE = 257;
-		byte *dest = (byte *)allocator(max(RECOLOUR_SPRITE_SIZE, num));
-
-		if (_palette_remap_grf[sc->file_slot]) {
-			byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
-
-			/* Only a few recolour sprites are less than 257 bytes */
-			if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
-			FioReadBlock(dest_tmp, num);
-
-			/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
-			for (int i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
-				dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
-			}
-		} else {
-			FioReadBlock(dest, num);
-		}
-
-		return dest;
-	}
+	/* Type 0xFF indicates either a colourmap or some other non-sprite info
+	 * which we should have already handled during GRF loading. */
+	assert(type != 0xFF);
 
 	/* Ugly hack to work around the problem that the old landscape
 	 *  generator assumes that those sprites are stored uncompressed in
@@ -305,7 +294,26 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 {
 	size_t file_pos = FioGetPos();
 
-	SpriteType type = ReadSpriteHeaderSkipData();
+	/* Read sprite header. */
+	uint16 num = FioReadWord();
+	if (num == 0) return false;
+	byte grf_type = FioReadByte();
+
+	SpriteType type;
+	void *data = NULL;
+	if (grf_type == 0xFF) {
+		/* Some NewGRF files have "empty" pseudo-sprites which are 1
+		 * byte long. Catch these so the sprites won't be displayed. */
+		if (num == 1) {
+			FioReadByte();
+			return false;
+		}
+		type = ST_RECOLOUR;
+		data = ReadRecolourSprite(file_slot, num);
+	} else {
+		FioSkipBytes(7);
+		type = SkipSpriteData(grf_type, num - 8) ? ST_NORMAL : ST_INVALID;
+	}
 
 	if (type == ST_INVALID) return false;
 
@@ -323,7 +331,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	SpriteCache *sc = AllocateSpriteCache(load_index);
 	sc->file_slot = file_slot;
 	sc->file_pos = file_pos;
-	sc->ptr = NULL;
+	sc->ptr = data;
 	sc->lru = 0;
 	sc->id = file_sprite_id;
 	sc->type = type;
@@ -449,33 +457,17 @@ static void CompactSpriteCache()
 	}
 }
 
-static void DeleteEntryFromSpriteCache()
+/**
+ * Delete a single entry from the sprite cache.
+ * @param item Entry to delete.
+ */
+static void DeleteEntryFromSpriteCache(uint item)
 {
-	SpriteID i;
-	uint best = UINT_MAX;
-	MemBlock *s;
-	int cur_lru;
-
-	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
-
-	cur_lru = 0xffff;
-	for (i = 0; i != _spritecache_items; i++) {
-		SpriteCache *sc = GetSpriteCache(i);
-		if (sc->ptr != NULL && sc->lru < cur_lru) {
-			cur_lru = sc->lru;
-			best = i;
-		}
-	}
-
-	/* Display an error message and die, in case we found no sprite at all.
-	 * This shouldn't really happen, unless all sprites are locked. */
-	if (best == UINT_MAX) error("Out of sprite memory");
-
 	/* Mark the block as free (the block must be in use) */
-	s = (MemBlock*)GetSpriteCache(best)->ptr - 1;
+	MemBlock *s = (MemBlock*)GetSpriteCache(item)->ptr - 1;
 	assert(!(s->size & S_FREE_MASK));
 	s->size |= S_FREE_MASK;
-	GetSpriteCache(best)->ptr = NULL;
+	GetSpriteCache(item)->ptr = NULL;
 
 	/* And coalesce adjacent free blocks */
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
@@ -485,6 +477,29 @@ static void DeleteEntryFromSpriteCache()
 			}
 		}
 	}
+}
+
+static void DeleteEntryFromSpriteCache()
+{
+	uint best = UINT_MAX;
+	int cur_lru;
+
+	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
+
+	cur_lru = 0xffff;
+	for (SpriteID i = 0; i != _spritecache_items; i++) {
+		SpriteCache *sc = GetSpriteCache(i);
+		if (sc->type != ST_RECOLOUR && sc->ptr != NULL && sc->lru < cur_lru) {
+			cur_lru = sc->lru;
+			best = i;
+		}
+	}
+
+	/* Display an error message and die, in case we found no sprite at all.
+	 * This shouldn't really happen, unless all sprites are locked. */
+	if (best == UINT_MAX) error("Out of sprite memory");
+
+	DeleteEntryFromSpriteCache(best);
 }
 
 static void *AllocSprite(size_t mem_req)
@@ -642,10 +657,8 @@ void GfxClearSpriteCache()
 	/* Clear sprite ptr for all cached items */
 	for (uint i = 0; i != _spritecache_items; i++) {
 		SpriteCache *sc = GetSpriteCache(i);
-		sc->ptr = NULL;
+		if (sc->type != ST_RECOLOUR) DeleteEntryFromSpriteCache(i);
 	}
-
-	GfxInitSpriteCache();
 }
 
 /* static */ ReusableBuffer<SpriteLoader::CommonPixel> SpriteLoader::Sprite::buffer;
