@@ -277,13 +277,17 @@ bool VideoDriver_SDL::ClaimMousePointer()
 }
 
 struct VkMapping {
+#if SDL_VERSION_ATLEAST(1, 3, 0)
+	SDL_Keycode vk_from;
+#else
 	uint16 vk_from;
+#endif
 	byte vk_count;
 	byte map_to;
 };
 
 #define AS(x, z) {x, 0, z}
-#define AM(x, y, z, w) {x, y - x, z}
+#define AM(x, y, z, w) {x, (byte)(y - x), z}
 
 static const VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
@@ -547,7 +551,11 @@ void VideoDriver_SDL::MainLoop()
 		if (_exit_game) break;
 
 		mod = SDL_CALL SDL_GetModState();
+#if SDL_VERSION_ATLEAST(1, 3, 0)
+		keys = SDL_CALL SDL_GetKeyboardState(&numkeys);
+#else
 		keys = SDL_CALL SDL_GetKeyState(&numkeys);
+#endif
 #if defined(_DEBUG)
 		if (_shift_pressed)
 #else
