@@ -1079,8 +1079,6 @@
     <ClInclude Include="..\src\video\video_driver.hpp" />
     <ClCompile Include="..\src\spriteloader\grf.cpp" />
     <ClInclude Include="..\src\spriteloader\grf.hpp" />
-    <ClCompile Include="..\src\spriteloader\png.cpp" />
-    <ClInclude Include="..\src\spriteloader\png.hpp" />
     <ClInclude Include="..\src\spriteloader\spriteloader.hpp" />
     <ClCompile Include="..\src\newgrf.cpp" />
     <ClCompile Include="..\src\newgrf_airport.cpp" />

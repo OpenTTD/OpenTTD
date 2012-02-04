@@ -3667,14 +3667,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\spriteloader\png.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\spriteloader\png.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\spriteloader\spriteloader.hpp"
 				>
 			</File>

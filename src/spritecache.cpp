@@ -15,9 +15,6 @@
 #include "gfx_func.h"
 #include "zoom_func.h"
 #include "settings_type.h"
-#ifdef WITH_PNG
-#include "spriteloader/png.hpp"
-#endif /* WITH_PNG */
 #include "blitter/factory.hpp"
 #include "core/math_func.hpp"
 #include "core/mem_func.hpp"
@@ -385,28 +382,6 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	SpriteLoader::Sprite sprite[ZOOM_LVL_COUNT];
 	uint8 sprite_avail = 0;
 	sprite[ZOOM_LVL_NORMAL].type = sprite_type;
-
-	if (sprite_type == ST_NORMAL && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
-#ifdef WITH_PNG
-		/* Try loading 32bpp graphics in case we are 32bpp output */
-		SpriteLoaderPNG sprite_loader;
-
-		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, sc->id, sprite_type, true);
-
-		if (sprite_avail != 0) {
-			if (ResizeSprites(sprite, sprite_avail, file_slot, sc->id)) {
-				return BlitterFactoryBase::GetCurrentBlitter()->Encode(sprite, allocator);
-			}
-		}
-		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
-#else
-		static bool show_once = true;
-		if (show_once) {
-			DEBUG(misc, 0, "You are running a 32bpp blitter, but this build is without libpng support; falling back to 8bpp graphics");
-			show_once = false;
-		}
-#endif /* WITH_PNG */
-	}
 
 	SpriteLoaderGrf sprite_loader(sc->container_ver);
 	if (sprite_type != ST_MAPGEN && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {

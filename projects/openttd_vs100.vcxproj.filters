@@ -2466,12 +2466,6 @@
     <ClInclude Include="..\src\spriteloader\grf.hpp">
       <Filter>Sprite loaders</Filter>
     </ClInclude>
-    <ClCompile Include="..\src\spriteloader\png.cpp">
-      <Filter>Sprite loaders</Filter>
-    </ClCompile>
-    <ClInclude Include="..\src\spriteloader\png.hpp">
-      <Filter>Sprite loaders</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\spriteloader\spriteloader.hpp">
       <Filter>Sprite loaders</Filter>
     </ClInclude>

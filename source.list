@@ -868,10 +868,6 @@ video/video_driver.hpp
 # Sprite loaders
 spriteloader/grf.cpp
 spriteloader/grf.hpp
-#if PNG
-spriteloader/png.cpp
-spriteloader/png.hpp
-#end
 spriteloader/spriteloader.hpp
 
 # NewGRF
