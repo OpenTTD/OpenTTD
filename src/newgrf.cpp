@@ -6882,15 +6882,20 @@ static void GRFSound(ByteReader *buf)
 		byte action = FioReadByte();
 		switch (action) {
 			case 0xFF:
-				LoadGRFSound(offs);
+				/* Allocate sound only in init stage. */
+				if (_cur.stage == GLS_INIT) LoadGRFSound(offs);
 				FioSkipBytes(len - 1); // <type> is not included in the length for pseudo-sprites.
 				break;
 
 			case 0xFE:
-				/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
-				 * importing sounds, so this is probably all wrong... */
-				if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
-				ImportGRFSound();
+				if (_cur.stage == GLS_ACTIVATION) {
+					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
+					 * importing sounds, so this is probably all wrong... */
+					if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
+					ImportGRFSound();
+				} else {
+					FioSkipBytes(len - 1);
+				}
 				break;
 
 			default:
@@ -8508,7 +8513,7 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit,     GRFInhibit,        GRFInhibit, },
 		/* 0x0F */ { NULL,     GRFUnsafe, NULL,            FeatureTownName, NULL,             NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,           NULL,              NULL, },
-		/* 0x11 */ { SkipAct11,GRFUnsafe, SkipAct11,       SkipAct11,      SkipAct11,         GRFSound, },
+		/* 0x11 */ { SkipAct11,GRFUnsafe, SkipAct11,       GRFSound,       SkipAct11,         GRFSound, },
 		/* 0x12 */ { SkipAct12, SkipAct12, SkipAct12,      SkipAct12,      SkipAct12,         LoadFontGlyph, },
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 		/* 0x14 */ { StaticGRFInfo, NULL, NULL,            NULL,           NULL,              NULL, },
