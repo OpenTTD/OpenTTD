@@ -131,7 +131,7 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 			file->missing_warning = strdup(item->value);
 		}
 
-		switch (file->CheckMD5(BASESET_DIR)) {
+		switch (T::CheckMD5(file, BASESET_DIR)) {
 			case MD5File::CR_MATCH:
 				this->valid_files++;
 				/* FALL THROUGH */

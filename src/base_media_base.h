@@ -33,7 +33,7 @@ struct MD5File {
 	uint8 hash[16];              ///< md5 sum of the file
 	const char *missing_warning; ///< warning when this file is missing
 
-	ChecksumResult CheckMD5(Subdirectory subdir) const;
+	ChecksumResult CheckMD5(Subdirectory subdir, size_t max_size) const;
 };
 
 /**
@@ -128,6 +128,20 @@ struct BaseSet {
 		}
 		/* Then fall back */
 		return this->description.Begin()->second;
+	}
+
+	/**
+	 * Calculate and check the MD5 hash of the supplied file.
+	 * @param file The file get the hash of.
+	 * @param subdir The sub directory to get the files from.
+	 * @return
+	 * - #CR_MATCH if the MD5 hash matches
+	 * - #CR_MISMATCH if the MD5 does not match
+	 * - #CR_NO_FILE if the file misses
+	 */
+	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir)
+	{
+		return file->CheckMD5(subdir, SIZE_MAX);
 	}
 };
 
