@@ -17,6 +17,7 @@
 #include "table/strings.h"
 #include "../error.h"
 #include "../core/math_func.hpp"
+#include "../core/alloc_type.hpp"
 #include "grf.hpp"
 
 extern const byte _palmap_w2d[];
@@ -41,30 +42,21 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
 	return false;
 }
 
-bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+/**
+ * Decode the image data of a single sprite.
+ * @param[in,out] sprite Filled with the sprite image data.
+ * @param file_slot File slot.
+ * @param file_pos File position.
+ * @param sprite_type Type of the sprite we're decoding.
+ * @param num Size of the decompressed sprite.
+ * @param type Type of the encoded sprite.
+ * @return True if the sprite was successfully loaded.
+ */
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type)
 {
-	/* Open the right file and go to the correct position */
-	FioSeekToFile(file_slot, file_pos);
-
-	/* Read the size and type */
-	int num = FioReadWord();
-	byte type = FioReadByte();
-
-	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
-	if (type == 0xFF) return false;
-
-	sprite->height = FioReadByte();
-	sprite->width  = FioReadWord();
-	sprite->x_offs = FioReadWord();
-	sprite->y_offs = FioReadWord();
-
-	/* 0x02 indicates it is a compressed sprite, so we can't rely on 'num' to be valid.
-	 *  In case it is uncompressed, the size is 'num' - 8 (header-size). */
-	num = (type & 0x02) ? sprite->width * sprite->height : num - 8;
-
-	byte *dest_orig = AllocaM(byte, num);
+	AutoFreePtr<byte> dest_orig(MallocT<byte>(num));
 	byte *dest = dest_orig;
-	const int dest_size = num;
+	const int64 dest_size = num;
 
 	/* Read the file, which has some kind of compression */
 	while (num > 0) {
@@ -145,7 +137,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 		if (dest_size > sprite->width * sprite->height) {
 			static byte warning_level = 0;
-			DEBUG(sprite, warning_level, "Ignoring %i unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height, FioGetFilename(file_slot), (int)file_pos);
+			DEBUG(sprite, warning_level, "Ignoring " OTTD_PRINTF64 " unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height, FioGetFilename(file_slot), (int)file_pos);
 			warning_level = 6;
 		}
 
@@ -182,4 +174,28 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 	}
 
 	return true;
+}
+
+bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+{
+	/* Open the right file and go to the correct position */
+	FioSeekToFile(file_slot, file_pos);
+
+	/* Read the size and type */
+	int num = FioReadWord();
+	byte type = FioReadByte();
+
+	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
+	if (type == 0xFF) return false;
+
+	sprite->height = FioReadByte();
+	sprite->width  = FioReadWord();
+	sprite->x_offs = FioReadWord();
+	sprite->y_offs = FioReadWord();
+
+	/* 0x02 indicates it is a compressed sprite, so we can't rely on 'num' to be valid.
+	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
+	num = (type & 0x02) ? sprite->width * sprite->height : num - 8;
+
+	return DecodeSingleSprite(sprite, file_slot, file_pos, sprite_type, num, type);
 }
