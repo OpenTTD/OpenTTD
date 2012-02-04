@@ -59,9 +59,10 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
  * @param sprite_type Type of the sprite we're decoding.
  * @param num Size of the decompressed sprite.
  * @param type Type of the encoded sprite.
+ * @param zoom_lvl Requested zoom level.
  * @return True if the sprite was successfully loaded.
  */
-bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type)
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl)
 {
 	AutoFreePtr<byte> dest_orig(MallocT<byte>(num));
 	byte *dest = dest_orig;
@@ -96,7 +97,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 
 	if (num != 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 
-	sprite->AllocateData(sprite->width * sprite->height * ZOOM_LVL_BASE * ZOOM_LVL_BASE);
+	sprite->AllocateData(zoom_lvl, sprite->width * sprite->height);
 
 	/* When there are transparency pixels, this format has another trick.. decode it */
 	if (type & 0x08) {
@@ -161,22 +162,6 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 		}
 	}
 
-	if (ZOOM_LVL_BASE != 1 && sprite_type == ST_NORMAL) {
-		/* Simple scaling, back-to-front so that no intermediate buffers are needed. */
-		int width  = sprite->width  * ZOOM_LVL_BASE;
-		int height = sprite->height * ZOOM_LVL_BASE;
-		for (int y = height - 1; y >= 0; y--) {
-			for (int x = width - 1; x >= 0; x--) {
-				sprite->data[y * width + x] = sprite->data[y / ZOOM_LVL_BASE * sprite->width + x / ZOOM_LVL_BASE];
-			}
-		}
-
-		sprite->width  *= ZOOM_LVL_BASE;
-		sprite->height *= ZOOM_LVL_BASE;
-		sprite->x_offs *= ZOOM_LVL_BASE;
-		sprite->y_offs *= ZOOM_LVL_BASE;
-	}
-
 	/* Make sure to mark all transparent pixels transparent on the alpha channel too */
 	for (int i = 0; i < sprite->width * sprite->height; i++) {
 		if (sprite->data[i].m != 0) sprite->data[i].a = 0xFF;
@@ -185,7 +170,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 	return true;
 }
 
-bool LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_slot, file_pos);
@@ -195,24 +180,28 @@ bool LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos
 	byte type = FioReadByte();
 
 	/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here */
-	if (type == 0xFF) return false;
+	if (type == 0xFF) return 0;
 
-	sprite->height = FioReadByte();
-	sprite->width  = FioReadWord();
-	sprite->x_offs = FioReadWord();
-	sprite->y_offs = FioReadWord();
+	ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+
+	sprite[zoom_lvl].height = FioReadByte();
+	sprite[zoom_lvl].width  = FioReadWord();
+	sprite[zoom_lvl].x_offs = FioReadWord();
+	sprite[zoom_lvl].y_offs = FioReadWord();
 
 	/* 0x02 indicates it is a compressed sprite, so we can't rely on 'num' to be valid.
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
-	num = (type & 0x02) ? sprite->width * sprite->height : num - 8;
+	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
 
-	return DecodeSingleSprite(sprite, file_slot, file_pos, sprite_type, num, type);
+	if (DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, num, type, zoom_lvl)) return 1 << zoom_lvl;
+
+	return 0;
 }
 
-bool LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
 	/* Is the sprite not present/stripped in the GRF? */
-	if (file_pos == SIZE_MAX) return false;
+	if (file_pos == SIZE_MAX) return 0;
 
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_slot, file_pos);
@@ -225,27 +214,33 @@ bool LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos
 		byte type = FioReadByte();
 
 		/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here. */
-		if (type == 0xFF) return false;
+		if (type == 0xFF) return 0;
 
 		byte colour = type & SCC_MASK;
 		byte zoom = FioReadByte();
 
 		if (colour == SCC_PAL && zoom == 0) {
-			sprite->height = FioReadWord();
-			sprite->width  = FioReadWord();
-			sprite->x_offs = FioReadWord();
-			sprite->y_offs = FioReadWord();
+			ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+
+			sprite[zoom_lvl].height = FioReadWord();
+			sprite[zoom_lvl].width  = FioReadWord();
+			sprite[zoom_lvl].x_offs = FioReadWord();
+			sprite[zoom_lvl].y_offs = FioReadWord();
 
 			/* Mask out colour information. */
 			type = type & ~SCC_MASK;
 
 			/* For chunked encoding we store the decompressed size in the file,
 			 * otherwise we can calculate it from the image dimensions. */
-			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite->width * sprite->height;
+			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite[zoom_lvl].width * sprite[zoom_lvl].height;
 
-			bool valid = DecodeSingleSprite(sprite, file_slot, file_pos, sprite_type, decomp_size, type);
-			if (FioGetPos() != start_pos + num) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
-			return valid;
+			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, decomp_size, type, zoom_lvl);
+			if (FioGetPos() != start_pos + num) {
+				WarnCorruptSprite(file_slot, file_pos, __LINE__);
+				return 0;
+			}
+
+			return 1 << zoom_lvl;
 		} else {
 			/* Not the wanted zoom level or colour depth, continue searching. */
 			FioSkipBytes(num - 2);
@@ -253,10 +248,10 @@ bool LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos
 
 	} while (FioReadDword() == id);
 
-	return false;
+	return 0;
 }
 
-bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
 	if (this->container_ver >= 2) {
 		return LoadSpriteV2(sprite, file_slot, file_pos, sprite_type);

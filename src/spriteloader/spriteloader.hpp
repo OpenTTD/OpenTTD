@@ -43,23 +43,24 @@ public:
 
 		/**
 		 * Allocate the sprite data of this sprite.
+		 * @param zoom Zoom level to allocate the data for.
 		 * @param size the minimum size of the data field.
 		 */
-		void AllocateData(size_t size) { this->data = Sprite::buffer.ZeroAllocate(size); }
+		void AllocateData(ZoomLevel zoom, size_t size) { this->data = Sprite::buffer[zoom].ZeroAllocate(size); }
 	private:
 		/** Allocated memory to pass sprite data around */
-		static ReusableBuffer<SpriteLoader::CommonPixel> buffer;
+		static ReusableBuffer<SpriteLoader::CommonPixel> buffer[ZOOM_LVL_COUNT];
 	};
 
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
-	 * @param sprite      The sprite to fill with data.
+	 * @param[out] sprite The sprites to fill with data.
 	 * @param file_slot   The file "descriptor" of the file we read from.
 	 * @param file_pos    The position within the file the image begins.
 	 * @param sprite_type The type of sprite we're trying to load.
-	 * @return true iff loading went okay.
+	 * @return Bit mask of the zoom levels successfully loaded or 0 if no sprite could be loaded.
 	 */
-	virtual bool LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type) = 0;
+	virtual uint8 LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type) = 0;
 
 	virtual ~SpriteLoader() { }
 };

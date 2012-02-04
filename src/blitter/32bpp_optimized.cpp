@@ -207,55 +207,6 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	}
 }
 
-/**
- * Resizes the sprite in a very simple way, takes every n-th pixel and every n-th row
- *
- * @param sprite_src sprite to resize
- * @param zoom resizing scale
- * @return resized sprite
- */
-static const SpriteLoader::Sprite *ResizeSprite(const SpriteLoader::Sprite *sprite_src, ZoomLevel zoom)
-{
-	SpriteLoader::Sprite *sprite = MallocT<SpriteLoader::Sprite>(1);
-
-	if (zoom == ZOOM_LVL_NORMAL) {
-		memcpy(sprite, sprite_src, sizeof(*sprite));
-		uint size = sprite_src->height * sprite_src->width;
-		sprite->data = MallocT<SpriteLoader::CommonPixel>(size);
-		memcpy(sprite->data, sprite_src->data, size * sizeof(SpriteLoader::CommonPixel));
-		return sprite;
-	}
-
-	sprite->height = UnScaleByZoom(sprite_src->height, zoom);
-	sprite->width  = UnScaleByZoom(sprite_src->width,  zoom);
-	sprite->x_offs = UnScaleByZoom(sprite_src->x_offs, zoom);
-	sprite->y_offs = UnScaleByZoom(sprite_src->y_offs, zoom);
-
-	uint size = sprite->height * sprite->width;
-	SpriteLoader::CommonPixel *dst = sprite->data = CallocT<SpriteLoader::CommonPixel>(size);
-
-	const SpriteLoader::CommonPixel *src = (SpriteLoader::CommonPixel *)sprite_src->data;
-	const SpriteLoader::CommonPixel *src_end = src + sprite_src->height * sprite_src->width;
-
-	uint scaled_1 = ScaleByZoom(1, zoom);
-
-	for (uint y = 0; y < sprite->height; y++) {
-		if (src >= src_end) src = src_end - sprite_src->width;
-
-		const SpriteLoader::CommonPixel *src_ln = src + sprite_src->width * scaled_1;
-		for (uint x = 0; x < sprite->width; x++) {
-			if (src >= src_ln) src = src_ln - 1;
-			*dst = *src;
-			dst++;
-			src += scaled_1;
-		}
-
-		src = src_ln;
-	}
-
-	return sprite;
-}
-
 Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
@@ -287,7 +238,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	}
 
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
-		const SpriteLoader::Sprite *src_orig = ResizeSprite(sprite, z);
+		const SpriteLoader::Sprite *src_orig = &sprite[z];
 
 		uint size = src_orig->height * src_orig->width;
 
@@ -371,9 +322,6 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 
 		lengths[z][0] = (byte *)dst_px_ln - (byte *)dst_px_orig[z]; // all are aligned to 4B boundary
 		lengths[z][1] = (byte *)dst_n_ln  - (byte *)dst_n_orig[z];
-
-		free(src_orig->data);
-		free(src_orig);
 	}
 
 	uint len = 0; // total length of data

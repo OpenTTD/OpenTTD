@@ -130,7 +130,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 	}
 
 	for (ZoomLevel i = zoom_min; i <= zoom_max; i++) {
-		memory += UnScaleByZoom(sprite->height, i) * UnScaleByZoom(sprite->width, i);
+		memory += sprite[i].width * sprite[i].height;
 	}
 
 	/* We have no idea how much memory we really need, so just guess something */
@@ -150,9 +150,8 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 		temp_dst->offset[i] = offset;
 
 		/* cache values, because compiler can't cache it */
-		int scaled_height = UnScaleByZoom(sprite->height, i);
-		int scaled_width  = UnScaleByZoom(sprite->width,  i);
-		int scaled_1      =   ScaleByZoom(1,              i);
+		int scaled_height = sprite[i].height;
+		int scaled_width  = sprite[i].width;
 
 		for (int y = 0; y < scaled_height; y++) {
 			uint trans = 0;
@@ -161,18 +160,10 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPro
 			byte *count_dst = NULL;
 
 			/* Store the scaled image */
-			const SpriteLoader::CommonPixel *src = &sprite->data[ScaleByZoom(y, i) * sprite->width];
-			const SpriteLoader::CommonPixel *src_end = &src[sprite->width];
+			const SpriteLoader::CommonPixel *src = &sprite[i].data[y * sprite[i].width];
 
 			for (int x = 0; x < scaled_width; x++) {
-				uint colour = 0;
-
-				/* Get the colour keeping in mind the zoom-level */
-				for (int j = 0; j < scaled_1; j++) {
-					if (src->m != 0) colour = src->m;
-					/* Because of the scaling it might happen we read outside the buffer. Avoid that. */
-					if (++src == src_end) break;
-				}
+				uint colour = src++->m;
 
 				if (last_colour == 0 || colour == 0 || pixels == 255) {
 					if (count_dst != NULL) {

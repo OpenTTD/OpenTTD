@@ -1152,7 +1152,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	if (width > 256 || height > 256) usererror("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	sprite.AllocateData(width * height);
+	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = ST_FONT;
 	sprite.width = width;
 	sprite.height = height;

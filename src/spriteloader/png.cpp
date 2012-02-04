@@ -51,7 +51,7 @@ static bool OpenPNGFile(const char *filename, uint32 id, bool mask)
 	return false;
 }
 
-static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 id, volatile bool mask)
+static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 id, volatile bool mask, ZoomLevel zoom)
 {
 	png_byte header[8];
 	png_structp png_ptr;
@@ -115,7 +115,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		}
 		sprite->height = height;
 		sprite->width  = width;
-		sprite->AllocateData(sprite->width * sprite->height * ZOOM_LVL_BASE * ZOOM_LVL_BASE);
+		sprite->AllocateData(zoom, sprite->width * sprite->height);
 	} else if (sprite->height != png_get_image_height(png_ptr, info_ptr) || sprite->width != png_get_image_width(png_ptr, info_ptr)) {
 		/* Make sure the mask image isn't larger than the sprite image. */
 		DEBUG(misc, 0, "Ignoring mask for SpriteID %d as it isn't the same dimension as the masked sprite", id);
@@ -206,29 +206,15 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	return true;
 }
 
-bool SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+uint8 SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
+	ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+
 	const char *filename = FioGetFilename(file_slot);
-	if (!LoadPNG(sprite, filename, (uint32)file_pos, false)) return false;
-	if (!LoadPNG(sprite, filename, (uint32)file_pos, true)) return false;
+	if (!LoadPNG(&sprite[zoom_lvl], filename, (uint32)file_pos, false, zoom_lvl)) return 0;
+	if (!LoadPNG(&sprite[zoom_lvl], filename, (uint32)file_pos, true, zoom_lvl)) return 0;
 
-	if (ZOOM_LVL_BASE != 1 && sprite_type == ST_NORMAL) {
-		/* Simple scaling, back-to-front so that no intermediate buffers are needed. */
-		int width  = sprite->width  * ZOOM_LVL_BASE;
-		int height = sprite->height * ZOOM_LVL_BASE;
-		for (int y = height - 1; y >= 0; y--) {
-			for (int x = width - 1; x >= 0; x--) {
-				sprite->data[y * width + x] = sprite->data[y / ZOOM_LVL_BASE * sprite->width + x / ZOOM_LVL_BASE];
-			}
-		}
-
-		sprite->width  *= ZOOM_LVL_BASE;
-		sprite->height *= ZOOM_LVL_BASE;
-		sprite->x_offs *= ZOOM_LVL_BASE;
-		sprite->y_offs *= ZOOM_LVL_BASE;
-	}
-
-	return true;
+	return 1 << zoom_lvl;
 }
 
 #endif /* WITH_PNG */
