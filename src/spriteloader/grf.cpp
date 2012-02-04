@@ -18,6 +18,7 @@
 #include "../error.h"
 #include "../core/math_func.hpp"
 #include "../core/alloc_type.hpp"
+#include "../core/bitmath_func.hpp"
 #include "grf.hpp"
 
 extern const byte _palmap_w2d[];
@@ -200,6 +201,8 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 
 uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
+	static const ZoomLevel zoom_lvl_map[6] = {ZOOM_LVL_OUT_4X, ZOOM_LVL_NORMAL, ZOOM_LVL_OUT_2X, ZOOM_LVL_OUT_8X, ZOOM_LVL_OUT_16X, ZOOM_LVL_OUT_32X};
+
 	/* Is the sprite not present/stripped in the GRF? */
 	if (file_pos == SIZE_MAX) return 0;
 
@@ -208,6 +211,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 
 	uint32 id = FioReadDword();
 
+	uint8 loaded_sprites = 0;
 	do {
 		int64 num = FioReadDword();
 		size_t start_pos = FioGetPos();
@@ -219,8 +223,15 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 		byte colour = type & SCC_MASK;
 		byte zoom = FioReadByte();
 
-		if (colour == SCC_PAL && zoom == 0) {
-			ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? ZOOM_LVL_OUT_4X : ZOOM_LVL_NORMAL;
+		if (colour == SCC_PAL && (sprite_type == ST_NORMAL ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
+			ZoomLevel zoom_lvl = (sprite_type == ST_NORMAL) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
+
+			if (HasBit(loaded_sprites, zoom_lvl)) {
+				/* We already have this zoom level, skip sprite. */
+				DEBUG(sprite, 1, "Ignoring duplicate zoom level sprite %u from %s", id, FioGetFilename(file_slot));
+				FioSkipBytes(num - 2);
+				continue;
+			}
 
 			sprite[zoom_lvl].height = FioReadWord();
 			sprite[zoom_lvl].width  = FioReadWord();
@@ -240,7 +251,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 				return 0;
 			}
 
-			return 1 << zoom_lvl;
+			if (valid) SetBit(loaded_sprites, zoom_lvl);
 		} else {
 			/* Not the wanted zoom level or colour depth, continue searching. */
 			FioSkipBytes(num - 2);
@@ -248,7 +259,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 
 	} while (FioReadDword() == id);
 
-	return 0;
+	return loaded_sprites;
 }
 
 uint8 SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
