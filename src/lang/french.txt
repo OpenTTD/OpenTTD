@@ -265,7 +265,7 @@ STR_SORT_BY_PRODUCTION                                          :Production
 STR_SORT_BY_TYPE                                                :Type
 STR_SORT_BY_TRANSPORTED                                         :Transporté
 STR_SORT_BY_NUMBER                                              :Numéro
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit année précédente
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit l'année précédente
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit cette année
 STR_SORT_BY_AGE                                                 :Âge
 STR_SORT_BY_RELIABILITY                                         :Fiabilité
@@ -295,7 +295,7 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre l
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rapide du jeu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Sauvegarder, abandonner, quitter
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la carte, vue supplémentaire ou liste des panneaux
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Afficher la mini-carte, vue supplémentaire ou liste des panneaux
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Afficher l'annuaire des villes
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Afficher les subventions
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Afficher la liste des stations de la compagnie
@@ -580,7 +580,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles ne forment qu'une seule station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si toutes ces parties ne forment qu'une seule station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers trimestres
@@ -654,7 +654,7 @@ STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLAC
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} atteint le niveau de «{NBSP}{STRING}{NBSP}»{NBSP}!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Carte - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Mini-carte − {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Relief
 STR_SMALLMAP_TYPE_VEHICLES                                      :Véhicules
@@ -662,12 +662,12 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industries
 STR_SMALLMAP_TYPE_ROUTES                                        :Routes
 STR_SMALLMAP_TYPE_VEGETATION                                    :Végétation
 STR_SMALLMAP_TYPE_OWNERS                                        :Propriétaires
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Afficher le relief sur la carte
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Afficher les véhicules sur la carte
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Afficher les industries sur la carte
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Afficher les routes de transport sur la carte
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Afficher la végétation sur la carte
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Afficher les propriétaires sur la carte
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Afficher le relief sur la mini-carte
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Afficher les véhicules sur la mini-carte
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Afficher les industries sur la mini-carte
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Afficher les routes de transport sur la mini-carte
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Afficher la végétation sur la mini-carte
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Afficher les propriétaires sur la mini-carte
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Cliquer sur un type d'industrie pour activer ou non son affichage.{}Ctrl-clic pour désactiver tous les types d'industrie excepté celui sélectionné.{}Ctrl-clic à nouveau pour réactiver tous les types d'industrie.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliquer sur une compagnie pour afficher ou non ses propriétés.{}Ctr-clic pour désactiver toutes les compagnies exceptée celle sélectionnée.{}Ctrl-clic à nouveau pour réactiver toutes les compagnies.
 
@@ -700,7 +700,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Désert
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Neige
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Afficher ou non le nom des villes sur la carte
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Afficher ou non le nom des villes sur la mini-carte
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la mini-carte sur la position actuelle
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -708,11 +708,11 @@ STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHI
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Désactiver tout
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activer tout
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Relief
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}N'afficher aucune industrie sur la carte
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Afficher toutes les industries sur la carte
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}N'afficher aucune industrie sur la mini-carte
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Afficher toutes les industries sur la mini-carte
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alterner entre l'affichage ou non du relief
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}N'afficher aucune propriété des compagnies sur la carte
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Afficher toutes les propriétés des compagnies sur la carte
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Afficher toutes les propriétés des compagnies sur la mini-carte
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Afficher le dernier message ou bulletin
@@ -1186,7 +1186,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Épaiss
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Générateur de terrain{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distance max depuis les bords pour les raffineries{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distance maximum depuis les bords pour les raffineries{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude d'enneigement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rugosité du terrain (TerraGenesis seulement){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
@@ -1205,7 +1205,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoris
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord Nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue max. des gares{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s} {RED}Attention{NBSP}: valeur élevée = jeu lent
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue maximum des gares{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s} {RED}Attention{NBSP}: valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle des rails/routes/eau et aéroport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Couleur utilisée pour le terrain sur la mini-carte{NBSP}: {ORANGE}{STRING}
@@ -1637,10 +1637,10 @@ STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cl
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nombre de clients max.{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagnie{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max compagnies{NBSP}:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max. compagnies{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limiter le serveur à un certain nombre de compagnies
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectateur{P "" s}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spectateurs{NBSP}:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. spectateurs{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiter le serveur à un certain nombre de spectateurs
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur
@@ -2019,8 +2019,8 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Signal d
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Signal de chemin à sens unique (électrique){}Un signal de chemin autorise plus d'un train à entrer dans un bloc de signaux en même temps, si le train peut réserver un chemin jusqu'à un point d'attente sûr. Les signaux de chemin à sens unique ne peuvent pas être passés par l'arrière.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversion de signal.{}Si sélectionné, cliquer sur un signal existant le convertit vers le type et la variante choisis.{}Ctrl-clic pour alterner entre les variantes existantes.{}Shift pour afficher seulement le coût estimé.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densité de signaux
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire la densité de signaux
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter la densité de signaux
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Réduire l'intervalle entre les signaux (augmenter la densité)
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Augmenter l'intervalle entre les signaux (réduire la densité)
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir un pont ferroviaire
@@ -2194,7 +2194,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aléatoi
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financer une nouvelle industrie
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisissez l'industrie appropriée dans cette liste
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisir l'industrie appropriée dans cette liste
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Beaucoup d'industries au hasard
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte d'industries placées au hasard
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Prix{NBSP}: {YELLOW}{CURRENCY_LONG}
@@ -2203,15 +2203,15 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonder
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle pour l'industrie {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne industrielle pour le type de marchandise {STRING}
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle pour l'industrie «{NBSP}{STRING}{NBSP}»
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Chaîne industrielle pour le type de marchandise «{NBSP}{STRING}{NBSP}»
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industries fournisseuses
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industries clientes
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Maisons
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliquer sur l'industrie pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliquer sur le type de marchandise pour voir ses fournisseurs et ses clients
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afficher la chaîne
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne les industries fournisseuses et clientes de ce type de marchandise
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afficher la chaîne des industries fournisseuses et clientes de ce type de marchandise
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Lier à la mini-carte
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Afficher les industries correspondantes sur la mini-carte
 
@@ -2435,8 +2435,8 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Prépara
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informations NewGRF détaillées
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fichiers NewGRF actifs
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fichiers NewGRF inactifs
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Modules NewGRF actifs
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Modules NewGRF inactifs
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Sélectionner la liste{NBSP}:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtre{NBSP}:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Charger la liste sélectionnée
@@ -2446,30 +2446,30 @@ STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Entrer u
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Supprimer la liste
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Supprimer la liste sélectionnée
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Ajouter
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Ajouter le fichier NewGRF sélectionné à votre configuration
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Ajouter le module NewGRF sélectionné à votre configuration
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Actualiser la liste
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Mettre à jour la liste des fichiers NewGRF disponibles
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Mettre à jour la liste des modules NewGRF disponibles
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirer
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirer le fichier NewGRF sélectionné de la liste
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirer le module NewGRF sélectionné de la liste
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Monter
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le fichier NewGRF sélectionné dans la liste
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le module NewGRF sélectionné dans la liste{NBSP}: cela réduit son influence relative (certains de ses paramètres sont plus susceptibles d'être écrasés par ceux équivalents provenant de modules chargés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le fichier NewGRF sélectionné dans la liste
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules chargés plus bas dans la liste)
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des modules NewGRF installés. Cliquer sur un module pour modifier ses paramètres.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Voir le Lisez Moi
+STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Voir le Lisez-moi
 STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Liste des changements
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licence
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Afficher les paramètres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Changer de palette
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Changer la palette de couleurs du NewGRF sélectionné.{}À faire quand les graphiques de ce NewGRF sont roses dans le jeu.
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Changer la palette de couleurs du module NewGRF sélectionné.{}À faire quand les graphiques de ce NewGRF sont roses dans le jeu.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Appliquer les changements
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Trouver le contenu manquant en ligne
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Vérifier si le contenu manquant peut être trouvé en ligne
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Trouver les modules manquants en ligne
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Vérifier si les modules manquants peuvent être trouvés en ligne
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nom de fichier{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID{NBSP}: {SILVER}{STRING}
@@ -2480,7 +2480,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette{
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramètres{NBSP}: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Pas d'informations disponibles
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichier correspondant non trouvé
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Module correspondant non trouvé
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Désactivé
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible avec cette version d'OpenTTD
 
@@ -2529,25 +2529,25 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Aller au
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attention{NBSP}: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erreur{NBSP}: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal{NBSP}: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Une erreur NewGRF fatale est survenue{NBSP}: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne fonctionnera pas avec la version de TTDPatch reportée par OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} est pour la version {STRING} de TTD
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erreur fatale{NBSP}: {SILVER}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Une erreur NewGRF fatale est survenue{NBSP}:{}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne fonctionnera pas avec la version de TTDPatch rapportée par OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} est conçu pour la version {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} est conçu pour être utilisé avec {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paramètre invalide pour {1:STRING}{NBSP}: paramètre {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} doit être chargé avant {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} doit être chargé après {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nécessite OpenTTD version {STRING} ou supérieur
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nécessite OpenTTD version {STRING} ou supérieure
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {1:STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronisation
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattendu (sprite {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Action 0 avec propriété inconnue {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'utilisation d'un identifiant invalide (sprite {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?)
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Présence multiple de l'Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin des pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certains sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certains sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base.
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Indisponibilité de la ressource demandée (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a été désactivé par {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Format de sprite invalide ou inconnu (sprite {3:NUM})
@@ -2557,28 +2557,28 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attentio
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours. Cela peut faire planter OpenTTD ou corrompre l'état de la partie. Ne rapportez pas de bogues pour ces problèmes.{}Êtes-vous absolument sûr{NBSP}?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichier exact non trouvé (GRF compatible chargé)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Module exact non trouvé (GRF compatible chargé)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les fichiers absents
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichier(s) GRF absent(s) désactivés
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichier(s) GRF manquant(s)
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne créez pas de rapport de bug pour ceux-ci.{}Voulez-vous vraiment retirer la pause{NBSP}?
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les modules absents
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Module(s) GRF absent(s) désactivés
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Module(s) GRF manquant(s)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne pas envoyer de rapport de bug à cause de cela.{}Voulez-vous vraiment retirer la pause{NBSP}?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Aucun
-STR_NEWGRF_LIST_ALL_FOUND                                       :Tous les fichiers présents
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fichiers compatibles trouvés
-STR_NEWGRF_LIST_MISSING                                         :{RED}Fichiers manquants
+STR_NEWGRF_LIST_ALL_FOUND                                       :Tous les modules présents
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Modules compatibles trouvés
+STR_NEWGRF_LIST_MISSING                                         :{RED}Modules manquants
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF '{0:STRING}' peut causer des erreurs de synchronisation et/ou des plantages
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour '{1:ENGINE}' en dehors du dépôt
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour '{1:ENGINE}' en dehors du dépôt
+STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{0:STRING}" peut provoquer des erreurs de synchronisation et/ou des plantages
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{1:ENGINE}" en dehors du dépôt
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{1:ENGINE}" en dehors du dépôt
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}L'information de cargaison/réaménagement pour '{1:ENGINE}' après sa construction est différent de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a causé une boucle infinie dans la fonction de rappel de production
+STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{0:STRING}" fournit une information incorrecte
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{1:ENGINE}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}"{1:STRING}" a causé une boucle infinie dans la fonction de rappel de production
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} a retourné un résultat invalide {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2610,7 +2610,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes
-STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Aucune -
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale{NBSP}: {COMMA}
@@ -2674,7 +2674,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corromp
 STR_GOALS_CAPTION                                               :{WHITE}Objectifs
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectifs globaux{NBSP}:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_GOALS_NONE                                                  :{ORANGE}- Aucuns -
+STR_GOALS_NONE                                                  :{ORANGE}− Aucun −
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectifs de la compagnie{NBSP}:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer sur l'objectif pour centrer la vue principale sur l'industrie, la ville ou la case. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie, la ville ou la case
 
@@ -2708,7 +2708,7 @@ STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fermer
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventions
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Offres de subvention pour le transport de{NBSP}:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} (avant {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}- Aucune -
+STR_SUBSIDIES_NONE                                              :{ORANGE}− Aucune −
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subventions déjà accordées{NBSP}:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} ({COMPANY}{YELLOW}, jusqu'à {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer sur le service pour centrer la vue principale sur l'industrie ou la ville. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie ou la ville
@@ -2719,9 +2719,9 @@ STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl-cli
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 1 "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_LIST_NONE                                           :{YELLOW}- Aucun -
+STR_STATION_LIST_NONE                                           :{YELLOW}− Aucun −
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Tous les types de station
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tous les types de marchandise (y compris pas en attente)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Tous les types de marchandise{}(y compris pas en attente)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Pas de marchandises en attente
 
 # Station view window
@@ -2866,7 +2866,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industries
-STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Aucune -
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}− Aucune −
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2915,7 +2915,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aéronefs dispo
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Voir la liste des modèles disponibles pour ce type de véhicules
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gérer la liste
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envoyer les instructions à tous les véhicules de cette liste
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envoyer des instructions à tous les véhicules de cette liste
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer des véhicules
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer en entretien
 

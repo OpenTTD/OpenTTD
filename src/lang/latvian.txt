@@ -739,13 +739,13 @@ STR_NEWS_MESSAGES_FULL                                          :Pilns
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Ziņojumu veidi:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Spēlētaja stacijā ierodas pirmais transporta līdzeklis
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sāncenša stacijā ierodas pirmais transporta līdzeklis
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Negadījumi / avārijas
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Negadījumi / katastrofas
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Uzņēmuma informācija
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ražotņu atklāšana
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Ražotņu slēgšana
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomikas izmaiņas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražošanas izmaiņas uzņēmuma apkalpotajās rūpnīcās
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas konkurentu apkalpotajās rūpnīcās
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražīguma izmaiņas uzņēmuma apkalpotajās ražotnēs
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražīguma izmaiņas konkurentu apkalpotajās ražotnēs
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Citas ražošanas apjomu izmaiņas
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transporta līdzekļiem
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jauni transportlīdzekļi
@@ -755,13 +755,13 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Vispār
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Iedzīvotāji svin svētkus . . .{}Pirmais vilciens ierodas {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Pilsētnieki svin . . .{}Pirmais autobuss ierodas {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Pilsētnieki svin . . .{}Pirmā kravas automašīna ierodas {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Pilsoņi līksmo . . .{}Pirmais pasažieru tramvajs ierodas {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Pilsoņi līksmo . . .{}Pirmais kravas tramvajs ierodas {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Pilsētnieki svin . . .{}Pirmais kuģis ierodas {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Iedzīvotāji svin svētkus . . .{}Pirmais lidaparāts ierodas {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais vilciens ierodas {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais autobuss ierodas {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmā kravas automašīna ierodas {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais pasažieru tramvajs ierodas {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais kravas tramvajs ierodas {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais kuģis ierodas {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais lidaparāts ierodas {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Vilciena avārija!{}{COMMA} mirušie
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
@@ -769,7 +769,7 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lidmašīna nogāzusies!{}{COMMA} iet bojā ugunī {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lidaparāta avārija!{}Lidaparātam beidzās degviela, {COMMA} bojāgājušie!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirižabļa nelaimes gadījums {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirižabļa katastrofa {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Autotransports ir gājis bojā sadursmē ar 'NLO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Naftas rūpnīcas sprādziens netālu no {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Netālu no {TOWN} mīklainos apstākļos iznīcināta rūpnīca!
@@ -795,7 +795,7 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} paziņo par tūlītēju darbības pārtraukšanu!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}Piegādes problēmas {STRING} izraisa tūlītēju darbības pārtraukšanu!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Tuvumā esošo koku iztrūkums izraisa {STRING} tūlītēju darbības pārtraukšanu!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Tuvumā esošu koku trūkums ir iemesls paziņojumam par draudošu {STRING} darbības slēgšanu!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Eiropas naudas apvienība!{}{}Eiro ir ieviests, kā vienīgā valūta jūsu valstī!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Krīze pasaulē!{}{}Finanšu eksperti ekonomikai paredz sliktākos attīstības scenārijus!
@@ -1137,7 +1137,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Svarīg
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citas ražotnes
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Līdzens laukums ap rūpnīcām: {ORANGE}{STRING} lauciņ{P š i u}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Līdzens laukums ap ražotnēm: {ORANGE}{STRING} lauciņ{P š i u}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Atļaut vairākas līdzīgas ražotnes vienā pilsētā : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Rādīt signālus braukšanas pusē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Gada beigās rādīt finanšu pārskatu: {ORANGE}{STRING}
@@ -1464,7 +1464,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Atzīmē
 STR_CHEATS_WARNING                                              :{BLACK}Brīdinājums! Jūs gatavojieties nodot savus biedrus konkurentus. Iegaumējiet, ka šādu pazemojumu viņi atcerēsies uz mūžīgiem laikiem.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Palielināt naudas līdzekļus par {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlēt kā uzņēmumam: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maģiskais buldozers (nojauc industrijas, nenojaucamos): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneļi drīkst krustoties: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktīvās lidmašīnas mazajās lidostās neavarēs (bieži): {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mērenais klimats
@@ -1823,6 +1823,7 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :serveris jūs i
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :mēģināja blēdīties
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveris pilns
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sūtīja pārak daudz rīkojumu
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :parole nav saņemta laikā
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :vispārējā noildze
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kartes lejupielāde bija pārāk ilga
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartes apstrāde bija pārāk ilga
@@ -2029,9 +2030,9 @@ STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tiltu iz
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Vanšu, tērauda
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Tērauda spraišļu
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsole, tērauda
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Piekartilts, betona
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Siju, tērauda
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Izgriežamais, tērauda
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Vanšu, betona
 STR_BRIDGE_NAME_WOODEN                                          :Koka
 STR_BRIDGE_NAME_CONCRETE                                        :Betona
 STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Cauruļveida, tērauda
@@ -2140,7 +2141,7 @@ STR_OBJECT_CLASS_TRNS                                           :Raidītāji
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Koki
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlieties koka veidu stādīšanai
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlēties koka veidu stādīšanai. Ja plāksne jau ir koks, tas pievienos vairāk jauktu veidu kokus neatkarīgi no izvēlētā veida
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nejauši izvēlēta veida koki
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Izvietot nejaušus kokus. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nejauši koki
@@ -2185,7 +2186,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Lielpils
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Lielpilsētas attīstās ātrāk kā pilsētas{}Atkarībā no iestatījumiem, dibināšanas brīdī tās ir lielākas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Pilsētas ceļu izskats:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Uzslēgt pilsētas ceļa izskatu
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Atlasīt šajā pilsētā lietojamo ceļu izkārtojumu
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Sākotnējs
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Labāks ceļš
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 režģis
@@ -2545,8 +2546,10 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radī
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ir ielādēti pārāk daudzi NewGRF
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {1:STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neparedzēts gariņš (gariņš {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nezināma Action 0 īpašība {4:HEX} (gariņš {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģinājums izmantot nederīgu ID (gariņš {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu gariņu. Visi bojātie gariņi tiks parādīti ar sarkanu jautājuma zīmi (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur vairākus Action 8 ierakstus (gariņš {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lasīt aiz pseidogariņa beigām (gariņš {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašreiz lietotajā pamata grafikas pakā iztrūkst daļa materiāla.{}Lūdzu atjaunojiet pamata grafikas paku
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pieprasītie GRF resursi nav pieejami (gariņš {3:NUM})
@@ -3474,7 +3477,7 @@ STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Šis sar
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Šis saraksts sāksies {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Sākuma datums
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izvēlēties starta datumu šim grafikam
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Izvēlēties sākuma datumu šim sarakstam
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt iezīmētajam maršrutam nepieciešamo laiku

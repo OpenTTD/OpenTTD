@@ -36,16 +36,16 @@ STR_CARGO_PLURAL_GOODS                                          :சரக்க
 STR_CARGO_PLURAL_GRAIN                                          :தானியம்
 STR_CARGO_PLURAL_WOOD                                           :மரங்கள்
 STR_CARGO_PLURAL_IRON_ORE                                       :இரும்புத் தாது
-STR_CARGO_PLURAL_STEEL                                          :ஸ்டீல்
+STR_CARGO_PLURAL_STEEL                                          :எஃகு
 STR_CARGO_PLURAL_VALUABLES                                      :மதிப்புள்ளவை
-STR_CARGO_PLURAL_COPPER_ORE                                     :தாமிரத் தாது
+STR_CARGO_PLURAL_COPPER_ORE                                     :செப்புத் தாது
 STR_CARGO_PLURAL_MAIZE                                          :சோளம்
 STR_CARGO_PLURAL_FRUIT                                          :பழம்
 STR_CARGO_PLURAL_DIAMONDS                                       :வைரங்கள்
 STR_CARGO_PLURAL_FOOD                                           :உணவு
 STR_CARGO_PLURAL_PAPER                                          :காகிதம்
 STR_CARGO_PLURAL_GOLD                                           :தங்கம்
-STR_CARGO_PLURAL_WATER                                          :நீர்
+STR_CARGO_PLURAL_WATER                                          :தண்ணீர்
 STR_CARGO_PLURAL_WHEAT                                          :கோதுமை
 STR_CARGO_PLURAL_RUBBER                                         :ரப்பர்
 STR_CARGO_PLURAL_SUGAR                                          :சர்க்கரை
@@ -57,7 +57,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :குமிழ
 STR_CARGO_PLURAL_TOFFEE                                         :மிட்டாய்கள்
 STR_CARGO_PLURAL_BATTERIES                                      :பாட்டரிகள்
 STR_CARGO_PLURAL_PLASTIC                                        :பிளாஸ்டிக்
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :பானங்கள்
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :குளிர்பானங்கள்
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -70,16 +70,16 @@ STR_CARGO_SINGULAR_GOODS                                        :சரக்க
 STR_CARGO_SINGULAR_GRAIN                                        :தானியம்
 STR_CARGO_SINGULAR_WOOD                                         :மரம்
 STR_CARGO_SINGULAR_IRON_ORE                                     :இரும்புத் தாது
-STR_CARGO_SINGULAR_STEEL                                        :ஸ்டீல்
+STR_CARGO_SINGULAR_STEEL                                        :எஃகு
 STR_CARGO_SINGULAR_VALUABLES                                    :மதிப்புள்ளது
-STR_CARGO_SINGULAR_COPPER_ORE                                   :தாமிரத் தாது
+STR_CARGO_SINGULAR_COPPER_ORE                                   :செப்புத் தாது
 STR_CARGO_SINGULAR_MAIZE                                        :சோளம்
 STR_CARGO_SINGULAR_FRUIT                                        :பழம்
 STR_CARGO_SINGULAR_DIAMOND                                      :வைரம்
 STR_CARGO_SINGULAR_FOOD                                         :உணவு
 STR_CARGO_SINGULAR_PAPER                                        :காகிதம்
 STR_CARGO_SINGULAR_GOLD                                         :தங்கம்
-STR_CARGO_SINGULAR_WATER                                        :நீர்
+STR_CARGO_SINGULAR_WATER                                        :தண்ணீர்
 STR_CARGO_SINGULAR_WHEAT                                        :கோதுமை
 STR_CARGO_SINGULAR_RUBBER                                       :ரப்பர்
 STR_CARGO_SINGULAR_SUGAR                                        :சர்க்கரை
@@ -89,31 +89,31 @@ STR_CARGO_SINGULAR_COLA                                         :கோலா
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :பஞ்சு மிட்டாய்
 STR_CARGO_SINGULAR_BUBBLE                                       :குமிழி
 STR_CARGO_SINGULAR_TOFFEE                                       :மிட்டாய்
-STR_CARGO_SINGULAR_BATTERY                                      :பாட்டரி
+STR_CARGO_SINGULAR_BATTERY                                      :மின்கலம்
 STR_CARGO_SINGULAR_PLASTIC                                      :பிளாஸ்டிக்
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :பானம்
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :குளிர்பானம்
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} பயணி{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} பயணி{P "" கள்}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} நிலக்கரி
 STR_QUANTITY_MAIL                                               :{COMMA} அஞ்சல் பை{P "" கள்}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} எண்ணெய்
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} கால்நடை{P "" கள்}
-STR_QUANTITY_GOODS                                              :{COMMA} பெட்டி சரக்கு{P "" கள்}
+STR_QUANTITY_GOODS                                              :{COMMA} சரக்குப் பெட்டி{P "" கள்}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} தானியம்
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} மரம்
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} இரும்புத் தாது
-STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} ஸ்டீல்
+STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} எஃகு
 STR_QUANTITY_VALUABLES                                          :{COMMA} மதிப்புள்ள பை{P "" கள்}
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} தாமிரத் தாது
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} செப்புத் தாது
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} சோளம்
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} பழம்
 STR_QUANTITY_DIAMONDS                                           :{COMMA} வைர பை{P "" கள்}
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} உணவு
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} காகிதம்
 STR_QUANTITY_GOLD                                               :{COMMA} தங்க பை{P "" கள்}
-STR_QUANTITY_WATER                                              :{VOLUME_LONG} நீர்
+STR_QUANTITY_WATER                                              :{VOLUME_LONG} தண்ணீர்
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} கோதுமை
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} ரப்பர்
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} சர்க்கரை
@@ -125,7 +125,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} கு�
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} மிட்டாய்
 STR_QUANTITY_BATTERIES                                          :{COMMA} பாட்டரி{P ... கள்}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} பிளாஸ்டிக்
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} fizzy drink{P "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} குளிர்பானம்{P "" கள்}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name

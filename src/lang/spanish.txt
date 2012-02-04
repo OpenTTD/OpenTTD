@@ -2140,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmisor
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleccione el tipo de árboles a plantar
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleccione el tipo de árboles a plantar. Si la casilla ya tiene un árbol, se añadirán mas árboles de distintos tipos sin importar el tipo elegido
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo aleatorio
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar distintos árboles al azar. Shift permite mostrar una estimación del precio
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
