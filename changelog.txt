@@ -1,3 +1,27 @@
+1.2.0-beta4 (2012-02-04)
+------------------------------------------------------------------------
+- Feature: [NewGRF] Give NewGRF defined level crossings and rail depots access to the townzone (r23866)
+- Feature: [NewGRF] New algorithm (activated via an engine flag) to determine the capacity of vehicles. This allows vehicles to better control the capacity for cargotypes which they know; and let cargo NewGRFs influence the capacity for cargos the vehicle NewGRF does not know, but which the vehicle is refittable to due to cargo classes (r23861)
+- Feature: [NewGRF] Add cargo property 1D to set the capacity multipliers when refitting vehicles, which do not use callback 15 (r23860)
+- Feature: Allow command line options -e and -g to be combined to load saves/scenarios directly into SE (r23839)
+- Feature: [NoGo] Allow querying orders of vehicles [FS#4994] (r23837)
+- Change: Do not let towns (ever) remove objects [FS#5001, FS#5002] (r23842)
+- Change: Make signs placed in scenario editor belong to the GS. That way they are always shown in game and are not editable [FS#4999] (r23835)
+- Fix: Generate industry subsidies again [FS#5039] (r23876)
+- Fix: [NoGo/NoAI] Scripts with a bad comparator could lock up OpenTTD [FS#5004] (r23870)
+- Fix: Make the colour of the dropdown items for opening the vehicle list for which the company has no vehicles looking less horrid [FS#5020] (r23867)
+- Fix: Railtype overlays were drawn 'only transparent' on invisible bridges (r23864)
+- Fix: Inserting conditional orders for ships checked the wrong orders wrt. maximum distance (r23859)
+- Fix: Out of bounds read for slowdown parameter caused desync when railtype >= 4, vehicles were fast, and the original acceleration model was used [FS#5007] (r23855)
+- Fix: Infrastructure cache could get out of sync when overbuilding a drive through road stop (r23851)
+- Fix: When the network is lagging, you try to copy a vehicle's order but accidentally create a station order and then copy the vehicle's order (before the first command is executed) one could trigger an assertion from the pool [FS#5008] (r23849)
+- Fix: When removing road or tram from a tram+road stop, the owner of the road stop's cache was updated instead of the owner of the removed infrastructure (r23847)
+- Fix: Infrastructure count for stations was not updated properly on company takeover. And do not count buoys while loading a game either (r23844)
+- Fix: Clear NewGRF vehicle cache when their owner changes (r23841)
+- Fix: Assertion got hit when destroing a dock when a ship was loading [FS#5000] (r23838)
+- Fix: If a vehicle is not refittable to any cargo in the CTT, then pick the first refittable cargoslot (r23836)
+
+
 1.2.0-beta3 (2012-01-21)
 ------------------------------------------------------------------------
 - Feature: [NoGo] Allow to chose the goal question window's title from a (small) set of options [FS#4992] (r23827)
