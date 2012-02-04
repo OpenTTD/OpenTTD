@@ -159,8 +159,17 @@ static void StartSound(SoundID sound_id, float pan, uint volume)
 {
 	if (volume == 0) return;
 
-	const SoundEntry *sound = GetSound(sound_id);
+	SoundEntry *sound = GetSound(sound_id);
 	if (sound == NULL) return;
+
+	/* NewGRF sound that wasn't loaded yet? */
+	if (sound->rate == 0 && sound->file_slot != 0) {
+		if (!LoadNewGRFSound(sound)) {
+			/* Mark as invalid. */
+			sound->file_slot = 0;
+			return;
+		}
+	}
 
 	/* Empty sound? */
 	if (sound->rate == 0) return;

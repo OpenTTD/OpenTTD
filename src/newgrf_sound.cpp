@@ -16,6 +16,8 @@
 #include "newgrf_sound.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
+#include "fileio_func.h"
+#include "debug.h"
 
 static SmallVector<SoundEntry, 8> _sounds;
 
@@ -48,6 +50,102 @@ SoundEntry *GetSound(SoundID index)
 uint GetNumSounds()
 {
 	return _sounds.Length();
+}
+
+
+/**
+ * Extract meta data from a NewGRF sound.
+ * @param sound Sound to load.
+ * @return True if a valid sound was loaded.
+ */
+bool LoadNewGRFSound(SoundEntry *sound)
+{
+	if (sound->file_offset == SIZE_MAX || sound->file_slot == 0) return false;
+
+	FioSeekToFile(sound->file_slot, sound->file_offset);
+
+	/* Format: <num> <FF> <FF> <name_len> <name> '\0' <data> */
+
+	uint16 num = FioReadWord();
+	if (FioReadByte() != 0xFF) return false;
+	if (FioReadByte() != 0xFF) return false;
+
+	uint8 name_len = FioReadByte();
+	char *name = AllocaM(char, name_len + 1);
+	FioReadBlock(name, name_len + 1);
+
+	/* Test string termination */
+	if (name[name_len] != 0) {
+		DEBUG(grf, 2, "LoadNewGRFSound [%s]: Name not properly terminated", FioGetFilename(sound->file_slot));
+		return false;
+	}
+
+	DEBUG(grf, 2, "LoadNewGRFSound [%s]: Sound name '%s'...", FioGetFilename(sound->file_slot), name);
+
+	if (FioReadDword() != BSWAP32('RIFF')) {
+		DEBUG(grf, 1, "LoadNewGRFSound [%s]: Missing RIFF header", FioGetFilename(sound->file_slot));
+		return false;
+	}
+
+	uint32 total_size = FioReadDword();
+	if (total_size + name_len + 11 > num) { // The first FF in the sprite is not counted for <num>.
+		DEBUG(grf, 1, "LoadNewGRFSound [%s]: RIFF was truncated", FioGetFilename(sound->file_slot));
+		return false;
+	}
+
+	if (FioReadDword() != BSWAP32('WAVE')) {
+		DEBUG(grf, 1, "LoadNewGRFSound [%s]: Invalid RIFF type", FioGetFilename(sound->file_slot));
+		return false;
+	}
+
+	while (total_size >= 8) {
+		uint32 tag  = FioReadDword();
+		uint32 size = FioReadDword();
+		total_size -= 8;
+		if (total_size < size) {
+			DEBUG(grf, 1, "LoadNewGRFSound [%s]: Invalid RIFF", FioGetFilename(sound->file_slot));
+			return false;
+		}
+		total_size -= size;
+
+		switch (tag) {
+			case ' tmf': // 'fmt '
+				/* Audio format, must be 1 (PCM) */
+				if (size < 16 || FioReadWord() != 1) {
+					DEBUG(grf, 1, "LoadGRFSound [%s]: Invalid audio format", FioGetFilename(sound->file_slot));
+					return false;
+				}
+				sound->channels = FioReadWord();
+				sound->rate = FioReadDword();
+				FioReadDword();
+				FioReadWord();
+				sound->bits_per_sample = FioReadWord();
+
+				/* The rest will be skipped */
+				size -= 16;
+				break;
+
+			case 'atad': // 'data'
+				sound->file_size   = size;
+				sound->file_offset = FioGetPos();
+
+				DEBUG(grf, 2, "LoadNewGRFSound [%s]: channels %u, sample rate %u, bits per sample %u, length %u", FioGetFilename(sound->file_slot), sound->channels, sound->rate, sound->bits_per_sample, size);
+				return true; // the fmt chunk has to appear before data, so we are finished
+
+			default:
+				/* Skip unknown chunks */
+				break;
+		}
+
+		/* Skip rest of chunk */
+		if (size > 0) FioSkipBytes(size);
+	}
+
+	DEBUG(grf, 1, "LoadNewGRFSound [%s]: RIFF does not contain any sound data", FioGetFilename(sound->file_slot));
+
+	/* Clear everything that was read */
+	MemSetT(sound, 0);
+	return false;
 }
 
 

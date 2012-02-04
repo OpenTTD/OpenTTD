@@ -73,10 +73,6 @@ static uint32 _ttdpatch_flags[8];
 /** Indicates which are the newgrf features currently loaded ingame */
 GRFLoadedFeatures _loaded_newgrf_features;
 
-enum GrfDataType {
-	GDT_SOUND,
-};
-
 static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a spritegroup.
 
 /** Temporary data during loading of GRFs */
@@ -104,8 +100,6 @@ public:
 
 	/* Kind of return values when processing certain actions */
 	int skip_sprites;         ///< Number of psuedo sprites to skip before processing the next one. (-1 to skip to end of file)
-	byte data_blocks;         ///< Number of binary include sprites to read before processing the next pseudo sprite.
-	GrfDataType data_type;    ///< Type of the binary include sprites to read.
 
 	/* Currently referenceable spritegroups */
 	SpriteGroup *spritegroups[MAX_SPRITEGROUP + 1];
@@ -115,7 +109,6 @@ public:
 	{
 		this->nfo_line = 0;
 		this->skip_sprites = 0;
-		this->data_blocks = 0;
 
 		for (uint i = 0; i < GSF_END; i++) {
 			this->spritesets[i].clear();
@@ -6818,42 +6811,12 @@ static void DefineGotoLabel(ByteReader *buf)
 	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", label->label);
 }
 
-/* Action 0x11 */
-static void GRFSound(ByteReader *buf)
-{
-	/* <11> <num>
-	 *
-	 * W num      Number of sound files that follow */
-
-	uint16 num = buf->ReadWord();
-
-	_cur.data_blocks = num;
-	_cur.data_type   = GDT_SOUND;
-
-	if (_cur.grffile->sound_offset == 0) {
-		_cur.grffile->sound_offset = GetNumSounds();
-		_cur.grffile->num_sounds = num;
-	}
-}
-
-/* Action 0x11 (SKIP) */
-static void SkipAct11(ByteReader *buf)
-{
-	/* <11> <num>
-	 *
-	 * W num      Number of sound files that follow */
-
-	_cur.skip_sprites = buf->ReadWord();
-
-	grfmsg(3, "SkipAct11: Skipping %d sprites", _cur.skip_sprites);
-}
-
-static void ImportGRFSound(ByteReader *buf)
+static void ImportGRFSound()
 {
 	const GRFFile *file;
 	SoundEntry *sound = AllocateSound();
-	uint32 grfid = buf->ReadDWord();
-	SoundID sound_id = buf->ReadWord();
+	uint32 grfid = FioReadDword();
+	SoundID sound_id = FioReadWord();
 
 	file = GetFileByGRFID(grfid);
 	if (file == NULL || file->sound_offset == 0) {
@@ -6875,102 +6838,79 @@ static void ImportGRFSound(ByteReader *buf)
 	sound->priority = 0;
 }
 
-/* 'Action 0xFE' */
-static void GRFImportBlock(ByteReader *buf)
+static void LoadGRFSound(size_t offs)
 {
-	if (_cur.data_blocks == 0) {
-		grfmsg(2, "GRFImportBlock: Unexpected import block, skipping");
-		return;
+	SoundEntry *sound = AllocateSound();
+
+	/* Set default volume and priority */
+	sound->volume = 0x80;
+	sound->priority = 0;
+
+	sound->file_slot = _cur.file_index;
+	sound->file_offset = offs;
+}
+
+/* Action 0x11 */
+static void GRFSound(ByteReader *buf)
+{
+	/* <11> <num>
+	 *
+	 * W num      Number of sound files that follow */
+
+	uint16 num = buf->ReadWord();
+
+	if (_cur.grffile->sound_offset == 0) {
+		_cur.grffile->sound_offset = GetNumSounds();
+		_cur.grffile->num_sounds = num;
 	}
 
-	_cur.data_blocks--;
+	for (int i = 0; i < num; i++) {
+		_cur.nfo_line++;
 
-	/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
-	 * importing sounds, so this is probably all wrong... */
-	if (buf->ReadByte() != _cur.data_type) {
-		grfmsg(1, "GRFImportBlock: Import type mismatch");
-	}
+		size_t offs = FioGetPos();
 
-	switch (_cur.data_type) {
-		case GDT_SOUND: ImportGRFSound(buf); break;
-		default: NOT_REACHED();
+		uint16 len = FioReadWord();
+		byte type = FioReadByte();
+
+		if (type != 0xFF) {
+			grfmsg(1, "GRFSound: Unexpected RealSprite found, skipping");
+			FioSkipBytes(7);
+			SkipSpriteData(type, num - 8);
+			continue;
+		}
+
+		byte action = FioReadByte();
+		switch (action) {
+			case 0xFF:
+				LoadGRFSound(offs);
+				FioSkipBytes(len - 1); // <type> is not included in the length for pseudo-sprites.
+				break;
+
+			case 0xFE:
+				/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
+				 * importing sounds, so this is probably all wrong... */
+				if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
+				ImportGRFSound();
+				break;
+
+			default:
+				grfmsg(1, "GRFSound: Unexpected Action %x found, skipping", action);
+				FioSkipBytes(len - 1);
+				break;
+		}
 	}
 }
 
-static void LoadGRFSound(ByteReader *buf)
+/* Action 0x11 (SKIP) */
+static void SkipAct11(ByteReader *buf)
 {
-	/* Allocate a sound entry. This is done even if the data is not loaded
-	 * so that the indices used elsewhere are still correct. */
-	SoundEntry *sound = AllocateSound();
+	/* <11> <num>
+	 *
+	 * W num      Number of sound files that follow */
 
-	if (buf->ReadDWord() != BSWAP32('RIFF')) {
-		grfmsg(1, "LoadGRFSound: Missing RIFF header");
-		return;
-	}
+	_cur.skip_sprites = buf->ReadWord();
 
-	uint32 total_size = buf->ReadDWord();
-	if (total_size > buf->Remaining()) {
-		grfmsg(1, "LoadGRFSound: RIFF was truncated");
-		return;
-	}
-
-	if (buf->ReadDWord() != BSWAP32('WAVE')) {
-		grfmsg(1, "LoadGRFSound: Invalid RIFF type");
-		return;
-	}
-
-	while (total_size >= 8) {
-		uint32 tag  = buf->ReadDWord();
-		uint32 size = buf->ReadDWord();
-		total_size -= 8;
-		if (total_size < size) {
-			grfmsg(1, "LoadGRFSound: Invalid RIFF");
-			return;
-		}
-		total_size -= size;
-
-		switch (tag) {
-			case ' tmf': // 'fmt '
-				/* Audio format, must be 1 (PCM) */
-				if (size < 16 || buf->ReadWord() != 1) {
-					grfmsg(1, "LoadGRFSound: Invalid audio format");
-					return;
-				}
-				sound->channels = buf->ReadWord();
-				sound->rate = buf->ReadDWord();
-				buf->ReadDWord();
-				buf->ReadWord();
-				sound->bits_per_sample = buf->ReadWord();
-
-				/* The rest will be skipped */
-				size -= 16;
-				break;
-
-			case 'atad': // 'data'
-				sound->file_size   = size;
-				sound->file_offset = FioGetPos() - buf->Remaining();
-				sound->file_slot   = _cur.file_index;
-
-				/* Set default volume and priority */
-				sound->volume = 0x80;
-				sound->priority = 0;
-
-				grfmsg(2, "LoadGRFSound: channels %u, sample rate %u, bits per sample %u, length %u", sound->channels, sound->rate, sound->bits_per_sample, size);
-				return; // the fmt chunk has to appear before data, so we are finished
-
-			default:
-				/* Skip unknown chunks */
-				break;
-		}
-
-		/* Skip rest of chunk */
-		for (; size > 0; size--) buf->ReadByte();
-	}
-
-	grfmsg(1, "LoadGRFSound: RIFF does not contain any sound data");
-
-	/* Clear everything that was read */
-	MemSetT(sound, 0);
+	grfmsg(3, "SkipAct11: Skipping %d sprites", _cur.skip_sprites);
 }
 
 /** Action 0x12 */
@@ -7573,36 +7513,6 @@ static void StaticGRFInfo(ByteReader *buf)
 {
 	/* <14> <type> <id> <text/data...> */
 	HandleNodes(buf, _tags_root);
-}
-
-/** 'Action 0xFF' */
-static void GRFDataBlock(ByteReader *buf)
-{
-	/* <FF> <name_len> <name> '\0' <data> */
-
-	if (_cur.data_blocks == 0) {
-		grfmsg(2, "GRFDataBlock: unexpected data block, skipping");
-		return;
-	}
-
-	uint8 name_len = buf->ReadByte();
-	const char *name = reinterpret_cast<const char *>(buf->Data());
-	buf->Skip(name_len);
-
-	/* Test string termination */
-	if (buf->ReadByte() != 0) {
-		grfmsg(2, "GRFDataBlock: Name not properly terminated");
-		return;
-	}
-
-	grfmsg(2, "GRFDataBlock: block name '%s'...", name);
-
-	_cur.data_blocks--;
-
-	switch (_cur.data_type) {
-		case GDT_SOUND: LoadGRFSound(buf); break;
-		default: NOT_REACHED();
-	}
 }
 
 /**
@@ -8627,11 +8537,9 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 		byte action = bufp->ReadByte();
 
 		if (action == 0xFF) {
-			grfmsg(7, "DecodeSpecialSprite: Handling data block in stage %d", stage);
-			GRFDataBlock(bufp);
+			grfmsg(2, "DecodeSpecialSprite: Unexpected data block, skipping");
 		} else if (action == 0xFE) {
-			grfmsg(7, "DecodeSpecialSprite: Handling import block in stage %d", stage);
-			GRFImportBlock(bufp);
+			grfmsg(2, "DecodeSpecialSprite: Unexpected import block, skipping");
 		} else if (action >= lengthof(handlers)) {
 			grfmsg(7, "DecodeSpecialSprite: Skipping unknown action 0x%02X", action);
 		} else if (handlers[action][stage] == NULL) {
