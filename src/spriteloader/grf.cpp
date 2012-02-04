@@ -107,7 +107,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 			bool last_item = false;
 			/* Look up in the header-table where the real data is stored for this row */
 			int offset;
-			if (container_format >= 2 && num > UINT16_MAX) {
+			if (container_format >= 2 && dest_size > UINT16_MAX) {
 				offset = (dest_orig[y * 4 + 3] << 24) | (dest_orig[y * 4 + 2] << 16) | (dest_orig[y * 4 + 1] << 8) | dest_orig[y * 4];
 			} else {
 				offset = (dest_orig[y * 2 + 1] << 8) | dest_orig[y * 2];
