@@ -227,65 +227,44 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 #endif /* WITH_PNG */
 	}
 
-	FioSeekToFile(file_slot, file_pos);
-
-	/* Read the size and type */
-	int num  = FioReadWord();
-	byte type = FioReadByte();
-
-	/* Type 0xFF indicates either a colourmap or some other non-sprite info
-	 * which we should have already handled during GRF loading. */
-	assert(type != 0xFF);
-
-	/* Ugly hack to work around the problem that the old landscape
-	 *  generator assumes that those sprites are stored uncompressed in
-	 *  the memory, and they are only read directly by the code, never
-	 *  send to the blitter. So do not send it to the blitter (which will
-	 *  result in a data array in the format the blitter likes most), but
-	 *  read the data directly from disk and store that as sprite.
-	 * Ugly: yes. Other solution: no. Blame the original author or
-	 *  something ;) The image should really have been a data-stream
-	 *  (so type = 0xFF basicly). */
-	if (sprite_type == ST_MAPGEN) {
-		uint height = FioReadByte();
-		uint width  = FioReadWord();
-		Sprite *sprite;
-		byte *dest;
-
-		num = width * height;
-		sprite = (Sprite *)allocator(sizeof(*sprite) + num);
-		sprite->height = height;
-		sprite->width  = width;
-		sprite->x_offs = FioReadWord();
-		sprite->y_offs = FioReadWord();
-
-		dest = sprite->data;
-		while (num > 0) {
-			int8 i = FioReadByte();
-			if (i >= 0) {
-				num -= i;
-				for (; i > 0; --i) *dest++ = FioReadByte();
-			} else {
-				const byte *rel = dest - (((i & 7) << 8) | FioReadByte());
-				i = -(i >> 3);
-				num -= i;
-				for (; i > 0; --i) *dest++ = *rel++;
-			}
-		}
-
-		return sprite;
-	}
-
-	assert(sprite_type == ST_NORMAL || sprite_type == ST_FONT);
-
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
 	sprite.type = sprite_type;
 
 	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) {
+		if (sprite_type == ST_MAPGEN) return NULL;
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator);
 	}
+
+	if (sprite_type == ST_MAPGEN) {
+		/* Ugly hack to work around the problem that the old landscape
+		 *  generator assumes that those sprites are stored uncompressed in
+		 *  the memory, and they are only read directly by the code, never
+		 *  send to the blitter. So do not send it to the blitter (which will
+		 *  result in a data array in the format the blitter likes most), but
+		 *  extract the data directly and store that as sprite.
+		 * Ugly: yes. Other solution: no. Blame the original author or
+		 *  something ;) The image should really have been a data-stream
+		 *  (so type = 0xFF basicly). */
+		uint num = sprite.width * sprite.height;
+
+		Sprite *s = (Sprite *)allocator(sizeof(*s) + num);
+		s->width  = sprite.width;
+		s->height = sprite.height;
+		s->x_offs = sprite.x_offs;
+		s->y_offs = sprite.y_offs;
+
+		SpriteLoader::CommonPixel *src = sprite.data;
+		byte *dest = s->data;
+		while (num-- > 0) {
+			*dest++ = src->m;
+			src++;
+		}
+
+		return s;
+	}
+
 	return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, allocator);
 }
 
