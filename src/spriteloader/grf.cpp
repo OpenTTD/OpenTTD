@@ -61,9 +61,10 @@ static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
  * @param num Size of the decompressed sprite.
  * @param type Type of the encoded sprite.
  * @param zoom_lvl Requested zoom level.
+ * @param container_format Container format of the GRF this sprite is in.
  * @return True if the sprite was successfully loaded.
  */
-bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl)
+bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type, int64 num, byte type, ZoomLevel zoom_lvl, byte container_format)
 {
 	AutoFreePtr<byte> dest_orig(MallocT<byte>(num));
 	byte *dest = dest_orig;
@@ -105,24 +106,40 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 		for (int y = 0; y < sprite->height; y++) {
 			bool last_item = false;
 			/* Look up in the header-table where the real data is stored for this row */
-			int offset = (dest_orig[y * 2 + 1] << 8) | dest_orig[y * 2];
+			int offset;
+			if (container_format >= 2 && num > UINT16_MAX) {
+				offset = (dest_orig[y * 4 + 3] << 24) | (dest_orig[y * 4 + 2] << 16) | (dest_orig[y * 4 + 1] << 8) | dest_orig[y * 4];
+			} else {
+				offset = (dest_orig[y * 2 + 1] << 8) | dest_orig[y * 2];
+			}
 
 			/* Go to that row */
 			dest = dest_orig + offset;
 
 			do {
-				if (dest + 2 > dest_orig + dest_size) {
+				if (dest + (container_format >= 2 && sprite->width > 256 ? 4 : 2) > dest_orig + dest_size) {
 					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				}
 
 				SpriteLoader::CommonPixel *data;
-				/* Read the header:
-				 *  0 .. 14  - length
-				 *  15       - last_item
-				 *  16 .. 31 - transparency bytes */
-				last_item  = ((*dest) & 0x80) != 0;
-				int length =  (*dest++) & 0x7F;
-				int skip   =   *dest++;
+				/* Read the header. */
+				int length, skip;
+				if (container_format >= 2 && sprite->width > 256) {
+					/*  0 .. 14  - length
+					 *  15       - last_item
+					 *  16 .. 31 - transparency bytes */
+					last_item = (dest[1] & 0x80) != 0;
+					length    = ((dest[1] & 0x7F) << 8) | dest[0];
+					skip      = (dest[3] << 8) | dest[2];
+					dest += 4;
+				} else {
+					/*  0 .. 6  - length
+					 *  7       - last_item
+					 *  8 .. 15 - transparency bytes */
+					last_item  = ((*dest) & 0x80) != 0;
+					length =  (*dest++) & 0x7F;
+					skip   =   *dest++;
+				}
 
 				data = &sprite->data[y * sprite->width + skip];
 
@@ -194,7 +211,7 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	 * In case it is uncompressed, the size is 'num' - 8 (header-size). */
 	num = (type & 0x02) ? sprite[zoom_lvl].width * sprite[zoom_lvl].height : num - 8;
 
-	if (DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, num, type, zoom_lvl)) return 1 << zoom_lvl;
+	if (DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, num, type, zoom_lvl, 1)) return 1 << zoom_lvl;
 
 	return 0;
 }
@@ -245,7 +262,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 			 * otherwise we can calculate it from the image dimensions. */
 			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite[zoom_lvl].width * sprite[zoom_lvl].height;
 
-			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, decomp_size, type, zoom_lvl);
+			bool valid = DecodeSingleSprite(&sprite[zoom_lvl], file_slot, file_pos, sprite_type, decomp_size, type, zoom_lvl, 2);
 			if (FioGetPos() != start_pos + num) {
 				WarnCorruptSprite(file_slot, file_pos, __LINE__);
 				return 0;
