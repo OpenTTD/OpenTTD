@@ -294,6 +294,28 @@ bool UpdateNewGRFConfigPalette(int32 p1)
 }
 
 /**
+ * Get the data section size of a GRF.
+ * @param f GRF.
+ * @return Size of the data section or SIZE_MAX if the file has no separate data section.
+ */
+size_t GRFGetSizeOfDataSection(FILE *f)
+{
+	extern const byte _grf_cont_v2_sig[];
+	static const uint header_len = 14;
+
+	byte data[header_len];
+	if (fread(data, 1, header_len, f) == header_len) {
+		if (data[0] == 0 && data[1] == 0 && MemCmpT(data + 2, _grf_cont_v2_sig, 8) == 0) {
+			/* Valid container version 2, get data section size. */
+			size_t offset = (data[13] << 24) | (data[12] << 16) | (data[11] << 8) | data[10];
+			return header_len + offset;
+		}
+	}
+
+	return SIZE_MAX;
+}
+
+/**
  * Calculate the MD5 sum for a GRF, and store it in the config.
  * @param config GRF to compute.
  * @param subdir The subdirectory to look in.
@@ -309,6 +331,10 @@ static bool CalcGRFMD5Sum(GRFConfig *config, Subdirectory subdir)
 	/* open the file */
 	f = FioFOpenFile(config->filename, "rb", subdir, &size);
 	if (f == NULL) return false;
+
+	size_t start = ftell(f);
+	size = min(size, GRFGetSizeOfDataSection(f));
+	fseek(f, start, SEEK_SET);
 
 	/* calculate md5sum */
 	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {

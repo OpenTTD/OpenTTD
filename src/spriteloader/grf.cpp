@@ -22,6 +22,15 @@
 
 extern const byte _palmap_w2d[];
 
+/** The different colour components a sprite can have. */
+enum SpriteColourComponent {
+	SCC_RGB   = 1 << 0, ///< Sprite has RGB.
+	SCC_ALPHA = 1 << 1, ///< Sprite has alpha.
+	SCC_PAL   = 1 << 2, ///< Sprite has palette data.
+	SCC_MASK  = SCC_RGB | SCC_ALPHA | SCC_PAL, ///< Mask of valid colour bits.
+};
+DECLARE_ENUM_AS_BIT_SET(SpriteColourComponent)
+
 /**
  * We found a corrupted sprite. This means that the sprite itself
  * contains invalid data or is too small for the given dimensions.
@@ -176,7 +185,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 	return true;
 }
 
-bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+bool LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_slot, file_pos);
@@ -198,4 +207,60 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 	num = (type & 0x02) ? sprite->width * sprite->height : num - 8;
 
 	return DecodeSingleSprite(sprite, file_slot, file_pos, sprite_type, num, type);
+}
+
+bool LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+{
+	/* Is the sprite not present/stripped in the GRF? */
+	if (file_pos == SIZE_MAX) return false;
+
+	/* Open the right file and go to the correct position */
+	FioSeekToFile(file_slot, file_pos);
+
+	uint32 id = FioReadDword();
+
+	do {
+		int64 num = FioReadDword();
+		size_t start_pos = FioGetPos();
+		byte type = FioReadByte();
+
+		/* Type 0xFF indicates either a colourmap or some other non-sprite info; we do not handle them here. */
+		if (type == 0xFF) return false;
+
+		byte colour = type & SCC_MASK;
+		byte zoom = FioReadByte();
+
+		if (colour == SCC_PAL && zoom == 0) {
+			sprite->height = FioReadWord();
+			sprite->width  = FioReadWord();
+			sprite->x_offs = FioReadWord();
+			sprite->y_offs = FioReadWord();
+
+			/* Mask out colour information. */
+			type = type & ~SCC_MASK;
+
+			/* For chunked encoding we store the decompressed size in the file,
+			 * otherwise we can calculate it from the image dimensions. */
+			uint decomp_size = (type & 0x08) ? FioReadDword() : sprite->width * sprite->height;
+
+			bool valid = DecodeSingleSprite(sprite, file_slot, file_pos, sprite_type, decomp_size, type);
+			if (FioGetPos() != start_pos + num) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
+			return valid;
+		} else {
+			/* Not the wanted zoom level or colour depth, continue searching. */
+			FioSkipBytes(num - 2);
+		}
+
+	} while (FioReadDword() == id);
+
+	return false;
+}
+
+bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
+{
+	if (this->container_ver >= 2) {
+		return LoadSpriteV2(sprite, file_slot, file_pos, sprite_type);
+	} else {
+		return LoadSpriteV1(sprite, file_slot, file_pos, sprite_type);
+	}
 }

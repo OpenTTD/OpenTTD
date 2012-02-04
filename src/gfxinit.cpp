@@ -52,7 +52,16 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 
 	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
-	while (LoadNextSprite(load_index, file_index, sprite_id)) {
+	byte container_ver = GetGRFContainerVersion();
+	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
+	ReadGRFSpriteOffsets(container_ver);
+	if (container_ver >= 2) {
+		/* Read compression. */
+		byte compression = FioReadByte();
+		if (compression != 0) usererror("Unsupported compression format");
+	}
+
+	while (LoadNextSprite(load_index, file_index, sprite_id, container_ver)) {
 		load_index++;
 		sprite_id++;
 		if (load_index >= MAX_SPRITES) {
@@ -80,11 +89,20 @@ static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, 
 
 	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
 
+	byte container_ver = GetGRFContainerVersion();
+	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
+	ReadGRFSpriteOffsets(container_ver);
+	if (container_ver >= 2) {
+		/* Read compression. */
+		byte compression = FioReadByte();
+		if (compression != 0) usererror("Unsupported compression format");
+	}
+
 	while ((start = *index_tbl++) != END) {
 		uint end = *index_tbl++;
 
 		do {
-			bool b = LoadNextSprite(start, file_index, sprite_id);
+			bool b = LoadNextSprite(start, file_index, sprite_id, container_ver);
 			assert(b);
 			sprite_id++;
 		} while (++start <= end);
@@ -260,6 +278,28 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
 		this->blitter = (item != NULL && *item->value == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;
+}
+
+/**
+ * Calculate and check the MD5 hash of the supplied GRF.
+ * @param file The file get the hash of.
+ * @param subdir The sub directory to get the files from.
+ * @return
+ * - #CR_MATCH if the MD5 hash matches
+ * - #CR_MISMATCH if the MD5 does not match
+ * - #CR_NO_FILE if the file misses
+ */
+/* static */ MD5File::ChecksumResult GraphicsSet::CheckMD5(const MD5File *file, Subdirectory subdir)
+{
+	size_t size = 0;
+	FILE *f = FioFOpenFile(file->filename, "rb", subdir, &size);
+	if (f == NULL) return MD5File::CR_NO_FILE;
+
+	size_t max = GRFGetSizeOfDataSection(f);
+
+	FioFCloseFile(f);
+
+	return file->CheckMD5(subdir, max);
 }
 
 

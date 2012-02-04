@@ -21,6 +21,7 @@ struct SoundEntry {
 	uint8 channels;
 	uint8 volume;
 	uint8 priority;
+	byte grf_container_ver; ///< NewGRF container version if the sound is from a NewGRF.
 };
 
 enum SoundFx {

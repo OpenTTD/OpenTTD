@@ -223,6 +223,8 @@ struct GraphicsSet : BaseSet<GraphicsSet, MAX_GFT, true> {
 	BlitterType blitter;       ///< Blitter of this graphics set
 
 	bool FillSetDetails(struct IniFile *ini, const char *path, const char *full_filename);
+
+	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir);
 };
 
 /** All data/functions related with replacing the base graphics. */

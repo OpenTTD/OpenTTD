@@ -64,9 +64,13 @@ bool LoadNewGRFSound(SoundEntry *sound)
 
 	FioSeekToFile(sound->file_slot, sound->file_offset);
 
+	/* Skip ID for container version >= 2 as we only look at the first
+	 * entry and ignore any further entries with the same ID. */
+	if (sound->grf_container_ver >= 2) FioReadDword();
+
 	/* Format: <num> <FF> <FF> <name_len> <name> '\0' <data> */
 
-	uint16 num = FioReadWord();
+	uint32 num = sound->grf_container_ver >= 2 ? FioReadDword() : FioReadWord();
 	if (FioReadByte() != 0xFF) return false;
 	if (FioReadByte() != 0xFF) return false;
 
@@ -88,7 +92,9 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	}
 
 	uint32 total_size = FioReadDword();
-	if (total_size + name_len + 11 > num) { // The first FF in the sprite is not counted for <num>.
+	uint header_size = 11;
+	if (sound->grf_container_ver >= 2) header_size++; // The first FF in the sprite is only counted for container version >= 2.
+	if (total_size + name_len + header_size > num) {
 		DEBUG(grf, 1, "LoadNewGRFSound [%s]: RIFF was truncated", FioGetFilename(sound->file_slot));
 		return false;
 	}

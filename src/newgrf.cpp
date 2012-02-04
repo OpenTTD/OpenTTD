@@ -97,6 +97,7 @@ public:
 	GRFFile *grffile;         ///< Currently processed GRF file.
 	GRFConfig *grfconfig;     ///< Config of the currently processed GRF file.
 	uint32 nfo_line;          ///< Currently processed pseudo sprite number in the GRF.
+	byte grf_container_ver;   ///< Container format of the current GRF file.
 
 	/* Kind of return values when processing certain actions */
 	int skip_sprites;         ///< Number of psuedo sprites to skip before processing the next one. (-1 to skip to end of file)
@@ -4332,7 +4333,7 @@ static void NewSpriteSet(ByteReader *buf)
 
 	for (int i = 0; i < num_sets * num_ents; i++) {
 		_cur.nfo_line++;
-		LoadNextSprite(_cur.spriteid++, _cur.file_index, _cur.nfo_line);
+		LoadNextSprite(_cur.spriteid++, _cur.file_index, _cur.nfo_line, _cur.grf_container_ver);
 	}
 }
 
@@ -5425,16 +5426,16 @@ static void GraphicsNew(ByteReader *buf)
 		/* Special not-TTDP-compatible case used in openttd.grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
 		grfmsg(2, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
-		LoadNextSprite(SPR_SHORE_BASE +  0, _cur.file_index, _cur.nfo_line++); // SLOPE_STEEP_S
-		LoadNextSprite(SPR_SHORE_BASE +  5, _cur.file_index, _cur.nfo_line++); // SLOPE_STEEP_W
-		LoadNextSprite(SPR_SHORE_BASE +  7, _cur.file_index, _cur.nfo_line++); // SLOPE_WSE
-		LoadNextSprite(SPR_SHORE_BASE + 10, _cur.file_index, _cur.nfo_line++); // SLOPE_STEEP_N
-		LoadNextSprite(SPR_SHORE_BASE + 11, _cur.file_index, _cur.nfo_line++); // SLOPE_NWS
-		LoadNextSprite(SPR_SHORE_BASE + 13, _cur.file_index, _cur.nfo_line++); // SLOPE_ENW
-		LoadNextSprite(SPR_SHORE_BASE + 14, _cur.file_index, _cur.nfo_line++); // SLOPE_SEN
-		LoadNextSprite(SPR_SHORE_BASE + 15, _cur.file_index, _cur.nfo_line++); // SLOPE_STEEP_E
-		LoadNextSprite(SPR_SHORE_BASE + 16, _cur.file_index, _cur.nfo_line++); // SLOPE_EW
-		LoadNextSprite(SPR_SHORE_BASE + 17, _cur.file_index, _cur.nfo_line++); // SLOPE_NS
+		LoadNextSprite(SPR_SHORE_BASE +  0, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_STEEP_S
+		LoadNextSprite(SPR_SHORE_BASE +  5, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_STEEP_W
+		LoadNextSprite(SPR_SHORE_BASE +  7, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_WSE
+		LoadNextSprite(SPR_SHORE_BASE + 10, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_STEEP_N
+		LoadNextSprite(SPR_SHORE_BASE + 11, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_NWS
+		LoadNextSprite(SPR_SHORE_BASE + 13, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_ENW
+		LoadNextSprite(SPR_SHORE_BASE + 14, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_SEN
+		LoadNextSprite(SPR_SHORE_BASE + 15, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_STEEP_E
+		LoadNextSprite(SPR_SHORE_BASE + 16, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_EW
+		LoadNextSprite(SPR_SHORE_BASE + 17, _cur.file_index, _cur.nfo_line++, _cur.grf_container_ver); // SLOPE_NS
 		if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ONLY_NEW;
 		return;
 	}
@@ -5473,7 +5474,7 @@ static void GraphicsNew(ByteReader *buf)
 
 	for (; num > 0; num--) {
 		_cur.nfo_line++;
-		LoadNextSprite(replace == 0 ? _cur.spriteid++ : replace++, _cur.file_index, _cur.nfo_line);
+		LoadNextSprite(replace == 0 ? _cur.spriteid++ : replace++, _cur.file_index, _cur.nfo_line, _cur.grf_container_ver);
 	}
 
 	if (type == 0x0D) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_5;
@@ -5723,7 +5724,7 @@ static void CfgApply(ByteReader *buf)
 
 	/* Preload the next sprite */
 	size_t pos = FioGetPos();
-	uint16 num = FioReadWord();
+	uint32 num = _cur.grf_container_ver >= 2 ? FioReadDword() : FioReadWord();
 	uint8 type = FioReadByte();
 	byte *preload_sprite = NULL;
 
@@ -6067,7 +6068,7 @@ static void SpriteReplace(ByteReader *buf)
 		for (uint j = 0; j < num_sprites; j++) {
 			int load_index = first_sprite + j;
 			_cur.nfo_line++;
-			LoadNextSprite(load_index, _cur.file_index, _cur.nfo_line); // XXX
+			LoadNextSprite(load_index, _cur.file_index, _cur.nfo_line, _cur.grf_container_ver); // XXX
 
 			/* Shore sprites now located at different addresses.
 			 * So detect when the old ones get replaced. */
@@ -6846,8 +6847,12 @@ static void LoadGRFSound(size_t offs)
 	sound->volume = 0x80;
 	sound->priority = 0;
 
-	sound->file_slot = _cur.file_index;
-	sound->file_offset = offs;
+	if (offs != SIZE_MAX) {
+		/* Sound is present in the NewGRF. */
+		sound->file_slot = _cur.file_index;
+		sound->file_offset = offs;
+		sound->grf_container_ver = _cur.grf_container_ver;
+	}
 }
 
 /* Action 0x11 */
@@ -6869,8 +6874,20 @@ static void GRFSound(ByteReader *buf)
 
 		size_t offs = FioGetPos();
 
-		uint16 len = FioReadWord();
+		uint32 len = _cur.grf_container_ver >= 2 ? FioReadDword() : FioReadWord();
 		byte type = FioReadByte();
+
+		if (_cur.grf_container_ver >= 2 && type == 0xFD) {
+			/* Reference to sprite section. */
+			if (len != 4) {
+				grfmsg(1, "GRFSound: Invalid sprite section import");
+				FioSkipBytes(len);
+			} else {
+				uint32 id = FioReadDword();
+				if (_cur.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id));
+			}
+			continue;
+		}
 
 		if (type != 0xFF) {
 			grfmsg(1, "GRFSound: Unexpected RealSprite found, skipping");
@@ -6883,7 +6900,13 @@ static void GRFSound(ByteReader *buf)
 		switch (action) {
 			case 0xFF:
 				/* Allocate sound only in init stage. */
-				if (_cur.stage == GLS_INIT) LoadGRFSound(offs);
+				if (_cur.stage == GLS_INIT) {
+					if (_cur.grf_container_ver >= 2) {
+						grfmsg(1, "GRFSound: Inline sounds are not supported for container version >= 2");
+					} else {
+						LoadGRFSound(offs);
+					}
+				}
 				FioSkipBytes(len - 1); // <type> is not included in the length for pseudo-sprites.
 				break;
 
@@ -6944,7 +6967,7 @@ static void LoadFontGlyph(ByteReader *buf)
 		for (uint c = 0; c < num_char; c++) {
 			if (size < FS_END) SetUnicodeGlyph(size, base_char + c, _cur.spriteid);
 			_cur.nfo_line++;
-			LoadNextSprite(_cur.spriteid++, _cur.file_index, _cur.nfo_line);
+			LoadNextSprite(_cur.spriteid++, _cur.file_index, _cur.nfo_line, _cur.grf_container_ver);
 		}
 	}
 }
@@ -8560,6 +8583,32 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 }
 
 
+/** Signature of a container version 2 GRF. */
+extern const byte _grf_cont_v2_sig[8] = {'G', 'R', 'F', 0x82, 0x0D, 0x0A, 0x1A, 0x0A};
+
+/**
+ * Get the container version of the currently opened GRF file.
+ * @return Container version of the GRF file or 0 if the file is corrupt/no GRF file.
+ */
+byte GetGRFContainerVersion()
+{
+	size_t pos = FioGetPos();
+
+	if (FioReadWord() == 0) {
+		/* Check for GRF container version 2, which is identified by the bytes
+		 * '47 52 46 82 0D 0A 1A 0A' at the start of the file. */
+		for (uint i = 0; i < lengthof(_grf_cont_v2_sig); i++) {
+			if (FioReadByte() != _grf_cont_v2_sig[i]) return 0; // Invalid format
+		}
+
+		return 2;
+	}
+
+	/* Container version 1 has no header, rewind to start. */
+	FioSeekTo(pos, SEEK_SET);
+	return 1;
+}
+
 /**
  * Load a particular NewGRF.
  * @param config     The configuration of the to be loaded NewGRF.
@@ -8570,7 +8619,6 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, Subdirectory subdir)
 {
 	const char *filename = config->filename;
-	uint16 num;
 
 	/* A .grf file is activated only if it was active when the game was
 	 * started.  If a game is loaded, only its active .grfs will be
@@ -8604,10 +8652,35 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 
 	DEBUG(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '%s'", filename);
 
+	_cur.grf_container_ver = GetGRFContainerVersion();
+	if (_cur.grf_container_ver == 0) {
+		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		return;
+	}
+
+	if (stage == GLS_INIT || stage == GLS_ACTIVATION) {
+		/* We need the sprite offsets in the init stage for NewGRF sounds
+		 * and in the activation stage for real sprites. */
+		ReadGRFSpriteOffsets(_cur.grf_container_ver);
+	} else {
+		/* Skip sprite section offset if present. */
+		if (_cur.grf_container_ver >= 2) FioReadDword();
+	}
+
+	if (_cur.grf_container_ver >= 2) {
+		/* Read compression value. */
+		byte compression = FioReadByte();
+		if (compression != 0) {
+			DEBUG(grf, 7, "LoadNewGRFFile: Unsupported compression format");
+			return;
+		}
+	}
+
 	/* Skip the first sprite; we don't care about how many sprites this
 	 * does contain; newest TTDPatches and George's longvehicles don't
 	 * neither, apparently. */
-	if (FioReadWord() == 4 && FioReadByte() == 0xFF) {
+	uint32 num = _cur.grf_container_ver >= 2 ? FioReadDword() : FioReadWord();
+	if (num == 4 && FioReadByte() == 0xFF) {
 		FioReadDword();
 	} else {
 		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
@@ -8618,7 +8691,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 
 	ReusableBuffer<byte> buf;
 
-	while ((num = FioReadWord()) != 0) {
+	while ((num = (_cur.grf_container_ver >= 2 ? FioReadDword() : FioReadWord())) != 0) {
 		byte type = FioReadByte();
 		_cur.nfo_line++;
 
@@ -8640,8 +8713,13 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 				break;
 			}
 
-			FioSkipBytes(7);
-			SkipSpriteData(type, num - 8);
+			if (_cur.grf_container_ver >= 2 && type == 0xFD) {
+				/* Reference to data section. Container version >= 2 only. */
+				FioSkipBytes(num);
+			} else {
+				FioSkipBytes(7);
+				SkipSpriteData(type, num - 8);
+			}
 		}
 
 		if (_cur.skip_sprites > 0) _cur.skip_sprites--;

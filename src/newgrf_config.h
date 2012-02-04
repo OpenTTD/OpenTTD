@@ -218,6 +218,8 @@ struct NewGRFScanCallback {
 	virtual void OnNewGRFsScanned() = 0;
 };
 
+size_t GRFGetSizeOfDataSection(FILE *f);
+
 void ScanNewGRFFiles(NewGRFScanCallback *callback);
 void CheckForMissingSprites();
 const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL, uint32 desired_version = 0);

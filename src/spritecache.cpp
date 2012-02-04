@@ -35,6 +35,7 @@ struct SpriteCache {
 	int16 lru;
 	SpriteTypeByte type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
+	byte container_ver;  ///< Container version of the GRF the sprite is from.
 };
 
 
@@ -227,7 +228,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 #endif /* WITH_PNG */
 	}
 
-	SpriteLoaderGrf sprite_loader;
+	SpriteLoaderGrf sprite_loader(sc->container_ver);
 	SpriteLoader::Sprite sprite;
 	sprite.type = sprite_type;
 
@@ -269,12 +270,62 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 }
 
 
-bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
+/** */
+static std::map<uint32, size_t> _grf_sprite_offsets;
+
+/**
+ * Get the file offset for a specific sprite in the sprite section of a GRF.
+ * @param id ID of the sprite to look up.
+ * @return Position of the sprite in the sprite section or SIZE_MAX if no such sprite is present.
+ */
+size_t GetGRFSpriteOffset(uint32 id)
+{
+	return _grf_sprite_offsets.find(id) != _grf_sprite_offsets.end() ? _grf_sprite_offsets[id] : SIZE_MAX;
+}
+
+/**
+ * Parse the sprite section of GRFs.
+ * @param container_version Container version of the GRF we're currently processing.
+ */
+void ReadGRFSpriteOffsets(byte container_version)
+{
+	_grf_sprite_offsets.clear();
+
+	if (container_version >= 2) {
+		/* Seek to sprite section of the GRF. */
+		size_t data_offset = FioReadDword();
+		size_t old_pos = FioGetPos();
+		FioSeekTo(data_offset, SEEK_CUR);
+
+		/* Loop over all sprite section entries and store the file
+		 * offset for each newly encountered ID. */
+		uint32 id, prev_id = 0;
+		while ((id = FioReadDword()) != 0) {
+			if (id != prev_id) _grf_sprite_offsets[id] = FioGetPos() - 4;
+			prev_id = id;
+			FioSkipBytes(FioReadDword());
+		}
+
+		/* Continue processing the data section. */
+		FioSeekTo(old_pos, SEEK_SET);
+	}
+}
+
+
+/**
+ * Load a real or recolour sprite.
+ * @param load_index Global sprite index.
+ * @param file_slot GRF to load from.
+ * @param file_sprite_id Sprite number in the GRF.
+ * @param container_version Container version of the GRF.
+ * @return True if a valid sprite was loaded, false on any error.
+ */
+bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id, byte container_version)
 {
 	size_t file_pos = FioGetPos();
 
 	/* Read sprite header. */
-	uint16 num = FioReadWord();
+	uint32 num = container_version >= 2 ? FioReadDword() : FioReadWord();
 	if (num == 0) return false;
 	byte grf_type = FioReadByte();
 
@@ -289,9 +340,20 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 		}
 		type = ST_RECOLOUR;
 		data = ReadRecolourSprite(file_slot, num);
+	} else if (container_version >= 2 && grf_type == 0xFD) {
+		if (num != 4) {
+			/* Invalid sprite section include, ignore. */
+			FioSkipBytes(num);
+			return false;
+		}
+		/* It is not an error if no sprite with the provided ID is found in the sprite section. */
+		file_pos = GetGRFSpriteOffset(FioReadDword());
+		type = ST_NORMAL;
 	} else {
 		FioSkipBytes(7);
 		type = SkipSpriteData(grf_type, num - 8) ? ST_NORMAL : ST_INVALID;
+		/* Inline sprites are not supported for container version >= 2. */
+		if (container_version >= 2) return false;
 	}
 
 	if (type == ST_INVALID) return false;
@@ -315,6 +377,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	sc->id = file_sprite_id;
 	sc->type = type;
 	sc->warned = false;
+	sc->container_ver = container_version;
 
 	return true;
 }
@@ -331,6 +394,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->id = scold->id;
 	scnew->type = scold->type;
 	scnew->warned = false;
+	scnew->container_ver = scold->container_ver;
 }
 
 /**
