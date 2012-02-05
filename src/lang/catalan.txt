@@ -1823,7 +1823,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :s'ha intentat u
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor ple
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava enviant massa ordres
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :no s'ha rebut la contrasenya a temps
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :temps d'espera general
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :General temps d'espera esgotat
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :la descàrrega del mapa ha tardat massa
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :el processat del mapa ha tardat massa
 ############ End of leave-in-this-order
@@ -2140,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissors
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori. Shift commuta construeix/mostra el cost estimat
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbres Aleatoris

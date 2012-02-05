@@ -538,6 +538,8 @@ STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}நி�
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :பொறியியலாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :போக்குவரத்து மேலாளர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :போக்குவரத்து ஒருங்கிணைப்பாளர்
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :தட மேற்பார்வையாளர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :நிறுவனர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :நிறுவனர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :ஜனாதிபதி
@@ -571,6 +573,9 @@ STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}இந�
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}அனைத்தும்
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}பழைய பாணி
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}புதிய பாணி
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}ஈசி தெரு
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}பாடல்பட்டியல் 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}பாடல்பட்டியல் 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}ஒலி அளவு
 STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}குறைந்தபட்ச
 STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}அதிகபட்ச
@@ -582,6 +587,7 @@ STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKG
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}இசைத்தடம்
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}தலைப்பு
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இசையை நிறுத்து
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}இசையினை ஆரம்பி
 
 
 # Playlist window

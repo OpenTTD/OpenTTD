@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterner entre grande et petite fenêtre
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Fait défiler la liste verticalement
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Fait défiler la liste horizontalement
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain.{}Ctrl pour sélectionner en diagonal.{}Shift pour afficher seulement le coût estimé
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain.{}Ctrl pour sélectionner en diagonale.{}Shift pour afficher seulement le coût estimé.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
@@ -285,8 +285,8 @@ STR_SORT_BY_COST                                                :Prix
 STR_SORT_BY_POWER                                               :Puissance
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Effort de traction
 STR_SORT_BY_INTRO_DATE                                          :Date d'introduction
-STR_SORT_BY_RUNNING_COST                                        :Coût d'entretien
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Puissance/Coût d'entretien
+STR_SORT_BY_RUNNING_COST                                        :Coûts d'entretien
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Puissance / Coûts d'entretien
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacité
 STR_SORT_BY_RANGE                                               :Rayon d'action
 
@@ -745,12 +745,12 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Fermetu
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Changements économiques
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Changements de production des industries desservies par la compagnie
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Changements de production des industries desservies par les concurrents
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Changement de production des industries non desservies
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Conseils / Information sur les véhicules de la compagnie
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Changements de production des industries non desservies
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Conseils / Informations sur les véhicules de la compagnie
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Nouveaux véhicules
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Changements d'acceptation de marchandises
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subventions
-STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Information générale
+STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informations générales
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
@@ -883,7 +883,7 @@ STR_GAME_OPTIONS_CURRENCY_HUF                                   :Florin hongrois
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Couronne islandaise (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lire italienne (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florin hollandais (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Courronne norvégienne (NOK)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Couronne norvégienne (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Nouv. Zloty polonais (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu roumain (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rouble russe (RUR)
@@ -962,16 +962,16 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Choisir 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Graphiques de base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Sélectionner les graphiques de base à utiliser
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les graphiques de base
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informations additionnelles sur les graphiques de base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Sons de base
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Sélectionner les sons de base à utiliser
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Information additionnelle sur les sons de base
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informations additionnelles sur les sons de base
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musique de base
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Sélectionner la musique de base à utiliser
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fichier{P "" s} corrompu{P "" s}
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Information additionnelle sur la musique de base
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informations additionnelles sur la musique de base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Échec du mode plein écran
 
@@ -1611,7 +1611,7 @@ STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF 
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Rejoindre la partie
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualiser
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiser les infos sur le serveur
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiser les informations sur le serveur
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trouver un serveur
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Chercher un serveur sur le réseau
@@ -1723,8 +1723,8 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) T�
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Traitement des données...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Inscription...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des infos sur le jeu...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatriement des informations sur le jeu...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des informations sur la compagnie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} téléchargés
@@ -1868,18 +1868,18 @@ STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliquer 
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Sélectionner tout
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marquer tous les contenus comme étant à télécharger
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélectionner les mises à jour
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant comme étant à télécharger
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer comme étant à télécharger tous les contenus qui sont une mise à jour du contenu existant
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus comme étant à ne pas télécharger
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur l'étiquette/le nom{NBSP}:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur les étiquettes/le nom{NBSP}:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce contenu
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement des éléments sélectionnés
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille totale du téléchargement{NBSP}: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATION DE CONTENU
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Vous n'avez pas sélectionné ceci pour être téléchargé
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vous avez sélectionné ceci pour être téléchargé
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATIONS SUR LE CONTENU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Non pré-sélectionné pour le téléchargement
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Pré-sélectionné pour le téléchargement
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cette dépendance a été sélectionnée pour être téléchargée
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vous avez déjà ceci
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce contenu est inconnu et ne peut pas être téléchargé dans OpenTTD
@@ -1916,7 +1916,7 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Téléch
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM}{NBSP}%)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de contenu impossible...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de modules impossible...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Échec du téléchargement...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexion perdue
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichier non enregistrable
@@ -2452,9 +2452,9 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Mettre �
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Retirer
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirer le module NewGRF sélectionné de la liste
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Monter
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le module NewGRF sélectionné dans la liste{NBSP}: cela réduit son influence relative (certains de ses paramètres sont plus susceptibles d'être écrasés par ceux équivalents provenant de modules chargés plus bas dans la liste)
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le module NewGRF sélectionné dans la liste{NBSP}: cela réduit son influence relative (certains de ses paramètres sont plus susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules chargés plus bas dans la liste)
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des modules NewGRF installés. Cliquer sur un module pour modifier ses paramètres.
 
 # Additional textfiles accompanying NewGRFs
@@ -2574,7 +2574,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Modules ma
 STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF "{0:STRING}" peut provoquer des erreurs de synchronisation et/ou des plantages
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour "{1:ENGINE}" en dehors du dépôt
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour "{1:ENGINE}" en dehors du dépôt
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train "{VEHICLE}" appartenant à "{COMPANY}" a une longueur invalide. Cela est probablement dû à des problèmes avec des NewGRFs, et peut provoquer des erreurs de synchronisation ou planter le jeu.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Le module NewGRF "{0:STRING}" fournit une information incorrecte
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Les informations de cargaison/réaménagement pour "{1:ENGINE}" après sa construction sont différentes de celles de la liste d'achat. Cela peut causer un échec de réaménagement lors de l'auto-renouvellement/remplacement.
@@ -2612,15 +2612,15 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Entrer u
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Villes
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}− Aucune −
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue principale sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
 STR_TOWN_POPULATION                                             :{BLACK}Population mondiale{NBSP}: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Métropole)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Population{NBSP}: {ORANGE}{COMMA}{BLACK} − Maisons{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagers le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Passagers le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Courrier le mois dernier{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Cargaison nécessaire à la croissance de la ville{NBSP}:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} requis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} requis en hiver
@@ -2630,8 +2630,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}La ville croît {P 0 chaque "tous les"} {ORANGE}{COMMA}{BLACK} jour{P "" s} (financé)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}La ville {RED}ne croît pas{BLACK}
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de nuisance pour la ville{NBSP}: {ORANGE}{COMMA}{BLACK} − max{NBSP}: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nuisances sonores en ville{NBSP}: {ORANGE}{COMMA}{BLACK} − max.{NBSP}: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer la vue sur la ville. Ctrl-clic pour ouvrir une nouvelle vue sur la ville.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Municipalité
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Afficher des informations sur la municipalité
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renommer la ville
@@ -2667,7 +2667,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financer la reconstruction du réseau routier local. Provoque de nombreux problèmes de trafic routier pendant 6 mois.{}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acheter les droits de transports exclusifs dans cette ville pour 1 an. Seules vos lignes seront autorisées dans la ville.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acheter les droits de transport exclusifs dans cette ville pour 1 an. Seules vos lignes seront autorisées dans la ville.{}Coût{NBSP}: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}Coût{NBSP}: {CURRENCY_LONG}
 
 # Goal window
@@ -2676,11 +2676,11 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Objectif
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}− Aucun −
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectifs de la compagnie{NBSP}:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer sur l'objectif pour centrer la vue principale sur l'industrie, la ville ou la case. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie, la ville ou la case
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer sur l'objectif pour centrer la vue principale sur l'industrie, la ville ou la case. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie, la ville ou la case.
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Question
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Information
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informations
 STR_GOAL_QUESTION_CAPTION_WARNING                               :Attention
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erreur
 
@@ -2903,8 +2903,8 @@ STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - Cliquer sur un train pour obtenir des informations
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - cliquer sur un navire pour informations
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - Cliquer sur un navire pour obtenir des informations
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur l'aéronef pour obtenir des informations
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 
@@ -2983,10 +2983,10 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA} cases
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Sélection du véhicule - Cliquer pour obtenir des informations
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule - cliquer sur un véhicule pour obtenir des informations
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Liste de sélection de navire - cliquer sur un navire pour informations
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Liste de sélection d'aéronef - cliquer sur les aéronefs pour de plus amples informations
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Choix du véhicule - Cliquer sur un véhicule pour obtenir des informations
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Choix du véhicule routier - Cliquer sur un véhicule pour obtenir des informations
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Choix du navire - Cliquer sur un navire pour obtenir des informations
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Choix de l'aéronef - Cliquer sur un aéronef pour obtenir des informations
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Acheter
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Acheter
@@ -3024,10 +3024,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément. Maintenir Ctrl pour que les deux fonctions s'appliquent à la chaine qui suit
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - cliquer droit sur un véhicule pour obtenir des informations
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - cliquer droit sur un navire pour obtenir des informations
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - cliquer droit sur l'aéronef pour obtenir des informations
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - Glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément. Maintenir Ctrl pour que les deux fonctions s'appliquent à la chaine qui suit.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - Cliquer droit sur un véhicule pour obtenir des informations
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - Cliquer droit sur un navire pour obtenir des informations
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - Cliquer droit sur l'aéronef pour obtenir des informations
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Glisser le véhicule ici pour le vendre
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
@@ -3098,12 +3098,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive magnétique
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Effort de traction max.{NBSP}: {6:FORCE}{}Coûts d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coût d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY}{}Capacité{NBSP}: {CARGO_LONG}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}, {CARGO_LONG}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {7:COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
@@ -3212,7 +3212,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Renommer
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Rebaptiser le navire
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renommer l'aéronef
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK}   Coût d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/an
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Âge{NBSP}: {LTBLUE}{STRING}{BLACK} − Coûts d'entretien{NBSP}: {LTBLUE}{CURRENCY_LONG}/an
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P "" nées} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" nées} ({COMMA})
@@ -3257,7 +3257,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Cargaison
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Afficher des informations sur les marchandises transportées
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Information
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informations
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Afficher des informations sur la locomotive et les wagons
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacités
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Afficher la capacité de chaque wagon
@@ -3451,7 +3451,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Basculer
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - cliquer sur un ordre pour le sélectionner
 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique; horaire au prochain ordre manuel)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique{NBSP}; horaire au prochain ordre manuel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaires)
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
