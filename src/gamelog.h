@@ -30,6 +30,7 @@ enum GamelogActionType {
 void GamelogStartAction(GamelogActionType at);
 void GamelogStopAction();
 
+void GamelogFree(struct LoggedAction *gamelog_action, uint gamelog_actions);
 void GamelogReset();
 
 /**

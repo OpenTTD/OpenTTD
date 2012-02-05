@@ -27,6 +27,7 @@
 #include "landscape_type.h"
 #include "date_func.h"
 #include "core/geometry_func.hpp"
+#include "gamelog.h"
 
 #include "widgets/fios_widget.h"
 
@@ -60,7 +61,7 @@ void LoadCheckData::Clear()
 	}
 	companies.Clear();
 
-	free(this->gamelog_action);
+	GamelogFree(this->gamelog_action, this->gamelog_actions);
 	this->gamelog_action = NULL;
 	this->gamelog_actions = 0;
 

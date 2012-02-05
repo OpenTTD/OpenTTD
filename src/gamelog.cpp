@@ -64,14 +64,12 @@ void GamelogStopAction()
 }
 
 /**
- * Resets and frees all memory allocated - used before loading or starting a new game
+ * Frees the memory allocated by a gamelog
  */
-void GamelogReset()
+void GamelogFree(LoggedAction *gamelog_action, uint gamelog_actions)
 {
-	assert(_gamelog_action_type == GLAT_NONE);
-
-	for (uint i = 0; i < _gamelog_actions; i++) {
-		const LoggedAction *la = &_gamelog_action[i];
+	for (uint i = 0; i < gamelog_actions; i++) {
+		const LoggedAction *la = &gamelog_action[i];
 		for (uint j = 0; j < la->changes; j++) {
 			const LoggedChange *lc = &la->change[j];
 			if (lc->ct == GLCT_SETTING) free(lc->setting.name);
@@ -79,7 +77,16 @@ void GamelogReset()
 		free(la->change);
 	}
 
-	free(_gamelog_action);
+	free(gamelog_action);
+}
+
+/**
+ * Resets and frees all memory allocated - used before loading or starting a new game
+ */
+void GamelogReset()
+{
+	assert(_gamelog_action_type == GLAT_NONE);
+	GamelogFree(_gamelog_action, _gamelog_actions);
 
 	_gamelog_action  = NULL;
 	_gamelog_actions = 0;
