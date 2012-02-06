@@ -30,6 +30,7 @@
 #include "../company_func.h"
 #include "../core/geometry_func.hpp"
 #include "../genworld.h"
+#include "../map_type.h"
 
 #include "../widgets/network_widget.h"
 
@@ -500,17 +501,17 @@ public:
 
 			case WID_NG_CLIENTS:
 				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
-				SetDParam(0, 255);
-				SetDParam(1, 255);
-				SetDParam(2, 15);
-				SetDParam(3, 15);
+				SetDParam(0, MAX_CLIENTS);
+				SetDParam(1, MAX_CLIENTS);
+				SetDParam(2, MAX_COMPANIES);
+				SetDParam(3, MAX_COMPANIES);
 				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_SERVER_LIST_GENERAL_ONLINE));
 				break;
 
 			case WID_NG_MAPSIZE:
 				size->width += 2 * WD_SORTBUTTON_ARROW_WIDTH; // Make space for the arrow
-				SetDParam(0, 2048);
-				SetDParam(1, 2048);
+				SetDParam(0, MAX_MAP_SIZE);
+				SetDParam(1, MAX_MAP_SIZE);
 				*size = maxdim(*size, GetStringBoundingBox(STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT));
 				break;
 
@@ -2057,7 +2058,7 @@ struct NetworkJoinStatusWindow : Window {
 		}
 
 		/* For the number of waiting (other) players */
-		SetDParam(0, 255);
+		SetDParam(0, MAX_CLIENTS);
 		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
 
 		/* Account for downloading ~ 10 MiB */
