@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Hiển thị bi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation đầy đủ
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Chi tiết
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Làm trong suốt nhà cửa
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong suốt biển hiệu nhà ga
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong suốt biển hiệu
 ############ range ends here
 
 ############ range for file menu starts

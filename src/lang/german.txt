@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Fremde Stations
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Vollständige Animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Vollständige Detailansicht
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparenz für Gebäude
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparenz für Stationsnamen
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparenz für Schilder
 ############ range ends here
 
 ############ range for file menu starts
@@ -1929,7 +1929,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nein, Op
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Schilder einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen. Strg+Klick, um Umschalten zu verhindern bzw. wieder zu erlauben
@@ -2140,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wähle die zu pflanzende Baumart
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wähle die zu pflanzende Baumart. Wenn auf dem Feld schon ein Baum steht, wird eine zufällige Baumart gepflanzt
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zufällige Baumart pflanzen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zufällige Bäume
@@ -2496,7 +2496,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Anzahl 
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF - Readme von {STRING}
 STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF Änderungen von {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF Lizenz von {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF-Lizenz von {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}

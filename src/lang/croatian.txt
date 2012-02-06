@@ -456,7 +456,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Prikazani znako
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Sve animacije
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Svi detalji
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Prozirne građevine
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prozirni znakovi postaja
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prozirni znakovi
 ############ range ends here
 
 ############ range for file menu starts
@@ -2024,7 +2024,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, iza�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Postavke prozirnosti
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Namjesti prozirnost za znakove postaja. Ctrl+klik za zaključavanje
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Namjesti prozirnost za znakove. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Namjesti prozirnost za drveće. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Namjesti prozirnost za kuće. Ctrl+klik za zaključavanje
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Namjesti prozirnost za industrije. Ctrl+klik za zaključavanje
@@ -2165,9 +2165,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Smjer au
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Odaberi smjer autobusne postaje
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Smjer kamionskog terminala
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Odaberi smjer kamionskog terminala
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija putničkog tramvaja
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija stanice putničkog tramvaja
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Odaberi smjer putničke tramvajske postaje
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijentacija teretnog tramvaja
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijentacija stanice teretnog tramvaja
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Odaberi smjer teretne tramvajske postaje
 
 # Waterways toolbar (last two for SE only)

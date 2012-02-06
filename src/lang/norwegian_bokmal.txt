@@ -362,7 +362,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Vis motstanders
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fullstending animasjon
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Maks detaljer
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjennomsiktige bygninger
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige stasjonsnavn
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige skilt
 ############ range ends here
 
 ############ range for file menu starts
@@ -1930,7 +1930,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, avs
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Instillinger for gjennomsiktighet
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Gjennomsiktighet for stasjonsskilt. Ctrl+klikk for å låse
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Veksle mellom gjennomsiktighet for skilt. Ctrl+klikk for å låse
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Gjennomsiktighet for trær. Ctrl+klikk for å låse
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Gjennomsiktighet for hus. Ctrl+klikk for å låse
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gjennomsiktighet for industrier. Ctrl+klikk for å låse

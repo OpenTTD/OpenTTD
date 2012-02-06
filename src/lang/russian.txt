@@ -486,7 +486,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показыв�
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Полная анимация
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Полная детализация
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачные здания
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачный фон названий станций
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрачные надписи
 ############ range ends here
 
 ############ range for file menu starts
@@ -2100,7 +2100,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Нет, 
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки прозрачности
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности значков станций. Ctrl+щелчок - заблокировать.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности надписей. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Переключение прозрачности деревьев. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Переключение прозрачности городских зданий. Ctrl+щелчок - заблокировать.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Переключение прозрачности предприятий. Ctrl+щелчок - заблокировать.

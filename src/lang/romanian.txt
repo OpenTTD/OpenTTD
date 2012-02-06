@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Afişează nume
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animaţie completă
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalii grafice complete
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Peisaj transparent
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii transparent
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii/semne transparente
 ############ range ends here
 
 ############ range for file menu starts
@@ -1928,7 +1928,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nu, ieș
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiuni transparenţă
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru semnele de staţii. Ctrl+Click pentru blocare
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru nume/semne. Ctrl+Click pentru blocare
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comută transparenţa pentru arbori. Ctrl+Click pentru blocare
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comută transparenţa pentru case. Ctrl+Click pentru blocare
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comută transparenţa pentru industrii. Ctrl+Click pentru blocare
@@ -2139,7 +2139,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmiţătoar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat. Dacă există deja un arbore în locația dorită, se va adăuga arbori de tip mixt, indiferent de specia selectată
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori din specii aleatoare
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantează arbori din diverse specii la întâmplare. Shift comută între plantare/afişare cost estimat
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbori aleatori
