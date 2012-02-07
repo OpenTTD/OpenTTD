@@ -916,7 +916,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Sélecti
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglais (originaux)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Français
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Allemand
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Allemands
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglais (additionnels)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-américains
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Drôles
@@ -1140,7 +1140,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Terrain
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permettre plusieurs industries similaires par ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan financier en fin d'année{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les nouveaux ordres sont 'sans arrêt' par défaut{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les nouveaux ordres sont « sans arrêt » par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Les nouveaux ordres arrêtent les trains {G au au "à la"} {ORANGE}{STRING}{LTBLUE} du quai par défaut
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :{G=f}queue
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :{G=m}milieu
@@ -2711,12 +2711,12 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}− Aucune −
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Subventions déjà accordées{NBSP}:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} à {STRING}{YELLOW} ({COMPANY}{YELLOW}, jusqu'à {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer sur le service pour centrer la vue principale sur l'industrie ou la ville. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie ou la ville
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Cliquer sur le service pour centrer la vue principale sur l'industrie ou la ville. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie ou la ville.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - cliquer sur un nom pour centrer la vue principale sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue principale sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ctrl-clic pour sélectionner plus d'un élément
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P 1 "" s}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} station{P 1 "" s}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}− Aucun −
@@ -2750,7 +2750,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excellent
 STR_CARGO_RATING_OUTSTANDING                                    :Exceptionnel
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrer la vue sur la station. Ctrl-clic pour ouvrir une nouvelle vue sur la station.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Renommer la station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Afficher les trains ayant cette station dans leurs ordres
@@ -2774,7 +2774,7 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finances
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Dépenses/Revenus
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construction
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nouveaux Véhicules
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nouveaux véhicules
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Entretien des trains
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Entretien des véhicules
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Entretien des aéronefs
@@ -2789,14 +2789,14 @@ STR_FINANCES_SECTION_OTHER                                      :{GOLD}Autres
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total{NBSP}:
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Équilibre bancaire
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Solde bancaire
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Emprunt
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Emprunt maximum{NBSP}: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Emprunter {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter le prêt. Ctrl-clic pour emprunter autant que possible
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenter l'emprunt. Ctrl-clic pour emprunter autant que possible.
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Rembourser {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Rembourser une partie du prêt. Ctrl-clic pour rembourser autant que possible
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Rembourser une partie de l'emprunt. Ctrl-clic pour rembourser autant que possible.
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastructure
 
 # Company view
@@ -2807,7 +2807,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inauguré
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Couleur{NBSP}:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Véhicules{NBSP}:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} train{P "" s}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} véhicule{P "" s}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} véhicule{P "" s} routier{P "" s}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aéronef{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} navire{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Aucun
@@ -2819,12 +2819,12 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} case{P "" s} d'eau
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} case{P "" s} de station
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aéroport{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Aucun
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Aucune
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Const. siège
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construire le siège social
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construire le siège
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construire le siège social de la compagnie
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Voir le siège
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Voir le siège social
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Voir le siège social de la compagnie
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Déménager le QG
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruire ailleurs le siège de la compagnie pour le prix de 1{NBSP}% de sa valeur.{}Shift-clic pour afficher seulement le coût estimé.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Détails
@@ -2847,7 +2847,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 2
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la société
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un acheteur pour notre compagnie{}{}Voulez-vous acheter {COMPANY} pour {CURRENCY_LONG}{NBSP}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un repreneur pour notre compagnie{}{}Voulez-vous acheter {COMPANY} pour {CURRENCY_LONG}{NBSP}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastructure de {COMPANY}
@@ -2870,13 +2870,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}− Auc
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transporté{P "" s})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms des industries - cliquer sur un nom pour centrer la vue principale sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Noms des industries - Cliquer sur un nom pour centrer la vue principale sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Production le mois dernier{NBSP}:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}{NBSP}% transporté{P "" s})
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer la vue sur l'industrie. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Niveau de production{NBSP}: {YELLOW}{COMMA}{NBSP}%
 
 ############ range for requires starts
@@ -2896,15 +2896,15 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Changer le niveau de production (pourcentage, max. 800{NBSP}%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Train{P "" s}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Véhicule{P "" s} routier{P "" s}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Navire{P "" s}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aéronef{P "" s}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} train{P "" s}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} véhicule{P "" s} routier{P "" s}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} navire{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} aéronef{P "" s}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trains - Cliquer sur un train pour obtenir des informations
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Véhicules routiers - Cliquer sur un véhicule pour obtenir des informations
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navires - Cliquer sur un navire pour obtenir des informations
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur l'aéronef pour obtenir des informations
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aéronef - Cliquer sur un aéronef pour obtenir des informations
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit cette année{NBSP}: {CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 
@@ -2917,7 +2917,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Voir la 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gérer la liste
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Envoyer des instructions à tous les véhicules de cette liste
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Remplacer des véhicules
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer en entretien
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Envoyer à l'entretien
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Envoyer au dépôt
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Envoyer au dépôt
@@ -3047,7 +3047,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autoremp
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoremplacer tous les aéronefs du hangar
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nouveaux véhicules
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nouveaux Véhicules
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nouveaux véhicules
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nouveaux navires
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nouvel aéronef
 
@@ -3057,7 +3057,7 @@ STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Acheter 
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Acheter un nouvel aéronef
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Copier Train
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Copier Véhicule
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Copier véhicule
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Copier Navire
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Copier aéronef
 
@@ -3225,7 +3225,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Poids{NB
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit cette année{NBSP}: {LTBLUE}{CURRENCY_LONG} (année précédente{NBSP}: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilité{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Pannes depuis le dernier entretien{NBSP}: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK}Construit{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Capacité{NBSP}: {LTBLUE}Aucune
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Capacité{NBSP}: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
@@ -3244,7 +3244,7 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Rebaptis
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renommer l'aéronef
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacité totale de ce train{NBSP}:
