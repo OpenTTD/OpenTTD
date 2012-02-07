@@ -473,6 +473,13 @@ static int PollEvent()
 			CreateMainSurface(w, h);
 			break;
 		}
+		case SDL_VIDEOEXPOSE: {
+			/* Force a redraw of the entire screen. Note
+			 * that SDL 1.2 seems to do this automatically
+			 * in most cases, but 1.3 / 2.0 does not. */
+		        _num_dirty_rects = MAX_DIRTY_RECTS + 1;
+			break;
+		}
 	}
 	return -1;
 }
