@@ -561,8 +561,12 @@ void VideoDriver_SDL::MainLoop()
 #else
 		/* Speedup when pressing tab, except when using ALT+TAB
 		 * to switch to another application */
+#if SDL_VERSION_ATLEAST(1, 3, 0)
+		if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
+#else
 		if (keys[SDLK_TAB] && (mod & KMOD_ALT) == 0)
-#endif
+#endif /* SDL_VERSION_ATLEAST(1, 3, 0) */
+#endif /* defined(_DEBUG) */
 		{
 			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
 		} else if (_fast_forward & 2) {
@@ -582,11 +586,17 @@ void VideoDriver_SDL::MainLoop()
 
 			/* determine which directional keys are down */
 			_dirkeys =
+#if SDL_VERSION_ATLEAST(1, 3, 0)
+				(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
+				(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
+				(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
+				(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
+#else
 				(keys[SDLK_LEFT]  ? 1 : 0) |
 				(keys[SDLK_UP]    ? 2 : 0) |
 				(keys[SDLK_RIGHT] ? 4 : 0) |
 				(keys[SDLK_DOWN]  ? 8 : 0);
-
+#endif
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
 			/* The gameloop is the part that can run asynchroniously. The rest
