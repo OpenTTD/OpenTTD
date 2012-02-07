@@ -838,6 +838,20 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 }
 
 /**
+ * Translate the refit mask.
+ */
+static uint32 TranslateRefitMask(uint32 refit_mask)
+{
+	uint32 result = 0;
+	uint8 bit;
+	FOR_EACH_SET_BIT(bit, refit_mask) {
+		CargoID cargo = GetCargoTranslation(bit, _cur.grffile, true);
+		if (cargo != CT_INVALID) SetBit(result, cargo);
+	}
+	return result;
+}
+
+/**
  * Converts TTD(P) Base Price pointers into the enum used by OTTD
  * See http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
  * @param base_pointer TTD(P) Base Price Pointer
@@ -1097,11 +1111,13 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->refit_cost = buf->ReadByte();
 				break;
 
-			case 0x1D: // Refit cargo
-				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
+			case 0x1D: { // Refit cargo
+				uint32 mask = buf->ReadDWord();
+				_gted[e->index].UpdateRefittability(mask != 0);
+				ei->refit_mask = TranslateRefitMask(mask);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
+			}
 
 			case 0x1E: // Callback
 				ei->callback_mask = buf->ReadByte();
@@ -1284,11 +1300,13 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				_gted[e->index].rv_max_speed = buf->ReadByte();
 				break;
 
-			case 0x16: // Cargoes available for refitting
-				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
+			case 0x16: { // Cargoes available for refitting
+				uint32 mask = buf->ReadDWord();
+				_gted[e->index].UpdateRefittability(mask != 0);
+				ei->refit_mask = TranslateRefitMask(mask);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
+			}
 
 			case 0x17: // Callback mask
 				ei->callback_mask = buf->ReadByte();
@@ -1447,11 +1465,13 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				svi->sfx = buf->ReadByte();
 				break;
 
-			case 0x11: // Cargoes available for refitting
-				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
+			case 0x11: { // Cargoes available for refitting
+				uint32 mask = buf->ReadDWord();
+				_gted[e->index].UpdateRefittability(mask != 0);
+				ei->refit_mask = TranslateRefitMask(mask);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
+			}
 
 			case 0x12: // Callback mask
 				ei->callback_mask = buf->ReadByte();
@@ -1603,11 +1623,13 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				avi->sfx = buf->ReadByte();
 				break;
 
-			case 0x13: // Cargoes available for refitting
-				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
+			case 0x13: { // Cargoes available for refitting
+				uint32 mask = buf->ReadDWord();
+				_gted[e->index].UpdateRefittability(mask != 0);
+				ei->refit_mask = TranslateRefitMask(mask);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
+			}
 
 			case 0x14: // Callback mask
 				ei->callback_mask = buf->ReadByte();
@@ -8069,7 +8091,7 @@ static void CalculateRefitMasks()
 		if (_gted[engine].refittability != GRFTempEngineData::UNSET) {
 			uint32 mask = 0;
 			uint32 not_mask = 0;
-			uint32 xor_mask = 0;
+			uint32 xor_mask = ei->refit_mask;
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
@@ -8079,27 +8101,6 @@ static void CalculateRefitMasks()
 			if (file == NULL) file = e->GetGRF();
 			if (file != NULL && file->grf_version >= 8 && file->cargo_max != 0) {
 				cargo_map_for_first_refittable = file->cargo_map;
-			}
-
-			if (ei->refit_mask != 0) {
-				if (file != NULL && file->cargo_max != 0) {
-					/* Apply cargo translation table to the refit mask */
-					uint num_cargo = min(32, file->cargo_max);
-					for (uint i = 0; i < num_cargo; i++) {
-						if (!HasBit(ei->refit_mask, i)) continue;
-
-						CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
-						if (c == CT_INVALID) continue;
-
-						SetBit(xor_mask, c);
-					}
-				} else {
-					/* No cargo table, so use the cargo bitnum values */
-					const CargoSpec *cs;
-					FOR_ALL_CARGOSPECS(cs) {
-						if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, cs->Index());
-					}
-				}
 			}
 
 			if (_gted[engine].cargo_allowed != 0) {
