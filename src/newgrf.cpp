@@ -295,7 +295,7 @@ struct GRFTempEngineData {
 	uint16 cargo_disallowed;
 	RailTypeLabel railtypelabel;
 	const GRFFile *refitmask_grf; ///< GRF providing the cargo translation table for the refitmask.
-	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
+	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 	uint32 ctt_include_mask; ///< Cargo types always included in the refit mask.
