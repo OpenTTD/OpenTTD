@@ -284,15 +284,35 @@ static const uint MAX_STATIONS = 256;
 
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
+	/** Summary state of refitability properties */
+	enum Refittability {
+		UNSET    =  0,  ///< No properties assigned. Default refit masks shall be activated.
+		EMPTY,          ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
+		NONEMPTY,       ///< GRF defined the vehicle as refittable. If the refitmask is empty after translation (cargotypes not available), disable the vehicle.
+	};
+
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
 	RailTypeLabel railtypelabel;
 	const GRFFile *refitmask_grf; ///< GRF providing the cargo translation table for the refitmask.
-	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
+	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 	uint32 ctt_include_mask; ///< Cargo types always included in the refit mask.
 	uint32 ctt_exclude_mask; ///< Cargo types always excluded from the refit mask.
+
+	/**
+	 * Update the summary refittability on setting a refittability property.
+	 * @param non_empty true if the GRF sets the vehicle to be refittable.
+	 */
+	void UpdateRefittability(bool non_empty)
+	{
+		if (non_empty) {
+			this->refittability = NONEMPTY;
+		} else if (this->refittability == UNSET) {
+			this->refittability = EMPTY;
+		}
+	}
 };
 
 static GRFTempEngineData *_gted;  ///< Temporary engine data used during NewGRF loading
@@ -1079,7 +1099,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x1D: // Refit cargo
 				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
 
@@ -1140,12 +1160,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x28: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
 				break;
 
 			case 0x29: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(false);
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
@@ -1159,12 +1179,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x2C:   // CTT refit include list
 			case 0x2D: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
+				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
 					SetBit(prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
 				}
-				_gted[e->index].refitmask_valid = true;
 				break;
 			}
 
@@ -1266,7 +1286,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x16: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
 
@@ -1297,12 +1317,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x1D: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
 				break;
 
 			case 0x1E: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(false);
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
@@ -1334,12 +1354,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x24:   // CTT refit include list
 			case 0x25: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
+				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
 					SetBit(prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
 				}
-				_gted[e->index].refitmask_valid = true;
 				break;
 			}
 
@@ -1429,7 +1449,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x11: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
 
@@ -1460,12 +1480,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
 				break;
 
 			case 0x19: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(false);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -1493,12 +1513,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x1E:   // CTT refit include list
 			case 0x1F: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
+				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
 					SetBit(prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
 				}
-				_gted[e->index].refitmask_valid = true;
 				break;
 			}
 
@@ -1585,7 +1605,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x13: // Cargoes available for refitting
 				ei->refit_mask = buf->ReadDWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(ei->refit_mask != 0);
 				_gted[e->index].refitmask_grf = _cur.grffile;
 				break;
 
@@ -1608,12 +1628,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
 				break;
 
 			case 0x19: // Cargo classes disallowed
 				_gted[e->index].cargo_disallowed = buf->ReadWord();
-				_gted[e->index].refitmask_valid = true;
+				_gted[e->index].UpdateRefittability(false);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -1631,12 +1651,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case 0x1D:   // CTT refit include list
 			case 0x1E: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
+				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
 					SetBit(prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
 				}
-				_gted[e->index].refitmask_valid = true;
 				break;
 			}
 
@@ -8046,14 +8066,14 @@ static void CalculateRefitMasks()
 		const uint8 *cargo_map_for_first_refittable = NULL;
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
-		if (_gted[engine].refitmask_valid) {
+		if (_gted[engine].refittability != GRFTempEngineData::UNSET) {
 			uint32 mask = 0;
 			uint32 not_mask = 0;
 			uint32 xor_mask = 0;
 
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
-			only_defaultcargo = (ei->refit_mask == 0 && _gted[engine].cargo_allowed == 0 && _gted[engine].ctt_include_mask == 0);
+			only_defaultcargo = _gted[engine].refittability == GRFTempEngineData::EMPTY;
 
 			const GRFFile *file = _gted[engine].refitmask_grf;
 			if (file == NULL) file = e->GetGRF();
