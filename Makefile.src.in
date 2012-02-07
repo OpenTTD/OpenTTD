@@ -292,7 +292,7 @@ depend: $(DEPS)
 
 clean:
 	$(E) '$(STAGE) Cleaning up object files'
-	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(DEPEND) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS)
+	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(DEPEND) $(TTD:%=$(BIN_DIR)/%) $(BIN_DIR)/baseset/openttd.32.bmp $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS)
 
 mrproper: clean
 	$(Q)rm -f $(SRC_DIR)/rev.cpp $(SRC_DIR)/os/windows/ottdres.rc
