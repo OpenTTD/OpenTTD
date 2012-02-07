@@ -294,7 +294,7 @@ struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
 	RailTypeLabel railtypelabel;
-	const GRFFile *refitmask_grf; ///< GRF providing the cargo translation table for the refitmask.
+	const GRFFile *defaultcargo_grf; ///< GRF defining the cargo translation table to use if the default cargo is the 'first refittable'.
 	Refittability refittability;     ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
 	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
@@ -1032,6 +1032,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x15: { // Cargo type
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				uint8 ctype = buf->ReadByte();
 
 				if (ctype == 0xFF) {
@@ -1115,7 +1116,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint32 mask = buf->ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].refitmask_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 			}
 
@@ -1177,6 +1178,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x28: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x29: // Cargo classes disallowed
@@ -1196,6 +1198,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x2D: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
+				if (prop == 0x2C) _gted[e->index].defaultcargo_grf = _cur.grffile;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
@@ -1262,6 +1265,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x10: { // Cargo type
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				uint8 ctype = buf->ReadByte();
 
 				if (ctype == 0xFF) {
@@ -1304,7 +1308,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint32 mask = buf->ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].refitmask_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 			}
 
@@ -1336,6 +1340,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x1D: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x1E: // Cargo classes disallowed
@@ -1373,6 +1378,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x25: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
+				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur.grffile;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
@@ -1435,6 +1441,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x0C: { // Cargo type
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				uint8 ctype = buf->ReadByte();
 
 				if (ctype == 0xFF) {
@@ -1469,7 +1476,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint32 mask = buf->ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].refitmask_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 			}
 
@@ -1501,6 +1508,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
@@ -1534,6 +1542,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x1F: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
+				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur.grffile;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
@@ -1627,7 +1636,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				uint32 mask = buf->ReadDWord();
 				_gted[e->index].UpdateRefittability(mask != 0);
 				ei->refit_mask = TranslateRefitMask(mask);
-				_gted[e->index].refitmask_grf = _cur.grffile;
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 			}
 
@@ -1651,6 +1660,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case 0x18: // Cargo classes allowed
 				_gted[e->index].cargo_allowed = buf->ReadWord();
 				_gted[e->index].UpdateRefittability(_gted[e->index].cargo_allowed != 0);
+				_gted[e->index].defaultcargo_grf = _cur.grffile;
 				break;
 
 			case 0x19: // Cargo classes disallowed
@@ -1674,6 +1684,7 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 			case 0x1E: { // CTT refit exclude list
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
+				if (prop == 0x1D) _gted[e->index].defaultcargo_grf = _cur.grffile;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
@@ -8085,7 +8096,6 @@ static void CalculateRefitMasks()
 		EngineID engine = e->index;
 		EngineInfo *ei = &e->info;
 		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
-		const uint8 *cargo_map_for_first_refittable = NULL;
 
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refittability != GRFTempEngineData::UNSET) {
@@ -8096,12 +8106,6 @@ static void CalculateRefitMasks()
 			/* If the original masks set by the grf are zero, the vehicle shall only carry the default cargo.
 			 * Note: After applying the translations, the vehicle may end up carrying no defined cargo. It becomes unavailable in that case. */
 			only_defaultcargo = _gted[engine].refittability == GRFTempEngineData::EMPTY;
-
-			const GRFFile *file = _gted[engine].refitmask_grf;
-			if (file == NULL) file = e->GetGRF();
-			if (file != NULL && file->grf_version >= 8 && file->cargo_max != 0) {
-				cargo_map_for_first_refittable = file->cargo_map;
-			}
 
 			if (_gted[engine].cargo_allowed != 0) {
 				/* Build up the list of cargo types from the set cargo classes. */
@@ -8148,6 +8152,16 @@ static void CalculateRefitMasks()
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Finally disable the vehicle, if there is still no cargo. */
 		if (ei->cargo_type == CT_INVALID && ei->refit_mask != 0) {
+			/* Figure out which CTT to use for the default cargo, if it is 'first refittable'. */
+			const uint8 *cargo_map_for_first_refittable = NULL;
+			{
+				const GRFFile *file = _gted[engine].defaultcargo_grf;
+				if (file == NULL) file = e->GetGRF();
+				if (file != NULL && file->grf_version >= 8 && file->cargo_max != 0) {
+					cargo_map_for_first_refittable = file->cargo_map;
+				}
+			}
+
 			if (cargo_map_for_first_refittable != NULL) {
 				/* Use first refittable cargo from cargo translation table */
 				byte best_local_slot = 0xFF;
