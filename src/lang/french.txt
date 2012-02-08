@@ -2960,13 +2960,13 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nouveaux véhic
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Véhicules sur rail
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nouveaux véhicules
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nouveaux navires
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel Aéronef
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nouvel aéronef
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY_LONG}{BLACK} − Poids{NBSP}: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}{BLACK} − Puissance{NBSP}: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{NBSP}: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Vitesse sur canal/fleuve: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Vitesse sur l'océan{NBSP}: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Vitesse sur canal/fleuve{NBSP}: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coûts d'entretien{NBSP}: {GOLD}{CURRENCY_LONG}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
@@ -3003,12 +3003,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renommer
 STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Renommer
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Renommer
 
-STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type de véhicule
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Renommer le type de véhicule ferroviaire
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renommer le type de véhicule routier
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renommer le type de navire
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renommer le type d'aéronef
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de train
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renommer le type de véhicule ferroviaire
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renommer le type de véhicule routier
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renommer type de navire
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renommer type d'aéronef
@@ -3019,7 +3019,7 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Changer le nom du dépôt
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Renommer le dépôt
 
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_NO_ENGINE                                             :{BLACK}−
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} véhicule{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
@@ -3027,7 +3027,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trains - Glisser un élément pour l'ajouter/le supprimer du train, cliquer droit pour obtenir des information sur l'élément. Maintenir Ctrl pour que les deux fonctions s'appliquent à la chaine qui suit.
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Véhicules - Cliquer droit sur un véhicule pour obtenir des informations
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Navires - Cliquer droit sur un navire pour obtenir des informations
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - Cliquer droit sur l'aéronef pour obtenir des informations
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef - Cliquer droit sur un aéronef pour obtenir des informations
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Glisser le véhicule ici pour le vendre
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
@@ -3049,27 +3049,27 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autoremp
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nouveaux véhicules
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nouveaux véhicules
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nouveaux navires
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nouvel aéronef
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nouveaux aéronefs
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Acheter un nouveau véhicule ferroviaire
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Acheter un nouveau véhicule routier
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Acheter un nouveau navire
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Acheter un nouvel aéronef
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Copier Train
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Copier véhicule
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Copier Navire
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Copier aéronef
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Copier un train
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Copier un véhicule
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Copier un navire
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Copier un aéronef
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Acheter une copie d'un train et de ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Acheter une copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Acheter une copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acheter une copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer la vue sur le dépôt naval. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt naval
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer la vue le hangar. Ctrl-clic pour ouvrir une nouvelle vue sur le hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer la vue sur le dépôt naval. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt naval.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer la vue le hangar. Ctrl-clic pour ouvrir une nouvelle vue sur le hangar.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Afficher les trains ayant ce dépôt dans leurs ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Afficher les véhicules routiers ayant ce dépôt dans leurs ordres
@@ -3245,11 +3245,11 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Renommer
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} − Construit en{NBSP}: {LTBLUE}{NUM}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK} − Valeur{NBSP}: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Capacité totale de ce train{NBSP}:
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}− {CARGO_LONG} ({CARGO_SHORT})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}− {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Vide
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} de {STATION}
