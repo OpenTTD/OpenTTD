@@ -111,21 +111,18 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
  */
 CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 {
-	/* Pre-version 7 uses the 'climate dependent' ID, i.e. cargo is the cargo ID */
-	if (grffile->grf_version < 7) {
-		if (!usebit) return cargo;
+	/* Pre-version 7 uses the 'climate dependent' ID in callbacks and properties, i.e. cargo is the cargo ID */
+	if (grffile->grf_version < 7 && !usebit) return cargo;
+
+	/* Other cases use (possibly translated) cargobits */
+
+	if (grffile->cargo_max > 0) {
+		/* ...and the cargo is in bounds, then get the cargo ID for
+		 * the label */
+		if (cargo < grffile->cargo_max) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
+	} else {
 		/* Else the cargo value is a 'climate independent' 'bitnum' */
 		return GetCargoIDByBitnum(cargo);
-	} else {
-		/* If the GRF contains a translation table... */
-		if (grffile->cargo_max > 0) {
-			/* ...and the cargo is in bounds, then get the cargo ID for
-			 * the label */
-			if (cargo < grffile->cargo_max) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
-		} else {
-			/* Else the cargo value is a 'climate independent' 'bitnum' */
-			return GetCargoIDByBitnum(cargo);
-		}
 	}
 	return CT_INVALID;
 }
