@@ -290,7 +290,6 @@ static CommandCost DoBuildLock(TileIndex tile, DiagDirection dir, DoCommandFlag 
 		Company *c = Company::GetIfValid(_current_company);
 		if (c != NULL) {
 			/* Counts for the water. */
-			c->infrastructure.water++;
 			if (!IsWaterTile(tile - delta)) c->infrastructure.water++;
 			if (!IsWaterTile(tile + delta)) c->infrastructure.water++;
 			/* Count for the lock itself. */
@@ -335,7 +334,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 		/* Remove middle part from company infrastructure count. */
 		Company *c = Company::GetIfValid(GetTileOwner(tile));
 		if (c != NULL) {
-			c->infrastructure.water -= 1 + 3 * LOCK_DEPOT_TILE_FACTOR; // Middle tile + three parts of the lock.
+			c->infrastructure.water -= 3 * LOCK_DEPOT_TILE_FACTOR; // three parts of the lock.
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
 
@@ -1259,13 +1258,15 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 {
 	if (!IsTileOwner(tile, old_owner)) return;
 
+	bool is_lock_middle = IsLock(tile) && GetLockPart(tile) == LOCK_PART_MIDDLE;
+
 	/* No need to dirty company windows here, we'll redraw the whole screen anyway. */
-	if (IsLock(tile) && GetLockPart(tile) == LOCK_PART_MIDDLE) Company::Get(old_owner)->infrastructure.water -= 3 * LOCK_DEPOT_TILE_FACTOR; // Lock has three parts.
+	if (is_lock_middle) Company::Get(old_owner)->infrastructure.water -= 3 * LOCK_DEPOT_TILE_FACTOR; // Lock has three parts.
 	if (new_owner != INVALID_OWNER) {
-		if (IsLock(tile) && GetLockPart(tile) == LOCK_PART_MIDDLE) Company::Get(new_owner)->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // Lock has three parts.
+		if (is_lock_middle) Company::Get(new_owner)->infrastructure.water += 3 * LOCK_DEPOT_TILE_FACTOR; // Lock has three parts.
 		/* Only subtract from the old owner here if the new owner is valid,
 		 * otherwise we clear ship depots and canal water below. */
-		if (GetWaterClass(tile) == WATER_CLASS_CANAL) {
+		if (GetWaterClass(tile) == WATER_CLASS_CANAL && !is_lock_middle) {
 			Company::Get(old_owner)->infrastructure.water--;
 			Company::Get(new_owner)->infrastructure.water++;
 		}
@@ -1284,7 +1285,7 @@ static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_own
 	/* Set owner of canals and locks ... and also canal under dock there was before.
 	 * Check if the new owner after removing depot isn't OWNER_WATER. */
 	if (IsTileOwner(tile, old_owner)) {
-		if (GetWaterClass(tile) == WATER_CLASS_CANAL) Company::Get(old_owner)->infrastructure.water--;
+		if (GetWaterClass(tile) == WATER_CLASS_CANAL && !is_lock_middle) Company::Get(old_owner)->infrastructure.water--;
 		SetTileOwner(tile, OWNER_NONE);
 	}
 }
