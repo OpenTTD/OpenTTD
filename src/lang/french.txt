@@ -3069,12 +3069,12 @@ STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Acheter 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrer la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centre la vue sur le dépôt. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrer la vue sur le dépôt naval. Ctrl-clic pour ouvrir une nouvelle vue sur le dépôt naval.
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer la vue le hangar. Ctrl-clic pour ouvrir une nouvelle vue sur le hangar.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrer la vue sur le hangar. Ctrl-clic pour ouvrir une nouvelle vue sur le hangar.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Afficher les trains ayant ce dépôt dans leurs ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Afficher les véhicules routiers ayant ce dépôt dans leurs ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Afficher les navires ayant ce dépôt dans leurs ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Afficher les aéronefs ayant ce dépôt dans leurs ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Afficher les aéronefs ayant ce hangar dans leurs ordres
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Cliquer pour arrêter tous les trains du dépôt
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Cliquer pour arrêter tous les véhicules routiers du dépôt
@@ -3096,7 +3096,7 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}véhicule
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m2}aéronef
 STR_ENGINE_PREVIEW_SHIP                                         :{G=m}navire
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotive monorail
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive magnétique
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotive MagLev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an{}Capacité{NBSP}: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Prix{NBSP}: {CURRENCY_LONG} − Poids{NBSP}: {WEIGHT_SHORT}{}Vitesse{NBSP}: {VELOCITY} − Puissance{NBSP}: {POWER}{}Effort de traction max.{NBSP}: {6:FORCE}{}Coûts d'entretien{NBSP}: {4:CURRENCY_LONG}/an{}Capacité{NBSP}: {5:CARGO_LONG}
@@ -3116,7 +3116,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de véhicule devant remplacer celui sélectionné à gauche
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de véhicule sélectionné à gauche avec celui sélectionné à droite
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de véhicule sélectionné à gauche par celui sélectionné à droite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Pas en cours de remplacement
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Aucun véhicule sélectionné
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
@@ -3132,7 +3132,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Ceci aff
 STR_REPLACE_RAIL_VEHICLES                                       :Véhicules sur rail
 STR_REPLACE_ELRAIL_VEHICLES                                     :Véhicules électriques sur rail
 STR_REPLACE_MONORAIL_VEHICLES                                   :Véhicules sur monorail
-STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules sur MagLev
+STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules MagLev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'autoremplacement de la locomotive provoque un accroissement de la longueur du train, alors sa longueur initiale sera retrouvée en retirant automatiquement des wagons (d'abord par la tête)
@@ -3140,15 +3140,15 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'aut
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer la vue sur le train. Ctrl-clic pour le suivre dans la vue principale
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer la vue sur le véhicule. Ctrl-clic pour le suivre dans la vue principale
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer la vue sur le navire. Ctrl-clic pour le suivre dans la vue principale
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer la vue sur l'aéronef. Ctrl-clic pour le suivre dans la vue principale
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer la vue sur le train. Ctrl-clic pour le suivre dans la vue principale.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer la vue sur le véhicule. Ctrl-clic pour le suivre dans la vue principale.
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer la vue sur le navire. Ctrl-clic pour le suivre dans la vue principale.
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer la vue sur l'aéronef. Ctrl-clic pour le suivre dans la vue principale.
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envoyer le train au dépôt. Ctrl-clic pour entretien seul
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envoyer le train au dépôt.{}Ctrl-clic pour un entretien seul.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoyer le véhicule au dépôt.{}Ctrl-clic pour un entretien seul.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envoyer le navire au dépôt.{}Ctrl-clic pour un entretien seul.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envoyer l'aéronef au hangar.{}Ctrl-clic pour un entretien seul.
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acheter une copie du train et de ses wagons.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acheter une copie du véhicule routier.{}Ctrl-clic pour partager les ordres.{}Shift-clic pour afficher seulement le coût estimé.
@@ -3165,10 +3165,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Réamén
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Faire faire demi-tour au train
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forcer le véhicule à faire demi-tour
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afficher les ordres du train. Ctrl-clic pour afficher son horaire
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afficher les ordres du véhicule routier. Ctrl-clic pour afficher son horaire
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afficher les ordres du navire. Ctrl-clic pour afficher son horaire
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afficher les ordres de l'aéronef. Ctrl-clic pour afficher son horaire
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Afficher les ordres du train.{}Ctrl-clic pour afficher son horaire.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Afficher les ordres du véhicule routier.{}Ctrl-clic pour afficher son horaire.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Afficher les ordres du navire.{}Ctrl-clic pour afficher son horaire.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Afficher les ordres de l'aéronef.{}Ctrl-clic pour afficher son horaire.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Afficher les détails du train
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afficher les détails du véhicule routier
@@ -3183,9 +3183,9 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action c
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Départ
-STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashé{NBSP}!
-STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En Panne
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppé
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accidenté{NBSP}!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}En panne
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Arrêté
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ralentit, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Pas de puissance
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}En attente d'un chemin libre
@@ -3235,8 +3235,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédits
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA} jours{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalle d'entretien{NBSP}: {LTBLUE}{COMMA}{NBSP}%{BLACK} − Dernier entretien{NBSP}: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenter l'intervalle d'entretien de 10. Ctrl-clic pour l'augmenter de 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer l'intervalle d'entretien de 10. Ctrl-clic pour le diminuer de 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Augmenter l'intervalle d'entretien de 10.{}Ctrl-clic pour l'augmenter de 5.
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuer l'intervalle d'entretien de 10.{}Ctrl-clic pour le diminuer de 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Renommer le train
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Renommer le véhicule
@@ -3271,7 +3271,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Choisir le type de cargaison à transporter{NBSP}:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Sélectionner les véhicules à réaménager. Glisser avec la souris pour sélectionner plusieurs véhicules. Cliquer sur un espace vide pour sélectionner l'ensemble complet. Ctrl-clic pour sélectionner un véhicule et la chaine qui suit
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Sélectionner les véhicules à réaménager.{}Glisser avec la souris pour sélectionner plusieurs véhicules.{}Cliquer sur un espace vide pour sélectionner l'ensemble complet.{}Ctrl-clic pour sélectionner un véhicule et la chaine qui suit.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Choisir le type de cargaison à transporter
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Choisir le type de cargaison à transporter
@@ -3280,8 +3280,8 @@ STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Choisir 
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Réaménager le train
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Réaménager le véhicule routier
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Réaménager navire
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Réaménager aéronef
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Réaménager le navire
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Réaménager l'aéronef
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Réaménager le train pour transporter la cargaison sélectionnée
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Réaménager le véhicule routier pour transporter la cargaison sélectionnée
@@ -3293,12 +3293,12 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horaire
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Basculer vers la vue de l'horaire
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste d'ordres - cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la destination de l'ordre
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste d'ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la destination de l'ordre.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Fin des ordres - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Fin des ordres partagés - -
+STR_ORDERS_END_OF_ORDERS                                        :−− Fin des ordres −−
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :−− Fin des ordres partagés −−
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Sans arrêt
@@ -3308,10 +3308,10 @@ STR_ORDER_GO_VIA                                                :Passer par
 STR_ORDER_GO_NON_STOP_VIA                                       :Passer sans arrêt par
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Modifier le comportement d'arrêt de l'ordre sélectionné
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Chargement complet par un seul type
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Chargement complet pour un seul type
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Charger si possible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Chargement complet
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chargement complet par un seul type
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chargement complet pour un seul type
 STR_ORDER_DROP_NO_LOADING                                       :Pas de chargement
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Modifier le comportement de chargement de l'ordre sélectionné
 
@@ -3323,9 +3323,9 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Pas de décharg
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier le comportement de déchargement de l'ordre sélectionné
 
 STR_ORDER_REFIT                                                 :{BLACK}Réaménager
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager avec cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Choisir pour quelle cargaison réaménager avec cet ordre.{}Ctrl-clic pour retirer l'instruction de réaménagement.
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Réaménagement automatique
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélectionner pour quel type de cargaison cet ordre va réaménager automatiquement. Ctrl-Clic pour retirer l'instruction de réaménagement. Le réaménagement automatique ne sera fait que si le véhicule l'autorise
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Sélectionner pour quel type de cargaison cet ordre va réaménager automatiquement.{}Ctrl-Clic pour retirer l'instruction de réaménagement. Le réaménagement automatique ne sera fait que si le véhicule l'autorise.
 STR_ORDER_DROP_REFIT_AUTO                                       :Cargaison fixée
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargaison disponible
 
@@ -3366,14 +3366,14 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Supprime
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Supprimer l'ordre sélectionné
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Supprimer tous les ordres
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Arrêter le partage
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Arrêter le partage des ordres. Ctrl-clic pour supprimer tous les ordres de ce véhicule
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Arrêter le partage des ordres.{}Ctrl-clic pour supprimer tous les ordres de ce véhicule.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Aller à
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Aller au dépôt le plus proche
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Aller au hangar le plus proche
 STR_ORDER_CONDITIONAL                                           :Saut conditionnel d'ordre
 STR_ORDER_SHARE                                                 :Partager les ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont 'Chargement complet par un seul type', les ordres de point de contrôle sont 'sans-arrêt' et les ordres de dépôt sont 'entretien'. 'Partager les ordres' ou Ctrl fait que ce véhicule partage ses ordres avec le véhicule sélectionné. Cliquer sur un véhicule copie les ordres de ce véhicule
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont «{NBSP}Chargement complet par un seul type{NBSP}», les ordres de point de contrôle sont «{NBSP}sans arrêt{NBSP}» et les ordres de dépôt sont «{NBSP}entretien{NBSP}». «{NBSP}Partager les ordres{NBSP}» ou Ctrl fait que ce véhicule partage ses ordres avec le véhicule sélectionné. Cliquer sur un véhicule copie les ordres de ce véhicule.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Afficher tous les véhicules partageant ce programme
 
@@ -3401,33 +3401,33 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 STR_ORDER_IMPLICIT                                              :(Implicite)
 
 STR_ORDER_FULL_LOAD                                             :(Charger complètement)
-STR_ORDER_FULL_LOAD_ANY                                         :(Charger complètement par un seul type)
+STR_ORDER_FULL_LOAD_ANY                                         :(Charger complètement pour un seul type)
 STR_ORDER_NO_LOAD                                               :(Pas de chargement)
 STR_ORDER_UNLOAD                                                :(Décharger)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Décharger et attendre pleine charge)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Décharger et attendre pleine charge par un seul type)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Décharger et attendre pleine charge pour un seul type)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Décharger et laisser vide)
 STR_ORDER_TRANSFER                                              :(Transférer et charger)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transférer et attendre pleine charge)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transférer et attendre pleine charge par un seul type)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transférer et attendre pleine charge pour un seul type)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transférer et laisser vide)
 STR_ORDER_NO_UNLOAD                                             :(Ne pas décharger et charger)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne pas décharger et attendre pleine charge)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge par un seul type)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne pas décharger et attendre pleine charge pour un seul type)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne pas décharger et ne pas charger)
 
 STR_ORDER_AUTO_REFIT                                            :(Réaménager automatiquement pour {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Charger complétement avec réaménagement automatique pour {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Charger complétement pour un seul type avec réaménagement automatique pour {STRING})
 STR_ORDER_UNLOAD_REFIT                                          :(Décharger et charger avec réaménagement automatique pour {STRING})
 STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Décharger et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Transférer et charger avec réaménagement automatique pour {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Transférer et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Transférer et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
 STR_ORDER_NO_UNLOAD_REFIT                                       :(Ne pas décharger et charger avec réaménagement automatique pour {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ne pas décharger et attendre pleine charge avec réaménagement automatique pour {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge par un seul type avec réaménagement automatique pour {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ne pas décharger et attendre pleine charge pour un seul type avec réaménagement automatique pour {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :cargaison disponible
 
@@ -3448,11 +3448,11 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordres
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Basculer vers la vue des ordres
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - cliquer sur un ordre pour le sélectionner
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - Cliquer sur un ordre pour le sélectionner
 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique{NBSP}; horaire au prochain ordre manuel)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaires)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaire)
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
@@ -3481,7 +3481,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ comp
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard (le véhicule sera donc à l'heure)
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplir l'horaire automatiquement avec les valeurs du prochain trajet (Ctrl-clic pour essayer de préserver les temps d'attente)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Attendu
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planifié
@@ -3508,7 +3508,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration du script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Arrêter l'IA, en recharger le script puis la relancer
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activer/désactiver l'arrêt lorsqu'un message d'IA correspond à la chaine d'arrêt
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activer/Désactiver l'arrêt lorsqu'un message d'IA correspond à la chaine d'arrêt
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Arrêter sur{NBSP}:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Arrêter sur
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Lorsqu'un message de l'IA correspond à cette chaine, la partie est suspendue
@@ -3518,17 +3518,17 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Reprendre la partie et continuer l'IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de jeu
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le log des scripts de jeu
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal des scripts de jeu
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage d'IA et de GameScript
+STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage d'IA et de GameScript.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de GameScript n'est disponible que pour le serveur
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de script de jeu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le GameScript qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur Humain
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
 STR_AI_CONFIG_NONE                                              :(aucun)
 
@@ -3558,7 +3558,7 @@ STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur{N
 STR_AI_LIST_VERSION                                             :{BLACK}Version{NBSP}: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL{NBSP}: {STRING}
 
-STR_AI_LIST_ACCEPT                                              :{BLACK}Accepte
+STR_AI_LIST_ACCEPT                                              :{BLACK}Accepter
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Sélectionner le script en surbrillance
 STR_AI_LIST_CANCEL                                              :{BLACK}Annuler
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas modifier le script

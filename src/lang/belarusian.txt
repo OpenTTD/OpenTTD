@@ -673,7 +673,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Паказан�
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Поўная анімацыя
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Поўная дэталізацыя
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Празрыстыя будынкі
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыстыя назвы станцыяў
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыстыя надпісы
 ############ range ends here
 
 ############ range for file menu starts
@@ -2261,7 +2261,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, в
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Наладкі празрыстасьці
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для назваў станцыяў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Пераключэньне празрыстасці надпісаў. Ctrl+пстрычка - заблякаваць.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для дрэваў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Пераключыць празрыстасьць для дамоў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для прадпрыемстваў. Ctrl+клік - заблякаваць.
@@ -2402,7 +2402,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Кіру
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберыце кірунак аўтобуснага прыпынка
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Кірунак грузавога тэрмінала
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберыце кірунак грузавога тэрмінала
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак трамвайнага прыпынка
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак прыпынку пасажырскiх трамваяў
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберыце кірунак трамвайнага прыпынка
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Кірунак прыпынка грузавых трамваяў
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберыце кірунак прыпынка грузавых трамваяў
@@ -2476,7 +2476,7 @@ STR_OBJECT_CLASS_TRNS                                           :Перадат�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце від дрэваў для пасадкі
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце тып дрэў для пасадкі. Калі на ўчастку ўжо ёсць дрэвы, будуць дададзены некалькі дрэў рознага тыпу, незалежна ад выбранага.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дрэвы розных відаў
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Высадка дрэў выпадковага тыпу. Пры націснутым Shift - ацэнка кошту высадкі.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Расставіць па мапе
@@ -2832,7 +2832,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кол�
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя набора графiкi {STRING}
 STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Журнал зьменаў {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лiцэнзiя {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Ліцэнзія да NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}

@@ -2570,7 +2570,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Paramet
 # NewGRF textfile window
 STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF aprašymas {STRING}
 STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF pasikeitimai {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licenzija {STRING}
+STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licencija {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Apžiūrėti - {STRING}
