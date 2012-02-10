@@ -222,8 +222,8 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}EI
 STR_ABBREV_ALL                                                  :{TINY_FONT}KÕIK
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} reisija{P "" s}
-STR_BAGS                                                        :{COMMA} kott{P "" i}
+STR_PASSENGERS                                                  :{COMMA} reisija{P "" d}
+STR_BAGS                                                        :{COMMA} kot{P t id}
 STR_TONS                                                        :{COMMA} tonn{P "" i}
 STR_LITERS                                                      :{COMMA} liit{P er rit}
 STR_ITEMS                                                       :{COMMA} ühik{P "" ut}
@@ -417,7 +417,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Konkurentide ni
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Täielik animeerimine
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Kõik täpsustused
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Läbipaistvad hooned
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbinähtavad jaama nimesildid
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbipaistvad sildid
 ############ range ends here
 
 ############ range for file menu starts
@@ -503,7 +503,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse / GameScript-i silumine
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suumitud ekraanitõmmis
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suurendatud ekraanitõmmis
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tavasuurendusega ekraanitõmmis
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
@@ -1855,6 +1856,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinu sis
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sind visati mängust välja
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Selles serveris on petmine keelatud
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sa saatsid serverile liiga palju käsklusi korraga
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Sisestasid parooli liiga kaua
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Arvutil võttis liitumisega liiga kaua aega
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kaardi allalaadimine võttis liiga kaua aega
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Serveriga liitumine võttis liiga kaua aega
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :üldine viga
@@ -1873,6 +1878,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :server viskas v
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :üritas pettust kasutada
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server on täis
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :saatis liiga palju käsklusi
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ei saanud õigeaegselt parooli
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :üldine aegumine
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kaardi laadimine võttis liiga kaua aega
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kaardi töötlemine võttis liiga kaua aega
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Võimalik ühenduse katkemine
@@ -1976,7 +1985,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, lahk
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvusvalikud
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Vaheta jaamamärkide läbipaistvust. Ctrl+klõps lukustab
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Muuda jaamamärkide läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Vaheta puude läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Vaheta majade läbipaistvust. Ctrl+klõps lukustab
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Vaheta tööstusehitiste läbipaistvust. Ctrl+klõps lukustab
@@ -2117,9 +2126,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bussijaa
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Vali bussijaamale suund
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Laadimisplatsi suund
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Vali laadimisplatsile suund
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Reisitrammi suund
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Reisitrammi Jaama Suund
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Vali reisitrammijaama suund
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kaubatrammi suund
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kaubatrammi Jaama Suund
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vali kaubatrammijaama suund
 
 # Waterways toolbar (last two for SE only)
@@ -2187,7 +2196,7 @@ STR_OBJECT_CLASS_TRNS                                           :Saatejaamad
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puud
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Istutatava puu liigi valimine
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vali istutatava puu liik. Kui ruudus juba on puu, siis lisatakse rohkem eri liikide puid, olenemata valikust
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalised puutüübid
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Istutab suvalisi puid. Shift valib ehitamise/hinna kuvamise režiimi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Suvalised puud
@@ -2510,6 +2519,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muudatus
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Litsents
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näita parameetreid
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vaheta paletti
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Vaheta valitud NewGRF-i paletti.{}Tee seda, kui NewGRF-i graafika paistab mängus roosa.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Rakenda muudatused
@@ -2587,9 +2597,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõu
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {1:STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ootamatu sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ootamatu tegevus 0 property {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Katse kasutada vigast ID'd (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitut Action 8 kirjet (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loe pseudo-sprite lõpust edasi (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Hetkel kasutatavast alus graafikapaketist puuduvad mõned spraidid.{}Palun uuenda alus graafikapaketti
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Soovitud GRFi ressursid ei ole saadaval (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blokeeriti {STRING} poolt
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Kehtetu/tundmatu sprite'i asetuse formaat (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaatust!
@@ -2718,8 +2735,30 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ettevõt
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kliki sihtmärgil et liikuda põhikuvas tööstuse/linna/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/linna/ruudu asukohas
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Küsimus
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Teave
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Hoiatus
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Viga
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Tühista
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Ei
+STR_GOAL_QUESTION_BUTTON_YES                                    :Jah
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Keeldu
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Nõustu
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Eira
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Proovi uuesti
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Eelmine
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Järgmine
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Peata
+STR_GOAL_QUESTION_BUTTON_START                                  :Alusta
+STR_GOAL_QUESTION_BUTTON_GO                                     :Mine
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Jätka
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Alusta uuesti
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Lükka edasi
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Anna alla
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Sulge
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Toetused
@@ -2831,11 +2870,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Mitte ü
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaväärtus: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktuur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} rööpad
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} sõidutee tükid
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} veekogu ruudud
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} jaama ruudud
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväljad
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} röö{P bas pad}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} sõidutee tük{P k id}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} veekogu ruu{P t dud}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} jaama ruu{P t dud}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväl{P i jad}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Puudub
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ehita peakorter
@@ -2909,7 +2948,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Toodab: 
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Toodab: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine (kaheksaga jaguv, kuni 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuda tootlikkuse taset (protsent, kuni 800%)
 
 # Vehicle lists
@@ -3132,11 +3171,11 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Õhusõiduk
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vali asendatav veduritüüp
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vali uus vedur, millega sa soovid vasakult valitud vedurit asendada.
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta veokite asendamist
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusta Sõidukite Vahetamist
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Vajuta vasakul asuva veduri asendamiseks paremal valitud veduriga
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ei asenda praegu
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ühtegi veovahendit pole valitud
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta veokite asendamine
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõpeta Sõidukite Asendamine
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Vajuta lõpetamaks vasakult valitud veduri asendust
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Asendamisel: {ORANGE}{STRING}

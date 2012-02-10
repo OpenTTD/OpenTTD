@@ -3569,7 +3569,7 @@ STR_AI_LIST_URL                                                 :{BLACK}URL: {ST
 STR_AI_LIST_ACCEPT                                              :{BLACK}Apstiprināt
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlēties izcelto skriptu
 STR_AI_LIST_CANCEL                                              :{BLACK}Atcelt
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainiet skriptu
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainīt skriptu
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametri

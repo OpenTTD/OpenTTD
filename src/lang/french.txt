@@ -3592,19 +3592,19 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu e
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus{NBSP}!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Enregistrement automatique échoué
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Échec de l'enregistrement automatique
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible d'accéder au disque
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La sauvegarde a échoué{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Impossible de supprimer le fichier
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Le chargement a échoué{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne{NBSP}: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue − {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisible
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier non modifiable
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier protégé en écriture
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Échec du contrôle d'intégrité des données
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non disponible>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Génération de la carte annulée...{}... pas d'emplacements valables pour une ville
@@ -3612,8 +3612,8 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... il n
 
 STR_ERROR_PNGMAP                                                :{WHITE}Chargement du paysage depuis PNG impossible...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fichier non trouvé
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... n'a pas pu convertir le type d'image. Image PNG 8 ou 24-bit nécessaire
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... quelque chose s'est mal passé (le fichier est probablement corrompu)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... n'a pas pu convertir le type d'image. Image PNG 8 ou 24-bit nécessaire.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... quelque chose s'est mal passé (probablement un fichier corrompu)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Chargement du paysage depuis BMP impossible...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... n'a pas pu convertir le type d'image
@@ -3624,11 +3624,11 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avertiss
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé.{}Continuer la génération{NBSP}?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seul les effets sonores de secours ont été trouvés. Si vous voulez des effets sonores, installez un pack de sons via le système de téléchargement de contenus
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seuls les effets sonores de secours ont été trouvés. Si vous voulez des effets sonores, installez un pack de sons via le système de téléchargement de contenus.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Copie d'écran a échoué{NBSP}!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous "{STRING}"
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Échec de la copie d'écran{NBSP}!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Message
@@ -3677,7 +3677,7 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Impossib
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... emprunt déjà remboursé
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} nécessaires
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossible de rembourser...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossible de distribuer de l'argent emprunté à la banque...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossible d'acheter la compagnie...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossible de construire le siège...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossible d'acheter 25{NBSP}% des parts...
@@ -3695,7 +3695,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... trop
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... il n'y a plus d'emplacement sur la carte
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La ville ne construira pas de routes. Vous pouvez activer la construction des routes sous Options avancées->Économie->Villes
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Route en travaux
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt font référence à cette ville ou une propriété municipale ne peut pas être supprimé
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossible de supprimer cette ville...{}Une station ou un dépôt fait référence à cette ville ou une propriété municipale ne peut pas être supprimée.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... aucun emplacement convenable disponible pour une statue dans ce centre-ville
 
 # Industry related errors
@@ -3706,8 +3706,8 @@ STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Impossib
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... trop proche d'une autre industrie
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... une ville doit d'abord être construite
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... droit à un seul par ville
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... peut seulement être construit dans des villes ayant une population d'au moins 1200 habitants
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... peut seulement être construit en forêt tropicale
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... peut seulement être construit dans des villes d'au moins 1200 habitants
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... peut seulement être construit dans une région tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... peut seulement être construit dans les endroits désertiques
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... peut seulement être construit en ville
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... peut seulement être construit dans les zones basses

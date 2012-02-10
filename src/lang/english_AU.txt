@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Competitor sign
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detail
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent buildings
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent station signs
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent signs
 ############ range ends here
 
 ############ range for file menu starts
@@ -1928,7 +1928,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, quit
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparency Options
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toggle transparency for station signs. Ctrl+Click to lock
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toggle transparency for signs. Ctrl+Click to lock
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toggle transparency for trees. Ctrl+Click to lock
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toggle transparency for houses. Ctrl+Click to lock
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toggle transparency for industries. Ctrl+Click to lock
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bus Stat
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Select bus station orientation
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Truck Station Orientation
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select Truck loading bay orientation
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passenger Tram Orientation
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passenger Tram Station Orientation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select passenger tram station orientation
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Freight Tram Orientation
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Freight Tram Station Orientation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Select freight tram station orientation
 
 # Waterways toolbar (last two for SE only)
@@ -2139,7 +2139,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmitters
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trees
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant. If the tile already has a tree, this will add more trees of mixed types independent of the selected type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of random type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Shift toggles building/showing cost estimate
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
