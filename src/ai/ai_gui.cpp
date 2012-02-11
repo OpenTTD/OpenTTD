@@ -517,11 +517,7 @@ struct AISettingsWindow : public Window {
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
-			delete this;
-		} else {
-			this->RebuildVisibleSettings();
-		}
+		this->RebuildVisibleSettings();
 	}
 };
 
