@@ -844,44 +844,89 @@
    -1 sprites/chars.png 610 340 01 21 15 0 -2
    -1 sprites/mono.png 175 250 01 13 7 0 0
 
+// U+2010: Hyphen
+   -1 * 18	 12 04 00 01 10 20 01 01 10 20 02 01 10 20 03 01 10 20
+   -1 sprites/chars.png 480 370 01 12 4 0 -1
+   -1 sprites/chars.png 480 390 01 7 2 0 0
+   -1 sprites/chars.png 480 400 01 21 6 0 -2
+   -1 sprites/mono.png 160 270 01 13 7 0 0
+
 // U+2013: En Dash
 // U+2014: Em Dash
-   -1 * 18	 12 04 00 02 13 20 01 02 13 20 02 02 13 20 03 02 13 20
+// U+2015: Horizontal Bar
+   -1 * 18	 12 04 00 03 13 20 01 03 13 20 02 03 13 20 03 03 13 20
    -1 sprites/chars.png 630 310 01 12 8 0 -1
-   -1 sprites/chars.png 450 370 01 12 11 0 -1
+   -1 sprites/chars.png 450 370 01 12 12 0 -1
+   -1 sprites/chars.png 490 370 01 12 10 0 -1
    -1 sprites/chars.png 630 330 01 7 4 0 0
    -1 sprites/chars.png 450 390 01 7 6 0 0
-   -1 sprites/chars.png 630 340 01 21 14 0 -2
-   -1 sprites/chars.png 450 400 01 21 20 0 -2
+   -1 sprites/chars.png 490 390 01 7 5 0 0
+   -1 sprites/chars.png 630 340 01 21 15 0 -2
+   -1 sprites/chars.png 450 400 01 21 21 0 -2
+   -1 sprites/chars.png 490 400 01 21 18 0 -2
    -1 sprites/mono.png 190 250 01 13 7 0 0
    -1 sprites/mono.png 145 270 01 13 7 0 0
+   -1 sprites/mono.png 175 270 01 13 7 0 0
 
+// U+2018: Left Single Quotation Mark
 // U+2019: Right Single Quotation Mark
-   -1 * 18	 12 04 00 01 19 20 01 01 19 20 02 01 19 20 03 01 19 20
-   -1 sprites/chars.png 650 310 01 12 4 0 -1
-   -1 sprites/chars.png 650 330 01 7 1 0 0
-   -1 sprites/chars.png 650 340 01 21 3 0 -2
-   -1 sprites/mono.png 205 250 01 13 7 0 0
-
+// U+201A: Single Low-9 Quotation Mark
+// U+201B: Single High-Reversed-9 Quotation Mark
 // U+201C: Left Double Quotation Mark
-   -1 * 18	 12 04 00 01 1C 20 01 01 1C 20 02 01 1C 20 03 01 1C 20
-   -1 sprites/chars.png 660 310 01 12 7 0 -1
-   -1 sprites/chars.png 660 330 01 7 3 0 0
-   -1 sprites/chars.png 660 340 01 21 9 0 -2
-   -1 sprites/mono.png 220 250 01 13 7 0 0
-
+// U+201D: Right Double Quotation Mark
 // U+201E: Double Low-9 Quotation Mark
-   -1 * 18	 12 04 00 01 1E 20 01 01 1E 20 02 01 1E 20 03 01 1E 20
+// U+201F: Double High-Reversed-9 Quotation Mark
+   -1 * 18	 12 04 00 08 18 20 01 08 18 20 02 08 18 20 03 08 18 20
+   -1 sprites/chars.png 510 370 01 12 4 0 -1
+   -1 sprites/chars.png 650 310 01 12 4 0 -1
+   -1 sprites/chars.png 520 370 01 12 4 0 -1
+   -1 sprites/chars.png 530 370 01 12 4 0 -1
+   -1 sprites/chars.png 660 310 01 12 7 0 -1
+   -1 sprites/chars.png 540 370 01 12 7 0 -1
    -1 sprites/chars.png 670 310 01 12 7 0 -1
+   -1 sprites/chars.png 550 370 01 12 7 0 -1
+   -1 sprites/chars.png 510 390 01 7 1 0 0
+   -1 sprites/chars.png 650 330 01 7 1 0 0
+   -1 sprites/chars.png 520 390 01 7 1 0 0
+   -1 sprites/chars.png 530 390 01 7 1 0 0
+   -1 sprites/chars.png 660 330 01 7 3 0 0
+   -1 sprites/chars.png 540 390 01 7 3 0 0
    -1 sprites/chars.png 670 330 01 7 3 0 0
+   -1 sprites/chars.png 550 390 01 7 3 0 0
+   -1 sprites/chars.png 510 400 01 21 3 0 -2
+   -1 sprites/chars.png 650 340 01 21 3 0 -2
+   -1 sprites/chars.png 520 400 01 21 3 0 -2
+   -1 sprites/chars.png 530 400 01 21 3 0 -2
+   -1 sprites/chars.png 660 340 01 21 9 0 -2
+   -1 sprites/chars.png 540 400 01 21 9 0 -2
    -1 sprites/chars.png 670 340 01 21 9 0 -2
+   -1 sprites/chars.png 550 400 01 21 9 0 -2
+   -1 sprites/mono.png 190 270 01 13 7 0 0
+   -1 sprites/mono.png 205 250 01 13 7 0 0
+   -1 sprites/mono.png 205 270 01 13 7 0 0
+   -1 sprites/mono.png 220 270 01 13 7 0 0
+   -1 sprites/mono.png 220 250 01 13 7 0 0
+   -1 sprites/mono.png 235 270 01 13 7 0 0
    -1 sprites/mono.png 235 250 01 13 7 0 0
+   -1 sprites/mono.png 250 270 01 13 7 0 0
 
+// U+2026: Horizontal Ellipsis
+   -1 * 18	 12 04 00 01 26 20 01 01 26 20 02 01 26 20 03 01 26 20
+   -1 sprites/chars.png 560 370 01 12 11 0 -1
+   -1 sprites/chars.png 560 390 01 7 5 0 0
+   -1 sprites/chars.png 560 400 01 21 15 0 -2
+   -1 sprites/mono.png 265 270 01 13 7 0 0
+
+// U+2039: Single Left-Pointing Angle Quotation Mark
 // U+203A: Single Right-Pointing Angle Quotation Mark
-   -1 * 18	 12 04 00 01 3A 20 01 01 3A 20 02 01 3A 20 03 01 3A 20
+   -1 * 18	 12 04 00 02 39 20 01 02 39 20 02 02 39 20 03 02 39 20
+   -1 sprites/chars.png 580 370 01 12 5 0 -1
    -1 sprites/chars.png 680 310 01 12 5 0 -1
+   -1 sprites/chars.png 580 390 01 7 2 0 0
    -1 sprites/chars.png 680 330 01 7 2 0 0
+   -1 sprites/chars.png 580 400 01 21 7 0 -2
    -1 sprites/chars.png 680 340 01 21 7 0 -2
+   -1 sprites/mono.png 280 270 01 13 7 0 0
    -1 sprites/mono.png 250 250 01 13 7 0 0
 
 // U+20A1: Colon Sign
@@ -1000,11 +1045,16 @@
    -1 sprites/mono.png 85 270 01 13 7 0 0
 
 // U+2116: Numero Sign
-   -1 * 18	 12 04 00 01 16 21 01 01 16 21 02 01 16 21 03 01 16 21
+// U+2117: Sound Recording Copyright
+   -1 * 18	 12 04 00 02 16 21 01 02 16 21 02 02 16 21 03 02 16 21
    -1 sprites/chars.png 370 370 01 12 14 0 -1
+   -1 sprites/chars.png 590 370 01 12 13 0 -1
    -1 sprites/chars.png 370 390 01 7 8 0 0
+   -1 sprites/chars.png 590 390 01 7 6 0 0
    -1 sprites/chars.png 370 400 01 21 27 0 -2
+   -1 sprites/chars.png 590 400 01 21 16 0 -2
    -1 sprites/mono.png 100 270 01 13 7 0 0
+   -1 sprites/mono.png 295 270 01 13 7 0 0
 
 // U+2122: Trade Mark Sign
    -1 * 18	 12 04 00 01 22 21 01 01 22 21 02 01 22 21 03 01 22 21
@@ -1012,3 +1062,22 @@
    -1 sprites/chars.png 400 390 01 7 9 0 0
    -1 sprites/chars.png 400 400 01 21 20 0 -2
    -1 sprites/mono.png 115 270 01 13 7 0 0
+
+// U+2212: Minus Sign
+   -1 * 18	 12 04 00 01 12 22 01 01 12 22 02 01 12 22 03 01 12 22
+   -1 sprites/chars.png 610 370 01 12 6 0 -1
+   -1 sprites/chars.png 610 390 01 7 3 0 0
+   -1 sprites/chars.png 610 400 01 21 9 0 -2
+   -1 sprites/mono.png 310 270 01 13 7 0 0
+
+// U+27E8: Mathematical Left Angle Bracket
+// U+27E9: Mathematical Right Angle Bracket
+   -1 * 18	 12 04 00 02 E8 27 01 02 E8 27 02 02 E8 27 03 02 E8 27
+   -1 sprites/chars.png 620 370 01 12 5 0 -1
+   -1 sprites/chars.png 630 370 01 12 5 0 -1
+   -1 sprites/chars.png 620 390 01 7 3 0 0
+   -1 sprites/chars.png 630 390 01 7 3 0 0
+   -1 sprites/chars.png 620 400 01 21 6 0 -2
+   -1 sprites/chars.png 630 400 01 21 6 0 -2
+   -1 sprites/mono.png 325 270 01 13 7 0 0
+   -1 sprites/mono.png 340 270 01 13 7 0 0
