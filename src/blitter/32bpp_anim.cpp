@@ -417,10 +417,9 @@ void Blitter_32bppAnim::PaletteAnimate(const Palette &palette)
 
 	this->palette = palette;
 	/* If first_dirty is 0, it is for 8bpp indication to send the new
-	 *  palette. As we dont do that for 32bpp, ignore that request
-	 *  completely */
-	if (this->palette.first_dirty == 0) return;
-	assert(this->palette.first_dirty == PALETTE_ANIM_START);
+	 *  palette. However, only the animation colours might possibly change.
+	 *  Especially when going between toyland and non-toyland. */
+	assert(this->palette.first_dirty == PALETTE_ANIM_START || this->palette.first_dirty == 0);
 
 	const uint16 *anim = this->anim_buf;
 	uint32 *dst = (uint32 *)_screen.dst_ptr;

@@ -21,7 +21,7 @@
 
 	EnforcePrecondition(false, text != NULL);
 	EnforcePrecondition(false, !StrEmpty(text->GetEncodedText()));
-	EnforcePrecondition(false, type >= NT_ARRIVAL_COMPANY && type <= NT_GENERAL);
+	EnforcePrecondition(false, type == NT_ECONOMY || type == NT_SUBSIDIES || type == NT_GENERAL);
 	EnforcePrecondition(false, company == ScriptCompany::COMPANY_INVALID || ScriptCompany::ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID);
 
 	uint8 c = company;
