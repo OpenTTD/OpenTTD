@@ -761,6 +761,31 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		default: return CMD_ERROR;
 	}
 
+	const WindowDesc *desc = _news_subtype_data[subtype].desc;
+	for (int i = 0; i < desc->nwid_length; i++) {
+		if (desc->nwid_parts[i].type == NWID_VIEWPORT && reftype1 != NR_VEHICLE && GetReferenceTile(reftype1, p2) == INVALID_TILE) {
+			return CMD_ERROR;
+		}
+	}
+
+	switch (subtype) {
+		/* These sub types require more parameters that are never passed. */
+		case NS_COMPANY_TROUBLE:
+		case NS_COMPANY_MERGER:
+		case NS_COMPANY_BANKRUPT:
+		case NS_COMPANY_NEW:
+			return CMD_ERROR;
+
+		/* This one only accepts engines. */
+		case NS_NEW_VEHICLES:
+			if (reftype1 != NR_ENGINE) return CMD_ERROR;
+			break;
+
+		/* The rest, in theory, accepts everything. */
+		default:
+			break;
+	}
+
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags & DC_EXEC) {
