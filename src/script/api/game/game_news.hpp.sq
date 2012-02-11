@@ -21,24 +21,9 @@ void SQGSNews_Register(Squirrel *engine)
 	SQGSNews.PreRegister(engine);
 	SQGSNews.AddConstructor<void (ScriptNews::*)(), 1>(engine, "x");
 
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ARRIVAL_COMPANY,  "NT_ARRIVAL_COMPANY");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ARRIVAL_OTHER,    "NT_ARRIVAL_OTHER");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ACCIDENT,         "NT_ACCIDENT");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_COMPANY_TROUBLE,  "NT_COMPANY_TROUBLE");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_COMPANY_MERGER,   "NT_COMPANY_MERGER");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_COMPANY_BANKRUPT, "NT_COMPANY_BANKRUPT");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_COMPANY_NEW,      "NT_COMPANY_NEW");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_INDUSTRY_OPEN,    "NT_INDUSTRY_OPEN");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_INDUSTRY_CLOSE,   "NT_INDUSTRY_CLOSE");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ECONOMY,          "NT_ECONOMY");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_INDUSTRY_COMPANY, "NT_INDUSTRY_COMPANY");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_INDUSTRY_OTHER,   "NT_INDUSTRY_OTHER");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_INDUSTRY_NOBODY,  "NT_INDUSTRY_NOBODY");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ADVICE,           "NT_ADVICE");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_NEW_VEHICLES,     "NT_NEW_VEHICLES");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_ACCEPTANCE,       "NT_ACCEPTANCE");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_SUBSIDIES,        "NT_SUBSIDIES");
-	SQGSNews.DefSQConst(engine, ScriptNews::NT_GENERAL,          "NT_GENERAL");
+	SQGSNews.DefSQConst(engine, ScriptNews::NT_ECONOMY,   "NT_ECONOMY");
+	SQGSNews.DefSQConst(engine, ScriptNews::NT_SUBSIDIES, "NT_SUBSIDIES");
+	SQGSNews.DefSQConst(engine, ScriptNews::NT_GENERAL,   "NT_GENERAL");
 
 	SQGSNews.DefSQStaticMethod(engine, &ScriptNews::Create, "Create", 4, ".i.i");
 
