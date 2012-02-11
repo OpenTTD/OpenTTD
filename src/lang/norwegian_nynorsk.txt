@@ -362,7 +362,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Vis motstandars
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animasjon
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Maks. detaljar
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gjennomsiktige bygningar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige stasjonsnamn
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige skilt
 ############ range ends here
 
 ############ range for file menu starts

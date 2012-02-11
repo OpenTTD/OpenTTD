@@ -1740,7 +1740,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Kijk toe
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nieuw bedrijf
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Schop uit het spel
+STR_NETWORK_CLIENTLIST_KICK                                     :Gooi uit het spel
 STR_NETWORK_CLIENTLIST_BAN                                      :Verban uit het spel
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geef geld
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Praat met iedereen
@@ -2216,10 +2216,10 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Kies de 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}Niet mogelijk
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Sloopkosten: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Opbrengst bij verwijdering: {LTBLUE}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_OWNER_N_A                             :(geen)
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Geen
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Eigenaar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Eigenaar van weg: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigenaar van tramrails: {LTBLUE}{STRING}

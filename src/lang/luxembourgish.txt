@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Géignerschëld
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Ganz Animatiounen
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Ganz Detailer
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparent Gebaier
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Statiounsschëlder
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Schëlder
 ############ range ends here
 
 ############ range for file menu starts
@@ -1799,6 +1799,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Dir sidd
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Dir sidd aus dem Spill gekickt ginn
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Dir hudd zevill Befehler un den Server geschéckt
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du hues ze laang gebraucht fir en Passwuert anzeginn
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dain Computer brauch ze laang fir bäizetrieden
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du hues ze laang gebraucht fir d'Kaart rofzelueden
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du hues ze laang gebraucht fir dem Server bäizetrieden
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
@@ -1817,6 +1821,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :vum Server geki
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :huet probéiert ze cheaten
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Server voll
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :huet zevill Befehler geschéckt
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :krut keen Passwuert mat Zäit
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generellen Timeout
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :Kaart rofzelueden huet ze laang gedauert
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Kaart ze verarbëschten huet ze laang gedauert
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Méiglechen Verbindungsverloscht
@@ -1920,7 +1928,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, ver
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzoptiounen
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Wiesselt d'Transparenz fir d'Statiounsschëlder. Ctrl+Klick fir festzesetzen
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Wiesselt d'Transparenz fir d'Schëlder. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Wiesselt d'Transparenz fir d'Beem. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Wiesselt d'Transparenz fir d'Haiser. Ctrl+Klick fir festzesetzen
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Wiesselt d'Transparenz fir d'Industrien. Ctrl+Klick fir festzesetzen
@@ -2131,7 +2139,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmitter
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beem
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wielt den Baamtyp
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wielt den Baamtyp. Wann d'Feld schons en Baam huet, gin méi Beem vun verschiddenen Arten gesat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zoufälleg Beem
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zoufälleg Beem planzen. Shift wiesselt tëscht bauen an ongeféier Käschten uweisen
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zoufälleg Beem
@@ -2454,6 +2462,7 @@ STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelo
 STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizenz
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Weis d'Parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette wiesselen
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Wiessel Palette vun den selectéierten NewGRF.{} Maach dat wann d'Grafiken vun deser NewGRF rosa am Spill ausgesin
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Ännerungen unhuelen
@@ -2531,9 +2540,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} brau
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF Datei déi designed gouf fir ze iwwersetzen
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zevill NewGRFen gelueden.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} als statësch NewGRF lueden mat {STRING} kann Desyncs efirrufen
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onerwarten Sprite (Sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekannten Aktioun 0 property {4:HEX} (Sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Versicht invalid ID ze benotzen (Sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} huet eng korrupt Sprite. All korrupt Sprites ginn als Fragezeichen (?) duergestallt
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet eng Rei Action 8 Einträg (Sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lanscht d'Enn vum Pseudo-Sprite gelies (Sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann. {}W.e.g d'Basisgrafikset updaten
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Ugefroten GRF Ressource net verfügbar (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} gouf ausgeschalt vun {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Invalid/onbekannten Sprite Layout Format (Sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Opgepasst!
@@ -2661,6 +2677,32 @@ STR_GOALS_NONE                                                  :{ORANGE}- Keng 
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Firmenzieler:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klick op Ziel fir d'Haptfënster op d'Industrie/Stad/Feld ze zentréiren. Ctrl+Klick mëcht eng nei Fënster op der Industrie/Stad/Feld-Positioun op
 
+# Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Fro
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informatioun
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Warnung
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Fehler
+
+### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ofbriechen
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nee
+STR_GOAL_QUESTION_BUTTON_YES                                    :Jo
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Ofleenen
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Unhuelen
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignoréiren
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Nach emol..
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Zréck
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Nächst
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Lass
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Weiderman
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Nei man
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Ofwarden
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Opginn
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zouman
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subventiounen
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Subventiounen fir den Service:
@@ -2771,11 +2813,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Keng
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmenwert: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% am Besëtz vun {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schinnendeeler
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Stroossendeeler
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} Waasserdeeler
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Statiounendeeler
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} Fluchhäfen
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} Schinnendeel{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} Stroossendeel{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} Waasserdeel{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} Statiounendeel{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} Fluchh{P afen äfen}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Keng
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Haaptgebai bauen
@@ -2798,8 +2840,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ännert 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kaaft 25%Undeel vun der Firma
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Verkaaft 25% Undeel vun der Firma
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaaft 25%Undeel vun dëser Firma. Shift+Klick weist ongeféier Käschten ouni Kaf
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkaaft 25% Undeel vun dëser Firma. Shift+Klick weist ongeféier Käschten ouni Verkaf
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kaaft 25%Undeel vun dëser Firma. Shift+Klick weist ongeféier Käschten ouni Kaf vun Aktien
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkaaft 25% Undeel vun dëser Firma. Shift+Klick weist ongeféier Käschten ouni Verkaf vun Aktien
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmennumm
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Numm vum Manager
@@ -3478,7 +3520,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spill-Sc
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Check den Spill-Scipt-Log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Keng passend KI fonnt fir ze lueden.{}Dës KI ass en Dummy an wäert näischt maachen.{}KI'en kënnen iwwert den 'Online Content' System downgeload gin.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eng KI ass ofgestierzt. W.e.g mellt des dem KI Autor mat engem Screenshot vun der KI Debugfënster
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En Script ass ofgestierzt. W.e.g mellt des dem Autor mat engem Screenshot vun der KI Debugfënster
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI / Spill-Script Debugfënster ass nëmmen fir Serveren verfügbar
 
 # AI configuration window
