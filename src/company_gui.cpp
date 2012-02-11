@@ -1588,8 +1588,9 @@ struct CompanyInfrastructureWindow : Window
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		Money total;
 
+		uint32 rail_total = c->infrastructure.GetRailTotal();
 		for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt]);
+			if (HasBit(this->railtypes, rt)) total += RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total);
 		}
 		total += SignalMaintenanceCost(c->infrastructure.signal);
 
@@ -1675,9 +1676,10 @@ struct CompanyInfrastructureWindow : Window
 				/* Find the maximum count that is displayed. */
 				uint32 max_val = 1000;  // Some random number to reserve enough space.
 				Money max_cost = 10000; // Some random number to reserve enough space.
+				uint32 rail_total = c->infrastructure.GetRailTotal();
 				for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 					max_val = max(max_val, c->infrastructure.rail[rt]);
-					max_cost = max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt]));
+					max_cost = max(max_cost, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
 				}
 				max_val = max(max_val, c->infrastructure.signal);
 				max_cost = max(max_cost, SignalMaintenanceCost(c->infrastructure.signal));
@@ -1739,12 +1741,13 @@ struct CompanyInfrastructureWindow : Window
 
 				break;
 
-			case WID_CI_RAIL_COUNT:
+			case WID_CI_RAIL_COUNT: {
 				/* Draw infrastructure count for each valid railtype. */
+				uint32 rail_total = c->infrastructure.GetRailTotal();
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					if (HasBit(this->railtypes, rt)) {
 						SetDParam(0, c->infrastructure.rail[rt]);
-						SetDParam(1, RailMaintenanceCost(rt, c->infrastructure.rail[rt]) * 12); // Convert to per year
+						SetDParam(1, RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total) * 12); // Convert to per year
 						DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 					}
 				}
@@ -1754,6 +1757,7 @@ struct CompanyInfrastructureWindow : Window
 					DrawString(r.left, r.right, y += FONT_HEIGHT_NORMAL, _settings_game.economy.infrastructure_maintenance ? STR_COMPANY_INFRASTRUCTURE_VIEW_COST : STR_WHITE_COMMA);
 				}
 				break;
+			}
 
 			case WID_CI_ROAD_DESC:
 				DrawString(r.left, r.right, y, STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT);

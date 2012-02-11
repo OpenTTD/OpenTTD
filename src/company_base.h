@@ -35,6 +35,14 @@ struct CompanyInfrastructure {
 	uint32 water;              ///< Count of company owned track bits for canals.
 	uint32 station;            ///< Count of company owned station tiles.
 	uint32 airport;            ///< Count of company owned airports.
+
+	/** Get total sum of all owned track bits. */
+	uint32 GetRailTotal() const
+	{
+		uint32 total = 0;
+		for (RailType rt =  RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) total += this->rail[rt];
+		return total;
+	}
 };
 
 typedef Pool<Company, CompanyByte, 1, MAX_COMPANIES> CompanyPool;

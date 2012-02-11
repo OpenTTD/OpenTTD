@@ -379,13 +379,14 @@ static inline Money RailConvertCost(RailType from, RailType to)
 /**
  * Calculates the maintenance cost of a number of track bits.
  * @param railtype The railtype to get the cost of.
- * @param num Number of track bits.
+ * @param num Number of track bits of this railtype.
+ * @param total_num Total number of track bits of all railtypes.
  * @return Total cost.
  */
-static inline Money RailMaintenanceCost(RailType railtype, uint32 num)
+static inline Money RailMaintenanceCost(RailType railtype, uint32 num, uint32 total_num)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
+	return (_price[PR_INFRASTRUCTURE_RAIL] * GetRailTypeInfo(railtype)->maintenance_multiplier * num * (1 + IntSqrt(total_num))) >> 11; // 4 bits fraction for the multiplier and 7 bits scaling.
 }
 
 /**
