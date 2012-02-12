@@ -13,6 +13,7 @@
 #include "../settings_type.h"
 #include "../core/random_func.hpp"
 #include "script_info.hpp"
+#include "../textfile_gui.h"
 
 void ScriptConfig::Change(const char *name, int version, bool force_exact_match, bool is_random)
 {
@@ -197,4 +198,11 @@ void ScriptConfig::SettingsToString(char *string, size_t size) const
 	/* Remove the last ',', but only if at least one setting was saved. */
 	size_t len = strlen(string);
 	if (len > 0) string[len - 1] = '\0';
+}
+
+const char *ScriptConfig::GetTextfile(TextfileType type, CompanyID slot) const
+{
+	if (slot == INVALID_COMPANY || this->GetInfo() == NULL) return NULL;
+
+	return ::GetTextfile(type, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR, this->GetInfo()->GetMainScript());
 }

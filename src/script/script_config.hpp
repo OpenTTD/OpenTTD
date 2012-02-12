@@ -16,6 +16,8 @@
 #include <list>
 #include "../core/smallmap_type.hpp"
 #include "../core/string_compare_type.hpp"
+#include "../company_type.h"
+#include "../textfile_gui.h"
 
 /** Bitmask of flags for Script settings. */
 enum ScriptConfigFlags {
@@ -160,6 +162,14 @@ public:
 	 *  file or savegames.
 	 */
 	void SettingsToString(char *string, size_t size) const;
+
+	/**
+	 * Search a textfile file next to this script.
+	 * @param type The type of the textfile to search for.
+	 * @param slot #CompanyID to check status of.
+	 * @return The filename for the textfile, \c NULL otherwise.
+	 */
+	const char *GetTextfile(TextfileType type, CompanyID slot) const;
 
 protected:
 	const char *name;                  ///< Name of the Script

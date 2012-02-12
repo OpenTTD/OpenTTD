@@ -180,6 +180,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_CHANGE,                            "WID_AIC_CHANGE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_CONFIGURE,                         "WID_AIC_CONFIGURE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_CLOSE,                             "WID_AIC_CLOSE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_TEXTFILE,                          "WID_AIC_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AIC_CONTENT_DOWNLOAD,                  "WID_AIC_CONTENT_DOWNLOAD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AID_VIEW,                              "WID_AID_VIEW");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_AID_NAME_TEXT,                         "WID_AID_NAME_TEXT");

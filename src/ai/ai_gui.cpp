@@ -23,6 +23,7 @@
 #include "../network/network.h"
 #include "../settings_func.h"
 #include "../network/network_content.h"
+#include "../textfile_gui.h"
 
 #include "ai.hpp"
 #include "../script/api/script_log.hpp"
@@ -559,6 +560,40 @@ static void ShowAISettingsWindow(CompanyID slot)
 	new AISettingsWindow(&_ai_settings_desc, slot);
 }
 
+
+/** Window for displaying the textfile of a AI. */
+struct ScriptTextfileWindow : public TextfileWindow {
+	CompanyID slot; ///< View the textfile of this CompanyID slot.
+
+	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
+	{
+		this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+
+		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
+		this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
+	}
+
+	/* virtual */ void SetStringParameters(int widget) const
+	{
+		if (widget == WID_TF_CAPTION) {
+			SetDParam(0, (slot == OWNER_DEITY) ? STR_CONTENT_TYPE_GAME_SCRIPT : STR_CONTENT_TYPE_AI);
+			SetDParamStr(1, GetConfig(slot)->GetName());
+		}
+	}
+};
+
+/**
+ * Open the AI version of the textfile window.
+ * @param file_type The type of textfile to display.
+ * @param slot The slot the Script is using.
+ */
+void ShowScriptTextfileWindow(TextfileType file_type, CompanyID slot)
+{
+	DeleteWindowByClass(WC_TEXTFILE);
+	new ScriptTextfileWindow(file_type, slot);
+}
+
+
 /** Widgets for the configure AI window. */
 static const NWidgetPart _nested_ai_config_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -592,6 +627,11 @@ static const NWidgetPart _nested_ai_config_widgets[] = {
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CHANGE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CHANGE, STR_AI_CONFIG_CHANGE_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONFIGURE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_CONFIG_CONFIGURE, STR_AI_CONFIG_CONFIGURE_TOOLTIP),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CLOSE), SetFill(1, 0), SetMinimalSize(93, 12), SetDataTip(STR_AI_SETTINGS_CLOSE, STR_NULL),
+			EndContainer(),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_NULL),
 		EndContainer(),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_AIC_CONTENT_DOWNLOAD), SetFill(1, 0), SetMinimalSize(279, 12), SetPadding(0, 7, 9, 7), SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 	EndContainer(),
@@ -728,6 +768,13 @@ struct AIConfigWindow : public Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		if (widget >= WID_AIC_TEXTFILE && widget < WID_AIC_TEXTFILE + TFT_END) {
+			if (this->selected_slot == INVALID_COMPANY || GetConfig(this->selected_slot) == NULL) return;
+
+			ShowScriptTextfileWindow((TextfileType)(widget - WID_AIC_TEXTFILE), this->selected_slot);
+			return;
+		}
+
 		switch (widget) {
 			case WID_AIC_DECREASE:
 			case WID_AIC_INCREASE: {
@@ -818,6 +865,10 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(WID_AIC_CONFIGURE, this->selected_slot == INVALID_COMPANY || GetConfig(this->selected_slot)->GetConfigList()->size() == 0);
 		this->SetWidgetDisabledState(WID_AIC_MOVE_UP, this->selected_slot == OWNER_DEITY || this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot - 1)));
 		this->SetWidgetDisabledState(WID_AIC_MOVE_DOWN, this->selected_slot == OWNER_DEITY || this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot + 1)));
+
+		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+			this->SetWidgetDisabledState(WID_AIC_TEXTFILE + tft, this->selected_slot == INVALID_COMPANY || (GetConfig(this->selected_slot)->GetTextfile(tft, this->selected_slot) == NULL));
+		}
 	}
 };
 

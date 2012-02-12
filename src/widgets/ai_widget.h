@@ -13,6 +13,7 @@
 #define WIDGETS_AI_WIDGET_H
 
 #include "../company_type.h"
+#include "../textfile_type.h"
 
 /** Widgets of the #AIListWindow class. */
 enum AIListWidgets {
@@ -47,7 +48,8 @@ enum AIConfigWidgets {
 	WID_AIC_CHANGE,           ///< Select another AI button.
 	WID_AIC_CONFIGURE,        ///< Change AI settings button.
 	WID_AIC_CLOSE,            ///< Close window button.
-	WID_AIC_CONTENT_DOWNLOAD, ///< Download content button.
+	WID_AIC_TEXTFILE,         ///< Open AI readme, changelog (+1) or license (+2).
+	WID_AIC_CONTENT_DOWNLOAD = WID_AIC_TEXTFILE + TFT_END, ///< Download content button.
 };
 
 /** Widgets of the #AIDebugWindow class. */

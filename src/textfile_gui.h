@@ -12,6 +12,7 @@
 #ifndef TEXTFILE_GUI_H
 #define TEXTFILE_GUI_H
 
+#include "fileio_type.h"
 #include "strings_func.h"
 #include "textfile_type.h"
 #include "window_gui.h"

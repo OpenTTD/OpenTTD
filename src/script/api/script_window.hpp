@@ -843,6 +843,7 @@ public:
 		WID_AIC_CHANGE                       = ::WID_AIC_CHANGE,                       ///< Select another AI button.
 		WID_AIC_CONFIGURE                    = ::WID_AIC_CONFIGURE,                    ///< Change AI settings button.
 		WID_AIC_CLOSE                        = ::WID_AIC_CLOSE,                        ///< Close window button.
+		WID_AIC_TEXTFILE                     = ::WID_AIC_TEXTFILE,                     ///< Open Script readme, changelog (+1) or license (+2).
 		WID_AIC_CONTENT_DOWNLOAD             = ::WID_AIC_CONTENT_DOWNLOAD,             ///< Download content button.
 	};
 
