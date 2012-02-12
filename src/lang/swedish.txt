@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Motståndarnas 
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Full animering
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Full detaljnivå
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Genomskinliga byggnader
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Genomskinliga stationsskyltar
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Genomskinliga skyltar
 ############ range ends here
 
 ############ range for file menu starts
@@ -447,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj kons
 STR_ABOUT_MENU_AI_DEBUG                                         :Felsökning av AI / spelskript
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt inzoomad skärmdump
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt inzoomad skärmdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av hela kartan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt
@@ -1798,6 +1799,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du är b
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Fusk är inte tillåtet på denna server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du skickade för många kommandon till servern
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du tog för lång tid på dig att mata in löserondet
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din dator tog för lång tid på sig för att ansluta
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Du tog för lång tid på dig att ladda ner kartan
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Du tog för lång tid på dig att ansluta till servern
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :allmänt fel
@@ -1816,6 +1821,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :utkastad av ser
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :försökte fuska
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servern är full
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :skickade för många kommandon
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :inget lösenord togs emot i tid
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generell timeout
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :nedladdning av kartan tog för lång tid
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :bearbetning av kartan tog för lång tid
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Anslutningen har troligtvis försvunnit
@@ -1919,7 +1928,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nej, avs
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Genomskinlighetsinställningar
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Växla genomskinlighet för stationsskyltar. Ctrl+klick för att låsa
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Växla genomskinlighet för skyltar. Ctrl+klick för att låsa
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Växla genomskinlighet för träd. Ctrl+klick för att låsa
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Växla genomskinlighet för byggnader. Ctrl+klick för att låsa
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Växla genomskinlighet för industrier. Ctrl+klick för att låsa
@@ -2060,9 +2069,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Riktinin
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Välj riktning för busshållplats
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Riktning för lastbrygga
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Välj riktning för lastbrygga
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Riktning för passagerarspårvagn
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Riktning för passagerarspårvagnsstation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Välj passagerarspårvagnsstationens orientering
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Riktning för godsspårvagn
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Riktning för godspårvagnsstation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Välj godsspårvagnsstationens orientering
 
 # Waterways toolbar (last two for SE only)
@@ -2130,7 +2139,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sändare
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Träd
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera. Om rutan redan har ett träd, kommer ytterliggare träd att vara av slumpmässig typ oberoende av vilken trädtyp som valts
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av slumpvald typ
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera träd av slumpvald typ. Shift växlar mellan att placera träd/visa beräknad kostnad
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Slumpmässigt träd
@@ -2447,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flytta n
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytta ner den markerade NewGRF-filen i listan
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En lista med installerade NewGRF-filer.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Visa manual
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ändringshistorik
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametrar
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Visa parametrar
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Byt palett
@@ -2482,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återst�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE} {STRING}-manual för {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Ändringshistorik för {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licens för {STRING}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
@@ -3363,7 +3362,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närms
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_SHARE                                                 :Dela order
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Håll in Ctrl för att välja 'full last någon frakttyp' vid stationer, 'åk non-stop via' vid riktmärken, och 'service' vid tågdepåer. Använd knappen 'Dela order' eller Ctrl+klicka på fordon för att dela order från annat fordon
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Håll in Ctrl för att välja 'full last någon frakttyp' vid stationer, 'åk non-stop via' vid riktmärken, och 'service' vid tågdepåer. Använd knappen 'Dela order' eller Ctrl+klicka på fordon för att dela order från annat fordon. En depåorder stänger av automatisk service av fordonet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Visa alla fordon som har samma schema
 
@@ -3561,6 +3560,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Ungefärligt antal dagar som denna datorspelare startar efter föregående datorspelare: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE} {STRING}-manual för {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Ändringshistorik för {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licens för {STRING}{STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Visa manual
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ändringshistorik
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
