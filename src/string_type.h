@@ -51,6 +51,6 @@ enum StringValidationSettings {
 	SVS_ALLOW_NEWLINE              = 1 << 1, ///< Allow newlines.
 	SVS_ALLOW_CONTROL_CODE         = 1 << 2, ///< Allow the special control codes.
 };
-DECLARE_ENUM_AS_BIT_SET(StringValidationSettings);
+DECLARE_ENUM_AS_BIT_SET(StringValidationSettings)
 
 #endif /* STRING_TYPE_H */

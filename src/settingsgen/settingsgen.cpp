@@ -44,7 +44,7 @@ void NORETURN CDECL error(const char *s, ...)
 	va_end(va);
 	fprintf(stderr, "FATAL: %s\n", buf);
 	exit(1);
-};
+}
 
 static const int OUTPUT_BLOCK_SIZE = 16000; ///< Block size of the buffer in #OutputBuffer.
 
