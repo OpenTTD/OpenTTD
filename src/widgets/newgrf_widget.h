@@ -13,6 +13,7 @@
 #define WIDGETS_NEWGRF_WIDGET_H
 
 #include "../newgrf_config.h"
+#include "../textfile_type.h"
 
 /** Widgets of the #NewGRFParametersWindow class. */
 enum NewGRFParametersWidgets {
@@ -27,14 +28,6 @@ enum NewGRFParametersWidgets {
 	WID_NP_RESET,            ///< Reset button.
 	WID_NP_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions.
 	WID_NP_DESCRIPTION,      ///< Multi-line description of a parameter.
-};
-
-/** Widgets of the #NewGRFTextfileWindow class. */
-enum NewGRFTextfileWidgets {
-	WID_NT_CAPTION,    ///< The caption of the window.
-	WID_NT_BACKGROUND, ///< Panel to draw the textfile on.
-	WID_NT_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
-	WID_NT_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 };
 
 /** Widgets of the #NewGRFWindow class. */

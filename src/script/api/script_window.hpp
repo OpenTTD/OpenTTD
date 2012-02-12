@@ -250,7 +250,7 @@ public:
 		 * textfile; Window numbers:
 		 *   - 0 = #NewGRFTextfileWidgets
 		 */
-		WC_NEWGRF_TEXTFILE = ::WC_NEWGRF_TEXTFILE,
+		WC_TEXTFILE = ::WC_TEXTFILE,
 
 
 		/**
@@ -1671,14 +1671,6 @@ public:
 		WID_NP_DESCRIPTION                   = ::WID_NP_DESCRIPTION,                   ///< Multi-line description of a parameter.
 	};
 
-	/** Widgets of the #NewGRFTextfileWindow class. */
-	enum NewGRFTextfileWidgets {
-		WID_NT_CAPTION                       = ::WID_NT_CAPTION,                       ///< The caption of the window.
-		WID_NT_BACKGROUND                    = ::WID_NT_BACKGROUND,                    ///< Panel to draw the textfile on.
-		WID_NT_VSCROLLBAR                    = ::WID_NT_VSCROLLBAR,                    ///< Vertical scrollbar to scroll through the textfile up-and-down.
-		WID_NT_HSCROLLBAR                    = ::WID_NT_HSCROLLBAR,                    ///< Horizontal scrollbar to scroll through the textfile left-to-right.
-	};
-
 	/** Widgets of the #NewGRFWindow class. */
 	enum NewGRFStateWidgets {
 		WID_NS_PRESET_LIST                   = ::WID_NS_PRESET_LIST,                   ///< Active NewGRF preset.
@@ -1713,6 +1705,14 @@ public:
 	enum ScanProgressWidgets {
 		WID_SP_PROGRESS_BAR                  = ::WID_SP_PROGRESS_BAR,                  ///< Simple progress bar.
 		WID_SP_PROGRESS_TEXT                 = ::WID_SP_PROGRESS_TEXT,                 ///< Text explaining what is happening.
+	};
+
+	/** Widgets of the #TextfileWindow class. */
+	enum TextfileWidgets {
+		WID_TF_CAPTION                       = ::WID_TF_CAPTION,                       ///< The caption of the window.
+		WID_TF_BACKGROUND                    = ::WID_TF_BACKGROUND,                    ///< Panel to draw the textfile on.
+		WID_TF_VSCROLLBAR                    = ::WID_TF_VSCROLLBAR,                    ///< Vertical scrollbar to scroll through the textfile up-and-down.
+		WID_TF_HSCROLLBAR                    = ::WID_TF_HSCROLLBAR,                    ///< Horizontal scrollbar to scroll through the textfile left-to-right.
 	};
 
 	/** Widgets of the #NewsWindow class. */

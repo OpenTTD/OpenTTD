@@ -45,4 +45,12 @@ enum QueryWidgets {
 	WID_Q_YES,     ///< No button.
 };
 
+/** Widgets of the #TextfileWindow class. */
+enum TextfileWidgets {
+	WID_TF_CAPTION,    ///< The caption of the window.
+	WID_TF_BACKGROUND, ///< Panel to draw the textfile on.
+	WID_TF_VSCROLLBAR, ///< Vertical scrollbar to scroll through the textfile up-and-down.
+	WID_TF_HSCROLLBAR, ///< Horizontal scrollbar to scroll through the textfile left-to-right.
+};
+
 #endif /* WIDGETS_MISC_WIDGET_H */

@@ -179,9 +179,9 @@ enum WindowClass {
 
 	/**
 	 * textfile; %Window numbers:
-	 *   - 0 = #NewGRFTextfileWidgets
+	 *   - 0 = #TextfileWidgets
 	 */
-	WC_NEWGRF_TEXTFILE,
+	WC_TEXTFILE,
 
 
 	/**

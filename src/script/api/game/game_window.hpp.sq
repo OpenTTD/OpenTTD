@@ -59,7 +59,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_SET_DATE,                               "WC_SET_DATE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_AI_SETTINGS,                            "WC_AI_SETTINGS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_GRF_PARAMETERS,                         "WC_GRF_PARAMETERS");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_NEWGRF_TEXTFILE,                        "WC_NEWGRF_TEXTFILE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_TEXTFILE,                               "WC_TEXTFILE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_TOWN_AUTHORITY,                         "WC_TOWN_AUTHORITY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_VEHICLE_DETAILS,                        "WC_VEHICLE_DETAILS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_VEHICLE_REFIT,                          "WC_VEHICLE_REFIT");
@@ -750,10 +750,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_RESET,                              "WID_NP_RESET");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_SHOW_DESCRIPTION,                   "WID_NP_SHOW_DESCRIPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NP_DESCRIPTION,                        "WID_NP_DESCRIPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NT_CAPTION,                            "WID_NT_CAPTION");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NT_BACKGROUND,                         "WID_NT_BACKGROUND");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NT_VSCROLLBAR,                         "WID_NT_VSCROLLBAR");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NT_HSCROLLBAR,                         "WID_NT_HSCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_PRESET_LIST,                        "WID_NS_PRESET_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_PRESET_SAVE,                        "WID_NS_PRESET_SAVE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_PRESET_DELETE,                      "WID_NS_PRESET_DELETE");
@@ -782,6 +778,10 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_NS_SHOW_APPLY,                         "WID_NS_SHOW_APPLY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SP_PROGRESS_BAR,                       "WID_SP_PROGRESS_BAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SP_PROGRESS_TEXT,                      "WID_SP_PROGRESS_TEXT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_CAPTION,                            "WID_TF_CAPTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_BACKGROUND,                         "WID_TF_BACKGROUND");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_VSCROLLBAR,                         "WID_TF_VSCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TF_HSCROLLBAR,                         "WID_TF_HSCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_PANEL,                               "WID_N_PANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_TITLE,                               "WID_N_TITLE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_N_HEADLINE,                            "WID_N_HEADLINE");

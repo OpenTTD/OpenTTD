@@ -1567,6 +1567,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\textfile_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\textfile_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\tgp.h"
 				>
 			</File>
@@ -2016,6 +2024,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\terraform_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\textfile_gui.cpp"
 				>
 			</File>
 			<File

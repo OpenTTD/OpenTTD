@@ -573,6 +573,8 @@
     <ClInclude Include="..\src\terraform_gui.h" />
     <ClInclude Include="..\src\textbuf_gui.h" />
     <ClInclude Include="..\src\texteff.hpp" />
+    <ClInclude Include="..\src\textfile_gui.h" />
+    <ClInclude Include="..\src\textfile_type.h" />
     <ClInclude Include="..\src\tgp.h" />
     <ClInclude Include="..\src\tile_cmd.h" />
     <ClInclude Include="..\src\tile_type.h" />
@@ -684,6 +686,7 @@
     <ClCompile Include="..\src\statusbar_gui.cpp" />
     <ClCompile Include="..\src\subsidy_gui.cpp" />
     <ClCompile Include="..\src\terraform_gui.cpp" />
+    <ClCompile Include="..\src\textfile_gui.cpp" />
     <ClCompile Include="..\src\timetable_gui.cpp" />
     <ClCompile Include="..\src\toolbar_gui.cpp" />
     <ClCompile Include="..\src\town_gui.cpp" />

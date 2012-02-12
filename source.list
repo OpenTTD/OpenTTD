@@ -306,6 +306,8 @@ tar_type.h
 terraform_gui.h
 textbuf_gui.h
 texteff.hpp
+textfile_gui.h
+textfile_type.h
 tgp.h
 tile_cmd.h
 tile_type.h
@@ -436,6 +438,7 @@ station_gui.cpp
 statusbar_gui.cpp
 subsidy_gui.cpp
 terraform_gui.cpp
+textfile_gui.cpp
 timetable_gui.cpp
 toolbar_gui.cpp
 town_gui.cpp

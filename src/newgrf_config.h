@@ -17,6 +17,7 @@
 #include "core/smallmap_type.hpp"
 #include "misc/countedptr.hpp"
 #include "fileio_type.h"
+#include "textfile_type.h"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -144,18 +145,6 @@ struct GRFTextWrapper : public SimpleCountedObject {
 	GRFTextWrapper();
 	~GRFTextWrapper();
 };
-
-/** Additional text files accompanying NewGRFs */
-enum TextfileType {
-	TFT_BEGIN,
-
-	TFT_README = TFT_BEGIN,  ///< NewGRF readme
-	TFT_CHANGELOG,           ///< NewGRF changelog
-	TFT_LICENSE,             ///< NewGRF license
-
-	TFT_END,
-};
-DECLARE_POSTFIX_INCREMENT(TextfileType)
 
 /** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : ZeroedMemoryAllocator {
