@@ -24,11 +24,7 @@ public:
 	ScriptScanner();
 	virtual ~ScriptScanner();
 
-	/**
-	 * Initialize the scanner.
-	 * @param name The name of the scanner ("AIScanner", "GSScanner", ..).
-	 */
-	virtual void Initialize(const char *name);
+	virtual void Initialize() = 0;
 
 	/**
 	 * Get the engine of the main squirrel handler (it indexes all available scripts).
@@ -87,6 +83,12 @@ protected:
 
 	ScriptInfoList info_list;        ///< The list of all script.
 	ScriptInfoList info_single_list; ///< The list of all unique script. The best script (highest version) is shown.
+
+	/**
+	 * Initialize the scanner.
+	 * @param name The name of the scanner ("AIScanner", "GSScanner", ..).
+	 */
+	void Initialize(const char *name);
 
 	/**
 	 * Get the script name how to store the script in memory.
