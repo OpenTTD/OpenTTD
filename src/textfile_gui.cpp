@@ -192,3 +192,39 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(), file_type(fil
 	this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
 }
+
+/**
+ * Search a textfile file next to the given content.
+ * @param type The type of the textfile to search for.
+ * @param dir The subdirectory to search in.
+ * @param filename The filename of the content to look for.
+ * @return The path to the textfile, \c NULL otherwise.
+ */
+const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filename)
+{
+	static const char * const prefixes[] = {
+		"readme",
+		"changelog",
+		"license",
+	};
+	assert_compile(lengthof(prefixes) == TFT_END);
+
+	const char *prefix = prefixes[type];
+
+	if (filename == NULL) return NULL;
+
+	static char file_path[MAX_PATH];
+	strecpy(file_path, filename, lastof(file_path));
+
+	char *slash = strrchr(file_path, PATHSEPCHAR);
+	if (slash == NULL) return NULL;
+
+	seprintf(slash + 1, lastof(file_path), "%s_%s.txt", prefix, GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(file_path, dir)) return file_path;
+
+	seprintf(slash + 1, lastof(file_path), "%s_%.2s.txt", prefix, GetCurrentLanguageIsoCode());
+	if (FioCheckFileExists(file_path, dir)) return file_path;
+
+	seprintf(slash + 1, lastof(file_path), "%s.txt", prefix);
+	return FioCheckFileExists(file_path, dir) ? file_path : NULL;
+}

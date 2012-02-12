@@ -16,6 +16,8 @@
 #include "textfile_type.h"
 #include "window_gui.h"
 
+const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filename);
+
 /** Window for displaying a textfile */
 struct TextfileWindow : public Window, MissingGlyphSearcher {
 	TextfileType file_type;              ///< Type of textfile to view.

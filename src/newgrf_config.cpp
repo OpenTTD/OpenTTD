@@ -20,6 +20,7 @@
 #include "progress.h"
 #include "video/video_driver.hpp"
 #include "strings_func.h"
+#include "textfile_gui.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -878,29 +879,5 @@ bool GRFConfig::IsOpenTTDBaseGRF() const
  */
 const char *GRFConfig::GetTextfile(TextfileType type) const
 {
-	static const char * const prefixes[] = {
-		"readme",
-		"changelog",
-		"license",
-	};
-	assert_compile(lengthof(prefixes) == TFT_END);
-
-	const char *prefix = prefixes[type];
-
-	if (this->filename == NULL) return NULL;
-
-	static char file_path[MAX_PATH];
-	strecpy(file_path, this->filename, lastof(file_path));
-
-	char *slash = strrchr(file_path, PATHSEPCHAR);
-	if (slash == NULL) return NULL;
-
-	seprintf(slash + 1, lastof(file_path), "%s_%s.txt", prefix, GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(file_path, NEWGRF_DIR)) return file_path;
-
-	seprintf(slash + 1, lastof(file_path), "%s_%.2s.txt", prefix, GetCurrentLanguageIsoCode());
-	if (FioCheckFileExists(file_path, NEWGRF_DIR)) return file_path;
-
-	seprintf(slash + 1, lastof(file_path), "%s.txt", prefix);
-	return FioCheckFileExists(file_path, NEWGRF_DIR) ? file_path : NULL;
+	return ::GetTextfile(type, NEWGRF_DIR, this->filename);
 }
