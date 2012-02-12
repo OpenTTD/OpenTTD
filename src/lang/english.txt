@@ -1800,9 +1800,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}You were
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheating is not allowed on this server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}You were sending too many commands to the server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}You took too long to enter the password
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Your computer took too long to join
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}You took too long to download the map
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}You took too long to join the server
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Your computer is too slow to keep up with the server
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Your computer took too long to download the map
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Your computer took too long to join the server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error
