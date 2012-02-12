@@ -1,5 +1,5 @@
 OpenTTD readme
-Last updated:    2012-02-04
+Last updated:    2012-02-12
 Release version: 1.2.0-beta4
 ------------------------------------------------------------------------
 
@@ -501,6 +501,8 @@ The following compilers are known to compile OpenTTD:
     Versions 4.4 - 4.6 give bogus warnings about freeing non-heap objects.
     Versions 4.5 and later give invalid warnings when lto is enabled.
   - Intel C++ Compiler (ICC) 12.0.
+  - Clang/LLVM 2.9 - 3.0
+    Version 2.9 gives bogus warnings about code nonconformity.
 
 The following compilers are known not to compile OpenTTD:
   - Microsoft Visual C++ (MSVC) 2003 and earlier.
@@ -510,7 +512,7 @@ The following compilers are known not to compile OpenTTD:
     Version 10.0 and earlier fail a configure check and fail with recent system
         headers.
     Version 10.1 fails to compile station_gui.cpp.
-    Version 11.1 fails with internal error when compiling network.cpp.
+    Version 11.1 fails with an internal error when compiling network.cpp.
   - Clang/LLVM 2.8 and earlier.
   - (Open) Watcom.
 

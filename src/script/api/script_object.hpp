@@ -33,6 +33,7 @@ typedef bool (ScriptModeProc)();
  */
 class ScriptObject : public SimpleCountedObject {
 friend class ScriptInstance;
+friend class ScriptController;
 protected:
 	/**
 	 * A class that handles the current active instance. By instantiating it at

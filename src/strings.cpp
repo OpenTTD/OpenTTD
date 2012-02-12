@@ -288,7 +288,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 			quot = num / divisor;
 			num = num % divisor;
 		}
-		if (tot |= quot || i >= max_digits - zerofill) {
+		if ((tot |= quot) || i >= max_digits - zerofill) {
 			buff += seprintf(buff, last, "%i", (int)quot);
 			if ((i % 3) == thousands_offset && i < max_digits - 1 - fractional_digits) buff = strecpy(buff, separator, last);
 		}

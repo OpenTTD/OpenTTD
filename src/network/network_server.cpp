@@ -2100,11 +2100,18 @@ void NetworkPrintClients()
 {
 	NetworkClientInfo *ci;
 	FOR_ALL_CLIENT_INFOS(ci) {
-		IConsolePrintF(CC_INFO, _network_server ? "Client #%1d  name: '%s'  company: %1d  IP: %s" : "Client #%1d  name: '%s'  company: %1d",
-				ci->client_id,
-				ci->client_name,
-				ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
-				_network_server ? (ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP()) : "");
+		if (_network_server) {
+			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
+					ci->client_id,
+					ci->client_name,
+					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
+					ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP());
+		} else {
+			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d",
+					ci->client_id,
+					ci->client_name,
+					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0));
+		}
 	}
 }
 

@@ -123,7 +123,7 @@ ScriptVehicleList_DefaultGroup::ScriptVehicleList_DefaultGroup(ScriptVehicle::Ve
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == ScriptObject::GetCompany() && v->IsPrimaryVehicle()) {
-			if (v->type == vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
+			if (v->type == (::VehicleType)vehicle_type && v->group_id == ScriptGroup::GROUP_DEFAULT) this->AddItem(v->index);
 		}
 	}
 }

@@ -1159,11 +1159,11 @@ make_compiler_cflags() {
 		if [ -z "$first_time_icc_check" ]; then
 			first_time_icc_check=no
 			if [ $cc_version -lt 90 ]; then
-				log 1 "WARNING: you seem to be using very old version of ICC"
+				log 1 "WARNING: you seem to be using a very old version of ICC"
 				log 1 "WARNING: OpenTTD hasn't been tested with this version"
 				sleep 5
 			elif [ $cc_version -lt 120 ]; then
-				log 1 "WARNING: you seem to be using unsupported ICC version"
+				log 1 "WARNING: you seem to be using an unsupported ICC version"
 				log 1 "WARNING: ICC older than 12.0 is known to fail to compile OpenTTD"
 				sleep 5
 			fi
@@ -1236,6 +1236,58 @@ make_compiler_cflags() {
 				features="$features lto"
 			fi
 		fi
+	elif [ `basename $1 | grep 'clang'` ]; then
+		# Enable some things only for certain clang versions
+		cc_version="`$1 -v 2>&1 | head -n 1 | sed s@[^0-9]@@g | cut -c 1-2`"
+
+		# aliasing rules are not held in openttd code
+		flags="$flags -fno-strict-aliasing"
+
+		# -W alone doesn't enable all warnings enabled by -Wall; on the other hand,
+		# -Weverything enables too many useless warnings that can't be disabled (as of 3.0)
+		flags="$flags -Wall -W"
+
+		# warning: unused parameter '...'
+		flags="$flags -Wno-unused-parameter"
+
+		# warning: expression result unused
+		flags="$flags -Wno-unused-value"
+
+		# warning: multi-character character constant
+		flags="$flags -Wno-multichar"
+
+		# warning: explicitly assigning a variable of type '...' to itself
+		# it happens when using the FOR_ALL_WINDOWS_FROM_BACK_FROM macro
+		flags="$flags -Wno-self-assign"
+
+		if [ "$cc_version" -lt "30" ]; then
+			# warning: equality comparison with extraneous parentheses
+			flags="$flags -Wno-parentheses"
+			# warning: operands of ? are integers of different signs: 'unsigned int' and 'int'
+			flags="$flags -Wno-sign-compare"
+		fi
+
+		if [ "$cc_version" -ge "30" ]; then
+			# warning: equality comparison with extraneous parentheses
+			# this warning could be useful, but it warns about code in squirrel
+			flags="$flags -Wno-parentheses-equality"
+		fi
+
+		if [ "$with_ccache" != "0" -o "$with_distcc" != "0" ]; then
+			# ccache and distcc run separate preprocess and compile passes,
+			# both are fed with the same CFLAGS. Unfortunately, clang
+			# complains about -I when compiling preprocessed files:
+			# "clang: warning: argument unused during compilation: '-I /usr/include'"
+			flags="$flags -Qunused-arguments"
+		fi
+
+		if [ "$enable_assert" -eq "0" ]; then
+			# do not warn about unused variables when building without asserts
+			flags="$flags -Wno-unused-variable"
+		fi
+
+		# rdynamic is used to get useful stack traces from crash reports.
+		ldflags="$ldflags -rdynamic"
 	else
 		# Enable some things only for certain GCC versions
 		cc_version=`$1 -dumpversion | cut -c 1,3`

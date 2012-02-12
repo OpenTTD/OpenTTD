@@ -107,7 +107,11 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 		assert(sizeof(Titem) == size);
 		item = (Titem *)this->alloc_cache;
 		this->alloc_cache = this->alloc_cache->next;
-		if (Tzero) MemSetT(item, 0);
+		if (Tzero) {
+			/* Explicitly casting to (void *) prevets a clang warning -
+			 * we are actually memsetting a (not-yet-constructed) object */
+			memset((void *)item, 0, sizeof(Titem));
+		}
 	} else if (Tzero) {
 		item = (Titem *)CallocT<byte>(size);
 	} else {
