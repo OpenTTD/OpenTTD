@@ -2641,9 +2641,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Пере
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список используемых файлов NewGRF
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Посмотреть инструкцию
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Список изменений
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лицензия
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Посмотреть инструкцию
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Список изменений
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лицензия
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Параметры
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показать параметры
@@ -2677,9 +2677,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Количество параметров: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Инструкция к NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Список изменений к NewGRF {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Лицензия к NewGRF {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Инструкция к {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Список изменений к {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Лицензия к {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}

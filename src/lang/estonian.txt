@@ -2514,9 +2514,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF-f
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}NewGRF failidest nimekiri installeerimata. Parameetrite muutmiseks klõpsa failil.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vaata abi
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muudatuste logi
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Litsents
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Vaata abi
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muudatuste logi
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Litsents
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Vali parameetrid
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näita parameetreid
@@ -2550,9 +2550,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parameetrite arv: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} NewGRF abi.
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF muudatuste logi {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF litsents {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} abi.
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} muudatuste logi {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} litsents {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteeri- {STRING}

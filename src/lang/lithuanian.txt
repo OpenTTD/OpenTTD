@@ -2532,9 +2532,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Perkelti
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Įdiegtų papild. grafikos failų sąrašas.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Peržiūrėti SKAITYKMANE
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Pasikeitimai
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencija
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Peržiūrėti SKAITYKMANE
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Pasikeitimai
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencija
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nustatyti parametrus
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rodyti parametrus
@@ -2568,9 +2568,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrų skaičius: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF aprašymas {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF pasikeitimai {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licencija {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} aprašymas {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} pasikeitimai {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencija {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Apžiūrėti - {STRING}

@@ -2350,9 +2350,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Movu la 
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Listo da instalitaj NewGRF-dosieroj. Alklaku dosieron por ŝanĝi la parametrojn
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vidi legumin
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Ŝanĝarĥivo
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenco
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Vidi legumin
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ŝanĝarĥivo
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenco
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Agordu parametrojn
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Baskuligi paletron
@@ -2384,9 +2384,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro da parametroj: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF legumin de {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF-a ŝanĝarĥivo de {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF-a licenco de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} legumin de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-a ŝanĝarĥivo de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-a licenco de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektu - {STRING}

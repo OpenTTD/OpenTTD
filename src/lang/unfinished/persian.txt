@@ -2456,9 +2456,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF �
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست فایل های NewGRF نصب شده. روی فایل کلیک کنید تا پارامترها را بتوانید تغییر بدهید
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}مشاهده راهنما
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}گزارش تغییر
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}گواهی
+STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}نمایش پارامترها
@@ -2492,9 +2492,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}تعداد پارامتر: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}راهنمای NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF گزارش تغییرات {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF گواهی {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}رسیدگی - {STRING}

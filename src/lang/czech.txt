@@ -2538,9 +2538,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunout
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam grafických souborů, které jsou nainstalovány.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Zobrazit readme
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK} Novinky ve verzi
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licence
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobrazit readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK} Novinky ve verzi
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Přepnout paletu
@@ -2573,9 +2573,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet prametrů: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF readme {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF změny ve verzi {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licence {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} změny ve verzi {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licence {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}

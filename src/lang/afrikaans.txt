@@ -2356,7 +2356,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Beweeg d
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}'n Lys van die NewGRF lêers wat installer. Kliek 'n lêer om sy parameter te verander.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisensie
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tokkel pallet

@@ -2458,9 +2458,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou aval
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una llista d'arxius NewGRF que estan instal·lats.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Veure llegeixme
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Registra de canvis
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Llicència
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registra de canvis
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Estableix paràm.
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostra els paràmetres
@@ -2494,9 +2494,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paràmetres: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Llegeixme del NewGRF de {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Registre de canvis del NewGRF de {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Llicència del NewGRF de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixme del {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecciona - {STRING}

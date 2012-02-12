@@ -2448,9 +2448,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o N
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ler o Leiame
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log de mudanças
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licença
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Ler o Leiame
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log de mudanças
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna paleta
@@ -2483,9 +2483,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parâmetros: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF Leiame de {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF log de mudanças de {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licença de {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} Leiame de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log de mudanças de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licença de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecionar - {STRING}

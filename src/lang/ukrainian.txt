@@ -2580,9 +2580,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Пере
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених NewGRF файлів.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Читати документацію (Readme)
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Зміни
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Ліцензія
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Читати документацію (Readme)
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Встановлення параметрів
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показати параметри
@@ -2616,9 +2616,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кількість параметрів: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Документація до NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Зміни в NewGRF {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Ліцензія до NewGRF {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Перегляд - {STRING}

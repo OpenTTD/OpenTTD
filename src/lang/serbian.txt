@@ -2652,9 +2652,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pomera o
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Spisak instaliranih NewGRF datoteka.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Prikaži uputstvo
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Izmene
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenca
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži uputstvo
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmene
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Postavi parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Prikaži parametre
@@ -2688,9 +2688,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF uputstvo za {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF izmene od {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licenca od {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} uputstvo za {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} izmene od {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}

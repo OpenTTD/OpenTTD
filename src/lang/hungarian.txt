@@ -2521,9 +2521,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}A kivál
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A feltelepített NewGRF-ek listája.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme megtekintése
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Változások listája
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenc
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Változások listája
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Paraméterek beállítása
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Paraméterek megjelenítése
@@ -2557,9 +2557,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Paraméterek száma: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}{STRING} NewGRF readme-je
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}A(z) {STRING} NewGRF változásainak listája
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}A(z) {STRING} NewGRF licence
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}

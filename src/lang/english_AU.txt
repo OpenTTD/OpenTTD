@@ -2457,9 +2457,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move the
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A list of the NewGRF files that are installed.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}View readme
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Changelog
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}License
+STR_TEXTFILE_VIEW_README                                        :{BLACK}View readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}License
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Show parameters
@@ -2493,9 +2493,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Number of parameters: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF readme of {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF changelog of {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF license of {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme of {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog of {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} license of {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspect - {STRING}

@@ -2794,9 +2794,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Пера
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Сьпіс устаноўленых файлаў NewGRF.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Прагледзець iнструкцыю
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Журнал зьменаў
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Лiцэнзiя
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лiцэнзiя
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Усталяваць парамэтры
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Паказаць парамэтры
@@ -2830,9 +2830,6 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Колькасьць парамэтраў: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Iнструкцыя набора графiкi {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Журнал зьменаў {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Ліцэнзія да NewGRF {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}

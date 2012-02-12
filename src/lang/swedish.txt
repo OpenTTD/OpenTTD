@@ -2448,9 +2448,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytta n
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En lista med installerade NewGRF-filer.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Visa manual
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Ändringshistorik
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licens
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Visa manual
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ändringshistorik
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Parametrar
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Visa parametrar
@@ -2484,9 +2484,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE} NewGRF-manual för {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Ändringshistorik för NewGRF {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Licens för NewGRF{STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE} {STRING}-manual för {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Ändringshistorik för {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licens för {STRING}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}

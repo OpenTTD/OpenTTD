@@ -2451,9 +2451,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flytt de
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Ei liste over NewGRF-filene som er installert.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Vis lesmeg
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Endringslogg
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisens
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Vis lesmeg
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Endringslogg
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisens
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parametrar
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vis parametrar
@@ -2487,9 +2487,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrar: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF lesmeg for {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF endringslogg for {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF lisens for {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} lesmeg for {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} endringslogg for {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisens for {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiser - {STRING}

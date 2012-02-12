@@ -2414,9 +2414,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}حرك �
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}قائمة ملفات NewGRF المركبة. اضغط على الملف لتغييرة.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}اعرض ملف التعليمات ريدمي
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}اعرض سجل التغييرات
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}الرخصة
+STR_TEXTFILE_VIEW_README                                        :{BLACK}اعرض ملف التعليمات ريدمي
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}اعرض سجل التغييرات
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}الرخصة
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}اضبط الاعدادات
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}فتح/اغلاق اللوحة
@@ -2449,9 +2449,6 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}عدد الانماط: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}اعرض ملف القرائة للمحتوى الجديد {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}اعرض ملف التغييرات للمحتوى الجديد {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}رخصة المحتوى الجديد {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}نظرة فاحصة - {STRING}

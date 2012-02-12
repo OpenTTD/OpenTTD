@@ -2610,9 +2610,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Premakne
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam nameščenih NewGRF datotek.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Prikaži preberi-me datoteko
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Zamenjaj dnevnik
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licenca
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Prikaži preberi-me datoteko
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Zamenjaj dnevnik
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenca
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavi parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Prikaži parametre
@@ -2646,9 +2646,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Število parametrov: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF preberi-me od {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF zamenjaj dnevnik od {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licenca od {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} preberi-me od {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} zamenjaj dnevnik od {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licenca od {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Preglej - {STRING}

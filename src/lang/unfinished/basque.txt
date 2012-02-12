@@ -1594,9 +1594,9 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Artxiboa
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}NewGRF artxiboen lista eguneratu
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Ikusi "irakur nazazu"
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Aldaketak
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lizentzia
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Ikusi "irakur nazazu"
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Aldaketak
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizentzia
 
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Erakutsi parametroak
 

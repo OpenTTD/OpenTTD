@@ -2457,9 +2457,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Siirrä 
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista asennetuista NewGRF-tiedostoista.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Näytä readme-tiedosto
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Muutosloki
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lisenssi
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Näytä readme-tiedosto
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Muutosloki
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisenssi
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Aseta parametrit
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Näytä parametrit
@@ -2493,9 +2493,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametrien määrä: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF:n {STRING} readme-tiedosto
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF:n {STRING} muutosloki
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF:n {STRING} lisenssi
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}:n {STRING} readme-tiedosto
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}:n {STRING} muutosloki
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}:n {STRING} lisenssi
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}

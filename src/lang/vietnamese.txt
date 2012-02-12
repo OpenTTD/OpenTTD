@@ -2457,9 +2457,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Chuyển
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Danh sách file NewGRF đã cài đặt.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Xem readme
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Lịch sử thay đổi
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Giấy phép
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Hiển thị tham số
@@ -2493,9 +2493,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}Readme của NewGRF {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}Lịch sử thay đổi của NewGRF {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}Giấy phép của NewGRF {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}

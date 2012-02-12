@@ -2460,9 +2460,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pārviet
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalēto NewGRF failu saraksts.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Skatīt failu Lasi_mani
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Izmaiņu žurnāls
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licence
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt parametrus
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rādīt parametrus
@@ -2496,9 +2496,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametru skaits: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF {STRING} lasi_mani
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF {STRING} izmaiņu žurnāls
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF {STRING} licence
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} lasi_mani
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} izmaiņu žurnāls
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} licence
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pārbaude - {STRING}

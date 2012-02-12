@@ -2448,9 +2448,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Gerakkan
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Senarai fail NewGRF yang telah dipasang.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Lihat readme
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}LogUbah
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Lesen
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}LogUbah
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lesen
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Tetapkan parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Papar atau padam palet
@@ -2483,9 +2483,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Bilangan parameter: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF readme untuk {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF LogUbah untuk {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF lesen untuk {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme untuk {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} LogUbah untuk {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lesen untuk {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Periksa - {STRING}

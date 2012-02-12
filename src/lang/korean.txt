@@ -2449,9 +2449,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택�
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Readme 보기
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}변경기록
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}저작권
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}파라미터 설정
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}팔레트 바꾸기
@@ -2484,9 +2484,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF {STRING}의 Readme
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF {STRING}의 변경기록
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF {STRING}의 저작권
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}

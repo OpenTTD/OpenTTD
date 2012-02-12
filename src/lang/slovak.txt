@@ -2525,9 +2525,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunút
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Zoznam inštalovaných NewGRF súborov.
 
 # Additional textfiles accompanying NewGRFs
-STR_NEWGRF_SETTINGS_VIEW_README                                 :{BLACK}Zobraz čítajma
-STR_NEWGRF_SETTINGS_VIEW_CHANGELOG                              :{BLACK}Log zmien
-STR_NEWGRF_SETTINGS_VIEW_LICENSE                                :{BLACK}Licencia
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraz čítajma
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log zmien
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Ukázať parametre
@@ -2561,9 +2561,9 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet parametrov: {ORANGE}{NUM}
 
 # NewGRF textfile window
-STR_NEWGRF_README_CAPTION                                       :{WHITE}NewGRF "čítajma" {STRING}
-STR_NEWGRF_CHANGELOG_CAPTION                                    :{WHITE}NewGRF log zmien {STRING}
-STR_NEWGRF_LICENSE_CAPTION                                      :{WHITE}NewGRF licencia {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "čítajma" {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log zmien {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencia {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}
