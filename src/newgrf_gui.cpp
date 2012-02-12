@@ -470,7 +470,7 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 
 	NewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c) : TextfileWindow(file_type), grf_config(c)
 	{
-		this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_NEWGRF_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
+		this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 
 		const char *textfile = this->grf_config->GetTextfile(file_type);
 		this->LoadTextfile(textfile, NEWGRF_DIR);
@@ -478,7 +478,10 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 
 	/* virtual */ void SetStringParameters(int widget) const
 	{
-		if (widget == WID_TF_CAPTION) SetDParamStr(0, this->grf_config->GetName());
+		if (widget == WID_TF_CAPTION) {
+			SetDParam(0, STR_CONTENT_TYPE_NEWGRF);
+			SetDParamStr(1, this->grf_config->GetName());
+		}
 	}
 };
 
@@ -1633,12 +1636,12 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_OPEN_URL), SetFill(1, 0), SetResize(1, 0),
 				SetDataTip(STR_CONTENT_OPEN_URL, STR_CONTENT_OPEN_URL_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_NEWGRF_SETTINGS_VIEW_README, STR_NULL),
+				SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_VIEW_CHANGELOG, STR_NULL),
+					SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_NULL),
 			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NS_NEWGRF_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_VIEW_LICENSE, STR_NULL),
+					SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_NULL),
 		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NS_SHOW_APPLY),
