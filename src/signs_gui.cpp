@@ -131,7 +131,7 @@ struct SignList {
 	{
 		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
 		/* Hide sign if non-own signs are hidden in the viewport */
-		return (*a)->owner == _local_company;
+		return (*a)->owner == _local_company || (*a)->owner == OWNER_DEITY;
 	}
 
 	/** Filter out signs from the sign list that does not match the name filter */
@@ -139,7 +139,7 @@ struct SignList {
 	{
 		FilterInfo filter_info = {this->filter_string, this->match_case};
 		this->signs.Filter(&SignNameFilter, filter_info);
-		this->signs.Filter(&OwnerDeityFilter, filter_info);
+		if (_game_mode != GM_EDITOR) this->signs.Filter(&OwnerDeityFilter, filter_info);
 		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)) {
 			this->signs.Filter(&OwnerVisibilityFilter, filter_info);
 		}
@@ -642,7 +642,7 @@ static const WindowDesc _query_sign_edit_desc(
  */
 void HandleClickOnSign(const Sign *si)
 {
-	if (_ctrl_pressed && si->owner == _local_company) {
+	if (_ctrl_pressed && (si->owner == _local_company || (si->owner == OWNER_DEITY && _game_mode == GM_EDITOR))) {
 		RenameSign(si->index, NULL);
 		return;
 	}
