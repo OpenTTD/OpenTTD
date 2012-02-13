@@ -1800,7 +1800,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn b�
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat không được phép ở server này
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Bạn vừa gửi lên máy chủ quá nhiều lệnh
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Bạn nhập mật khẩu quá trễ
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Máy của bạn mất quá nhiều thời gian tham gia
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Máy của bạn quá chậm để có thể theo kịp máy chủ
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Thời gian tải bản đồ quá lâu
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Thời gian tham gia máy chủ quá lâu
 
@@ -2456,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Chuyển
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Chuyển NewGRF file xuống dưới
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Danh sách file NewGRF đã cài đặt.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Đặt tham số
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Hiển thị tham số
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Đổi bảng màu
@@ -2491,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt t
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -3570,6 +3560,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết Lập Lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Số ngày cần chờ để chạy AI này sau cái trước (sớm hay muộn): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Readme của {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lịch sử thay đổi của {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Giấy phép của {STRING} {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Xem readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lịch sử thay đổi
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Giấy phép
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

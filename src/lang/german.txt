@@ -1801,7 +1801,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sie wurd
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Mogeln ist auf diesem Server nicht erlaubt
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Es wurden zu viele Kommandos an den Server gesendet
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zeit für die Eingabe des Passwortes wurde überschritten
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer brauchte zu lange, um dem Spiel beizutreten
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer ist sehr langsam, sodass er nicht mit dem Server mithalten kann
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Das Herunterladen der Karte dauerte zu lange
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Der Beitritt zum Server dauerte zu lange
 
