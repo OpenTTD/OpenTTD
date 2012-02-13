@@ -3588,7 +3588,7 @@ void DeleteOilRig(TileIndex tile)
 
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (IsDriveThroughStopTile(tile)) {
+	if (IsRoadStopTile(tile)) {
 		for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 			/* Update all roadtypes, no matter if they are present */
 			if (GetRoadOwner(tile, rt) == old_owner) {
@@ -3624,11 +3624,7 @@ static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_o
 
 			case STATION_BUS:
 			case STATION_TRUCK:
-				if (!IsDriveThroughStopTile(tile)) {
-					/* Drive-through stops were already handled above. */
-					old_company->infrastructure.road[FIND_FIRST_BIT(GetRoadTypes(tile))] -= 2;
-					new_company->infrastructure.road[FIND_FIRST_BIT(GetRoadTypes(tile))] += 2;
-				}
+				/* Road stops were already handled above. */
 				break;
 
 			case STATION_BUOY:
