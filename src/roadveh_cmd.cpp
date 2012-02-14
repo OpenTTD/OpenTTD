@@ -416,7 +416,7 @@ void RoadVehicle::UpdateDeltaXY(Direction direction)
  */
 inline int RoadVehicle::GetCurrentMaxSpeed() const
 {
-	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) return this->vcache.cached_max_speed;
+	if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) return min(this->vcache.cached_max_speed, this->current_order.max_speed * 2);
 
 	int max_speed = this->vcache.cached_max_speed;
 
@@ -430,7 +430,7 @@ inline int RoadVehicle::GetCurrentMaxSpeed() const
 		}
 	}
 
-	return max_speed;
+	return min(max_speed, this->current_order.max_speed * 2);
 }
 
 /**

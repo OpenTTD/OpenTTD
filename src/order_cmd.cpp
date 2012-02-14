@@ -241,6 +241,7 @@ Order::Order(uint32 packed)
 	this->refit_subtype = 0;
 	this->wait_time     = 0;
 	this->travel_time   = 0;
+	this->max_speed     = UINT16_MAX;
 }
 
 /**
@@ -281,6 +282,7 @@ void Order::AssignOrder(const Order &other)
 
 	this->wait_time   = other.wait_time;
 	this->travel_time = other.travel_time;
+	this->max_speed   = other.max_speed;
 }
 
 /**

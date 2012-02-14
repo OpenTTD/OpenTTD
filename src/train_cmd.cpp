@@ -404,6 +404,7 @@ int Train::GetCurrentMaxSpeed() const
 		}
 	}
 
+	max_speed = min(max_speed, this->current_order.max_speed);
 	return min(max_speed, this->gcache.cached_max_track_speed);
 }
 
@@ -2748,7 +2749,7 @@ int Train::UpdateSpeed()
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
 		case AM_ORIGINAL:
-			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, this->gcache.cached_max_track_speed);
+			return this->DoUpdateSpeed(this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2), 0, min(this->gcache.cached_max_track_speed, this->current_order.max_speed));
 
 		case AM_REALISTIC:
 			return this->DoUpdateSpeed(this->GetAcceleration(), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 2, this->GetCurrentMaxSpeed());

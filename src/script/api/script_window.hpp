@@ -2154,6 +2154,8 @@ public:
 		WID_VT_SHARED_ORDER_LIST             = ::WID_VT_SHARED_ORDER_LIST,             ///< Show the shared order list.
 		WID_VT_ARRIVAL_DEPARTURE_SELECTION   = ::WID_VT_ARRIVAL_DEPARTURE_SELECTION,   ///< Disable/hide the arrival departure panel.
 		WID_VT_EXPECTED_SELECTION            = ::WID_VT_EXPECTED_SELECTION,            ///< Disable/hide the expected selection button.
+		WID_VT_CHANGE_SPEED                  = ::WID_VT_CHANGE_SPEED,                  ///< Change speed limit button.
+		WID_VT_CLEAR_SPEED                   = ::WID_VT_CLEAR_SPEED,                   ///< Clear speed limit button.
 	};
 
 	/** Widgets of the #MainToolbarWindow class. */

@@ -1107,6 +1107,8 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VT_SHARED_ORDER_LIST,                  "WID_VT_SHARED_ORDER_LIST");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VT_ARRIVAL_DEPARTURE_SELECTION,        "WID_VT_ARRIVAL_DEPARTURE_SELECTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VT_EXPECTED_SELECTION,                 "WID_VT_EXPECTED_SELECTION");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VT_CHANGE_SPEED,                       "WID_VT_CHANGE_SPEED");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_VT_CLEAR_SPEED,                        "WID_VT_CLEAR_SPEED");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_PAUSE,                              "WID_TN_PAUSE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_FAST_FORWARD,                       "WID_TN_FAST_FORWARD");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_TN_SETTINGS,                           "WID_TN_SETTINGS");

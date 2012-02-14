@@ -42,6 +42,10 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
 			order->travel_time = val;
 			break;
 
+		case MTF_TRAVEL_SPEED:
+			order->max_speed = val;
+			break;
+
 		default:
 			NOT_REACHED();
 	}
@@ -56,6 +60,10 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val,
 
 				case MTF_TRAVEL_TIME:
 					v->current_order.travel_time = val;
+					break;
+
+				case MTF_TRAVEL_SPEED:
+					v->current_order.max_speed = val;
 					break;
 
 				default:
@@ -98,6 +106,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	int wait_time   = order->wait_time;
 	int travel_time = order->travel_time;
+	int max_speed   = order->max_speed;
 	switch (mtf) {
 		case MTF_WAIT_TIME:
 			wait_time = GB(p2, 0, 16);
@@ -105,6 +114,10 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		case MTF_TRAVEL_TIME:
 			travel_time = GB(p2, 0, 16);
+			break;
+
+		case MTF_TRAVEL_SPEED:
+			max_speed = GB(p2, 0, 16);
 			break;
 
 		default:
@@ -125,10 +138,12 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	if (travel_time != order->travel_time && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
+	if (max_speed != order->max_speed && (order->IsType(OT_CONDITIONAL) || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (wait_time   != order->wait_time)   ChangeTimetable(v, order_number, wait_time,   MTF_WAIT_TIME);
 		if (travel_time != order->travel_time) ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME);
+		if (max_speed   != order->max_speed)   ChangeTimetable(v, order_number, max_speed,   MTF_TRAVEL_SPEED);
 	}
 
 	return CommandCost();
