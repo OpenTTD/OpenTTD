@@ -3442,7 +3442,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetabl
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel with at most {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Travel for {STRING} with at most {2:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
@@ -3465,6 +3467,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change t
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clear Time
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Change Speed Limit
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Change the maximum travel speed of the highlighted order
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Clear Speed Limit
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clear the maximum travel speed of the highlighted order
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset Late Counter
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time

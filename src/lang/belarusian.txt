@@ -1521,7 +1521,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Даз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна ці некалькі клетак ў паўночным куце мапы не пустыя
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. працялегласьць станцыі: {ORANGE}{STRING} клет{P 0:1 ка кi ак} {RED}(вялікія значэньні запавольваюць гульню)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. працялегласьць аб'яднанай станцыі: {ORANGE}{STRING} клет{P 0:1 ка кi ак} {RED}(вялікія значэньні запавольваюць гульню)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Уключыць абслугоўваньне на верталётных пляцоўках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Зьвязаць ляндшафтную панэль з транспартнай: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Колер зямлі на мінімапе: {ORANGE}{STRING}
@@ -2117,9 +2117,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас �
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Махлярства не дазволена на гэтым сэрвэры
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы дасылалi да сэрвэра занадта шмат камандаў
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы задоўга ня можаце ўвесьцi пароль
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш кампутар задоўга ня можа далучыцца
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Вы задоўга пампуеце мапу
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Вы задоўга далучаецеся да сэрвэра
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш кампутар задоўга ня можа далучыцца да сэрвэру
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ваш кампутар задоўга пампуе мапу
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ваш кампутар задоўга далучаецца да сэрвэру
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка
@@ -2793,11 +2793,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Унiз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перамясьціць выбраны файл NewGRF ніжэй
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Сьпіс устаноўленых файлаў NewGRF.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лiцэнзiя
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Усталяваць парамэтры
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Паказаць парамэтры
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Пераключыць палітру
@@ -2828,8 +2823,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ські
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамэтр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Колькасьць парамэтраў: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}
@@ -3726,7 +3719,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ісьці да
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ісьці да бліжэйшага ангара
 STR_ORDER_CONDITIONAL                                           :Умоўны пераход да заданьня
 STR_ORDER_SHARE                                                 :Агульныя заданьнi
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьнi» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьнi з вылучаным транспартам. Пстрычка па транспарце капiруе заданьнi гэтага транспарту.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьнi» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьнi з вылучаным транспартам. Пстрычка па транспарце капiруе заданьнi гэтага транспарту. Заданьне «ў дэпо» адключае аўтаматычнае абслугоўваньне гэтага транспарту.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Паказаць ўвесь транспарт з агульнымі заданьнямі
 
@@ -3830,6 +3823,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмя
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ськінуць час
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Ськінуць час у вылучаным заданьні
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ськід лічыльніка
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ськінуць лічыльнік так, каб транспарт прыбыў своечасова
 
@@ -3924,6 +3919,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закр
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Колькасьць дзён да старту гэтага AI/ШI пасьля папярэдняга: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} iнструкцыя {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} сьпiс зьменаў {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лiцэнзiя {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лiцэнзiя
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -4489,79 +4494,79 @@ STR_SV_SHIP_NAME                                                :Карабел�
 STR_SV_AIRCRAFT_NAME                                            :Самалёт {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{G=f}Паўночная {STRING}
-STR_SV_STNAME_NORTH.gen                                         :Паўночнай {STRING}
-STR_SV_STNAME_NORTH.acc                                         :Паўночную {STRING}
-STR_SV_STNAME_SOUTH                                             :{G=f}Паўднёвая {STRING}
-STR_SV_STNAME_SOUTH.gen                                         :Паўднёвай {STRING}
-STR_SV_STNAME_SOUTH.acc                                         :Паўднёвую {STRING}
-STR_SV_STNAME_EAST                                              :{G=f}Усходняя {STRING}
-STR_SV_STNAME_EAST.gen                                          :Усходняй {STRING}
-STR_SV_STNAME_EAST.acc                                          :Усходнюю {STRING}
-STR_SV_STNAME_WEST                                              :{G=f}Заходняя {STRING}
-STR_SV_STNAME_WEST.gen                                          :Заходняй {STRING}
-STR_SV_STNAME_WEST.acc                                          :Заходнюю {STRING}
-STR_SV_STNAME_CENTRAL                                           :{G=f}Цэнтральная {STRING}
-STR_SV_STNAME_CENTRAL.gen                                       :Цэнтральнай {STRING}
-STR_SV_STNAME_CENTRAL.acc                                       :Цэнтральную {STRING}
-STR_SV_STNAME_TRANSFER                                          :{G=f}Таварная {STRING}
-STR_SV_STNAME_TRANSFER.gen                                      :Таварнай {STRING}
-STR_SV_STNAME_TRANSFER.acc                                      :Таварную {STRING}
-STR_SV_STNAME_HALT                                              :Прамежкавая {STRING}
-STR_SV_STNAME_HALT.gen                                          :Прамежкавай {STRING}
-STR_SV_STNAME_HALT.acc                                          :Прамежкавую {STRING}
-STR_SV_STNAME_VALLEY                                            :Даліна {STRING}
-STR_SV_STNAME_VALLEY.gen                                        :Даліны {STRING}
-STR_SV_STNAME_VALLEY.acc                                        :Даліну {STRING}
-STR_SV_STNAME_HEIGHTS                                           :{G=f}{STRING}-Вышынная
-STR_SV_STNAME_HEIGHTS.gen                                       :{STRING}-Вышыннай
-STR_SV_STNAME_HEIGHTS.acc                                       :{STRING}-Вышынную
-STR_SV_STNAME_WOODS                                             :{G=f}Лясная {STRING}
-STR_SV_STNAME_WOODS.gen                                         :Лясной {STRING}
-STR_SV_STNAME_WOODS.acc                                         :Лясную {STRING}
-STR_SV_STNAME_LAKESIDE                                          :{G=f}Азёрная {STRING}
-STR_SV_STNAME_LAKESIDE.gen                                      :Азёрнай {STRING}
-STR_SV_STNAME_LAKESIDE.acc                                      :Азёрную {STRING}
-STR_SV_STNAME_EXCHANGE                                          :{G=f}{STRING}-Сартавальная
-STR_SV_STNAME_EXCHANGE.gen                                      :{STRING}-Сартавальнай
-STR_SV_STNAME_EXCHANGE.acc                                      :{STRING}-Сартавальную
-STR_SV_STNAME_AIRPORT                                           :{G=m}Аэрапорт {STRING}
-STR_SV_STNAME_AIRPORT.gen                                       :Аэрапорта {STRING}
-STR_SV_STNAME_AIRPORT.acc                                       :Аэрапорт {STRING}
-STR_SV_STNAME_OILFIELD                                          :{G=f}Нафтавая плятформа {STRING}
-STR_SV_STNAME_OILFIELD.gen                                      :Нафтавай плятформы {STRING}
-STR_SV_STNAME_OILFIELD.acc                                      :Нафтавую плятформу {STRING}
-STR_SV_STNAME_MINES                                             :{G=p}Шахты {STRING}
-STR_SV_STNAME_MINES.gen                                         :Шахтаў {STRING}
-STR_SV_STNAME_MINES.acc                                         :Шахты {STRING}
-STR_SV_STNAME_DOCKS                                             :{G=f}Прыстань {STRING}
-STR_SV_STNAME_DOCKS.gen                                         :Прыстанi {STRING}
-STR_SV_STNAME_DOCKS.acc                                         :Прыстань {STRING}
+STR_SV_STNAME_NORTH                                             :{G=m}{STRING}-Паўночны
+STR_SV_STNAME_NORTH.gen                                         :{STRING}-Паўночнага
+STR_SV_STNAME_NORTH.acc                                         :{STRING}-Паўночны
+STR_SV_STNAME_SOUTH                                             :{G=m}{STRING}-Паўднёвы
+STR_SV_STNAME_SOUTH.gen                                         :{STRING}-Паўднёвага
+STR_SV_STNAME_SOUTH.acc                                         :{STRING}-Паўднёвы
+STR_SV_STNAME_EAST                                              :{G=m}{STRING}-Усходнi
+STR_SV_STNAME_EAST.gen                                          :{STRING}-Усходняга
+STR_SV_STNAME_EAST.acc                                          :{STRING}-Усходнi
+STR_SV_STNAME_WEST                                              :{G=m}{STRING}-Заходнi
+STR_SV_STNAME_WEST.gen                                          :{STRING}-Заходняга
+STR_SV_STNAME_WEST.acc                                          :{STRING}-Заходнi
+STR_SV_STNAME_CENTRAL                                           :{G=m}{STRING}-Цэнтральны
+STR_SV_STNAME_CENTRAL.gen                                       :{STRING}-Цэнтральнага
+STR_SV_STNAME_CENTRAL.acc                                       :{STRING}-Цэнтральны
+STR_SV_STNAME_TRANSFER                                          :{G=m}{STRING}-Таварны
+STR_SV_STNAME_TRANSFER.gen                                      :{STRING}-Таварнага
+STR_SV_STNAME_TRANSFER.acc                                      :{STRING}-Таварны
+STR_SV_STNAME_HALT                                              :{G=m}{STRING}-Прамежкавы
+STR_SV_STNAME_HALT.gen                                          :{STRING}-Прамежкавага
+STR_SV_STNAME_HALT.acc                                          :{STRING}-Прамежкавага
+STR_SV_STNAME_VALLEY                                            :{G=f}{STRING}-Даліна
+STR_SV_STNAME_VALLEY.gen                                        :{STRING}-Даліны
+STR_SV_STNAME_VALLEY.acc                                        :{STRING}-Даліну
+STR_SV_STNAME_HEIGHTS                                           :{G=m}{STRING}-Вышынны
+STR_SV_STNAME_HEIGHTS.gen                                       :{STRING}-Вышыннага
+STR_SV_STNAME_HEIGHTS.acc                                       :{STRING}-Вышынны
+STR_SV_STNAME_WOODS                                             :{G=m}{STRING}-Лясны
+STR_SV_STNAME_WOODS.gen                                         :{STRING}-Ляснога
+STR_SV_STNAME_WOODS.acc                                         :{STRING}-Лясны
+STR_SV_STNAME_LAKESIDE                                          :{G=m}{STRING}-Азёрны
+STR_SV_STNAME_LAKESIDE.gen                                      :{STRING}-Азёрнага
+STR_SV_STNAME_LAKESIDE.acc                                      :{STRING}-Азёрны
+STR_SV_STNAME_EXCHANGE                                          :{G=m}{STRING}-Сартавальны
+STR_SV_STNAME_EXCHANGE.gen                                      :{STRING}-Сартавальнага
+STR_SV_STNAME_EXCHANGE.acc                                      :{STRING}-Сартавальны
+STR_SV_STNAME_AIRPORT                                           :{G=m}{STRING}-Аэрапорт
+STR_SV_STNAME_AIRPORT.gen                                       :{STRING}-Аэрапорта
+STR_SV_STNAME_AIRPORT.acc                                       :{STRING}-Аэрапорт
+STR_SV_STNAME_OILFIELD                                          :{G=f}{STRING} Нафтавая плятформа
+STR_SV_STNAME_OILFIELD.gen                                      :{STRING} Нафтавай плятформы
+STR_SV_STNAME_OILFIELD.acc                                      :{STRING} Нафтавую плятформу
+STR_SV_STNAME_MINES                                             :{G=p}{STRING}-Шахты
+STR_SV_STNAME_MINES.gen                                         :{STRING}-Шахтаў
+STR_SV_STNAME_MINES.acc                                         :{STRING}-Шахты
+STR_SV_STNAME_DOCKS                                             :{G=f}{STRING}-Прыстань
+STR_SV_STNAME_DOCKS.gen                                         :{STRING}-Прыстанi
+STR_SV_STNAME_DOCKS.acc                                         :{STRING}-Прыстань
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{G=f}{STRING}-Дадатковая
-STR_SV_STNAME_ANNEXE.gen                                        :{STRING}-Дадатковай
-STR_SV_STNAME_ANNEXE.acc                                        :{STRING}-Дадатковую
-STR_SV_STNAME_SIDINGS                                           :{G=f}{STRING}-Запасная
-STR_SV_STNAME_SIDINGS.gen                                       :{STRING}-Запасной
-STR_SV_STNAME_SIDINGS.acc                                       :{STRING}-Запасную
+STR_SV_STNAME_ANNEXE                                            :{G=m}{STRING}-Дадатковы
+STR_SV_STNAME_ANNEXE.gen                                        :{STRING}-Дадатковага
+STR_SV_STNAME_ANNEXE.acc                                        :{STRING}-Дадатковы
+STR_SV_STNAME_SIDINGS                                           :{G=m}{STRING}-Запасны
+STR_SV_STNAME_SIDINGS.gen                                       :{STRING}-Запаснога
+STR_SV_STNAME_SIDINGS.acc                                       :{STRING}-Запасны
 STR_SV_STNAME_BRANCH                                            :{G=m}{STRING}-Тупік
 STR_SV_STNAME_BRANCH.gen                                        :{STRING}-Тупіка
 STR_SV_STNAME_BRANCH.acc                                        :{STRING}-Тупік
-STR_SV_STNAME_UPPER                                             :{G=f}Верхняя {STRING}
-STR_SV_STNAME_UPPER.gen                                         :Верхняй {STRING}
-STR_SV_STNAME_UPPER.acc                                         :Верхнюю {STRING}
-STR_SV_STNAME_LOWER                                             :{G=f}Нiжняя {STRING}
-STR_SV_STNAME_LOWER.gen                                         :Нiжняй {STRING}
-STR_SV_STNAME_LOWER.acc                                         :Нiжнюю {STRING}
-STR_SV_STNAME_HELIPORT                                          :{G=f}Пляцоўка {STRING}
-STR_SV_STNAME_HELIPORT.gen                                      :Пляцоўкі {STRING}
-STR_SV_STNAME_HELIPORT.acc                                      :Пляцоўку {STRING}
-STR_SV_STNAME_FOREST                                            :{G=m}Лес {STRING}
-STR_SV_STNAME_FOREST.gen                                        :Леса {STRING}
-STR_SV_STNAME_FOREST.acc                                        :Лес {STRING}
-STR_SV_STNAME_FALLBACK                                          :г. {NBSP}{STRING}, станцыя №{NUM}
+STR_SV_STNAME_UPPER                                             :{G=m}{STRING} Верхнi
+STR_SV_STNAME_UPPER.gen                                         :{STRING} Верхняга
+STR_SV_STNAME_UPPER.acc                                         :{STRING} Верхнi
+STR_SV_STNAME_LOWER                                             :{G=m}{STRING}-Нiжнi
+STR_SV_STNAME_LOWER.gen                                         :{STRING}-Нiжняга
+STR_SV_STNAME_LOWER.acc                                         :{STRING}-Нiжнi
+STR_SV_STNAME_HELIPORT                                          :{G=f}{STRING}-Пляцоўка
+STR_SV_STNAME_HELIPORT.gen                                      :{STRING}-Пляцоўкi
+STR_SV_STNAME_HELIPORT.acc                                      :{STRING}-Пляцоўку
+STR_SV_STNAME_FOREST                                            :{G=m}{STRING}-Лес
+STR_SV_STNAME_FOREST.gen                                        :{STRING}-Леса
+STR_SV_STNAME_FOREST.acc                                        :{STRING}-Лес
+STR_SV_STNAME_FALLBACK                                          :{NBSP}{STRING}, станцыя №{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000

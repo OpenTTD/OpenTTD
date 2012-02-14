@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Dangos arwyddio
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animeiddiad llawn
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Manylder llawn
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Adeiladau tryloyw
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Arwyddion gorsaf tryloyw
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Arwyddion tryloyw
 ############ range ends here
 
 ############ range for file menu starts
@@ -1800,9 +1800,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}YCafoch 
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ni chaniateir twyllo ar y gweinydd hwn
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Roeddech yn gyrru gormod o orchmynion i'r gweinydd
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Fe gymeroch ormod o amser i fewnbynnu'r cyfrinair
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Roedd eich cyfrifiadur yn cymeryd gormod o amser i ymuno
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Fe gymeroch ormod o amser i lawrlwytho'r map
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Fe gymeroch ormod o amser i ymuno a'r gweinydd
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Mae'ch cyfrifiadur rhy araf i gadw amser gyda'r gweinydd
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Fe gymerodd eich cyfrifiadur gormod o amser i lawrlwytho'r map
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Fe gymerodd eich cyfrifiadur gormod o amser i ymuno a'r gweinydd
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :gwall cyffredinol
@@ -2456,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Symud i 
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Symud y ffeil NewGRF sydd wedi'i ddewis i lawr y rhestr
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Rhestr o bob ffeil NewGRF sydd wedi'u gosod.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Gweld dogfenyddiaeth
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log Newidiadau
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Trwydded
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Gosod paramedrau
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Dangos paramedrau
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Toglu palet
@@ -2491,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Gosod po
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramedr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nifer y paramedrau: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Dogfenyddiaeth {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Log newidiadau {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Trwydded {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Arolygu - {STRING}
@@ -3476,6 +3466,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid fa
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clirio Amser
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd.
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ailosod Mesurydd Hwyrni
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
 
@@ -3570,6 +3562,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Cau
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ailosod
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Nifer o ddiwrnodau i aros wedi dechrau AI blaenorol cyn dechrau hon (fwy neu lai): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Dogfenyddiaeth {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Log newidiadau {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Trwydded {STRING} {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Gweld dogfenyddiaeth
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log Newidiadau
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Trwydded
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

@@ -1824,9 +1824,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sei stat
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}I trucchi non sono ammessi su questo server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Stavano venendo inviati troppi comandi al server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Si è impiegato troppo tempo ad inserire la password
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Il computer ha impiegato troppo tempo ad entrare nella partita
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Il download della mappa ha richiesto troppo tempo
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}L'ingresso al server ha richiesto troppo tempo
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Il computer è troppo lento per restare al passo col server
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Il compiuter ha impiegato troppo tempo per il download della mappa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Il computer ha impiegato troppo tempo per l'ingresso al server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :errore generale
@@ -3493,6 +3493,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia l
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Elimina tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina l'impostazione della quantità di tempo per l'ordine selezionato
+
+
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Azzera ritardo
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario

@@ -3442,6 +3442,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataul
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje enimmillään {2:VELOCITY} (ei aikataulutettu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
@@ -3465,6 +3466,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta ku
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nollaa aika
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa tämän rivin aika
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuta nopeusrajoitusta
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuta valitun määräyksen suurinta sallittua nopeutta
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tyhjennä nopeusrajoitus
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tyhjennä valitun määräyksen suurin sallittu nopeus
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nollaa myöhästymislaskuri
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa myöhästymislaskuri, jotta vaunu olisi taas aikataulussa

@@ -3110,8 +3110,8 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Pakeisti
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Pakeisti visus laivus depe
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Pakeisti visus lėktuvus angare
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Naujos tr. priemonės
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Naujos tr. priemonės
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Naujas traukinys
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Naujas automobilis
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Naujas laivas
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Naujas lėktuvas
 
@@ -3214,7 +3214,7 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE.ka                             :Automobilį
 STR_REPLACE_VEHICLE_SHIP                                        :Laivas
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lėktuvas
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pasirink tr. priemonės tipa, kurią reikės keisti
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pasirink tr. priemonės tipą, kurią reikės keisti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pasirink tr. priemonės tipą, kuria bus keičiamos pasirinktos tr. priemonės
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradėti tr. priemonių keitimą
@@ -3293,9 +3293,9 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nėra ener
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Laukiama laisvo kelio
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Sekanti paskirties vieta yra per toli
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Važiuojama į {STATION}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Vyksta į „{STATION}“, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neturi užduočių, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Vyksta į {WAYPOINT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Vyksta į „{WAYPOINT}“, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Važiuoja link {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Remontuoti {DEPOT}, {VELOCITY}
 
@@ -3370,7 +3370,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Talpa: {
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Perorientuoti)
-STR_REFIT_TITLE                                                 :{GOLD}Pasirink 'sergimo' krovinio tipa:
+STR_REFIT_TITLE                                                 :{GOLD}Pasirink gabenamo krovinio tipą:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias perdarysite. Norėdami pasirinkti kelias transporto priemones, tempkite su pele. Spaudžiant ant tuščio ploto, pasirinksite visą transporto priemonę. Ctrl+Click pasirinks transporto priemonę ir sekančią jų eilę
@@ -3578,6 +3578,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti p
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ištrinti laiką
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Valyti pažymėto nurodymo trukmę
+
+
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Paleisti vėlavimo skaitiklį
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atstatyti vėlavimo skaitliuką, kad mašina nuo šiol nebvėluotų
