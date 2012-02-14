@@ -683,6 +683,25 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 }
 
 /**
+ * Convert the given km/h-ish speed to the display speed.
+ * @param speed the speed to convert
+ * @return the converted speed.
+ */
+uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
+{
+	return _units[_settings_game.locale.units].c_velocity.ToDisplay(speed * 10, false) / 16;
+}
+
+/**
+ * Convert the given display speed to the km/h-ish speed.
+ * @param speed the speed to convert
+ * @return the converted speed.
+ */
+uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
+{
+	return _units[_settings_game.locale.units].c_velocity.FromDisplay(speed * 16) / 10;
+}
+/**
  * Parse most format codes within a string and write the result to a buffer.
  * @param buff  The buffer to write the final string to.
  * @param str   The original string with format codes.
@@ -1137,7 +1156,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_VELOCITY: { // {VELOCITY}
 				assert(_settings_game.locale.units < lengthof(_units));
-				int64 args_array[] = {ConvertSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY) * 10 / 16)};
+				int64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY))};
 				StringParameters tmp_params(args_array);
 				buff = FormatString(buff, GetStringPtr(_units[_settings_game.locale.units].velocity), &tmp_params, last);
 				break;

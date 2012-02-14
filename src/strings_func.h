@@ -141,6 +141,9 @@ char *GetString(char *buffr, StringID string, const char *last);
 char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, const char *last, uint case_index = 0, bool game_script = false);
 const char *GetStringPtr(StringID string);
 
+uint ConvertKmhishSpeedToDisplaySpeed(uint speed);
+uint ConvertDisplaySpeedToKmhishSpeed(uint speed);
+
 void InjectDParam(uint amount);
 
 /**
