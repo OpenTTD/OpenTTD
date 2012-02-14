@@ -15,6 +15,7 @@
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_base.h"
+#include "cmd_helper.h"
 
 #include "table/strings.h"
 
@@ -22,29 +23,43 @@
  * Change/update a particular timetable entry.
  * @param v            The vehicle to change the timetable of.
  * @param order_number The index of the timetable in the order list.
- * @param time         The new time of the timetable entry.
- * @param is_journey   Whether to set the waiting or travelling time.
+ * @param val          The new data of the timetable entry.
+ * @param mtf          Which part of the timetable entry to change.
  */
-static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)
+static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 val, ModifyTimetableFlags mtf)
 {
 	Order *order = v->GetOrder(order_number);
-	int delta;
+	int delta = 0;
 
-	if (is_journey) {
-		delta = time - order->travel_time;
-		order->travel_time = time;
-	} else {
-		delta = time - order->wait_time;
-		order->wait_time = time;
+	switch (mtf) {
+		case MTF_WAIT_TIME:
+			delta = val - order->wait_time;
+			order->wait_time = val;
+			break;
+
+		case MTF_TRAVEL_TIME:
+			delta = val - order->travel_time;
+			order->travel_time = val;
+			break;
+
+		default:
+			NOT_REACHED();
 	}
 	v->orders.list->UpdateOrderTimetable(delta);
 
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
 		if (v->cur_real_order_index == order_number && v->current_order.Equals(*order)) {
-			if (is_journey) {
-				v->current_order.travel_time = time;
-			} else {
-				v->current_order.wait_time = time;
+			switch (mtf) {
+				case MTF_WAIT_TIME:
+					v->current_order.wait_time = val;
+					break;
+
+				case MTF_TRAVEL_TIME:
+					v->current_order.travel_time = val;
+					break;
+
+				default:
+					NOT_REACHED();
 			}
 		}
 		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
@@ -52,16 +67,15 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 }
 
 /**
- * Add or remove waiting times from an order.
+ * Change timetable data of an order.
  * @param tile Not used.
  * @param flags Operation to perform.
  * @param p1 Various bitstuffed elements
  * - p1 = (bit  0-19) - Vehicle with the orders to change.
  * - p1 = (bit 20-27) - Order index to modify.
- * - p1 = (bit    28) - Whether to change the waiting time or the travelling
- *                      time.
+ * - p1 = (bit 28-29) - Timetable data to change (@see ModifyTimetableFlags)
  * @param p2 The amount of time to wait.
- * - p2 = (bit  0-15) - Waiting or travelling time as specified by p1 bit 28
+ * - p2 = (bit  0-15) - The data to modify as specified by p1 bits 28-29.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -79,14 +93,22 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Order *order = v->GetOrder(order_number);
 	if (order == NULL || order->IsType(OT_IMPLICIT)) return CMD_ERROR;
 
-	bool is_journey = HasBit(p1, 28);
+	ModifyTimetableFlags mtf = Extract<ModifyTimetableFlags, 28, 2>(p1);
+	if (mtf >= MTF_END) return CMD_ERROR;
 
 	int wait_time   = order->wait_time;
 	int travel_time = order->travel_time;
-	if (is_journey) {
-		travel_time = GB(p2, 0, 16);
-	} else {
-		wait_time   = GB(p2, 0, 16);
+	switch (mtf) {
+		case MTF_WAIT_TIME:
+			wait_time = GB(p2, 0, 16);
+			break;
+
+		case MTF_TRAVEL_TIME:
+			travel_time = GB(p2, 0, 16);
+			break;
+
+		default:
+			NOT_REACHED();
 	}
 
 	if (wait_time != order->wait_time) {
@@ -105,8 +127,8 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (travel_time != order->travel_time && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time   != order->wait_time)   ChangeTimetable(v, order_number, wait_time,   false);
-		if (travel_time != order->travel_time) ChangeTimetable(v, order_number, travel_time, true);
+		if (wait_time   != order->wait_time)   ChangeTimetable(v, order_number, wait_time,   MTF_WAIT_TIME);
+		if (travel_time != order->travel_time) ChangeTimetable(v, order_number, travel_time, MTF_TRAVEL_TIME);
 	}
 
 	return CommandCost();
@@ -291,7 +313,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			 * processing of different orders when filling the timetable. */
 			time_taken = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
 
-			ChangeTimetable(v, v->cur_real_order_index, time_taken, travelling);
+			ChangeTimetable(v, v->cur_real_order_index, time_taken, travelling ? MTF_TRAVEL_TIME : MTF_WAIT_TIME);
 		}
 
 		if (v->cur_real_order_index == first_manual_order && travelling) {

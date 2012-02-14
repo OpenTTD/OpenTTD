@@ -493,11 +493,11 @@ struct TimetableWindow : Window {
 	static inline uint32 PackTimetableArgs(const Vehicle *v, uint selected)
 	{
 		uint order_number = (selected + 1) / 2;
-		uint is_journey   = (selected % 2 == 1) ? 1 : 0;
+		ModifyTimetableFlags mtf = (selected % 2 == 1) ? MTF_TRAVEL_TIME : MTF_WAIT_TIME;
 
 		if (order_number >= v->GetNumOrders()) order_number = 0;
 
-		return v->index | (order_number << 20) | (is_journey << 28);
+		return v->index | (order_number << 20) | (mtf << 28);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
