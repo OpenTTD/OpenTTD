@@ -140,7 +140,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (type >= GOAL_QUESTION_TYPE_COUNT) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (company == _local_company || (company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowGoalQuestion(uniqueid, type, p2, text);
+		if ((company != INVALID_COMPANY && company == _local_company) || (company == INVALID_COMPANY && Company::IsValidID(_local_company))) ShowGoalQuestion(uniqueid, type, p2, text);
 	}
 
 	return CommandCost();
