@@ -380,7 +380,7 @@ void UpdateAllTownVirtCoords()
 static void ChangePopulation(Town *t, int mod)
 {
 	t->population += mod;
-	SetWindowDirty(WC_TOWN_VIEW, t->index);
+	InvalidateWindowData(WC_TOWN_VIEW, t->index); // Cargo requirements may appear/vanish for small populations
 	t->UpdateVirtCoord();
 
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
