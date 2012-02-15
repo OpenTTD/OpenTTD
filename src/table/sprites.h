@@ -270,8 +270,12 @@ static const uint16 ONEWAY_SPRITE_COUNT = 6;
 static const SpriteID SPR_FLAGS_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT;
 static const uint16 FLAGS_SPRITE_COUNT = 36;
 
+/** Tunnel sprites with grass only for custom railtype tunnel. */
+static const SpriteID SPR_RAILTYPE_TUNNEL_BASE = SPR_FLAGS_BASE + FLAGS_SPRITE_COUNT;
+static const uint16 RAILTYPE_TUNNEL_BASE_COUNT = 16;
+
 /* Not really a sprite, but an empty bounding box. Used to construct bounding boxes that help sorting the sprites, but do not have a sprite associated. */
-static const SpriteID SPR_EMPTY_BOUNDING_BOX = SPR_FLAGS_BASE + FLAGS_SPRITE_COUNT;
+static const SpriteID SPR_EMPTY_BOUNDING_BOX = SPR_RAILTYPE_TUNNEL_BASE + RAILTYPE_TUNNEL_BASE_COUNT;
 static const uint16 EMPTY_BOUNDING_BOX_SPRITE_COUNT = 1;
 
 /* From where can we start putting NewGRFs? */

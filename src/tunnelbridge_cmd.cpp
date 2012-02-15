@@ -1115,13 +1115,20 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		bool catenary = false;
 
 		SpriteID image;
+		SpriteID railtype_overlay = 0;
 		if (transport_type == TRANSPORT_RAIL) {
-			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			image = rti->base_sprites.tunnel;
+			if (rti->UsesOverlay()) {
+				/* Check if the railtype has custom tunnel portals. */
+				railtype_overlay = GetCustomRailSprite(rti, ti->tile, RTSG_TUNNEL_PORTAL);
+				if (railtype_overlay != 0) image = SPR_RAILTYPE_TUNNEL_BASE; // Draw blank grass tunnel base.
+			}
 		} else {
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
 		}
 
-		if (HasTunnelBridgeSnowOrDesert(ti->tile)) image += 32;
+		if (HasTunnelBridgeSnowOrDesert(ti->tile)) image += railtype_overlay != 0 ? 8 : 32;
 
 		image += tunnelbridge_direction * 2;
 		DrawGroundSprite(image, PAL_NONE);
@@ -1164,9 +1171,13 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			}
 		}
 
-		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, BB_data[0], BB_data[1], TILE_HEIGHT, ti->z, false, BB_data[2], BB_data[3], BB_Z_SEPARATOR);
+		if (railtype_overlay != 0 && !catenary) StartSpriteCombine();
 
-		if (catenary) EndSpriteCombine();
+		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, BB_data[0], BB_data[1], TILE_HEIGHT, ti->z, false, BB_data[2], BB_data[3], BB_Z_SEPARATOR);
+		/* Draw railtype tunnel portal overlay if defined. */
+		if (railtype_overlay != 0) AddSortableSpriteToDraw(railtype_overlay + tunnelbridge_direction, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, BB_data[0], BB_data[1], TILE_HEIGHT, ti->z, false, BB_data[2], BB_data[3], BB_Z_SEPARATOR);
+
+		if (catenary || railtype_overlay != 0) EndSpriteCombine();
 
 		/* Add helper BB for sprite sorting that separates the tunnel from things beside of it. */
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x,              ti->y,              BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);

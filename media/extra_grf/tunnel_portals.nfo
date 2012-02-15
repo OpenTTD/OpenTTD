@@ -1,0 +1,74 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+
+   -1 * 63	 0C "Tunnel portal overlays for railtypes by Snail (Jacopo Coletto)"
+
+// Tropical sprites.
+   -1 * 6	 07 83 01 \7! 02 11
+   -1 * 3	 05 17 10
+   -1 sprites/tunnel_portals.png 5 88 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 88 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 88 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 88 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 88 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 88 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 88 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 88 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 5 170 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 170 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 170 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 170 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 170 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 170 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 170 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 170 01 37 40 -31 -38
+
+// Temperate grass + snow sprites.
+   -1 * 6	 07 83 01 \7= 02 25
+   -1 * 3	 05 17 10
+   -1 sprites/tunnel_portals.png 5 6 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 6 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 6 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 6 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 6 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 6 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 6 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 6 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 5 129 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 129 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 129 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 129 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 129 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 129 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 129 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 129 01 37 40 -31 -38
+
+// Arctic grass sprites.
+   -1 * 6	 07 83 01 \7! 01 09
+   -1 * 4	 05 97 08 00
+   -1 sprites/tunnel_portals.png 5 47 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 47 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 47 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 47 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 47 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 47 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 47 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 47 01 37 40 -31 -38
+
+// Toyland sprites.
+   -1 * 6	 07 83 01 \7! 03 09
+   -1 * 4	 05 97 08 00
+   -1 sprites/tunnel_portals.png 5 211 01 33 35 -31 -2
+   -1 sprites/tunnel_portals.png 43 211 01 37 40 -7 -38
+   -1 sprites/tunnel_portals.png 86 211 01 21 35 -31 0
+   -1 sprites/tunnel_portals.png 124 211 01 22 40 -7 -29
+   -1 sprites/tunnel_portals.png 168 211 01 21 35 -2 0
+   -1 sprites/tunnel_portals.png 206 211 01 22 40 -31 -29
+   -1 sprites/tunnel_portals.png 249 211 01 33 35 -2 -2
+   -1 sprites/tunnel_portals.png 287 211 01 37 40 -31 -38

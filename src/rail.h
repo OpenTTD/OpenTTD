@@ -46,6 +46,7 @@ enum RailTypeSpriteGroup {
 	RTSG_CROSSING,    ///< Level crossing overlay images
 	RTSG_DEPOT,       ///< Depot images
 	RTSG_FENCES,      ///< Fence images
+	RTSG_TUNNEL_PORTAL, ///< Tunnel portal overlay
 	RTSG_END,
 };
 

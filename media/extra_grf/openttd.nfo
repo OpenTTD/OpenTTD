@@ -110,3 +110,4 @@
 #include "rivers/arctic.nfo"
 #include "rivers/tropic.nfo"
 #include "rivers/toyland.nfo"
+#include "tunnel_portals.nfo"
