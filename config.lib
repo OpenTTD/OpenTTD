@@ -3120,9 +3120,9 @@ detect_grfcodec() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "846" ]; then
-		if [ -n "$version" ] && [ "$version" -lt "846" ]; then
-			log 1 "checking grfcodec... needs at least version 5.1.3 (r846), disabled"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version" -lt "897" ]; then
+		if [ -n "$version" ] && [ "$version" -lt "897" ]; then
+			log 1 "checking grfcodec... needs at least version 5.1.4 (r897), disabled"
 		else
 			log 1 "checking grfcodec... not found"
 		fi
