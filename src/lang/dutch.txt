@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Toon tegenstand
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Alle animaties
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Alle details
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparante gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante stationsborden
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparante borden
 ############ range ends here
 
 ############ range for file menu starts
@@ -1800,9 +1800,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent 
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Valsspelen is niet toegestaan op deze server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Je stuurde te veel commando's naar de server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Het invoeren van het wachtwoord duurde te lang
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Het duurde te lang totdat uw computer zich aanmeldde
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Het duurde je te lang om de kaart te downloaden
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Het duurde je te lang om met de server te verbinden
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Het duurde jouw computer te lang totdat uw computer zich aanmeldde
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Het duurde jouw computer te lang om de kaart te downloaden
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Het duurde jouw computer te lang om met de server te verbinden
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
@@ -2456,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Naar ben
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Verplaats het geselecteerde NewGRF-bestand naar beneden in de lijst
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Een lijst van de NewGRF-bestanden die zijn geïnstalleerd.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Bekijk leesme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Wijzigingen
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters in
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Laat parameters zien
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palet omzetten
@@ -2491,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Zet alle
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Aantal parameters: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesme van {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecteer - {STRING}
@@ -3452,7 +3442,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstre
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijd (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {2:VELOCITY} (geen tijdschema)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {2:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd naar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
@@ -3475,6 +3467,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Verwijder tijd
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de tijdsduur die de geselecteerde order mag duren
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Wijzig Maximum Snelheid
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Wijzig de maximum snelheid voor de gekozen order
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Verwijder Snelheidslimiet
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Verwijderen de maximum snelheid van de gekozen order
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset vertragingsteller
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de vertragingsteller zodat het voertuig op tijd is
@@ -3570,6 +3568,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Aantal dagen dat deze AI start na de vorige (ongeveer): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} leesme van {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} wijzigingen van {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licentie van {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Bekijk leesme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Wijzigingen
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licentie
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

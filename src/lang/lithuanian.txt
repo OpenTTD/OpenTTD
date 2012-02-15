@@ -3548,57 +3548,69 @@ STR_INVALID_ORDER                                               :{RED} (Neteisin
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tvarkaraštis)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Užduotys
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Pereiti į užsakymą
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Pereiti į užduotis
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Grafikas - nurodymas paryškės ant jo spustelėjus
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tvarkaraštis — konkrečią užduotį pažymėsite spragtelėdami ją
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nėra kelionių
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kelionė (automatinė; pagal kito nurodymo tvarkaraštį)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kelionė (nėra tvarkaraštyje)
-STR_TIMETABLE_TRAVEL_FOR                                        :Keliauti už {STRING}
-STR_TIMETABLE_STAY_FOR                                          :ir pasilikti už {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :ir keliauti už {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a ų os}
-STR_TIMETABLE_TICKS                                             :{COMMA} žym{P a ų os}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Vykti ne didesniu, nei {2:VELOCITY} greičiu (kelionės trukmė nenustatyta)
+STR_TIMETABLE_TRAVEL_FOR                                        :Keliauti {STRING.ka}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Vykti {STRING} ne didesniu, nei {2:VELOCITY} greičiu
+STR_TIMETABLE_STAY_FOR                                          :ir pasilikti {STRING.ka}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :ir keliauti {STRING.ka}
+STR_TIMETABLE_DAYS                                              :{G=mot}{COMMA} dien{P a os ų}
+STR_TIMETABLE_DAYS.kas                                          :{COMMA} dien{P a os ų}
+STR_TIMETABLE_DAYS.ko                                           :{COMMA} dien{P os as ų}
+STR_TIMETABLE_DAYS.kam                                          :{COMMA} dien{P ai oms ų}
+STR_TIMETABLE_DAYS.ka                                           :{COMMA} dien{P ą as ų}
+STR_TIMETABLE_DAYS.kuo                                          :{COMMA} dien{P a omis ų}
+STR_TIMETABLE_DAYS.kur                                          :{COMMA} dien{P oje ose ų}
+STR_TIMETABLE_TICKS                                             :{COMMA} žym{P a os ų}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Apvažiuos visą maršrutą per {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Šis maršrutas užtruks mažiausiai {STRING} (ne viskas turi nustatytą laiką)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Maršruto trukmė yra {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Maršruto trukmė yra mažiausiai {STRING}, nes nustatytos ne visų užduočių trukmės
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Transporto priemonė atvažiuoja laiku
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Transporto priemonė tvarkaraščio laikosi
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Transporto priemonė vėluoja {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Transporto priemonė skuba {STRING}
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Šis tvarkaraštis dar neprasidėjo
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Šis tvarkaraštis prasidės {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Tvarkaraštis dar nėra aktyvintas
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tvarkaraštis bus aktyvintas {STRING}
 
-STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Pradžios data
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Pasirinkito šio tvarkaraščio pradžią
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Aktyvinimo data
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Nustatykite šio tvarkaraščio aktyvinimo datą
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti laiką
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėto nurodymo trukmę
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Keisti trukmę
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Keisti pažymėtos užduoties trukmę
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ištrinti laiką
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Valyti pažymėto nurodymo trukmę
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Trukmės neriboti
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Atšaukti pažymėtos užduoties trukmės ribojimus
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Pakeisti greičio ribą
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Pakeisti pažymėtos užduoties maksimalaus greičio ribą
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Greičio neriboti
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Neriboti pažymėtos užduoties greičio
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Paleisti vėlavimo skaitiklį
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Atkurti vėlavimo skaitiklį
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atstatyti vėlavimo skaitliuką, kad mašina nuo šiol nebvėluotų
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto užpildymas
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Užpildyti tvarkaraštį iš kitos kelionės tvarkaraščio. (Ctrl+Paspaudimas bandys palikti laukimo laikus)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoužpildymas
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automatiškai užpildyti tvarkaraštį pagal transporto priemonės užduotis (spragtelkite laikydami nuspaudę Ctrl, jei norite bandyti išsaugoti laukimo trukmes)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Tikimasi
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planuota
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Keisti tarp tikėtino ir planuoto
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Tikėtini laikai
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Planuoti laikai
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Rodyti arba suplanuotus atvykimo laikus, arba tikėtinus atvykimo laikus (pastarieji gali keistis atsižvelgiant į tai, ar transporto priemonė laikosi tvarkaraščio)
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :AT:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :IŠ:
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :Atv.:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :Išv.:
 
 
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Nustatyti datą
 STR_DATE_SET_DATE                                               :{BLACK}Nustatyti datą
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Naudoti pasirinktą datą kaip tvarkaraščio pradžią
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Nustatykite dieną, kuomet tvarkaraštis bus aktyvintas
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Pasirinkti dieną
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Pasirinkti mėnesį
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Pasirinkti metus

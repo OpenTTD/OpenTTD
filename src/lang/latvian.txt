@@ -2459,11 +2459,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Uz leju
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pārvietot atlasīto NewGRF failu saraksta apakšā
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Instalēto NewGRF failu saraksts.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Iestatīt parametrus
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Rādīt parametrus
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Iespējot paleti
@@ -2494,11 +2489,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Iestatī
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM}. parametrs
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametru skaits: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} lasi_mani
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} izmaiņu žurnāls
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} licence
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Pārbaude - {STRING}
@@ -3314,21 +3304,21 @@ STR_ORDER_GO_TO                                                 :Braukt uz
 STR_ORDER_GO_NON_STOP_TO                                        :Braukt bez pieturām uz
 STR_ORDER_GO_VIA                                                :Braukt caur
 STR_ORDER_GO_NON_STOP_VIA                                       :Braukt bez pieturām caur
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Izmainīt apstāšanās veidu izvēlētajai komandai
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Mainīt apstāšanās veidu atlasītajā rīkojumā
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pielādēt pilnu ar jebkuru kravu
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Pielādēt, ja ir pieejams
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pielādēt pilnu ar visām kravām
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pielādēt pilnu ar jebkurām kravām
 STR_ORDER_DROP_NO_LOADING                                       :Bez iekraušanas
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Izmainīt iekraušanas veidu izvēlētajai komandai
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Mainīt iekraušanas veidu atlasītajā rīkojumā
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Izkraut visu
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Izkraut, ja kravu pieņem
 STR_ORDER_DROP_UNLOAD                                           :Izkraut visu
 STR_ORDER_DROP_TRANSFER                                         :Pārkraut
 STR_ORDER_DROP_NO_UNLOADING                                     :Bez izkraušanas
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Izmainīt izkraušanas veidu izvēlētajai komandai
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Mainīt izkraušanas veidu atlasītajā rīkojumā
 
 STR_ORDER_REFIT                                                 :{BLACK}Pielāgot
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Izvēlieties, uz kādu kravas veidu pārveidot norīkojumā. Ctrl+klikšķis, lai atceltu pārveidošanas norādījumu
@@ -3461,7 +3451,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts
 STR_TIMETABLE_NO_TRAVEL                                         :Bez braukšanas
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ceļot (automātiski; iegrafikosies līdz ar nākamo pašrocīgo rīkojumu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Braukšana (nav pēc saraksta)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Braukt ar ne vairāk kā {2:VELOCITY} (nav sarakstā)
 STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {2:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
@@ -3484,6 +3476,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mainīt 
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Notīrīt laiku
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Dzēst laiku atlasītajam norīkojumam
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Mainīt ātruma ierobežojumu
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Mainīt maksimālo braukšanas ātrumu atlasītajā rīkojumā
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nodzēst ātruma ierobežojumu
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Nodzēst maksimālo braukšanas ātrumu atlasītajā rīkojumā
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest kavējuma skaitītāju
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju, lai transportlīdzeklis būtu laikā
@@ -3579,6 +3577,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dienu skaits, līdz palaist šo MI pēc iepriekšējā: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} lasi_mani
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} izmaiņu žurnāls
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} licence
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

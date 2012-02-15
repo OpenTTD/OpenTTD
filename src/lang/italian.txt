@@ -3470,7 +3470,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tabella 
 STR_TIMETABLE_NO_TRAVEL                                         :Nessun viaggio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viaggia (automatico; orario basato sul successivo ordine manuale)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia (senza orario)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaggia a non più di {2:VELOCITY} (senza orario)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaggia per {STRING} a non più di {2:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaggia per {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} giorn{P o i}
@@ -3494,7 +3496,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia l
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Elimina tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina l'impostazione della quantità di tempo per l'ordine selezionato
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambia limite di velocità
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia l'impostazione del limite di velocità per l'ordine selezionato
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Elimina limite di velocità
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Elimina l'impostazione del limite di velocità per l'ordine selezionato
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Azzera ritardo
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario

@@ -3443,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Unterwegs (automatisch; Fahrplan abhängig vom nächsten manuellen Auftrag)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Unterwegs (ohne Fahrplan)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fahrt mit höchstens {2:VELOCITY} (ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Unterwegs für {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Fahrt zu {STRING} mit höchstens {2:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :und {STRING} lang bleiben
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :und {STRING} lang unterwegs
 STR_TIMETABLE_DAYS                                              :{COMMA} Tag{P "" e}
@@ -3466,6 +3468,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahm
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zeit löschen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahmen für den markierten Auftrag löschen
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Tempolimit ändern
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Tempolimit beim Ausführen des ausgewählten Auftrags ändern
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tempolimit löschen
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Geschwindigkeitsbegrenzung beim Ausführen des ausgewählten Auftrags löschen
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspätung löschen
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Verspätungsmelder zurücksetzen (das Fahrzeug gilt dann als pünktlich).

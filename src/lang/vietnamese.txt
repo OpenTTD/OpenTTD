@@ -3362,7 +3362,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Đi tới xư�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Đi tới xưởng ở sân bay gần nhất
 STR_ORDER_CONDITIONAL                                           :Điểm lộ trình có điều kiện
 STR_ORDER_SHARE                                                 :Lịch trình chia sẻ
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl để là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'bảo trì'. 'Lộ trình chia sẻ" hoặc giữ Ctrl để cho phép phương tiện này chia sẻ lộ trình với phương tiện đã chọn. Nháy vào một phương tiện để sao chép lộ trình từ phương tiện đó.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Thêm một điểm lộ trình trước điểm đã chọn, hoặc thêm nó vào cuối danh sách. Ctrl nếu là ga thì 'bốc xếp đủ bất kỳ hàng nào', là điểm mốc thì 'đi suốt' và là xưởng thì 'bảo trì'. 'Lộ trình chia sẻ" hoặc giữ Ctrl để cho phép phương tiện này chia sẻ lộ trình với phương tiện đã chọn. Nháy vào một phương tiện để sao chép lộ trình từ phương tiện đó. Lệnh dẫn đến xưởng sẽ dừng việc bảo trì tự động cho phương tiện
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Hiện tất cả phương tiện chia sẻ lộ trình này
 
@@ -3465,6 +3465,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đ�
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Xoá thời gian
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình
+
+
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Lập lại bộ đếm trễ
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để việc di chuyển phương tiện được tính lại đúng đắn
