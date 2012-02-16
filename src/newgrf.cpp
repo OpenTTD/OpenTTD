@@ -1199,10 +1199,12 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x2C && count != 0);
 				if (prop == 0x2C) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				uint32 &ctt = prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
-					SetBit(prop == 0x2C ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+					SetBit(ctt, ctype);
 				}
 				break;
 			}
@@ -1379,10 +1381,12 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x24 && count != 0);
 				if (prop == 0x24) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				uint32 &ctt = prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
-					SetBit(prop == 0x24 ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+					SetBit(ctt, ctype);
 				}
 				break;
 			}
@@ -1543,10 +1547,12 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1E && count != 0);
 				if (prop == 0x1E) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				uint32 &ctt = prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
-					SetBit(prop == 0x1E ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+					SetBit(ctt, ctype);
 				}
 				break;
 			}
@@ -1685,10 +1691,12 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 				uint8 count = buf->ReadByte();
 				_gted[e->index].UpdateRefittability(prop == 0x1D && count != 0);
 				if (prop == 0x1D) _gted[e->index].defaultcargo_grf = _cur.grffile;
+				uint32 &ctt = prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask;
+				ctt = 0;
 				while (count--) {
 					CargoID ctype = GetCargoTranslation(buf->ReadByte(), _cur.grffile);
 					if (ctype == CT_INVALID) continue;
-					SetBit(prop == 0x1D ? _gted[e->index].ctt_include_mask : _gted[e->index].ctt_exclude_mask, ctype);
+					SetBit(ctt, ctype);
 				}
 				break;
 			}
