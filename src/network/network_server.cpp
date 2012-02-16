@@ -1330,7 +1330,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 {
-	if (this->status < STATUS_AUTHORIZED) {
+	if (this->status < STATUS_PRE_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
 	}
