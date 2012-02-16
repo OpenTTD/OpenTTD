@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Afficher les no
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animation complète
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Détails maximums
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Édifices transparents
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Noms et panneaux transparents
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Panneaux transparents
 ############ range ends here
 
 ############ range for file menu starts
@@ -1801,9 +1801,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vous ave
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tricher n'est pas autorisé sur ce serveur
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vous envoyiez trop de commandes au serveur
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vous avez mis trop de temps pour entrer le mot de passe
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Le téléchargement de la carte a mis trop de temps
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Vous avez mis trop de temps pour rejoindre le serveur
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre ordinateur est trop lent pour suivre le serveur
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Votre ordinateur a mis trop de temps pour télécharger la carte
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre le serveur
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erreur générale
@@ -1929,7 +1929,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, qui
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des noms de station.{}Ctrl-clic pour verrouiller.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparence des panneaux.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparence des arbres.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparence des maisons.{}Ctrl-clic pour verrouiller.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparence des industries.{}Ctrl-clic pour verrouiller.
@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Arrêt d
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Choisir l'orientation de l'arrêt d'autobus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Aire de chargement
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Choix de l'orientation de l'aire de chargement
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Tramway pour passagers
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientation de la station de tramway pour passagers
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Choisir l'orientation de la station de tramway pour passagers
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Tramway pour fret
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientation de la station de tramway pour fret
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Choisir l'orientation de la station de tramway pour fret
 
 # Waterways toolbar (last two for SE only)
@@ -3363,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Aller au dépô
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Aller au hangar le plus proche
 STR_ORDER_CONDITIONAL                                           :Saut conditionnel d'ordre
 STR_ORDER_SHARE                                                 :Partager les ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont «{NBSP}Chargement complet par un seul type{NBSP}», les ordres de point de contrôle sont «{NBSP}sans arrêt{NBSP}» et les ordres de dépôt sont «{NBSP}entretien{NBSP}». «{NBSP}Partager les ordres{NBSP}» ou Ctrl fait que ce véhicule partage ses ordres avec le véhicule sélectionné. Cliquer sur un véhicule copie les ordres de ce véhicule.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont «{NBSP}Chargement complet par un seul type{NBSP}», les ordres de point de contrôle sont «{NBSP}sans arrêt{NBSP}» et les ordres de dépôt sont «{NBSP}entretien{NBSP}». «{NBSP}Partager les ordres{NBSP}» ou Ctrl fait que ce véhicule partage ses ordres avec le véhicule sélectionné. Cliquer sur un véhicule copie les ordres de ce véhicule. Un ordre de dépôt désactive l'entretien automatique du véhicule
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Afficher tous les véhicules partageant ce programme
 
@@ -3443,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire 
 STR_TIMETABLE_NO_TRAVEL                                         :Pas de voyage
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automatique{NBSP}; horaire au prochain ordre manuel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaire)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Déplacement à {2:VELOCITY} max. (non planifié)
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Déplacement de {STRING} à {1:VELOCITY} max.
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}
@@ -3466,6 +3468,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler durée
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modifier la vitesse limite
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Modifier la vitesse maximale de déplacement de l'ordre sélectionné
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Annuler la vitesse limite
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Annuler la vitesse maximale de déplacement de l'ordre sélectionné
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}RAZ compteur de retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Remettre à zéro le compteur de retard (le véhicule sera donc à l'heure)

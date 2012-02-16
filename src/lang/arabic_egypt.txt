@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :بداية ال
 STR_SORT_BY_RUNNING_COST                                        :تكلفة التشغيل
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :القوة/تكلفة التشغيل
 STR_SORT_BY_CARGO_CAPACITY                                      :سعة الشحن
+STR_SORT_BY_RANGE                                               :مدى
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ايقاف اللعبة
@@ -348,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :انهاء
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :خيارات اللعبة
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :خيارات الصعوبة
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :اعدادات متقدمة
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :الذكاء الصناعي/ اعدادات اللعبة
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :إعدادات جرافيك جديده
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :خيارات الشفافية
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :عرض اسماء المدن
@@ -380,6 +382,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :جد المدي
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :العروض
+STR_SUBSIDIES_MENU_GOAL                                         :الاهداف الحالية
 ############ range ends here
 
 ############ range for graph menu starts
@@ -444,6 +447,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :توقل كون
 STR_ABOUT_MENU_AI_DEBUG                                         :مكتشف اخطاء الذكاء الصناعي
 STR_ABOUT_MENU_SCREENSHOT                                       :صورة من الشاشة - Ctrl-S -
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :صورة للشاشة مصغرة
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :تقريب الشاشة القياسي
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :صورة كبيرة لكامل الخريطة -Ctrl-G -
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :حول 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :موائم العفريتات
@@ -747,6 +751,8 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}تغي�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}العروض
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}معلومات عامة
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK} ... المواطنون يحتفلون{} اول قطار وصل في {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}يحتفل الأهالي ...{}بوصول اول باص للمحطة ...{STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}الأهالي يحتفلون ... {}بوصول اول عربة الى .. {STATION}!
@@ -821,6 +827,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} لا يستطيع ايجاد طريق للمواصلة
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} تائه
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} دخل العربة السنة السابقة {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE}لا يمكن الوصول للمحطة التالية لانها خارج المدى
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}امرالاستبدال توقف {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}فشل تطبيق الاستبدال الذاتي ل{VEHICLE}{}{STRING}
@@ -1155,6 +1162,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE} الس
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}السماح ببناء محطات متلاصقة{ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}السماح بتعدد محركات NewGFR {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}صيانة البنية التحتية: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE} المطارات لا تنتهي صلاحيتها {ORANGE}{STRING}
 
@@ -1172,6 +1180,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}زمن 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}تاخير احداث الهوفر: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}عرض التلميحات: {ORANGE}اضغط يمين
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}أعرض عدد السكان مع الاسم على العلامة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}سمك الخطوط في العرض: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}مولد الأرض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
@@ -1263,6 +1272,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الحاسوب: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE} السماح بالذكاء الصناعي في اللعب الجماعي : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes قبل تعليق الاسكربت: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
@@ -1355,6 +1365,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE} الم
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE} قطارات
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE} مدن
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}الاسكربت
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلي
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1366,6 +1377,20 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE} موج
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}العكس عند الإشارات: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
+
+# Config errors
+STR_CONFIG_ERROR                                                :{WHITE}خطا في ملف الاعدادات
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}خطا في الجملة '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... قيمة غير صحيحة '{STRING}' لـ '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... حروف في نهاية الاعدادات '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... تجاهل الاضافات الجديدة '{STRING}': متطابق مع اضافة '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}...تجاهل الاضافة الجديده '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :غير متوفر
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :غير امن للاستخدام
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :نظام الاضافات الجديدة
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :غير متطابق مع هذه النسخة من OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :مجهول
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... نسبة الضغط '{STRING}' غير صحيحة
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2097,7 +2122,7 @@ STR_OBJECT_CLASS_TRNS                                           :النواقل
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}اشجار
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK} اختر نوع الشجر لزراعتة
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK} اختر نوع الشجر لزراعتة, اذا المربع يحتوي على اشجار فهذا الامر يضيف المزيد
 STR_TREES_RANDOM_TYPE                                           :{BLACK}شجر عشوائي
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ضع شجر عشوائي
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}زراعة اشجار عشوائيا
@@ -2413,11 +2438,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}تحري
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}حرك الملف المختار الى الاسفل في القائمة
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}قائمة ملفات NewGRF المركبة. اضغط على الملف لتغييرة.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}اعرض ملف التعليمات ريدمي
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}اعرض سجل التغييرات
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}الرخصة
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}اضبط الاعدادات
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}فتح/اغلاق اللوحة
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}فتح / اغلاق لوحة NewGRF المختارة.{} افعل هذا عندما تكون الرسومات الجديدة وردية اللون.
@@ -2447,8 +2467,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}استر
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :نمط {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}عدد الانماط: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}نظرة فاحصة - {STRING}
@@ -2615,6 +2633,16 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} مول
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط. {}التكلفة: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة. {} التكلفة: {CURRENCY_LONG}
 
+# Goal window
+
+# Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :اسئله
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :معلومات
+STR_GOAL_QUESTION_CAPTION_WARNING                               :تحذير
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :خطا
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}العروض
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}العروض المتاحة للخدمة:
@@ -2742,13 +2770,15 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}غير �
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}اشتري 25% من أسهم الشركة
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}بيع 25% من أسهم الشركة
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}اشتري 25% من اسهم هذه الشركة
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}اشتري 25% من اسهم هذه الشركة, + مفتاح الاعلى لاظهار التكلفه
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}بيع 25% من اسهم هذه الشركة
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :اسم الشركة
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :اسم صاحب الشركة
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن نبحث عن شركة لتشتري شركتنا. {}{} عل ترغب في شراء {COMPANY} بـ {CURRENCY_LONG}؟
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
@@ -3316,6 +3346,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[قرب الن�
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[وسط]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[النهاية القصوى]
 
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :اقفز الى الأمر {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :اقفز للامر{COMMA} عندما {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :اقفز للامر {COMMA} عندما {STRING} {STRING}
@@ -3332,7 +3363,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}جدول
 STR_TIMETABLE_NO_TRAVEL                                         :لا رحيل
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادرة (ذاتي: بواسطة الامر اليدوي التالي)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (ليس هناك جدولة)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر بمعدل {2:VELOCITY} (بدون جدوله)
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {1:VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}يوم
@@ -3355,6 +3388,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}غير �
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}مسح الوقت
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}مسح مقدار الوقت للامر
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}غير تحديد السرعة
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}غير السرعة القصوى للامر المختار
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}ازل تحديد السرعة
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}ازل السرعة القصوى للرحلة من الامر المختار
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}اعد ضبط العداد التأخير
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}عدل وقت التاخير للعداد حتى تصل المركبة في الوقت المحدد
@@ -3397,7 +3436,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}استم
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}عدم توقيف ومواصلة الذكاء الصناعي
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :لا يوجد اضافات مناسبة للتحميل {} هذه اضافة غبية ولن تفعل شيئا لك {} تستطيع تحميل اضافات من الشبكة عن طريق نظام التحميل
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}واحد من الذكاء الصناعي فشل. الرجاء ابلاغ المبرمج عنه مصحوبا بصورة من شاشة مصحح الاخطاء.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاشة اخطاء الذكاء الصناعي متوفرة فقط في الخادم
@@ -3411,6 +3449,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}انقل
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل الذكاء الاصطناعي المختار للاعلى
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}انقل للاسفل
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}انقل الذكاء الاصطناعي المختار للاسفل
+
 
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعداد
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعداد خواص الذكاء الصناعي
@@ -3431,6 +3470,16 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا ت
 STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
 STR_AI_SETTINGS_RESET                                           :{BLACK} اعادة ضبط
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}اقراني {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} سجل التغيير ل{STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}رخصة {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}اعرض ملف التعليمات ريدمي
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}اعرض سجل التغييرات
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}الرخصة
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

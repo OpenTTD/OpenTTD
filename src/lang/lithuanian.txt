@@ -836,11 +836,11 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Žmonės džiaugiasi...{}Pirmas laivas atvyko į {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Gyventojai džiugauja. . .{}Pirmas lėktuvas atvyko į {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Traukinio avarija!{}{COMMA} zuvo liepsnose po katastrofos
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Traukinio avarija!{}{COMMA} žmon{P us ės ių} žuvo liepsnose po traukinių susidūrimo
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Automobilio avarija!{}Automobilio vairuotojas žuvo po susidūrimo su traukiniu
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Automobilio avarija! {}Žuvo {COMMA} keleiv{P is iai ių} automobiliui susidūrus su traukiniu
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lektuvo katastrofa!{}Prie {1:STATION} liepsnose žuvo {0:COMMA} keleiv{P is iai ių}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lėktuvo katastrofa!{}Lėktuvas pritrūko degalų, {COMMA} nukrito ant žemės!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lėktuvo avarija!{}Prie {1:STATION} liepsnose žuvo {0:COMMA} keleiv{P is iai ių}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lėktuvo avarija!{}Lėktuvas pritrūko degalų, {COMMA} nukrito ant žemės!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK} Dirizablio katastrofa {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automobilis sunaikintas ateiviu!
@@ -2911,7 +2911,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Parduoti
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompanijos pavadinimas
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktoriaus vardas
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mes ieskome, kas galėtų perimti mūsų kompaniją.{}{}Ar jūs norėtumėte pirkti {COMPANY} už {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mes ieškome, kas galėtų perimti mūsų kompaniją.{}{}Ar jūs norėtumėte pirkti {COMPANY} už {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} infrastruktūra
@@ -3033,7 +3033,7 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Greitis 
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Greitis kanale/upėje: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Važiavimo kaina: {GOLD}{CURRENCY_LONG}/m
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(perorientuotinas)
+STR_PURCHASE_INFO_REFITTABLE                                    :(galima pertvarkyti)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Sukurtas: {GOLD}{NUM}{BLACK} Tarnavimo laikas: {GOLD}{COMMA} met{P ai ai ų}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Didž. Patikimumas: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {GOLD}{CURRENCY_LONG}
@@ -3041,9 +3041,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svoris: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kaina: {GOLD}{CURRENCY_LONG}{BLACK} Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Talpa: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pajungta vagonų: {GOLD}+{POWER}{BLACK} Svoris: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pakeičiami į: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Visus krovinių tipus
-STR_PURCHASE_INFO_ALL_BUT                                       :Visus, išskyrus {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Galima pertvarkyti {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :visiems krovinių tipams
+STR_PURCHASE_INFO_ALL_BUT                                       :visiems krovinių tipams, išskyrus {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Did. traukiamoji galia: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Nuotolis: {GOLD}{COMMA} langeliai
 
@@ -3259,10 +3259,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tai nupi
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Priversti traukinį vykti toliau nelaukiant tai leidžiančio signalo
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Įsteigti traukinį, kuris rūpinsis prioritetiniais kroviniais
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti kitoki krovinio tipa
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pertvarkyti laivą kitokio tipo krovinio vežimui
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Pertvarkyti automobilį kitokio tipo krovinio vežimui
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Pertvarkyti laivą kitokio tipo krovinio vežimui
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pakeisti lektuvo pervezamu kroviniu tipa
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Pertvarkyti lėktuvą kitokio tipo krovinio vežimui
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Pakeisti traukinio važiavimo kryptį
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Apgrezti automobili
@@ -3369,26 +3369,26 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Rodyti b
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Talpa: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Perorientuoti)
-STR_REFIT_TITLE                                                 :{GOLD}Pasirink gabenamo krovinio tipą:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY_LONG}
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pertvarkymas)
+STR_REFIT_TITLE                                                 :{GOLD}Pasirinkite krovinio tipą:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias perdarysite. Norėdami pasirinkti kelias transporto priemones, tempkite su pele. Spaudžiant ant tuščio ploto, pasirinksite visą transporto priemonę. Ctrl+Click pasirinks transporto priemonę ir sekančią jų eilę
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias pertvarkysite. Vilkdami galite pažymėti keletą jų. Spragtelėję tuščiame plote, pasirinksite visas transporto priemones. Spragtelėję laikydami nuspaustą Ctrl klavišą, pasirinksite transporto priemonę ir visas, esančias už jos
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirink prioritetinį krovinio tipą, kuriuo rūpinsis traukinys
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Nurodykite šios transporto priemonės pervežamą krovinių tipą
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pasirink laivo gabenamo krovinio tipą
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pasirink nauja krovinio tipa
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirinkite traukiniu gabenamo krovinio tipą
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pasirinkite automobiliu gabenamo krovinio tipą
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pasirinkite laivu gabenamo krovinio tipą
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pasirinkite lėktuvu gabenamo krovinio tipą
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Įsteigti traukinį
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Perkomplektuoti
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Keisti krovinio tipą
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Keisti krovinio tipą
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Pertvarkyti traukinį
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pertvarkyti automobilį
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Pertvarkyti laivą
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Pertvarkyti lėktuvą
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Įsteigti traukinį prioritetinių krovinių pervežimui
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti pazymeta krovinio tipa
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pakeisti gabenamo krovinio tipą
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pakeisti lektuvo pervezamo krovinio tipa pazymetu
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pakeisti traukiniu gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pakeisti automobiliu gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pakeisti laivu gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pakeisti lėktuvu gabenamo krovinio tipą į pažymėtąjį sąraše
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Užduotys)
@@ -3553,11 +3553,11 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Pereiti 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tvarkaraštis — konkrečią užduotį pažymėsite spragtelėdami ją
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nėra kelionių
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kelionė (automatinė; pagal kito nurodymo tvarkaraštį)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kelionė (automatinė; į tvarkaraštį bus įtraukta kitos užduoties)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kelionė (nėra tvarkaraštyje)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Vykti ne didesniu, nei {2:VELOCITY} greičiu (kelionės trukmė nenustatyta)
 STR_TIMETABLE_TRAVEL_FOR                                        :Keliauti {STRING.ka}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Vykti {STRING} ne didesniu, nei {2:VELOCITY} greičiu
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Vykti {STRING} ne didesniu, nei {1:VELOCITY} greičiu
 STR_TIMETABLE_STAY_FOR                                          :ir pasilikti {STRING.ka}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ir keliauti {STRING.ka}
 STR_TIMETABLE_DAYS                                              :{G=mot}{COMMA} dien{P a os ų}
@@ -4014,10 +4014,10 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobi
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Laivas kelyje
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Oro uostai
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Negalima įsteigti traukinio...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Neimanoma perkomplektuoti...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Negalima perorientuotilaivo...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Negalima pakeisti krovinio tipo...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Pertvarkyti traukinio nepavyko...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Pertvarkyti automobilio nepavyko...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Pertvarkyti laivo nepavyko...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Pertvarkyti lėktuvo nepavyko...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Negali pakeisti traukinio vardo...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Automobilio pavadinti nepavyko...
