@@ -3445,7 +3445,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Voyager (automa
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaire)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Déplacement à {2:VELOCITY} max. (non planifié)
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Déplacement de {STRING} à {1:VELOCITY} max.
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Déplacement de {STRING} à {VELOCITY} max.
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}

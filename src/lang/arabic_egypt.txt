@@ -3365,7 +3365,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :المغادر�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :مسافر (ليس هناك جدولة)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :سافر بمعدل {2:VELOCITY} (بدون جدوله)
 STR_TIMETABLE_TRAVEL_FOR                                        :مسافر لـ {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {1:VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :سافر لي {STRING} بمعدل {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ويبقى لـ {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ويسافر لـ {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}يوم

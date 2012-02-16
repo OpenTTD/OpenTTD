@@ -3444,7 +3444,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijd (automatis
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis met maximaal {2:VELOCITY} (geen tijdschema)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} met maximaal {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijd naar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}

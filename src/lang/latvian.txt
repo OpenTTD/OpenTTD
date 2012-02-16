@@ -3453,7 +3453,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ceļot (automā
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Braukšana (nav pēc saraksta)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Braukt ar ne vairāk kā {2:VELOCITY} (nav sarakstā)
 STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Braukt uz {STRING} ar ne vairāk kā {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :un braukt līdz {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
