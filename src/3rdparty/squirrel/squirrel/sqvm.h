@@ -200,6 +200,10 @@ inline SQObjectPtr &stack_get(HSQUIRRELVM v,SQInteger idx){return ((idx>=0)?(v->
 
 #define PUSH_CALLINFO(v,nci){ \
 	if(v->_callsstacksize == v->_alloccallsstacksize) { \
+		if (v->_callsstacksize > 65535) {\
+			v->Raise_Error(_SC("stack overflow"));\
+			return false;\
+		}\
 		v->GrowCallStack(); \
 	} \
 	v->ci = &v->_callsstack[v->_callsstacksize]; \
