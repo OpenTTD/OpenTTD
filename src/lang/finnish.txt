@@ -3444,6 +3444,7 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaat
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Kulje enimmillään {2:VELOCITY} (ei aikataulutettu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Kulje kohteeseen {STRING} enintään {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}

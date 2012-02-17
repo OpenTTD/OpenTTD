@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostra noms i s
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animació completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detall complet
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edificis Transparents
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Signes d'estació transparents
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Senyals transparents
 ############ range ends here
 
 ############ range for file menu starts
@@ -1801,9 +1801,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}T'han fe
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}No es permet fer trampes en aquest servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estaves enviant massa ordres al servidor
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Has tardat massa a introduir la contrasenya
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}El teu ordenador ha tardat massa a unir-se
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Has tardat massa a descarregar el mapa
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Has tardat massa a unir-te al servidor
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}El teu ordenador es massa lent per mantenir-se connectat al servidor
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}El teu ordenador ha tardat massa a descarregar el mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}El teu ordenador ha tardat massa a unir-se al servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
@@ -1929,7 +1929,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, sort
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Commuta la transparència dels rètols d'estació. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Commuta la transparència de les senyals. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Commuta la transparència dels arbres. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Commuta la transparència de les cases. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Commuta la transparència de les indústries. Ctrl+Clic per bloquejar
@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientac
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecciona l'orientació de la parada d'autobús
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientació Estació de Mercaderies
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecciona l'orientació del moll de càrrega de camions
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientació estació passatgers
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientació estació de tramvies de passatgers
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecciona l'orientació de l'estació de tramvies de passatgers
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientació estació mercaderies
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientació estació de tramvies de mercaderies
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecciona l'orientació de l'estació de tramvies de mercaderies
 
 # Waterways toolbar (last two for SE only)
@@ -2457,11 +2457,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mou aval
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una llista d'arxius NewGRF que estan instal·lats.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registra de canvis
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Estableix paràm.
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostra els paràmetres
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Commuta paleta
@@ -2492,11 +2487,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Establei
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paràmetre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paràmetres: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixme del {STRING} de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecciona - {STRING}
@@ -2598,7 +2588,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Escanejant arxi
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyal{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Coincideix Majúscules/Minúscules
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Neteja el filtre
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta minúscules/majúscules en comparar els noms del signes contra la cadena de filtre
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta minúscules/majúscules en comparar els noms de les senyals contra la cadena filtrant
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Neteja la cadena de filtre
 
 # Sign window
@@ -2606,7 +2596,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita el
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ves a la propera senyal
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ves a la senyal anterior
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa el nom del signe
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Posa un nom a la senyal
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Poblacions
@@ -3373,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ves al dipòsit
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle. Una ordre de cotxeres desactiva la revisió automàtica del vehicle
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
 
@@ -3453,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari -
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viatge (automàtic; programat per la següent ordre manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Travel amb almenys {2:VELOCITY} (sense horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viatge per {STRING} amb almenys {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i viatge per {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
@@ -3476,6 +3468,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia l
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Esborra Temps
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Canvia el límit de velocitat
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Canvia la velocitat de viatge màxima de l'ordre seleccionada
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Esborra el límit de velocitat
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Esborra la velocitat de viatge màxima de l'ordre seleccionada
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset. control de retard
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja el comptador de retards, de manera que el vehicle serà puntual
@@ -3571,6 +3569,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Número de dies per començar aquesta IA després de l'anterior (dóna o pren): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixme del {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registra de canvis
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

@@ -2608,10 +2608,10 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {1:S
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Netikėtas spruklys (spruklys {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nežinoma veiksmo 0 savybė {4:HEX} (spruklys {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas panaudoti neteisingą ID (spruklys {3:NUM})
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?)
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spruklį. Visi sugadinti sprukliai bus rodomi kaip raudoni klaustukai (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Susideda iš keleto veiksmo 8 įrašų (spruklys {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Skaitymas už pseudospruklio pabaigos (spruklys {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keletos spraitų.{}Atnaujinkite pagrindinį grafikos rinkinį
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Šiuo metu naudojamam grafikos rinkiniui trūksta keleto spruklių.{}Atnaujinkite pagrindinį grafikos rinkinį
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pageidautas GRF resursas yra neprieinamas (spruklys {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} buvo išjungta: {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neteisingas/nežinomas spruklio išdėstymo formatas (spruklys {3:NUM})

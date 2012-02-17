@@ -3538,7 +3538,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Vozni re
 STR_TIMETABLE_NO_TRAVEL                                         :Nema putovanja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Putovanje (automatsko; prema rasporedu sljedeće ručno određene naredbe)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (izvan voznog reda)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Putuj uz najviše {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Putuj prema {STRING} uz najviše {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putovanje za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
@@ -3561,6 +3563,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijen
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Obriši vrijeme
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Obriši vrijeme potrebno za označenu naredbu
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Izmijeni limit brzine
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Izmijeni maksimalnu putnu brzinu za označenu naredbu
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Izbriši limit brzine
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Izbriši maksimalnu putnu brzinu za označenu naredbu
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Poništi brojač kašnjenja
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj brojač kašnjenja, kako bi vozilo stiglo na vrijeme

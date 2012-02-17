@@ -569,7 +569,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :АІ / Дебаг ІгровогоСкрипту
+STR_ABOUT_MENU_AI_DEBUG                                         :Дебаг АІ / Ігрового скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану (Ctrl-S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -1158,7 +1158,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Від�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :нема
-STR_FUNDING_ONLY                                                :тільки профінансоване
+STR_FUNDING_ONLY                                                :фінансувати власноруч
 STR_MINIMAL                                                     :мінімально
 STR_NUM_VERY_LOW                                                :дуже мало
 STR_NUM_LOW                                                     :мало
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Тов�
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :класичний
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. віддаленість від краю для нафтових свердловин: {ORANGE}{STRING} клітинок
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. відстань від краю мапи до нафтозаводів: {ORANGE}{STRING} клітинок
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Нерівність землі (лише для TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :дуже гладкий
@@ -1946,8 +1946,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :відключ�
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :спроба грати нечесно
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер переповнений
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :посилав забагато команд
-STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :вчасно не отримав пароль
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :пароль не отримано за відведений час
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :час вийшов
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :мапа дуже довго завантажувалась
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :мапа дуже довго оброблювалась
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Можлива втрата з'єднання
@@ -2579,11 +2581,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Нижч
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перемістити вибрані файли вниз по списку
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Список встановлених NewGRF файлів.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Читати документацію (Readme)
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Встановлення параметрів
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Показати параметри
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Переключити палітру
@@ -2614,11 +2611,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Вста
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кількість параметрів: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Перегляд - {STRING}
@@ -2663,9 +2655,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} по
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Завантажено забагато NewGRF-файлів
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Завантаження {1:STRING} як статичного NewGRF з {STRING} може викликати десинхронізацію
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочікуваний спрайт (спрайт {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невідомий Action 0 параметр {4:HEX} (спрайт {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба використання некоректного ID (спрайт {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} містить зіпсований спрайт. Усі зіпсовані спрайти будуть показані як червоний знак питання (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Містить декілька записів Action 8 (спрайт {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Вихід за границю псевдо-спрайта при читанні (спрайт {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У базовому наборі графіки, що зараз використовується не вистачає спрайтів.{}Будь-ласка оновіть базовий набір графіки
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Недоступні необхідні ресурси GRF (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} був вимкнений {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Некоректний або невідомий формат розміщення спрайтів (спрайт {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Обережно!
@@ -2795,6 +2794,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клік
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Питання
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Інформація
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Попередження
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Помилка
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Відмінити
@@ -3563,9 +3565,11 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Пере
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розклад - клікніть на наказ, щоб виділити його
 
 STR_TIMETABLE_NO_TRAVEL                                         :Не прямувати
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Подорож (автоматично; буде додано до розкладу наступним наказом вручну)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Прямує (не за розкладом)
-STR_TIMETABLE_TRAVEL_FOR                                        :Прямує до {STRING}
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В дорозі (час руху враховано в наступному не автоматичному наказі)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В дорозі (час не вказано)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :В дорозі зі швидкістю, що не перевищує {2:VELOCITY} (час не вказано)
+STR_TIMETABLE_TRAVEL_FOR                                        :В дорозі {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В дорозі {STRING} зі швидкістю, що не перевищує {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
@@ -3588,6 +3592,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змін
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Очистити час
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистити час для виділеного наказу
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Змінити обмеження швидкості
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Змінити обмеження швидкості для виділеного пункту
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Зняти обмеження швидкості
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Зняти обмеження швидкості для виділеного пункту
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Очистити лічильник запізнення
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Очистити лічильник запізнення, щоб транспорт встигнув
@@ -3683,6 +3693,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закр
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Кількість днів, після яких запускати цей АІ після попереднього АІ: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Переглянути інструкцію
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

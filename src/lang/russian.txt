@@ -3634,11 +3634,13 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Пере
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Нет назначения
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Пробег (автоматически; в расписание следующим заданием вручную)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Время в пути (не задано)
-STR_TIMETABLE_TRAVEL_FOR                                        :Время в пути - {STRING}
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :В пути (время учтено в ближайшем не автоматическом задании)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :В пути (время не задано)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :В пути со скоростью не более {2:VELOCITY} (время не задано)
+STR_TIMETABLE_TRAVEL_FOR                                        :В пути {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :В пути {STRING} со скоростью не более {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти до {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти в {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
 STR_TIMETABLE_TICKS                                             :{COMMA} тик{P "" а ов}
 
@@ -3659,6 +3661,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изме
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Сбросить время
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Сбросить время в выделенном задании
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Изменить ограничение скорости
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Изменить ограничение скорости движения для выбранного задания
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Снять ограничение скорости
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Снять ограничение скорости движения для выделенного задания
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сброс счётчика
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик так, чтобы транспорт прибыл вовремя.

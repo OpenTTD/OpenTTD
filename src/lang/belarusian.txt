@@ -3799,7 +3799,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Раск
 STR_TIMETABLE_NO_TRAVEL                                         :Няма назначэньня
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Прабег (аўтаматычна; у расклад наступным заданьнем уручную)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Час у шляху (не зададзены)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Рухацца не хутчэй за {2:VELOCITY} (расклад ня вызначаны)
 STR_TIMETABLE_TRAVEL_FOR                                        :Час у шляху - {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Рухацца да {STRING} не хутчэй за {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :і чакаць {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :і рухацца да {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P зень нi зён}
@@ -3823,7 +3825,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмя
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ськінуць час
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Ськінуць час у вылучаным заданьні
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Зьмянiць абмежаваньне хуткасьцi
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Зьмянiць макс. хуткасьць руху для выдзеленага заданьня
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Ачысьцiць абмежаваньне хуткасьцi
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ачысьцiць макс. хуткасьць руху для выдзеленага заданьня
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ськід лічыльніка
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ськінуць лічыльнік так, каб транспарт прыбыў своечасова
