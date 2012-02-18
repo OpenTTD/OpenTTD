@@ -331,7 +331,7 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	_pause_mode = PM_UNPAUSED;
 	_cursor.fix_at = false;
 
-	CheckForMissingSprites();
+	if (load_newgrfs) CheckForMissingSprites();
 	CheckForMissingGlyphs();
 
 	/* Play main theme */
