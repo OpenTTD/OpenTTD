@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Mostrar sinais 
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais transparentes nas estações
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais Transparentes
 ############ range ends here
 
 ############ range for file menu starts
@@ -1801,9 +1801,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você fo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Batotas não são permitidas neste servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estava a enviar demasiados comandos ao servidor
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Demorou demasiado tempo a introduzir a palavra-chave
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}O seu computador demorou demasiado a ligar a rede
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Demorou demasiado a transferir o mapa
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Demorou demasiado a ligar ao servidor
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}O seu computador é demasiado lento para acompanhar com o servidor
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}O seu computador demorou demasiado a transferir o mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}O seu computador demorou demasiado a ligar ao servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral
@@ -2457,11 +2457,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para Bai
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o ficheiro NewGRF seleccionado para baixo na lista
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Uma lista dos ficheiros NewGRF que estão instalados.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver leia-me
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Mostrar parametros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar palete
@@ -2492,11 +2487,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Retorna 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parâmetros: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
@@ -3477,6 +3467,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda o e
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Apagar Tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Apagar o tempo que dura a ordem seleccionada
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Apagar Contador Atraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Limpar o contador de atraso, para que o veículo passe a estar a horas
 
@@ -3571,6 +3563,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Número de dias para iniciar esta IA depois da anterior (tomar ou lorgar): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Leiame {STRING} de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Lista de alterações {STRING} de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licença {STRING} de {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Ver leia-me
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista de alterações
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licença
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

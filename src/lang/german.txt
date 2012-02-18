@@ -3291,11 +3291,11 @@ STR_ORDERS_END_OF_ORDERS                                        :- - Ende der Au
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Ende des gemeinsam genutzten Fahrplans - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}ohne Halt
+STR_ORDER_NON_STOP                                              :{BLACK}ohne Zwischenhalt
 STR_ORDER_GO_TO                                                 :Fahre zu
-STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt zu
+STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Zwischenhalt zu
 STR_ORDER_GO_VIA                                                :Fahre über
-STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Halt über
+STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Zwischenhalt über
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ändert Stoppverhalten des ausgewählten Auftrags
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen einer Fracht
@@ -3363,16 +3363,16 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben es, für mehrere Fahrzeuge nur einen Fahrplan und eine Auftragsliste zu verwenden. Durch Klicken auf ein Fahrzeug werden die Aufträge durch die des ausgewählten Fahrzeugs ersetzt. Wartungs- und Depotaufträge schalten die automatische Wartung aus.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Zwischenhalt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben es, für mehrere Fahrzeuge nur einen Fahrplan und eine Auftragsliste zu verwenden. Durch Klicken auf ein Fahrzeug werden die Aufträge durch die des ausgewählten Fahrzeugs ersetzt. Wartungs- und Depotaufträge schalten die automatische Wartung aus.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Fahre über {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Fahre ohne Halt über {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Fahre ohne Zwischenhalt über {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Falls nötig, fahre zwecks Wartung zu
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zwecks Wartung zu
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Zwischenhalt zwecks Wartung zu
 
 STR_ORDER_NEAREST_DEPOT                                         :nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar

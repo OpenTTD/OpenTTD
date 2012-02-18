@@ -678,17 +678,41 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொ�
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் இரயில் {STATION} வந்தது!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் பேருந்து {STATION} வந்தது!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் லாரி {STATION} வந்தது!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் பயணிகள் இரயில் {STATION} வந்தது!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் சரக்கு இரயில் {STATION} வந்தது!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}முதல் கப்பல் {STATION} வந்தது!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}மக்கள் கொண்டாடுகிறார்கள் . . .{}விமானம் முதன்முதலாக {STATION} வந்தது!
 
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}இரயில் விபத்து!{}{COMMA} பேர் இறந்தனர்
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}சாலை வாகன விபத்து!{}இரயில், வாகனத்துடன் மோதியதில் வாகன ஓட்டுனர் இறந்தார்.
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}சாலை வாகன விபத்து!{}இரயில், வாகனத்துடன் மோதியதில் {COMMA} பேர் இறந்தனர்.
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}விமான விபத்து!{}{COMMA} பேர் இறந்தனர் {STATION} இல்.
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}விமான விபத்து!{}விமானத்தின் எரிபொருள் தீர்ந்து போனது, {COMMA} பேர் இறந்தனர்.
 
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK} {STATION} இல் விமான விபத்து!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}'UFO' உடன் மோதியதில் சாலை வாகனம் நொறுங்கியது!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK} {TOWN} அருகில் எண்ணெய் சுத்திகரிப்பு நிலையம் வெடித்தது!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}{TOWN} அருகில் 'UFO' தரையிறங்கியது!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}வெள்ளம்!{}குறைந்தபட்சம் {COMMA} பேர் காணவில்லை, வெள்ளத்தால் இறந்திருப்பார்கள் என்று அஞ்சப்படுகின்றது!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}போக்குவரத்து நிறுவனம் பிரச்சனையில் உள்ளது!
+STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}போக்குவரத்து நிறுவனம் இணைக்கப்படுகின்றது !
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK} {STRING} இற்கு {STRING} {CURRENCY_LONG} இற்கு விற்கப்பட்டது!
+STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}கடனில் மூழ்கியது!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}புதிய நிறுவனம் தொடங்கப்பட்டது!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} கட்டுமானங்களை தொடங்கியது {TOWN} அருகில்!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(மேலாளர்)
 
 
 
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} மூடப்படுவதாக அறிவித்துள்ளது!
 
 
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தியை அதிகரித்தது!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தி 50 சதவீதமாக குறைத்தது
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
@@ -699,6 +723,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} பழையதாகிறது
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} தன் பயணத்தை தொடர வழியை கண்டுபிடிக்க முடியவில்லை
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} தொலைந்துவிட்டது
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}இன் சென்ற வருட நிகர லாபம் {CURRENCY_LONG}
@@ -708,12 +733,18 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}புதிய {STRING} இப்போது கிடைக்கும்!  -  {ENGINE}
 
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} இனிமேல் {STRING} ஏற்றுக்கொள்ளாது
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} இனிமேல் {STRING} அல்லது {STRING} ஏற்றுக்கொள்ளாது
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} இப்போது {STRING} ஏற்றுக்கொள்கிறது
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} இப்போது {STRING} {STRING} ஆகியவற்றை ஏற்றுக்கொள்கிறது
 
 
 
 # Extra view window
 
 # Game options window
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}நாணய பிரிவுகள்
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}நாணய பிரிவு தேர்ந்தெடுத்தல்
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :பிரித்தானிய பவுண்டு (GBP)
@@ -745,12 +776,16 @@ STR_GAME_OPTIONS_CURRENCY_BRL                                   :பிரேச
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :எஸ்டோனிய க்ரூனி (EEK)
 ############ end of currency region
 
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}அளவிடும் பிரிவுகள்
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}அளவிடும் பிரிவு தேர்ந்தெடுத்தல்
 
 ############ start of measuring units region
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :மெட்ரிக்
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}சாலை வாகனங்கள்
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}வாகனங்கள் சாலையின் எந்தப்பக்கத்தில் செல்ல வேண்டும்
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :இடப்பக்கம் ஒட்டு
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :வலப்பக்கம் ஒட்டு
 
@@ -761,6 +796,8 @@ STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :ஆங்கி
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :பிரெஞ்சு
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :ஜெர்மன்
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :ஆங்கிலம் (கூடுதலான)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :இலத்தின்-அமெரிக்க
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :சுவீடிஷ்
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :டச்சு
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :பின்னிஷ்
 STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :போலிஷ்
@@ -779,15 +816,18 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Off
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :ஒவ்வொரு மாதமும்
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :மூன்று மாதங்களுக்கு ஒரு முறை
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :ஆறு மாதங்களுக்கு ஒரு முறை
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :ஒவ்வொரு வருடமும்
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}மொழி
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் மொழியினை தேர்ந்தெடு
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}முழு படம்
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}திரையின் அளவு
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 
@@ -797,10 +837,17 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவ
 
 # Custom currency window
 
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}நாணயமாற்று விகிதம்: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}முன் ஒட்டு: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் முன் ஒட்டத்தினை அமையுங்கள்
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}பின் ஒட்டு: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் பின் ஒட்டத்தினை அமையுங்கள்
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}யுரோவிற்கு மாற்றுங்கள்: {ORANGE}{NUM}
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}முன்னோட்டம்: {ORANGE}{CURRENCY_LONG}
 
 # Difficulty level window
 
@@ -812,6 +859,8 @@ STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}நட�
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}சேமி
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}நகரங்களின் எண்ணிக்கை: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}தொழிற்சாலைகளின் எண்ணிக்கை: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}கட்டுமானத்திற்கான செலவு: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
@@ -1390,15 +1439,11 @@ STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆற�
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}சேர்
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோப்புகளை மறுபடியும் ஆராய்
 
-# Additional textfiles accompanying NewGRFs
-
 
 
 
 
 # NewGRF parameters window
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -1893,6 +1938,8 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}நே�
 
 
 
+
+
 STR_TIMETABLE_EXPECTED                                          :{BLACK}எதிர்ப்பார்க்கப்படுவது
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
@@ -1937,6 +1984,10 @@ STR_AI_LIST_CAPTION_GAMESCRIPT                                  :விளைய
 # AI Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :விளையாட்டின் ஸ்கிரிப்ட்
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 

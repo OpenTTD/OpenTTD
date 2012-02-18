@@ -1864,9 +1864,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lett�
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ez a szerver nem engedi a csalást
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Túl sok parancsot küldtél a szervernek
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Túl sokáig tartott a jelszó beírása
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A számítógépednek túl sok időbe tartott csatlakozni
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozás
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A számítógéped túl lassú, hogy tartsa a szerver sebességét
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése a számítógépednek
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozása a számítógépednek
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba
@@ -2520,11 +2520,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Le
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}A kiválasztott NewGRF-et lefelé mozgatja a listán
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}A feltelepített NewGRF-ek listája.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Változások listája
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Paraméterek beállítása
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Paraméterek megjelenítése
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palettaváltás
@@ -2555,11 +2550,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Összes 
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraméter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Paraméterek száma: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}
@@ -3436,7 +3426,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi j
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangárba
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_SHARE                                                 :Menetrend megosztása
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+Kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz. 'Menetrend megosztása' esetén a jármű megosztja az utasításait a kiválasztott járművel.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+Kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz. 'Menetrend megosztása' esetén a jármű megosztja az utasításait a kiválasztott járművel. Ha járműtelep szerepel a menetrendben, kikapcsolja az automatikus javításokat
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
 
@@ -3513,12 +3503,14 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Átkapcs
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - egy utasítás kijelöléshez kattints rá
 
-STR_TIMETABLE_NO_TRAVEL                                         :Nincs utazás
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Megy (automata; menetrend a következő kézi utasítás alapján)
+STR_TIMETABLE_NO_TRAVEL                                         :Nincs menet
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Menet (automata; menetrend a következő kézi utasítás alapján)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő célpontig a menetidő időzítetlen
-STR_TIMETABLE_TRAVEL_FOR                                        :Következő célpontig rendelkezésre álló menetidő: {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Menet {2:VELOCITY} max. sebességgel (nincs menetrend)
+STR_TIMETABLE_TRAVEL_FOR                                        :Menetidő: {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Menetidő: {STRING} {VELOCITY} max. sebességgel
 STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING}ig
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :és menj {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :és a menetidő: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
@@ -3539,6 +3531,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijel�
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Idő törlése
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Sebességkorlátozás megváltoztatása
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Kijelölt utasítás legnagyobb utazósebességének megváltoztatása
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Sebességkorlátozás törlése
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Maximális utazósebesség törlése a kijelölt utasításból
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Késés nullázása
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
@@ -3634,6 +3632,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárá
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Az előző MI indításától eltelt napok száma ezen MI indításáig (megközelítőleg): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} readme-je
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}A(z) {STRING} {STRING} változásainak listája
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}A(z) {STRING} {STRING} licence
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme megtekintése
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Változások listája
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenc
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

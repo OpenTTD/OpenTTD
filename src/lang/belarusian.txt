@@ -2725,8 +2725,8 @@ STR_MAPGEN_NORTHWEST                                            :{BLACK}Паўн
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Паўночны ўсход
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Паўднёвы ўсход
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Паўднёвы захад
-STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Свабодны
-STR_MAPGEN_BORDER_WATER                                         :{BLACK}Водны
+STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Зямля
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вада
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Выпадковы
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Выпадковыя
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Уручную
