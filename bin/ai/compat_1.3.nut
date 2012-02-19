@@ -6,19 +6,3 @@
  * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
-
-/**
- * @file game_changelog.hpp Lists all changes / additions to the API.
- *
- * Only new / renamed / deleted api functions will be listed here. A list of
- * bug fixes can be found in the normal changelog. Note that removed API
- * functions may still be available if you return an older API version
- * in GetAPIVersion() in info.nut.
- *
- * \b 1.3.0
- *
- * 1.3.0 is not yet released. The following changes are not set in stone yet.
- *
- * \b 1.2.0
- * \li First stable release with the NoGo framework.
- */
