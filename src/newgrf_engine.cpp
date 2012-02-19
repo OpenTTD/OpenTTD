@@ -498,7 +498,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 					if (v->type == VEH_TRAIN) user_def_data |= Train::From(u)->tcache.user_def_data;
 
 					/* Skip empty engines */
-					if (u->cargo_cap == 0) continue;
+					if (!u->GetEngine()->CanCarryCargo()) continue;
 
 					cargo_classes |= CargoSpec::Get(u->cargo_type)->classes;
 					common_cargoes[u->cargo_type]++;
@@ -516,7 +516,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 				/* Count subcargo types of common_cargo_type */
 				for (u = v; u != NULL; u = u->Next()) {
 					/* Skip empty engines and engines not carrying common_cargo_type */
-					if (u->cargo_cap == 0 || u->cargo_type != common_cargo_type) continue;
+					if (u->cargo_type != common_cargo_type || !u->GetEngine()->CanCarryCargo()) continue;
 
 					common_subtypes[u->cargo_subtype]++;
 				}

@@ -206,7 +206,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 		 * now we will figure out what cargo the train is carrying and refit to fit this */
 
 		for (v = v->First(); v != NULL; v = v->Next()) {
-			if (v->cargo_cap == 0) continue;
+			if (!v->GetEngine()->CanCarryCargo()) continue;
 			/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
 			if (HasBit(available_cargo_types, v->cargo_type)) return v->cargo_type;
 		}
