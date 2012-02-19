@@ -2439,11 +2439,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下移
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}将选定的 NewGRF 文件向下移动
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}已经安装的 NewGRF 文件列表{}点击可以改变参数
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}设置参数
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}显示参数
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}切换调色板
@@ -2474,11 +2469,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全部�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}参数数目: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 - {STRING}
@@ -3450,6 +3440,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除时间
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除高亮选择的命令的执行时间
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}清除晚点计数器
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆准时到达
 
@@ -3544,6 +3536,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}关闭
 STR_AI_SETTINGS_RESET                                           :{BLACK}重设
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :当前AI在前一个AI运行 {ORANGE}{STRING}天之后开始运行
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} 的说明
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} 的更新日志
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} 的版权信息
+STR_TEXTFILE_VIEW_README                                        :{BLACK}查看说明
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}更新日志
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}版权信息
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

@@ -2448,11 +2448,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Kebawah
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian bawah daftar
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang diinstal.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Catatan Perubahan
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensi
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Atur parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tandai palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Tandai palet NewGRF terpilih.{}Lakukan ini ketika grafis NewGRF ini terlihat berwarna merah muda di dalam permainan
@@ -2482,11 +2477,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalik
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Jumlah parameter: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterangan {STRING} dari {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
@@ -2660,6 +2650,10 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Tidak ada -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Target perusahaan:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada tujuan untuk mengarahkan pandangan pada tengah industri/kota/kotak. Ctrl+klik untuk membuka jendela baru pada lokasi industri/kota/kotak
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
@@ -3434,6 +3428,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jum
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hapus waktu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus jumlah waktu pada tujuan yang terpilih
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
 
@@ -3528,6 +3524,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Jalankan AI setelah berapa hari : {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}keterangan {STRING} dari {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Catatan perubahan {STRING} dari {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Lisensi {STRING} dari {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Catatan Perubahan
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensi
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

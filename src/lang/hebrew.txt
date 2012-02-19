@@ -2326,8 +2326,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}העבר
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}מעביר את הקובץ שנבחר כלפי מטה ברשימה
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK} רשימת קבצי שדרוג גראפי מותקנים
 
-# Additional textfiles accompanying NewGRFs
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}קבע ערכים
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}החלף פלטת צבעים
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}מחליף את פלטת הצבעים עבור קובץ השדרוג הגראפי שנבחר. השתמש באפשרות זו אם הצבעים שהתקבלו אינם די ברורים
@@ -2351,8 +2349,6 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}אתחל
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}הגדר את כל הפרמטרים לערך ברירת המחדל שלהם
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}מספר הגדרות: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
@@ -2484,6 +2480,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}רכו�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}שחד את הרשות המקומית כדי להגדיל את הדרוג שלך בעיר תוך כדי סיכון להתפס ולשלם קנס חמור.{}עלות: {CURRENCY_LONG}
 
 # Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}סובסידיות
@@ -3201,6 +3201,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}שנה �
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}אפס זמן
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}אפס את פרק הזמן לשהייה ביעד שנבחר
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}אפס מונה איחורים
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}אפס את מונה האיחורים על מנת לאפשר לכלי להגיע בזמן
 
@@ -3274,6 +3276,10 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}אל ת�
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}סגור
 STR_AI_SETTINGS_RESET                                           :{BLACK}אתחל
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

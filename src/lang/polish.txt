@@ -2836,11 +2836,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Na dół
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Przesuń zaznaczony plik NewGRF na dół listy
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista zainstalowanych plików NewGRF.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ustaw parametry
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Pokaż parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Zmień paletę
@@ -2871,11 +2866,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Przywró
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Liczba parametrów: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}'CzytajTo' dla {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Zmiany w {STRING} dla {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencja dla {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zbadaj - {STRING}
@@ -3862,6 +3852,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień i
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czasu przeznaczoną na zaznaczone zadanie
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 
@@ -3956,6 +3948,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, które odczekuje SI przed aktywacją po uruchomieniu poprzedniego (zwiększ lub zmniejsz): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}'CzytajTo' dla {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Zmiany w {STRING} dla {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencja dla {STRING} {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Odczytaj plik readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Lista zmian
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencja
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

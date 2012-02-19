@@ -588,6 +588,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
+
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -708,6 +709,7 @@ STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Ungarsk
 
 
 
+
 # Advanced settings window
 
 
@@ -733,11 +735,15 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
 
 
+# Config errors
+
 # Intro window
+
 
 
 
@@ -835,6 +841,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -843,6 +850,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {W
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -942,7 +950,6 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -968,6 +975,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
+# NewGRF scanning window
+
 # Sign list window
 
 # Sign window
@@ -985,6 +994,12 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 
@@ -1023,6 +1038,8 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -1148,6 +1165,8 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1168,7 +1187,12 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+
+
+
 # Time table window
+
+
 
 
 
@@ -1188,8 +1212,8 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 # AI debug window
 
 
-
 # AI configuration window
+
 
 
 
@@ -1199,6 +1223,10 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -1213,6 +1241,7 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Saveload messages
 
 # Map generation messages
+
 
 
 

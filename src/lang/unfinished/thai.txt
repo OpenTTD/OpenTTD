@@ -747,6 +747,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}กา�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}โครงการที่มีงบประมาณสนับสนุน
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}ข้อมูลทั่วไป
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถไฟขบวนแรกเทียบชานชาลาที่ {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถโดยสารคันแรกได้มาถึง {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถบรรทุกคันแรกได้มาถึง {STATION}!
@@ -1358,6 +1359,8 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}หม�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1870,6 +1873,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ก�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ไม่สามารถเขียนทับไฟล์ได้
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ไม่สามารถทำการแตกไฟล์ที่ดาวโหลดมาแล้วได้
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ตัวเลือกค่าโปร่งใส
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปร่งใสของป้ายสถานี. กด Ctrl+Click สำหรับการล็อก
@@ -1915,6 +1919,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}สร�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}สร้างอุโมงค์รถไฟ. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}เปลี่ยนระหว่าง สร้าง/รื้อถอน รางรถไฟ, เสาสัญญาณ, ที่หมายและสถานี. กด Ctrl ค้างไว้เพื่อทำการถอนรางรถไฟที่เป็นจุดหมายและสถานี
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}เปลี่ยน/อัพเกรด ชนิดของรางรถไฟ. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}ทิศทางของอู่รถไฟ
@@ -2134,6 +2139,7 @@ STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :หญ้า
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :พื้นที่หิมะปกคลุม
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :ทะเลทราย
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :ถนน
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :ถนนพร้อมไฟถนน
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :ถนนพร้อมต้นไม้
@@ -2258,7 +2264,6 @@ STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}เว�
 
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}ไม่รองรับกับ OpenTTD เวอร์ชั่นนี้
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}ตั้งค่าใหม่
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ตั้งค่าพารามิเตอร์ทุกตัวให้เป็นแบบค่าดั้งเดิม
@@ -2322,6 +2327,12 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}เงินอุดหนุน
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}ให้เงินอุดหนุนสำหรับการบริการ:
@@ -2355,6 +2366,8 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำ�
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
@@ -2563,12 +2576,17 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(ไม่ม�
 
 
 
+
+
+
 STR_INVALID_ORDER                                               :{RED} (คำสั่งไม่ถูกต้อง)
 
 # Time table window
 
 
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :เดินทาง (อัตโนมัติ; ตามตารางเวลาต่อไปที่ตั้งไว้)
+
+
 
 
 
@@ -2591,7 +2609,6 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}โห�
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}ดูการผลลัพธ์การดีบักของ AI นี้
 
 
-
 # AI configuration window
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}เลื่อนขึ้น
@@ -2600,12 +2617,17 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}เล�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}ย้าย AI ที่เลือกลงด้านล่างของรายชื่อ
 
 
+
 # Available AIs window
 
 
 
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 

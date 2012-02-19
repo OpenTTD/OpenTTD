@@ -2447,11 +2447,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Gerak Ke
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Gerakkan ke bawah senarai NewGRF yang terpilih
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Senarai fail NewGRF yang telah dipasang.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}LogUbah
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lesen
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Tetapkan parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Papar atau padam palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Papar atau padam NewGRF yang terpilih.{}Lakukan ini apabila grafik daripada NewGRF kelihatan merah-jambu dalam permainan
@@ -2481,11 +2476,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tetapkan
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Bilangan parameter: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme untuk {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} LogUbah untuk {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lesen untuk {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Periksa - {STRING}
@@ -2659,6 +2649,10 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Tiada -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Hasrat syarikat:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada industri/bandar/petak untuk memusatkan pandangan. Ctrl+Klik akan membuka pusat pandangan di atas industri/bandar/petak
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
@@ -3433,6 +3427,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Tukar te
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Kosongkan Masa
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Kosongkan tempoh masa untuk arahan yang terpilih
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset Kiraan Lewat
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset kiraan kelewatan, supaya kenderaan sampai mengikut jadual
 
@@ -3527,6 +3523,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Bilangan hari Kepintaran Tiruan dimulakan selepas yang terdahulu (lebih kurang): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme untuk {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} LogUbah untuk {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lesen untuk {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Lihat readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}LogUbah
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lesen
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

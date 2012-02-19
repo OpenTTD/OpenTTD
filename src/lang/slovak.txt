@@ -2524,11 +2524,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Nižšie
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunút vybraný NewGRF súbor v zozname nižšie
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Zoznam inštalovaných NewGRF súborov.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraz čítajma
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log zmien
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Ukázať parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Prepnúť paletu
@@ -2559,11 +2554,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastavi�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet parametrov: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "čítajma" {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log zmien {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencia {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}
@@ -3544,6 +3534,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmenit d
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vymazat cas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazať dĺžku trvania označeného príkazu
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset meskania
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Vynulovať počítadlo meškania, takže vozidlo pôjde presne
 
@@ -3638,6 +3630,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavrieť
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetovať
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Koľko dní prejde od spustenia predchádzajúcej umelej inteligencie k naštartovaniu novej: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} "čítajma" {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} log zmien {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencia {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraz čítajma
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log zmien
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

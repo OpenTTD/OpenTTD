@@ -656,16 +656,12 @@ STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Żid il-
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Erga' sskanja il-fajls
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorna l-lista tal-fajls NewGRF disponibbli
 
-# Additional textfiles accompanying NewGRFs
-
 
 
 
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux ma din il-verzjoni ta' OpenTTD
 
 # NewGRF parameters window
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -707,6 +703,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 
 
 # Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 
@@ -893,6 +893,8 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 
 
+
+
 # Date window (for timetable)
 
 
@@ -909,6 +911,10 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 
 # AI Parameters
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 

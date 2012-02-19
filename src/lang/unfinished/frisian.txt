@@ -2007,8 +2007,6 @@ STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Set sele
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Pleats leger
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Set selektjere NewGRF ûnderoan de list
 
-# Additional textfiles accompanying NewGRFs
-
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Sykje ynhâld op ynternet
 
@@ -2025,8 +2023,6 @@ STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Slút
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Set werom
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Set alle ynstellings op normale wearde
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 
@@ -2464,6 +2460,8 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reizgje (automa
 
 
 
+
+
 # Date window (for timetable)
 
 
@@ -2496,6 +2494,10 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Annulear
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Slúte
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

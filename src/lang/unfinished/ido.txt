@@ -425,6 +425,7 @@ STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Sendajo
 
 
 
+
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -510,6 +511,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 
 
 
+
 # Advanced settings window
 
 
@@ -538,6 +540,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
+
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
@@ -545,12 +548,15 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
 
+# Config errors
+
 # Intro window
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
 STR_INTRO_LOAD_GAME                                             :{BLACK}Charjas Ludo
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludo Selekti
+
 
 
 
@@ -638,6 +644,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro mu
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -647,6 +654,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -767,7 +775,6 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NovaGRF
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiono: {SILVER}{NUM}
 
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -800,6 +807,8 @@ STR_NEWGRF_LIST_NONE                                            :Nulo
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
+# NewGRF scanning window
+
 # Sign list window
 
 # Sign window
@@ -814,6 +823,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 # Town local authority window
 
 
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 
@@ -846,6 +861,8 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 
@@ -1000,6 +1017,8 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1007,6 +1026,9 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 # String parts to build the order string
+
+
+
 
 
 
@@ -1031,6 +1053,8 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 
+
+
 # Date window (for timetable)
 
 
@@ -1038,8 +1062,8 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 
 
-
 # AI configuration window
+
 
 
 
@@ -1050,6 +1074,10 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
+
+# Textfile window
+
+
 # Vehicle loading indicators
 
 # Income 'floats'
@@ -1057,6 +1085,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 # Saveload messages
 
 # Map generation messages
+
 
 
 

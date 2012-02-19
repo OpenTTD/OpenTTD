@@ -726,6 +726,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Cambios
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidios
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Información xeral
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebración cidadá . . .{}Chega o primeiro tren a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Celebración cidadá . . .{}¡Chega o primeiro autobús a {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Celebración cidadá . . .{}¡Chega o primeiro camión a {STATION}!
@@ -1029,6 +1030,7 @@ STR_SEA_LEVEL_LOW                                               :Baixo
 STR_SEA_LEVEL_MEDIUM                                            :Medio
 STR_SEA_LEVEL_HIGH                                              :Alto
 
+
 STR_DISASTER_NONE                                               :Ningún
 STR_DISASTER_REDUCED                                            :Reducido
 STR_DISASTER_NORMAL                                             :Normal
@@ -1178,6 +1180,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automáticamente ó comezo dunha nova partida: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usa-la lista avanzada de vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
@@ -1283,6 +1286,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Buscado
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambia-lo valor
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1318,6 +1323,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra a
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra-la configuración de NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Buscar contidos novos e actualizados para descargar
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Saír 'OpenTTD'
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Saír
@@ -1783,6 +1789,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... perd
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... arquivo non escribible
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Non se puido descomprimi-lo arquivo descargado
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcións de Transparencia
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+Click para bloquear.
@@ -1827,6 +1834,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Constru�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construír/eliminar vías, sinais, puntos de ruta e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de vía
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orient. do Dep. de Trens
@@ -2082,6 +2090,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Campos
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Terra cuberta de neve
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deserto
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Estrada
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Estrada con iluminación
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Estrada con árbores
@@ -2273,7 +2282,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Non hai 
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro non atopado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Pechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reiniciar
@@ -2333,6 +2341,8 @@ STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' produciu un bucle sen fin na chamada de retorno de produción
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+
+# NewGRF scanning window
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
@@ -2399,6 +2409,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Constru
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Subvenciona-la construción de novos edificios comerciais na cidade.{}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra-los dereitos exclusivos de transporte na cidade durante 1 ano. A autoridade só permitirá que os pasaxeiros e as mercadorías usen as estacións da túa compañía.{}Custo: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna-la autoridade local para mellorá-la túa puntuación, co risco dunha gran penalización se o descobren.{}Custo: {CURRENCY_LONG}
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidios
@@ -2532,6 +2548,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Compañ
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome Do Presidente
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos unha compañía de transporte para adquiri-la nosa compañía{}{}¿Queres comprar {COMPANY} por {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
@@ -2987,6 +3005,8 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Parar
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Saltar esta orde a non ser que sexa necesario o servizo
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos do vehículo para basa lo salto
+
+# Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentaxe de carga
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
@@ -3057,9 +3077,12 @@ STR_ORDER_NO_UNLOAD                                             :(Non descargar 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non descargar e esperar a carga completa)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non descargar e esperar a calquera carga completa)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[preto do final]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[lonxe do final]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar á orde {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar á orde {COMMA} cando {STRING} {STRING} {COMMA}
@@ -3100,6 +3123,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar Tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Quitar a cantidade de tempo para a orde seleccionada
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Retraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atraso, para que o vehículo vaia en punto
 
@@ -3133,7 +3158,6 @@ STR_AI_DEBUG_RELOAD                                             :{BLACK}Recargar
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata-la IA, recargar o script, e reinicia-la IA
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Non se atopou ningunha AI adecuada para cargar.{} Esta AI é un bot e non vai facer nada.{}Podes descargar varias AIs no sistema de contido online.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Fallou unha das IA en execución. Por favor, informa ó autor desta IA cunha captura da Fiestra de Depuración de IA.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A fiestra de Depuración de IA só está dispoñible para o servidor
@@ -3147,6 +3171,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA seleccionada hacia arriba na lista
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Baixar
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA seleccionada hacia abaixo na lista
+
 
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura-los parámetros da IA
@@ -3167,6 +3192,10 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non camb
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Pechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reiniciar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -3212,6 +3241,7 @@ STR_ERROR_PNGMAP_MISC                                           :{WHITE}... algo
 
 STR_ERROR_BMPMAP                                                :{WHITE}Non se pode carga-la paisaxe desde o BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... non se puido convertí-lo tipo de imaxe.
+
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Non se recomenda redimensionar moito o mapa de orixe. ¿Continuar coa xeración?

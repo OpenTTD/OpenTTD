@@ -457,6 +457,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
+
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(व्यवस्थापक)
 
 
@@ -573,6 +574,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
 STR_SUBSIDY_X1_5                                                :x१.५
 STR_SUBSIDY_X2                                                  :x२
 STR_SUBSIDY_X3                                                  :x३
@@ -602,6 +604,7 @@ STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE} वा
 
 
 
+
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :कोणतीही कृती नाही
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व कृत्या
 
@@ -618,8 +621,11 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}स्�
 
 
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}ओपेन टीटीडी {REV}
+
 
 
 
@@ -777,6 +783,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गे�
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -785,6 +792,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गे�
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -912,7 +920,6 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -939,6 +946,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
+# NewGRF scanning window
+
 # Sign list window
 
 # Sign window
@@ -959,6 +968,12 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 
@@ -1020,6 +1035,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}व्�
 
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :व्यवस्थापकाचे नाव
 
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -1163,6 +1180,8 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1177,6 +1196,9 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर�
 
 
 STR_ORDER_IMPLICIT                                              :(आपोआप)
+
+
+
 
 
 
@@ -1197,14 +1219,16 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वे�
 
 
 
+
+
 # Date window (for timetable)
 
 
 # AI debug window
 
 
-
 # AI configuration window
+
 
 
 
@@ -1214,6 +1238,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वे�
 
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
@@ -1234,6 +1262,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अं�
 # Saveload messages
 
 # Map generation messages
+
 
 
 

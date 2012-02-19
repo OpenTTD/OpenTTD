@@ -2448,11 +2448,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}아래�
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}선택한 NewGRF 파일을 아래로 내림
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}설치된 NewGRF의 목록입니다.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}파라미터 설정
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}팔레트 바꾸기
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}NewGRF의 팔레트를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
@@ -2482,11 +2477,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 �
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
@@ -3438,6 +3428,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간 초기화
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 카운터 초기화
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
 
@@ -3532,6 +3524,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}닫기
 STR_AI_SETTINGS_RESET                                           :{BLACK}초기화
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :마지막 AI 이후에 새로운 AI를 시작하기 위해 필요한 날짜 수: {ORANGE}{STRING}일
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING}의 Readme
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING}의 변경기록
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING}의 저작권
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme 보기
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}변경기록
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}저작권
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

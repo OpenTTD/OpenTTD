@@ -2455,11 +2455,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}حرکت
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}NewGRF انتخاب شده را به پایین می فرستد
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}لیست فایل های NewGRF نصب شده. روی فایل کلیک کنید تا پارامترها را بتوانید تغییر بدهید
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}ثبت پارامترها
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}نمایش پارامترها
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}تغییر پالت
@@ -2490,11 +2485,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ثبت �
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :پارامتر{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}تعداد پارامتر: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}رسیدگی - {STRING}
@@ -3125,6 +3115,8 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}پاک �
 
 
 
+
+
 # Date window (for timetable)
 
 
@@ -3179,6 +3171,16 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :کد بازی
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}بستن
 STR_AI_SETTINGS_RESET                                           :{BLACK}بازنشاندن
 STR_AI_SETTINGS_START_DELAY                                     :تعداد روزهایی که این بازیگر هوش مصنوعی پس از بازیگر هوش مصنوعی قبلی قبل از اتصال صبر می کند(کم و بیش): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}راهنمای {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} گزارش تغییرات {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} گواهی {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}مشاهده راهنما
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}گزارش تغییر
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}گواهی
+
 
 # Vehicle loading indicators
 

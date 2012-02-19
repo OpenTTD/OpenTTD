@@ -2445,11 +2445,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Flyt ned
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flyt det valgte NewGRF sæt ned i listen
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En liste over de NewGRF sæt der er installeret.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Indstil parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Slå palette til/fra
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Slå palette til/fra i den valgte NewGRF.{}Gør dette når grafik fra denne NewGRF ser lyserøde ud i spillet
@@ -2479,11 +2474,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sæt all
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrer: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspicer - {STRING}
@@ -2657,6 +2647,10 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Selskabsmål:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik på mål for at centrere hovedvinduet over industri/by/felt Ctrl+klik åbner et nyt vindue over industri/by/felt lokation
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tilskudsordninger
@@ -3431,6 +3425,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre h
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nulstil tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nulstil forsinkelse
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
 
@@ -3525,6 +3521,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Antal dage denne AI skal starte efter den forrige (plus/minus): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme for {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} ændringslog for {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licens for {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Se readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ændringslog
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licens
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

@@ -3442,7 +3442,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabel
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Restid (automatisk; tidtabellen baseras på nästa manuella order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Restid (inte angiven)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Res högst i {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Res i {STRING} med högsta hastighet {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
@@ -3465,6 +3467,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra h
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Rensa tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa tiden för markerad order
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ändra hastighetsgräns
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ändra hastighetsgräns för markerad order
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Rensa hastighetsgräns
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Rensa hastighetsgräns för markerad order
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Rensa räknaren för sen ankomst
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid

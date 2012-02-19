@@ -746,6 +746,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}受入�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}助成金
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般情報
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}{STATION}に初めて列車が到着！{}住民から歓声が湧き上がっている模様。
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}{STATION}に初めてバスが到着！{}住民から歓声が湧き上がっている模様。
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}{STATION}に初めてトラックが到着！{}住民から歓声が湧き上がっている模様。
@@ -1357,6 +1358,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶�
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}信号待ちで自動的に折り返す: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
+
+# Config errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2373,8 +2376,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}下へ
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}選択したNewGRFファイルを下へ移動します
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}インストールしたNewGRFファイルのリストです。設定を変更するにはファイルをクリックします。
 
-# Additional textfiles accompanying NewGRFs
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}パラメータの設定
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}パレットを切り替える
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}選択したパレットを切り替えます。{}（この NewGRF のスプライトがピンクになってしまうとき、この操作を試します。）
@@ -2404,8 +2405,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}すべ�
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータの数: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}検査する - {STRING}
@@ -2562,6 +2561,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}会社�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}町内の市街地の開発に出資{}　価格：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}一年間の独占的運送権を購入します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY_LONG}
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}助成金
@@ -3252,6 +3257,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[手前に止�
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間に止まる]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[奥に止まる]
 
+
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}に飛ぶ
 STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING} が {3:COMMA}{2:STRING}時、指令{0:COMMA}に飛ぶ
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{1:STRING}{2:STRING}時、指令{0:COMMA}に飛ぶ
@@ -3291,6 +3297,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択�
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}時間を消去
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の実行時間を消去します
+
+
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅刻回数をリセット
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
@@ -3347,6 +3355,7 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}選択�
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下にします
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
+
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}AI のパラメータを設定します
 
@@ -3366,6 +3375,10 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI を�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

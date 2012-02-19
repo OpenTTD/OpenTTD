@@ -2370,8 +2370,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Надо
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Премества избрания NewGRF файл надолу в списъка
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Списък на инсталираните NewGRF файлове. Изберете файл за да промените параметрите му
 
-# Additional textfiles accompanying NewGRFs
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Настройване на параметрите
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Покажи параметрите
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Превключване на палитрата
@@ -2402,8 +2400,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Пром
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметър {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Брой параметри: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Инспектирай - {STRING}
@@ -3307,6 +3303,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Пром
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Изчисти времето
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Изчисти времетраенето на маркираната заповед
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Преправи закъснялата бройка
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 
@@ -3386,6 +3384,10 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Програм�
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Затвори
 STR_AI_SETTINGS_RESET                                           :{BLACK}Рестартиране
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

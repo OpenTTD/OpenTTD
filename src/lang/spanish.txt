@@ -1801,9 +1801,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Has sido
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}No se permiten trucos en este servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estabas enviando demasiados comandos al servidor
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tardaste demasiado en introducir la contraseña
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Su ordenador tardó demasiado tiempo en conectar
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Llevó demasiado tiempo descargar el mapa
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Llevó demasiado tiempo conectar al servidor
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Su ordenador es demasiado lento para seguir la velocidad del servidor
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Su ordenador tardó demasiado en descargar el mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Su ordenador tardó demasiado en conectar al servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
@@ -3443,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar a como máximo {2:VELOCITY} (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar a {STRING} con un límite de velocidad de {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
@@ -3466,6 +3468,12 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia l
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpiar Horario
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar la cantidad de tiempo para la orden seleccionada
+
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar Límite de Velocidad
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia el límite de velocidad de la orden seleccionada
+
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Limpiar Límite de Velocidad
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpia el límite de velocidad de la orden seleccionada
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario

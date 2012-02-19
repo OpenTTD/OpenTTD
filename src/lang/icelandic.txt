@@ -739,6 +739,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Breytin
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Samstarfssamningar
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Almennar upplýsingar
 
+
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsti strætisvagn kemur við á {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Bæjarbúar fagna . . .{}Fyrsti vörubíll kemur við á {STATION}!
@@ -1324,6 +1325,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Leiðs�
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Breyta gildi stillingar
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1831,6 +1834,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... teng
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... skráin er ekki skrifanleg
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Gat ekki afþjappað niðurhöluðu skránni
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Stilling gegnsæjis
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Virkja/afvirkja gegnsæji stöðvaskiltia. CTRL+smella til að læsa.
@@ -1876,6 +1880,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja l
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina, lestarljós, leiðarsteina og lestarstöðvar. Haltu Ctrl inni til að líka fjarlægja lestarteina úr leiðarsteinum og lestarstöðvum
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð lestarteins
+
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Lega lestarskýlis
@@ -2145,6 +2150,7 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Akur
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snjóþekið land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Eyðimörk
 
+
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Vegur
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Vegur með götuljósum
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Trjáskreyttur vegur
@@ -2345,7 +2351,6 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Engar up
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Viðeigandi skrá finnst ekki
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Breyta NewGRF stillingum
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Loka
@@ -2507,6 +2512,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Kosta b
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{} Kostnaður: {CURRENCY_LONG}
 
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
+
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Samstarfssamningar
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:
@@ -2641,6 +2652,8 @@ STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nafn Fyrirtæki
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nafn forstöðumanns
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Við erum að leita að flutningsfyrirtæki til að taka yfir okkar rekstri.{}{}Viltu kaupa {COMPANY} fyrir {CURRENCY_LONG}?
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
@@ -3172,9 +3185,12 @@ STR_ORDER_NO_UNLOAD                                             :(Ekki afhlaða 
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ekki afhlaða en býða fullfermis)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ekki afhlaða og bíða hvaða fullfermis sem er)
 
+
+
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[upphaf]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[miðja]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[endir]
+
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hoppa í skipun {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Hoppa í skipun {COMMA} þegar {STRING} {STRING} {COMMA}
@@ -3214,6 +3230,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Breyta t
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hreinsa tíma
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hreinsa tímann fyrir valda skipun
+
+
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Endurstilla seinkunnarteljara
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Endurstilla seinkunarteljara, svo farartækið verði á réttum tíma
@@ -3256,7 +3274,6 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Áfram
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Láta gerfigreind halda áfram.
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Skoða ferlisupplýsingar frá þessari gerfigreind
 
-
 STR_ERROR_AI_NO_AI_FOUND                                        :Engin nothæf gerfigreind fundin.{}Þetta er platgerfigreind sem gerir ekkert.{}Hægt er að ná í gerfigreindir með 'Ná í viðbætur af netinu' valmöguleikanum.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af gervigreindunum hrundi. Vinsamlega gerðu höfundi gervigreindarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar er aðeins aðgengilegur á þjóni
@@ -3270,6 +3287,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Færa up
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa valda gerfigreind upp listann
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Færa niður
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa valda gerfigreind niður listann
+
 
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Stilla
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu eiginleika gervigreindarinnar
@@ -3290,6 +3308,10 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta v
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

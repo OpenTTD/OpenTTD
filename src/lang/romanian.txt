@@ -2456,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută î
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF selectat mai jos în listă
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Afișează parametrii
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
@@ -2491,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Număr de parametrii: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Fișier readme al {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Listă modificări {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licența fișierului {STRING} {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}
@@ -3476,6 +3466,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modific�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimină durata de timp pentru comanda selectată
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinitializeaza contorul de intarziere
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniţializează contorul de întârziere, astfel ca vehiculul să ajungă la timp
 
@@ -3570,6 +3562,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Perioada (în zile) după care această librărie IA va fi activată, după cea anterioară (valoare aproximativă): {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Fișier readme al {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Listă modificări {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licența fișierului {STRING} {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

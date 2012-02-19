@@ -2456,11 +2456,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Rof
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Setzt d'NewGRF an der Lëscht erof
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Eng Lëscht vun NewGRF Dateien déi installéiert sinn.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme liesen
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Set parameters
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Weis d'Parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Palette wiesselen
@@ -2491,11 +2486,6 @@ STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setzt al
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Unzuel Parameter: {ORANGE}{NUM}
-
-# NewGRF textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme vun {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Changelog vun {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} Lizenz vun {STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}
@@ -3476,6 +3466,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Z
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zäit läschen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Lesch Zäit fir den gewielten Optrag
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspeidungszieler zerécksetzen
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Setzt den Verspéidungszieler zréck, sou dass d'Gefiert mat Zäit ukënnt
 
@@ -3570,6 +3562,16 @@ STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaach
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 STR_AI_SETTINGS_START_DELAY                                     :Unzuel vun Deeg wou dës KI gestart gëtt no der leschter: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme vun {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Changelog vun {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} Lizenz vun {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Readme liesen
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lizenz
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

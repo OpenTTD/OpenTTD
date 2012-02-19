@@ -2355,9 +2355,6 @@ STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Beweeg A
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Beweeg die gekose NewGRF af in die lys
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}'n Lys van die NewGRF lêers wat installer. Kliek 'n lêer om sy parameter te verander.
 
-# Additional textfiles accompanying NewGRFs
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
-
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tokkel pallet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Tokkel die pallet van die geselekteurde NewGRF.{}Doen dit wanneer die grafika van hierdie NewGRF pink lyk in die speletjie.
@@ -2385,8 +2382,6 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Herstel
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Hoeveelheid parameters: {ORANGE}{NUM}
-
-# NewGRF textfile window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteer - {STRING}
@@ -2526,6 +2521,10 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Maatskappy doelwitte:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}kliek op doel om kern oorsig van industrie/stad/teël te middel. Ctrl+Kliek open 'n nuwe siens poort by industrie/stad/teël lokasie
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidiee
@@ -3250,6 +3249,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Reinig Tyd
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit die totaal van tyd vir die gespesiveerde opdrag
 
+
+
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Herstel Laat Teller
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die voertuig op tyd is
 
@@ -3334,6 +3335,11 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :SpelethieSkrif
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+
+
+# Textfile window
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
+
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}

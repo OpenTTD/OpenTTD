@@ -446,6 +446,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Гра�
 
 
 
+
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
@@ -545,6 +546,7 @@ STR_VARIETY_NONE                                                :Ҫук
 STR_SEA_LEVEL_CUSTOM                                            :Харпӑр хӑй
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Харпӑр хӑй ({NUM}%)
 
+
 STR_DISASTER_NONE                                               :Ҫук
 
 STR_SUBSIDY_X1_5                                                :x1.5
@@ -601,6 +603,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 
 
 
+
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :чӑн
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
@@ -627,6 +630,8 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 
 
 
+# Config errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -638,6 +643,7 @@ STR_INTRO_QUIT                                                  :{BLACK}Вӗҫл
 
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF майлаштару кӑтар
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD' вӗҫле
+
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Вӗҫле
@@ -820,6 +826,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 # Content downloading error messages
 
+
 # Transparency settings window
 
 # Base for station construction window(s)
@@ -828,6 +835,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 
 
 # Rail construction toolbar
+
 
 
 # Rail depot construction window
@@ -977,7 +985,6 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Объе
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верси: {SILVER}{NUM}
 
 
-
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Хуп
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сикӗ
@@ -1007,6 +1014,8 @@ STR_NEWGRF_LIST_NONE                                            :Ҫук
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 
+# NewGRF scanning window
+
 # Sign list window
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Филтр тасат
 
@@ -1023,6 +1032,12 @@ STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ҫу�
 # Town local authority window
 
 
+
+# Goal window
+
+# Goal question window
+
+### Start of Goal Question button list
 
 # Subsidies window
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ҫук -
@@ -1053,6 +1068,8 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ҫук
 
 
 
+
+# Company infrastructure window
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫук -
@@ -1169,6 +1186,8 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 
+# Conditional order variables, must follow order of OrderConditionVariable enum
+
 
 
 
@@ -1176,6 +1195,9 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 # String parts to build the order string
+
+
+
 
 
 
@@ -1200,14 +1222,16 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 
+
+
 # Date window (for timetable)
 
 
 # AI debug window
 
 
-
 # AI configuration window
+
 
 
 
@@ -1219,6 +1243,10 @@ STR_AI_LIST_VERSION                                             :{BLACK}Верс
 # AI Parameters
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
+
+# Textfile window
+
+
 # Vehicle loading indicators
 
 # Income 'floats'
@@ -1228,6 +1256,7 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ӑнӑҫ
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<палӑ мар>
 
 # Map generation messages
+
 
 
 
