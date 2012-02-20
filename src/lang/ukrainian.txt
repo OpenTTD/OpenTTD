@@ -441,7 +441,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буду
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Змінити ландшафт
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Налаштувати звук/музику
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показати останнє повідомлення. Налаштування повідомлень
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку, консоль, дебаг AI, знімки екрану, про OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку, консоль, налагодження AI, знімки екрану, про OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключити панелі
 
 # Extra tooltips for the scenario editor toolbar
@@ -569,7 +569,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Дебаг АІ / Ігрового скрипта
+STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -1397,7 +1397,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заб�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Дозволити AI у командній грі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Кількість #opcodes перед призупинкою скриптів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Кількість #opcodes до призупинення скриптів: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} д{P 0:1 ень ні нів}/%
@@ -2264,7 +2264,7 @@ STR_OBJECT_CLASS_TRNS                                           :Ретранс�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дерева
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Виберіть тип дерев
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Оберіть тип дерева для посадки. Клітинки, які вже містять дерева, доповнюються новими деревами різного типу незалежно від обраного.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дерева випадкового типу
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Садити дерева випадкового типу. Утримуйте Shift для показу витрат на висаджування
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Випадкові дерева
@@ -2644,7 +2644,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Попередження: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Помилка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Збій: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Сталася фатальна помилка NewGRF: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Фатальна помилка NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} не буде працювати з версією TTDPatch, вказаною OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} для {STRING}-версії TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} розроблено для {STRING}
@@ -2930,9 +2930,9 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Інфраструктура:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} клітин{P ка ки ок} з залізничними коліями
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} клітин{P ка ки ок} з дорогами
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} клітин{P ка ки ок} з водою
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} клітин{P ка ки ок} з водними шляхами
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} клітин{P ка ки ок} станцій
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорти
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорт{P "" а ів}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нема
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс
@@ -3623,7 +3623,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Обер
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Дебаг АІ / Ігрового скрипта
+STR_AI_DEBUG                                                    :{WHITE}Налагодження АІ / Ігрового скрипта
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва скрипта
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування
@@ -3643,8 +3643,8 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Ігро
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипту
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один з поточних AI зазнав краху. Будь ласка, повідомте про це автора AI зі знімком налагоджувального вікна AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}АІ / Вікно Дебагу ІгровогоСкрипту доступне тільки серверу
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Збій одного з запущених скриптів. Будь ласка, повідомте про це (разом зі знімком вікна налагодження скрипта) автору скрипта
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно налагодження АІ / Ігрового скрипта доступне тільки серверу
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Налаштування гри
@@ -3672,7 +3672,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наст
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Доступні {STRING}
-STR_AI_LIST_CAPTION_AI                                          :АІ
+STR_AI_LIST_CAPTION_AI                                          :Модулі АІ
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :ІгровіСкрипти
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати скрипт
 

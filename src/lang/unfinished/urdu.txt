@@ -1672,13 +1672,34 @@ STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}موج�
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}پچھلے سال کی آمدن: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}کادکردگی: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}گاڑیاں: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}اسٹیشن: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}کھلاڑی: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}نئی کمپنی
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}نئی کمپنی بنائیں
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}کھیل دیکھیں
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}کھیل کو ناظر کے طور پر دیکھیں
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}کھیل میں شامل ہوں
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}کمپنی کو چلانے میں مدد کریں
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}رابطہ کر رہے ہیں۔ ۔ ۔
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) رابطہ کر رہے ہیں۔ ۔ ۔
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) اختیار دے رہے ہیں ۔ ۔ ۔
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) انتظار کر رہے ہیں ۔ ۔ ۔
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) نقشہ ڈاون لوڈ کر رہے ہیں ۔ ۔ ۔
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) معلومات پر کام کر رہے ہیں ۔ ۔ ۔
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) رجسٹر کر رہے ہیں ۔ ۔ ۔
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}کھیل کے بارے میں معلومات حاصل کر رہے ہیں ۔ ۔ ۔
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}کمپنی کے بارے میں معلومات حاصل کر رہے ہیں ۔ ۔ ۔
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}آپ سے آگے {NUM} کلائنٹ{P "" س} ہیں
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}اب تک {BYTES} ڈاون لوڈ ہوئی ہیں
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}اب تک {BYTES} / {BYTES} ڈاون لوڈ ہوئی ہیں
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}رابطہ منقطع کریں
 
@@ -1686,16 +1707,20 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}سرور
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}کمپنی محفوظ ہے۔ پاس ورڈ بتایہں
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائینٹس کی فہرست
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}نظارہ کریں
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}نئی کمپنی
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :ٹھڈا
+STR_NETWORK_CLIENTLIST_BAN                                      :پابندی
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :پیسے دئیں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :سب سے بات کریں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :کمپنی سے بات کریں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پرائیویٹ پیغام
 
 STR_NETWORK_SERVER                                              :سرور
+STR_NETWORK_CLIENT                                              :کلائینٹ
 STR_NETWORK_SPECTATORS                                          :ناظرین
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}بتائیں آپ کتنے پیسے بھیجنا چاہتے ہیں
@@ -1729,53 +1754,222 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}نیٹ �
 # Network messages
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}نیٹ ورک پر کوئی کھیل نہیں ملا
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرور نے آپ کی درخواست کا جواب نہیں دیا
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF کے فرق کی وجہ سے رابطہ نہیں ہو سکا
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}نیٹ ورک کھیل کو ایک جیسا کرنے کی کوشش ناکام
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}نیٹ ورک کھیل کا رابطہ منقطع
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}بچایا ہوا کھیل لوڈ نہیں ہوسکا
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}سرور شروع نہیں ہو سکا
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}رابطہ نہیں ہوسکا
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}کنکشن #{NUM} کا وقت ختم ہوگیا
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}غلط پاس ورڈ
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}سرور فُل ہے
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}اس سرور پر آپ کے داخلے پر پابندی ہے
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}آپ کو کھیل سے ٹھڈا مار کر نکال دیا گیا
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}اس سرور پر دھوکے کی اجازت نہیں
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}آپ سرور کو بہت زیادہ احکامات بھیج رہے تھے
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}آپ نے پاس ورڈ لکھنے میں بہت دیر لگا دی
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}آپ کے کمپیوٹر نے نقشہ ڈاون لوڈ کرنے میں بہت دیر لگا دی
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}آپ کے کمپیوٹر نے سرور کے ساتھ شامل ہونے میں بہت دیر لگا دی
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :عمومی خرابی
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync خرابی
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :نقشہ لوڈ نہیں ہوسکا
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :رابطہ ختم
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :پروٹوکول کی خرابی
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF مختلف ہے
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :اجازت نہیں ہے
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :خراب یا غیر متوقع پیکٹ وصول کیا ہے
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :غلط دہرائی
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :نام پہلے سے استعمال میں ہے
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :غلط پاس ورڈ
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand میں غلط کمپنی ہے
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :سرور نے ٹھڈا مار دیا
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :دھوکہ دینے کی کوشش کر رہا تھا
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :سرور بھرا ہوا ہے
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :بہت زیادہ احکامات بھیج رہا تھا
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :وقت پر پاس ورڈ نہیں ملا
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :عمومی وقت کا خاتمہ
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :نقشہ ڈاون لوڈ کرنے میں بہت دیر لگی
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :نقشہ پر کام کرنے میں بہت دیر لگی
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}ممکنہ طور پر کنکشن کا خاتمہ
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}آخری {NUM} سیکنڈ{P "" وں} سے سرور سے کوئی معلومات نہیں ملیں
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :کھیل رکا ہوا ہے۔ ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :کھیل اب تک رکا ہوا ہے۔ ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :کھیل اب تک رکا ہوا ہے۔ ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :کھیل اب تک رکا ہوا ہے۔ ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :کھیل اب تک رکا ہوا ہے۔ ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :کھیل کا توقف ختم۔ ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :کھلاڑیوں کی تعداد
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :کلائینٹس سے رابطہ کر رہے ہیں
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :دستی
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :کھیل کا سکرپٹ
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :چھوڑ رہا ہوں
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} کھیل میں شامل ہوا ہے
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} کھیل میں شامل ہوا ہے (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} کمپنی میں شامل ہوا #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ناظرین میں شامل ہوا
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} نے نئی کمپنی شروع کی ہے (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} نے کھیل چھوڑ دیا ہے ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نے اپنا نام بدل کر {STRING} رکھ لیا ہے
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} نے آپ کی کمپنی کو {2:CURRENCY_LONG} دئیے ہیں
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** آپ نے {1:STRING} کو {2:CURRENCY_LONG} دئیے ہیں
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرور نے سیشن بند کر دیا
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}سرور دوبارہ سے سٹارٹ ہو رہا ہے - - -{}برائے مہربانی انتظار فرمائیے ۔ ۔ ۔
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}مواد ڈاون لوڈ کیا جا رہا ہے
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}طرذ
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}مواد کی قسم
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}نام
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}مواد کا نام
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}تفصیلات کے لئے لاین پر کلک کریں{}ڈاون لوڈ کرنے کےلئے چیک باکس پر کلک کریں
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}تمام منتخب کریں
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}تمام مواد ڈاون لوڈ کرنے کے لئے منتخب کریں
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}اپ گریڈ منتخب کریں
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}پہلے سے موجودہ تمام مواد سے متعلقہ اپ گریڈز کو ڈاون لوڈ کرنے کے لئے منتخب کریں
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}تمام کو نا منتخب کریں
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}تمام کو ڈاون لوڈ نا کرنے کے لئے منتخب کریں
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}ٹیگ / نام پر چھانیں:
 STR_CONTENT_OPEN_URL                                            :{BLACK}ویب سائٹ دیکھیں
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}یہ مواد دیکھنے کے لئے ویب سائٹ دیکھیں
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ڈاون لوڈ
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}منتخب شدہ مواد کو ڈاون لوڈ کرنا شروع کریں
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}مکمل ڈاون لوڈ کا سائز: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}مواد سے متعلقہ معلومات
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}آپ نے اس کو ڈاون لوڈ کے لئے منتخب نہیں کیا
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}آپ نے اس کو ڈاون لوڈ کے لئے منتخب کیا
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}یہ انحصارات ڈاون لوڈ کے لئے منتخب کئے گے ہیں
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}آپ کے پاس یہ پہلے سے ہے
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}یہ مواد نامعلوم ہے اور OpenTTD میں ڈاون لوڈ نہیں کیا جا سکتا
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}یہ پہلے سے موجود {STRING} کا متبادل ہے
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}نام: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}ورژن: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}تفصیلات: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}طرز: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}ڈاون لوڈ کا سائز: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{WHITE}{STRING}{SILVER} کی وجہ سے منتخب کیا گیا
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}انحصارات: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}ٹیگز: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" کی مدد کے بغیر بنائی گئی ہے ۔ ۔ ۔
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}۔ ۔ ۔ مواد ڈاون لوڈ کرنا ممکن نہیں!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :بنیادی گرافکس
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI لائیبریری
+STR_CONTENT_TYPE_SCENARIO                                       :منظر نامہ
+STR_CONTENT_TYPE_HEIGHTMAP                                      :اونچائی والا نقشہ
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :بنیادی آوازیں
+STR_CONTENT_TYPE_BASE_MUSIC                                     :بنیادی موسیقی
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :کھیل کا سکرپٹ
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS لائیبریری
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}مواد ڈاون لوڈ کر رہے ہیں ۔ ۔ ۔
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}فائلوں کی درخواست کر رہے ہیں ۔ ۔ ۔
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}اب ڈاون لوڈ کر رہے ہیں {STRING} ({NUM} میں سے {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}ڈاون لوڈ مکمل
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} میں سے {BYTES} ڈاون لوڈ ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}مواد والے سرور سے رابطہ ممکن نہیں ۔ ۔ ۔
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ڈاون لوڈنگ ناکام ہوگئی ۔ ۔ ۔
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}۔ ۔ ۔ رابطہ ٹوٹ گیا
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE} ۔ ۔ ۔ فائل لکھے جانے کے قابل نہیں
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ڈاون لوڈ شدہ فائل decompress نہیں ہوسکی
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}گرافکس غایب ہیں
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD کو چلنے کے لئے ضروری گرافکس نہیں ملے۔ کیا آپ ڈاون لوڈ کر کے انسٹال کرنا چاہتے ہیں؟
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ہاں، گرافکس ڈاون لوڈ کریں
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}نہیں، OpenTTD سے باہر نکلو
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparency کے اختیارات
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}چیزوں کو شفاف کی بجائے غائب کر دیں
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}کوریج والے علاقے کو واضح کریں
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}بند
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}آن
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}مجوزہ جگہ کا کوریج کا علاقہ واضح نہ کریں
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}مجوزہ جگہ کا کوریج کا علاقہ واضح کریں
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}منظور کرتا ہے:
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}فراہم کرتا ہے:
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}اسٹیشن ملائیں
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}الگ اسٹیشن تعمیر کریں
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}گزرگاہ ملائیں
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}الگ سے گزرگاہ تعمیر کریں
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :ریلوے کی تعمیر
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :برقی ریلوے کی تعمیر
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :مونو ریلوے کی تعمیر
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :میگ لیو ریلوے کی تعمیر
 
 
+STR_RAIL_NAME_RAILROAD                                          :ریلوے
+STR_RAIL_NAME_ELRAIL                                            :برقی ریلوے
+STR_RAIL_NAME_MONORAIL                                          :مونو ریل
+STR_RAIL_NAME_MAGLEV                                            :میگ لیو
 
 # Rail depot construction window
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}گزرگاہ
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}گزرگاہ کی طرز منتخب کریں
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ریلوے اسٹیشن منتخب کریں
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}پٹڑیوں کی تعداد
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}ریلوے اسٹیشن کے لئے پلیٹ فارموں کی تعداد منتخب کریں
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}پلیٹ فارم کی لمبائی
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}ریلوے اسٹیشن کی لمبائی منتخب کریں
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}کھینچ کر رکھ دیں
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}کھینچ کر رکھ کر اسٹیشن تعمیر کریں
 
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}تعمیر کے لئے اسٹیشن کی طرز منتخب کریں
 
+STR_STATION_CLASS_DFLT                                          :طے شدہ اسٹیشن
+STR_STATION_CLASS_WAYP                                          :گزرگاہیں
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}اشارے منتخب کریں
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}کھینچتے ہوئے اشاروں کی تعداد
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}کھینچتے ہوئے اشاروں کی تعداد کم کریں
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}کھینچتے ہوئے اشاروں کی تعداد زیادہ کریں
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}ریل کا پل منتخب کریں
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}سڑک کا پل منتخب کریں
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}پل کا انتخاب - تعمیر کرنے کے لئے اپنی مرضی کے پل پر کلک کریں
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :لٹکا ہوا، سٹیل کا
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :گارڈر، سٹیل کا
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :لٹکا ہوا، کنکریٹ کا
+STR_BRIDGE_NAME_WOODEN                                          :لکڑی کا
+STR_BRIDGE_NAME_CONCRETE                                        :کنکریٹ کا
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :ٹیوب نما، سٹیل کا
+STR_BRIDGE_TUBULAR_SILICON                                      :ٹیوب نما، سلیکون کا
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}سڑک کی تعمیرات
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ٹرام وے کی تعمیرات
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ون وے سڑکوں کو فعال / غیر فعال کریں
 
 # Road depot construction window
 
