@@ -548,7 +548,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Prikazani znako
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Puna animacija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Svi detalji
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Transparentne zgrade
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentni znakovi stanica
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentni znakovi
 ############ range ends here
 
 ############ range for file menu starts
@@ -1995,9 +1995,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vi ste i
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Varanja nisu dozvoljena na ovom serveru
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Slali ste previše naredbi na server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Previše dugo se nije unala lozinka
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Računaru je previše dugo trebalo da se priključi
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Previše dugo je trajalo preuzimanje terena
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Previše dugo je trajalo priključivanje serveru
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Računar je suviše spor da bi ispratio rad servera
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Računaru je suviše dugo trebalo da preuzme mapu
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Računaru je suviše dugo trebalo da se priključi serveru
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opšta greška
@@ -2123,7 +2123,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, napu
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Podešavanja Prozirnosti
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Promena prozirnosti naziva stanica. Sa Ctrl+Klik se zaključava
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Promena prozirnosti znakova. Sa Ctrl+Klik se zaključava
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Promena prozirnosti drveća. Sa Ctrl+Klik se zaključava
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Promena prozirnosti zgrada. Sa Ctrl+Klik se zaključava
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Promena prozirnosti fabrika. Sa Ctrl+Klik se zaključava
@@ -2264,9 +2264,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orijenta
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izbor orijentacije autobuske stanice
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orijentacija stanice za utovar kamiona
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izbor orijentacije stanice za utovar kamiona
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija putničke stanice
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija tramvajske putničke stanice
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Odaberite orijentaciju putničke tamvajske stanice
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijentacija teretne stanice
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijentacija tramvajske teretne stanice
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Odaberite orijentaciju teretne tamvajske stanice
 
 # Waterways toolbar (last two for SE only)
@@ -2334,7 +2334,7 @@ STR_OBJECT_CLASS_TRNS                                           :Repetitori
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drveće
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vrste drveća
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vrste drveća za sađenje. Ako pločica već ima drveće, ovim će se dodati još drveća ali mešanih vrsta, bez obzira na odabranu vrstu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drveće proizvoljne vrste
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sađenje drveća proizvoljne vrste. Shift prebacuje između sadnje i prikaza procene troškova
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nasumično postavljeno drveće
@@ -3573,7 +3573,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbliž
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uslovna naredba skoka
 STR_ORDER_SHARE                                                 :Deli naredbe
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska. Ctrl čini da stanica naredi "pun bilo koji tovar", putna tačka naredi "non-stop" i depo naredi "servis". "Deli naredbe" ili Ctrl omogućava da vozilo deli naredbe sa drugim odabranim vozilom. Klikom na drugo vozilo kopiraju se njegove naredbe
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska. Ctrl čini da stanica naredi "pun bilo koji tovar", putna tačka naredi "non-stop" i depo naredi "servis". "Deli naredbe" ili Ctrl omogućava da vozilo deli naredbe sa drugim odabranim vozilom. Klikom na drugo vozilo kopiraju se njegove naredbe. Naredbom za depo se isključuje automatsko servisiranje
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Prikazuje sva vozila koja dele ovaj red vožnje
 
@@ -3653,7 +3653,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Raspored
 STR_TIMETABLE_NO_TRAVEL                                         :Nema putovanja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Putovanje (automatski; raspored po redu naredbi)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Putovanje sa najviše {2:VELOCITY} (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Putovanje do {STRING} sa najviše {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i ostani {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putuj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
@@ -3677,7 +3679,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Menjanje
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ukloni Vreme
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Uklanja vreme koje je određeno za obeleženu naredbu
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Promeni Ograničenje Brzine
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Menjanje ograničenja najviše brzine putovanja onznačene naredbe
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Ukloni Ograničenje Brzine
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Uklanja ograničenje najviše brzine putovanja označene naredbe
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Poništi Merač Kašnjenja
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Poništava merač kašnjenja, tako da vozilo ide na vreme

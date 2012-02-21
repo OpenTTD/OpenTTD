@@ -422,7 +422,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Εμφανίζ�
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Πλήρες animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Πλήρης λεπτομέρειες
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανή κτίρια
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες σταθμών
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες
 ############ range ends here
 
 ############ range for file menu starts
@@ -507,7 +507,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / Αποσφαλμάτωση
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Μεγένθυση στη φωτογραφία εικόνας
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Πλήρης μεγένθυση στην απεικόνιση οθόνης
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολο το χάρτη(Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
@@ -1977,7 +1977,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Λείπ
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες των σταθμών. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες. Ctrl+κλικ για να την κλειδώσετε.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας για τα δέντρα. Ctrl+κλικ για να το κλειδώσετε.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Εναλλαγή διαφάνιας για τα σπίτια. Ctrl+κλικ για να το κλειδώσετε.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για τις βιομηχανίες. Ctrl+κλικ για να το κλειδώσετε.
@@ -2055,16 +2055,16 @@ STR_STATION_CLASS_WAYP                                          :Σημείο κ
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να βρίσκεται σε κάθε τμήμα κάθε φορά
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου στο επόμενο τμήμα γράμμης. Αλλιώς δείχνει κόκκινο
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στην είσοδο στους συνδιασμένους προ-σηματοδότες.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδιασμένος Σηματοδότης (σηματοφόρος){}Ο συνδιασμένος σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το χτήσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την άλλη πλεύρα.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπόρουν να περαστούν από την άλλη πλεύρα.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να τεθεί το σωστό χρώμα στους προ-σηματοδότες είσοδου και συνδιασμένους
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδυασμένος Σηματοδότης (σηματοφόρος){}Ο συνδυασμένος σηματοδότης απλά λειτουργεί ταυτόχρονα ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το χτίσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στιγμή, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπόρουν να περαστούν από την πίσω πλεύρα.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλεύρα.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Σηματοδότης τμήματος (ηλεκτρικός){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να είναι στο ίδιο τμήμα την ίδια στιγμή.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Σηματοδότηςεισόδου (ηλεκτρικός){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες εξόδου από το επόμενο τμήμα γράμμης. Αλλιώς είναι κόκκινο.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Σηματοδότης εξόδου (ηλεκτρικός){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στους προ-σηματοδότες εισόδου και συνδιασμένους
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδιασμένος σηματοδότης (ηλεκτρικός){}Ο συνδιασμένος σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου. Αυτό σας επιτρέπει το χτήσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την άλλη πλεύρα.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπόρουν να περαστούν από την άλλη πλεύρα.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την πίσω πλεύρα.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλεύρα.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπέας σηματοδότη{}Όταν επιλεγεί, πατώντας σε έναν υπάρχον σηματοδότη θα τον μετατρέψει στον επιλεγμένο τύπο σηματοδότη και παραλλαγή, με Ctrl+κλικ εναλλάσεται με την υπάρχουσα παραλλαγή, με Shift+κλικ εμφανίζεται το εκιμώμενο κόστος μετατροπής
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Πυκνότητα σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση πυκνότητας σηματοδοτών με σύρσιμο
@@ -2188,7 +2188,7 @@ STR_OBJECT_CLASS_TRNS                                           :Αναμετα�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το κελί έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Βάλε δέντρα τυχαίου τύπου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
@@ -2479,7 +2479,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετα
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση κάτω
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα άρχεια NewGRF που είναι εγκατεστημένα. Κάντε κλικ σε ένα αρχείο για αλλάξετε τις παραμέτρους του
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα αρχεία NewGRF που είναι εγκατεστημένα.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
@@ -2559,7 +2559,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη· αυτό μπορεί να κρασάρει το OpenTTD.{}Είστε απόλυτα σίγουρος/η για την ενέργεια αυτή;
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη. Αυτό μπορεί να κρασάρει το OpenTTD ή να διαλύσει την κατάσταση του παιχνιδιού. Μην καταχωρείτε αναφορές σφάλματος για τέτοια προβλήματα.{}Είστε απόλυτα σίγουρος/η για αυτή την ενέργεια;
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθηκη του αρχείου: διπλότυπο GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε αρχείο ταυτοποιημένο (φορτώθηκε συμβατό GRF)
@@ -2582,7 +2582,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τ�
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει στην σωστή ανακατασκευή
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην ανακοίνωση παραγωγής.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
@@ -2785,7 +2785,7 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανέ
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμια
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσιμο αρχηγείου εταιρίας
@@ -2807,7 +2807,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλα
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρία
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτή την εταιρεία. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφναίζεται το κόστος χωρίς την πώληση μετοχών
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κέρδος χωρίς την πώληση μετοχών
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
@@ -2983,7 +2983,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - κλικ σε ένα τρένο για πληροφορίες, μεταφέρετε ενα όχημα για το προσθέσετε/αφαιρέσετε στο τρένο
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέσετε από ένα τρένο, δεξί κλικ για πληροφορίες. Κρατήστε το Ctrl για να κάνετε και τις δυο λειτουργίες να ισχύσουν για τις ακόλουθες αλυσίδες
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δέξι κλικ σε ένα όχημα για πληροφορίες
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δέξι κλικ σε ένα πλοίο για πληροφορίες
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - δέξι κλικ σε ένα αεροπλάνο για πληροφορίες
@@ -3331,7 +3331,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές του σταθμού γίνονται 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', οι εντολές σημείου καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες ενοτλές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές σταθμού γίνονται 'πληρής φόρτωση οποιουδήποτε εμπορεύματος', οι εντολές καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες εντολές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό. Μια εντολή για αμαξοστάσιο απενεργοποιεί την αυτόματη επισκευή του οχήματος
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχήματων που μοιράζονται αυτό το δρομολόγιο
 
@@ -3466,7 +3466,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέ
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης για αυτό το AI
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα script που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του script με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Το παράθυρο αποσφαλμάτωσης είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window

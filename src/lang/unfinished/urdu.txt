@@ -448,6 +448,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تد
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :اسکرین کی تصویر
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :قریب سے اسکرین کی تصویر
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :پہلے سے طے شدہ قربت سے اسکرین کی تصویر
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :پورے نقشے کی اسکرین کی تصویر
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف بندھ
@@ -1976,27 +1977,57 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ون و�
 # Road vehicle station construction window
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}گزرگاہوں کی تعمیرات
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}نہریں
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا رکھو.
 
 # Ship depot construction window
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}بندرگاہ
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}ہوائی اڈے
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}ہوائی اڈے کا انتخاب
+STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}ہوائی اڈے کی طرز اور سائز منتخب کریں
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}ہوائی اڈے کی قسم
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}پھیلاو کی قسم {NUM}
 
+STR_AIRPORT_SMALL                                               :چھوٹا
+STR_AIRPORT_CITY                                                :شہری
+STR_AIRPORT_METRO                                               :میٹروپولیٹن
+STR_AIRPORT_INTERNATIONAL                                       :بین الاقوامی
+STR_AIRPORT_COMMUTER                                            :مسافر
+STR_AIRPORT_INTERCONTINENTAL                                    :بین البراعظمی
+STR_AIRPORT_HELIPORT                                            :ہیلی اڈہ
 
+STR_AIRPORT_CLASS_SMALL                                         :چھوٹے ہوائی اڈے
+STR_AIRPORT_CLASS_LARGE                                         :بڑے ہوائی اڈے
+STR_AIRPORT_CLASS_HUB                                           :مرکزی ہوائی اڈے
+STR_AIRPORT_CLASS_HELIPORTS                                     :ہیلی کاپڑوں کا ہوائی اڈہ
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}پیدا کردہ شور: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}منظر نامہ
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}چیز کا انتخاب
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}تعمیر کرنے کے لئے چیز کی قسم کا انتخاب کریں
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}چیز کا جائزہ
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}سائز: {GOLD}{NUM} x {NUM} ٹائلیں
 
+STR_OBJECT_CLASS_LTHS                                           :روشنی کے مینار
+STR_OBJECT_CLASS_TRNS                                           :ٹرانسمیٹرز
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}درخت
+STR_TREES_RANDOM_TYPE                                           :{BLACK}مختلف اقسام کے درخت
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}مختلف درخت
 
 # Land generation window (SE)
 
