@@ -3463,10 +3463,10 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Cet hora
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de départ
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Sélectionner une date comme point de départ de cet horaire
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier durée
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler durée
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler la durée
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modifier la vitesse limite

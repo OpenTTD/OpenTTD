@@ -1565,6 +1565,7 @@ STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}کلائینٹس
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}نقشے کا حجم
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}کھیل لے نقشے کا سائز منتخب کریں{}علاقے کے حساب سے ترتیب دینے کے لئے کلک کریں
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}تاریخ
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}آج کی تاریخ
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}سال
@@ -1597,6 +1598,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}سرور
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}سرور ڈھونڈیں
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}سرور کے لئے نیٹ ورک تلاش کریں
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}سرور شامل کریں
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}سرور کو اس فہرست میں شامل کریں جو ہمیشہ کھیل شروع کرنے کے لئے پرکھی جاتی ہے
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}سرور شروع کریں
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}اپنا سرور خود شروع کریں
 
@@ -1607,16 +1609,23 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ہوسٹ
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}نیا زیادہ کھلاڑیوں والا کھیل شروع کریں
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}کھیل کا نام:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}کھیل دوسرے کھلاڑیوں کو زیادہ کھلاڑیوں والی فہرست میں دکھایا جائے گا
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}پاس ورڈ رکھیں
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر آپ اس کھیل کو ہر کسی کی پہنچ سے بچانا چاہتے ہیں تو کھیل کو پاس ورڈ سے محفوظ بنا لیں
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / انٹرنیٹ
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} کلائینٹ{P "" س}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}زیادہ سے زیادہ کلائینٹ:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}زیادہ سے زیادہ کلائینٹس کی تعداد کا انتخاب کریں
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} کمپنی{P "" اں}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}زیادہ سے زیادہ کمپنیاں:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}سرور پر کمپنیوں کی زیادہ سے زیادہ تعداد مقرر کریں
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ناظر{P "" ین}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}زیادہ سے زیادہ ناظرین
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}سرور پس زیادہ سے زیادہ ناظرین کی تعداد مقرر کریں
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}بولی گئی زبان:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دوسرے کھلاڑی سرور پر بولی جانے والی زبان کے بادے میں جان سکیں گے
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}نیٹ ورک والے کھیل کا نام لکھیں
 
@@ -1664,6 +1673,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}زیادہ کھلاڑیوں والے کھیل کی لابی
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}شامل ہونے کی تیاری کرتے ہوئے: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}موجودہ کھیل میں شامل کمپنیوں کی فہرست۔ آپ ان میں سے کسی میں شامل ہو سکتے ہیں یا جگہ ہونے کی صورت میں نئی کمپنی شروع کر سکتے ہیں
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}کمپنی کی معلومات
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}کمپنی کا نام: {WHITE}{STRING}
@@ -1737,6 +1747,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}کمپن
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}شامل ہوں
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}اس کمپنی کے طور پر کھیل میں شامل ہوں
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}پاس ورڈ
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}اپنی کمپنی کو پاس ورڈ سے محفوظ بنائیں تاکہ غیر متعلقہ کھلاڑی اس میں شامل نہ ہو سکیں
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}کمپنی کا پاس ورڈ رکھیں
 
 # Network chat
@@ -1753,6 +1764,7 @@ STR_NETWORK_CHAT_ALL                                            :[تمام] {STR
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}نیٹ ورک پر بات کرنے کے لئے پیغام لکھیں
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}کوئی نیٹ ورک والا آلہ نہیں ملا یا کھیل کو ENABLE_NETWORK کے بغیر بنایا گیا ہے
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}نیٹ ورک پر کوئی کھیل نہیں ملا
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}سرور نے آپ کی درخواست کا جواب نہیں دیا
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF کے فرق کی وجہ سے رابطہ نہیں ہو سکا
@@ -1762,6 +1774,8 @@ STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}بچای
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}سرور شروع نہیں ہو سکا
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}رابطہ نہیں ہوسکا
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}کنکشن #{NUM} کا وقت ختم ہوگیا
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}پروٹوکول کی خرابی کی وجہ سے رابطے کو بند کرنا پڑا
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}کلائینٹ اور سرور کا ورژن ایک جیسا نہیں ہے
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}غلط پاس ورڈ
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}سرور فُل ہے
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}اس سرور پر آپ کے داخلے پر پابندی ہے
@@ -1769,6 +1783,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}آپ ک�
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}اس سرور پر دھوکے کی اجازت نہیں
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}آپ سرور کو بہت زیادہ احکامات بھیج رہے تھے
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}آپ نے پاس ورڈ لکھنے میں بہت دیر لگا دی
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}آپ کا کمپیوٹر اتنا سُست ہے کہ کھیل میں سرور کا ساتھ نہیں دے پا رہا
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}آپ کے کمپیوٹر نے نقشہ ڈاون لوڈ کرنے میں بہت دیر لگا دی
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}آپ کے کمپیوٹر نے سرور کے ساتھ شامل ہونے میں بہت دیر لگا دی
 
@@ -1896,6 +1911,15 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}نہیں
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparency کے اختیارات
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}اشاروں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}درختوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}گھروں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}صنعتوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}تعمیرات کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}پلوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}بنیادی ڈھانچوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}catenary کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}لوڈ کرنے کے نشانوں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}چیزوں کو شفاف کی بجائے غائب کر دیں
 
 # Base for station construction window(s)
@@ -1920,6 +1944,14 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :برقی ریل
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :مونو ریلوے کی تعمیر
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :میگ لیو ریلوے کی تعمیر
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}ریل گاڑی کے ٹریک کی تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}ریل گاڑی کے ٹریک کی خود کار طریقے سے تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}ریل گاڑیوں کے ڈپو کی تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}ریل گاڑی کے ٹریک کو گزرگاہ میں بدلیں۔ Ctrl گزرگاہوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}ریلوے اسٹیشن کی تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}ریلوے سگنل کی تعمیر کریں۔ Ctrl روشنی/semaphore والے سگنل میں تدویم کرتا ہے۔{}کھینچ کر لگانے سے سیدھی پٹڑی پر سگنل لگتے ہیں۔ Ctrl سے اگلے جنکشن تک سگنلز کی تعمیر ہوتی ہے۔{}Ctrl+Click سے سگنلز کے انتخاب والی ونڈو کھلتی ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}ریلوے کا پل تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}ریلوے کی سرنگ تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 
 STR_RAIL_NAME_RAILROAD                                          :ریلوے
 STR_RAIL_NAME_ELRAIL                                            :برقی ریلوے
@@ -1927,6 +1959,8 @@ STR_RAIL_NAME_MONORAIL                                          :مونو ریل
 STR_RAIL_NAME_MAGLEV                                            :میگ لیو
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}ریل گاڑی کے ڈپو کا رخ
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}ریلوے ڈپو کا رخ منتخب کریں
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}گزرگاہ
@@ -1934,6 +1968,8 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}گزرگ
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ریلوے اسٹیشن منتخب کریں
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}رخ
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}ریلوے اسٹیشن کا رخ منتخب کریں
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}پٹڑیوں کی تعداد
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}ریلوے اسٹیشن کے لئے پلیٹ فارموں کی تعداد منتخب کریں
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}پلیٹ فارم کی لمبائی
@@ -1941,6 +1977,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}ریلو
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}کھینچ کر رکھ دیں
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}کھینچ کر رکھ کر اسٹیشن تعمیر کریں
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}دکھانے کے لئے ریلوے اسٹیشن کی قسم کا انتخاب کریں
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}تعمیر کے لئے اسٹیشن کی طرز منتخب کریں
 
 STR_STATION_CLASS_DFLT                                          :طے شدہ اسٹیشن
@@ -1960,6 +1997,7 @@ STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :لٹکا ہوا، سٹیل کا
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :گارڈر، سٹیل کا
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever، سٹیل
 STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :لٹکا ہوا، کنکریٹ کا
 STR_BRIDGE_NAME_WOODEN                                          :لکڑی کا
 STR_BRIDGE_NAME_CONCRETE                                        :کنکریٹ کا
@@ -1970,24 +2008,58 @@ STR_BRIDGE_TUBULAR_SILICON                                      :ٹیوب نما
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}سڑک کی تعمیرات
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ٹرام وے کی تعمیرات
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}سڑک کی تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}ٹرام کی پٹڑی کی تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}سڑک کی خودکار طریقے سے تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}ٹرام وے کی پٹڑی خودکار طریقے سے تعمیر کریں۔ Ctrl تعمیر/ خاتمے میں تدویم کرتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}گاڑیوں کا ڈپو تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}ٹرام گاڑیوں کا ڈپو تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}لاری اڈے کی تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}ٹرام کا مسافروں والا اسٹیشن تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}لاریوں میں سامان لوڈ کرنے کے لئے لاری اڈے کی تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}ٹرام کا سامان والا اسٹیشن تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ون وے سڑکوں کو فعال / غیر فعال کریں
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}پل تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}ٹرام وے کا پل تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}سرنگ تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}ٹرام وے کی سرنگ تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}سڑک کی تعمیر / خاتمے میں تدویم کریں
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}ٹرام وے کی تعمیر / خاتمے میں تدویم کریں
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}گاڑیوں کے ڈپو کا رخ
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}گاڑیوں کے ڈپو کا رخ منتخب کریں
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}ٹرام وے کے ڈپو کا رخ
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}ٹرام وے کے ڈپو کا رخ منتخب کریں
 
 # Road vehicle station construction window
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}لاری اڈے کا رخ
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}لاری اڈے کا رخ منتخب کریں
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}سامان بردار لاری اڈے کا رخ
+STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}سامان لوڈ کرنے والے لاری اڈے کا رخ منتخب کریں
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}ٹرام وے کے مسافروں والے اسٹیشن کا رخ
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}ٹرام وے کے مسافروں والے اسٹیشن کا رخ منتخب کریں
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}ٹرام وے کے سامان والے اسٹیشن کا رخ
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}ٹرام وے کے سامان والے اسٹیشن کا رخ منتخب کریں
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}گزرگاہوں کی تعمیرات
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}نہریں
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}نہر تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}بحری جہازوں کا ڈپو تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}بندرگاہ تعمیر کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا رکھو.
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}بحری جہازوں کے ڈپو کا رخ
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}بحری جہازوں کے ڈپو کا رخ منتخب کریں
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}بندرگاہ
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}ہوائی اڈے
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}ہوائی اڈے کی تعمیر کریں۔ Ctrl اسٹیشنوں کو ملاتا ہے۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}ہوائی اڈے کا انتخاب
@@ -2002,6 +2074,7 @@ STR_AIRPORT_INTERNATIONAL                                       :بین الاق
 STR_AIRPORT_COMMUTER                                            :مسافر
 STR_AIRPORT_INTERCONTINENTAL                                    :بین البراعظمی
 STR_AIRPORT_HELIPORT                                            :ہیلی اڈہ
+STR_AIRPORT_HELIDEPOT                                           :ہیلی کاپٹر کا ڈپو
 
 STR_AIRPORT_CLASS_SMALL                                         :چھوٹے ہوائی اڈے
 STR_AIRPORT_CLASS_LARGE                                         :بڑے ہوائی اڈے
