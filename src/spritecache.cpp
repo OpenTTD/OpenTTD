@@ -264,33 +264,37 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 
 static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail)
 {
-	int left   = sprite[ZOOM_LVL_NORMAL].x_offs;
-	int top    = sprite[ZOOM_LVL_NORMAL].y_offs;
-	int right  = sprite[ZOOM_LVL_NORMAL].x_offs + sprite[ZOOM_LVL_NORMAL].width;
-	int bottom = sprite[ZOOM_LVL_NORMAL].y_offs + sprite[ZOOM_LVL_NORMAL].height;
-
-	/* Find combined bounds of all zoom levels.*/
-	for (ZoomLevel zoom = ZOOM_LVL_OUT_2X; zoom != ZOOM_LVL_END; zoom++) {
+	/* Get minimum top left corner coordinates. */
+	int min_xoffs = INT32_MAX;
+	int min_yoffs = INT32_MAX;
+	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (HasBit(sprite_avail, zoom)) {
-			uint8 scaled_1 = ScaleByZoom(1, zoom);
-
-			left   = min(left, sprite[zoom].x_offs * scaled_1);
-			top    = min(top, sprite[zoom].y_offs * scaled_1);
-			right  = max(right, (sprite[zoom].x_offs + sprite[zoom].width - 1) * scaled_1);
-			bottom = max(bottom, (sprite[zoom].y_offs + sprite[zoom].height - 1) * scaled_1);
+			min_xoffs = min(min_xoffs, ScaleByZoom(sprite[zoom].x_offs, zoom));
+			min_yoffs = min(min_yoffs, ScaleByZoom(sprite[zoom].y_offs, zoom));
 		}
 	}
 
-	/* Pad too small sprites. */
-	SetBit(sprite_avail, ZOOM_LVL_NORMAL);
+	/* Get maximum dimensions taking necessary padding at the top left into account. */
+	int max_width  = INT32_MIN;
+	int max_height = INT32_MIN;
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (HasBit(sprite_avail, zoom)) {
-			int pad_left   = sprite[zoom].x_offs - UnScaleByZoom(left, zoom);
-			int pad_top    = sprite[zoom].y_offs - UnScaleByZoom(top, zoom);
-			int pad_right  = UnScaleByZoom(right, zoom) - (sprite[zoom].x_offs + sprite[zoom].width);
-			int pad_bottom = UnScaleByZoom(bottom, zoom) - (sprite[zoom].y_offs + sprite[zoom].height);
+			max_width  = max(max_width, ScaleByZoom(sprite[zoom].width + sprite[zoom].x_offs - UnScaleByZoom(min_xoffs, zoom), zoom));
+			max_height = max(max_height, ScaleByZoom(sprite[zoom].height + sprite[zoom].y_offs - UnScaleByZoom(min_yoffs, zoom), zoom));
+		}
+	}
 
-			if (pad_left != 0 || pad_right != 0 || pad_top != 0 || pad_bottom != 0) {
+	/* Pad sprites where needed. */
+	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
+		if (HasBit(sprite_avail, zoom)) {
+			/* Scaling the sprite dimensions in the blitter is done with rounding up,
+			 * so a negative padding here is not an error. */
+			int pad_left   = max(0, sprite[zoom].x_offs - UnScaleByZoom(min_xoffs, zoom));
+			int pad_top    = max(0, sprite[zoom].y_offs - UnScaleByZoom(min_yoffs, zoom));
+			int pad_right  = max(0, UnScaleByZoom(max_width, zoom) - sprite[zoom].width - pad_left);
+			int pad_bottom = max(0, UnScaleByZoom(max_height, zoom) - sprite[zoom].height - pad_top);
+
+			if (pad_left > 0 || pad_right > 0 || pad_top > 0 || pad_bottom > 0) {
 				if (!PadSingleSprite(&sprite[zoom], zoom, pad_left, pad_top, pad_right, pad_bottom)) return false;
 			}
 		}
@@ -305,6 +309,7 @@ static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, uint
 	ZoomLevel first_avail = static_cast<ZoomLevel>(FIND_FIRST_BIT(sprite_avail));
 	if (first_avail != ZOOM_LVL_NORMAL) {
 		if (!ResizeSpriteIn(sprite, first_avail, ZOOM_LVL_NORMAL)) return false;
+		SetBit(sprite_avail, ZOOM_LVL_NORMAL);
 	}
 
 	/* Pad sprites to make sizes match. */
