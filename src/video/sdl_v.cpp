@@ -261,15 +261,15 @@ static bool CreateMainSurface(uint w, uint h)
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	blitter->PostResize();
 
+	InitPalette();
 	switch (blitter->UsePaletteAnimation()) {
 		case Blitter::PALETTE_ANIMATION_NONE:
 		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-			InitPalette();
 			UpdatePalette();
 			break;
 
 		case Blitter::PALETTE_ANIMATION_BLITTER:
-			blitter->PaletteAnimate(_local_palette);
+			if (_video_driver != NULL) blitter->PaletteAnimate(_local_palette);
 			break;
 
 		default:
