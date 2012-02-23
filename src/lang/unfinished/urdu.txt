@@ -2075,6 +2075,7 @@ STR_AIRPORT_COMMUTER                                            :مسافر
 STR_AIRPORT_INTERCONTINENTAL                                    :بین البراعظمی
 STR_AIRPORT_HELIPORT                                            :ہیلی اڈہ
 STR_AIRPORT_HELIDEPOT                                           :ہیلی کاپٹر کا ڈپو
+STR_AIRPORT_HELISTATION                                         :ہیلی کاپٹر کا اسٹیشن
 
 STR_AIRPORT_CLASS_SMALL                                         :چھوٹے ہوائی اڈے
 STR_AIRPORT_CLASS_LARGE                                         :بڑے ہوائی اڈے
@@ -2087,9 +2088,11 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}پیدا
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}منظر نامہ
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}مستقبل میں استعمال کے لئے زمین خریدیں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}چیز کا انتخاب
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}تعمیرکرنے کے لئے چیز منتخب کریں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}تعمیر کرنے کے لئے چیز کی قسم کا انتخاب کریں
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}چیز کا جائزہ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}سائز: {GOLD}{NUM} x {NUM} ٹائلیں
