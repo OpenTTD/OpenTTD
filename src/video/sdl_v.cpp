@@ -258,9 +258,23 @@ static bool CreateMainSurface(uint w, uint h)
 	_screen.dst_ptr = newscreen->pixels;
 	_sdl_screen = newscreen;
 
-	BlitterFactoryBase::GetCurrentBlitter()->PostResize();
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	blitter->PostResize();
 
-	InitPalette();
+	switch (blitter->UsePaletteAnimation()) {
+		case Blitter::PALETTE_ANIMATION_NONE:
+		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+			InitPalette();
+			UpdatePalette();
+			break;
+
+		case Blitter::PALETTE_ANIMATION_BLITTER:
+			blitter->PaletteAnimate(_local_palette);
+			break;
+
+		default:
+			NOT_REACHED();
+	}
 
 	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_CALL SDL_WM_SetCaption(caption, caption);
