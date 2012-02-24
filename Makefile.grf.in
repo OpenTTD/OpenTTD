@@ -66,7 +66,7 @@ $(OBJS_DIR)/openttd.grf: $(PNG_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(Q) gcc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) -s $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
-	$(Q) $(GRFCODEC) -s -e -p1 $(OBJS_DIR)/openttd.grf
+	$(Q) $(GRFCODEC) -n -s -e -p1 $(OBJS_DIR)/openttd.grf
 
 # Clean up temporary files.
 clean:
