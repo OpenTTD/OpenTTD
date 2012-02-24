@@ -8,39 +8,39 @@
 //
    -1 * 0	 0C "Flag graphics"
    -1 * 3	 05 14 24
-   -1 sprites/flags.png 34 8 09 8 11 0 0
-   -1 sprites/flags.png 50 8 09 8 11 0 0
-   -1 sprites/flags.png 66 8 09 8 11 0 0
-   -1 sprites/flags.png 82 8 09 8 11 0 0
-   -1 sprites/flags.png 98 8 09 8 11 0 0
-   -1 sprites/flags.png 114 8 09 8 11 0 0
-   -1 sprites/flags.png 130 8 09 8 11 0 0
-   -1 sprites/flags.png 146 8 09 8 11 0 0
-   -1 sprites/flags.png 162 8 09 8 11 0 0
-   -1 sprites/flags.png 178 8 09 8 11 0 0
-   -1 sprites/flags.png 194 8 09 8 11 0 0
-   -1 sprites/flags.png 210 8 09 8 11 0 0
-   -1 sprites/flags.png 226 8 09 8 11 0 0
-   -1 sprites/flags.png 242 8 09 8 11 0 0
-   -1 sprites/flags.png 258 8 09 8 11 0 0
-   -1 sprites/flags.png 274 8 09 8 11 0 0
-   -1 sprites/flags.png 290 8 09 8 11 0 0
-   -1 sprites/flags.png 306 8 09 8 11 0 0
-   -1 sprites/flags.png 322 8 09 8 11 0 0
-   -1 sprites/flags.png 338 8 09 8 11 0 0
-   -1 sprites/flags.png 354 8 09 8 11 0 0
-   -1 sprites/flags.png 370 8 09 8 11 0 0
-   -1 sprites/flags.png 386 8 09 8 11 0 0
-   -1 sprites/flags.png 402 8 09 8 11 0 0
-   -1 sprites/flags.png 418 8 09 8 11 0 0
-   -1 sprites/flags.png 434 8 09 8 11 0 0
-   -1 sprites/flags.png 450 8 09 8 11 0 0
-   -1 sprites/flags.png 466 8 09 8 11 0 0
-   -1 sprites/flags.png 482 8 09 8 11 0 0
-   -1 sprites/flags.png 498 8 09 8 11 0 0
-   -1 sprites/flags.png 514 8 09 8 11 0 0
-   -1 sprites/flags.png 530 8 09 8 11 0 0
-   -1 sprites/flags.png 546 8 09 8 11 0 0
-   -1 sprites/flags.png 562 8 09 8 11 0 0
-   -1 sprites/flags.png 578 8 09 8 11 0 0
-   -1 sprites/flags.png 594 8 09 8 11 0 0
+   -1 sprites/flags.png 8bpp  34    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp  50    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp  66    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp  82    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp  98    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 114    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 130    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 146    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 162    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 178    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 194    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 210    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 226    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 242    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 258    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 274    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 290    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 306    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 322    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 338    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 354    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 370    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 386    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 402    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 418    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 434    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 450    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 466    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 482    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 498    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 514    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 530    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 546    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 562    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 578    8  11   8   0   0 normal
+   -1 sprites/flags.png 8bpp 594    8  11   8   0   0 normal

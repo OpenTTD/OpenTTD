@@ -8,51 +8,51 @@
 //
    -1 * 0	 0C "Electrified rail by Michael Blunck"
    -1 * 3	 05 05 30
-   -1 sprites/elrails.png 66 8 01 16 32 -29 -2
-   -1 sprites/elrails.png 114 8 01 16 32 -1 -2
-   -1 sprites/elrails.png 162 8 01 1 32 -1 -2
-   -1 sprites/elrails.png 210 8 01 16 1 0 -3
-   -1 sprites/elrails.png 226 8 01 24 32 -29 -2
-   -1 sprites/elrails.png 274 8 01 9 32 -1 6
-   -1 sprites/elrails.png 322 8 01 9 32 -29 6
-   -1 sprites/elrails.png 370 8 01 24 32 -1 -2
-   -1 sprites/elrails.png 418 8 01 16 32 -29 -2
-   -1 sprites/elrails.png 466 8 01 16 32 -1 -2
-   -1 sprites/elrails.png 514 8 01 1 32 -1 -2
-   -1 sprites/elrails.png 562 8 01 16 1 0 -3
-   -1 sprites/elrails.png 578 8 01 24 32 -29 -2
-   -1 sprites/elrails.png 626 8 01 9 32 -1 6
-   -1 sprites/elrails.png 674 8 01 9 32 -29 6
-   -1 sprites/elrails.png 722 8 01 24 32 -1 -2
-   -1 sprites/elrails.png 2 56 01 16 32 -29 -2
-   -1 sprites/elrails.png 50 56 01 16 32 -1 -2
-   -1 sprites/elrails.png 98 56 01 1 32 -1 -2
-   -1 sprites/elrails.png 146 56 01 16 1 0 -3
-   -1 sprites/elrails.png 162 56 01 24 32 -29 -2
-   -1 sprites/elrails.png 210 56 01 9 32 -1 6
-   -1 sprites/elrails.png 258 56 01 9 32 -29 6
-   -1 sprites/elrails.png 306 56 01 24 32 -1 -2
-   -1 sprites/elrails.png 354 56 01 8 16 -29 6
-   -1 sprites/elrails.png 386 56 01 8 16 -1 -2
-   -1 sprites/elrails.png 418 56 01 8 16 -13 -2
-   -1 sprites/elrails.png 450 56 01 8 16 15 6
-   -1 sprites/elrails.png 482 56 01 16 8 -7 -14
-   -1 sprites/elrails.png 498 56 01 18 8 0 -17
-   -1 sprites/elrails.png 514 56 01 16 8 0 -14
-   -1 sprites/elrails.png 530 56 01 18 8 -7 -17
-   -1 sprites/elrails.png 546 56 01 16 2 0 -15
-   -1 sprites/elrails.png 562 56 01 18 2 0 -16
-   -1 sprites/elrails.png 578 56 01 16 8 0 -15
-   -1 sprites/elrails.png 594 56 01 16 8 -7 -15
-   -1 sprites/elrails.png 610 56 09 16 13 4 2
-   -1 sprites/elrails.png 642 56 09 16 20 0 2
-   -1 sprites/elrails.png 674 56 09 16 20 0 2
-   -1 sprites/elrails.png 706 56 09 16 20 0 2
-   -1 sprites/elrails.png 738 56 03 30 38 -3 -14
-   -1 sprites/elrails.png 2 104 03 44 72 -16 -8
-   -1 sprites/elrails.png 82 104 03 35 44 -21 -2
-   -1 sprites/elrails.png 146 104 03 44 72 -16 -35
-   -1 sprites/elrails.png 226 104 09 19 20 0 1
-   -1 sprites/elrails.png 258 104 03 32 32 0 0
-   -1 sprites/elrails.png 306 104 01 22 12 -9 -18
-   -1 sprites/elrails.png 338 104 01 22 12 -1 -18
+   -1 sprites/elrails.png 8bpp  66    8  32  16 -29  -2 normal
+   -1 sprites/elrails.png 8bpp 114    8  32  16  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 162    8  32   1  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 210    8   1  16   0  -3 normal
+   -1 sprites/elrails.png 8bpp 226    8  32  24 -29  -2 normal
+   -1 sprites/elrails.png 8bpp 274    8  32   9  -1   6 normal
+   -1 sprites/elrails.png 8bpp 322    8  32   9 -29   6 normal
+   -1 sprites/elrails.png 8bpp 370    8  32  24  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 418    8  32  16 -29  -2 normal
+   -1 sprites/elrails.png 8bpp 466    8  32  16  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 514    8  32   1  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 562    8   1  16   0  -3 normal
+   -1 sprites/elrails.png 8bpp 578    8  32  24 -29  -2 normal
+   -1 sprites/elrails.png 8bpp 626    8  32   9  -1   6 normal
+   -1 sprites/elrails.png 8bpp 674    8  32   9 -29   6 normal
+   -1 sprites/elrails.png 8bpp 722    8  32  24  -1  -2 normal
+   -1 sprites/elrails.png 8bpp   2   56  32  16 -29  -2 normal
+   -1 sprites/elrails.png 8bpp  50   56  32  16  -1  -2 normal
+   -1 sprites/elrails.png 8bpp  98   56  32   1  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 146   56   1  16   0  -3 normal
+   -1 sprites/elrails.png 8bpp 162   56  32  24 -29  -2 normal
+   -1 sprites/elrails.png 8bpp 210   56  32   9  -1   6 normal
+   -1 sprites/elrails.png 8bpp 258   56  32   9 -29   6 normal
+   -1 sprites/elrails.png 8bpp 306   56  32  24  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 354   56  16   8 -29   6 normal
+   -1 sprites/elrails.png 8bpp 386   56  16   8  -1  -2 normal
+   -1 sprites/elrails.png 8bpp 418   56  16   8 -13  -2 normal
+   -1 sprites/elrails.png 8bpp 450   56  16   8  15   6 normal
+   -1 sprites/elrails.png 8bpp 482   56   8  16  -7 -14 normal
+   -1 sprites/elrails.png 8bpp 498   56   8  18   0 -17 normal
+   -1 sprites/elrails.png 8bpp 514   56   8  16   0 -14 normal
+   -1 sprites/elrails.png 8bpp 530   56   8  18  -7 -17 normal
+   -1 sprites/elrails.png 8bpp 546   56   2  16   0 -15 normal
+   -1 sprites/elrails.png 8bpp 562   56   2  18   0 -16 normal
+   -1 sprites/elrails.png 8bpp 578   56   8  16   0 -15 normal
+   -1 sprites/elrails.png 8bpp 594   56   8  16  -7 -15 normal
+   -1 sprites/elrails.png 8bpp 610   56  13  16   4   2 normal
+   -1 sprites/elrails.png 8bpp 642   56  20  16   0   2 normal
+   -1 sprites/elrails.png 8bpp 674   56  20  16   0   2 normal
+   -1 sprites/elrails.png 8bpp 706   56  20  16   0   2 normal
+   -1 sprites/elrails.png 8bpp 738   56  38  30  -3 -14 normal
+   -1 sprites/elrails.png 8bpp   2  104  72  44 -16  -8 normal
+   -1 sprites/elrails.png 8bpp  82  104  44  35 -21  -2 normal
+   -1 sprites/elrails.png 8bpp 146  104  72  44 -16 -35 normal
+   -1 sprites/elrails.png 8bpp 226  104  20  19   0   1 normal
+   -1 sprites/elrails.png 8bpp 258  104  32  32   0   0 normal
+   -1 sprites/elrails.png 8bpp 306  104  12  22  -9 -18 normal
+   -1 sprites/elrails.png 8bpp 338  104  12  22  -1 -18 normal

@@ -8,18 +8,18 @@
 //
    -1 * 0	 0C "Extra airport graphics"
    -1 * 3	 05 10 0F
-   -1 sprites/airports.png 18 8 09 31 64 -31 0
-   -1 sprites/airports.png 98 8 09 31 64 -31 0
-   -1 sprites/airports.png 178 8 09 31 64 -31 0
-   -1 sprites/airports.png 258 8 09 31 64 -31 0
-   -1 sprites/airports.png 338 8 09 31 64 -31 0
-   -1 sprites/airports.png 418 8 09 31 64 -31 0
-   -1 sprites/airports.png 498 8 09 55 64 -2 -38
-   -1 sprites/airports.png 578 8 09 17 18 16 -1
-   -1 sprites/airports.png 610 8 09 55 64 -2 -38
-   -1 sprites/airports.png 690 8 09 17 18 -30 1
-   -1 sprites/airports.png 722 8 09 55 64 -2 -38
-   -1 sprites/airports.png 2 88 09 55 64 -2 -38
-   -1 sprites/airports.png 82 88 09 31 64 -31 0
-   -1 sprites/airports.png 162 88 09 31 64 -31 0
-   -1 sprites/airports.png 242 88 09 31 64 -31 0
+   -1 sprites/airports.png 8bpp  18    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp  98    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 178    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 258    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 338    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 418    8  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 498    8  64  55  -2 -38 normal
+   -1 sprites/airports.png 8bpp 578    8  18  17  16  -1 normal
+   -1 sprites/airports.png 8bpp 610    8  64  55  -2 -38 normal
+   -1 sprites/airports.png 8bpp 690    8  18  17 -30   1 normal
+   -1 sprites/airports.png 8bpp 722    8  64  55  -2 -38 normal
+   -1 sprites/airports.png 8bpp   2   88  64  55  -2 -38 normal
+   -1 sprites/airports.png 8bpp  82   88  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 162   88  64  31 -31   0 normal
+   -1 sprites/airports.png 8bpp 242   88  64  31 -31   0 normal

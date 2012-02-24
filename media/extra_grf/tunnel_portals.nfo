@@ -12,63 +12,63 @@
 // Tropical sprites.
    -1 * 6	 07 83 01 \7! 02 11
    -1 * 3	 05 17 10
-   -1 sprites/tunnel_portals.png 5 88 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 88 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 88 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 88 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 88 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 88 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 88 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 88 01 37 40 -31 -38
-   -1 sprites/tunnel_portals.png 5 170 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 170 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 170 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 170 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 170 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 170 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 170 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 170 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 8bpp   5   88  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43   88  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86   88  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124   88  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168   88  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206   88  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249   88  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287   88  40  37 -31 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp   5  170  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43  170  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86  170  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124  170  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168  170  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206  170  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249  170  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287  170  40  37 -31 -38 normal
 
 // Temperate grass + snow sprites.
    -1 * 6	 07 83 01 \7= 02 25
    -1 * 3	 05 17 10
-   -1 sprites/tunnel_portals.png 5 6 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 6 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 6 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 6 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 6 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 6 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 6 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 6 01 37 40 -31 -38
-   -1 sprites/tunnel_portals.png 5 129 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 129 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 129 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 129 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 129 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 129 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 129 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 129 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 8bpp   5    6  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43    6  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86    6  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124    6  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168    6  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206    6  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249    6  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287    6  40  37 -31 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp   5  129  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43  129  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86  129  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124  129  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168  129  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206  129  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249  129  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287  129  40  37 -31 -38 normal
 
 // Arctic grass sprites.
    -1 * 6	 07 83 01 \7! 01 09
    -1 * 4	 05 97 08 00
-   -1 sprites/tunnel_portals.png 5 47 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 47 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 47 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 47 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 47 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 47 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 47 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 47 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 8bpp   5   47  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43   47  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86   47  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124   47  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168   47  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206   47  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249   47  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287   47  40  37 -31 -38 normal
 
 // Toyland sprites.
    -1 * 6	 07 83 01 \7! 03 09
    -1 * 4	 05 97 08 00
-   -1 sprites/tunnel_portals.png 5 211 01 33 35 -31 -2
-   -1 sprites/tunnel_portals.png 43 211 01 37 40 -7 -38
-   -1 sprites/tunnel_portals.png 86 211 01 21 35 -31 0
-   -1 sprites/tunnel_portals.png 124 211 01 22 40 -7 -29
-   -1 sprites/tunnel_portals.png 168 211 01 21 35 -2 0
-   -1 sprites/tunnel_portals.png 206 211 01 22 40 -31 -29
-   -1 sprites/tunnel_portals.png 249 211 01 33 35 -2 -2
-   -1 sprites/tunnel_portals.png 287 211 01 37 40 -31 -38
+   -1 sprites/tunnel_portals.png 8bpp   5  211  35  33 -31  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp  43  211  40  37  -7 -38 normal
+   -1 sprites/tunnel_portals.png 8bpp  86  211  35  21 -31   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 124  211  40  22  -7 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 168  211  35  21  -2   0 normal
+   -1 sprites/tunnel_portals.png 8bpp 206  211  40  22 -31 -29 normal
+   -1 sprites/tunnel_portals.png 8bpp 249  211  35  33  -2  -2 normal
+   -1 sprites/tunnel_portals.png 8bpp 287  211  40  37 -31 -38 normal

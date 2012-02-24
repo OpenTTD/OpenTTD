@@ -8,9 +8,9 @@
 //
    -1 * 0	 0C "One way road graphics"
    -1 * 3	 05 09 06
-   -1 sprites/oneway.png 34 8 01 16 24 -12 -8
-   -1 sprites/oneway.png 66 8 01 16 24 -12 -8
-   -1 sprites/oneway.png 98 8 01 16 24 -12 -8
-   -1 sprites/oneway.png 130 8 01 16 24 -12 -8
-   -1 sprites/oneway.png 162 8 01 16 24 -12 -8
-   -1 sprites/oneway.png 194 8 01 16 24 -12 -8
+   -1 sprites/oneway.png 8bpp  34    8  24  16 -12  -8 normal
+   -1 sprites/oneway.png 8bpp  66    8  24  16 -12  -8 normal
+   -1 sprites/oneway.png 8bpp  98    8  24  16 -12  -8 normal
+   -1 sprites/oneway.png 8bpp 130    8  24  16 -12  -8 normal
+   -1 sprites/oneway.png 8bpp 162    8  24  16 -12  -8 normal
+   -1 sprites/oneway.png 8bpp 194    8  24  16 -12  -8 normal

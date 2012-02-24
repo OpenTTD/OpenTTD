@@ -9,369 +9,369 @@
    -1 * 0	 0C "Foundations. Non-halftile ones by Marcin Grzegorczyk"
    -1 * 6	 07 83 01 \7! 00 5B
    -1 * 3	 05 06 5A
-   -1 sprites/foundations.png 82 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 8 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 8 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 8 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 72 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 72 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 72 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 72 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 72 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 136 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 136 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 136 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 136 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 200 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 200 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 200 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 200 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 200 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 264 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 264 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 264 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 264 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 264 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 264 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 264 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 264 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 264 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 264 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 328 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 328 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 328 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 328 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 328 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 392 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 392 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 392 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 392 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 392 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 456 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 456 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 456 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 456 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 456 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 456 09 40 64 -15 -17
-   -1 sprites/foundations.png 482 456 09 33 64 -31 -25
-   -1 sprites/foundations.png 562 456 09 40 64 -47 -17
-   -1 sprites/foundations.png 642 456 09 33 64 -31 -9
-   -1 sprites/foundations.png 722 456 09 40 64 -15 -17
-   -1 sprites/foundations.png 2 520 09 33 64 -31 -25
-   -1 sprites/foundations.png 82 520 09 40 64 -47 -17
-   -1 sprites/foundations.png 162 520 09 33 64 -31 -9
-   -1 sprites/foundations.png 242 520 09 40 64 -15 -17
-   -1 sprites/foundations.png 322 520 09 33 64 -31 -25
-   -1 sprites/foundations.png 402 520 09 40 64 -47 -17
-   -1 sprites/foundations.png 482 520 09 33 64 -31 -9
-   -1 sprites/foundations.png 562 520 09 40 64 -15 -17
-   -1 sprites/foundations.png 642 520 09 33 64 -31 -25
-   -1 sprites/foundations.png 722 520 09 40 64 -47 -17
-   -1 sprites/foundations.png 2 584 09 33 64 -31 -9
+   -1 sprites/foundations.png 8bpp  82    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242    8  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322    8  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722    8  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162   72  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242   72  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482   72  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562   72  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722   72  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  136  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  136  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  136  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  136  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  200  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  200  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  200  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  200  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  200  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  264  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  264  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  264  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  264  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  264  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  264  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  264  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  264  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  264  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  264  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  328  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  328  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  328  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  328  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  328  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  392  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  392  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  392  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  392  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  392  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  456  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  456  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  456  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  456  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  456  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  456  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 482  456  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 562  456  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 642  456  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  456  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp   2  520  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp  82  520  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 162  520  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  520  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 322  520  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 402  520  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 482  520  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  520  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 642  520  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 722  520  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp   2  584  64  33 -31  -9 normal
    -1 * 6	 07 83 01 \7! 01 5B
    -1 * 3	 05 06 5A
-   -1 sprites/foundations.png 114 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 194 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 274 584 09 32 64 -31 -9
-   -1 sprites/foundations.png 354 584 09 32 64 -31 -9
-   -1 sprites/foundations.png 434 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 514 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 594 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 674 584 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 648 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 648 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 648 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 648 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 648 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 648 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 648 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 648 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 648 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 648 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 712 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 712 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 712 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 712 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 712 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 776 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 776 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 776 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 776 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 776 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 840 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 840 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 840 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 840 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 840 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 840 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 840 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 840 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 840 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 840 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 904 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 904 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 904 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 904 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 968 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 968 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 968 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 968 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 968 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1032 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 1032 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 1032 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1032 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1032 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1032 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1032 09 40 64 -15 -17
-   -1 sprites/foundations.png 562 1032 09 33 64 -31 -25
-   -1 sprites/foundations.png 642 1032 09 40 64 -47 -17
-   -1 sprites/foundations.png 722 1032 09 33 64 -31 -9
-   -1 sprites/foundations.png 2 1096 09 40 64 -15 -17
-   -1 sprites/foundations.png 82 1096 09 33 64 -31 -25
-   -1 sprites/foundations.png 162 1096 09 40 64 -47 -17
-   -1 sprites/foundations.png 242 1096 09 33 64 -31 -9
-   -1 sprites/foundations.png 322 1096 09 40 64 -15 -17
-   -1 sprites/foundations.png 402 1096 09 33 64 -31 -25
-   -1 sprites/foundations.png 482 1096 09 40 64 -47 -17
-   -1 sprites/foundations.png 562 1096 09 33 64 -31 -9
-   -1 sprites/foundations.png 642 1096 09 40 64 -15 -17
-   -1 sprites/foundations.png 722 1096 09 33 64 -31 -25
-   -1 sprites/foundations.png 2 1160 09 40 64 -47 -17
-   -1 sprites/foundations.png 82 1160 09 33 64 -31 -9
+   -1 sprites/foundations.png 8bpp 114  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 194  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 274  584  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 354  584  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 434  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 514  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 594  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 674  584  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  648  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  648  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  648  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  648  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  648  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  648  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  648  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  648  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  648  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  648  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  712  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  712  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  712  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  712  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  712  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  776  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  776  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  776  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  776  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  776  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  840  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  840  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  840  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  840  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  840  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  840  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  840  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  840  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  840  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  840  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  904  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  904  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  904  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  904  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2  968  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242  968  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322  968  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562  968  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722  968  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1032  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1032  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1032  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1032  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1032  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1032  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1032  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 562 1032  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 642 1032  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 722 1032  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1096  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp  82 1096  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 162 1096  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 242 1096  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1096  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 402 1096  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 482 1096  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 562 1096  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1096  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 722 1096  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp   2 1160  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp  82 1160  64  33 -31  -9 normal
    -1 * 6	 07 83 01 \7! 02 5B
    -1 * 3	 05 06 5A
-   -1 sprites/foundations.png 194 1160 09 40 64 -31 -9
-   -1 sprites/foundations.png 274 1160 09 40 64 -31 -9
-   -1 sprites/foundations.png 354 1160 09 32 64 -31 -9
-   -1 sprites/foundations.png 434 1160 09 32 64 -31 -9
-   -1 sprites/foundations.png 514 1160 09 40 64 -31 -9
-   -1 sprites/foundations.png 594 1160 09 40 64 -31 -9
-   -1 sprites/foundations.png 674 1160 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1224 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 1224 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1224 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 1224 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 1224 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1288 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 1288 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 1288 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1288 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1288 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 1288 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1288 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1288 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 1288 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 1288 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1352 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 1352 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1352 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 1352 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 1352 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1416 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 1416 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1416 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 1416 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 1416 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 1480 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1480 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 1480 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 1480 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1544 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 1544 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 1544 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1544 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1544 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 1544 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 1544 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1544 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 1544 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 1544 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1608 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1608 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 1608 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 1608 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1608 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1608 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1608 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1608 09 40 64 -15 -17
-   -1 sprites/foundations.png 642 1608 09 33 64 -31 -25
-   -1 sprites/foundations.png 722 1608 09 40 64 -47 -17
-   -1 sprites/foundations.png 2 1672 09 33 64 -31 -9
-   -1 sprites/foundations.png 82 1672 09 40 64 -15 -17
-   -1 sprites/foundations.png 162 1672 09 33 64 -31 -25
-   -1 sprites/foundations.png 242 1672 09 40 64 -47 -17
-   -1 sprites/foundations.png 322 1672 09 33 64 -31 -9
-   -1 sprites/foundations.png 402 1672 09 40 64 -15 -17
-   -1 sprites/foundations.png 482 1672 09 33 64 -31 -25
-   -1 sprites/foundations.png 562 1672 09 40 64 -47 -17
-   -1 sprites/foundations.png 642 1672 09 33 64 -31 -9
-   -1 sprites/foundations.png 722 1672 09 40 64 -15 -17
-   -1 sprites/foundations.png 2 1736 09 33 64 -31 -25
-   -1 sprites/foundations.png 82 1736 09 40 64 -47 -17
-   -1 sprites/foundations.png 162 1736 09 33 64 -31 -9
+   -1 sprites/foundations.png 8bpp 194 1160  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 274 1160  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 354 1160  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 434 1160  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 514 1160  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 594 1160  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 674 1160  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1224  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1224  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1224  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1224  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1224  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1288  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1288  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1288  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1288  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1288  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1288  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1288  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1288  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1288  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1288  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1352  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1352  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1352  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1352  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1352  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1416  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1416  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1416  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1416  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1416  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1480  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1480  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1480  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1480  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1544  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1544  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1544  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1544  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1544  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1544  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1544  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1544  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1544  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1544  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1608  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1608  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1608  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1608  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1608  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1608  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1608  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1608  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 642 1608  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 722 1608  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp   2 1672  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1672  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 162 1672  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 242 1672  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 322 1672  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1672  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 482 1672  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 562 1672  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 642 1672  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1672  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp   2 1736  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp  82 1736  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 162 1736  64  33 -31  -9 normal
    -1 * 6	 07 83 01 \7! 03 5B
    -1 * 3	 05 06 5A
-   -1 sprites/foundations.png 274 1736 09 40 64 -31 -9
-   -1 sprites/foundations.png 354 1736 09 40 64 -31 -9
-   -1 sprites/foundations.png 434 1736 09 32 64 -31 -9
-   -1 sprites/foundations.png 514 1736 09 32 64 -31 -9
-   -1 sprites/foundations.png 594 1736 09 40 64 -31 -9
-   -1 sprites/foundations.png 674 1736 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1800 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 1800 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1800 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 1800 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 1800 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 1864 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1864 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 1864 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 1864 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1864 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1864 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 1864 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1864 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 1864 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 1864 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 1928 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 1928 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 1928 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 1928 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 1992 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 1992 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 1992 09 32 64 -31 -9
-   -1 sprites/foundations.png 402 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 1992 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 1992 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 2056 09 32 64 -31 -9
-   -1 sprites/foundations.png 82 2056 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 242 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 2056 09 32 64 -31 -9
-   -1 sprites/foundations.png 642 2056 09 32 64 -31 -9
-   -1 sprites/foundations.png 722 2056 09 40 64 -31 -9
-   -1 sprites/foundations.png 2 2120 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 2120 09 32 64 -31 -9
-   -1 sprites/foundations.png 162 2120 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 2120 09 40 64 -31 -9
-   -1 sprites/foundations.png 322 2120 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 2120 09 32 64 -31 -9
-   -1 sprites/foundations.png 482 2120 09 32 64 -31 -9
-   -1 sprites/foundations.png 562 2120 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 2120 09 40 64 -31 -9
-   -1 sprites/foundations.png 722 2120 09 32 64 -31 -9
-   -1 sprites/foundations.png 2 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 82 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 162 2184 09 32 64 -31 -9
-   -1 sprites/foundations.png 242 2184 09 32 64 -31 -9
-   -1 sprites/foundations.png 322 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 402 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 482 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 562 2184 09 40 64 -31 -9
-   -1 sprites/foundations.png 642 2184 09 40 64 -15 -17
-   -1 sprites/foundations.png 722 2184 09 33 64 -31 -25
-   -1 sprites/foundations.png 2 2248 09 40 64 -47 -17
-   -1 sprites/foundations.png 82 2248 09 33 64 -31 -9
-   -1 sprites/foundations.png 162 2248 09 40 64 -15 -17
-   -1 sprites/foundations.png 242 2248 09 33 64 -31 -25
-   -1 sprites/foundations.png 322 2248 09 40 64 -47 -17
-   -1 sprites/foundations.png 402 2248 09 33 64 -31 -9
-   -1 sprites/foundations.png 482 2248 09 40 64 -15 -17
-   -1 sprites/foundations.png 562 2248 09 33 64 -31 -25
-   -1 sprites/foundations.png 642 2248 09 40 64 -47 -17
-   -1 sprites/foundations.png 722 2248 09 33 64 -31 -9
-   -1 sprites/foundations.png 2 2312 09 40 64 -15 -17
-   -1 sprites/foundations.png 82 2312 09 33 64 -31 -25
-   -1 sprites/foundations.png 162 2312 09 40 64 -47 -17
-   -1 sprites/foundations.png 242 2312 09 33 64 -31 -9
+   -1 sprites/foundations.png 8bpp 274 1736  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 354 1736  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 434 1736  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 514 1736  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 594 1736  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 674 1736  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1800  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1800  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1800  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1800  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1800  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1864  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1864  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1864  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1864  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1864  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1864  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1864  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1864  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1864  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1864  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1928  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1928  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1928  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1928  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 1992  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 1992  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 1992  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 1992  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 1992  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 2056  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 2056  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 2056  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 2056  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 2056  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 2120  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 2120  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 2120  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 2120  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 2120  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 2120  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 2120  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 2120  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 2120  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 722 2120  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp  82 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 2184  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 242 2184  64  32 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 322 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 402 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 562 2184  64  40 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 642 2184  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 722 2184  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp   2 2248  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp  82 2248  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 162 2248  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 242 2248  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 322 2248  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 402 2248  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp 482 2248  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp 562 2248  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 642 2248  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 722 2248  64  33 -31  -9 normal
+   -1 sprites/foundations.png 8bpp   2 2312  64  40 -15 -17 normal
+   -1 sprites/foundations.png 8bpp  82 2312  64  33 -31 -25 normal
+   -1 sprites/foundations.png 8bpp 162 2312  64  40 -47 -17 normal
+   -1 sprites/foundations.png 8bpp 242 2312  64  33 -31  -9 normal

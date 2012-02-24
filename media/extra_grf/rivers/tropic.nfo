@@ -8,271 +8,271 @@
 //
    -1 * 0	 0C "Tropic river graphics by andythenorth (Andrew Parkhouse)"
    -1 * 4	 01 05 01 3C
-   -1 sprites/tropic_desert.png  10  10 09 19 38  -5  0
-   -1 sprites/tropic_desert.png  58  10 09 18 38  -5 13
-   -1 sprites/tropic_desert.png 106  10 09 18 38 -31 13
-   -1 sprites/tropic_desert.png 154  10 09 19 38 -31  0
-   -1 sprites/tropic_desert.png 202  10 09  9 19  14 11
-   -1 sprites/tropic_desert.png 234  10 09  9 16  -7 22
-   -1 sprites/tropic_desert.png 266  10 09  9 19 -31 11
-   -1 sprites/tropic_desert.png 298  10 09  9 16  -7  0
-   -1 sprites/tropic_desert.png 330  10 09  6  8  25 13
-   -1 sprites/tropic_desert.png 346  10 09  4 12  -5 27
-   -1 sprites/tropic_desert.png 364  10 09  6  8 -31 13
-   -1 sprites/tropic_desert.png 380  10 09  5 12  -5  0
+   -1 sprites/tropic_desert.png 8bpp  10   10  38  19  -5   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58   10  38  18  -5  13 normal
+   -1 sprites/tropic_desert.png 8bpp 106   10  38  18 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 154   10  38  19 -31   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202   10  19   9  14  11 normal
+   -1 sprites/tropic_desert.png 8bpp 234   10  16   9  -7  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266   10  19   9 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 298   10  16   9  -7   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330   10   8   6  25  13 normal
+   -1 sprites/tropic_desert.png 8bpp 346   10  12   4  -5  27 normal
+   -1 sprites/tropic_desert.png 8bpp 364   10   8   6 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 380   10  12   5  -5   0 normal
 
-   -1 sprites/tropic_desert.png  10  40 09 11 40  -7  0
-   -1 sprites/tropic_desert.png  58  40 09 18 39  -6  5
-   -1 sprites/tropic_desert.png 106  40 09 11 38 -31 12
-   -1 sprites/tropic_desert.png 154  40 09 18 39 -31  0
-   -1 sprites/tropic_desert.png 202  40 09  6 20  13  5
-   -1 sprites/tropic_desert.png 234  40 09  7 13  -6 16
-   -1 sprites/tropic_desert.png 266  40 09  6 20 -31 12
-   -1 sprites/tropic_desert.png 298  40 09  7 13  -5  0
-   -1 sprites/tropic_desert.png 330  40 09  5  8  25  6
-   -1 sprites/tropic_desert.png 346  40 09  3 12  -5 20
-   -1 sprites/tropic_desert.png 364  40 09  4  8 -31 13
-   -1 sprites/tropic_desert.png 380  40 09  4 15  -7  0
+   -1 sprites/tropic_desert.png 8bpp  10   40  40  11  -7   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58   40  39  18  -6   5 normal
+   -1 sprites/tropic_desert.png 8bpp 106   40  38  11 -31  12 normal
+   -1 sprites/tropic_desert.png 8bpp 154   40  39  18 -31   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202   40  20   6  13   5 normal
+   -1 sprites/tropic_desert.png 8bpp 234   40  13   7  -6  16 normal
+   -1 sprites/tropic_desert.png 8bpp 266   40  20   6 -31  12 normal
+   -1 sprites/tropic_desert.png 8bpp 298   40  13   7  -5   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330   40   8   5  25   6 normal
+   -1 sprites/tropic_desert.png 8bpp 346   40  12   3  -5  20 normal
+   -1 sprites/tropic_desert.png 8bpp 364   40   8   4 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 380   40  15   4  -7   0 normal
 
-   -1 sprites/tropic_desert.png  10  70 09 20 38  -5 -8
-   -1 sprites/tropic_desert.png  58  70 09 26 38  -5  5
-   -1 sprites/tropic_desert.png 106  70 09 20 37 -31 11
-   -1 sprites/tropic_desert.png 154  70 09 27 38 -31 -8
-   -1 sprites/tropic_desert.png 202  70 09  9 16  17  3
-   -1 sprites/tropic_desert.png 234  70 09  9 15  -7 22
-   -1 sprites/tropic_desert.png 266  70 09  9 16 -31 11
-   -1 sprites/tropic_desert.png 298  70 09  9 15  -6 -8
-   -1 sprites/tropic_desert.png 330  70 09  7  8  25  5
-   -1 sprites/tropic_desert.png 346  70 09  5 10  -4 27
-   -1 sprites/tropic_desert.png 364  70 09  7  8 -31 11
-   -1 sprites/tropic_desert.png 380  70 09  6 12  -5 -8
+   -1 sprites/tropic_desert.png 8bpp  10   70  38  20  -5  -8 normal
+   -1 sprites/tropic_desert.png 8bpp  58   70  38  26  -5   5 normal
+   -1 sprites/tropic_desert.png 8bpp 106   70  37  20 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 154   70  38  27 -31  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 202   70  16   9  17   3 normal
+   -1 sprites/tropic_desert.png 8bpp 234   70  15   9  -7  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266   70  16   9 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 298   70  15   9  -6  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 330   70   8   7  25   5 normal
+   -1 sprites/tropic_desert.png 8bpp 346   70  10   5  -4  27 normal
+   -1 sprites/tropic_desert.png 8bpp 364   70   8   7 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 380   70  12   6  -5  -8 normal
 
-   -1 sprites/tropic_desert.png  10 100 09 18 39  -6  0
-   -1 sprites/tropic_desert.png  58 100 09 11 38  -5 12
-   -1 sprites/tropic_desert.png 106 100 09 18 39 -31  5
-   -1 sprites/tropic_desert.png 154 100 09 11 40 -32  0
-   -1 sprites/tropic_desert.png 202 100 09  6 20  13 12
-   -1 sprites/tropic_desert.png 234 100 09  7 13  -5 16
-   -1 sprites/tropic_desert.png 266 100 09  6 20 -31  5
-   -1 sprites/tropic_desert.png 298 100 09  7 13  -6  0
-   -1 sprites/tropic_desert.png 330 100 09  4  8  26 13
-   -1 sprites/tropic_desert.png 346 100 09  3 12  -5 20
-   -1 sprites/tropic_desert.png 364 100 09  5  8 -31  6
-   -1 sprites/tropic_desert.png 380 100 09  4 15  -6  0
+   -1 sprites/tropic_desert.png 8bpp  10  100  39  18  -6   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58  100  38  11  -5  12 normal
+   -1 sprites/tropic_desert.png 8bpp 106  100  39  18 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 154  100  40  11 -32   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202  100  20   6  13  12 normal
+   -1 sprites/tropic_desert.png 8bpp 234  100  13   7  -5  16 normal
+   -1 sprites/tropic_desert.png 8bpp 266  100  20   6 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 298  100  13   7  -6   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330  100   8   4  26  13 normal
+   -1 sprites/tropic_desert.png 8bpp 346  100  12   3  -5  20 normal
+   -1 sprites/tropic_desert.png 8bpp 364  100   8   5 -31   6 normal
+   -1 sprites/tropic_desert.png 8bpp 380  100  15   4  -6   0 normal
 
-   -1 sprites/tropic_desert.png  10 130 09 27 38  -5 -8
-   -1 sprites/tropic_desert.png  58 130 09 20 37  -4 11
-   -1 sprites/tropic_desert.png 106 130 09 26 37 -31  5
-   -1 sprites/tropic_desert.png 154 130 09 20 38 -31 -8
-   -1 sprites/tropic_desert.png 202 130 09  9 16  17 11
-   -1 sprites/tropic_desert.png 234 130 09  9 15  -6 22
-   -1 sprites/tropic_desert.png 266 130 09  9 16 -31  3
-   -1 sprites/tropic_desert.png 298 130 09  9 15  -7 -8
-   -1 sprites/tropic_desert.png 330 130 09  7  8  25 11
-   -1 sprites/tropic_desert.png 346 130 09  5 10  -4 26
-   -1 sprites/tropic_desert.png 364 130 09  7  8 -31  5
-   -1 sprites/tropic_desert.png 380 130 09  6 12  -5 -8
+   -1 sprites/tropic_desert.png 8bpp  10  130  38  27  -5  -8 normal
+   -1 sprites/tropic_desert.png 8bpp  58  130  37  20  -4  11 normal
+   -1 sprites/tropic_desert.png 8bpp 106  130  37  26 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 154  130  38  20 -31  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 202  130  16   9  17  11 normal
+   -1 sprites/tropic_desert.png 8bpp 234  130  15   9  -6  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266  130  16   9 -31   3 normal
+   -1 sprites/tropic_desert.png 8bpp 298  130  15   9  -7  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 330  130   8   7  25  11 normal
+   -1 sprites/tropic_desert.png 8bpp 346  130  10   5  -4  26 normal
+   -1 sprites/tropic_desert.png 8bpp 364  130   8   7 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 380  130  12   6  -5  -8 normal
    -1 * 7	 02 05 40 01 00 00 00
 
    -1 * 4	 01 05 01 3C
-   -1 sprites/tropic_forest.png  10  10 09 19 38  -5  0
-   -1 sprites/tropic_forest.png  58  10 09 18 38  -5 13
-   -1 sprites/tropic_forest.png 106  10 09 18 38 -31 13
-   -1 sprites/tropic_forest.png 154  10 09 19 38 -31  0
-   -1 sprites/tropic_forest.png 202  10 09  9 19  14 11
-   -1 sprites/tropic_forest.png 234  10 09  9 16  -7 22
-   -1 sprites/tropic_forest.png 266  10 09  9 19 -31 11
-   -1 sprites/tropic_forest.png 298  10 09  9 16  -7  0
-   -1 sprites/tropic_forest.png 330  10 09  6  8  25 13
-   -1 sprites/tropic_forest.png 346  10 09  4 12  -5 27
-   -1 sprites/tropic_forest.png 364  10 09  6  8 -31 13
-   -1 sprites/tropic_forest.png 380  10 09  5 12  -5  0
+   -1 sprites/tropic_forest.png 8bpp  10   10  38  19  -5   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58   10  38  18  -5  13 normal
+   -1 sprites/tropic_forest.png 8bpp 106   10  38  18 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 154   10  38  19 -31   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202   10  19   9  14  11 normal
+   -1 sprites/tropic_forest.png 8bpp 234   10  16   9  -7  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266   10  19   9 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 298   10  16   9  -7   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330   10   8   6  25  13 normal
+   -1 sprites/tropic_forest.png 8bpp 346   10  12   4  -5  27 normal
+   -1 sprites/tropic_forest.png 8bpp 364   10   8   6 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 380   10  12   5  -5   0 normal
 
-   -1 sprites/tropic_forest.png  10  40 09 11 40  -7  0
-   -1 sprites/tropic_forest.png  58  40 09 18 39  -6  5
-   -1 sprites/tropic_forest.png 106  40 09 11 38 -31 12
-   -1 sprites/tropic_forest.png 154  40 09 18 39 -31  0
-   -1 sprites/tropic_forest.png 202  40 09  6 20  13  5
-   -1 sprites/tropic_forest.png 234  40 09  7 13  -6 16
-   -1 sprites/tropic_forest.png 266  40 09  6 20 -31 12
-   -1 sprites/tropic_forest.png 298  40 09  7 13  -5  0
-   -1 sprites/tropic_forest.png 330  40 09  5  8  25  6
-   -1 sprites/tropic_forest.png 346  40 09  3 12  -5 20
-   -1 sprites/tropic_forest.png 364  40 09  4  8 -31 13
-   -1 sprites/tropic_forest.png 380  40 09  4 15  -7  0
+   -1 sprites/tropic_forest.png 8bpp  10   40  40  11  -7   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58   40  39  18  -6   5 normal
+   -1 sprites/tropic_forest.png 8bpp 106   40  38  11 -31  12 normal
+   -1 sprites/tropic_forest.png 8bpp 154   40  39  18 -31   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202   40  20   6  13   5 normal
+   -1 sprites/tropic_forest.png 8bpp 234   40  13   7  -6  16 normal
+   -1 sprites/tropic_forest.png 8bpp 266   40  20   6 -31  12 normal
+   -1 sprites/tropic_forest.png 8bpp 298   40  13   7  -5   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330   40   8   5  25   6 normal
+   -1 sprites/tropic_forest.png 8bpp 346   40  12   3  -5  20 normal
+   -1 sprites/tropic_forest.png 8bpp 364   40   8   4 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 380   40  15   4  -7   0 normal
 
-   -1 sprites/tropic_forest.png  10  70 09 20 38  -5 -8
-   -1 sprites/tropic_forest.png  58  70 09 26 38  -5  5
-   -1 sprites/tropic_forest.png 106  70 09 20 37 -31 11
-   -1 sprites/tropic_forest.png 154  70 09 27 38 -31 -8
-   -1 sprites/tropic_forest.png 202  70 09  9 16  17  3
-   -1 sprites/tropic_forest.png 234  70 09  9 15  -7 22
-   -1 sprites/tropic_forest.png 266  70 09  9 16 -31 11
-   -1 sprites/tropic_forest.png 298  70 09  9 15  -6 -8
-   -1 sprites/tropic_forest.png 330  70 09  7  8  25  5
-   -1 sprites/tropic_forest.png 346  70 09  5 10  -4 27
-   -1 sprites/tropic_forest.png 364  70 09  7  8 -31 11
-   -1 sprites/tropic_forest.png 380  70 09  6 12  -5 -8
+   -1 sprites/tropic_forest.png 8bpp  10   70  38  20  -5  -8 normal
+   -1 sprites/tropic_forest.png 8bpp  58   70  38  26  -5   5 normal
+   -1 sprites/tropic_forest.png 8bpp 106   70  37  20 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 154   70  38  27 -31  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 202   70  16   9  17   3 normal
+   -1 sprites/tropic_forest.png 8bpp 234   70  15   9  -7  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266   70  16   9 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 298   70  15   9  -6  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 330   70   8   7  25   5 normal
+   -1 sprites/tropic_forest.png 8bpp 346   70  10   5  -4  27 normal
+   -1 sprites/tropic_forest.png 8bpp 364   70   8   7 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 380   70  12   6  -5  -8 normal
 
-   -1 sprites/tropic_forest.png  10 100 09 18 39  -6  0
-   -1 sprites/tropic_forest.png  58 100 09 11 38  -5 12
-   -1 sprites/tropic_forest.png 106 100 09 18 39 -31  5
-   -1 sprites/tropic_forest.png 154 100 09 11 40 -32  0
-   -1 sprites/tropic_forest.png 202 100 09  6 20  13 12
-   -1 sprites/tropic_forest.png 234 100 09  7 13  -5 16
-   -1 sprites/tropic_forest.png 266 100 09  6 20 -31  5
-   -1 sprites/tropic_forest.png 298 100 09  7 13  -6  0
-   -1 sprites/tropic_forest.png 330 100 09  4  8  26 13
-   -1 sprites/tropic_forest.png 346 100 09  3 12  -5 20
-   -1 sprites/tropic_forest.png 364 100 09  5  8 -31  6
-   -1 sprites/tropic_forest.png 380 100 09  4 15  -6  0
+   -1 sprites/tropic_forest.png 8bpp  10  100  39  18  -6   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58  100  38  11  -5  12 normal
+   -1 sprites/tropic_forest.png 8bpp 106  100  39  18 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 154  100  40  11 -32   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202  100  20   6  13  12 normal
+   -1 sprites/tropic_forest.png 8bpp 234  100  13   7  -5  16 normal
+   -1 sprites/tropic_forest.png 8bpp 266  100  20   6 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 298  100  13   7  -6   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330  100   8   4  26  13 normal
+   -1 sprites/tropic_forest.png 8bpp 346  100  12   3  -5  20 normal
+   -1 sprites/tropic_forest.png 8bpp 364  100   8   5 -31   6 normal
+   -1 sprites/tropic_forest.png 8bpp 380  100  15   4  -6   0 normal
 
-   -1 sprites/tropic_forest.png  10 130 09 27 38  -5 -8
-   -1 sprites/tropic_forest.png  58 130 09 20 37  -4 11
-   -1 sprites/tropic_forest.png 106 130 09 26 37 -31  5
-   -1 sprites/tropic_forest.png 154 130 09 20 38 -31 -8
-   -1 sprites/tropic_forest.png 202 130 09  9 16  17 11
-   -1 sprites/tropic_forest.png 234 130 09  9 15  -6 22
-   -1 sprites/tropic_forest.png 266 130 09  9 16 -31  3
-   -1 sprites/tropic_forest.png 298 130 09  9 15  -7 -8
-   -1 sprites/tropic_forest.png 330 130 09  7  8  25 11
-   -1 sprites/tropic_forest.png 346 130 09  5 10  -4 26
-   -1 sprites/tropic_forest.png 364 130 09  7  8 -31  5
-   -1 sprites/tropic_forest.png 380 130 09  6 12  -5 -8
+   -1 sprites/tropic_forest.png 8bpp  10  130  38  27  -5  -8 normal
+   -1 sprites/tropic_forest.png 8bpp  58  130  37  20  -4  11 normal
+   -1 sprites/tropic_forest.png 8bpp 106  130  37  26 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 154  130  38  20 -31  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 202  130  16   9  17  11 normal
+   -1 sprites/tropic_forest.png 8bpp 234  130  15   9  -6  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266  130  16   9 -31   3 normal
+   -1 sprites/tropic_forest.png 8bpp 298  130  15   9  -7  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 330  130   8   7  25  11 normal
+   -1 sprites/tropic_forest.png 8bpp 346  130  10   5  -4  26 normal
+   -1 sprites/tropic_forest.png 8bpp 364  130   8   7 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 380  130  12   6  -5  -8 normal
    -1 * 7	 02 05 41 01 00 00 00
 
    -1 * 4	 01 05 01 3C
-   -1 sprites/tropic_desert.png  10 210 09 19 38  -5  0
-   -1 sprites/tropic_desert.png  58 210 09 18 38  -5 13
-   -1 sprites/tropic_desert.png 106 210 09 18 38 -31 13
-   -1 sprites/tropic_desert.png 154 210 09 19 38 -31  0
-   -1 sprites/tropic_desert.png 202 210 09  9 19  14 11
-   -1 sprites/tropic_desert.png 234 210 09  9 16  -7 22
-   -1 sprites/tropic_desert.png 266 210 09  9 19 -31 11
-   -1 sprites/tropic_desert.png 298 210 09  9 16  -7  0
-   -1 sprites/tropic_desert.png 330 210 09  6  8  25 13
-   -1 sprites/tropic_desert.png 346 210 09  4 12  -5 27
-   -1 sprites/tropic_desert.png 364 210 09  6  8 -31 13
-   -1 sprites/tropic_desert.png 380 210 09  5 12  -5  0
+   -1 sprites/tropic_desert.png 8bpp  10  210  38  19  -5   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58  210  38  18  -5  13 normal
+   -1 sprites/tropic_desert.png 8bpp 106  210  38  18 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 154  210  38  19 -31   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202  210  19   9  14  11 normal
+   -1 sprites/tropic_desert.png 8bpp 234  210  16   9  -7  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266  210  19   9 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 298  210  16   9  -7   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330  210   8   6  25  13 normal
+   -1 sprites/tropic_desert.png 8bpp 346  210  12   4  -5  27 normal
+   -1 sprites/tropic_desert.png 8bpp 364  210   8   6 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 380  210  12   5  -5   0 normal
 
-   -1 sprites/tropic_desert.png  10 240 09 11 40  -7  0
-   -1 sprites/tropic_desert.png  58 240 09 18 39  -6  5
-   -1 sprites/tropic_desert.png 106 240 09 11 38 -31 12
-   -1 sprites/tropic_desert.png 154 240 09 18 39 -31  0
-   -1 sprites/tropic_desert.png 202 240 09  6 20  13  5
-   -1 sprites/tropic_desert.png 234 240 09  7 13  -6 16
-   -1 sprites/tropic_desert.png 266 240 09  6 20 -31 12
-   -1 sprites/tropic_desert.png 298 240 09  7 13  -5  0
-   -1 sprites/tropic_desert.png 330 240 09  5  8  25  6
-   -1 sprites/tropic_desert.png 346 240 09  3 12  -5 20
-   -1 sprites/tropic_desert.png 364 240 09  4  8 -31 13
-   -1 sprites/tropic_desert.png 380 240 09  4 15  -7  0
+   -1 sprites/tropic_desert.png 8bpp  10  240  40  11  -7   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58  240  39  18  -6   5 normal
+   -1 sprites/tropic_desert.png 8bpp 106  240  38  11 -31  12 normal
+   -1 sprites/tropic_desert.png 8bpp 154  240  39  18 -31   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202  240  20   6  13   5 normal
+   -1 sprites/tropic_desert.png 8bpp 234  240  13   7  -6  16 normal
+   -1 sprites/tropic_desert.png 8bpp 266  240  20   6 -31  12 normal
+   -1 sprites/tropic_desert.png 8bpp 298  240  13   7  -5   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330  240   8   5  25   6 normal
+   -1 sprites/tropic_desert.png 8bpp 346  240  12   3  -5  20 normal
+   -1 sprites/tropic_desert.png 8bpp 364  240   8   4 -31  13 normal
+   -1 sprites/tropic_desert.png 8bpp 380  240  15   4  -7   0 normal
 
-   -1 sprites/tropic_desert.png  10 270 09 20 38  -5 -8
-   -1 sprites/tropic_desert.png  58 270 09 26 38  -5  5
-   -1 sprites/tropic_desert.png 106 270 09 20 37 -31 11
-   -1 sprites/tropic_desert.png 154 270 09 27 38 -31 -8
-   -1 sprites/tropic_desert.png 202 270 09  9 16  17  3
-   -1 sprites/tropic_desert.png 234 270 09  9 15  -7 22
-   -1 sprites/tropic_desert.png 266 270 09  9 16 -31 11
-   -1 sprites/tropic_desert.png 298 270 09  9 15  -6 -8
-   -1 sprites/tropic_desert.png 330 270 09  7  8  25  5
-   -1 sprites/tropic_desert.png 346 270 09  5 10  -4 27
-   -1 sprites/tropic_desert.png 364 270 09  7  8 -31 11
-   -1 sprites/tropic_desert.png 380 270 09  6 12  -5 -8
+   -1 sprites/tropic_desert.png 8bpp  10  270  38  20  -5  -8 normal
+   -1 sprites/tropic_desert.png 8bpp  58  270  38  26  -5   5 normal
+   -1 sprites/tropic_desert.png 8bpp 106  270  37  20 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 154  270  38  27 -31  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 202  270  16   9  17   3 normal
+   -1 sprites/tropic_desert.png 8bpp 234  270  15   9  -7  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266  270  16   9 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 298  270  15   9  -6  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 330  270   8   7  25   5 normal
+   -1 sprites/tropic_desert.png 8bpp 346  270  10   5  -4  27 normal
+   -1 sprites/tropic_desert.png 8bpp 364  270   8   7 -31  11 normal
+   -1 sprites/tropic_desert.png 8bpp 380  270  12   6  -5  -8 normal
 
-   -1 sprites/tropic_desert.png  10 300 09 18 39  -6  0
-   -1 sprites/tropic_desert.png  58 300 09 11 38  -5 12
-   -1 sprites/tropic_desert.png 106 300 09 18 39 -31  5
-   -1 sprites/tropic_desert.png 154 300 09 11 40 -32  0
-   -1 sprites/tropic_desert.png 202 300 09  6 20  13 12
-   -1 sprites/tropic_desert.png 234 300 09  7 13  -5 16
-   -1 sprites/tropic_desert.png 266 300 09  6 20 -31  5
-   -1 sprites/tropic_desert.png 298 300 09  7 13  -6  0
-   -1 sprites/tropic_desert.png 330 300 09  4  8  26 13
-   -1 sprites/tropic_desert.png 346 300 09  3 12  -5 20
-   -1 sprites/tropic_desert.png 364 300 09  5  8 -31  6
-   -1 sprites/tropic_desert.png 380 300 09  4 15  -6  0
+   -1 sprites/tropic_desert.png 8bpp  10  300  39  18  -6   0 normal
+   -1 sprites/tropic_desert.png 8bpp  58  300  38  11  -5  12 normal
+   -1 sprites/tropic_desert.png 8bpp 106  300  39  18 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 154  300  40  11 -32   0 normal
+   -1 sprites/tropic_desert.png 8bpp 202  300  20   6  13  12 normal
+   -1 sprites/tropic_desert.png 8bpp 234  300  13   7  -5  16 normal
+   -1 sprites/tropic_desert.png 8bpp 266  300  20   6 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 298  300  13   7  -6   0 normal
+   -1 sprites/tropic_desert.png 8bpp 330  300   8   4  26  13 normal
+   -1 sprites/tropic_desert.png 8bpp 346  300  12   3  -5  20 normal
+   -1 sprites/tropic_desert.png 8bpp 364  300   8   5 -31   6 normal
+   -1 sprites/tropic_desert.png 8bpp 380  300  15   4  -6   0 normal
 
-   -1 sprites/tropic_desert.png  10 330 09 27 38  -5 -8
-   -1 sprites/tropic_desert.png  58 330 09 20 37  -4 11
-   -1 sprites/tropic_desert.png 106 330 09 26 37 -31  5
-   -1 sprites/tropic_desert.png 154 330 09 20 38 -31 -8
-   -1 sprites/tropic_desert.png 202 330 09  9 16  17 11
-   -1 sprites/tropic_desert.png 234 330 09  9 15  -6 22
-   -1 sprites/tropic_desert.png 266 330 09  9 16 -31  3
-   -1 sprites/tropic_desert.png 298 330 09  9 15  -7 -8
-   -1 sprites/tropic_desert.png 330 330 09  7  8  25 11
-   -1 sprites/tropic_desert.png 346 330 09  5 10  -4 26
-   -1 sprites/tropic_desert.png 364 330 09  7  8 -31  5
-   -1 sprites/tropic_desert.png 380 330 09  6 12  -5 -8
+   -1 sprites/tropic_desert.png 8bpp  10  330  38  27  -5  -8 normal
+   -1 sprites/tropic_desert.png 8bpp  58  330  37  20  -4  11 normal
+   -1 sprites/tropic_desert.png 8bpp 106  330  37  26 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 154  330  38  20 -31  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 202  330  16   9  17  11 normal
+   -1 sprites/tropic_desert.png 8bpp 234  330  15   9  -6  22 normal
+   -1 sprites/tropic_desert.png 8bpp 266  330  16   9 -31   3 normal
+   -1 sprites/tropic_desert.png 8bpp 298  330  15   9  -7  -8 normal
+   -1 sprites/tropic_desert.png 8bpp 330  330   8   7  25  11 normal
+   -1 sprites/tropic_desert.png 8bpp 346  330  10   5  -4  26 normal
+   -1 sprites/tropic_desert.png 8bpp 364  330   8   7 -31   5 normal
+   -1 sprites/tropic_desert.png 8bpp 380  330  12   6  -5  -8 normal
    -1 * 7	 02 05 42 01 00 00 00
 
    -1 * 4	 01 05 01 3C
-   -1 sprites/tropic_forest.png  10 210 09 19 38  -5  0
-   -1 sprites/tropic_forest.png  58 210 09 18 38  -5 13
-   -1 sprites/tropic_forest.png 106 210 09 18 38 -31 13
-   -1 sprites/tropic_forest.png 154 210 09 19 38 -31  0
-   -1 sprites/tropic_forest.png 202 210 09  9 19  14 11
-   -1 sprites/tropic_forest.png 234 210 09  9 16  -7 22
-   -1 sprites/tropic_forest.png 266 210 09  9 19 -31 11
-   -1 sprites/tropic_forest.png 298 210 09  9 16  -7  0
-   -1 sprites/tropic_forest.png 330 210 09  6  8  25 13
-   -1 sprites/tropic_forest.png 346 210 09  4 12  -5 27
-   -1 sprites/tropic_forest.png 364 210 09  6  8 -31 13
-   -1 sprites/tropic_forest.png 380 210 09  5 12  -5  0
+   -1 sprites/tropic_forest.png 8bpp  10  210  38  19  -5   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58  210  38  18  -5  13 normal
+   -1 sprites/tropic_forest.png 8bpp 106  210  38  18 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 154  210  38  19 -31   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202  210  19   9  14  11 normal
+   -1 sprites/tropic_forest.png 8bpp 234  210  16   9  -7  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266  210  19   9 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 298  210  16   9  -7   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330  210   8   6  25  13 normal
+   -1 sprites/tropic_forest.png 8bpp 346  210  12   4  -5  27 normal
+   -1 sprites/tropic_forest.png 8bpp 364  210   8   6 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 380  210  12   5  -5   0 normal
 
-   -1 sprites/tropic_forest.png  10 240 09 11 40  -7  0
-   -1 sprites/tropic_forest.png  58 240 09 18 39  -6  5
-   -1 sprites/tropic_forest.png 106 240 09 11 38 -31 12
-   -1 sprites/tropic_forest.png 154 240 09 18 39 -31  0
-   -1 sprites/tropic_forest.png 202 240 09  6 20  13  5
-   -1 sprites/tropic_forest.png 234 240 09  7 13  -6 16
-   -1 sprites/tropic_forest.png 266 240 09  6 20 -31 12
-   -1 sprites/tropic_forest.png 298 240 09  7 13  -5  0
-   -1 sprites/tropic_forest.png 330 240 09  5  8  25  6
-   -1 sprites/tropic_forest.png 346 240 09  3 12  -5 20
-   -1 sprites/tropic_forest.png 364 240 09  4  8 -31 13
-   -1 sprites/tropic_forest.png 380 240 09  4 15  -7  0
+   -1 sprites/tropic_forest.png 8bpp  10  240  40  11  -7   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58  240  39  18  -6   5 normal
+   -1 sprites/tropic_forest.png 8bpp 106  240  38  11 -31  12 normal
+   -1 sprites/tropic_forest.png 8bpp 154  240  39  18 -31   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202  240  20   6  13   5 normal
+   -1 sprites/tropic_forest.png 8bpp 234  240  13   7  -6  16 normal
+   -1 sprites/tropic_forest.png 8bpp 266  240  20   6 -31  12 normal
+   -1 sprites/tropic_forest.png 8bpp 298  240  13   7  -5   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330  240   8   5  25   6 normal
+   -1 sprites/tropic_forest.png 8bpp 346  240  12   3  -5  20 normal
+   -1 sprites/tropic_forest.png 8bpp 364  240   8   4 -31  13 normal
+   -1 sprites/tropic_forest.png 8bpp 380  240  15   4  -7   0 normal
 
-   -1 sprites/tropic_forest.png  10 270 09 20 38  -5 -8
-   -1 sprites/tropic_forest.png  58 270 09 26 38  -5  5
-   -1 sprites/tropic_forest.png 106 270 09 20 37 -31 11
-   -1 sprites/tropic_forest.png 154 270 09 27 38 -31 -8
-   -1 sprites/tropic_forest.png 202 270 09  9 16  17  3
-   -1 sprites/tropic_forest.png 234 270 09  9 15  -7 22
-   -1 sprites/tropic_forest.png 266 270 09  9 16 -31 11
-   -1 sprites/tropic_forest.png 298 270 09  9 15  -6 -8
-   -1 sprites/tropic_forest.png 330 270 09  7  8  25  5
-   -1 sprites/tropic_forest.png 346 270 09  5 10  -4 27
-   -1 sprites/tropic_forest.png 364 270 09  7  8 -31 11
-   -1 sprites/tropic_forest.png 380 270 09  6 12  -5 -8
+   -1 sprites/tropic_forest.png 8bpp  10  270  38  20  -5  -8 normal
+   -1 sprites/tropic_forest.png 8bpp  58  270  38  26  -5   5 normal
+   -1 sprites/tropic_forest.png 8bpp 106  270  37  20 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 154  270  38  27 -31  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 202  270  16   9  17   3 normal
+   -1 sprites/tropic_forest.png 8bpp 234  270  15   9  -7  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266  270  16   9 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 298  270  15   9  -6  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 330  270   8   7  25   5 normal
+   -1 sprites/tropic_forest.png 8bpp 346  270  10   5  -4  27 normal
+   -1 sprites/tropic_forest.png 8bpp 364  270   8   7 -31  11 normal
+   -1 sprites/tropic_forest.png 8bpp 380  270  12   6  -5  -8 normal
 
-   -1 sprites/tropic_forest.png  10 300 09 18 39  -6  0
-   -1 sprites/tropic_forest.png  58 300 09 11 38  -5 12
-   -1 sprites/tropic_forest.png 106 300 09 18 39 -31  5
-   -1 sprites/tropic_forest.png 154 300 09 11 40 -32  0
-   -1 sprites/tropic_forest.png 202 300 09  6 20  13 12
-   -1 sprites/tropic_forest.png 234 300 09  7 13  -5 16
-   -1 sprites/tropic_forest.png 266 300 09  6 20 -31  5
-   -1 sprites/tropic_forest.png 298 300 09  7 13  -6  0
-   -1 sprites/tropic_forest.png 330 300 09  4  8  26 13
-   -1 sprites/tropic_forest.png 346 300 09  3 12  -5 20
-   -1 sprites/tropic_forest.png 364 300 09  5  8 -31  6
-   -1 sprites/tropic_forest.png 380 300 09  4 15  -6  0
+   -1 sprites/tropic_forest.png 8bpp  10  300  39  18  -6   0 normal
+   -1 sprites/tropic_forest.png 8bpp  58  300  38  11  -5  12 normal
+   -1 sprites/tropic_forest.png 8bpp 106  300  39  18 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 154  300  40  11 -32   0 normal
+   -1 sprites/tropic_forest.png 8bpp 202  300  20   6  13  12 normal
+   -1 sprites/tropic_forest.png 8bpp 234  300  13   7  -5  16 normal
+   -1 sprites/tropic_forest.png 8bpp 266  300  20   6 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 298  300  13   7  -6   0 normal
+   -1 sprites/tropic_forest.png 8bpp 330  300   8   4  26  13 normal
+   -1 sprites/tropic_forest.png 8bpp 346  300  12   3  -5  20 normal
+   -1 sprites/tropic_forest.png 8bpp 364  300   8   5 -31   6 normal
+   -1 sprites/tropic_forest.png 8bpp 380  300  15   4  -6   0 normal
 
-   -1 sprites/tropic_forest.png  10 330 09 27 38  -5 -8
-   -1 sprites/tropic_forest.png  58 330 09 20 37  -4 11
-   -1 sprites/tropic_forest.png 106 330 09 26 37 -31  5
-   -1 sprites/tropic_forest.png 154 330 09 20 38 -31 -8
-   -1 sprites/tropic_forest.png 202 330 09  9 16  17 11
-   -1 sprites/tropic_forest.png 234 330 09  9 15  -6 22
-   -1 sprites/tropic_forest.png 266 330 09  9 16 -31  3
-   -1 sprites/tropic_forest.png 298 330 09  9 15  -7 -8
-   -1 sprites/tropic_forest.png 330 330 09  7  8  25 11
-   -1 sprites/tropic_forest.png 346 330 09  5 10  -4 26
-   -1 sprites/tropic_forest.png 364 330 09  7  8 -31  5
-   -1 sprites/tropic_forest.png 380 330 09  6 12  -5 -8
+   -1 sprites/tropic_forest.png 8bpp  10  330  38  27  -5  -8 normal
+   -1 sprites/tropic_forest.png 8bpp  58  330  37  20  -4  11 normal
+   -1 sprites/tropic_forest.png 8bpp 106  330  37  26 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 154  330  38  20 -31  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 202  330  16   9  17  11 normal
+   -1 sprites/tropic_forest.png 8bpp 234  330  15   9  -6  22 normal
+   -1 sprites/tropic_forest.png 8bpp 266  330  16   9 -31   3 normal
+   -1 sprites/tropic_forest.png 8bpp 298  330  15   9  -7  -8 normal
+   -1 sprites/tropic_forest.png 8bpp 330  330   8   7  25  11 normal
+   -1 sprites/tropic_forest.png 8bpp 346  330  10   5  -4  26 normal
+   -1 sprites/tropic_forest.png 8bpp 364  330   8   7 -31   5 normal
+   -1 sprites/tropic_forest.png 8bpp 380  330  12   6  -5  -8 normal
    -1 * 7	 02 05 43 01 00 00 00
 
    -1 * 14	 02 05 44 81 81 00 FF 01 40 00 01 01 41 00

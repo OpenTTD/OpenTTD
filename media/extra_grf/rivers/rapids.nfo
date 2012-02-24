@@ -8,115 +8,115 @@
 //
    -1 * 0	 0C "Rapid graphics"
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10  10 09 23 64 -31  0
-   -1 sprites/rapids.png  90  10 09 39 64 -31 -8
-   -1 sprites/rapids.png 170  10 09 23 64 -31  0
-   -1 sprites/rapids.png 250  10 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10   10  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90   10  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170   10  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250   10  64  39 -31  -8 normal
    -1 * 7	 02 05 00 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10  60 09 23 64 -31  0
-   -1 sprites/rapids.png  90  60 09 39 64 -31 -8
-   -1 sprites/rapids.png 170  60 09 23 64 -31  0
-   -1 sprites/rapids.png 250  60 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10   60  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90   60  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170   60  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250   60  64  39 -31  -8 normal
    -1 * 7	 02 05 01 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 110 09 23 64 -31  0
-   -1 sprites/rapids.png  90 110 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 110 09 23 64 -31  0
-   -1 sprites/rapids.png 250 110 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  110  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  110  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  110  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  110  64  39 -31  -8 normal
    -1 * 7	 02 05 02 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 160 09 23 64 -31  0
-   -1 sprites/rapids.png  90 160 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 160 09 23 64 -31  0
-   -1 sprites/rapids.png 250 160 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  160  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  160  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  160  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  160  64  39 -31  -8 normal
    -1 * 7	 02 05 03 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 210 09 23 64 -31  0
-   -1 sprites/rapids.png  90 210 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 210 09 23 64 -31  0
-   -1 sprites/rapids.png 250 210 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  210  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  210  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  210  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  210  64  39 -31  -8 normal
    -1 * 7	 02 05 04 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 260 09 23 64 -31  0
-   -1 sprites/rapids.png  90 260 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 260 09 23 64 -31  0
-   -1 sprites/rapids.png 250 260 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  260  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  260  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  260  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  260  64  39 -31  -8 normal
    -1 * 7	 02 05 05 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 310 09 23 64 -31  0
-   -1 sprites/rapids.png  90 310 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 310 09 23 64 -31  0
-   -1 sprites/rapids.png 250 310 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  310  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  310  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  310  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  310  64  39 -31  -8 normal
    -1 * 7	 02 05 06 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 360 09 23 64 -31  0
-   -1 sprites/rapids.png  90 360 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 360 09 23 64 -31  0
-   -1 sprites/rapids.png 250 360 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  360  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  360  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  360  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  360  64  39 -31  -8 normal
    -1 * 7	 02 05 07 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 410 09 23 64 -31  0
-   -1 sprites/rapids.png  90 410 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 410 09 23 64 -31  0
-   -1 sprites/rapids.png 250 410 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  410  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  410  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  410  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  410  64  39 -31  -8 normal
    -1 * 7	 02 05 08 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 460 09 23 64 -31  0
-   -1 sprites/rapids.png  90 460 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 460 09 23 64 -31  0
-   -1 sprites/rapids.png 250 460 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  460  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  460  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  460  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  460  64  39 -31  -8 normal
    -1 * 7	 02 05 09 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 510 09 23 64 -31  0
-   -1 sprites/rapids.png  90 510 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 510 09 23 64 -31  0
-   -1 sprites/rapids.png 250 510 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  510  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  510  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  510  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  510  64  39 -31  -8 normal
    -1 * 7	 02 05 0A 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 560 09 23 64 -31  0
-   -1 sprites/rapids.png  90 560 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 560 09 23 64 -31  0
-   -1 sprites/rapids.png 250 560 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  560  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  560  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  560  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  560  64  39 -31  -8 normal
    -1 * 7	 02 05 0B 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 610 09 23 64 -31  0
-   -1 sprites/rapids.png  90 610 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 610 09 23 64 -31  0
-   -1 sprites/rapids.png 250 610 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  610  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  610  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  610  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  610  64  39 -31  -8 normal
    -1 * 7	 02 05 0C 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 660 09 23 64 -31  0
-   -1 sprites/rapids.png  90 660 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 660 09 23 64 -31  0
-   -1 sprites/rapids.png 250 660 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  660  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  660  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  660  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  660  64  39 -31  -8 normal
    -1 * 7	 02 05 0D 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 710 09 23 64 -31  0
-   -1 sprites/rapids.png  90 710 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 710 09 23 64 -31  0
-   -1 sprites/rapids.png 250 710 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  710  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  710  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  710  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  710  64  39 -31  -8 normal
    -1 * 7	 02 05 0E 01 00 00 00
 
    -1 * 4	 01 05 01 04
-   -1 sprites/rapids.png  10 760 09 23 64 -31  0
-   -1 sprites/rapids.png  90 760 09 39 64 -31 -8
-   -1 sprites/rapids.png 170 760 09 23 64 -31  0
-   -1 sprites/rapids.png 250 760 09 39 64 -31 -8
+   -1 sprites/rapids.png 8bpp  10  760  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp  90  760  64  39 -31  -8 normal
+   -1 sprites/rapids.png 8bpp 170  760  64  23 -31   0 normal
+   -1 sprites/rapids.png 8bpp 250  760  64  39 -31  -8 normal
    -1 * 7	 02 05 0F 01 00 00 00
 
    -1 * 39	 02 05 10 80 00 01 10
