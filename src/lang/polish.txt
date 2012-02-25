@@ -699,7 +699,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informac
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Przełącz paski narzędzi
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapis scenariusza, wczytanie scenariusza, wyjście z edytora, wyjście
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Zapis scenariusza, wczytanie scenariusza, opuść edytor, wyjście
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Edytor scenariuszy
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Zmień datę początkową do tyłu o 1 rok
@@ -719,7 +719,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Zapisz scenariu
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Wczytaj scenariusz
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Zapisz mapę wysokości
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Wczytaj mapę wysokości
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Wyjdź z edytora
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Wyjdź z edytora scenariuszy
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 ############ range for SE file menu starts
@@ -2180,9 +2180,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Zostałe
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ułatwienia są niedozwolone na tym serwerze
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Wysyłano zbyt dużo komend na serwer
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zbyt długo wprowadzałeś hasło
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer zbyt długo probował się połączyć
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Pobieranie mapy trwało zbyt długo
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Zbyt długo łączyłeś się do serwera
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Twój komputer jest zbyt wolny, by nadążyć za serwerem
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Twój komputer zbyt długo pobierał mapę
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Twój komputer zbyt długo łączył się z serwerem
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :błąd ogólny

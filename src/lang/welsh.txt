@@ -1928,7 +1928,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Na, gada
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion gorsafoedd. Mae Ctrl+Clic yn cloi
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion. Mae Ctrl+Clic yn cloi
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer coed. Ctrl+Clic i gloi
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toglu tryloywder ar gyfer tai. Ctrl+Clic i gloi
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer diwydiannau. Ctrl+Clic i gloi
@@ -3362,7 +3362,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mynd i'r depo a
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mynd i'r awyrendy agosaf
 STR_ORDER_CONDITIONAL                                           :Naid gorchymyn amodol
 STR_ORDER_SHARE                                                 :Rhannu gorchmynion
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Creu gorchymyn newydd cyn yr orchymyn a amlygwyd, neu creu ar ddiwedd y daflen. Mae Ctrl yn gwneud gorchymynion orsaf yn rhai 'llwyth llawn unrhyw cargo', gorchymynion pwyntiau llwybro 'heb aros' a gorchmynion depot 'gwasanaethu'. Mae 'Rhannu gorchmynion' neu Ctrl yn gadael i'r cerbyd yma rannu gorchmynion gyda'r cerbyd a ddewisir. Mae clicio ar gerbyd yn copïo gorchmynion o'r cerbyd hwnnw
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Mewnosod gorchymyn newydd cyn yr orchymyn a amlygwyd, neu greu ar ddiwedd y rhestr. Mae Ctrl yn gwneud gorchymynion orsaf yn rhai 'llwyth llawn unrhyw cargo', gorchymynion pwyntiau llwybro 'heb aros' a gorchmynion depot 'gwasanaethu'. Mae 'Rhannu gorchmynion' neu Ctrl yn galluogi i'r cerbyd yma rannu gorchmynion gyda'r cerbyd a ddewisir. Mae clicio ar gerbyd yn copïo gorchmynion o'r cerbyd hwnnw. Mae gorchymyn depo'n analluogi gwasanaethu diofyn ar gyfer y cerbyd
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon
 
@@ -3442,7 +3442,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amserlen
 STR_TIMETABLE_NO_TRAVEL                                         :Dim teithio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Teithio (awtomatig; amserlennir gan y gorchymyn defnyddiwr nesaf)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Teithio (heb ei amserlenu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Teithio heb oresgyn {2:VELOCITY} (heb ei amserlenu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Teithio am{STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Teithio am {STRING} heb oresgyn {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :aros am {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a theithio am {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} diwrnod
@@ -3466,7 +3468,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid fa
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clirio Amser
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd.
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Newid Terfyn Cyflymder
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Newid cyflymder teithio uchafsymol y gorchymyn a amlygwyd
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Clirio Terfyn Cyflymder
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clirio cyflymder teithio uchafsymol y gorchymyn a amlygwyd
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ailosod Mesurydd Hwyrni
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser

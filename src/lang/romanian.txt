@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informa�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Comută bara de unelte
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvează/încarcă scenariu, abandonează editorul, ieşire din joc
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvează/încarcă scenariu, abandonează editorul, ieşire
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de scenarii
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Schimbă data de start cu un an înapoi
@@ -340,7 +340,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvează scena
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Încarcă scenariu
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvează harta înălţimilor
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Încarcă harta de înălţimi
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ieşire din editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ieşire din editorul de scenarii
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 ############ range for SE file menu starts
@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nume staţii/se
 STR_FILE_MENU_SAVE_GAME                                         :Salvează jocul
 STR_FILE_MENU_LOAD_GAME                                         :Încarcă joc
 STR_FILE_MENU_QUIT_GAME                                         :Ieşire în meniul principal
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ieşire din joc
 ############ range ends here
 
@@ -1800,7 +1801,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ai fost 
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat-urile nu sunt permise pe acest server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Trimiteai prea multe comenzi către server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}A expirat timpul pentru introducerea unei parole
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A expirat timpul pentru conectarea calculatorului dvs.
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Calculatorul dvs. este prea lent pentru a se sincroniza cu serverul
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A expirat timpul pentru descărcarea hărţii
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A expirat timpul pentru conectarea la server
 
@@ -2139,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmiţătoar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat. Dacă există deja un arbore în locația dorită, se va adăuga arbori de tip mixt, indiferent de specia selectată
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat. Dacă există deja un arbore în locația dorită, se vor adăuga arbori de tip mixt, indiferent de specia selectată
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori din specii aleatoare
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantează arbori din diverse specii la întâmplare. Shift comută între plantare/afişare cost estimat
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbori aleatori
@@ -2535,7 +2536,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietate nec
 STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de a folosi un ID invalid (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conţine o imagine coruptă. Toate imaginile corupte vor fi afişate ca semne de întrebare (?) roşii
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conține mai multe intrări pentru Acțiunea 8 (sprite {3:NUM})
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sfîrșitul preudo-elementului grafic (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire după sfârşitul preudo-elementului grafic (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Resursele GRF solicitate nu sunt disponibile (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} a fost dezactivat de {STRING}
@@ -3362,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel ma
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
 STR_ORDER_CONDITIONAL                                           :Salt în ordine condiţionată
 STR_ORDER_SHARE                                                 :Sincronizează ordinele
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi sincronizeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'. 'Sincronizarea ordinelor' sau Ctrl permite acestui vehicul să îşi partajeze ordinele cu vehiculul selectat. Click pe un vehicul pentru a copia ordinele de la el. Un ordin de depou anulează service-ul automat pentru vehicul
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
@@ -3442,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - c
 STR_TIMETABLE_NO_TRAVEL                                         :NU este calatorie
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Călătorie (automat; orar generat de următorul ordin manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Mergi cu maxim {2:VELOCITY} (fără planificare)
 STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Mergi către {STRING} cu maxim {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} zi{P "" le}
@@ -3466,7 +3469,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modific�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Curata timp
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimină durata de timp pentru comanda selectată
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Schimbă limita de viteză
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Schimbă limita maximă de viteză a ordinului selectat
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Şterge limita de viteză
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Şterge limita maximă de viteză a ordinului selectat
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reinitializeaza contorul de intarziere
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniţializează contorul de întârziere, astfel ca vehiculul să ajungă la timp
@@ -3565,9 +3572,9 @@ STR_AI_SETTINGS_START_DELAY                                     :Perioada (în z
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Fișier readme al {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Listă modificări {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licența fișierului {STRING} {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}, fișier readme al {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}, lista de modificări a {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}, licența fișierului {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Vezi fișierul readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Listă modificări
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licenţă

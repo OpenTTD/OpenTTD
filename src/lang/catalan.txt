@@ -294,7 +294,7 @@ STR_SORT_BY_RANGE                                               :Abast
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Para el joc
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avanç ràpid del joc
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcions
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa el joc, abandona el joc, sortir
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Desa el joc, abandona el joc, surt
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostra el mapa
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Mostra el directori de poblacions
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Mostra les subvencions
@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informac
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, sortir
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, surt
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor d'Escenaris
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retarda la data d'inici 1 any
@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Desa l'escenari
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carrega un escenari
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Desa mapa d'alçades
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carrega Mapa d'alçades
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Surt de l'editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Surt de l'editor d'escenaris
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 ############ range for SE file menu starts
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Senyals transpa
 STR_FILE_MENU_SAVE_GAME                                         :Desa el joc
 STR_FILE_MENU_LOAD_GAME                                         :Carrega un joc
 STR_FILE_MENU_QUIT_GAME                                         :Abandona el joc
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Surt
 ############ range ends here
 
@@ -1925,7 +1926,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics que falten
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD necessita gràfics per funcionar però no se n'ha trobat cap. Vols permetre a OpenTTD descarregar i instal·lar aquests gràfics?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Si, descarregar els gràfics
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, sortir d'OpenTTD
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt d'OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència

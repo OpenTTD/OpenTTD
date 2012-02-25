@@ -294,7 +294,7 @@ STR_SORT_BY_RANGE                                               :항속거리
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 일시정지
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 고속 진행
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임 저장, 중지, 게임 종료
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임을 저장하거나, 그만두거나, 게임을 종료합니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부화면, 팻말 목록 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 목록 보여주기
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 �
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바 변경
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오 저장, 불러오기, 에디터 종료, 게임 종료 등
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}시나리오를 저장하거나, 불러오거나, 시나리오 에디터를 종료하거나, 게임을 종료합니다
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}시나리오 에디터
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}시작년도를 1년 앞당깁니다.
@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :시나리오 �
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :시나리오 불러오기
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Heightmap 저장
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Heightmap 불러오기
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :에디터 종료
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :시나리오 에디터 종료
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 ############ range for SE file menu starts
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :역명판 감�
 STR_FILE_MENU_SAVE_GAME                                         :게임 저장하기
 STR_FILE_MENU_LOAD_GAME                                         :불러오기
 STR_FILE_MENU_QUIT_GAME                                         :게임 그만두기
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :종료
 ############ range ends here
 
@@ -1430,7 +1431,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 �
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI와 게임 설정 표시
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}OpenTTD를 종료합니다
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다
 
 STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. 한국어 번역자에게 번역을 의뢰하십시오.{}텔크 (telk5093@gmail.com)
 
@@ -1925,7 +1926,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운�
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}그래픽 없음
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD가 작동되기 위한 그래픽이 필요합니다. 그러나 당신의 컴퓨터에서 어떤 그래픽도 찾을수 없습니다. OpenTTD의 구동을 위한 그래픽을 다운로드 받아서 설치합니까?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}예, 그래픽을 다운로드 받습니다.
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}아니오, OpenTTD를 종료합니다.
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}아니요, OpenTTD를 종료합니다.
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}투명 옵션

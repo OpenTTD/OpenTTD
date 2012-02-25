@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Làm trong su�
 STR_FILE_MENU_SAVE_GAME                                         :Lưu game
 STR_FILE_MENU_LOAD_GAME                                         :Nạp game
 STR_FILE_MENU_QUIT_GAME                                         :Bỏ game
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Thoát
 ############ range ends here
 
@@ -3442,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Lịch t
 STR_TIMETABLE_NO_TRAVEL                                         :Không di chuyển
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Hành trình (tự động; tính thời gian theo lịch trình thủ công kế tiếp)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Di chuyển (không bó buộc theo lịch trình)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Hành trình với tốc độ tối đa là {2:VELOCITY} (chưa dựng lịch trình)
 STR_TIMETABLE_TRAVEL_FOR                                        :Di chuyển trong {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Lộ trình {STRING} với tốc độ tối đa {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :và ở lại trong {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :và di chuyển trong {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ngày
@@ -3466,7 +3469,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Thay đ�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Xoá thời gian
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Xóa thời lượng áp dụng cho điểm lộ trình
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Thay Đổi Giới Hạn Tốc Độ
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Thay đổi tốc độ tối đa của lộ trình được chọn
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Xóa Giới Hạn Tốc Độ
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Xóa tốc độ đối đa đối với lộ trình được chọn
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Lập lại bộ đếm trễ
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Thiết lập lại bộ đếm trễ giờ, để việc di chuyển phương tiện được tính lại đúng đắn

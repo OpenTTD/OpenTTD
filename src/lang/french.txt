@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder scénario, charger scénario, abandonner éditeur de scénario, quitter
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder scénario, charger scénario, abandonner l'éditeur de scénario, quitter
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Éditeur de scénario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Reculer la date de départ d'un an
@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sauvegarder le 
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Charger un scénario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sauvegarder la carte d'altitude
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Charger une carte d'altitude
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quitter l'éditeur
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonner l'éditeur de scénario
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 ############ range for SE file menu starts
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Panneaux transp
 STR_FILE_MENU_SAVE_GAME                                         :Sauvegarder la partie
 STR_FILE_MENU_LOAD_GAME                                         :Charger une partie
 STR_FILE_MENU_QUIT_GAME                                         :Abandonner la partie
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Quitter le jeu
 ############ range ends here
 

@@ -2648,6 +2648,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击�
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :帮助索引
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :信息
+STR_GOAL_QUESTION_CAPTION_WARNING                               :警告
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :错误
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消
@@ -3416,7 +3419,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间�
 STR_TIMETABLE_NO_TRAVEL                                         :原地待命
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :行驶 (自动; 时间表按下一手动命令)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :行驶 (无时间表)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :限速 {2:VELOCITY} (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :途中行驶 {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :开往{STRING} ，限速为 {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :并且停留 {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :并行驶{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} 天
@@ -3440,7 +3445,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除时间
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除高亮选择的命令的执行时间
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}更改限速
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}更改高亮调度命令的最高限速
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}取消限速
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除高亮调度命令的最高限速
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}清除晚点计数器
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆准时到达

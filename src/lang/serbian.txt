@@ -555,6 +555,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparentni z
 STR_FILE_MENU_SAVE_GAME                                         :Sačuvaj igru
 STR_FILE_MENU_LOAD_GAME                                         :Učitaj partiju
 STR_FILE_MENU_QUIT_GAME                                         :Napusti partiju
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izađi
 ############ range ends here
 

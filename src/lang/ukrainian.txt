@@ -257,7 +257,7 @@ STR_QUANTITY_N_A                                                :немає
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINY_FONT}ПС
 STR_ABBREV_COAL                                                 :{TINY_FONT}ВГ
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ПЧ
+STR_ABBREV_MAIL                                                 :{TINY_FONT}ПШ
 STR_ABBREV_OIL                                                  :{TINY_FONT}НФ
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ХД
 STR_ABBREV_GOODS                                                :{TINY_FONT}ТО
@@ -286,7 +286,7 @@ STR_ABBREV_TOFFEE                                               :{TINY_FONT}ІР
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}БТ
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}ГЗ
-STR_ABBREV_NONE                                                 :{TINY_FONT}Нічого
+STR_ABBREV_NONE                                                 :{TINY_FONT}НІ
 STR_ABBREV_ALL                                                  :{TINY_FONT}Все
 
 # 'Mode' of transport for cargoes
@@ -398,7 +398,7 @@ STR_SORT_BY_MAX_SPEED                                           :за швидк
 STR_SORT_BY_MODEL                                               :за моделлю
 STR_SORT_BY_VALUE                                               :за ціною
 STR_SORT_BY_LENGTH                                              :за довжиною
-STR_SORT_BY_LIFE_TIME                                           :за залишком строка служби
+STR_SORT_BY_LIFE_TIME                                           :за залишком строку служби
 STR_SORT_BY_TIMETABLE_DELAY                                     :за відхиленням від розкладу
 STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
@@ -445,7 +445,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інфо
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключити панелі
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценарію, вихід
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценаріїв, вихід
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценаріїв
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Перенести початкову дату на 1 рік назад
@@ -465,7 +465,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Зберегт�
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Завантажити сценарій
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Зберегти карту висот
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Завантажити карту висот
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Вийти з редактору
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Вийти з редактору сценаріїв
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 ############ range for SE file menu starts
@@ -492,6 +492,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозорі 
 STR_FILE_MENU_SAVE_GAME                                         :Зберегти гру
 STR_FILE_MENU_LOAD_GAME                                         :Завантажити гру
 STR_FILE_MENU_QUIT_GAME                                         :Покинути гру
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Вихід
 ############ range ends here
 
@@ -872,7 +873,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Змі�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Зміни обсягів виробництва на інших підприємствах
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Поради / інформація про транспорт компанії
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Поява нових моделей транспорту
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зміни в списку грузів, що приймаются
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зміни в списку грузів, що приймаються
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
 
@@ -933,33 +934,33 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Нашестя саранчі призвело до спустошення на {INDUSTRY}!{}Виробництво впало на 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{1:INDUSTRY}: Виробництво {0:STRING.r} впало на {2:COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}«{VEHICLE}» чекає в депо
-STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}«{VEHICLE}» чекає в депо
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}«{VEHICLE}» чекає в депо
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}«{VEHICLE}» чекає в ангарі
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чекає в депо
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чекає в ангарі
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}«{VEHICLE}» має замало завдань
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}«{VEHICLE}» має недійсне завдання
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}«{VEHICLE}» має подвоєння завдань
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}«{VEHICLE}» має недійсну станцію в завданнях
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} має замало завдань
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} має недійсне завдання
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} має подвоєння завдань
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} має невірну станцію в завданнях
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}«{VEHICLE}» зістарився
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}«{VEHICLE}» дуже зістарився
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}«{VEHICLE}» дуже зістарився і потребує негайної заміни
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}«{VEHICLE}» не може знайти шлях
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}«{VEHICLE}» загубився
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}«{VEHICLE}» торік приніс {CURRENCY_LONG} прибутку
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}«{VEHICLE}» не може дістатися наступного місця призначення, бо воно дуже далеко
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} зістарився
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже зістарився
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} дуже зістарився і потребує негайної заміни
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} загубився
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} торік приніс {CURRENCY_LONG} прибутку
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} не може дістатися наступного місця призначення, бо воно дуже далеко
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}«{VEHICLE}» зупинено внаслідок збою запланованого переобладнання
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Не вдалося автоматично поновити «{VEHICLE}»{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} зупинено внаслідок збою запланованого переобладнання
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Не вдалося автоматично поновити {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Відтепер в наявності новий {STRING}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Сідтепер в наявності новий {STRING}!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Відтепер в наявності новий {STRING}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} більше не приймає {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} більше не приймає {STRING} або {STRING}
@@ -967,7 +968,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} тепер приймає {STRING} і {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Субсидія більше не пропонується:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Срок дії субсидії закінчився:{}{}Перевезення {STRING.r} з {STRING} до {STRING}
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Субсидію скасовано:{}{}Перевезення {STRING.r} з {STRING.r} до {STRING.r}
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Пропонується річна субсидія {}{}компанії, яка першою привезе {STRING.z} з {STRING} до {STRING}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе додатково 50% протягом наступного року!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вдвічі більше прибутків наступного року!
@@ -1076,8 +1077,8 @@ STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Вибе
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}На весь екран
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Натисніть цю кнопку щоб грати на весь екран
 
-STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Розподільна здатність
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть розподільну здатність екрану
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат знімків екрану
@@ -2932,7 +2933,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} клітин{P ка ки ок} з дорогами
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} клітин{P ка ки ок} з водними шляхами
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} клітин{P ка ки ок} станцій
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорт{P "" а ів}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} аеропорт{P "" и ів}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Нема
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Будувати Офіс

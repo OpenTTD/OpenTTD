@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar cenári
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de alturas
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Abrir mapa de alturas
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonar editor de cenário
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 ############ range for SE file menu starts
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais Transpar
 STR_FILE_MENU_SAVE_GAME                                         :Guardar jogo
 STR_FILE_MENU_LOAD_GAME                                         :Abrir jogo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar jogo
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Sair
 ############ range ends here
 
@@ -1929,7 +1930,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sa
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comutar transparência para sinais das estações. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comutar transparência para sinais. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comutar transparência das árvores. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comutar transparência das casas. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comutar transparência das indústrias. Ctrl+Clique para bloquear.
@@ -2070,7 +2071,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orienta�
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Seleccionar a orientação da estação de autocarros
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientação da estação de carga
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Seleccionar a orientação da estação de carregamento de camiões
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Estação de Eléctricos
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Estação de Eléctricos de Passageiros
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Seleccionar orientação da estação de eléctricos
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientação da Estação de Eléctricos
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccionar orientação da estação de eléctricos
@@ -3443,7 +3444,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário
 STR_TIMETABLE_NO_TRAVEL                                         :Não viaja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizadas por próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viagem (sem programação)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar no máximo a {2:VELOCITY} (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar por {STRING} no máximo a {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaja para {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
@@ -3467,7 +3470,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda o e
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Apagar Tempo
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Apagar o tempo que dura a ordem seleccionada
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Alterar Limite de Velocidade
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Mudar a velocidade maxima durante a viagem da ordem selecionada
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Apagar Limite de Velocidade
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade maxima durante a viagem da ordem selecionada
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Apagar Contador Atraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Limpar o contador de atraso, para que o veículo passe a estar a horas
