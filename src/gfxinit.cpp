@@ -256,6 +256,7 @@ void GfxLoadSprites()
 	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);
 
 	SwitchNewGRFBlitter();
+	ClearFontCache();
 	GfxInitSpriteMem();
 	LoadSpriteTables();
 	GfxInitPalettes();
