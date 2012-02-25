@@ -215,7 +215,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	Colour *dst_px_orig[ZOOM_LVL_COUNT];
 
 	/* interleaved stream of 'm' channel and 'n' channel
-	 * 'n' is number if following pixels with the same alpha channel class
+	 * 'n' is number of following pixels with the same alpha channel class
 	 * there are 3 classes: 0, 255, others
 	 *
 	 * it has to be stored in one stream so fewer registers are used -
