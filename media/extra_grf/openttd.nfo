@@ -15,13 +15,6 @@
 //
 
 //
-// -- NFO Renum 'settings' --
-// Do not make nforenum warn about the fact that we use a reserved GRF ID
-// @@WARNING DISABLE 101
-// -- End of NFO Renum 'settings' --
-//
-
-//
 // Number of sprites, it is wrong, but GRFcodec automagically gets it right.
 //
     0 * 4	 00 00 00 00

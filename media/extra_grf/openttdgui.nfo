@@ -6,12 +6,6 @@
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
-// -- NFO Renum 'settings' --
-// Do not make nforenum warn about the fact that we use more sprites.
-// We are the 'authority' on how many sprites may be used.
-// @@WARNING DISABLE 60
-// -- End of NFO Renum 'settings' --
-//
    -1 * 0	 0C "OpenTTD GUI graphics"
    -1 * 3	 05 15 A2
    -1 sprites/openttdgui.png 8bpp  66    8  64  31 -31   7 normal
@@ -176,8 +170,3 @@
    -1 sprites/openttdgui.png 8bpp 194  440  13  10   0  -2 normal
    -1 sprites/openttdgui.png 8bpp 215  440   9  10   0   0 normal
    -1 sprites/openttdgui.png 8bpp 232  440   8  10   0   0 normal
-
-// -- NFO Renum 'settings' --
-// Undo disabling the warning
-// @@WARNING ENABLE 60
-// -- End of NFO Renum 'settings' --

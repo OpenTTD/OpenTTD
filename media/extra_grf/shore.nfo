@@ -7,13 +7,6 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
 
-//
-// -- NFO Renum 'settings' --
-// Do not make nforenum warn about the fact that we use an incorrect number of shores
-// @@WARNING DISABLE 60
-// -- End of NFO Renum 'settings' --
-//
-
    -1 * 6	 07 83 01 \7! 00 0C
    -1 * 54	 0C "Missing shore tile graphics for the temperate climate"
    -1 * 3	 05 0D 0A
@@ -66,10 +59,3 @@
    -1 sprites/shore.png 8bpp  82  264  64  31 -31  -8 normal
    -1 sprites/shore.png 8bpp 162  264  64  32 -31  -1 normal
    -1 sprites/shore.png 8bpp 242  264  64  31 -31  -8 normal
-
-//
-// -- NFO Renum 'settings' --
-// Reset warning about incorrect number of shores
-// @@WARNING ENABLE 60
-// -- End of NFO Renum 'settings' --
-//
