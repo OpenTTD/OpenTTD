@@ -369,6 +369,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspīdīgas 
 STR_FILE_MENU_SAVE_GAME                                         :Saglabāt spēli
 STR_FILE_MENU_LOAD_GAME                                         :Ielādēt spēli
 STR_FILE_MENU_QUIT_GAME                                         :Pamest spēli
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Iziet
 ############ range ends here
 
@@ -719,7 +720,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Parādī
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Rādīt pēdējo ziņojumu vai avīzes rakstu
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUZE  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSAGLABĀŠANA
+STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMĀTISKĀ SAGLABĀŠANA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPĒLE TIEK SAGLABĀTA *  *
 
 # News message history
@@ -888,9 +889,9 @@ STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvēģijas kr
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polijas zloti (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumānijas lejas (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Krievijas rubļii (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovēnijas tolārs (SIT)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovēnijas tolāri (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Zviedrijas kronas (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turcijas lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turcijas liras (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovākijas kronas (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazīlijas reāli (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Igaunijas kronas (EEK)
@@ -938,11 +939,11 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itāļu
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Kataloņu
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autosaglabāšana
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Spēles autosaglabāšanas laika inervāla izvēle
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Izvēlēties spēles automātiskās saglabāšanas laika inervālu
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Izslēgta
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Ikmēnesi
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Katru mēnesi
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Katrus 3 mēnešus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Katrus 6 mēnešus
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Katrus 12 mēnešus
@@ -1795,7 +1796,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nevar sa
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Savienojums #{NUM} beidzies
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tika pielaista protokola kļūda un savienojums tika slēgts
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Klienta pārskats neatbilst servera pārskatam
-STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza Parole
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nepareiza parole
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveris ir pilns
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jūs esat izraidīts no šī severa
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jūs esat izmests no šīs spēles
@@ -2713,7 +2714,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikšķ
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Staciju nosaukumi - klikšķināt uz nosaukuma, lai centrētu galveno skatu uz staciju. Ctrl+klikšķis atvērs jaunu skatvietu pie stacijas
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Aizturēt Ctrl, lai izvēlētos vairākus
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stacij{P a as u}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stacij{P a as u}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nav -
@@ -3562,7 +3563,7 @@ STR_AI_LIST_TOOLTIP                                             :{BLACK}Uzklikš
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autors: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versija: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_URL                                                 :{BLACK}Tīmekļa adrese: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Apstiprināt
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlēties izcelto skriptu
@@ -3954,7 +3955,7 @@ STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Vilciens
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Vilcienu nevar apgriezt...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Vilcienam trūkst jaudas
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Auto transportlīdzekli nevar apgriezt apkārt...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Autotransporta līdzekli nevar apgriezt apkārt...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Lidaparāts pašlaik lido
 
@@ -4464,6 +4465,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

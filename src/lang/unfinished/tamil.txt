@@ -671,7 +671,7 @@ STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}வி�
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}தொழிற்சாலைகளின் திறப்பு
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}தொழிற்சாலைகளின் மூடல்
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}பருலாதார மாற்றங்கள்
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}பொருளாதார மாற்றங்கள்
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}புதிய வாகனங்கள்
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}உதவித் தொகைகள்
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}பொதுவான விவரம்
@@ -861,7 +861,12 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}சே�
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}நகரங்களின் எண்ணிக்கை: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}தொழிற்சாலைகளின் எண்ணிக்கை: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}அதிகபட்சக் கடன் தொகை: {ORANGE}{CURRENCY_LONG}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}ஆரம்ப வட்டி சதவிகிதம்: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}வாகன ஓட்டும் செலவுகள்: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}கட்டுமானத்திற்கான செலவு: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}பொருளாதாரம்: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}பேரழிவுகள்: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :ஒன்றுமில்லை
@@ -875,6 +880,7 @@ STR_NUM_CUSTOM                                                  :மாற்ற
 
 STR_VARIETY_NONE                                                :ஒன்றுமில்லை
 STR_VARIETY_VERY_LOW                                            :மிகவும் குறைவு
+STR_VARIETY_LOW                                                 :குறைந்த
 STR_VARIETY_MEDIUM                                              :நடுத்தரம்
 STR_VARIETY_HIGH                                                :அதிகம்
 STR_VARIETY_VERY_HIGH                                           :மிகவும் அதிகம்
@@ -885,6 +891,10 @@ STR_AI_SPEED_MEDIUM                                             :இயல்ப
 STR_AI_SPEED_FAST                                               :வேகமாக
 STR_AI_SPEED_VERY_FAST                                          :அதிவேகம்
 
+STR_SEA_LEVEL_VERY_LOW                                          :மிகவும் குறைந்த
+STR_SEA_LEVEL_LOW                                               :குறைந்த
+STR_SEA_LEVEL_MEDIUM                                            :நடுத்தரம்
+STR_SEA_LEVEL_HIGH                                              :உயர்ந்த
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 STR_RIVERS_NONE                                                 :ஒன்றுமில்லை
@@ -901,15 +911,24 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_HILLY                                          :உயர்ந்து
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :மலைகளாக
 
+STR_ECONOMY_STEADY                                              :நிலையாக
+STR_ECONOMY_FLUCTUATING                                         :ஏற்ற இறக்கங்களுடன்
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :தடத்தின் முடிவில் மற்றும் நிலையங்களில்
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :தடத்தின் முடிவில் மட்டும்
 
 
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_OFF                                          :Off
+STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :செயலிழக்க செய்யப்பட்டது
 
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Off
 STR_CONFIG_SETTING_COMPANIES_OWN                                :சொந்த நிறுவனம்'
 STR_CONFIG_SETTING_COMPANIES_ALL                                :எல்லா நிறுவனங்களும்
 
@@ -921,25 +940,52 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :இடது
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ரயில் வண்டியின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}இரயில் மற்றும் கப்பல்களை 90° வளைவுகள் எடுப்பதை அனுமதிக்காதே: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}நேரடியாக இணைக்கப்படாத நிலையங்களை இணைக்க அனுமதி: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}பொறுமையாக வாகனங்களை ஏற்று: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}விலைவாசி ஏற்றம்: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}தேவை இருந்தால் மட்டுமே அச்சரக்குகளை நிலையத்தில் இறக்கு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}பாலத்தின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}அதிகபட்ச சுரங்க நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ஒன்றுமில்லை
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :மற்ற தொழிற்சாலைகளைப்போல
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}தொழிற்சாலைகளை சுற்றி தட்டையான இடங்கள்: {ORANGE}{STRING} கட்டம்{P 0:1 "" கள்}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}ஓட்டும் பக்கத்தில் சிக்னல்களைக் காட்டு: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :நடு
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}கட்டடங்களை கட்ட அனுமதி: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}மற்ற நிறுவனங்களுக்கு பணம் அனுப்ப அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}விமான வேகம்: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}விமான விபத்துகளின் எண்ணிக்கை: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ஒன்றுமில்லை
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :குறைந்தபட்சம்
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :இயல்பான
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}நிலையங்களை ஒட்டி கட்ட அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}கட்டட பராமரிப்பு: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}விமான நிலையங்கள் என்றும் காலாவதியாகாது: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}வாகனங்களின் கட்டளைகளை பார்வையிடு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :இல்லை
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ஆம், ஆனால் நிறுத்தப்பட்டுள்ள வாகனங்களை விட்டுவிடு
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :அனைத்து வாகனங்கள்
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}வாகனம் நஷ்டத்தில் ஓடினால் எச்சரி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}வாகனங்கள் என்றும் காலாவதியாகாது: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}காலாவதியான வாகனங்களை மாற்றியமைக்கத் தேவையான பணம்: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}பிழைச் செய்தியின் காலம்: {ORANGE}{STRING} வினாடி{P 0:1 "" கள்}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}நகரத்தின் மக்கள்த் தொகையினை அதன் பெயருடன் காட்டு: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}வரைபடத்தில் கோடுகளின் எண்ணிக்கை: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}பனி-கோடின் உயரம்: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
@@ -954,6 +1000,7 @@ STR_CONFIG_SETTING_LIVERIES_ALL                                 :அனைத்
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :டாஸ் வண்ணத்தட்டு
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்டோஸ் வண்ணத்தட்டு
 
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {ORANGE}{STRING}
 

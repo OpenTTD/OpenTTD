@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar escenar
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Cargar escenario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Guardar mapa de alturas
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Cargar mapa de alturas
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Salir del editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Salir del editor de escenarios
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 ############ range for SE file menu starts
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Carteles transp
 STR_FILE_MENU_SAVE_GAME                                         :Guardar juego
 STR_FILE_MENU_LOAD_GAME                                         :Cargar juego
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar juego
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Salir
 ############ range ends here
 

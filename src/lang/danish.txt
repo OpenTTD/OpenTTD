@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landomr�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift værktøjslinier
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Gem scenarie, hent scenarie, forlad scenarie editoren, afslut
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Gem scenarie, hent scenarie, forlad scenarieeditoren, afslut
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenarieeditor
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Flyt startdatoen 1 år tilbage
@@ -340,7 +340,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Gem scenarie
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Hent scenarie
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Gem højdekort
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hent højdekort
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Afslut editoren
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Forlad scenarieeditor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afslut
 ############ range for SE file menu starts
@@ -355,18 +355,19 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighed
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Kontrolsteder vist
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Skilte vist
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Fuld detalje
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Gennemsigtige bygninger
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gennemsigtige stationsskilte
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gennemsigtige skilte
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Gem spil
 STR_FILE_MENU_LOAD_GAME                                         :Hent spil
 STR_FILE_MENU_QUIT_GAME                                         :Forlad spillet
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Afslut
 ############ range ends here
 
@@ -446,7 +447,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tænd/Sluk konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :Computerspiller / spilscript-debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skærmbillede (Ctrl-S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomet skærmbillede
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fuldt zoomet skærmbillede
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standard zoom screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Kæmpe skærmbillede (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Tilpas grafikelement
@@ -517,7 +519,7 @@ STR_MONTH_DEC                                                   :december
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøgle
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Viser nøglen til grafen
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vis nøglen til grafer
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -1798,6 +1800,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du har f
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev smidt ud af spillet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Snyderi er ikke tilladt på denne server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du tog for lang tid om at indtaste adgangskoden
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din computer er for langsom at holde trit med serveren
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Din computer tog for lang tid om at downloade kortet
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Din computer var for længe om at forbinde til serveren
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generel fejl
@@ -1816,6 +1822,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :smidt ud af ser
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvede at snyde
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er fuld
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :modtog ingen adgangskode i tide
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generel timeout
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :det tog for lang tid at downloade kortet
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :det tog for lang tid at bearbejde kortet
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig forbindelses tab
@@ -1895,6 +1905,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenarie
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Højdekort
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basislyde
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismusik
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spilscript
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS bibliotek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloader indhold...
@@ -1917,7 +1929,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nej, afs
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gennemsigtighedsvalg
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for stationsskilte. CTRL+Klik for at låse værdi.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for skilte. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for træer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Skift gennemsigtighed for huse. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for industrier. CTRL+Klik for at låse værdi.
@@ -2058,7 +2070,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Retning 
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Vælg retning af rutebilstation
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Retning af fragtcentral
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Vælg retning af fragtcentral
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Retning af sporvognsstation
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Retning af passager-sporvognsstation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Vælg retning af sporvognsstation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Retning af sporvognsstation
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vælg retning af sporvognsstation
@@ -2128,7 +2140,7 @@ STR_OBJECT_CLASS_TRNS                                           :Sendere
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Træer
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes. Hvis feltet allerede har et træ, vil dette tilføje flere træer i blandede typer, uafhængigt af den valgte type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Træer af tilfældig type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placer træer af tilfældig type. Shift skifter mellem at bygge og vise prisoverslag.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfældige træer
@@ -2446,6 +2458,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Flyt det
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En liste over de NewGRF sæt der er installeret.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Indstil parameter
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vis parametre
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Slå palette til/fra
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Slå palette til/fra i den valgte NewGRF.{}Gør dette når grafik fra denne NewGRF ser lyserøde ud i spillet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Anvend ændringer
@@ -2518,9 +2531,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kræ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {1:STRING} som statisk NewGRF med {STRING} kan forårsage de-sykronisering.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikelement (grafikelement {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt handling 0 egenskab {4:HEX} (grafikelement {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på at bruge ugyldigt ID (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder adskillige handling 8 indgange (grafikelement {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi slutningen af pseudo-grafikelement (grafikelement {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det brugte basis graftik sæt mangler en række elementer.{}Updater venligst grafik sættet
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blev deaktiveret af {STRING}
+STR_NEWGRF_ERROR_GRM_FAILED                                     :De ønskede GRF ressourcer er ikke tilgængelige (grafikelement {3:NUM})
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} blev deaktiveret af {2:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldigt / ukendt grafikelement layoutformat (grafikelement {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2649,8 +2669,30 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Selskabs
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik på mål for at centrere hovedvinduet over industri/by/felt Ctrl+klik åbner et nyt vindue over industri/by/felt lokation
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spørgsmål
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Information
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Advarsel
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Mål-spørgsmåls-overskriftsfejl
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuller
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Nej
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ja
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Afvis
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Accepter
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorer
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Prøv igen
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Forrige
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Næste
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Stop
+STR_GOAL_QUESTION_BUTTON_START                                  :Start
+STR_GOAL_QUESTION_BUTTON_GO                                     :Kør
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Fortsæt
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Genstart
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Udskyd
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Overgiv dig
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Luk
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Tilskudsordninger
@@ -2762,11 +2804,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Selskabsværdi: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ejes af {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spor-stykker
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vej-stykker
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vand-felter
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} station-felter
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lufthavne
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spor-stykker{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vej-stykker{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vand-felter{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} station-felter{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lufthavn{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ingen
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byg HK
@@ -2789,8 +2831,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ændrer 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Køb 25% aktier i selskabet
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sælg 25% aktier i selskabet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Køb 25% aktier i dette selskab. Shift skifter mellem at købe og vise prisoverslag.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sælg 25% aktier i dette selskab. Shift skifter mellem at sælge og vise prisoverslag.
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Køb 25% aktier i dette selskab. Shift+Klik viser de anslåede omkostninger uden at købe nogle aktier
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sælg 25% aktier i dette selskab. Shift+Klik viser de anslåede indtægter uden at sælge nogle aktier
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Selskabsnavn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktørens navn
@@ -3010,7 +3052,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klon ski
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon fly
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil købe en kopi af toget inklusiv alle vogne. Klik på denne knap og så på et tog indeni eller udenfor remisen. Ctrl-klik vil kopiere ordrer. Shift-klik vil vise prisoverslag.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil købe en kopi af køretøjet. Klik på denne knap og så på et køretøj indeni eller udenfor værkstedet. Ctrl-klik vil dele ordrer. Shift-klik viser anslået pris uden køb
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil købe en kopi af skibet. Klik på denne knap og så på et skib indeni eller udenfor dokken. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil købe en kopi af et fly. Klik på denne knap og så på et fly indeni eller udenfor hangaren. Ctrl-klik vil dele ordrer. Shift-klik vil vise prisoverslag.
 
@@ -3321,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmes
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
 STR_ORDER_SHARE                                                 :Del ordrer
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'. 'Deleordrer' eller Ctrl lader dette køretøj dele ordrer med det valgte køretøj. At klikke på et køretøj kopierer ordrer fra det pågældende køretøj. En depot ordre deaktiverer automatisk servicering af køretøjet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
@@ -3401,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Kørepla
 STR_TIMETABLE_NO_TRAVEL                                         :Rejs ikke
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rejs (automatisk; planlagt med næste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Rejs med højst {2:VELOCITY} (ikke skemalagt)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Rejs mod {STRING} med højst {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og rejs i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}
@@ -3425,7 +3469,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre h
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Nulstil tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ændr hastighedsbegrænsning
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ændr den maksimale rejsehastighed for den markerede ordre
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nulstil hastighedsbegrænsning
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Nulstil den maksimale rejsehastighed for den markerede ordre
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nulstil forsinkelse
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
@@ -3471,7 +3519,7 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spil Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tjek SpilScript-loggen
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI kan findes.{}Denne AI er en pladsholder, og vil ikke gøre noget.{} Du kan downloade indtil flere AI'er fra 'Online Indhold'-systemet.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En computerstyret spiller gik ned. Rapporter det venligst til udvikleren af computerspilleren med et skærmbilledet af computerspiller-debugvinduet.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En af de kørende scripts gik ned. Rapporter det venligst til script-udvikleren sammen med et skærmbillede af AI / spilscript-debugvinduet.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspiller/script-debugvindue er kun tilgængeligt på serveren
 
 # AI configuration window
@@ -4408,6 +4456,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

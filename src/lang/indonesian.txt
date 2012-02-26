@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparasikan 
 STR_FILE_MENU_SAVE_GAME                                         :Simpan permainan
 STR_FILE_MENU_LOAD_GAME                                         :Buka Permainan
 STR_FILE_MENU_QUIT_GAME                                         :Batalkan permainan
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Keluar
 ############ range ends here
 
@@ -1799,6 +1800,7 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda dit
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda diusir dari permainan
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tidak boleh curang di server ini
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Anda mengirim terlalu banyak perintah ke server
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jangan terlalu lama memasukkan kata kunci
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Kesalahan umum
@@ -2652,6 +2654,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Target p
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada tujuan untuk mengarahkan pandangan pada tengah industri/kota/kotak. Ctrl+klik untuk membuka jendela baru pada lokasi industri/kota/kotak
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pertanyaan
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasi
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Peringatan
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesalahan
 
 ### Start of Goal Question button list
 
@@ -3404,7 +3410,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar J
 STR_TIMETABLE_NO_TRAVEL                                         :Tidak berjalan
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Perjalanan (otomatis; akan dijadwalkan pada perintah manual berikutnya)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Perjalanan belum terjadwal
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Bergerak dengan kecepatan maks. {2:VELOCITY} (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Berjalan selama {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Bergerak {STRING} dengan maks. kecepatan {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan berjalan selama {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} hari
@@ -3428,7 +3436,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jum
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Hapus waktu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus jumlah waktu pada tujuan yang terpilih
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Ubah batas kecepatan
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Ubah batas kecepatan maks. pada tujuan terpilih
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hapus batas kecepatan
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hapus batas kecepatan maks. pada tujuan terpilih
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Kembalikan penghitung waktu keterlambatan seperti semula, sehingga kendaraan akan selalu tepat waktu
@@ -4411,6 +4423,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

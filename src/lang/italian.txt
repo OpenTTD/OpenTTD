@@ -369,6 +369,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Cartelli traspa
 STR_FILE_MENU_SAVE_GAME                                         :Salva partita
 STR_FILE_MENU_LOAD_GAME                                         :Carica partita
 STR_FILE_MENU_QUIT_GAME                                         :Abbandona partita
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Esci
 ############ range ends here
 
