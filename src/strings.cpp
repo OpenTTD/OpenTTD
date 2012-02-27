@@ -605,12 +605,13 @@ struct UnitConversion {
 	/**
 	 * Convert the displayed value back into a value of OpenTTD's internal unit.
 	 * @param input The input to convert.
-	 * @param round Whether to round the value or not.
+	 * @param round Whether to round the value up or not.
+	 * @param divider Divide the return value by this.
 	 * @return The converted value.
 	 */
-	int64 FromDisplay(int64 input, bool round = true) const
+	int64 FromDisplay(int64 input, bool round = true, int64 divider = 1) const
 	{
-		return ((input << this->shift) + (round ? this->multiplier / 2 : 0)) / this->multiplier;
+		return ((input << this->shift) + (round ? (this->multiplier * divider) - 1 : 0)) / (this->multiplier * divider);
 	}
 };
 
@@ -699,7 +700,7 @@ uint ConvertKmhishSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToKmhishSpeed(uint speed)
 {
-	return _units[_settings_game.locale.units].c_velocity.FromDisplay(speed * 16) / 10;
+	return _units[_settings_game.locale.units].c_velocity.FromDisplay(speed * 16, true, 10);
 }
 /**
  * Parse most format codes within a string and write the result to a buffer.
