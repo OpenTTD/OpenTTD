@@ -1410,7 +1410,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spēles 
 STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtības pakāpe ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildus iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešaistes saturu
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI / spēles iestatījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
 
@@ -1866,13 +1866,13 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tips
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Satura tips
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nosaukums
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Satura nosaukums
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikšķināt uz līnijas lai redzētu īpašības{}Klikšķināt izvēles rūtiņā, lai to iezīmētu lejupielādei
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Klikšķināt uz rindiņas, lai redzētu īpašības{}Klikšķināt uz izvēles rūtiņas, lai to atzīmētu lejupielādei
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Atlasīt visu
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Atzīmēt visu saturu lejupielādei
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Atlasīt uzlabojumus
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Atzīmējiet visu saturu lejupielādei, lai, tas ir uzlabojums esošajam saturam
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Atcelt visa atlasi
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Atzīmēt visu saturu lejupielādei
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Atlasīt jauninājumus
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Atzīmēt visu saturu lejupielādei, lai tas ir jauninājums jau esošajam
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Atcelt visu atlasi
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Noņemt visas satura lejupielādes atzīmes
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Atzīmju/nosaukumu filtrs:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Apmeklēt tīmekļa vietni
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Apmeklēt tīmekļa vietni, lai tiktu pie šī satura
@@ -1883,7 +1883,7 @@ STR_CONTENT_DETAIL_TITLE                                        :{SILVER}SATURA 
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Šo jūs neesat atlasījis lejupielādei
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Šo jūs esat atlasījis lejupielādei
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Šis atkarīgais materiāls ir iezīmēts lejupielādei.
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jums jau šis ir
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Šis jums jau ir
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šī materiāla saturs ir nezināms, tādēļ to nav iespejams lejupielādēt OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Šis ir jau esoša {STRING} aizvietošanai
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nosaukums: {WHITE}{STRING}
@@ -2817,7 +2817,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} ūdens lauciņ{P š i u}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stacijas lauciņ{P š i u}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lidosta{P "" s u}
-STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nekas
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nav
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Celt biroju
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Būvēt uzņēmuma vadības ēku

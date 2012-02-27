@@ -166,7 +166,7 @@ STR_ABBREV_ALL                                                  :{TINY_FONT}全
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} 旅客
-STR_BAGS                                                        :{COMMA} 邮件
+STR_BAGS                                                        :{COMMA} 包
 STR_TONS                                                        :{COMMA} 英吨
 STR_LITERS                                                      :{COMMA} 升
 STR_ITEMS                                                       :{COMMA} 件
@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地块�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}切换工具栏
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}保存场景，读取场景，放弃场景等
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}保存场景，读取场景，放弃场景，退出
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}场景编辑器
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}将开始年份向前调整 1 年
@@ -331,7 +331,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}生成�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}生成城镇
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}生成工业
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}公路建设
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树。Shift显示预计花费。
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置标志
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物体
 
@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :透明车站标
 STR_FILE_MENU_SAVE_GAME                                         :保存游戏
 STR_FILE_MENU_LOAD_GAME                                         :读取存档
 STR_FILE_MENU_QUIT_GAME                                         :放弃游戏
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :退出
 ############ range ends here
 
@@ -444,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :消息历史
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信息
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
-STR_ABOUT_MENU_AI_DEBUG                                         :AI 调试
+STR_ABOUT_MENU_AI_DEBUG                                         :AI / 脚本 调试
 STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高清截图
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :默认缩放模式下的屏幕截图
@@ -1116,13 +1117,13 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道等下方改变地形（自动斜坡）： {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁、隧道等：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}火车最大长度: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}汽车加速模型: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响 {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}坡度对汽车速度的影响 {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响： {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}坡度对汽车速度的影响： {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用进阶的装货算法：{ORANGE}{STRING}
@@ -1261,10 +1262,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}建造�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}企业财政窗口中的组群支出：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}不显示没有对应车辆的轨道建设面板: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每位玩家最大汽车数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家最大飞机数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每位玩家最大船只数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每间公司最大火车数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每间公司最大汽车数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每间公司最大飞机数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每间公司最大船只数量：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}禁止电脑使用火车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}禁止电脑使用汽车：{ORANGE}{STRING}
@@ -1797,10 +1798,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您的IP
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此服务器不允许作弊
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您向服务器发送操作指令过于频繁
-STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}输入密码用时过长
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}游戏连接时间过长
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}下载地图用时过长
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}加入服务器用时过长
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}输入密码超时
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}您的计算机联网超时
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}您的计算机下载地图用时过长
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}您的计算机加入服务器用时过长
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
@@ -1922,7 +1923,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法�
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}缺失图形组
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 需要基础图形组用以绘制界面。您是否希望 OpenTTD 下载并安装以下图形组？
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是的，下载之
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}不，退出
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}不，退出OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明选项
@@ -1959,16 +1960,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :电气化铁路
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :单轨铁路建设
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :磁悬浮铁路建设
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 Ctrl 键切换建设/移除铁轨。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设铁轨。按住 Ctrl 键切换建设/移除铁轨。
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/光板式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}建设铁轨。按住 Ctrl 键切换建设/移除铁轨。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}使用多向路轨工具铺设铁轨。按住 Ctrl 键切换建设/移除铁轨。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}建设列车车库（可以购买或维护列车）按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}将铁路变为路点。按住 Ctrl 键允许合并路点。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}建设火车站。按住 Ctrl 键允许合并站台。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}设置铁路信号。按住 Ctrl 键可以切换悬臂式/光板式信号灯{}拖拽可以沿此分支建立信号灯。按住 Ctrl 键可以建立到下一个联结点。{}按住 Ctrl 键单击此按钮可以开关信号灯选择窗口{}按住 Shift 键显示预计费用
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}建设铁路桥梁。按住 Shift 键显示预计费用。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}建设铁路隧道。按住 Shift 键显示预计费用。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切换建设/拆除铁轨、信号灯、路点和车站。按住 Ctrl 键可在移除路点和车站时同时移除铁轨。
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}转换/升级 铁路类型。按住 Shift 键显示预计费用。
 
 STR_RAIL_NAME_RAILROAD                                          :铁路
 STR_RAIL_NAME_ELRAIL                                            :电气化铁路
@@ -2137,7 +2138,7 @@ STR_OBJECT_CLASS_TRNS                                           :发射机
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型。如果格子内已经有树木，将种植随机类型的树木
 STR_TREES_RANDOM_TYPE                                           :{BLACK}随机类型的树木
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木，按住 Shift 键可以显示所需资金
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}随机树木
@@ -2252,6 +2253,21 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 出口
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 复合信号灯轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 普通信号灯轨道
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 单向信号灯轨道
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 具有入口信号灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 具有出口信号灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 具有组合信号灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 具有高级信号灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 具有高级单向信号灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 同时有入口灯和出口灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 同时有入口灯和组合灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 同时有入口灯和高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 同时有入口灯和单向高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 同时有出口灯和组合灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 同时有出口灯和高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 同时有出口灯和单向高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} 同时有组合灯和高级灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} 同时有组合灯和高级单向灯的铁轨
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} 同时有高级灯和单向高级灯的铁轨
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 列车车库
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :公路
@@ -2517,9 +2533,11 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :异常sprite (s
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的Action 0 属性 {4:HEX} (sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用非法ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :具有多个Action 8 (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
 STR_NEWGRF_ERROR_GRM_FAILED                                     :GRF源文件不可访问 (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} 被 {STRING} 禁用
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :错误/未知的sprite输出格式 (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -2548,6 +2566,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}列车 '
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 的信息不正确
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}购买'{1:ENGINE}' 后，将造成货物/运费的参数与购买列表不符，这将有可能造成自动更新/购买不成功。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 产生了一个死循环
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}回调函数 {1:HEX} 返回了一个未知/错误的结果 {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
@@ -3292,6 +3311,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}改变�
 STR_ORDER_REFIT                                                 :{BLACK}改装
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}选择要在调度计划中改装的货物类型{}CTRL+单击 可以去掉改装计划
 STR_ORDER_REFIT_AUTO                                            :{BLACK}自动改装
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}选择在此调度计划内使用何种货物类型来自动改装。 Ctrl+单击以移除自动改装。自动改装仅在载具支持时进行。
 STR_ORDER_DROP_REFIT_AUTO                                       :固定货物
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :可用类型
 
@@ -4432,6 +4452,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

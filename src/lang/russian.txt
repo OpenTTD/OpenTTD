@@ -493,6 +493,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозрач�
 STR_FILE_MENU_SAVE_GAME                                         :Сохранить игру
 STR_FILE_MENU_LOAD_GAME                                         :Загрузить игру
 STR_FILE_MENU_QUIT_GAME                                         :В главное меню
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Выход
 ############ range ends here
 
@@ -4686,6 +4687,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

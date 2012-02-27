@@ -719,7 +719,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Zapisz scenariu
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Wczytaj scenariusz
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Zapisz mapę wysokości
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Wczytaj mapę wysokości
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Wyjdź z edytora scenariuszy
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Opuść edytor scenariuszy
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 ############ range for SE file menu starts
@@ -3829,7 +3829,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład
 STR_TIMETABLE_NO_TRAVEL                                         :Nie podróżuje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Podróż (automatycznie; zaplanowana przez następny ręczny rozkaz)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj z maksymalną prędkością {2:VELOCITY} (not timetabled)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Podróżuj z maksymalną prędkością {2:VELOCITY} (poza rozkładem)
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Podróżuj przez {STRING} z maksymalną prędkością {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}

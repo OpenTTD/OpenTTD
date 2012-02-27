@@ -293,7 +293,7 @@ STR_SORT_BY_RANGE                                               :Maes teithio
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r gêm
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Cyflymu'r gêm
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Dewisiadau
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Cadw'r gêm, cefnu ar y gêm, cau
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Cadw'r gêm, gwaredu a'r gêm, gadael
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Dangos map
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Dangos cyfeiriadur trefi
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Dangos Cymorthdaliadau
@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gwybodae
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Amnewid bariau offer
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gadael y golygydd senario, cau
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gwaredu a'r golygydd senario, gadael
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Golygydd Senario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
@@ -340,7 +340,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Cadw senario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Llwytho senario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Cadw siart uchder
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Llwytho siart uchder
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Gadael golygydd
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Gwaredu a'r golygydd senario
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 ############ range for SE file menu starts
@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Arwyddion trylo
 STR_FILE_MENU_SAVE_GAME                                         :Cadw Gêm
 STR_FILE_MENU_LOAD_GAME                                         :Llwytho Gêm
 STR_FILE_MENU_QUIT_GAME                                         :Rhoi'r gorau i'r Gêm
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Gadael
 ############ range ends here
 
@@ -4455,6 +4456,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

@@ -606,7 +606,7 @@ STR_SORT_BY_RANGE                                               :Далёкас�
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паўза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Паскорыць гульню
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Наладкі
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Захаваньне гульні{}Галоўнае мэню{}Выхад
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Захаваньне гульні, галоўнае мэню, выхад
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Паказаць мапу, вакно прагляду цi сьпiс знакаў
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Сьпiс гарадоў
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Паказаць субсыдыі
@@ -633,7 +633,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Iнфа�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пераключыць панэлі інструмэнтаў
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Захаваць сцэнар, загрузіць сцэнар, выхад з рэдактара
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Захаванне/загрузка сцэнара, выхад з рэдактара, выхад
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Рэдактар сцэнараў
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Зьменшыць пачатковую дату гульні на 1 год

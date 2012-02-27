@@ -292,7 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Karga Edukiera
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Jokoa pausatu
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Jokoa bizkor aurreratu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Ezarpenak
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Jokoa gorde, jokoa utzi, Irten
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Partida gorde, partida honetaz irten, jokotik irten
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Erakutsi mapa, ikusbegi extra edo kartelen zerrenda
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Erakutsi herri direktorioa
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subsidioak erakutsi
@@ -339,7 +339,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gord
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Eszenarioa kargatu
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Altuera mapa gorde
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Garaiera-mapa kargatu
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Editoretik irten
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Eszenario editoretik irten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 ############ range for SE file menu starts
@@ -365,6 +365,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Geltoki errotul
 STR_FILE_MENU_SAVE_GAME                                         :Jokoa gorde
 STR_FILE_MENU_LOAD_GAME                                         :Jokoa kargatu
 STR_FILE_MENU_QUIT_GAME                                         :Jokoa utzi
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Irten
 ############ range ends here
 
@@ -441,9 +442,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mezuen historia
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Lur arearen informazioa
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
-STR_ABOUT_MENU_AI_DEBUG                                         :IA debug
+STR_ABOUT_MENU_AI_DEBUG                                         :IA / GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Pantailan dagoenaren argazkia hartu (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pantailan dagoenaren argazkia hartu zoom-a erabiliz
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pantailan dagoenaren argazkia hartu zoom-a guztiz erabiliz
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Mapa osoaren argazkia hartu (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'-ri buruz
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprit" lerrokatzailea
@@ -1405,7 +1406,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network messages
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Komandu gehiegi bidaltzen hari zara zerbitzarira
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Luzeegia hartu duzu pasahitza idatzi
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Zure ordenagailua hartu luzeegia join
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Zure ordenagailua motelegia da serbidorean egoteko
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :komandu gehiegi bidali dira
@@ -1634,7 +1635,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Joan "sp
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larria gertatu da: {}{STRING}
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} desgaitua izan da {STRING}(en)gatik
 
@@ -1911,7 +1912,11 @@ STR_ORDER_IMPLICIT                                              :(Implizitua)
 
 
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Abiadura limitea aldatu
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Hautatutako aginduaren gehienezko abiadura aldatu
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Abiadura limitea kendu
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Hautatutako aginduaren gehienezko abiadura kendu
 
 
 
@@ -2298,6 +2303,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

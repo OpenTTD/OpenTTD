@@ -280,7 +280,7 @@ STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :높은 화물 등급순
 STR_SORT_BY_RATING_MIN                                          :낮은 화물 등급순
-STR_SORT_BY_ENGINE_ID                                           :기관차ID
+STR_SORT_BY_ENGINE_ID                                           :이름 (기본 정렬)
 STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
 STR_SORT_BY_TRACTIVE_EFFORT                                     :견인 효과
@@ -1083,10 +1083,10 @@ STR_TERRAIN_TYPE_FLAT                                           :평탄함
 STR_TERRAIN_TYPE_HILLY                                          :언덕
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :산
 
-STR_ECONOMY_STEADY                                              :안정됨
+STR_ECONOMY_STEADY                                              :안정적
 STR_ECONOMY_FLUCTUATING                                         :불안정함
 
-STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :선로 끝과 역에서의 회차 가능
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :선로 끝과 역에서 회차 가능
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :선로 끝에서만 회차 가능
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
@@ -1388,7 +1388,7 @@ STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... 설�
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없음
-STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안정적
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안함
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF 시스템
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :현재 OpenTTD 버전과 맞지 않음
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :{G=m}알 수 없음
@@ -2604,7 +2604,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}도시 �
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}(없음)
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}도시 이름 - 이 도시로 시점을 변경하려면 클릭하세요. Ctrl+클릭하면 이 도시 위치의 새로운 뷰포트를 엽니다.
-STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}총 인구수: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
@@ -2970,7 +2970,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
-STR_PURCHASE_INFO_ALL_BUT                                       :모든 화물 / 제외: {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}{G "을" "를"} 제외한 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
@@ -3436,8 +3436,8 @@ STR_INVALID_ORDER                                               :{RED} (잘못�
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}순서
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}순서 보기로 변경
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}행선지표
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}행선지표 창으로 전환
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
 
@@ -3447,15 +3447,15 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간�
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속도로 운행 (시간표 작성 안됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}까지 최대 {1:VELOCITY}의 속도로 운행
-STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING} 동안 머무름
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}(으)로 이동
-STR_TIMETABLE_DAYS                                              :{COMMA} 일
-STR_TIMETABLE_TICKS                                             :{COMMA} 틱
+STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}동안 머무름
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G "으로" "로"} 이동
+STR_TIMETABLE_DAYS                                              :{COMMA}일
+STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이(가) 걸릴 것입니다
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표는 완주하는데 최소 {STRING}이(가) 필요합니다 (일부만 시간지정됨)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}이 시간표는 완주하는데 {STRING}이 걸릴 것입니다.
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}이 시간표는 완주하는데 최소 {STRING}이 필요합니다 (일부만 시간지정됨)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 현재 제시간에 운행하고 있습니다
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}이 차량은 지금 정시운행 중입니다.
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}이 차량은 현재 {STRING} 늦게 운행하고 있습니다
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}이 차량은 현재 {STRING} 빨리 운행하고 있습니다
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}이 시간표는 아직 시작되지 않았습니다.
@@ -3465,10 +3465,10 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 �
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요.
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 필요한 소요시간을 변경합니다
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간 초기화
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간을 초기화합니다
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한 초기화
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
@@ -3476,11 +3476,11 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택�
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한 초기화
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 카운터 초기화
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 시간 초기화
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간을 초기화하여 정시운행으로 바꿉니다.
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동채움
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음 여행에서 얻어진 값으로 시간표를 자동으로 채웁니다 (CTRL-클릭하여 대기 시간을 유지합니다)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동 시간 설정
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음에 운행하면서 자동으로 값을 얻어 시간표를 채웁니다 (머무르는 시간을 유지하려면 CTRL-클릭하십시오)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}예정일 기준
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}예정 소요시간 기준
@@ -4457,6 +4457,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

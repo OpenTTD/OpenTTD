@@ -1801,6 +1801,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda diu
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tidak boleh curang di server ini
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Anda mengirim terlalu banyak perintah ke server
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Jangan terlalu lama memasukkan kata kunci
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Komputer anda terlalu lambat dalam mengikuti server
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Komputer anda terlalu lama untuk mengunduh peta
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Komputer anda terlalu lama untuk bisa bergabung dengan server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Kesalahan umum
@@ -1819,6 +1822,8 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :diusir oleh ser
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :tadi mencoba curang
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server penuh
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :terlalu banyak mengirim perintah
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :pengunduhan peta memakan banyak waktu
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :pengolahan peta memakan banyak waktu
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Koneksi mungkin terputus
@@ -2451,6 +2456,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Pindahka
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Daftar file NewGRF yang diinstal.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Atur parameter
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Tampilkan parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tandai palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Tandai palet NewGRF terpilih.{}Lakukan ini ketika grafis NewGRF ini terlihat berwarna merah muda di dalam permainan
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Terapkan Perubahan
