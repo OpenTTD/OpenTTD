@@ -2970,7 +2970,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
-STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}{G "을" "를"} 제외한 모든 화물
+STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}을 제외한 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
@@ -3448,7 +3448,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOC
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}까지 최대 {1:VELOCITY}의 속도로 운행
 STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}동안 머무름
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G "으로" "로"} 이동
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G 0 "으로" "로"} 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일
 STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
