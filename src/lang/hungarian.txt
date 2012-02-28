@@ -356,7 +356,7 @@ STR_SORT_BY_RANGE                                               :Hatótávolság
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Játék gyorsítása
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Beállítások
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése, kilépés a játékból, kilépés
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Játék mentése, játék elhagyása, kilépés
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Térkép
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Településlista mutatása
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Támogatások megjelenítése
@@ -383,7 +383,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Eszköztár váltás
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Pálya betöltése, mentése, kilépés a szerkesztőből, kilépés
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Pálya betöltése, mentése, pályaszerkesztő elhagyása, kilépés
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Pályaszerkesztő
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}A kezdődátum hátrébb állítása egy évvel
@@ -403,7 +403,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Pálya mentése
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Pálya betöltése
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Magasságtérkép mentése
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Magasságtérkép betöltése
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Kilépés a szerkesztőből
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pályaszerkesztő elhagyása
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Kilépés
 ############ range for SE file menu starts
@@ -430,6 +430,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Átlátszó fel
 STR_FILE_MENU_SAVE_GAME                                         :Játék mentése
 STR_FILE_MENU_LOAD_GAME                                         :Játék betöltése
 STR_FILE_MENU_QUIT_GAME                                         :Kilépés a játékból
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Kilépés
 ############ range ends here
 
@@ -1988,7 +1989,7 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sike
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Hiányzó grafikus alapcsomag
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Az OpenTTD-nek egy grafikus alapcsomagra van szüksége a működéshez, de nem található grafikus alapcsomag. Engedélyezed az OpenTTD-nek, hogy letöltse és telepítse a grafikus alapcsomagot?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Igen, a grafikai alapcsomag letöltése
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nem, az OpenTTD bezárása
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nem, kilépés az OpenTTD-ből
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
@@ -4560,6 +4561,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

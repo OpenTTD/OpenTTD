@@ -294,7 +294,7 @@ STR_SORT_BY_RANGE                                               :Alcance
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelerar o jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, desistir
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, sair
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, janela extra ou lista de placas
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir lista de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Exibir subsídios
@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informa�
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, carregar cenário, abandonar editor de cenário, desistir
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, carregar cenário, sair do editor de cenário, sair
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Cenário
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mover a data inicial 1 ano para trás
@@ -341,9 +341,9 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carregar cenário
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Salvar mapa topográfico
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar mapa de elevação
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Desistir do editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor de cenários
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Desistir
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -361,13 +361,14 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Placas e nomes 
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação total
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalhamento total
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais de estações transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Placas de estações transparentes
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Salvar jogo
 STR_FILE_MENU_LOAD_GAME                                         :Carregar jogo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar jogo
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Sair
 ############ range ends here
 
@@ -445,9 +446,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de M
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informação da área do terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Alternar console
-STR_ABOUT_MENU_AI_DEBUG                                         :Depurar I.A.
+STR_ABOUT_MENU_AI_DEBUG                                         :Depurar I.A./GameScript
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliado em captura de tela
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de tela em ampliação padrão
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela do mapa inteiro
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
@@ -1429,7 +1431,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Exibe configurações de IA e do Jogo
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair do 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
 
@@ -1799,6 +1801,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Você fo
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você foi expulso do jogo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Trapaceiros não são permitidos neste servidor
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Você enviou comandos demais ao servidor
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Você demorou demais para digitar a senha
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Seu computador é lento demais para acompanhar o servidor
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Seu computador demorou demais para baixar o mapa
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Seu computador demorou demais para entrar no servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral
@@ -1817,6 +1823,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :expulso pelo se
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava tentando trapacear
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :enviou comandos demais
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :não recebeu senha a tempo
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :tempo esgotado
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :a baixa do mapa demorou demais
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :o processamento do mapa demorou demais
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possível perda de conexão
@@ -1897,6 +1907,7 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfi
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script do jogo
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS's disponíveis
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Baixando conteúdo...
@@ -2060,9 +2071,9 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orienta�
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Selecionar orientação do estação de ônibus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientação da área de carga
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Selecionar orientação da área de carga
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Estação de Bonde
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orientação da Estação de Bonde Passageiros
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Selecionar orientação da estação de bonde
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientação da Estação de Bonde
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orientação da Estação de Bonde de Carga
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecionar orientação da estação de bonde
 
 # Waterways toolbar (last two for SE only)
@@ -2130,7 +2141,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecionar um tipo de árvore para plantar
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecionar um tipo de árvore para plantar. Se o local já tiver uma árvore, isso irá adicionar mais árvores do tipo misto indepentendemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório, Shift alterna entre construção/preço estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
@@ -2448,6 +2459,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o N
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos NewGRF instalados.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Exibir parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alterna paleta
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste ficarem rosa durante o jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
@@ -2520,9 +2532,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitas NewGRFs estão carregadas
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {1:STRING} como um NewGRF estático em conjunto com {STRING} pode causar desincronias
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :"Sprite" inesperado (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Ação Desconhecida 0 {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de uso de ID inválido (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém multiplas entradas de Ação 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura após o final do pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Estão faltando alguns sprites na base de gráficos em uso.{}Por favor atualize a base de gráficos
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Recursos GRF requeridos indisponíveis (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} foi desativado por {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Formato de layout de sprite inválido/desconhecido (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -2651,8 +2670,30 @@ STR_GOALS_COMPANY_TITLE                                         :{G=m}{BLACK}Obj
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique num objetivo para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pergunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informação
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Alerta
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erro
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Não
+STR_GOAL_QUESTION_BUTTON_YES                                    :Sim
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Recusar
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Aceitar
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorar
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Tentar novamente
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Anterior
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Próximo
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Parar
+STR_GOAL_QUESTION_BUTTON_START                                  :Iniciar
+STR_GOAL_QUESTION_BUTTON_GO                                     :Ir
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Continuar
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Reiniciar
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Postergar
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Desistir
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Fechar
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
@@ -2764,11 +2805,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propriedade de {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} partes de ferrovia
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} partes de rodovia
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} partes de água
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} partes de estação
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroportos
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} parte{P "" s} de ferrovia
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} parte{P "" s} de rodovia
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} parte{P "" s} de água
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} parte{P "" s} de estação
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
@@ -3323,7 +3364,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para depósi
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Pulo de ordem condicional
 STR_ORDER_SHARE                                                 :Compartilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem em destaque, ou adicionar no fim da lista. Ctrl torna ordens da estação 'carregar completamente qualquer carga', ordens de pontos de controle como 'sem parada' e ordens de depósito como 'serviço'. 'Compartilhar ordens' ou Ctrl deixa este veículo compartilhar ordens com o veículo selecionado. Clicar num veículo copia as ordens daquele veículo
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem selecionada, ou adicionar no fim da lista. Ctrl torna ordens da estação 'carregar completamente qualquer carga', ordens de pontos de controle como 'sem parada' e ordens de depósito como 'manutenção'. 'Compartilhar ordens' ou Ctrl deixa este veículo compartilhar ordens com o veículo selecionado. Clicar num veículo copia as ordens daquele veículo. Uma ordem de depósito desativa manutenção automática para o veículo
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Exibir todos os veículos com a mesma rota
 
@@ -3403,7 +3444,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário
 STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizada pela próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não calendarizado)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viaje em até {2:VELOCITY} (sem plano de horário)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaje por {STRING} em até {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
@@ -3427,7 +3470,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpar Horário
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpar a quantidade de tempo para a ordem destacada
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Alterar Limite de Vel.
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Altera a velocidade máxima de viagem para a ordem selecionada
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Limpa Limite de Vel.
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpar a velocidade máxima de viagem para a ordem selecionada
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restabelecer Contador de Atraso
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restabelecer o contador de atraso,então o veículo estará pontual
@@ -3453,11 +3500,11 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecion
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Depurar IA
+STR_AI_DEBUG                                                    :{WHITE}Depurar I.A./GameScript
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições da IA
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições da IA
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome do script
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições do script
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e reiniciar a IA
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar pausagem quando uma mensagem de registo da IA corresponder á sequencia de falhas
@@ -3469,13 +3516,15 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver a depuração produzida desta IA
+STR_AI_GAME_SCRIPT                                              :{BLACK}Game Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Checando o log do Game Script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar. {} Esta IA é falsa e não irá fazer nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uma das em execução IA's travou. Favor relatar isto ao autor da IA com uma captura de tela da Janela de Depuração da IA
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debug de IA só é acessível pelo servidor
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos scripts em execução travou. Favor relatar isto ao autor do script com uma captura de tela da Janela de Depuração da I.A./GameScript
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Depuração de I.A./GameScript só é acessível pelo servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração da IA
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração da I.A./GameScript
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}IAs que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
@@ -3487,32 +3536,36 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Descer
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA selecionada para baixo na lista
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
 STR_AI_CONFIG_AI                                                :{G=f}{SILVER}IAs
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecionar {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :{G=f}IA
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurar
-STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros da IA
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurar os parâmetros do Script
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Disponíveis {STRING}
 STR_AI_LIST_CAPTION_AI                                          :{G=f}IAs
-STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar uma IA
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar um script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versão: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceitar
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecionar a IA destacada
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecionar o script destacado
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar IA
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
 STR_AI_SETTINGS_CAPTION_AI                                      :{G=f}IA
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4404,6 +4457,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

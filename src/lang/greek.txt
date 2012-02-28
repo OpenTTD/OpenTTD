@@ -351,12 +351,13 @@ STR_SORT_BY_INTRO_DATE                                          :Ημερομη�
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ενέργεια/Κόστος Συντήρησης
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
+STR_SORT_BY_RANGE                                               :Εύρος
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύση
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Επιλογές
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, παραίτηση, έξοδος
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, εγκατάλειψη, έξοδος
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Εμφάνιση χάρτη
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Εμφάνιση του καταλόγου πόλεων
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Εμφάνιση χρηματοδοτήσεων
@@ -383,7 +384,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληρ
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, παραίτηση πρόγραμμα επεξεργασίας, έξοδος
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, εγκατάλειψη προγράμματος επεξεργασίας σεναρίων, έξοδος
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
@@ -403,7 +404,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκε�
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Φόρτωση σεναρίου
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Αποθηκευση χάρτη υψομετρίας
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Φόρτωση χάρτη υψομετρίας
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας σεναρίων
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 ############ range for SE file menu starts
@@ -412,6 +413,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ΑΙ / Ρυθμίσεις παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -429,6 +431,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανε�
 STR_FILE_MENU_SAVE_GAME                                         :Αποθήκευση παιχνιδιού
 STR_FILE_MENU_LOAD_GAME                                         :Φόρτωση παιχνιδιού
 STR_FILE_MENU_QUIT_GAME                                         :Έξοδος από το παιχνίδι
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Έξοδος
 ############ range ends here
 
@@ -444,6 +447,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Ιδρύση π
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Χρηματοδοτήσεις
+STR_SUBSIDIES_MENU_GOAL                                         :Τρέχοντες στόχοι
 ############ range ends here
 
 ############ range for graph menu starts
@@ -839,6 +843,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Αλλ�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επιχορηγήσεις
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γενικές πληροφορίες
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τρένο φτάνει στο στάθμο {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
@@ -1460,6 +1465,8 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλα
 # Config errors
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... άκυρη τιμή '{STRING}' για '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :δεν βρέθηκε
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ασύμβατο με αυτήν την έκδοση του OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :άγνωστο
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1476,6 +1483,7 @@ STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δ�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Ρυθμίσεις παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
@@ -1495,6 +1503,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Προβολή AI και ρυθμίσεων παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
@@ -1865,6 +1874,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστέλνεις πάρα πολλές εντολές στο διακομιστή
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρειαστήκατε πολύ χρόνο για να συμπληρώσετε τον κωδικό
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να ακολουθήσει το διακομιστή
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει το χάρτη
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να συνδεθεί με τον διακομιστή
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Γενικό πρόβλημα
@@ -1883,6 +1896,7 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :Εκδιωχθ�
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :δεν παραλήφθηκε κωδικός εντός του ορισμένου χρόνου
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
@@ -2672,6 +2686,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωρ�
 # Goal window
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ερώτηση
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Πληροφορίες
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Προειδοποίηση
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Σφάλμα
 
 ### Start of Goal Question button list
 
@@ -3422,6 +3440,7 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλά
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθαρισμός χρόνων
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο της επιλεγμένης επιλογής
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή ορίου ταχύτητας
 
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
@@ -3473,6 +3492,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Τ
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Ρύθμιση παιχνικδιού
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
+STR_AI_CONFIG_NONE                                              :(κανένα)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση του επιλεγμένου AI πάνω στη λίστη
@@ -3480,6 +3500,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετα
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά του επιλεγμένου AI κάτω στη λίστα
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων ενός script
 
@@ -4383,6 +4404,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

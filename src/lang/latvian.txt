@@ -884,11 +884,11 @@ STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grieķijas drah
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Ungārijas forinti (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Īslandes kronas (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Itālijas liras (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nīderlandes guldeņi(NLG)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Nīderlandes guldeņi (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norvēģijas kronas (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polijas zloti (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumānijas lejas (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Krievijas rubļii (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Krievijas rubļi (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovēnijas tolāri (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Zviedrijas kronas (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turcijas liras (TRY)
@@ -952,7 +952,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Valoda
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Saskarnes valodas izvēle
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pilnekrāns
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Iezīmējiet ķeksi, lai spēlētu OpenTTD pilnekrāna režīmā
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Noklikšķināt uz šīs pogas, lai spēlētu OpenTTD pilnekrāna režīmā
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrāna izšķirtspēja
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna izšķirtspējas izvēle
@@ -1876,7 +1876,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Noņemt 
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Atzīmju/nosaukumu filtrs:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Apmeklēt tīmekļa vietni
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Apmeklēt tīmekļa vietni, lai tiktu pie šī satura
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lejupielāde
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lejupielādēt
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Sākt atlasītā lejupielādi
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Lejupielādes kopējais lielums: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}SATURA INFORMĀCIJA
@@ -1889,7 +1889,7 @@ STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Šis ir
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nosaukums: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versija: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Apraksts: {WHITE}{STRING}
-STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}Tīmekļa adrese: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tips: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Lejupielādes lielums: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Atlasīts, jo: {WHITE}{STRING}
