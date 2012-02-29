@@ -3417,6 +3417,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδ
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με την περισσότερη {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} μέρ{P α ες}
@@ -3441,7 +3442,10 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθα
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο της επιλεγμένης επιλογής
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή ορίου ταχύτητας
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Αλλαγή της μέγιστης ταχύτητα ταξιδίου της επιλεγμένης σειράς
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Καθαρισμός ορίου ταχύτητας
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Καθαρίζει την μέγιστη ταχύτητα ταξιδιού της επιλεγμένης σειράς
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Επαναφορά του μετρητή καθυστέρησης, ώστε το όχημα να είναι στην ώρα του
@@ -3524,6 +3528,9 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} άδεια του {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Εμφάνιση readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ημερόλογιο αλλαγών
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Άδεια
 
 
