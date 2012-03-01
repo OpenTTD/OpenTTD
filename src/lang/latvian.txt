@@ -24,7 +24,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(nedefinēta virkne)
-STR_JUST_NOTHING                                                :Nekā
+STR_JUST_NOTHING                                                :Neko
 
 # Cargo related strings
 # Plural cargo name
@@ -675,7 +675,7 @@ STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikšķ
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ceļi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Dzelzsceļi
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacijas/Lidostas/Doki
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacijas/lidostas/piestātnes
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Celtnes/ražotnes
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Transporta līdzekļi
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vilcieni
@@ -2142,7 +2142,7 @@ STR_OBJECT_CLASS_TRNS                                           :Raidītāji
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Koki
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlēties koka veidu stādīšanai. Ja plāksne jau ir koks, tas pievienos vairāk jauktu veidu kokus neatkarīgi no izvēlētā veida
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlēties koka veidu stādīšanai. Ja lauciņš jau ir koks, tas pievienos vairāk jauktu veidu kokus neatkarīgi no izvēlētā veida
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nejauši izvēlēta veida koki
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Izvietot nejaušus kokus. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nejauši koki
@@ -3267,7 +3267,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ietilpī
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pielāgot)
-STR_REFIT_TITLE                                                 :{GOLD}Izvēlēties vedamās kravas veidu:
+STR_REFIT_TITLE                                                 :{GOLD}Izvēlēties pārvadājamās kravas veidu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izvēlēties transportlīdzekļus pielāgošanai. Vilkšana ar peli ļauj izvēlēties vairākus transportlīdzekļus. Klikšķināšana tukšumā atzīmēs visus transportlīdzekļus. Ctrl+klikšķis atzīmēs izvēlēto un visus tam sekojošus transportlīdzekļus
@@ -3739,7 +3739,7 @@ STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar b�
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nevar būvēt kravas automobiļu staciju...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nevar būvēt pasažieru tramvaju pieturu...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nevar būvēt kravas tramvaju pieturu...
-STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Šeit nevar būvēt ostu...
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Šeit nevar būvēt piestātni...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit nevar būvēt lidostu...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Blakus atrodas vairāk nekā viena stacija/iekraušanas zona
