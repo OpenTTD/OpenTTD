@@ -3344,7 +3344,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Repülő
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} menetrendje
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Menetrend
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Nézetváltás
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Átkapcsolás menetrendi nézetre
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez. Ctrl+Kattintással az utasítás helyszínére görget
@@ -3470,7 +3470,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ki nem rakodá
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodás és bármiből teljes berakodás)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nincs ki- és berakodás)
 
-STR_ORDER_AUTO_REFIT                                            :(Átalakítás {STRING} rakományra)
+STR_ORDER_AUTO_REFIT                                            :(Átalakítás {STRING} szállítására)
 STR_ORDER_FULL_LOAD_REFIT                                       :(Kirakodás, mindenből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Kirakodás, bármiből teljes berakodás és átalakítás {STRING} rakományra)
 STR_ORDER_UNLOAD_REFIT                                          :(Kirakodás, rakományfelvétel és átalakítás {STRING} rakományra)
@@ -3499,7 +3499,7 @@ STR_INVALID_ORDER                                               :{RED} (Hibás u
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} várakozási és menetidői
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Menetrend
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Nézetváltás
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Átkapcsolás a menetrend utasítástáblájára
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - egy utasítás kijelöléshez kattints rá
@@ -3534,10 +3534,10 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Idő tö
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Sebességkorlátozás megváltoztatása
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Kijelölt utasítás legnagyobb utazósebességének megváltoztatása
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Kijelölt utasítás sebességkorlátozásának megváltoztatása
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Sebességkorlátozás törlése
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Maximális utazósebesség törlése a kijelölt utasításból
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Sebességkorlátozás törlése a kijelölt utasításból
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Késés nullázása
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
