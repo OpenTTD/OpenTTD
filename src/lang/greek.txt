@@ -351,12 +351,13 @@ STR_SORT_BY_INTRO_DATE                                          :Ημερομη�
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ενέργεια/Κόστος Συντήρησης
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
+STR_SORT_BY_RANGE                                               :Εύρος
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύση
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Επιλογές
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, παραίτηση, έξοδος
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, εγκατάλειψη, έξοδος
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Εμφάνιση χάρτη
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Εμφάνιση του καταλόγου πόλεων
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Εμφάνιση χρηματοδοτήσεων
@@ -383,7 +384,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληρ
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, παραίτηση πρόγραμμα επεξεργασίας, έξοδος
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Αποθήκευση σεναρίου, φόρτωση, εγκατάλειψη προγράμματος επεξεργασίας σεναρίων, έξοδος
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Πρόγραμμα Επεξεργασίας Σεναρίου
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
@@ -403,7 +404,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκε�
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Φόρτωση σεναρίου
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Αποθηκευση χάρτη υψομετρίας
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Φόρτωση χάρτη υψομετρίας
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Έξοδος από το πρόγραμμα επεξεργασίας σεναρίων
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 ############ range for SE file menu starts
@@ -412,6 +413,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ΑΙ / Ρυθμίσεις παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -422,13 +424,14 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Εμφανίζ�
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Πλήρες animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Πλήρης λεπτομέρειες
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Διαφανή κτίρια
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες σταθμών
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Διάφανες ταμπέλες
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Αποθήκευση παιχνιδιού
 STR_FILE_MENU_LOAD_GAME                                         :Φόρτωση παιχνιδιού
 STR_FILE_MENU_QUIT_GAME                                         :Έξοδος από το παιχνίδι
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Έξοδος
 ############ range ends here
 
@@ -444,6 +447,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Ιδρύση π
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Χρηματοδοτήσεις
+STR_SUBSIDIES_MENU_GOAL                                         :Τρέχοντες στόχοι
 ############ range ends here
 
 ############ range for graph menu starts
@@ -507,7 +511,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :AI / Αποσφαλμάτωση
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Μεγένθυση στη φωτογραφία εικόνας
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Πλήρης μεγένθυση στην απεικόνιση οθόνης
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολο το χάρτη(Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
@@ -839,6 +843,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Αλλ�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Επιχορηγήσεις
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Γενικές πληροφορίες
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο τρένο φτάνει στο στάθμο {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο λεωφορείο φτάνει στη στάση {STATION}!
@@ -1460,6 +1465,8 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλα
 # Config errors
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... άκυρη τιμή '{STRING}' για '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :δεν βρέθηκε
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ασύμβατο με αυτήν την έκδοση του OpenTTD
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :άγνωστο
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1476,6 +1483,7 @@ STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δ�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Ρυθμίσεις παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
@@ -1495,6 +1503,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Προβολή AI και ρυθμίσεων παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
@@ -1865,6 +1874,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστέλνεις πάρα πολλές εντολές στο διακομιστή
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Χρειαστήκατε πολύ χρόνο για να συμπληρώσετε τον κωδικό
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ο υπολογιστής σας είναι πολύ αργός για να ακολουθήσει το διακομιστή
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να κατεβάσει το χάρτη
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ο υπολογιστής σας χρειάστηκε πολύ χρόνο για να συνδεθεί με τον διακομιστή
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Γενικό πρόβλημα
@@ -1883,6 +1896,7 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :Εκδιωχθ�
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :δεν παραλήφθηκε κωδικός εντός του ορισμένου χρόνου
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
@@ -1977,7 +1991,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Λείπ
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες των σταθμών. Ctrl+κλικ για να το κλειδώσετε.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας στις πινάκιδες. Ctrl+κλικ για να την κλειδώσετε.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνιας για τα δέντρα. Ctrl+κλικ για να το κλειδώσετε.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Εναλλαγή διαφάνιας για τα σπίτια. Ctrl+κλικ για να το κλειδώσετε.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Εναλλαγή διαφάνιας για τις βιομηχανίες. Ctrl+κλικ για να το κλειδώσετε.
@@ -2055,16 +2069,16 @@ STR_STATION_CLASS_WAYP                                          :Σημείο κ
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Επιλογή σηματοδότη
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Σηματοδότες τμήματος (σηματοφόρος){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να βρίσκεται σε κάθε τμήμα κάθε φορά
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Σηματοδότης-Εισόδου (σηματοφόρος){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες-εξόδου στο επόμενο τμήμα γράμμης. Αλλιώς δείχνει κόκκινο
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στην είσοδο στους συνδιασμένους προ-σηματοδότες.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδιασμένος Σηματοδότης (σηματοφόρος){}Ο συνδιασμένος σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το χτήσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την άλλη πλεύρα.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπόρουν να περαστούν από την άλλη πλεύρα.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Σηματοδότης-Εξόδου (σηματοφόρος){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να τεθεί το σωστό χρώμα στους προ-σηματοδότες είσοδου και συνδιασμένους
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Συνδυασμένος Σηματοδότης (σηματοφόρος){}Ο συνδυασμένος σηματοδότης απλά λειτουργεί ταυτόχρονα ως σηματοδότης εισόδου και εξόδου. Αυτό επιτρέπει το χτίσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Σηματοδότης τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στιγμή, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Κανονικοί σηματοδότες τροχιάς μπόρουν να περαστούν από την πίσω πλεύρα.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (σηματοφόρος){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλεύρα.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Σηματοδότης τμήματος (ηλεκτρικός){}Αυτός είναι ο πιο βασικός τύπος σηματοδότη, επιτρέποντας μόνο ένα τρένο να είναι στο ίδιο τμήμα την ίδια στιγμή.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Σηματοδότηςεισόδου (ηλεκτρικός){}Πράσινο όσο υπάρχει ένας ή περισσότεροι πράσινοι σηματοδότες εξόδου από το επόμενο τμήμα γράμμης. Αλλιώς είναι κόκκινο.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Σηματοδότης εξόδου (ηλεκτρικός){}Συμπεριφέρεται με τον ίδιο τρόπο οπως οι σηματοδότες τμήματος αλλά είναι απαραίτητο να θέσει το σωστό χρώμα στους προ-σηματοδότες εισόδου και συνδιασμένους
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Συνδιασμένος σηματοδότης (ηλεκτρικός){}Ο συνδιασμένος σηματοδότης δουλεύει απλά ως σηματοδότης εισόδου και εξόδου. Αυτό σας επιτρέπει το χτήσιμο μεγάλυτερων "δέντρων" με προ-σηματοδότες
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την άλλη πλεύρα.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελεγχόυ την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει την τρόχια σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπόρουν να περαστούν από την άλλη πλεύρα.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Σηματοδότης τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπόρει να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Κανονίκοι σηματοδότες τροχιάς μπόρουν να περαστούν από την πίσω πλεύρα.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Μονόδρομος Σηματοδότης Τροχιάς (ηλεκτρικός){}Ένας σηματοδότης τροχιάς επιτρέπει σε περισσότερα του ενός τρένου να είναι σε ένα κομματι ελέγχου την ίδια στίγμη, εάν το τρένο μπορεί να δεσμεύσει τροχιά σε ένα ασφαλές σημείο στάσης. Μονόδρομοι σηματοδότες τροχιάς δεν μπορούν να περαστούν από την πίσω πλεύρα.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Μετατροπέας σηματοδότη{}Όταν επιλεγεί, πατώντας σε έναν υπάρχον σηματοδότη θα τον μετατρέψει στον επιλεγμένο τύπο σηματοδότη και παραλλαγή, με Ctrl+κλικ εναλλάσεται με την υπάρχουσα παραλλαγή, με Shift+κλικ εμφανίζεται το εκιμώμενο κόστος μετατροπής
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Πυκνότητα σηματοδοτών με σύρσιμο
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Μείωση πυκνότητας σηματοδοτών με σύρσιμο
@@ -2188,7 +2202,7 @@ STR_OBJECT_CLASS_TRNS                                           :Αναμετα�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το κελί έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Βάλε δέντρα τυχαίου τύπου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
@@ -2479,7 +2493,7 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Μετα
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF πάνω στη λίστα
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Μετακίνηση κάτω
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετακίνηστε το επιλεγμένο αρχείο NewGRF κάτω στη λίστα
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα άρχεια NewGRF που είναι εγκατεστημένα. Κάντε κλικ σε ένα αρχείο για αλλάξετε τις παραμέτρους του
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα αρχεία NewGRF που είναι εγκατεστημένα.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
@@ -2559,7 +2573,7 @@ STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :Το {1:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Προσοχή!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη· αυτό μπορεί να κρασάρει το OpenTTD.{}Είστε απόλυτα σίγουρος/η για την ενέργεια αυτή;
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Πρόκειται να κάνετε αλλαγές σε ένα παιχνίδι σε εξέλιξη. Αυτό μπορεί να κρασάρει το OpenTTD ή να διαλύσει την κατάσταση του παιχνιδιού. Μην καταχωρείτε αναφορές σφάλματος για τέτοια προβλήματα.{}Είστε απόλυτα σίγουρος/η για αυτή την ενέργεια;
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Δεν μπορεί να γίνει η προσθηκη του αρχείου: διπλότυπο GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Δεν βρέθηκε αρχείο ταυτοποιημένο (φορτώθηκε συμβατό GRF)
@@ -2582,7 +2596,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τ�
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει στην σωστή ανακατασκευή
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόγχο στην ανακοίνωση παραγωγής.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην ανακοίνωση παραγωγής.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
@@ -2672,6 +2686,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωρ�
 # Goal window
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ερώτηση
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Πληροφορίες
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Προειδοποίηση
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Σφάλμα
 
 ### Start of Goal Question button list
 
@@ -2785,7 +2803,7 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανέ
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμια
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσιμο αρχηγείου εταιρίας
@@ -2807,7 +2825,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Αλλα
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Αγορά μεριδίου 25% στην εταιρία
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Πώληση μεριδίου 25% της εταιρίας
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Αγορά μεριδίου 25% σε αυτή την εταιρεία. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς την αγορά μετοχών
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφναίζεται το κόστος χωρίς την πώληση μετοχών
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Πώληση μεριδίου 25% της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κέρδος χωρίς την πώληση μετοχών
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Όνομα Εταιρίας
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Όνομα Διευθυντή
@@ -2983,7 +3001,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} {P όχημα οχήματα}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - κλικ σε ένα τρένο για πληροφορίες, μεταφέρετε ενα όχημα για το προσθέσετε/αφαιρέσετε στο τρένο
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέσετε από ένα τρένο, δεξί κλικ για πληροφορίες. Κρατήστε το Ctrl για να κάνετε και τις δυο λειτουργίες να ισχύσουν για τις ακόλουθες αλυσίδες
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δέξι κλικ σε ένα όχημα για πληροφορίες
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δέξι κλικ σε ένα πλοίο για πληροφορίες
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - δέξι κλικ σε ένα αεροπλάνο για πληροφορίες
@@ -3331,7 +3349,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
 STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές του σταθμού γίνονται 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', οι εντολές σημείου καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες ενοτλές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη ή προσθέστε στο τέλος της λίστας. Με Ctrl οι εντολές σταθμού γίνονται 'πληρής φόρτωση οποιουδήποτε εμπορεύματος', οι εντολές καθοδήγησης 'χωρίς στάση' και οι εντολές αμαξοστασίου 'επισκευή'. Με 'Ίδιες εντολές' ή με Ctrl το όχημα θα έχει τις ίδιες εντολές με το επιλεγμένο. Πατώντας πάνω σε κάποιο όχημα αντιγράφονται οι εντολές από αυτό. Μια εντολή για αμαξοστάσιο απενεργοποιεί την αυτόματη επισκευή του οχήματος
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Εμφάνιση όλων των οχήματων που μοιράζονται αυτό το δρομολόγιο
 
@@ -3399,6 +3417,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδ
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με την περισσότερη {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :και ταξίδεψε για {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} μέρ{P α ες}
@@ -3422,7 +3441,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Αλλά
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Καθαρισμός χρόνων
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Καθαρίζει το χρόνο της επιλεγμένης επιλογής
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Αλλαγή ορίου ταχύτητας
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Αλλαγή της μέγιστης ταχύτητα ταξιδίου της επιλεγμένης σειράς
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Καθαρισμός ορίου ταχύτητας
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Καθαρίζει την μέγιστη ταχύτητα ταξιδιού της επιλεγμένης σειράς
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Επαναφορά Μετρητή Καθυστέρησης
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Επαναφορά του μετρητή καθυστέρησης, ώστε το όχημα να είναι στην ώρα του
@@ -3466,13 +3489,14 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέ
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης για αυτό το AI
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα AI που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του AI με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα script που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του script με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Το παράθυρο αποσφαλμάτωσης είναι διαθέσιμο μόνο για τον διακομιστή
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Ρύθμιση παιχνικδιού
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
 STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
+STR_AI_CONFIG_NONE                                              :(κανένα)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση πάνω
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση του επιλεγμένου AI πάνω στη λίστη
@@ -3480,6 +3504,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετα
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά του επιλεγμένου AI κάτω στη λίστα
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων ενός script
 
@@ -3503,6 +3528,9 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} άδεια του {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Εμφάνιση readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ημερόλογιο αλλαγών
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Άδεια
 
 
@@ -4383,6 +4411,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

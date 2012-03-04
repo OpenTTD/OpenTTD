@@ -295,7 +295,7 @@ STR_SORT_BY_RANGE                                               :Rekkevidde
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel hastighet på spelet
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Instillingar
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt eller avslutt spelet
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Lagre, avbryt spel, avslutt OpenTTD
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Syne kart, ekstra tilleggsvindauge eller skiltliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Syne byoversikt
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Syne subsidiar
@@ -342,7 +342,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Last inn scenario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Lagre høgdekart
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Last inn høgdekart
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avslutt redigeringsprogram
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Avbryt redigeringsprogram
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 ############ range for SE file menu starts
@@ -369,6 +369,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjennomsiktige 
 STR_FILE_MENU_SAVE_GAME                                         :Lagre spel
 STR_FILE_MENU_LOAD_GAME                                         :Last inn spel
 STR_FILE_MENU_QUIT_GAME                                         :Avslutt noverande spel
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Avslutt OpenTTD
 ############ range ends here
 
@@ -1801,6 +1802,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er ba
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du vart kasta ut frå spelet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Juksing er forbode på denne tenaren
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sende for mange kommandoar til serveren
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du bruka for lang tid på å angje passord.
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Datamaskina di er for treig til å halde følge med tjenaren.
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Datamaskina di bruka for lang tid på å laste ned kartet
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Datamaskina di bruka for lang tid på å koble til tjenaren.
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
@@ -1819,6 +1824,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :kasta ut av ten
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :freista å jukse
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :tenaren er full
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sende for mange kommandoar
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :mottok inkje passord i tide
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :generelt tidsavbrot
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :nedlasting av kart tok for lang tid
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :prosessering av kartet tok for lang tid
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogleg tilkoblingsbrot
@@ -1918,11 +1927,11 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kunne ik
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Manglande grafikk
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD krever grafikk for å fungere, men finn han ikkje. Tillet du OpenTTD å laste ned og installere denne grafikken?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, last ned grafikken.
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, avslutt OpenTTD.
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, avslutt OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gjennomsynsval
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Byt gjennomsyn for stasjonssktilt. Ctrl+klikk for å låsa.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Byt gjennomsyn for stasjonssktilt. Ctrl+klikk for å låsa
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Byt gjennomsyn for tre. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Byt gjennomsyn for hus. Ctrl+klikk for å låsa.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Byt gjennomsyn for industriar. Ctrl+klikk for å låsa.
@@ -2133,7 +2142,7 @@ STR_OBJECT_CLASS_TRNS                                           :Radiosendarar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tre
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vel typen tre som skal plantast
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vel typen tre som skal plantast. Om ruta allereie har eit tre, vil dette leggje til fleire tre av ulike typar uavhengig av den valde typen
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tre av tilfeldig type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plasser tre av tilfeldig type. Skift vekslar mellom byggjing/syning av prisoverslag.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfeldige tre
@@ -2524,9 +2533,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Tren
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fila den var laga for å omsetje
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er lasta inn.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Å laste inn {1:STRING} som statisk NewGRF med {STRING} kan forårsaka synkroniseringsfeil.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventa sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjend handling 0 eigenskap {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruke ugyldig ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld øydelagd grafikk. All øydelagd grafikk vil bli vist som raude spørsmålsteikn (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneheld fleire tilfelle av handling 8 (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lest forbi slutten av pseudo-sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværande grafikksettet manglar ein del bilete.{}Vennligst oppdater grafikksettet.
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Etterspurde GRF-ressursar ikkje tilgjengeleg (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} vart deaktivert av {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ugyldig/ukjend sprite layout-format (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Åtvaring!
@@ -2656,6 +2672,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikk p�
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Spørsmål
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasjon
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Åtvaring
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Feil
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Avbryt
@@ -2814,8 +2833,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Byt namn
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kjøp 25{NBSP}% av aksjane i firmaet
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sel 25{NBSP}% av aksjane i firmaet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25{NBSP}% av aksjane i firmaet. Skift-klikk viser prisoverslag utan å kjøpe aksjar.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25{NBSP}% av aksjane i firmaet. Skift-klikk viser prisoverslag utan å selje aksjar.
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kjøp 25{NBSP}% av aksjane i firmaet. Skift-klikk viser prisoverslag utan å kjøpe aksjar
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sel 25{NBSP}% av aksjane i firmaet. Skift-klikk viser prisoverslag utan å selje aksjar
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Firmanamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namnet til sjefen
@@ -3035,7 +3054,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klon ski
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klon luftfartøy
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil lage ein kopi av eit lokomotiv inkludert alle vognene. Klikk på denne knappen og etter det på eit anna tog. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil lage ein kopi av eit køyretøy. Klikk denne knappen og etter det på eit anna køyretøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil lage ein kopi av eit køyretøy. Klikk denne knappen og etter det på eit køyretyg inni eller utanfor garasjen. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil laga ein kopi av eit skip. Klikk på denne knappen og etter det på eit anna skip. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil lage ein kopi av eit luftfartøy. Klikk denne knappen og etter det på eit anna luftfartøy. Ctrl+klikk deler ordrane. Skift+klikk syner prisoverslag utan å kjøpe.
 
@@ -3346,7 +3365,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Køyr til næra
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gå til næraste hangar
 STR_ORDER_CONDITIONAL                                           :Betinga ordrehopp
 STR_ORDER_SHARE                                                 :Del ordrar
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Set inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. Ctrl gjer ordren 'full last, einkvar varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'. 'Del ordre' eller Ctrl let dette køyretyget dele ordrer med det valde køyretyget. Ved å klikke på eit køyretyg, kopierast ordrene frå dette køyretyget.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Set inn ein ny ordre før den valde ordren, eller legg til i slutten av lista. Ctrl gjer ordren 'full last, einkvar varetype', kontrollpunktordre 'direkte' og verkstadsordre 'vedlikehald'. 'Del ordre' eller Ctrl let dette køyretyget dele ordrer med det valde køyretyget. Ved å klikke på eit køyretyg, kopierast ordrene frå dette køyretyget. Ein verkstadsordre slår av automatisk vedlikehald av kjøyretyget
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Syne alle køyretøy som delar denne ruteplanen
 
@@ -3426,7 +3445,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabe
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen reise
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (automatisk; blir sett på ruteplan med neste manuelle ordre)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (ikkje på rutetabell)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis med maks {2:VELOCITY} (utan rutetabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis i {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis i {STRING} med maks {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :og bli værande i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :og reis i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
@@ -3450,7 +3471,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Byt tida
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Fjern Tid
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern tida den merka ordra skal bruke
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Byt fartsgrense
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Byt maks reisehastigheit for den merka ordra
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Fjern fartsgrense
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Fjern maks reisehastigheit for den merka ordra
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Still attende teljaren for forseining
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Still attende teljaren for forseining, slik at køyretøyet vert presis
@@ -4433,6 +4458,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

@@ -357,7 +357,7 @@ STR_SORT_BY_RANGE                                               :Rozsah
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zrýchliť priebeh hry
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť OpenTTD
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobraziť mapu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobraziť zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobraziť dotácie
@@ -384,7 +384,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informá
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenáru, koniec
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, koniec
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenárov
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Posunúť začiatok o rok dozadu
@@ -404,7 +404,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložiť scená
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nahrať scenár
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Uložiť výškovú mapu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Nahrať výškovú mapu
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukončiť editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukončiť editor scenára
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Koniec
 ############ range for SE file menu starts
@@ -424,7 +424,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Značky a mená
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plná animácia
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitné budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priesvitné názvy staníc
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priesvitné názvy
 ############ range ends here
 
 ############ range for file menu starts
@@ -1477,7 +1477,7 @@ STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Rozšír
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Umelá inteligencia / Nastavenia hry
-STR_INTRO_QUIT                                                  :{BLACK}Ukončiť
+STR_INTRO_QUIT                                                  :{BLACK}Koniec
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť novú hru. Ctrl+klik preskočí nastavenie mapy
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrať uloženú hru
@@ -1497,7 +1497,7 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Zobrazi�
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobraz umelú inteligenciu a nastavenia hry
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť OpenTTD
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}V preklade chýba {NUM} v{P eta ety iet}. Prosím pomôžte urobiť OpenTTD lepším a prihláste sa ako prekladateľ. Viac detailov v readme.txt
 
@@ -1868,9 +1868,9 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bol si v
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheatovanie nie je povolene na tomto serveri
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posielali ste priveľa príkazov serveru
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Príliš dlho si zadával heslo
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Počítač vstupoval príliš dlho
-STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Mapa sa sťahovala príliš dlho
-STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Príliš dlho si vstupoval na server
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvoj počítač sa príliš pomaly pripájal na server
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvoj počítač sťahoval mapu príliš dlho
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tvoj počítač sa príliš dlho pripájal na server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generalna chyba
@@ -2117,7 +2117,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Postavi�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postaviť autobusovú zastávku. Ctrl+klik umožní spájanie zastávok
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postaviť osobnú električkovú stanicu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postaviť vykládku
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postavit nákladnú elektrickovú stanicu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postaviť nákladnú električkovú stanicu. CTRL umožní.... SHIFT ukáže náklady na stavbu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Prepnút stavbu jednosmerných ciest
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postaviť cestný most
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postaviť most pre električky

@@ -358,7 +358,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Buordsjes sjen 
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Folsleine animaasje
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Folsleine detais
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Trochsichtige gebouwen
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch statjons nammen
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch nammen
 ############ range ends here
 
 ############ range for file menu starts

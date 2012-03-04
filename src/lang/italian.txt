@@ -369,6 +369,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Cartelli traspa
 STR_FILE_MENU_SAVE_GAME                                         :Salva partita
 STR_FILE_MENU_LOAD_GAME                                         :Carica partita
 STR_FILE_MENU_QUIT_GAME                                         :Abbandona partita
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Esci
 ############ range ends here
 
@@ -2537,7 +2538,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Procede 
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Rappresentazione dello sprite corrente. L'allineamento viene ignorato in questa casella.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Sposta lo sprite, cambiando i posizionamenti X e Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posizionamento X: {NUM}, Y: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Scegli
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Scegli sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Sceglie uno o più sprite da un qualsiasi punto dello schermo
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Vai a
@@ -3288,7 +3289,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selezionare il tipo di carico da trasportare:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seleziona i veicoli da riadattare. Trascinare col mouse per selezionare più veicoli. Fare clic sullo spazio vuote per selezionarli tutti. CTRL+clic seleziona anche la parte successiva della composizione
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seleziona i veicoli da riadattare. Trascinare col mouse per selezionare più veicoli. Fare clic sullo spazio vuoto per selezionarli tutti. CTRL+clic seleziona anche la parte successiva della composizione
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico da far trasportare al treno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selezionare il tipo di carico da far trasportare all'automezzo
@@ -4483,6 +4484,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

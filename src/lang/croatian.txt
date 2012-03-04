@@ -389,7 +389,7 @@ STR_SORT_BY_RANGE                                               :Domet
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Zaustavi igru
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Premotaj igru naprijed
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Postavke
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spremi igru, napusti igru, prekini igru
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spremi igru, napusti igru, izađi
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Prikaži kartu, dodatni pogled ili popis znakova
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Prikaži popis gradova
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Prikaži subvencije
@@ -416,7 +416,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Promijeni alatne trake
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spremi scenarij, učitaj scenarij, napusti uređivanje scenarija, završi
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Spremi scenarij, učitaj scenarij, napusti uređivanje scenarija, izađi
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Uređivanje scenarija
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pomakni početni datum 1 godinu unatrag
@@ -436,9 +436,9 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spremi scenarij
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Učitaj scenarij
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Spremi visinsku mapu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Učitaj visinsku kartu
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Završi s uređivanjem
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Odustani od uređivanja scenarija
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Završi
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Izlaz
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -463,6 +463,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prozirni znakov
 STR_FILE_MENU_SAVE_GAME                                         :Spremi igru
 STR_FILE_MENU_LOAD_GAME                                         :Učitaj igru
 STR_FILE_MENU_QUIT_GAME                                         :Napusti igru
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izlaz
 ############ range ends here
 
@@ -1505,7 +1506,7 @@ STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / postavke igre
-STR_INTRO_QUIT                                                  :{BLACK}Završi
+STR_INTRO_QUIT                                                  :{BLACK}Izlaz
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru. Ctrl+klik preskače konfiguriranje karte
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Učitaj spremljenu igru
@@ -1525,12 +1526,12 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži postavke NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI i postavke igre
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Završi 'OpenTTD'
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izzađi it 'OpenTTD'-a
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prijevodu nedostaje {NUM} slijed. Molimo, pomognite učiniti OpenTTD boljim tako da se prijavite kao prevoditelj. Pogledajte readme.txt za detalje.
 
 # Quit window
-STR_QUIT_CAPTION                                                :{WHITE}Prekid
+STR_QUIT_CAPTION                                                :{WHITE}Izlaz
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Jesi li siguran da želiš napustiti OpenTTD i vratiti se u {STRING}e?
 STR_QUIT_YES                                                    :{BLACK}Da
 STR_QUIT_NO                                                     :{BLACK}Ne
@@ -4588,6 +4589,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

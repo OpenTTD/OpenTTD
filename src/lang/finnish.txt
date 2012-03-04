@@ -293,7 +293,7 @@ STR_SORT_BY_RANGE                                               :Toimintasäde
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Nopeuta peliä
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Asetukset
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Tallenna peli, lopeta peli, poistu
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Tallenna peli, hylkää peli, sulje
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Näytä kartta, lisänäkymä ja kylttilista
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Näytä kaupunkihakemisto
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Näytä tukitarjoukset
@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-alue
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaihda työkalupalkkeja
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, sulje skenaariomuokkain, poistu
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Tallenna skenaario, lataa skenaario, hylkää skenaariomuokkain, sulje
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Skenaariomuokkain
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Siirrä aloituspäivää vuodella taaksepäin
@@ -340,9 +340,9 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Tallenna skenaa
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Lataa skenaario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Tallenna korkeuskartta
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lataa korkeuskartta
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sulje muokkain
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Hylkää skenaariomuokkain
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Poistu
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Sulje
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -367,7 +367,8 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läpinäkyvät 
 STR_FILE_MENU_SAVE_GAME                                         :Tallenna peli
 STR_FILE_MENU_LOAD_GAME                                         :Lataa peli
 STR_FILE_MENU_QUIT_GAME                                         :Lopeta peli
-STR_FILE_MENU_EXIT                                              :Poistu
+STR_FILE_MENU_SEPARATOR                                         :
+STR_FILE_MENU_EXIT                                              :Sulje
 ############ range ends here
 
 ############ range for map menu starts
@@ -1429,13 +1430,13 @@ STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly- ja peliasetukset
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje OpenTTD.
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje 'OpenTTD'.
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sulje
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Lopetetaanko peli ja palataan {STRING}-järjestelmään?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Suljetaanko peli ja palataan {STRING}-järjestelmään?
 STR_QUIT_YES                                                    :{BLACK}Kyllä
 STR_QUIT_NO                                                     :{BLACK}Ei
 
@@ -4455,6 +4456,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

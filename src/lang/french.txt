@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder scénario, charger scénario, abandonner éditeur de scénario, quitter
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder scénario, charger scénario, abandonner l'éditeur de scénario, quitter
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Éditeur de scénario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Reculer la date de départ d'un an
@@ -341,7 +341,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sauvegarder le 
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Charger un scénario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sauvegarder la carte d'altitude
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Charger une carte d'altitude
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quitter l'éditeur
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandonner l'éditeur de scénario
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 ############ range for SE file menu starts
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de difficulté
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration avancée
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration d'IA et de jeu
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration d'IA et du jeu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Panneaux transp
 STR_FILE_MENU_SAVE_GAME                                         :Sauvegarder la partie
 STR_FILE_MENU_LOAD_GAME                                         :Charger une partie
 STR_FILE_MENU_QUIT_GAME                                         :Abandonner la partie
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Quitter le jeu
 ############ range ends here
 
@@ -528,7 +529,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Graphique du profit d'opération
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Graphique du revenu
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Cargaison livrée
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historique de performance (performance max=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Historique de performance (performance max. = 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valeur de la compagnie
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Valeur des marchandises
@@ -1791,7 +1792,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La conne
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}La sauvegarde serveur n'a pas pu être chargée
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Le serveur n'a pas pu être démarré
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Connexion échouée
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexion #{NUM} a dépassé le temps d'attente
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexion n°{NBSP}{NUM} a dépassé le temps d'attente
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Une erreur de protocole a été détectée et la connexion a été fermée
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}L'identifiant de révision de ce client ne correspond pas à celui du serveur
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Mot de passe incorrect
@@ -1847,10 +1848,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de jeu
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :départ
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a rejoint la partie
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} a rejoint la partie (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} a rejoint la compagnie #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} a rejoint la partie (Client n°{NBSP}{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} a rejoint la compagnie n°{NBSP}{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a rejoint les spectateurs
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a lancé une nouvelle compagnie (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a lancé une nouvelle compagnie (n°{NBSP}{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a quitté la partie ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY_LONG} à votre compagnie
@@ -2454,7 +2455,7 @@ STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Retirer 
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Monter
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Monter le module NewGRF sélectionné dans la liste{NBSP}: cela réduit son influence relative (certains de ses paramètres sont plus susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Descendre
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Descendre le module NewGRF sélectionné dans la liste{NBSP}: cela augmente son influence relative (certains de ses paramètres sont moins susceptibles d'être écrasés par ceux équivalents provenant de modules situés plus bas dans la liste)
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Liste des modules NewGRF installés. Cliquer sur un module pour modifier ses paramètres.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Changer les paramètres
@@ -2823,7 +2824,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Afficher
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nouveau visage
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'un nouveau visage pour le P.D.G.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Couleur
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Change la couleur des véhicules
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Changer la couleur des véhicules
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nom de la société
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Changer le nom de la compagnie
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nom du P.D.G.
@@ -3463,10 +3464,10 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Cet hora
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Date de départ
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Sélectionner une date comme point de départ de cet horaire
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier durée
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier la durée
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre sélectionné
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler durée
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Annuler la durée
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre sélectionné
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Modifier la vitesse limite
@@ -3523,8 +3524,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de GameScript n'est disponible que pour le serveur
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de script de jeu
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le GameScript qui sera chargé dans la prochaine partie
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de scripts de jeu
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Le script de jeu qui sera chargé dans la prochaine partie
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs qui seront chargées dans la prochaine partie
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Joueur humain
 STR_AI_CONFIG_RANDOM_AI                                         :IA aléatoire
@@ -3535,21 +3536,21 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Déplace
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Déplacer vers le bas
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Déplacer l'IA sélectionnée vers le bas
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
-STR_AI_CONFIG_AI                                                :{SILVER}IAs
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script de jeu
+STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Sélectionner {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script de jeu
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Charger un autre script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configurer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configurer les paramètres du script
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
-STR_AI_LIST_CAPTION_AI                                          :IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_CAPTION_AI                                          :IA
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de jeu
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliquer pour sélectionner un script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur{NBSP}: {STRING}
@@ -3564,7 +3565,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas m
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramètres
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script de jeu
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
 STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
@@ -3751,30 +3752,30 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossible de supprimer une partie de la gare...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Vous devez d'abord retirer la gare
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossible de supprimer la station de bus...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossible de supprimer la station de camions...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Impossible de supprimer l'arrêt de bus...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Impossible de supprimer l'aire de chargement...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Impossible de retirer la station de tramway pour passagers...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Impossible de retirer la station de tramway pour fret...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vous devez d'abord retirer l'arrêt de bus
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... il n'y a pas de station ici
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vous devez d'abord détruire la gare
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Vous devez d'abord détruire l'arrêt d'autobus
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vous devez d'abord détruire l'aire de chargement
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vous devez d'abord démolir la gare
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Vous devez d'abord démolir l'arrêt d'autobus
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vous devez d'abord démolir l'aire de chargement
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vous devez d'abord démolir la station de tramway pour passagers
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vous devez d'abord démolir la station de tramway pour fret
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vous devez d'abord détruire le port
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Vous devez d'abord détruire l'aéroport
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vous devez d'abord démolir le port
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Vous devez d'abord démolir l'aéroport
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Adjacent à plus d'un point de contrôle
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Trop près d'un autre point de contrôle
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Impossible de construire point de contrôle ici...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Impossible de construire un point de contrôle ici...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Impossible de placer une bouée ici...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossible de modifier le nom du point de contrôle...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossible de renommer le point de contrôle...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossible de retirer point de contrôle ici...
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossible de retirer le point de contrôle d'ici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vous devez d'abord retirer le point de contrôle
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bouée présente
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bouée utilisée par une autre compagnie{NBSP}!
@@ -3783,16 +3784,16 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bou�
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossible de construire un dépôt ferroviaire ici...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Impossible de construire un dépôt routier ici...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Impossible de construire un dépôt de tramway ici...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossible de construire le dépôt naval ici...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossible de construire un dépôt naval ici...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossible de renommer le dépôt...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... doit être à l'arrêt dans un dépôt
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... doit être à l'arrêt dans un dépôt routier
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... doit être à l'arrêt dans un dépôt
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... doit être à l'arrêt dans un dépôt naval
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... doit être à l'arrêt dans un hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Les trains peuvent être manipulés qu'une fois stoppés au dépôt
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Les trains ne peuvent être manipulés qu'une fois à l'arrêt dans un dépôt
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train trop long
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossible de changer la direction du véhicule...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... unités multiples
@@ -3800,18 +3801,18 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Types de rail i
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Impossible de déplacer le véhicule...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}L'engin de queue suivra toujours sa contre-partie avant
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Impossible de trouver la route jusqu'au dépôt
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible de trouver le dépôt
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Impossible de trouver une route jusqu'au dépôt local
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Impossible de trouver un dépôt local
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Dépôt incompatible
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} est trop long après remplacement
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Aucune règles de remplacement/renouvellement automatique appliquées
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Aucune règle de remplacement/renouvellement automatique appliquée
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite d'argent)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinaison de rail impossible
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinaison de rails impossible
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vous devez d'abord retirer les signaux
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Aucuns rails convenables
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vous devez d'abord enlever les rails
@@ -3821,32 +3822,32 @@ STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossib
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossible de construire des rails ici...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossible de retirer les rails d'ici...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Impossible de retirer les signaux d'ici...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossible de convertir les signaux...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Impossible de convertir les signaux ici...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... il n'y a pas de voie ferrée
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... il n'y pas de signaux
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... il n'y a pas de signaux
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossible de convertir le type de rail...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Impossible de convertir le type de rails...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Vous devez d'abord retirer la route
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... les routes à sens unique ne peuvent pas avoir de jonctions
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossible de construire la route ici...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossible de construire une section de tramway ici...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossible de retirer la route ici...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossible de retirer la section de tramway d'ici...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Impossible de construire une route ici...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Impossible de construire une section de voie de tramway ici...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossible de retirer la route d'ici...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossible de retirer la section de voie de tramway d'ici...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... il n'y a pas de route
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... il n'y a pas de tramway
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossible de construire un canal ici...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Impossible de construire une écluse ici...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossible de construire une rivière ici...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Impossible de placer une rivière ici...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... doit être construit sur l'eau
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... impossible de construire sur l'eau
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... impossible de construire sur la mer
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... impossible de construire sur un canal
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... impossible de construire sur une rivière
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Vous devez d'abord détruire le canal
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Vous devez d'abord démolir le canal
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Impossible de construire un aqueduc ici...
 
 # Tree related errors
@@ -3892,7 +3893,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Impossib
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Train présent
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Véhicule Routier présent
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Véhicule routier présent
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Navire présent
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aéronef présent
 
@@ -3902,17 +3903,17 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Impossib
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Impossible de réaménager l'aéronef...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Impossible de renommer le train...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Impossible de renommer le véhicule...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Impossible de renommer le véhicule routier...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Impossible de nommer le navire...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Impossible de nommer l'aéronef...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Impossible de démarrer/stopper le train...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Impossible de démarrer/stopper le véhicule...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Impossible d'arrêter/démarrer le navire...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Impossible d'arrêter/démarrer aéronef...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Impossible de démarrer/stopper le navire...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Impossible de démarrer/stopper l'aéronef...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Impossible d'envoyer le train au dépôt...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossible d'envoyer le véhicule au dépôt...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Impossible d'envoyer le véhicule routier au dépôt...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Impossible d'envoyer le navire au dépôt...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Impossible d'envoyer l'aéronef au hangar...
 
@@ -3924,11 +3925,11 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Impossible de renommer le type de train...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Impossible de renommer type de véhicule routier...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Impossible de renommer type de navire...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Impossible de renommer type d'aéronef...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Impossible de renommer le type d'aéronef...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Impossible de vendre le véhicule ferroviaire...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Impossible de vendre le véhicule...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Impossible de vendre navire...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Impossible de vendre le véhicule routier...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Impossible de vendre le navire...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Impossible de vendre l'aéronef...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Véhicule non disponible
@@ -3958,7 +3959,7 @@ STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Impossib
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Impossible de modifier cet ordre...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Impossible de déplacer cet ordre...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Impossible de sauter l'ordre courant...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossible de sauter l'ordre sélectionné...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Impossible de sauter vers l'ordre sélectionné...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... le véhicule ne peut pas aller dans toutes les stations
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... le véhicule ne peut pas aller dans cette station
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un véhicule partageant cet ordre ne peut pas aller dans cette station
@@ -3977,7 +3978,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ce véhi
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... trop de panneaux
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Impossible de placer un panneau ici...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossible d'éditer le texte du panneau...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossible de modifier le texte du panneau...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossible de supprimer le panneau...
 
 # Translatable comment for OpenTTD's desktop shortcut
@@ -4014,7 +4015,7 @@ STR_TOWN_BUILDING_NAME_OFFICES_1                                :Bureaux
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Maisons
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Cinéma
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Centre commercial
-STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglou
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tipis
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Salon de thé
 STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Tirelire
@@ -4049,13 +4050,13 @@ STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ferme
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Scierie
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Forêt de barbe à papa
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Usine de bonbons
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Ferme de Batteries
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Élevage en batterie
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Puits de Cola
-STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Boutique de Jouets
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Boutique de jouets
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Usine de jouets
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontaines de plastique
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Usine de boissons gazeuses
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Générateur de Bulles
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Générateur de bulles
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Carrière de caramel
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mine de sucre
 
@@ -4065,7 +4066,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mine de su
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Non nommé
 STR_SV_TRAIN_NAME                                               :Train {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Véhicule {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Véhicule routier {COMMA}
 STR_SV_SHIP_NAME                                                :Navire {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aéronef {COMMA}
 
@@ -4081,7 +4082,7 @@ STR_SV_STNAME_VALLEY                                            :{STRING} Vallé
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Hauteurs
 STR_SV_STNAME_WOODS                                             :{STRING} Bois
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Bords de lac
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Echange
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Échange
 STR_SV_STNAME_AIRPORT                                           :{STRING} Aéroport
 STR_SV_STNAME_OILFIELD                                          :{STRING} Gisement pétrolifère
 STR_SV_STNAME_MINES                                             :{STRING} Mines
@@ -4096,7 +4097,7 @@ STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
-STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station n°{NBSP}{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -4124,12 +4125,12 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (D
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Electrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Électrique)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Voiture à voyageurs
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Wagon de courrier
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Wagon postal
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Wagon-citerne de pétrole
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Wagon à bétail
@@ -4155,11 +4156,11 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Wagon à batteries
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Wagon à plastique
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Electrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Électrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Voiture à voyageurs
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Wagon de courrier
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Wagon postal
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Wagon-citerne de pétrole
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Wagon à bétail
@@ -4185,13 +4186,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Wagon à batteries
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Wagon à plastique
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Electrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Electrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Léviathan' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclope' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pégase' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimère' (Électrique)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Voiture à voyageurs
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Wagon de courrier
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Wagon postal
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Wagon de charbon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Wagon-citerne de pétrole
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Wagon à bétail
@@ -4201,7 +4202,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Wagon à bois
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Wagon à fer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Wagon à acier
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Wagon blindé
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Wagon de nourriture
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Wagon à nourriture
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Wagon à papier
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Wagon à cuivre
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Wagon-citerne d'eau
@@ -4257,54 +4258,54 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camion d'acier 
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Fourgon blindé Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Fourgon blindé Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Fourgon blindé Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camion de nourriture Foster
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camion de nourriture Perry
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camion de nourriture Chippy
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camion de papier Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camion de papier Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camion de papier MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Camion de cuivre MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Camion de cuivre Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Camion de cuivre Goss
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Camion à nourriture Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Camion à nourriture Perry
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Camion à nourriture Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Camion à papier Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_PAPER_TRUCK                :Camion à papier Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Camion à papier MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Camion à cuivre MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Camion à cuivre Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Camion à cuivre Goss
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Camion-citerne d'eau Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Camion-citerne d'eau Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Camion-citerne d'eau MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Camion de fruits Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Camion de fruits Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Camion de fruits Kelling
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Camion de caoutchouc Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camion de caoutchouc Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Camion de caoutchouc RMT
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Camion de sucre MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Camion de sucre Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camion de sucre Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camion de Cola MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camion de Cola Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camion de Cola Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camion de barbe à papa MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camion de barbe à papa Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camion de barbe à papa Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camion de caramel MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camion de caramel Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camion de caramel Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Camion de jouets MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Camion de jouets Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Camion de jouets Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Camion de bonbons MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camion de bonbons Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camion de bonbons Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camion de batteries MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camion de batteries Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camion de batteries Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Camion de boissons gazeuses MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Camion de boissons gazeuses Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Camion de boissons gazeuses Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Camion de plastique MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Camion de plastique Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Camion de plastique Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Camion de bulles MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Camion de bulles Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Camion de bulles Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Camion à fruits Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Camion à fruits Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Camion à fruits Kelling
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Camion à caoutchouc Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Camion à caoutchouc Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :Camion à caoutchouc RMT
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :Camion à sucre MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Camion à sucre Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camion à sucre Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camion à cola MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camion à cola Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camion à cola Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camion à barbe à papa MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camion à barbe à papa Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camion à barbe à papa Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camion à caramel MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camion à caramel Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camion à caramel Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Camion à jouets MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Camion à jouets Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Camion à jouets Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :Camion à bonbons MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Camion à bonbons Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Camion à bonbons Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Camion à batteries MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Camion à batteries Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Camion à batteries Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Camion à boissons gazeuses MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Camion à boissons gazeuses Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Camion à boissons gazeuses Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Camion à plastique MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Camion à plastique Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Camion à plastique Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Camion à bulles MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Camion à bulles Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Camion à bulles Wizzowow
 STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Pétrolier MPS
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Pétrolier CS-Inc.
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Ferry de voyageurs MPS
@@ -4366,19 +4367,19 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Bouée de {TOWN}
-STR_FORMAT_BUOY_NAME_SERIAL                                     :Bouée de {TOWN} #{COMMA}
+STR_FORMAT_BUOY_NAME_SERIAL                                     :Bouée de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Compagnie {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Groupe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Point de contrôle de {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contrôle de {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contrôle de {TOWN} n°{NBSP}{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Dépôt ferroviaire de {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Dépôt ferroviaire de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Dépôt ferroviaire de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Dépôt routier de {TOWN}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Dépôt routier de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Dépôt routier de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Dépôt naval de {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Dépôt naval de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Dépôt naval de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
 
 STR_UNKNOWN_STATION                                             :station inconnue
@@ -4456,6 +4457,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

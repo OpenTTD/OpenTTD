@@ -293,7 +293,7 @@ STR_SORT_BY_RANGE                                               :Maes teithio
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r gêm
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Cyflymu'r gêm
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Dewisiadau
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Cadw'r gêm, cefnu ar y gêm, cau
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Cadw'r gêm, gwaredu a'r gêm, gadael
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Dangos map
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Dangos cyfeiriadur trefi
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Dangos Cymorthdaliadau
@@ -320,7 +320,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gwybodae
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Amnewid bariau offer
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gadael y golygydd senario, cau
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Cadw Senario, llwytho senario, gwaredu a'r golygydd senario, gadael
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Golygydd Senario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Symud y dyddiad cychwyn yn ôl 1 blwyddyn
@@ -340,7 +340,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Cadw senario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Llwytho senario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Cadw siart uchder
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Llwytho siart uchder
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Gadael golygydd
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Gwaredu a'r golygydd senario
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Gadael
 ############ range for SE file menu starts
@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Arwyddion trylo
 STR_FILE_MENU_SAVE_GAME                                         :Cadw Gêm
 STR_FILE_MENU_LOAD_GAME                                         :Llwytho Gêm
 STR_FILE_MENU_QUIT_GAME                                         :Rhoi'r gorau i'r Gêm
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Gadael
 ############ range ends here
 
@@ -1928,7 +1929,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Na, gada
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion gorsafoedd. Mae Ctrl+Clic yn cloi
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion. Mae Ctrl+Clic yn cloi
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer coed. Ctrl+Clic i gloi
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Toglu tryloywder ar gyfer tai. Ctrl+Clic i gloi
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Toglu tryloywder ar gyfer diwydiannau. Ctrl+Clic i gloi
@@ -3362,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mynd i'r depo a
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mynd i'r awyrendy agosaf
 STR_ORDER_CONDITIONAL                                           :Naid gorchymyn amodol
 STR_ORDER_SHARE                                                 :Rhannu gorchmynion
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Creu gorchymyn newydd cyn yr orchymyn a amlygwyd, neu creu ar ddiwedd y daflen. Mae Ctrl yn gwneud gorchymynion orsaf yn rhai 'llwyth llawn unrhyw cargo', gorchymynion pwyntiau llwybro 'heb aros' a gorchmynion depot 'gwasanaethu'. Mae 'Rhannu gorchmynion' neu Ctrl yn gadael i'r cerbyd yma rannu gorchmynion gyda'r cerbyd a ddewisir. Mae clicio ar gerbyd yn copïo gorchmynion o'r cerbyd hwnnw
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Mewnosod gorchymyn newydd cyn yr orchymyn a amlygwyd, neu greu ar ddiwedd y rhestr. Mae Ctrl yn gwneud gorchymynion orsaf yn rhai 'llwyth llawn unrhyw cargo', gorchymynion pwyntiau llwybro 'heb aros' a gorchmynion depot 'gwasanaethu'. Mae 'Rhannu gorchmynion' neu Ctrl yn galluogi i'r cerbyd yma rannu gorchmynion gyda'r cerbyd a ddewisir. Mae clicio ar gerbyd yn copïo gorchmynion o'r cerbyd hwnnw. Mae gorchymyn depo'n analluogi gwasanaethu diofyn ar gyfer y cerbyd
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon
 
@@ -3442,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amserlen
 STR_TIMETABLE_NO_TRAVEL                                         :Dim teithio
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Teithio (awtomatig; amserlennir gan y gorchymyn defnyddiwr nesaf)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Teithio (heb ei amserlenu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Teithio heb oresgyn {2:VELOCITY} (heb ei amserlenu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Teithio am{STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Teithio am {STRING} heb oresgyn {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :aros am {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a theithio am {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} diwrnod
@@ -3466,7 +3469,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Newid fa
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Clirio Amser
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clirio faint o amser y dylai'r gorchymyn a amlygwyd ei gymryd.
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Newid Terfyn Cyflymder
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Newid cyflymder teithio uchafsymol y gorchymyn a amlygwyd
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Clirio Terfyn Cyflymder
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Clirio cyflymder teithio uchafsymol y gorchymyn a amlygwyd
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ailosod Mesurydd Hwyrni
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ailosod y mesurydd hwyrni, fel y bydd y cerbyd ar amser
@@ -4449,6 +4456,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

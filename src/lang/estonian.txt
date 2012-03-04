@@ -424,6 +424,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Läbipaistvad s
 STR_FILE_MENU_SAVE_GAME                                         :Salvesta mäng
 STR_FILE_MENU_LOAD_GAME                                         :Laadi mäng
 STR_FILE_MENU_QUIT_GAME                                         :Lahku mängust
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Välju
 ############ range ends here
 
@@ -3499,7 +3500,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõidupl
 STR_TIMETABLE_NO_TRAVEL                                         :Sõitu pole
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reisi (automaatne; ajakava järgmise manuaalse käsu järgi)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reisi kõike suurema {2:VELOCITY} (ei ole ajastatud)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reisi selleks {STRING} kõige rohkema {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja sõida {STRING} jaoks
 STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
@@ -3523,7 +3526,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, k
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tühista aeg
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista esile tõstetud sihtpunkti ajaperiood
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiirusepiirangut
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda maksimum reisikiirust valitud järjekorras
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tühjenda kiiruselimiit
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Tühjenda maksimum reisikiirus valitud järjekorras
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisloendur
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisloendur, et sõiduk ei jääks hiljaks
@@ -4506,6 +4513,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
