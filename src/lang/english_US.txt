@@ -293,7 +293,7 @@ STR_SORT_BY_RANGE                                               :Range
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause game
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Fast forward the game
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Options
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save game, quit game, quit
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Save game, abandon game, quit
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Display map
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Display town directory
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Display subsidies
@@ -340,7 +340,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Save scenario
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Load scenario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Save heightmap
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Load heightmap
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Quit editor
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Abandon scenario editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 ############ range for SE file menu starts
@@ -366,7 +366,8 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent sig
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Save game
 STR_FILE_MENU_LOAD_GAME                                         :Load game
-STR_FILE_MENU_QUIT_GAME                                         :Quit game
+STR_FILE_MENU_QUIT_GAME                                         :Abandon game
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Quit
 ############ range ends here
 
@@ -1452,9 +1453,9 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Quit Game
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to quit this game ?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Are you sure you want to quit this scenario ?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandon Game
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Are you sure you want to abandon this game ?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Are you sure you want to abandon this scenario ?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats

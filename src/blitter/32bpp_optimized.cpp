@@ -337,6 +337,7 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 	dest_sprite->y_offs = sprite->y_offs;
 
 	SpriteData *dst = (SpriteData *)dest_sprite->data;
+	memset(dst, 0, sizeof(*dst));
 
 	for (ZoomLevel z = zoom_min; z <= zoom_max; z++) {
 		dst->offset[z][0] = z == zoom_min ? 0 : lengths[z - 1][1] + dst->offset[z - 1][1];

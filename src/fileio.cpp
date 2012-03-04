@@ -683,6 +683,7 @@ uint TarScanner::DoScan(Subdirectory sd)
 	}
 	if (mode & TarScanner::SCENARIO) {
 		num += fs.DoScan(SCENARIO_DIR);
+		num += fs.DoScan(HEIGHTMAP_DIR);
 	}
 	DEBUG(misc, 1, "Scan complete, found %d files", num);
 	return num;

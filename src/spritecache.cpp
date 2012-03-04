@@ -197,18 +197,19 @@ static void ResizeSpriteOut(SpriteLoader::Sprite *sprite, ZoomLevel zoom)
 	const SpriteLoader::CommonPixel *src_end = src + sprite[zoom - 1].height * sprite[zoom - 1].width;
 
 	for (uint y = 0; y < sprite[zoom].height; y++) {
-		if (src >= src_end) src = src_end - sprite[zoom - 1].width;
-
-		const SpriteLoader::CommonPixel *src_ln = src + sprite[zoom - 1].width * 2;
+		const SpriteLoader::CommonPixel *src_ln = src + sprite[zoom - 1].width;
+		assert(src_ln <= src_end);
 		for (uint x = 0; x < sprite[zoom].width; x++) {
-			if (src >= src_ln) src = src_ln - 1;
-			if ((src + 1)->a != 0) { *dst = *(src + 1); }
-			else { *dst = *src; }
+			assert(src < src_ln);
+			if (src + 1 != src_ln && (src + 1)->a != 0) {
+				*dst = *(src + 1);
+			} else {
+				*dst = *src;
+			}
 			dst++;
 			src += 2;
 		}
-
-		src = src_ln;
+		src = src_ln + sprite[zoom - 1].width;
 	}
 }
 
