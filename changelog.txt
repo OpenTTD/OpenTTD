@@ -1,3 +1,20 @@
+1.2.0-RC2 (2012-03-04)
+------------------------------------------------------------------------
+- Fix: [Script] AI used in names in API for GSOrder [FS#5088] (r24006)
+- Fix: Improve rounding when converting display speeds to internal speeds [FS#5079] (r23995)
+- Fix: Also reset the font glyph cache when switching blitters (r23992, r23987)
+- Fix: [NewGRF] Also display the cargo subtype for vehicles which have no capacity, but a subtype [FS#5076] (r23991)
+- Fix: Zero the offsets of disabled zoomlevels, so they do not influence offset calculations (r23989)
+- Fix: Invalid reads when scaling an odd-sized sprite smaller (r23986)
+- Fix: Inconsistent quit/abandon/exit game/scenario/editor strings [FS#5074] (r23985)
+- Fix: Fix the order of lights on the helipad [FS#5082] (r23984)
+- Fix: Tarred heightmaps would not be found [FS#5083] (r23983)
+- Fix: Do not load a game during UpdateWindows as that might trigger changing the blitter which triggers re-entrant locking (r23980, r23977)
+- Fix: [SDL] Palette update was done too late making switching from 8bpp -> 32bpp look ugly (r23978)
+- Fix: Sprites of different zoom levels were not always padded correctly to a common size (r23976)
+- Fix: Also save the maximum travel speed for the current vehicle order (r23973)
+
+
 1.2.0-RC1 (2012-02-19)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Customisable tunnel portals for rail types (r23952)
