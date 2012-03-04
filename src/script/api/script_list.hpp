@@ -44,9 +44,9 @@ private:
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 public:
-	typedef std::set<int32> AIItemList;               ///< The list of items inside the bucket
-	typedef std::map<int32, AIItemList> ScriptListBucket; ///< The bucket list per value
-	typedef std::map<int32, int32> ScriptListMap;         ///< List per item
+	typedef std::set<int32> ScriptItemList;                   ///< The list of items inside the bucket
+	typedef std::map<int32, ScriptItemList> ScriptListBucket; ///< The bucket list per value
+	typedef std::map<int32, int32> ScriptListMap;             ///< List per item
 
 	ScriptListMap items;           ///< The items in the list
 	ScriptListBucket buckets;      ///< The items in the list, sorted by value

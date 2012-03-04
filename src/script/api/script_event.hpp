@@ -79,7 +79,7 @@ protected:
  * Class that handles all event related functions.
  * @api ai game
  * @note it is not needed to create an instance of ScriptEvent to access it, as
- *  all members are static, and all data is stored AI-wide.
+ *  all members are static, and all data is stored script instance-wide.
  */
 class ScriptEventController : public ScriptObject {
 public:

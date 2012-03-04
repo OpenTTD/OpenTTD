@@ -923,12 +923,12 @@ function Regression::Order()
 	print("--Order--");
 	print("  GetOrderCount():       " + AIOrder.GetOrderCount(12));
 	print("  GetOrderDestination(): " + AIOrder.GetOrderDestination(12, 1));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.AIOF_TRANSFER));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.AIOF_TRANSFER | AIOrder.AIOF_UNLOAD));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.AIOF_TRANSFER | AIOrder.AIOF_FULL_LOAD));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.AIOF_SERVICE_IF_NEEDED));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.AIOF_STOP_IN_DEPOT));
-	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(0, AIOrder.AIOF_SERVICE_IF_NEEDED | AIOrder.AIOF_GOTO_NEAREST_DEPOT));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER | AIOrder.OF_UNLOAD));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33416, AIOrder.OF_TRANSFER | AIOrder.OF_FULL_LOAD));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_SERVICE_IF_NEEDED));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(33417, AIOrder.OF_STOP_IN_DEPOT));
+	print("  AreOrderFlagsValid():  " + AIOrder.AreOrderFlagsValid(0, AIOrder.OF_SERVICE_IF_NEEDED | AIOrder.OF_GOTO_NEAREST_DEPOT));
 	print("  IsValidConditionalOrder(): " + AIOrder.IsValidConditionalOrder(AIOrder.OC_LOAD_PERCENTAGE, AIOrder.CF_EQUALS));
 	print("  IsValidConditionalOrder(): " + AIOrder.IsValidConditionalOrder(AIOrder.OC_RELIABILITY, AIOrder.CF_IS_TRUE));
 	print("  IsValidConditionalOrder(): " + AIOrder.IsValidConditionalOrder(AIOrder.OC_REQUIRES_SERVICE, AIOrder.CF_IS_FALSE));
@@ -940,8 +940,8 @@ function Regression::Order()
 	print("  IsConditionalOrder():  " + AIOrder.IsConditionalOrder(12, 1));
 	print("  IsCurrentOrderPartOfOrderList(): " + AIOrder.IsCurrentOrderPartOfOrderList(12));
 	print("  GetOrderFlags():       " + AIOrder.GetOrderFlags(12, 1));
-	print("  AppendOrder():         " + AIOrder.AppendOrder(12, 33416, AIOrder.AIOF_TRANSFER));
-	print("  InsertOrder():         " + AIOrder.InsertOrder(12, 0, 33416, AIOrder.AIOF_TRANSFER));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(12, 33416, AIOrder.OF_TRANSFER));
+	print("  InsertOrder():         " + AIOrder.InsertOrder(12, 0, 33416, AIOrder.OF_TRANSFER));
 	print("  GetOrderCount():       " + AIOrder.GetOrderCount(12));
 	print("  IsValidVehicleOrder(): " + AIOrder.IsValidVehicleOrder(12, 1));
 	print("  IsGotoStationOrder():  " + AIOrder.IsGotoStationOrder(12, 1));
@@ -953,7 +953,7 @@ function Regression::Order()
 	print("  GetOrderFlags():       " + AIOrder.GetOrderFlags(12, 1));
 	print("  GetOrderJumpTo():      " + AIOrder.GetOrderJumpTo(12, 1));
 	print("  RemoveOrder():         " + AIOrder.RemoveOrder(12, 0));
-	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(12, 0, AIOrder.AIOF_FULL_LOAD));
+	print("  SetOrderFlags():       " + AIOrder.SetOrderFlags(12, 0, AIOrder.OF_FULL_LOAD));
 	print("  GetOrderFlags():       " + AIOrder.GetOrderFlags(12, 0));
 	print("  GetOrderDestination(): " + AIOrder.GetOrderDestination(12, 0));
 	print("  CopyOrders():          " + AIOrder.CopyOrders(12, 1));
@@ -961,12 +961,12 @@ function Regression::Order()
 	print("  ShareOrders():         " + AIOrder.ShareOrders(13, 1));
 	print("  ShareOrders():         " + AIOrder.ShareOrders(13, 12));
 	print("  UnshareOrders():       " + AIOrder.UnshareOrders(13));
-	print("  AppendOrder():         " + AIOrder.AppendOrder(12, 33421, AIOrder.AIOF_NONE));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(12, 33421, AIOrder.OF_NONE));
 
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(13, 0));
 	print("  BuildVehicle():        " + AIVehicle.BuildVehicle(23596, 8));
 	print("  BuildRailStation():    " + AIRail.BuildRailStation(7958, AIRail.RAILTRACK_NE_SW, 1, 1, AIStation.STATION_NEW));
-	print("  AppendOrder():         " + AIOrder.AppendOrder(20, 7958, AIOrder.AIOF_NONE));
+	print("  AppendOrder():         " + AIOrder.AppendOrder(20, 7958, AIOrder.OF_NONE));
 	print("  GetOrderCount():       " + AIOrder.GetOrderCount(20));
 	print("  GetStopLocation():     " + AIOrder.GetStopLocation(20, 0));
 	print("  SetStopLocation():     " + AIOrder.SetStopLocation(20, 0, AIOrder.STOPLOCATION_MIDDLE));

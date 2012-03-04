@@ -64,8 +64,8 @@ public:
 class ScriptListSorterValueAscending : public ScriptListSorter {
 private:
 	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	ScriptList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
-	ScriptList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
+	ScriptList::ScriptItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::ScriptItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
 	/**
@@ -150,8 +150,8 @@ public:
 class ScriptListSorterValueDescending : public ScriptListSorter {
 private:
 	ScriptList::ScriptListBucket::iterator bucket_iter;    ///< The iterator over the list to find the buckets.
-	ScriptList::AIItemList *bucket_list;               ///< The current bucket list we're iterator over.
-	ScriptList::AIItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
+	ScriptList::ScriptItemList *bucket_list;               ///< The current bucket list we're iterator over.
+	ScriptList::ScriptItemList::iterator bucket_list_iter; ///< The iterator over the bucket list.
 
 public:
 	/**
@@ -593,9 +593,9 @@ void ScriptList::RemoveTop(int32 count)
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
 			for (ScriptListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
-				AIItemList *items = &(*iter).second;
+				ScriptItemList *items = &(*iter).second;
 				size_t size = items->size();
-				for (AIItemList::iterator iter = items->begin(); iter != items->end(); iter = items->begin()) {
+				for (ScriptItemList::iterator iter = items->begin(); iter != items->end(); iter = items->begin()) {
 					if (--count < 0) return;
 					this->RemoveItem(*iter);
 					/* When the last item is removed from the bucket, the bucket itself is removed.
@@ -630,9 +630,9 @@ void ScriptList::RemoveBottom(int32 count)
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
 			for (ScriptListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
-				AIItemList *items = &(*iter).second;
+				ScriptItemList *items = &(*iter).second;
 				size_t size = items->size();
-				for (AIItemList::reverse_iterator iter = items->rbegin(); iter != items->rend(); iter = items->rbegin()) {
+				for (ScriptItemList::reverse_iterator iter = items->rbegin(); iter != items->rend(); iter = items->rbegin()) {
 					if (--count < 0) return;
 					this->RemoveItem(*iter);
 					/* When the last item is removed from the bucket, the bucket itself is removed.
