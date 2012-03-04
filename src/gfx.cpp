@@ -1732,10 +1732,11 @@ void DrawDirtyBlocks()
 		_modal_progress_paint_mutex->BeginCritical();
 		_modal_progress_work_mutex->BeginCritical();
 
-		if (_switch_mode != SM_NONE && !HasModalProgress()) {
-			SwitchToMode(_switch_mode);
-			_switch_mode = SM_NONE;
-		}
+		/* When we ended with the modal progress, do not draw the blocks.
+		 * Simply let the next run do so, otherwise we would be loading
+		 * the new state (and possibly change the blitter) when we hold
+		 * the drawing lock, which we must not do. */
+		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
 	y = 0;
