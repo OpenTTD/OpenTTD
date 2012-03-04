@@ -8,12 +8,12 @@
 //
    -1 * 0	 0C "Airport previews"
    -1 * 0	 05 16 09
-   -1 sprites/airport_preview.png 50 8 09 140 230 0 0
-   -1 sprites/airport_preview.png 290 8 09 140 230 0 0
-   -1 sprites/airport_preview.png 530 8 09 140 230 0 0
-   -1 sprites/airport_preview.png 2 168 09 140 230 0 0
-   -1 sprites/airport_preview.png 242 168 09 140 230 0 0
-   -1 sprites/airport_preview.png 482 168 09 140 230 0 0
-   -1 sprites/airport_preview.png 2 328 09 140 230 0 0
-   -1 sprites/airport_preview.png 242 328 09 140 230 0 0
-   -1 sprites/airport_preview.png 482 328 09 140 230 0 0
+   -1 sprites/airport_preview.png 8bpp  50    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 290    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 530    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp   2  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 242  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 482  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp   2  328 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 242  328 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 482  328 230 140   0   0 normal

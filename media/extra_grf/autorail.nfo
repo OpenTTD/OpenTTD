@@ -8,58 +8,58 @@
 //
    -1 * 0	 0C "Autorail graphics"
    -1 * 3	 05 13 37
-   -1 sprites/autorail.png 18 8 09 31 64 -31 7
-   -1 sprites/autorail.png 98 8 09 31 64 -31 -1
-   -1 sprites/autorail.png 178 8 09 39 64 -31 -1
-   -1 sprites/autorail.png 258 8 09 47 64 -31 -9
-   -1 sprites/autorail.png 338 8 09 31 64 -31 -5
-   -1 sprites/autorail.png 418 8 09 23 64 -31 7
-   -1 sprites/autorail.png 498 8 09 18 64 -31 4
-   -1 sprites/autorail.png 578 8 09 31 64 -31 -1
-   -1 sprites/autorail.png 658 8 09 31 64 -31 7
-   -1 sprites/autorail.png 2 72 09 31 64 -31 -1
-   -1 sprites/autorail.png 82 72 09 23 64 -31 7
-   -1 sprites/autorail.png 162 72 09 18 64 -31 4
-   -1 sprites/autorail.png 242 72 09 31 64 -31 -1
-   -1 sprites/autorail.png 322 72 09 39 64 -31 -1
-   -1 sprites/autorail.png 402 72 09 47 64 -31 -9
-   -1 sprites/autorail.png 482 72 09 31 64 -31 -5
-   -1 sprites/autorail.png 562 72 09 31 64 -31 7
-   -1 sprites/autorail.png 642 72 09 31 64 -31 -1
-   -1 sprites/autorail.png 722 72 09 47 64 -31 -9
-   -1 sprites/autorail.png 2 136 09 26 64 -31 4
-   -1 sprites/autorail.png 82 136 09 23 64 -31 4
-   -1 sprites/autorail.png 162 136 09 31 64 -31 -3
-   -1 sprites/autorail.png 242 136 09 26 64 -31 4
-   -1 sprites/autorail.png 322 136 09 23 64 -31 4
-   -1 sprites/autorail.png 402 136 09 31 64 -31 -3
-   -1 sprites/autorail.png 482 136 09 31 64 -31 7
-   -1 sprites/autorail.png 562 136 09 31 64 -31 -1
-   -1 sprites/autorail.png 642 136 09 15 64 -31 7
-   -1 sprites/autorail.png 722 136 09 31 64 -31 7
-   -1 sprites/autorail.png 2 184 09 39 64 -31 -1
-   -1 sprites/autorail.png 82 184 09 31 64 -31 -1
-   -1 sprites/autorail.png 162 184 09 31 64 -31 7
-   -1 sprites/autorail.png 242 184 09 39 64 -31 -1
-   -1 sprites/autorail.png 322 184 09 31 64 -31 -1
-   -1 sprites/autorail.png 402 184 09 31 64 -31 7
-   -1 sprites/autorail.png 482 184 09 31 64 -31 -1
-   -1 sprites/autorail.png 562 184 09 31 64 -31 -1
-   -1 sprites/autorail.png 642 184 09 31 64 -31 -1
-   -1 sprites/autorail.png 722 184 09 23 64 -31 7
-   -1 sprites/autorail.png 2 248 09 15 64 -31 7
-   -1 sprites/autorail.png 82 248 09 39 64 -31 -1
-   -1 sprites/autorail.png 162 248 09 47 64 -31 -9
-   -1 sprites/autorail.png 242 248 09 31 64 -31 7
-   -1 sprites/autorail.png 322 248 09 31 64 -31 -1
-   -1 sprites/autorail.png 402 248 09 31 64 -31 -1
-   -1 sprites/autorail.png 482 248 09 31 64 -31 -1
-   -1 sprites/autorail.png 562 248 09 23 64 -31 7
-   -1 sprites/autorail.png 642 248 09 15 64 -31 7
-   -1 sprites/autorail.png 722 248 09 39 64 -31 -1
-   -1 sprites/autorail.png 2 312 09 47 64 -31 -9
-   -1 sprites/autorail.png 82 312 09 31 64 -31 -1
-   -1 sprites/autorail.png 162 312 09 31 64 -31 -1
-   -1 sprites/autorail.png 242 312 09 23 64 -31 7
-   -1 sprites/autorail.png 322 312 09 31 64 -31 7
-   -1 sprites/autorail.png 402 312 09 31 64 -31 7
+   -1 sprites/autorail.png 8bpp  18    8  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp  98    8  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 178    8  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 258    8  64  47 -31  -9 normal
+   -1 sprites/autorail.png 8bpp 338    8  64  31 -31  -5 normal
+   -1 sprites/autorail.png 8bpp 418    8  64  23 -31   7 normal
+   -1 sprites/autorail.png 8bpp 498    8  64  18 -31   4 normal
+   -1 sprites/autorail.png 8bpp 578    8  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 658    8  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp   2   72  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp  82   72  64  23 -31   7 normal
+   -1 sprites/autorail.png 8bpp 162   72  64  18 -31   4 normal
+   -1 sprites/autorail.png 8bpp 242   72  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 322   72  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 402   72  64  47 -31  -9 normal
+   -1 sprites/autorail.png 8bpp 482   72  64  31 -31  -5 normal
+   -1 sprites/autorail.png 8bpp 562   72  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 642   72  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 722   72  64  47 -31  -9 normal
+   -1 sprites/autorail.png 8bpp   2  136  64  26 -31   4 normal
+   -1 sprites/autorail.png 8bpp  82  136  64  23 -31   4 normal
+   -1 sprites/autorail.png 8bpp 162  136  64  31 -31  -3 normal
+   -1 sprites/autorail.png 8bpp 242  136  64  26 -31   4 normal
+   -1 sprites/autorail.png 8bpp 322  136  64  23 -31   4 normal
+   -1 sprites/autorail.png 8bpp 402  136  64  31 -31  -3 normal
+   -1 sprites/autorail.png 8bpp 482  136  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 562  136  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 642  136  64  15 -31   7 normal
+   -1 sprites/autorail.png 8bpp 722  136  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp   2  184  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp  82  184  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 162  184  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 242  184  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 322  184  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 402  184  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 482  184  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 562  184  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 642  184  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 722  184  64  23 -31   7 normal
+   -1 sprites/autorail.png 8bpp   2  248  64  15 -31   7 normal
+   -1 sprites/autorail.png 8bpp  82  248  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 162  248  64  47 -31  -9 normal
+   -1 sprites/autorail.png 8bpp 242  248  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 322  248  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 402  248  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 482  248  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 562  248  64  23 -31   7 normal
+   -1 sprites/autorail.png 8bpp 642  248  64  15 -31   7 normal
+   -1 sprites/autorail.png 8bpp 722  248  64  39 -31  -1 normal
+   -1 sprites/autorail.png 8bpp   2  312  64  47 -31  -9 normal
+   -1 sprites/autorail.png 8bpp  82  312  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 162  312  64  31 -31  -1 normal
+   -1 sprites/autorail.png 8bpp 242  312  64  23 -31   7 normal
+   -1 sprites/autorail.png 8bpp 322  312  64  31 -31   7 normal
+   -1 sprites/autorail.png 8bpp 402  312  64  31 -31   7 normal

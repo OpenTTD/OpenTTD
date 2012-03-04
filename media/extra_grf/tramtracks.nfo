@@ -8,116 +8,116 @@
 //
    -1 * 0	 0C "Tram track graphics by PikkaBird"
    -1 * 3	 05 0B 71
-   -1 sprites/tramtracks.png 18 8 09 13 20 0 4
-   -1 sprites/tramtracks.png 50 8 09 13 20 0 4
-   -1 sprites/tramtracks.png 82 8 03 36 64 -18 -8
-   -1 sprites/tramtracks.png 162 8 03 36 62 -16 -8
-   -1 sprites/tramtracks.png 242 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 322 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 402 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 482 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 642 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 722 8 09 31 64 -31 0
-   -1 sprites/tramtracks.png 2 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 82 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 162 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 242 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 322 56 09 39 64 -31 -8
-   -1 sprites/tramtracks.png 402 56 09 23 64 -31 0
-   -1 sprites/tramtracks.png 482 56 09 23 64 -31 0
-   -1 sprites/tramtracks.png 562 56 09 39 64 -31 -8
-   -1 sprites/tramtracks.png 642 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 722 56 09 31 64 -31 0
-   -1 sprites/tramtracks.png 2 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 82 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 162 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 242 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 322 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 402 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 482 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 642 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 722 120 09 31 64 -31 0
-   -1 sprites/tramtracks.png 2 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 82 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 162 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 242 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 322 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 402 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 482 168 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 168 09 39 64 -31 -8
-   -1 sprites/tramtracks.png 642 168 09 23 64 -31 0
-   -1 sprites/tramtracks.png 722 168 09 23 64 -31 0
-   -1 sprites/tramtracks.png 2 232 09 39 64 -31 -8
-   -1 sprites/tramtracks.png 82 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 162 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 242 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 322 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 402 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 482 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 232 09 20 20 0 0
-   -1 sprites/tramtracks.png 594 232 09 31 64 -31 0
-   -1 sprites/tramtracks.png 674 232 09 64 62 2 -49
-   -1 sprites/tramtracks.png 2 312 09 31 64 -31 0
-   -1 sprites/tramtracks.png 82 312 09 64 62 -62 -49
-   -1 sprites/tramtracks.png 162 312 09 64 62 -62 -49
-   -1 sprites/tramtracks.png 242 312 09 64 62 2 -49
-   -1 sprites/tramtracks.png 322 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 402 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 482 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 562 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 642 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 722 312 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 2 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 82 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 162 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 242 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 322 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 402 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 482 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 562 392 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 642 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 722 392 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 2 472 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 82 472 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 162 472 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 242 472 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 322 472 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 402 472 09 31 64 -31 0
-   -1 sprites/tramtracks.png 482 472 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 472 09 31 64 -31 0
-   -1 sprites/tramtracks.png 642 472 09 31 64 -31 0
-   -1 sprites/tramtracks.png 722 472 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 2 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 82 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 162 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 242 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 322 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 402 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 482 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 562 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 642 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 722 552 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 2 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 82 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 162 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 242 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 322 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 402 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 482 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 562 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 642 616 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 722 616 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 2 696 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 82 696 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 162 696 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 242 696 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 322 696 09 56 64 -31 -25
-   -1 sprites/tramtracks.png 402 696 09 48 64 -31 -17
-   -1 sprites/tramtracks.png 482 696 09 31 64 -31 0
-   -1 sprites/tramtracks.png 562 696 09 31 64 -31 0
-   -1 sprites/tramtracks.png 642 696 09 39 64 -31 -8
-   -1 sprites/tramtracks.png 722 696 09 23 64 -31 0
-   -1 sprites/tramtracks.png 2 776 09 23 64 -31 0
-   -1 sprites/tramtracks.png 82 776 09 39 64 -31 -8
+   -1 sprites/tramtracks.png 8bpp  18    8  20  13   0   4 normal
+   -1 sprites/tramtracks.png 8bpp  50    8  20  13   0   4 normal
+   -1 sprites/tramtracks.png 8bpp  82    8  64  36 -18  -8 normal
+   -1 sprites/tramtracks.png 8bpp 162    8  62  36 -16  -8 normal
+   -1 sprites/tramtracks.png 8bpp 242    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 322    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 402    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 642    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 722    8  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp   2   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp  82   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 162   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 242   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 322   56  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp 402   56  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482   56  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562   56  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp 642   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 722   56  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp   2  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp  82  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 162  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 242  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 322  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 402  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 642  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 722  120  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp   2  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp  82  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 162  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 242  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 322  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 402  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482  168  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562  168  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp 642  168  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 722  168  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp   2  232  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp  82  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 162  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 242  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 322  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 402  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562  232  20  20   0   0 normal
+   -1 sprites/tramtracks.png 8bpp 594  232  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 674  232  62  64   2 -49 normal
+   -1 sprites/tramtracks.png 8bpp   2  312  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp  82  312  62  64 -62 -49 normal
+   -1 sprites/tramtracks.png 8bpp 162  312  62  64 -62 -49 normal
+   -1 sprites/tramtracks.png 8bpp 242  312  62  64   2 -49 normal
+   -1 sprites/tramtracks.png 8bpp 322  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 402  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 482  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 562  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 642  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 722  312  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp   2  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp  82  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 162  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 242  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 322  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 402  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 482  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 562  392  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 642  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 722  392  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp   2  472  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp  82  472  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 162  472  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 242  472  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 322  472  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 402  472  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 482  472  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562  472  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 642  472  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 722  472  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp   2  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp  82  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 162  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 242  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 322  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 402  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 482  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 562  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 642  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 722  552  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp   2  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp  82  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 162  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 242  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 322  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 402  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 482  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 562  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 642  616  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 722  616  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp   2  696  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp  82  696  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 162  696  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 242  696  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 322  696  64  56 -31 -25 normal
+   -1 sprites/tramtracks.png 8bpp 402  696  64  48 -31 -17 normal
+   -1 sprites/tramtracks.png 8bpp 482  696  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 562  696  64  31 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp 642  696  64  39 -31  -8 normal
+   -1 sprites/tramtracks.png 8bpp 722  696  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp   2  776  64  23 -31   0 normal
+   -1 sprites/tramtracks.png 8bpp  82  776  64  39 -31  -8 normal

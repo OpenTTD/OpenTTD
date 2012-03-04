@@ -12,194 +12,194 @@
    -1 * 6	 07 83 01 \7= 03 3D
 // Fix missing wheels on the wood trucks
    -1 * 14	 0A 04 01 87 0C 01 89 0C 01 07 0E 01 09 0E
-   -1 sprites/fix_graphics.png 82 8 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 114 8 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 146 8 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 178 8 09 16 22 -14 -7
+   -1 sprites/fix_graphics.png 8bpp  82    8  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 114    8  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 146    8  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 178    8  22  16 -14  -7 normal
 // Show correct graphics for various 3rd generation trucks
    -1 * 5	 0A 01 28 C4 0D
-   -1 sprites/fix_graphics.png 226 8 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 242 8 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 274 8 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 322 8 09 16 20 -6 -7
-   -1 sprites/fix_graphics.png 354 8 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 370 8 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 402 8 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 450 8 09 16 20 -6 -7
-   -1 sprites/fix_graphics.png 482 8 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 498 8 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 530 8 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 578 8 09 16 20 -6 -7
-   -1 sprites/fix_graphics.png 610 8 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 626 8 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 658 8 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 706 8 09 16 20 -6 -7
-   -1 sprites/fix_graphics.png 738 8 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 754 8 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 2 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 50 40 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 82 40 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 98 40 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 130 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 178 40 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 210 40 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 226 40 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 258 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 306 40 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 338 40 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 354 40 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 386 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 434 40 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 466 40 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 482 40 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 514 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 562 40 09 16 20 -6 -7
-   -1 sprites/fix_graphics.png 594 40 01 18 8 -3 -10
-   -1 sprites/fix_graphics.png 610 40 09 16 20 -14 -7
-   -1 sprites/fix_graphics.png 642 40 01 12 28 -14 -6
-   -1 sprites/fix_graphics.png 690 40 09 16 20 -6 -7
+   -1 sprites/fix_graphics.png 8bpp 226    8   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 242    8  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 274    8  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 322    8  20  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 354    8   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 370    8  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 402    8  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 450    8  20  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 482    8   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 498    8  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 530    8  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 578    8  20  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 610    8   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 626    8  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 658    8  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 706    8  20  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 738    8   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 754    8  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp   2   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp  50   40  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp  82   40   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp  98   40  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 130   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 178   40  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 210   40   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 226   40  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 258   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 306   40  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 338   40   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 354   40  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 386   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 434   40  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 466   40   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 482   40  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 514   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 562   40  20  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 594   40   8  18  -3 -10 normal
+   -1 sprites/fix_graphics.png 8bpp 610   40  20  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 642   40  28  12 -14  -6 normal
+   -1 sprites/fix_graphics.png 8bpp 690   40  20  16  -6  -7 normal
 // Fix clipping on the 2nd generation paper truck
    -1 * 14	 0A 04 01 9D 0C 01 9F 0C 01 A1 0C 01 A3 0C
-   -1 sprites/fix_graphics.png 738 40 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 770 40 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 2 72 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 34 72 09 16 22 -6 -7
+   -1 sprites/fix_graphics.png 8bpp 738   40  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 770   40  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp   2   72  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp  34   72  22  16  -6  -7 normal
 // Fix clipping on the 1st generation paper truck
    -1 * 14	 0A 04 01 5D 0D 01 5F 0D 01 61 0D 01 63 0D
-   -1 sprites/fix_graphics.png 82 72 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 114 72 09 17 22 -5 -7
-   -1 sprites/fix_graphics.png 146 72 09 17 22 -14 -8
-   -1 sprites/fix_graphics.png 178 72 09 16 22 -6 -7
+   -1 sprites/fix_graphics.png 8bpp  82   72  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 114   72  22  17  -5  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 146   72  22  17 -14  -8 normal
+   -1 sprites/fix_graphics.png 8bpp 178   72  22  16  -6  -7 normal
 // Fix clipping on the 3rd generation paper truck
    -1 * 14	 0A 04 01 1D 0E 01 1F 0E 01 21 0E 01 23 0E
-   -1 sprites/fix_graphics.png 226 72 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 258 72 09 16 22 -6 -7
-   -1 sprites/fix_graphics.png 290 72 09 16 22 -14 -7
-   -1 sprites/fix_graphics.png 322 72 09 16 22 -6 -7
+   -1 sprites/fix_graphics.png 8bpp 226   72  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 258   72  22  16  -6  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 290   72  22  16 -14  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 322   72  22  16  -6  -7 normal
 
 // Fix clipping on the toyland toy van in the German DOS graphics
    -1 * 6 07 83 01 \7! 03 02
    -1 * 5 0A 01 01 5D 0C
-   -1 sprites/fix_graphics.png 18 296 09 16 20 -14 -7
+   -1 sprites/fix_graphics.png 8bpp  18  296  20  16 -14  -7 normal
 
 // Non-toyland specific
    -1 * 6	 07 83 01 \7= 03 08
 // Fix offsets for the monorail bridge heads
    -1 * 8	 0A 02 01 EA 10 02 EC 10
-   -1 sprites/fix_graphics.png 370 72 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 434 72 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 498 72 09 21 49 -24 3
+   -1 sprites/fix_graphics.png 8bpp 370   72  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 434   72  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 498   72  49  21 -24   3 normal
 // Fix offsets for the maglev bridge heads
    -1 * 8	 0A 02 01 12 11 02 14 11
-   -1 sprites/fix_graphics.png 322 486 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 386 486 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 450 486 09 21 49 -24 3
+   -1 sprites/fix_graphics.png 8bpp 322  486  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 386  486  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 450  486  49  21 -24   3 normal
 
 // Toyland specific
    -1 * 6	 07 83 01 \7! 03 0F
 // Fix offsets for the toyland monorail bridge heads
    -1 * 8	 0A 02 01 EA 10 02 EC 10
-   -1 sprites/fix_graphics.png 610 630 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 674 630 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 738 630 09 21 49 -24 3
+   -1 sprites/fix_graphics.png 8bpp 610  630  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 674  630  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 738  630  49  21 -24   3 normal
 // Fix offsets for the toyland maglev bridge heads
    -1 * 8	 0A 02 01 12 11 02 14 11
-   -1 sprites/fix_graphics.png 18 678 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 82 678 09 35 48 -23 -7
-   -1 sprites/fix_graphics.png 146 678 09 21 49 -24 3
+   -1 sprites/fix_graphics.png 8bpp  18  678  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp  82  678  48  35 -23  -7 normal
+   -1 sprites/fix_graphics.png 8bpp 146  678  49  21 -24   3 normal
 // Fix colours for toyland maglev junction overlays
    -1 * 5	 0A 01 06 91 04
-   -1 sprites/fix_graphics.png 338 630 09 16 30 -14 8
-   -1 sprites/fix_graphics.png 386 630 09 16 30 -14 8
-   -1 sprites/fix_graphics.png 434 630 01 7 40 -19 4
-   -1 sprites/fix_graphics.png 482 630 01 7 40 -19 20
-   -1 sprites/fix_graphics.png 530 630 01 19 12 11 6
-   -1 sprites/fix_graphics.png 562 630 01 19 12 -21 6
+   -1 sprites/fix_graphics.png 8bpp 338  630  30  16 -14   8 normal
+   -1 sprites/fix_graphics.png 8bpp 386  630  30  16 -14   8 normal
+   -1 sprites/fix_graphics.png 8bpp 434  630  40   7 -19   4 normal
+   -1 sprites/fix_graphics.png 8bpp 482  630  40   7 -19  20 normal
+   -1 sprites/fix_graphics.png 8bpp 530  630  12  19  11   6 normal
+   -1 sprites/fix_graphics.png 8bpp 562  630  12  19 -21   6 normal
 
 // Fix transparency of cinema
    -1 * 5	 0A 01 02 34 11
-   -1 sprites/fix_graphics.png 578 72 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 658 72 09 47 50 -28 -20
+   -1 sprites/fix_graphics.png 8bpp 578   72  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 658   72  50  47 -28 -20 normal
 
 // Fix misaligned undergrounds for temperate monorail
    -1 * 6	 07 83 01 \7! 00 06
    -1 * 5	 0A 01 05 4C 04
-   -1 sprites/fix_graphics.png 2 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 162 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 322 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp   2  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 162  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 322  136  64  31 -31   0 normal
 
 // Fix misaligned undergrounds for arctic monorail
    -1 * 6	 07 83 01 \7! 01 06
    -1 * 5	 0A 01 05 4C 04
-   -1 sprites/fix_graphics.png 434 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 514 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 594 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 674 136 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 434  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 514  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 594  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 674  136  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  184  64  31 -31   0 normal
 
 // Fix misaligned undergrounds for tropical/desert monorail/maglev
    -1 * 6	 07 83 01 \7! 02 10
    -1 * 11	 0A 03 05 4C 04 05 66 04 05 B8 04
-   -1 sprites/fix_graphics.png 114 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 194 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 274 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 354 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 434 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 514 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 594 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 674 184 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 162 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 322 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 402 232 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 482 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 114  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 194  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 274  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 354  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 434  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 514  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 594  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 674  184  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 162  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 322  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 402  232  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 482  232  64  31 -31   0 normal
 
 // Fix misaligned X crossing for snow-covered monorail
    -1 * 6	 07 83 01 \7! 01 02
    -1 * 5	 0A 01 01 65 04
-   -1 sprites/fix_graphics.png 594 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 594  232  64  31 -31   0 normal
 
 // Fix offsets for the tropical house
    -1 * 5	 0A 01 01 FF 11
-   -1 sprites/fix_graphics.png 706 232 09 47 64 -31 -16
+   -1 sprites/fix_graphics.png 8bpp 706  232  64  47 -31 -16 normal
 
 // Graphics metadata pixel higher than actual graphics
    -1 * 6	 12 01 00 01 AC E2
-   -1 sprites/fix_graphics.png 66 296 01 10 9 0 0
+   -1 sprites/fix_graphics.png 8bpp  66  296   9  10   0   0 normal
 
 // Non-toyland specific
    -1 * 6	 07 83 01 \7= 03 0A
 // Fix offsets for the tubular bridge pillars
    -1 * 5	 0A 01 04 05 0A
-   -1 sprites/fix_graphics.png 98 296 09 9 4 2 -1
-   -1 sprites/fix_graphics.png 114 296 09 9 4 2 -1
-   -1 sprites/fix_graphics.png 130 296 09 9 4 -4 0
-   -1 sprites/fix_graphics.png 146 296 09 9 4 -4 0
+   -1 sprites/fix_graphics.png 8bpp  98  296   4   9   2  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 114  296   4   9   2  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 130  296   4   9  -4   0 normal
+   -1 sprites/fix_graphics.png 8bpp 146  296   4   9  -4   0 normal
 // Fix offsets for the cantilever bridge pillars
    -1 * 5	 0A 01 04 DD 09
-   -1 sprites/fix_graphics.png 178 296 09 11 10 2 -3
-   -1 sprites/fix_graphics.png 194 296 09 12 10 2 -2
-   -1 sprites/fix_graphics.png 210 296 09 11 10 -10 -1
-   -1 sprites/fix_graphics.png 226 296 09 11 10 -10 -1
+   -1 sprites/fix_graphics.png 8bpp 178  296  10  11   2  -3 normal
+   -1 sprites/fix_graphics.png 8bpp 194  296  10  12   2  -2 normal
+   -1 sprites/fix_graphics.png 8bpp 210  296  10  11 -10  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 226  296  10  11 -10  -1 normal
 
 // Toyland specific
    -1 * 6	 07 83 01 \7! 03 0A
 // Fix offsets for the toyland tubular bridge pillars
    -1 * 5	 0A 01 04 05 0A
-   -1 sprites/fix_graphics.png 248 296 09 9 4 2 -1
-   -1 sprites/fix_graphics.png 264 296 09 9 4 2 -1
-   -1 sprites/fix_graphics.png 280 296 09 9 4 -4 0
-   -1 sprites/fix_graphics.png 296 296 09 9 4 -4 0
+   -1 sprites/fix_graphics.png 8bpp 248  296   4   9   2  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 264  296   4   9   2  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 280  296   4   9  -4   0 normal
+   -1 sprites/fix_graphics.png 8bpp 296  296   4   9  -4   0 normal
 // Fix offsets for the toyland cantilever bridge pillars
    -1 * 5	 0A 01 04 DD 09
-   -1 sprites/fix_graphics.png 328 296 09 11 10 2 -3
-   -1 sprites/fix_graphics.png 344 296 09 12 10 2 -2
-   -1 sprites/fix_graphics.png 360 296 09 11 10 -10 -1
-   -1 sprites/fix_graphics.png 376 296 09 11 10 -10 -1
+   -1 sprites/fix_graphics.png 8bpp 328  296  10  11   2  -3 normal
+   -1 sprites/fix_graphics.png 8bpp 344  296  10  12   2  -2 normal
+   -1 sprites/fix_graphics.png 8bpp 360  296  10  11 -10  -1 normal
+   -1 sprites/fix_graphics.png 8bpp 376  296  10  11 -10  -1 normal
 
 // Wrong, non-translated colours in tubular bridge in 'normal' climates
 // Toyland has separate sprites which are not colour translated, thus
@@ -208,169 +208,169 @@
    -1 * 6	 07 83 01 \7= 03 \b22
 // Main tubular bridge sprites
    -1 * 5	 0A 01 \b6 \w2559
-   -1 sprites/fix_graphics.png 2 330 09 40 32 -30 -26
-   -1 sprites/fix_graphics.png 52 330 09 50 44 -42 -26
-   -1 sprites/fix_graphics.png 116 330 09 45 46 -42 -21
-   -1 sprites/fix_graphics.png 180 330 09 45 46 -2 -20
-   -1 sprites/fix_graphics.png 244 330 09 50 44 0 -25
-   -1 sprites/fix_graphics.png 308 330 09 41 32 0 -25
+   -1 sprites/fix_graphics.png 8bpp   2  330  32  40 -30 -26 normal
+   -1 sprites/fix_graphics.png 8bpp  52  330  44  50 -42 -26 normal
+   -1 sprites/fix_graphics.png 8bpp 116  330  46  45 -42 -21 normal
+   -1 sprites/fix_graphics.png 8bpp 180  330  46  45  -2 -20 normal
+   -1 sprites/fix_graphics.png 8bpp 244  330  44  50   0 -25 normal
+   -1 sprites/fix_graphics.png 8bpp 308  330  32  41   0 -25 normal
 // start rail bridge
    -1 * 5	 0A 01 01 \w2569
-   -1 sprites/fix_graphics.png 350 330 09 29 52 -25 -4
+   -1 sprites/fix_graphics.png 8bpp 350  330  52  29 -25  -4 normal
 // start rail + road bridge
    -1 * 5	 0A 01 02 \w2574
-   -1 sprites/fix_graphics.png 420 330 09 29 50 -25 -4
-   -1 sprites/fix_graphics.png 489 330 09 29 52 -25 -4
+   -1 sprites/fix_graphics.png 8bpp 420  330  50  29 -25  -4 normal
+   -1 sprites/fix_graphics.png 8bpp 489  330  52  29 -25  -4 normal
 // start road + monorail bridge
    -1 * 5	 0A 01 02 \w2580
-   -1 sprites/fix_graphics.png 559 330 09 29 50 -25 -4
-   -1 sprites/fix_graphics.png 629 330 09 29 52 -25 -4
+   -1 sprites/fix_graphics.png 8bpp 559  330  50  29 -25  -4 normal
+   -1 sprites/fix_graphics.png 8bpp 629  330  52  29 -25  -4 normal
 // start monrail + maglev bridge
    -1 * 5	 0A 01 02 \w2586
-   -1 sprites/fix_graphics.png 699 330 09 29 50 -25 -4
-   -1 sprites/fix_graphics.png 489 283 09 29 52 -25 -4
+   -1 sprites/fix_graphics.png 8bpp 699  330  50  29 -25  -4 normal
+   -1 sprites/fix_graphics.png 8bpp 489  283  52  29 -25  -4 normal
 // start maglev bridge
    -1 * 5	 0A 01 01 \w2592
-   -1 sprites/fix_graphics.png 559 283 09 29 50 -25 -4
+   -1 sprites/fix_graphics.png 8bpp 559  283  50  29 -25  -4 normal
 // GUI sprite
    -1 * 5	 0A 01 01 \w2600
-   -1 sprites/fix_graphics.png 433 298 09 15 40 0 5
+   -1 sprites/fix_graphics.png 8bpp 433  298  40  15   0   5 normal
 
 // Remove road markings from tropical rail crossings
    -1 * 6	 07 83 01 \7! 02 19
    -1 * 14	 0A 04 04 5A 05 08 62 05 08 6E 05 04 7A 05
-   -1 sprites/fix_graphics.png 2 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 162 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 322 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 402 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 482 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 562 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 642 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 722 390 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 162 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 322 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 402 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 482 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 562 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 642 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 722 438 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 486 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 486 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 162 486 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 486 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp   2  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 162  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 322  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 402  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 482  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 562  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 642  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 722  390  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 162  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 322  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 402  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 482  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 562  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 642  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 722  438  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  486  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  486  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 162  486  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  486  64  31 -31   0 normal
 
 // Fix transparency of steel mill
    -1 * 5	 0A 01 06 46 08
-   -1 sprites/fix_graphics.png 162 870 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 870 09 51 64 -31 -21
-   -1 sprites/fix_graphics.png 322 870 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 402 870 09 58 49 -29 -29
-   -1 sprites/fix_graphics.png 466 870 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 546 870 09 42 45 -18 -12
+   -1 sprites/fix_graphics.png 8bpp 162  870  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  870  64  51 -31 -21 normal
+   -1 sprites/fix_graphics.png 8bpp 322  870  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 402  870  49  58 -29 -29 normal
+   -1 sprites/fix_graphics.png 8bpp 466  870  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 546  870  45  42 -18 -12 normal
    -1 * 5	 0A 01 0A 4D 08
-   -1 sprites/fix_graphics.png 610 486 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 690 486 09 61 59 -31 -33
-   -1 sprites/fix_graphics.png 2 566 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 566 09 50 51 -25 -21
-   -1 sprites/fix_graphics.png 606 870 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 686 870 09 46 64 -31 -16
-   -1 sprites/fix_graphics.png 2 945 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 945 09 51 50 -29 -21
-   -1 sprites/fix_graphics.png 146 945 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 226 945 09 42 47 -18 -12
+   -1 sprites/fix_graphics.png 8bpp 610  486  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 690  486  59  61 -31 -33 normal
+   -1 sprites/fix_graphics.png 8bpp   2  566  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  566  51  50 -25 -21 normal
+   -1 sprites/fix_graphics.png 8bpp 606  870  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 686  870  64  46 -31 -16 normal
+   -1 sprites/fix_graphics.png 8bpp   2  945  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  945  50  51 -29 -21 normal
+   -1 sprites/fix_graphics.png 8bpp 146  945  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 226  945  47  42 -18 -12 normal
    -1 * 5	 0A 01 04 58 08
-   -1 sprites/fix_graphics.png 162 566 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 242 566 09 52 59 -31 -24
-   -1 sprites/fix_graphics.png 306 566 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 386 566 09 44 51 -25 -15
+   -1 sprites/fix_graphics.png 8bpp 162  566  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 242  566  59  52 -31 -24 normal
+   -1 sprites/fix_graphics.png 8bpp 306  566  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 386  566  51  44 -25 -15 normal
 
 // Fix transparency of oil well
    -1 * 5	 0A 01 07 7D 08
-   -1 sprites/fix_graphics.png 2 630 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 482 566 09 50 31 -11 -28
-   -1 sprites/fix_graphics.png 530 566 09 47 31 -11 -25
-   -1 sprites/fix_graphics.png 578 566 09 47 31 -11 -25
-   -1 sprites/fix_graphics.png 626 566 09 47 31 -11 -25
-   -1 sprites/fix_graphics.png 674 566 09 49 31 -11 -27
-   -1 sprites/fix_graphics.png 722 566 09 52 31 -11 -30
+   -1 sprites/fix_graphics.png 8bpp   2  630  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 482  566  31  50 -11 -28 normal
+   -1 sprites/fix_graphics.png 8bpp 530  566  31  47 -11 -25 normal
+   -1 sprites/fix_graphics.png 8bpp 578  566  31  47 -11 -25 normal
+   -1 sprites/fix_graphics.png 8bpp 626  566  31  47 -11 -25 normal
+   -1 sprites/fix_graphics.png 8bpp 674  566  31  49 -11 -27 normal
+   -1 sprites/fix_graphics.png 8bpp 722  566  31  52 -11 -30 normal
    -1 * 6	 07 83 01 \7! 01 02
    -1 * 5	 0A 01 01 7D 08
-   -1 sprites/fix_graphics.png 114 630 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 114  630  64  31 -31   0 normal
    -1 * 6	 07 83 01 \7! 02 02
    -1 * 5	 0A 01 01 7D 08
-   -1 sprites/fix_graphics.png 226 630 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 226  630  64  31 -31   0 normal
 
 // Fix city airport's grass for temperate
    -1 * 6	 07 83 01 \7! 00 0A
    -1 * 5	 0A 01 09 4C 0A
-   -1 sprites/fix_graphics.png 242 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 322 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 402 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 482 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 562 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 642 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 722 678 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 726 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 242  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 322  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 402  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 482  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 562  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 642  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 722  678  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  726  64  31 -31   0 normal
 
 // Fix city airport's grass for arctic
    -1 * 6	 07 83 01 \7! 01 0A
    -1 * 5	 0A 01 09 4C 0A
-   -1 sprites/fix_graphics.png 194 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 274 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 354 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 434 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 514 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 594 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 674 726 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 774 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 194  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 274  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 354  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 434  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 514  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 594  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 674  726  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  774  64  31 -31   0 normal
 
 // Fix city airport's grass for tropical
    -1 * 6	 07 83 01 \7! 02 0A
    -1 * 5	 0A 01 09 4C 0A
-   -1 sprites/fix_graphics.png 194 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 274 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 354 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 434 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 514 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 594 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 674 774 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 822 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 194  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 274  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 354  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 434  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 514  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 594  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 674  774  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  822  64  31 -31   0 normal
 
 // Fix city airport's grass for toyland
    -1 * 6	 07 83 01 \7! 03 0A
    -1 * 5	 0A 01 09 4C 0A
-   -1 sprites/fix_graphics.png 194 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 274 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 354 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 434 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 514 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 594 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 674 822 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 2 870 09 31 64 -31 0
-   -1 sprites/fix_graphics.png 82 870 09 31 64 -31 0
+   -1 sprites/fix_graphics.png 8bpp 194  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 274  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 354  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 434  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 514  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 594  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp 674  822  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp   2  870  64  31 -31   0 normal
+   -1 sprites/fix_graphics.png 8bpp  82  870  64  31 -31   0 normal
 
 // Wrong, non-translated colours in arctic buildings
    -1 * 8	 0A 02 01 1F 06 01 DB 11
-   -1 sprites/fix_graphics.png 305 945 09 29 59 -29 -12
-   -1 sprites/fix_graphics.png 369 945 09 29 59 -29 -12
+   -1 sprites/fix_graphics.png 8bpp 305  945  59  29 -29 -12 normal
+   -1 sprites/fix_graphics.png 8bpp 369  945  59  29 -29 -12 normal
    -1 * 8	 0A 02 01 76 11 01 E6 11
-   -1 sprites/fix_graphics.png 449 945 09 69 64 -31 -38
-   -1 sprites/fix_graphics.png 529 945 09 69 64 -31 -38
+   -1 sprites/fix_graphics.png 8bpp 449  945  64  69 -31 -38 normal
+   -1 sprites/fix_graphics.png 8bpp 529  945  64  69 -31 -38 normal
    -1 * 8	 0A 02 02 7E 11 01 E1 11
-   -1 sprites/fix_graphics.png 625 945 03 75 54 -25 -47
-   -1 sprites/fix_graphics.png 2 1037 09 75 54 -25 -47
-   -1 sprites/fix_graphics.png 66 1037 09 75 54 -25 -47
+   -1 sprites/fix_graphics.png 8bpp 625  945  54  75 -25 -47 normal
+   -1 sprites/fix_graphics.png 8bpp   2 1037  54  75 -25 -47 normal
+   -1 sprites/fix_graphics.png 8bpp  66 1037  54  75 -25 -47 normal
 
 // Fix buoy in-game; don't show black outline
    -1 * 4        01 05 01 \b1
-   -1 sprites/fix_graphics.png 575 490 09 11 7 7 4
+   -1 sprites/fix_graphics.png 8bpp 575  490   7  11   7   4 normal
    -1 * 7        02 05 17 01 00 00 00
    -1 * 7        03 05 01 08 00 17 00
