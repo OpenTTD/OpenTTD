@@ -30,9 +30,9 @@
  * @note The names of the setting for ScriptGameSettings::IsValid and
  *       ScriptGameSettings::GetValue are the same ones as those that are shown by
  *       the list_settings command in the in-game console. Settings that are
- *       string based are NOT supported and AIGAmeSettings::IsValid will return
+ *       string based are NOT supported and GameSettings::IsValid will return
  *       false for them. These settings will not be supported either because
- *       they have no relevance for the AI (default client names, server IPs,
+ *       they have no relevance for the script (default client names, server IPs,
  *       etc.).
  */
 class ScriptGameSettings : public ScriptObject {
@@ -73,7 +73,7 @@ public:
 	static bool SetValue(const char *setting, int value);
 
 	/**
-	 * Checks whether the given vehicle-type is disabled for AIs.
+	 * Checks whether the given vehicle-type is disabled for companies.
 	 * @param vehicle_type The vehicle-type to check.
 	 * @return True if the vehicle-type is disabled.
 	 * @api -game

@@ -123,7 +123,7 @@ public:
 	 * Index in the list of orders for a vehicle. The first order has index 0, the second
 	 * order index 1, etc. The current order can be queried by using ORDER_CURRENT. Do not
 	 * use ORDER_INVALID yourself, it's used as return value by for example ResolveOrderPosition.
-	 * @note Automatic orders are hidden from AIs, so OrderPosition 0 will always be the first
+	 * @note Automatic orders are hidden from scripts, so OrderPosition 0 will always be the first
 	 * manual order.
 	 */
 	enum OrderPosition {
@@ -510,7 +510,7 @@ public:
 	 * @param order_flags The new flags given to the order.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags).
-	 * @pre (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (GetOrderFlags(vehicle_id, order_position) & AIOF_GOTO_NEAREST_DEPOT).
+	 * @pre (order_flags & OF_GOTO_NEAREST_DEPOT) == (GetOrderFlags(vehicle_id, order_position) & OF_GOTO_NEAREST_DEPOT).
 	 * @exception ScriptError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was changed.
 	 * @api -game

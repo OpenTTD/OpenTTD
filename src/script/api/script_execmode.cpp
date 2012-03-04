@@ -31,9 +31,9 @@ ScriptExecMode::ScriptExecMode()
 ScriptExecMode::~ScriptExecMode()
 {
 	if (this->GetDoCommandModeInstance() != this) {
-		/* Ignore this error if the AI already died. */
+		/* Ignore this error if the script already died. */
 		if (!ScriptObject::GetActiveInstance()->IsDead()) {
-			throw Script_FatalError("ScriptExecMode object was removed while it was not the latest AI*Mode object created.");
+			throw Script_FatalError("ScriptExecMode object was removed while it was not the latest *Mode object created.");
 		}
 	}
 	this->SetDoCommandMode(this->last_mode, this->last_instance);

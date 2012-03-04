@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_testmode.hpp Switch the AI to Test Mode. */
+/** @file script_testmode.hpp Switch the script instance to Test Mode. */
 
 #ifndef SCRIPT_TESTMODE_HPP
 #define SCRIPT_TESTMODE_HPP

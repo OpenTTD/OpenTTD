@@ -14,7 +14,7 @@
 
 #include <queue>
 
-/** The queue of events for an AI. */
+/** The queue of events for a script. */
 struct ScriptEventData {
 	std::queue<ScriptEvent *> stack; ///< The actual queue.
 };

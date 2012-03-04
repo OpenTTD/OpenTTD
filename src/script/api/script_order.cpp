@@ -544,7 +544,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
  * command has completed before we know the next bits to change we need to
  * call the function multiple times. Each time it'll reduce the difference
  * between the wanted and the current order.
- * @param instance The AI we are doing the callback for.
+ * @param instance The script instance we are doing the callback for.
  */
 static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 {

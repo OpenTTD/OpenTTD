@@ -303,13 +303,13 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 		if (callback != NULL) callback(GetActiveInstance());
 		return true;
 	} else if (_networking) {
-		/* Suspend the AI till the command is really executed. */
+		/* Suspend the script till the command is really executed. */
 		throw Script_Suspend(-(int)GetDoCommandDelay(), callback);
 	} else {
 		IncreaseDoCommandCosts(res.GetCost());
 
-		/* Suspend the AI player for 1+ ticks, so it simulates multiplayer. This
-		 *  both avoids confusion when a developer launched his AI in a
+		/* Suspend the script player for 1+ ticks, so it simulates multiplayer. This
+		 *  both avoids confusion when a developer launched his script in a
 		 *  multiplayer game, but also gives time for the GUI and human player
 		 *  to interact with the game. */
 		throw Script_Suspend(GetDoCommandDelay(), callback);

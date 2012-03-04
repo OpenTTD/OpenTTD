@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_accounting.hpp Everything to handle AI accounting things. */
+/** @file script_accounting.hpp Everything to handle script accounting things. */
 
 #ifndef SCRIPT_ACCOUNTING_HPP
 #define SCRIPT_ACCOUNTING_HPP

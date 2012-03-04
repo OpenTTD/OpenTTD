@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file script_controller.hpp The controller of the AI. */
+/** @file script_controller.hpp The controller of the script. */
 
 #ifndef SCRIPT_CONTROLLER_HPP
 #define SCRIPT_CONTROLLER_HPP
@@ -39,21 +39,21 @@ public:
 	~ScriptController();
 
 	/**
-	 * This function is called to start your AI. Your AI starts here. If you
-	 *   return from this function, your AI dies, so make sure that doesn't
+	 * This function is called to start your script. Your script starts here. If you
+	 *   return from this function, your script dies, so make sure that doesn't
 	 *   happen.
-	 * @note Cannot be called from within your AI.
+	 * @note Cannot be called from within your script.
 	 */
 	void Start();
 
 	/**
-	 * Find at which tick your AI currently is.
+	 * Find at which tick your script currently is.
 	 * @return returns the current tick.
 	 */
 	static uint GetTick();
 
 	/**
-	 * Get the number of operations the AI may still execute this tick.
+	 * Get the number of operations the script may still execute this tick.
 	 * @return The amount of operations left to execute.
 	 * @note This number can go negative when certain uninteruptable
 	 *   operations are executed. The amount of operations that you go
@@ -82,21 +82,21 @@ public:
 	static uint GetVersion();
 
 	/**
-	 * Change the minimum amount of time the AI should be put in suspend mode
+	 * Change the minimum amount of time the script should be put in suspend mode
 	 *   when you execute a command. Normally in SP this is 1, and in MP it is
 	 *   what ever delay the server has been programmed to delay commands
-	 *   (normally between 1 and 5). To give a more 'real' effect to your AI,
+	 *   (normally between 1 and 5). To give a more 'real' effect to your script,
 	 *   you can control that number here.
 	 * @param ticks The minimum amount of ticks to wait.
-	 * @pre Ticks should be positive. Too big values will influence performance of the AI.
+	 * @pre Ticks should be positive. Too big values will influence performance of the script.
 	 * @note If the number is lower than the MP setting, the MP setting wins.
 	 */
 	static void SetCommandDelay(int ticks);
 
 	/**
-	 * Sleep for X ticks. The code continues after this line when the X AI ticks
-	 *   are passed. Mind that an AI tick is different from in-game ticks and
-	 *   differ per AI speed.
+	 * Sleep for X ticks. The code continues after this line when the X script ticks
+	 *   are passed. Mind that an script tick is different from in-game ticks and
+	 *   differ per script speed.
 	 * @param ticks the ticks to wait
 	 * @pre ticks > 0.
 	 * @post the value of GetTick() will be changed exactly 'ticks' in value after
@@ -131,7 +131,7 @@ private:
 	int loaded_library_count;         ///< The amount of libraries.
 
 	/**
-	 * Register all classes that are known inside the NoAI API.
+	 * Register all classes that are known inside the script API.
 	 */
 	void RegisterClasses();
 };

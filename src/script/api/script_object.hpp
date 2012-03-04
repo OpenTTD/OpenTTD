@@ -67,7 +67,7 @@ public:
 
 protected:
 	/**
-	 * Executes a raw DoCommand for the AI.
+	 * Executes a raw DoCommand for the script.
 	 */
 	static bool DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const char *text = NULL, Script_SuspendCallbackProc *callback = NULL);
 
@@ -117,17 +117,17 @@ protected:
 	static RailType GetRailType();
 
 	/**
-	 * Set the current mode of your AI to this proc.
+	 * Set the current mode of your script to this proc.
 	 */
 	static void SetDoCommandMode(ScriptModeProc *proc, ScriptObject *instance);
 
 	/**
-	 * Get the current mode your AI is currently under.
+	 * Get the current mode your script is currently under.
 	 */
 	static ScriptModeProc *GetDoCommandMode();
 
 	/**
-	 * Get the instance of the current mode your AI is currently under.
+	 * Get the instance of the current mode your script is currently under.
 	 */
 	static ScriptObject *GetDoCommandModeInstance();
 
@@ -223,7 +223,7 @@ protected:
 	static int GetCallbackVariable(int index);
 
 	/**
-	 * Can we suspend the AI at this moment?
+	 * Can we suspend the script at this moment?
 	 */
 	static bool CanSuspend();
 

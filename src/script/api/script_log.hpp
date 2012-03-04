@@ -20,13 +20,13 @@
  */
 class ScriptLog : public ScriptObject {
 	/* ScriptController needs access to Enum and Log, in order to keep the flow from
-	 *  OpenTTD core to NoAI API clear and simple. */
+	 *  OpenTTD core to script API clear and simple. */
 	friend class ScriptController;
 
 public:
 	/**
 	 * Log levels; The value is also feed to DEBUG() lvl.
-	 *  This has no use for you, as AI writer.
+	 *  This has no use for you, as script writer.
 	 * @api -all
 	 */
 	enum ScriptLogType {
@@ -38,8 +38,8 @@ public:
 	};
 
 	/**
-	 * Internal representation of the log-data inside the AI.
-	 *  This has no use for you, as AI writer.
+	 * Internal representation of the log-data inside the script.
+	 *  This has no use for you, as script writer.
 	 * @api -all
 	 */
 	struct LogData {

@@ -20,7 +20,7 @@
  *
  * @note The random functions are not called Random and RandomRange, because
  *        RANDOM_DEBUG does some tricky stuff, which messes with those names.
- * @note In MP we cannot use Random because that will cause desyncs (AIs are
+ * @note In MP we cannot use Random because that will cause desyncs (scripts are
  *        ran on the server only, not on all clients). This means that
  *        we use InteractiveRandom in MP. Rand() takes care of this for you.
  */
