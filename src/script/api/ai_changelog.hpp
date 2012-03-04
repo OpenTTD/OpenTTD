@@ -62,6 +62,7 @@
  *     like CONFIG_RANDOM.
  * \li AIEvent has all its types renamed from AI_ET_ prefix to just ET_ prefix,
  *     like ET_SUBSIDY_OFFER.
+ * \li AIOrder has all its types renamed from AIOF_ prefix to just OF_ prefix.
  *
  * API removals:
  * \li AICompany::GetCompanyValue, use AICompany::GetQuarterlyCompanyValue instead.
