@@ -186,14 +186,16 @@ static CargoSummary _cargo_summary;
  */
 static void TrainDetailsCargoTab(const CargoSummaryItem *item, int left, int right, int y)
 {
-	StringID str = STR_VEHICLE_DETAILS_CARGO_EMPTY;
-
+	StringID str;
 	if (item->amount > 0) {
 		SetDParam(0, item->cargo);
 		SetDParam(1, item->amount);
 		SetDParam(2, item->source);
 		SetDParam(3, _settings_game.vehicle.freight_trains);
 		str = FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_DETAILS_CARGO_FROM_MULT : STR_VEHICLE_DETAILS_CARGO_FROM;
+	} else {
+		SetDParam(0, STR_QUANTITY_N_A);
+		str = item->cargo == INVALID_CARGO ? STR_LTBLUE_STRING : STR_VEHICLE_DETAILS_CARGO_EMPTY;
 	}
 
 	DrawString(left, right, y, str);
@@ -231,11 +233,19 @@ static void TrainDetailsInfoTab(const Vehicle *v, int left, int right, int y)
  */
 static void TrainDetailsCapacityTab(const CargoSummaryItem *item, int left, int right, int y)
 {
-	SetDParam(0, item->cargo);
-	SetDParam(1, item->capacity);
-	SetDParam(4, item->subtype);
-	SetDParam(5, _settings_game.vehicle.freight_trains);
-	DrawString(left, right, y, FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_INFO_CAPACITY_MULT : STR_VEHICLE_INFO_CAPACITY);
+	StringID str;
+	if (item->cargo != INVALID_CARGO) {
+		SetDParam(0, item->cargo);
+		SetDParam(1, item->capacity);
+		SetDParam(4, item->subtype);
+		SetDParam(5, _settings_game.vehicle.freight_trains);
+		str = FreightWagonMult(item->cargo) > 1 ? STR_VEHICLE_INFO_CAPACITY_MULT : STR_VEHICLE_INFO_CAPACITY;
+	} else {
+		/* Draw subtype only */
+		SetDParam(0, item->subtype);
+		str = STR_VEHICLE_INFO_NO_CAPACITY;
+	}
+	DrawString(left, right, y, str);
 }
 
 /**
@@ -247,11 +257,12 @@ static void GetCargoSummaryOfArticulatedVehicle(const Train *v, CargoSummary *su
 {
 	summary->Clear();
 	do {
-		if (v->cargo_cap == 0) continue;
+		if (!v->GetEngine()->CanCarryCargo()) continue;
 
 		CargoSummaryItem new_item;
-		new_item.cargo = v->cargo_type;
+		new_item.cargo = v->cargo_cap > 0 ? v->cargo_type : INVALID_CARGO;
 		new_item.subtype = GetCargoSubtypeText(v);
+		if (new_item.cargo == INVALID_CARGO && new_item.subtype == STR_EMPTY) continue;
 
 		CargoSummaryItem *item = summary->Find(new_item);
 		if (item == summary->End()) {
@@ -395,6 +406,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 							if (i < _cargo_summary.Length()) {
 								TrainDetailsCapacityTab(&_cargo_summary[i], data_left, data_right, py);
 							} else {
+								SetDParam(0, STR_EMPTY);
 								DrawString(data_left, data_right, py, STR_VEHICLE_INFO_NO_CAPACITY);
 							}
 							break;

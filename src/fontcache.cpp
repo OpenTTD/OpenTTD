@@ -974,6 +974,14 @@ void UninitFreeType()
 	_library = NULL;
 }
 
+/**
+ * Reset cached glyphs.
+ */
+void ClearFontCache()
+{
+	ResetGlyphCache(true);
+	ResetGlyphCache(false);
+}
 
 static FT_Face GetFontFace(FontSize size)
 {

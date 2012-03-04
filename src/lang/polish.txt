@@ -3601,7 +3601,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w t
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Pojemność: {LTBLUE}Żadna
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Pojemność: {LTBLUE}Żadna{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

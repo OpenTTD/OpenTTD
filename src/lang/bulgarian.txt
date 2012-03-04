@@ -3074,7 +3074,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Печа
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Разваляния от последното сервизиране: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{G=m}{LTBLUE}{ENGINE} {BLACK}Построен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Капацитет: {LTBLUE}няма
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Капацитет: {LTBLUE}няма{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Капацитет: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Капацитет: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Капацитет: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

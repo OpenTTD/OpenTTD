@@ -3215,7 +3215,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit t
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Toriadau ers gwasanaeth olaf: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Codi: {LTBLUE}{NUM}{BLACK} Pris: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Cynhwysedd: {LTBLUE}Dim
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Cynhwysedd: {LTBLUE}Dim{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Cynhwysedd: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

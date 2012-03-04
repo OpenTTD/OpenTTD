@@ -44,6 +44,7 @@ extern FreeTypeSettings _freetype;
 
 void InitFreeType(bool monospace);
 void UninitFreeType();
+void ClearFontCache();
 const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
 bool GetDrawGlyphShadow();

@@ -1159,7 +1159,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑт: {LTBLUE}Ҫук пул
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑт: {LTBLUE}Ҫук пул{STRING}
 
 
 

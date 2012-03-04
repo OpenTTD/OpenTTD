@@ -3177,7 +3177,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Keuntung
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliabilitas: {LTBLUE}{COMMA}%  {BLACK}Mogok sejak perbaikan terakhir : {LTBLUE}{COMMA} kali
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Dibuat: {LTBLUE}{NUM}{BLACK} Nilai: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitas: {LTBLUE}Tidak ada{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Daya Muat: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

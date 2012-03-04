@@ -3199,7 +3199,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålitelegheit: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havari sidan sist vedlikehald: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygd: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapasitet: {LTBLUE}Ingen{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapasitet: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapasitet: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapasitet:{LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}

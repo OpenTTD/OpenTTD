@@ -3368,7 +3368,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Letošnj
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Zanesljivost: {LTBLUE}{COMMA}%  {BLACK}Okvare po zadnjem servisu: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Zmogljivost: {LTBLUE}Brez
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Zmogljivost: {LTBLUE}Brez{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Zmogljivost: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Zmogljivost: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Zmogljivost: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
