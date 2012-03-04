@@ -1008,7 +1008,14 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தக�
 
 
 
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}நகரங்கள் சாலைகளை கட்ட அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}ஆட்டத்தில் நகரங்களை நிறுவ அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :இயலாது
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமதிக்கப்பட்டுள்ளது
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :எங்கும்
 
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
@@ -1045,6 +1052,11 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 STR_INTRO_NEW_GAME                                              :{BLACK}புது விளையாட்டு
 
+STR_INTRO_DIFFICULTY                                            :{BLACK}கடினம் ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}அமைப்புகள்
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF அமைப்புகள்
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}கோப்புகளை இணையதளத்தில் தேடு
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / ஆட்டம் அமைப்புகள்
 STR_INTRO_QUIT                                                  :{BLACK}விட்டுச் செல்
 
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}பதிவு செய்யப்பட்ட விளையாட்டை ஏற்று
@@ -1075,6 +1087,11 @@ STR_OSNAME_SUNOS                                                :SunOS
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட்டத்தை கைவிடு
 
 # Cheat window
+STR_CHEATS                                                      :{WHITE}ஏமாற்றுகள்
+STR_CHEAT_MONEY                                                 :{LTBLUE}{CURRENCY_LONG} ஆக பணத்தை உயர்த்து
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}இந்த நிறுவனமாக ஆடுகிறீர்கள்: {ORANGE}{COMMA}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}சுரங்கங்கள் ஒன்றுக்கொன்று குறுக்கிடலாம்: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}சிறிய விமான நிலையங்களில் ஜெட்விமானங்கள் நொறுங்காது: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலத்தோற்றம்
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலத்தோற்றம்
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}தேதியை மாற்று: {ORANGE}{DATE_SHORT}
@@ -1094,8 +1111,11 @@ STR_LIVERY_BUS                                                  :பேருந
 STR_LIVERY_TRUCK                                                :லாரி
 STR_LIVERY_PASSENGER_SHIP                                       :பயணிகள் கப்பல்
 STR_LIVERY_FREIGHT_SHIP                                         :சரக்கு கப்பல்
+STR_LIVERY_HELICOPTER                                           :ஹெலிகாப்டர்
 STR_LIVERY_SMALL_PLANE                                          :சிறிய விமானம்
 STR_LIVERY_LARGE_PLANE                                          :பெரிய விமானம்
+STR_LIVERY_PASSENGER_TRAM                                       :பயணிகள் ட்ராம்
+STR_LIVERY_FREIGHT_TRAM                                         :சரக்கு ட்ராம்
 
 # Face selection window
 
@@ -1152,8 +1172,12 @@ STR_NETWORK_LANG_RUSSIAN                                        :ரஷ்ய �
 STR_NETWORK_LANG_SPANISH                                        :ஸ்பானிஷ்
 STR_NETWORK_LANG_SWEDISH                                        :சவீடிஷ்
 STR_NETWORK_LANG_TURKISH                                        :டர்கிஷ்
+STR_NETWORK_LANG_UKRAINIAN                                      :உக்ரேனியம்
 STR_NETWORK_LANG_AFRIKAANS                                      :ஆப்ரிகான்ஸ்
 STR_NETWORK_LANG_CROATIAN                                       :குரோஏசியன்
+STR_NETWORK_LANG_CATALAN                                        :கடலான்
+STR_NETWORK_LANG_ESTONIAN                                       :எஸ்தோனியம்
+STR_NETWORK_LANG_GALICIAN                                       :கலிசியம்
 STR_NETWORK_LANG_GREEK                                          :கிரேக்க மொழி
 STR_NETWORK_LANG_LATVIAN                                        :லாத்வியன்
 ############ End of leave-in-this-order

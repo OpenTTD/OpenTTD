@@ -355,7 +355,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-Einstell
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparenzeinstellungen
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Städtenamen anzeigen
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnamen anzeigen
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktsnamen anzeigen
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Wegpunktnamen anzeigen
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Schilder anzeigen
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Fremde Stationsnamen & Schilder zeigen
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Vollständige Animation
@@ -1985,7 +1985,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Ausricht
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Wegpunkt
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wegpunktstyp auswählen
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Wegpunktbauform auswählen
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Bahnhof bauen
@@ -2758,7 +2758,7 @@ STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namen de
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Boje scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Boje
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namen der Boje ändern
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen der Wegpunkts ändern
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
@@ -3773,7 +3773,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Zu nahe 
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Wegpunkt kann hier nicht gebaut werden...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Boje kann hier nicht platziert werden...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunktsname kann nicht geändert werden...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunktname kann nicht geändert werden...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Wegpunkt kann hier nicht entfernt werden...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Wegpunkt muss erst abgerissen werden
