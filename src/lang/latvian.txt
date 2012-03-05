@@ -102,7 +102,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} o
 STR_QUANTITY_MAIL                                               :{COMMA} pasta mais{P s i u}
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} naftas
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} mājlop{P s i u}
-STR_QUANTITY_GOODS                                              :{COMMA} preču kaste{P "" s s}
+STR_QUANTITY_GOODS                                              :{COMMA} preču kast{P e es u}
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graudu
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} kokmateriālu
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} dzelzsrūdas
@@ -172,7 +172,7 @@ STR_BAGS                                                        :{COMMA} mais{P 
 STR_TONS                                                        :{COMMA} tonn{P a as u}
 STR_LITERS                                                      :{COMMA} litr{P s i u}
 STR_ITEMS                                                       :{COMMA} vienīb{P a as u}
-STR_CRATES                                                      :{COMMA} kaste{P "" s s}
+STR_CRATES                                                      :{COMMA} kast{P e es u}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tumši zils
@@ -230,7 +230,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}Atrašan
 STR_BUTTON_RENAME                                               :{BLACK}Pārdēvēt
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Aizvērt logu
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - vilkt šo, lai pārvietotu logu
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Loga virsraksts - vilkt to, lai pārvietotu logu
 STR_TOOLTIP_SHADE                                               :{BLACK}Aizēnot logu - rādīt tikai virsrakstu
 STR_TOOLTIP_DEBUG                                               :{BLACK}Rādīt NewGRF atkļūdošanas informāciju
 STR_TOOLTIP_STICKY                                              :{BLACK}Atzīmēt šo logu kā neaizveramu ar "Aizvērt visus logus" taustiņu
@@ -303,9 +303,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rādīt 
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finansiālo stāvokli
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt uzņēmuma vispārējo informāciju
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rādīt diagrammas
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rādīt uzņēmuma rangu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rādīt uzņēmumu rangu sarakstu
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansēt jaunas ražotnes būvniecību vai uzskaitīt visas ražotnes
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rādīt uzņēmuma vilcienu sarakstu. Ctrl+klikšķis pārslēdz starp grupu/transportlīdzekļu sarakstu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rādīt uzņēmuma vilcienu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rādīt uzņēmuma autotransporta sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rādīt uzņēmuma kuģu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rādīt uzņēmuma lidaparātu sarakstu. Ctrl+klikšķis pārslēdz grupu/transportlīdzekļu saraksta atvēršanu
@@ -399,7 +399,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kravas apmaksas
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Uzņēmumu rangu saraksts
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalizēti uzņēmējdarbības rezultāti
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Detalizēts uzņēmējdarbības vērtējums
 ############ range ends here
 
 ############ range for industry menu starts
@@ -530,7 +530,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Darbības peļņas grafiks
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Ienākumu grafiks
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Pārvadātās kravas vienības
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Uzņēmuma ražīguma vērtējumi (maksimālais ir 1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Uzņēmuma darbības vērtējumi (maksimālais ir 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Uzņēmuma vērtības
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Pārvadāšanas izmaksas
@@ -543,7 +543,7 @@ STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādī
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ieslēgt/izslēgt kravas tipa grafiku
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus ražīguma vērtējumus
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leģendas uzņēmumu grafikos
@@ -563,7 +563,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Prezidents
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnāts
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalizēts sasniegumu reitings
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalizēts uzņēmējdarbības vērtējums
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalizēti
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -677,7 +677,7 @@ STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Dzelzsceļi
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacijas/lidostas/piestātnes
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Celtnes/ražotnes
-STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Transporta līdzekļi
+STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Transportlīdzekļi
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Vilcieni
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Autotransporta līdzekļi
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Kuģi
@@ -714,7 +714,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nerādī
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Rādīt uz kartes visas ražotnes
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Pārslēgt augstumu kartes attēlošanu
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerādīt neviena uzņēmuma īpašumus uz kartes
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Parādīt uz kartes visu uzņēmumu īpašumus
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Rādīt visu uzņēmumu īpašumus uz kartes
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Rādīt pēdējo ziņojumu vai avīzes rakstu
@@ -745,10 +745,10 @@ STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Uzņēm
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ražotņu atklāšana
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Ražotņu slēgšana
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomikas izmaiņas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražīguma izmaiņas uzņēmuma apkalpotajās ražotnēs
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražīguma izmaiņas konkurentu apkalpotajās ražotnēs
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas konkurentu apkalpotajās ražotnēs
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Citas ražošanas apjomu izmaiņas
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transporta līdzekļiem
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transportlīdzekļiem
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jauni transportlīdzekļi
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Izmaiņas kravu pieņemšanā
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsīdijas
@@ -778,7 +778,7 @@ STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ogļu raktuves iebrukšana atstāj bojājumu joslu netālu no {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Plūdi!{}Vismaz {COMMA} pazuduši bez vēsts, iespējams gājuši bojā plūdos!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transporta uzņēmumam problēmas!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transporta uzņēmumam ir grūtības!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} tiks izpārdots vai paziņots par bankrotu, ja vien darbības rādītāji tuvākajā laikā neuzlabosies!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transporta uzņēmumi apvienojas!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} tika pārdots {STRING} par {CURRENCY_LONG}!
@@ -835,17 +835,17 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās tā pielāgošanas rīkojums
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automātiskās atjaunošanas kļūda {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Jauns {STRING} tagad pieejams!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Jauns {STRING} tagad ir pieejams!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Jauns {STRING} tagad pieejams!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Jauns {STRING} tagad ir pieejams!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} vairs nepieņem {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} vairs nepieņem {STRING} vai {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} pieņem {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} pieņem {STRING} un {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta .
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsīdijas piedāvājums beidzies:{}{}{STRING} no {STRING} uz {STRING} subsidēšana ir atcelta
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidēšana atcelta:{}{}{STRING} pārvadājumi no {STRING} uz {STRING} turpmāk vairs netiek subsidēti
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsīdijas piedāvājums:{}{}Pirmais {STRING} pārvadātājs no {STRING} uz {STRING} vienu gadu saņems pašvaldības subsīdijas!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Pārvadājumu subsīdija piešķirta {STRING}!{}{}{STRING} pārvadājumi no {STRING} uz {STRING} saņems 50% piemaksu vienu gadu!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Pārvadājumu subsīdija piešķirta {STRING}!{}{}{STRING} pārvadājumi no {STRING} uz {STRING} saņems divkāršu samaksu vienu gadu!
@@ -1014,7 +1014,7 @@ STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pielāgo
 ############ range for difficulty levels ends
 
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rādīt vērtējumu tabulu
-STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Saglabât
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Saglabāt
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimālais pretinieku daudzums: {ORANGE}{COMMA}
@@ -1522,7 +1522,7 @@ STR_FACE_MALE_TOOLTIP                                           :{BLACK}Izvēlē
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}Sieviete
 STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izvēlēties sieviešu sejas
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Jauna seja
-STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Ģenerēt nejaušu seju
+STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Radīt nejaušu seju
 STR_FACE_ADVANCED                                               :{BLACK}Papildus
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Papildus seju izvēle
 STR_FACE_SIMPLE                                                 :{BLACK}Vienkāršs
@@ -2041,7 +2041,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cauruļveida, s
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Ceļu būvēšana
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Ceļu būvniecība
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaju būvēšana
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ceļu būves izvēle. Ctrl pārslēdz ceļa būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvaja sliežu būves izvēle. Ctrl pārslēdz tramvaja sliežu būvniecību/demolēšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
@@ -2205,10 +2205,10 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Būvēt
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ieguldīt
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes '{STRING}' ražošanas ķēde
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}'{STRING}' kravu ražotņu ķēde
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Izejvielu ražotnes
-STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Pārstrādes ražotnes
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes {STRING} ražošanas ķēde
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kravas ražotņu ķēde
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ražotāji
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Patērētāji
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Mājas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikšķināt uz ražotnes, lai redzētu tās piegādātājus un patērētājus
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikšķināt uz kravas, lai redzētu tās piegādātājus un patērētājus
@@ -2437,7 +2437,7 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Sagatavo
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF iestatījumi
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Padziļināta NewGRF informācija
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF detalizēta informācija
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktīvie NewGRF faili
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktīvie NewGRF faili
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Izvēlēties paraugu:
@@ -2733,7 +2733,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rādīt 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Pieņem: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumu
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Transporta pakalpojumu vietējais vērtējums:
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
@@ -2866,15 +2866,15 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ražotnes
 STR_INDUSTRY_DIRECTORY_NONE                                     :{G=m}{ORANGE}- Neviens -
 STR_INDUSTRY_DIRECTORY_NONE.kas                                 :{G=f}{ORANGE}- Neviena -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% pārvadāti)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% pārvadāti)
+STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% pārvadāts)
+STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% pārvadāts)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ražotņu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz ražotni. Ctrl+klikšķis atvērs jaunu skatvietu pie ražotnes
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Iepriekšējā mēnesī saražots:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% aizvests)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% pārvadāts)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz rūpnīcu. Ctrl+klikšķis atvērs skatu uz rūpnīcu jaunā skatlaukā
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 
@@ -2891,8 +2891,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Ražo: {
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Ražo: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju (dalāmais ar 8, līdz pat 2040)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mainīt ražīguma līmeni (procentos, līdz 800%)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt ražošanu (dalāmais ar 8, līdz pat 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mainīt ražošanas līmeni (procentos, līdz 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} vilcien{P s i u}
@@ -3624,7 +3624,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nav pieejams>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spēle tika saglabāta bez tramvaju atbalsta. Visi tramvaji tika aizvākti.
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes ģenerēšana apturēta...{}... nav piemērotas pozīcijas pilsētām
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kartes radīšana ir pārtraukta...{}... nav piemērotas atrašanās vietas pilsētām
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... šajā scenārijā nav pilsētu
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nevar ielādēt ainavu no PNG...
@@ -3720,7 +3720,7 @@ STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... pār
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nevar radīt ražotnes...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Šeit nevar būvēt {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Šeit nevar būvēt šī veida ražotni...
-STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... pārāk tuvu citai rūpnīcai
+STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... pārāk tuvu citai ražotnei
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... vispirms ir jāuzceļ pilsētu
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... pilsētā atļauts tikai viens(a)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200

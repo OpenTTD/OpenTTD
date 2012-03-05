@@ -520,6 +520,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Prosojni napisi
 STR_FILE_MENU_SAVE_GAME                                         :Shrani igro
 STR_FILE_MENU_LOAD_GAME                                         :Naloži igro
 STR_FILE_MENU_QUIT_GAME                                         :Zapusti igro
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Izhod
 ############ range ends here
 
@@ -1953,7 +1954,7 @@ STR_NETWORK_ERROR_KICKED                                        :{WHITE}Brcnjen/
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Goljufanje ni dovoljeno na tem strežniku
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Pošiljal si preveč ukazov strežniku
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Tvoj čas za vnos gesla je bil predolg
-STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvoj računalnik se je predolgo povezoval
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvoj računalnik je prepočasen in ne dohiteva strežnika
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvoj prenos ozemlja je trajal predolgo
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Priklop na strežnik je trajal predolgo
 
@@ -2222,7 +2223,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientac
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izberi orientacijo železniške postaje
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Orientacija tovorne postaje
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izberi orientacijo tovorne postaje
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija potniške postaje
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Orijentacija tramvaj potniške postaje
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izbor orijentacije potniške tramvaj postaje
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Orijentacija tovorne postaje
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izbor orijentacije tovorne tramvaj postaje
@@ -3595,7 +3596,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Urnik - 
 STR_TIMETABLE_NO_TRAVEL                                         :Brez potovanja
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Potovanje (avtomatično; urnik z naslednjim ukazom)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez urnika)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Potuj z največ {2:VELOCITY} (brez časovne tabele)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Pozuj proti {STRING} z najvišjo hitrostjo {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :s potovanjem za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva nevi ni}
@@ -3619,7 +3622,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Počisti čas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti čas za označen ukaz
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Spremeni omejitev hitrosti
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Spremeni najvišjo potovalno hitrost označenega ukaza
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Počisti omejitev hitrosti
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Počisti najvišjo potovalno hitrost onačenega ukaza
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Resetiraj Števec zamud
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj števec zamud, da bodo vozila točna
@@ -4645,6 +4652,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
