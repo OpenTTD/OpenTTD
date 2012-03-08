@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder scénario, charger scénario, abandonner l'éditeur de scénario, quitter
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sauvegarder le scénario, charger un scénario, abandonner l'éditeur de scénario, quitter
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Éditeur de scénario
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Reculer la date de départ d'un an
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de difficulté
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration avancée
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration d'IA et du jeu
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration des IA et du jeu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
@@ -453,7 +453,7 @@ STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Copie d'écran 
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À propos d'OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
-STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/cacher les boites de dimensions maximum
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afficher/Cacher les boites de dimensions maximum
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -580,7 +580,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Argent{N
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{NBSP}:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si toutes ces parties ne forment qu'une seule station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers trimestres
@@ -618,15 +618,15 @@ STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Arrêter
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Démarrer la musique
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Faire glisser les curseurs pour changer les volumes
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Choisir le programme «{NBSP}Tout{NBSP}»
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Choisir le programme «{NBSP}Ancien style musical{NBSP}»
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Choisir le programme «{NBSP}Nouveau style musical{NBSP}»
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Choisir le programme musical «{NBSP}Ancien style{NBSP}»
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Choisir le programme musical «{NBSP}Nouveau style{NBSP}»
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Sélectionner le programme musical «{NBSP}Ezy Street{NBSP}»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Choisir le programme personnalisé «{NBSP}Personnalisé 1{NBSP}»
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Choisir le programme personnalisé «{NBSP}Personnalisé 2{NBSP}»
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Activer/Désactiver le mode aléatoire
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afficher la fenêtre de sélection de pistes
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisi. Aucune musique ne sera jouée
+STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisi. Aucune musique ne sera jouée.
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Sélection du programme musical

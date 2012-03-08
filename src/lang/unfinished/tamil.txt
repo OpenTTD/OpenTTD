@@ -1332,9 +1332,14 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல�
 # Base for station construction window(s)
 
 # Join station window
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
 
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :இரயில்வே கட்டுமானம்
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :மின்சார இரயில்வே கட்டுமானம்
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :மோனோ-இரயில் கட்டுமானம்
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :மேக்லெவ் கட்டுமானம்
 
 
 STR_RAIL_NAME_RAILROAD                                          :இரயில்வே
@@ -1355,10 +1360,15 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}தட�
 # Signal window
 
 # Bridge selection window
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_WOODEN                                          :மர
+STR_BRIDGE_NAME_CONCRETE                                        :சிமண்ட்
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}சாலை கட்டுமானம்
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ட்ரேம்வே கட்டுமானம்
 
 # Road depot construction window
 
@@ -1376,15 +1386,20 @@ STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},
 
 STR_AIRPORT_SMALL                                               :சிறிய
 STR_AIRPORT_CITY                                                :மாநகர
+STR_AIRPORT_METRO                                               :மாநகர
+STR_AIRPORT_INTERNATIONAL                                       :சர்வதேச
+STR_AIRPORT_HELIPORT                                            :ஹெலிபோர்ட்
 
 STR_AIRPORT_CLASS_SMALL                                         :சிறிய விமான நிலையங்கள்
 STR_AIRPORT_CLASS_LARGE                                         :பெரிய விமான நிலையங்கள்
+STR_AIRPORT_CLASS_HELIPORTS                                     :ஹெலிகாப்டர் நிலையங்கள்
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}ஒலி இரைச்சல்: {GOLD}{COMMA}
 
 # Landscaping toolbar
 
 # Object construction window
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}அளவு: {GOLD}{NUM} x {NUM} கட்டங்கள்
 
 STR_OBJECT_CLASS_LTHS                                           :கலங்கரைவிளக்கு
 
@@ -1406,18 +1421,43 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}சி�
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}நடுத்தரம்
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}பெரியது
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}நகரத்தின் அளவை தேர்ந்தெடு
+STR_FOUND_TOWN_CITY                                             :{BLACK}மாநகரம்
 
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}நகரத்தின் சாலை அமைப்பு:
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}இந்த நகரத்திற்கான சாலை அமைப்பினை தேர்ந்தெடு
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}அசல்
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}நல்ல சாலைகள்
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 கட்டங்கள்
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 கட்டங்கள்
 
 # Fund new industry window
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}புதிய தொழிற்சாலையினை நிறுவு
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}இந்தப் பட்டியலிருந்து பொருத்தமான தொழிற்சாலை ஒன்றினை தேர்ந்தெடு
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}விலை: {YELLOW}{CURRENCY_LONG}
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}கட்டு
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}நிறுவு
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}தயாரிக்கும் தொழிற்சாலைகள்
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}வீடுகள்
 
 # Land area window
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}நிலப் பகுதி விவரம்
+STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
+STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}சொந்தக்காரர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ஒன்றுமில்லை
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}கட்டப்பட்டது: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}விமான நிலைய வகுப்பு: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}விமான நிலைய பெயர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :கற்கள்
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :புல்
+STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :பனி-படர்ந்த நிலம்
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :பாலைவனம்
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} தடம்
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} இரயில் பணிமனை
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :சாலை

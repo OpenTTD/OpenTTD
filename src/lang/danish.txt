@@ -354,7 +354,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF indstill
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Gennemsigtighedsvalg
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Bynavne vist
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stationsnavne vist
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Kontrolsteder vist
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Waypointnavne vist
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Viste skilte
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Modstander skilte og navne vist
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Fuld animation
@@ -1933,7 +1933,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift ge
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for træer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Skift gennemsigtighed for huse. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for industrier. CTRL+Klik for at låse værdi.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, remiser og kontrolsteder. Ctrl+klik låser.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, remiser og waypoint. Ctrl+klik låser.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Skift gennemsigtighed for broer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
@@ -1953,8 +1953,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Forsynin
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sammenkæd station
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Byg en separat station
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Forbind kontrolsted
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Byg et separat kontrolsted
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Forbind waypoint
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Byg et separat waypoint
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Jernbanekonstruktion
@@ -1965,12 +1965,12 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetskinnekon
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg en remise (til køb og servicering af tog). Shift skifter mellem at bygge og vise prisoverslag.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til kontrolsted. Ctrl muliggør sammenslutning af kontrolsteder. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til waypoint. Ctrl muliggør sammenslutning af waypoint. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg en banegård. Ctrl muliggør sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg jernbanesignaler. Ctrl skifter mellem semaforer og lyssignaler.{}Hvis musen trækkes langs en lige strækning, bygges signaler med jævne mellemrum. Hold Ctrl nede for at bygge signaler indtil næste kryds.{}Ctrl+klik skifter mellem at åbne eller ikke åbne signalvælgeren. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg jernbanebro. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg jernbanetunnel. Shift skifter mellem at bygge og vise prisoverslag.
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem at bygge og fjerne jernbaneskinner, signaler, kontrolsteder og stationer. Hold Ctrl nede for også at fjerne togspor fra kontrolsteder og stationer.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem at bygge og fjerne jernbaneskinner, signaler, waypoints og stationer. Hold Ctrl nede for også at fjerne togspor fra waypoints og stationer.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ombyg/opgradér typen af jernbane. Shift skifter mellem at bygge og vise prisoverslag.
 
 STR_RAIL_NAME_RAILROAD                                          :Jernbane
@@ -1983,8 +1983,8 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Retning 
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vælg orientering af remise
 
 # Rail waypoint construction window
-STR_WAYPOINT_CAPTION                                            :{WHITE}Kontrolsted
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vælg udseende af kontrolsteder
+STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vælg udseende af waypoint
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Valg af banegård
@@ -2001,7 +2001,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vælg hv
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vælg hvilken stationstype du vil bygge
 
 STR_STATION_CLASS_DFLT                                          :Standard station
-STR_STATION_CLASS_WAYP                                          :Kontrolsteder
+STR_STATION_CLASS_WAYP                                          :Waypoints
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvælger
@@ -2293,7 +2293,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Fragtcentral
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Rutebilstation
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Havn
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Bøje
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Kontrolsted
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Vand
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
@@ -2753,11 +2753,11 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Omdøb statione
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved waypointets lokalitet.
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb kontrolsted
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Omdøb waypoint
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrer skræmen over bøjens lokalitet. Ctrl+Klik åbner et nyt vindue ved bøjens lokalitet.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ændre navnet på bøjen
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb kontrolsted
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb waypoint
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanser {BLACK}{COMPANY_NUM}
@@ -3363,7 +3363,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmes
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
 STR_ORDER_SHARE                                                 :Del ordrer
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'. 'Deleordrer' eller Ctrl lader dette køretøj dele ordrer med det valgte køretøj. At klikke på et køretøj kopierer ordrer fra det pågældende køretøj. En depot ordre deaktiverer automatisk servicering af køretøjet
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', waypoint ordrer med 'Uden stop', og depotordrer med 'Service'. 'Deleordrer' eller Ctrl lader dette køretøj dele ordrer med det valgte køretøj. At klikke på et køretøj kopierer ordrer fra det pågældende køretøj. En depot ordre deaktiverer automatisk servicering af køretøjet
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Vis alle transportmidler, der deler denne ruteplan
 
@@ -3767,15 +3767,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Det er n
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Det er nødvendigt at rive lufthavnen ned først
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Støder op til mere en et eksisterende kontrolsted
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For tæt på et andet kontrolsted
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Støder op til mere end et eksisterende waypoint
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}For tæt på et andet waypoint
 
-STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge kontrolsted for tog her...
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Kan ikke bygge waypoint for tog her...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Kan ikke placere en bøje her...
-STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe kontrolsted...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke omdøbe waypoint...
 
-STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne kontrolsted for tog her...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Kontrolsted skal fjernes først
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne waypoint for tog her...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbanewaypoint skal fjernes først
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
 
@@ -4370,8 +4370,8 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bøje #{
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Gruppe {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
-STR_FORMAT_WAYPOINT_NAME                                        :Kontrolsted {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Kontrolsted {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Waypoint
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Waypoint #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Tog Depot
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Tog Depot #{COMMA}

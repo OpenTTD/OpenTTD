@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Sch
 STR_FILE_MENU_SAVE_GAME                                         :Spill späicheren
 STR_FILE_MENU_LOAD_GAME                                         :Spill lueden
 STR_FILE_MENU_QUIT_GAME                                         :Spill ophalen
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Eraus
 ############ range ends here
 
@@ -3442,7 +3443,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zäitpla
 STR_TIMETABLE_NO_TRAVEL                                         :Net ënnerwee
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rees(automatesch; Zaitplang durch manuell Opträg)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ënnerwee (ouni Zäitplang)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Fiert maximal {2:VELOCITY} (ouni Stonneplang)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ënnerwee fir {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Fiert fir {STRING} mat maximal {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :an bleif fir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :an ënnerwee op {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} D{P ag eeg}
@@ -3466,7 +3469,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Z
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zäit läschen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Lesch Zäit fir den gewielten Optrag
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Änner de Geschwindëgkeetslimit
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Änner d'maximal Reesgeschwindëgkeet fir den gewielten Optrag
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Geschwindëgkeetslimit leschen
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Maximal Reesgeschwindëgkeet vum gewielten Optrag leschen
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspeidungszieler zerécksetzen
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Setzt den Verspéidungszieler zréck, sou dass d'Gefiert mat Zäit ukënnt
@@ -4449,6 +4456,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

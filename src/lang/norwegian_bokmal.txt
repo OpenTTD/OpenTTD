@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer osv. eid av byene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimal toglengde: {ORANGE}{STRING} rute{P 0:1 "" r}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med lokomotivrøyk/gnister: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med kjøretøyrøyk/gnister: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kjøretøyers akselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
@@ -1135,9 +1135,9 @@ STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Lever v
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimal brolengde: {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimal tunnellengde: {ORANGE}{STRING} rute{P 0:1 "" r}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for primærindustri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekterer
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre næringer
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterer
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flatt landområde rundt industrier: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillat flere like industrier i samme by: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis signaler på kjøresiden: {ORANGE}{STRING}
@@ -1157,9 +1157,9 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for last til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Flyhastighetsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antall flystyrter: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ingen
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redusert
-STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalt
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ingen
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Redusert
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normalt
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat stoppesteder med gjennomkjøring på by-eide veier: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Tillat stoppesteder med gjennomkjøring på motstander-eide veier: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
@@ -1171,9 +1171,9 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flyplas
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varsle hvis et kjøretøy har kjørt seg vill: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordre: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nei
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men utelukk stoppede kjøretøy
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :alle kjøretøy
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nei
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, men utelukk stoppede kjøretøy
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle kjøretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis inntekten til et kjøretøy er negativ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoforny kjøretøy når det blir gammelt: {ORANGE}{STRING}
@@ -1240,15 +1240,15 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Antatt standardpalett for NewGRFer uten spesifisert palett: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Antatt palett for NewGRFer uten spesifisert palett: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Når spillet er på pause, tillat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ingen handlinger
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all ikke-konstruering
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alle utenom landskapsendringer
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ingen handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alt utenom konstruksjon
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Alt utenom landskapsendringer
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert kjøretøyliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Bruk lastingsindikatorer: {ORANGE}{STRING}
@@ -1308,23 +1308,23 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kun avanserte s
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Veiløsning for nye byer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bedre veier
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
-STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfeldig
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Bedre veier
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Rutenett
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Rutenett
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Tilfeldig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer kan bygge veier: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Byer har lov å bygge overganger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert støynivå for flyplasser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunnlegging av byer i spillet: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :forbudt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillatt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillatt, egendefinert oppsett av by
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Forbudt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillatt
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillatt, egendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Plassering av trær i spillet: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(ødelegger sagbruk)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskog
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overalt
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ingen {RED}(ødelegger sagbruk)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Kun i regnskog
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Overalt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovedverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusbarens posisjon: {ORANGE}{STRING}
