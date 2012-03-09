@@ -651,8 +651,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grand ponte
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon du siècle
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} atteint le niveau de «{NBSP}{STRING}{NBSP}»{NBSP}!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} atteint le niveau de «{NBSP}{STRING}{NBSP}»{NBSP}!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} atteint le statut de «{NBSP}{STRING}{NBSP}»{NBSP}!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} de {COMPANY} atteint le statut de «{NBSP}{STRING}{NBSP}»{NBSP}!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mini-carte − {STRING}
@@ -674,7 +674,7 @@ STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Cliquer 
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Routes
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Voies ferrées
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Gares/Aéroports/Ports maritimes
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stations/Aéroports/Ports
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Bâtiments/Industries
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Véhicules
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Trains
@@ -682,12 +682,12 @@ STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Navires
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Aéronefs
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Routes de transport
-STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Forêt
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gare ferroviaire
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Forêts
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gares ferroviaires
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Aires de chargement
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Arrêt d'autobus
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Arrêts d'autobus
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Aéroports/Héliports
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Port maritime
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Ports maritimes
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terre en friche
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Herbe
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terre nue
@@ -739,7 +739,7 @@ STR_NEWS_MESSAGES_FULL                                          :Complet
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Types de message{NBSP}:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Arrivée du premier véhicule dans la station du joueur
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Arrivée du premier véhicule dans la station d'un concurrent
-STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / Désastres
+STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Accidents / Catastrophes
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informations corporatives
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ouvertures d'industries
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Fermetures d'industries
@@ -758,7 +758,7 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier train arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}{NBSP}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}{NBSP}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway de passagers arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier tramway de marchandises arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier navire arrive à {STATION}{NBSP}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Les habitants célèbrent . . .{}Le premier aéronef arrive à {STATION}{NBSP}!
@@ -769,16 +769,16 @@ STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLAC
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}{COMMA} mort{P "" s} brûlé{P "" s} vif{P "" s} à {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Accident d'avion{NBSP}!{}L'aéronef n'avait plus de carburant, {COMMA} passager{P "" s} meur{P t ent} dans le crash{NBSP}!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Désastre impliquant un Zeppelin à {STATION}{NBSP}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Catastrophe impliquant un Zeppelin à {STATION}{NBSP}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Un véhicule routier est détruit dans une collision avec un OVNI{NBSP}!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Explosion d'une raffinerie pétrolière près de {TOWN}{NBSP}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Une usine détruite dans des circonstances suspectes près de {TOWN}{NBSP}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}Un OVNI se pose près de {TOWN}{NBSP}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}L'affaissement d'une veine de charbon laisse des traces de destruction près de {TOWN}{NBSP}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inondations{NBSP}!{}Au moins {COMMA} présumé{P "" s} manquant{P "" s} ou mort{P "" s} après des inondations meurtrières{NBSP}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Inondations{NBSP}!{}Au moins {COMMA} personne{P "" s} manquante{P "" s}, présumée{P "" s} morte{P "" s} après des inondations importantes{NBSP}!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}La compagnie de transport a des ennuis{NBSP}!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} va être en banqueroute si ses performances ne s'améliorent pas rapidement{NBSP}!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} va être vendue ou mise en banqueroute si ses performances ne s'améliorent pas rapidement{NBSP}!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Fusion de compagnies de transport{NBSP}!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} a été vendue à {STRING} pour {CURRENCY_LONG}{NBSP}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Banqueroute{NBSP}!
@@ -1030,7 +1030,7 @@ STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Type de
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Quantité de mer/lacs{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Économie{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Demi-tour des trains{NBSP}: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Désastres{NBSP}: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Catastrophes{NBSP}: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Attitude de la municipalité face au repaysagement{NBSP}: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
@@ -1073,7 +1073,7 @@ STR_DISASTER_NONE                                               :Aucune
 STR_DISASTER_REDUCED                                            :Réduites
 STR_DISASTER_NORMAL                                             :Normales
 
-STR_SUBSIDY_X1_5                                                :x1.5
+STR_SUBSIDY_X1_5                                                :x1,5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
@@ -1084,17 +1084,17 @@ STR_TERRAIN_TYPE_HILLY                                          :Collinaire
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montagneux
 
 STR_ECONOMY_STEADY                                              :Stable
-STR_ECONOMY_FLUCTUATING                                         :Fluctuant
+STR_ECONOMY_FLUCTUATING                                         :Fluctuante
 
 STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :À la fin de la ligne et aux gares
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :À la fin de la ligne seulement
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
-STR_CITY_APPROVAL_TOLERANT                                      :Tolérant
+STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de 'Contenu en ligne'
-STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette action a modifié le niveau de difficulté en 'Personnalisé'
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Aucune IA utilisable...{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette action a modifié le niveau de difficulté en «{NBSP}Personnalisé{NBSP}»
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options avancées
@@ -1126,7 +1126,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modèle
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinaison des pentes pour les trains{NBSP}: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinaison des pentes pour les véhicules routiers{NBSP}: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et aux navires les virages à 90°{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre une station non adjacente{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre des stations non adjacentes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Charger les véhicules graduellement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation{NBSP}: {ORANGE}{STRING}
@@ -1171,7 +1171,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Les aé
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avertir qu'un véhicule est perdu{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Vérifier les ordres des véhicules{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Non
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :De tous, sauf ceux stoppés
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :De tous, sauf de ceux à l'arrêt
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tous les véhicules
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Alerter en cas de revenu négatif pour un véhicule{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les véhicules n'expirent jamais{NBSP}: {ORANGE}{STRING}
@@ -1208,7 +1208,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou p
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue maximum des gares{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s} {RED}Attention{NBSP}: valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle des rails/routes/eau et aéroport{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle du rail/route/eau/aéroport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Couleur utilisée pour le terrain sur la mini-carte{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Vert
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Vert foncé
@@ -1216,11 +1216,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Défilement régulier de la vue{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Affichage des livrées de compagnie{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Affichage des livrées des compagnies{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Aucune
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propre compagnie
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Toutes les compagnies
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Préférer le chat d'équipe avec <ENTER>{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Préférer le clavardage d'équipe avec <ENTER>{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fonction de la molette{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom de la carte
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Défilement de la carte
@@ -1780,7 +1780,7 @@ STR_NETWORK_CHAT_TO_COMPANY                                     :[Équipe] À {S
 STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRING}{NBSP}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privé] À {STRING}{NBSP}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Tous] {STRING}{NBSP}: {WHITE}{STRING}
-STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer le texte pour le chat
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer le texte du clavardage
 
 # Network messages
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
