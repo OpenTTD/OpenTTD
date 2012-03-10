@@ -931,49 +931,26 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 	uint32 cmask = GetUnionOfArticulatedRefitMasks(engine, false);
 	/* List of cargo types available in this climate */
 	uint32 lmask = _cargo_mask;
-	char string[512];
-	char *b = string;
 
 	/* Draw nothing if the engine is not refittable */
 	if (HasAtMostOneBit(cmask)) return y;
 
-	b = InlineString(b, STR_PURCHASE_INFO_REFITTABLE_TO);
-
 	if (cmask == lmask) {
 		/* Engine can be refitted to all types in this climate */
-		b = InlineString(b, STR_PURCHASE_INFO_ALL_TYPES);
+		SetDParam(0, STR_PURCHASE_INFO_ALL_TYPES);
 	} else {
 		/* Check if we are able to refit to more cargo types and unable to. If
 		 * so, invert the cargo types to list those that we can't refit to. */
 		if (CountBits(cmask ^ lmask) < CountBits(cmask) && CountBits(cmask ^ lmask) <= 7) {
 			cmask ^= lmask;
-			b = InlineString(b, STR_PURCHASE_INFO_ALL_BUT);
+			SetDParam(0, STR_PURCHASE_INFO_ALL_BUT);
+		} else {
+			SetDParam(0, STR_JUST_CARGO_LIST);
 		}
-
-		bool first = true;
-
-		/* Add each cargo type to the list */
-		const CargoSpec *cs;
-		FOR_ALL_SORTED_CARGOSPECS(cs) {
-			if (!HasBit(cmask, cs->Index())) continue;
-
-			if (b >= lastof(string) - (2 + 2 * 4)) break; // ", " and two calls to Utf8Encode()
-
-			if (!first) b = strecpy(b, ", ", lastof(string));
-			first = false;
-
-			b = InlineString(b, cs->name);
-		}
+		SetDParam(1, cmask);
 	}
 
-	/* Terminate and display the completed string */
-	*b = '\0';
-
-	/* Make sure we detect any buffer overflow */
-	assert(b < endof(string));
-
-	SetDParamStr(0, string);
-	return DrawStringMultiLine(left, right, y, INT32_MAX, STR_JUST_RAW_STRING);
+	return DrawStringMultiLine(left, right, y, INT32_MAX, STR_PURCHASE_INFO_REFITTABLE_TO);
 }
 
 /** Get the cargo subtype text from NewGRF for the vehicle details window. */
