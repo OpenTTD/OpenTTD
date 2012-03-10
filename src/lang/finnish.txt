@@ -1946,8 +1946,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}pois
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}päällä
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Älä korosta ehdotetun tontin vaikutusaluetta.
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Korosta ehdotetun tontin vaikutusalue.
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Vastaanottaa: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tuottaa: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Liitä asema
@@ -2722,7 +2722,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa vastaan
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.
@@ -2967,9 +2967,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
-STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua
 

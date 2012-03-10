@@ -1936,8 +1936,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Tiada
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ada
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Jangan serlahkan kawasan liputan tapak yang dicadangkan
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Serlahkan kawasan liputan tapak yang dicadangkan
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-berkalan: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Menerima: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Bekalan-berkalan: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Gabungkan stesen
@@ -2682,7 +2682,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Terima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tunjukkan senarai kargo yang diterima
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
@@ -2927,9 +2927,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kos: {GOLD}{CURRENCY_LONG}{BLACK} Kelajuan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Muatan: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Gerabak Berkuasa: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ubahsuai kepada: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ubahsuai kepada: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
-STR_PURCHASE_INFO_ALL_BUT                                       :Semua kecuali {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Semua kecuali {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Usaha Penarikan Maks.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jarak: {GOLD}{COMMA} petak
 

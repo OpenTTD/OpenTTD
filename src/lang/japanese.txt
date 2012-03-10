@@ -1893,8 +1893,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}切
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}入
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}駅の受入れる地域をハイライトしません
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}駅の受入れる地域をハイライトします
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入れ貨物：{GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}受入れ貨物：{GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}供給: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}駅を統合
@@ -2596,7 +2596,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}（{1:S
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入れ貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}駅の評価を表示します
@@ -2821,9 +2821,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量�
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格：{GOLD}{CURRENCY_LONG}{BLACK}　最大速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}収容能力：{GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力貨車：{GOLD}+{POWER}{BLACK}　重量：{GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装備の貨物種類：{GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
-STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}を除いてすべて
+STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}を除いてすべて
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}列車のリスト - 情報を見るには列車をクリックします

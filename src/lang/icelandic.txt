@@ -1854,8 +1854,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Fela
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Sýna
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ekki sýna svæði sem tilheyrir stöð
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Sýna svæði sem tilheyrir stöð
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Móttekur: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Birgðir: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Móttekur: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Birgðir: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Tengja stöðvar
@@ -2546,7 +2546,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Tekur við
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Sýna lista yfir móttækilegan varning
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Móttekur: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Móttekur: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Einkunn
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Sýna einkunn stöðvar
@@ -2764,9 +2764,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY_LONG}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Hægt að breyta farmi í: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Hægt að breyta farmi í: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Allar tegundir farms
-STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Allt nema {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Hámarks : {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lestarlisti - smelltu á farartæki fyrir meiri upplýsingar

@@ -1860,8 +1860,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}מופס
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}מופעל
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}בטל הדגשת השטח המכוסה ע"י התחנה
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}הדגש את השטח המכוסה ע"י התחנה
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}מקבלת: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}מספקת: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}מקבלת: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}מספקת: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}חבר לתחנה קיימת
@@ -2513,7 +2513,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}מקבל
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}הצג רשימת סוגי המטען שהתחנה מקבלת
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}מקבלת: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}מקבלת: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}דירוג
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}הצג את דירוג השירות
@@ -2733,9 +2733,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}משקל
 STR_PURCHASE_INFO_COST_SPEED                                    :{GOLD}{1:VELOCITY}{BLACK} : מהירות {GOLD}{0:CURRENCY_LONG} {BLACK} :מחיר
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}קיבולת: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}קרונות ממונעים: {GOLD}+{POWER}{BLACK} משקל: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK} :ניתן להתאים ל{GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK} :ניתן להתאים ל{GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :כל סוגי המטען
-STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} כל סוגי המטען למעט
+STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} כל סוגי המטען למעט
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}כוח סחיבה מקסימלי: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK} בחירת קרונות - לחץ על קרון לקבלת מידע

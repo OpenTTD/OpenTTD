@@ -1885,8 +1885,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Malaktiv
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Aktiva
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne marku ŝarĝregionon de proponata loko
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Marku ŝarĝregionon ĉe proponata loko
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptiĝas: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Akceptiĝas: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provizoj: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ligi stacion
@@ -2559,7 +2559,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Akceptas
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Montri liston de akceptataj ŝarĝoj.
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Akceptiĝas: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Takso
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montru stacian takson
@@ -2780,9 +2780,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosto: {GOLD}{CURRENCY_LONG}{BLACK} Rapido: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Enhaveco: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagonfortoj: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transformebla al: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Transformebla al: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
-STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimuma Tiro: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Trajnveturila elektolisto - alklaku veturilon por informoj

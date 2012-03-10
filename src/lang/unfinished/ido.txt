@@ -648,7 +648,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro mu
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas: {GOLD}{CARGO_LIST}
 
 # Join station window
 
@@ -838,7 +838,7 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Vartabas: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceptas: {WHITE}{CARGO_LIST}
 
 
 ############ range for rating starts

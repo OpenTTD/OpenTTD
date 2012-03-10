@@ -1944,8 +1944,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}خامو
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}روشن
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}منطقه تحت پوشش از سایت پیشنهادی را نشان نده
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}منطقه تحت پوشش از سایت پیشنهادی را نشان بده
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}قبول می کند:
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}تدارکات:
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{CARGO_LIST}{BLACK}قبول می کند:
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{CARGO_LIST}{BLACK}تدارکات:
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}پیوستن ایستگاه
@@ -2710,7 +2710,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول می کند
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه

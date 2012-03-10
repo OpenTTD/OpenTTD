@@ -1035,8 +1035,8 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :ГШ библи
 # Transparency settings window
 
 # Base for station construction window(s)
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Залихи: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прифаќа: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Залихи: {GOLD}{CARGO_LIST}
 
 # Join station window
 
@@ -1316,7 +1316,7 @@ STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чека
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} пренасочено од {STATION})
 
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{CARGO_LIST}
 
 
 ############ range for rating starts

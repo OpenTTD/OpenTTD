@@ -1725,7 +1725,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}எட�
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}விலை: {GOLD}{CURRENCY_LONG}{BLACK} வேகம்: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}கொள்ளளவு: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_ALL_TYPES                                     :அனைத்து சரக்கு வகைகள்
-STR_PURCHASE_INFO_ALL_BUT                                       :அனைத்தும் {GOLD} தவிர
+STR_PURCHASE_INFO_ALL_BUT                                       :அனைத்தும் {CARGO_LIST} தவிர
 
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}வாகனத்தை வாங்கு

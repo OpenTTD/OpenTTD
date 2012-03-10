@@ -1879,8 +1879,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}As
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Ar siúl
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ná haibhsigh an limistéar clúdaigh don suíomh beartaithe
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Aibhsigh an limistéar clúdaigh don suíomh beartaithe
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Glactar le: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Soláthar: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Glactar le: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Soláthar: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Ceangail stáisiún
@@ -2576,7 +2576,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Glactar le
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Taispeáin liosta den lastas a ghlactar leis
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Glactar le: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Glactar le: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rátálacha
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Taispeáin rátálacha na stáisiún
@@ -2796,9 +2796,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Meáchan
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costas: {GOLD}{CURRENCY_LONG}{BLACK} Luas: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Toilleadh: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vaigíní faoi Chumhacht: {GOLD}+{POWER}{BLACK} Meáchan: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Is féidir athfheistiú go: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Is féidir athfheistiú go: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Gach cineál lastais
-STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seachas {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Gach rud seachas {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Iarracht uasta tarraingthe: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Liosta chun feithicil traenach a roghnú - cliceáil ar fheithicil le faisnéis a fháil

@@ -2020,8 +2020,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Vypnuto
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Zapnuto
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nezvýrazňovat oblast pokrytí
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Zvýraznit oblast pokrytí
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Přijímá: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Poskytuje: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Přijímá: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Poskytuje: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojování stanic
@@ -2781,7 +2781,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Přijímá: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Přijímá: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnocení
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat hodnocení společností
@@ -3026,9 +3026,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháněné vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy nákladu
-STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tažná síla: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam vlaků - stiskni na vlaku pro informace

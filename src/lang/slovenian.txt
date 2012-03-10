@@ -2099,8 +2099,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Izključ
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Vključeno
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Ne osvetli zajemnega območja predvidene lokacije
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Osvetli zajemno območje predvidene lokacije
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Sprejema: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Sprejema: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dobavlja: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Združi postaje
@@ -2875,7 +2875,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Sprejema
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži seznam sprejetega tovora
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Sprejema: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Sprejema: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaz ocen postaje
@@ -3120,9 +3120,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Teža: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Hitrost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zmogljivost: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pogonski vagoni: {GOLD}+{POWER}{BLACK} Teža: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Preureditve za: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Preureditve za: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
-STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Največja vlečna moč: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Domet: {GOLD}{COMMA} polj
 

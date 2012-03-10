@@ -1889,8 +1889,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Изкл
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Включен
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не отбелязвай зоната от предложеното място
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Отбележи зоната от предложеното място
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приема: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Запаси: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Приема: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Запаси: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Присъедини станцията
@@ -2609,7 +2609,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Приема
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Покажи списък с приетите товари
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приема: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинги
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Покажи нивото на обслужване
@@ -2829,9 +2829,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Тегл
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цема {GOLD}{CURRENCY_LONG}{BLACK} Скорост: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Капацитет: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Вагони с мощност: {GOLD}+{POWER}{BLACK} Тегло: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Преобразуваем на: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Преобразуваем на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всички видове товар
-STR_PURCHASE_INFO_ALL_BUT                                       :Всичко освен {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :Всичко освен {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. теглеща сила: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Списък с влакове - натисни върху влак за информация

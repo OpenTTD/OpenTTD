@@ -1893,8 +1893,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}ปิ�
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}เปิด
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}ปิดการแสดงพื้นที่ให้บริการ
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}เปิดการแสดงพื้นที่ให้บริการ
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}กำลังต้องการ: {GOLD}{STRING}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผลิต: {GOLD}{STRING}
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}กำลังต้องการ: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผลิต: {GOLD}{CARGO_LIST}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}รวมสถานี
@@ -2345,7 +2345,7 @@ STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}กำ�
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ถ่ายมาจาก {STATION})
 
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{CARGO_LIST}
 
 
 ############ range for rating starts
