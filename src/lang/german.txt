@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafe
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschaftsbau: Land senken/heben, Bäume pflanzen, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound- / Musikfenster anzeigen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zeige letzte Mitteilung / Nachricht, Nachrichtenoptionen anzeigen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation, Konsole, KI Debug, Screenshot, über OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Gebietsinformation, Konsole, KI- und Skript-Debug, Screenshots, über OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Werkzeugleisten wechseln
 
 # Extra tooltips for the scenario editor toolbar

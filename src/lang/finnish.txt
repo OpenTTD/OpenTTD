@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Rakenna 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Avaa maastonmuokkaustyökalupalkki maan kohottamiseen/madaltamiseen, puiden istuttamiseen, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näytä ääni- ja musiikkiasetukset
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-aluetiedot, konsoli, tekoälyn virheenjäljitys, kuvankaappaukset, tietoja OpenTTD:stä
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-aluetiedot, konsoli, skriptin virheenjäljitys, kuvankaappaukset, tietoja OpenTTD:stä
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Vaihda työkalupalkkeja
 
 # Extra tooltips for the scenario editor toolbar
@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sulje
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn / Pelin asetukset
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tekoälyn/Peliskriptin asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
@@ -445,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Viestihistoria
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tiedot
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
-STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn / Peliskriptin virheenjäljitys
+STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn/Peliskriptin virheenjäljitys
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Täysin lähennetty kuvakaappaus
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Kuvakaappaus oletuslähennystasolla
@@ -1409,7 +1409,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Vaikeusa
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Lisäasetukset
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-asetukset
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Tarkista Online-sisältö
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tekoälyn / Pelin asetukset
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tekoälyn/Peliskriptin asetukset
 STR_INTRO_QUIT                                                  :{BLACK}Sulje
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Aloita uusi peli. Ctrl+Klik ohittaa kartan asetukset
@@ -1429,7 +1429,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Näytä 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Näytä edistyneemmät asetukset
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Näytä NewGRF-asetukset
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly- ja peliasetukset
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Näytä tekoäly/peliskriptiasetukset
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sulje 'OpenTTD'.
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Tästä käännöksestä puuttuu {NUM} merkkijono{P "" a}. Auta tekemään OpenTTD:stä parempi rekisteröitymällä kääntäjäksi. Lisätietoja tiedostossa readme.txt.
@@ -3499,7 +3499,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Valitse 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Tekoälyn / Peliskriptin virheenjäljitys
+STR_AI_DEBUG                                                    :{WHITE}Tekoälyn/Peliskriptin virheenjäljitys
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skriptin nimi
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Asetukset
@@ -3519,11 +3519,11 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Peliskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Tarkista peliskriptin loki
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online-sisältö' järjestelmällä
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle littäen mukaan kuvankaappaus Tekoälyn/Skriptin virheenjäljitys -ikkunasta
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn / Peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista skripteistä kaatui. Ilmoita tästä skriptin kehittäjälle littäen mukaan kuvankaappaus Tekoälyn/Peliskriptin virheenjäljitys -ikkunasta
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn/Peliskriptin virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn / Pelin määritteet
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn/Peliskriptin määritteet
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Seuraavassa pelissä ladattava peliskripti
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Seuraavassa pelissä ladattavat tekoälyt
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ihmispelaaja

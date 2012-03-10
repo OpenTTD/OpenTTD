@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construc
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ouvrir la barre d'outils de terraformation pour relever/abaisser du terrain, planter des arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Options son et musique
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Afficher le dernier message/bulletin, afficher les options des messages
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, console, débogage d'IA, copies d'écran, à propos d'OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Outils d'inspection du paysage, console, débogage de script, copies d'écran, à propos d'OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Changer de barre d'outils
 
 # Extra tooltips for the scenario editor toolbar
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quitter
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Options du Jeu
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Niveau de difficulté
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configuration avancée
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration des IA et du jeu
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Configuration des scripts
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Paramètres NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Options de transparence
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afficher le nom des villes
@@ -446,7 +446,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historique des 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'inspection du paysage
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/Cacher la console
-STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA et de GameScript
+STR_ABOUT_MENU_AI_DEBUG                                         :Débogage de scripts
 STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran au zoom maximum
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Copie d'écran au zoom par défaut
@@ -1410,7 +1410,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficul
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Options avancées
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration d'IA et de jeu
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration des scripts
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain
@@ -1430,7 +1430,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Afficher
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Afficher les options avancées
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Afficher la configuration des NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Vérifier les contenus nouveaux ou mis à jour téléchargeables
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afficher la configuration d'IA et de jeu
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afficher la configuration des scripts
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Quitter OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Il manque {NUM} chaine{P "" s} dans cette traduction. Merci d'aider à améliorer OpenTTD en vous inscrivant comme traducteur. Voir readme.txt pour les details.
@@ -1630,7 +1630,7 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Commence
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nom de la partie{NBSP}:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Les autres joueurs trouveront le nom de la partie dans le menu de sélection d'une partie multijoueurs
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Choisir le mot de passe
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protégez votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publier)
@@ -3500,7 +3500,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Sélecti
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA et de GameScript
+STR_AI_DEBUG                                                    :{WHITE}Débogage de scripts
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom du script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configuration
@@ -3520,8 +3520,8 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Examiner le journal des scripts de jeu
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Aucune IA n'a été trouvée.{}Cette IA est factice et ne fera rien.{}Vous pouvez télécharger diverses IA via le système de «{NBSP}Contenu en ligne{NBSP}».
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage d'IA et de GameScript.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage d'IA et de GameScript n'est disponible que pour le serveur
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}L'un des scripts a rencontré un problème. Merci de rapporter ceci à l'auteur du script avec une capture d'écran de la fenêtre de débogage de scripts.
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La fenêtre de débogage de scripts n'est disponible que pour le serveur
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration d'IA et de scripts de jeu
