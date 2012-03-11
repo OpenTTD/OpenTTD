@@ -1219,12 +1219,14 @@ STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Konpain
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ezer ez
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Enpresa propioa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Enpresa guztiak
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Talde txat-a <ENTER> rekin nahiago: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Saguaren gurpilaren eginkizuna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mapari zoom egin
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mapa korritu
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Itzalita
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapan zehar mugitzerakoan saguaren gurpilaren abiadura: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Xaguaren eskumako botoiaren emulazioa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
@@ -1270,7 +1272,18 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Ordenag
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Ordenagailuak kontrolatutako kompainiei aireontziak erabiltzen ez utzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Ordenagailuak kontrolatutako kompainiei itsasontzirik erabiltzen ez utzi: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Multijokalari moduan IA baimentzea: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes scriptak amatuta izan baino lehen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Ikuskatze datak ehunekoetan ematea: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Trenentzako ikuskapenen arteko denboraldia: {ORANGE}{STRING} egun{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenentzako ikuskatze arteko denboraldia: {ORANGE}ezindu
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Errepide ibilgailuentzako ikuskatzeen arteko denbora: {ORANGE}{STRING} egun{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Errepide ibilgailuentzako ikuskapenen arteko denboraldia: {ORANGE}galarazi
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Aireontzientzako ikuskapen arteko denboraldia: {ORANGE}{STRING} egun{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Aireontzientzako ikuskapen arteko denboraldia: {ORANGE}galarazi
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Itsasontzientzako ikuskapen arteko denboraldia: {ORANGE}{STRING} egun{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Itsasontzientzako ikuskapen arteko denboraldia: {ORANGE}galarazi
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Kolorezko albisteak {ORANGE}{STRING}. urtean agertzen dira
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Hasierako urtea: {ORANGE}{STRING}
@@ -2341,6 +2354,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

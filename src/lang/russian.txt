@@ -442,7 +442,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, консоль, отладка ИИ, снимки экрана, об игре
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о территории, консоль, отладка скриптов, снимки экрана, об игре
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -1585,7 +1585,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Наст
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показать расширенные настройки
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ и игрового скрипта
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ / игрового скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйти из OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На этот язык не переведен{P 0 а ы о} {NUM} строк{P а и ""}. Вы можете помочь проекту, зарегистрировавшись как переводчик. Инструкции в файле readme.txt.
@@ -4653,6 +4653,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

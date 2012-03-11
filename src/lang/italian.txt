@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Costruis
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Apre la barra di modellazione del terreno per alzare/abbassare il terreno, piantare alberi, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra suoni/musica
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno, console, debug IA, screenshot, informazioni su OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informazioni area terreno, console, debug degli script, screenshot, informazioni su OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Alterna barre degli strumenti
 
 # Extra tooltips for the scenario editor toolbar
@@ -351,7 +351,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Esci
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opzioni gioco
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Impostazioni difficoltà
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Impostazioni avanzate
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Impostazioni IA e gioco
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Impostazioni IA e Script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Impostazioni NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opzioni trasparenza
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra nomi città
@@ -447,7 +447,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Cronologia mess
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informazioni sull'area di terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Apri/chiudi console
-STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA / GameScript
+STR_ABOUT_MENU_AI_DEBUG                                         :Debug IA/Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot con zoom massimo
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot con zoom predefinito
@@ -1433,7 +1433,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Difficol
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Impostazioni avanzate
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Impostazioni NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenuti online
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Impostazioni IA e gioco
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Impostazioni IA e Script
 STR_INTRO_QUIT                                                  :{BLACK}Esci
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Inizia una nuova partita. CTRL salta la configurazione della mappa.
@@ -1453,7 +1453,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra le impostazioni avanzate
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra le impostazioni NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Controlla la disponibilità di contenuti nuovi o aggiornati da scaricare
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra le impostazioni delle IA e del gioco
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra le impostazioni delle IA e degli Script
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Esci da 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}A questa traduzione mancano {NUM} string{P a he}. Aiutaci a migliorare OpenTTD iscrivendoti come traduttore. Vedi readme.txt per dettagli.
@@ -1867,7 +1867,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partita ripresa
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :numero di giocatori
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connessione client in corso
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuale
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script di gioco
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :abbandono della partita
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} è entrato nella partita
@@ -1929,7 +1929,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Suoni base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=f}Musica base
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script di gioco
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Libreria script
 
 # Content downloading progress window
@@ -3527,7 +3527,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selezion
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debug IA / GameScript
+STR_AI_DEBUG                                                    :{WHITE}Debug IA/Script
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome dello script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Impostazioni
@@ -3543,16 +3543,16 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Attiva/d
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Esce dalla pausa e continua l'esecuzione della IA
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visualizza l'output di debug di questa IA
-STR_AI_GAME_SCRIPT                                              :{BLACK}Script di gioco
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visualizza il log degli script di gioco
+STR_AI_GAME_SCRIPT                                              :{BLACK}Script
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visualizza il log degli script
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno degli script in funzione è andato in crash. Si prega di inviare una segnalazione all'autore dello script con uno screenshot della finestra Debug IA / GameScript
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA / GameScript è disponibile soltanto per il server
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uno degli script in funzione è andato in crash. Si prega di inviare una segnalazione all'autore dello script con uno screenshot della finestra Debug IA/Script
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA/Script è disponibile soltanto per il server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurazione IA e gioco
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Lista dei GameScript che saranno caricati nella prossima partita
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurazione IA e Script
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Lista degli Script che saranno caricati nella prossima partita
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Lista delle IA che saranno caricate nella prossima partita
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Giocatore umano
 STR_AI_CONFIG_RANDOM_AI                                         :IA casuale
@@ -3563,13 +3563,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Sposta l
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Sposta giù
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Sposta l'IA selezionata più in basso nell'elenco
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script
 STR_AI_CONFIG_AI                                                :{SILVER}IA
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Seleziona {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carica un altro script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura i parametri dello script
@@ -3577,7 +3577,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibili
 STR_AI_LIST_CAPTION_AI                                          :IA
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScript
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Script
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Fare clic per selezionare uno script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autore: {STRING}
@@ -3592,7 +3592,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non modi
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri {STRING}
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Chiudi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reimposta
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4450,6 +4450,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

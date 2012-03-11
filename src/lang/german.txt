@@ -232,7 +232,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster 
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste klicken und ziehen, um das Fenster zu verschieben
 STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen - Nur die Titelleiste zeigen
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
-STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
+STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die "Schließe alle Fenster"-Taste geschlossen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: In der Liste auf- und abwärts blättern

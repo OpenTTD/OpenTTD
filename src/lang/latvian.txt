@@ -264,7 +264,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datums
 STR_SORT_BY_NAME                                                :Nosaukuma
 STR_SORT_BY_PRODUCTION                                          :Produkcijas
 STR_SORT_BY_TYPE                                                :Veida
-STR_SORT_BY_TRANSPORTED                                         :Transportētā
+STR_SORT_BY_TRANSPORTED                                         :Pārvadājuma
 STR_SORT_BY_NUMBER                                              :Numura
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Peļņas pērn
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Peļņas šogad
@@ -324,14 +324,14 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslē
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenārija redaktoru, iziet
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenāriju redaktors
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pārvietot sākšanas datumu 1 gadu atpakaļ
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}scenāriju redaktors
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pārvietot sākuma datumu 1 gadu atpakaļ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Pārvietot sākuma datumu 1 gadu uz priekšu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klikšķināt, lai ievadītu sākuma gadu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Rādīt karti, pilsētu sarakstu
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Ainavas radīšana
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pilsētu radīšana
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ražošanas radīšana
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ražotņu radīšana
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Ceļu būvēšana
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Stādīt kokus. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Novietot zīmi
@@ -772,7 +772,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirižabļa katastrofa {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Autotransports ir gājis bojā sadursmē ar 'NLO'!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Naftas rūpnīcas sprādziens netālu no {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Ir uzsprāgusi naftas pārstrādes rūpnīca netālu no {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Netālu no {TOWN} mīklainos apstākļos iznīcināta rūpnīca!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'NLO' nolaižas netālu no {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ogļu raktuves iebrukšana atstāj bojājumu joslu netālu no {TOWN}!
@@ -903,8 +903,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Mērvien
 
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Britu
-STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriskā
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
+STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metriskās
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Starptautiskās (SI)
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autotransporta līdzekļi
@@ -2926,16 +2926,16 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Sūtīt uz ang�
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Klik, lai apstādinātu visas mašīnas, kas ir sarakstā
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Klik, lai iedarbinātu visas mašīnas, kas ir sarakstā
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Dalītie uzdevumi {COMMA} transportlīdzek{P lim ļiem ļiem}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Koplietojamie rīkojumi {COMMA} transportlīdzek{P lim ļiem ļiem}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Visi vilcieni
-STR_GROUP_ALL_ROAD_VEHICLES                                     :Visi automobiļi
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Visi autotransporta līdzekļi
 STR_GROUP_ALL_SHIPS                                             :Visi kuģi
 STR_GROUP_ALL_AIRCRAFTS                                         :Visi lidaparāti
 
 STR_GROUP_DEFAULT_TRAINS                                        :Negrupēti vilcieni
-STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupēti transportlīdzekļi
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupēti autotransporta līdzekļi
 STR_GROUP_DEFAULT_SHIPS                                         :Negrupēti kuģi
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupēti lidaparāti
 
@@ -3896,8 +3896,8 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nevar iz
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nevar izdzēst šo grupu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nevar pārdēvēt grupu...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}No šīs grupas nevar noņemt visus transportlīdzekļus...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nevar pievienot transportus šajā grupā...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pievienot kopējos transportus šajā grupā...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nevar pievienot transportlīdzekļus šajā grupā...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pievienot koplietojamos transportlīdzekļus šajā grupā...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vilciens ceļā
@@ -4074,7 +4074,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukura raktuve
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bez nosaukuma
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Automašīna {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Autotransporta līdzeklis {COMMA}
 STR_SV_SHIP_NAME                                                :Kuģis {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Lidaparāts {COMMA}
 
@@ -4431,6 +4431,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

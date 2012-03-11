@@ -441,7 +441,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буду
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Змінити ландшафт
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Налаштувати звук/музику
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показати останнє повідомлення. Налаштування повідомлень
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку, консоль, налагодження AI, знімки екрану, про OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Інформація про земельну ділянку, консоль, налагодження скриптів, знімки екрану, про OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключити панелі
 
 # Extra tooltips for the scenario editor toolbar
@@ -474,7 +474,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Налаштування складності
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Розширені налаштування
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / скрипта
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Налаштування ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показувати назви міст
@@ -570,7 +570,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового скрипта
+STR_ABOUT_MENU_AI_DEBUG                                         :АІ/Налагодження Ігрового скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -793,7 +793,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Показати маршрути на карті
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Показати рослинність на карті
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Показати власників землі на карті
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Оберіть вид підприємств клацнувши мишкою. Ctrl + клік мишкою вмикає/вимикає відображення всіх видів, окрім обраного.
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Щоб відобразити певний вид підприємств, клацніть на ньому мишкою. Ctrl + клік мишкою вмикає/вимикає відображення всіх видів, окрім обраного.
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Натисніть на компанію аби відобразити її власність. Ctrl + клік мишкою вмикає/вимикає відображення власності всіх компаній, окрім обраної.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Дороги
@@ -854,15 +854,15 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Повідомлення
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Налаштування повідомлень
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Задати відображення для всіх типів повідомленнь
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Задати відображення всіх типів повідомлень: Не показувати / Скорочено / Повністю
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_NEWS_MESSAGES_OFF                                           :Не показувати
 STR_NEWS_MESSAGES_SUMMARY                                       :Скорочено
 STR_NEWS_MESSAGES_FULL                                          :Повністю
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Типи повідомлень:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прибуття першого транспорту гравця на станцію
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Прибуття першого транспорту конкурента на станцію
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Прибуття першого транспорту на станцію гравця
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Прибуття першого транспорту на станцію конкурента
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Нещасні випадки / стихійні лиха
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Інформація щодо компанії
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Відкриття підприємств
@@ -872,7 +872,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Змі�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Зміна обсягів виробництва на підприємствах, обслуговуваних суперниками
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Зміни обсягів виробництва на інших підприємствах
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Поради / інформація про транспорт компанії
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Поява нових моделей транспорту
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Новий транспорт
 STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Зміни в списку грузів, що приймаються
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Субсидії
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Загальна інформація
@@ -1030,7 +1030,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метричн�
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дорожній транспорт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Виберіть, по якій стороні рухається автотранспорт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :лівосторонній рух
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :правосторонній рух
@@ -1534,7 +1534,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / скрипта
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Налаштування Ігрового Скрипта
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
@@ -1554,7 +1554,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI та ігрового скрипта
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI та Ігрового скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Переклад має {NUM} неперекладених рядків. Зареєструйтесь як перекладач вашої мови та покращіть OpenTTD. Детальніше читайте в readme.txt.
@@ -3092,7 +3092,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY_LONG}{BLACK} Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
@@ -3624,7 +3624,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Обер
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Налагодження АІ / Ігрового скрипта
+STR_AI_DEBUG                                                    :{WHITE}АІ/Налагодження Ігрового Скрипта
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва скрипта
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування
@@ -3644,12 +3644,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Ігро
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипту
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Збій одного з запущених скриптів. Будь ласка, повідомте про це (разом зі знімком вікна налагодження скрипта) автору скрипта
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно налагодження АІ / Ігрового скрипта доступне тільки серверу
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один із запущених скриптів перестав працювати. Будь ласка, повідомте про це автору скрипта (разом зі знімком вікна налагодження АІ/Ігрового Скрипта)
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}АІ/Вікно налагодження Ігрового Скрипта доступне тільки серверу
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Налаштування гри
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}ІгровийСкрипт, який буде завантажено в наступній грі
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Налаштування Ігрового Скрипту
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий Скрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина
 STR_AI_CONFIG_RANDOM_AI                                         :Випадковий AI
@@ -3660,13 +3660,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Пере
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Перемістити нижче
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перемістити обраний AI вниз по списку
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ІгровийСкрипт
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Ігровий Скрипт
 STR_AI_CONFIG_AI                                                :{SILVER}АІ
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Вибрати {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :ІгровийСкрипт
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Ігровий Скрипт
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Завантажити інший скрипт
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Настроїти
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Настроїти параметри скрипту
@@ -3674,7 +3674,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Наст
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Доступні {STRING}
 STR_AI_LIST_CAPTION_AI                                          :Модулі АІ
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :ІгровіСкрипти
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Ігрові Скрипти
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати скрипт
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
@@ -3689,7 +3689,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не м�
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри
 STR_AI_SETTINGS_CAPTION_AI                                      :АІ
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ІгровийСкрипт
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий Скрипт
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4584,6 +4584,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

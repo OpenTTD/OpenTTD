@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 �
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, AI 디버그, 스크린샷, OpenTTD에 대하여
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, 스크립트 디버그, 스크린샷, OpenTTD에 대한 정보를 보여줍니다.
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}툴바 변경
 
 # Extra tooltips for the scenario editor toolbar
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :게임 종료
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :게임 옵션
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :난이도 설정
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :고급 설정
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 게임 설정
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / 게임 스크립트 설정
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 설정
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :투명 설정
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :도시 이름을 표시함
@@ -1410,7 +1410,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}난이�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 체크
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게임 설정
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}새 게임을 시작합니다.{}Ctrl+클릭하시면 지도 설정을 건너뛰고 바로 시작합니다.
@@ -1430,7 +1430,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}난이�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}고급 설정 표시
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF 세팅을 봅니다
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}새로 나왔거나 업데이트된 콘텐츠를 체크하여 다운로드합니다.
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI와 게임 설정 표시
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI와 게임 스크립트 설정 표시
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'를 종료합니다
 
 STR_INTRO_TRANSLATION                                           :{BLACK}이 버전의 OpenTTD는 {NUM}개의 문장이 한국어로 번역되지 않았습니다. 한국어 번역자에게 번역을 의뢰하십시오.{}텔크 (telk5093@gmail.com)
@@ -3520,12 +3520,12 @@ STR_AI_GAME_SCRIPT                                              :{G=f}{BLACK}게
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}게임 스크립트 기록 체크
 
 STR_ERROR_AI_NO_AI_FOUND                                        :불러올 인공지능이 없습니다.{}이 인공지능은 불용품이며 아무 기능도 하지 않을 것입니다.{}'온라인 컨텐츠 체크' 기능으로 다른 인공지능을 다운받으세요.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 스크립트 중 하나가 충돌했습니다. 인공지능 / 게임 스크립트 디버그 창에서 스크린샷을 찍어 인공지능 제작자에게 보고하십시오.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}작동중인 스크립트 중 하나가 충돌했습니다. 인공지능 / 게임 스크립트 디버그 창에서 스크린샷을 찍어 스크립트 제작자에게 보고하십시오.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / 게임 스크립트 디버그창은 오직 서버만 사용 가능합니다
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 / 게임 설정
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다
+STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 / 게임 스크립트 설정
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}다음에 게임을 시작할 때 이 게임 스크립트를 불러올 것입니다.
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}다음에 게임을 시작할 때 이 AI를 불러올 것입니다
 STR_AI_CONFIG_HUMAN_PLAYER                                      :사용자 플레이어
 STR_AI_CONFIG_RANDOM_AI                                         :무작위 인공지능

@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparan ista
 STR_FILE_MENU_SAVE_GAME                                         :Kaydet
 STR_FILE_MENU_LOAD_GAME                                         :Yükle
 STR_FILE_MENU_QUIT_GAME                                         :Ana menüye dön
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Çıkış
 ############ range ends here
 
@@ -1802,6 +1803,8 @@ STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bu sunuc
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sunucuya çok fazla komut gönderiyordunuz
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Şifre girmeniz çok uzun sürdü
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Bilgisayarınızın katılması çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Bilgisayarınızın haritayı indirmesi çok uzun sürdü
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Bilgisayarınızın sunucuya katılması çok uzun sürdü
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
@@ -1820,6 +1823,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :sunucu tarafın
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :hile yapmaya çalıştı
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :sunucu dolu
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :çok fazla komut gönderiyordu
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :şifre zamanında alınamadı
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :genel zamanaşımı
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :haritayı indirmek çok uzun sürdü
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :haritayı işlemek çok uzun sürdü
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Olası bağlantı kaybı
@@ -2525,9 +2532,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Open
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmedik sprayt (sprayt {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği {4:HEX} (sprayt {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanım girişimi (sprayt {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden çok Action 8 girişi içeriyor (sprayt {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprayt bitiminden sonrasını okudu (sprayt {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
+STR_NEWGRF_ERROR_GRM_FAILED                                     :İstenen GRF kaynakları mevcut değil (sprayt {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} {STRING} tarafından deaktive edildi
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Geçersiz bilinmeyen sprayt yerleşim biçimi (sprayt {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2657,6 +2671,9 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Ana gör
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Soru
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Bilgi
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Uyarı
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Hata
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :İptal
@@ -3427,7 +3444,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman ç
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki manuel emir tarafından zamanlanır)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :En çok {2:VELOCITY} hız ile git (zaman tablosu yok)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} boyunca en çok {VELOCITY} hız ile git
 STR_TIMETABLE_STAY_FOR                                          :{STRING} bekle
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefer yap: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} gün
@@ -3451,7 +3470,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zamanı Temizle
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili talimatın harcaması gereken süreyi sil
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Hız Sınırını Değiştir
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Seçili emrin azami hızını değiştir
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Hız Sınırını Kaldır
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Seçili emrin azami hızını kaldır
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Gecikme sayacını sıfırla
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
@@ -4410,6 +4433,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4444,6 +4468,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
