@@ -570,7 +570,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :АІ/Налагодження Ігрового скрипта
+STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -1534,7 +1534,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Налаштування Ігрового Скрипта
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / Ігрового Скрипта
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
@@ -1554,7 +1554,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI та Ігрового скрипта
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Переклад має {NUM} неперекладених рядків. Зареєструйтесь як перекладач вашої мови та покращіть OpenTTD. Детальніше читайте в readme.txt.
@@ -3624,7 +3624,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Обер
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}АІ/Налагодження Ігрового Скрипта
+STR_AI_DEBUG                                                    :{WHITE}Налагодження АІ / Ігрового Скрипта
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Назва скрипта
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Налаштування
@@ -3645,10 +3645,10 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Пере
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один із запущених скриптів перестав працювати. Будь ласка, повідомте про це автору скрипта (разом зі знімком вікна налагодження АІ/Ігрового Скрипта)
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}АІ/Вікно налагодження Ігрового Скрипта доступне тільки серверу
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вікно налагодження АІ / Ігрового Скрипта доступне тільки серверу
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Налаштування Ігрового Скрипту
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Налаштування AI / Ігрового Скрипта
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Ігровий Скрипт, який буде завантажено в наступній грі
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}АІ, які будуть завантажені в наступній грі
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Гравець-людина

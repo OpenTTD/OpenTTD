@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Åpne landskapsverktøylinjen for å heve/senke land, plante trær, osv.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vis lyd-/musikkinnstillinger
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om landområde, konsoll, AI-feilsøking, skjermbilder, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informasjon om landområde, konsoll, skriptfeilsøking, skjermbilder, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skift verktøylinjer
 
 # Extra tooltips for the scenario editor toolbar
@@ -351,7 +351,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskelighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte innstillinger
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / Spillinnstillinger
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spillskript-innstillinger
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis bynavn
@@ -447,7 +447,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Tidligere meldi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om landområde
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / Spillskript feilsøking
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spillskript-feilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermbilde
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørret skjermbilde
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt forstørret skjermbilde
@@ -1411,7 +1411,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Vanskeli
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Avanserte Innstillinger
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-innstillinger
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Se etter innhold på nettet
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Spillinnstillinger
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spillskript-innstillinger
 STR_INTRO_QUIT                                                  :{BLACK}Avslutt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start et nytt spill. Ctrl+klikk hopper over kartkonfigurering
@@ -1431,7 +1431,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Vis vans
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Vis avanserte innstillinger
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Vis NewGRF-instillinger
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Se etter nytt og oppdatert innhold for nedlasting
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis AI / Spillinnstillinger
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vis AI/Spillskript-innstillinger
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Avslutt 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Denne oversettelsen mangler {NUM} streng{P "" er}. Vennligst hjelp til å gjøre OpenTTD bedre ved å bli med i oversettergruppen. For detaljer, sjekk readme.txt.
@@ -3501,7 +3501,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Velg år
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI / Spillskript feilsøking
+STR_AI_DEBUG                                                    :{WHITE}AI/Spillskript-feilsøking
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Navnet til AIen
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Innstillinger
@@ -3521,11 +3521,11 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spillskr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Sjekk spillskriptloggen
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passende AI ble funnet.{}Denne AIen er en plassholder og vil ikke gjøre noe.{}Du kan laste ned flere AIer fra nettet med spillets nedlastingssystem.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Et skript krasjet. Vennligst rapporter dette til skript-forfatteren med et skjermbilde av AI / Spillskript feilsøkingsvinduet.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Spillskript-feilsøkingsvindu er kun tilgjengelig for tjeneren
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Et skript krasjet. Vennligst rapporter dette til skript-forfatteren med et skjermbilde av AI/Spillskript feilsøkingsvinduet
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Spillskript-feilsøkingsvindu er kun tilgjengelig for tjeneren
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI-konfigurasjon
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spillskript-konfigurasjon
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spillskriptet som vil bli lastet i neste spill
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIene som vil bli lastet i neste spill
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menneskelig spiller
@@ -4424,6 +4424,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

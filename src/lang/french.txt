@@ -219,7 +219,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP}m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entrer le filtre
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entrer un mot clé pour filtrer la liste
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entrer un mot-clé pour filtrer la liste
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Choisir l'ordre de tri (croissant/décroissant)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Choisir le critère de tri

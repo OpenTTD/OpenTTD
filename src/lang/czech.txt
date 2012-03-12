@@ -437,6 +437,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Průhledná jm�
 STR_FILE_MENU_SAVE_GAME                                         :Uložit hru
 STR_FILE_MENU_LOAD_GAME                                         :Načíst hru
 STR_FILE_MENU_QUIT_GAME                                         :Ukončit hru
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ukončit program
 ############ range ends here
 
@@ -909,6 +910,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemůže najít cestu
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se ztratil{G 0 "" a o i y y a}
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} - loňský zisk {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} se nemůže dostat do dalšího cíle, protože je mimo dosah
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stojí kvůli selhání příkazu na změnu nákladu
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Obnovení selhalo pro {VEHICLE}{}{STRING}
@@ -1880,6 +1882,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jsi blok
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Byl jsi vyhozen ze hry
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Používání cheatů není na tomto serveru povoleno
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posíláte serveru příliš mnoho příkazů
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vložení hesla ti trvalo příliš dlouho
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tvůj počítač je přiliš pomalý pro udržení kroku se serverem
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Tvému počítači trvalo stahování mapy příliš dlouho
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Tvému počítači trvalo připojování na server příliš dlouho
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba
@@ -1898,6 +1904,8 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :vyhozen servere
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :se pokoušel podvádět
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :na serveru je plno
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :posílal příliš mnoho příkazů
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :neobdrženo žádné heslo v časovém limitu
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :všeobecný timeout
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :stahování mapy trvalo příliš dlouho
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :zpracování mapy trvalo příliš dlouho
 ############ End of leave-in-this-order
@@ -2538,6 +2546,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunout
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam grafických souborů, které jsou nainstalovány.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametry
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Zobrazit parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Přepnout paletu
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}U vybrané grafiky přepne paletu.{}Je to užitečné, když se ti ve hře zobrazuje růžově
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Potvrdit změny
@@ -2610,9 +2619,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} pot�
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {1:STRING} jako statické grafiky spolu s {STRING} může způsobit chybu synchronizace
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočekávaný sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá Akce 0 vlastnost {4:HEX} (sprite {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje vícero Akce 8 záznamů (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení konce pseudo-spritu (sprite {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zdroje GRF nejsou dostupné (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neplatný/neznámý sprite layout formát (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -2738,8 +2754,13 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globáln
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Žádné -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cíle společnosti:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cíl pro zaměření pohledu na průmysl/město/pole. Ctrl+Klik otevře nové okno s pohledem na průmyslu/městu/poli.
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Dotaz
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informace
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Varování
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Chyba
 
 ### Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Zrušit
@@ -2748,10 +2769,18 @@ STR_GOAL_QUESTION_BUTTON_NO                                     :Ne
 STR_GOAL_QUESTION_BUTTON_YES                                    :Ano
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Odmítnout
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Příjmout
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorovat
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Zkusit znovu
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Předchozí
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Další
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Zastavit
+STR_GOAL_QUESTION_BUTTON_START                                  :Spustit
+STR_GOAL_QUESTION_BUTTON_GO                                     :Jdi
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Pokračovat
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Restartovat
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Odložit
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Vzdát se
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Zavřít
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Dotace
@@ -3030,6 +3059,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitova
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tažná síla: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Dosah: {GOLD}{COMMA} polí
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
@@ -3156,6 +3186,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {C
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Váha: {WEIGHT_SHORT}{}Rychlost: {VELOCITY}  Síla: {POWER}  Maximální tažná síla: {6:FORCE}{}Provozní náklady: {4:CURRENCY_LONG}/rok{}Kapacita: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Cena provozu: {CURRENCY_LONG} ročně
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO_LONG}{}Cena provozu: {CURRENCY_LONG} ročně
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena {CURRENCY_LONG} Max. Rychlost: {VELOCITY} Dosah: {7:COMMA} polí{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Provozní náklady: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena {CURRENCY_LONG} Max. Rychlost {VELOCITY} Dosah: {7:COMMA} polí{}Kapacita: {CARGO_LONG}{}Provozní náklady: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING}
@@ -3270,6 +3302,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok 
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok roky let} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Dosah: {LTBLUE}{COMMA} polí
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_SHORT} {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY} {BLACK}Max. tažná síla: {LTBLUE}{FORCE}
 
@@ -3486,6 +3519,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[na začátku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[uprostřed]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[na konci]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Další cíl je mimo dosah)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skočit na příkaz {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Skočit na příkaz {COMMA}, když {STRING.small} {STRING} {COMMA}
@@ -3503,7 +3537,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní
 STR_TIMETABLE_NO_TRAVEL                                         :Nikam nejet
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Jet do (automatický; jizdní řád podle následujícího ručního příkazu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Jet maximálně {2:VELOCITY} (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Jeď {STRING} a maximálně {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a jet {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ny nů}
@@ -3527,7 +3563,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Smazat čas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Změnit rychlostní limit
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Změnit maximální cestovní rychlost u vybraného příkazu
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstranit rychlostní limit
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstranit maximální cestovní rychlost u vybraného příkazu
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Zapomenout zpoždění
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
@@ -3622,6 +3662,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :herní skript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Počet dní kdy se spustí tato AI po předchozí (plus/mínus): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -4599,6 +4640,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4633,6 +4675,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}

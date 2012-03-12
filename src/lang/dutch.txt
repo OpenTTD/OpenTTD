@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bouw vli
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Toon geluid/muziekscherm
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Toon laatste (nieuws)bericht, toon berichtinstellingen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, console, AI-debug, screenshots, over OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinformatie, console, script-debug, screenshots, over OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Verwissel knoppenbalk
 
 # Extra tooltips for the scenario editor toolbar
@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / Spel instellingen
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Game script instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsnamen
@@ -445,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berichtengeschi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Schakel console aan/uit
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Game Script debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ingezoomd screenshot
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot met standaard zoom
@@ -1409,7 +1409,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilijk
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Geavanceerde instellingen
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-instellingen
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Online inhoud zoeken
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Spel Instellingen
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spel script Instellingen
 STR_INTRO_QUIT                                                  :{BLACK}Afsluiten
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Start een nieuw spel. Ctrl+klik slaat de kaartconfiguratie over
@@ -1429,7 +1429,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Toon moe
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon geavanceerde instellingen
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Toon NewGRF-instellingen
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Zoeken naar nieuwe en aangepaste inhoud om te downloaden
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Toon AI en spel instellingen
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Toon AI/Game script instellingen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Deze vertaling mist {NUM} tekst{P "" en}. Help aub om OpenTTD beter te maken door je al vertaler aan te melden. Zie readme.txt voor details.
@@ -3499,7 +3499,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selectee
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI / GameScript Debug
+STR_AI_DEBUG                                                    :{WHITE}AI/Game Script Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van het script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instellingen
@@ -3519,12 +3519,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Game Scr
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Controleer het Game Script log
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve scripts is vastgelopen. Meld dit a.u.b. bij de auteur van dit script met een schermprint van het AI / GameScript Debugscherm
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / GameScript debugvenster is alleen beschikbaar voor de server
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eén van de actieve scripts is vastgelopen. Meld dit a.u.b. bij de auteur van dit script met een schermprint van het AI/Spel script Debugscherm
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/Spel script debugvenster is alleen beschikbaar voor de server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Spel configuratie
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Het GameScript dat in het volgende spel geladen wordt
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spel script configuratie
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Het Game Script dat in het volgende spel geladen wordt
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}De AI's die in het volgende spel geladen worden
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Menselijke speler
 STR_AI_CONFIG_RANDOM_AI                                         :Willekeurige AI
@@ -3535,13 +3535,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Geselect
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Omlaag verplaatsen
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}De geselecteerde AI naar omlaag verplaatsen in de lijst
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Game Script
 STR_AI_CONFIG_AI                                                :{SILVER}AI's
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Kies{STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Game Script
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laad een ander script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configureer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configureer de parameters van het script
@@ -3549,7 +3549,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Beschikbaar {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AI's
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een script te selecteren
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur: {STRING}
@@ -3564,7 +3564,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Script n
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sluiten
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstellen
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4422,6 +4422,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
