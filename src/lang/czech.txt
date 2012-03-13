@@ -1491,7 +1491,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Obtížn
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Pokročilé nastavení
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavení grafik
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat součásti
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}nastavení AI / hry
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Nastavení AI / hry
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy

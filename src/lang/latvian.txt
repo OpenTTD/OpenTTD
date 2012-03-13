@@ -2615,8 +2615,8 @@ STR_TOWN_POPULATION                                             :{BLACK}Pasaules
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (lielpilsēta)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Iedzīvotāji: {ORANGE}{COMMA}{BLACK}  Mājas: {ORANGE}{COMMA}
-STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasažieru sk. pagājušā mēnesī: {ORANGE}{COMMA}{BLACK}  Maks. sk.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pasts pagājušā mēnesī: {ORANGE}{COMMA}{BLACK}  Maks. apjoms: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasažieri pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Vēstules pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava nepieciešama pilsētas attīstībai:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nepieciešams
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nepieciešams ziemā
@@ -2625,7 +2625,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u} (finansēta)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}ne{BLACK}aug
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neaug{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu ierobežojums pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pašvaldība
@@ -3170,7 +3170,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Rādīt 
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Rādīt lidaparātu rīkojumus. Ctrl+klikšķis, lai parādītu lidaparātu lidojumu sarakstu
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Rādīt vilciena informāciju
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rādīt transportl. informāciju
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Rādīt autotransporta līdzekļa informāciju
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Rādīt kuģa informāciju
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Rādīt lidaparāta informāciju
 

@@ -412,7 +412,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradi 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvori alatnu traku za krajolik kako bi spustio/izdignuo zemlju, posadio drveće, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Pokaži prozor za zvuk/glazbu
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Pokaži zadnju poruku/vijest, pokaži postavke poruka
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemlji, konzola, debug UI, snimke ekrana, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemlji, konzola, debug skripte, snimke ekrana, o OpenTTD-u
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Promijeni alatne trake
 
 # Extra tooltips for the scenario editor toolbar
@@ -445,7 +445,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izlaz
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Postavke težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne postavke
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI / postavke igre
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Postavke UI-ja/Skripte igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena gradova
@@ -541,7 +541,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Povijest poruka
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemljištu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Otvori konzolu
-STR_ABOUT_MENU_AI_DEBUG                                         :Debugiranje UI-ja / skripte igre
+STR_ABOUT_MENU_AI_DEBUG                                         :Debugiranje UI-ja/Skripte igre
 STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano do kraja na slici zaslona
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Standardno zumiranje slike zaslona
@@ -1505,7 +1505,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Težina 
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne postavke
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Postavke
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Provjeri online sadržaj
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / postavke igre
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Postavke UI-ja/Skripte igre
 STR_INTRO_QUIT                                                  :{BLACK}Izlaz
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započni novu igru. Ctrl+klik preskače konfiguriranje karte
@@ -1525,7 +1525,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikaži
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaži napredne postavke
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži postavke NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI i postavke igre
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži postavke UI-ja/Skripte igre
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izzađi it 'OpenTTD'-a
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prijevodu nedostaje {NUM} slijed. Molimo, pomognite učiniti OpenTTD boljim tako da se prijavite kao prevoditelj. Pogledajte readme.txt za detalje.
@@ -3595,7 +3595,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Odaberi 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI-ja / skripte igre
+STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI-ja/Skripte igre
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime skripte
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Postavke
@@ -3615,11 +3615,11 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta 
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Provjeri zapis Skripte Igre
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nema prikladne UI za učitavanje.{}Ova UI je samo model i neće ništa učiniti.{}Možete preuzeti nekoliko umjetnih inteligencija pomoću sustava 'Online sadržaji'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti se srušila. Molimo vas da prijavite ovo autoru skripte sa kopijom slike prozora za debugiranje UI/skripte igre.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za debugiranje UI-ja / skripte igre je dopušten samo za poslužitelj
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti se srušila. Molimo vas da prijavite ovo autoru skripte sa slikom prozora za debugiranje UI-ja/Skripte igre.
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za debugiranje UI-ja/Skripte igre je dopušten samo za poslužitelj
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracija UI-ja / igre
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracija UI-ja/Skripte igre
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skripta Igre koja će biti učitana u sljedećoj igri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}UI-jevi koji će biti učitani u sljedećoj igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ljudski igrač
@@ -4555,6 +4555,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

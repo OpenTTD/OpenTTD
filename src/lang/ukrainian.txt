@@ -474,7 +474,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Вихід
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Налаштування гри
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Налаштування складності
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Розширені налаштування
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Налаштування ігрового скрипта
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Налаштування AI / Ігрового скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Налаштування NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налаштування прозорості
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показувати назви міст
