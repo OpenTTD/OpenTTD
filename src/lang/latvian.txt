@@ -204,7 +204,7 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna{P "" s u}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P a as u}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
@@ -415,7 +415,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magleva būvnie
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Ceļa būvniecība
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Ceļu būvniecība
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramvaja ceļa būvniecība
 ############ range ends here
 
@@ -688,7 +688,7 @@ STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kravas automobiļu iekrautuve
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusa stacija
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Lidosta/Helikopteru osta
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Doki
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Piestātne
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Nelīdzena zeme
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Zālāju zeme
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Kaila zeme
@@ -835,9 +835,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo neizdevās tā pielāgošanas rīkojums
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automātiskās atjaunošanas kļūda {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Jauns {STRING} tagad ir pieejams!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Tagad ir pieejams jauns {STRING}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Jauns {STRING} tagad ir pieejams!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Tagad ir pieejams jauns {STRING}!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} vairs nepieņem {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} vairs nepieņem {STRING} vai {STRING}
@@ -2094,7 +2094,7 @@ STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Kuģu de
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Izvēlēties kuģu depo virzienu
 
 # Dock construction window
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doks
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Piestātne
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Lidostas
@@ -2771,7 +2771,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Labot pi
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} finanses {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Izdevumi/ienākumi
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Būvdarbi
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Būvniecība
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Jauni transportlīdzekļi
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Vilcienu kārtējās izmaksas
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Autotransporta kārtējās izmaksas
@@ -3661,7 +3661,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Nav iesp
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Vispirms ir jānojauc ēku
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Šo laukumu nevar nolīdzināt...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... vieta nav piemērota
-STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau uzbūvēts
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau ir uzbūvēts
 STR_ERROR_OWNED_BY                                              :{WHITE}... pieder {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... sasniegts ainavu limits
@@ -3749,7 +3749,7 @@ STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk 
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturu
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Pārāk daudz kravas automobiļu staciju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citam dokam
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citai piestātnei
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Pārāk tuvu citai lidostai
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nevar pārdēvēt staciju...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... šis ceļš pieder pilsētai
@@ -3772,7 +3772,7 @@ STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Virpirms
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vispirms ir jānojauc kravas staciju
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vispirms ir jānojauc pasažieru tramvaja pieturu
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vispirms ir jānojauc kravas tramvaja pieturu
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vispirms ir jānojauc doku
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vispirms ir jānojauc piestātni
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Vispirms ir jānojauc lidostu
 
 # Waypoint related errors
@@ -4094,7 +4094,7 @@ STR_SV_STNAME_EXCHANGE                                          :{STRING} Pārs�
 STR_SV_STNAME_AIRPORT                                           :{STRING} Lidosta
 STR_SV_STNAME_OILFIELD                                          :{STRING} Naftas lauks
 STR_SV_STNAME_MINES                                             :{STRING} Raktuves
-STR_SV_STNAME_DOCKS                                             :{STRING} Doki
+STR_SV_STNAME_DOCKS                                             :{STRING} Piestātne
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
