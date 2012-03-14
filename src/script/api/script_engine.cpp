@@ -233,7 +233,7 @@
 	if (!IsValidEngine(engine_id)) return false;
 	if (GetVehicleType(engine_id) != ScriptVehicle::VT_ROAD && GetVehicleType(engine_id) != ScriptVehicle::VT_RAIL) return false;
 
-	return CountArticulatedParts(engine_id, true) != 0;
+	return IsArticulatedEngine(engine_id);
 }
 
 /* static */ ScriptAirport::PlaneType ScriptEngine::GetPlaneType(EngineID engine_id)

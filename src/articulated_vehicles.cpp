@@ -55,6 +55,16 @@ static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle 
 }
 
 /**
+ * Does a NewGRF report that this should be an articulated vehicle?
+ * @param engine_type The engine to check.
+ * @return True iff the articulated engine callback flag is set.
+ */
+bool IsArticulatedEngine(EngineID engine_type)
+{
+	return HasBit(EngInfo(engine_type)->callback_mask, CBM_VEHICLE_ARTIC_ENGINE);
+}
+
+/**
  * Count the number of articulated parts of an engine.
  * @param engine_type The engine to get the number of parts of.
  * @param purchase_window Whether we are in the scope of the purchase window or not, i.e. whether we cannot allocate vehicles.
