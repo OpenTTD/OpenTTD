@@ -24,7 +24,7 @@ enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
 	STAT_CLASS_DFLT = 0,     ///< Default station class.
 	STAT_CLASS_WAYP,         ///< Waypoint class.
-	STAT_CLASS_MAX = 32,     ///< Maximum number of classes.
+	STAT_CLASS_MAX = 256,    ///< Maximum number of classes.
 };
 typedef SimpleTinyEnumT<StationClassID, byte> StationClassIDByte;
 template <> struct EnumPropsT<StationClassID> : MakeEnumPropsT<StationClassID, byte, STAT_CLASS_BEGIN, STAT_CLASS_MAX, STAT_CLASS_MAX, 8> {};
