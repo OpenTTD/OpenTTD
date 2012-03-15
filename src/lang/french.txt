@@ -328,9 +328,9 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Reculer 
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avancer la date de départ d'un an
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Cliquer pour saisir l'année de départ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Afficher la carte, l'annuaire des villes
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Créer le terrain
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Créer les villes
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Créer les industries
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Création du terrain
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Création des villes
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Création des industries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construction routière
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planter des arbres.{}Shift pour afficher seulement le coût estimé.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placer un panneau
@@ -1413,7 +1413,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifie
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration des scripts
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Charger une partie sauvegardée
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Démarrer une nouvelle partie utilisant une carte d'altitude comme paysage
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Démarrer une nouvelle partie à partir d'un scénario personnalisé
@@ -1456,12 +1456,12 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonner la partie
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Êtes-vous sûr de vouloir abandonner cette partie{NBSP}?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-vous sûr de vouloir quitter ce scénario{NBSP}?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-vous sûr de vouloir abandonner ce scénario{NBSP}?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher montrent si vous avez déjà utilisé cette triche auparavant
-STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité
+STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement des industries et des objets fixes){NBSP}: {ORANGE}{STRING}

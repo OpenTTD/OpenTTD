@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Aireport
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zabaldu paisaiko tresna-barra lurra igotzeko/beheratzeko, zuhaitzak landatu, etab.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Erakutsi soinu/musika leihoa
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Erakutsi azken mezu/albiste erreportaia, erakutsi mezu aukerak
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lur arearen informazioa, konsola, IA debug, screenshots, OpenTTDri buruz
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lur arearen informazioa, konsola, script debug, screenshots, OpenTTDri buruz
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Erreminta barra
 
 # Extra tooltips for the scenario editor toolbar
@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarpenak
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :InteligentziaArtifizialaren / Jokoaren ezaugarriak
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :IA/Jokoaren scriptaren ezaugarriak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia ezarpenak
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izenak erakutsita
@@ -445,7 +445,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mezuen historia
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Lur arearen informazioa
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsola aktibatu
-STR_ABOUT_MENU_AI_DEBUG                                         :IA / GameScript debug
+STR_ABOUT_MENU_AI_DEBUG                                         :IA/GameScript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Pantailan dagoenaren argazkia hartu (Ctrl+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pantailan dagoenaren argazkia hartu zoom-a guztiz erabiliz
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :zoom lehenetsikoarekin pantaila-argazkia
@@ -1284,6 +1284,8 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Aireont
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Aireontzientzako ikuskapen arteko denboraldia: {ORANGE}galarazi
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Itsasontzientzako ikuskapen arteko denboraldia: {ORANGE}{STRING} egun{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Itsasontzientzako ikuskapen arteko denboraldia: {ORANGE}galarazi
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Bagoiaren abiadura mugak aktibatu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Trenbide elektrikoa desaktibatu: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Kolorezko albisteak {ORANGE}{STRING}. urtean agertzen dira
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Hasierako urtea: {ORANGE}{STRING}
@@ -1309,6 +1311,13 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri b
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Egoera posizioa {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normala
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Herriaren hazkuntza-abiadura: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motel
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
@@ -1332,6 +1341,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Biderak
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Scriptak
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Originala
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1341,6 +1351,9 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Gom
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpenaren balioa aldatu
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ez da aurkitu
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :bateraezina OpenTTD bertsio honetarako
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

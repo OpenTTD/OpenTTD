@@ -3409,80 +3409,80 @@ STR_ORDER_GO_TO                                                 :Vykti į
 STR_ORDER_GO_NON_STOP_TO                                        :Vykti nesustojant į
 STR_ORDER_GO_VIA                                                :Vykti per
 STR_ORDER_GO_NON_STOP_VIA                                       :Vykti nesustojant per
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Keisti sustojimo būdą pažymeto nurodymo
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Keisti pažymėtos užduoties sustojimo nuostatas
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pilnai pakrovus bet ko
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Krauti jei įmanoma
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pilnai pakrauti viską
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pilnai pakrauti bet kokį krovinį
-STR_ORDER_DROP_NO_LOADING                                       :Nesikrauti
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Keisti pakrovimo būdą pažymėto nurodymo
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pilnai prikrauti kurio nors krovinio
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Krauti, jei yra ką
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pilnai prikrauti visų krovinių
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pilnai prikrauti kurio nors krovinio
+STR_ORDER_DROP_NO_LOADING                                       :Nekrauti
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Keisti pažymėtos užduoties krovinio pakrovimo nuostatas
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iškrauti viską
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iškrauti jei priima
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iškrauti, jei priima
 STR_ORDER_DROP_UNLOAD                                           :Iškrauti viską
 STR_ORDER_DROP_TRANSFER                                         :Perkelti krovinį
 STR_ORDER_DROP_NO_UNLOADING                                     :Neiškrauti
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Keisti iškrovimo būdą pažymėto nurodymo
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Keisti pažymėtos užduoties krovinio iškrovimo nuostatas
 
-STR_ORDER_REFIT                                                 :{BLACK}Naujinti
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pasirinkite kurį vagonų tipą kuriuo tipu pakeisti (eilės tvarka). Spragtelėjus laikant VALD (CTRL) nurodymas pašalinamas
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatinis perdarymas
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Pasirinkite kokį krovinių tipą automatiškai pertvarkyti šiame nurodyme. Paspaudus laikant VALD (CTRL) klavišą pertvarkymo nurodymas bus pašalintas. Automatinis pertvarkymas bus galimas jeigu tik transporto priemonė tai leidžia
-STR_ORDER_DROP_REFIT_AUTO                                       :Žinomas krovinys
-STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Galimas krovinys
+STR_ORDER_REFIT                                                 :{BLACK}Pertvarkyti
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintaslėjus laikant VALD (CTRL) nurodymas pašalinamas
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatinis pertvarkymas
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Automatiškai pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintas. Automatinis pertvarkymas įmanomas tik jei transporto priemonė yra tam pritaikyta
+STR_ORDER_DROP_REFIT_AUTO                                       :Nustatytam kroviniui
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Galimam kroviniui
 
-STR_ORDER_SERVICE                                               :{BLACK}Remontas
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti be sustojimo
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Taisytis, jei reikia
-STR_ORDER_DROP_HALT_DEPOT                                       :Sustoti
+STR_ORDER_SERVICE                                               :{BLACK}Techninė apžiūra
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti visuomet
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Vykti, jei reikia
+STR_ORDER_DROP_HALT_DEPOT                                       :Nuvykti ir sustoti
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Automobilio duomenys bazei šokant ant
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovimosi kiekis (proc)
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovinio užpilda (proc.)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Max. greitis
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Didžiausias greitis
 STR_ORDER_CONDITIONAL_AGE                                       :Amžius (metais)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo
-STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visada
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likęs naudojimo laikas (metais)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia techninės apžiūros
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visuomet
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likusi eksploatacijos trukmė (metais)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kaip lyginti automobilio duomenis su duota reikšme
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu su
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygus su
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau negu
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mažiau arba lygus
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :daugiau negu
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Palyginimo operacija
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau, negu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mažiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :daugiau, negu
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :daugiau arba lygu
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :tiesa
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :klaida
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :netiesa
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšmė su kuria lyginti automobilio duomenis
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite kainą palyginti su
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšmė su kuria lyginti pasirinktą transporto priemonės parametrą
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite reikšmę, su kuria bus lyginama
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Praleisti
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti esamą nurodymą ir pradėti sekantį. Ctrl+spaudimas praleidžia nurodymą
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti šiuo metų vykdomą užduotį ir imtis kitos. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pradėta vykdyti pažymėtoji užduotis
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ištrinti
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ištrinti pažymėta užduotį
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ištrinti visas užduotis
-STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stabdyti dalijimasi
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebesidalinti užsakymų sąrašu.. Ctrl+Click papildomai ištrins visus užsakymus šiai transporto priemonei
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Šalinti
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Šalinti pažymėtąją užduotį
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Šalinti visas užduotis
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Atšaukti užduočių bendrinimą
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebebendrinti užduočių su kitomis transporto priemonėmis. Spragtelėjus laikant nuspaustą Ctrl klavišą, papildomai dar bus pašalintos visos šios transporto priemonės užduotys
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti į
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimiausią depą
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
-STR_ORDER_CONDITIONAL                                           :Sąlyginis užsakymo šuolis
-STR_ORDER_SHARE                                                 :Dalintis užduotimis
+STR_ORDER_CONDITIONAL                                           :Sukurti sąlyginę užduotį
+STR_ORDER_SHARE                                                 :Bendrinti užduotis
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują nurodymą prieš pažymetą, arba iterpti sąrašo pabaigoje. Ctrl+Paspaudimas verčia stotelių nurodymus į 'pilnai pasikrauti bet kokio krovinio', kontrolės punktų į 'praleisti' ir garažų į 'aptarnauti'. 'Dalintis nurodymais' arba paspaudimas laikant VALD (CTRL) klavišą leidžia šiai transporto priemonei dalintis nurodymais su kita transporto priemone. Paspaudus ant kitos transporto priemonės, bus nukopijuoti jos nurodymai
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas tr. priemones, kurios dalijasi šiais nurodymais
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas transporto priemones, kurios dalinasi šiuo užduočių sąrašu
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Vykti per {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti be sustojimo per {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Vykti per „{WAYPOINT}“
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti nesustojant per „{WAYPOINT}“
 
 STR_ORDER_SERVICE_AT                                            :Aptarnavimas
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Servisas nestojant
