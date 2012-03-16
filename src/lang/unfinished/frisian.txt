@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou flea
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Iepenje it lânskips ark om it lân te ferheegje/ferleegje, beamplantsje, etsetera
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Lit lûd/musyk finster sjen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Lit lêste (neis)berjocht sjen / lit berjocht ynstellings sjen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje, console, AI-debug, screenshots, oer OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje, console, script debug, screenshots, oer OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skeakelje tusken ark
 
 # Extra tooltips for the scenario editor toolbar
@@ -365,6 +365,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch namm
 STR_FILE_MENU_SAVE_GAME                                         :Spul opslaan
 STR_FILE_MENU_LOAD_GAME                                         :Spul lade
 STR_FILE_MENU_QUIT_GAME                                         :Spul ferlitte
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Ofslúte
 ############ range ends here
 
@@ -441,7 +442,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskied
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiets ynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript debug
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Gamescript debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Tichtby helje skermfoto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermfoto fan de hiele wrald
@@ -1811,7 +1812,7 @@ STR_OBJECT_CLASS_TRNS                                           :Stjoerders
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beammen
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selektear soart beam
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selektear soart beam. As it fakje al in beam hat, sil dit mear beamen tafoege fan it mixed soart ûnôfhinklike fan it selekteare soart
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Samar wat beammen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantsje samar wat beammen yn it lânskip
 
@@ -2219,8 +2220,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Feroarje
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Keapje 25% oandielen fan bedriuw
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Ferkeapje 25% oandielen fan bedriuw
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Keapje 25% oandielen fan dit bedriuw
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ferkeapje 25% oandielen fan dit bedriuw
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Keapje 25% oandielen fan dit bedriuw. Shift+Klik toant ferwachte kosten sûnder oandielen te keapje
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ferkeapje 25% oandielen fan dit bedriuw. Shift+Klik toant ferwachte kosten sûnder oandielen te ferkeapje
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedriuwsnamme
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namme fan Direkteur
@@ -2449,13 +2450,18 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of lo
 
 
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reizgje (automatic; timetabled by next manual order)
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis {STRING} mei maksimum {VELOCITY}
 
 
 
 
 
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Feroarje maksimumfaasje
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Feroarje de maksimum reissnelheid fan de opljochte oarder
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Helje maksimum snelheid fuort
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Helje de maksimum reissnelheid fuort fan de opljochte oarder
 
 
 
@@ -3262,6 +3268,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3296,6 +3303,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
