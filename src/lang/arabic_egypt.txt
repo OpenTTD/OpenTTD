@@ -1928,8 +1928,8 @@ STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}غلق
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}فتح
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}لا توضح منطقة التغطية للموقح المقترح
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}وضح منطقة التغطيةللموقع المقترح
-STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{STRING}{BLACK}يقبل:
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{STRING}{BLACK}الموارد:
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{GOLD}{CARGO_LIST}{BLACK}يقبل:
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{GOLD}{CARGO_LIST}{BLACK}الموارد:
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}اربط المحطات
@@ -2671,7 +2671,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}يستقبل
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}عرض لائحة بالبضائع المقبولة
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل: {WHITE}{STRING}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل: {WHITE}{CARGO_LIST}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
@@ -2893,9 +2893,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}الوز
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}التكلفة: {GOLD}{CURRENCY_LONG}{BLACK} السرعة : {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK} السعة {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} العربات ذات الطاقة: {GOLD}+{POWER}{BLACK} الوزن: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع الحمولة
-STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {GOLD}
+STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثير الجذب القصى: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}قائمة اختيار القطارات - اضغط على العربة لعرض معلوماتها

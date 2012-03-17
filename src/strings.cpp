@@ -1106,6 +1106,38 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				break;
 			}
 
+			case SCC_CARGO_LIST: { // {CARGO_LIST}
+				uint32 cmask = args->GetInt32(SCC_CARGO_LIST);
+				bool first = true;
+
+				const CargoSpec *cs;
+				FOR_ALL_SORTED_CARGOSPECS(cs) {
+					if (!HasBit(cmask, cs->Index())) continue;
+
+					if (buff >= last - 2) break; // ',' and ' '
+
+					if (first) {
+						first = false;
+					} else {
+						/* Add a comma if this is not the first item */
+						*buff++ = ',';
+						*buff++ = ' ';
+					}
+
+					buff = GetStringWithArgs(buff, cs->name, args, last, next_substr_case_index, game_script);
+				}
+
+				/* If first is still true then no cargo is accepted */
+				if (first) buff = GetStringWithArgs(buff, STR_JUST_NOTHING, args, last, next_substr_case_index, game_script);
+
+				*buff = '\0';
+				next_substr_case_index = 0;
+
+				/* Make sure we detect any buffer overflow */
+				assert(buff < last);
+				break;
+			}
+
 			case SCC_CURRENCY_SHORT: // {CURRENCY_SHORT}
 				buff = FormatGenericCurrency(buff, _currency, args->GetInt64(), true, last);
 				break;
