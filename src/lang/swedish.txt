@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI-felsökning, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, skript-felsökning, skärmdumpar, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
@@ -3519,12 +3519,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Spelskri
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Visa debug-utskrifter för spelskript
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades.{}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av datorspelarna har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på förstret 'Felsökning av datorspelare / spelskript'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ett av scripten som körs har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på förstret 'Felsökning av datorspelare / spelskript'
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelare / spelskript är bara tillgänglig för servern
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration av datorspelaren
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spelskript som kommer att läsas in i nästa spel
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguration av datorspelare/spelskript
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spelskriptet som kommer att läsas in i nästa spel
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Datorspelare som kommer att läsas in i nästa spel
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spelare
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
@@ -4422,6 +4422,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4477,4 +4478,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}

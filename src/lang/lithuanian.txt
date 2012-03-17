@@ -52,86 +52,194 @@ STR_CARGO_PLURAL_OIL                                            :Naftą
 STR_CARGO_PLURAL_OIL.ko                                         :Naftos
 STR_CARGO_PLURAL_OIL.ka                                         :Naftą
 STR_CARGO_PLURAL_LIVESTOCK                                      :Galvijai
-STR_CARGO_PLURAL_LIVESTOCK.ko                                   :Galvijų
-STR_CARGO_PLURAL_LIVESTOCK.ka                                   :Galvijus
+STR_CARGO_PLURAL_LIVESTOCK.kas                                  :galvijai
+STR_CARGO_PLURAL_LIVESTOCK.ko                                   :galvijų
+STR_CARGO_PLURAL_LIVESTOCK.kam                                  :galvijams
+STR_CARGO_PLURAL_LIVESTOCK.ka                                   :galvijus
+STR_CARGO_PLURAL_LIVESTOCK.kuo                                  :galvijais
+STR_CARGO_PLURAL_LIVESTOCK.kur                                  :galvijuose
 STR_CARGO_PLURAL_GOODS                                          :Prekės
-STR_CARGO_PLURAL_GOODS.ko                                       :Prekių
-STR_CARGO_PLURAL_GOODS.ka                                       :Prekes
+STR_CARGO_PLURAL_GOODS.kas                                      :prekės
+STR_CARGO_PLURAL_GOODS.ko                                       :prekių
+STR_CARGO_PLURAL_GOODS.kam                                      :prekėms
+STR_CARGO_PLURAL_GOODS.ka                                       :prekes
+STR_CARGO_PLURAL_GOODS.kuo                                      :prekėmis
+STR_CARGO_PLURAL_GOODS.kur                                      :prekėse
 STR_CARGO_PLURAL_GRAIN                                          :Grūdai
-STR_CARGO_PLURAL_GRAIN.ko                                       :Grūdų
-STR_CARGO_PLURAL_GRAIN.ka                                       :Grūdus
+STR_CARGO_PLURAL_GRAIN.kas                                      :grūdai
+STR_CARGO_PLURAL_GRAIN.ko                                       :grūdų
+STR_CARGO_PLURAL_GRAIN.kam                                      :grūdams
+STR_CARGO_PLURAL_GRAIN.ka                                       :grūdus
+STR_CARGO_PLURAL_GRAIN.kuo                                      :grūdais
+STR_CARGO_PLURAL_GRAIN.kur                                      :grūduose
 STR_CARGO_PLURAL_WOOD                                           :Mediena
-STR_CARGO_PLURAL_WOOD.ko                                        :Medienos
-STR_CARGO_PLURAL_WOOD.ka                                        :Medieną
+STR_CARGO_PLURAL_WOOD.kas                                       :mediena
+STR_CARGO_PLURAL_WOOD.ko                                        :medienos
+STR_CARGO_PLURAL_WOOD.kam                                       :medienai
+STR_CARGO_PLURAL_WOOD.ka                                        :medieną
+STR_CARGO_PLURAL_WOOD.kuo                                       :mediena
+STR_CARGO_PLURAL_WOOD.kur                                       :medienoje
 STR_CARGO_PLURAL_IRON_ORE                                       :Geležies rūda
-STR_CARGO_PLURAL_IRON_ORE.ko                                    :Geležies rūdos
-STR_CARGO_PLURAL_IRON_ORE.ka                                    :Geležies rūdą
+STR_CARGO_PLURAL_IRON_ORE.kas                                   :geležies rūda
+STR_CARGO_PLURAL_IRON_ORE.ko                                    :geležies rūdos
+STR_CARGO_PLURAL_IRON_ORE.kam                                   :geležies rūdai
+STR_CARGO_PLURAL_IRON_ORE.ka                                    :geležies rūdą
+STR_CARGO_PLURAL_IRON_ORE.kuo                                   :geležies rūda
+STR_CARGO_PLURAL_IRON_ORE.kur                                   :geležies rūdoje
 STR_CARGO_PLURAL_STEEL                                          :Plienas
-STR_CARGO_PLURAL_STEEL.ko                                       :Plieno
-STR_CARGO_PLURAL_STEEL.ka                                       :Plieną
+STR_CARGO_PLURAL_STEEL.kas                                      :plienas
+STR_CARGO_PLURAL_STEEL.ko                                       :plieno
+STR_CARGO_PLURAL_STEEL.kam                                      :plienui
+STR_CARGO_PLURAL_STEEL.ka                                       :plieną
+STR_CARGO_PLURAL_STEEL.kuo                                      :plienu
+STR_CARGO_PLURAL_STEEL.kur                                      :pliene
 STR_CARGO_PLURAL_VALUABLES                                      :Brangenybės
-STR_CARGO_PLURAL_VALUABLES.ko                                   :Brangenybių
-STR_CARGO_PLURAL_VALUABLES.ka                                   :Brangenybes
+STR_CARGO_PLURAL_VALUABLES.kas                                  :brangenybės
+STR_CARGO_PLURAL_VALUABLES.ko                                   :brangenybių
+STR_CARGO_PLURAL_VALUABLES.kam                                  :brangenybėms
+STR_CARGO_PLURAL_VALUABLES.ka                                   :brangenybes
+STR_CARGO_PLURAL_VALUABLES.kuo                                  :brangenybėmis
+STR_CARGO_PLURAL_VALUABLES.kur                                  :brangenybėse
 STR_CARGO_PLURAL_COPPER_ORE                                     :Vario rūda
-STR_CARGO_PLURAL_COPPER_ORE.ko                                  :Vario rūdos
-STR_CARGO_PLURAL_COPPER_ORE.ka                                  :Vario rūdą
+STR_CARGO_PLURAL_COPPER_ORE.kas                                 :vario rūda
+STR_CARGO_PLURAL_COPPER_ORE.ko                                  :vario rūdos
+STR_CARGO_PLURAL_COPPER_ORE.kam                                 :vario rūdai
+STR_CARGO_PLURAL_COPPER_ORE.ka                                  :vario rūdą
+STR_CARGO_PLURAL_COPPER_ORE.kuo                                 :vario rūda
+STR_CARGO_PLURAL_COPPER_ORE.kur                                 :vario rūdoje
 STR_CARGO_PLURAL_MAIZE                                          :Kukurūzai
-STR_CARGO_PLURAL_MAIZE.ko                                       :Kukurūzų
-STR_CARGO_PLURAL_MAIZE.ka                                       :Kukurūzus
+STR_CARGO_PLURAL_MAIZE.kas                                      :kukurūzai
+STR_CARGO_PLURAL_MAIZE.ko                                       :kukurūzų
+STR_CARGO_PLURAL_MAIZE.kam                                      :kukurūzams
+STR_CARGO_PLURAL_MAIZE.ka                                       :kukurūzus
+STR_CARGO_PLURAL_MAIZE.kuo                                      :kukurūzais
+STR_CARGO_PLURAL_MAIZE.kur                                      :kukurūzuose
 STR_CARGO_PLURAL_FRUIT                                          :Vaisiai
-STR_CARGO_PLURAL_FRUIT.ko                                       :Vaisių
-STR_CARGO_PLURAL_FRUIT.ka                                       :Vaisius
+STR_CARGO_PLURAL_FRUIT.kas                                      :vaisiai
+STR_CARGO_PLURAL_FRUIT.ko                                       :vaisių
+STR_CARGO_PLURAL_FRUIT.kam                                      :vaisiams
+STR_CARGO_PLURAL_FRUIT.ka                                       :vaisius
+STR_CARGO_PLURAL_FRUIT.kuo                                      :vaisiais
+STR_CARGO_PLURAL_FRUIT.kur                                      :vaisiuose
 STR_CARGO_PLURAL_DIAMONDS                                       :Deimantai
-STR_CARGO_PLURAL_DIAMONDS.ko                                    :Deimantų
-STR_CARGO_PLURAL_DIAMONDS.ka                                    :Deimantus
-STR_CARGO_PLURAL_FOOD                                           :Maistas
-STR_CARGO_PLURAL_FOOD.ko                                        :Maisto
-STR_CARGO_PLURAL_FOOD.ka                                        :Maistą
+STR_CARGO_PLURAL_DIAMONDS.kas                                   :deimantai
+STR_CARGO_PLURAL_DIAMONDS.ko                                    :deimantų
+STR_CARGO_PLURAL_DIAMONDS.kam                                   :deimantams
+STR_CARGO_PLURAL_DIAMONDS.ka                                    :deimantus
+STR_CARGO_PLURAL_DIAMONDS.kuo                                   :deimantais
+STR_CARGO_PLURAL_DIAMONDS.kur                                   :deimantuose
+STR_CARGO_PLURAL_FOOD                                           :Maisto produktai
+STR_CARGO_PLURAL_FOOD.kas                                       :maisto produktai
+STR_CARGO_PLURAL_FOOD.ko                                        :maisto produktų
+STR_CARGO_PLURAL_FOOD.kam                                       :maisto produktams
+STR_CARGO_PLURAL_FOOD.ka                                        :maisto produktus
+STR_CARGO_PLURAL_FOOD.kuo                                       :maisto produktais
+STR_CARGO_PLURAL_FOOD.kur                                       :maisto produktuose
 STR_CARGO_PLURAL_PAPER                                          :Popierius
-STR_CARGO_PLURAL_PAPER.ko                                       :Popieriaus
-STR_CARGO_PLURAL_PAPER.ka                                       :Popierių
+STR_CARGO_PLURAL_PAPER.kas                                      :popierius
+STR_CARGO_PLURAL_PAPER.ko                                       :popieriaus
+STR_CARGO_PLURAL_PAPER.kam                                      :popieriui
+STR_CARGO_PLURAL_PAPER.ka                                       :popierių
+STR_CARGO_PLURAL_PAPER.kuo                                      :popieriumi
+STR_CARGO_PLURAL_PAPER.kur                                      :popieriuje
 STR_CARGO_PLURAL_GOLD                                           :Auksas
-STR_CARGO_PLURAL_GOLD.ko                                        :Aukso
-STR_CARGO_PLURAL_GOLD.ka                                        :Auksą
+STR_CARGO_PLURAL_GOLD.kas                                       :auksas
+STR_CARGO_PLURAL_GOLD.ko                                        :aukso
+STR_CARGO_PLURAL_GOLD.kam                                       :auksui
+STR_CARGO_PLURAL_GOLD.ka                                        :auksą
+STR_CARGO_PLURAL_GOLD.kuo                                       :auksu
+STR_CARGO_PLURAL_GOLD.kur                                       :aukse
 STR_CARGO_PLURAL_WATER                                          :Vanduo
-STR_CARGO_PLURAL_WATER.ko                                       :Vandens
-STR_CARGO_PLURAL_WATER.ka                                       :Vandenį
+STR_CARGO_PLURAL_WATER.kas                                      :vanduo
+STR_CARGO_PLURAL_WATER.ko                                       :vandens
+STR_CARGO_PLURAL_WATER.kam                                      :vandeniui
+STR_CARGO_PLURAL_WATER.ka                                       :vandenį
+STR_CARGO_PLURAL_WATER.kuo                                      :vandeniu
+STR_CARGO_PLURAL_WATER.kur                                      :vandenyje
 STR_CARGO_PLURAL_WHEAT                                          :Kviečiai
-STR_CARGO_PLURAL_WHEAT.ko                                       :Kviečių
-STR_CARGO_PLURAL_WHEAT.ka                                       :Kviečius
+STR_CARGO_PLURAL_WHEAT.kas                                      :kviečiai
+STR_CARGO_PLURAL_WHEAT.ko                                       :kviečių
+STR_CARGO_PLURAL_WHEAT.kam                                      :kviečiams
+STR_CARGO_PLURAL_WHEAT.ka                                       :kviečius
+STR_CARGO_PLURAL_WHEAT.kuo                                      :kviečiais
+STR_CARGO_PLURAL_WHEAT.kur                                      :kviečiuose
 STR_CARGO_PLURAL_RUBBER                                         :Kaučiukas
-STR_CARGO_PLURAL_RUBBER.ko                                      :Kaučiuko
-STR_CARGO_PLURAL_RUBBER.ka                                      :Kaučiuką
+STR_CARGO_PLURAL_RUBBER.kas                                     :kaučiukas
+STR_CARGO_PLURAL_RUBBER.ko                                      :kaučiuko
+STR_CARGO_PLURAL_RUBBER.kam                                     :kaučiukui
+STR_CARGO_PLURAL_RUBBER.ka                                      :kaučiuką
+STR_CARGO_PLURAL_RUBBER.kuo                                     :kaučiuku
+STR_CARGO_PLURAL_RUBBER.kur                                     :kaučiuke
 STR_CARGO_PLURAL_SUGAR                                          :Cukrus
-STR_CARGO_PLURAL_SUGAR.ko                                       :Cukraus
-STR_CARGO_PLURAL_SUGAR.ka                                       :Cukrų
+STR_CARGO_PLURAL_SUGAR.kas                                      :cukrus
+STR_CARGO_PLURAL_SUGAR.ko                                       :cukraus
+STR_CARGO_PLURAL_SUGAR.kam                                      :cukrui
+STR_CARGO_PLURAL_SUGAR.ka                                       :cukrų
+STR_CARGO_PLURAL_SUGAR.kuo                                      :cukrumi
+STR_CARGO_PLURAL_SUGAR.kur                                      :cukruje
 STR_CARGO_PLURAL_TOYS                                           :Žaislai
-STR_CARGO_PLURAL_TOYS.ko                                        :Žaislų
-STR_CARGO_PLURAL_TOYS.ka                                        :Žaislus
+STR_CARGO_PLURAL_TOYS.kas                                       :žaislai
+STR_CARGO_PLURAL_TOYS.ko                                        :žaislų
+STR_CARGO_PLURAL_TOYS.kam                                       :žaislams
+STR_CARGO_PLURAL_TOYS.ka                                        :žaislus
+STR_CARGO_PLURAL_TOYS.kuo                                       :žaislais
+STR_CARGO_PLURAL_TOYS.kur                                       :žaisluose
 STR_CARGO_PLURAL_CANDY                                          :Saldumynai
-STR_CARGO_PLURAL_CANDY.ko                                       :Saldumynų
-STR_CARGO_PLURAL_CANDY.ka                                       :Saldumynus
+STR_CARGO_PLURAL_CANDY.kas                                      :saldumynai
+STR_CARGO_PLURAL_CANDY.ko                                       :saldumynų
+STR_CARGO_PLURAL_CANDY.kam                                      :saldumynams
+STR_CARGO_PLURAL_CANDY.ka                                       :saldumynus
+STR_CARGO_PLURAL_CANDY.kuo                                      :saldumynais
+STR_CARGO_PLURAL_CANDY.kur                                      :saldumynuose
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COLA.ko                                        :Kolos
-STR_CARGO_PLURAL_COLA.ka                                        :Kolą
+STR_CARGO_PLURAL_COLA.kas                                       :kola
+STR_CARGO_PLURAL_COLA.ko                                        :kolos
+STR_CARGO_PLURAL_COLA.kam                                       :kolai
+STR_CARGO_PLURAL_COLA.ka                                        :kolą
+STR_CARGO_PLURAL_COLA.kuo                                       :kola
+STR_CARGO_PLURAL_COLA.kur                                       :koloje
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukraus vata
-STR_CARGO_PLURAL_COTTON_CANDY.ko                                :Cukraus vatos
-STR_CARGO_PLURAL_COTTON_CANDY.ka                                :Cukraus vatą
+STR_CARGO_PLURAL_COTTON_CANDY.kas                               :cukraus vata
+STR_CARGO_PLURAL_COTTON_CANDY.ko                                :cukraus vatos
+STR_CARGO_PLURAL_COTTON_CANDY.kam                               :cukraus vatai
+STR_CARGO_PLURAL_COTTON_CANDY.ka                                :cukraus vatą
+STR_CARGO_PLURAL_COTTON_CANDY.kuo                               :cukraus vata
+STR_CARGO_PLURAL_COTTON_CANDY.kur                               :cukraus vatoje
 STR_CARGO_PLURAL_BUBBLES                                        :Burbulai
-STR_CARGO_PLURAL_BUBBLES.ko                                     :Burbulų
-STR_CARGO_PLURAL_BUBBLES.ka                                     :Burbulus
+STR_CARGO_PLURAL_BUBBLES.kas                                    :burbulai
+STR_CARGO_PLURAL_BUBBLES.ko                                     :burbulų
+STR_CARGO_PLURAL_BUBBLES.kam                                    :burbulams
+STR_CARGO_PLURAL_BUBBLES.ka                                     :burbulus
+STR_CARGO_PLURAL_BUBBLES.kuo                                    :burbulais
+STR_CARGO_PLURAL_BUBBLES.kur                                    :burbuluose
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelė
-STR_CARGO_PLURAL_TOFFEE.ko                                      :Karamelės
-STR_CARGO_PLURAL_TOFFEE.ka                                      :Karamelę
+STR_CARGO_PLURAL_TOFFEE.kas                                     :karamelė
+STR_CARGO_PLURAL_TOFFEE.ko                                      :karamelės
+STR_CARGO_PLURAL_TOFFEE.kam                                     :karamelei
+STR_CARGO_PLURAL_TOFFEE.ka                                      :karamelę
+STR_CARGO_PLURAL_TOFFEE.kuo                                     :karamele
+STR_CARGO_PLURAL_TOFFEE.kur                                     :karamelėje
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijos
-STR_CARGO_PLURAL_BATTERIES.ko                                   :Baterijų
-STR_CARGO_PLURAL_BATTERIES.ka                                   :Baterijas
+STR_CARGO_PLURAL_BATTERIES.kas                                  :baterijos
+STR_CARGO_PLURAL_BATTERIES.ko                                   :baterijų
+STR_CARGO_PLURAL_BATTERIES.kam                                  :baterijoms
+STR_CARGO_PLURAL_BATTERIES.ka                                   :baterijas
+STR_CARGO_PLURAL_BATTERIES.kuo                                  :baterijomis
+STR_CARGO_PLURAL_BATTERIES.kur                                  :baterijose
 STR_CARGO_PLURAL_PLASTIC                                        :Plastmasė
-STR_CARGO_PLURAL_PLASTIC.ko                                     :Plastmasės
-STR_CARGO_PLURAL_PLASTIC.ka                                     :Plastmasę
+STR_CARGO_PLURAL_PLASTIC.kas                                    :plastmasė
+STR_CARGO_PLURAL_PLASTIC.ko                                     :plastmasės
+STR_CARGO_PLURAL_PLASTIC.kam                                    :plastmasei
+STR_CARGO_PLURAL_PLASTIC.ka                                     :plastmasę
+STR_CARGO_PLURAL_PLASTIC.kuo                                    :plastmase
+STR_CARGO_PLURAL_PLASTIC.kur                                    :plastmasėje
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gaivieji gėrimai
-STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                :Gaiviųjų gėrimų
-STR_CARGO_PLURAL_FIZZY_DRINKS.ka                                :Gaiviuosius gėrimus
+STR_CARGO_PLURAL_FIZZY_DRINKS.kas                               :gaivieji gėrimai
+STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                :gaiviųjų gėrimų
+STR_CARGO_PLURAL_FIZZY_DRINKS.kam                               :gaiviesiems gėrimams
+STR_CARGO_PLURAL_FIZZY_DRINKS.ka                                :gaiviuosius gėrimus
+STR_CARGO_PLURAL_FIZZY_DRINKS.kuo                               :gaiviaisiais gėrimais
+STR_CARGO_PLURAL_FIZZY_DRINKS.kur                               :gaiviuosiuose gėrimuose
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -3396,7 +3504,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tvarkaraštis
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pereiti į tvarkaraštį
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spragtelėjimas laikant VALD (CTRL) nukelia į nurodymo tikslą
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, užduoties tikslo vieta bus centruojama pagrindiniame ekranes
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 

@@ -1354,6 +1354,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ezarpena
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ez da aurkitu
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :sistema NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :bateraezina OpenTTD bertsio honetarako
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ezezaguna
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1376,10 +1377,14 @@ STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Multijok
 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Jokoaren aukerak erakutsi
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}'OpenTTD'-tik Irten
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Itzultze honi {NUM} string{P "" s} falta zaio. Mesedez OpenTTD hobeago egiten lagundu itzultzaile bezala aritzen. Ikusi readme.txt zehetasunentzako.
 
 # Quit window
+STR_QUIT_CAPTION                                                :{WHITE}Irten
+STR_QUIT_YES                                                    :{BLACK}Bai
+STR_QUIT_NO                                                     :{BLACK}Ez
 
 # Supported OSes
 STR_OSNAME_WINDOWS                                              :Windows
@@ -1394,6 +1399,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Jokoa Utzi
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Seguru al zaude eszenario hau utzi nahi duzula?
 
 # Cheat window
@@ -1467,6 +1473,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :komandu gehiegi
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
@@ -1737,6 +1744,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Galdera
@@ -1775,6 +1783,7 @@ STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
@@ -1846,6 +1855,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Garajearen izen
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -1920,6 +1930,8 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1998,6 +2010,7 @@ STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Gora Mug
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Behera Mugitu
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -2423,10 +2436,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
