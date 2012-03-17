@@ -4191,3 +4191,11 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_FILE_MENU_SEPARATOR                                         :
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

@@ -4537,3 +4537,6 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_FILE_MENU_SEPARATOR                                         :
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

@@ -4432,3 +4432,5 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
