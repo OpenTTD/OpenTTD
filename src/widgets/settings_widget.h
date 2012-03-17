@@ -26,12 +26,15 @@ enum GameOptionsWidgets {
 	WID_GO_SCREENSHOT_DROPDOWN,    ///< Select the screenshot type... please use PNG!.
 	WID_GO_BASE_GRF_DROPDOWN,      ///< Use to select a base GRF.
 	WID_GO_BASE_GRF_STATUS,        ///< Info about missing files etc.
-	WID_GO_BASE_GRF_DESCRIPTION,   ///< Description of selected base GRF.
+	WID_GO_BASE_GRF_TEXTFILE,      ///< Open base GRF readme, changelog (+1) or license (+2).
+	WID_GO_BASE_GRF_DESCRIPTION = WID_GO_BASE_GRF_TEXTFILE + TFT_END,     ///< Description of selected base GRF.
 	WID_GO_BASE_SFX_DROPDOWN,      ///< Use to select a base SFX.
-	WID_GO_BASE_SFX_DESCRIPTION,   ///< Description of selected base SFX.
+	WID_GO_BASE_SFX_TEXTFILE,      ///< Open base SFX readme, changelog (+1) or license (+2).
+	WID_GO_BASE_SFX_DESCRIPTION = WID_GO_BASE_SFX_TEXTFILE + TFT_END,     ///< Description of selected base SFX.
 	WID_GO_BASE_MUSIC_DROPDOWN,    ///< Use to select a base music set.
 	WID_GO_BASE_MUSIC_STATUS,      ///< Info about corrupted files etc.
-	WID_GO_BASE_MUSIC_DESCRIPTION, ///< Description of selected base music set.
+	WID_GO_BASE_MUSIC_TEXTFILE,    ///< Open base music readme, changelog (+1) or license (+2).
+	WID_GO_BASE_MUSIC_DESCRIPTION = WID_GO_BASE_MUSIC_TEXTFILE + TFT_END, ///< Description of selected base music set.
 };
 
 /** Widgets of the #GameDifficultyWindow class. */
