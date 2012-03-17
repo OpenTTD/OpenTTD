@@ -67,6 +67,7 @@ static void Load_AIPL()
 	while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
 		if (index >= MAX_COMPANIES) SlErrorCorrupt("Too many AI configs");
 
+		_ai_saveload_is_random = 0;
 		_ai_saveload_version = -1;
 		SlObject(NULL, _ai_company);
 
