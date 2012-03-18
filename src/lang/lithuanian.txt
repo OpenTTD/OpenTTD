@@ -36,102 +36,222 @@ STR_JUST_NOTHING.kur                                            :Niekur
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Keleiviai
-STR_CARGO_PLURAL_PASSENGERS.kas                                 :Keleiviai
-STR_CARGO_PLURAL_PASSENGERS.ko                                  :Keleivių
-STR_CARGO_PLURAL_PASSENGERS.kam                                 :Keleiviams
-STR_CARGO_PLURAL_PASSENGERS.ka                                  :Keleivius
-STR_CARGO_PLURAL_PASSENGERS.kuo                                 :Keleiviais
-STR_CARGO_PLURAL_COAL                                           :Anglis
-STR_CARGO_PLURAL_COAL.kas                                       :Anglis
-STR_CARGO_PLURAL_COAL.ko                                        :Anglies
-STR_CARGO_PLURAL_COAL.ka                                        :Anglį
+STR_CARGO_PLURAL_PASSENGERS.kas                                 :keleiviai
+STR_CARGO_PLURAL_PASSENGERS.ko                                  :keleivių
+STR_CARGO_PLURAL_PASSENGERS.kam                                 :keleiviams
+STR_CARGO_PLURAL_PASSENGERS.ka                                  :keleivius
+STR_CARGO_PLURAL_PASSENGERS.kuo                                 :keleiviais
+STR_CARGO_PLURAL_PASSENGERS.kur                                 :keleiviuose
+STR_CARGO_PLURAL_COAL                                           :Akmens anglys
+STR_CARGO_PLURAL_COAL.kas                                       :akmens anglys
+STR_CARGO_PLURAL_COAL.ko                                        :akmens anglių
+STR_CARGO_PLURAL_COAL.kam                                       :akmens anglims
+STR_CARGO_PLURAL_COAL.ka                                        :akmens anglis
+STR_CARGO_PLURAL_COAL.kuo                                       :akmens anglimis
+STR_CARGO_PLURAL_COAL.kur                                       :akmens anglyse
 STR_CARGO_PLURAL_MAIL                                           :Paštas
-STR_CARGO_PLURAL_MAIL.ko                                        :Pašto
-STR_CARGO_PLURAL_MAIL.ka                                        :Paštą
-STR_CARGO_PLURAL_OIL                                            :Naftą
-STR_CARGO_PLURAL_OIL.ko                                         :Naftos
-STR_CARGO_PLURAL_OIL.ka                                         :Naftą
+STR_CARGO_PLURAL_MAIL.kas                                       :paštas
+STR_CARGO_PLURAL_MAIL.ko                                        :pašto
+STR_CARGO_PLURAL_MAIL.kam                                       :paštui
+STR_CARGO_PLURAL_MAIL.ka                                        :paštą
+STR_CARGO_PLURAL_MAIL.kuo                                       :paštu
+STR_CARGO_PLURAL_MAIL.kur                                       :pašte
+STR_CARGO_PLURAL_OIL                                            :Nafta
+STR_CARGO_PLURAL_OIL.kas                                        :nafta
+STR_CARGO_PLURAL_OIL.ko                                         :naftos
+STR_CARGO_PLURAL_OIL.kam                                        :naftai
+STR_CARGO_PLURAL_OIL.ka                                         :naftą
+STR_CARGO_PLURAL_OIL.kuo                                        :nafta
+STR_CARGO_PLURAL_OIL.kur                                        :naftoje
 STR_CARGO_PLURAL_LIVESTOCK                                      :Galvijai
-STR_CARGO_PLURAL_LIVESTOCK.ko                                   :Galvijų
-STR_CARGO_PLURAL_LIVESTOCK.ka                                   :Galvijus
+STR_CARGO_PLURAL_LIVESTOCK.kas                                  :galvijai
+STR_CARGO_PLURAL_LIVESTOCK.ko                                   :galvijų
+STR_CARGO_PLURAL_LIVESTOCK.kam                                  :galvijams
+STR_CARGO_PLURAL_LIVESTOCK.ka                                   :galvijus
+STR_CARGO_PLURAL_LIVESTOCK.kuo                                  :galvijais
+STR_CARGO_PLURAL_LIVESTOCK.kur                                  :galvijuose
 STR_CARGO_PLURAL_GOODS                                          :Prekės
-STR_CARGO_PLURAL_GOODS.ko                                       :Prekių
-STR_CARGO_PLURAL_GOODS.ka                                       :Prekes
+STR_CARGO_PLURAL_GOODS.kas                                      :prekės
+STR_CARGO_PLURAL_GOODS.ko                                       :prekių
+STR_CARGO_PLURAL_GOODS.kam                                      :prekėms
+STR_CARGO_PLURAL_GOODS.ka                                       :prekes
+STR_CARGO_PLURAL_GOODS.kuo                                      :prekėmis
+STR_CARGO_PLURAL_GOODS.kur                                      :prekėse
 STR_CARGO_PLURAL_GRAIN                                          :Grūdai
-STR_CARGO_PLURAL_GRAIN.ko                                       :Grūdų
-STR_CARGO_PLURAL_GRAIN.ka                                       :Grūdus
+STR_CARGO_PLURAL_GRAIN.kas                                      :grūdai
+STR_CARGO_PLURAL_GRAIN.ko                                       :grūdų
+STR_CARGO_PLURAL_GRAIN.kam                                      :grūdams
+STR_CARGO_PLURAL_GRAIN.ka                                       :grūdus
+STR_CARGO_PLURAL_GRAIN.kuo                                      :grūdais
+STR_CARGO_PLURAL_GRAIN.kur                                      :grūduose
 STR_CARGO_PLURAL_WOOD                                           :Mediena
-STR_CARGO_PLURAL_WOOD.ko                                        :Medienos
-STR_CARGO_PLURAL_WOOD.ka                                        :Medieną
+STR_CARGO_PLURAL_WOOD.kas                                       :mediena
+STR_CARGO_PLURAL_WOOD.ko                                        :medienos
+STR_CARGO_PLURAL_WOOD.kam                                       :medienai
+STR_CARGO_PLURAL_WOOD.ka                                        :medieną
+STR_CARGO_PLURAL_WOOD.kuo                                       :mediena
+STR_CARGO_PLURAL_WOOD.kur                                       :medienoje
 STR_CARGO_PLURAL_IRON_ORE                                       :Geležies rūda
-STR_CARGO_PLURAL_IRON_ORE.ko                                    :Geležies rūdos
-STR_CARGO_PLURAL_IRON_ORE.ka                                    :Geležies rūdą
+STR_CARGO_PLURAL_IRON_ORE.kas                                   :geležies rūda
+STR_CARGO_PLURAL_IRON_ORE.ko                                    :geležies rūdos
+STR_CARGO_PLURAL_IRON_ORE.kam                                   :geležies rūdai
+STR_CARGO_PLURAL_IRON_ORE.ka                                    :geležies rūdą
+STR_CARGO_PLURAL_IRON_ORE.kuo                                   :geležies rūda
+STR_CARGO_PLURAL_IRON_ORE.kur                                   :geležies rūdoje
 STR_CARGO_PLURAL_STEEL                                          :Plienas
-STR_CARGO_PLURAL_STEEL.ko                                       :Plieno
-STR_CARGO_PLURAL_STEEL.ka                                       :Plieną
+STR_CARGO_PLURAL_STEEL.kas                                      :plienas
+STR_CARGO_PLURAL_STEEL.ko                                       :plieno
+STR_CARGO_PLURAL_STEEL.kam                                      :plienui
+STR_CARGO_PLURAL_STEEL.ka                                       :plieną
+STR_CARGO_PLURAL_STEEL.kuo                                      :plienu
+STR_CARGO_PLURAL_STEEL.kur                                      :pliene
 STR_CARGO_PLURAL_VALUABLES                                      :Brangenybės
-STR_CARGO_PLURAL_VALUABLES.ko                                   :Brangenybių
-STR_CARGO_PLURAL_VALUABLES.ka                                   :Brangenybes
+STR_CARGO_PLURAL_VALUABLES.kas                                  :brangenybės
+STR_CARGO_PLURAL_VALUABLES.ko                                   :brangenybių
+STR_CARGO_PLURAL_VALUABLES.kam                                  :brangenybėms
+STR_CARGO_PLURAL_VALUABLES.ka                                   :brangenybes
+STR_CARGO_PLURAL_VALUABLES.kuo                                  :brangenybėmis
+STR_CARGO_PLURAL_VALUABLES.kur                                  :brangenybėse
 STR_CARGO_PLURAL_COPPER_ORE                                     :Vario rūda
-STR_CARGO_PLURAL_COPPER_ORE.ko                                  :Vario rūdos
-STR_CARGO_PLURAL_COPPER_ORE.ka                                  :Vario rūdą
+STR_CARGO_PLURAL_COPPER_ORE.kas                                 :vario rūda
+STR_CARGO_PLURAL_COPPER_ORE.ko                                  :vario rūdos
+STR_CARGO_PLURAL_COPPER_ORE.kam                                 :vario rūdai
+STR_CARGO_PLURAL_COPPER_ORE.ka                                  :vario rūdą
+STR_CARGO_PLURAL_COPPER_ORE.kuo                                 :vario rūda
+STR_CARGO_PLURAL_COPPER_ORE.kur                                 :vario rūdoje
 STR_CARGO_PLURAL_MAIZE                                          :Kukurūzai
-STR_CARGO_PLURAL_MAIZE.ko                                       :Kukurūzų
-STR_CARGO_PLURAL_MAIZE.ka                                       :Kukurūzus
+STR_CARGO_PLURAL_MAIZE.kas                                      :kukurūzai
+STR_CARGO_PLURAL_MAIZE.ko                                       :kukurūzų
+STR_CARGO_PLURAL_MAIZE.kam                                      :kukurūzams
+STR_CARGO_PLURAL_MAIZE.ka                                       :kukurūzus
+STR_CARGO_PLURAL_MAIZE.kuo                                      :kukurūzais
+STR_CARGO_PLURAL_MAIZE.kur                                      :kukurūzuose
 STR_CARGO_PLURAL_FRUIT                                          :Vaisiai
-STR_CARGO_PLURAL_FRUIT.ko                                       :Vaisių
-STR_CARGO_PLURAL_FRUIT.ka                                       :Vaisius
+STR_CARGO_PLURAL_FRUIT.kas                                      :vaisiai
+STR_CARGO_PLURAL_FRUIT.ko                                       :vaisių
+STR_CARGO_PLURAL_FRUIT.kam                                      :vaisiams
+STR_CARGO_PLURAL_FRUIT.ka                                       :vaisius
+STR_CARGO_PLURAL_FRUIT.kuo                                      :vaisiais
+STR_CARGO_PLURAL_FRUIT.kur                                      :vaisiuose
 STR_CARGO_PLURAL_DIAMONDS                                       :Deimantai
-STR_CARGO_PLURAL_DIAMONDS.ko                                    :Deimantų
-STR_CARGO_PLURAL_DIAMONDS.ka                                    :Deimantus
-STR_CARGO_PLURAL_FOOD                                           :Maistas
-STR_CARGO_PLURAL_FOOD.ko                                        :Maisto
-STR_CARGO_PLURAL_FOOD.ka                                        :Maistą
+STR_CARGO_PLURAL_DIAMONDS.kas                                   :deimantai
+STR_CARGO_PLURAL_DIAMONDS.ko                                    :deimantų
+STR_CARGO_PLURAL_DIAMONDS.kam                                   :deimantams
+STR_CARGO_PLURAL_DIAMONDS.ka                                    :deimantus
+STR_CARGO_PLURAL_DIAMONDS.kuo                                   :deimantais
+STR_CARGO_PLURAL_DIAMONDS.kur                                   :deimantuose
+STR_CARGO_PLURAL_FOOD                                           :Maisto produktai
+STR_CARGO_PLURAL_FOOD.kas                                       :maisto produktai
+STR_CARGO_PLURAL_FOOD.ko                                        :maisto produktų
+STR_CARGO_PLURAL_FOOD.kam                                       :maisto produktams
+STR_CARGO_PLURAL_FOOD.ka                                        :maisto produktus
+STR_CARGO_PLURAL_FOOD.kuo                                       :maisto produktais
+STR_CARGO_PLURAL_FOOD.kur                                       :maisto produktuose
 STR_CARGO_PLURAL_PAPER                                          :Popierius
-STR_CARGO_PLURAL_PAPER.ko                                       :Popieriaus
-STR_CARGO_PLURAL_PAPER.ka                                       :Popierių
+STR_CARGO_PLURAL_PAPER.kas                                      :popierius
+STR_CARGO_PLURAL_PAPER.ko                                       :popieriaus
+STR_CARGO_PLURAL_PAPER.kam                                      :popieriui
+STR_CARGO_PLURAL_PAPER.ka                                       :popierių
+STR_CARGO_PLURAL_PAPER.kuo                                      :popieriumi
+STR_CARGO_PLURAL_PAPER.kur                                      :popieriuje
 STR_CARGO_PLURAL_GOLD                                           :Auksas
-STR_CARGO_PLURAL_GOLD.ko                                        :Aukso
-STR_CARGO_PLURAL_GOLD.ka                                        :Auksą
+STR_CARGO_PLURAL_GOLD.kas                                       :auksas
+STR_CARGO_PLURAL_GOLD.ko                                        :aukso
+STR_CARGO_PLURAL_GOLD.kam                                       :auksui
+STR_CARGO_PLURAL_GOLD.ka                                        :auksą
+STR_CARGO_PLURAL_GOLD.kuo                                       :auksu
+STR_CARGO_PLURAL_GOLD.kur                                       :aukse
 STR_CARGO_PLURAL_WATER                                          :Vanduo
-STR_CARGO_PLURAL_WATER.ko                                       :Vandens
-STR_CARGO_PLURAL_WATER.ka                                       :Vandenį
+STR_CARGO_PLURAL_WATER.kas                                      :vanduo
+STR_CARGO_PLURAL_WATER.ko                                       :vandens
+STR_CARGO_PLURAL_WATER.kam                                      :vandeniui
+STR_CARGO_PLURAL_WATER.ka                                       :vandenį
+STR_CARGO_PLURAL_WATER.kuo                                      :vandeniu
+STR_CARGO_PLURAL_WATER.kur                                      :vandenyje
 STR_CARGO_PLURAL_WHEAT                                          :Kviečiai
-STR_CARGO_PLURAL_WHEAT.ko                                       :Kviečių
-STR_CARGO_PLURAL_WHEAT.ka                                       :Kviečius
+STR_CARGO_PLURAL_WHEAT.kas                                      :kviečiai
+STR_CARGO_PLURAL_WHEAT.ko                                       :kviečių
+STR_CARGO_PLURAL_WHEAT.kam                                      :kviečiams
+STR_CARGO_PLURAL_WHEAT.ka                                       :kviečius
+STR_CARGO_PLURAL_WHEAT.kuo                                      :kviečiais
+STR_CARGO_PLURAL_WHEAT.kur                                      :kviečiuose
 STR_CARGO_PLURAL_RUBBER                                         :Kaučiukas
-STR_CARGO_PLURAL_RUBBER.ko                                      :Kaučiuko
-STR_CARGO_PLURAL_RUBBER.ka                                      :Kaučiuką
+STR_CARGO_PLURAL_RUBBER.kas                                     :kaučiukas
+STR_CARGO_PLURAL_RUBBER.ko                                      :kaučiuko
+STR_CARGO_PLURAL_RUBBER.kam                                     :kaučiukui
+STR_CARGO_PLURAL_RUBBER.ka                                      :kaučiuką
+STR_CARGO_PLURAL_RUBBER.kuo                                     :kaučiuku
+STR_CARGO_PLURAL_RUBBER.kur                                     :kaučiuke
 STR_CARGO_PLURAL_SUGAR                                          :Cukrus
-STR_CARGO_PLURAL_SUGAR.ko                                       :Cukraus
-STR_CARGO_PLURAL_SUGAR.ka                                       :Cukrų
+STR_CARGO_PLURAL_SUGAR.kas                                      :cukrus
+STR_CARGO_PLURAL_SUGAR.ko                                       :cukraus
+STR_CARGO_PLURAL_SUGAR.kam                                      :cukrui
+STR_CARGO_PLURAL_SUGAR.ka                                       :cukrų
+STR_CARGO_PLURAL_SUGAR.kuo                                      :cukrumi
+STR_CARGO_PLURAL_SUGAR.kur                                      :cukruje
 STR_CARGO_PLURAL_TOYS                                           :Žaislai
-STR_CARGO_PLURAL_TOYS.ko                                        :Žaislų
-STR_CARGO_PLURAL_TOYS.ka                                        :Žaislus
+STR_CARGO_PLURAL_TOYS.kas                                       :žaislai
+STR_CARGO_PLURAL_TOYS.ko                                        :žaislų
+STR_CARGO_PLURAL_TOYS.kam                                       :žaislams
+STR_CARGO_PLURAL_TOYS.ka                                        :žaislus
+STR_CARGO_PLURAL_TOYS.kuo                                       :žaislais
+STR_CARGO_PLURAL_TOYS.kur                                       :žaisluose
 STR_CARGO_PLURAL_CANDY                                          :Saldumynai
-STR_CARGO_PLURAL_CANDY.ko                                       :Saldumynų
-STR_CARGO_PLURAL_CANDY.ka                                       :Saldumynus
+STR_CARGO_PLURAL_CANDY.kas                                      :saldumynai
+STR_CARGO_PLURAL_CANDY.ko                                       :saldumynų
+STR_CARGO_PLURAL_CANDY.kam                                      :saldumynams
+STR_CARGO_PLURAL_CANDY.ka                                       :saldumynus
+STR_CARGO_PLURAL_CANDY.kuo                                      :saldumynais
+STR_CARGO_PLURAL_CANDY.kur                                      :saldumynuose
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COLA.ko                                        :Kolos
-STR_CARGO_PLURAL_COLA.ka                                        :Kolą
+STR_CARGO_PLURAL_COLA.kas                                       :kola
+STR_CARGO_PLURAL_COLA.ko                                        :kolos
+STR_CARGO_PLURAL_COLA.kam                                       :kolai
+STR_CARGO_PLURAL_COLA.ka                                        :kolą
+STR_CARGO_PLURAL_COLA.kuo                                       :kola
+STR_CARGO_PLURAL_COLA.kur                                       :koloje
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukraus vata
-STR_CARGO_PLURAL_COTTON_CANDY.ko                                :Cukraus vatos
-STR_CARGO_PLURAL_COTTON_CANDY.ka                                :Cukraus vatą
+STR_CARGO_PLURAL_COTTON_CANDY.kas                               :cukraus vata
+STR_CARGO_PLURAL_COTTON_CANDY.ko                                :cukraus vatos
+STR_CARGO_PLURAL_COTTON_CANDY.kam                               :cukraus vatai
+STR_CARGO_PLURAL_COTTON_CANDY.ka                                :cukraus vatą
+STR_CARGO_PLURAL_COTTON_CANDY.kuo                               :cukraus vata
+STR_CARGO_PLURAL_COTTON_CANDY.kur                               :cukraus vatoje
 STR_CARGO_PLURAL_BUBBLES                                        :Burbulai
-STR_CARGO_PLURAL_BUBBLES.ko                                     :Burbulų
-STR_CARGO_PLURAL_BUBBLES.ka                                     :Burbulus
+STR_CARGO_PLURAL_BUBBLES.kas                                    :burbulai
+STR_CARGO_PLURAL_BUBBLES.ko                                     :burbulų
+STR_CARGO_PLURAL_BUBBLES.kam                                    :burbulams
+STR_CARGO_PLURAL_BUBBLES.ka                                     :burbulus
+STR_CARGO_PLURAL_BUBBLES.kuo                                    :burbulais
+STR_CARGO_PLURAL_BUBBLES.kur                                    :burbuluose
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelė
-STR_CARGO_PLURAL_TOFFEE.ko                                      :Karamelės
-STR_CARGO_PLURAL_TOFFEE.ka                                      :Karamelę
+STR_CARGO_PLURAL_TOFFEE.kas                                     :karamelė
+STR_CARGO_PLURAL_TOFFEE.ko                                      :karamelės
+STR_CARGO_PLURAL_TOFFEE.kam                                     :karamelei
+STR_CARGO_PLURAL_TOFFEE.ka                                      :karamelę
+STR_CARGO_PLURAL_TOFFEE.kuo                                     :karamele
+STR_CARGO_PLURAL_TOFFEE.kur                                     :karamelėje
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijos
-STR_CARGO_PLURAL_BATTERIES.ko                                   :Baterijų
-STR_CARGO_PLURAL_BATTERIES.ka                                   :Baterijas
+STR_CARGO_PLURAL_BATTERIES.kas                                  :baterijos
+STR_CARGO_PLURAL_BATTERIES.ko                                   :baterijų
+STR_CARGO_PLURAL_BATTERIES.kam                                  :baterijoms
+STR_CARGO_PLURAL_BATTERIES.ka                                   :baterijas
+STR_CARGO_PLURAL_BATTERIES.kuo                                  :baterijomis
+STR_CARGO_PLURAL_BATTERIES.kur                                  :baterijose
 STR_CARGO_PLURAL_PLASTIC                                        :Plastmasė
-STR_CARGO_PLURAL_PLASTIC.ko                                     :Plastmasės
-STR_CARGO_PLURAL_PLASTIC.ka                                     :Plastmasę
+STR_CARGO_PLURAL_PLASTIC.kas                                    :plastmasė
+STR_CARGO_PLURAL_PLASTIC.ko                                     :plastmasės
+STR_CARGO_PLURAL_PLASTIC.kam                                    :plastmasei
+STR_CARGO_PLURAL_PLASTIC.ka                                     :plastmasę
+STR_CARGO_PLURAL_PLASTIC.kuo                                    :plastmase
+STR_CARGO_PLURAL_PLASTIC.kur                                    :plastmasėje
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gaivieji gėrimai
-STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                :Gaiviųjų gėrimų
-STR_CARGO_PLURAL_FIZZY_DRINKS.ka                                :Gaiviuosius gėrimus
+STR_CARGO_PLURAL_FIZZY_DRINKS.kas                               :gaivieji gėrimai
+STR_CARGO_PLURAL_FIZZY_DRINKS.ko                                :gaiviųjų gėrimų
+STR_CARGO_PLURAL_FIZZY_DRINKS.kam                               :gaiviesiems gėrimams
+STR_CARGO_PLURAL_FIZZY_DRINKS.ka                                :gaiviuosius gėrimus
+STR_CARGO_PLURAL_FIZZY_DRINKS.kuo                               :gaiviaisiais gėrimais
+STR_CARGO_PLURAL_FIZZY_DRINKS.kur                               :gaiviuosiuose gėrimuose
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -2022,7 +2142,7 @@ STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Įjungta
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nerodyti stotelės aptarnaujamos teritorijos
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Rodyti stotelės aptarnaujamą teritoriją
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Priima: {GOLD}{CARGO_LIST.ka}
-STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tiekia: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Tiekia: {GOLD}{CARGO_LIST.ka}
 
 # Join station window
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Sujungti stotį
@@ -2797,7 +2917,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
-STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{CARGO_LIST}
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{CARGO_LIST.ka}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Parodyti stotelės reitingus
@@ -3396,7 +3516,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tvarkaraštis
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pereiti į tvarkaraštį
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spragtelėjimas laikant VALD (CTRL) nukelia į nurodymo tikslą
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, užduoties tikslo vieta bus centruojama pagrindiniame ekranes
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3409,140 +3529,152 @@ STR_ORDER_GO_TO                                                 :Vykti į
 STR_ORDER_GO_NON_STOP_TO                                        :Vykti nesustojant į
 STR_ORDER_GO_VIA                                                :Vykti per
 STR_ORDER_GO_NON_STOP_VIA                                       :Vykti nesustojant per
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Keisti sustojimo būdą pažymeto nurodymo
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Keisti pažymėtos užduoties sustojimo nuostatas
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pilnai pakrovus bet ko
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Krauti jei įmanoma
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pilnai pakrauti viską
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pilnai pakrauti bet kokį krovinį
-STR_ORDER_DROP_NO_LOADING                                       :Nesikrauti
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Keisti pakrovimo būdą pažymėto nurodymo
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pilnai prikrauti kurio nors krovinio
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Krauti, jei yra ką
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pilnai prikrauti visų krovinių
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pilnai prikrauti kurio nors krovinio
+STR_ORDER_DROP_NO_LOADING                                       :Nekrauti
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Keisti pažymėtos užduoties krovinio pakrovimo nuostatas
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iškrauti viską
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iškrauti jei priima
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iškrauti, jei priima
 STR_ORDER_DROP_UNLOAD                                           :Iškrauti viską
 STR_ORDER_DROP_TRANSFER                                         :Perkelti krovinį
 STR_ORDER_DROP_NO_UNLOADING                                     :Neiškrauti
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Keisti iškrovimo būdą pažymėto nurodymo
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Keisti pažymėtos užduoties krovinio iškrovimo nuostatas
 
-STR_ORDER_REFIT                                                 :{BLACK}Naujinti
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pasirinkite kurį vagonų tipą kuriuo tipu pakeisti (eilės tvarka). Spragtelėjus laikant VALD (CTRL) nurodymas pašalinamas
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatinis perdarymas
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Pasirinkite kokį krovinių tipą automatiškai pertvarkyti šiame nurodyme. Paspaudus laikant VALD (CTRL) klavišą pertvarkymo nurodymas bus pašalintas. Automatinis pertvarkymas bus galimas jeigu tik transporto priemonė tai leidžia
-STR_ORDER_DROP_REFIT_AUTO                                       :Žinomas krovinys
-STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Galimas krovinys
+STR_ORDER_REFIT                                                 :{BLACK}Pertvarkyti
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintaslėjus laikant VALD (CTRL) nurodymas pašalinamas
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatinis pertvarkymas
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Automatiškai pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintas. Automatinis pertvarkymas įmanomas tik jei transporto priemonė yra tam pritaikyta
+STR_ORDER_DROP_REFIT_AUTO                                       :Nustatytam kroviniui
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Galimam kroviniui
 
-STR_ORDER_SERVICE                                               :{BLACK}Remontas
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti be sustojimo
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Taisytis, jei reikia
-STR_ORDER_DROP_HALT_DEPOT                                       :Sustoti
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
+STR_ORDER_SERVICE                                               :{BLACK}Techninė apžiūra
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti visuomet
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Vykti, jei reikia
+STR_ORDER_DROP_HALT_DEPOT                                       :Nuvykti ir sustoti
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Keisti techninės apžiūros nuostatas
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Automobilio duomenys bazei šokant ant
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovimosi kiekis (proc)
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovinio užpilda (proc.)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Max. greitis
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Didžiausias greitis
 STR_ORDER_CONDITIONAL_AGE                                       :Amžius (metais)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo
-STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visada
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likęs naudojimo laikas (metais)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia techninės apžiūros
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visuomet
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likusi eksploatacijos trukmė (metais)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kaip lyginti automobilio duomenis su duota reikšme
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu su
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygus su
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau negu
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mažiau arba lygus
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :daugiau negu
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :daugiau arba lygu
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :tiesa
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :klaida
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Palyginimo operacija
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :yra nelygu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :yra mažiau, negu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :yra mažiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :yra daugiau, negu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :yra daugiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :yra tiesa
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :yra netiesa
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšmė su kuria lyginti automobilio duomenis
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite kainą palyginti su
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšmė su kuria lyginti pasirinktą transporto priemonės parametrą
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite reikšmę, su kuria bus lyginama
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Praleisti
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti esamą nurodymą ir pradėti sekantį. Ctrl+spaudimas praleidžia nurodymą
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleisti šiuo metų vykdomą užduotį ir imtis kitos. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus pradėta vykdyti pažymėtoji užduotis
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ištrinti
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ištrinti pažymėta užduotį
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ištrinti visas užduotis
-STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stabdyti dalijimasi
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebesidalinti užsakymų sąrašu.. Ctrl+Click papildomai ištrins visus užsakymus šiai transporto priemonei
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Šalinti
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Šalinti pažymėtąją užduotį
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Šalinti visas užduotis
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Atšaukti užduočių bendrinimą
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebebendrinti užduočių su kitomis transporto priemonėmis. Spragtelėjus laikant nuspaustą Ctrl klavišą, papildomai dar bus pašalintos visos šios transporto priemonės užduotys
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti į
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimiausią depą
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
-STR_ORDER_CONDITIONAL                                           :Sąlyginis užsakymo šuolis
-STR_ORDER_SHARE                                                 :Dalintis užduotimis
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują nurodymą prieš pažymetą, arba iterpti sąrašo pabaigoje. Ctrl+Paspaudimas verčia stotelių nurodymus į 'pilnai pasikrauti bet kokio krovinio', kontrolės punktų į 'praleisti' ir garažų į 'aptarnauti'. 'Dalintis nurodymais' arba paspaudimas laikant VALD (CTRL) klavišą leidžia šiai transporto priemonei dalintis nurodymais su kita transporto priemone. Paspaudus ant kitos transporto priemonės, bus nukopijuoti jos nurodymai
+STR_ORDER_CONDITIONAL                                           :Sukurti sąlyginę užduotį
+STR_ORDER_SHARE                                                 :Bendrinti užduotis
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują užduotį prieš pažymėtąją (arba sąrašo pabaigoje, jei jokia užduotis nepažymėta). Spragtelėjus laikant nuspaustą Ctrl klavišą, sukurta užduotis bus „pilnai prikrauti kurio nors krovinio“ (stotims), „vykti per“ (kontrolės punktams) bei „vykti techninės apžiūros“ (depams, garažams ar angarams). Pasirinkus kitą transporto priemonę kaip užduoties tikslą, bus užduotys bus nukopijuotos. Padarius tą patį lainkant nuspaustą Ctrl klavišą, užduotys bus bendrinamos. Pasirinkus garažą, depą ar angarą kaip užduoties tikslą, bus išjungta periodinė transporto priemonės techninė apžiūra
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas tr. priemones, kurios dalijasi šiais nurodymais
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas transporto priemones, kurios dalinasi šiuo užduočių sąrašu
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Vykti per {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti be sustojimo per {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Vykti per „{WAYPOINT}“
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti nesustojant per „{WAYPOINT}“
 
-STR_ORDER_SERVICE_AT                                            :Aptarnavimas
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Servisas nestojant
+STR_ORDER_SERVICE_AT                                            :Vykti techninės apžiūros į
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Vykti techninės apžiūros nesustojant į
 
 STR_ORDER_NEAREST_DEPOT                                         :artimiausias
-STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
-STR_ORDER_TRAIN_DEPOT                                           :Lokomotyvų depas
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Automobilių garažas
-STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+STR_ORDER_NEAREST_DEPOT.kas                                     :artimiausias
+STR_ORDER_NEAREST_DEPOT.ka                                      :artimiausią
+STR_ORDER_NEAREST_HANGAR                                        :artimiausias angaras
+STR_ORDER_NEAREST_HANGAR.kas                                    :artimiausias angaras
+STR_ORDER_NEAREST_HANGAR.ka                                     :artimiausią angarą
+STR_ORDER_TRAIN_DEPOT                                           :depas
+STR_ORDER_TRAIN_DEPOT.kas                                       :depas
+STR_ORDER_TRAIN_DEPOT.ka                                        :depą
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garažas
+STR_ORDER_ROAD_VEHICLE_DEPOT.kas                                :garažas
+STR_ORDER_ROAD_VEHICLE_DEPOT.ka                                 :garažą
+STR_ORDER_SHIP_DEPOT                                            :depas
+STR_ORDER_SHIP_DEPOT.kas                                        :depas
+STR_ORDER_SHIP_DEPOT.ka                                         :depą
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING.ka} {STRING.ka}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} „{DEPOT}“
 
-STR_ORDER_REFIT_ORDER                                           :(Keisti į {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Pertvarkyti į {STRING} ir sustoti)
-STR_ORDER_STOP_ORDER                                            :(Sustoti)
+STR_ORDER_REFIT_ORDER                                           :(pertvarkyti {STRING.kam})
+STR_ORDER_REFIT_STOP_ORDER                                      :(pertvarkyti {STRING.kam} ir sustoti)
+STR_ORDER_STOP_ORDER                                            :(sustoti)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} „{STATION}“ {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatinis)
+STR_ORDER_IMPLICIT                                              :(automatinis)
 
-STR_ORDER_FULL_LOAD                                             :(Pilnai pasikrauti)
-STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)
-STR_ORDER_NO_LOAD                                               :(Nepakrauti)
-STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iškrauti ir laukti pilno pakrovimo)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Iškrauti ir palikti tuščią)
-STR_ORDER_TRANSFER                                              :(Perkelti ir paimti krovinį)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Perkelti ir laukti pilno krovinio)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Perkelti ir laukti pilno bet kokio pakrovimo)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Perkelti ir palikti tuščią)
-STR_ORDER_NO_UNLOAD                                             :(Neiškrauti ir paimti krovinį)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Neiškrauti ir laukti pilno pakrovimo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Neiškrauti ir laukti bet kokio pilno pakrovimo)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Jokio iškrovimo ar pakrovimo)
+STR_ORDER_FULL_LOAD                                             :(pilnai prikrauti visų krovinių)
+STR_ORDER_FULL_LOAD_ANY                                         :(pilnai prikrauti kurio nors krovinio)
+STR_ORDER_NO_LOAD                                               :(nekrauti)
+STR_ORDER_UNLOAD                                                :(iškrauti ir paimti krovinį)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(iškrauti ir pilnai prikrauti visų krovinių)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(iškrauti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(iškrauti ir palikti tuščią)
+STR_ORDER_TRANSFER                                              :(perkelti ir paimti krovinį)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(perkelti ir pilnai prikrauti visų krovinių)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(perkelti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(perkelti ir palikti tuščią)
+STR_ORDER_NO_UNLOAD                                             :(neiškrauti ir paimti krovinį)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(neiškrauti ir pilnai prikrauti visų krovinių)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(neiškrauti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(neiškrauti ir neprikrauti)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatiškai pertvarkyti į {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Pilnai pakrauti ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Pilnai pakrauti bet kokio krovinio ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Iškrauti ir pasikrauti krovinį ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Iškrauti ir laukti pilno pasikrovimo ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Iškrauti ir laukti bet kokio krovinio pilno pasikrovimo ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Perkelti ir pasikrauti ir pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Perkelti ir laukti pilno pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Perkelti ir laukti pilno bet kokio krovinio pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Neiškrauti, pilnai pasikrauti ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Neiškrauti, laukti pilno pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Neiškrauti ir laukti pilno bet kokio pasikrovimo ir pertvarkyti į {STRING})
+STR_ORDER_AUTO_REFIT                                            :(automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_FULL_LOAD_REFIT                                       :(pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_REFIT                                          :(iškrauti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(iškrauti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(iškrauti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_REFIT                                        :(perkelti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(perkelti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(perkelti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(neiškrauti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(neiškrauti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(neiškrauti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
 
-STR_ORDER_AUTO_REFIT_ANY                                        :prieinamas krovinys
+STR_ORDER_AUTO_REFIT_ANY                                        :galimas krovinys
+STR_ORDER_AUTO_REFIT_ANY.kas                                    :galimas krovinys
+STR_ORDER_AUTO_REFIT_ANY.kam                                    :galimam kroviniui
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[netoli pabaigos]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[viduryje]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[toli nuo pabaigos]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[sustoti ties artimuoju kraštu]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sustoti viduryje]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[sustoti ties tolimuoju kraštu]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (Sekanti paskirties vieta yra per toli)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Užduoties tikslas yra per toli)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti į užsakymą {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Pereiti į užsakymą {COMMA} kai {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti į užsakymą {COMMA} kai {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti prie {COMMA}-(i)os užduoties
+STR_ORDER_CONDITIONAL_NUM                                       :Pereiti prie {COMMA}-(i)os užduoties, jei {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti prie {COMMA}-(i)os užduoties, jei teiginys „{STRING}“ {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
@@ -4541,6 +4673,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

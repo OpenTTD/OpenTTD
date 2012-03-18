@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construe
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar nivell, plantar arbres, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostra la finestra de so/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostra els darrers missatges/notícies, mostra les opcions de missatges
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny, terminal, depuració IA, captures de pantalla, Quant a OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informació del terreny, terminal, depuració d'scripts, captures de pantalla, quant a OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Commuta barres d'eines
 
 # Extra tooltips for the scenario editor toolbar
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions del Joc
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Paràmetres de dificultat
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Paràmetres avançats
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :IA / Paràmetres del joc
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Paràmetres de la IA/Scripts del joc
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
@@ -446,7 +446,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Historial de Mi
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informació de l'àrea de terreny
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia al terminal
-STR_ABOUT_MENU_AI_DEBUG                                         :IA / Depuració de l'script del joc
+STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de la IA/Scripts del joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoom màxim en la captura de pantalla
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zoom predeterminat en les captures de pantalla
@@ -1410,7 +1410,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Dificult
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Paràmetres avançats
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}IA / Paràmetres del joc
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Paràmetres de la IA/Scripts del Joc
 STR_INTRO_QUIT                                                  :{BLACK}Surt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença un joc nou. Ctrl+Clic salta la configuració del mapa
@@ -1430,7 +1430,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Mostra paràmetres avançats
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra els paràmetres NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra la IA i els paràmetres del joc
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de la IA/Script del joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt d'OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}A aquesta traducció li falta {NUM} string{P "" s}. Si us plau ajuda a fer millor OpenTTD unint-te com a traductor. Veure readme.txt per més detalls.
@@ -3500,7 +3500,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Seleccio
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}IA / Depuració de l'script del joc
+STR_AI_DEBUG                                                    :{WHITE}IA/Depuració de l'script del joc
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nom de l'script
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Paràmetres
@@ -3520,12 +3520,12 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Comprova el registre de l'script de joc
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts s'ha penjat. Si us plau reporta això a l'autor de l'script amb una captura de pantalla de la finestra de depuració IA / Script
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA / La finestra de depuració només està disponible pel servidor
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts executant-se s'ha penjat. Si us plau reporta això a l'autor de l'script amb una captura de pantalla de la finestra de depuració IA/Script del Joc
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}IA/La finestra de depuració de l'Script del Joc només està disponible pel servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}IA / Configuració del joc
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}L'ScriptdeJoc que serà carregat al proper joc
+STR_AI_CONFIG_CAPTION                                           :{WHITE}IA/Configuració dels Scripts del joc
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}L'Script del Joc que serà carregat al proper joc
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Les IAs que seran carregades al proper joc
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatòria
@@ -3536,13 +3536,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mou la I
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Mou Avall
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mou la IA selecionada avall a la llista
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}ScriptdeJoc
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Script del Joc
 STR_AI_CONFIG_AI                                                :{SILVER}IAs
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecciona {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :IA
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :ScriptdeJoc
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Script del Joc
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carrega un altre script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configura
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura els paràmetres de l'script
@@ -3550,7 +3550,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
 STR_AI_LIST_CAPTION_AI                                          :IAs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :ScriptsdeJoc
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts del Joc
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3565,7 +3565,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canv�
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paràmetres
 STR_AI_SETTINGS_CAPTION_AI                                      :IA
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :ScriptdeJoc
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Script del Joc
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tanca
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4423,6 +4423,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}

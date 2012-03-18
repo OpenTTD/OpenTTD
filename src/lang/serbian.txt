@@ -504,7 +504,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Izgradnj
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvaranjem trake za oblikovanje terena moguće je posaditi drveće, menjati reljef, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži prozor za zvuk i muziku
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži poslednju poruku/izveštaj, prikaži opcije poruka
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemljištu, konzola, debag veštačke inteligencije, slika sa ekrana, o OpenTTD-u
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Podaci o zemljištu, konzola, korekcija skripti, slika sa ekrana, o OpenTTD-u
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Zamenjuje trake sa alatima
 
 # Extra tooltips for the scenario editor toolbar
@@ -537,7 +537,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :VI / Podešavanja partije
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Podešavanja VI/Skripte partije
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikazana imena naselja
@@ -1604,7 +1604,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Težina 
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredna Podešavanja
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Podešavanja
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Spisak Dodataka na Mreži
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}VI / Podešavanja Partije
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Podešavanja VI/Skripte Partije
 STR_INTRO_QUIT                                                  :{BLACK}Izađi
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Započinje novu partiju. Ctrl+Klik preskače konfiguraciju mape
@@ -1624,7 +1624,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazuj
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikazuje prozor sa detaljnim podešavanjima
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikazuje NewGRF podešavanja
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pregled novih i ažureiranih dodatka za preuzimanje
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikazuje VI i Podešavanja partije
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikazuje podešavanja za VI/Skriptu partije
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Napušta 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Ovom prevodu nedostaje {NUM} nisk{P a e i}. Pomozite da OpenTTD bude bolji - prijavite se kao prevodilac. Za detalje pogledajte readme.txt.
@@ -3730,8 +3730,8 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Skripta 
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pregled zapisnika Skripte partije
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti je pukla. Molimo vas da prijavite grešku autoru skripte sa slikom prozora za korigovanje VI / SkriptePartije
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / SkriptePartije je dostupan samo na serveru
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od pokrenutih skripti je pukla. Molimo vas da prijavite grešku autoru skripte sa slikom prozora za korigovanje VI / Skripte Partije
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor za korigovanje VI / Skripte Partije je dostupan samo na serveru
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Podešavanja VI / Skripte Partije
@@ -3746,13 +3746,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pomera o
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Pomeri Naniže
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Pomera obeleženu VI naniže u listi
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SkriptaPartije
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta Partije
 STR_AI_CONFIG_AI                                                :{SILVER}VIe
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Izaberi {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :VI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkriptaPartije
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta Partije
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Učitava drugu skriptu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Podešavanje
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešavanje parametara skripte
@@ -3760,7 +3760,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Podešav
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostupno {STRING}
 STR_AI_LIST_CAPTION_AI                                          :VIe
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkriptePartije
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte Partije
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikom se označava skripta
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
@@ -3775,7 +3775,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne menja
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :VI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :SkriptaPartije
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta Partije
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zatvori
 STR_AI_SETTINGS_RESET                                           :{BLACK}Poništi
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -4633,6 +4633,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
