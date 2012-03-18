@@ -15,6 +15,8 @@
 #include "fileio_func.h"
 #include "core/smallmap_type.hpp"
 #include "gfx_type.h"
+#include "textfile_type.h"
+#include "textfile_gui.h"
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
@@ -142,6 +144,22 @@ struct BaseSet {
 	static MD5File::ChecksumResult CheckMD5(const MD5File *file, Subdirectory subdir)
 	{
 		return file->CheckMD5(subdir, SIZE_MAX);
+	}
+
+	/**
+	 * Search a textfile file next to this base media.
+	 * @param type The type of the textfile to search for.
+	 * @return The filename for the textfile, \c NULL otherwise.
+	 */
+	const char *GetTextfile(TextfileType type) const
+	{
+		for (uint i = 0; i < NUM_FILES; i++) {
+			const char *textfile = ::GetTextfile(type, BASESET_DIR, this->files[i].filename);
+			if (textfile != NULL) {
+				return textfile;
+			}
+		}
+		return NULL;
 	}
 };
 
