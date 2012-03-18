@@ -368,6 +368,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اسٹ
 STR_FILE_MENU_SAVE_GAME                                         :کھیل محفوظ کرو
 STR_FILE_MENU_LOAD_GAME                                         :کھیل دوبارہ چڑھاو
 STR_FILE_MENU_QUIT_GAME                                         :کھیل چھوڑ دو
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :باہر نکلو
 ############ range ends here
 
@@ -2180,6 +2181,7 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 
 # World generation
+STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
@@ -2225,6 +2227,7 @@ STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK} اسک�
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE} جایئے sprite تک
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 
 # NewGRF related 'general' warnings
 
@@ -2255,18 +2258,22 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK} اشا�
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE} قصبے
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}مٹائو
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}اس شہر کو پورا مٹا دو
 
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
@@ -2279,17 +2286,21 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :خرابی
 # Subsidies window
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}تمام سہولتوں کا انتخاب کرو
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}تمام قسم کے سامان کا انتخاب کرو (بشمول غیر منتظر سامان کے)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}منتظر: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} سے براستہ ہے {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -2298,9 +2309,13 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظو
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
 # Company view
 
@@ -2380,6 +2395,9 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK} ڈیپو کا نام تبدیل کیجئے
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :ڈیپو کا نام تبدیل کیجئے
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -2408,6 +2426,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -2455,6 +2474,8 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}حد ر�
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -2475,8 +2496,11 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}حد ر�
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 
 
@@ -2521,6 +2545,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK} وقف�
 
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -2877,6 +2902,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -2893,6 +2919,7 @@ STR_TINY_COMMA                                                  :{TINY_FONT}{COM
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
@@ -2910,6 +2937,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -2930,31 +2958,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_MAPGEN_BY                                                   :{BLACK}*
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
-STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

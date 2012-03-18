@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :اسماء ال
 STR_FILE_MENU_SAVE_GAME                                         :حفظ
 STR_FILE_MENU_LOAD_GAME                                         :تحميل
 STR_FILE_MENU_QUIT_GAME                                         :اغلاق اللعبة
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 ############ range ends here
 
@@ -2634,6 +2635,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} اشت
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} ارشي السلطات المحلية لزيادة كفائة الشركة. هناك عقاب شديد اذا ما اكتشفت الرشوة. {} التكلفة: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :اسئله
@@ -3451,6 +3453,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}انقل
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}انقل الذكاء الاصطناعي المختار للاسفل
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK} اعداد
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعداد خواص الذكاء الصناعي
 
@@ -4322,6 +4325,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4337,6 +4341,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
@@ -4355,6 +4360,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -4375,9 +4381,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

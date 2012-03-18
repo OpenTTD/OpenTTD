@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Транспа�
 STR_FILE_MENU_SAVE_GAME                                         :Зачувај ја играта
 STR_FILE_MENU_LOAD_GAME                                         :Вчитај игра
 STR_FILE_MENU_QUIT_GAME                                         :Напушти ја играта
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Излез
 ############ range ends here
 
@@ -917,6 +918,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ни
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова Игра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Вчитај Игра
@@ -963,6 +965,8 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дал�
 
 # Network server list
 
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 
 
 
@@ -1014,6 +1018,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :испраќа 
 
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Игра уште пауза ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игра скрипта
@@ -1243,6 +1248,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Објекто�
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Во моментов се користат база графики поставени недостасува голем број на sprites.{}Надградете ја основата графика во собата.
 
 # NewGRF related 'general' warnings
@@ -1280,14 +1286,17 @@ STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Исчи
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Рашири
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Зголеми го градот
 
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
@@ -1307,17 +1316,21 @@ STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Клик
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Избери ги сите објекти
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Избери ги сите видови товар (including no waiting cargo)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Не чека никаков товар
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чекање: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} пренасочено од {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прифаќа: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -1326,9 +1339,13 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приф
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}инфраструктура
 
 # Company view
@@ -1426,10 +1443,14 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преи
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Промена на името на депо
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Преименувај депо
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Типови на авионите - десен клик на авиони за информации
 
@@ -1467,6 +1488,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летало
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Центар главниот приказ на локација авионот. Ctrl + клик ќе го следат авион во главниот приказ
 
@@ -1536,6 +1558,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1556,8 +1580,11 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 
 
@@ -1783,7 +1810,11 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :А симула
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 ############ end of savegame specific region!
 
@@ -1838,12 +1869,14 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -1853,6 +1886,7 @@ STR_TINY_COMMA                                                  :{TINY_FONT}{COM
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
 STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
@@ -1861,11 +1895,18 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINY_FONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINY_FONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
 
@@ -1883,45 +1924,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_FILE_MENU_SEPARATOR                                         :
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
-STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
-STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_SV_EMPTY                                                    :
-STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{STRING}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_BLACK_INT                                                   :{BLACK}{NUM}
-STR_ORANGE_INT                                                  :{ORANGE}{NUM}
-STR_GREEN_STRING                                                :{GREEN}{STRING}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_RED_STRING                                                  :{RED}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
-STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

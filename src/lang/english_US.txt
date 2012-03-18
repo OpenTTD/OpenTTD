@@ -3717,7 +3717,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... only
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can only be built in towns with a population of at least 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... can only be built in desert areas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can only be built in towns
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can only be built in towns (replacing houses)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... can only be built near the centre of towns
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... can only be built in low areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can only be positioned near edges of map
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line

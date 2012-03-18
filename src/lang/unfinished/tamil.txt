@@ -361,6 +361,7 @@ STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :கட்டட
 STR_FILE_MENU_SAVE_GAME                                         :விளையாட்டை பதி
 STR_FILE_MENU_LOAD_GAME                                         :விளையாட்டை ஏற்று
 STR_FILE_MENU_QUIT_GAME                                         :விளையாட்டை கைவிடு
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :வெளியேறு
 ############ range ends here
 
@@ -1135,6 +1136,8 @@ STR_FACE_MOUSTACHE                                              :மீசை:
 
 # Network server list
 
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 
 
 
@@ -1474,7 +1477,9 @@ STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :கள்ளி
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :இரயில் நிலையம்
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :விமான பணிமனை
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :விமான நிலையம்
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :சரக்குகளை ஏற்றும் இடம்
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :பேருந்து நிலையம்
+STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :கப்பல் துறைமுகம்
 STR_LAI_STATION_DESCRIPTION_BUOY                                :காவியக்கட்டை
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :பாதைப்புள்ளி
 
@@ -1564,6 +1569,7 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோ�
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}, {STRING}ஆல் செயலிழக்க செய்யப்பட்டது
 
 # NewGRF related 'general' warnings
@@ -1589,12 +1595,15 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :சுவடி
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
@@ -1616,10 +1625,15 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :பிழை
 # Subsidies window
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -1628,9 +1642,11 @@ STR_GOAL_QUESTION_CAPTION_ERROR                                 :பிழை
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}புதிய வாகனங்கள்
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}இரயில்வே வருமானம்
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
@@ -2047,6 +2063,7 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}நே�
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}நேரத்தை நீக்கு
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}வேக எல்லையை மாற்று
 
 
 
@@ -2098,6 +2115,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :விளைய
 
 
 # Textfile window
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}அனுமதி
 
 
 # Vehicle loading indicators
@@ -2118,19 +2136,55 @@ STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ப�
 # Screenshot related messages
 
 # Error message titles
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}தகவல்
 
 # Generic construction errors
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}படத்தின் எல்லைக்கு மிக அருகாமையில் உள்ளது
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}பணம் பத்தாது - {CURRENCY_LONG} தேவைப்படுகிறது
+STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}தட்டையான நிலப்பகுதி வேண்டும்
+STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}நிலம் தவறான பக்கத்தில் சரிந்துள்ளது
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}இதைச் செய்ய இயலாது...
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}முதலில் கட்டடம் இடிக்கப்பட வேண்டும்
+STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ஏற்கனவே கட்டப்பட்டது
+STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... பகுதி மற்றோரு நிறுவனத்திற்கு சொந்தமானதாகும்
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... நிலத்தோற்ற மாற்ற வரம்பு எட்ட பட்டுள்ளது
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... மாற்ற வரம்பு எட்ட பட்டுள்ளது
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} வழியில் உள்ளது
 
 # Local authority errors
 
 # Levelling errors
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}இங்கு நிலத்தினை சமம்மாக்க முடியாது...
+STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... ஏற்கனவே கடல்மட்டத்தில் உள்ளது
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ஏற்கனவே தட்டையாக உள்ளது
 
 # Company related errors
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}நிறுவனத்தின் பெயரை மாற்ற இயலாது...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}மேலாளரின் பெயரினை மாற்ற இயலாது...
 
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... அதிகபட்ச கடன் அளவு {CURRENCY_LONG}
+STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}மேலும் கடன் வாங்க இயலாது...
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... திரும்பிச் செலுத்த எந்தக் கடனும் இல்லை
+STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} தேவைப்படுகிறது
+STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}கடனினைத் திருப்பி கட்ட இயலாது...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}வங்கியிலிருந்து கடனாக பெறப்பட்டத் தொகையினை தங்களால் கொடுக்க இயலாது...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}நிறுவனத்தினை வாங்க இயலாது...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}நிறுவன தலைமையிடத்தினை கட்ட இயலாது...
+STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}இந்த நிறுவனத்தின் 25 சதவிகித பங்குகளை வாங்க இயலாது...
+STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}இந்த நிறுவனத்தின் 25 சதவிகித பங்குகளை விற்க இயலாது...
+STR_ERROR_PROTECTED                                             :{WHITE}பங்குகளை பரிமாற்றம் செய்யும் அளவிற்கு இந்த நிறுவனம் இன்னும் வளரவில்லை...
 
 # Town related errors
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}எந்த நகரத்தினையும் கட்ட இயலாது
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}நகரத்தின் பெயரினை மாற்ற இயலாது...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}நகரத்தினை இங்கே நிறுவ இயலாது...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}நகரத்தினை விரிவாக்க இயலாது...
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... படத்தின் எல்லைக்கு மிக அருகாமையில் உள்ளது
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... மற்றொரு நகரத்திற்கு மிகவும் அருகாமையில் உள்ளது
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... மிகவும் அதிகமான நகரங்கள்
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... படத்தில் வேறு வெற்றுஇடம் இல்லை
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}சாலைப் பணிகள் நடந்துக் கொண்டிருக்கின்றன
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... நகரத்தின் நடுவில் சிலையினை அமைக்க தகுந்த இடமில்லை
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... மிகவும் அதிகமான தொழிற்சாலைகள்
@@ -2140,15 +2194,22 @@ STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}இந�
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... மற்றொரு தொழிற்சாலையின் அருகாமையில் உள்ளது
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... முதலில் நகரம் நிருவப்பட வேண்டும்
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ஒரு நகரத்திற்கு ஒன்று தான் அனுமதிக்கப்படும்
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 1200 மக்கள்தொகை உள்ள நகரங்களில் மட்டுமே கட்ட இயலும்
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... மழைக்காட்டு பகுதிகளில் மட்டுமே கட்ட இயலும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... பாலைவனப்பகுதிகளில் மட்டுமே இதனை கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... நகரங்களில் மட்டுமே இதனை கட்ட முடியும்
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... நகரங்களின் நடுவில் மட்டுமே கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... தாழ்வான பகுதிகளில் மட்டுமே இதனை கட்ட முடியும்
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... படங்களின் எல்லைகளில் மட்டுமே இட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... பனி-கோடின் மேலே மட்டுமே கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... பனி-கோடின் கீழே மட்டுமே கட்ட முடியும்
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}இங்கே இரயில் நிலையம் கட்ட முடியாது...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}பேருந்து நிலையத்தினை கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}லாரி நிலையத்தினை கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}பயணிகள் ட்ராம் நிலையத்தினை கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}சரக்கு ட்ராம் நிலையத்தினை கட்ட இயலாது...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}இங்கே விமான நிலையத்தை கட்ட இயலாது...
 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... நிறுத்தம் மிகவும் விரிந்துள்ளது
@@ -2156,6 +2217,7 @@ STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}மி�
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}மிக அதிகமான இரயில்வே நிலைய பாகங்கள்
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}மிக அதிகமான பேருந்து நிறுத்தங்கள்
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}மிக அதிகமான லாரி நிலையங்கள்
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}மற்றொரு நிலையத்திற்கு மிக அருகில் உள்ளது
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}மற்றொரு விமான நிலையத்தின் அருகாமையில் உள்ளது
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}நிறுத்தத்தின் பெயரை மாற்ற இயலாது...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... இது நகரத்திற்கு சொந்தமான சாலையாகும்
@@ -2165,14 +2227,33 @@ STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ச�
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}நிறுத்தத்தின் பகுதியை நீக்க இயலாது...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}முதலில் இரயில் நிலையம் நீக்கப்பட வேண்டும்
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}பேருந்து நிறுத்தத்தை நீக்க இயலாது...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}லாரி நிலையத்தினை நீக்க முடியாது...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}பயணிகள் ட்ராம் நிலையத்தினை நீக்க இயலாது...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}சரக்கு ட்ராம் நிலையத்தினை நீக்க இயலாது...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}முதலில் சாலை நிறுத்தத்தினை நீக்கு
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...தொடர்வண்டி நிலையம் இல்லை
 
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}முதலில் இரயில்வே நிலையத்தினை நீக்கு
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}முதலில் பேருந்து நிலையத்தினை நீக்கு
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}முதலில் லாரி நிலையத்தினை நீக்கு
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}முதலில் பயணிகள் ட்ராம் நிலையத்தினை நீக்கு
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}முதலில் ட்ராம் சரக்கு நிலையத்தினை நீக்கு
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}முதலில் விமானநிலையத்தினை நீக்க வேண்டும்
 
 # Waypoint related errors
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}மற்றொரு பாதைப்புள்ளியின் அருகில் உள்ளது
 
+STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}இங்கே இரயில்வே பாதைப்புள்ளியினைக் கட்ட இயலாது...
+STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}பாதைப்புள்ளியின் பெயரினை மாற்ற இயலாது...
 
+STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}இந்த இரயில்வே பாதைப்புள்ளியினை நீக்க இயலாது...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}முதலில் இரயில்வே பாதைப்புள்ளியினை நீக்க வேண்டும்
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}இங்கே இரயில்வே பணிமனையினைக் கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}இங்கே சாலை வாகன பணிமனையினைக் கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}இங்கே ட்ராம் வாகன பணிமனையினைக் கட்ட இயலாது...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}இங்கே கப்பல் பணிமனையினைக் கட்ட இயலாது...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}பணிமனையின் பெயரினை மாற்ற இயலாது...
 
@@ -2184,9 +2265,11 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ப�
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}பணிமையின் உள்ளே நிறுத்தப்பட்ட பின்னரே இரயில்கள் மாற்றியமைக்க முடியும்
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}iஇரயில் மிக நீளமாக உள்ளது
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}வாகனத்தின் திசையை மாற்ற முடியாது...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... பல்வேறு பாகங்களினைக் கொண்டுள்ளது
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :ஒத்துவரா இரயில் வகைகள்
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}வாகனத்தை நகர்த்த முடியாது...
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}பின் பொறி தனது முன் பொறியினையே தொடரும்
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}பணிமனைக்கு செல்ல வழி இல்லை
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}பணிமனையை கண்டுபிடிக்க முடியவில்லை
 
@@ -2217,6 +2300,7 @@ STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... ஒ�
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}இங்கே சாலை கட்ட இயலாது...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}இங்கே ட்ரேம்வே கட்ட இயலாது...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}இங்கே சாலையை அகற்ற இயலாது...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}இங்கிருந்து ட்ராம்வேயினை நீக்க முடியாது...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...சாலை இல்லை
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட்ராம் வழி இல்லை
 
@@ -2229,6 +2313,7 @@ STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... க�
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... கால்வாயின் மேல் கட்ட முடியாது
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... ஆற்றின் மேல் கட்ட முடியாது.
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}முதலில் கால்வாய் அழிக்கப்பட வேண்டும்
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}தண்ணீர்ப் பாதையினை கட்ட இயலாது...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... மரம் ஏற்கனவே உள்ளது
@@ -2239,24 +2324,50 @@ STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}இங�
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}முதலில் பாலம் அழிக்கப்பட வேண்டும்
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}ஆரம்பித்த இடத்திலிருந்தே முடியக் கூடாது
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}பாலத்தின் முனைகள் ஒரே உயரத்தில் இல்லை
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}பாலம் மிகவும் உயரம் மிகவும் குறைவாக உள்ளது
+STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}ஆரம்பம் மற்றும் முடிவு ஒரே கோடில் இருக்க வேண்டும்
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... பாலத்தின் முடிவுகள் இரண்டும் நிலத்திலேயே இருக்க வேண்டும்
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... பாலம் மிக நீளமாக உள்ளது
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}பாலம் படத்தின் எல்லையினைத் தாண்டி முடியும்
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}இங்கே சுரங்கப்பாதையினை கட்ட இயலாது...
+STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}சுரங்கத்தின் நுழைவுவாயிலிற்கு தகுந்த இடம் இது அல்ல
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}முதலில் சுரங்கப்பாதை அழிக்கப்பட வேண்டும்
+STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}மற்றொரு சுரங்கம் வழியில் உள்ளது
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}சுரங்கம் படத்தின் எல்லையை தாண்டி முடியும்
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}சுரங்கத்தின் மற்றொரு முனையில் நிலத்தினை மாற்றியமைக்க இயலவில்லை
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... சுரங்கம் வெகு நீளம்
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... மிக அதிகமான பொருட்கள்
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}பொருளினை கட்ட இயலாது...
+STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}பொருள் வழியில் உள்ளது
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... நிறுவனத்தின் தலைமையிடம் வழியில் உள்ளது
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}இந்த நிலப் பகுதியினை வாங்க முடியாது...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... இது ஏற்கனவே உங்களிடம் உள்ளது!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}குழுவை உருவாக்க முடியாது...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}இந்தக் குழுவினை நீக்க முடியாது...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}குழுவின் பெயரினை மாற்ற இயலாது...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}இந்தக் குழுவில் உள்ள அனைத்து வாகனங்களையும் நீக்க இயலாது...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}வாகனத்தினை இந்தக் குழுவில் இணைக்க இயலாது...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}பகிரப்பட்ட வாகனத்தினை இந்தக் குழுவில் இணைக்க இயலாது...
 
 # Generic vehicle errors
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}இரயில் வழியில் உள்ளது
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}சாலை வாகனம் வழியில் உள்ளது
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}கப்பல் வழியில் உள்ளது
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}விமானம் வழியில் உள்ளது
 
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}இரயிலினை மாற்றியமைக்க இயலாது...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}சாலை வாகனத்தை மாற்றியமைக்க இயலாது...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}கப்பலை மாற்றியமைக்க இயலாது...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}விமானத்தை மாற்றியமைக்க இயலாது...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}இரயிலின் பெயரினை மாற்ற இயலவில்லை...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}சாலை வாகனத்தின் பெயரை மாற்ற இயலாது...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}கப்பலை பெயரிட முடியாது...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}விமானத்தை பெயரிட முடியாது...
 
@@ -2291,13 +2402,16 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}கப�
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}விமானம் கிடைக்காது
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}ஆட்டத்தில் நிறைய வாகனங்கள் உள்ளன
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}சர்வீஸ் இடைவேளியினை மாற்ற இயலாது...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... வாகனம் அழிக்கப்பட்டுள்ளது
 
 # Specific vehicle errors
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}இரயில் சிக்னலைத் தாண்டிச் செல்ல முடியாது...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}இரயில் செல்லும் திசையினை திருப்ப முடியாது...
 STR_ERROR_TRAIN_START_NO_POWER                                  :இரயில கிளம்ப ஆற்றல் இல்லை
 
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}சாலை வாகினத்தினை வழிமாற்ற இயலாது...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}விமானம் பறந்துக் கொண்டிருக்கிறது
 
@@ -2315,17 +2429,27 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... அ�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... இந்த கட்டளையை பகிர்ந்துகொள்ளும் வாகனம் அந்த நிறுத்தத்திற்கு செல்ல இயலாது
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}இந்த கட்டளைப் பட்டியலை பகிர முடியாது...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}கட்டளைப் பட்டியலை பிரதி செய்ய இயலாது...
 
 # Timetable related errors
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}வாகனங்கள் நிலையங்களில் மட்டுமே காத்திருக்க முடியும்
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}இந்த வாகனம் இந்த இரயில் நிலையத்தில் நிற்கவில்லை
 
 # Sign related errors
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... அதிகமான குறிகள்
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}குரியீடினை நீக்க முடியாது...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :உயரமான அலுவலுக கட்டம்
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :அலுவலுக கட்டம்
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :சிறிய பிளாட்டுகள் கட்டம்
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :தேவாலயம்
+STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :பெரிய அலுவலுக கட்டம்
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :நகர வீடுகள்
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :ஹோட்டல்
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :சிலை
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :ஊற்று
@@ -2350,13 +2474,18 @@ STR_TOWN_BUILDING_NAME_HOUSES_2                                 :வீடுக
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :சினிமா
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :வணிக மையம்
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :இக்லூ
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :டெபீஸ்
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :தேனீர் விருந்து வீடு
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :பிக்கி வங்கி
 
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :நிலக்கரி சுரங்கம்
 STR_INDUSTRY_NAME_POWER_STATION                                 :மின் உற்பத்தி நிலையம்
+STR_INDUSTRY_NAME_SAWMILL                                       :மர மில்
 STR_INDUSTRY_NAME_FOREST                                        :காடு
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :எண்ணெய் சுத்திகரிப்பு நிலையம்
+STR_INDUSTRY_NAME_OIL_RIG                                       :எண்ணெய்க் கிணறு
 STR_INDUSTRY_NAME_FACTORY                                       :தொழிற்சாலை
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :அச்சகம்
 STR_INDUSTRY_NAME_STEEL_MILL                                    :எஃகு மில்
@@ -2752,6 +2881,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -2786,6 +2916,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -2806,19 +2937,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

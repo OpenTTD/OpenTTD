@@ -365,6 +365,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายส
 STR_FILE_MENU_SAVE_GAME                                         :บันทึกเกม
 STR_FILE_MENU_LOAD_GAME                                         :โหลดเกม
 STR_FILE_MENU_QUIT_GAME                                         :เลิกเล่น
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :ออกจากเกม
 ############ range ends here
 
@@ -2279,6 +2280,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :วัตถุ
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}กราฟิกพื้นฐานที่ใช้อยู่นี้ขาดตัวเลขของสไปรท์{}Please update the base graphics set.
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ถูกยกเลิกโดย {STRING}
@@ -2311,8 +2313,10 @@ STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}ยก�
 
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- ไม่มี -
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}ผู้โดยสารเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}จดหมายเมื่อเดือนที่แล้ว: {ORANGE}{COMMA}{BLACK}  จำนวนสูงสุด: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} ต้องการหิมะ
@@ -2328,6 +2332,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
@@ -2339,14 +2344,18 @@ STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}ให�
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}การบริการได้เงินอุดหนุนเรียบร้อยแล้ว:
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}กำลังรอ: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} ถ่ายมาจาก {STATION})
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -2355,9 +2364,13 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำ�
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
 # Company view
 
@@ -2448,6 +2461,7 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}เป�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}เปลี่ยนชื่อชนิดของเครื่องบิน
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -2493,6 +2507,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :อากาศ
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -2544,6 +2559,8 @@ STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}คว�
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
 
@@ -2567,8 +2584,11 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}ลบ�
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(อัตโนมัติ)
 
@@ -2617,6 +2637,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}เล�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}ย้าย AI ที่เลือกลงด้านล่างของรายชื่อ
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -2825,7 +2846,11 @@ STR_INDUSTRY_NAME_STEEL_MILL                                    :โรงงา
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 ############ end of savegame specific region!
 
@@ -2976,6 +3001,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -2991,6 +3017,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
@@ -3009,6 +3036,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -3029,31 +3057,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_SV_EMPTY                                                    :
-STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{STRING}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

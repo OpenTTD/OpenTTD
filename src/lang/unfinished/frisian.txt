@@ -2160,6 +2160,7 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Sintrear
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jow stasjon in nije namme
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Sintrearje it byld op de lokaasje fan dizze kontrôlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Namme fan kontrôlepost oanpasse
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Sintrearje it byld op de lokaasje fan dizze boei
@@ -3324,4 +3325,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

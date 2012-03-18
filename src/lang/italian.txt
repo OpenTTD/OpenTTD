@@ -3745,7 +3745,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... ne �
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... può essere costruita solo in città con almeno 1.200 abitanti
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... può essere costruita solo nella foresta pluviale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... può essere costruita solo in aree desertiche
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... può essere costruito solo in città (sostituendo le case)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... può essere costruito solo vicino al centro delle città
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... può essere costruito solo a basse quote
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... può essere posizionata solo vicino ai bordi della mappa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... una foresta può essere piantata solo al di sopra della linea delle nevi perenni

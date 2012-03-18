@@ -223,6 +223,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF майл
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Тух
 ############ range ends here
 
@@ -814,6 +815,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :Вырӑнти 
 
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
@@ -967,6 +969,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 
 # World generation
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Виҫа картти:
+STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
@@ -1001,6 +1004,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Объект
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 
 # NewGRF related 'general' warnings
 
@@ -1024,16 +1028,20 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 # Town directory window
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ҫук -
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
@@ -1043,11 +1051,16 @@ STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ҫу�
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ҫук -
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ҫук -
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -1056,9 +1069,13 @@ STR_STATION_LIST_NONE                                           :{YELLOW}- Ҫу�
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
 # Company view
 
@@ -1109,8 +1126,12 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -1137,6 +1158,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫу�
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -1177,6 +1199,8 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -1197,8 +1221,11 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 
 
@@ -1234,6 +1261,7 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -1363,6 +1391,8 @@ STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_AIRPORT                                           :{STRING} Аэропорт
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 ############ end of savegame specific region!
 
@@ -1415,6 +1445,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1430,6 +1461,8 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
@@ -1445,7 +1478,9 @@ STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLA
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -1466,38 +1501,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-STR_MAPGEN_BY                                                   :{BLACK}*
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
-STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{STRING}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

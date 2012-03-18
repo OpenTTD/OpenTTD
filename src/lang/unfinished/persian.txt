@@ -367,6 +367,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف کرد
 STR_FILE_MENU_SAVE_GAME                                         :ذخیره بازی
 STR_FILE_MENU_LOAD_GAME                                         :فراخوانی بازی
 STR_FILE_MENU_QUIT_GAME                                         :رها کردن بازی
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :خروج
 ############ range ends here
 
@@ -2756,6 +2757,8 @@ STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}هزین�
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}هزینه های نگهداری کشتی
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}هزینه های نگهداری مستغلات
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}درآمد قطارها
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}زیرساخت
 
 # Company view
@@ -2896,9 +2899,12 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}نام �
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگذاری مجدد نوع هواپیما
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}کشی ها -برای اطلاعات بر روی کشتی کلیک راست کنید
@@ -3057,6 +3063,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}تغیی
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (دستورها)
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}لیست دستورات - برای مشخص کردن دستور روی آن کلیک کنید. Ctrl+click به ایستگاه میرود
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - پایان دستورها - -
 
@@ -3085,8 +3093,11 @@ STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}وارد
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(ضمنی)
 
@@ -3861,6 +3872,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -3895,6 +3907,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -3915,16 +3928,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
-STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

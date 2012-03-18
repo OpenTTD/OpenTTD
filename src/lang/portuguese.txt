@@ -317,7 +317,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construi
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostrar janela som/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar última mensagem/notícia, mostrar opções de mensagens
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações do terreno, consola, depuração da IA, capturas, sobre o OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações do terreno, consola, depuração de scripts, capturas, sobre o OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar barras de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
@@ -3524,8 +3524,8 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Houve um
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela Depuração da IA/Scripts de Jogo está disponível apenas para o servidor
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração IA / Jogo
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O script de jogo que será carregado no próximo jogo
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração IA / Script de Jogo
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}O Script de Jogo que será carregado no próximo jogo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}As IAs que serão carregadas no próximo jogo
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
 STR_AI_CONFIG_RANDOM_AI                                         :IA Aleatória
@@ -3718,7 +3718,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só se pode construir em zonas florestais
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... só se pode construir em zonas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode construir em cidades
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode construir em cidades (substituindo casas)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... só se pode construir no centro de uma cidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... só se pode construir em planícies
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... só pode ser colocado perto das bordas do mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... a floresta só pode ser plantada acima do nível de neve
@@ -4423,6 +4424,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4478,4 +4480,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}

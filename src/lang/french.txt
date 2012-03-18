@@ -3718,7 +3718,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... droi
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... peut seulement être construit dans des villes d'au moins 1200 habitants
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... peut seulement être construit dans une région tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... peut seulement être construit dans les endroits désertiques
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... peut seulement être construit en ville
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... peut seulement être construit en ville (en remplaçant des maisons)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... peut seulement être construit près du centre des villes
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... peut seulement être construit dans les zones basses
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... positionnement uniquement sur les bords de la carte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... les forêts ne peuvent être plantées qu'au dessus de l'altitude d'enneigement

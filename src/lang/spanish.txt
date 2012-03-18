@@ -3718,7 +3718,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... solo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... sólo puede ser construido en pueblos con población superior a 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... sólo se puede construir en áreas de selva
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... sólo se puede construir en áreas desérticas
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede ser construido en pueblos
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... solo puede ser construido en pueblos (reemplazando casas)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... solamente puede construirse cerca del centro de un pueblo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... solo puede construirse en zonas bajas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... sólo se puede colocar cerca de los bordes del mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... sólo se puede plantar bosques sobre la nieve

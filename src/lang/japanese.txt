@@ -365,6 +365,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :駅の看板の
 STR_FILE_MENU_SAVE_GAME                                         :ゲームデータをセーブ
 STR_FILE_MENU_LOAD_GAME                                         :ゲームデータをロード
 STR_FILE_MENU_QUIT_GAME                                         :タイトルに戻る
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :OpenTTDを終了
 ############ range ends here
 
@@ -2563,6 +2564,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}一年�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
@@ -3356,6 +3358,7 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}下に�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}選択したAIの順位を下げる
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}設定
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}AI のパラメータを設定します
 
@@ -4220,6 +4223,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -4235,6 +4239,7 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
 STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
@@ -4253,6 +4258,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -4273,9 +4279,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

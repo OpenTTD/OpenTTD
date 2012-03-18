@@ -36,21 +36,33 @@ STR_JUST_NOTHING.kur                                            :Niekur
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Keleiviai
-STR_CARGO_PLURAL_PASSENGERS.kas                                 :Keleiviai
-STR_CARGO_PLURAL_PASSENGERS.ko                                  :Keleivių
-STR_CARGO_PLURAL_PASSENGERS.kam                                 :Keleiviams
-STR_CARGO_PLURAL_PASSENGERS.ka                                  :Keleivius
-STR_CARGO_PLURAL_PASSENGERS.kuo                                 :Keleiviais
-STR_CARGO_PLURAL_COAL                                           :Anglis
-STR_CARGO_PLURAL_COAL.kas                                       :Anglis
-STR_CARGO_PLURAL_COAL.ko                                        :Anglies
-STR_CARGO_PLURAL_COAL.ka                                        :Anglį
+STR_CARGO_PLURAL_PASSENGERS.kas                                 :keleiviai
+STR_CARGO_PLURAL_PASSENGERS.ko                                  :keleivių
+STR_CARGO_PLURAL_PASSENGERS.kam                                 :keleiviams
+STR_CARGO_PLURAL_PASSENGERS.ka                                  :keleivius
+STR_CARGO_PLURAL_PASSENGERS.kuo                                 :keleiviais
+STR_CARGO_PLURAL_PASSENGERS.kur                                 :keleiviuose
+STR_CARGO_PLURAL_COAL                                           :Akmens anglys
+STR_CARGO_PLURAL_COAL.kas                                       :akmens anglys
+STR_CARGO_PLURAL_COAL.ko                                        :akmens anglių
+STR_CARGO_PLURAL_COAL.kam                                       :akmens anglims
+STR_CARGO_PLURAL_COAL.ka                                        :akmens anglis
+STR_CARGO_PLURAL_COAL.kuo                                       :akmens anglimis
+STR_CARGO_PLURAL_COAL.kur                                       :akmens anglyse
 STR_CARGO_PLURAL_MAIL                                           :Paštas
-STR_CARGO_PLURAL_MAIL.ko                                        :Pašto
-STR_CARGO_PLURAL_MAIL.ka                                        :Paštą
-STR_CARGO_PLURAL_OIL                                            :Naftą
-STR_CARGO_PLURAL_OIL.ko                                         :Naftos
-STR_CARGO_PLURAL_OIL.ka                                         :Naftą
+STR_CARGO_PLURAL_MAIL.kas                                       :paštas
+STR_CARGO_PLURAL_MAIL.ko                                        :pašto
+STR_CARGO_PLURAL_MAIL.kam                                       :paštui
+STR_CARGO_PLURAL_MAIL.ka                                        :paštą
+STR_CARGO_PLURAL_MAIL.kuo                                       :paštu
+STR_CARGO_PLURAL_MAIL.kur                                       :pašte
+STR_CARGO_PLURAL_OIL                                            :Nafta
+STR_CARGO_PLURAL_OIL.kas                                        :nafta
+STR_CARGO_PLURAL_OIL.ko                                         :naftos
+STR_CARGO_PLURAL_OIL.kam                                        :naftai
+STR_CARGO_PLURAL_OIL.ka                                         :naftą
+STR_CARGO_PLURAL_OIL.kuo                                        :nafta
+STR_CARGO_PLURAL_OIL.kur                                        :naftoje
 STR_CARGO_PLURAL_LIVESTOCK                                      :Galvijai
 STR_CARGO_PLURAL_LIVESTOCK.kas                                  :galvijai
 STR_CARGO_PLURAL_LIVESTOCK.ko                                   :galvijų
@@ -3544,7 +3556,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Technin�
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vykti visuomet
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Vykti, jei reikia
 STR_ORDER_DROP_HALT_DEPOT                                       :Nuvykti ir sustoti
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Keisti techninės apžiūros nuostatas
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
@@ -3558,14 +3570,14 @@ STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visuomet
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likusi eksploatacijos trukmė (metais)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Palyginimo operacija
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :lygu
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygu
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau, negu
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mažiau arba lygu
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :daugiau, negu
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :daugiau arba lygu
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :tiesa
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :netiesa
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :yra nelygu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :yra mažiau, negu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :yra mažiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :yra daugiau, negu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :yra daugiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :yra tiesa
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :yra netiesa
 
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Reikšmė su kuria lyginti pasirinktą transporto priemonės parametrą
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Įveskite reikšmę, su kuria bus lyginama
@@ -3584,7 +3596,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimi
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
 STR_ORDER_CONDITIONAL                                           :Sukurti sąlyginę užduotį
 STR_ORDER_SHARE                                                 :Bendrinti užduotis
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują nurodymą prieš pažymetą, arba iterpti sąrašo pabaigoje. Ctrl+Paspaudimas verčia stotelių nurodymus į 'pilnai pasikrauti bet kokio krovinio', kontrolės punktų į 'praleisti' ir garažų į 'aptarnauti'. 'Dalintis nurodymais' arba paspaudimas laikant VALD (CTRL) klavišą leidžia šiai transporto priemonei dalintis nurodymais su kita transporto priemone. Paspaudus ant kitos transporto priemonės, bus nukopijuoti jos nurodymai
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują užduotį prieš pažymėtąją (arba sąrašo pabaigoje, jei jokia užduotis nepažymėta). Spragtelėjus laikant nuspaustą Ctrl klavišą, sukurta užduotis bus „pilnai prikrauti kurio nors krovinio“ (stotims), „vykti per“ (kontrolės punktams) bei „vykti techninės apžiūros“ (depams, garažams ar angarams). Pasirinkus kitą transporto priemonę kaip užduoties tikslą, bus užduotys bus nukopijuotos. Padarius tą patį lainkant nuspaustą Ctrl klavišą, užduotys bus bendrinamos. Pasirinkus garažą, depą ar angarą kaip užduoties tikslą, bus išjungta periodinė transporto priemonės techninė apžiūra
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti visas transporto priemones, kurios dalinasi šiuo užduočių sąrašu
 
@@ -3592,65 +3604,77 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Parodyti
 STR_ORDER_GO_TO_WAYPOINT                                        :Vykti per „{WAYPOINT}“
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Vykti nesustojant per „{WAYPOINT}“
 
-STR_ORDER_SERVICE_AT                                            :Aptarnavimas
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Servisas nestojant
+STR_ORDER_SERVICE_AT                                            :Vykti techninės apžiūros į
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Vykti techninės apžiūros nesustojant į
 
 STR_ORDER_NEAREST_DEPOT                                         :artimiausias
-STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
-STR_ORDER_TRAIN_DEPOT                                           :Lokomotyvų depas
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Automobilių garažas
-STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
+STR_ORDER_NEAREST_DEPOT.kas                                     :artimiausias
+STR_ORDER_NEAREST_DEPOT.ka                                      :artimiausią
+STR_ORDER_NEAREST_HANGAR                                        :artimiausias angaras
+STR_ORDER_NEAREST_HANGAR.kas                                    :artimiausias angaras
+STR_ORDER_NEAREST_HANGAR.ka                                     :artimiausią angarą
+STR_ORDER_TRAIN_DEPOT                                           :depas
+STR_ORDER_TRAIN_DEPOT.kas                                       :depas
+STR_ORDER_TRAIN_DEPOT.ka                                        :depą
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :garažas
+STR_ORDER_ROAD_VEHICLE_DEPOT.kas                                :garažas
+STR_ORDER_ROAD_VEHICLE_DEPOT.ka                                 :garažą
+STR_ORDER_SHIP_DEPOT                                            :depas
+STR_ORDER_SHIP_DEPOT.kas                                        :depas
+STR_ORDER_SHIP_DEPOT.ka                                         :depą
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING.ka} {STRING.ka}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} „{DEPOT}“
 
-STR_ORDER_REFIT_ORDER                                           :(Keisti į {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Pertvarkyti į {STRING} ir sustoti)
-STR_ORDER_STOP_ORDER                                            :(Sustoti)
+STR_ORDER_REFIT_ORDER                                           :(pertvarkyti {STRING.kam})
+STR_ORDER_REFIT_STOP_ORDER                                      :(pertvarkyti {STRING.kam} ir sustoti)
+STR_ORDER_STOP_ORDER                                            :(sustoti)
 
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION                                         :{STRING} „{STATION}“ {STRING}
 
-STR_ORDER_IMPLICIT                                              :(Automatinis)
+STR_ORDER_IMPLICIT                                              :(automatinis)
 
-STR_ORDER_FULL_LOAD                                             :(Pilnai pasikrauti)
-STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)
-STR_ORDER_NO_LOAD                                               :(Nepakrauti)
-STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Iškrauti ir laukti pilno pakrovimo)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Iškrauti ir palikti tuščią)
-STR_ORDER_TRANSFER                                              :(Perkelti ir paimti krovinį)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Perkelti ir laukti pilno krovinio)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Perkelti ir laukti pilno bet kokio pakrovimo)
-STR_ORDER_TRANSFER_NO_LOAD                                      :(Perkelti ir palikti tuščią)
-STR_ORDER_NO_UNLOAD                                             :(Neiškrauti ir paimti krovinį)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Neiškrauti ir laukti pilno pakrovimo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Neiškrauti ir laukti bet kokio pilno pakrovimo)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Jokio iškrovimo ar pakrovimo)
+STR_ORDER_FULL_LOAD                                             :(pilnai prikrauti visų krovinių)
+STR_ORDER_FULL_LOAD_ANY                                         :(pilnai prikrauti kurio nors krovinio)
+STR_ORDER_NO_LOAD                                               :(nekrauti)
+STR_ORDER_UNLOAD                                                :(iškrauti ir paimti krovinį)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(iškrauti ir pilnai prikrauti visų krovinių)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(iškrauti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(iškrauti ir palikti tuščią)
+STR_ORDER_TRANSFER                                              :(perkelti ir paimti krovinį)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(perkelti ir pilnai prikrauti visų krovinių)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(perkelti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(perkelti ir palikti tuščią)
+STR_ORDER_NO_UNLOAD                                             :(neiškrauti ir paimti krovinį)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(neiškrauti ir pilnai prikrauti visų krovinių)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(neiškrauti ir pilnai prikrauti kurio nors krovinio)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(neiškrauti ir neprikrauti)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatiškai pertvarkyti į {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Pilnai pakrauti ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Pilnai pakrauti bet kokio krovinio ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Iškrauti ir pasikrauti krovinį ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Iškrauti ir laukti pilno pasikrovimo ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Iškrauti ir laukti bet kokio krovinio pilno pasikrovimo ir automatiškai pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Perkelti ir pasikrauti ir pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Perkelti ir laukti pilno pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Perkelti ir laukti pilno bet kokio krovinio pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Neiškrauti, pilnai pasikrauti ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Neiškrauti, laukti pilno pasikrovimo ir pertvarkyti į {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Neiškrauti ir laukti pilno bet kokio pasikrovimo ir pertvarkyti į {STRING})
+STR_ORDER_AUTO_REFIT                                            :(automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_FULL_LOAD_REFIT                                       :(pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_REFIT                                          :(iškrauti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(iškrauti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(iškrauti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_REFIT                                        :(perkelti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(perkelti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(perkelti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(neiškrauti ir paimti krovinį bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(neiškrauti ir pilnai prikrauti visų krovinių bei automatiškai pertvarkyti {STRING.kam})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(neiškrauti ir pilnai prikrauti kurio nors krovinio bei automatiškai pertvarkyti {STRING.kam})
 
-STR_ORDER_AUTO_REFIT_ANY                                        :prieinamas krovinys
+STR_ORDER_AUTO_REFIT_ANY                                        :galimas krovinys
+STR_ORDER_AUTO_REFIT_ANY.kas                                    :galimas krovinys
+STR_ORDER_AUTO_REFIT_ANY.kam                                    :galimam kroviniui
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[netoli pabaigos]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[viduryje]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[toli nuo pabaigos]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[sustoti ties artimuoju kraštu]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sustoti viduryje]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[sustoti ties tolimuoju kraštu]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (Sekanti paskirties vieta yra per toli)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Užduoties tikslas yra per toli)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti į užsakymą {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Pereiti į užsakymą {COMMA} kai {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti į užsakymą {COMMA} kai {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti prie {COMMA}-(i)os užduoties
+STR_ORDER_CONDITIONAL_NUM                                       :Pereiti prie {COMMA}-(i)os užduoties, jei {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti prie {COMMA}-(i)os užduoties, jei teiginys „{STRING}“ {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
@@ -3945,6 +3969,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gali
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gali būti statomas tik džiunglėse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gali būti statomas tik dykumose
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gali būti statomas tik miestuose
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... statyti galima tik netoli miesto centro
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... galima statyti tik žemose vietose
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... gali būti tik prie žemėlapio kraštų
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... miškas gali būti pasodintas tik virš sniego ribos

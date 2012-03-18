@@ -3781,7 +3781,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vár
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... csak 1200-nál nagyobb lakosságszámú településeken építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... csak esőerdőben építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... csak sivatagban építhető
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak településen építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak településen, meglévő házak helyére építhető
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... csak települések központjában építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép határaihoz közel építhető
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... erdő csak a hóhatár fölé ültethető

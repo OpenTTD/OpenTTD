@@ -356,6 +356,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Gjøgnumskygd s
 STR_FILE_MENU_SAVE_GAME                                         :Goym spæl
 STR_FILE_MENU_LOAD_GAME                                         :Heinta spæl
 STR_FILE_MENU_QUIT_GAME                                         :Far frá spæli
+STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Útgongd
 ############ range ends here
 
@@ -743,6 +744,7 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 # Config errors
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 
 
@@ -779,6 +781,7 @@ STR_FACE_YES                                                    :Já
 # Network server list
 
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 
 
 
@@ -996,6 +999,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
@@ -1216,6 +1220,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -1337,6 +1342,9 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 ############ end of savegame specific region!
 
@@ -1390,6 +1398,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1405,6 +1414,8 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
@@ -1420,7 +1431,9 @@ STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLA
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
+STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
@@ -1441,16 +1454,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_FILE_MENU_SEPARATOR                                         :
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_BUOY                                              :{STRING}
-STR_SV_STNAME_WAYPOINT                                          :{STRING}
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
-STR_ORANGE_STRING                                               :{ORANGE}{STRING}
-STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

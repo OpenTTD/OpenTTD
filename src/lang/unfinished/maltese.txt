@@ -115,6 +115,7 @@ STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} t
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} ta' plastik
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passiġġier{P "" i i i}
@@ -255,6 +256,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 # Extra tooltips for the scenario editor toolbar
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -313,6 +315,10 @@ STR_FILE_MENU_SEPARATOR                                         :
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 
 
@@ -322,15 +328,26 @@ STR_FILE_MENU_SEPARATOR                                         :
 # Company league window
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
 # Music window
+STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 
 
 # Playlist window
 
 # Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
 
@@ -343,6 +360,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Turix il
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Uri l-propjeta kollha tal-kumpanija fuq il-mappa
 
 # Status bar messages
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 # News message history
 
@@ -460,6 +478,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet k
 # Config errors
 
 # Intro window
+STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 
 
@@ -485,6 +504,8 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is
 
 # Network server list
 
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 
 
 
@@ -539,6 +560,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
@@ -639,6 +661,7 @@ STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel i
 
 
 # World generation
+STR_MAPGEN_BY                                                   :{BLACK}*
 
 # Strings for map borders at game generation
 
@@ -672,6 +695,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 
 # NewGRF related 'general' warnings
 
@@ -694,16 +718,20 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 
 
 
 # Goal window
+STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
 
@@ -712,10 +740,15 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 # Subsidies window
 
 # Station list window
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
 
 
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
@@ -724,9 +757,13 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrija inv
 
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 
 
 # Finances window
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 
 # Company view
 
@@ -780,6 +817,9 @@ STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Biddel l-isem tad-depot
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem ta' dan id-depot
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 
 
@@ -806,6 +846,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 
 # Vehicle view
+STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 
 
@@ -845,6 +886,8 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 # Order view
 
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 
 # Order bottom buttons
@@ -866,8 +909,11 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hassar l
 # String parts to build the order string
 
 
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 
+STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Awtomatiku)
 
@@ -912,6 +958,7 @@ STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Исчи
 
 
 
+STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
@@ -1279,6 +1326,7 @@ STR_JUST_CHECKMARK                                              :{CHECKMARK}
 STR_JUST_COMMA                                                  :{COMMA}
 STR_JUST_CURRENCY_SHORT                                         :{CURRENCY_SHORT}
 STR_JUST_CURRENCY_LONG                                          :{CURRENCY_LONG}
+STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
 STR_JUST_INT                                                    :{NUM}
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
@@ -1294,6 +1342,8 @@ STR_TINY_BLACK_COMA                                             :{TINY_FONT}{BLA
 STR_TINY_COMMA                                                  :{TINY_FONT}{COMMA}
 STR_BLUE_COMMA                                                  :{BLUE}{COMMA}
 STR_RED_COMMA                                                   :{RED}{COMMA}
+STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
+STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
 STR_COMPANY_MONEY                                               :{WHITE}{CURRENCY_LONG}
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
@@ -1332,53 +1382,3 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
-STR_ABBREV_NOTHING                                              :
-STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
-STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
-STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
-STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
-STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
-STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
-STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
-STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
-STR_MAPGEN_BY                                                   :{BLACK}*
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
-STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
-STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
-STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
-STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
-STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
-STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
-STR_DEPOT_NO_ENGINE                                             :{BLACK}-
-STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
-STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
-STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
-STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
-STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_JUST_CARGO_LIST                                             :{CARGO_LIST}
-STR_WHITE_COMMA                                                 :{WHITE}{COMMA}
-STR_TINY_BLACK_DECIMAL                                          :{TINY_FONT}{BLACK}{DECIMAL}
