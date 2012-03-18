@@ -1,3 +1,13 @@
+1.2.0-RC3 (2012-03-18)
+------------------------------------------------------------------------
+- Feature: Allow display of baseset textfiles (r24037)
+- Feature: Increase the station class limit from 32 to 256 (r24031)
+- Fix: After opening a text window with the monospaced font, all other text started glitching (r24038)
+- Fix: [NoAI] Reset 'is random' status of temporary variable during saveload as it is not always written to when loading an AI which means it wouldd be taking the 'is random' setting of another AI (r24033)
+- Fix: [NoAI] Make AIEngine::IsArticulated return true if the articulated callback flag is set, do not try to run the callback (r24029)
+- Fix: Pass cases down into the list of cargos [FS#5090] (r24024, r24023, r24022)
+
+
 1.2.0-RC2 (2012-03-04)
 ------------------------------------------------------------------------
 - Fix: [Script] AI used in names in API for GSOrder [FS#5088] (r24006)
