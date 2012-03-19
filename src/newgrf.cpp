@@ -6954,7 +6954,7 @@ static void GRFSound(ByteReader *buf)
 		if (type != 0xFF) {
 			grfmsg(1, "GRFSound: Unexpected RealSprite found, skipping");
 			FioSkipBytes(7);
-			SkipSpriteData(type, num - 8);
+			SkipSpriteData(type, len - 8);
 			continue;
 		}
 
