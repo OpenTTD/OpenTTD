@@ -6969,7 +6969,7 @@ static void GRFSound(ByteReader *buf)
 						LoadGRFSound(offs);
 					}
 				}
-				FioSkipBytes(len - 1); // <type> is not included in the length for pseudo-sprites.
+				FioSkipBytes(len - 1); // already read <action>
 				break;
 
 			case 0xFE:
@@ -6979,13 +6979,13 @@ static void GRFSound(ByteReader *buf)
 					if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
 					ImportGRFSound();
 				} else {
-					FioSkipBytes(len - 1);
+					FioSkipBytes(len - 1); // already read <action>
 				}
 				break;
 
 			default:
 				grfmsg(1, "GRFSound: Unexpected Action %x found, skipping", action);
-				FioSkipBytes(len - 1);
+				FioSkipBytes(len - 1); // already read <action>
 				break;
 		}
 	}
