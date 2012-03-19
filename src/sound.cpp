@@ -218,11 +218,11 @@ static const byte _sound_idx[] = {
 
 void SndCopyToPool()
 {
+	SoundEntry *sound = AllocateSound(ORIGINAL_SAMPLE_COUNT);
 	for (uint i = 0; i < ORIGINAL_SAMPLE_COUNT; i++) {
-		SoundEntry *sound = AllocateSound();
-		*sound = _original_sounds[_sound_idx[i]];
-		sound->volume = _sound_base_vol[i];
-		sound->priority = 0;
+		sound[i] = _original_sounds[_sound_idx[i]];
+		sound[i].volume = _sound_base_vol[i];
+		sound[i].priority = 0;
 	}
 }
 
