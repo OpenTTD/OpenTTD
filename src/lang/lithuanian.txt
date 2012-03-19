@@ -2913,14 +2913,14 @@ STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Jokių k
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Laukia: {WHITE}{STRING}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
-STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pakeliui iš {STATION})
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO_SHORT} pakeliui iš „{STATION}“)
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{CARGO_LIST.ka}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
-STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Parodyti stotelės reitingus
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Vietinis transporto sistemos reitingas:
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
@@ -2935,15 +2935,15 @@ STR_CARGO_RATING_EXCELLENT                                      :Puikus
 STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Rodyti stotelę ekrano centre. Spragtelėjus laikant nuspaustą Ctrl klavišą atsidarys naujas langas su stotelės vaizdu
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stotelės pavadinimą
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane.Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su stotelės vaizdu
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotelė
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotelė
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotelė
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotelė
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Rodyti visus automobilius, į kurių užduotis yra įtraukta ši stotis
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti visus lėktuvus, į kurių užduotis yra įtraukta ši stotis
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotis
 
-STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotelę
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotį
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3546,7 +3546,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Neiškrauti
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Keisti pažymėtos užduoties krovinio iškrovimo nuostatas
 
 STR_ORDER_REFIT                                                 :{BLACK}Pertvarkyti
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintaslėjus laikant VALD (CTRL) nurodymas pašalinamas
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintas
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatinis pertvarkymas
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Automatiškai pertvarkyti transporto priemonę kitokio tipo krovinio vežimui. Spragtelėjus laikant nuspaustą Ctrl klavišą, pertvarkymo nurodymas bus pašalintas. Automatinis pertvarkymas įmanomas tik jei transporto priemonė yra tam pritaikyta
 STR_ORDER_DROP_REFIT_AUTO                                       :Nustatytam kroviniui
@@ -3561,13 +3561,13 @@ STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Keisti t
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Transporto priemonės parametras, kuriuo bus remiamasi vykdant sąlyginę užduotį
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovinio užpilda (proc.)
-STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
-STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Didžiausias greitis
-STR_ORDER_CONDITIONAL_AGE                                       :Amžius (metais)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia techninės apžiūros
-STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visuomet
-STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Likusi eksploatacijos trukmė (metais)
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :krovinio užpilda (proc.)
+STR_ORDER_CONDITIONAL_RELIABILITY                               :patikimumas
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :didžiausias greitis
+STR_ORDER_CONDITIONAL_AGE                                       :amžius (metais)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :reikia techninės apžiūros
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :visuomet
+STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :likusi eksploatacijos trukmė (metais)
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Palyginimo operacija
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu
@@ -3592,8 +3592,8 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Atšaukt
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebebendrinti užduočių su kitomis transporto priemonėmis. Spragtelėjus laikant nuspaustą Ctrl klavišą, papildomai dar bus pašalintos visos šios transporto priemonės užduotys
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti į
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimiausią depą
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimiausią depą/garažą
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Vykti į artimiausią angarą
 STR_ORDER_CONDITIONAL                                           :Sukurti sąlyginę užduotį
 STR_ORDER_SHARE                                                 :Bendrinti užduotis
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Įterpti naują užduotį prieš pažymėtąją (arba sąrašo pabaigoje, jei jokia užduotis nepažymėta). Spragtelėjus laikant nuspaustą Ctrl klavišą, sukurta užduotis bus „pilnai prikrauti kurio nors krovinio“ (stotims), „vykti per“ (kontrolės punktams) bei „vykti techninės apžiūros“ (depams, garažams ar angarams). Pasirinkus kitą transporto priemonę kaip užduoties tikslą, bus užduotys bus nukopijuotos. Padarius tą patį lainkant nuspaustą Ctrl klavišą, užduotys bus bendrinamos. Pasirinkus garažą, depą ar angarą kaip užduoties tikslą, bus išjungta periodinė transporto priemonės techninė apžiūra
@@ -3672,9 +3672,9 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[sustoti ties t
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Užduoties tikslas yra per toli)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti prie {COMMA}-(i)os užduoties
-STR_ORDER_CONDITIONAL_NUM                                       :Pereiti prie {COMMA}-(i)os užduoties, jei {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti prie {COMMA}-(i)os užduoties, jei teiginys „{STRING}“ {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pereiti prie {COMMA}-os užduoties
+STR_ORDER_CONDITIONAL_NUM                                       :Pereiti prie {COMMA}-os užduoties, jei „{STRING}“ {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pereiti prie {COMMA}-os užduoties, jei teiginys „{STRING}“ {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
@@ -4627,7 +4627,13 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} kontrol�
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Traukinių depas
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Traukinių depas #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Automobilių depas
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Garažas
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.kas                          :{TOWN} garažas
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.ko                           :{TOWN} garažo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.kam                          :{TOWN} garažui
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.ka                           :{TOWN} garažą
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.kuo                          :{TOWN} garažu
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE.kur                          :{TOWN} garaže
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Automobilių depas #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laivų depas
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laivo depas #{COMMA}
