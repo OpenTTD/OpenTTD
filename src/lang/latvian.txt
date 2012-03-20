@@ -416,7 +416,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Magleva būvnie
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Ceļu būvēšana
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramvaja ceļa būvniecība
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramvaju ceļa būvniecība
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -1322,7 +1322,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Koku izvietošana spēlē: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(izbojā kokzāģētavu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(bojā kokzāģētavu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusmežos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
@@ -1981,7 +1981,7 @@ STR_RAIL_NAME_MONORAIL                                          :Viensliedes
 STR_RAIL_NAME_MAGLEV                                            :Maglevs
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Vilcienu depo orientācija
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Vilcienu depo virziens
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlēties vilcienu depo virzienu
 
 # Rail waypoint construction window
@@ -2042,40 +2042,40 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cauruļveida, s
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Ceļu būvniecība
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaju būvēšana
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvaju sliežu ceļu būvniecība
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Ceļu būves izvēle. Ctrl pārslēdz ceļa būvešanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvaja sliežu būves izvēle. Ctrl pārslēdz tramvaja sliežu būvešanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvaju sliežu būves izvēle. Ctrl pārslēdz tramvaju sliežu būvešanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt ceļu izmantojot automātiskā ceļa paņēmienu. Ctrl pārslēdz ceļu būvēšanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaja sliedes izmantojot automātisko paņēmienu. Ctrl pārslēdz tramvaja sliežu būvēšanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaju sliedes izmantojot automātisko paņēmienu. Ctrl pārslēdz tramvaju sliežu būvēšanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt autotransporta depo (autotransporta līdzekļu pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaja pieturu. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu staciju. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaja pieturu. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaju pieturu. Ctrl ieslēdz pieturu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu iekraušanas laukumu. Ctrl ieslēdz iekraušanas laukumu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaju pieturu. Ctrl ieslēdz pieturu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt ceļa tiltu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Būvēt tramvaja tiltu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Būvēt ceļa tuneli. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Būvēt tramvaja tuneli. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt ceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Būvēt tramvaju tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Būvēt ceļa tuneli. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Būvēt tramvaju tuneli. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Pārslēgties starp ceļa būvēšanas/nojaukšanas režīmiem
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Pārslēgt būvēt/novākt tramvaju būvei
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Automašīnu depo orientācija
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties autotransporta depo orientāciju
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvaja depo orientācija
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties tramvaja depo orientāciju
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Automašīnu depo virziens
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties autotransporta depo virzienu
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvaju depo virziens
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties tramvaju depo virzienu
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Autoostas virziens
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlēties autoostas virzienu
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Kravas stacijas virziens
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlēties kravas iekraušanas laukuma virzienu
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaja orientācija
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties tramvaja pasažieru pieturas orientāciju
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaja virziens
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlēties tramvaja kravas pieturas orientāciju
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaju pieturas virziens
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties pasažieru tramvaju pieturas virzienu
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaju pieturas virziens
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlēties kravas tramvaju pieturas virzienu
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu būvniecība
@@ -2225,7 +2225,7 @@ STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ieņēmu
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Nav
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Ceļa īpašnieks: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvaja īpašnieks: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvaju ceļa īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dzelzceļa īpašnieks: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER.kas                        :{G=f}{BLACK}Dzelzceļa īpašniece: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pašvaldība: {LTBLUE}{STRING}
@@ -2276,7 +2276,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} sliede
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} vilcienu depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ceļš
-STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ceļš ar ielu gaismām
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ceļš ar ielu apgaismojumu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Aleja
 STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Automašīnu depo
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Dzelzceļa pārbrauktuve
@@ -2577,11 +2577,11 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Izsaukums {1:HEX} atgrieza nezināmu vai nederīgu rezultātu {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
-STR_NEWGRF_INVALID_CARGO                                        :<nepareiza krava>
+STR_NEWGRF_INVALID_CARGO                                        :<nederīga krava>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nepareizas kravas>
-STR_NEWGRF_INVALID_ENGINE                                       :<nepareizs transportlīdzekļa modelis>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nepareiza rūpnīca>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <nederīgas kravas>
+STR_NEWGRF_INVALID_ENGINE                                       :<nederīgs transportlīdzekļa modelis>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nederīga ražotne>
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skenē NewGRF
@@ -2845,7 +2845,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Pārdot 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Uzņēmuma nosaukums
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Vadītāja vārds
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mēs meklējam kādu, kas vēlētos pirkt mūsu uzņēmumu.{}{}Vai tu gribi nopirkt {COMPANY} par {CURRENCY_LONG}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mēs meklējam transporta uzņēmumu, kurš vēlētos pārņemt mūsējo.{}{}Vai Jūs vēlaties pirkt {COMPANY} par {CURRENCY_LONG}?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} infrastruktūra
@@ -3072,7 +3072,7 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrēt
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Iegūt vilcienu sarakstu, kuru rīkojumos ir pašreizējais depo
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Iegūt transportu sarakstu, kuru rīkojumos ir pašreizējais depo
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Iegūt kuģ sarakstu, kuru rīkojumos ir pašreizējais depo
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Iegūt visu kuģu sarakstu, kuru rīkojumos ir pašreizējais depo
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Iegūt lidaparātu sarakstu, kuru rīkojumos ir angāri no šīs lidostas
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik, lai apstādinātu visus vilcienus, kas atrodas depo
@@ -3713,7 +3713,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... uz k
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Pilsēta ceļus nebūvēs. Jūs varat ieslēgt ceļu būvi caur Papildu iestatījumi->Ekonomika->Pilsētas
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Notiek ceļa remonts
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nevar dzēst šo pilsētu... {}Pilsēta ir atbildīga par kādu staciju vai depo
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... šās pilsētas centrā nav piemērotas vietas piemineklim
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... šās pilsētas centrā statujai nav piemērotas vietas
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... pārāk daudz ražotņu
@@ -3766,13 +3766,13 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nevar no
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nevar novākt pasažieru tramvaju pieturu...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nevar novākt kravas tramvaju pieturu...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vispirms jānoņem pietura
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... iztrūkst stacijas
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... tur nav stacijas
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vispirms ir jānojauc dzelzceļa staciju
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Virpirms ir jānojauc autoostu
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vispirms ir jānojauc kravas staciju
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vispirms ir jānojauc pasažieru tramvaja pieturu
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vispirms ir jānojauc kravas tramvaja pieturu
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vispirms ir jānojauc pasažieru tramvaju pieturu
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vispirms ir jānojauc kravas tramvaju pieturu
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vispirms ir jānojauc piestātni
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Vispirms ir jānojauc lidostu
 
@@ -3832,8 +3832,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Šeit ne
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Šeit nevar nojaukt dzelzceļa posmu...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Šeit nevar nojaukt semaforu...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Šeit nevar pārveidot signālus,,,
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... iztrūkst sliežu
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... iztrūkst signālu
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... tur nav dzelzsceļa sliežu
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... tur nav signālu
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nevar pārveidot sliežu veidu šeit...
 
@@ -3844,25 +3844,25 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Šeit ne
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Šeit nevar būvēt tramvaju sliežu ceļu...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šeit nevar nojaukt ceļu...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Šeit nevar nojaukt tramvaju sliežu ceļu...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... iztrūkst ceļš
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... iztrūkst tramvaja sliežu
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... tur nav ceļa
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tur nav tramvaju sliežu ceļa
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Šeit nevar būvēt kanālus...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Šeit nevar būvēt slūžas...
-STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Upes šeit likt nevar...
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Šeit nevar novietot upes...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... jābūvē uz ūdens
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... uz ūdens būvēt nevar
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... atklātā jūrā būvēt nevar
 STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... uz kanāla būvēt nevar
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... uz upes būvēt nevar
 STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Vispirms ir jānojauc kanālu
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Šeit nevar uzbūvēt akveduktu...
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Šeit nevar būvēt akveduktu...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... šeit jau aug koks
 STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... koka veidam nepiemērota zeme
-STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Šeit nevar iestādīt koku...
+STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Šeit nevar stādīt koku...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Šeit nevar būvēt tiltu...
@@ -3890,18 +3890,18 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nevar uz
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Traucējošs objekts
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... traucē uzņēmuma birojs
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes platību...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tev jau tā pieder!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... tā jums jau pieder!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nevar izveidot grupu...
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nevar izdzēst šo grupu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nevar pārdēvēt grupu...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}No šīs grupas nevar noņemt visus transportlīdzekļus...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nevar pievienot transportlīdzekļus šajā grupā...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pievienot koplietojamos transportlīdzekļus šajā grupā...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nevar pievienot transportlīdzekļus šai grupai...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nevar pievienot koplietojamos transportlīdzekļus šai grupai...
 
 # Generic vehicle errors
-STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vilciens ceļā
+STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vilciens ir ceļā
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Autotransporta līdzeklis ir ceļā
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Kuģis ir ceļā
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lidaparāts ceļā
@@ -3973,7 +3973,7 @@ STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... tran
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... transportlīdzeklis netiek uz šo staciju
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... transportlīdzeklis, kam kopīgs šis rīkojums, nespēj doties uz norādīto staciju
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nevar dalīties ar rīkojumu sarakstu...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nevar koplietot rīkojumu sarakstu...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nevar pārtraukt koplietot rīkojumus...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nevar kopēt rīkojumu sarakstu...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... pārāk tāla no iepriekšējā punkta

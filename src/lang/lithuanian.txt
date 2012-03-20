@@ -2935,7 +2935,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Puikus
 STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane.Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su stotelės vaizdu
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane.Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su stotelės vaizdu į šią stotį
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
@@ -3061,7 +3061,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Pramonė
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Praėjusio mėnesio produkcija:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% transportuota)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruoti gamyklą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į gamyklą
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruoti gamyklą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią gamyklą
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Gamybos sparta: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3201,42 +3201,42 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Pakeisti
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Keisti depo pavadinimą
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Pervadinti depą
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Keisti depo/garažo pavadinimą
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Pervadinti depą/garažą
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} mašin{P a ų os}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} transporto priemon{P ė ės ių}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Traukiniai - norėdamas pridėti vagoną, nutemp jį prie garvežio, paspausk dešiniu mygtuku ant traukinio jei nori detalesnės informacijos, tempk vagoną, jei nori jį prikabinti/pašalinti nuo traukinio
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Automobiliai - paspausk dešiniu mygtuku ant automobilio, jei nori detalesnes informacijos
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivai - paspausk dešiniu mygtuku ant laivo, jei nori daugiau informacijos
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lėktuvas - paspausk dešiniu mygtuku ant lėktuvo, jei nori daugiau informacijos
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Traukinių, esančių depe, sąrašas. Norėdami prijungti, atjungti ar sukeisti vietomis vagonus, tempkite pasirinktą vagoną į norimą vietą. Jei norite gauti daugiau informacijos apie pasirinktą lokomotyvą ar vagoną, spragtelkite jį dešiniuoju pelės klavišu. Spragtelėjus laikant nuspaustą Ctrl klavišą, minėtos operacijos bus atliekamos su vagonų grupėmis
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Automobilių, esančių garaže, sąrašas. Jei norite gauti daugiau informacijos apie pasirinktą automobilį, spragtelkite jį dešiniuoju pelės klavišu
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laivų, esančių depe, sąrašas. Jei norite gauti daugiau informacijos apie pasirinktą laivą, spragtelkite jį dešiniuoju pelės klavišu
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lėktuvų, esančių angare, sąrašas. Jei norite gauti daugiau informacijos apie pasirinktą lėktuvą, spragtelkite jį dešiniuoju pelės klavišu
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Nutempk transporto priemone cia, jei nori ja parduoti
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Nutempk automobili cia, jei nori ji parduoti
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Nutempk laiva cia, jei nori ji parduoti
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Nutempk lektuva cia, jei nori parduoti
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Nutempkite vagoną ar lokomotyvą čia, jei norite jį parduoti. Nutempus laikant nuspaustą Ctrl klavišą, bus parduota visa vagonų grupė
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Nutempkite automobilį čia, jei norite jį parduoti
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Nutempkite laivą čia, jei norite jį parduoti
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Nutempkite lėktuvą čia, jei norite jį parduoti
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Nutempkite lokomotyvą čia, norėdami parduoti visą traukinį
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Nutempkite lokomotyvą čia, jei norite parduoti visą traukinį
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Parduoti visus traukinius šiame depe
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Parduoti visus automobilius šiame depe
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Parduoti visus automobilius šiame garaže
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Parduoti visus laivus šiame depe
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Parduoti visus lėktuvus šiame angare
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Pakeisti visus traukinius depe
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Pakeisti automobilius traukinius depe
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Pakeisti visus laivus depe
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Pakeisti visus lėktuvus angare
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Atnaujinti visus traukinius šiame depe
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Atnaujinti visus automobilius šiame garaže
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Atnaujinti visus laivus šiame depe
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Atnaujinti visus lėktuvus šiame angare
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Naujas traukinys
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Naujas automobilis
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Naujas laivas
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Naujas lėktuvas
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Pirkti traukinį
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Pirkti automobilį
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Pirkti laivą
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Pirkti lėktuvą
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Pirkti naują geležinkelio transporto priemonę
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Pirkti naują lokomotyvą ar vagoną
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Pirkti naują automobilį
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Pirkti naują laivą
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Pirkti naują lėktuvą
@@ -3246,36 +3246,36 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kopijuot
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kopijuoti laivą
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopijuoti lėktuvą
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Tai nupirks traukinio kopiją su visais vagonais. Spragtelkite šį mygtuką, o tada traukinį esantį depe arba už jo ribų. Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tai nupirks automobilio kopiją. Spragtelkite šį mygtuką, o tada automobilį esantį garaže arba už jo ribų. Ctrl+Paspaudimas nukopijuojami nurodymai. Shift+Paspaudimas parodys kainą neperkant
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tai nupirks laivo kopiją. Spragtelkite šį mygtuką, o tada laivą esantį depe arba už jo ribų. Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tai nupirks lėktuvo kopiją. Spragtelkite šį mygtuką, o tada lėktuvą esantį angare arba už jo ribų. Spragtelėjus laikant Ctrl+Click nukopijuojami nurodymai. Shift+Click parodys kainą neperkant
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Nupirkti traukinio kopiją įskaitant visus vagonus. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus bendrinamos kopijos ir originalo užduotys. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Nupirkti automobilio kopiją. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus bendrinamos kopijos ir originalo užduotys. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Nupirkti laivo kopiją. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus bendrinamos kopijos ir originalo užduotys. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Nupirkti lėktuvo kopiją. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus bendrinamos kopijos ir originalo užduotys. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruoti traukinių depą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į depą
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruoti automobilių garažą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į garažą
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruoti laivų depą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į depą
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruoti lėktuvų angarą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į angarą
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centruoti traukinių depą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šį depą
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centruoti automobilių garažą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šį garažą
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centruoti laivų depą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šį depą
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centruoti lėktuvų angarą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šį angarą
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Gauti sąrašą visų traukinių turiunčių nurodymuose šį depą
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Gauti sąrašą visų automobilių turiunčių nurodymuose šį depą
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Gauti sąrašą visų laivų turiunčių nurodymuose šį depą
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Gauti sąrašą visų lėktuvų turiunčių nurodymuose šį angarą
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Parodyti sąrašą visų traukinių, į kurių užduotis yra įtrauktas šis depas
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Parodyti sąrašą visų automobilių, į kurių užduotis yra įtrauktas šis garažas
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Parodyti sąrašą visų laivų, į kurių užduotis yra įtrauktas šis depas
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Parodyti sąrašą visų lėktuvų, į kurių užduotis yra įtrauktas šis angaras
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Spragtelėkite norėdami sustabdyti visus traukinius esančius depe
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Spragtelėkite norėdami sustabdyti visus automobilius esančius depe
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Spragtelėkite norėdami sustabdyti visus laivus esančius depe
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Spragtelėkite norėdami sustabdyti visus lėktuvus esančius angare
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Sustabdyti visus traukinius, esančius šiame depe
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Sustabdyti visus automobilius, esančius šiame garaže
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Sustabdyti visus laivus, esančius šiame depe
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Sustabdyti visus lėktuvus, esančius šiame angare
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Spragtelėkite norėdami paleisti visus traukinius esančius depe
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Spragtelėkite norėdami paleisti visus automobilius esančius depe
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Spragtelėkite norėdami paleisti visus laivus esančius depe
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Spragtelėkite norėdami paleisti visus lėktuvus esančius angare
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Paleisti visus traukinius, esančius šiame depe
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Paleisti visus automobilius, esančius šiame garaže
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Paleisti visus laivus, esančius šiame depe
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Paleisti visus lėktuvus, esančius šiame angare
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikrai norite parduoti visas tr. priemones esančias šiame depe?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ar tikrai norite parduoti visas transporto priemones, esančias šiame depe/garaže/angare?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Žinutė nuo transporto priemonių gamintojo
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėt vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mes ką tik sukūrėme naują {STRING.ka}! Ar norėtumėte vienerius metus išskirtinėmis teisėmis bandyti šią transporto priemonę, kol dar nepradėta jos serijinė gamyba?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kas                      :lokomotyvas
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ko                       :lokomotyvo

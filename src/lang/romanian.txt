@@ -3717,7 +3717,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... un s
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... se poate construi doar în oraşe cu populaţia de cel puţin 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... se poate construi doar in padurile tropicale
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... se poate construi doar în zonele de deşert
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... se poate construi doar în oraşe
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... se poate construi doar în oraşe (înlocuind casele)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... se poate construi doar lângă centrul orașului
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... poate fi construit(ă) doar în zone joase
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... se poate construi doar la marginea hărţii
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... pădurile pot fi plantate doar în zonele înzăpezite
