@@ -318,11 +318,11 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Būvēt 
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atvērt ainavas rīkjoslu, lai paceltu/nolaistu zemes līmeni, stādītu kokus utt.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rādīt skaņas/mūzikas logu
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rādīt pēdējo ziņojumu/ziņu rādīšanas režīmus
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, MI atkļūdošana, ekrānuzņēmumi, par OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informācija par zemesgabalu, konsole, skriptu atkļūdošana, ekrānuzņēmumi, par OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Pārslēgt rīkjoslas
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenārija redaktoru, iziet
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Saglabāt scenāriju, ielādēt scenāriju, pamest scenāriju redaktoru, iziet
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}scenāriju redaktors
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Pārvietot sākuma datumu 1 gadu atpakaļ
@@ -335,14 +335,14 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ražotņ
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Ceļu būvēšana
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Stādīt kokus. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Novietot zīmi
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Novietot objektu. Shift pārslēdz būvniecību/izmaksu tāmes rādīšanu
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Novietot objektu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Saglabāt scenāriju
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Ielādēt scenāriju
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Saglabāt augstumu karti
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Ielādēt augstumu karti
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Iziet no redaktora
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Pamest scenāriju redaktoru
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 ############ range for SE file menu starts
@@ -351,7 +351,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles opcijas
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības iestatījumi
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildu iestatījumi
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI / spēles iestatījumi
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :MI/spēles skriptu iestatījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF iestatījumi
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības opcijas
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
@@ -362,7 +362,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rādīt konkure
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pilna animācija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visas detaļas
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Caurspīdīgas ēkas
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspīdīgas staciju zīmes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Caurspīdīgas zīmes
 ############ range ends here
 
 ############ range for file menu starts
@@ -447,7 +447,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ziņojumu vēst
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Zemes gabala informācija
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Atvērt/aizvērt konsoli
-STR_ABOUT_MENU_AI_DEBUG                                         :MI / GameScript atkļūdošana
+STR_ABOUT_MENU_AI_DEBUG                                         :MI/spēles skriptu atkļūdošana
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrānuzņēmums
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pilnībā tuvināts ekrānuzņēmums
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Noklusētā mēroga ekrānuzņēmums
@@ -613,8 +613,8 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Nosaukums
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Sajaukt
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programma
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pārlēkt uz iepriekšējo dziesmu
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pārlēkt uz nākošo dziesmu
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pārlēkt uz iepriekšējo celiņu
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pārlēkt uz nākamo celiņu
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Apturēt mūzikas atskaņošanu
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Sākt mūzikas atskaņošanu
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Bīdīt slīdņus, lai mainītu mūzikas un skaņas efektu skaļumu
@@ -1094,7 +1094,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Pieļaujoša
 STR_CITY_APPROVAL_TOLERANT                                      :Iecietīga
 STR_CITY_APPROVAL_HOSTILE                                       :Naidīga
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejamu derīgu MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot 'Tiešsaistes Saturs' sistēmu
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nav pieejami derīgi MI...{}Jūs varat lejuplādēt dažādus MI, izmantojot sistēmu 'Tiešsaistes saturs'
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rīcība nomainīja grūtības pakāpi uz pielāgoto
 
 # Advanced settings window
@@ -1411,7 +1411,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Grūtīb
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Papildu iestatījumi
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF iestatījumi
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Pārbaudīt tiešsaistes saturu
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI / spēles iestatījumi
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}MI/spēles skriptu iestatījumi
 STR_INTRO_QUIT                                                  :{BLACK}Iziet
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Sākt jaunu spēli. Ctrl+klikšķis izlaiž kartes konfigurēšanu
@@ -1431,7 +1431,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Rādīt 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Rādīt papildu iestatījumus
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Rādīt NewGRF iestatījumus
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Pārbaudīt vai lejupielādei nav pieejams jauns un atjaunināts saturs
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rādīt MI un spēles iestatījumus
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Rādīt MI un spēles skriptu iestatījumus
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Iziet no 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Šim tulkojumam trūkst {NUM} virk{P ne nes ņu}. Lūdzu palīdziet OpenTTD veidot labāku piesakoties par tulkotāju. Informācijai skatīt readme.txt.
@@ -1908,7 +1908,7 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :Augstumu karte
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Pamata skaņas efekti
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Pamata mūzika
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Spēles skripts
-STR_CONTENT_TYPE_GS_LIBRARY                                     :GS bibliotēka
+STR_CONTENT_TYPE_GS_LIBRARY                                     :SS bibliotēka
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lejupielādē saturu...
@@ -1931,7 +1931,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nē, izi
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Caurspīdības opcijas
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Pārslēgt stacijas zīmju caurspīdību. Ctrl+klikšķis lai slēgtu
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Pārslēgt zīmju caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Pārslēgt koku caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Pārslēgt ēku caurspīdību. Ctrl+klikšķis lai slēgtu
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Pārslēgt rūpniecības ēku caurspīdību. Ctrl+klikšķis lai slēgtu
@@ -3508,7 +3508,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izvēlē
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}MI / GameScript atkļūdošana
+STR_AI_DEBUG                                                    :{WHITE}MI/spēles skriptu atkļūdošana
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripta nosaukums
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Iestatījumi
@@ -3525,15 +3525,15 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Turpinā
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Atsākt un turpināt šo MI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Attēlot šī MI atkļūdošanas izvadu
 STR_AI_GAME_SCRIPT                                              :{BLACK}Spēles skripts
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Apskatīt Game Script žurnālu
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pārbaudīt spēles skriptu žurnālu
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt vairākus MI no globālās satura sistēmas.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Viens no strādājošiem skriptiem nobruka. Lūdzu, paziņojiet par šo gadījumu skripta autoram, pievienojot ekrānuzņēmumu ar MI / GameScript atkļūdošanas logu.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI / GameScript atkļūdošanas logs ir pieejams tikai serverim
+STR_ERROR_AI_NO_AI_FOUND                                        :Nav atrasts piemērots MI.{}Šis ir MI makets un spēlē tas neko nedarīs.{}Jūs varat lejupielādēt vairākus MI no globālās satura sistēmas
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Viens no strādājošiem skriptiem nobruka. Lūdzu, paziņojiet par šo gadījumu skripta autoram, pievienojot ekrānuzņēmumu ar MI/spēles skriptu atkļūdošanas logu
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}MI/spēles skriptu atkļūdošanas logs ir pieejams tikai serverim
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}MI / spēles konfigurācija
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript, kas tiks ielādēts nākamajā spēlē
+STR_AI_CONFIG_CAPTION                                           :{WHITE}MI/spēles skriptu konfigurācija
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spēles skripts, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}MI, kas tiks ielādēts nākamajā spēlē
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Spēlētājs (cilvēks)
 STR_AI_CONFIG_RANDOM_AI                                         :Nejaušs MI
@@ -3544,13 +3544,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Pacelt i
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Nolaist uz leju
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Nolaist izvēlētos MI sarakstā uz leju
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spēles skripti
 STR_AI_CONFIG_AI                                                :{SILVER}MI
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Izvēlēties {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :MI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spēles skripts
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ielādēt citu skriptu
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurēt
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigurēt skripta parametrus
@@ -3558,7 +3558,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Pieejamie {STRING}
 STR_AI_LIST_CAPTION_AI                                          :MI
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScripts
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spēles skripti
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Uzklikšķināt, lai izvēlētos skriptu
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Autors: {STRING}
@@ -3573,7 +3573,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemainī
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :MI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Spēles skripts
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Aizvērt
 STR_AI_SETTINGS_RESET                                           :{BLACK}Atiestatīt
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}

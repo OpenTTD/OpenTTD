@@ -349,12 +349,12 @@ STR_SORT_BY_POWER                                               :Δύναμη
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Δύναμη έλξης
 STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία Παρουσιάσης
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ενέργεια/Κόστος Συντήρησης
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Κόστος Λειτουργίας
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
 STR_SORT_BY_RANGE                                               :Εύρος
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύση
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Παύση παιχνιδιού
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Γρήγορη ταχύτητα παιχνιδιού
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Επιλογές
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Αποθήκευση, εγκατάλειψη, έξοδος
@@ -380,7 +380,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Κατα
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Ανοίξτε την μπάρα εργαλείων μορφοποίησης εδάφους για ανύψωση/βύθιση γης, δενδροφύτευση, κλπ.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Εμφάνιση παραθύρου ήχου/μουσικής
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής, κονσόλα, αποσφαλμάτωση AI, φωτογραφίες οθόνης, περί του OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Πληροφορίες περιοχής, κονσόλα, αποσφαλμάτωση δέσμης ενεργειών, φωτογραφίες οθόνης, περί του OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Εναλλάγη μπαρών εργασίας
 
 # Extra tooltips for the scenario editor toolbar
@@ -413,7 +413,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Έξοδος
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Επιλογές παιχνιδιού
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ρυθμίσεις δυσκολίας
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Προχωρημένες ρυθμίσεις
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ΑΙ / Ρυθμίσεις παιχνιδιού
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Ρυθμίσεις ΑΙ και δέσμης ενεργειών παιχνιδιού
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ρυθμίσεις NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Επιλογές διαφάνειας
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Εμφάνιση ονομάτων πόλεων
@@ -509,12 +509,14 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ιστορικ�
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Πληροφορίες περιοχής εδάφους
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / Αποσφαλμάτωση
+STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Πλήρης μεγένθυση στην απεικόνιση οθόνης
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Στιγμιότυπο οθόνης μέγιστης μεγέθυνσης
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Στιγμιότυπο οθόνης τυπικής μεγέθυνσης
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολο το χάρτη(Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής sprite
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Εναλλαγή πλαισίου οριοθέτησης
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -723,7 +725,7 @@ STR_ERROR_NO_SONGS                                              :{WHITE}Ένα �
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Επιλογή Μουσικού Προγράμματος
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
-STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Λίστα Κομματιών
+STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Λίστα σιδηροτροχιών
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Πρόγραμμα - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Καθαρισμός
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
@@ -761,6 +763,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Εμφά
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Εμφάνιση μεταφορικών οδών στο χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Εμφάνιση βλάστησης στο χάρτη
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Εμφάνιση ιδιοκτητών γης στο χάρτη
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Επιλέξτε μια βιομηχανία για εναλλαγή εμφάνισής της. Ctrl+Κλικ απενεργοποιεί όλους τους τύπους εκτός του επιλεγμένου. Ctrl+Κλικ ξανά για την επαναφορά όλων των τύπων
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Επιλέξτε μια εταιρεία για εναλλαγή εμφάνισης της περιουσίας της. Ctrl+Κλικ απενεργοποιεί όλες τις εταιρείες εκτός της επιλεγμένης. Ctrl+Κλικ ξανά για την επαναφορά όλων των εταιρειών
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Δρόμοι
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Σιδηρόδρομοι
@@ -919,6 +923,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} δε μπορεί να μεταφερθεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
@@ -1239,6 +1244,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρ�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Να επιτρέπεται η κατασκευή κτιρίων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
@@ -1270,6 +1276,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διά�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}Αναδυση για {STRING} δευτερολεπτ{P ο α}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Εμφάνιση αναδυόμενων γεγονότων: {ORANGE}Δεξί κλικ
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Πάχος γραμμών στα γραφήματα: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
@@ -1326,6 +1333,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Η προεπιλεγμένη παλέτα για NewGRFs δεν ορίζει ορθά παλέτα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Παλέτα DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Windows
 
@@ -1360,6 +1368,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απε�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται AI σε παιχνίδι για πολλούς παίκτες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#εντολών πριν τη παύση δεσμών ενεργειών: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} ημέρες/%
@@ -1416,6 +1425,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτ�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Μέγιστο επίπεδο μεγέθυνσης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Μέγιστο επίπεδο σμίκρυνσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Κανονικό
@@ -1450,6 +1461,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Δρο�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Τρένα
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Πόλεις
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Βιομηχανίες
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Δέσμες ενεργειών
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :Αρχικό
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1463,10 +1475,19 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Αυτ�
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Σφάλμα στο αρχείο ρυθμίσεων
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... σφάλμα στον πίνακα '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... άκυρη τιμή '{STRING}' για '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... καταληκτικοί χαρακτήρες στο τέλος της ρύθμισης '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... αγνοείται το NewGRF '{STRING}': διπλότυπο GRF ID του '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... αγνοείταο το άκυρο NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :δεν βρέθηκε
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ανασφαλής για στατική χρήση
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :σύστημα NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ασύμβατο με αυτήν την έκδοση του OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :άγνωστο
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... το επίπεδο συμπίεσης '{STRING}' είναι άκυρο
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... ο τύπος αρχείου αποθήκευσης '{STRING}' δεν είναι διαθέσιμος. Επαναφορά σε '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1483,7 +1504,7 @@ STR_INTRO_DIFFICULTY                                            :{G=f}{BLACK}Δ�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Προηγμένες Ρυθμίσεις
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Ρυθμίσεις NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Έλεγχος Online περιεχομένου
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Ρυθμίσεις παιχνιδιού
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Ρυθμίσεις AI και δέσμης ενεργειών παιχνιδιού
 STR_INTRO_QUIT                                                  :{BLACK}Έξοδος
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Έναρξη νέου παιχνιδιού. Ctrl+κλικ παρακάμπτει την ρύθμιση του χάρτη
@@ -1503,7 +1524,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Εμφά
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Εμφάνιση ρυθμίσεων NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Έλεγχος για νέο και ανανεωμένο περιεχόμενο για κατέβασμα
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Προβολή AI και ρυθμίσεων παιχνιδιού
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Προβολή AI και ρυθμίσεων δέσμης ενεργειών παιχνιδιού
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Έξοδος από το 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Λείπουν {NUM} παράμετροι από τη μετάφραση. Παρακαλούμε βοηθήστε να κάνουμε το OpenTTD καλύτερο εγγραφόμενοι ως μεταφραστές. Δείτε το αρχείο readme.txt για λεπτομέρειες.
@@ -1897,6 +1918,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθ�
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :δεν παραλήφθηκε κωδικός εντός του ορισμένου χρόνου
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :γενικό χρονικό όριο
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :η μεταφόρτωση του χάρτη καθυστέρησε υπερβολικά
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :η επεξεργασία του χάρτη καθυστέρησε υπερβολικά
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
@@ -1909,10 +1933,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Παιχνίδ�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Παιχνίδι ακόμα σε παύση ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Παιχνίδι ακόμα σε παύση ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Συνεχίση παιχνιδιού ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :αριθμός παιχτών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :σύνδεση πελατών
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :χειροκίνητο
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :δέσμη ενεργειών παιχνιδιού
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :αποχώρηση
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} συμμετέχει στο παιχνίδι
@@ -1941,6 +1967,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Μαρκ
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Αποεπιλογή όλων
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Σημείωση όλων των περιεχομένων να μην κατέβουν
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Ετικέτα/όνομα φίλτρου:
+STR_CONTENT_OPEN_URL                                            :{BLACK}Επισκεφθείτε την ιστοσελίδα
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Επισκεφθείτε την ιστοσελίδα αυτού του περιεχομένου
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Κατέβασμα
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Έναρξη κατεβάσματος του επιλεγμένου περιεχόμενου
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Συνολικό μέγεθος κατεβάσματος: {WHITE}{BYTES}
@@ -1960,7 +1988,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Μέγ�
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Επιλεγμένο γιατί: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Εξαρτήσεις: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}ετικέτες: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD είναι χτισμένο χωρίς την υποστηριξη "zlib"...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD είναι κατασκευασμένο χωρίς υποστηριξη της βιβλιοθήκης "zlib"...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... το κατέβασμα περιεχομένου δεν είναι δυνατό!
 
 # Order of these is important!
@@ -1972,6 +2000,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Σενάριο
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Χάρτης Υψομετρίας
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Βασικοί ήχοι
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Βασική μουσική
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Δέσμη ενεργειών παιχνιδιού
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Βιβλιοθήκη GS
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Κατέβασμα περιεχόμενου...
@@ -1988,6 +2018,9 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... αρ
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Δεν μπορεί να γίνει η αποσυμπίεση του κατεβασμένου αρχείου
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Λείπουν γραφικά
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Το OpenTTD απαιτεί γραφικά για να λειτουργήσει αλλά κανένα δεν είναι διαθέσιμο. Θέλετε να επιτρέψετε στο OpenTTD να μεταφορτώσει και να εγκαταστήσει αυτά τα γραφικά;
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ναι, μεταφόρτωσε τα γραφικά
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Όχι, έξοδος από το OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις διαφάνειας
@@ -2310,6 +2343,8 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Χωράφια
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Χιονισμένο έδαφος
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Έρημος
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} σιδηροτροχιά
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} αμαξοστάσιο τρένων
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Δρόμος με φωτισμό
@@ -2392,7 +2427,7 @@ STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Αποθ
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Αποθήκευση παιχνιδιού, χρησιμοποιώντας το επιλεγμένο όνομα
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Φόρτωση
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Φόρτωση του επιλεγμένου παιχνιδιού
-STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Λεπτομέριες Παιχνιδιού
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Λεπτομέρειες Παιχνιδιού
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Δεν υπάρχουν πληροφορίες.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
@@ -2467,7 +2502,8 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημι
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόγχου πλακιδίων
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου πλακιδίων
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
 # NewGRF settings
@@ -2496,6 +2532,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Μετα
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Μια λίστα με τα αρχεία NewGRF που είναι εγκατεστημένα.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Ρύθμιση παραμέτρων
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Εμφάνιση παραμέτρων
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Εναλλαγή παλέτας
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Εναλλάσει την παλέττα του επιλεγμένου NewGRF.{}Κάντε αυτό όταν τα γραφίκα από αυτό το NewGRF δείχνουν ροζ μέσα στο παιχνίδι
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Εφαρμογή αλλαγών
@@ -2597,6 +2634,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τ�
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει στην σωστή ανακατασκευή
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην ανακοίνωση παραγωγής.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<μη έγκυρο φορτίο>
@@ -2614,6 +2652,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Σάρωση γ
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Αντιστοίχιση πεζών/κεφαλαίων
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Καθαρισμός φίλτρου
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Εναλλαγή ταύτισης μεγέθους κατά τη σύγκρισης ονομάτων πινακίδων με τη συμβολοσειρά αναζήτησης
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Καθαρισμός κειμένου φίλτρου
 
 # Sign window
@@ -2636,13 +2675,15 @@ STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Επιβάτες τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Αλληλογραφία τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπορεύματα που χρειάζονται για την ανάπτυξη της πόλης:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Εμπορεύματα που χρειάζονται για την επέκταση της πόλης:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} απαιτείται
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} απαιτείται τον χειμώνα
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} παραδόθηκε
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ακόμη απαιτείται)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (παραδόθηκε)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δενt{BLACK} μεγαλώνει
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} μέρα{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} μέρα{P "" s} (χρηματοδοτούμενη)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δεν{BLACK} επεκτείνεται
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Τοπική αρχή
@@ -2684,7 +2725,12 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Αγο�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Δωροδοκίστε τις τοπικές αρχές για να αυξησετε τα ποσοστά σας, με ρίσκο ένα μεγάλο πρόστιμο εαν συλληφθείτε.{}Κόστος: {CURRENCY_LONG}
 
 # Goal window
+STR_GOALS_CAPTION                                               :{WHITE}Στόχοι
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθολικοί στόχοι:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
+STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
+STR_GOALS_COMPANY_TITLE                                         :{BLACK}Εταιρικοί στόχοι:
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κλικ στον στόχο για να επικεντροθεί η οθόνη στη βιομηχανία/πόλη/πεδίο. Ctrl+Κλικ ανοίγει οθόνη θέασης στη τοποθεσία της βιομηχανίας/πόλης/πεδίου
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ερώτηση
@@ -2693,6 +2739,24 @@ STR_GOAL_QUESTION_CAPTION_WARNING                               :Προειδο�
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :Σφάλμα
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Ακύρωση
+STR_GOAL_QUESTION_BUTTON_OK                                     :Εντάξει
+STR_GOAL_QUESTION_BUTTON_NO                                     :Όχι
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ναι
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Απόρριψη
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Αποδοχή
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Αγνόηση
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Επανάληψη
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Προηγούμενο
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Επόμενο
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Τερματισμός
+STR_GOAL_QUESTION_BUTTON_START                                  :Έναρξη
+STR_GOAL_QUESTION_BUTTON_GO                                     :Έναρξη
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Συνέχιση
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Επανεκκίνιση
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Αναβολή
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Παράδοση
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Κλείσιμο
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Χρηματοδοτήσεις
@@ -2765,10 +2829,10 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Έξοδ
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Κατασκευές
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Νέα Οχήματα
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Τρεχούμενα Έξοδα Τρέν.
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Τρεχούμενα Έξοδα Οχημάτων
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Τρεχούμενα Έξοδα Αεροπ.
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Τρεχούμενα Έξοδα Πλοίων
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Τρέχοντα Έξοδα Τρέν.
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Τρέχοντα Έξοδα Οχημάτων
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Τρέχοντα Έξοδα Αεροπ.
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Τρέχοντα Έξοδα Πλοίων
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Συντήρηση Ιδιοκτησίας
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Έσοδα Τρένων
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Έσοδα Οχημάτων
@@ -2804,7 +2868,12 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανέ
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} κομμάτι σιδηροτροχιάς{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} κομμάτι δρόμου{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} πεδίο νερού{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} πεδίο σταθμού{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Τίποτα
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Χτίσιμο Αρχηγείου
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Χτίσιμο αρχηγείου εταιρίας
@@ -2813,6 +2882,7 @@ STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Προβ
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Ανοικοδόμηση Αρχηγείου
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Επανοικοδόμηση της έδρας της εταιρίας σε άλλο μέρος, με κόστος το 1% της αξίας της εταιρίας. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς επανατοποθέτηση της έδρας.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Λεπτομέρειες
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Προβολή λεπτομερούς μέτρησης υποδομών
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Νέο Πρόσωπο
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Επιλογή νέου προσώπου διευθυντή
@@ -2835,10 +2905,15 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ψάχν
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Υποδομή της {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Κομμάτια σιδηροτροχιάς:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Σήματα
+STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Κομμάτια δρόμου:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Δρόμος
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Τροχιόδρομος(τραμ)
+STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Πεδία νερού:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Κανάλια
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Σταθμοί:
+STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Πεδία σταθμού
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Αεροδρόμια
 STR_COMPANY_INFRASTRUCTURE_VIEW_COST                            :{WHITE}{1:CURRENCY_LONG}/έτος ({0:COMMA})
 STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENCY_LONG}/έτος
@@ -2960,6 +3035,7 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Μετα
 STR_PURCHASE_INFO_ALL_TYPES                                     :Όλοι οι τύποι εμπορεύματος
 STR_PURCHASE_INFO_ALL_BUT                                       :Όλα εκτός {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Μεγ. Δύναμη Έλξης: {GOLD}{FORCE}
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Εύρος: {GOLD}{COMMA} πεδία
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλεγμένων βαγονιών τρένων - κάντε κλικ σε ένα βαγόνι για πληροφορίες
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλεγμένων οχήματα δρόμου - κάντε κλικ σε ένα όχημα για πληροφορίες
@@ -3171,6 +3247,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταμα
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Σταματάει, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Χώρις ενέργεια κίνησης
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Αναμονή για ελεύθερη τροχιά
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Υπερβολικά μακριά από τον επόμενο προορισμό
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν έχει οδηγίες, {VELOCITY}
@@ -3304,6 +3381,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Αλλά
 
 STR_ORDER_REFIT                                                 :{BLACK}Μετατροπή
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Επιλέξτε τι τύπο εμπορεύματος για τη μετατροπή σε αυτή την εντολή. Ctrl+κλικ για να αφαιρέσετε την εντολή μετατροπής
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Αυτόματη-επανακατασκευή
+STR_ORDER_DROP_REFIT_AUTO                                       :Προκαθορισμένο φορτίο
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Διαθέσιμο φορτίο
 
 STR_ORDER_SERVICE                                               :{BLACK}Επισκευή
@@ -3400,6 +3479,7 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντά σ�
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[μέση]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[στην άκρη]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Ο επόμενος προορισμός είναι υπερβολικά μακριά)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Μετάβαση στην εντολή {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Μετάβαση στην εντολή {COMMA} όταν {STRING} {STRING} {COMMA}
@@ -3417,6 +3497,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομ
 STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδέψεις
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Ταξίψετε με μέγιστη ταχύτητα {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Ταξίδεψε για {STRING} με την περισσότερη {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
@@ -3472,44 +3553,57 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Επιλ
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI / Αποσφαλμάτωση
+STR_AI_DEBUG                                                    :{WHITE}Αποσφαλμάτωση AI και δέσμης ενεργειών παιχνιδιού
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Το όνομα του script
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Όνομα δέσμης ενεργειών
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ρυθμίσεις
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων του script
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Ξαναφορτώση AI
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε το AI, ξαναφορτώστε το σενάριο και ξαναεκκινήστε το AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/Απενεργοποίηση break όταν μια καταχώρηση του ΑΙ ταιριάζει το break string
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Break στο:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Break στο
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Αλλαγή των ρυθμίσεων της δέσμης ενεργειών
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Επαναφόρτωση AI
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Τερματίστε την AI, ξαναφορτώστε τη δέσμη ενεργειών και επανεκκινήστε την AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ενεργοποίηση/Απενεργοποίηση παύσης όταν μια καταχώρηση ιστορικού της ΑΙ ταυτίζεται με τη συμβολοσειρά παύσης
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Παύση στο:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Παύση στο
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Εάν υπάρξει ταύτιση του παρόντος string με μια καταχώρηση από τα μηνύματα του ΑΙ, τότε γίνεται παύση του παιγνιδιού
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης όταν η γίνεται η σύγκριση με μια καταχώρηση του ΑΙ με ένα break string
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτιση μεγέθους
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης μεγέθους όταν η γίνεται σύγκριση μιας καταχώρησης της ΑΙ με τη συμβολοσειρά παύσης
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης για αυτό το AI
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας της AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης αυτής της AI
+STR_AI_GAME_SCRIPT                                              :{BLACK}Δέσμη ενεργειών παιχνιδιού
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Έλεγχος ιστορικού δέσμης ενεργειών παιχνιδιού
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλο AI για φόρτωση.{}Αυτό το AI είναι ένα ψεύτικο AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορα AΙ από το σύστημα 'Online περιεχομένου'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ένα από τα script που εκτελούνται κράσαρε. Παρακαλώ ενημερώστε τον συγγραφέα του script με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI / Το παράθυρο αποσφαλμάτωσης είναι διαθέσιμο μόνο για τον διακομιστή
+STR_ERROR_AI_NO_AI_FOUND                                        :Δεν βρέθηκε κατάλληλη AI για φόρτωση.{}Αυτή η AI είναι μια ψεύτικη AI και δεν θα κάνει τίποτα.{}Μπορείτε να κατεβάσετε διάφορες AΙ από το σύστημα 'Online περιεχομένου'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Μια τρέχουσα δέσμη ενεργειών τερμάτισε απότομα. Παρακαλώ ενημερώστε τον συγγραφέα της δέσμης ενεργειών με ένα στιγμιότυπο οθόνης από το παράθυρο αποσφαλμάτωσης AI/Παιχνιδιού
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Το παράθυρο αποσφαλμάτωσης ΑΙ και δέσμης ενεργειών παιχνιδιού είναι διαθέσιμο μόνο για το διακομιστή
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Ρύθμιση παιχνικδιού
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Ρύθμιση ΑΙ και δέσμης ενεργειών παιχνιδιού
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Η δέσμη ενεργειών παιχνιδιού που θα φορτωθεί στο επόμενο παιχνίδι
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Οι AIs που θα φορτωθούν στο επόμενο παιχνίδι
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Ανθρώπινος παίκτης
-STR_AI_CONFIG_RANDOM_AI                                         :Τυχαίο AI
-STR_AI_CONFIG_NONE                                              :(κανένα)
+STR_AI_CONFIG_RANDOM_AI                                         :Τυχαία AI
+STR_AI_CONFIG_NONE                                              :{G=f}(καμία)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Μετακίνηση πάνω
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση του επιλεγμένου AI πάνω στη λίστη
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Μετακίνηση της επιλεγμένης AI πάνω στη λίστα
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Μετακίνηση κάτω
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά του επιλεγμένου AI κάτω στη λίστα
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Μεταφορά της επιλεγμένης AI κάτω στη λίστα
 
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Δέσμη ενεργειών παιχνιδιού
+STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Επιλογή {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
+STR_AI_CONFIG_CHANGE_AI                                         :ΑΙ
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Δέσμη ενεργειών Παιχνιδιού
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Φόρτωση άλλης δέσμης ενεργειών
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Ρυθμίσεις
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Ρύθμιση των παραμέτρων ενός script
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}Διαθέσιμο {STRING}
+STR_AI_LIST_CAPTION_AI                                          :AIs
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες ενεργειών Παιχνιδιού
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Πατήστε για επιλέξετε ένα script
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Συγγραφέας: {STRING}
@@ -3523,15 +3617,18 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μ�
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Παράμετροι
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme του {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{G=m}{WHITE}{STRING} ιστορικό αλλαγών του {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} άδεια του {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Εμφάνιση readme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ημερόλογιο αλλαγών
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Ιστορικό αλλαγών
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Άδεια
 
 
@@ -3670,7 +3767,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... επ
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... μπορεί να χτιστεί μόνο σε ερημικές περιοχές
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... μπορεί να χτιστεί μόνο σε πόλεις (αντικαθιστώντας σπίτια)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... μπορεί να χτιστεί μόνο κοντά σε κέντρα πόλεων
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... μπορεί να χτιστεί μόνο σε χαμηλές περιοχές
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
@@ -3769,7 +3867,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Πρέπ
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Μη συμβατή σιδηροτροχιά
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Η δρόμος είναι μονόδρομος ή μπλοκαρισμένος
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Δεν επιτρέπεται ισόπεδες διασταυρώσεις για αυτόν το τύπο σιδηροτροχιάς
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Δεν επιτρέπονται ισόπεδες διασταυρώσεις για αυτόν το τύπο σιδηροδρόμου
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Δεν μπορούν να χτιστούν σηματοδότες εδώ...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Δεν μπορεί να χτιστεί σιδηρόδρομος εδώ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Δεν μπορεί να αφαιρεθεί σιδηρόδρομος από εδώ...
