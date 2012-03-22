@@ -2202,10 +2202,10 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pārklā
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Izmaksā: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Pētīt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Būvēt
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ieguldīt
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansēt
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes {STRING} ražošanas ķēde
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes {STRING} kravu ķēde
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kravas ražotņu ķēde
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ražotāji
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Patērētāji
@@ -2213,7 +2213,7 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Mājas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikšķināt uz ražotnes, lai redzētu tās piegādātājus un patērētājus
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikšķināt uz kravas, lai redzētu tās piegādātājus un patērētājus
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Rādīt ķēdi
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rādīt kravas ražošanas un pieņemšanas ražotnes
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rādīt kravas ražojošās un patērējošās ražotnes
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Piesaistīt minikartei
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izvēlēties arī minikartē attēlotās rūpnīcas
 
@@ -2875,7 +2875,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ražotņ
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Iepriekšējā mēnesī saražots:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% pārvadāts)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz rūpnīcu. Ctrl+klikšķis atvērs skatu uz rūpnīcu jaunā skatlaukā
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz ražotni. Ctrl+klikšķis atvērs skatu uz ražotni jaunā skatlaukā
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3065,8 +3065,8 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Tas nopi
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Tas nopirks kuģa kopiju. Spiediet šo pogu un pēc tam uz kuģa, kas atrodas depo vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Tas pirks lidaparāta kopiju. Spiediet uz pogas un pēc tam uz lidaparāta, kas atrodas angārā vai ārpus tā. Ctrl+klikšķis, lai koplietotu rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz vilciena depo. Ctrl+klikšķis atvērs skatu uz depo jaunā skatlaukā
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz auto depo. Ctrl+Klikšķis atvērs skatu uz depo jaunā skatulaukā
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz vilcienu depo. Ctrl+klikšķis atvērs skatu uz depo jaunā skatlaukā
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt galveno skatu uz autotransporta depo. Ctrl+klikšķis atvērs skatu uz depo jaunā skatlaukā
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz kuģu depo. Ctrl+klikšķis atvērs skatu uz depo jaunā skatlaukā
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrēt galveno skatu uz angāru. Ctrl+klikšķis atvērs skatu uz angāru jaunā skatlaukā
 

@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :วันเป
 STR_SORT_BY_RUNNING_COST                                        :ค่าใช้จ่าย
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
 STR_SORT_BY_CARGO_CAPACITY                                      :ความจุการบรรทุก
+STR_SORT_BY_RANGE                                               :ช่วง
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
@@ -348,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนดระดับความยาก
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ตั้งค่า AI/Game script
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ตัวเลือกค่าโปร่งใส
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :แสดงชื่อเมือง
@@ -358,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :ชื่อแ
 STR_SETTINGS_MENU_FULL_ANIMATION                                :ภาพเคลื่อนไหวเต็มที่
 STR_SETTINGS_MENU_FULL_DETAIL                                   :รายละเอียดเต็มที่
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :สิ่งก่อสร้างแบบโปร่งใส
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายสถานีแบบโปร่งใส
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายแบบโปร่งใส
 ############ range ends here
 
 ############ range for file menu starts
@@ -381,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :ตั้งเ
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :การสนับสนุน
+STR_SUBSIDIES_MENU_GOAL                                         :เป้าหมายปัจจุบัน
 ############ range ends here
 
 ############ range for graph menu starts
@@ -442,9 +445,10 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ูข้อค
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :ข้อมูลพื้นที่
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
-STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
+STR_ABOUT_MENU_AI_DEBUG                                         :ดีบัก AI/Game script
 STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :จับภาพหน้าจอในแบบขยาย
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :จับภาพหน้าจอในแบบขยายใหญ่สุด
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :ค่าเริ่มต้นของการขยายภาพในการจับหน้าจอ
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอทั้งหมด (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจัดแนว Sprite
@@ -748,6 +752,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}กา�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}โครงการที่มีงบประมาณสนับสนุน
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}ข้อมูลทั่วไป
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถไฟขบวนแรกเทียบชานชาลาที่ {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}ผู้คนต่างยินดี . . .{}รถโดยสารคันแรกได้มาถึง {STATION}!
@@ -823,6 +828,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ไม่สามารถหาเส้นทางไปต่อได้.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} กำลังหลงทาง.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}กำไรของ {VEHICLE} เมื่อปีที่ผ่านมา {CURRENCY_LONG}
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} ไม่สามารถไปยังจุดหมายถัดไปได้เนื่องจากไม่อยู่ในระยะ
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} หยุดเนื่องจากการเปลี่ยนชนิดบรรทุกไม่สำเร็จ
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}เปลี่ยนใหม่อัตโนมัติไม่สำเร็จบน {VEHICLE}{}{STRING}
@@ -861,7 +867,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}กา�
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :ปอนด์สเตอร์ลิง (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :ดอลลาร์สหรัฐ ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :ยูโร (€)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :ยูโร
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :เยน (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :ชิลลิ่งออสเตรีย (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :ฟรังก์เบลเยี่ยม (BEF)
@@ -1156,6 +1162,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}อน�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}อนุญาติให้สร้างสถานีติดกัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}เปิดใช้การ NewGRF engine หลายชุดพร้อมกัน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}ไม่สามารถเปลี่ยนการตั้งค่านี้ได้เมื่อมียานพาหนะ
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}ค่าบำรุงรักษาโครงสร้างพื้นฐาน: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}สนามบินไม่มีวันหมดอายุ: {ORANGE}{STRING}
 
@@ -1173,6 +1180,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}ระ�
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}แสดงคำแนะนำเครื่องมือ: {ORANGE}ชี้เป็นเวลา{STRING} วินาที
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}แสดงคำแนะนำเครื่องมือ: {ORANGE}คลิกขวา
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}แสดงจำนวนประชากรของเมืองในป้ายชื่อเมือง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}ความหนาของเส้นกราฟ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}ตัวสังเคราะห์ภูมิประเทศ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :ดั้งเดิม
@@ -1264,6 +1272,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}ไม�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}ไม่ยอมให้มีเรือสำหรับคอมพิวเตอร์: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}อนุญาตให้ใช้ปัญญาประดิษฐ์ (AI) สำหรับหลายผู้เล่น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}จำนวน opcodes ก่อนที่สคริปต์ถูกหยุด: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}ระยะเวลาซ่อมบำรุงเป็นเปอร์เซนต์: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}ระยะเวลาซ่อมบำรุงปกติของรถไฟ: {ORANGE}{STRING} วัน/%
@@ -1320,6 +1329,14 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ระ�
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ระยะ snap หน้าต่าง: {ORANGE}ไม่ใช้งาน
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}จำนวนมากสุดของหน้าต่างที่ไม่ปักหมุด: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}ขอบเขตหน้าต่างอย่างอ่อน (ไม่ติด): {ORANGE}ไม่ใช้งาน
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}ระดับการซูมสูงสุด: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}ระดับสูงสุดของการซูมออก: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4 เท่า
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2 เท่า
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :ปกติ
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2 เท่า
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 เท่า
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 เท่า
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}ความเร็วการเจริญเติบโตของเมือง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :ไม่มี
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :ช้า
@@ -1348,6 +1365,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}เล�
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}รถไฟ
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}เมือง
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}อุตสาหกรรม
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}สคริปต์
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :ดั้งเดิม
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1361,6 +1379,18 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}หม�
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}เกิดข้อผิดพลาดกับไฟล์ที่เก็บข้อมูลการตั้งค่า
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... เกิดข้อผิดพลาดในอาร์เรย์ '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}...ค่านี้ไม่ถูกต้อง '{STRING}' สำหรับ '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... กำลังเพิกเฉย NewGRF '{STRING}': GRF ID ซ้ำกับ '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... กำลังเพิกเฉย NewGRF ที่ไม่ถูกต้อง '{STRING}': {STRING}
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :ไม่พบ
+STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ไม่ปลอดภัยสำหรับการใช้แบบคงที่
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF ของระบบ
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :ไม่รองรับกับ OpenTTD เวอร์ชันนี้
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ไม่ทราบ
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ระดับการบับอัด '{STRING}' ไม่ถูกต้อง
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... รูปแบบการเซฟเกม '{STRING}' ใช้ไม่ได้... กำลังปรับค่ากลับเป็น '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1377,6 +1407,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}คว�
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}การตั้งค่าของความก้าวหน้า
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}การตั้งค่า NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}ตรวจสอบเนื้อหาออนไลน์
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}ตั้งค่า AI/Game Script
 STR_INTRO_QUIT                                                  :{BLACK}ออก
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}เริ่มเกมใหม่, Ctrl+Click เพื่อข้ามการตั้งค่าแผนที่
@@ -1396,7 +1427,8 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}แส�
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}แสดงการกำหนดค่าขั้นสูง
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}แสดงการกำหนดค่า NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}ตรวจสอบเนื้อหาใหม่และการปรับปรุงสำหรับดาวโหลด
-STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม 'OpenTTD'
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}แสดงการตั้งค่า AI/Game script
+STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}ออกจากเกม OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK} การแปลภาษาส่วนนี้หายไป {NUM} string{P ""}. โปรดช่วยทำให้ OpenTTD ดีขึ้นโดยการสมัครเป็นผู้แปล. ดูใน readme.txt สำหรับรายละเอียด.
 
@@ -1731,7 +1763,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}ใช�
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}เข้าร่วม
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}เข้าร่วมและเล่นเป็นบริษัทนี้
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}พาสเวิร์ด
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}พาสเวิร์ด ป้องกันบริษัทของคุณจากผู้เล่นที่ไม่ได้รับอนุญาตให้เข้าร่วม
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}รหัสผ่านป้องกันบริษัทของคุณจากผู้เล่นที่ไม่ได้รับอนุญาตให้เข้าร่วม
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ตั้งพาสเวิร์ดของบริษัท
 
 # Network chat
@@ -1766,6 +1798,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}คุ�
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}คุณถูกเตะออกจากเซิฟเวอร์
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}ไม่อนุญาติให้โกงในเซิฟเวอร์นี้
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}คุณส่งคำสั่งให้เซิฟเวอร์มากเกินไป
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}คุณใช้เวลานานเกินไปสำหรับป้อนรหัสผ่าน
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}คอมพิวเตอร์ของคุณช้าไปในการติดต่อกับเครื่องแม่ข่าย
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}คอมพิวเตอร์ของคุณใช้เวลามากเกินไปสำหรับการดาวน์โหลดแผนที่
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}คอมพิวเตอร์ของคุณใช้เวลามากเกินไปสำหรับการเข้าร่วมกับเซิร์ฟเวอร์
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :การผิดพลาดทั่วไป
@@ -1784,6 +1820,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :ถูกเต
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :กำลังพยายามที่จะโกง
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :เซิฟเวอร์เต็ม
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :ส่งคำสั่งมากเกินไป
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :ไม่ได้รับรหัสผ่านในเวลาที่กำหนด
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :หมดเวลา
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :ใช้เวลามากไปในการดาวน์โหลดแผนที่
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :ใช้เวลามากไปในการประมวลผลแผนที่
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}การเชื่อมต่อล้มเหลว
@@ -1796,10 +1836,12 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :เกมหย
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :เกมยังหยุดอยู่ ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :เกมยังหยุดอยู่ ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :เกมยังหยุดอยู่ ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :เกมยังถูกหยุดอยู่ ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :เกมเริ่มต่อแล้ว ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :จำนวนผู้เล่น
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ลูกข่ายกำลังเชื่อมต่อ
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :กำหนดเอง
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :เกมสคริปต์
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :กำลังออก
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ได้เข้าร่วมเกม
@@ -1828,6 +1870,8 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}เล�
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}ยกเลิกการเลือกทั้งหมด
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}เลือกทั้งหมดให้ไม่ทำการดาวโหลด
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name ตัวกรอง:
+STR_CONTENT_OPEN_URL                                            :{BLACK}เยี่ยมชมเว็บไซต์
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}เยี่ยมชมเว็บไซต์ของเนื้อหานี้
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ดาวโหลด
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}เริ่มทำการดาวโหลดเนื้อหาที่ได้เลือกไว้
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}ขนาดทั้งหมด: {WHITE}{BYTES}
@@ -1859,6 +1903,8 @@ STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :เสียง
 STR_CONTENT_TYPE_BASE_MUSIC                                     :เพลงประกอบพื้นฐาน
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :เกมสคริปต์
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS library
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}กำลังดาวโหลดเนื้อหา
@@ -1874,10 +1920,14 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... ก�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ไม่สามารถเขียนทับไฟล์ได้
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ไม่สามารถทำการแตกไฟล์ที่ดาวโหลดมาแล้วได้
 
+STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}กราฟฟิกขาดหาย
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD ไม่พบกราฟฟิกที่ใช้ในการทำงาน. คุณต้องการให้ OpenTTD ดาวน์โหลดและติดตั้งกราฟฟิกหรือไม่?
+STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ดาวน์โหลดกราฟฟิก
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}ออกจาก OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ตัวเลือกค่าโปร่งใส
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปร่งใสของป้ายสถานี. กด Ctrl+Click สำหรับการล็อก
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปร่งใสของป้าย. กด Ctrl+Click สำหรับการล็อก
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปร่งใสของต้นไม้. กด Ctrl+Click สำหรับการล็อก
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}เปิด/ปิด การโปร่งใสของบ้าน. กด Ctrl+Click สำหรับการล็อก
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}เปิด/ปิด การโปร่งใสของอุตสาหกรรม. กด Ctrl+Click สำหรับการล็อก
@@ -1921,6 +1971,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}สร�
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}เปลี่ยนระหว่าง สร้าง/รื้อถอน รางรถไฟ, เสาสัญญาณ, ที่หมายและสถานี. กด Ctrl ค้างไว้เพื่อทำการถอนรางรถไฟที่เป็นจุดหมายและสถานี
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}เปลี่ยน/อัพเกรด ชนิดของรางรถไฟ. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
 
+STR_RAIL_NAME_RAILROAD                                          :รางรถไฟ
+STR_RAIL_NAME_ELRAIL                                            :รางรถไฟฟ้า
+STR_RAIL_NAME_MONORAIL                                          :รถไฟรางเดียว
+STR_RAIL_NAME_MAGLEV                                            :รถไฟพลังแม่เหล็ก
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}ทิศทางของอู่รถไฟ
@@ -1982,9 +2036,16 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}สร�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}สร้างทางส่วนของรถราง กด CTRL + คลิก เพื่อรื้อถอน กด Shift + คลิก เพื่อแสดงประมาณการค่าใช้จ่าย
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}สร้างทางส่วนของถนนอัตโนมัติ กด CTRL + คลิก เพื่อรื้อถอน กด Shift + คลิก เพื่อแสดงประมาณการค่าใช้จ่าย
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}สร้างทางส่วนของรถรางอัตโนมัติ กด CTRL + คลิก เพื่อรื้อถอน กด Shift + คลิก เพื่อแสดงประมาณการค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}สร้างอู่รถ (สำหรับซื้อและบำรุงรักษารถ). กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}สร้างอู่รถราง (สำหรับซื้อและบำรุงรักษารถราง). กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}สร้างสถานีรถ. กด Ctrl เพื่อใช้สถานีร่วมกับที่อื่น. กด Shift เพื่อแสดงมูลค่าการก่อสร้าง
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}สร้างสถานีรถราง. กด Ctrl เพื่อใช้สถานีร่วมกับที่อื่น. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}สร้างสถานีสินค้ารถราง. กด Ctrl เพื่อทำการรวมสถานี. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}เลือกใช้ / ยกเลิกการใช้ ถนนวันเวย์
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}สร้างสะพานสำหรับรถยนต์ กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}สร้างสะพานสำหรับรถราง. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}สร้างอุโมงค์รถ. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}สร้างอุโมงค์รถราง. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}สลับโหมด สร้าง/ลบ ถนน
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}สลับโหมด สร้าง/ลบ รางสำหรับรถราง
 
@@ -2282,7 +2343,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :วัตถุ
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF: {}{STRING}
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}กราฟิกพื้นฐานที่ใช้อยู่นี้ขาดตัวเลขของสไปรท์{}Please update the base graphics set.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}กราฟิกพื้นฐานที่ใช้อยู่มีสไปรท์ไม่สมบูรณ์{}กรุณาปรับรุ่นกราฟฟิกพื้นฐาน
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ถูกยกเลิกโดย {STRING}
 
 # NewGRF related 'general' warnings
@@ -2335,6 +2396,10 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :คำถาม
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :ข้อมูล
+STR_GOAL_QUESTION_CAPTION_WARNING                               :คำเตือน
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :ข้อผิดพลาด
 
 ### Start of Goal Question button list
 
@@ -2605,13 +2670,19 @@ STR_INVALID_ORDER                                               :{RED} (คำ�
 
 
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :เดินทาง (อัตโนมัติ; ตามตารางเวลาต่อไปที่ตั้งไว้)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :ความเร็วการเดินทางไม่เกิน {2:VELOCITY} (ไม่ได้กำหนดตารางเวลา)
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :ความเร็วการเดินทางสำหรับ {STRING} สูงสุดไม่เกิน {VELOCITY}
 
 
 
 
 
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}เปลี่ยนความเร็วที่จำกัด
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}เปลี่ยนความเร็วการเดินทางสูงสุดของลำดับที่ถูกไฮไลท์
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}ยกเลิกการจำกัดความเร็ว
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}ยกเลิกความเร็วการเดินทางสูงสุดของลำดับที่ถูกไฮไลท์
 
 
 
@@ -2648,6 +2719,12 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme ของ {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} changelog ของ {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} การอนุญาตของ {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}แสดง readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Changelog
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}การอนุญาต
 
 
 # Vehicle loading indicators
@@ -2707,13 +2784,24 @@ STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}ไม�
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... มีอุตสาหกรรมมากเกินไป
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต้องสร้างเมืองก่อน
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... สามารถสร้างได้บริเวณใกล้จุดศูนย์กลางของเมืองเท่านั้น
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}สามารถสร้างได้เฉพาะพื้นที่ต่ำกว่าเท่านั้น
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... สามารถวางตำแหน่งบริเวณขอบของแผนที่เท่านั้น
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... สามารถปลูกป่าได้ที่ระดับเหนือกว่าระดับหิมะเท่านั้น
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... สามารถสร้างได้ที่ระดับเหนือกว่าระดับหิมะเท่านั้น
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... สามารถสร้างได้ที่ระดับต่ำกว่าระดับหิมะเท่านั้น
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ตรงนี้ไม่สามารถสร้างสถานีรถไฟได้
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}ไม่สามารถสร้างสถานีรถบัสได้
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}ไม่สามารถสร้างสถานีรถบรรทุกได้
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}ไม่สามารถสร้างสถานีผู้โดยสารรถรางได้
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}ไม่สามารถสร้างสถานีรถรางขนส่งสินค้าได้
+STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}ตรงนี้ไม่สามารถสร้างอู่เรือได้
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}ตรงนี้ไม่สามารถสร้างสนามบินได้
 
+STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ขอบเขตของสถานีกว้างเกินไป
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}มีสถานีหรือจุดโหลด มากเกินไปแล้วในเกม
 
 # Station destruction related errors
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}ต้องลบถนนออกก่อน

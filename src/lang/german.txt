@@ -3719,7 +3719,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kann nur in Regenwaldgebieten errichtet werden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kann nur in Wüstengebieten errichtet werden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kann nur in Städten gebaut werden (muss Häuser ersetzen)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}...kann nur in der Nähe des Stadtzentrums gebaut werden
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kann nur in der Nähe des Stadtzentrums gebaut werden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kann nur im Tiefland gebaut werden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kann nur in der Nähe des Spielfeldrandes errichtet werden
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Wald kann nur oberhalb der Schneegrenze gepflanzt werden

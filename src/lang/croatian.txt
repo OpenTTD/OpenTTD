@@ -3813,7 +3813,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dopu
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{G=male}{WHITE}... može biti izgrađen samo u gradovima s najmanje 1.200 stanovnika
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... može biti izgrađen samo u predjelima kišnih šuma
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... može biti izgrađen samo u pustinjskim područjima
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... može biti izgrađen samo u gradovima
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... može biti izgrađen samo u gradovima (zamjenjujući kuće)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... može biti izgrađen samo blizu središta gradova
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... može biti izgrađen samo u nizinskim područjima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može se postaviti samo blizu rubova karte
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šume mogu biti posađene jedino iznad linije snijega
