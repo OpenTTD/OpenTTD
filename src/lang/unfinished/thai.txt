@@ -690,7 +690,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}พื้นลูกรัง
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}พื้นหญ้า
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}ที่ดินเปล่า
-STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}ทุ่งนา
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}ทุ้งหญ้า
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}ต้นไม้
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}หิน
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}ผืนน้ำ
@@ -2062,20 +2062,30 @@ STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}ทิ�
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}เลือกทิศทางของท่าขนส่งสินค้า
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}ทิศทางผู้โดยสารรถราง
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}เลือกทิษทางสำหรับผู้โดยสารรถราง
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}ทิศทางของสถานีรถรางขนส่งสินค้า
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}เลือกทิศทางของสถานีรถรางขนส่งสินค้า
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}การก่อสร้างทางน้ำ
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}คลอง
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}สร้างคลอง กด Shift + คลิก เพื่อประมาณการค่าใช้จ่าย
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}สร้างอู่เรือ (สำหรับซื้อขายและซ่อมบำรุงเรือ). กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}สร้างอู่เรือ. กด Ctrl เพื่อใช้สถานีร่วมกับที่อื่น. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}วางทุ่นเพื่อใช้เป็นเวย์พอยต์. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}สร้างสะพานน้ำ. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}สร้างพื้นน้ำ.{}สร้างคลอง หรือหากกด Ctrl ที่ระดับน้ำทะเลจะทำให้ระดับนั้นเป็นน้ำทั้งบริเวณ
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}ปักป้ายบนน้ำ
 
 # Ship depot construction window
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}ทิศทางของอู่เรือ
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}เลือกทิศทางของอู่เรือ
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}ท่าเรือ
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}สนามบิน
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}สร้างสนามบิน. กด Ctrl เพื่อใช้สถานีร่วมกับที่อื่น. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}การเลือกสนามบิน
@@ -2096,16 +2106,20 @@ STR_AIRPORT_HELISTATION                                         :สถานี
 STR_AIRPORT_CLASS_SMALL                                         :สนามบินขนาดเล็ก
 STR_AIRPORT_CLASS_LARGE                                         :สนามบินขนาดใหญ่
 STR_AIRPORT_CLASS_HUB                                           :ศูนย์กลางสนามบิน
+STR_AIRPORT_CLASS_HELIPORTS                                     :สนามบินเฮลิคอปเตอร์
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}สร้างเสียงรบกวน: {GOLD}{COMMA}
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}การจัดภูมิประเทศ
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}ลดระดับมุมของที่ดิน. ลากเพื่อลดระดับมุมที่เลือกและปรับระดับบริเวณที่เลือกใหม่. กด Ctrl เพื่อเลือกบริเวณเป็นแนวทแยง. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้าง/แสดงการประเมินค่าใช้จ่าย
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}ซื้อพื้นที่สำหรับใช้ในอนาคต. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}เลือกชนิดของวัตถุที่จะสร้าง
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
 
@@ -2116,18 +2130,23 @@ STR_OBJECT_CLASS_TRNS                                           :เครื่
 STR_PLANT_TREE_CAPTION                                          :{WHITE}ต้นไม้
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}เลือกชนิดของต้นไม้
 STR_TREES_RANDOM_TYPE                                           :{BLACK}สุ่มชนิดของต้นไม้
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}วางต้นไม้แบบสุ่มชนิด. กด Shift เพื่อแสดงการประเมินค่าใช้จ่าย
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}สุ่มต้นไม้
+STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}วางต้นไม้แบบสุ่มบนภูมิประเทศ
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}สร้างแผ่นดิน
+STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}วางพื้นที่แบบหินบนภูมิประเทศ
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}สร้างเขตทะเลทราบ{}กด CTRL เพื่อถอนทิ้ง
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}เพิ่มพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}ลดพื้นที่ในการปรับระดับแผ่นดิน
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}สร้างแผ่นดินแบบสุ่ม
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}สร้างฉากใหม่
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}ยกเลิกภูมิทัศน์ทังหมด
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}ลบทรัพย์สินทั้งหมดที่เป็นของบริษัทออกจากแผนที่
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}ยกเลิกภูมิทัศน์ทังหมด
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}คุณต้องการลบทรัพย์สินทั้งหมดของบริษัทออกหรือไม่?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}สร้างเมือง
@@ -2162,20 +2181,31 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}สุ�
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ก่อตั้งอุตสาหกรรมใหม่
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}เลือกอุตสาหกรรมที่เหมาะสมจากรายการนี้
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :สุ่มหลากหลายอุตสาหกรรม
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}วางโรงงานอุตสาหกรรมแบบสุ่มทั่วแผนที่
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}ราคา: {YELLOW}{CURRENCY_LONG}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}สำรวจ
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}สร้าง
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}ก่อตั้ง
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}สายการผลิตสำหรับอุตสาหกรรม{STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}สายการผลิตสำหรับสินค้า {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}อุตสาหกรรมการผลิต
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}อุตสาหกรรมที่รองรับ
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}บ้าน
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}คลิกที่อุตสาหกรรมเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}คลิกที่สินค้าเพื่อแสดงผู้ผลิตสินค้าและลูกค้า
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}แสดงห่วงโซ่
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}แสดงอุปทานและการรับเข้าของอุตสาหกรรม
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}ไปยังแผนที่เล็ก
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลพื้นที่
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}รายได้จากการเคลียร์: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :ไม่กำหนด
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}เจ้าของ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}เจ้าของถนน: {LTBLUE}{STRING}
@@ -2197,10 +2227,14 @@ STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}จำ�
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :หิน
 STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :พื้นที่หยาบ
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :พื้นที่เปล่า
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :หญ้า
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :ทุ่งหญ้า
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :พื้นที่หิมะปกคลุม
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :ทะเลทราย
 
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} ราง
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} อู่รถไฟ
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :ถนน
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :ถนนพร้อมไฟถนน
@@ -2214,13 +2248,16 @@ STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (ก�
 
 STR_LAI_TREE_NAME_TREES                                         :ต้นไม้
 STR_LAI_TREE_NAME_RAINFOREST                                    :ป่าดิบชื้น
+STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :ตะบองเพชร
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :สถานีรถไฟ
 STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :โรงเก็บเครื่องบิน
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :สนามบิน
+STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :จุดโหลดสำหรับรถบรรทุก
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :สถานีขนส่ง
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :ท่าเรือ
 STR_LAI_STATION_DESCRIPTION_BUOY                                :ทุ่น
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :ที่หมาย
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :น้ำ
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :คลอง
@@ -2272,7 +2309,10 @@ STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}โห�
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}บันทึกแผนที่จำลองเสมือนจริง
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}กดที่นี่เพื่อเข้าสู่ตำแหน่งบันทึกเกม/โหลดเกมที่ใช้อยู่
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} ฟรี
+STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}แสดงไดรฟ์, โฟลเดอร์, และไฟล์เซฟ
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}ชื่อที่กำลังถูกเลือกสำหรับเซฟเกม
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}ลบ
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}ลบเซฟเกมสำหรับชื่อที่เลือก
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}บันทึก
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}โหลด
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}รายละเอียดเกม

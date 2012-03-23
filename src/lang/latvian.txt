@@ -1277,12 +1277,12 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Izslēg
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Atļaut MI vairākspēlētāju spēlē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#darbību kodi, pirms skripti tiek apstādināti: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}atspējots
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Noklusētais autotransporta apkalpošanas periods: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Noklusētais autotransporta apkalpošanas periods: {ORANGE}atspējots
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Noklusētais lidaparātu apkalpošanas periods: {ORANGE}{STRING} dien{P 0:1 a as u}/%
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkopju starplaiks procentos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Noklusētais vilcienu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklusētais vilcienu apkopju starplaiks: {ORANGE}izslēgts
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}izslēgts
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Noklusētais lidaparātu apkalpošanas periods: {ORANGE}atspējots
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Noklusētais kuģu apkalpošanas periods: {ORANGE}{STRING} dien{P 0:1 a as u}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Noklusētais kuģu apkalpošanas periods: {ORANGE}atspējots
@@ -3372,7 +3372,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Doties uz tuvā
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Doties uz tuvāko angāru
 STR_ORDER_CONDITIONAL                                           :Nosacītais rīkojuma lēciens
 STR_ORDER_SHARE                                                 :Koplietot rīkojumus
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms iezīmētā rīkojuma vai saraksta beigās. Ctrl izveido stacijas rīkojumu 'piekraut pilnu ar jebkuru kravu', liek braukt cauri pieturas punktam 'neapstājoties' un depo veikt 'apkalpošanu'. 'Koplietot rīkojumus' vai Ctrl ļauj šim transportlīdzeklim lietot rīkojumus kopīgi ar atlasīto transportlīdzekli. Klikšķināšana uz transportlīdzekļa kopēs tā rīkojumus
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms iezīmētā rīkojuma vai saraksta beigās. Ctrl izveido stacijas rīkojumu 'piekraut pilnu ar jebkuru kravu', liek braukt cauri pieturas punktam 'neapstājoties' un depo veikt 'apkopi'. 'Koplietot rīkojumus' vai Ctrl ļauj šim transportlīdzeklim lietot rīkojumus kopīgi ar atlasīto transportlīdzekli. Klikšķināšana uz transportlīdzekļa kopēs tā rīkojumus. Depo rīkojums izslēdz automātisko apkopi.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt visus ar šo plānu saistītos transportlīdzekļus
 
