@@ -3282,8 +3282,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуж.: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {7:COMMA} клет{P 7 ка ки ок}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {7:COMMA} клет{P 7 ка ки ок}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {COMMA} клет{P 3 ка ки ок}{}Ёмкость: {CARGO_LONG}, {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {COMMA} клет{P 3 ка ки ок}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}

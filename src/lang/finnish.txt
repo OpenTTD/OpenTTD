@@ -3092,8 +3092,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. Vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Hinta: {CURRENCY_LONG} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/yr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Hinta: {CURRENCY_LONG} Maks. Nopeus: {VELOCITY}{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Hinta: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {7:COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Hinta: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {7:COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Hinta: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}, {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Hinta: {CURRENCY_LONG} Suurin nopeus: {VELOCITY} Toimintasäde: {COMMA} ruutua{}Kapasiteetti: {CARGO_LONG}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}

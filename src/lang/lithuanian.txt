@@ -3323,8 +3323,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY_LONG}/yr{}Talpa: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY}{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kaina: {CURRENCY_LONG} Didž. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {7:COMMA} langeliai{}Talpa: {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {COMMA} langeliai{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY} Nuotolis: {COMMA} langeliai{}Talpa: {CARGO_LONG}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
