@@ -1105,8 +1105,8 @@ STR_CONFIG_SETTING_ON                                           :Ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Izslēgts
-STR_CONFIG_SETTING_COMPANIES_OWN                                :Paša uzņēmums
-STR_CONFIG_SETTING_COMPANIES_ALL                                :Visi uzņēmumi
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Savam uzņēmumam
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Visiem uzņēmumiem
 
 STR_CONFIG_SETTING_NONE                                         :Nekāds
 STR_CONFIG_SETTING_ORIGINAL                                     :Oriģinālais
@@ -1208,7 +1208,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens va
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. staciju lielums: {ORANGE}{STRING} lauciņ{P 0:1 š i u} {RED}Brīdinājums: Lielas vērt. palēnina spēli
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automātiski apkalpot helikopterus heliportos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Veikt helikopteru automātisko apkopi nolaišanās laukumos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sasaitēt ainavas rīkjoslu ar sliežu/ceļu/ūdens/lidostu rīkjoslām: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartes zemes krāsa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zaļa
@@ -1219,8 +1219,8 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plūden
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma livrejas (krāsojumu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nav
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Paša uzņēmums
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Visi uzņēmumi
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savam uzņēmumam
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Visiem uzņēmumiem
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Dot priekšroku tērzēšanai ar <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Peles ritenīša funkcija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Pietuvināt karti
@@ -1252,7 +1252,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot papildināto transportlīdzekļu sarakstu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot piekraušanas indikatorus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikos nevis dienās: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu mirkļos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Maršrutu sarakstos rādīt pienākšanu un atiešanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transportlīdzekļu norīkojumu ātrā veidošana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Noklusējuma sliežu tips (pēc jaunas sp./sp. ielādes): {ORANGE}{STRING}
@@ -1260,8 +1260,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pirmās pieejam
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Visbiežāk lietotās
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rādīt rezervētās sliedes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Paturēt celtnes rīkus aktīvus pēc lietošanas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupēt izdevumu sadaļas uzņēmuma finansu informācijas logā: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Būvniecības rīkus pēc lietošanas paturēt darbīgus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupēt izdevumu sadaļas uzņēmuma finansu inform. logā: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportlīdz.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimālais vilcienu skaits uzņēmumā: {ORANGE}{STRING}
@@ -1283,16 +1283,16 @@ STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklus�
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}izslēgts
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Noklusētais lidaparātu apkalpošanas periods: {ORANGE}atspējots
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Noklusētais kuģu apkalpošanas periods: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Noklusētais kuģu apkalpošanas periods: {ORANGE}atspējots
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}izslēgts
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}izslēgts
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizliedz apkopi, kad sabojāšanās izslēgta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ieslēgt vagonu ātruma ierobežojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Izslēgt eletrificēto dzelzceļu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Iekrāsotās ziņas parādās: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Krāsainas ziņas parādās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt vienmērīgas izmaiņas ekonomikā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citiem uzņēmumiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procenti no kopējās peļņas, ko maksā tranzītstacijās: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot, izvietot signālus uz katra {ORANGE}{STRING}. lauciņa
@@ -1346,10 +1346,10 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lēns
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ātrs
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ļoti ātrs
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Pilsētu daļa kura kļūs par lielpilsētām: {ORANGE}1 pret {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}Neviens
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Sākotnējais pilsētas lieluma daudzkārtnis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Pilsētu daļa kas kļūs par lielpilsētām: {ORANGE}1 pret {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu daļa kas kļūs par pilsētām: {ORANGE}neviens
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Lielpilsētu sākuma lieluma reizinātājs: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvniecība
@@ -2008,17 +2008,17 @@ STR_STATION_CLASS_WAYP                                          :Ceļapunkti
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signāla izvēle
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloka signālierīce (semafors){}Šis ir pats vienkāršākais signālierīces veids, kas ļauj uz bloka vienlaicīgi atrasties tikai vienam vilcienam
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ieejas signālierīce (semafors){}Zaļš kamēr ir vismaz viena zaļš izejas signāls no sekojošās sliežu sekcijas. Citādi signāls būs sarkans
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ieejas signālierīce (semafors){}Zaļš kamēr ir viens vai vairāki zaļi izejas signāli no sekojošās sliežu sekcijas. Citādi signāls būs sarkans
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izejas signālierīce (semafors){}Uzvedas tāpat kā bloka signālierīce, bet tā ir nepieciešama, lai pirmssignālu ierīces rādītu pareizās krāsas
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinētā signālierīce (semafors){} Kombinētā signālierīce darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Ceļa signāls (semafors){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Parastiem ceļa signāliem var aizbraukt garām muguras.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Viena virziena ceļa signālierīce (semafors){}Viena virziena ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Šai signālierīcei nevar aizbraukt garām no mugurpuses.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloka signāls (luksofors){}Šis ir vienkāršākais, kas ļauj vienlaicīgi tikai vienam vilcienam atrasties uz bloka.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ieejas signāls (elektrisks){}Zaļš līdz parādās vēl viens vai vairāki zaļie izejas signāli no šīs sliežu sekcijas. Citādi tas parādās sarkans
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinētā signālierīce (semafors){} Kombinētā signālierīce darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Ceļa signāls (semafors){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Parastiem ceļa signāliem var pabraukt garām no aizmugures
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Viena virziena ceļa signālierīce (semafors){}Viena virziena ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Šai signālierīcei nevar pabraukt garām no aizmugures
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Bloka signāls (luksofors){}Šis ir vienkāršākais, kas ļauj atrasties uz bloka vienlaicīgi tikai vienam vilcienam
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ieejas signāls (luksofors){}Zaļš līdz parādās vēl viens vai vairāki zaļi izejas signāli no šīs sliežu sekcijas. Citādi tas parādās sarkans
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izejas signālierīce (luksofors){}Uzvedas tāpat kā bloka signālierīce, bet tā ir nepieciešama, lai pirmssignālu ierīces rādītu pareizās krāsas
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinētā signālierīce (luksofors){} Kombinētā signālierīce darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Ceļa signāls (luksofors){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Parastiem ceļa signāliem var aizbraukt garām muguras.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Viena virziena ceļa signālierīce (luksofors){}Viena virziena ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Šai signālierīcei nevar aizbraukt garām no mugurpuses.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinētā signālierīce (luksofors){} Kombinētā signālierīce darbojas gan kā izejas, gan ieejas signāls. Tas ļauj radīt lielus pirmssignālu tīklus
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Ceļa signāls (luksofors){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Parastiem ceļa signāliem var pabraukt garām no aizmugures
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Vienvirziena ceļa signālierīce (elektriska){}Ceļa signāls ļauj iebraukt signāla blokā vairāk kā vienam vilcienam vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Vienvirziena ceļa signālierīcēm nevar pabraukt garām no aizmugures
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signālierīču pārveidotājs{}Kad ieslēgts, klikšķis uz jau esošas signālierīces pārveidos to uz norādīto signāla tipu un variantu. Ctrl+klikšķis pārslēgs pašreizējo variantu. Shift+klikšķis rāda pārveidošanas tāmes vērtību
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Vilkt signālu biežumu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Samazināt signālu biežumu
@@ -3097,12 +3097,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotīve
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG}/yr{}Ietilpība:  {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Izmaksas: {4:CURRENCY_LONG}/g{}Ietilpība: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Izmaksas: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} flīzes{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Izmaksas: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} flīzes{}Ietilpība: {CARGO_LONG}{} Kārtējās izmaksas : {CURRENCY_LONG} gadā
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā{}Ietilpība:  {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Kārtējās izmaksas: {4:CURRENCY_LONG}/gadā{}Ietilpība: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}{} Kārtējās izmaksas : {CURRENCY_LONG}/gadā
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING}
@@ -3194,7 +3194,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dodas u
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nav rīkojumu, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dodas uz {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dodas uz {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Apkalpošana {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Veikt apkopi {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Apturēts
@@ -3332,7 +3332,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Serviss
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vienmēr doties
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Apkope, ja nepieciešama
 STR_ORDER_DROP_HALT_DEPOT                                       :Apstādināt
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Izlaist šo rīkojumu, izņemot, ja vajadzīga apkope
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Izlaist šo rīkojumu, izņemot ja vajadzīga apkope
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 
@@ -3380,8 +3380,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Rādīt 
 STR_ORDER_GO_TO_WAYPOINT                                        :Dodas caur {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Dodas caur {WAYPOINT} bez apstāšanās
 
-STR_ORDER_SERVICE_AT                                            :Apkalpot
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Bez apstājas apkope
+STR_ORDER_SERVICE_AT                                            :Veikt apkopi
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Bezapstājas apkope
 
 STR_ORDER_NEAREST_DEPOT                                         :tuvākais
 STR_ORDER_NEAREST_HANGAR                                        :tuvākais angārs
