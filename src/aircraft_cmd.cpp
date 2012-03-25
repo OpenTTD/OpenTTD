@@ -1894,7 +1894,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 
 	if (v->current_order.IsType(OT_LOADING) || v->current_order.IsType(OT_LEAVESTATION)) return true;
 
-	if (v->state == FLYING) {
+	if (v->state >= ENDTAKEOFF && v->state <= HELIENDLANDING) {
 		/* If we are flying, unconditionally clear the 'dest too far' state. */
 		AircraftHandleDestTooFar(v, false);
 	} else if (v->acache.cached_max_range_sqr != 0) {
