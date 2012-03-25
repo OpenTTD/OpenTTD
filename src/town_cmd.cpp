@@ -2171,8 +2171,8 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	/* no house allowed at all, bail out */
 	if (!CanBuildHouseHere(tile, t->index, false)) return false;
 
-	int z;
-	Slope slope = GetTileSlope(tile, &z);
+	Slope slope = GetTileSlope(tile);
+	int maxz = GetTileMaxZ(tile);
 
 	/* Get the town zone type of the current tile, as well as the climate.
 	 * This will allow to easily compare with the specs of the new house to build */
@@ -2180,7 +2180,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 	/* Above snow? */
 	int land = _settings_game.game_creation.landscape;
-	if (land == LT_ARCTIC && z >= HighestSnowLine()) land = -1;
+	if (land == LT_ARCTIC && maxz > HighestSnowLine()) land = -1;
 
 	uint bitmask = (1 << rad) + (1 << (land + 12));
 
@@ -2215,7 +2215,6 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		houses[num++] = (HouseID)i;
 	}
 
-	int maxz = GetTileMaxZ(tile);
 	TileIndex baseTile = tile;
 
 	while (probability_max > 0) {
