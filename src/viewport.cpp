@@ -47,6 +47,7 @@
 #include "window_gui.h"
 
 #include "table/strings.h"
+#include "table/palettes.h"
 
 Point _tile_fract_coords;
 
@@ -148,6 +149,8 @@ static ViewportDrawer _vd;
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
+bool _draw_dirty_blocks = false;
+uint _dirty_block_colour = 0;
 
 static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
 {
@@ -1361,6 +1364,28 @@ static void ViewportDrawBoundingBoxes(const ParentSpriteToSortVector *psd)
 	}
 }
 
+/**
+ * Draw/colour the blocks that have been redrawn.
+ */
+static void ViewportDrawDirtyBlocks()
+{
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	const DrawPixelInfo *dpi = _cur_dpi;
+	void *dst;
+	int right =  UnScaleByZoom(dpi->width,  dpi->zoom);
+	int bottom = UnScaleByZoom(dpi->height, dpi->zoom);
+
+	int colour = _string_colourmap[_dirty_block_colour & 0xF];
+
+	dst = dpi->dst_ptr;
+
+	byte bo = UnScaleByZoom(dpi->left + dpi->top, dpi->zoom) & 1;
+	do {
+		for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8)colour);
+		dst = blitter->MoveTo(dst, 0, 1);
+	} while (--bottom > 0);
+}
+
 static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVector *sstdv)
 {
 	DrawPixelInfo dp;
@@ -1457,6 +1482,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportDrawParentSprites(&_vd.parent_sprites_to_sort, &_vd.child_screen_sprites_to_draw);
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&_vd.parent_sprites_to_sort);
+	if (_draw_dirty_blocks) ViewportDrawDirtyBlocks();
 
 	if (_vd.string_sprites_to_draw.Length() != 0) ViewportDrawStrings(&_vd.dpi, &_vd.string_sprites_to_draw);
 

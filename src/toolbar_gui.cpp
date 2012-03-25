@@ -949,7 +949,7 @@ static CallBackFunction PlaceLandBlockInfo()
 
 static CallBackFunction ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 11 : 9);
+	PopupMainToolbMenu(w, WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 12 : 9);
 	return CBF_NONE;
 }
 
@@ -991,6 +991,23 @@ void ToggleBoundingBoxes()
 }
 
 /**
+ * Toggle drawing of the dirty blocks.
+ * @note has only an effect when newgrf_developer_tools are active.
+ *
+ * Function is found here and not in viewport.cpp in order to avoid
+ * importing the settings structs to there.
+ */
+void ToggleDirtyBlocks()
+{
+	extern bool _draw_dirty_blocks;
+	/* Always allow to toggle them off */
+	if (_settings_client.gui.newgrf_developer_tools || _draw_dirty_blocks) {
+		_draw_dirty_blocks = !_draw_dirty_blocks;
+		MarkWholeScreenDirty();
+	}
+}
+
+/**
  * Choose the proper callback function for the main toolbar's help menu.
  * @param index The menu index which was selected.
  * @return CBF_NONE
@@ -1008,6 +1025,7 @@ static CallBackFunction MenuClickHelp(int index)
 		case  8: ShowAboutWindow();                break;
 		case  9: ShowSpriteAlignerWindow();        break;
 		case 10: ToggleBoundingBoxes();            break;
+		case 11: ToggleDirtyBlocks();              break;
 	}
 	return CBF_NONE;
 }

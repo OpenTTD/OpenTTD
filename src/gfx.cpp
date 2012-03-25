@@ -110,6 +110,7 @@ static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 static uint _dirty_bytes_per_line = 0;
 static byte *_dirty_blocks = NULL;
+extern uint _dirty_block_colour;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -1807,6 +1808,7 @@ void DrawDirtyBlocks()
 		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
 	} while (b += -(int)(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
 
+	++_dirty_block_colour;
 	_invalid_rect.left = w;
 	_invalid_rect.top = h;
 	_invalid_rect.right = 0;

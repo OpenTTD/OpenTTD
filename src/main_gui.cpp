@@ -217,6 +217,7 @@ enum {
 	GHK_ABANDON,
 	GHK_CONSOLE,
 	GHK_BOUNDING_BOXES,
+	GHK_DIRTY_BLOCKS,
 	GHK_CENTER,
 	GHK_CENTER_ZOOM,
 	GHK_RESET_OBJECT_TO_PLACE,
@@ -300,6 +301,10 @@ struct MainWindow : Window
 
 			case GHK_BOUNDING_BOXES:
 				ToggleBoundingBoxes();
+				return ES_HANDLED;
+
+			case GHK_DIRTY_BLOCKS:
+				ToggleDirtyBlocks();
 				return ES_HANDLED;
 		}
 
@@ -455,6 +460,7 @@ Hotkey<MainWindow> MainWindow::global_hotkeys[] = {
 	Hotkey<MainWindow>(_ghk_abandon_keys, "abandon", GHK_ABANDON),
 	Hotkey<MainWindow>(WKC_BACKQUOTE, "console", GHK_CONSOLE),
 	Hotkey<MainWindow>('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
+	Hotkey<MainWindow>('I' | WKC_CTRL, "dirty_blocks", GHK_DIRTY_BLOCKS),
 	Hotkey<MainWindow>('C', "center", GHK_CENTER),
 	Hotkey<MainWindow>('Z', "center_zoom", GHK_CENTER_ZOOM),
 	Hotkey<MainWindow>(WKC_ESC, "reset_object_to_place", GHK_RESET_OBJECT_TO_PLACE),
