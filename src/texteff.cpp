@@ -65,6 +65,7 @@ void UpdateTextEffect(TextEffectID te_id, StringID msg)
 {
 	/* Update details */
 	TextEffect *te = _text_effects.Get(te_id);
+	if (msg == te->string_id && GetDParam(0) == te->params_1) return;
 	te->string_id = msg;
 	te->params_1 = GetDParam(0);
 
