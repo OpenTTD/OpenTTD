@@ -6688,13 +6688,12 @@ static void ParamSet(ByteReader *buf)
 			break;
 
 		case 0x9E: // Miscellaneous GRF features
-			_misc_grf_features = res;
-
 			/* Set train list engine width */
-			_cur.grffile->traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
-
+			_cur.grffile->traininfo_vehicle_width = HasBit(res, GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
 			/* Remove the local flags from the global flags */
-			ClrBit(_misc_grf_features, GMB_TRAIN_WIDTH_32_PIXELS);
+			ClrBit(res, GMB_TRAIN_WIDTH_32_PIXELS);
+
+			_misc_grf_features = res;
 			break;
 
 		case 0x9F: // locale-dependent settings
