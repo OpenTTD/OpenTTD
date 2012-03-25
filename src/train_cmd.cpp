@@ -2200,6 +2200,8 @@ void FreeTrainTrackReservation(const Train *v, TileIndex origin, Trackdir orig_t
 	bool      free_tile = tile != v->tile || !(IsRailStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
 	StationID station_id = IsRailStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
 
+	/* A train inside a depot can't have a reservation. */
+	if (v->track == TRACK_BIT_DEPOT) return;
 	/* Don't free reservation if it's not ours. */
 	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
 
