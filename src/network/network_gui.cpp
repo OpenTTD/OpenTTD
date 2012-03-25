@@ -452,7 +452,7 @@ public:
 		this->field = WID_NG_CLIENT;
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
-		NetworkUDPQueryServer(this->last_joined->address);
+		if (this->last_joined != NULL) NetworkUDPQueryServer(this->last_joined->address);
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
