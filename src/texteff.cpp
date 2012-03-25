@@ -89,9 +89,9 @@ void MoveAllTextEffects()
 			continue;
 		}
 
-		te->MarkDirty();
+		te->MarkDirty(ZOOM_LVL_OUT_8X);
 		te->top -= ZOOM_LVL_BASE;
-		te->MarkDirty();
+		te->MarkDirty(ZOOM_LVL_OUT_8X);
 	}
 }
 

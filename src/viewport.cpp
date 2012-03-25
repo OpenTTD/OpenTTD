@@ -144,6 +144,8 @@ struct ViewportDrawer {
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
+static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom);
+
 static ViewportDrawer _vd;
 
 TileHighlightData _thd;
@@ -1245,20 +1247,31 @@ void ViewportSign::UpdatePosition(int center, int top, StringID str)
 
 /**
  * Mark the sign dirty in all viewports.
+ * @param maxzoom Maximum %ZoomLevel at which the text is visible.
  *
  * @ingroup dirty
  */
-void ViewportSign::MarkDirty() const
+void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 {
-	/* We use ZOOM_LVL_MAX here, as every viewport can have another zoom,
-	 *  and there is no way for us to know which is the biggest. So make the
-	 *  biggest area dirty, and we are safe for sure.
-	 * We also add 1 to make sure the whole thing is redrawn. */
-	MarkAllViewportsDirty(
-		this->center - ScaleByZoom(this->width_normal / 2 + 1, ZOOM_LVL_MAX),
-		this->top    - ScaleByZoom(1, ZOOM_LVL_MAX),
-		this->center + ScaleByZoom(this->width_normal / 2 + 1, ZOOM_LVL_MAX),
-		this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, ZOOM_LVL_MAX));
+	Rect zoomlevels[ZOOM_LVL_COUNT];
+
+	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
+		/* FIXME: This doesn't switch to width_small when appropriate. */
+		zoomlevels[zoom].left   = this->center - ScaleByZoom(this->width_normal / 2 + 1, zoom);
+		zoomlevels[zoom].top    = this->top    - ScaleByZoom(1, zoom);
+		zoomlevels[zoom].right  = this->center + ScaleByZoom(this->width_normal / 2 + 1, zoom);
+		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
+	}
+
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		ViewPort *vp = w->viewport;
+		if (vp != NULL && vp->zoom <= maxzoom) {
+			assert(vp->width != 0);
+			Rect &zl = zoomlevels[vp->zoom];
+			MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
+		}
+	}
 }
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
