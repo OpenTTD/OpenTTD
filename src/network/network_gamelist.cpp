@@ -62,7 +62,7 @@ static void NetworkGameListHandleDelayedInsert()
 			}
 			item->manually |= ins_item->manually;
 			if (item->manually) NetworkRebuildHostList();
-			UpdateNetworkGameWindow(false);
+			UpdateNetworkGameWindow();
 		}
 		free(ins_item);
 	}
@@ -105,7 +105,7 @@ NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 	}
 	DEBUG(net, 4, "[gamelist] added server to list");
 
-	UpdateNetworkGameWindow(false);
+	UpdateNetworkGameWindow();
 
 	return item;
 }
@@ -132,7 +132,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 
 			DEBUG(net, 4, "[gamelist] removed server from list");
 			NetworkRebuildHostList();
-			UpdateNetworkGameWindow(false);
+			UpdateNetworkGameWindow();
 			return;
 		}
 		prev_item = item;

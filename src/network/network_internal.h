@@ -145,7 +145,7 @@ void NetworkTCPQueryServer(NetworkAddress address);
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList();
-void UpdateNetworkGameWindow(bool unselect);
+void UpdateNetworkGameWindow();
 
 bool IsNetworkCompatibleVersion(const char *version);
 

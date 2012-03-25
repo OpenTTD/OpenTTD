@@ -395,7 +395,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 
 	item->online = true;
 
-	UpdateNetworkGameWindow(false);
+	UpdateNetworkGameWindow();
 }
 
 void ClientNetworkUDPSocketHandler::Receive_MASTER_RESPONSE_LIST(Packet *p, NetworkAddress *client_addr)
