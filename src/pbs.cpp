@@ -369,7 +369,8 @@ Train *GetTrainForReservation(TileIndex tile, Track track)
  */
 bool IsSafeWaitingPosition(const Train *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg)
 {
-	if (IsRailDepotTile(tile)) return true;
+	/* A depot is safe if we enter it, but not when we exit. */
+	if (IsRailDepotTile(tile) && TrackdirToExitdir(trackdir) != GetRailDepotDirection(tile)) return true;
 
 	if (IsTileType(tile, MP_RAILWAY)) {
 		/* For non-pbs signals, stop on the signal tile. */

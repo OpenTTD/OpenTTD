@@ -72,9 +72,9 @@ void SortNetworkLanguages()
  * found on the network.
  * @param unselect unselect the currently selected item
  */
-void UpdateNetworkGameWindow(bool unselect)
+void UpdateNetworkGameWindow()
 {
-	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, unselect ? 1 : 0);
+	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, 0);
 }
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
@@ -438,6 +438,9 @@ protected:
 public:
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_CLIENT_NAME_LENGTH)
 	{
+		this->list_pos = SLP_INVALID;
+		this->server = NULL;
+
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_NG_SCROLLBAR);
 		this->FinishInitNested(desc, WN_NETWORK_WINDOW_GAME);
@@ -447,11 +450,10 @@ public:
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
 		this->SetFocusedWidget(WID_NG_CLIENT);
 
-		UpdateNetworkGameWindow(true);
-
 		this->field = WID_NG_CLIENT;
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
+		if (this->last_joined != NULL) NetworkUDPQueryServer(this->last_joined->address);
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
@@ -790,10 +792,6 @@ public:
 	 */
 	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
 	{
-		if (data == 1) {
-			this->server = NULL;
-			this->list_pos = SLP_INVALID;
-		}
 		this->servers.ForceRebuild();
 		this->SetDirty();
 	}
