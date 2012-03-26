@@ -455,6 +455,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Visas kartes ek
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Par 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Gariņu līdzinātājs
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Pārslēgt saistītās kastes
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Pārslēgt netīru bloku krāsojumu
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -554,7 +555,7 @@ STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Uzņēmu
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inženieris
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Satiksmes vadītājs
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Satiksmes koordinators
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Pārvadājumu koordinators
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Maršrutu uzraugs
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktors
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Rīkotājdirektors
@@ -725,7 +726,7 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPĒ
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Ziņojumu vēsture
-STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno ziņu saraksts
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Neseno ziņojumu saraksts
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
@@ -738,8 +739,8 @@ STR_NEWS_MESSAGES_SUMMARY                                       :Kopsavilkums
 STR_NEWS_MESSAGES_FULL                                          :Pilns
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Ziņojumu veidi:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Spēlētaja stacijā ierodas pirmais transporta līdzeklis
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sāncenša stacijā ierodas pirmais transporta līdzeklis
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Spēlētaja stacijā ierodas pirmais transportlīdzeklis
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Sāncenša stacijā ierodas pirmais transportlīdzeklis
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Negadījumi / katastrofas
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Uzņēmuma informācija
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ražotņu atklāšana
@@ -779,7 +780,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Plūdi!{}Vismaz {COMMA} pazuduši bez vēsts, iespējams gājuši bojā plūdos!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transporta uzņēmumam ir grūtības!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} tiks izpārdots vai paziņots par bankrotu, ja vien darbības rādītāji tuvākajā laikā neuzlabosies!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} tiks izpārdots vai pasludināts bankrots, ja tuvākajā laikā neuzlabosies tā darbības rādītāji!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transporta uzņēmumi apvienojas!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} tika pārdots {STRING} par {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrots!
@@ -818,10 +819,10 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sarakstā ir pārāk maz pieturvietu
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} grafikā ir pārāk maz rīkojumu
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ir nederīgs maršruts
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ir divi vienādi maršruti
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} norīkojumā ir nederīga pieturvieta
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} rīkojumā ir nederīga stacija
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} pamazām noveco
@@ -1177,7 +1178,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transpor
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transporta ienākumi ir negatīvi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad nemirst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atjaunot transportl. {ORANGE}{STRING}{LTBLUE} mēne{P 0:1 si šus šus} pirms/pēc maks. vecuma
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atj. transportl. {ORANGE}{STRING}{LTBLUE} mēne{P 0:1 si šus šus} pirms/pēc maks. vecuma
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automātiski atjaunot minimālo naudu atjaunošanai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Kļūdas ziņojuma ilgums: {ORANGE}{STRING} sekun{P 0:1 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Rādīt skaidrojumus: {ORANGE}Attēlot {STRING} sekund{P 0:1 i es es}
@@ -1240,7 +1241,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garu (31. Dec 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Noklusējuma palete NewGRF failiem, kuriem tā nav definēta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}NewGRF noklusējuma palete, kuriem tā nav norādīta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palete
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palete
 
@@ -1263,7 +1264,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rādīt
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Būvniecības rīkus pēc lietošanas paturēt darbīgus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupēt izdevumu sadaļas uzņēmuma finansu inform. logā: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportlīdz.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportl.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimālais vilcienu skaits uzņēmumā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimālais automašīnu skaits uzņēmumā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimālais lidaparātu skaits uzņēmumam: {ORANGE}{STRING}
@@ -2062,7 +2063,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Pārslē
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Pārslēgt būvēt/novākt tramvaju būvei
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Automašīnu depo virziens
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Autotransporta depo virziens
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties autotransporta depo virzienu
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Tramvaju depo virziens
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Izvēlēties tramvaju depo virzienu
@@ -2080,8 +2081,8 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlē
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu būvniecība
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Ūdensceļi
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt slūžas. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Būvēt kanālus. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt slūžas. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Būvēt kuģu depo (kuģu būvēšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt kuģu piestātni. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Izvieto boju, kura var kalpot kā pieturas punkts. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
@@ -2219,8 +2220,8 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izvēlē
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Zemes laukuma informācija
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Izmaksas nolīdzināšanai: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Izmaksas nolīdzināšanai: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Notīrīšanas izmaksa: {LTBLUE}nav zināma
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Notīrīšanas izmaksa: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ieņēmumi pēc notīrīšanas: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Nav
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Īpašnieks: {LTBLUE}{STRING}
@@ -2278,7 +2279,7 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} vilcie
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Ceļš
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Ceļš ar ielu apgaismojumu
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Aleja
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Automašīnu depo
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Autotransporta depo
 STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Dzelzceļa pārbrauktuve
 STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Tramvajs
 
@@ -2616,7 +2617,7 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (lielpilsēta)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Iedzīvotāji: {ORANGE}{COMMA}{BLACK}  Mājas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Pasažieri pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
-STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Vēstules pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pasts pagājušajā mēnesī: {ORANGE}{COMMA}{BLACK}  maksimāli: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava nepieciešama pilsētas attīstībai:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} nepieciešams
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nepieciešams ziemā
@@ -2719,7 +2720,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nav -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Izvēlēties visu aprīkojumu
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Izvēlēties visus kravas veidus (ieskaitot, kas negaida)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Izvēlēties visus kravas veidus (ieskaitot tos kas negaida)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Neviena veida krava negaida
 
 # Station view window
@@ -2760,7 +2761,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārdēvēt sta
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz maršruta punktu. Ctrl+Klikšķis atvērs skatu uz maršruta punktu jaunā skatulaukā
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrēt galveno skatu uz pieturas punktu. Ctrl+klikšķis atvērs skatu uz pieturas punktu jaunā skatulaukā
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Mainīt pieturas punkta nosaukumu
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz boju. Ctrl+klikšķis atvērs skatu uz boju jaunā skatulaukā
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Mainīt bojas nosaukumu
@@ -2782,7 +2783,7 @@ STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Vilcienu 
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Autotransporta ienākumi
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Lidaparātu ienākumi
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Kuģu ienākumi
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma likme
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Aizdevuma procents
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Citi
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
@@ -3297,7 +3298,7 @@ STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Rīkojumu beigas - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Dalīto rīkojumu beigas - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koplietojamo rīkojumu beigas - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Nestāties
@@ -3484,7 +3485,7 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Mainīt 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Nodzēst ātruma ierobežojumu
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Nodzēst maksimālo braukšanas ātrumu atlasītajā rīkojumā
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nomest kavējuma skaitītāju
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Atiestatīt kavējuma skaitītāju
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Atslēgt skaitītāju, lai transportlīdzeklis būtu laikā
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automātiska aizpildīšana
@@ -3581,9 +3582,9 @@ STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dien
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} {STRING} lasi_mani
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} {STRING} izmaiņu žurnāls
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} {STRING} licence
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} kopas {STRING} fails Lasi_mani
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
@@ -3666,8 +3667,8 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... pied
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... sasniegts ainavu ierobežojums
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... sasniegts lauciņu attīrīšanas ierobežojums
-STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam jābūt unikālam
-STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} traucē
+STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam ir jābūt unikālam
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Traucē {1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nav atļauts pauzes režīmā
 
 # Local authority errors
@@ -3689,9 +3690,9 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... jau 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Uzņēmuma nosaukumu nevar mainīt...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Vadītāja vārdu nevar mainīt...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimāli pieļaujamais aizņēmuma apjoms ir {CURRENCY_LONG}
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... maksimāli pieļaujamais aizdevuma apjoms ir {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nevar aizņemties vairāk naudas...
-STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... visi aizņēmumi ir atmaksāti
+STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nav atmaksājamu aizdevumu
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} nepieciešams
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nevar atmaksāt aizdevumu...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankas aizdoto naudu nevar dot projām...

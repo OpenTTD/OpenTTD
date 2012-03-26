@@ -453,6 +453,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuv
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Reunat päälle/pois
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Likaisten ruutujen värjäys päälle/pois
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -3717,7 +3718,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... vain
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... voidaan rakentaa vain sademetsäalueisiin
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... voidaan rakentaa vain aavikkoalueisiin
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain kaupunkeihin.
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... voidaan rakentaa vain kaupunkeihin (korvaamaan taloja)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... voidaan rakentaa vain lähelle kaupungin keskustaa
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... voidaan rakentaa vain matalille alueille
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... voidaan asettaa vain kartan reunoille
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsää voi istuttaa vain lumirajan yläpuolelle

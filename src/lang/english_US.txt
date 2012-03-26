@@ -453,6 +453,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Whole map scree
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toggle bounding boxes
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Toggle coloring of dirty blocks
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

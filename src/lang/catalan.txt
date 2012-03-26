@@ -454,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pant
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Commuta les caixes delimitadores
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Commuta el colorejat dels blocs bruts
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

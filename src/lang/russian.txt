@@ -579,6 +579,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Снимок в
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Переключить ограничивающие рамки
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Подкрашивать блоки, требующие перерисовки
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

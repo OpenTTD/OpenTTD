@@ -641,6 +641,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku 
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjavanje sprajta
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Uključi/isključi granične linije
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Uključi/Isključi bojenje nesređenih blokova
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

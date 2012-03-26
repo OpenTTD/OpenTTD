@@ -516,6 +516,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés tel
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Befoglaló doboz ki/bekapcsolása
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Koszos épületek színezésének be/kikapcsolása
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
