@@ -6688,13 +6688,12 @@ static void ParamSet(ByteReader *buf)
 			break;
 
 		case 0x9E: // Miscellaneous GRF features
-			_misc_grf_features = res;
-
 			/* Set train list engine width */
-			_cur.grffile->traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
-
+			_cur.grffile->traininfo_vehicle_width = HasBit(res, GMB_TRAIN_WIDTH_32_PIXELS) ? VEHICLEINFO_FULL_VEHICLE_WIDTH : TRAININFO_DEFAULT_VEHICLE_WIDTH;
 			/* Remove the local flags from the global flags */
-			ClrBit(_misc_grf_features, GMB_TRAIN_WIDTH_32_PIXELS);
+			ClrBit(res, GMB_TRAIN_WIDTH_32_PIXELS);
+
+			_misc_grf_features = res;
 			break;
 
 		case 0x9F: // locale-dependent settings
@@ -6874,10 +6873,13 @@ static void DefineGotoLabel(ByteReader *buf)
 	grfmsg(2, "DefineGotoLabel: GOTO target with label 0x%02X", label->label);
 }
 
-static void ImportGRFSound()
+/**
+ * Process a sound import from another GRF file.
+ * @param sound Destination for sound.
+ */
+static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	SoundEntry *sound = AllocateSound();
 	uint32 grfid = FioReadDword();
 	SoundID sound_id = FioReadWord();
 
@@ -6901,10 +6903,13 @@ static void ImportGRFSound()
 	sound->priority = 0;
 }
 
-static void LoadGRFSound(size_t offs)
+/**
+ * Load a sound from a file.
+ * @param offs File offset to read sound from.
+ * @param sound Destination for sound.
+ */
+static void LoadGRFSound(size_t offs, SoundEntry *sound)
 {
-	SoundEntry *sound = AllocateSound();
-
 	/* Set default volume and priority */
 	sound->volume = 0x80;
 	sound->priority = 0;
@@ -6925,14 +6930,23 @@ static void GRFSound(ByteReader *buf)
 	 * W num      Number of sound files that follow */
 
 	uint16 num = buf->ReadWord();
+	if (num == 0) return;
 
+	SoundEntry *sound;
 	if (_cur.grffile->sound_offset == 0) {
 		_cur.grffile->sound_offset = GetNumSounds();
 		_cur.grffile->num_sounds = num;
+		sound = AllocateSound(num);
+	} else {
+		sound = GetSound(_cur.grffile->sound_offset);
 	}
 
 	for (int i = 0; i < num; i++) {
 		_cur.nfo_line++;
+
+		/* Check whether the index is in range. This might happen if multiple action 11 are present.
+		 * While this is invalid, we do not check for this. But we should prevent it from causing bigger trouble */
+		bool invalid = i >= _cur.grffile->num_sounds;
 
 		size_t offs = FioGetPos();
 
@@ -6941,12 +6955,15 @@ static void GRFSound(ByteReader *buf)
 
 		if (_cur.grf_container_ver >= 2 && type == 0xFD) {
 			/* Reference to sprite section. */
-			if (len != 4) {
+			if (invalid) {
+				grfmsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
+				FioSkipBytes(len);
+			} else if (len != 4) {
 				grfmsg(1, "GRFSound: Invalid sprite section import");
 				FioSkipBytes(len);
 			} else {
 				uint32 id = FioReadDword();
-				if (_cur.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id));
+				if (_cur.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
 			}
 			continue;
 		}
@@ -6954,8 +6971,13 @@ static void GRFSound(ByteReader *buf)
 		if (type != 0xFF) {
 			grfmsg(1, "GRFSound: Unexpected RealSprite found, skipping");
 			FioSkipBytes(7);
-			SkipSpriteData(type, num - 8);
+			SkipSpriteData(type, len - 8);
 			continue;
+		}
+
+		if (invalid) {
+			grfmsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
+			FioSkipBytes(len);
 		}
 
 		byte action = FioReadByte();
@@ -6966,7 +6988,7 @@ static void GRFSound(ByteReader *buf)
 					if (_cur.grf_container_ver >= 2) {
 						grfmsg(1, "GRFSound: Inline sounds are not supported for container version >= 2");
 					} else {
-						LoadGRFSound(offs);
+						LoadGRFSound(offs, sound + i);
 					}
 				}
 				FioSkipBytes(len - 1); // <type> is not included in the length for pseudo-sprites.
@@ -6977,7 +6999,7 @@ static void GRFSound(ByteReader *buf)
 					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 					 * importing sounds, so this is probably all wrong... */
 					if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
-					ImportGRFSound();
+					ImportGRFSound(sound + i);
 				} else {
 					FioSkipBytes(len - 1);
 				}

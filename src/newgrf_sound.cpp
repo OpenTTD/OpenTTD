@@ -22,11 +22,15 @@
 static SmallVector<SoundEntry, 8> _sounds;
 
 
-/* Allocate a new Sound */
-SoundEntry *AllocateSound()
+/**
+ * Allocate sound slots.
+ * @param num Number of slots to allocate.
+ * @return First allocated slot.
+ */
+SoundEntry *AllocateSound(uint num)
 {
-	SoundEntry *sound = _sounds.Append();
-	MemSetT(sound, 0);
+	SoundEntry *sound = _sounds.Append(num);
+	MemSetT(sound, 0, num);
 	return sound;
 }
 

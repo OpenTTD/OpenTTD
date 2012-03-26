@@ -118,6 +118,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		case MTF_TRAVEL_SPEED:
 			max_speed = GB(p2, 0, 16);
+			if (max_speed == 0) max_speed = UINT16_MAX; // Disable speed limit.
 			break;
 
 		default:
