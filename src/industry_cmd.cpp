@@ -1455,7 +1455,7 @@ static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town
 	}
 
 	if ((GetIndustrySpec(type)->behaviour & INDUSTRYBEH_ONLY_NEARTOWN) && DistanceMax(t->xy, tile) > 9) {
-		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
+		return_cmd_error(STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER);
 	}
 
 	return CommandCost();

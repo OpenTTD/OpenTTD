@@ -1473,8 +1473,8 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Цент
 
 # Engine preview window
 
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {7:COMMA} плочки{}Капацитет: {CARGO_LONG}, {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {7:COMMA}плочки{}капацитет: {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {COMMA} плочки{}Капацитет: {CARGO_LONG}, {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. брзина: {VELOCITY} Опсег: {COMMA}плочки{}капацитет: {CARGO_LONG}{}Вклучување Цена: {CURRENCY_LONG}/год
 
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :Воз

@@ -2945,8 +2945,8 @@ STR_ENGINE_PREVIEW_SHIP                                         :کشتی
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :لوکوموتیو مونوریل
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :لوکوموتیو ریل مغناطیسی
 
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {7:COMMA} قطعه{}ظرفیت: {CARGO_LONG}, {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {7:COMMA} قطعه{}ظرفیت: {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {COMMA} قطعه{}ظرفیت: {CARGO_LONG}, {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}قیمت: {CURRENCY_LONG} بیشینه سرعت: {VELOCITY} برد: {COMMA} قطعه{}ظرفیت: {CARGO_LONG}{}هزینه نگهداری: {CURRENCY_LONG}/درسال
 
 # Autoreplace window
 STR_REPLACE_VEHICLE_TRAIN                                       :قطار
