@@ -832,6 +832,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu ca
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Wł./wył. ramki
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Włącz/wyłącz kolorowanie brudnych bloków
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

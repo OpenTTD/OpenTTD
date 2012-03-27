@@ -3574,11 +3574,11 @@ STR_AI_SETTINGS_START_DELAY                                     :Nombre de jours
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du {STRING} {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Liste des changements du {STRING} {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du {STRING} {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Lisez-moi du module {STRING} {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Journal des modifications pour le module {STRING} {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licence du module {STRING} {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Voir le Lisez-moi
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Liste des changements
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Journal des modifications
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
 
 
