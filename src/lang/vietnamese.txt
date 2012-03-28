@@ -453,6 +453,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hìn
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Bật/tắt hiển thị khối nhà
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Bật/tắt màu sắc trên các ô 'bẩn'
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

@@ -453,6 +453,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Afişează/ascunde casetele de încadrare
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Comutator pentru colorarea secțiunilor murdare
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -700,7 +701,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Deşert
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Zăpadă
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Afişează/Ascunde numele oraşelor pe hartă
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Comutator pentru afișarea numele oraşelor pe hartă
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrează harta mică la poziţia actuală
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
