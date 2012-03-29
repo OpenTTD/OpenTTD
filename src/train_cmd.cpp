@@ -1827,6 +1827,9 @@ void ReverseTrainDirection(Train *v)
 			HasSignalOnTrackdir(v->tile, v->GetVehicleTrackdir()) &&
 			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->track))));
 
+		/* If we are on a depot tile facing outwards, do not treat the current tile as safe. */
+		if (IsRailDepotTile(v->tile) && TrackdirToExitdir(v->GetVehicleTrackdir()) == GetRailDepotDirection(v->tile)) first_tile_okay = false;
+
 		if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 		if (TryPathReserve(v, false, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
@@ -2200,8 +2203,14 @@ void FreeTrainTrackReservation(const Train *v, TileIndex origin, Trackdir orig_t
 	bool      free_tile = tile != v->tile || !(IsRailStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
 	StationID station_id = IsRailStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
 
-	/* A train inside a depot can't have a reservation. */
-	if (v->track == TRACK_BIT_DEPOT) return;
+	/* Can't be holding a reservation if we enter a depot. */
+	if (IsRailDepotTile(tile) && TrackdirToExitdir(td) != GetRailDepotDirection(tile)) return;
+	if (v->track == TRACK_BIT_DEPOT) {
+		/* Front engine is in a depot. We enter if some part is not in the depot. */
+		for (const Train *u = v; u != NULL; u = u->Next()) {
+			if (u->track != TRACK_BIT_DEPOT || u->tile != v->tile) return;
+		}
+	}
 	/* Don't free reservation if it's not ours. */
 	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
 
