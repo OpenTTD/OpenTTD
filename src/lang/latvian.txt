@@ -522,7 +522,7 @@ STR_MONTH_DEC                                                   :Decembris
 
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Leģenda
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Grafikos rādīt leģendas
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Diagrammās rādīt leģendas
 STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
@@ -539,16 +539,16 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20mit lauciņiem
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Iespējot visu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Atspējot visu
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Rādīt visas kravas samaksu salīdzināšanas grafikā
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādīt nevienu kravu samaksu salīdzināšanas grafikā
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Rādīt visas kravas samaksu salīdzināšanas diagrammā
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nerādīt nevienu kravu samaksu salīdzināšanas diagrammā
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Ieslēgt/izslēgt kravu veidu diagrammu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leģendas uzņēmumu grafikos
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķināt šeit, lai izslēgtu/ieslēgtu uzņēmumu grafikā
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Leģendas uzņēmumu diagrammās
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klikšķināt šeit, lai izslēgtu/ieslēgtu uzņēmuma iekļaušanu diagrammā
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Uzņēmumu rangu saraksts
@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Nauda:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Aizdevums:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kopā:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transportlīdzekļi, kuri iepriekšējā gadā nesuši peļņu. Ietver auto, vilcienus, kuģus un lidaparātus
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Transportlīdzekļi, kuri iepriekšējā gadā ir nesuši peļņu. Ietver autotransporta līdzekļus, vilcienus, kuģus un lidaparātus
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nesen apkalpoto stacijas daļu skaits. Katra stacijas daļa (piem. stacija, autoosta, lidosta) tiek skaitīta, pat ja tās ir savienotas kā viena stacija
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Transportlīdzekļa, kuram ir mazākie ienākumi, peļņa (ņemti vērā tikai transportlīdzekļi, kuri vecāki par 2 gadiem)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Nopelnītās naudas daudzums ceturksnī ar vismazāko peļņu pēdējos 12 ceturkšņos
@@ -819,7 +819,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} grafikā ir pārāk maz rīkojumu
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sarakstā ir pārāk maz rīkojumu
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ir nederīgs maršruts
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} ir divi vienādi maršruti
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} rīkojumā ir nederīga stacija

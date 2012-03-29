@@ -144,7 +144,7 @@ STR_ABBREV_STEEL                                                :{TINY_FONT}AC
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CV
 STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_FRUIT                                                :{TINY_FONT}FR
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
 STR_ABBREV_FOOD                                                 :{TINY_FONT}NR
 STR_ABBREV_PAPER                                                :{TINY_FONT}PR
