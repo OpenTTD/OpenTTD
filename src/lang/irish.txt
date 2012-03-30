@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :Dáta a tugadh 
 STR_SORT_BY_RUNNING_COST                                        :Costas le Rith
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cumhacht/Costas le Rith
 STR_SORT_BY_CARGO_CAPACITY                                      :Méid an Lastais
+STR_SORT_BY_RANGE                                               :Raon
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an cluiche ar sos
@@ -337,8 +338,9 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Cuir sí
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sábháil scéal
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Lódáil scéal
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Sábháil mapa airde
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Lódáil léarscáil airde
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scoir den eagarthóir
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Fág eagarthóir na scéalta
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 ############ range for SE file menu starts
@@ -347,12 +349,14 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Scoir
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Roghanna an chluiche
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Socruithe deacrachta
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ardsocruithe
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Socruithe scripte AI/Cluiche
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Socruithe NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Roghanna trédhearcachta
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Taispeántar ainmneacha bailte
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Taispeántar ainmneacha na stáisiún
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Taispeántar ainmneacha na bpointí bealaigh
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Taispeántar comharthaí
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Taispeántar comharthaí agus ainmneacha iomaitheoirí
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Míreanna beochana iomlán
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Sonraí iomlán
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Foignimh trédhearcacha
@@ -379,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :Aimsíodh baile
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :Fordheontais
+STR_SUBSIDIES_MENU_GOAL                                         :Spriocanna reatha
 ############ range ends here
 
 ############ range for graph menu starts
@@ -443,9 +448,12 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh con
 STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Seat scáileáin zúmáilte isteach
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Seat scáileáin le zúm réamhshocraithe
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin den léarscáil ar fad
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Maidir le 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ailínóir spriteanna
+STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Scoránaigh boscaí imill
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Scor anaigh dath na mbloc salacha
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -743,6 +751,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Athruit
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Fordheontais
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Faisnéis ginearálta
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Saoránaigh ag ceiliúradh . . .{}Tagann an chéad traein isteach ag {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Saoránaigh ag ceiliúradh . . .{}Tagann an chéad bus isteach ag {STATION}!
@@ -1052,6 +1061,10 @@ STR_SEA_LEVEL_HIGH                                              :Ard
 STR_SEA_LEVEL_CUSTOM                                            :Saincheaptha
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Saincheaptha ({NUM}%)
 
+STR_RIVERS_NONE                                                 :Ceann ar bith
+STR_RIVERS_FEW                                                  :Cúpla ceann
+STR_RIVERS_MODERATE                                             :Meánach
+STR_RIVERS_LOT                                                  :Go leor
 
 STR_DISASTER_NONE                                               :Gan tubaistí
 STR_DISASTER_REDUCED                                            :Laghdaithe
@@ -1147,6 +1160,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Ceadaig
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ceadaigh tógáil taobh le stáisiúin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Cumasaigh níos mó ná sraith innill NewGRF amháin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann.
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Cothabháil bonneagair: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Ní imíonn aerfoirt as dáta riamh: {ORANGE}{STRING}
 
@@ -1164,6 +1178,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Fad na 
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Moill na n-imeachtaí ainlithe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Taispeán leideanna uirlise: {ORANGE}Deaschliceáil
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Taispéain daonra an bhaile i lipéad ainm an bhaile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Tiús na línte sna graif: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gineadóir talún: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Bunaidh
@@ -1220,6 +1235,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31 Noll 2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :gearr (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailéad DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailéad Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Cuir cluiche ar sos go huathoibríoch agus cluiche nua á thosú: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Agus an cluiche ar sos, ceadaigh: {ORANGE}{STRING}
@@ -1364,7 +1381,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Deacrach
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ardsocruithe
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Socruithe NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Seiceáil Inneachar Ar Líne
-STR_INTRO_QUIT                                                  :{BLACK}Amach
+STR_INTRO_QUIT                                                  :{BLACK}Scoir
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Tosaigh cluiche nua. Scipeáltar cumrú an léarscáil le Ctrl+Cliceáil
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Lódáil cluiche sábháilte
@@ -1387,7 +1404,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Téigh a
 
 
 # Quit window
-STR_QUIT_CAPTION                                                :{WHITE}Amach
+STR_QUIT_CAPTION                                                :{WHITE}Scoir
 STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}An bhfuil tú cinnte gur mhaith leat dul amach as OpenTTD agus filleadh ar {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Tá
 STR_QUIT_NO                                                     :{BLACK}Níl
@@ -2002,7 +2019,7 @@ STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Treosuí
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Roghnaigh treosuíomh don bhá lódála leoraithe
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Treosuíomh Tram Paisinéirí
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna paisinéirí
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Treosuíomh Tram Lastais
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Treosuíomh Stáisiún Tram Lastais
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna lastais
 
 # Waterways toolbar (last two for SE only)
@@ -2547,6 +2564,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Tabhair
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ceist
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Faisnéis
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Rabhadh
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Earráid
 
 ### Start of Goal Question button list
 
@@ -3250,7 +3271,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Amchlár
 STR_TIMETABLE_NO_TRAVEL                                         :Ná taisteal
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Taisteal (uathoibríoch; curtha ar an gclár ama ag an chéad ordú de láimh eile)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Taisteal (gan amchlár)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Taisteal le {2:VELOCITY} ar a mhéad (gan amchlár)
 STR_TIMETABLE_TRAVEL_FOR                                        :Taisteal ar feadh {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Taisteal ar feadh {STRING} le {VELOCITY} ar a mhéad
 STR_TIMETABLE_STAY_FOR                                          :agus fan ar feadh {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :agus taisteal ar feadh {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} lá{P "" "" "" "" ""}
@@ -3274,7 +3297,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Athraigh
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Glan Am
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Glan an méid ama don ordú aibhsithe
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Athraigh Teorainn Luais
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Athraigh uas-luas taistil an ordaithe aibhsithe
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Glan Teorainn Luais
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Glan uas-luas taistil an ordaithe aibhsithe
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Athshocraigh an tAmadóir Moille
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Athshocraigh an t-amadóir moille, le go mbeidh an fheithicil ar am
@@ -3355,6 +3382,12 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} léigh mé de {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} loga athruithe de {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} ceadúnas de {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Amharc ar léigh mé
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Loga na n-athruithe
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ceadúnas
 
 
 # Vehicle loading indicators
@@ -3493,6 +3526,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... ní 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... ní féidir é a thógáil ach i limistéar foraois bháistí
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... ní féidir é a thógáil ach i limistéar fásaigh
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... ní féidir é a thógáil ach i mbailte
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... ní féidir é a thógáil ach i lár na mbailte
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... ní féidir é a thógáil ach i gceantar íseal
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... ní féidir é a chur ach in aice le taobhanna na léarscáile
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ní féidir foraois a chur ach taobh thuas den líne sneachta amháin

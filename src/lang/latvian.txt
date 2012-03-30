@@ -175,22 +175,22 @@ STR_ITEMS                                                       :{COMMA} vienīb
 STR_CRATES                                                      :{COMMA} kast{P e es u}
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :Tumši zils
-STR_COLOUR_PALE_GREEN                                           :Gaiši zaļš
-STR_COLOUR_PINK                                                 :Rozā
-STR_COLOUR_YELLOW                                               :Dzeltens
-STR_COLOUR_RED                                                  :Sarkans
-STR_COLOUR_LIGHT_BLUE                                           :Gaiši zils
-STR_COLOUR_GREEN                                                :Zaļš
-STR_COLOUR_DARK_GREEN                                           :Tumši zaļš
-STR_COLOUR_BLUE                                                 :Zils
+STR_COLOUR_DARK_BLUE                                            :Tumši zila
+STR_COLOUR_PALE_GREEN                                           :Gaiši zaļa
+STR_COLOUR_PINK                                                 :Sārta
+STR_COLOUR_YELLOW                                               :Dzeltena
+STR_COLOUR_RED                                                  :Sarkana
+STR_COLOUR_LIGHT_BLUE                                           :Gaiši zila
+STR_COLOUR_GREEN                                                :Zaļa
+STR_COLOUR_DARK_GREEN                                           :Tumši zaļa
+STR_COLOUR_BLUE                                                 :Zila
 STR_COLOUR_CREAM                                                :Krēmkrāsa
-STR_COLOUR_MAUVE                                                :Gaišsārti violets
-STR_COLOUR_PURPLE                                               :Purpurs
-STR_COLOUR_ORANGE                                               :Oranžs
-STR_COLOUR_BROWN                                                :Brūns
-STR_COLOUR_GREY                                                 :Pelēks
-STR_COLOUR_WHITE                                                :Balts
+STR_COLOUR_MAUVE                                                :Gaišsārti violeta
+STR_COLOUR_PURPLE                                               :Purpura
+STR_COLOUR_ORANGE                                               :Oranža
+STR_COLOUR_BROWN                                                :Brūna
+STR_COLOUR_GREY                                                 :Pelēka
+STR_COLOUR_WHITE                                                :Balta
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes/h
@@ -623,8 +623,8 @@ STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Izvēlē
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Izvēlēties programmu 'vecā stila mūzika'
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Izvēlēties programmu 'jaunā stila mūzika'
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Izvēlēties programmu 'Ezy Ielas stila mūzika'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 1' (lietotāja definēto)
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 2' (lietotāja definēto)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 1' (lietotāja sastādīto)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Izvēlēties programmu 'Pielāgotā 2' (lietotāja sastādīto)
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ieslēgt/izslēgt mūzikas saraksta jaukšanu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rādīt mūzikas celiņu atlases logu
 
@@ -1171,9 +1171,9 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Infrast
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lidostas darbosies mūžīgi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Brīdināt, ja transportlīdzeklis ir noklīdis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportlīdz. rīkojumus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportlīdzekļu rīkojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētos transportlīdz.
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transporta ienākumi ir negatīvi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad nemirst: {ORANGE}{STRING}
@@ -1217,7 +1217,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}Tumši za�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}Violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pretējs ritināšanas virziens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plūdena skatvietas ritināšana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot būvniecības rīkus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma livrejas (krāsojumu): {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nav
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savam uzņēmumam
@@ -1478,18 +1478,18 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ieslēgt ražojumu vērtības maiņu: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}Jauna krāsu identitāte
+STR_LIVERY_CAPTION                                              :{WHITE}Jauna identitātes krāsu shēma
 
-STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rādīt vispārējo krāsu identitati
-STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rādīt vilcienu krāsu identitāti
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rādīt autotransporta krāsu identitāti
-STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Rādīt kuģu krāsu identitāti
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Rādīt lidaparātu krāsu identitāti
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izvēlēties primāro krāsu atlasītajai identitātei
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izvēlēties sekundāro krāsu atlasītajai identitātei
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izvēlēties kuru identitāti mainīt, vai vairākas ar Ctrl+klikšķi. Klikšķināt uz rūtiņas, lai pārslēgtu identitātes izmantošanu
+STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rādīt vispārējo identitates krāsu shēmas
+STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rādīt vilcienu identitātes krāsu shēmas
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rādīt autotransporta identitātes krāsu shēmas
+STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Rādīt kuģu identitātes krāsu shēmas
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Rādīt lidaparātu identitātes krāsu shēmas
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izvēlēties galveno identitātes krāsu atlasītajai shēmai
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izvēlēties papildu identitātes krāsu atlasītajai shēmai
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izvēlēties kuru identitātes krāsu shēmu mainīt, vai vairākas ar Ctrl+klikšķi. Klikšķināt uz rūtiņas, lai pārslēgtu shēmas izmantošanu
 
-STR_LIVERY_DEFAULT                                              :Standarta pajūgs
+STR_LIVERY_DEFAULT                                              :Vispārpieņemtā identitātes krāsa
 STR_LIVERY_STEAM                                                :Tvaika lokomotīve
 STR_LIVERY_DIESEL                                               :Dīzeļlokomotīve
 STR_LIVERY_ELECTRIC                                             :Elektrolokomotīve
@@ -1739,7 +1739,7 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klientu saraksts
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Spēlētāju saraksts
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Skatīt
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Jauns uzņēmums
 
@@ -2086,8 +2086,8 @@ STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Būvēt 
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Būvēt kuģu depo (kuģu būvēšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Būvēt kuģu piestātni. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Izvieto boju, kura var kalpot kā pieturas punkts. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Būvēt akveduktu. Shift pārslēdz būvēšanu/izmaksu novērtējuma rādīšanu
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definēt ūdens laukumu.{}Veidot kanālu. Ja nospiests CTRL jūras līmenī, tad appludinās apkārtni
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Būvēt akveduktu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Norādīt ūdens laukumu.{}Būvēt kanālu. Ja tur nospiestu Ctrl jūras līmenī, tad appludinās apkārtni
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Izvietot upes
 
 # Ship depot construction window
@@ -2152,7 +2152,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Zemes radīšana
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Ainavā novietot akmeņainus apvidus
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Norādīt tuksneša platību.{}Aizturēt Ctrl, lai to noņemtu
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Norādīt tuksneša laukumu.{}Turēt nospiestu Ctrl, lai to noņemtu
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Palielināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Samazināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Radīt nejaušu zemi
@@ -2673,7 +2673,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globāli
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nav -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Uzņēmuma mērķi:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķināt uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/flīzi. Ctrl+klikšķis atver jaunu skatu logu uz ražotnes/pilsētas/flīzes vietu
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķināt uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/lauciņu. Ctrl+klikšķis atver jaunu skatvietu uz ražotni/pilsētu/lauciņu
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Jautājums
@@ -2803,7 +2803,7 @@ STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY
 STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Vadītājs)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dibināts: {WHITE}{NUM}
-STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Krāsu identitāte
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Identitātes krāsu shēma
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Transportlīdzekļi:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} vilcien{P s i u}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} mašīn{P a as u}
@@ -2831,8 +2831,8 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Skatīt 
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Jauna seja
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izvēlēties jaunu seju vadītājam
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Krāsu identitāte
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Mainīt uzņēmuma transportlīdzekļu piederības krāsas
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Identitātes krāsu shēma
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Mainīt uzņēmuma transportlīdzekļu identitātes krāsas
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Uzņēmuma nosaukums
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Mainīt uzņēmuma nosaukumu
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Vadītāja vārds
@@ -3090,9 +3090,9 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Jūs gr
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Ziņojums no transportlīdzekļu ražotāja
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli - {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportu uz vienu gadu, lai mēs varētu to izmēģināt pirms tas kļūst pieejams visiem?
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Mēs tikko esam izstrādājuši jaunu transportlīdzekli - {STRING}. Vai esat ieinteresēts iegūt izņēmuma tiesības izmantot šo transportlīdzekli uz vienu gadu, lai mēs redzētu tā iespējas pirms padaram pieejamu visiem?
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :dzelzceļa lokomotīve
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :automobilis
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :autotransporta līdzeklis
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lidaparāts
 STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
@@ -3108,7 +3108,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {C
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Vilciens
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransports
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autotransporta līdzeklis
 STR_REPLACE_VEHICLE_SHIP                                        :Kuģis
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Lidaparāts
 
@@ -3582,9 +3582,9 @@ STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dien
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} kopas {STRING} fails Lasi_mani
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}s kopas {STRING} fails Lasi_mani
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}s kopas {STRING} izmaiņu žurnāls
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}s kopas {STRING} licence
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence

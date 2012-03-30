@@ -578,6 +578,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Знімок в
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Про гру 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Вирівнювання спрайтів
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Вкл./відкл. обмежуючі рамки
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Вкл./відкл. підсвічування застарілих блоків
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
