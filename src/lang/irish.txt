@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Taispeántar co
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Míreanna beochana iomlán
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Sonraí iomlán
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Foignimh trédhearcacha
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Comharthaí stáisiún trédhearcacha
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Comharthaí trédhearcacha
 ############ range ends here
 
 ############ range for file menu starts
@@ -445,9 +445,9 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Stair na dteach
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Faisnéis faoin limistéar talún
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh consól
-STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI
+STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú scripteanna AI/Cluiche
 STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Seat scáileáin zúmáilte isteach
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Seat scáileáin zúmáilte isteach go hiomlán
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Seat scáileáin le zúm réamhshocraithe
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin den léarscáil ar fad
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Maidir le 'OpenTTD'
@@ -853,9 +853,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLAC
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Amharc {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cóipeáil chuig amharc
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cóipeáil suíomh an amhairc uilíoch chuig an amharc seo
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cóipeáil suíomh an phríomh-amhairc chuig an amharc seo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Greamaigh ón amharc
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gramaigh suíomh an amhairc seo chuig an amharc uilíoch
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Gramaigh suíomh an amhairc seo chuig an bpríomh-amharc
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Roghanna Cluiche
@@ -863,26 +863,26 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Aonaid a
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Aonaid airgeadra a roghnú
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Puint (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollair ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Punt na Breataine (GBP)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dollar Mheiriceá (USD)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen na Seapáine (JPY)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Scilling na hOstaire (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franc na Beilge (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franc na hEilbhéise (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Koruna Phoblacht na Seice (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Deutschmark (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Krone na Danmhairge (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta na Spáinne (ESP)
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :Markka na Fionlainne (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc (FRF)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Franc na Fraince (FRF)
 STR_GAME_OPTIONS_CURRENCY_GRD                                   :Drachma na Gréige (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Forint na hUngáire (HUF)
 STR_GAME_OPTIONS_CURRENCY_ISK                                   :Krona na hÍoslainne (ISK)
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira na hIodáile (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilder na hÍsiltíre (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Krone na hIorua (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty na Polainne (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Złoty na Polainne (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu na Rómáine (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rúbal na Rúise (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar na Slóivéine (SIT)
@@ -1115,13 +1115,13 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid srl. ar le baile iad a bhaint: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Uasfhad na dtraenacha: {ORANGE}{STRING} {P th th t dt t}íl
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Méid deataigh/splancacha na bhfeithiclí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Samhail luasghéaraithe do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Samhail luasghéaraithe d'fheithiclí bóthair: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Géire na fána d'fheithiclí bóthair {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha: {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Géire na fána d'fheithiclí bóthair: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Úsáid an algartam lódála feabhsaithe: {ORANGE}{STRING}
@@ -1159,7 +1159,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ceadaig
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ceadaigh tógáil taobh le stáisiúin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Cumasaigh níos mó ná sraith innill NewGRF amháin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Cothabháil bonneagair: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Ní imíonn aerfoirt as dáta riamh: {ORANGE}{STRING}
@@ -2017,7 +2017,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Treosuí
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Roghnaigh treosuíomh an stáisiúin bus
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Treosuíomh Stáisiún Leoraithe
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Roghnaigh treosuíomh don bhá lódála leoraithe
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Treosuíomh Tram Paisinéirí
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Treosuíomh Stáisiún Tram Paisinéirí
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna paisinéirí
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Treosuíomh Stáisiún Tram Lastais
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Roghnaigh treosuíomh an stáisiúin tramanna lastais
