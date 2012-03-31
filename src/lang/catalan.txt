@@ -3718,7 +3718,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... nom�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... només es pot construir en poblacions de més de 1200 hab.
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... només es pot construir en àrees de selva tropical
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... només es pot construir en àrees de desert
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... només es pot construir en poblacions
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... només es pot construir en poblacions (substituint cases)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... només es pot construir prop del centre de les poblacions
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... només pot ser construït en zones baixes
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... només es pot situar prop dels límits del mapa
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... els boscos només es poden plantar sota la cota de neu

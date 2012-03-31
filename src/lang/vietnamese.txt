@@ -3717,7 +3717,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... mỗ
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... chỉ có thể xây dựng ở đô thị có dân số hơn 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... chỉ có thể xây dựng ở vùng rừng nhiệt đới
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... chỉ có thể xây ở hoang mạc
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... chỉ xây được ở trong thị trấn
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... chỉ có thể xây được ở trong thị trấn (xây đè lên nhà)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... chỉ có thể xây dựng gần trung tâm thị trấn
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... chỉ có thể xây ở vùng đất thấp
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... chỉ có thể đặt ở gần mép bản đồ
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... rừng này chỉ đặt ở trên vùng núi cao có tuyết

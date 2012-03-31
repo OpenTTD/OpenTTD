@@ -3911,7 +3911,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... та
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можно построить в городах с населением не менее 1200 жителей
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можно строить только в тропиках
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можно строить только в пустыне
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можно строить только в городах
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можно строить только в городах (на месте домов)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... можно строить только около центра города
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можно строить только в низинах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... может находиться только у края карты
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можно сажать только выше линии снега

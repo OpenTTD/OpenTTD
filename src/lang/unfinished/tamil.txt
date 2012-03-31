@@ -2198,6 +2198,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... மழைக்காட்டு பகுதிகளில் மட்டுமே கட்ட இயலும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... பாலைவனப்பகுதிகளில் மட்டுமே இதனை கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... நகரங்களில் மட்டுமே இதனை கட்ட முடியும்
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... நகரங்களின் நடுவில் மட்டுமே கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... தாழ்வான பகுதிகளில் மட்டுமே இதனை கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... படங்களின் எல்லைகளில் மட்டுமே இட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... பனி-கோடின் மேலே மட்டுமே கட்ட முடியும்

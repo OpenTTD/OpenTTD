@@ -3842,7 +3842,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... у �
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна будувати лише у містах з населенням не менш 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будувати лише у джунглях
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будувати лише у пустелі
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будувати лише у містах
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будувати лише у містах (заміщуючи будинки)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... можна будувати тільки неподалік від центру міста
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будувати лише у низинах
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можна розмістити лише біля країв карти
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... садити ліс можна тільки вище рівня снігу

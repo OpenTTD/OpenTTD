@@ -3717,8 +3717,9 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... un y
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gellir ei adeiladu'n unig mewn trefi gyda phoblogaeth o 1200 neu fwy
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gellir ei adeiladu mewn ardal coedwig glaw yn unig
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gellir ei adeiladu mewn ardal anialwch yn unig
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gellir ei adeiladu mewn trefi yn unig
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gellir ei adeiladu mewn manau ise ly unig
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gellir ei adeiladu mewn trefi'n unig (gan ddisodli tai)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... gellir ei adeiladu ger canol trefi'n unig
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gellir ei adeiladu mewn manau isel yn unig
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... dim ond ger ymyl y map y gellir ei leoli
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... dim ond uwch ben y llinell eira mae modd plannu fforest
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... gellir ei adeiladu uwchben yr eirlin yn unig

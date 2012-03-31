@@ -3928,7 +3928,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... dozv
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... dozvoljeno izgraditi samo u naseljima sa populacijom od najmanje 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gradnja je dozvoljena samo u područjima pod tropskim šumama
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gradnja je dozvoljena samo u pustinjskim oblastima
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gradnja je dozvoljena samo u naseljima
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... može da se izgradi samo u naseljima (zamenjujući kuće)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... može da se izgradi samo blizu centra naselja
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gradnja je dozvoljena samo u nizijskim oblastima
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... može biti postavljeno samo blizu ivica terena
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... šuma može biti posađena samo iznad linije snega
