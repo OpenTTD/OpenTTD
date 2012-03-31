@@ -1,3 +1,18 @@
+1.2.0-RC4 (2012-04-01)
+------------------------------------------------------------------------
+- Fix: Reversing trains while they were entering or leaving a depot could lead to stuck trains [FS#5093] (r24078, r24071)
+- Fix: The 'last joined' server was not properly selected anymore [FS#5098] (r24070)
+- Fix: Immediately start querying the last joined server instead of waiting for the requery loop [FS#5097] (r24069, r24062)
+- Fix: Make the full snowedness level of houses the same as roads and rails [FS#5121] (r24064)
+- Fix: With certain versions of GCC and compiler flags the compiler could reorder some code badly causing the 32bpp depot flag not working [FS#5125] (r24063)
+- Fix: Do not freeze aircraft mid-flight when skipping to an out-of-range destination [FS#5123] (r24060)
+- Fix: Wrong numbering of string parameters causing wrong capacities to be shown [FS#5124] (r24058)
+- Fix: Crash when timetabling a maximum travel speed of 0 [FS#5111] (r24053)
+- Fix: [NewGRF] Imported GRF sounds were inserted into the wrong slots [FS#5107] (r24052)
+- Fix: [NewGRF] Realsprites inside the action 11 block were not skipped correctly (r24050)
+- Fix: Improve error messages for the placement restrictions of banks, water towers and toy shops [FS#5095] (r24040)
+
+
 1.2.0-RC3 (2012-03-18)
 ------------------------------------------------------------------------
 - Feature: Allow display of baseset textfiles (r24037)
