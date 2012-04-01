@@ -3603,7 +3603,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Kiválas
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Játékszkript
 STR_AI_CONFIG_AI                                                :{SILVER}MI-k
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Kiválasztás {STRING}
+STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING} kiválasztása
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :MI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Játékszkript

@@ -358,7 +358,7 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsēt
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Rādīt staciju nosaukumus
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Rādīt pieturas punktu nosaukumus
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Rādīt zīmes
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rādīt konkurentu zīmes un nosaukumus
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rādīt sāncenšu zīmes un nosaukumus
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Pilna animācija
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Visas detaļas
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Caurspīdīgas ēkas
@@ -747,7 +747,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Ražot�
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Ražotņu slēgšana
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Ekonomikas izmaiņas
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Ražošanas izmaiņas uzņēmuma apkalpotajās ražotnēs
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas konkurentu apkalpotajās ražotnēs
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Ražošanas izmaiņas sāncenšu apkalpotajās ražotnēs
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Citas ražošanas apjomu izmaiņas
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Padomi / informācija par uzņēmuma transportlīdzekļiem
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Jauni transportlīdzekļi
@@ -1162,7 +1162,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Atļaut caurbraucamas pieturas uz konkurentu ceļiem: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Atļaut būvēt vienu otrai piekļautas stacijas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ieslēgt vairākus NewGRF transportlīdzekļu komplektus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
@@ -1287,7 +1287,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Noklus�
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}izslēgts
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}izslēgts
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizliedz apkopi, kad sabojāšanās izslēgta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizliegt apkopi, kad sabojāšanās ir izslēgta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ieslēgt vagonu ātruma ierobežojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Atspējot eletrificēto dzelzceļu: {ORANGE}{STRING}
 
@@ -1357,7 +1357,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvnie
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Transportlīdzekļi
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacijas
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurenti
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Saziņa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
@@ -3284,7 +3284,7 @@ STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Pielāgo
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Pielāgot lidaparātu
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pielāgot vilcienu izceltā kravas veida pārvadāšanai
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pielāgot autotransportu, lai pārvadātu iezīmēto kravas veidu
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pielāgot autotransporta līdzakli, lai pārvadātu iezīmēto kravas veidu
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pielāgot kuģi, lai pārvadātu iezīmēto kravas veidu
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pielāgot lidaparātu, lai pārvadātu iezīmēto kravas veidu
 
@@ -3582,9 +3582,9 @@ STR_AI_SETTINGS_START_DELAY                                     :Aptuvenais dien
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}s kopas {STRING} fails Lasi_mani
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}s kopas {STRING} izmaiņu žurnāls
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}s kopas {STRING} licence
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} kopas {STRING} fails Lasi_mani
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} kopas {STRING} izmaiņu žurnāls
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} kopas {STRING} licence
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Skatīt failu Lasi_mani
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Izmaiņu žurnāls
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licence
@@ -3998,7 +3998,7 @@ STR_DESKTOP_SHORTCUT_COMMENT                                    :Uz 'Transport T
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Biroju augstceltne
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Biroju ēka
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Maza dzīvokļu ēka
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Maza dzīvokļu māja
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Baznīca
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Liela biroju ēka
 STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Dzīvojamās mājas
@@ -4015,7 +4015,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_1                                :Stadions
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Senas mājas
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Vasarnīcas
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Mājas
-STR_TOWN_BUILDING_NAME_FLATS_1                                  :Dzīvokļi
+STR_TOWN_BUILDING_NAME_FLATS_1                                  :Daudzdzīvokļu māja
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Augsta biroju ēka
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_2                      :Veikali un biroji
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_3                      :Veikali un biroji
@@ -4041,11 +4041,11 @@ STR_INDUSTRY_NAME_OIL_RIG                                       :Naftas ieguves 
 STR_INDUSTRY_NAME_FACTORY                                       :Rūpnīca
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tipogrāfija
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Tēraudlietuve
-STR_INDUSTRY_NAME_FARM                                          :Ferma
+STR_INDUSTRY_NAME_FARM                                          :Zemnieku saimniecība
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Vara rūdas raktuves
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Naftas urbumi
 STR_INDUSTRY_NAME_BANK                                          :Banka
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Pārtikas ražotne
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Pārtikas pārstrādes rūpnīca
 STR_INDUSTRY_NAME_PAPER_MILL                                    :Papīrfabrika
 STR_INDUSTRY_NAME_GOLD_MINE                                     :Zelta raktuves
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
@@ -4056,7 +4056,7 @@ STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaučuka plant�
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Ūdens ieguve
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Ūdenstornis
 STR_INDUSTRY_NAME_FACTORY_2                                     :Rūpnīca
-STR_INDUSTRY_NAME_FARM_2                                        :Ferma
+STR_INDUSTRY_NAME_FARM_2                                        :Zemnieku saimniecība
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Kokzāģētava
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Cukurvates mežs
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Saldumu fabrika
@@ -4320,7 +4320,7 @@ STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS naftas tank
 STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. naftas tankeris
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS pasažieru prāmis
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP pasažieru prāmis
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 kuteris uz gaisa spilvena
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 kuģis uz gaisa spilvena
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug pasažieru prāmis
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake pasažieru prāmis
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate kravas kuģis
