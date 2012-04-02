@@ -454,6 +454,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :지도 전체 �
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :박스 경계선 토글
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :더러운 블록의 색상 토글
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)

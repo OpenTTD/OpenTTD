@@ -1693,7 +1693,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letton
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Préparation de la partie
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Se prépare à rejoindre{NBSP}: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liste des compagnies présentes dans le jeu. Vous pouvez soit en rejoindre une, soit en créer une si il reste un emplacement libre
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liste des compagnies présentes dans le jeu. Vous pouvez soit en rejoindre une, soit en créer une si il reste un emplacement libre.
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFOS SUR LA COMPAGNIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nom de la compagnie{NBSP}: {WHITE}{STRING}
@@ -1792,10 +1792,10 @@ STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La synch
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La connexion de la partie réseau a été perdue
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}La sauvegarde serveur n'a pas pu être chargée
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Le serveur n'a pas pu être démarré
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Connexion échouée
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Échec de la connexion
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexion n°{NBSP}{NUM} a dépassé le temps d'attente
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Une erreur de protocole a été détectée et la connexion a été fermée
-STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}L'identifiant de révision de ce client ne correspond pas à celui du serveur
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Le numéro de version/révision de ce client ne correspond pas à celui du serveur
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Mot de passe incorrect
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Le serveur est complet
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vous êtes banni de ce serveur
@@ -1816,7 +1816,7 @@ STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :erreur de proto
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF requis
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :non autorisé
 STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :paquet invalide ou inattendu reçu
-STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :révision incorrecte
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :n° de version/révision incorrect
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nom déjà utilisé
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :mot de passe de partie incorrect
 STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :mauvais company-id dans DoCommand
