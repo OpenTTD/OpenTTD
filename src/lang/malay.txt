@@ -448,10 +448,12 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Papar atau pada
 STR_ABOUT_MENU_AI_DEBUG                                         :Kepintaran Tiruan / Nyahpepijat SkripPermainan
 STR_ABOUT_MENU_SCREENSHOT                                       :Tangkapan skrin (Ctrl+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Tangkapan skrin dizoom
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tangkapan skrin dizoom asal
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tangkap gambar skrin besar (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar peperi
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Papar atau padamkan kotak
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Tukar warna blok kotor
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1799,6 +1801,10 @@ STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda tel
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda telah ditendang keluar daripada permainan ini
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Penipuan (Cheats) tidak dibenarkan di pelayan ini
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Anda menghantar terlalu banyak arahan ke pelayan ini
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Anda mengambil masa terlalu lama untuk memasukkan kata laluan
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Komputer anda terlalu perlahan untuk bersaing dengan server
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Komputer anda mengambil masa terlalu lama untuk muat turun peta
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Komputer anda mengambil masa terlalu lama untuk menyertai Pelayan
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :kesilapan am
@@ -1817,6 +1823,10 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :ditendang oleh 
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :cuba menggunakan penipuan (cheats)
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :pelayan penuh
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :menghantar terlalu banyak arahan
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :Tiada kata laluan diterima dalam waktu ditetapkan
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Masa tamat umum
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :muat turun peta terlalu lama
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :proses peta megambil masa terlalu lama
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mungkin kehilangan penyambungan
@@ -2449,6 +2459,7 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Gerakkan
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Senarai fail NewGRF yang telah dipasang.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Tetapkan parameter
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Tunjukkan parameter
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Papar atau padam palet
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Papar atau padam NewGRF yang terpilih.{}Lakukan ini apabila grafik daripada NewGRF kelihatan merah-jambu dalam permainan
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Lakukan pertukaran
@@ -2521,9 +2532,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} meme
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fail GRF yang ianya direka untuk menterjemah
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak NewGRF dimuatkan.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuatkan {1:STRING} sebagai NewGRF statik dengan {STRING} mungkin boleh menyebabkan kesilapan sinkronisasi (desync).
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Peperi luar jangkaan (sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tindakan tidak diketahui pada properti 0 {4:HEX} (peperi {3:NUM})
+STR_NEWGRF_ERROR_INVALID_ID                                     :Cubaan untuk menggunakan ID tidak sah (peperi {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} mengandungi peperi yang rosak. Semua peperi yang rosak akan ditunjukkan menggunakan tanda soal (?) merah.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Mengandungi pelbagai Tindakan 8 kemasukan (peperi {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Bacaan melepasi penghujung peperi-pseudo (peperi {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Set asas grafik yang sedang digunakan, hilang sebilangan sprites.{}Sila mengemaskini set asas grafik
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Sumber GRF yang diminta tidak diperolehi (peperi {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} telah dinyahaktifkan oleh {STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Tidak sah/diketahui format susun atur (peperi {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Amaran!
@@ -2652,8 +2670,30 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Hasrat s
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada industri/bandar/petak untuk memusatkan pandangan. Ctrl+Klik akan membuka pusat pandangan di atas industri/bandar/petak
 
 # Goal question window
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :Soalan
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Maklumat
+STR_GOAL_QUESTION_CAPTION_WARNING                               :Amaran
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesilapan
 
 ### Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Batal
+STR_GOAL_QUESTION_BUTTON_OK                                     :OK
+STR_GOAL_QUESTION_BUTTON_NO                                     :Tidak
+STR_GOAL_QUESTION_BUTTON_YES                                    :Ya
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Menolak
+STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Terima
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Abai
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Cuba Semula
+STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Sebelum
+STR_GOAL_QUESTION_BUTTON_NEXT                                   :Seterusnya
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Berhenti
+STR_GOAL_QUESTION_BUTTON_START                                  :Mula
+STR_GOAL_QUESTION_BUTTON_GO                                     :Pergi
+STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Sambung
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Mula semula
+STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Tangguh
+STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Menyerah
+STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Tutup
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsidi
@@ -2732,7 +2772,7 @@ STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Kos Penge
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Kos Pengendalian Kapal
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Penyelenggaraan Hartanah
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Pendapatan Keretapi
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pendapatan Kend. Jalan
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pendapatan Kenderaan Jalanraya
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Pendapatan Pesawat
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Pendapatan Kapal
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Bunga Pinjaman
@@ -3428,7 +3468,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Tukar te
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Kosongkan Masa
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Kosongkan tempoh masa untuk arahan yang terpilih
 
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Tukar Had Laju
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Tukar kelajuan perjalanan maksima untuk arahan yang dipilih
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Kosongkan Had Laju
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Kosongkan kelajuan maksima untuk arahan yang terpilih
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset Kiraan Lewat
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset kiraan kelewatan, supaya kenderaan sampai mengikut jadual
@@ -3673,6 +3717,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hany
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya boleh dibina di kawasan hutan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya boleh dibina di kawasan gurun
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya boleh dibina di bandar
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... hanya boleh dibina berhampiran pusat bandar
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... hanya boleh dibina di kawasan rendah
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya boleh diletakkan pada kedudukan berhampiran sempadan peta
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... hutan hanya boleh ditanam di atas paras garisan salji
@@ -4330,7 +4375,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} Tandatuj
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Depoh Kereta Api
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depoh Kereta Api #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depoh Keneraan
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Depoh Kenderaan
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Depoh Kenderaan #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Depoh Kapal
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Depoh Kapal #{COMMA}
