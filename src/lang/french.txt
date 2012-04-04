@@ -1840,7 +1840,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Partie suspendu
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partie toujours suspendue ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partie toujours suspendue ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :La partie est toujours en pause ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Reprise de la partie ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de joueurs
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connexion de clients
@@ -1861,30 +1861,30 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serve
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Téléchargement de contenu
+STR_CONTENT_TITLE                                               :{WHITE}Téléchargement de modules
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
-STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type de contenu
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Type de module
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
-STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nom du contenu
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliquer sur une ligne pour voir les détails{}Cocher la case comme pré-sélection pour le téléchargement
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nom du module
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Cliquer sur une ligne pour voir les détails.{}Cocher la case comme pré-sélection pour le téléchargement.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Sélectionner tout
-STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marquer tous les contenus comme étant à télécharger
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Marquer tous les modules comme étant à télécharger
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélectionner les mises à jour
-STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer comme étant à télécharger tous les contenus qui sont une mise à jour du contenu existant
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Marquer comme étant à télécharger tous les modules qui sont une mise à jour des modules existants
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les contenus comme étant à ne pas télécharger
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Marquer tous les modules comme étant à ne pas télécharger
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtre sur les étiquettes/le nom{NBSP}:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Visiter le site web
-STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce contenu
+STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Visiter le site web pour ce module
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement des éléments sélectionnés
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Démarrer le téléchargement des modules sélectionnés
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille totale du téléchargement{NBSP}: {WHITE}{BYTES}
-STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATIONS SUR LE CONTENU
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATIONS SUR LE MODULE
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Non pré-sélectionné pour le téléchargement
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Pré-sélectionné pour le téléchargement
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cette dépendance a été sélectionnée pour être téléchargée
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vous avez déjà ceci
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce contenu est inconnu et ne peut pas être téléchargé dans OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce module est inconnu et ne peut pas être téléchargé dans OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour {G "un" "des" "une"} {STRING} existant{G 0 "" "s" "e"}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version{NBSP}: {WHITE}{STRING}
@@ -1895,8 +1895,8 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Taille{
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Sélectionné à cause de{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dépendances{NBSP}: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Étiquettes{NBSP}: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD est compilé sans «{NBSP}zlib{NBSP}»...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible{NBSP}!
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD est compilé sans la gestion de «{NBSP}zlib{NBSP}»...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... téléchargement des modules impossible{NBSP}!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m2}Graphiques de base
@@ -1908,10 +1908,10 @@ STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Carte d'al
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m2}Sons de base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m2}Musique de base
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de jeu
-STR_CONTENT_TYPE_GS_LIBRARY                                     :Bibliothèque GS
+STR_CONTENT_TYPE_GS_LIBRARY                                     :Bibliothèque SJ
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement du contenu...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement des modules...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demande des fichiers...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Téléchargement de {STRING} ({NUM} sur {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Téléchargement terminé

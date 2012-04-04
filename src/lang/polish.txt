@@ -503,37 +503,37 @@ STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}CL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
-STR_ABBREV_GOODS                                                :{TINY_FONT}GD
-STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PŻ
+STR_ABBREV_COAL                                                 :{TINY_FONT}WG
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PC
+STR_ABBREV_OIL                                                  :{TINY_FONT}RP
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ŻC
+STR_ABBREV_GOODS                                                :{TINY_FONT}TW
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ZB
+STR_ABBREV_WOOD                                                 :{TINY_FONT}DR
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}RŻ
 STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}KS
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}RM
+STR_ABBREV_MAIZE                                                :{TINY_FONT}KK
+STR_ABBREV_FRUIT                                                :{TINY_FONT}OW
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
-STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
-STR_ABBREV_WATER                                                :{TINY_FONT}WR
-STR_ABBREV_WHEAT                                                :{TINY_FONT}WH
-STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SG
-STR_ABBREV_TOYS                                                 :{TINY_FONT}TY
-STR_ABBREV_SWEETS                                               :{TINY_FONT}SW
+STR_ABBREV_FOOD                                                 :{TINY_FONT}ŻN
+STR_ABBREV_PAPER                                                :{TINY_FONT}PP
+STR_ABBREV_GOLD                                                 :{TINY_FONT}ZŁ
+STR_ABBREV_WATER                                                :{TINY_FONT}WD
+STR_ABBREV_WHEAT                                                :{TINY_FONT}PS
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KC
+STR_ABBREV_SUGAR                                                :{TINY_FONT}CK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}ZA
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SŁ
 STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}WC
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BB
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}NG
 STR_ABBREV_NONE                                                 :{TINY_FONT}0
 STR_ABBREV_ALL                                                  :{TINY_FONT}+
 
@@ -3699,11 +3699,11 @@ STR_ORDER_DROP_TRANSFER                                         :Przeładunek
 STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień zachowanie wyładunku podświetlonego rozkazu
 
-STR_ORDER_REFIT                                                 :{BLACK}Przeksztalc
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przekształcenia. Ctrl+klik usuwa zmianę
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczne odnowienie
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznego odnowienia w tym poleceniu.Ctrl+Click by usunąć instrukcję odnowienia. Automatyczne odnowienie zostanie wykonane jedynie, jeśli dany pojazd na to pozwala
-STR_ORDER_DROP_REFIT_AUTO                                       :Naprawiony ładunek
+STR_ORDER_REFIT                                                 :{BLACK}Przebudowa
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczna przebudowa
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznej przebudowy. Ctrl+klik usuwa polecenie. Automatyczna przebudowa zostanie wykonana jedynie, jeśli dany pojazd na to pozwala
+STR_ORDER_DROP_REFIT_AUTO                                       :Ustalony ładunek
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
 STR_ORDER_SERVICE                                               :{BLACK}Serwis
@@ -3793,18 +3793,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowu
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatyczne odnowienie do {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Załaduj do pełna z automatycznym odnowieniem do {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Załaduj do pełna dowolny ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj i zaczekaj na dowolny pełny ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Przetwórz i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przewie i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przewieź i poczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj i zaczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Automatyczna przebudowa na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Załaduj do pełna z automatyczną przebudową na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Załaduj do pełna dowolny ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj i zabierz ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj i zaczekaj na dowolny pełny ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Przetwórz i zabierz ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przewie i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przewieź i poczekaj na dowolny pełen ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj i zabierz ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj i zaczekaj na dowolny pełen ładunek z automatyczną przebudową na {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostępny ładunek
 
@@ -4409,7 +4409,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Świnka-skarbon
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia Węgla
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia węgla
 STR_INDUSTRY_NAME_COAL_MINE.d                                   :{G=f}kopalni węgla
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrownia
 STR_INDUSTRY_NAME_POWER_STATION.d                               :{G=f}elektrowni
@@ -4419,7 +4419,7 @@ STR_INDUSTRY_NAME_FOREST                                        :{G=m}Las
 STR_INDUSTRY_NAME_FOREST.d                                      :{G=m}lasu
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafineria
 STR_INDUSTRY_NAME_OIL_REFINERY.d                                :{G=f}rafinerii
-STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma Wiertnicza
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma wiertnicza
 STR_INDUSTRY_NAME_OIL_RIG.d                                     :{G=f}platformy wiertniczej
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fabryka
 STR_INDUSTRY_NAME_FACTORY.d                                     :{G=f}fabryki
@@ -4429,30 +4429,31 @@ STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Huta
 STR_INDUSTRY_NAME_STEEL_MILL.d                                  :{G=f}huty
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
 STR_INDUSTRY_NAME_FARM.d                                        :{G=f}farmy
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia Rudy Miedzi
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia rudy miedzi
 STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                             :{G=f}kopalni rudy miedzi
-STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole Naftowe
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole naftowe
 STR_INDUSTRY_NAME_OIL_WELLS.d                                   :{G=m}pola naftowego
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Bank
 STR_INDUSTRY_NAME_BANK.d                                        :{G=m}banku
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia Żywności
-STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład Papierniczy
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia żywności
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :{G=f}przetwórni żywności
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład papierniczy
 STR_INDUSTRY_NAME_PAPER_MILL.d                                  :{G=m}zakładu papierniczego
-STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia Złota
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia złota
 STR_INDUSTRY_NAME_GOLD_MINE.d                                   :{G=f}kopalni złota
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Bank
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                          :{G=m}banku
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia Diamentów
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia diamentów
 STR_INDUSTRY_NAME_DIAMOND_MINE.d                                :{G=f}kopalni diamentów
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia Rudy Żelaza
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia rudy żelaza
 STR_INDUSTRY_NAME_IRON_ORE_MINE.d                               :{G=f}kopalni rudy żelaza
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja Owoców
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja owoców
 STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                            :{G=f}plantacji owoców
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja Kauczuku
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja kauczuku
 STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                           :{G=f}plantacji kauczuku
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie Wody
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie wody
 STR_INDUSTRY_NAME_WATER_SUPPLY.d                                :{G=n}ujęcia wody
-STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża Ciśnień
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża ciśnień
 STR_INDUSTRY_NAME_WATER_TOWER.d                                 :{G=f}wieży ciśnień
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fabryka
 STR_INDUSTRY_NAME_FACTORY_2.d                                   :{G=f}fabryki
@@ -4460,27 +4461,27 @@ STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
 STR_INDUSTRY_NAME_FARM_2.d                                      :{G=f}farmy
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=m}Tartak
 STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :{G=m}tartaku
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las Waty Cukrowej
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las waty cukrowej
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                         :{G=m}lasu waty cukrowej
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład Cukierniczy
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład cukierniczy
 STR_INDUSTRY_NAME_CANDY_FACTORY.d                               :{G=m}zakładu cukierniczego
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma Baterii
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma baterii
 STR_INDUSTRY_NAME_BATTERY_FARM.d                                :{G=f}farmy baterii
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia Coli
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia coli
 STR_INDUSTRY_NAME_COLA_WELLS.d                                  :{G=f}studni coli
-STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z Zabawkami
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z zabawkami
 STR_INDUSTRY_NAME_TOY_SHOP.d                                    :{G=m}sklepu z zabawkami
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka Zabawek
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka zabawek
 STR_INDUSTRY_NAME_TOY_FACTORY.d                                 :{G=f}fabryki zabawek
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny Plastiku
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny plastiku
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                           :{G=f}fontann plastiku
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka Napojów Gazowanych
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka napojów gazowanych
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                         :{G=f}fabryki napojów gazowanych
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator Bąbelków
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator bąbelków
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                            :{G=m}generatora bąbelków
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka Toffi
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka toffi
 STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                               :{G=f}odkrywkę toffi
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia Cukru
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia cukru
 STR_INDUSTRY_NAME_SUGAR_MINE.d                                  :{G=f}kopalni cukru
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
