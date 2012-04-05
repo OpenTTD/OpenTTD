@@ -653,8 +653,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Moguls
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Gadsimta biržas magnāts
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} sasniegusi '{STRING}' statusu!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} no {COMPANY} sasnieguši '{STRING}' statusu!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} sasniedzis '{STRING}' stāvokli!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} no {COMPANY} sasnieguši '{STRING}' stāvokli!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Karte - {STRING}
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Atļaut
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu piekraušanas algoritmu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Transportlīdzekļus piekraut pakāpeniski: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflācija: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Nogādāt kravu uz staciju tikai tad, ja ir pieprasijums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Nogādāt kravu uz staciju tikai tad ja ir pieprasījums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimālais tiltu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimālais tuneļu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Svarīgāko ražotņu manuālā būvniec. metode: {ORANGE}{STRING}
@@ -1175,7 +1175,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārska
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transporta ienākumi ir negatīvi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad nemirst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atj. transportl. {ORANGE}{STRING}{LTBLUE} mēne{P 0:1 si šus šus} pirms/pēc maks. vecuma
@@ -1218,11 +1218,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pretējs ritināšanas virziens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plūdena skatvietas ritināšana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot būvniecības rīkus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma livrejas (krāsojumu): {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES_NONE                                :Nav
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savam uzņēmumam
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Visiem uzņēmumiem
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Dot priekšroku tērzēšanai ar <ENTER>: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma identitātes krāsas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :visiem uzņēmumiem
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Dot priekšroku komandas tērzēšanai ar <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Peles ritenīša funkcija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :pietuvināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :ritināt karti
@@ -1256,7 +1256,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot 
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu mirkļos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Maršrutu sarakstos rādīt pienākšanu un atiešanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transportlīdzekļu norīkojumu ātrā veidošana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Noklusējuma sliežu tips (pēc jaunas sp./sp. ielādes): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Noklus. sliežu tips (pēc jaunas spēl./spēl. ielādes): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
@@ -1328,7 +1328,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusme�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas novietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusa joslas novietojums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Stāvokļa joslas novietojums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}{STRING} pikse{P 0:1 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimālais logu skaits: {ORANGE}{STRING}
