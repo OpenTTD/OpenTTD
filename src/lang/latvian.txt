@@ -732,9 +732,9 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Ziņojums
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Ziņojumu iestatījumi
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Noteikt visu ziņojumu veidu: Atslēgts/Kopsavilkums/Pilns
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Noteikt visu ziņojumu veidu: izslēgts/kopsavilkums/pilns
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Atskaņot signālu kopsavilkuma ziņojumiem
-STR_NEWS_MESSAGES_OFF                                           :Atslēgts
+STR_NEWS_MESSAGES_OFF                                           :Izslēgts
 STR_NEWS_MESSAGES_SUMMARY                                       :Kopsavilkums
 STR_NEWS_MESSAGES_FULL                                          :Pilns
 
@@ -766,15 +766,15 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Pilsētnieki līksmo . . .{}Pirmais lidaparāts ierodas {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Vilciena avārija!{}Pēc sadursmei sekojoša sprādziena {COMMA} bojāgājušie
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lidmašīna nogāzusies!{}{COMMA} iet bojā ugunī {STATION}
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Autotransporta līdzekļa avārija!{}Vadītājs mirst sprādzienā pēc sadursmes ar vilcienu
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Autotransporta līdzekļa avārija!{}{COMMA} mirst sprādzienā pēc sadursmes ar vilcienu
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lidmašīna nogāzusies!{}{COMMA} iet bojā sprādzienā {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lidaparāta avārija!{}Lidaparātam beidzās degviela, {COMMA} bojāgājušie!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Dirižabļa katastrofa {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Autotransports ir gājis bojā sadursmē ar 'NLO'!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Autotransporta līdzeklis ir gājis bojā sadursmē ar 'NLO'!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Ir uzsprāgusi naftas pārstrādes rūpnīca netālu no {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Netālu no {TOWN} mīklainos apstākļos iznīcināta rūpnīca!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Netālu no {TOWN} mīklainos apstākļos ir iznīcināta rūpnīca!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'NLO' nolaižas netālu no {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Ogļu raktuves iebrukšana atstāj bojājumu joslu netālu no {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Plūdi!{}Vismaz {COMMA} pazuduši bez vēsts, iespējams gājuši bojā plūdos!
@@ -788,7 +788,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Darbu sāk jauns transporta uzņēmums!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} sāk būvdarbus netālu no {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} tiek pārņemts {STRING} izpildījumā!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Vadītājs)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(vadītājs)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} pabalstīja jaunas pilsētas - {TOWN} dibināšanu!
 
@@ -1117,7 +1117,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut celt uz nelīdzenas zemes un krastiem: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut būvēt nogāzēs un piekrastēs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākas, palielinātas apkalpojamās platības: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {ORANGE}{STRING}
@@ -1333,8 +1333,8 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pi
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimālais logu skaits: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimālais logu skaits: {ORANGE}izslēgts
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimālais tuvinājuma līmenis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimālais tālinājuma līmenis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimālais pietuvinājuma līmenis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimālais attālinājuma līmenis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Parasts
@@ -2206,7 +2206,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Būvēt
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansēt
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes {STRING} kravu ķēde
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ražotnes '{STRING}' kravu ķēde
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kravas ražotņu ķēde
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Ražotāji
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Patērētāji
@@ -2800,7 +2800,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastr
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(Vadītājs)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(vadītājs)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Dibināts: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Identitātes krāsu shēma
@@ -2820,7 +2820,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lidosta{P "" s u}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nav
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Celt biroju
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Būvēt biroju
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Būvēt uzņēmuma vadības ēku
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skatīt biroju
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Rādīt uzņēmuma vadības ēku
