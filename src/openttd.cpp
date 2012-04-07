@@ -192,6 +192,9 @@ static void ShowHelp()
 	/* List the blitters */
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
 
+	/* List the debug facilities. */
+	p = DumpDebugFacilityNames(p, lastof(buf));
+
 	/* We need to initialize the AI, so it finds the AIs */
 	AI::Initialize();
 	p = AI::GetConsoleList(p, lastof(buf), true);

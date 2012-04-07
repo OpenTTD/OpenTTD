@@ -73,6 +73,31 @@ struct DebugLevel {
 	};
 #undef DEBUG_LEVEL
 
+/**
+ * Dump the available debug facility names in the help text.
+ * @param buf Start address for storing the output.
+ * @param last Last valid address for storing the output.
+ * @return Next free position in the output.
+ */
+char *DumpDebugFacilityNames(char *buf, char *last)
+{
+	int length = 0;
+	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
+		if (length == 0) {
+			buf = strecpy(buf, "List of debug facility names:\n", last);
+		} else {
+			buf = strecpy(buf, ", ", last);
+			length += 2;
+		}
+		buf = strecpy(buf, i->name, last);
+		length += strlen(i->name);
+	}
+	if (length > 0) {
+		buf = strecpy(buf, "\n\n", last);
+	}
+	return buf;
+}
+
 #if !defined(NO_DEBUG_MESSAGES)
 
 /**

@@ -58,6 +58,7 @@
 	void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
 #endif /* NO_DEBUG_MESSAGES */
 
+char *DumpDebugFacilityNames(char *buf, char *last);
 void SetDebugString(const char *s);
 const char *GetDebugString();
 
