@@ -36,7 +36,7 @@ STR_CARGO_PLURAL_LIVESTOCK                                      :Bétail
 STR_CARGO_PLURAL_GOODS                                          :Biens
 STR_CARGO_PLURAL_GRAIN                                          :Céréales
 STR_CARGO_PLURAL_WOOD                                           :Bois
-STR_CARGO_PLURAL_IRON_ORE                                       :Fer
+STR_CARGO_PLURAL_IRON_ORE                                       :Minerai de fer
 STR_CARGO_PLURAL_STEEL                                          :Acier
 STR_CARGO_PLURAL_VALUABLES                                      :Objets de valeur
 STR_CARGO_PLURAL_COPPER_ORE                                     :Cuivre
@@ -70,7 +70,7 @@ STR_CARGO_SINGULAR_LIVESTOCK                                    :Bétail
 STR_CARGO_SINGULAR_GOODS                                        :Biens
 STR_CARGO_SINGULAR_GRAIN                                        :Céréales
 STR_CARGO_SINGULAR_WOOD                                         :Bois
-STR_CARGO_SINGULAR_IRON_ORE                                     :Fer
+STR_CARGO_SINGULAR_IRON_ORE                                     :Minerai de fer
 STR_CARGO_SINGULAR_STEEL                                        :Acier
 STR_CARGO_SINGULAR_VALUABLES                                    :Objets de valeur
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Cuivre
@@ -104,7 +104,7 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} tête{P
 STR_QUANTITY_GOODS                                              :{COMMA} caisse{P "" s} de biens
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de céréales
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de bois
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de fer
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minerai de fer
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acier
 STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} d'objets de valeur
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de cuivre
@@ -4139,7 +4139,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Wagon à bétai
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Wagon de biens
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Wagon à céréales
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Wagon à bois
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Wagon à fer
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Wagon à minerai de fer
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Wagon à acier
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Wagon blindé
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Wagon de nourriture
@@ -4169,7 +4169,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Wagon à bétai
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Wagon de biens
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Wagon à céréales
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Wagon à bois
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Wagon à fer
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Wagon à minerai de fer
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Wagon à acier
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Wagon blindé
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Wagon de nourriture
@@ -4201,7 +4201,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Wagon à bétai
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Wagon de biens
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Wagon à céréales
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Wagon à bois
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Wagon à fer
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Wagon à minerai de fer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Wagon à acier
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Wagon blindé
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Wagon à nourriture
@@ -4251,9 +4251,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Camion à cér�
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Camion à bois Witcombe
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Camion à bois Foster
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Camion à bois Moreland
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Camion de fer MPS
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Camion de fer Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Camion de fer Chippy
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Camion pour minerai de fer MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Camion pour minerai de fer Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Camion pour minerai de fer Chippy
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Camion d'acier Balogh
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Camion d'acier Uhl
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Camion d'acier Kelling
