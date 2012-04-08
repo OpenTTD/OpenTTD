@@ -2717,14 +2717,23 @@ static bool TryClearTile(TileIndex tile)
 	return r.Succeeded();
 }
 
+/** Structure for storing data while searching the best place to build a statue. */
+struct StatueBuildSearchData {
+	TileIndex best_position; ///< Best position found so far.
+
+	StatueBuildSearchData(TileIndex best_pos) : best_position(best_pos) { }
+};
+
 /**
- * Search callback function for TownActionBuildStatue.
+ * Search callback function for #TownActionBuildStatue.
  * @param tile Tile on which to perform the search.
- * @param user_data Unused.
+ * @param user_data Reference to the statue search data.
  * @return Result of the test.
  */
 static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
+	StatueBuildSearchData *statue_data = (StatueBuildSearchData *)user_data;
+
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
 	if (IsSteepSlope(GetTileSlope(tile))) return false;
 	/* Don't build statues under bridges. */
@@ -2732,11 +2741,13 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 
 	/* A clear-able open space is always preferred. */
 	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && TryClearTile(tile)) {
+		statue_data->best_position = tile;
 		return true;
 	}
 
 	bool house = IsTileType(tile, MP_HOUSE);
 
+	statue_data->best_position = tile; // Is optimistic, the condition below must also hold.
 	return house && TryClearTile(tile);
 }
 
@@ -2752,15 +2763,16 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
 
 	TileIndex tile = t->xy;
-	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) return_cmd_error(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
+	StatueBuildSearchData statue_data(INVALID_TILE);
+	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, &statue_data)) return_cmd_error(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 
 	if (flags & DC_EXEC) {
 		Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		DoCommand(statue_data.best_position, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		cur_company.Restore();
-		BuildObject(OBJECT_STATUE, tile, _current_company, t);
+		BuildObject(OBJECT_STATUE, statue_data.best_position, _current_company, t);
 		SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
-		MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(statue_data.best_position);
 	}
 	return CommandCost();
 }
