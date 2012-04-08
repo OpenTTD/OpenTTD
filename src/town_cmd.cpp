@@ -2705,6 +2705,19 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 }
 
 /**
+ * Check whether the land can be cleared.
+ * @param tile Tile to check.
+ * @return The tile can be cleared.
+ */
+static bool TryClearTile(TileIndex tile)
+{
+	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+	CommandCost r = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
+	cur_company.Restore();
+	return r.Succeeded();
+}
+
+/**
  * Search callback function for TownActionBuildStatue.
  * @param tile Tile on which to perform the search.
  * @param user_data Unused.
@@ -2723,13 +2736,7 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 		return false;
 	}
 
-	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-	CommandCost r = DoCommand(tile, 0, 0, DC_NONE, CMD_LANDSCAPE_CLEAR);
-	cur_company.Restore();
-
-	if (r.Failed()) return false;
-
-	return true;
+	return TryClearTile(tile);
 }
 
 /**
