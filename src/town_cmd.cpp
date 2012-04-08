@@ -2720,8 +2720,9 @@ static bool TryClearTile(TileIndex tile)
 /** Structure for storing data while searching the best place to build a statue. */
 struct StatueBuildSearchData {
 	TileIndex best_position; ///< Best position found so far.
+	int tile_count;          ///< Number of tiles tried.
 
-	StatueBuildSearchData(TileIndex best_pos) : best_position(best_pos) { }
+	StatueBuildSearchData(TileIndex best_pos, int count) : best_position(best_pos), tile_count(count) { }
 };
 
 /**
@@ -2732,7 +2733,10 @@ struct StatueBuildSearchData {
  */
 static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
+	static const int STATUE_NUMBER_INNER_TILES = 25; // Number of tiles int the center of the city, where we try to protect houses.
+
 	StatueBuildSearchData *statue_data = (StatueBuildSearchData *)user_data;
+	statue_data->tile_count++;
 
 	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
 	if (IsSteepSlope(GetTileSlope(tile))) return false;
@@ -2747,6 +2751,18 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 
 	bool house = IsTileType(tile, MP_HOUSE);
 
+	/* Searching inside the inner circle. */
+	if (statue_data->tile_count <= STATUE_NUMBER_INNER_TILES) {
+		/* Save first house in inner circle. */
+		if (house && statue_data->best_position == INVALID_TILE && TryClearTile(tile)) {
+			statue_data->best_position = tile;
+		}
+
+		/* If we have reached the end of the inner circle, and have a saved house, terminate the search. */
+		return statue_data->tile_count == STATUE_NUMBER_INNER_TILES && statue_data->best_position != INVALID_TILE;
+	}
+
+	/* Searching outside the circle, just pick the first possible spot. */
 	statue_data->best_position = tile; // Is optimistic, the condition below must also hold.
 	return house && TryClearTile(tile);
 }
@@ -2763,7 +2779,7 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
 
 	TileIndex tile = t->xy;
-	StatueBuildSearchData statue_data(INVALID_TILE);
+	StatueBuildSearchData statue_data(INVALID_TILE, 0);
 	if (!CircularTileSearch(&tile, 9, SearchTileForStatue, &statue_data)) return_cmd_error(STR_ERROR_STATUE_NO_SUITABLE_PLACE);
 
 	if (flags & DC_EXEC) {
