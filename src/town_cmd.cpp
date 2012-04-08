@@ -2730,13 +2730,14 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
 	/* Don't build statues under bridges. */
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
-	if (!IsTileType(tile, MP_HOUSE) &&
-			!IsTileType(tile, MP_CLEAR) &&
-			!IsTileType(tile, MP_TREES)) {
-		return false;
+	/* A clear-able open space is always preferred. */
+	if ((IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) && TryClearTile(tile)) {
+		return true;
 	}
 
-	return TryClearTile(tile);
+	bool house = IsTileType(tile, MP_HOUSE);
+
+	return house && TryClearTile(tile);
 }
 
 /**
