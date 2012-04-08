@@ -1,4 +1,4 @@
-# $Id$
+# $Id: openttd.desktop.translation.awk 19884 2010-05-22 19:59:37Z rubidium $
 
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -6,10 +6,8 @@
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 
 #
-# Awk script to automatically generate a comment lines for
-# a translated desktop shortcut. If it does not exist there
-# is no output.
+# Awk script to automatically remove duplicate Comment[i]= lines
 #
 
-/##isocode/ { lang = $2; next }
-/STR_DESKTOP_SHORTCUT_COMMENT/ { sub("^[^:]*:", "", $0); print "Comment[" lang "]=" $0; sub("_.*", "", lang); print "Comment[" lang "]=" $0; next}
+BEGIN { FS = "="; last = "" }
+{ if (last != $1) { print $0 }; last = $1 }
