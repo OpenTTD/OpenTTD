@@ -1156,7 +1156,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Atļaut
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Atļaut finansēt vietējo ceļu atjaunošanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Atļaut pārsūtīt naudu citiem uzņēmumiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Svara koeficients kravām, lai simulētu smagus vilcienus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lidaparātu ātruma koeficients: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lidmašīnu ātruma pakāpe: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lidmašīnu avāriju daudzums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Atļaut būvēt vienu otrai piekļautas stacijas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ieslēgt vairākus NewGRF transportlīdzekļu komplektus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Atļaut vairākus NewGRF transportlīdzekļu komplektus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Infrastruktūras uzturēšana: {ORANGE}{STRING}
 
@@ -1176,7 +1176,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad nemirst: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad "nemirst": {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atj. transportl. {ORANGE}{STRING}{LTBLUE} mēne{P 0:1 si šus šus} pirms/pēc maks. vecuma
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automātiski atjaunot minimālo naudu atjaunošanai: {ORANGE}{STRING}
@@ -1314,7 +1314,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :labāki ceļi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nejaušs
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Pilsētu dibināšana: {ORANGE}{STRING}
@@ -2739,14 +2739,14 @@ STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Transpor
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Drausmīgs
-STR_CARGO_RATING_VERY_POOR                                      :Ļoti vājš
-STR_CARGO_RATING_POOR                                           :Vājš
-STR_CARGO_RATING_MEDIOCRE                                       :Viduvējs
-STR_CARGO_RATING_GOOD                                           :Labs
-STR_CARGO_RATING_VERY_GOOD                                      :Ļoti labs
-STR_CARGO_RATING_EXCELLENT                                      :Lielisks
-STR_CARGO_RATING_OUTSTANDING                                    :Izcils
+STR_CARGO_RATING_APPALLING                                      :drausmīgs
+STR_CARGO_RATING_VERY_POOR                                      :ļoti vājš
+STR_CARGO_RATING_POOR                                           :vājš
+STR_CARGO_RATING_MEDIOCRE                                       :viduvējs
+STR_CARGO_RATING_GOOD                                           :labs
+STR_CARGO_RATING_VERY_GOOD                                      :ļoti labs
+STR_CARGO_RATING_EXCELLENT                                      :lielisks
+STR_CARGO_RATING_OUTSTANDING                                    :izcils
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz staciju. Ctrl+klikšķis atvērs skatu uz staciju jaunā skatlaukā
@@ -2970,7 +2970,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ātrums 
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kārtējās izmaksas: {GOLD}{CURRENCY_LONG}/gadā
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpība: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(pielāgojams)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektēts: {GOLD}{NUM}{BLACK}{}Kalpošanas laiks: {GOLD}{COMMA} gad{P s i u}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektēts: {GOLD}{NUM}{BLACK}Kalpoš. laiks: {GOLD}{COMMA} gad{P s i u}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksimālā uzticamība: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
