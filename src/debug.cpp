@@ -81,7 +81,7 @@ struct DebugLevel {
  */
 char *DumpDebugFacilityNames(char *buf, char *last)
 {
-	int length = 0;
+	size_t length = 0;
 	for (const DebugLevel *i = debug_level; i != endof(debug_level); ++i) {
 		if (length == 0) {
 			buf = strecpy(buf, "List of debug facility names:\n", last);
