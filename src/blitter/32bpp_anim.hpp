@@ -47,9 +47,9 @@ public:
 	/**
 	 * Look up the colour in the current palette.
 	 */
-	inline uint32 LookupColourInPalette(uint index)
+	inline Colour LookupColourInPalette(uint index)
 	{
-		return this->palette.palette[index].data;
+		return this->palette.palette[index];
 	}
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);

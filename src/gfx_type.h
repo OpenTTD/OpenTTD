@@ -158,7 +158,34 @@ union Colour {
 		uint8 b, g, r, a; ///< colour channels in LE order
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 	};
+
+	/**
+	 * Create a new colour.
+	 * @param r The channel for the red colour.
+	 * @param g The channel for the green colour.
+	 * @param b The channel for the blue colour.
+	 * @param a The channel for the alpha/transparency.
+	 */
+	Colour(uint8 r, uint8 g, uint8 b, uint8 a = 0xFF) :
+#if TTD_ENDIAN == TTD_BIG_ENDIAN
+		a(a), r(r), g(g), b(b)
+#else
+		b(b), g(g), r(r), a(a)
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+	{
+	}
+
+	/**
+	 * Create a new colour.
+	 * @param The colour in the correct packed format.
+	 */
+	Colour(uint data = 0) : data(data)
+	{
+	}
 };
+
+assert_compile(sizeof(Colour) == sizeof(uint32));
+
 
 /** Available font sizes */
 enum FontSize {

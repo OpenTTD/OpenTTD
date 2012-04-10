@@ -34,32 +34,24 @@ public:
 	/* virtual */ int GetBytesPerPixel() { return 4; }
 
 	/**
-	 * Compose a colour based on RGB values.
-	 */
-	static inline uint32 ComposeColour(uint a, uint r, uint g, uint b)
-	{
-		return (((a) << 24) & 0xFF000000) | (((r) << 16) & 0x00FF0000) | (((g) << 8) & 0x0000FF00) | ((b) & 0x000000FF);
-	}
-
-	/**
 	 * Look up the colour in the current palette.
 	 */
-	static inline uint32 LookupColourInPalette(uint index)
+	static inline Colour LookupColourInPalette(uint index)
 	{
-		return _cur_palette.palette[index].data;
+		return _cur_palette.palette[index];
 	}
 
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 */
-	static inline uint32 ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, uint32 current)
+	static inline Colour ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, Colour current)
 	{
-		uint cr = GB(current, 16, 8);
-		uint cg = GB(current, 8,  8);
-		uint cb = GB(current, 0,  8);
+		uint cr = current.r;
+		uint cg = current.g;
+		uint cb = current.b;
 
 		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return ComposeColour(0xFF,
+		return Colour(
 							((int)(r - cr) * a) / 256 + cr,
 							((int)(g - cg) * a) / 256 + cg,
 							((int)(b - cb) * a) / 256 + cb);
@@ -69,10 +61,10 @@ public:
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
 	 */
-	static inline uint32 ComposeColourRGBA(uint r, uint g, uint b, uint a, uint32 current)
+	static inline Colour ComposeColourRGBA(uint r, uint g, uint b, uint a, Colour current)
 	{
 		if (a == 0) return current;
-		if (a >= 255) return ComposeColour(0xFF, r, g, b);
+		if (a >= 255) return Colour(r, g, b);
 
 		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}
@@ -80,11 +72,11 @@ public:
 	/**
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
 	 */
-	static inline uint32 ComposeColourPANoCheck(uint32 colour, uint a, uint32 current)
+	static inline Colour ComposeColourPANoCheck(Colour colour, uint a, Colour current)
 	{
-		uint r  = GB(colour,  16, 8);
-		uint g  = GB(colour,  8,  8);
-		uint b  = GB(colour,  0,  8);
+		uint r  = colour.r;
+		uint g  = colour.g;
+		uint b  = colour.b;
 
 		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}
@@ -93,10 +85,13 @@ public:
 	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
 	 * Handles fully transparent and solid pixels in a special (faster) way.
 	 */
-	static inline uint32 ComposeColourPA(uint32 colour, uint a, uint32 current)
+	static inline Colour ComposeColourPA(Colour colour, uint a, Colour current)
 	{
 		if (a == 0) return current;
-		if (a >= 255) return (colour | 0xFF000000);
+		if (a >= 255) {
+			colour.a = 255;
+			return colour;
+		}
 
 		return ComposeColourPANoCheck(colour, a, current);
 	}
@@ -108,13 +103,13 @@ public:
 	 * @param denom denominator, makes colour darker.
 	 * @return the new colour for the screen.
 	 */
-	static inline uint32 MakeTransparent(uint32 colour, uint nom, uint denom = 256)
+	static inline Colour MakeTransparent(Colour colour, uint nom, uint denom = 256)
 	{
-		uint r = GB(colour, 16, 8);
-		uint g = GB(colour, 8,  8);
-		uint b = GB(colour, 0,  8);
+		uint r = colour.r;
+		uint g = colour.g;
+		uint b = colour.b;
 
-		return ComposeColour(0xFF, r * nom / denom, g * nom / denom, b * nom / denom);
+		return Colour(r * nom / denom, g * nom / denom, b * nom / denom);
 	}
 
 	/**
@@ -122,45 +117,46 @@ public:
 	 * @param colour the colour to make grey.
 	 * @return the new colour, now grey.
 	 */
-	static inline uint32 MakeGrey(uint32 colour)
+	static inline Colour MakeGrey(Colour colour)
 	{
-		uint r = GB(colour, 16, 8);
-		uint g = GB(colour, 8,  8);
-		uint b = GB(colour, 0,  8);
+		uint r = colour.r;
+		uint g = colour.g;
+		uint b = colour.b;
 
 		/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
 		 *  divide by it to normalize the value to a byte again. See heightmap.cpp for
 		 *  information about the formula. */
-		colour = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
+		uint grey = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
 
-		return ComposeColour(0xFF, colour, colour, colour);
+		return Colour(grey, grey, grey);
 	}
 
 	static const int DEFAULT_BRIGHTNESS = 64;
 
-	static inline uint32 AdjustBrightness(uint32 colour, uint8 brightness)
+	static inline Colour AdjustBrightness(Colour colour, uint8 brightness)
 	{
 		/* Shortcut for normal brightness */
 		if (brightness == DEFAULT_BRIGHTNESS) return colour;
 
 		uint16 ob = 0;
-		uint16 r = GB(colour, 16, 8) * brightness / DEFAULT_BRIGHTNESS;
-		uint16 g = GB(colour, 8,  8) * brightness / DEFAULT_BRIGHTNESS;
-		uint16 b = GB(colour, 0,  8) * brightness / DEFAULT_BRIGHTNESS;
+		uint16 r = colour.r * brightness / DEFAULT_BRIGHTNESS;
+		uint16 g = colour.g * brightness / DEFAULT_BRIGHTNESS;
+		uint16 b = colour.b * brightness / DEFAULT_BRIGHTNESS;
 
 		/* Sum overbright */
 		if (r > 255) ob += r - 255;
 		if (g > 255) ob += g - 255;
 		if (b > 255) ob += b - 255;
 
-		if (ob == 0) return ComposeColour(GB(colour, 24, 8), r, g, b);
+		if (ob == 0) return Colour(r, g, b, colour.a);
 
 		/* Reduce overbright strength */
 		ob /= 2;
-		return ComposeColour(GB(colour, 24, 8),
+		return Colour(
 		                     r >= 255 ? 255 : min(r + ob * (255 - r) / 256, 255),
 		                     g >= 255 ? 255 : min(g + ob * (255 - g) / 256, 255),
-		                     b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255));
+		                     b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255),
+		                     colour.a);
 	}
 };
 

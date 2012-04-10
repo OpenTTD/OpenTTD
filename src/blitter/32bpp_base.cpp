@@ -19,15 +19,15 @@ void *Blitter_32bppBase::MoveTo(void *video, int x, int y)
 
 void Blitter_32bppBase::SetPixel(void *video, int x, int y, uint8 colour)
 {
-	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
+	*((Colour *)video + x + y * _screen.pitch) = LookupColourInPalette(colour);
 }
 
 void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 colour)
 {
-	uint32 colour32 = LookupColourInPalette(colour);
+	Colour colour32 = LookupColourInPalette(colour);
 
 	do {
-		uint32 *dst = (uint32 *)video;
+		Colour *dst = (Colour *)video;
 		for (int i = width; i > 0; i--) {
 			*dst = colour32;
 			dst++;

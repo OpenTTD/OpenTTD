@@ -44,14 +44,14 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 	}
 
 	/* skip lines in dst */
-	uint32 *dst = (uint32 *)bp->dst + bp->top * bp->pitch + bp->left;
+	Colour *dst = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* store so we don't have to access it via bp everytime (compiler assumes pointer aliasing) */
 	const byte *remap = bp->remap;
 
 	for (int y = 0; y < bp->height; y++) {
 		/* next dst line begins here */
-		uint32 *dst_ln = dst + bp->pitch;
+		Colour *dst_ln = dst + bp->pitch;
 
 		/* next src line begins here */
 		const Colour *src_px_ln = (const Colour *)((const byte *)src_px + *(const uint32 *)src_px);
@@ -62,7 +62,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 		src_n += 2;
 
 		/* we will end this line when we reach this point */
-		uint32 *dst_end = dst + bp->skip_left;
+		Colour *dst_end = dst + bp->skip_left;
 
 		/* number of pixels with the same aplha channel class */
 		uint n;
@@ -286,10 +286,10 @@ Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorPr
 						*dst_n |= rgb_max << 8;
 
 						/* Pre-convert the mapping channel to a RGB value */
-						uint32 colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
-						dst_px->r = GB(colour, 16, 8);
-						dst_px->g = GB(colour, 8,  8);
-						dst_px->b = GB(colour, 0,  8);
+						Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
+						dst_px->r = colour.r;
+						dst_px->g = colour.g;
+						dst_px->b = colour.b;
 					} else {
 						dst_px->r = src->r;
 						dst_px->g = src->g;

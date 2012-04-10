@@ -21,11 +21,11 @@ static FBlitter_32bppSimple iFBlitter_32bppSimple;
 void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	const Blitter_32bppSimple::Pixel *src, *src_line;
-	uint32 *dst, *dst_line;
+	Colour *dst, *dst_line;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const Blitter_32bppSimple::Pixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
-	dst_line = (uint32 *)bp->dst + bp->top * bp->pitch + bp->left;
+	dst_line = (Colour *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	for (int y = 0; y < bp->height; y++) {
 		dst = dst_line;
@@ -66,7 +66,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 
 void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height, PaletteID pal)
 {
-	uint32 *udst = (uint32 *)dst;
+	Colour *udst = (Colour *)dst;
 
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		do {
@@ -122,10 +122,10 @@ Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, AllocatorProc 
 			dst[i].v = rgb_max;
 
 			/* Pre-convert the mapping channel to a RGB value */
-			uint colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), dst[i].v);
-			dst[i].r = GB(colour, 16, 8);
-			dst[i].g = GB(colour, 8,  8);
-			dst[i].b = GB(colour, 0,  8);
+			Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), dst[i].v);
+			dst[i].r = colour.r;
+			dst[i].g = colour.g;
+			dst[i].b = colour.b;
 			dst[i].a = src->a;
 			dst[i].m = src->m;
 		}

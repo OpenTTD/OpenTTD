@@ -11,13 +11,13 @@
 
 #include "../core/endian_type.hpp"
 
-#define M(r, g, b) { 0xFF000000U | (r) << 16 | (g) << 8 | (b) }
+#define M(r, g, b) Colour(r, g, b)
 
 /** Colour palette (DOS) */
 static const Palette _palette = {
 	{
 		/* transparent */
-		{             0},
+		Colour(0, 0, 0, 0),
 		/* grey scale */
 		                  M( 16,  16,  16), M( 32,  32,  32), M( 48,  48,  48),
 		M( 65,  64,  65), M( 82,  80,  82), M( 98, 101,  98), M(115, 117, 115),
