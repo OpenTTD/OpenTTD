@@ -1975,8 +1975,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterner entre construire et retirer des voies, des signaux, des points de contrôle et des gares.{}Ctrl pour retirer également la voie lors du retrait des points de contrôle et des gares.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Améliorer le type de rail.{}Shift pour afficher seulement le coût estimé.
 
-STR_RAIL_NAME_RAILROAD                                          :Voie normale
-STR_RAIL_NAME_ELRAIL                                            :Voie électrifiée
+STR_RAIL_NAME_RAILROAD                                          :Voie ferrée simple
+STR_RAIL_NAME_ELRAIL                                            :Voie ferrée électrifiée
 STR_RAIL_NAME_MONORAIL                                          :Monorail
 STR_RAIL_NAME_MAGLEV                                            :MagLev
 
@@ -2157,7 +2157,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Créer un monde aléatoire
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Nouveau scénario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Réinitialiser le terrain
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ôter toutes les propriétés des compagnies de la carte
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ôter de la carte toutes les propriétés des compagnies
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Réinitialiser le terrain
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vous sûr de vouloir ôter toutes les propriétés des compagnies{NBSP}?
@@ -2420,8 +2420,8 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifier
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Création du monde...
 STR_GENERATION_ABORT                                            :{BLACK}Annuler
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Annuler la génération du terrain
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-vous vraiment annuler la génération{NBSP}?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Annuler la création du terrain
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Voulez-vous vraiment annuler la création{NBSP}?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% réalisé{P "" s}
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Création du monde
@@ -4372,7 +4372,7 @@ STR_FORMAT_BUOY_NAME                                            :Bouée de {TOWN
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Bouée de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Compagnie {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Groupe {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} - {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Point de contrôle de {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contrôle de {TOWN} n°{NBSP}{COMMA}
 

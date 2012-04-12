@@ -3289,6 +3289,8 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}清除�
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除目前選定命令所設定的時間
 
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}清除速度限制
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}清除目前選定命令所設定的最高速度
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}歸零誤點／慢分
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤點／慢分歸零，如此交通工具將會準時抵達
@@ -3519,6 +3521,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... 只�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... 只能建在雨林區
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... 只能建在沙漠區
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... 只能建在市鎮內
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... 只能在城市中心附近興建
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... 只能建在低地
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只能位於地圖邊緣
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
