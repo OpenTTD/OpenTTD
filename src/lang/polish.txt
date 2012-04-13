@@ -647,7 +647,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodność
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita pojemność typu ładunku
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita ładowność typu ładunku
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maksymalna
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
@@ -663,9 +663,9 @@ STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Siła pociągowa
 STR_SORT_BY_INTRO_DATE                                          :Data wprowadzenia
-STR_SORT_BY_RUNNING_COST                                        :Koszty użytkowania
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszty użytkowania
-STR_SORT_BY_CARGO_CAPACITY                                      :Pojemność
+STR_SORT_BY_RUNNING_COST                                        :Koszt utrzymania
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszt utrzymania
+STR_SORT_BY_CARGO_CAPACITY                                      :Ładowność
 STR_SORT_BY_RANGE                                               :Zasięg
 
 # Tooltips for the main toolbar
@@ -908,7 +908,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Wykres obrotów
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Wykres przychodów
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarczonych jednostek ładunku
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena działalności firmy (max. ocena=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena działalności firmy (maks. ocena=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wartości firm
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za Ładunek
@@ -3282,7 +3282,7 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLA
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokomotywy
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostępne pojazdy
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostępne statki
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępny samolot
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępne samoloty
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą
@@ -3333,25 +3333,25 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd dro
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Waga: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Masa: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty użytkowania: {GOLD}{CURRENCY_LONG}/rok
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Pojemność: {GOLD}{CARGO_LONG} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_LONG}/rok
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ładowność: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodność: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Masa: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Prędkość: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ładowność: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Masa: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przystosować do: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
 STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje
@@ -3475,8 +3475,8 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :{G=f}lokomotyw�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa MagLev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotywę MagLev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Waga: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY_LONG}/rok{}Pojemność: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszty użytkowania: {4:CURRENCY_LONG}/rok{}Pojemność: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosztuje: {CURRENCY_LONG} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO_LONG}, {CARGO_LONG}{}Koszt używania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
