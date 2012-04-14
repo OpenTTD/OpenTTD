@@ -1715,7 +1715,7 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksyma
 STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksymalne oddalenie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaln
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :normalne
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
@@ -3349,8 +3349,8 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ładowność: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Masa: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przystosować do: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
-STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_TYPES                                     :wszystkie typy ładunków
+STR_PURCHASE_INFO_ALL_BUT                                       :wszystko oprócz {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 
@@ -3477,10 +3477,10 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotyw�
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosztuje: {CURRENCY_LONG} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO_LONG}, {CARGO_LONG}{}Koszt używania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING}
@@ -3589,31 +3589,31 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nazwij s
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nazwa statku
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nazwa samolotu
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt używania: {LTBLUE}{CURRENCY_LONG}/rok
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/rok
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksymalna prędkość: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. szybkość: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (w zeszłym roku: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Pojemność: {LTBLUE}Żadna{STRING}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}Żadna{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniem o 10. Ctrl+klik zwiększa okres między serwisowaniem o 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniem o 10. Ctrl+klik zmniejsza okres między serwisowaniem o 5
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniami: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniami: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa pociągu
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwij samochód
@@ -3624,7 +3624,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nazwa sa
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Budowa: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wartość: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Całkowita pojemność tego pociągu:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Całkowita ładowność tego pociągu:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -3636,18 +3636,18 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ładunek
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Pokaż szczegóły przewożonych ładunków
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacje
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Pokaż szczegóły pociągu
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Pojemność
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż pojemność każdego wagonu
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Całkowity ładunek
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Pokaż całkowitą pojemność pociągu, według typu ładunku
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Ładowność
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż ładowność każdego wagonu
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Całkowita ładowność
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Pokaż całkowitą ładowność pociągu, według typu ładunku
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Pojemność: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowność: {LTBLUE}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przekształcenia: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -3746,8 +3746,8 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przesta�
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań dzielić listę poleceń. Ctrl+Klik dodatkowo usuwa wszystkie polecenia tego pojazdu
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższej zajezdni
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższej zajezdni
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
@@ -3769,7 +3769,7 @@ STR_ORDER_SHIP_DEPOT                                            :Doku
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Przekształć na {STRING})
+STR_ORDER_REFIT_ORDER                                           :(Przebuduj na {STRING.b})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Remontuj w {STRING} i zatrzymaj)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
@@ -4325,7 +4325,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Statek j
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Samolot jest niedostępny
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo pojazdów w grze
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniem...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniami...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
 
