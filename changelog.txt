@@ -1,3 +1,10 @@
+1.2.0 (2012-04-15)
+------------------------------------------------------------------------
+- Fix: When starting GS or AI, always use the settings of the game, not the new-game settings [FS#5142] (r24108)
+- Fix: Provide translated comments in the desktop file without language name postfix (r24100)
+- Fix: Cloning orders of aircraft with limited range failed [FS#5131] (r24086)
+
+
 1.2.0-RC4 (2012-04-01)
 ------------------------------------------------------------------------
 - Fix: Reversing trains while they were entering or leaving a depot could lead to stuck trains [FS#5093] (r24078, r24071)
