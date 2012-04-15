@@ -1,3 +1,90 @@
+1.2.0 (2012-04-15)
+------------------------------------------------------------------------
+- Fix: When starting GS or AI, always use the settings of the game, not the new-game settings [FS#5142] (r24108)
+- Fix: Provide translated comments in the desktop file without language name postfix (r24100)
+- Fix: Cloning orders of aircraft with limited range failed [FS#5131] (r24086)
+
+
+1.2.0-RC4 (2012-04-01)
+------------------------------------------------------------------------
+- Fix: Reversing trains while they were entering or leaving a depot could lead to stuck trains [FS#5093] (r24078, r24071)
+- Fix: The 'last joined' server was not properly selected anymore [FS#5098] (r24070)
+- Fix: Immediately start querying the last joined server instead of waiting for the requery loop [FS#5097] (r24069, r24062)
+- Fix: Make the full snowedness level of houses the same as roads and rails [FS#5121] (r24064)
+- Fix: With certain versions of GCC and compiler flags the compiler could reorder some code badly causing the 32bpp depot flag not working [FS#5125] (r24063)
+- Fix: Do not freeze aircraft mid-flight when skipping to an out-of-range destination [FS#5123] (r24060)
+- Fix: Wrong numbering of string parameters causing wrong capacities to be shown [FS#5124] (r24058)
+- Fix: Crash when timetabling a maximum travel speed of 0 [FS#5111] (r24053)
+- Fix: [NewGRF] Imported GRF sounds were inserted into the wrong slots [FS#5107] (r24052)
+- Fix: [NewGRF] Realsprites inside the action 11 block were not skipped correctly (r24050)
+- Fix: Improve error messages for the placement restrictions of banks, water towers and toy shops [FS#5095] (r24040)
+
+
+1.2.0-RC3 (2012-03-18)
+------------------------------------------------------------------------
+- Feature: Allow display of baseset textfiles (r24037)
+- Feature: Increase the station class limit from 32 to 256 (r24031)
+- Fix: After opening a text window with the monospaced font, all other text started glitching (r24038)
+- Fix: [NoAI] Reset 'is random' status of temporary variable during saveload as it is not always written to when loading an AI which means it wouldd be taking the 'is random' setting of another AI (r24033)
+- Fix: [NoAI] Make AIEngine::IsArticulated return true if the articulated callback flag is set, do not try to run the callback (r24029)
+- Fix: Pass cases down into the list of cargos [FS#5090] (r24024, r24023, r24022)
+
+
+1.2.0-RC2 (2012-03-04)
+------------------------------------------------------------------------
+- Fix: [Script] AI used in names in API for GSOrder [FS#5088] (r24006)
+- Fix: Improve rounding when converting display speeds to internal speeds [FS#5079] (r23995)
+- Fix: Also reset the font glyph cache when switching blitters (r23992, r23987)
+- Fix: [NewGRF] Also display the cargo subtype for vehicles which have no capacity, but a subtype [FS#5076] (r23991)
+- Fix: Zero the offsets of disabled zoomlevels, so they do not influence offset calculations (r23989)
+- Fix: Invalid reads when scaling an odd-sized sprite smaller (r23986)
+- Fix: Inconsistent quit/abandon/exit game/scenario/editor strings [FS#5074] (r23985)
+- Fix: Fix the order of lights on the helipad [FS#5082] (r23984)
+- Fix: Tarred heightmaps would not be found [FS#5083] (r23983)
+- Fix: Do not load a game during UpdateWindows as that might trigger changing the blitter which triggers re-entrant locking (r23980, r23977)
+- Fix: [SDL] Palette update was done too late making switching from 8bpp -> 32bpp look ugly (r23978)
+- Fix: Sprites of different zoom levels were not always padded correctly to a common size (r23976)
+- Fix: Also save the maximum travel speed for the current vehicle order (r23973)
+
+
+1.2.0-RC1 (2012-02-19)
+------------------------------------------------------------------------
+- Feature: [NewGRF] Customisable tunnel portals for rail types (r23952)
+- Feature: Timetabled maximum travel speeds for non-flying vehicles (r23947)
+- Feature: Readme/licence/changelog viewer for AI and game scripts [FS#5047] (r23936)
+- Feature: [NewGRF] 32bpp sprites in GRFs (r23897)
+- Feature: [NewGRF] Support for RealSprites with multiple zoom levels (r23890)
+- Feature: [NewGRF] Support for container version 2 (r23887)
+- Fix: Refittability should never depend on the current capacity of a vehicle [FS#5070] (r23965)
+- Fix: Do not look for missing sprites twice during startup [FS#5072] (r23963)
+- Fix: [Script] Infinite recursion within a script was not caught properly, so they could cause crashes of OpenTTD instead of the AI [FS#5068] (r23962)
+- Fix: [NewGRF] Make the properties for always/never refittable cargo types not behave incremental, but reset them on reassignment (r23960)
+- Fix: [Network] Do not allow chat messages from pre-active clients. As they have not got the savegame yet, they will not have the interface to send them either (r23958)
+- Fix: [Network] Allow sending chat to pre-active clients as the clients start accepting once they send 'map ok' to the server, which is the same moment we change their status to pre-active [FS#4990] (r23957)
+- Fix: When the population of a town changes the town view might even have to change size due to different cargo requirements [FS#5062] (r23953)
+- Fix: [NoGo] Never show GSGoal::Question() to spectators [FS#5063] (r23950)
+- Fix: Better rounding when converting internal speed to displayed speed (r23945)
+- Fix: Also list DEITY signs in the signlist in the scenario editor [FS#5061] (r23943)
+- Fix: Infrastructure cache of standard road stops would get messed up when buying a company with them (r23942)
+- Fix: Scale infrastructure cost of rail tracks by the total number of all tracks and not independently for each rail type (r23931)
+- Fix: [Script] Do not close the parameter window when a script starts [FS#4944] (r23930)
+- Fix: Do not accelerate, for smoke purposes, when you reached the track's maximum speed [FS#5053]
+- Fix: 32bpp animated blitter was optimised a bit too far regarding not needing to update the colour mapping when (re)initialising the palette [FS#5056] (r23927)
+- Fix: [NoGo] Some news messages would cause an assertion to be triggered due to a missing proper location for the viewport of the news message, so only allow building when valid data for the viewport is provided or no viewport is used [FS#5054] (r23924)
+- Fix: Consider only the middle tile of a lock for lock-infrastructure costs. The other two tiles may be owned by other companies. Also do not count the middle tile of a lock as canal, independent of whether it is build on ground or river slope (r23920)
+- Fix: [NewGRF] When determining the first refittable cargotype according to CTT order, do not rely on the GRF assigning the refit_mask property. Also check for GRFs setting the default_cargo or refittable-cargo-classes or -types properties (r23916)
+- Fix: [NewGRF] Do not test validity of cargobits using a mask of cargoslots (r23914)
+- Fix: [NewGRF] When testing whether a engine shall only carry the default cargo, check ctt_include_mask for being empty before applying cargo translation (r23912)
+- Fix: [SDL] Handle the SDL_VIDEOEXPOSE event to solve issues with SDL 1.3 (r23910)
+- Fix: [SDL] Fix keyboard-related segfault when compiling against SDL 1.3 (r23909)
+- Fix: [Makefile] Make sure bin/baseset/openttd.32.bmp is removed on make clean (r23908)
+- Fix: [Makefile] Let "make clean --dry-run" not delete Makefiles (r23907)
+- Fix: [Windows installer] OpenMSX got downloaded to and extracted in the wrong (non-existent) folder [FS#5045] (r23905)
+- Fix: Memory leak everytime one clicked a savegame in the load GUI (r23901)
+- Fix: [NewGRF] It was not possible to import sounds from a NewGRF later in the load order (r23883)
+- Remove: PNG sprite loader; use 32bpp sprites in a NewGRF (r23898)
+
+
 1.2.0-beta4 (2012-02-04)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Give NewGRF defined level crossings and rail depots access to the townzone (r23866)

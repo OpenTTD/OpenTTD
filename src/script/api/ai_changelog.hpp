@@ -21,8 +21,6 @@
  *
  * \b 1.2.0
  *
- * 1.2.0 is not yet released. The following changes are not set in stone yet.
- *
  * API additions:
  *
  * \li AIAirport::GetMaintenanceCostFactor
@@ -74,6 +72,19 @@
  *     town effects.
  * \li AITown::GetLastMonthTransportedPercentage no longer has prerequisites
  *     based on town effects.
+ *
+ * \b 1.1.5
+ *
+ * No changes
+ *
+ * \b 1.1.4
+ *
+ * API additions:
+ * \li AIVehicle::ERR_VEHICLE_TOO_LONG in case vehicle length limit is reached.
+ *
+ * \b 1.1.3
+ *
+ * No changes
  *
  * \b 1.1.2
  *
