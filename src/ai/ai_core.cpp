@@ -39,7 +39,7 @@
 	/* Clients shouldn't start AIs */
 	if (_networking && !_network_server) return;
 
-	AIConfig *config = AIConfig::GetConfig(company);
+	AIConfig *config = AIConfig::GetConfig(company, AIConfig::SSS_FORCE_GAME);
 	AIInfo *info = config->GetInfo();
 	if (info == NULL || (rerandomise_ai && config->IsRandom())) {
 		info = AI::scanner_info->SelectRandomAI();
@@ -283,7 +283,7 @@
 {
 	/* Find the first company which doesn't exist yet */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
-		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c)->GetSetting("start_date");
+		if (!Company::IsValidID(c)) return AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->GetSetting("start_date");
 	}
 
 	/* Currently no AI can be started, check again in a year. */
