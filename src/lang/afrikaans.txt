@@ -234,7 +234,7 @@ STR_TOOLTIP_SHADE                                               :{BLACK}Skerm ve
 STR_TOOLTIP_DEBUG                                               :{BLACK}Toon NewGRF debug informasie
 STR_TOOLTIP_STICKY                                              :{BLACK}Merk die venster as ontoemaakbaar met die"Sluit Alle Vensters" sleutel
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliek en sleep om venster te vergroot
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tokkel groot/klein venster groote
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skakel groot/klein venster groote
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys op/af
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolstaaf - rol die lys links/regs
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Vernietig geboue ens. op 'n vierkant van land
@@ -321,9 +321,9 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land geb
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skakel nutsbalke
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Stoor draaiboek, laai draaiboek, verlaat draaiboek redigeerder, verlaat
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Stoor scenario, laai scenario, verlaat scenario redigeerder, verlaat
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Draaiboek Redigeerder
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario Redigeerder
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Beweeg die begin datum 1 jaar terug
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Beweeg die begin datum 1 jaar voorentoe
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliek om die begin jaar in te sleutel
@@ -332,13 +332,13 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskap
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Dorp generasie
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Nywerheid generasie
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pad konstruksie
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bome
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bome. Shift skakel gebou/wys koste beraaming
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaas teken
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plaas voorwerp. Shift skakel tussen bou/aanduiding koste beraming
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Stoor draaiboek
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Laai draaiboek
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Stoor scenario
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Laai scenario
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Stoor hoogtekaart
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Laai Hoogtekaart
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Verlaat redigeerder
@@ -350,7 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Verlaat
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spel opsies
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moelikheid stellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gevorderde stellings
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI / Spel instellings
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/Spel skript instellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF stellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Deursigtigheid opsies
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Dorp name vertoon
@@ -445,12 +445,12 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Boodskap Geskid
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebied informasie
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Tokkel terminaal
-STR_ABOUT_MENU_AI_DEBUG                                         :AI / GameScript ontfout
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spel skript ontfout
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermskoot
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ten volle vergrote skermskoot
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Basiese groote skermskoot
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Groot Skermskoot (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Hele kaart Skermkiekie (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oor 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :"Sprite" rigter
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :skakel beperkte bokse
@@ -624,7 +624,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Kies 'nu
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Kies 'Ezy Straat styl musiek' program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Kies 'Bestelling 1' (gebruiker-verklaarde) program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Kies 'Bestelling 2' (gebruiker-verklaarde) program
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Tokkel musiek lys skommel aan/af
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Skakel musiek lys skommel aan/af
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Vertoon musiek snit keuse venster
 
 STR_ERROR_NO_SONGS                                              :{WHITE}'n Musiek stel was gekies wat nie liedere bevat nie. Niks liedere sal gespel word nie
@@ -702,7 +702,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Woestyn
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Sneeu
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Tokkel dorp name aan/af op kaart
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skakel dorp name aan/af op kaart
 STR_SMALLMAP_CENTER                                             :{BLACK}Senter die kleinkaart op die huidige posisie
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
@@ -712,7 +712,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ontsper 
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vertoon hoogte
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Moet nie enige nywerheide op die kaart vertoon
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vertoon alle nywerheide op die kaart
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Tokkel vertooning van hoogtekaart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Skakel vertooning van hoogtekaart
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Vertoon geen maatskappy eiendom op die kaart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Vertoon alle maatskappy eiendom op die kaart
 
@@ -781,7 +781,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Vervoer maatsappy in moelikheid!
 STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Vervoer maatskappy samesmelting!
-STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} is na {STRING} vir  {CURRENCY_LONG} verkoop!
+STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} is na {STRING} vir {CURRENCY_LONG} verkoop!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Bankrotspeler!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} is deur skuldeisers toegemaak en alle bates is afverkoop!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Nuwe vervoer maatskappy geloods!
@@ -832,7 +832,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kan nie die volgende bestemmingpunt bereik nie want dis te ver
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} het gestop omdat 'n herstel opdrag gefaal
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} het gestop omdat 'n herbou opdrag gefaal het
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatiese hernuwing het misluk met {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Nuwe {STRING} nou beskikbaar!
@@ -988,7 +988,7 @@ STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel die
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Afskeier {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Stel die skeier vir jou koers
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Vervoegsel: {ORANGE}{STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Stel die voorvoegsel teks vir jou koers
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Agtervoegsel: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Stel die agtervoegsel teks vir jou koers
@@ -1313,6 +1313,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ewekansige
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Dorpe word toegelaat om paaie te bou: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Dorpe word toegelaat om vlak kruising te bou: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Laat dorp-beheerede klankvlak vir lughawes toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Stigting van dorpe binne speletjie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbode
@@ -1325,10 +1326,19 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënw
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posisie van statusbalk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Venster slag straal: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Venster slag straal: {ORANGE}strem
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Venster sagte beperking (nie taai): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Venster sag beperking (nie taai): {ORANGE}ongeaktiveer
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maximum zoem in level: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maximum zoem uit level: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Dorp groei spoed: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Geen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Stadig
@@ -1357,7 +1367,9 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Roete
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Treine
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Dorpe
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Skripte
 
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :Oorspronklik
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevole)
 
@@ -1369,20 +1381,25 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Outomat
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander stel waarde
 
 # Config errors
+STR_CONFIG_ERROR                                                :{WHITE}Fout met die konfigurasie lêer...
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fout in skikking '{STRING}'
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ongeldig waarde '{STRING}' vir '{STRING}'
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoreer ongeldige NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie gevind
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :onveilig vir statiese gebruik
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :stelsel NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :onversoenbaar met hierdie weergawe van OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressie vlak '{STRING}' is ongeldig
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nuwe Spel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Laai Spel
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Speel Draaiboek
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Speel Scenario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Speel Hoogtekaart
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Draaiboek Redakteur
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Scenario Redakteur
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multispeler
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Spel Opsies
@@ -1393,11 +1410,11 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na A
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Spel Instellings
 STR_INTRO_QUIT                                                  :{BLACK}Verlaat
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel. Ctrl+Kliek ignoreer kaart konfigurasie
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Laai 'n gestoorde spel
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}begin 'n nuwe speletjie, gebruikend 'n hoogtekaart as 'n landskap
-STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Begin 'n nuwe speletjie, met 'n doelgeboude draaiboek
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skep 'n doelgeboude spel wêreld/draaiboek
+STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Begin 'n nuwe speletjie, met 'n doelgeboude scenario
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skep 'n doelgeboude spel wêreld/scenario
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Begin 'n multispeler spel
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Kies 'matige' landskap styl
@@ -1410,8 +1427,10 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Vertoon 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Toon gevorderde stellings
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Wys NewGRF stellings
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Kyk vir nuwe of bygewerkde inhoud om af te laai
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Vertoon AI/Spel skript konfigurasie
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Verlaat 'OpenTTD'
 
+STR_INTRO_TRANSLATION                                           :{BLACK}Die vertaling kort {NUM} string{P "" s}. Help aseblief om OpenTTD beter te maak, deur aan te sluit as 'n vertaaler. Sien die readme.txt vir meer inligting.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Verlaat
@@ -1434,7 +1453,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Verlaat Spel
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Is jy seker jy wil die speletjie verlaat?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Is jy seker jy wil die draaiboek verlaat?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Is jy seker jy wil die scenario verlaat?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kullery
@@ -1711,8 +1730,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Loskoppel
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Invoeg wagwoord
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Invoeg wagwoord
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Voer wagwoord in
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Voer wagwoord in
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klient Lys
@@ -1778,6 +1797,11 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Die vers
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jy is van die verskaffer verban
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Jy is van die spel geskop
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Kullery word nie toegelaat op hierdie bediener
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Jy het te veel opdragte na die bediener gestuur
+STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE} Jy het te lank gevat om die wagwoord in te sleutel
+STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE} Jou rekenaar is te stadig om met bediener by te hou
+STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Jou rekenaar het te lank gevat om die kaart af te laai
+STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Jou rekenaar het te lank gevat om met die bediener te bind
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemeen fout
@@ -1796,8 +1820,13 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :geskop by versk
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :het probeer om 'n bedreig te gebruik
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :verskaffer vol
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :het te veel opdragte gestuur
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :het geen wagwoord betyds gekry nie
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :algemene tyduit
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :die kaart af laai het te lank gevat
+STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :verwerking van die kaart het te lank gevat
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moontlike verbinding verlore
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1869,10 +1898,12 @@ STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis grafike
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI biblioteek
-STR_CONTENT_TYPE_SCENARIO                                       :Draaiboek
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogte kaart
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basis klanke
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basis musiek
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Speletjie Skrif
+STR_CONTENT_TYPE_GS_LIBRARY                                     :GS biblioteek
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laai inhoud af...
@@ -1894,15 +1925,15 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, ver
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Deursigtigheid Opsies
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Tokkel deursigtigheid vir stasie tekens
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Tokkel deursigtigheid vir boome
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Tokkel deursigtigheid vir huise
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Tokkel deursigtigheid vir nywerhede
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Tokkel deursigtigheid vir boubaardes soos stasies, depots, weypunte en catenary
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Tokkel deursigtigheid vir brue
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tokkel deursigtigheid vir strukture soos vuurtorings en senders, miskien in toekoms vir ooglekkers
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tokkel deursigtigheid van kettinglyn. Ctrl+Kliek om te sluit.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Tokkel deursigtigheid vir laai aanwysers
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skakel deursigtigheid vir stasie tekens. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Skakel deursigtigheid vir boome. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Skakel deursigtigheid vir huise. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Skakel deursigtigheid van nywerhede. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skakel deursigtigheid vir boubaardes soos stasies, depots, weypunte en catenary. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Skakel deursigtigheid vir brue. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skakel deursigtigheid vir strukture soos vuurtorings en senders, miskien in toekoms vir ooglekkers. Ctrl+Kliek om te sluit
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Skakel deursigtigheid van kettinglyn. Ctrl+Kliek om te sluit.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Skakel deursigtigheid vir laai aanwysers. Ctrl+Kliek om te sluit
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Stel voorwerpe onsigbaar inplaas van deursigtig
 
 # Base for station construction window(s)
@@ -1927,15 +1958,15 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifiseerde
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Enkelspoor Konstruksie
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore. Ctrl skakel Bou/verwydering van spoorweg knstruksie. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bou spoorweg spoor met die Outospoor metode
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou trein skuur (vir die bou en diens van treine)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Verander spoor na wegwyser. Ctrl laat wegwyser verbinding toe
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bou spoorweg stasie
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bou spoorweg stasie. Ctrl voeg stasies saam. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bou spoorweg seinligte
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou spoorweg brug
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou spoorweg tonnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Tokkel bou/verwyder vir spoore en seinligte
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou spoorweg brug. Shift skakel Bou/wys koste beraming
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou spoorweg tonnel. Shift skakel Bou/wys koste beraming
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skakel bou/verwyder vir spoore en seinligte
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verdoel/Opgradeer die spoor tipe
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
@@ -2007,7 +2038,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicon
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pad Konstruksie
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tremweg Konstruksie
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou pad afdeling
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bou tremweg afdeling
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bou tremweg afdeling. Ctrl skakel bou/verwydering van tremweg konstruksie. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bou pad seksie gebruikend Outopad metode
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bou tremweg gebruikend die Outotrem metode
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bou pad voertuig depot (vir bou en diens van voertuie)
@@ -2018,11 +2049,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bou vraa
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bou vrag trem stasie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktifeer/Deaktifeer ee-rigting paaie
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou pad brug
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bou tremweg brug
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bou tremweg brug. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou pad tonnel
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou tremweg tonnel
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Tokkel bou/verwyder vir pad bou
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tokkel bou/verwyder vir tremweg konstruksie
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skakel bou/verwydering van pad konstruksie
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skakel bou/verwyder vir tremweg konstruksie
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Pad Depot Oriëntering
@@ -2096,9 +2127,11 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop lan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Voorwerp Keuse
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Kies klas van die voorwerp te bou
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Voorskou van 'n voorwerp
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} teels
 
 STR_OBJECT_CLASS_LTHS                                           :Vuurtorings
+STR_OBJECT_CLASS_TRNS                                           :Stuurders
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Boome
@@ -2115,7 +2148,7 @@ STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Bepaal w
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot gebied wat verlaag/verhoog moet word
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verminder gebied wat verlaag/verhoog moet word
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer lukraake land
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Skep nuwe draaiboek
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Skep 'n nuwe scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Herstel landskap
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwyder alle speler-besit eiendom van die kaart af
 
@@ -2165,9 +2198,14 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bou
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonds
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Nywerheid ketting vir {STRING} nywerheid
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Nywerheid ketting vir {STRING} vrag
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Vervaardiging van nywerhede
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aanvaar nywerhede
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huise
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vertoon Ketting
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vertoon vrag voorsiening en aanvaar nywerhede
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verbinding na kleinkaart
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
@@ -2274,8 +2312,8 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Spaar Spel
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Laai Spel
-STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Stoor Draaiboek
-STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laai Draaiboek
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Stoor Scenario
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Laai Scenario
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Laai Hoogtekaart
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Stoor Hoogtekaart
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliek hier om na die huidige spaar/laai lêer te spring
@@ -2300,7 +2338,7 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Wêreld 
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaart groote:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Hoev. dorpe:
-STR_MAPGEN_DATE                                                 :{BLACK}Date:
+STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. nywerhede:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
@@ -2340,7 +2378,7 @@ STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander begin jaar
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Draaiboek tipe
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenario tipe
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Plat land
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereer 'n plat terrein
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Lukraake land
@@ -2358,6 +2396,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Wil jy 
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% klaar
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wêreld generasie
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Rivier generasie
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Boom generasie
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Onbeweegbaar generasie
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ru en rotserig area ontwikkeling
@@ -2371,12 +2410,13 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF s
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Gedetaileerde NewGRF inligting
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktiewe NewGRF lêers
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Onaktiewe NewGRF lêers
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selekteer voorafinstelling:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter string:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Laai die gekose voorafstel
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Stoor voorafstel
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Stoor voorafinstelling
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Stoor die huidige lys as 'n voorafstel
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Sleutel 'n naam vir die voorafstel in
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Vee voorafstel uit
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Vee voorafinstelling uit
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Vee die huidige gekose voorafstel uit
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Voeg
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Voeg die verkiesde NewGRF lêer na u configurasie
@@ -2391,8 +2431,9 @@ STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Beweeg d
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}'n Lys van die NewGRF lêers wat installer. Kliek 'n lêer om sy parameter te verander.
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Stel parameters
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Tokkel palet
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Tokkel die palet van die geselekteurde NewGRF.{}Doen dit wanneer die grafika van hierdie NewGRF pink lyk in die speletjie.
+STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vertoon parameters
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Skakel palet
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Skakel die palet van die geselekteurde NewGRF.{}Doen dit wanneer die grafika van hierdie NewGRF pink lyk in die speletjie.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Wend aan veranderings
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Vind vermisde inhoud aanlyn
@@ -2414,12 +2455,14 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Onversoenb
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Verander NewGRF parameters
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Maak Toe
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Herstel
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Stel alle parameters na hul verstek waarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Hoeveelheid parameters: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteer - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Ouer
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} by {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Voorwerp
@@ -2427,8 +2470,10 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoor tipe
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gaan na sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige sprite
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X afwyking: {NUM}, Y afwyking: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies sprite
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Gaan na sprite
@@ -2449,7 +2494,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vere
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Die laai van {1:STRING} as statiese NewGRF met {STRING} kan desinkroniesasies veroorsaak.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwagte sprite (sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} was gedeaktiveer deur {2:STRING}
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!
@@ -2480,12 +2527,19 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vrag/her
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' het 'n eindelose herhaling in die produksie callback veroorsaak.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vrag>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vrag>
+STR_NEWGRF_INVALID_ENGINE                                       :<ongeldige voertuig model>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige industrie>
 
 # NewGRF scanning window
+STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skandeer NewGRFs
+STR_NEWGRF_SCAN_ARCHIVES                                        :Skandering van argiewe
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ooreenstemmende case
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Redigeer teken teks
@@ -2663,7 +2717,7 @@ STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Eiendom O
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Trein Inkomste
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Pad Voertuig Inkome
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Vliegtuig Inkome
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Skip Inkome
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Skip Inkomste
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Lening Rente
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Ander
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
@@ -3033,10 +3087,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dit sal 
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forseer trein om voort te gaan sonder om vir sien die uit te klaar
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Herstel trein om 'n ander vrag tipe te ontvoer
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Herpas pad voertuig om 'n ander vrag tipe te ontvoer
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Herstel vragskip om 'n ander vrag tipe te vervoer
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Hestel vliegtuig om 'n ander vrag tipe te ontvoer
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Herbou trein om 'n ander vrag tipe te ontvoer
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Herbou pad voertuig om 'n ander vrag tipe te ontvoer
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Herbou vragskip om 'n ander vrag tipe te vervoer
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Herbou vliegtuig om 'n ander vrag tipe te ontvoer
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Omkeer rigting van trein
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forseer voertuig om te draai om
@@ -3083,10 +3137,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Begin
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Aanwyse)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Naam
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Benaam trein
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Benoem trein
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Benaam pad voertuig
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Benaam skip
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benaam vliegtuig
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Benoem skip
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Benoem vliegtuig
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ouderdom: {LTBLUE}{STRING}{BLACK}   Lopende kostes: {LTBLUE}{CURRENCY_LONG}/yr
 # The next two need to stay in this order
@@ -3113,10 +3167,10 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Diens tu
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot diens tussentyd
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verminder diens tussentyd
 
-STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Benaam trein
+STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Benoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benaam pad voertuig
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Benaam skip
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Benaam vliegtuig
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Benoem skip
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Benoem vliegtuig
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY_LONG}
@@ -3142,24 +3196,25 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Toon tot
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasiteit: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Herstel)
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Herbou)
 STR_REFIT_TITLE                                                 :{GOLD}Kies vrag tipe vir skip te ontvoer:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Herstelkoste: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Herboukoste: {GOLD}{CURRENCY_LONG}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selekteer die voertuig vir herbou. Trek met die muis om meer as een voertuig te selekteer. Kliek op 'n leë spasie sal die hele voertuig selekteer. Ctrl+Kliek sal 'n voertuig en daarop volgende ketting selekteer
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies vrag tipe vir trein te ontvoer
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kies vrag tipe vir pad voertuig om te vervoer
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kies vrag tipe vir skip te ontvoer
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Kies vrag tipe vir vliegtuig om te ontvoer
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Herstel trein
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Herbou trein
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Herpas pad voertuig
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Herstel skip
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Herstel vliegtuig
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Herbou skip
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Herbou vliegtuig
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Herstel trein om verlig vrag tipe te ontvoer
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Herpas pad voertuig om beklemtoonde vrat tipe te ontvoer
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Herstel skip om die verlig vrag tipe te ontvoer
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Herstel vliegtuig om verlig vrag tipe te ontvoer
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Herbou trein om verlig vrag tipe te ontvoer
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Herbou pad voertuig om beklemtoonde vrat tipe te ontvoer
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Herbou skip om die verligte vrag tipe te ontvoer
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Herbou vliegtuig om verlig vrag tipe te ontvoer
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Opdrae)
@@ -3376,7 +3431,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Daar was
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die SpeletjieSkrif ontfout venster is net beskikbaar vir die server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}AI / Spel Konfigurasie
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spel Konfigurasie
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Die Speletjieskrif wat volgende gelaai word vir die volgende spel
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die AIs wat om die volgende spel gelaai sal word
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
@@ -3401,7 +3456,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigur
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Beskikbaar {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIs
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SpeletjieSkrifte
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Speletjie Skrifte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliek om 'n skrif te kies
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Skrywer: {STRING}
@@ -3423,7 +3478,11 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} readme van {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} veranderinge-log van {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} lisensie van {STRING}
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Besigtig readme
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Veranderinge-log
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Lisensie
 
 
@@ -3736,15 +3795,15 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Pad voer
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Skip in die pad
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Vliegtuig in die pad
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}kan nie trein herstel nie...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}kan nie trein herbou nie...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Kan nie pad voertuig herpas nie...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Skip kan nie herstel word nie...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Vliegtuig kan nie herstel word nie...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Skip kan nie herbou word nie...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Vliegtuig kan nie herbou word nie...
 
-STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Trein kan nie benaam word nie...
+STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Trein kan nie benoem word nie...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Kan nie pad voertuig 'n naam gee nie...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan nie skip benaam nie...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Vliegtuig kan nie benaam word nie...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Kan nie skip benoem nie...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Vliegtuig kan nie benoem word nie...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Trein kan nie stop/begin word nie...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Kan nie pad voertuig stop/begin nie...
