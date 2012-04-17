@@ -57,6 +57,8 @@ void SQGSStation_Register(Squirrel *engine)
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::HasStationType,             "HasStationType",             3, ".ii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::HasRoadType,                "HasRoadType",                3, ".ii");
 	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::GetNearestTown,             "GetNearestTown",             2, ".i");
+	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::IsAirportClosed,            "IsAirportClosed",            2, ".i");
+	SQGSStation.DefSQStaticMethod(engine, &ScriptStation::OpenCloseAirport,           "OpenCloseAirport",           2, ".i");
 
 	SQGSStation.PostRegister(engine);
 }

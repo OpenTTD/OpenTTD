@@ -172,6 +172,24 @@ public:
 	 *  towns grow, towns change. So don't depend on this value too much.
 	 */
 	static TownID GetNearestTown(StationID station_id);
+
+	/**
+	 * Get the open/closed state of an airport.
+	 * @param station_id The airport to look at.
+	 * @pre IsValidStation(station_id).
+	 * @pre HasStationType(station_id, STATION_AIRPORT).
+	 * @return True if the airport is currently closed to incoming traffic.
+	 */
+	static bool IsAirportClosed(StationID station_id);
+
+	/**
+	 * Toggle the open/closed state of an airport.
+	 * @param station_id The airport to modify.
+	 * @pre IsValidStation(station_id).
+	 * @pre HasStationType(station_id, STATION_AIRPORT).
+	 * @return True if the state could be toggled.
+	 */
+	static bool OpenCloseAirport(StationID station_id);
 };
 
 DECLARE_ENUM_AS_BIT_SET(ScriptStation::StationType)

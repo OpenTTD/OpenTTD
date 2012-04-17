@@ -2059,6 +2059,7 @@ public:
 		WID_SV_LOCATION                      = ::WID_SV_LOCATION,                      ///< 'Location' button.
 		WID_SV_ACCEPTS_RATINGS               = ::WID_SV_ACCEPTS_RATINGS,               ///< 'Accepts' / 'Ratings' button.
 		WID_SV_RENAME                        = ::WID_SV_RENAME,                        ///< 'Rename' button.
+		WID_SV_CLOSE_AIRPORT                 = ::WID_SV_CLOSE_AIRPORT,                 ///< 'Close airport' button.
 		WID_SV_TRAINS                        = ::WID_SV_TRAINS,                        ///< List of scheduled trains button.
 		WID_SV_ROADVEHS                      = ::WID_SV_ROADVEHS,                      ///< List of scheduled road vehs button.
 		WID_SV_SHIPS                         = ::WID_SV_SHIPS,                         ///< List of scheduled ships button.

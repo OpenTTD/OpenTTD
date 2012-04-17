@@ -122,7 +122,8 @@ static const uint64
 	OUT_WAY_block2           = 1ULL << 31,
 	/* end of new blocks */
 
-	NOTHING_block            = 1ULL << 30;
+	NOTHING_block            = 1ULL << 30,
+	AIRPORT_CLOSED_block     = 1ULL << 63; ///< Dummy block for indicating a closed airport.
 
 /** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {

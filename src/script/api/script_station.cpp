@@ -127,3 +127,19 @@
 
 	return ::Station::Get(station_id)->town->index;
 }
+
+/*static */ bool ScriptStation::IsAirportClosed(StationID station_id)
+{
+	EnforcePrecondition(false, IsValidStation(station_id));
+	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
+
+	return (::Station::Get(station_id)->airport.flags & AIRPORT_CLOSED_block) != 0;
+}
+
+/*static */ bool ScriptStation::OpenCloseAirport(StationID station_id)
+{
+	EnforcePrecondition(false, IsValidStation(station_id));
+	EnforcePrecondition(false, HasStationType(station_id, STATION_AIRPORT));
+
+	return ScriptObject::DoCommand(0, station_id, 0, CMD_OPEN_CLOSE_AIRPORT);
+}

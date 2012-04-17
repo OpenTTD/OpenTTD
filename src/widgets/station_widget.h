@@ -21,6 +21,7 @@ enum StationViewWidgets {
 	WID_SV_LOCATION,           ///< 'Location' button.
 	WID_SV_ACCEPTS_RATINGS,    ///< 'Accepts' / 'Ratings' button.
 	WID_SV_RENAME,             ///< 'Rename' button.
+	WID_SV_CLOSE_AIRPORT,      ///< 'Close airport' button.
 	WID_SV_TRAINS,             ///< List of scheduled trains button.
 	WID_SV_ROADVEHS,           ///< List of scheduled road vehs button.
 	WID_SV_SHIPS,              ///< List of scheduled ships button.
