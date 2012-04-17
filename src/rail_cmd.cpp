@@ -1845,7 +1845,7 @@ static uint32 _drawtile_track_palette;
 static void DrawTrackFence_NW(const TileInfo *ti, SpriteID base_image)
 {
 	RailFenceOffset rfo = RFO_FLAT_X;
-	if (ti->tileh != SLOPE_FLAT) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SW : RFO_SLOPE_NE;
+	if (ti->tileh & SLOPE_NW) rfo = (ti->tileh & SLOPE_W) ? RFO_SLOPE_SW : RFO_SLOPE_NE;
 	AddSortableSpriteToDraw(base_image + rfo, _drawtile_track_palette,
 		ti->x, ti->y + 1, 16, 1, 4, ti->z);
 }
@@ -1853,7 +1853,7 @@ static void DrawTrackFence_NW(const TileInfo *ti, SpriteID base_image)
 static void DrawTrackFence_SE(const TileInfo *ti, SpriteID base_image)
 {
 	RailFenceOffset rfo = RFO_FLAT_X;
-	if (ti->tileh != SLOPE_FLAT) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SW : RFO_SLOPE_NE;
+	if (ti->tileh & SLOPE_SE) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SW : RFO_SLOPE_NE;
 	AddSortableSpriteToDraw(base_image + rfo, _drawtile_track_palette,
 		ti->x, ti->y + TILE_SIZE - 1, 16, 1, 4, ti->z);
 }
@@ -1867,7 +1867,7 @@ static void DrawTrackFence_NW_SE(const TileInfo *ti, SpriteID base_image)
 static void DrawTrackFence_NE(const TileInfo *ti, SpriteID base_image)
 {
 	RailFenceOffset rfo = RFO_FLAT_Y;
-	if (ti->tileh != SLOPE_FLAT) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SE : RFO_SLOPE_NW;
+	if (ti->tileh & SLOPE_NE) rfo = (ti->tileh & SLOPE_E) ? RFO_SLOPE_SE : RFO_SLOPE_NW;
 	AddSortableSpriteToDraw(base_image + rfo, _drawtile_track_palette,
 		ti->x + 1, ti->y, 1, 16, 4, ti->z);
 }
@@ -1875,7 +1875,7 @@ static void DrawTrackFence_NE(const TileInfo *ti, SpriteID base_image)
 static void DrawTrackFence_SW(const TileInfo *ti, SpriteID base_image)
 {
 	RailFenceOffset rfo = RFO_FLAT_Y;
-	if (ti->tileh != SLOPE_FLAT) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SE : RFO_SLOPE_NW;
+	if (ti->tileh & SLOPE_SW) rfo = (ti->tileh & SLOPE_S) ? RFO_SLOPE_SE : RFO_SLOPE_NW;
 	AddSortableSpriteToDraw(base_image + rfo, _drawtile_track_palette,
 		ti->x + TILE_SIZE - 1, ti->y, 1, 16, 4, ti->z);
 }
@@ -2553,78 +2553,37 @@ static void TileLoop_Track(TileIndex tile)
 		/* determine direction of fence */
 		TrackBits rail = GetTrackBits(tile);
 
-		switch (rail) {
-			case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
-			case TRACK_BIT_LOWER: new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
-			case TRACK_BIT_LEFT:  new_ground = RAIL_GROUND_FENCE_VERT1;  break;
-			case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
+		Owner owner = GetTileOwner(tile);
+		byte fences = 0;
 
-			default: {
-				Owner owner = GetTileOwner(tile);
+		for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+			static const TrackBits dir_to_trackbits[DIAGDIR_END] = {TRACK_BIT_3WAY_NE, TRACK_BIT_3WAY_SE, TRACK_BIT_3WAY_SW, TRACK_BIT_3WAY_NW};
 
-				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) || (
-							(rail & TRACK_BIT_3WAY_NW) == 0 &&
-							(rail & TRACK_BIT_X)
-						)) {
-					TileIndex n = tile + TileDiffXY(0, -1);
-					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
+			/* Track bit on this edge => no fence. */
+			if ((rail & dir_to_trackbits[d]) != TRACK_BIT_NONE) continue;
 
-					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
-							!IsTileOwner(n, owner) ||
-							nrail == TRACK_BIT_UPPER ||
-							nrail == TRACK_BIT_LEFT) {
-						new_ground = RAIL_GROUND_FENCE_NW;
-					}
-				}
+			TileIndex tile2 = tile + TileOffsByDiagDir(d);
 
-				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_LEFT) || (
-							(rail & TRACK_BIT_3WAY_SE) == 0 &&
-							(rail & TRACK_BIT_X)
-						)) {
-					TileIndex n = tile + TileDiffXY(0, 1);
-					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
-
-					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
-							!IsTileOwner(n, owner) ||
-							nrail == TRACK_BIT_LOWER ||
-							nrail == TRACK_BIT_RIGHT) {
-						new_ground = (new_ground == RAIL_GROUND_FENCE_NW) ?
-							RAIL_GROUND_FENCE_SENW : RAIL_GROUND_FENCE_SE;
-					}
-				}
-
-				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_LEFT) || (
-							(rail & TRACK_BIT_3WAY_NE) == 0 &&
-							(rail & TRACK_BIT_Y)
-						)) {
-					TileIndex n = tile + TileDiffXY(-1, 0);
-					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
-
-					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
-							!IsTileOwner(n, owner) ||
-							nrail == TRACK_BIT_UPPER ||
-							nrail == TRACK_BIT_RIGHT) {
-						new_ground = RAIL_GROUND_FENCE_NE;
-					}
-				}
-
-				if (rail == (TRACK_BIT_UPPER | TRACK_BIT_RIGHT) || (
-							(rail & TRACK_BIT_3WAY_SW) == 0 &&
-							(rail & TRACK_BIT_Y)
-						)) {
-					TileIndex n = tile + TileDiffXY(1, 0);
-					TrackBits nrail = (IsPlainRailTile(n) ? GetTrackBits(n) : TRACK_BIT_NONE);
-
-					if ((!IsTileType(n, MP_RAILWAY) && !IsRailWaypointTile(n)) ||
-							!IsTileOwner(n, owner) ||
-							nrail == TRACK_BIT_LOWER ||
-							nrail == TRACK_BIT_LEFT) {
-						new_ground = (new_ground == RAIL_GROUND_FENCE_NE) ?
-							RAIL_GROUND_FENCE_NESW : RAIL_GROUND_FENCE_SW;
-					}
-				}
-				break;
+			/* Show fences if it's a house, industry, road, tunnelbridge or not owned by us. */
+			if (!IsValidTile(tile2) || IsTileType(tile2, MP_HOUSE) || IsTileType(tile2, MP_INDUSTRY) ||
+					IsTileType(tile2, MP_ROAD) || IsTileType(tile2, MP_TUNNELBRIDGE) || !IsTileOwner(tile2, owner)) {
+				fences |= 1 << d;
 			}
+		}
+
+		switch (fences) {
+			case 0: break;
+			case (1 << DIAGDIR_NE): new_ground = RAIL_GROUND_FENCE_NE; break;
+			case (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_SE; break;
+			case (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_SW; break;
+			case (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_NW; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_NESW; break;
+			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_SENW; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_SE): new_ground = RAIL_GROUND_FENCE_VERT1; break;
+			case (1 << DIAGDIR_NE) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
+			case (1 << DIAGDIR_SE) | (1 << DIAGDIR_SW): new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
+			case (1 << DIAGDIR_SW) | (1 << DIAGDIR_NW): new_ground = RAIL_GROUND_FENCE_VERT2; break;
+			default: NOT_REACHED();
 		}
 	}
 
