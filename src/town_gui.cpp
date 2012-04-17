@@ -727,15 +727,31 @@ public:
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right, y, STR_TOWN_DIRECTORY_NONE);
 					break;
 				}
+
 				/* At least one town available. */
+				bool rtl = _current_text_dir == TD_RTL;
+				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
+				int text_left  = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : icon_size.width + 2);
+				int text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? icon_size.width + 2 : 0);
+				int icon_x = rtl ? r.right - WD_FRAMERECT_RIGHT - icon_size.width : r.left + WD_FRAMERECT_LEFT;
+
 				for (uint i = this->vscroll->GetPosition(); i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
-
 					assert(t->xy != INVALID_TILE);
+
+					/* Draw rating icon. */
+					if (_game_mode == GM_EDITOR || !HasBit(t->have_ratings, _local_company)) {
+						DrawSprite(SPR_TOWN_RATING_NA, PAL_NONE, icon_x, y + (this->resize.step_height - icon_size.height) / 2);
+					} else {
+						SpriteID icon = SPR_TOWN_RATING_APALLING;
+						if (t->ratings[_local_company] > RATING_VERYPOOR) icon = SPR_TOWN_RATING_MEDIOCRE;
+						if (t->ratings[_local_company] > RATING_GOOD)     icon = SPR_TOWN_RATING_GOOD;
+						DrawSprite(icon, PAL_NONE, icon_x, y + (this->resize.step_height - icon_size.height) / 2);
+					}
 
 					SetDParam(0, t->index);
 					SetDParam(1, t->population);
-					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TOWN_DIRECTORY_TOWN);
+					DrawString(text_left, text_right, y + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, STR_TOWN_DIRECTORY_TOWN);
 
 					y += this->resize.step_height;
 					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
@@ -767,6 +783,9 @@ public:
 					SetDParam(1, 10000000); // 10^7
 					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
 				}
+				Dimension icon_size = GetSpriteSize(SPR_TOWN_RATING_GOOD);
+				d.width += icon_size.width + 2;
+				d.height = max(d.height, icon_size.height);
 				resize->height = d.height;
 				d.height *= 5;
 				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
