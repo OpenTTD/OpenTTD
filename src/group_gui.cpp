@@ -646,9 +646,9 @@ public:
 				this->SetDirty();
 
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
-				if (id_g >= this->groups.Length()) return;
+				GroupID new_g = id_g >= this->groups.Length() ? NEW_GROUP : this->groups[id_g]->index;
 
-				DoCommandP(0, this->groups[id_g]->index, vindex | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, new_g, vindex | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE), new_g == NEW_GROUP ? CcAddVehicleNewGroup : NULL);
 				break;
 			}
 
@@ -862,6 +862,21 @@ void CcCreateGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 
 	VehicleGroupWindow *w = FindVehicleGroupWindow((VehicleType)p1, _current_company);
 	if (w != NULL) w->ShowRenameGroupWindow(_new_group_id, true);
+}
+
+/**
+ * Open rename window after adding a vehicle to a new group via drag and drop.
+ * @param success Did command succeed?
+ * @param tile Unused.
+ * @param p1 Unused.
+ * @param p2 Bit 0-19: Vehicle ID.
+ */
+void CcAddVehicleNewGroup(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (result.Failed()) return;
+	assert(Vehicle::IsValidID(GB(p2, 0, 20)));
+
+	CcCreateGroup(result, 0, Vehicle::Get(GB(p2, 0, 20))->type, 0);
 }
 
 /**

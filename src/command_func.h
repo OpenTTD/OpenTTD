@@ -91,6 +91,7 @@ CommandCallback CcGame;
 
 /* group_gui.cpp */
 CommandCallback CcCreateGroup;
+CommandCallback CcAddVehicleNewGroup;
 
 /* industry_gui.cpp */
 CommandCallback CcBuildIndustry;

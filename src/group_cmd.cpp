@@ -429,7 +429,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Vehicle *v = Vehicle::GetIfValid(GB(p2, 0, 20));
 	GroupID new_g = p1;
 
-	if (v == NULL || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
+	if (v == NULL || (!Group::IsValidID(new_g) && !IsDefaultGroupID(new_g) && new_g != NEW_GROUP)) return CMD_ERROR;
 
 	if (Group::IsValidID(new_g)) {
 		Group *g = Group::Get(new_g);
@@ -437,6 +437,14 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	}
 
 	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return CMD_ERROR;
+
+	if (new_g == NEW_GROUP) {
+		/* Create new group. */
+		CommandCost ret = CmdCreateGroup(0, flags, v->type, 0, NULL);
+		if (ret.Failed()) return ret;
+
+		new_g = _new_group_id;
+	}
 
 	if (flags & DC_EXEC) {
 		AddVehicleToGroup(v, new_g);
