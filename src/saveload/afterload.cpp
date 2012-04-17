@@ -483,6 +483,10 @@ bool AfterLoadGame()
 
 	TileIndex map_size = MapSize();
 
+	extern TileIndex _cur_tileloop_tile; // From landscape.cpp.
+	/* The LFSR used in RunTileLoop iteration cannot have a zeroed state, make it non-zeroed. */
+	if (_cur_tileloop_tile == 0) _cur_tileloop_tile = 1;
+
 	if (IsSavegameVersionBefore(98)) GamelogOldver();
 
 	GamelogTestRevision();

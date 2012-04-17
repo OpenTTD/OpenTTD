@@ -712,32 +712,43 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 
 TileIndex _cur_tileloop_tile;
-#define TILELOOP_BITS 4
-#define TILELOOP_SIZE (1 << TILELOOP_BITS)
-#define TILELOOP_ASSERTMASK ((TILELOOP_SIZE - 1) + ((TILELOOP_SIZE - 1) << MapLogX()))
-#define TILELOOP_CHKMASK (((1 << (MapLogX() - TILELOOP_BITS))-1) << TILELOOP_BITS)
 
+/**
+ * Gradually iterate over all tiles on the map, calling their TileLoopProcs once every 256 ticks.
+ */
 void RunTileLoop()
 {
-	TileIndex tile = _cur_tileloop_tile;
+	/* The pseudorandom sequence of tiles is generated using a Galois linear feedback
+	 * shift register (LFSR). This allows a deterministic pseudorandom ordering, but
+	 * still with minimal state and fast iteration. */
 
-	assert((tile & ~TILELOOP_ASSERTMASK) == 0);
-	uint count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
-	do {
+	/* Maximal length LFSR feedback terms, from 12-bit (for 64x64 maps) to 22-bit (for 2048x2048 maps).
+	 * Extracted from http://www.ece.cmu.edu/~koopman/lfsr/ */
+	static const uint32 feedbacks[] = {
+		0xD8F, 0x1296, 0x2496, 0x4357, 0x8679, 0x1030E, 0x206CD, 0x403FE, 0x807B8, 0x1004B2, 0x2006A8
+	};
+	const uint32 feedback = feedbacks[MapLogX() + MapLogY() - 12];
+
+	/* We update every tile every 256 ticks, so divide the map size by 2^8 = 256 */
+	uint count = 1 << (MapLogX() + MapLogY() - 8);
+
+	TileIndex tile = _cur_tileloop_tile;
+	/* The LFSR cannot have a zeroed state. */
+	assert(tile != 0);
+
+	/* Manually update tile 0 every 256 ticks - the LFSR never iterates over it itself.  */
+	if (_tick_counter % 256 == 0) {
+		_tile_type_procs[GetTileType(0)]->tile_loop_proc(0);
+		count--;
+	}
+
+	while (count--) {
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
-		if (TileX(tile) < MapSizeX() - TILELOOP_SIZE) {
-			tile += TILELOOP_SIZE; // no overflow
-		} else {
-			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); // x would overflow, also increase y
-		}
-	} while (--count != 0);
-	assert((tile & ~TILELOOP_ASSERTMASK) == 0);
-
-	tile += 9;
-	if (tile & TILELOOP_CHKMASK) {
-		tile = (tile + MapSizeX()) & TILELOOP_ASSERTMASK;
+		/* Get the next tile in sequence using a Galois LFSR. */
+		tile = (tile >> 1) ^ (-(int32)(tile & 1) & feedback);
 	}
+
 	_cur_tileloop_tile = tile;
 }
 

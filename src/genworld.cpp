@@ -159,6 +159,7 @@ static void _GenerateWorld(void *)
 			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
 			for (i = 0; i < 0x500; i++) {
 				RunTileLoop();
+				_tick_counter++;
 				IncreaseGeneratingWorldProgress(GWP_RUNTILELOOP);
 			}
 
