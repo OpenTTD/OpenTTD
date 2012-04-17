@@ -91,6 +91,8 @@ void VehicleServiceInDepot(Vehicle *v)
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
 	v->reliability = v->GetEngine()->reliability;
+	/* Prevent vehicles from breaking down directly after exiting the depot. */
+	v->breakdown_chance /= 4;
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
