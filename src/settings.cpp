@@ -220,20 +220,23 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
 	}
 
 	switch (type) {
-	case SLE_VAR_BL:
-	case SLE_VAR_I8:
-	case SLE_VAR_U8:
-		for (i = 0; i != nitems; i++) ((byte*)array)[i] = items[i];
-		break;
-	case SLE_VAR_I16:
-	case SLE_VAR_U16:
-		for (i = 0; i != nitems; i++) ((uint16*)array)[i] = items[i];
-		break;
-	case SLE_VAR_I32:
-	case SLE_VAR_U32:
-		for (i = 0; i != nitems; i++) ((uint32*)array)[i] = items[i];
-		break;
-	default: NOT_REACHED();
+		case SLE_VAR_BL:
+		case SLE_VAR_I8:
+		case SLE_VAR_U8:
+			for (i = 0; i != nitems; i++) ((byte*)array)[i] = items[i];
+			break;
+
+		case SLE_VAR_I16:
+		case SLE_VAR_U16:
+			for (i = 0; i != nitems; i++) ((uint16*)array)[i] = items[i];
+			break;
+
+		case SLE_VAR_I32:
+		case SLE_VAR_U32:
+			for (i = 0; i != nitems; i++) ((uint32*)array)[i] = items[i];
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	return true;
@@ -255,14 +258,14 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
 
 	for (i = 0; i != nelems; i++) {
 		switch (type) {
-		case SLE_VAR_BL:
-		case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
-		case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
-		case SLE_VAR_I16: v = *(const  int16 *)p; p += 2; break;
-		case SLE_VAR_U16: v = *(const uint16 *)p; p += 2; break;
-		case SLE_VAR_I32: v = *(const  int32 *)p; p += 4; break;
-		case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
-		default: NOT_REACHED();
+			case SLE_VAR_BL:
+			case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
+			case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
+			case SLE_VAR_I16: v = *(const  int16 *)p; p += 2; break;
+			case SLE_VAR_U16: v = *(const uint16 *)p; p += 2; break;
+			case SLE_VAR_I32: v = *(const  int32 *)p; p += 4; break;
+			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
+			default: NOT_REACHED();
 		}
 		buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
 	}
@@ -339,48 +342,52 @@ static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32
 static const void *StringToVal(const SettingDescBase *desc, const char *orig_str)
 {
 	const char *str = orig_str == NULL ? "" : orig_str;
+
 	switch (desc->cmd) {
-	case SDT_NUMX: {
-		char *end;
-		size_t val = strtoul(str, &end, 0);
-		if (*end != '\0') {
-			SetDParamStr(0, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
+		case SDT_NUMX: {
+			char *end;
+			size_t val = strtoul(str, &end, 0);
+			if (*end != '\0') {
+				SetDParamStr(0, desc->name);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
+			}
+			return (void*)val;
 		}
-		return (void*)val;
-	}
-	case SDT_ONEOFMANY: {
-		size_t r = LookupOneOfMany(desc->many, str);
-		/* if the first attempt of conversion from string to the appropriate value fails,
-		 * look if we have defined a converter from old value to new value. */
-		if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
-		if (r != (size_t)-1) return (void*)r; // and here goes converted value
 
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return 0;
-	}
-	case SDT_MANYOFMANY: {
-		size_t r = LookupManyOfMany(desc->many, str);
-		if (r != (size_t)-1) return (void*)r;
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return NULL;
-	}
-	case SDT_BOOLX:
-		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
-		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
+		case SDT_ONEOFMANY: {
+			size_t r = LookupOneOfMany(desc->many, str);
+			/* if the first attempt of conversion from string to the appropriate value fails,
+			 * look if we have defined a converter from old value to new value. */
+			if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
+			if (r != (size_t)-1) return (void*)r; // and here goes converted value
 
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		break;
+			SetDParamStr(0, str);
+			SetDParamStr(1, desc->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			return 0;
+		}
 
-	case SDT_STRING: return orig_str;
-	case SDT_INTLIST: return str;
-	default: break;
+		case SDT_MANYOFMANY: {
+			size_t r = LookupManyOfMany(desc->many, str);
+			if (r != (size_t)-1) return (void*)r;
+			SetDParamStr(0, str);
+			SetDParamStr(1, desc->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			return NULL;
+		}
+
+		case SDT_BOOLX:
+			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
+			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
+
+			SetDParamStr(0, str);
+			SetDParamStr(1, desc->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			break;
+
+		case SDT_STRING: return orig_str;
+		case SDT_INTLIST: return str;
+		default: break;
 	}
 
 	return NULL;
@@ -490,38 +497,41 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 		ptr = GetVariableAddress(object, sld);
 
 		switch (sdb->cmd) {
-		case SDT_BOOLX: // All four are various types of (integer) numbers
-		case SDT_NUMX:
-		case SDT_ONEOFMANY:
-		case SDT_MANYOFMANY:
-			Write_ValidateSetting(ptr, sd, (int32)(size_t)p); break;
+			case SDT_BOOLX: // All four are various types of (integer) numbers
+			case SDT_NUMX:
+			case SDT_ONEOFMANY:
+			case SDT_MANYOFMANY:
+				Write_ValidateSetting(ptr, sd, (int32)(size_t)p); break;
 
-		case SDT_STRING:
-			switch (GetVarMemType(sld->conv)) {
-				case SLE_VAR_STRB:
-				case SLE_VAR_STRBQ:
-					if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
-					break;
-				case SLE_VAR_STR:
-				case SLE_VAR_STRQ:
-					free(*(char**)ptr);
-					*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
-					break;
-				case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
-				default: NOT_REACHED();
-			}
-			break;
+			case SDT_STRING:
+				switch (GetVarMemType(sld->conv)) {
+					case SLE_VAR_STRB:
+					case SLE_VAR_STRBQ:
+						if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
+						break;
 
-		case SDT_INTLIST: {
-			if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
-				SetDParamStr(0, sdb->name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
-			} else if (sd->desc.proc_cnvt != NULL) {
-				sd->desc.proc_cnvt((const char*)p);
+					case SLE_VAR_STR:
+					case SLE_VAR_STRQ:
+						free(*(char**)ptr);
+						*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
+						break;
+
+					case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
+
+					default: NOT_REACHED();
+				}
+				break;
+
+			case SDT_INTLIST: {
+				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
+					SetDParamStr(0, sdb->name);
+					ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+				} else if (sd->desc.proc_cnvt != NULL) {
+					sd->desc.proc_cnvt((const char*)p);
+				}
+				break;
 			}
-			break;
-		}
-		default: NOT_REACHED();
+			default: NOT_REACHED();
 		}
 	}
 }
@@ -576,72 +586,80 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 			/* The main type of a variable/setting is in bytes 8-15
 			 * The subtype (what kind of numbers do we have there) is in 0-7 */
 			switch (sdb->cmd) {
-			case SDT_BOOLX:
-			case SDT_NUMX:
-			case SDT_ONEOFMANY:
-			case SDT_MANYOFMANY:
-				switch (GetVarMemType(sld->conv)) {
-				case SLE_VAR_BL:
-					if (*(bool*)ptr == (p != NULL)) continue;
+				case SDT_BOOLX:
+				case SDT_NUMX:
+				case SDT_ONEOFMANY:
+				case SDT_MANYOFMANY:
+					switch (GetVarMemType(sld->conv)) {
+						case SLE_VAR_BL:
+							if (*(bool*)ptr == (p != NULL)) continue;
+							break;
+
+						case SLE_VAR_I8:
+						case SLE_VAR_U8:
+							if (*(byte*)ptr == (byte)(size_t)p) continue;
+							break;
+
+						case SLE_VAR_I16:
+						case SLE_VAR_U16:
+							if (*(uint16*)ptr == (uint16)(size_t)p) continue;
+							break;
+
+						case SLE_VAR_I32:
+						case SLE_VAR_U32:
+							if (*(uint32*)ptr == (uint32)(size_t)p) continue;
+							break;
+
+						default: NOT_REACHED();
+					}
 					break;
-				case SLE_VAR_I8:
-				case SLE_VAR_U8:
-					if (*(byte*)ptr == (byte)(size_t)p) continue;
-					break;
-				case SLE_VAR_I16:
-				case SLE_VAR_U16:
-					if (*(uint16*)ptr == (uint16)(size_t)p) continue;
-					break;
-				case SLE_VAR_I32:
-				case SLE_VAR_U32:
-					if (*(uint32*)ptr == (uint32)(size_t)p) continue;
-					break;
-				default: NOT_REACHED();
-				}
-				break;
-			default: break; // Assume the other types are always changed
+
+				default: break; // Assume the other types are always changed
 			}
 		}
 
 		/* Value has changed, get the new value and put it into a buffer */
 		switch (sdb->cmd) {
-		case SDT_BOOLX:
-		case SDT_NUMX:
-		case SDT_ONEOFMANY:
-		case SDT_MANYOFMANY: {
-			uint32 i = (uint32)ReadValue(ptr, sld->conv);
+			case SDT_BOOLX:
+			case SDT_NUMX:
+			case SDT_ONEOFMANY:
+			case SDT_MANYOFMANY: {
+				uint32 i = (uint32)ReadValue(ptr, sld->conv);
 
-			switch (sdb->cmd) {
-			case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", lastof(buf)); break;
-			case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : "%u", i); break;
-			case SDT_ONEOFMANY:  MakeOneOfMany(buf, lastof(buf), sdb->many, i); break;
-			case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
-			default: NOT_REACHED();
-			}
-			break;
-		}
-
-		case SDT_STRING:
-			switch (GetVarMemType(sld->conv)) {
-			case SLE_VAR_STRB: strecpy(buf, (char*)ptr, lastof(buf)); break;
-			case SLE_VAR_STRBQ:seprintf(buf, lastof(buf), "\"%s\"", (char*)ptr); break;
-			case SLE_VAR_STR:  strecpy(buf, *(char**)ptr, lastof(buf)); break;
-			case SLE_VAR_STRQ:
-				if (*(char**)ptr == NULL) {
-					buf[0] = '\0';
-				} else {
-					seprintf(buf, lastof(buf), "\"%s\"", *(char**)ptr);
+				switch (sdb->cmd) {
+					case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", lastof(buf)); break;
+					case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : "%u", i); break;
+					case SDT_ONEOFMANY:  MakeOneOfMany(buf, lastof(buf), sdb->many, i); break;
+					case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
+					default: NOT_REACHED();
 				}
 				break;
-			case SLE_VAR_CHAR: buf[0] = *(char*)ptr; buf[1] = '\0'; break;
-			default: NOT_REACHED();
 			}
-			break;
 
-		case SDT_INTLIST:
-			MakeIntList(buf, lastof(buf), ptr, sld->length, GetVarMemType(sld->conv));
-			break;
-		default: NOT_REACHED();
+			case SDT_STRING:
+				switch (GetVarMemType(sld->conv)) {
+					case SLE_VAR_STRB: strecpy(buf, (char*)ptr, lastof(buf)); break;
+					case SLE_VAR_STRBQ:seprintf(buf, lastof(buf), "\"%s\"", (char*)ptr); break;
+					case SLE_VAR_STR:  strecpy(buf, *(char**)ptr, lastof(buf)); break;
+
+					case SLE_VAR_STRQ:
+						if (*(char**)ptr == NULL) {
+							buf[0] = '\0';
+						} else {
+							seprintf(buf, lastof(buf), "\"%s\"", *(char**)ptr);
+						}
+						break;
+
+					case SLE_VAR_CHAR: buf[0] = *(char*)ptr; buf[1] = '\0'; break;
+					default: NOT_REACHED();
+				}
+				break;
+
+			case SDT_INTLIST:
+				MakeIntList(buf, lastof(buf), ptr, sld->length, GetVarMemType(sld->conv));
+				break;
+
+			default: NOT_REACHED();
 		}
 
 		/* The value is different, that means we have to write it to the ini */
