@@ -17,7 +17,7 @@
 
 static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
 static const int CF_ISEURO = 1; ///< Currency _is_ the Euro.
-static const uint NUM_CURRENCY = 29; ///< Number of currencies.
+static const uint NUM_CURRENCY = 30; ///< Number of currencies.
 static const int CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1; ///< Index of the custom currency.
 
 /** Specification of a currency. */
