@@ -2861,7 +2861,6 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}עלות
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}עלות: {CURRENCY_LONG} מהירות מקסימלית: {VELOCITY}{}קיבולת: {CARGO_LONG}{}הוצאה שוטפת: {CURRENCY_LONG}/לשנה
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} החלף
 STR_REPLACE_VEHICLE_TRAIN                                       :רכבת
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :רכב
 STR_REPLACE_VEHICLE_SHIP                                        :כלי שייט

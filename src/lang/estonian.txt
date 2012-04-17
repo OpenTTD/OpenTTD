@@ -3153,7 +3153,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Maksumu
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Maksumus: {CURRENCY_LONG} Maksimaalne kiirus: {VELOCITY} Tegevusraadius: {COMMA} ruutu{}Mahutavus: {CARGO_LONG}{}Kasutamise kulu: {CURRENCY_LONG}/aastas
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Rong
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Sõiduk
 STR_REPLACE_VEHICLE_SHIP                                        :Laev

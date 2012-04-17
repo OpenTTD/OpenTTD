@@ -2937,7 +2937,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}費用�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}費用：{CURRENCY_LONG} 最高速度：{VELOCITY}{}容量：{CARGO_LONG}{}營運成本：{CURRENCY_LONG}/年
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}替換 {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :列車
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :車輛
 STR_REPLACE_VEHICLE_SHIP                                        :船舶

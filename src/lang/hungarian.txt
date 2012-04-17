@@ -3161,7 +3161,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Ár: {C
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :vonat
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :közúti jármű
 STR_REPLACE_VEHICLE_SHIP                                        :hajó

@@ -2788,7 +2788,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Custo: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Custo: {CURRENCY_LONG} Velocidade Máx.: {VELOCITY}{}Capacidade: {CARGO_LONG}{}Custo Mantemento: {CURRENCY_LONG}/ano
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituír {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Tren
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehículo de estrada
 STR_REPLACE_VEHICLE_SHIP                                        :Barco

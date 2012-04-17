@@ -3097,7 +3097,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Viteză maximă: {VELOCITY} Rază de acțiune: {COMMA} pătrățele{}Capacitate: {CARGO_LONG}{}Cost de rulare: {CURRENCY_LONG}/yr
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Trenul
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Autovehicolul
 STR_REPLACE_VEHICLE_SHIP                                        :Nava

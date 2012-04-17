@@ -3098,7 +3098,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Coût{N
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Coût{NBSP}: {CURRENCY_LONG} − Vitesse max.{NBSP}: {VELOCITY} − Rayon d'action{NBSP}: {COMMA} cases{}Capacité{NBSP}: {CARGO_LONG}{}Coûts d'entretien{NBSP}: {CURRENCY_LONG}/an
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Train
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Véhicule routier
 STR_REPLACE_VEHICLE_SHIP                                        :Navire

@@ -2956,7 +2956,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цена
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цена: {CURRENCY_LONG} Макс. Скорост: {VELOCITY}{}Вместимост: {CARGO_LONG}{}Експлоатационни разходи: {CURRENCY_LONG}/год.
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замяна {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Влак
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автобус/камион
 STR_REPLACE_VEHICLE_SHIP                                        :Кораб

@@ -2908,7 +2908,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosto: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Kosto: {CURRENCY_LONG} Maks. Rapido: {VELOCITY}{}Kapacito: {CARGO_LONG}{}Irkosto: {CURRENCY_LONG}/jaro
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Anstataŭu {STRING.n} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Trajno
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stratveturilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ŝipo

@@ -3097,7 +3097,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käscht
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Zuch
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossengefihr
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff

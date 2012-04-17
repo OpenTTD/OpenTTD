@@ -3098,7 +3098,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kosten:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschwindigkeit: {VELOCITY} Reichweite: {COMMA} Felder{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/a
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Zug
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Straßenfahrzeug
 STR_REPLACE_VEHICLE_SHIP                                        :Schiff

@@ -3446,7 +3446,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Кош�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Кошт: {CURRENCY_LONG} Макс. хуткасьць: {VELOCITY} Далёкасьць: {COMMA} клет{P ка кi ак}{}Умяшчальнасьць: {CARGO_LONG}{}Кошт абслугоўваньня: {CURRENCY_LONG}/год
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=m}Цягнiк
 STR_REPLACE_VEHICLE_TRAIN.gen                                   :чыгуначнага транспарту
 STR_REPLACE_VEHICLE_TRAIN.acc                                   :чыгуначны транспарт

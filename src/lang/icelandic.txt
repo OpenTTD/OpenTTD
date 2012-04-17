@@ -2892,7 +2892,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Verð: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Verð: {CURRENCY_LONG} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO_LONG}{}Rekstrarkostnaður: {CURRENCY_LONG} á ári
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Lest
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Bifreið
 STR_REPLACE_VEHICLE_SHIP                                        :Skip

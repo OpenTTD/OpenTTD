@@ -2945,7 +2945,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Costas: 
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Costas: {CURRENCY_LONG} Luas Uasta: {VELOCITY}{}Toilleadh: {CARGO_LONG}{}Costas Coinneála: {CURRENCY_LONG}/bl
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ionadaigh{STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ionadaigh{STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Traein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Feithicil Bóthair
 STR_REPLACE_VEHICLE_SHIP                                        :Long

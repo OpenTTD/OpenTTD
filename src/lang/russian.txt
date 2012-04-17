@@ -3287,7 +3287,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цен�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Цена: {CURRENCY_LONG} Макс. скорость: {VELOCITY} Дальность: {COMMA} клет{P 3 ка ки ок}{}Ёмкость: {CARGO_LONG}{}Стоимость обслуживания: {CURRENCY_LONG}/год
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Поезд
 STR_REPLACE_VEHICLE_TRAIN.gen                                   :ж/д транспорта
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автотранспорт

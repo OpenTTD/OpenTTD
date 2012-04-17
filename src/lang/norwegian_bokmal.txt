@@ -3098,7 +3098,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kostnad
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kostnad: {CURRENCY_LONG} Maks hastighet: {VELOCITY} Rekkevidde: {COMMA} ruter{}Kapasitet: {CARGO_LONG}{}Driftskostnad: {CURRENCY_LONG}/år
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Tog
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kjøretøy
 STR_REPLACE_VEHICLE_SHIP                                        :Skip

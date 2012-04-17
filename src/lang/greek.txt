@@ -3164,7 +3164,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστ
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντικατάσταση {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Τρένο
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο

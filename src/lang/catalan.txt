@@ -3098,7 +3098,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cost: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cost: {CURRENCY_LONG} Vel. max: {VELOCITY} Abast: {COMMA} cel·les{}Capacitat: {CARGO_LONG}{}Cost d'utilització: {CURRENCY_LONG}/any
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Tren
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Vehicle
 STR_REPLACE_VEHICLE_SHIP                                        :Vaixell

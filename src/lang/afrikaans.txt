@@ -3037,7 +3037,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Koste: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koste: {CURRENCY_LONG} Maks. Spoed: {VELOCITY}{}Kapasiteit: {CARGO_LONG}{}Lopende Koste: {CURRENCY_LONG}/jaar
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Trein
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Pad voertuig
 STR_REPLACE_VEHICLE_SHIP                                        :Skip

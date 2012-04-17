@@ -3193,7 +3193,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cijena:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cijena: {CURRENCY_LONG} Maks. Brzina: {VELOCITY} Domet: {COMMA} tiles{}Kapacitet: {CARGO_LONG}{}Trošak vožnje: {CURRENCY_LONG}/god
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamijeni {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamijeni {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Vlak
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Cestovno vozilo
 STR_REPLACE_VEHICLE_SHIP                                        :Brod

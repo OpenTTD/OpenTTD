@@ -3021,7 +3021,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK} الت�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK} التكلفة {CURRENCY_LONG} السرعة القصوى {VELOCITY}{} السعة {CARGO_LONG}{} كلفة التشغيل {CURRENCY_LONG} / سنة
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}تبديل {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}تبديل {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :قطار
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :مركبات
 STR_REPLACE_VEHICLE_SHIP                                        :سفن

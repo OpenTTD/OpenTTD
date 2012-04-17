@@ -3092,7 +3092,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}费用:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}购买费用: {CURRENCY_LONG} 最大速度: {VELOCITY} 航行距离: {COMMA} 格{}运载量: {CARGO_LONG}{}运营成本: {CURRENCY_LONG}/年
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}更新 {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :火车
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :汽车
 STR_REPLACE_VEHICLE_SHIP                                        :船只

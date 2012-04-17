@@ -3249,7 +3249,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Max. Hitrost: {VELOCITY} Domet: {COMMA} polj{}Zmogljivost: {CARGO_LONG}{}Stroški delovanja: {CURRENCY_LONG}/leto
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamenjaj {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zamenjaj {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Vlak
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Cestno vozilo
 STR_REPLACE_VEHICLE_SHIP                                        :Ladja

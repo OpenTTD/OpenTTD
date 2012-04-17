@@ -3097,7 +3097,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kos: {C
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kos: {CURRENCY_LONG} Kelajuan Maks.: {VELOCITY} Jarak: {COMMA} petak{}Kapasiti: {CARGO_LONG}{}Kos berjalan: {CURRENCY_LONG}/thn
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Gantikan {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Gantikan {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Keretapi
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Kenderaan Jalanraya
 STR_REPLACE_VEHICLE_SHIP                                        :Kapal

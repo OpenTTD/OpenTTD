@@ -1825,7 +1825,7 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}செ�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY} வரையறை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}{}இயக்குவதற்கான செலவு: {CURRENCY_LONG}/வரு
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}மாற்று {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}மாற்று {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :இரயில்
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :சாலை வாகனம்
 STR_REPLACE_VEHICLE_SHIP                                        :கப்பல்

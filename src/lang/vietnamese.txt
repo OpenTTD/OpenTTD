@@ -3097,7 +3097,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Gía: {
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Giá: {CURRENCY_LONG} Tốc độ max: {VELOCITY} Tầm xa: {COMMA} ô{}Trọng tải: {CARGO_LONG}{}Chi phí hoạt động: {CURRENCY_LONG}/năm
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Thay thế {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Tàu
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Xe cộ
 STR_REPLACE_VEHICLE_SHIP                                        :Tàu thủy

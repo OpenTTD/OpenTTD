@@ -3190,7 +3190,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena {C
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena {CURRENCY_LONG} Max. Rychlost {VELOCITY} Dosah: {COMMA} polí{}Kapacita: {CARGO_LONG}{}Provozní náklady: {CURRENCY_LONG}/rok
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Vlak
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Silniční vozidlo
 STR_REPLACE_VEHICLE_SHIP                                        :Loď

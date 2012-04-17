@@ -3222,7 +3222,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Цін�
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Вартість: {CURRENCY_LONG} Макс. швидкість: {VELOCITY} Дальність: {COMMA} клітинок{}Місткість: {CARGO_LONG}{}Витрати від експлуатації: {CURRENCY_LONG}/рік
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Поїзд
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Авто
 STR_REPLACE_VEHICLE_SHIP                                        :Корабель

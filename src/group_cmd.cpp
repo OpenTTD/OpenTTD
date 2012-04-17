@@ -379,6 +379,7 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		/* Assign the new one */
 		g->name = reset ? NULL : strdup(text);
 
+		SetWindowDirty(WC_REPLACE_VEHICLE, g->vehicle_type);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 	}
 
