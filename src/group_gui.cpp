@@ -106,6 +106,7 @@ private:
 
 	VehicleID vehicle_sel; ///< Selected vehicle
 	GroupID group_rename;  ///< Group being renamed, INVALID_GROUP if none
+	GroupID group_over;    ///< Group over which a vehicle is dragged, INVALID_GROUP if none
 	GUIGroupList groups;   ///< List of groups
 	uint tiny_step_height; ///< Step height for the group list
 	Scrollbar *group_sb;
@@ -207,6 +208,11 @@ private:
 	 */
 	void DrawGroupInfo(int y, int left, int right, GroupID g_id, bool protection = false) const
 	{
+		/* Highlight the group if a vehicle is dragged over it and it isn't selected. */
+		if (g_id == this->group_over && g_id != this->vli.index) {
+			GfxFillRect(left + WD_FRAMERECT_LEFT, y + WD_FRAMERECT_TOP, right - WD_FRAMERECT_RIGHT, y + this->tiny_step_height - WD_FRAMERECT_BOTTOM - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][7]);
+		}
+
 		/* draw the selected group in white, else we draw it in black */
 		TextColour colour = g_id == this->vli.index ? TC_WHITE : TC_BLACK;
 		const GroupStatistics &stats = GroupStatistics::Get(this->vli.company, g_id, this->vli.vtype);
@@ -253,6 +259,22 @@ private:
 		DrawString(x, x + this->column_size[VGC_NUMBER].width - 1, y + (this->tiny_step_height - this->column_size[VGC_NUMBER].height) / 2, STR_TINY_COMMA, colour, SA_RIGHT | SA_FORCE);
 	}
 
+	/**
+	 * Mark the widget containing the currently highlighted group as dirty.
+	 */
+	void DirtyHighlightedGroupWidget()
+	{
+		if (this->group_over == INVALID_GROUP) return;
+
+		if (IsAllGroupID(this->group_over)) {
+			this->SetWidgetDirty(WID_GL_ALL_VEHICLES);
+		} else if (IsDefaultGroupID(this->group_over)) {
+			this->SetWidgetDirty(WID_GL_DEFAULT_VEHICLES);
+		} else {
+			this->SetWidgetDirty(WID_GL_LIST_GROUP);
+		}
+	}
+
 public:
 	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(window_number)
 	{
@@ -272,6 +294,7 @@ public:
 		this->vli.index = ALL_GROUP;
 		this->vehicle_sel = INVALID_VEHICLE;
 		this->group_rename = INVALID_GROUP;
+		this->group_over = INVALID_GROUP;
 
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
@@ -611,6 +634,7 @@ public:
 				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
 
 				this->vehicle_sel = INVALID_VEHICLE;
+				this->group_over = INVALID_GROUP;
 
 				this->SetDirty();
 				break;
@@ -618,6 +642,7 @@ public:
 			case WID_GL_LIST_GROUP: { // Matrix group
 				const VehicleID vindex = this->vehicle_sel;
 				this->vehicle_sel = INVALID_VEHICLE;
+				this->group_over = INVALID_GROUP;
 				this->SetDirty();
 
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
@@ -630,6 +655,7 @@ public:
 			case WID_GL_LIST_VEHICLE: { // Matrix vehicle
 				const VehicleID vindex = this->vehicle_sel;
 				this->vehicle_sel = INVALID_VEHICLE;
+				this->group_over = INVALID_GROUP;
 				this->SetDirty();
 
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_VEHICLE);
@@ -714,7 +740,43 @@ public:
 	{
 		/* abort drag & drop */
 		this->vehicle_sel = INVALID_VEHICLE;
+		this->DirtyHighlightedGroupWidget();
+		this->group_over = INVALID_GROUP;
 		this->SetWidgetDirty(WID_GL_LIST_VEHICLE);
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		if (this->vehicle_sel == INVALID_VEHICLE) return;
+
+		/* A vehicle is dragged over... */
+		GroupID new_group_over = INVALID_GROUP;
+		switch (widget) {
+			case WID_GL_ALL_VEHICLES: // ... the 'all' group.
+				/* Moving a vehicle from the all group to the default group
+				 * is a no-op, so do not highlight then. */
+				if (!IsDefaultGroupID(Vehicle::Get(vehicle_sel)->group_id)) new_group_over = ALL_GROUP;
+				break;
+
+			case WID_GL_DEFAULT_VEHICLES: // ... the 'default' group.
+				/* Moving a vehicle from the default group to the all group
+				 * is a no-op, so do not highlight then. */
+				if (!IsDefaultGroupID(Vehicle::Get(vehicle_sel)->group_id)) new_group_over = DEFAULT_GROUP;
+				break;
+
+			case WID_GL_LIST_GROUP: { // ... the list of custom groups.
+				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
+				if (id_g < this->groups.Length()) new_group_over = this->groups[id_g]->index;
+				break;
+			}
+		}
+
+		/* Mark widgets as dirty if the group changed. */
+		if (new_group_over != this->group_over) {
+			this->DirtyHighlightedGroupWidget();
+			this->group_over = new_group_over;
+			this->DirtyHighlightedGroupWidget();
+		}
 	}
 
 	void ShowRenameGroupWindow(GroupID group, bool empty)
