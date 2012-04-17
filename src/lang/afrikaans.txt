@@ -101,7 +101,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT_LONG} s
 STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} van lewende hawe
-STR_QUANTITY_GOODS                                              :{COMMA} hok{P "" ke} goedere
+STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" te} goedere
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} yster erts
@@ -171,7 +171,7 @@ STR_BAGS                                                        :{COMMA} sakke{P
 STR_TONS                                                        :{COMMA} ton{P "" s}
 STR_LITERS                                                      :{COMMA} liters{P "" s}
 STR_ITEMS                                                       :{COMMA} items{P "" s}
-STR_CRATES                                                      :{COMMA} kratte{P "" s}
+STR_CRATES                                                      :{COMMA} krat{P "" te}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donker Blou
@@ -859,7 +859,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Gesigswe
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopie na gesigswerf
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer die ligging van die hoof vertoning na die gesigswerf
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Deeg van gesigswerf
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Deeg die lokasie van die gesigspunt na die hoofskerm
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Plak die lokasie van die gesigspunt na die hoofskerm
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spel Opsies
@@ -1861,7 +1861,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipe
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Tipe inhoud
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Naam van die inhoud
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Kliek op 'n ry am besonderheide te sien{}Kliek op die merkblokkie om dit te kies vir aflaai
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Kliek op 'n ry om besonderhede te sien{}Kliek op die merkblokkie om dit te kies vir aflaai
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selekteer alles
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merk al die inhoud wat afgelaai moet word
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selekteer opgraderings
@@ -2564,6 +2564,7 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pos verl
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vrag nodig om dorp te laat groei:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vereis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vereis in winter
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Dorp groei {RED}nie{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Senter skerm op dorp lokasie
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Plaaslike raad
@@ -3180,7 +3181,7 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Totaale 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
-STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Leë
+STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Leeg
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} vanaf {STATION}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} van {STATION} (x{NUM})
 
@@ -3261,7 +3262,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Diens indien no
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Sprong die opdraag tensy 'n diens nodig is
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig besonderheide om sprong op te baseer
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig data om sprong op te baseer
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Vrag persentasie
@@ -3329,7 +3330,7 @@ STR_ORDER_NO_LOAD                                               :(Geen oplaai)
 STR_ORDER_UNLOAD                                                :(Laai af en vat vrag)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Laai af en wag vir 'n vol vrag)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Laai af en wag vir enige vol vrag)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Laai af en los leeg)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Laai af en verlaat leeg)
 STR_ORDER_TRANSFER                                              :(Verplaas en vat vrag)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Verplaas en wag vir 'n vol vrag)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Verplaas en wag vir enige vol vrag)
