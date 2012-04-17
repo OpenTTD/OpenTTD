@@ -1526,6 +1526,13 @@ public:
 
 				_cur_signal_type = (SignalType)((uint)((widget - WID_BS_SEMAPHORE_NORM) % (SIGTYPE_LAST + 1)));
 				_cur_signal_variant = widget >= WID_BS_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
+
+				/* If 'remove' button of rail build toolbar is active, disable it. */
+				if (_remove_button_clicked) {
+					Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
+					if (w != NULL) ToggleRailButton_Remove(w);
+				}
+
 				break;
 
 			case WID_BS_CONVERT:
