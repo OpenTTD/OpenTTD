@@ -364,7 +364,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			SetDParamStr(0, str);
 			SetDParamStr(1, desc->name);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-			return 0;
+			return desc->def;
 		}
 
 		case SDT_MANYOFMANY: {
@@ -373,7 +373,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			SetDParamStr(0, str);
 			SetDParamStr(1, desc->name);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-			return NULL;
+			return desc->def;
 		}
 
 		case SDT_BOOLX:
@@ -383,7 +383,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			SetDParamStr(0, str);
 			SetDParamStr(1, desc->name);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-			break;
+			return desc->def;
 
 		case SDT_STRING: return orig_str;
 		case SDT_INTLIST: return str;
