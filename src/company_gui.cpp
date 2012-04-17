@@ -781,7 +781,8 @@ public:
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-			if (HasBit(this->sel, scheme)) {
+			/* Changed colour for the selected scheme, or all visible schemes if CTRL is pressed. */
+			if (HasBit(this->sel, scheme) || (_ctrl_pressed && _livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme))) {
 				DoCommandP(0, scheme | (widget == WID_SCL_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOUR);
 			}
 		}
