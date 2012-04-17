@@ -895,6 +895,8 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Koruna (
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilian Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonian Krooni (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
 ############ end of currency region
 
