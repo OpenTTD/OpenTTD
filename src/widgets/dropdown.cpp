@@ -172,7 +172,7 @@ struct DropdownWindow : Window {
 		if (w2 != NULL) {
 			if (w2->nested_array != NULL) {
 				NWidgetCore *nwi2 = w2->GetWidget<NWidgetCore>(this->parent_button);
-				if (nwi2->type == NWID_BUTTON_DROPDOWN) {
+				if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
 					nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
 				} else {
 					w2->RaiseWidget(this->parent_button);
@@ -358,7 +358,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
 	wi_colour = nwi->colour;
 
-	if (nwi->type == NWID_BUTTON_DROPDOWN) {
+	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
 		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
 	} else {
 		w->LowerWidget(button);

@@ -102,6 +102,7 @@ enum WidgetType {
 	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,
 	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,
 	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,
+	NWID_PUSHBUTTON_DROPDOWN = NWID_BUTTON_DROPDOWN | WWB_PUSHBUTTON,
 };
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */

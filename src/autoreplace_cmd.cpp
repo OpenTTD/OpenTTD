@@ -225,10 +225,11 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
  * Get the EngineID of the replacement for a vehicle
  * @param v The vehicle to find a replacement for
  * @param c The vehicle's owner (it's faster to forward the pointer than refinding it)
+ * @param always_replace Always replace, even if not old.
  * @param [out] e the EngineID of the replacement. INVALID_ENGINE if no replacement is found
  * @return Error if the engine to build is not available
  */
-static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, EngineID &e)
+static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool always_replace, EngineID &e)
 {
 	assert(v->type != VEH_TRAIN || !v->IsArticulatedPart());
 
@@ -239,7 +240,9 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, EngineID
 		return CommandCost();
 	}
 
-	e = EngineReplacementForCompany(c, v->engine_type, v->group_id);
+	bool replace_when_old;
+	e = EngineReplacementForCompany(c, v->engine_type, v->group_id, &replace_when_old);
+	if (!always_replace && replace_when_old && !v->NeedsAutorenewing(c, false)) e = INVALID_ENGINE;
 
 	/* Autoreplace, if engine is available */
 	if (e != INVALID_ENGINE && IsEngineBuildable(e, v->type, _current_company)) {
@@ -271,7 +274,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	/* Shall the vehicle be replaced? */
 	const Company *c = Company::Get(_current_company);
 	EngineID e;
-	CommandCost cost = GetNewEngineType(old_veh, c, e);
+	CommandCost cost = GetNewEngineType(old_veh, c, true, e);
 	if (cost.Failed()) return cost;
 	if (e == INVALID_ENGINE) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
 
@@ -683,7 +686,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	bool any_replacements = false;
 	while (w != NULL) {
 		EngineID e;
-		CommandCost cost = GetNewEngineType(w, c, e);
+		CommandCost cost = GetNewEngineType(w, c, false, e);
 		if (cost.Failed()) return cost;
 		any_replacements |= (e != INVALID_ENGINE);
 		w = (!free_wagon && w->type == VEH_TRAIN ? Train::From(w)->GetNextUnit() : NULL);
@@ -736,6 +739,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
  * @param tile unused
  * @param flags operation to perform
  * @param p1 packed data
+ *   - bit      0 = replace when engine gets old?
  *   - bits 16-31 = engine group
  * @param p2 packed data
  *   - bits  0-15 = old engine type
@@ -760,7 +764,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		if (!Engine::IsValidID(new_engine_type)) return CMD_ERROR;
 		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
-		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
+		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, HasBit(p1, 0), flags);
 	} else {
 		cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
 	}

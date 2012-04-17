@@ -24,6 +24,7 @@
 #include "settings_func.h"
 #include "core/geometry_func.hpp"
 #include "rail_gui.h"
+#include "widgets/dropdown_func.h"
 
 #include "widgets/autoreplace_widget.h"
 
@@ -66,6 +67,12 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 	InvalidateWindowData(WC_REPLACE_VEHICLE, type, 0); // Update the autoreplace window
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 }
+
+static const StringID _start_replace_dropdown[] = {
+	STR_REPLACE_VEHICLES_NOW,
+	STR_REPLACE_VEHICLES_WHEN_OLD,
+	INVALID_STRING_ID
+};
 
 /**
  * Window for the autoreplacing of vehicles.
@@ -170,6 +177,18 @@ class ReplaceVehicleWindow : public Window {
 		this->reset_sel_engine = false;
 	}
 
+	/**
+	 * Handle click on the start replace button.
+	 * @param replace_when_old Replace now or only when old?
+	 */
+	void ReplaceClick_StartReplace(bool replace_when_old)
+	{
+		EngineID veh_from = this->sel_engine[0];
+		EngineID veh_to = this->sel_engine[1];
+		DoCommandP(0, (replace_when_old ? 1 : 0) | (this->sel_group << 16), veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
+		this->SetDirty();
+	}
+
 public:
 	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window()
 	{
@@ -270,6 +289,17 @@ public:
 				*size = maxdim(*size, d);
 				break;
 			}
+
+			case WID_RV_START_REPLACE: {
+				Dimension d = GetStringBoundingBox(STR_REPLACE_VEHICLES_START);
+				for (int i = 0; _start_replace_dropdown[i] != INVALID_STRING_ID; i++) {
+					d = maxdim(d, GetStringBoundingBox(_start_replace_dropdown[i]));
+				}
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
 		}
 	}
 
@@ -301,8 +331,10 @@ public:
 					if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
 						SetDParam(0, STR_REPLACE_NOT_REPLACING);
 					} else {
-						SetDParam(0, STR_ENGINE_NAME);
-						SetDParam(1, EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group));
+						bool when_old = false;
+						EngineID e = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group, &when_old);
+						SetDParam(0, when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME);
+						SetDParam(1, e);
 					}
 				} else {
 					SetDParam(0, STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
@@ -334,13 +366,11 @@ public:
 
 		/* Disable the "Start Replacing" button if:
 		 *    Either engines list is empty
-		 * or The selected replacement engine has a replacement (to prevent loops)
-		 * or The right engines list (new replacement) has the existing replacement vehicle selected */
+		 * or The selected replacement engine has a replacement (to prevent loops). */
 		this->SetWidgetDisabledState(WID_RV_START_REPLACE,
 										this->sel_engine[0] == INVALID_ENGINE ||
 										this->sel_engine[1] == INVALID_ENGINE ||
-										EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE ||
-										EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group) == this->sel_engine[1]);
+										EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != INVALID_ENGINE);
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left engines list (existing vehicle) is empty
@@ -348,9 +378,6 @@ public:
 		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE,
 										this->sel_engine[0] == INVALID_ENGINE ||
 										!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
-
-		/* now the actual drawing of the window itself takes place */
-		SetDParam(0, STR_REPLACE_VEHICLE_TRAIN + this->window_number);
 
 		if (this->window_number == VEH_TRAIN) {
 			/* sets the colour of that art thing */
@@ -401,10 +428,13 @@ public:
 				break;
 
 			case WID_RV_START_REPLACE: { // Start replacing
-				EngineID veh_from = this->sel_engine[0];
-				EngineID veh_to = this->sel_engine[1];
-				DoCommandP(0, this->sel_group << 16, veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
-				this->SetDirty();
+				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
+					this->HandleButtonClick(WID_RV_START_REPLACE);
+					ReplaceClick_StartReplace(false);
+				} else {
+					bool replacment_when_old = EngineHasReplacementWhenOldForCompany(Company::Get(_local_company), this->sel_engine[0], this->sel_group);
+					ShowDropDownMenu(this, _start_replace_dropdown, replacment_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
+				}
 				break;
 			}
 
@@ -441,17 +471,26 @@ public:
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		RailType temp = (RailType)index;
-		if (temp == sel_railtype) return; // we didn't select a new one. No need to change anything
-		sel_railtype = temp;
-		/* Reset scrollbar positions */
-		this->vscroll[0]->SetPosition(0);
-		this->vscroll[1]->SetPosition(0);
-		/* Rebuild the lists */
-		this->engines[0].ForceRebuild();
-		this->engines[1].ForceRebuild();
-		this->reset_sel_engine = true;
-		this->SetDirty();
+		switch (widget) {
+			case WID_RV_TRAIN_RAILTYPE_DROPDOWN: {
+				RailType temp = (RailType)index;
+				if (temp == sel_railtype) return; // we didn't select a new one. No need to change anything
+				sel_railtype = temp;
+				/* Reset scrollbar positions */
+				this->vscroll[0]->SetPosition(0);
+				this->vscroll[1]->SetPosition(0);
+				/* Rebuild the lists */
+				this->engines[0].ForceRebuild();
+				this->engines[1].ForceRebuild();
+				this->reset_sel_engine = true;
+				this->SetDirty();
+				break;
+			}
+
+			case WID_RV_START_REPLACE:
+				this->ReplaceClick_StartReplace(index != 0);
+				break;
+		}
 	}
 
 	virtual void OnResize()
@@ -497,7 +536,7 @@ static const NWidgetPart _nested_replace_rail_vehicle_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(228, 102), SetResize(1, 0), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
+		NWidget(NWID_PUSHBUTTON_DROPDOWN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_INFO_TAB), SetMinimalSize(167, 12), SetDataTip(0x0, STR_REPLACE_HELP_REPLACE_INFO_TAB), SetResize(1, 0),
 		EndContainer(),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_STOP_REPLACE), SetMinimalSize(150, 12), SetDataTip(STR_REPLACE_VEHICLES_STOP, STR_REPLACE_HELP_STOP_BUTTON),
@@ -537,7 +576,7 @@ static const NWidgetPart _nested_replace_vehicle_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_RIGHT_DETAILS), SetMinimalSize(228, 92), SetResize(1, 0), EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
+		NWidget(NWID_PUSHBUTTON_DROPDOWN, COLOUR_GREY, WID_RV_START_REPLACE), SetMinimalSize(139, 12), SetDataTip(STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_RV_INFO_TAB), SetMinimalSize(167, 12), SetDataTip(0x0, STR_REPLACE_HELP_REPLACE_INFO_TAB), SetResize(1, 0), EndContainer(),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_RV_STOP_REPLACE), SetMinimalSize(138, 12), SetDataTip(STR_REPLACE_VEHICLES_STOP, STR_REPLACE_HELP_STOP_BUTTON),
 		NWidget(WWT_RESIZEBOX, COLOUR_GREY),

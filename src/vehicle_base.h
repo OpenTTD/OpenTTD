@@ -603,7 +603,7 @@ public:
 
 	bool HandleBreakdown();
 
-	bool NeedsAutorenewing(const Company *c) const;
+	bool NeedsAutorenewing(const Company *c, bool use_renew_setting = true) const;
 
 	bool NeedsServicing() const;
 	bool NeedsAutomaticServicing() const;
