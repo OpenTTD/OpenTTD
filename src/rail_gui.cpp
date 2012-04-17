@@ -1482,6 +1482,11 @@ public:
 		this->OnInvalidateData();
 	}
 
+	~BuildSignalWindow()
+	{
+		_convert_signal_button = false;
+	}
+
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
