@@ -30,6 +30,7 @@
 #include "engine_gui.h"
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
+#include "autoreplace_func.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -885,11 +886,16 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	int sprite_x        = (rtl ? r - sprite_width / 2 : l + sprite_width / 2) - 1;
 	int sprite_y_offset = sprite_y_offsets[type] + step_size / 2;
 
-	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT : sprite_width);
-	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT);
+	Dimension replace_icon = {0, 0};
+	if (show_count) replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+
+	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT + replace_icon.width : sprite_width);
+	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT + replace_icon.width);
+	int replace_icon_left = rtl ? l + WD_FRAMERECT_LEFT : r - WD_FRAMERECT_RIGHT - replace_icon.width;
 
 	int normal_text_y_offset = (step_size - FONT_HEIGHT_NORMAL) / 2;
 	int small_text_y_offset  = step_size - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1;
+	int replace_icon_y_offset = (step_size - replace_icon.height) / 2 - 1;
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = (*eng_list)[min];
@@ -902,6 +908,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		if (show_count) {
 			SetDParam(0, num_engines);
 			DrawString(text_left, text_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
+			if (EngineHasReplacementForCompany(Company::Get(_local_company), engine, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, replace_icon_left, y + replace_icon_y_offset);
 		}
 	}
 }
