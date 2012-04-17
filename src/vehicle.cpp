@@ -1146,7 +1146,7 @@ bool Vehicle::HandleBreakdown()
 						(this->type == VEH_TRAIN ? SND_3A_COMEDY_BREAKDOWN_2 : SND_35_COMEDY_BREAKDOWN), this);
 				}
 
-				if (!(this->vehstatus & VS_HIDDEN)) {
+				if (!(this->vehstatus & VS_HIDDEN) && !HasBit(EngInfo(this->engine_type)->misc_flags, EF_NO_BREAKDOWN_SMOKE)) {
 					EffectVehicle *u = CreateEffectVehicleRel(this, 4, 4, 5, EV_BREAKDOWN_SMOKE);
 					if (u != NULL) u->animation_state = this->breakdown_delay * 2;
 				}
