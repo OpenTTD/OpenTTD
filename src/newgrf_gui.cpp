@@ -26,6 +26,7 @@
 #include "core/geometry_func.hpp"
 #include "newgrf_text.h"
 #include "textfile_gui.h"
+#include "tilehighlight_func.h"
 
 #include "widgets/newgrf_widget.h"
 #include "widgets/misc_widget.h"
@@ -537,6 +538,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	bool show_params;           ///< Are the grf-parameters shown in the info-panel?
 	bool execute;               ///< On pressing 'apply changes' are grf changes applied immediately, or only list is updated.
 	int preset;                 ///< Selected preset.
+	int active_over;            ///< Active GRF item over which another one is dragged, \c -1 if none.
 
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
@@ -552,6 +554,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->execute     = execute;
 		this->show_params = show_params;
 		this->preset      = -1;
+		this->active_over = -1;
 
 		CopyGRFConfigList(&this->actives, *orig_list, false);
 		GetGRFPresetList(&_grf_preset_list);
@@ -731,7 +734,17 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 						bool h = (this->active_sel == c);
 						PaletteID pal = this->GetPalette(c);
 
-						if (h) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, PC_DARK_BLUE);
+						if (h) {
+							GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 1, PC_DARK_BLUE);
+						} else if (i == this->active_over) {
+							/* Get index of current selection. */
+							int active_sel_pos = 0;
+							for (GRFConfig *c = this->actives; c != NULL && c != this->active_sel; c = c->next, active_sel_pos++) {}
+							if (active_sel_pos != this->active_over) {
+								uint top = this->active_over < active_sel_pos ? y + 1 : y + step_height - 2;
+								GfxFillRect(r.left + WD_FRAMERECT_LEFT, top - 1, r.right - WD_FRAMERECT_RIGHT, top + 1, PC_GREY);
+							}
+						}
 						DrawSprite(SPR_SQUARE, pal, square_left, y + square_offset_y);
 						if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, warning_left, y + warning_offset_y);
 						uint txtoffset = c->error == NULL ? 0 : warning.width;
@@ -739,11 +752,14 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 						y += step_height;
 					}
 				}
+				if (i == this->active_over && this->vscroll->IsVisible(i)) { // Highlight is after the last GRF entry.
+					GfxFillRect(r.left + WD_FRAMERECT_LEFT, y, r.right - WD_FRAMERECT_RIGHT, y + 2, PC_GREY);
+				}
 				break;
 			}
 
 			case WID_NS_AVAIL_LIST: {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK);
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, this->active_over == -2 ? PC_DARK_GREY : PC_BLACK);
 
 				uint step_height = this->GetWidget<NWidgetBase>(WID_NS_AVAIL_LIST)->resize_y;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
@@ -868,6 +884,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 			}
 
 			case WID_NS_FILE_LIST: { // Select an active GRF.
+				ResetObjectToPlace();
+
 				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
 
 				GRFConfig *c;
@@ -879,7 +897,10 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				this->avail_pos = -1;
 
 				this->InvalidateData();
-				if (click_count == 1) break;
+				if (click_count == 1) {
+					if (this->editable && this->active_sel != NULL) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+					break;
+				}
 				/* FALL THROUGH, with double click. */
 			}
 
@@ -912,6 +933,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 			}
 
 			case WID_NS_AVAIL_LIST: { // Select a non-active GRF.
+				ResetObjectToPlace();
+
 				uint i = this->vscroll2->GetScrolledRowFromWidget(pt.y, this, WID_NS_AVAIL_LIST);
 				this->active_sel = NULL;
 				DeleteWindowByClass(WC_GRF_PARAMETERS);
@@ -920,36 +943,18 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 					this->avail_pos = i;
 				}
 				this->InvalidateData();
-				if (click_count == 1) break;
+				if (click_count == 1) {
+					if (this->editable && this->avail_sel != NULL && !HasBit(this->avail_sel->flags, GCF_INVALID)) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+					break;
+				}
 				/* FALL THROUGH, with double click. */
 			}
 
-			case WID_NS_ADD: {
+			case WID_NS_ADD:
 				if (this->avail_sel == NULL || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) break;
 
-				GRFConfig **list;
-				/* Find last entry in the list, checking for duplicate grfid on the way */
-				for (list = &this->actives; *list != NULL; list = &(*list)->next) {
-					if ((*list)->ident.grfid == this->avail_sel->ident.grfid) {
-						ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
-						return;
-					}
-				}
-
-				GRFConfig *c = new GRFConfig(*this->avail_sel); // Copy GRF details from scanned list.
-				c->SetParameterDefaults();
-				*list = c; // Append GRF config to configuration list.
-
-				/* Select next (or previous, if last one) item in the list. */
-				int new_pos = this->avail_pos + 1;
-				if (new_pos >= (int)this->avails.Length()) new_pos = this->avail_pos - 1;
-				this->avail_pos = new_pos;
-				if (new_pos >= 0) this->avail_sel = this->avails[new_pos];
-
-				this->avails.ForceRebuild();
-				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
+				this->AddGRFToActive();
 				break;
-			}
 
 			case WID_NS_APPLY_CHANGES: // Apply changes made to GRF list
 				if (!this->editable) break;
@@ -1024,6 +1029,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		}
 		this->avails.ForceRebuild();
 
+		ResetObjectToPlace();
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		this->active_sel = NULL;
 		this->InvalidateData(GOID_NEWGRF_PRESET_LOADED);
@@ -1089,7 +1095,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				for (const GRFConfig *c = this->actives; c != NULL; c = c->next, i++) {}
 
 				this->vscroll->SetCapacityFromWidget(this, WID_NS_FILE_LIST);
-				this->vscroll->SetCount(i);
+				this->vscroll->SetCount(i + 1); // Reserve empty space for drag and drop handling.
 
 				this->vscroll2->SetCapacityFromWidget(this, WID_NS_AVAIL_LIST);
 				if (this->avail_pos >= 0) this->vscroll2->ScrollTowards(this->avail_pos);
@@ -1226,6 +1232,77 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->InvalidateData(0);
 	}
 
+	virtual void OnDragDrop(Point pt, int widget)
+	{
+		if (!this->editable) return;
+
+		if (widget == WID_NS_FILE_LIST) {
+			if (this->active_sel != NULL) {
+				/* Get pointer to the selected file in the active list. */
+				int from_pos = 0;
+				GRFConfig **from_prev;
+				for (from_prev = &this->actives; *from_prev != this->active_sel; from_prev = &(*from_prev)->next, from_pos++) {}
+
+				/* Gets the drag-and-drop destination offset. Ignore the last dummy line. */
+				int to_pos = min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 2);
+				if (to_pos != from_pos) { // Don't move NewGRF file over itself.
+					/* Get pointer to destination position. */
+					GRFConfig **to_prev = &this->actives;
+					for (int i = from_pos < to_pos ? -1 : 0; *to_prev != NULL && i < to_pos; to_prev = &(*to_prev)->next, i++) {}
+
+					/* Detach NewGRF file from its original position. */
+					*from_prev = this->active_sel->next;
+
+					/* Attach NewGRF file to its new position. */
+					this->active_sel->next = *to_prev;
+					*to_prev = this->active_sel;
+
+					this->vscroll->ScrollTowards(to_pos);
+					this->preset = -1;
+					this->InvalidateData();
+				}
+			} else if (this->avail_sel != NULL) {
+				int to_pos = min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 1);
+				this->AddGRFToActive(to_pos);
+			}
+		} else if (widget == WID_NS_AVAIL_LIST && this->active_sel != NULL) {
+			/* Remove active NewGRF file by dragging it over available list. */
+			Point dummy = {-1, -1};
+			this->OnClick(dummy, WID_NS_REMOVE, 1);
+		}
+
+		ResetObjectToPlace();
+
+		if (this->active_over != -1) {
+			/* End of drag-and-drop, hide dragged destination highlight. */
+			this->SetWidgetDirty(this->active_over == -2 ? WID_NS_AVAIL_LIST : WID_NS_FILE_LIST);
+			this->active_over = -1;
+		}
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		if (!this->editable) return;
+
+		if (widget == WID_NS_FILE_LIST && (this->active_sel != NULL || this->avail_sel != NULL)) {
+			/* An NewGRF file is dragged over the active list. */
+			int to_pos = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
+			/* Skip the last dummy line if the source is from the active list. */
+			to_pos = min(to_pos, this->vscroll->GetCount() - (this->active_sel != NULL ? 2 : 1));
+
+			if (to_pos != this->active_over) {
+				this->active_over = to_pos;
+				this->SetWidgetDirty(WID_NS_FILE_LIST);
+			}
+		} else if (widget == WID_NS_AVAIL_LIST && this->active_sel != NULL) {
+			this->active_over = -2;
+			this->SetWidgetDirty(WID_NS_AVAIL_LIST);
+		} else if (this->active_over != -1) {
+			this->SetWidgetDirty(this->active_over == -2 ? WID_NS_AVAIL_LIST : WID_NS_FILE_LIST);
+			this->active_over = -1;
+		}
+	}
+
 private:
 	/** Sort grfs by name. */
 	static int CDECL NameSorter(const GRFConfig * const *a, const GRFConfig * const *b)
@@ -1287,6 +1364,45 @@ private:
 		}
 
 		this->vscroll2->SetCount(this->avails.Length()); // Update the scrollbar
+	}
+
+	/**
+	 * Insert a GRF into the active list.
+	 * @param ins_pos Insert GRF at this position.
+	 * @return True if the GRF was successfully added.
+	 */
+	bool AddGRFToActive(int ins_pos = -1)
+	{
+		if (this->avail_sel == NULL || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) return false;
+
+		GRFConfig **entry = NULL;
+		GRFConfig **list;
+		/* Find last entry in the list, checking for duplicate grfid on the way */
+		for (list = &this->actives; *list != NULL; list = &(*list)->next, ins_pos--) {
+			if (ins_pos == 0) entry = list; // Insert position? Save.
+			if ((*list)->ident.grfid == this->avail_sel->ident.grfid) {
+				ShowErrorMessage(STR_NEWGRF_DUPLICATE_GRFID, INVALID_STRING_ID, WL_INFO);
+				return false;
+			}
+		}
+		if (entry == NULL) entry = list;
+
+		GRFConfig *c = new GRFConfig(*this->avail_sel); // Copy GRF details from scanned list.
+		c->SetParameterDefaults();
+
+		/* Insert GRF config to configuration list. */
+		c->next = *entry;
+		*entry = c;
+
+		/* Select next (or previous, if last one) item in the list. */
+		int new_pos = this->avail_pos + 1;
+		if (new_pos >= (int)this->avails.Length()) new_pos = this->avail_pos - 1;
+		this->avail_pos = new_pos;
+		if (new_pos >= 0) this->avail_sel = this->avails[new_pos];
+
+		this->avails.ForceRebuild();
+		this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
+		return true;
 	}
 };
 
