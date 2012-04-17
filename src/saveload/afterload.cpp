@@ -2736,6 +2736,12 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(175)) {
+		/* Introduced tree planting limit. */
+		Company *c;
+		FOR_ALL_COMPANIES(c) c->tree_limit = _settings_game.construction.tree_frame_burst << 16;
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

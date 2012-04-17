@@ -340,6 +340,9 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	/* Check the tree type within the current climate */
 	if (tree_to_plant != TREE_INVALID && !IsInsideBS(tree_to_plant, _tree_base_by_landscape[_settings_game.game_creation.landscape], _tree_count_by_landscape[_settings_game.game_creation.landscape])) return CMD_ERROR;
 
+	Company *c = (_game_mode != GM_EDITOR) ? Company::GetIfValid(_current_company) : NULL;
+	int limit = (c == NULL ? INT32_MAX : GB(c->tree_limit, 16, 16));
+
 	TileArea ta(tile, p2);
 	TILE_AREA_LOOP(tile, ta) {
 		switch (GetTileType(tile)) {
@@ -350,9 +353,16 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					continue;
 				}
 
+				/* Test tree limit. */
+				if (--limit < 1) {
+					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
+					break;
+				}
+
 				if (flags & DC_EXEC) {
 					AddTreeCount(tile, 1);
 					MarkTileDirtyByTile(tile);
+					if (c != NULL) c->tree_limit -= 1 << 16;
 				}
 				/* 2x as expensive to add more trees to an existing tile */
 				cost.AddCost(_price[PR_BUILD_TREES] * 2);
@@ -381,6 +391,12 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 						(IsInsideMM(treetype, TREE_SUB_TROPICAL, TREE_TOYLAND) && GetTropicZone(tile) != TROPICZONE_NORMAL))) {
 					msg = STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE;
 					continue;
+				}
+
+				/* Test tree limit. */
+				if (--limit < 1) {
+					msg = STR_ERROR_TREE_PLANT_LIMIT_REACHED;
+					break;
 				}
 
 				if (IsTileType(tile, MP_CLEAR)) {
@@ -412,6 +428,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					/* Plant full grown trees in scenario editor */
 					PlantTreesOnTile(tile, treetype, 0, _game_mode == GM_EDITOR ? 3 : 0);
 					MarkTileDirtyByTile(tile);
+					if (c != NULL) c->tree_limit -= 1 << 16;
 
 					/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
 					if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS)) {
@@ -426,6 +443,9 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				msg = STR_ERROR_SITE_UNSUITABLE;
 				break;
 		}
+
+		/* Tree limit used up? No need to check more. */
+		if (limit < 0) break;
 	}
 
 	if (cost.GetCost() == 0) {
