@@ -200,7 +200,7 @@ uint Vehicle::Crash(bool flooded)
 	SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 	SetWindowDirty(WC_VEHICLE_DEPOT, this->tile);
 
-	return pass;
+	return RandomRange(pass + 1); // Randomise deceased passengers.
 }
 
 
