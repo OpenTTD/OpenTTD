@@ -145,8 +145,7 @@ public:
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_PLANT_TREES);
-		VpSetPlaceSizingLimit(20);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_PLANT_TREES);
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
