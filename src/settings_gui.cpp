@@ -1451,6 +1451,7 @@ static SettingEntry _settings_construction_signals[] = {
 	SettingEntry("construction.signal_side"),
 	SettingEntry("gui.enable_signal_gui"),
 	SettingEntry("gui.drag_signals_density"),
+	SettingEntry("gui.drag_signals_fixed_distance"),
 	SettingEntry("gui.semaphore_build_before"),
 	SettingEntry("gui.default_signal_type"),
 	SettingEntry("gui.cycle_signal_types"),

@@ -390,12 +390,14 @@ static void HandleAutoSignalPlacement()
 		SB(p2,  6, 1, _ctrl_pressed);
 		SB(p2,  7, 3, _cur_signal_type);
 		SB(p2, 24, 8, _settings_client.gui.drag_signals_density);
+		SB(p2, 10, 1, !_settings_client.gui.drag_signals_fixed_distance);
 	} else {
 		SB(p2,  3, 1, 0);
 		SB(p2,  4, 1, (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
 		SB(p2,  6, 1, _ctrl_pressed);
 		SB(p2,  7, 3, _default_signal_type[_settings_client.gui.default_signal_type]);
 		SB(p2, 24, 8, _settings_client.gui.drag_signals_density);
+		SB(p2, 10, 1, !_settings_client.gui.drag_signals_fixed_distance);
 	}
 
 	/* _settings_client.gui.drag_signals_density is given as a parameter such that each user
