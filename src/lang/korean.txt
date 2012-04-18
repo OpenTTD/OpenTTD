@@ -828,7 +828,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}{P "가" "이"} 아직 다음 목적지에 도착하지 못했습니다.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
@@ -895,6 +895,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :터키 리라 (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :슬로바키아 코루나 (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :브라질 레알 (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :에스토니아 크룬 (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :리투아니아 리타스 (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :대한민국 원 (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :남아프리카공화국 자르 (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :사용자 설정...
 ############ end of currency region
 
@@ -1133,7 +1136,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물�
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션(화폐가치하락) 켜기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}다리의 최대 길이: {ORANGE}{STRING} 타일
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (위치 선택 가능, 7배 비용)
@@ -1296,6 +1299,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}부드�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}다른 회사의 지분을 사는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}공장에 원자재투입시 생산되는 물품의 무게 비율: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}신호기 드래그로 설치시 {ORANGE}{STRING}타일 간격으로 설치
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}드래그할 때, 신호기 사이의 거리를 계속 고정: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용: {ORANGE}{STRING}년 이후에
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 설치시 신호기 선택 창을 띄움: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
@@ -2752,6 +2756,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}이 역�
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :역 이름 변경
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}공항 폐쇄
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공항에서 항공기가 이륙하는 것을 막습니다.
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}이 경유지의 위치로 시점을 변경합니다. Ctrl+클릭하면 이 경유지 위치를 기준으로 새로운 외부 화면을 엽니다.
@@ -3098,6 +3105,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G "을" "를"} {STRING}{G "으" ""}로 교체
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
@@ -3107,9 +3115,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체�
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}좌측에서 선택한 기관차 종류를 교체할 새로운 기관차로 선택하십시오.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
+STR_REPLACE_VEHICLES_NOW                                        :모든 차량을 지금 교체
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차량만 교체
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}좌측에서 선택한 기관차 종류를 우측의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
+STR_REPLACE_REPLACING_WHEN_OLD                                  :오래되면 {ENGINE}(으)로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}좌측에서 선택한 기관차 종류의 교체를 중지하려면 누르세요
 
@@ -3658,6 +3669,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... {STR
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 다른 회사의 소유지입니다!
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 지형 편집 제한에 다다랐습니다
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 타일 제거 제한에 다다랐습니다
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 나무 심기 제한에 다다랐습니다
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시정지 중에는 할 수 없습니다

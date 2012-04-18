@@ -895,6 +895,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lire turque (TR
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Couronne slovaque (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Réal brésilien (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Couronne estonienne (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituanien (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won sud-coréen (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-africain (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personnalisée...
 ############ end of currency region
 
@@ -1296,6 +1299,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Permett
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Pourcentage du profit de branche à payer dans les systèmes multi-modaux{NBSP}: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacement des signaux en mode glisser-déposer{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Espacement fixe entre les signaux en mode glisser-déposer{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer l'interface graphique pour les signaux{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Type de signaux construit par défaut{NBSP}: {ORANGE}{STRING}
@@ -1484,8 +1488,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Montrer 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Montrer les livrées de véhicules routiers
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Montrer les livrées de navires
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Montrer les livrées d'aéronefs
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choisir la couleur primaire de la livrée sélectionnée. Ctrl-Clic appliquera cette couleur à toutes les livrées.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée. Ctrl-Clic appliquera cette couleur à toutes les livrées.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Sélectionner la livrée à modifier ou plusieurs d'entre elles par Ctrl-clic. Cliquer sur la case à cocher pour en activer l'utilisation ou non.
 
 STR_LIVERY_DEFAULT                                              :Livrée standard
@@ -2752,6 +2756,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afficher
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renommer la gare
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fermer l'aéroport
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Empêcher l'aéronef de se poser sur cet aéroport
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer la vue sur le point de contrôle. Ctrl-clic pour ouvrir une nouvelle vue sur le point de contrôle
@@ -3108,9 +3115,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Choisir 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Choisir le nouveau type de véhicule devant remplacer celui sélectionné à gauche
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
+STR_REPLACE_VEHICLES_NOW                                        :Rempacer maintenant tous les véhicules
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ne remplacer que les vieux véhicules
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Appuyer sur ce bouton pour commencer le remplacement du type de véhicule sélectionné à gauche par celui sélectionné à droite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Pas en cours de remplacement
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Aucun véhicule sélectionné
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} si vieux
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Appuyer sur ce bouton pour arrêter le remplacement du type de véhicule sélectionné à gauche
 
@@ -3659,6 +3669,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... appa
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... appartient à une autre compagnie
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}...{NBSP}limite de terrassement atteinte
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}...{NBSP}limite de démolition atteinte
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}…{NBSP}limite de plantation d'arbres atteinte
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Le nom doit être unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} présente
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non autorisé pendant la pause
@@ -4158,8 +4169,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Wagon à batteries
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Wagon à plastique
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Électrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Monorail)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millénium Z1' (Monorail)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Voiture à voyageurs
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Wagon postal
@@ -4188,10 +4199,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Wagon à jouets
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Wagon à batteries
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Wagon à boissons gazeuses
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Wagon à plastique
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Léviathan' (Électrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclope' (Électrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pégase' (Électrique)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimère' (Électrique)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Léviathan' (MagLev)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclope' (MagLev)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pégase' (MagLev)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimère' (MagLev)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Voiture à voyageurs
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Wagon postal

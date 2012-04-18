@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkse Lira (TR
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slowaakse Kroon (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Braziliaanse Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estse Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litouwse Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Zuid-Koreaanse Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Zuid-Afrikaanse Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Aangepast...
 ############ end of currency region
 
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Vloeien
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen van andere bedrijven toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage van de winst die wordt betaald bij overslag van vracht: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Bij slepen, hou vaste afstand tussen seinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch armseinen voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein-GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Seintype dat standaard moet worden gebouwd: {ORANGE}{STRING}
@@ -2751,6 +2755,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Geef all
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem station/laadgebied
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Sluit luchthaven
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Voorkom landen van vliegtuig op deze luchthaven
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost. Ctrl+klik opent een nieuw venster op de locatie van de controlepost
@@ -3107,9 +3114,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Kies het
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Kies een nieuw type locomotief die je wilt gebruiken om de links geselecteerde type locomotief te vervangen
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het vervangen
+STR_REPLACE_VEHICLES_NOW                                        :Vervang alle voertuigen nu
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Vervang alleen oude voertuigen
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief wilt vervangen met die aan de rechterkant
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Niet aan het vervangen
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Geen voertuig geselecteerd
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} als oud
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het vervangen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wilt vervangen
 
@@ -3658,6 +3668,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... is e
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limiet landschapsaanpassing bereikt
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... legen van tegels limiet bereikt
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... boomplant limit bereikt
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet uniek zijn
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in de weg
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toegestaan wanneer gepauzeerd

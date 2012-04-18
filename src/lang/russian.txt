@@ -1039,6 +1039,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецка�
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Словацкая крона (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразильский реал (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонские кроны (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Литовский лит (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Южнокорейская вона (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафриканский ранд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 ############ end of currency region
 
@@ -1451,6 +1454,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Вкл�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Часть прибыли, начисляемая за частичную перевозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке сигналов линией, ставить кажд{P 0:1 ую ые ые}: {ORANGE}{STRING} клет{P 0:1 ку ки ок}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Равномерная расстановка сигналов при перетаскивании: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигналов по умолчанию: {ORANGE}{STRING}
@@ -2935,6 +2939,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пока
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Название станции
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыть аэропорт
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Запретить воздушным судам садиться в этом аэропорту
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать точку пути в основном окне. Ctrl+клик - показать в дополнительном окне.
@@ -3301,9 +3308,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбор типа транспорта, на который следует заменить
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Начать замену
+STR_REPLACE_VEHICLES_NOW                                        :Заменить все ТС сейчас
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Заменять только устаревшие ТС
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Начать замену выбранных типов транспорта
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Нет замены
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Транспорт не выбран
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} когда устареет
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Прекратить замену
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Прекратить замену транспорта
 
@@ -3852,6 +3862,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... пр
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участок принадлежит другой компании
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... достигнуто ограничение по изменению ландшафта
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... достигнуто ограничение по количеству очищаемых клеток
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... достигнут лимит высадки деревьев
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя должно быть уникальным
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на пути
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запрещено во время паузы

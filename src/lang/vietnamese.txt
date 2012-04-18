@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Thổ Nhĩ
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Đồng Real Brasil (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Kroon Estonia (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Đồng Litas Lát-vi (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Hàn Quốc (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Nam Phi (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Tùy chọn...
 ############ end of currency region
 
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Nền k
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Cho phép mua cổ phần của các công ty khác: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Tỉ lệ của nhánh lợi nhuận sẽ được trả cho hệ thống phụ trợ: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi kéo/thả, đặt đèn tín hiệu lên mỗi : {ORANGE}{STRING} ô
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Xây cờ hiệu thay vì đèn trước năm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Kiểu đèn tín hiệu đc xây mặc định: {ORANGE}{STRING}
@@ -1483,8 +1487,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Hiển t
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Hiển thị phối màu xe ôtô
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Hiển thị phối màu tàu thủy
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Hiển thị phối màu máy bay
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Chọn màu chủ đạo cho bảng phối màu đang chọn
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Chọn màu thứ hai cho bảng phối màu đang chọn
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Chọn màu chủ đạo cho bảng phối màu đang chọn. Ctrl+click để chọn màu chủ đạo cho tất cả bảng phối màu
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Chọn màu thứ hai cho bảng phối màu đang chọn. Ctrl+click để chọn màu cho tất cả bảng phối màu
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Chọn một bảng phối màu để sửa, hoặc nhiều bảng phối màu với Ctrl+Click.Click vào bảng để bật/tắt bảng phối
 
 STR_LIVERY_DEFAULT                                              :Chế Phục Tiêu Chuẩn
@@ -2751,6 +2755,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Hiện t
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Đổi tên ga, bến, cảng
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Đóng cửa sân bay
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Không cho máy bay hạ cánh ở sân bay này
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Xem vị trí của điểm mốc. Ctrl+Click mở cửa sổ mới để xem
@@ -3107,9 +3114,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Lựa ch
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Lựa chọn đầu máy mới để thay thế đầu máy đã chọn
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Bắt đầu thay thế
+STR_REPLACE_VEHICLES_NOW                                        :Thay thế ngay tất cả các phương tiện
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Chỉ thay thế các phương tiện cũ
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Bấm để bắt đầu thay thế đầu máy đã chọn bởi loại mới chọn
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Không thay thế
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Chưa chọn đầu máy
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} khi đã cũ
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ngừng thay thế phương tiện
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Bấm để ngừng việc thay thế kiểu đầu máy đã chọn
 
@@ -3658,6 +3668,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... sở
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... vùng này sở hữu bởi công ty khác
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... giới hạn tôn hạ nền đất đã tới
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... giới hạn xoá ô đã tới
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... số cây trồng đã tới giới hạn
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Tên phải không trùng lặp
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} đang có trên đường
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Không cho phép trong khi dừng

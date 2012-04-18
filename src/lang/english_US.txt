@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkish Lira (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilian Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonian Krooni (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithuanian Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :South Korean Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :South African Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Custom...
 ############ end of currency region
 
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Enable 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage of leg profit to pay in feeder systems: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}When dragging, keep fixed distance between signals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING}
@@ -1483,8 +1487,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Show tra
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Show road vehicle color schemes
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Show ship color schemes
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Show aircraft color schemes
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary color for the selected scheme
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary color for the selected scheme
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Choose the primary color for the selected scheme. Ctrl+Click will set this color for every scheme
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Choose the secondary color for the selected scheme. Ctrl+Click will set this color for every scheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Select a color scheme to change, or multiple schemes with Ctrl+Click. Click on the box to toggle use of the scheme
 
 STR_LIVERY_DEFAULT                                              :Standard Livery
@@ -2751,6 +2755,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Show all
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Rename station/loading area
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Close airport
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevent aircraft from landing on this airport
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Center main view on waypoint location. Ctrl+Click opens a new viewport on waypoint location
@@ -3107,9 +3114,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Select t
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Select the new engine type you would like to use in place of the left selected engine type
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles
+STR_REPLACE_VEHICLES_NOW                                        :Replace all vehicles now
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Replace only old vehicles
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Not replacing
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}No vehicle selected
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} when old
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Replacing Vehicles
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Press to stop the replacement of the engine type selected on the left
 
@@ -3658,6 +3668,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... owne
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area is owned by another company
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terraforming limit reached
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tile clearing limit reached
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... tree planting limit reached
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name must be unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in the way
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Not allowed while paused

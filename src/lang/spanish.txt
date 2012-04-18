@@ -895,6 +895,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turca (TRY
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Eslovaca
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasileño (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonio (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituana (LTL)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 ############ end of currency region
 
@@ -1296,6 +1297,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permitir comprar acciones de otras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Porcentaje del beneficio total a pagar en transferencias: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Al arrastrar, colocar señales cada: {ORANGE}{STRING} casilla{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Al arrastrar, mantener distancia fija entre señales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Señales mecánicas por defecto antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de señal a construir por defecto: {ORANGE}{STRING}
@@ -1484,8 +1486,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Ver esqu
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Ver esquema de color de los vehículos de carretera
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Ver esquema de color de los barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostrar esquema de color de aeronaves
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecciona el color primario para el esquema seleccionado
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecciona el color secundario para el esquema seleccionado
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecciona el color primario para el esquema seleccionado. Ctrl+Click fijará este color para todo el esquema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecciona el color secundario para el esquema seleccionado. Ctrl+Click fijará este color para todo el esquema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de color a modificar, o selecciona varios pulsando Ctrl+Click. Pulsa en la caja para cambiar el uso del esquema
 
 STR_LIVERY_DEFAULT                                              :Estación normal
@@ -2752,6 +2754,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar 
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renombrar estación/zona de carga
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Cerrar aeropuerto
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prevenir a los aviones de aterrizar en este aeropuerto
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta. Ctrl+Click abre un punto de vista en dicha posición
@@ -3108,9 +3113,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccio
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Seleccione nuevo tipo de vehículo a usar en vez del vehículo seleccionado a la izquierda
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Empezar a reemplazar vehículos
+STR_REPLACE_VEHICLES_NOW                                        :Reemplazar todos los vehículos ahora
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Reemplazar solamente vehículos viejos
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Presiona este botón si quieres reemplazar el vehículo seleccionado a la izquierda por el seleccionado a la derecha
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}No reemplazar
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}No hay vehículos seleccionados
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} cuando esté viejo
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de reemplazar vehículos
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona este botón para detener el reemplazo del vehículo situado a la izquierda
 
@@ -3659,6 +3667,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... prop
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... otra empresa posee esta área
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... límite de modificación de terreno alcanzado
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... límite de casillas despejadas alcanzado
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limite de plantación de árboles alcanzado
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nombre debe ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en medio
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permitido en pausa

@@ -1274,6 +1274,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira turecka (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Korona słowacka (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brazylijski (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Korony estońskie (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lit litewski (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won południowokoreański (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Południowej Afryki (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Własna...
 ############ end of currency region
 
@@ -1675,6 +1678,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Udział w zyskach w przypadku częściowego transportu (przeładunku): {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} krat{P kę ki ek}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Zachowaj stały odstęp między semaforami przy przeciąganiu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Domyślny typ sygnalizatorów: {ORANGE}{STRING}
@@ -1863,8 +1867,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaż s
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Pokaż schematy koloru samochodów
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Pokaż schematy koloru statków
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Pokaż schematy koloru samolotów
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz pierwszy kolor dla wybranego schematu
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz drugi kolor dla wybranego schematu
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wybierz główny kolor dla wybranego schematu. Ctrl + klik ustawi ten kolor dla wszystkich schematów
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wybierz drugi kolor dla wybranego schematu. Ctrl + klik ustawi ten kolor dla wszystkich schematów
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wybierz schemat kolorów do zmiany, albo wiele schematów z CTRL+klik. Kliknij na okienku aby wł./wył. używanie schematu.
 
 STR_LIVERY_DEFAULT                                              :Standardowy wygląd
@@ -3131,6 +3135,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zamknij lotnisko
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nie zezwalaj maszynie lądować na tym lotnisku
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na pkt. orientacyjnym. Ctrl+klik otwiera nowy podgląd na lokacji pkt. orientacyjnego
@@ -3493,9 +3500,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wybierz typ pojazdu jakim chcesz zastąpić pojazd zaznaczony po lewej stronie
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastępowanie
+STR_REPLACE_VEHICLES_NOW                                        :Zastąp wszystkie pojazdy teraz
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zastąp tylko stare pojazdy
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Naciśnij jeśli chcesz zastąpić pojazd zaznaczony po lewej stronie wybranym pojazdem po prawej stronie
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nie zastępowane
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Brak zaznaczonych pojazdów
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kiedy stary
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastępowanie
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Wciśnij ten przycisk jeśli nie chcesz zmieniać pojazdu zaznaczone po lewej stronie
 
@@ -4044,6 +4054,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... w po
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osiągnięto limit terraformowania
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... osiągnięto limit czyszczenia pól
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... wykorzystano limit sadzenia drzew
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na drodze
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwolone w trakcie pauzy
