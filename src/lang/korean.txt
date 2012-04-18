@@ -3105,7 +3105,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}가격:
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}가격: {CURRENCY_LONG} 최고 속력: {VELOCITY} 항속거리: {COMMA} 칸{}수용량: {CARGO_LONG}{}운행비용: {CURRENCY_LONG}/년
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G "을" "를"} {STRING}{G "으" ""}로 교체
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}{G 0 "을" "를"} {STRING}{G 1 "으" ""}로 교체
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=f}열차
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
