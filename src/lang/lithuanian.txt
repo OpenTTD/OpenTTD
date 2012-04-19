@@ -1089,6 +1089,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkijos liros 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakijos kronos (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilijos realai (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estijos kronos (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvos Respublikos litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Pietų Korėjos vonas (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos Respublikos randas (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
 ############ end of currency region
 
@@ -1490,6 +1493,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Tolygi 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Leisti pirkti kitų kompanijų akcijas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Grynojo pelno dalis, mokama tiekėjų sistemoms: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tempiant, kopijuoti šviesoforus kas: {ORANGE}{STRING} langel{P į lius lių}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Tempiant išlaikyti vienodą atstumą tarp signalų: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatiškai pastatyti semaforus prieš: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Įgalinti signalų vartotojų sąsają: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signalai pagal nutylėjimą: {ORANGE}{STRING}
@@ -2936,7 +2940,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Puikus
 STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane.Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią stotį
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią stotį
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
@@ -2945,6 +2949,9 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rodyti v
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rodyti visus laivus, į kurių užduotis yra įtraukta ši stotis
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pervardinti stotį
+
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uždaryti
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Uždrausti lėktuvams leistis šiame oro uoste
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3340,9 +3347,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Pasirink
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Pasirink tr. priemonės tipą, kuria bus keičiamos pasirinktos tr. priemonės
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradėti tr. priemonių keitimą
+STR_REPLACE_VEHICLES_NOW                                        :Atnaujinti visas transporto priemones
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Atnaujinti tik pasenusias transporto priemones
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk, jei nori pradėti pažymėto tipo tr. priemonių keitimo procedūrą
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nekeičiama
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nėra pažymėta nei viena tr. priemonė
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} jei paseno
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stabdyti tr. priemonių keitimą
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Spustelk, jei nori sustabdyti šiuo metu vykdomą keitimo procedūrą
 
@@ -3909,6 +3919,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... prik
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ši žemė priklauso kitai įmonei
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}...pasiekta reljefo keitimo riba
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... pasiekta langelių valymo riba
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... pasiektas leistinas sodinimų skaičius
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vardas turi būti unikalus
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} kelyje
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Negalima pauzės režime

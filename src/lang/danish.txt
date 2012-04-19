@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkiske Lira (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakiske Koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianske Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estiske Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Brugerdefineret...
 ############ end of currency region
 
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procentdel af etape afkastet der skal bruges i overførsels systemet : {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning, placer et signal hvert: {ORANGE}{STRING}. felt
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE} Når der trækkes, hold fastlagt afstand mellem signaler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Byg automatisk semaforer før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Vis signalvælgeren som standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype der bygges som standard: {ORANGE}{STRING}
@@ -2751,6 +2755,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Omdøb stationen/fragtcentralen
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Luk lufthavn
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Undgå at fly lander i denne lufthavn
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrer skærmen over vejpunktets lokalitet. Ctrl+Klik åbner et nyt vindue ved waypointets lokalitet.
@@ -3107,9 +3114,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vælg en
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du har valgt i venste side
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
+STR_REPLACE_VEHICLES_NOW                                        :Erstat alle køretøjer nu
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Erstat kun gamle køretøjer
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Udskifter ikke
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Intet køretøj valgt
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når det er gammelt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop udskiftning
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 
@@ -3658,6 +3668,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... ejes
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... grænsen for landskabsændringer er nået
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... grænsen for rydning af felter er nået
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... grænse for plantning af træer er nået
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vejen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke tilladt imens spillet er på pause

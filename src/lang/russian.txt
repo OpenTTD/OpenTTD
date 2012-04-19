@@ -1643,8 +1643,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Наст
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Настройка цветовой схемы автотранспорта
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Настройка цветовой схемы судов
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Настройка цветовой схемы авиатранспорта
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Настройка основного цвета
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Настройка дополнительного цвета
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Настройка основного цвета. Ctrl+щелчок установит выбранный цвет для всех видов транспорта.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Настройка дополнительного цвета. Ctrl+щелчок установит выбранный цвет для всех видов транспорта.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с Ctrl. Щёлкните по флажку для использования выбранной схемы.
 
 STR_LIVERY_DEFAULT                                              :Стандарт. раскраска
