@@ -429,6 +429,8 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		/* We have loaded the config, so we may possibly save it. */
 		*save_config_ptr = save_config;
 
+		/* restore saved music volume */
+		_music_driver->SetVolume(_settings_client.music.music_vol);
 
 		if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -814,9 +816,6 @@ int ttd_main(int argc, char *argv[])
 			usererror("Failed to select requested music driver '%s'", musicdriver);
 	}
 	free(musicdriver);
-
-	/* restore saved music volume */
-	_music_driver->SetVolume(_settings_client.music.music_vol);
 
 	/* Take our initial lock on whatever we might want to do! */
 	_modal_progress_paint_mutex->BeginCritical();
