@@ -1387,6 +1387,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander
 STR_CONFIG_ERROR                                                :{WHITE}Fout met die konfigurasie lêer...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fout in skikking '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ongeldig waarde '{STRING}' vir '{STRING}'
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoreer NewGRF '{STRING}': duplikaat GRF ID met '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoreer ongeldige NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie gevind
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :onveilig vir statiese gebruik
@@ -1394,6 +1395,7 @@ STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :stelsel NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :onversoenbaar met hierdie weergawe van OpenTTD
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressie vlak '{STRING}' is ongeldig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is nie beskikbaar. Keer terug na '{STRING}'
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1830,6 +1832,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :verwerking van 
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moontlike verbinding verlore
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Die laaste {NUM} seconde{P "" s} geen data het van die bediener gekom nie
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2207,9 +2210,11 @@ STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Vervaard
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aanvaar nywerhede
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huise
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kliek op die industrie om sy verskaffers en kliente te sien
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kliek op die vrag om sy verskaffers en kliente te sien
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vertoon Ketting
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vertoon vrag voorsiening en aanvaar nywerhede
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verbinding na kleinkaart
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selekteer die vertoonde industrie ook op die kleinkaart
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
@@ -2255,6 +2260,17 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} spoor 
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} spoor met blok en uitgang-seine
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} spoor met blok en kombinasie-seine
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} spoor met blok en pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} spoor met blok en een-rigting pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} spoor met voor en uitgang seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} spoor met voor en kombinasie-seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} spoor met voor en pad-seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} spoor met voor en een-rigting pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} spoor met uitgang en kombinasie-seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} spoor met uitgang en pad-seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} spoor met uitgang en een-rigting pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} spoor met kombinasie en pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} spoor met kombinasie en eenrigting-pad seine
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} spoor met pad en een-rigting pad seine
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} trein diensstasie
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Pad
@@ -2481,12 +2497,14 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} by {HE
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Voorwerp
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoor tipe
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF veranderlike 60+x parameter (heksadesimaal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Belyn sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gaan na sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige sprite
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweeg die sprite rond, verander die X en Y afwyking
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X afwyking: {NUM}, Y afwyking: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies sprite
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Kies 'n sprite van enige plek op die skerm
@@ -2514,7 +2532,11 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging on 'n ongeldige ID (sprite {3:NUM}) te gebruik
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvoudige Aksie 8 inskrywings (sprite {3:NUM})
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees verby die einde van die pseudo-sprite (sprite {3:NUM})
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Die huideige grafiese stel ontbreek 'n paar sprites.{}Dateer die grafiese stel asseblief na die nuutste
+STR_NEWGRF_ERROR_GRM_FAILED                                     :Aangevraagde GRF hulpbronne is nie beskikbaar nie (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} was gedeaktiveer deur {2:STRING}
+STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende sprite uitleg formaat (sprite {3:NUM})
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Versigtig!
@@ -2543,6 +2565,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' verskaf foutiewe inligting.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vrag/herbou informasie vir '{1:ENGINE}' verskil van aankope lys na konstruksie. Dit mag veroorsaak dat die outo hernuwing/vervanging van die herbouing korrek faal.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' het 'n eindelose herhaling in die produksie callback veroorsaak.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback {1:HEX} het 'n ongeldige/onbekende resultaat terug gestuur {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vrag>
@@ -2553,11 +2576,15 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldige indu
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skandeer NewGRFs
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skandeer NewGRFs. Na mate van die hoeveelheid, kan dit 'n tydtjie neem
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} het ongeveer {NUM} NewGRF{P "" s} geskandeer
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skandering van argiewe
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ooreenstemmende case
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Maak Filter Skoon
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Maak filter string skoon
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Redigeer teken teks
@@ -2582,6 +2609,11 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Pos verl
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Vrag nodig om dorp te laat groei:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vereis
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} vereis in winter
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} af gelewer
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (steeds benodig)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (af gelewer)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Dorp groei elke {ORANGE}{COMMA}{BLACK} da{P g e} (befonds)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Dorp groei {RED}nie{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Senter skerm op dorp lokasie
@@ -2784,6 +2816,7 @@ STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vertoon 
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Beweeg HQ
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbou maatskappy hoofkwartiers elders vir 1% koste van maatskappy waarde
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Besonderhede
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Sien gedetaileerde infrastruktuur telling
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuwe Gesig
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Kies nuwe gesig vir bestuurder
@@ -2807,6 +2840,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ons is o
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrastruktuur van {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Spoor dele:
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Seine
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Pad dele:
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD                            :{WHITE}Pad
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAMWAY                         :{WHITE}Tremweg
@@ -3277,6 +3311,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}verander
 
 STR_ORDER_REFIT                                                 :{BLACK}Herbou
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies watter vrag tipe te herbou na in die opdraag. CTRL-kliek om herbou instruksie te verwyder
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Outo-herbou
 STR_ORDER_DROP_REFIT_AUTO                                       :Vaste vrag
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbare vrag
 
@@ -3316,6 +3351,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sprong d
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Uit vee
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Vee uit die verlig opdrag
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwyder alle opdragte
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop deeling
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gaan Na
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gaan na naaste diensstasie
