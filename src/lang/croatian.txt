@@ -990,6 +990,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turska lira (TR
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovačka kruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonska kruna (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafrički Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Proizvoljno...
 ############ end of currency region
 
@@ -1391,6 +1394,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključ
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela u drugim tvrtkama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Postotak legalne dobiti koju ćete platiti u sustavima za posluživanje: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih: {ORANGE}{STRING} polja
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Prilikom povlačenja, zadrži odabrani razmak između signala: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatski izgradi semafore prije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogući signalni GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Predodređeni signal za izgradnju: {ORANGE}{STRING}
@@ -1579,8 +1583,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Pokaži 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Pokaži sheme boja za cestovno vozilo
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Pokaži sheme boja za brod
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Pokaži sheme boja za zrakoplov
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberi primarnu boju za odabranu shemu
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Odaberi sekundardnu boju za odabranu shemu
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izaberi primarnu boju za odabranu shemu. Ctrl+Klik odabire tu boju za sve sheme.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Odaberi sekundardnu boju za odabranu shemu. Ctrl+Klik odabire tu boju za sve sheme.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izaberi shemu boja za promjenu, ili višestruke sheme pomoću Ctrl+klik. Klikni na kućicu kako bi odredio uporabu sheme
 
 STR_LIVERY_DEFAULT                                              :Standardna boja
@@ -2847,6 +2851,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokaži 
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj postaju/terminal
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zatvori aerodrom
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Spriječi sletanje aviona na ovaj aerodrom
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centriraj glavni pogled na lokaciju čvorišta. Ctrl+klik otvara novi pogled na lokaciju čvorišta.
@@ -3203,9 +3210,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izaberi 
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Odaberite novu vrstu lokomotive koji želite koristiti umjesto lijevo odabrane vrste lokomotive
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Počni zamijenjivati vozila
+STR_REPLACE_VEHICLES_NOW                                        :Zamijeni sva vozila sada
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zamijeni samo stara vozila
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikni za početak zamjene lijevo odabrane lokomotive sa desno odabranom vrstom
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ne zamijenjujem
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Niti jedno vozilo nije odabrano
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kada je staro
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Prestani zamijenjivati vozila
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikni za zaustavljanje zamjene lijevo odabrane vrste lokomotive
 
@@ -3754,6 +3764,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... u vl
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... područje je u vlasništvu druge tvrtke
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dosegnut limit preobrazbe terena
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dosegnut limit čišćenja polja
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... dosegnut limit sađenja drveća
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti jedinstveno
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na putu
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nije dozvoljeno za vrijeme pauze

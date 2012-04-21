@@ -1207,6 +1207,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турэцка�
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Славацкая каруна (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразыльскі рэал (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Летувiскi лiт (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Паўднёвакарэйская вона (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Паўднёваафрыканскі рэнд (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Уласная...
 ############ end of currency region
 
@@ -1612,6 +1615,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Укл�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Дазволіць купляць акцыі іншых кампаніяў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Частка прыбытку, якая налічваецца за частковую перавозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Пры ўсталяваньні сыгналаў лініяй, ставіць кожн{P 0:1 ую ыя ыя}: {ORANGE}{STRING} клет{P 0:1 ку кі ак}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Захоўваць дыстанцыю памiж сыгналамi пры цягненьнi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Будаваць сэмафоры (сыгналы старога стылю): {ORANGE}да {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Уключыць адмысловае мэню сыгналаў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тып сыгналаў па змоўчаньні: {ORANGE}{STRING}
@@ -3088,6 +3092,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пака
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Перайменаваць станцыю
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Закрыць аэрапорт
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Прадухiляць пасадку паветранаго судна ў гэтым аэрапорце
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць пункт шляху ў асноўным вакне. Ctrl+клік - паказаць у дадатковым вакне.
@@ -3464,9 +3471,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выба
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбар тыпу транспарту, на які варта замяніць
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Пачаць замену
+STR_REPLACE_VEHICLES_NOW                                        :Замянiць увесь транспарт
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замянiць толькi старыя транспартныя сродкi
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Пачаць замену выбраных тыпаў транспарту
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Няма замены
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Транспарт ня выбраны
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} калi стары
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спыніць замену
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Спыніць замену транспарту
 
@@ -4015,6 +4025,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... на
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участак належыць іншай кампаніі
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... дасягнуты лiмiт ляндшафтных зьменаў
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... дасягнута абмежаваньне па колькасьці ачышчаных клетак
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... дасягнены лiмiт пасаджаных дрэваў
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на шляху
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Забаронена падчас паўзы

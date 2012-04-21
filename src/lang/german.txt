@@ -895,6 +895,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkische Lire
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slowakische Kronen (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianische Reais (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnische Kronen (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauische Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanischer Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanischer Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eigene...
 ############ end of currency region
 
@@ -1296,6 +1299,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Feinere
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Handel mit Firmenanteilen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prozentsatz des Profits, der Zubringern gezahlt wird: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale jedes {ORANGE}{STRING}. Feld beim Ziehen mit der Maus
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Beim Ziehen, festen Signalabstand einhalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard-Signaltyp: {ORANGE}{STRING}
@@ -1484,8 +1488,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zugfarbs
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Fahrzeugfarbschema anzeigen
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Schiffsfarbschema anzeigen
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Flugzeugfarbschema anzeigen
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus. Strg+Klick wählt diese Farbe für jedes Schema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema. Strg+Klick wählt diese Farbe für jedes Schema.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wähle ein Farbschema oder mehrere Farbschemata mittels Strg+Klick aus, um diese zu ändern. Klicke in das Kästchen, um ein Schema zu aktivieren
 
 STR_LIVERY_DEFAULT                                              :Standardlackierung
@@ -2752,6 +2756,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Alle Sch
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Station/Ladeplatz umbenennen
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Flughafen schließen
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Luftfahrzeugen die Landeerlaubnis verweigern
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Hauptansicht auf den Wegpunkt zentrieren. Strg+Klick öffnet neue Zusatzansicht beim Wegpunkt
@@ -3108,9 +3115,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu erset
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Fahrzeugtyp auswählen, der anstelle des links gewählten Typs verwendet werden soll
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
+STR_REPLACE_VEHICLES_NOW                                        :Ersetze jetzt alle Fahrzeuge
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ersetze nur alte Fahrzeuge
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Fahrzeugtyps auf der linken Seite mit dem auf der rechten Seite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Keine Ersetzung
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Kein Fahrzeug gewählt
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wenn alt
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung aus
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klick zum Abbrechen der Ersetzung des Fahrzeugtyps auf der linken Seite
 
@@ -3659,6 +3669,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... Eige
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... das Gebiet gehört einer anderen Firma
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Obergrenze für Landschaftsveränderungen erreicht
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... Obergrenze für Abrissarbeiten erreicht
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... Obergrenze für Baumpflanzungen erreicht
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name bereits vergeben
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} im Weg
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nicht erlaubt, während das Spiel angehalten ist

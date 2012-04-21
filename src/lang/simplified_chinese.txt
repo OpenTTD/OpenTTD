@@ -2746,6 +2746,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}显示�
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :重命名车站
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}关闭机场
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}禁止飞机降落本场
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}将屏幕中心移动到路点所在的位置. 单击的同时按住Ctrl会在新视点中显示路点位置
@@ -3653,6 +3656,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}归 {STR
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 景观数量限制已达上限
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 已达地块清理限制
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 已经达最大植树量
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}目标位置有 {1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停时不能进行此操作

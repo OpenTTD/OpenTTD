@@ -197,7 +197,7 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}zs
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ZS
 STR_UNITS_POWER_METRIC                                          :{COMMA}zs
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
@@ -896,6 +896,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turcijas liras 
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovākijas kronas (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazīlijas reāli (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Igaunijas kronas (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lietuvas liti (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dienvidkorejas vonas (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dienvidāfrikas rendi (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Cita...
 ############ end of currency region
 
@@ -1018,13 +1021,13 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Rādīt 
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Saglabāt
 
 ############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimālais pretinieku daudzums: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimālais sāncenšu daudzums: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Pilsētu daudzums: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Ražotņu daudzums: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksimālais sākotnējais aizdevums: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Sākotnējā aizdevuma procentu likme: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Transportlīdzekļu kārtējās izmaksas: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Pretinieku būvniecības ātrums: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Sāncenšu būvniecības ātrums: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Transportlīdzekļu lūšana: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subsīdiju reizinātājs: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Būvniecības izmaksas: {ORANGE}{STRING}
@@ -1191,7 +1194,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks. att. no kartes malas naftas pārstrādes rūpnīcām: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega līnijas augstums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Apvidus raupjums (tikai TerraGenesis): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Apvidus nelīdzenums (tikai TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti līdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Līdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Nelīdzena
@@ -1296,7 +1299,8 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Atļaut vienmērīgas izmaiņas ekonomikā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citiem uzņēmumiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procenti no kopējās peļņas, ko maksā tranzītstacijās: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot, izvietot signālus uz katra {ORANGE}{STRING}. lauciņa
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot izvietot signālus uz katra {ORANGE}{STRING}. lauciņa
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Velkot paturēt vienādu attālumu starp signāliem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automātiski būvēt semaforus pirms: {ORANGE}{STRING} gada
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ieslēgt signālu grafisko lietotāju saskarni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Noklusētais signālu veids: {ORANGE}{STRING}
@@ -1485,8 +1489,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rādīt 
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rādīt autotransporta identitātes krāsu shēmas
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Rādīt kuģu identitātes krāsu shēmas
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Rādīt lidaparātu identitātes krāsu shēmas
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izvēlēties galveno identitātes krāsu atlasītajai shēmai
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izvēlēties papildu identitātes krāsu atlasītajai shēmai
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izvēlēties galveno identitātes krāsu atlasītajai shēmai. Ctrl+klikšķis iestatīs šo krāsu katrai shēmai
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izvēlēties papildu identitātes krāsu atlasītajai shēmai. Ctrl+klikšķis iestatīs šo krāsu katrai shēmai
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izvēlēties kuru identitātes krāsu shēmu mainīt, vai vairākas ar Ctrl+klikšķi. Klikšķināt uz rūtiņas, lai pārslēgtu shēmas izmantošanu
 
 STR_LIVERY_DEFAULT                                              :Vispārpieņemtā identitātes krāsa
@@ -2511,7 +2515,7 @@ STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iet pie 
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Iet pie dotā gariņa. Ja tas nav parastais gariņš, tad pāriet pie nākamā
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Iepriekšējais gariņš
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Iet pie iepriekšējā parastā gariņa, izlaižot visus pseido/pārkrāsotos/fonta gariņus
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Izvēlētā objekta attēlojums. To attēlojot, izkārtojums ir ignorēts
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atlasītā gariņa attēlojums. To attēlojot, izkārtojums netiek ievērots
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pārvietot gariņu, lai mainītu X un Y vērtības
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X garums: {NUM}, Y garums: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Paņemt gariņu
@@ -2688,7 +2692,7 @@ STR_GOAL_QUESTION_BUTTON_NO                                     :Nē
 STR_GOAL_QUESTION_BUTTON_YES                                    :Jā
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Noraidīt
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Pieņemt
-STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Ignorēt
+STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Neievērot
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :Mēģināt vēl
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Iepriekšējais
 STR_GOAL_QUESTION_BUTTON_PREVIOUS.kas                           :{G=f}Iepriekšējā
@@ -2758,6 +2762,9 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Rādīt 
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Rādīt kuģus, kuru rīkojumu sarakstos ir šī stacija
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Pārdēvēt staciju/iekraušanas zonu
+
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Slēgt lidostu
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Novērst lidaparātu nolaišanos šajā lidostā
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2941,10 +2948,10 @@ STR_GROUP_DEFAULT_SHIPS                                         :Negrupēti kuģ
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupēti lidaparāti
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupas - uzklikšķināt uz grupas, lai iegūtu tās transportlīdzekļu sarakstu
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik, lai izveidotu grupu
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikšķināt, lai izveidotu grupu
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Dzēst izvēlēto grupu
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Pārdēvēt izvēlēto grupu
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik, lai aizsargātu šo grupu no vispārējas autoaizstāšanas
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikšķināt, lai pasargātu šo grupu no vispārējās automātiskās aizstāšanas
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pievienot kopīgos transportlīdzekļus
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Novākt visus transportlīdzekļus
@@ -3116,13 +3123,16 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izvēlē
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izvēlēties jaunu lokomotīves veidu, kuru vēlaties lietot kreisajā pusē atlasītās lokomotīves vietā
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Sākt transportlīdzekļu nomaiņu
+STR_REPLACE_VEHICLES_NOW                                        :Nomainīt visus transportlīdzekļus
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nomainīt tikai vecos transportlīdzekļus
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospiest, lai sāktu kreisajā pusē atlasītās lokomotīves aizstāšanu ar labajā pusē atlasīto lokomotīvi
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}Netiks nomainîts
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Netiks nomainīts
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nav atlasītu transportlīdzekļu
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} kad vecs
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Pārtraukt transportlīdzekļu nomaiņu
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospiest, lai apturētu kreisajā pusē atlasītās lokomotīves aizstāšanu
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Nomainīt: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Parslēgties starp lokomotīves un vagona aizstāšanas logiem
 STR_REPLACE_ENGINES                                             :Lokomotīves
 STR_REPLACE_WAGONS                                              :Vagoni
@@ -3155,7 +3165,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Tas pirk
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Tas nopirks kuģa kopiju. Izmantojot CTRL+klikšķis, kuģi kopīgi lietos rīkojumu. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Tas nopirks lidaparāta kopiju. Izmantojot CTRL+klik, lidaparāti kopīgi lietos rīkojumus. Shift+klikšķis rāda izmaksu novērtējumu, neveicot pirkumu
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu ignorēt signālu
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Piespiest vilcienu doties tālāk neievērojot signālu
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Pielāgot vilcienu citam kravas veidam
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Pielāgot autotransporta līdzekli citam kravas veidam
@@ -3667,6 +3677,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... pied
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... sasniegts ainavu ierobežojums
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... sasniegts lauciņu attīrīšanas ierobežojums
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... sasniegts koku stādīšanas ierobežojums
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam ir jābūt unikālam
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Traucē {1:STRING}
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nav atļauts pauzes režīmā

@@ -897,7 +897,7 @@ STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilian Real 
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonian Krooni (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauen Litas (LTL)
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Suid Koreanse Won (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Siud Afrikaanse Rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Suid Afrikaanse Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Pasmaak...
 ############ end of currency region
 
@@ -1589,7 +1589,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kaart gr
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kaart groote van die speeletjie{}Kliek om volgens area te sorteer
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Datum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Huidigge datum
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}jare
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Jare
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Hoeveelheid jaar{}wat die speeletjie hardloop
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Taal, bediender verwerking, ens.
 
@@ -1609,7 +1609,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Huidige
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Wagwoord beskerm!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}VERSKAFFER AFLYN
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}VERSKAFFER VOL
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}HERSIENING ONGELYK
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}HERSIENING MISPAS
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF MISPAS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Verbind spel
@@ -1877,7 +1877,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merk all
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Merker/naam filter:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Besoek webblad
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Besoek die webwerf vir hierdie inhoud
-STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Aflaai
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laai Af
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Begin om die geselekteerde inligting af te laai
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale aflaai groote: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INHOUD INFORMASIE
@@ -2516,7 +2516,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fataal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}n' Fataale NewGRF fout het gebeur: {}{STRING}
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}'n Fataale NewGRF fout het gebeur: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is vir die {STRING} uitgawe van TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is onderwerp om saam met {STRING} gebruik te word
@@ -2533,7 +2533,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poging on 'n on
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat veelvoudige Aksie 8 inskrywings (sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees verby die einde van die pseudo-sprite (sprite {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Die huideige grafiese stel ontbreek 'n paar sprites.{}Dateer die grafiese stel asseblief na die nuutste
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Die huideige grafiese stel ontbreek 'n paar sprites.{}Opdateer die grafiese stel asseblief na die nuutste
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Aangevraagde GRF hulpbronne is nie beskikbaar nie (sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} was gedeaktiveer deur {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ongeldige/onbekende sprite uitleg formaat (sprite {3:NUM})
@@ -2652,7 +2652,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin '
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Fonds die herkonstruksie van die stedelik pad netwerk. Veroorsaak aansienlike skeuring to pad verkeer vir op tot 6 maande.{}  Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Bou 'n standbeeld in eer van u maatskappy.{} Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Fonds die bou van nuwe kommersieel geboue in die stad.{}  Prys: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Koop 1 jare eksklusief vervoer regte in dorp. Dorp raad sal slegs passasiers en cargo toelaat om jou maatskappy se stasies te gebruik.{} Prys: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Koop 1 jaar se eksklusief vervoer regte in dorp. Dorp raad sal slegs passasiers en cargo toelaat om jou maatskappy se stasies te gebruik.{} Prys: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Omkoop die plaaslike raad om jou gradering te verbeter, by die risiko van 'n ernstig straf indien gevang{}  Kos: {CURRENCY_LONG}
 
 # Goal window
@@ -2958,7 +2958,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Spoed op
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Loopkoste: {GOLD}{CURRENCY_LONG}/jr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteit: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(herboubaar)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontwerp: {GOLD}{NUM}{BLACK} Lewe: {GOLD}{COMMA} jare{P "" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontwerp: {GOLD}{NUM}{BLACK} Lewe: {GOLD}{COMMA} ja{P ar re}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Betroubaarheid: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kos: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewig: {GOLD}{WEIGHT_SHORT}  ({WEIGHT_SHORT})
@@ -3383,6 +3383,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_IMPLICIT                                              :(Implesiete)
 
 STR_ORDER_FULL_LOAD                                             :(Vol laai)
 STR_ORDER_FULL_LOAD_ANY                                         :(Vol laai enige vrag)
@@ -3400,6 +3401,18 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Geen aflaai en
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Geen aflaai en wag vir enige vol vrag)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Geen aflaai en geen laai)
 
+STR_ORDER_AUTO_REFIT                                            :(Outo-herbou na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Vollas met outo-herbou na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Vollas enige vrago met outo-herbou na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Laai af en laai vrag met outo-herbou na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Laai af en wag vir 'n vol vrag met outo-herbo na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Laai af en wag vir enige vol vrag met outo-herbo na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Verplaas en vat vrag met outo-herbou na{STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Verplaas en wag vir 'n vol vrag met outo-herbou na{STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Verplaas en wag vir enige vol vrag met outo-herbou na{STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Geen aflaai en vat vrag met outo-herbou na{STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Geen aflaai en wag vir 'n vol vrag met outo-herbou na{STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Geen aflaai en wag vir enige vol vrag met outo-herbou na{STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :beskikbare vrag
 
@@ -3424,7 +3437,9 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster 
 
 STR_TIMETABLE_NO_TRAVEL                                         :Geen reis
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie op rooster nie)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis op die meeste {2:VELOCITY} (nie gerooster)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reis vir {STRING} met die meeste {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :en reis vir {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} da{P g e}
@@ -3449,8 +3464,10 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Reinig T
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vee uit die totaal van tyd vir die gespesiveerde opdrag
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Verander Spoedgrens
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Verander die maksimum reis spoed van die verligte bevel
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Verwyder Spoedgrens
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}verwyder die maksimum reis spoed van die verligte bevel
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Herstel Laat Teller
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Herstel die laat teller, so dat die voertuig op tyd is
@@ -3483,7 +3500,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI stell
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Verander die stellings van die skrif
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Breek op:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Breek op
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Pas kas
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Gaan voort
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Hervat en gaan met die AI voort
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Kyk na die ontfout uitset van die AI
 STR_AI_GAME_SCRIPT                                              :{BLACK}Speletjie Skrif
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Nagaan die Spel Skrif log
 
@@ -3511,6 +3533,7 @@ STR_AI_CONFIG_CHANGE                                            :{BLACK}Selektee
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SpeletjieSkrif
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laai nog 'n script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigureer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigureer die parameters van skrif
 
@@ -3536,6 +3559,7 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Speletjie Skrif
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Maak toe
 STR_AI_SETTINGS_RESET                                           :{BLACK}Herstel
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Aantal Dae om die AI te begin na die vorige een (omenby): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -3622,6 +3646,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ligg
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alreeds gebou
 STR_ERROR_OWNED_BY                                              :{WHITE}... besit deur {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is besit deur 'n ander maatskappy
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Landargitekteur beperking beryk
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... teël skoonmaak limiet bereik
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... bome se plant beperking bereik
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet unike wees
@@ -3632,6 +3657,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nie toeg
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} plaaslike raad weier om dit te toelaat
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} plaaslikke raad weier toestemming vir lughawes omdat die dorp oor geraas bekommer
+STR_ERROR_BRIBE_FAILED                                          :{WHITE}Jou pogin met omkoop is deur 'n plaaslike ondersoeker uit gesniffel
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}kan nie land hier verhoog nie...
@@ -3670,6 +3696,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp sal nie paaie bou nie. You can enable building of roads via Gevorderde Stellings->Ekonomie->Dorpe.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... daar is geen plek vir 'n standbeeld in die middel van die dorp
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... te veel industrieë
@@ -3711,6 +3738,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Te naby 
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Stasie kan nie hernoem word nie...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... hierdie is 'n dorp besit pad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... pad teenoor in die verkeerde rigting
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... deurry stops kan nie hoeke hê nie
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... deurry stops kan nie aansluitings hê nie
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan nie deel van stasie verwyder nie...
@@ -3780,6 +3809,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Moet eer
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Geen geskikte treinspoor
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Moet eers spoor verwyder
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Pad is een rigting of geblok
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Vlak kruisings word nie toegelaat vir die spoor tipe nie
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan nie seinligte hier bou nie...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan nie spoore hier bou nie...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan nie spoore vanaf hier verwyder nie...
@@ -3826,6 +3856,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brug is 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begin en einde moet in lyn wees
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... albei brug eindes moet op land wees
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brug te lank
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Brug sou eindig buite die kaart
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tonnel kan nie daar gebou word nie...
@@ -3838,6 +3869,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tonn
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... te veel voorwerpe
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan nie voorwerp bou nie...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Voorwerp in die pad
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... maatskappy hoofkwartier in die pad
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Die land area kan nie aangekoop word nie...
@@ -3905,6 +3937,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... voer
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan nie trein forseer om sein te vermy op gevaar...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Kan nie rigting van trein omkeer nie...
+STR_ERROR_TRAIN_START_NO_POWER                                  :Trein het geen krag
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Kan nie pad voertuig laat omdraai nie...
 
@@ -3924,8 +3957,10 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... voer
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... 'n voertuig wat hierdie opdrag deel kan nie na daardie stasie toe gaan nie
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan nie opdraglys deel nie...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan nie opdraglys ophou deel nie......
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan nie opdrag lys kopie nie...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te ver van vorige destinasie
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... vliegtuig kan nie so ver vlieg nie
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan nie voertuig 'n rooster gee nie...
@@ -3939,6 +3974,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan nie 
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan nie teken verwyder nie
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :'n Simulasie speletjie wat gebaseer is op Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -4336,6 +4372,7 @@ STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Pad Voer
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Pad Voertuig Depot #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Skip Depot
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Skip Depot #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :onbekende stasie
 STR_DEFAULT_SIGN_NAME                                           :Teken
