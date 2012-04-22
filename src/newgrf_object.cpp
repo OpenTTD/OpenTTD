@@ -54,15 +54,23 @@ ObjectSpec _object_specs[NUM_OBJECTS];
 }
 
 /**
+ * Check whether the object might be available at some point in this game with the current game mode.
+ * @return true if it might be available.
+ */
+bool ObjectSpec::IsEverAvailable() const
+{
+	return this->enabled && HasBit(this->climate, _settings_game.game_creation.landscape) &&
+			(this->flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
+}
+
+/**
  * Check whether the object is available at this time.
  * @return true if it is available.
  */
 bool ObjectSpec::IsAvailable() const
 {
-	return this->enabled && _date > this->introduction_date &&
-			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365) &&
-			HasBit(this->climate, _settings_game.game_creation.landscape) &&
-			(flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
+	return this->IsEverAvailable() && _date > this->introduction_date &&
+			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365);
 }
 
 /**

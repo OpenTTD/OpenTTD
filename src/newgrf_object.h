@@ -82,6 +82,7 @@ struct ObjectSpec {
 	 */
 	Money GetClearCost() const { return GetPrice(PR_CLEAR_OBJECT, this->clear_cost_multiplier, this->grf_prop.grffile, 0); }
 
+	bool IsEverAvailable() const;
 	bool IsAvailable() const;
 	uint Index() const;
 
