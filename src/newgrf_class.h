@@ -49,9 +49,9 @@ public:
 	static void Reset();
 	static Tid Allocate(uint32 global_id);
 	static void Assign(Tspec *spec);
+	static uint GetClassCount();
 	static NewGRFClass *Get(Tid cls_id);
 
-	static uint GetCount();
 	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
 };
 

@@ -1105,7 +1105,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	if (!ValParamRailtype(rt)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
-	if ((uint)spec_class >= StationClass::GetCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
+	if ((uint)spec_class >= StationClass::GetClassCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
 	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
 	if (plat_len == 0 || numtracks == 0) return CMD_ERROR;
 

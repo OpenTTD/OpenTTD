@@ -109,7 +109,7 @@ NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
  * Get the number of allocated classes.
  * @return The number of classes.
  */
-DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount()
+DEFINE_NEWGRF_CLASS_METHOD(uint)::GetClassCount()
 {
 	uint i;
 	for (i = 0; i < Tmax && classes[i].global_id != 0; i++) {}
@@ -162,6 +162,6 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template void name::Insert(Tspec *spec); \
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
-	template uint name::GetCount(); \
+	template uint name::GetClassCount(); \
 	template const Tspec *name::GetSpec(uint index) const; \
 	template const Tspec *name::GetByGrf(uint32 grfid, byte localidx, int *index);

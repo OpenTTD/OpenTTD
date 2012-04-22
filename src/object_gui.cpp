@@ -42,7 +42,7 @@ public:
 		this->vscroll = this->GetScrollbar(WID_BO_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
-		this->vscroll->SetCount(ObjectClass::GetCount());
+		this->vscroll->SetCount(ObjectClass::GetClassCount());
 
 		this->FinishInitNested(desc, 0);
 
@@ -77,7 +77,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
-				for (uint i = 0; i < ObjectClass::GetCount(); i++) {
+				for (uint i = 0; i < ObjectClass::GetClassCount(); i++) {
 					size->width = max(size->width, GetStringBoundingBox(ObjectClass::Get((ObjectClassID)i)->name).width);
 				}
 				size->width += padding.width;
@@ -155,7 +155,7 @@ public:
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
 				int y = r.top;
-				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(); i++) {
+				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetClassCount(); i++) {
 					SetDParam(0, ObjectClass::Get((ObjectClassID)i)->name);
 					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, STR_JUST_STRING,
 							((int)i == _selected_object_class) ? TC_WHITE : TC_BLACK);
@@ -289,7 +289,7 @@ public:
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
-				if (num_clicked >= (int)ObjectClass::GetCount()) break;
+				if (num_clicked >= (int)ObjectClass::GetClassCount()) break;
 
 				_selected_object_class = (ObjectClassID)num_clicked;
 				this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetSpecCount());

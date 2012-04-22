@@ -207,7 +207,7 @@ class BuildAirportWindow : public PickerWindowBase {
 	{
 		DropDownList *list = new DropDownList();
 
-		for (uint i = 0; i < AirportClass::GetCount(); i++) {
+		for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
 			list->push_back(new DropDownListStringItem(AirportClass::Get((AirportClassID)i)->name, i, false));
 		}
 
@@ -268,7 +268,7 @@ public:
 		switch (widget) {
 			case WID_AP_CLASS_DROPDOWN: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < AirportClass::GetCount(); i++) {
+				for (uint i = 0; i < AirportClass::GetClassCount(); i++) {
 					SetDParam(0, AirportClass::Get((AirportClassID)i)->name);
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
 				}

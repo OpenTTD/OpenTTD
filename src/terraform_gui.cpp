@@ -163,7 +163,7 @@ struct TerraformToolbarWindow : Window {
 	{
 		/* Don't show the place object button when there are no objects to place. */
 		NWidgetStacked *show_object = this->GetWidget<NWidgetStacked>(WID_TT_SHOW_PLACE_OBJECT);
-		show_object->SetDisplayedPlane(ObjectClass::GetCount() != 0 ? 0 : SZSP_NONE);
+		show_object->SetDisplayedPlane(ObjectClass::GetClassCount() != 0 ? 0 : SZSP_NONE);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -209,7 +209,7 @@ struct TerraformToolbarWindow : Window {
 
 			case WID_TT_PLACE_OBJECT: // Place object button
 				/* Don't show the place object button when there are no objects to place. */
-				if (ObjectClass::GetCount() == 0) return;
+				if (ObjectClass::GetClassCount() == 0) return;
 				if (HandlePlacePushButton(this, WID_TT_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT)) {
 					ShowBuildObjectPicker(this);
 					this->last_user_action = widget;

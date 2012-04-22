@@ -937,7 +937,7 @@ public:
 		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
 
-		if (!newstation || _railstation.station_class >= (int)StationClass::GetCount()) {
+		if (!newstation || _railstation.station_class >= (int)StationClass::GetClassCount()) {
 			/* New stations are not available or changed, so ensure the default station
 			 * type is 'selected'. */
 			_railstation.station_class = STAT_CLASS_DFLT;
@@ -949,7 +949,7 @@ public:
 			_railstation.station_type = min(_railstation.station_type, _railstation.station_count - 1);
 
 			int count = 0;
-			for (uint i = 0; i < StationClass::GetCount(); i++) {
+			for (uint i = 0; i < StationClass::GetClassCount(); i++) {
 				if (i == STAT_CLASS_WAYP) continue;
 				count++;
 			}
@@ -1024,7 +1024,7 @@ public:
 		switch (widget) {
 			case WID_BRAS_NEWST_LIST: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < StationClass::GetCount(); i++) {
+				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
 					SetDParam(0, StationClass::Get((StationClassID)i)->name);
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
@@ -1046,7 +1046,7 @@ public:
 				/* If newstations exist, compute the non-zero minimal size. */
 				Dimension d = {0, 0};
 				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetCount(); statclass++) {
+				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetClassCount(); statclass++) {
 					if (statclass == STAT_CLASS_WAYP) continue;
 					StationClass *stclass = StationClass::Get(statclass);
 					for (uint16 j = 0; j < stclass->GetSpecCount(); j++) {
@@ -1102,7 +1102,7 @@ public:
 			case WID_BRAS_NEWST_LIST: {
 				uint statclass = 0;
 				uint row = 0;
-				for (uint i = 0; i < StationClass::GetCount(); i++) {
+				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
 					if (this->vscroll->IsVisible(statclass)) {
 						SetDParam(0, StationClass::Get((StationClassID)i)->name);
@@ -1283,8 +1283,8 @@ public:
 
 			case WID_BRAS_NEWST_LIST: {
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BRAS_NEWST_LIST, 0, this->line_height);
-				if (y >= (int)StationClass::GetCount()) return;
-				for (uint i = 0; i < StationClass::GetCount(); i++) {
+				if (y >= (int)StationClass::GetClassCount()) return;
+				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
 					if (y == 0) {
 						if (_railstation.station_class != (StationClassID)i) {
@@ -1437,7 +1437,7 @@ static const WindowDesc _station_builder_desc(
 /** Open station build window */
 static void ShowStationBuilder(Window *parent)
 {
-	bool newstations = StationClass::GetCount() > 2 || StationClass::Get(STAT_CLASS_DFLT)->GetSpecCount() != 1;
+	bool newstations = StationClass::GetClassCount() > 2 || StationClass::Get(STAT_CLASS_DFLT)->GetSpecCount() != 1;
 	new BuildRailStationWindow(&_station_builder_desc, parent, newstations);
 }
 
