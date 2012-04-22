@@ -46,6 +46,8 @@ public:
 	uint GetSpecCount() const { return this->count; }
 	/** Get the number of potentially user-available specs within the class. */
 	uint GetUISpecCount() const { return this->ui_count; }
+	int GetUIFromIndex(int index) const;
+	int GetIndexFromUI(int ui_index) const;
 
 	const Tspec *GetSpec(uint index) const;
 
@@ -57,6 +59,7 @@ public:
 	static void Assign(Tspec *spec);
 	static uint GetClassCount();
 	static uint GetUIClassCount();
+	static Tid GetUIClass(uint index);
 	static NewGRFClass *Get(Tid cls_id);
 
 	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);

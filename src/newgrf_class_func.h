@@ -133,6 +133,20 @@ DEFINE_NEWGRF_CLASS_METHOD(uint)::GetUIClassCount()
 }
 
 /**
+ * Get the nth-class with user available specs.
+ * @param index UI index of a class.
+ * @return The class ID of the class.
+ */
+DEFINE_NEWGRF_CLASS_METHOD(Tid)::GetUIClass(uint index)
+{
+	for (uint i = 0; i < Tmax && classes[i].global_id != 0; i++) {
+		if (classes[i].GetUISpecCount() == 0) continue;
+		if (index-- == 0) return (Tid)i;
+	}
+	NOT_REACHED();
+}
+
+/**
  * Get a spec from the class at a given index.
  * @param index  The index where to find the spec.
  * @return The spec at given location.
@@ -141,6 +155,36 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetSpec(uint index) const
 {
 	/* If the custom spec isn't defined any more, then the GRF file probably was not loaded. */
 	return index < this->GetSpecCount() ? this->spec[index] : NULL;
+}
+
+/**
+ * Translate a UI spec index into a spec index.
+ * @param ui_index UI index of the spec.
+ * @return index of the spec, or -1 if out of range.
+ */
+DEFINE_NEWGRF_CLASS_METHOD(int)::GetIndexFromUI(int ui_index) const
+{
+	if (ui_index < 0) return -1;
+	for (uint i = 0; i < this->GetSpecCount(); i++) {
+		if (!this->IsUIAvailable(i)) continue;
+		if (ui_index-- == 0) return i;
+	}
+	return -1;
+}
+
+/**
+ * Translate a spec index into a UI spec index.
+ * @param index index of the spec.
+ * @return UI index of the spec, or -1 if out of range.
+ */
+DEFINE_NEWGRF_CLASS_METHOD(int)::GetUIFromIndex(int index) const
+{
+	if ((uint)index >= this->GetSpecCount()) return -1;
+	uint ui_index = 0;
+	for (int i = 0; i < index; i++) {
+		if (this->IsUIAvailable(i)) ui_index++;
+	}
+	return ui_index;
 }
 
 /**
@@ -180,5 +224,8 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
 	template uint name::GetClassCount(); \
 	template uint name::GetUIClassCount(); \
+	template Tid name::GetUIClass(uint index); \
 	template const Tspec *name::GetSpec(uint index) const; \
+	template int name::GetUIFromIndex(int index) const; \
+	template int name::GetIndexFromUI(int ui_index) const; \
 	template const Tspec *name::GetByGrf(uint32 grfid, byte localidx, int *index);
