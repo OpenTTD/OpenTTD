@@ -326,7 +326,7 @@ public:
 		for (uint i = 0; i < ObjectClass::GetCount(_selected_object_class); i++) {
 			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, i);
 			if (spec->IsAvailable()) {
-				this->SelectOtherObject(0);
+				this->SelectOtherObject(i);
 				return;
 			}
 		}
