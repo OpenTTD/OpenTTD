@@ -198,17 +198,17 @@ STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA} ZS
-STR_UNITS_POWER_METRIC                                          :{COMMA}zs
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_METRIC                                          :{COMMA} ZS
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P a as u}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P s i u}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
@@ -2882,7 +2882,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ražotņ
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Iepriekšējā mēnesī saražots:
-STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% pārvadāts)
+STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} (aizvests {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrēt galveno skatu uz ražotni. Ctrl+klikšķis atvērs skatu uz ražotni jaunā skatlaukā
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Ražošanas līmenis: {YELLOW}{COMMA}%
 
@@ -2974,7 +2974,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ātrums okeānā: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ātrums kanālā/upē: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kārtējās izmaksas: {GOLD}{CURRENCY_LONG}/gadā
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kārtējās izmaksas: {GOLD}{CURRENCY_LONG} gadā
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpība: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(pielāgojams)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektēts: {GOLD}{NUM}{BLACK} Kalpošanas laiks: {GOLD}{COMMA} gad{P s i u}
@@ -2986,7 +2986,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpī
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorvagoni: {GOLD}+{POWER}zs{BLACK} Svars: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pielāgojams uz: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Visi kravu veidi
-STR_PURCHASE_INFO_ALL_BUT                                       :Visu izņemot {CARGO_LIST}
+STR_PURCHASE_INFO_ALL_BUT                                       :visu, izņemot {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimālais vilces spēks: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Apgabas: {GOLD}{COMMA} lauciņi
 
@@ -3105,12 +3105,12 @@ STR_ENGINE_PREVIEW_SHIP                                         :kuģis
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :viensliedes lokomotīve
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :magleva lokomotīve
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā{}Ietilpība:  {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Kārtējās izmaksas: {4:CURRENCY_LONG}/gadā{}Ietilpība: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG}/gadā
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}{} Kārtējās izmaksas : {CURRENCY_LONG}/gadā
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY} Jauda: {POWER}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā{}Ietilpība:  {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Svars: {WEIGHT_SHORT}{}Ātrums: {VELOCITY}  Jauda: {POWER}  Maks. spēks: {6:FORCE}{}Kārtējās izmaksas: {4:CURRENCY_LONG} gadā{}Ietilpība: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY}{}Ietilpība: {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}, {CARGO_LONG}{}Kārtējās izmaksas: {CURRENCY_LONG} gadā
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Maks. ātrums: {VELOCITY} Apgabals: {COMMA} lauciņi{}Ietilpība: {CARGO_LONG}{} Kārtējās izmaksas : {CURRENCY_LONG} gadā
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomainīt {STRING} - {STRING}
@@ -3222,7 +3222,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nosaukt 
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nosaukt kuģi
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nosaukt lidaparātu
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Izmaksas: {LTBLUE}{CURRENCY_LONG}/gadā
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Izmaksas: {LTBLUE}{CURRENCY_LONG} gadā
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} gad{P s i u} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} gad{P s i u} ({COMMA})
