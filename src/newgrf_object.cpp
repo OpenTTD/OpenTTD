@@ -103,12 +103,12 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	if (_game_mode != GM_EDITOR) return;
 
 	ObjectClassID cls = ObjectClass::Allocate('LTHS');
-	ObjectClass::SetName(cls, STR_OBJECT_CLASS_LTHS);
+	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_LTHS;
 	_object_specs[OBJECT_LIGHTHOUSE].cls_id = cls;
 	ObjectClass::Assign(&_object_specs[OBJECT_LIGHTHOUSE]);
 
 	cls = ObjectClass::Allocate('TRNS');
-	ObjectClass::SetName(cls, STR_OBJECT_CLASS_TRNS);
+	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_TRNS;
 	_object_specs[OBJECT_TRANSMITTER].cls_id = cls;
 	ObjectClass::Assign(&_object_specs[OBJECT_TRANSMITTER]);
 }

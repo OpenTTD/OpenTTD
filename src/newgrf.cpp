@@ -3809,8 +3809,9 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 			case 0x09: { // Class name
 				StringID class_name = buf->ReadWord();
-				ObjectClass::SetName(spec->cls_id, class_name);
-				_string_to_grf_mapping[&ObjectClass::classes[spec->cls_id].name] = _cur.grffile->grfid;
+				ObjectClass *objclass = ObjectClass::Get(spec->cls_id);
+				objclass->name = class_name;
+				_string_to_grf_mapping[&objclass->name] = _cur.grffile->grfid;
 				break;
 			}
 
@@ -5351,7 +5352,7 @@ static void FeatureNewName(ByteReader *buf)
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID cls_id = _cur.grffile->stations[GB(id, 0, 8)]->cls_id;
-							StationClass::SetName(cls_id, AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED));
+							StationClass::Get(cls_id)->name = AddGRFString(_cur.grffile->grfid, id, lang, new_scheme, false, name, STR_UNDEFINED);
 						}
 						break;
 

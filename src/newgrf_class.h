@@ -32,11 +32,9 @@ struct NewGRFClass {
 	static void InsertDefaults();
 
 	static Tid Allocate(uint32 global_id);
-	static void SetName(Tid cls_id, StringID name);
 	static void Assign(Tspec *spec);
 	static NewGRFClass *Get(Tid cls_id);
 
-	static StringID GetName(Tid cls_id);
 	static uint GetCount();
 	static uint GetCount(Tid cls_id);
 	static const Tspec *Get(Tid cls_id, uint index);

@@ -2912,7 +2912,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		const StationSpec *spec = GetStationSpec(tile);
 
 		if (spec != NULL) {
-			td->station_class = StationClass::GetName(spec->cls_id);
+			td->station_class = StationClass::Get(spec->cls_id)->name;
 			td->station_name  = spec->name;
 
 			if (spec->grf_prop.grffile != NULL) {
@@ -2927,7 +2927,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 
 	if (IsAirport(tile)) {
 		const AirportSpec *as = Station::GetByTile(tile)->airport.GetSpec();
-		td->airport_class = AirportClass::GetName(as->cls_id);
+		td->airport_class = AirportClass::Get(as->cls_id)->name;
 		td->airport_name = as->name;
 
 		const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);

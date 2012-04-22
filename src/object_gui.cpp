@@ -78,7 +78,7 @@ public:
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
 				for (uint i = 0; i < ObjectClass::GetCount(); i++) {
-					size->width = max(size->width, GetStringBoundingBox(ObjectClass::GetName((ObjectClassID)i)).width);
+					size->width = max(size->width, GetStringBoundingBox(ObjectClass::Get((ObjectClassID)i)->name).width);
 				}
 				size->width += padding.width;
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
@@ -156,7 +156,7 @@ public:
 			case WID_BO_CLASS_LIST: {
 				int y = r.top;
 				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(); i++) {
-					SetDParam(0, ObjectClass::GetName((ObjectClassID)i));
+					SetDParam(0, ObjectClass::Get((ObjectClassID)i)->name);
 					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, STR_JUST_STRING,
 							((int)i == _selected_object_class) ? TC_WHITE : TC_BLACK);
 					y += this->line_height;

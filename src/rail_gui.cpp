@@ -1026,7 +1026,7 @@ public:
 				Dimension d = {0, 0};
 				for (uint i = 0; i < StationClass::GetCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
-					SetDParam(0, StationClass::GetName((StationClassID)i));
+					SetDParam(0, StationClass::Get((StationClassID)i)->name);
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
 				}
 				size->width = max(size->width, d.width + padding.width);
@@ -1104,7 +1104,7 @@ public:
 				for (uint i = 0; i < StationClass::GetCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
 					if (this->vscroll->IsVisible(statclass)) {
-						SetDParam(0, StationClass::GetName((StationClassID)i));
+						SetDParam(0, StationClass::Get((StationClassID)i)->name);
 						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, row * this->line_height + r.top + WD_MATRIX_TOP, STR_JUST_STRING,
 								(StationClassID)i == _railstation.station_class ? TC_WHITE : TC_BLACK);
 						row++;

@@ -65,18 +65,6 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 }
 
 /**
- * Set the name of a particular class.
- * @param cls_id The id for the class.
- * @pre index < GetCount(cls_id)
- * @param name   The new name for the class.
- */
-DEFINE_NEWGRF_CLASS_METHOD(void)::SetName(Tid cls_id, StringID name)
-{
-	assert(cls_id < Tmax);
-	classes[cls_id].name = name;
-}
-
-/**
  * Assign a spec to one of the classes.
  * @param spec The spec to assign.
  * @note The spec must have a valid class id set.
@@ -102,18 +90,6 @@ NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
 {
 	assert(cls_id < Tmax);
 	return classes + cls_id;
-}
-
-/**
- * Get the name of a particular class.
- * @param cls_id The class to get the name of.
- * @pre index < GetCount(cls_id)
- * @return The name of said class.
- */
-DEFINE_NEWGRF_CLASS_METHOD(StringID)::GetName(Tid cls_id)
-{
-	assert(cls_id < Tmax);
-	return classes[cls_id].name;
 }
 
 /**
@@ -186,10 +162,8 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 #define INSTANTIATE_NEWGRF_CLASS_METHODS(name, Tspec, Tid, Tmax) \
 	template void name::Reset(); \
 	template Tid name::Allocate(uint32 global_id); \
-	template void name::SetName(Tid cls_id, StringID name); \
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
-	template StringID name::GetName(Tid cls_id); \
 	template uint name::GetCount(); \
 	template uint name::GetCount(Tid cls_id); \
 	template const Tspec *name::Get(Tid cls_id, uint index); \
