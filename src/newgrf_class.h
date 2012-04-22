@@ -19,18 +19,25 @@
  */
 template <typename Tspec, typename Tid, Tid Tmax>
 struct NewGRFClass {
-	uint32 global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
-	StringID name;    ///< Name of this class.
-	uint count;       ///< Number of stations in this class.
-	Tspec **spec;     ///< Array of station specifications.
+private:
+	uint count;       ///< Number of specs in this class.
+	Tspec **spec;     ///< Array of specifications.
 
-	/** The actual classes. */
+	/**
+	 * The actual classes.
+	 * @note We store pointers to membes of this array in various places outside this class (e.g. to 'name' for GRF string resolving).
+	 *       Thus this must be a static array, and cannot be a self-resizing SmallVector or similar.
+	 */
 	static NewGRFClass<Tspec, Tid, Tmax> classes[Tmax];
 
-	static void Reset();
 	/** Initialise the defaults. */
 	static void InsertDefaults();
 
+public:
+	uint32 global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
+	StringID name;    ///< Name of this class.
+
+	static void Reset();
 	static Tid Allocate(uint32 global_id);
 	static void Assign(Tspec *spec);
 	static NewGRFClass *Get(Tid cls_id);
