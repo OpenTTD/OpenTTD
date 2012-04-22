@@ -71,6 +71,18 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 }
 
 /**
+ * Insert a spec into the class.
+ * @param spec The spec to insert.
+ */
+DEFINE_NEWGRF_CLASS_METHOD(void)::Insert(Tspec *spec)
+{
+	uint i = this->count++;
+	this->spec = ReallocT(this->spec, this->count);
+
+	this->spec[i] = spec;
+}
+
+/**
  * Assign a spec to one of the classes.
  * @param spec The spec to assign.
  * @note The spec must have a valid class id set.
@@ -78,12 +90,7 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 DEFINE_NEWGRF_CLASS_METHOD(void)::Assign(Tspec *spec)
 {
 	assert(spec->cls_id < Tmax);
-	NewGRFClass<Tspec, Tid, Tmax> *cls = &classes[spec->cls_id];
-
-	uint i = cls->count++;
-	cls->spec = ReallocT(cls->spec, cls->count);
-
-	cls->spec[i] = spec;
+	Get(spec->cls_id)->Insert(spec);
 }
 
 /**
@@ -169,6 +176,7 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template void name::ResetClass(); \
 	template void name::Reset(); \
 	template Tid name::Allocate(uint32 global_id); \
+	template void name::Insert(Tspec *spec); \
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
 	template uint name::GetCount(); \

@@ -39,6 +39,8 @@ public:
 	uint32 global_id; ///< Global ID for class, e.g. 'DFLT', 'WAYP', etc.
 	StringID name;    ///< Name of this class.
 
+	void Insert(Tspec *spec);
+
 	static void Reset();
 	static Tid Allocate(uint32 global_id);
 	static void Assign(Tspec *spec);
