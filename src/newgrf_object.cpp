@@ -99,9 +99,6 @@ void ResetObjects()
 template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
 {
-	/* We only add the transmitters in the scenario editor. */
-	if (_game_mode != GM_EDITOR) return;
-
 	ObjectClassID cls = ObjectClass::Allocate('LTHS');
 	ObjectClass::Get(cls)->name = STR_OBJECT_CLASS_LTHS;
 	_object_specs[OBJECT_LIGHTHOUSE].cls_id = cls;
