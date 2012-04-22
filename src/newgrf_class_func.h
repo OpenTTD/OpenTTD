@@ -31,6 +31,7 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::ResetClass()
 	this->global_id = 0;
 	this->name      = STR_EMPTY;
 	this->count     = 0;
+	this->ui_count  = 0;
 
 	free(this->spec);
 	this->spec = NULL;
@@ -80,6 +81,8 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Insert(Tspec *spec)
 	this->spec = ReallocT(this->spec, this->count);
 
 	this->spec[i] = spec;
+
+	if (this->IsUIAvailable(i)) this->ui_count++;
 }
 
 /**
@@ -114,6 +117,19 @@ DEFINE_NEWGRF_CLASS_METHOD(uint)::GetClassCount()
 	uint i;
 	for (i = 0; i < Tmax && classes[i].global_id != 0; i++) {}
 	return i;
+}
+
+/**
+ * Get the number of classes available to the user.
+ * @return The number of classes.
+ */
+DEFINE_NEWGRF_CLASS_METHOD(uint)::GetUIClassCount()
+{
+	uint cnt = 0;
+	for (uint i = 0; i < Tmax && classes[i].global_id != 0; i++) {
+		if (classes[i].GetUISpecCount() > 0) cnt++;
+	}
+	return cnt;
 }
 
 /**
@@ -163,5 +179,6 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
 	template uint name::GetClassCount(); \
+	template uint name::GetUIClassCount(); \
 	template const Tspec *name::GetSpec(uint index) const; \
 	template const Tspec *name::GetByGrf(uint32 grfid, byte localidx, int *index);

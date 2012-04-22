@@ -40,6 +40,12 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	classes[1].Insert(NULL);
 }
 
+template <typename Tspec, typename Tid, Tid Tmax>
+bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
+{
+	return true;
+}
+
 INSTANTIATE_NEWGRF_CLASS_METHODS(StationClass, StationSpec, StationClassID, STAT_CLASS_MAX)
 
 static const uint MAX_SPECLIST = 255;

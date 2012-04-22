@@ -113,6 +113,12 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	ObjectClass::Assign(&_object_specs[OBJECT_TRANSMITTER]);
 }
 
+template <typename Tspec, typename Tid, Tid Tmax>
+bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
+{
+	return this->GetSpec(index)->IsEverAvailable();
+}
+
 INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX)
 
 

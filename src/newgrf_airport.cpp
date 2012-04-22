@@ -31,6 +31,12 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	AirportClass::Get(AirportClass::Allocate('HELI'))->name = STR_AIRPORT_CLASS_HELIPORTS;
 }
 
+template <typename Tspec, typename Tid, Tid Tmax>
+bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
+{
+	return true;
+}
+
 INSTANTIATE_NEWGRF_CLASS_METHODS(AirportClass, AirportSpec, AirportClassID, APC_MAX)
 
 

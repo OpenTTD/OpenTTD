@@ -21,6 +21,7 @@ template <typename Tspec, typename Tid, Tid Tmax>
 struct NewGRFClass {
 private:
 	uint count;       ///< Number of specs in this class.
+	uint ui_count;    ///< Number of specs in this class potentially available to the user.
 	Tspec **spec;     ///< Array of specifications.
 
 	/**
@@ -43,13 +44,19 @@ public:
 
 	/** Get the number of allocated specs within the class. */
 	uint GetSpecCount() const { return this->count; }
+	/** Get the number of potentially user-available specs within the class. */
+	uint GetUISpecCount() const { return this->ui_count; }
 
 	const Tspec *GetSpec(uint index) const;
+
+	/** Check whether the spec will be available to the user at some point in time. */
+	bool IsUIAvailable(uint index) const;
 
 	static void Reset();
 	static Tid Allocate(uint32 global_id);
 	static void Assign(Tspec *spec);
 	static uint GetClassCount();
+	static uint GetUIClassCount();
 	static NewGRFClass *Get(Tid cls_id);
 
 	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
