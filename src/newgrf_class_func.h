@@ -93,6 +93,18 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Assign(Tspec *spec)
 }
 
 /**
+ * Get a particular class.
+ * @param cls_id The id for the class.
+ * @pre cls_id < Tmax
+ */
+template <typename Tspec, typename Tid, Tid Tmax>
+NewGRFClass<Tspec, Tid, Tmax> *NewGRFClass<Tspec, Tid, Tmax>::Get(Tid cls_id)
+{
+	assert(cls_id < Tmax);
+	return classes + cls_id;
+}
+
+/**
  * Get the name of a particular class.
  * @param cls_id The class to get the name of.
  * @pre index < GetCount(cls_id)
@@ -176,6 +188,7 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template Tid name::Allocate(uint32 global_id); \
 	template void name::SetName(Tid cls_id, StringID name); \
 	template void name::Assign(Tspec *spec); \
+	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
 	template StringID name::GetName(Tid cls_id); \
 	template uint name::GetCount(); \
 	template uint name::GetCount(Tid cls_id); \
