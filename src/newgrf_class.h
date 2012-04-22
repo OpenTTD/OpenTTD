@@ -30,6 +30,8 @@ private:
 	 */
 	static NewGRFClass<Tspec, Tid, Tmax> classes[Tmax];
 
+	void ResetClass();
+
 	/** Initialise the defaults. */
 	static void InsertDefaults();
 

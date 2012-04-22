@@ -25,16 +25,22 @@
 template <typename Tspec, typename Tid, Tid Tmax>
 NewGRFClass<Tspec, Tid, Tmax> NewGRFClass<Tspec, Tid, Tmax>::classes[Tmax];
 
+/** Reset the class, i.e. clear everything. */
+DEFINE_NEWGRF_CLASS_METHOD(void)::ResetClass()
+{
+	this->global_id = 0;
+	this->name      = STR_EMPTY;
+	this->count     = 0;
+
+	free(this->spec);
+	this->spec = NULL;
+}
+
 /** Reset the classes, i.e. clear everything. */
 DEFINE_NEWGRF_CLASS_METHOD(void)::Reset()
 {
 	for (Tid i = (Tid)0; i < Tmax; i++) {
-		classes[i].global_id = 0;
-		classes[i].name      = STR_EMPTY;
-		classes[i].count     = 0;
-
-		free(classes[i].spec);
-		classes[i].spec = NULL;
+		classes[i].ResetClass();
 	}
 
 	InsertDefaults();
@@ -160,6 +166,7 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 
 /** Force instantiation of the methods so we don't get linker errors. */
 #define INSTANTIATE_NEWGRF_CLASS_METHODS(name, Tspec, Tid, Tmax) \
+	template void name::ResetClass(); \
 	template void name::Reset(); \
 	template Tid name::Allocate(uint32 global_id); \
 	template void name::Assign(Tspec *spec); \
