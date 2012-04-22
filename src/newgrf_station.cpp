@@ -33,15 +33,11 @@ template <typename Tspec, typename Tid, Tid Tmax>
 	/* Set up initial data */
 	classes[0].global_id = 'DFLT';
 	classes[0].name = STR_STATION_CLASS_DFLT;
-	classes[0].count = 1;
-	classes[0].spec = MallocT<StationSpec*>(1);
-	classes[0].spec[0] = NULL;
+	classes[0].Insert(NULL);
 
 	classes[1].global_id = 'WAYP';
 	classes[1].name = STR_STATION_CLASS_WAYP;
-	classes[1].count = 1;
-	classes[1].spec = MallocT<StationSpec*>(1);
-	classes[1].spec[0] = NULL;
+	classes[1].Insert(NULL);
 }
 
 INSTANTIATE_NEWGRF_CLASS_METHODS(StationClass, StationSpec, StationClassID, STAT_CLASS_MAX)
