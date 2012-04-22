@@ -549,7 +549,7 @@ struct BuildRailToolbarWindow : Window {
 
 			case WID_RAT_BUILD_WAYPOINT:
 				this->last_user_action = widget;
-				_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
+				_waypoint_count = StationClass::Get(STAT_CLASS_WAYP)->GetSpecCount();
 				if (HandlePlacePushButton(this, WID_RAT_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT) && _waypoint_count > 1) {
 					ShowBuildWaypointPicker(this);
 				}
@@ -945,7 +945,7 @@ public:
 			this->vscroll2 = NULL;
 		}
 		if (newstation) {
-			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
+			_railstation.station_count = StationClass::Get(_railstation.station_class)->GetSpecCount();
 			_railstation.station_type = min(_railstation.station_type, _railstation.station_count - 1);
 
 			int count = 0;
@@ -974,7 +974,7 @@ public:
 	virtual void OnPaint()
 	{
 		bool newstations = _railstation.newstations;
-		const StationSpec *statspec = newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
+		const StationSpec *statspec = newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : NULL;
 
 		if (_settings_client.gui.station_dragdrop) {
 			SetTileSelectSize(1, 1);
@@ -1048,8 +1048,9 @@ public:
 				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
 				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetCount(); statclass++) {
 					if (statclass == STAT_CLASS_WAYP) continue;
-					for (uint16 j = 0; j < StationClass::GetCount(statclass); j++) {
-						const StationSpec *statspec = StationClass::Get(statclass, j);
+					StationClass *stclass = StationClass::Get(statclass);
+					for (uint16 j = 0; j < stclass->GetSpecCount(); j++) {
+						const StationSpec *statspec = stclass->GetSpec(j);
 						SetDParam(0, (statspec != NULL && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
 						d = maxdim(d, GetStringBoundingBox(str));
 					}
@@ -1118,7 +1119,7 @@ public:
 				byte type = GB(widget, 16, 16);
 				assert(type < _railstation.station_count);
 				/* Check station availability callback */
-				const StationSpec *statspec = StationClass::Get(_railstation.station_class, type);
+				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(type);
 				if (!IsStationAvailable(statspec)) {
 					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, PC_BLACK, FILLRECT_CHECKER);
 				}
@@ -1148,7 +1149,7 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == WID_BRAS_SHOW_NEWST_TYPE) {
-			const StationSpec *statspec = StationClass::Get(_railstation.station_class, _railstation.station_type);
+			const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type);
 			SetDParam(0, (statspec != NULL && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
 		}
 	}
@@ -1181,7 +1182,7 @@ public:
 
 				_settings_client.gui.station_dragdrop = false;
 
-				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 					/* The previously selected number of platforms in invalid */
 					for (uint i = 0; i < 7; i++) {
@@ -1216,7 +1217,7 @@ public:
 
 				_settings_client.gui.station_dragdrop = false;
 
-				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_platforms, _settings_client.gui.station_numtracks - 1)) {
 					/* The previously selected number of tracks in invalid */
 					for (uint i = 0; i < 7; i++) {
@@ -1242,7 +1243,7 @@ public:
 				this->ToggleWidgetLoweredState(WID_BRAS_PLATFORM_DRAG_N_DROP);
 
 				/* get the first allowed length/number of platforms */
-				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class)->GetSpec(_railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 					for (uint i = 0; i < 7; i++) {
 						if (!HasBit(statspec->disallowed_lengths, i)) {
@@ -1288,10 +1289,11 @@ public:
 					if (y == 0) {
 						if (_railstation.station_class != (StationClassID)i) {
 							_railstation.station_class = (StationClassID)i;
-							_railstation.station_count = StationClass::GetCount(_railstation.station_class);
+							StationClass *stclass = StationClass::Get(_railstation.station_class);
+							_railstation.station_count = stclass->GetSpecCount();
 							_railstation.station_type  = min((int)_railstation.station_type, max(0, (int)_railstation.station_count - 1));
 
-							this->CheckSelectedSize(StationClass::Get(_railstation.station_class, _railstation.station_type));
+							this->CheckSelectedSize(stclass->GetSpec(_railstation.station_type));
 
 							NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
 							matrix->SetCount(_railstation.station_count);
@@ -1312,7 +1314,7 @@ public:
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
-				const StationSpec *statspec = StationClass::Get(_railstation.station_class, y);
+				const StationSpec *statspec = StationClass::Get(_railstation.station_class)->GetSpec(y);
 				if (!IsStationAvailable(statspec)) return;
 
 				_railstation.station_type = y;
@@ -1435,7 +1437,7 @@ static const WindowDesc _station_builder_desc(
 /** Open station build window */
 static void ShowStationBuilder(Window *parent)
 {
-	bool newstations = StationClass::GetCount() > 2 || StationClass::GetCount(STAT_CLASS_DFLT) != 1;
+	bool newstations = StationClass::GetCount() > 2 || StationClass::Get(STAT_CLASS_DFLT)->GetSpecCount() != 1;
 	new BuildRailStationWindow(&_station_builder_desc, parent, newstations);
 }
 
@@ -1741,7 +1743,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 		switch (GB(widget, 0, 16)) {
 			case WID_BRW_WAYPOINT: {
 				byte type = GB(widget, 16, 16);
-				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(type);
 				DrawWaypointSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, type, _cur_railtype);
 
 				if (!IsStationAvailable(statspec)) {
@@ -1759,7 +1761,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				this->GetWidget<NWidgetMatrix>(WID_BRW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);
 
 				/* Check station availability callback */
-				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP)->GetSpec(type);
 				if (!IsStationAvailable(statspec)) return;
 
 				_cur_waypoint_type = type;

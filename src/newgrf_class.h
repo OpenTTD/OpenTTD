@@ -41,14 +41,17 @@ public:
 
 	void Insert(Tspec *spec);
 
+	/** Get the number of allocated specs within the class. */
+	uint GetSpecCount() const { return this->count; }
+
+	const Tspec *GetSpec(uint index) const;
+
 	static void Reset();
 	static Tid Allocate(uint32 global_id);
 	static void Assign(Tspec *spec);
 	static NewGRFClass *Get(Tid cls_id);
 
 	static uint GetCount();
-	static uint GetCount(Tid cls_id);
-	static const Tspec *Get(Tid cls_id, uint index);
 	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
 };
 

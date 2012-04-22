@@ -117,31 +117,14 @@ DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount()
 }
 
 /**
- * Get the number of allocated specs within a particular class.
- * @param cls_id The class to get the size of.
- * @pre cls_id < GetCount()
- * @return The size of the class.
- */
-DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount(Tid cls_id)
-{
-	assert(cls_id < Tmax);
-	return classes[cls_id].count;
-}
-
-/**
- * Get a spec from a particular class at a given index.
- * @param cls_id The class to get the spec from.
+ * Get a spec from the class at a given index.
  * @param index  The index where to find the spec.
- * @pre index < GetCount(cls_id)
  * @return The spec at given location.
  */
-DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::Get(Tid cls_id, uint index)
+DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetSpec(uint index) const
 {
-	assert(cls_id < Tmax);
-	if (index < classes[cls_id].count) return classes[cls_id].spec[index];
-
 	/* If the custom spec isn't defined any more, then the GRF file probably was not loaded. */
-	return NULL;
+	return index < this->GetSpecCount() ? this->spec[index] : NULL;
 }
 
 /**
@@ -180,6 +163,5 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id,
 	template void name::Assign(Tspec *spec); \
 	template NewGRFClass<Tspec, Tid, Tmax> *name::Get(Tid cls_id); \
 	template uint name::GetCount(); \
-	template uint name::GetCount(Tid cls_id); \
-	template const Tspec *name::Get(Tid cls_id, uint index); \
+	template const Tspec *name::GetSpec(uint index) const; \
 	template const Tspec *name::GetByGrf(uint32 grfid, byte localidx, int *index);

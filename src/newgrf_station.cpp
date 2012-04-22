@@ -805,13 +805,12 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
  */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
 {
-	const StationSpec *statspec;
 	const DrawTileSprites *sprites = NULL;
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	PaletteID palette = COMPANY_SPRITE_COLOUR(_local_company);
 	uint tile = 2;
 
-	statspec = StationClass::Get(sclass, station);
+	const StationSpec *statspec = StationClass::Get(sclass)->GetSpec(station);
 	if (statspec == NULL) return false;
 
 	if (HasBit(statspec->callback_mask, CBM_STATION_SPRITE_LAYOUT)) {

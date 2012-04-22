@@ -170,7 +170,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 	/* Check if the given station class is valid */
 	if (spec_class != STAT_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= StationClass::GetCount(spec_class)) return CMD_ERROR;
+	if (spec_index >= StationClass::Get(spec_class)->GetSpecCount()) return CMD_ERROR;
 
 	/* The number of parts to build */
 	byte count = axis == AXIS_X ? height : width;
@@ -242,7 +242,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 		wp->UpdateVirtCoord();
 
-		const StationSpec *spec = StationClass::Get(spec_class, spec_index);
+		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
 		byte *layout_ptr = AllocaM(byte, count);
 		if (spec == NULL) {
 			/* The layout must be 0 for the 'normal' waypoints by design. */

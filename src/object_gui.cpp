@@ -51,7 +51,7 @@ public:
 
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
 		matrix->SetScrollbar(this->GetScrollbar(WID_BO_SELECT_SCROLL));
-		matrix->SetCount(ObjectClass::GetCount(_selected_object_class));
+		matrix->SetCount(ObjectClass::Get(_selected_object_class)->GetSpecCount());
 	}
 
 	virtual ~BuildObjectWindow()
@@ -62,7 +62,7 @@ public:
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_SIZE: {
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				int size = spec == NULL ? 0 : spec->size;
 				SetDParam(0, GB(size, HasBit(_selected_object_view, 0) ? 4 : 0, 4));
 				SetDParam(1, GB(size, HasBit(_selected_object_view, 0) ? 0 : 4, 4));
@@ -89,7 +89,7 @@ public:
 
 			case WID_BO_OBJECT_MATRIX: {
 				/* Get the right amount of buttons based on the current spec. */
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				if (spec != NULL) {
 					if (spec->views >= 2) size->width  += resize->width;
 					if (spec->views >= 4) size->height += resize->height;
@@ -129,7 +129,7 @@ public:
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				if (spec != NULL) {
 					if (spec->views >= 2) size->width  = size->width  / 2 - 1;
 					if (spec->views >= 4) size->height = size->height / 2 - 1;
@@ -165,7 +165,7 @@ public:
 			}
 
 			case WID_BO_OBJECT_SPRITE: {
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				if (spec == NULL) break;
 
 				DrawPixelInfo tmp_dpi;
@@ -189,7 +189,7 @@ public:
 				if (_selected_object_index < 0) break;
 
 				int obj_index = GB(widget, 16, 16);
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, obj_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(obj_index);
 				if (spec == NULL) break;
 
 				if (!spec->IsAvailable()) {
@@ -214,7 +214,7 @@ public:
 			}
 
 			case WID_BO_INFO: {
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				if (spec == NULL) break;
 
 				/* Get the extra message for the GUI */
@@ -253,7 +253,7 @@ public:
 	{
 		_selected_object_index = object_index;
 		if (_selected_object_index != -1) {
-			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 			_selected_object_view = min(_selected_object_view, spec->views - 1);
 			this->ReInit();
 		} else {
@@ -271,7 +271,7 @@ public:
 		if (_selected_object_index == -1) {
 			SetTileSelectSize(1, 1);
 		} else {
-			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 			int w = GB(spec->size, HasBit(_selected_object_view, 0) ? 4 : 0, 4);
 			int h = GB(spec->size, HasBit(_selected_object_view, 0) ? 0 : 4, 4);
 			SetTileSelectSize(w, h);
@@ -292,14 +292,14 @@ public:
 				if (num_clicked >= (int)ObjectClass::GetCount()) break;
 
 				_selected_object_class = (ObjectClassID)num_clicked;
-				this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
+				this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(ObjectClass::Get(_selected_object_class)->GetSpecCount());
 				this->SelectFirstAvailableObject(false);
 				break;
 			}
 
 			case WID_BO_SELECT_IMAGE: {
 				int num_clicked = GB(widget, 16, 16);
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, num_clicked);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(num_clicked);
 				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
@@ -323,8 +323,9 @@ public:
 	void SelectFirstAvailableObject(bool change_class)
 	{
 		/* First try to select an object in the selected class. */
-		for (uint i = 0; i < ObjectClass::GetCount(_selected_object_class); i++) {
-			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, i);
+		ObjectClass *sel_objclass = ObjectClass::Get(_selected_object_class);
+		for (uint i = 0; i < sel_objclass->GetSpecCount(); i++) {
+			const ObjectSpec *spec = sel_objclass->GetSpec(i);
 			if (spec->IsAvailable()) {
 				this->SelectOtherObject(i);
 				return;
@@ -334,8 +335,9 @@ public:
 			/* If that fails, select the first available object
 			 * from a random class. */
 			for (ObjectClassID j = OBJECT_CLASS_BEGIN; j < OBJECT_CLASS_MAX; j++) {
-				for (uint i = 0; i < ObjectClass::GetCount(j); i++) {
-					const ObjectSpec *spec = ObjectClass::Get(j, i);
+				ObjectClass *objclass = ObjectClass::Get(j);
+				for (uint i = 0; i < objclass->GetSpecCount(); i++) {
+					const ObjectSpec *spec = objclass->GetSpec(i);
 					if (spec->IsAvailable()) {
 						_selected_object_class = j;
 						this->SelectOtherObject(i);
@@ -418,5 +420,5 @@ void InitializeObjectGui()
  */
 void PlaceProc_Object(TileIndex tile)
 {
-	DoCommandP(tile, ObjectClass::Get(_selected_object_class, _selected_object_index)->Index(), _selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+	DoCommandP(tile, ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index)->Index(), _selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
