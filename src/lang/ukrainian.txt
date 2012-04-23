@@ -1612,7 +1612,7 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пока
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Показати фарбування автотранспорта
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Показати фарбування кораблів
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Показати фарбування авіації
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Виберіть основний колір для обраної схеми. Ctrl+клік встановить обраний колір для всіх схем.
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Оберіть основний колір для обраної схеми. Ctrl+клік встановить обраний колір для всіх схем.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Оберіть другорядний колір для обраної схеми. Ctrl+клік встановить обраний колір для всіх схем.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Оберіть кольорову схему для зміни, чи декілька з Ctrl+клік. Клікніть на прямокутнику, щоб ввімкнути/вимкнути використання схем
 

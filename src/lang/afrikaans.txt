@@ -759,8 +759,8 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste trein arriveer by {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste bus arriveer by {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste trok arriveer by {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste passasier trein arriveer by {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste vrag trein arriveer by {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste passasier trem arriveer by {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste vrag trem arriveer by {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste skip arriveer by {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Burgers vier fees . . .{}Eerste vliegtuig arriveer by {STATION}!
 
@@ -2118,7 +2118,7 @@ STR_AIRPORT_HELISTATION                                         :Helistasie
 
 STR_AIRPORT_CLASS_SMALL                                         :Klein lughawe
 STR_AIRPORT_CLASS_LARGE                                         :Groot Lughawe
-STR_AIRPORT_CLASS_HUB                                           :Naaf lughawe
+STR_AIRPORT_CLASS_HUB                                           :Spilpunt lughawe
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopter lughawe
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Geraas gegenereer: {GOLD}{COMMA}
