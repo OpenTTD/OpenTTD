@@ -18,7 +18,8 @@ enum BuildObjectWidgets {
 	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.
 	WID_BO_OBJECT_MATRIX,  ///< The matrix with preview sprites.
 	WID_BO_OBJECT_SPRITE,  ///< A preview sprite of the object.
-	WID_BO_OBJECT_SIZE,    ///< The size of an object.
+	WID_BO_OBJECT_NAME,    ///< The name of the selected object.
+	WID_BO_OBJECT_SIZE,    ///< The size of the selected object.
 	WID_BO_INFO,           ///< Other information about the object (from the NewGRF).
 
 	WID_BO_SELECT_MATRIX,  ///< Selection preview matrix of objects of a given class.

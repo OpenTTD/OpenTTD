@@ -62,6 +62,12 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
+			case WID_BO_OBJECT_NAME: {
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
+				SetDParam(0, spec != NULL ? spec->name : STR_EMPTY);
+				break;
+			}
+
 			case WID_BO_OBJECT_SIZE: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				int size = spec == NULL ? 0 : spec->size;
@@ -384,6 +390,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 						NWidget(WWT_PANEL, COLOUR_GREY, WID_BO_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
 					EndContainer(),
 				EndContainer(),
+				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_NAME), SetDataTip(STR_ORANGE_STRING, STR_NULL), SetPadding(2, 5, 2, 5),
 				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, WID_BO_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(WID_BO_SELECT_SCROLL),
