@@ -47,6 +47,7 @@ public:
 		this->FinishInitNested(desc, 0);
 
 		this->SelectFirstAvailableObject(true);
+		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disables elsewise
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetCount(4);
 
 		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX);
@@ -354,7 +355,16 @@ public:
 				}
 			}
 		}
-		/* If all objects are unavailable, select nothing. */
+		/* If all objects are unavailable, select nothing... */
+		if (ObjectClass::Get(_selected_object_class)->GetUISpecCount() == 0) {
+			/* ... but make sure that the class is not empty. */
+			for (ObjectClassID j = OBJECT_CLASS_BEGIN; j < OBJECT_CLASS_MAX; j++) {
+				if (ObjectClass::Get(j)->GetUISpecCount() > 0) {
+					_selected_object_class = j;
+					break;
+				}
+			}
+		}
 		this->SelectOtherObject(-1);
 	}
 };
