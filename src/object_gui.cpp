@@ -193,8 +193,6 @@ public:
 			}
 
 			case WID_BO_SELECT_IMAGE: {
-				if (_selected_object_index < 0) break;
-
 				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
 				int obj_index = objclass->GetIndexFromUI(GB(widget, 16, 16));
 				if (obj_index < 0) break;
