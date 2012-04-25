@@ -13,9 +13,46 @@
 #include "../newgrf_house.h"
 #include "../town.h"
 #include "../landscape.h"
+#include "../subsidy_func.h"
 
 #include "saveload.h"
 #include "newgrf_sl.h"
+
+/**
+ * Rebuild all the cached variables of towns.
+ */
+void RebuildTownCaches()
+{
+	Town *town;
+	InitializeBuildingCounts();
+
+	/* Reset town population and num_houses */
+	FOR_ALL_TOWNS(town) {
+		town->cache.population = 0;
+		town->cache.num_houses = 0;
+	}
+
+	for (TileIndex t = 0; t < MapSize(); t++) {
+		if (!IsTileType(t, MP_HOUSE)) continue;
+
+		HouseID house_id = GetCleanHouseType(t);
+		town = Town::GetByTile(t);
+		IncreaseBuildingCount(town, house_id);
+		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
+
+		/* Increase the number of houses for every house, but only once. */
+		if (GetHouseNorthPart(house_id) == 0) town->cache.num_houses++;
+	}
+
+	/* Update the population and num_house dependant values */
+	FOR_ALL_TOWNS(town) {
+		UpdateTownRadius(town);
+		UpdateTownCargoes(town);
+	}
+	UpdateTownCargoBitmap();
+
+	RebuildSubsidisedSourceAndDestinationCache();
+}
 
 /**
  * Check and update town and house values.
@@ -27,15 +64,6 @@
  */
 void UpdateHousesAndTowns()
 {
-	Town *town;
-	InitializeBuildingCounts();
-
-	/* Reset town population and num_houses */
-	FOR_ALL_TOWNS(town) {
-		town->cache.population = 0;
-		town->cache.num_houses = 0;
-	}
-
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
@@ -82,24 +110,7 @@ void UpdateHousesAndTowns()
 		}
 	}
 
-	for (TileIndex t = 0; t < MapSize(); t++) {
-		if (!IsTileType(t, MP_HOUSE)) continue;
-
-		HouseID house_id = GetCleanHouseType(t);
-		town = Town::GetByTile(t);
-		IncreaseBuildingCount(town, house_id);
-		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
-
-		/* Increase the number of houses for every house, but only once. */
-		if (GetHouseNorthPart(house_id) == 0) town->cache.num_houses++;
-	}
-
-	/* Update the population and num_house dependant values */
-	FOR_ALL_TOWNS(town) {
-		UpdateTownRadius(town);
-		UpdateTownCargoes(town);
-	}
-	UpdateTownCargoBitmap();
+	RebuildTownCaches();
 }
 
 /** Save and load of towns. */
