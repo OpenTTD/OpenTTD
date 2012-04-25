@@ -251,7 +251,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == NULL || DistanceSquare(tile_start, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+		if (town == NULL || DistanceSquare(tile_start, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
 			company = OWNER_NONE;
 		}
 	}
@@ -560,7 +560,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		company = OWNER_TOWN;
 
 		/* If we are not within a town, we are not owned by the town */
-		if (town == NULL || DistanceSquare(start_tile, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+		if (town == NULL || DistanceSquare(start_tile, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
 			company = OWNER_NONE;
 		}
 	}

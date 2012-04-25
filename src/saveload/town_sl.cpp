@@ -32,8 +32,8 @@ void UpdateHousesAndTowns()
 
 	/* Reset town population and num_houses */
 	FOR_ALL_TOWNS(town) {
-		town->population = 0;
-		town->num_houses = 0;
+		town->cache.population = 0;
+		town->cache.num_houses = 0;
 	}
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
@@ -88,10 +88,10 @@ void UpdateHousesAndTowns()
 		HouseID house_id = GetCleanHouseType(t);
 		town = Town::GetByTile(t);
 		IncreaseBuildingCount(town, house_id);
-		if (IsHouseCompleted(t)) town->population += HouseSpec::Get(house_id)->population;
+		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
 
 		/* Increase the number of houses for every house, but only once. */
-		if (GetHouseNorthPart(house_id) == 0) town->num_houses++;
+		if (GetHouseNorthPart(house_id) == 0) town->cache.num_houses++;
 	}
 
 	/* Update the population and num_house dependant values */

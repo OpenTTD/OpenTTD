@@ -355,8 +355,8 @@ void Town::UpdateVirtCoord()
 {
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
 	SetDParam(0, this->index);
-	SetDParam(1, this->population);
-	this->sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_LVL_BASE,
+	SetDParam(1, this->cache.population);
+	this->cache.sign.UpdatePosition(pt.x, pt.y - 24 * ZOOM_LVL_BASE,
 		_settings_client.gui.population_in_label ? STR_VIEWPORT_TOWN_POP : STR_VIEWPORT_TOWN);
 
 	SetWindowDirty(WC_TOWN_VIEW, this->index);
@@ -379,7 +379,7 @@ void UpdateAllTownVirtCoords()
  */
 static void ChangePopulation(Town *t, int mod)
 {
-	t->population += mod;
+	t->cache.population += mod;
 	InvalidateWindowData(WC_TOWN_VIEW, t->index); // Cargo requirements may appear/vanish for small populations
 	t->UpdateVirtCoord();
 
@@ -396,7 +396,7 @@ uint32 GetWorldPopulation()
 	uint32 pop = 0;
 	const Town *t;
 
-	FOR_ALL_TOWNS(t) pop += t->population;
+	FOR_ALL_TOWNS(t) pop += t->cache.population;
 	return pop;
 }
 
@@ -1295,16 +1295,16 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 	 * them a little handicap. */
 	switch (t->layout) {
 		case TL_BETTER_ROADS:
-			_grow_town_result = 10 + t->num_houses * 2 / 9;
+			_grow_town_result = 10 + t->cache.num_houses * 2 / 9;
 			break;
 
 		case TL_3X3_GRID:
 		case TL_2X2_GRID:
-			_grow_town_result = 10 + t->num_houses * 1 / 9;
+			_grow_town_result = 10 + t->cache.num_houses * 1 / 9;
 			break;
 
 		default:
-			_grow_town_result = 10 + t->num_houses * 4 / 9;
+			_grow_town_result = 10 + t->cache.num_houses * 4 / 9;
 			break;
 	}
 
@@ -1453,25 +1453,25 @@ void UpdateTownRadius(Town *t)
 		{121, 81,  0, 49, 36}, // 88
 	};
 
-	if (t->num_houses < 92) {
-		memcpy(t->squared_town_zone_radius, _town_squared_town_zone_radius_data[t->num_houses / 4], sizeof(t->squared_town_zone_radius));
+	if (t->cache.num_houses < 92) {
+		memcpy(t->cache.squared_town_zone_radius, _town_squared_town_zone_radius_data[t->cache.num_houses / 4], sizeof(t->cache.squared_town_zone_radius));
 	} else {
-		int mass = t->num_houses / 8;
+		int mass = t->cache.num_houses / 8;
 		/* Actually we are proportional to sqrt() but that's right because we are covering an area.
 		 * The offsets are to make sure the radii do not decrease in size when going from the table
 		 * to the calculated value.*/
-		t->squared_town_zone_radius[0] = mass * 15 - 40;
-		t->squared_town_zone_radius[1] = mass * 9 - 15;
-		t->squared_town_zone_radius[2] = 0;
-		t->squared_town_zone_radius[3] = mass * 5 - 5;
-		t->squared_town_zone_radius[4] = mass * 3 + 5;
+		t->cache.squared_town_zone_radius[0] = mass * 15 - 40;
+		t->cache.squared_town_zone_radius[1] = mass * 9 - 15;
+		t->cache.squared_town_zone_radius[2] = 0;
+		t->cache.squared_town_zone_radius[3] = mass * 5 - 5;
+		t->cache.squared_town_zone_radius[4] = mass * 3 + 5;
 	}
 }
 
 void UpdateTownMaxPass(Town *t)
 {
-	t->supplied[CT_PASSENGERS].old_max = t->population >> 3;
-	t->supplied[CT_MAIL].old_max = t->population >> 4;
+	t->supplied[CT_PASSENGERS].old_max = t->cache.population >> 3;
+	t->supplied[CT_MAIL].old_max = t->cache.population >> 4;
 }
 
 /**
@@ -1488,11 +1488,11 @@ void UpdateTownMaxPass(Town *t)
 static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout, bool manual)
 {
 	t->xy = tile;
-	t->num_houses = 0;
+	t->cache.num_houses = 0;
 	t->time_until_rebuild = 10;
 	UpdateTownRadius(t);
 	t->flags = 0;
-	t->population = 0;
+	t->cache.population = 0;
 	t->grow_counter = 0;
 	t->growth_rate = 250;
 
@@ -1541,7 +1541,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	/* Don't create huge cities when founding town in-game */
 	if (city && (!manual || _game_mode == GM_EDITOR)) x *= _settings_game.economy.initial_city_size;
 
-	t->num_houses += x;
+	t->cache.num_houses += x;
 	UpdateTownRadius(t);
 
 	int i = x * 4;
@@ -1549,7 +1549,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 		GrowTown(t);
 	} while (--i);
 
-	t->num_houses -= x;
+	t->cache.num_houses -= x;
 	UpdateTownRadius(t);
 	UpdateTownMaxPass(t);
 	UpdateAirportsNoise();
@@ -1845,7 +1845,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
-		if (t->population > 0) return t;
+		if (t->cache.population > 0) return t;
 		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
 		assert(rc.Succeeded());
 
@@ -1921,7 +1921,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 
 	HouseZonesBits smallest = HZB_TOWN_EDGE;
 	for (HouseZonesBits i = HZB_BEGIN; i < HZB_END; i++) {
-		if (dist < t->squared_town_zone_radius[i]) smallest = i;
+		if (dist < t->cache.squared_town_zone_radius[i]) smallest = i;
 	}
 
 	return smallest;
@@ -2202,10 +2202,10 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
 		if (hs->class_id != HOUSE_NO_CLASS) {
 			/* id_count is always <= class_count, so it doesn't need to be checked */
-			if (t->building_counts.class_count[hs->class_id] == UINT16_MAX) continue;
+			if (t->cache.building_counts.class_count[hs->class_id] == UINT16_MAX) continue;
 		} else {
 			/* If the house has no class, check id_count instead */
-			if (t->building_counts.id_count[i] == UINT16_MAX) continue;
+			if (t->cache.building_counts.id_count[i] == UINT16_MAX) continue;
 		}
 
 		/* Without NewHouses, all houses have probability '1' */
@@ -2282,7 +2282,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		}
 
 		/* build the house */
-		t->num_houses++;
+		t->cache.num_houses++;
 
 		/* Special houses that there can be only one of. */
 		t->flags |= oneof;
@@ -2371,7 +2371,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
 		ChangePopulation(t, -hs->population);
 	}
 
-	t->num_houses--;
+	t->cache.num_houses--;
 
 	/* Clear flags for houses that only may exist once/town. */
 	if (hs->building_flags & BUILDING_IS_CHURCH) {
@@ -2543,14 +2543,14 @@ CommandCost CmdExpandTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	if (flags & DC_EXEC) {
 		/* The more houses, the faster we grow */
 		if (p2 == 0) {
-			uint amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
-			t->num_houses += amount;
+			uint amount = RandomRange(ClampToU16(t->cache.num_houses / 10)) + 3;
+			t->cache.num_houses += amount;
 			UpdateTownRadius(t);
 
 			uint n = amount * 10;
 			do GrowTown(t); while (--n);
 
-			t->num_houses -= amount;
+			t->cache.num_houses -= amount;
 		} else {
 			for (; p2 > 0; p2--) {
 				/* Try several times to grow, as we are really suppose to grow */
@@ -2962,7 +2962,7 @@ static void UpdateTownRating(Town *t)
 
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				if (Company::IsValidID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
@@ -2997,10 +2997,10 @@ static void UpdateTownGrowRate(Town *t)
 		for (int i = TE_BEGIN; i < TE_END; i++) {
 			switch (t->goal[i]) {
 				case TOWN_GROWTH_WINTER:
-					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->population > 90) return;
+					if (TileHeight(t->xy) >= GetSnowLine() && t->received[i].old_act == 0 && t->cache.population > 90) return;
 					break;
 				case TOWN_GROWTH_DESERT:
-					if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->population > 60) return;
+					if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->received[i].old_act == 0 && t->cache.population > 60) return;
 					break;
 				default:
 					if (t->goal[i] > t->received[i].old_act) return;
@@ -3028,7 +3028,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->cache.squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
 			}
@@ -3051,7 +3051,7 @@ static void UpdateTownGrowRate(Town *t)
 	m >>= growth_multiplier;
 	if (t->larger_town) m /= 2;
 
-	t->growth_rate = m / (t->num_houses / 50 + 1);
+	t->growth_rate = m / (t->cache.num_houses / 50 + 1);
 	if (m <= t->grow_counter) {
 		t->grow_counter = m;
 	}

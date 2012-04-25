@@ -328,8 +328,8 @@ public:
 
 		uint y = r.top + WD_FRAMERECT_TOP;
 
-		SetDParam(0, this->town->population);
-		SetDParam(1, this->town->num_houses);
+		SetDParam(0, this->town->cache.population);
+		SetDParam(1, this->town->cache.num_houses);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y, STR_TOWN_VIEW_POPULATION_HOUSES);
 
 		SetDParam(0, this->town->supplied[CT_PASSENGERS].old_act);
@@ -343,8 +343,8 @@ public:
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->population <= 90)) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->population <= 60)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
 
 			if (first) {
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
@@ -465,8 +465,8 @@ public:
 		bool first = true;
 		for (int i = TE_BEGIN; i < TE_END; i++) {
 			if (this->town->goal[i] == 0) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->population <= 90)) continue;
-			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->population <= 60)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_WINTER && (TileHeight(this->town->xy) < LowestSnowLine() || this->town->cache.population <= 90)) continue;
+			if (this->town->goal[i] == TOWN_GROWTH_DESERT && (GetTropicZone(this->town->xy) != TROPICZONE_DESERT || this->town->cache.population <= 60)) continue;
 
 			if (first) {
 				aimed_height += FONT_HEIGHT_NORMAL;
@@ -681,7 +681,7 @@ private:
 	/** Sort by population */
 	static int CDECL TownPopulationSorter(const Town * const *a, const Town * const *b)
 	{
-		return (*a)->population - (*b)->population;
+		return (*a)->cache.population - (*b)->cache.population;
 	}
 
 public:
@@ -750,7 +750,7 @@ public:
 					}
 
 					SetDParam(0, t->index);
-					SetDParam(1, t->population);
+					SetDParam(1, t->cache.population);
 					DrawString(text_left, text_right, y + (this->resize.step_height - FONT_HEIGHT_NORMAL) / 2, STR_TOWN_DIRECTORY_TOWN);
 
 					y += this->resize.step_height;
