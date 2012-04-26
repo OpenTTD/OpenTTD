@@ -769,8 +769,6 @@ static void TownTickHandler(Town *t)
 		}
 		t->grow_counter = i;
 	}
-
-	UpdateTownRadius(t);
 }
 
 void OnTick_Town()
@@ -2304,6 +2302,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		}
 
 		MakeTownHouse(tile, t, construction_counter, construction_stage, house, random_bits);
+		UpdateTownRadius(t);
 		UpdateTownCargoes(t, tile);
 
 		return true;
@@ -2386,6 +2385,8 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	if (eflags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1), t, ++house);
 	if (eflags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0), t, ++house);
 	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
+
+	UpdateTownRadius(t);
 
 	/* Update cargo acceptance. */
 	UpdateTownCargoes(t, tile);
