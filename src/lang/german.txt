@@ -1299,7 +1299,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Feinere
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Handel mit Firmenanteilen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prozentsatz des Profits, der Zubringern gezahlt wird: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale jedes {ORANGE}{STRING}. Feld beim Ziehen mit der Maus
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Beim Ziehen, festen Signalabstand einhalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Signalabstand nach Lücken (durch Tunnel, Brücken) nicht verkürzen : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard-Signaltyp: {ORANGE}{STRING}
@@ -3115,7 +3115,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu erset
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Fahrzeugtyp auswählen, der anstelle des links gewählten Typs verwendet werden soll
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
-STR_REPLACE_VEHICLES_NOW                                        :Ersetze jetzt alle Fahrzeuge
+STR_REPLACE_VEHICLES_NOW                                        :Alle Fahrzeuge jetzt ersetzen
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Ersetze nur alte Fahrzeuge
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klick zum Ersetzen des Fahrzeugtyps auf der linken Seite mit dem auf der rechten Seite
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Keine Ersetzung
