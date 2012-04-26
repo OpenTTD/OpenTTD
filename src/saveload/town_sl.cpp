@@ -35,7 +35,7 @@ void RebuildTownCaches()
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;
 
-		HouseID house_id = GetCleanHouseType(t);
+		HouseID house_id = GetHouseType(t);
 		town = Town::GetByTile(t);
 		IncreaseBuildingCount(town, house_id);
 		if (IsHouseCompleted(t)) town->cache.population += HouseSpec::Get(house_id)->population;
