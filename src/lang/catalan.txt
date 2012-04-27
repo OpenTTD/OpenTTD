@@ -895,6 +895,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turca (TRY
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Eslovaca (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasiler (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Corona Estoniana (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lites Lituanes (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sud Coreà (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sud Africà (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalitzat...
 ############ end of currency region
 
@@ -1296,6 +1299,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activa 
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permet comprar participacions d'altres empreses: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentatge del benefici total a pagar en les transferències: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, situa senyals cada: {ORANGE}{STRING} cel·l{P 0:1 a es}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Quan arrosseguis, mantingues fixada la distància entre senyals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir semàfors automàticament abans de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activa la interfície de les senyals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipus de senyal a construir predeterminada: {ORANGE}{STRING}
@@ -1484,8 +1488,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Mostra e
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Mostra els esquemes de colors dels automòbils
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Mostra els esquemes de colors dels vaixells
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Mostra esquemes de colors dels avions
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolleix el color primari per l'esquema triat
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolleix el color secundari per l'esquema triat
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Escolleix el color primari per l'esquema triat. Ctr+Click establirà el color per a cada esquema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Escolleix el color secundari per l'esquema triat. Ctrl+Click establirà el color per a cada esquema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+Clic. Clica a la casella per canviar l'esquema
 
 STR_LIVERY_DEFAULT                                              :Decoració estàndard
@@ -2752,6 +2756,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostra t
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Canvia el nom de l'estació/àrea de càrrega
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Tanca l'aeroport
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita que els avions aterrin en aquest aeroport
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centra la vista principal al lloc del punt de control. Ctrl+Clic obre una nova vista al lloc del punt de control
@@ -3108,9 +3115,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Seleccio
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona el nou tipus de motor que vols fer servir en lloc del seleccionat
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comença a substituir
+STR_REPLACE_VEHICLES_NOW                                        :Substitueix ara tots els vehicles
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Substitueix només vehicles vells
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}No substituint
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Cap vehicle seleccionat
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} quan sigui vell
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de substituir
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
 
@@ -3659,6 +3669,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... prop
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... s'ha arribat al límit de neteja de paisatge
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... s'ha arribat al límit de neteja de cel·les
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... s'ha arribat al límit de plantat d'arbres
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nom ha de ser únic
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en el camí
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No està permès mentre s'està en pausa

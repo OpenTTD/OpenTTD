@@ -2941,7 +2941,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nic
-STR_NEWGRF_LIST_ALL_FOUND                                       :Wszystkie pliki są na dostępne
+STR_NEWGRF_LIST_ALL_FOUND                                       :Wszystkie pliki są dostępne
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znaleziono kompatybilne pliki
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
@@ -3043,7 +3043,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Ufunduj
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia Twojej firmy.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufundowanie nowych budynków komercyjnych w mieście.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ Swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele
@@ -3204,12 +3204,12 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz SG
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś SG
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główna w innym miejscu za cenę 1% wartości firmy. Shift+Click pokazuje szacunkowy koszt bez przenoszenia siedziby
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Shift+klik pokazuje szacunkowy koszt bez przenoszenia siedziby
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegóły
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nowa twarz
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nowa twarz prezesa
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nową twarz prezesa
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Schemat kolorów
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Zmień kolor pojazdów firmy
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nazwa Firmy
@@ -3293,7 +3293,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępne samol
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liĹ›cie
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liście
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do Serwisu
 
@@ -3620,8 +3620,8 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowno
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniami: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniami: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
 
@@ -3780,41 +3780,41 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Przebuduj na {STRING.b})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Remontuj w {STRING} i zatrzymaj)
+STR_ORDER_REFIT_STOP_ORDER                                      :(Przebuduj na {STRING.b} i zatrzymaj)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Sugerujący)
 
-STR_ORDER_FULL_LOAD                                             :(Pełen załadunek)
-STR_ORDER_FULL_LOAD_ANY                                         :(Pełen załadunek dowolnego towaru)
+STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
 STR_ORDER_NO_LOAD                                               :(Nie ładować)
-STR_ORDER_UNLOAD                                                :(Rozładuj i weź towar)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełen załadunek)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_UNLOAD                                                :(Rozładuj i zabierz ładunek)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Rozładuj i pozostaw pusty)
 STR_ORDER_TRANSFER                                              :(Przeładuj i zabierz ładunek)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładuj i czekaj na pełen załadunek)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładuj i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeładuj i pozostaw pusty)
-STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i weź ładunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełen załadunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i zabierz ładunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełny załadunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatyczna przebudowa na {STRING.b})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Załaduj do pełna z automatyczną przebudową na {STRING.b})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Załaduj do pełna dowolny ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj i zabierz ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj i zaczekaj na dowolny pełny ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_TRANSFER_REFIT                                        :(Przetwórz i zabierz ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przewie i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przewieź i poczekaj na dowolny pełen ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj i zabierz ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj i zaczekaj na pełen ładunek z automatyczną przebudową na {STRING.b})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj i zaczekaj na dowolny pełen ładunek z automatyczną przebudową na {STRING.b})
+STR_ORDER_AUTO_REFIT                                            :(Przebuduj na {STRING.b})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_TRANSFER_REFIT                                        :(Przeładuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przeładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przeładuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostępny ładunek
 

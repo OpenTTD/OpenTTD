@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Liră turceasc�
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Coroană slovacă (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real brazilian (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Coroane estoniene (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas lituanian (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won sud-corean (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sud-african (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizată...
 ############ end of currency region
 
@@ -1295,6 +1298,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Economi
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite cumpărarea de acţiuni de la alte companii: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procentul din profitul final care va fi plătit intermediarilor: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasarea automată a semnalelor la fiecare: {ORANGE}{STRING} pătrăţele
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}La plasarea mai multor semale, păstrează distanţa fixă între acestea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieşte automat semafoare înainte de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tip semnal implicit: {ORANGE}{STRING}
@@ -1483,8 +1487,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Arată s
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Arată schemele de culori pentru autovehicule
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Arată schemele de culori pentru nave
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Arată schemele de culori pentru aeronave
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Alege culoarea primară pentru schema selectată
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Alege culoarea secundară pentru schema selectată
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Alege culoarea principală pentru schema selectată. Ctrl+Click va seta această culoare pentru toate schemele
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Alege culoarea secundară pentru schema selectată. Ctrl+Click va seta această culoare pentru toate schemele
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Alege o schemă de culori pentru modificare sau mai multe scheme, folosind Ctrl+Click. Apasă pe căsuţă pentru a comuta schema
 
 STR_LIVERY_DEFAULT                                              :Uniforma standard
@@ -2751,6 +2755,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Afiseaza
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Redenumeşte staţia
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Închide aeroport
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Nu permite avioanelor să aterizeze pe acest aeroport
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrază fereasta principală pe punctul de tranzit. Ctrl+Click deshide o fereastra cu locaţia punctului de tranzit
@@ -3107,9 +3114,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege ti
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Alege noul tip de motor pe care doreşti să-l foloseşti în locul motorului selectat în stânga
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
+STR_REPLACE_VEHICLES_NOW                                        :Înlocuieşte toate vehiculele acum
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Înlocuieşte doar vehiculele vechi
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Apasă aici pentru a începe înlocuirea motorului selectat în stânga cu cel selectat în dreapta
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Neinlocuire
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nici un vehicul selectat
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} când este învechit
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire înlocuire vehicule
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Apasă aici pentru a opri înlocuirea motorului selectat în stânga
 
@@ -3525,7 +3535,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Fereast
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurație Inteligentă Artificială / Scripturi Joc
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script Joc incărcat în jocul următor
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Script Joc încărcat în jocul următor
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Modulul de IA care va fi încărcat în jocul următor
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jucator uman
 STR_AI_CONFIG_RANDOM_AI                                         :IA aleator
@@ -3658,6 +3668,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... apar
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... terenul se află în proprietatea altei companii
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... a fost atinsă limita de modificări ale peisajului pe care le poți face
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... a fost atinsă limita numarului de zone pe care le poti curăța
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... limita de plantare a copacilor a fost atinsă
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numele trebuie să fie unic
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} în cale
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis când jocul este în pauză

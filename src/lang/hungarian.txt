@@ -958,6 +958,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Török Líra (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Szlovák Korona (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazil Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Észt Korona (EKK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litván litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dél-koreai von (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dél-afrikai rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saját...
 ############ end of currency region
 
@@ -1358,7 +1361,8 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Játék
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Egyenletes gazdaság (több, kisebb változás): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Más vállalatokból lehet részvényt vásárolni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Kifizetendő profitszázalék a ráhordó rendszereknek: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Amikor megragadom helyezzen jelzőket minden {ORANGE}{STRING}. mezőre
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Húzáskor helyezzen jelzőket minden {ORANGE}{STRING}. mezőre
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Húzáskor a jelzők között legyen fix a távolság: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan alakjelző épüljön {ORANGE}{STRING}-ig.
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Jelzőépítés-kezelő engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett jelzőtípus: {ORANGE}{STRING}
@@ -1547,8 +1551,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vonat sz
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Közúti jármű színsémák mutatása
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Hajó színsémák mutatása
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Repülőgép színsémák mutatása
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Válassz egy elsődleges színt a kiválasztott sémához
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Válassz egy másodlagos színt a kiválasztott sémához
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Válassz egy elsődleges színt a kiválasztott sémához. Ctrl+Kattintással az összes sémához ezt a színt állíthatod be.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Válassz egy másodlagos színt a kiválasztott sémához. Ctrl+Kattintással az összes sémához ezt a színt állíthatod be.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Válassz megváltoztatandó színsémát, vagy színsémákat Ctrl+kattintással. Kattints a dobozra a színséma használat váltásához.
 
 STR_LIVERY_DEFAULT                                              :Alapértelmezett
@@ -2815,6 +2819,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Kilistá
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Állomás/rakodóhely átnevezése
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Reptér bezárása
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Repülőgépek leszállásának megakadályozása
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}A fő nézetet az ellenőrző pontra állítja. Ctrl+Kattintás esetén új nézetet nyit az ellenőrző pont pozíciójára
@@ -3171,9 +3178,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Válaszd
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Válaszd ki milyen típusra cseréljük le a bal oldalon kiválaszott járműveket
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Járműcsere elkezdése
+STR_REPLACE_VEHICLES_NOW                                        :Az összes jármű azonnali lecserélése
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Csak az elöregedett járművek lecserélése
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott járműveket lecseréld a jobb oldalon kiválasztottra
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Nem cserélendő
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Nincs kiválasztva jármű
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} - csak ha elöregedett
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Járműcsere befejezése
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd meg ezt a gombot, ha be akarod fejezni a bal oldalon kiválasztott járművek cseréjét
 
@@ -3722,6 +3732,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... {STR
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a terület más vállalaté
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... tájrendezési limit elérve
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... mezőtörlési limit elérve
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... a faültetési korlát elérve
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}A névnek egyedinek kell lennie
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}...{1:STRING} van az útban
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Szünet közben nem megengedett
