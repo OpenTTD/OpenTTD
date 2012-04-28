@@ -1655,8 +1655,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->last_month_transported[1] = 0;
 	i->was_cargo_delivered = false;
 	i->last_prod_year = _cur_year;
-	i->last_month_production[0] = i->production_rate[0] * 8;
-	i->last_month_production[1] = i->production_rate[1] * 8;
 	i->founder = founder;
 
 	i->construction_date = _date;
@@ -1668,11 +1666,28 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	 * else, chosen layout + 1 */
 	i->selected_layout = layout + 1;
 
-	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
-
 	i->prod_level = PRODLEVEL_DEFAULT;
 
 	/* Call callbacks after the regular fields got initialised. */
+
+	if (HasBit(indspec->callback_mask, CBM_IND_PROD_CHANGE_BUILD)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_PROD_CHANGE_BUILD, 0, Random(), i, type, INVALID_TILE);
+		if (res != CALLBACK_FAILED) {
+			if (res < PRODLEVEL_MINIMUM || res > PRODLEVEL_MAXIMUM) {
+				ErrorUnknownCallbackResult(indspec->grf_prop.grffile->grfid, CBID_INDUSTRY_PROD_CHANGE_BUILD, res);
+			} else {
+				i->prod_level = res;
+				i->RecomputeProductionMultipliers();
+			}
+		}
+	}
+
+	if (_generating_world) {
+		i->last_month_production[0] = i->production_rate[0] * 8;
+		i->last_month_production[1] = i->production_rate[1] * 8;
+	} else {
+		i->last_month_production[0] = i->last_month_production[1] = 0;
+	}
 
 	if (HasBit(indspec->callback_mask, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
@@ -2741,7 +2756,7 @@ bool IndustrySpec::UsesSmoothEconomy() const
 {
 	return _settings_game.economy.smooth_economy &&
 		!(HasBit(this->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
-		!(HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
+		!(HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE) || HasBit(this->callback_mask, CBM_IND_PROD_CHANGE_BUILD)); // production change callbacks
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
