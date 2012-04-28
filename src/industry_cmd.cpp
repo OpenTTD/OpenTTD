@@ -1582,6 +1582,25 @@ static CommandCost CheckIfFarEnoughFromConflictingIndustry(TileIndex tile, int t
 }
 
 /**
+ * Advertise about a new industry opening.
+ * @param ind Industry being opened.
+ */
+static void AdvertiseIndustryOpening(const Industry *ind)
+{
+	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
+	SetDParam(0, ind_spc->name);
+	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
+		SetDParam(1, STR_TOWN_NAME);
+		SetDParam(2, ind->town->index);
+	} else {
+		SetDParam(1, ind->town->index);
+	}
+	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
+	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
+	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
+}
+
+/**
  * Put an industry on the map.
  * @param i       Just allocated poolitem, mostly empty.
  * @param tile    North tile of the industry.
@@ -1867,17 +1886,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if ((flags & DC_EXEC) && ind != NULL && _game_mode != GM_EDITOR) {
-		/* Created a new industry in-game, advertise the event. */
-		SetDParam(0, indspec->name);
-		if (indspec->new_industry_text > STR_LAST_STRINGID) {
-			SetDParam(1, STR_TOWN_NAME);
-			SetDParam(2, ind->town->index);
-		} else {
-			SetDParam(1, ind->town->index);
-		}
-		AddIndustryNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-		AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
-		Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
+		AdvertiseIndustryOpening(ind);
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1973,25 +1982,6 @@ static uint GetNumberOfIndustries()
 	assert(lengthof(numof_industry_table) == ID_END);
 	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.industry_density : (uint)ID_VERY_LOW;
 	return ScaleByMapSize(numof_industry_table[difficulty]);
-}
-
-/**
- * Advertise about a new industry opening.
- * @param ind Industry being opened.
- */
-static void AdvertiseIndustryOpening(const Industry *ind)
-{
-	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
-	SetDParam(0, ind_spc->name);
-	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
-		SetDParam(1, STR_TOWN_NAME);
-		SetDParam(2, ind->town->index);
-	} else {
-		SetDParam(1, ind->town->index);
-	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
-	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
 }
 
 /**
