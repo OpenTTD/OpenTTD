@@ -319,15 +319,13 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 #if !defined(WINCE)
 		AdjustWindowRect(&r, style, FALSE);
 #endif
-		w = r.right - r.left;
-		h = r.bottom - r.top;
-		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
-		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
-		if (_wnd.main_wnd) {
-			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
-			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
-		} else {
+		if (_wnd.main_wnd == NULL) {
+			w = r.right - r.left;
+			h = r.bottom - r.top;
+			x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
+			y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
+
 			TCHAR Windowtitle[50];
 
 			_sntprintf(Windowtitle, lengthof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
