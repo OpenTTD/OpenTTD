@@ -296,6 +296,9 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	} else if (_wnd.fullscreen) {
 		/* restore display? */
 		ChangeDisplaySettings(NULL, 0);
+		/* restore the resolution */
+		_wnd.width = _bck_resolution.width;
+		_wnd.height = _bck_resolution.height;
 	}
 #endif
 
@@ -628,7 +631,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
-				if (_window_maximize) _bck_resolution = _cur_resolution;
+				if (_window_maximize || _fullscreen) _bck_resolution = _cur_resolution;
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
