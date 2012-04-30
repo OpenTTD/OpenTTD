@@ -523,6 +523,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot cel�
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Přepnout ohraničení
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Přepnout zbarvení špinavých bloků
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -975,6 +976,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turecká lira (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovenská koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilský real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonská koruna (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litevský litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Jihokorejský won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Jihoafrický rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastní...
 ############ end of currency region
 
@@ -1376,6 +1380,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Plynul�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Podíl ze zisku pro částečné dopravní (při překládce): {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každ{P 0 ý é ých}: {ORANGE}{STRING} díl{P ek ky ků}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Při přetahování udržovat stálou vzdálenost mezi signály: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu návěstidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Výchozí typ návěstidla: {ORANGE}{STRING}
@@ -2838,6 +2843,9 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobrazit
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Přejmenovat stanici
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Uzavřít letiště
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zabránit letadlu od přistání na tomto letišti
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vystředit pohled na směrování. Ctrl+Klik otevře nový pohled
@@ -3200,9 +3208,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vyber ty
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber typ nové lokomotivy, kterou chceš použít místo vybrané v levém seznamu
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zapnout vyměňování
+STR_REPLACE_VEHICLES_NOW                                        :Nahradit hned všechny vozidla
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nahradit pouze staré vozidla
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Zmáčkni toto tlačítko, když chceš vyměňovat typ lokomotivy vybraný v levém seznamu lokomotivou vybranou v pravém seznamu
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}(nevyměňuje se)
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Není označeno žádné vozidlo
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} když je starý
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Vypnout vyměňování
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Zmáčkni toto tlačítko, když nechceš vyměňovat typ lokomotivy vybraný v levém seznamu
 
@@ -3751,6 +3762,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... vlas
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... území vlastní jiná společnost
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dosažen limit pro úpravu terénu
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dosažen limit pro čištění dláždic
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... výsadba stromů dosáhla limitu
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Jméno musí být jedinečné
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} v cestě
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nelze v pozastavené hře
