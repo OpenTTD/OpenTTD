@@ -1112,7 +1112,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :eins og annarra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :með jarðefnisleit
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Jafnslétt svæði í kringum iðnað: {ORANGE}{STRING} flötur{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Leyfa marga svipaða iðnaði í sama bæ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sýna fjármálaglugga í lok árs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nýjar skipanir eru "hraðleiðar" sem sjálfgildi {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Við nýja áfangastaði stöðva lestir sjálfgefið við {ORANGE}{STRING}{LTBLUE} brautarpallsins

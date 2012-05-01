@@ -1805,7 +1805,12 @@ static uint GetSaveSlopeZ(uint x, uint y, Track track)
 
 static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
 {
-	bool side = (_settings_game.vehicle.road_side != 0) && _settings_game.construction.signal_side;
+	bool side;
+	switch (_settings_game.construction.train_signal_side) {
+		case 0:  side = false;                                 break; // left
+		case 2:  side = true;                                  break; // right
+		default: side = _settings_game.vehicle.road_side != 0; break; // driving side
+	}
 	static const Point SignalPositions[2][12] = {
 		{ // Signals on the left side
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */

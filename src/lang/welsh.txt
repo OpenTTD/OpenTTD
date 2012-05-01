@@ -1138,7 +1138,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :fel diwydiannau
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :mwynchwilio am adnoddau crai
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ardal fflat o amgylch diwydiannau: {ORANGE}{STRING} teil
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau unfath i bob tref: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Gorchmynion trenau newydd yn nodi aros ar y {ORANGE}{STRING}{LTBLUE} o'r platfform fel rhagosodiad

@@ -954,7 +954,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ஒன்று
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :மற்ற தொழிற்சாலைகளைப்போல
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}தொழிற்சாலைகளை சுற்றி தட்டையான இடங்கள்: {ORANGE}{STRING} கட்டம்{P 0:1 "" கள்}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}ஓட்டும் பக்கத்தில் சிக்னல்களைக் காட்டு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :நடு
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {ORANGE}{STRING}

@@ -1140,7 +1140,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre indus
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekterar
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flatt landområde rundt industriar: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillet fleire like industriar i samme by: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Syne signal i køyreretninga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Syne rekneskap ved nyttår: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'direkte' som standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nye togordrar stoppar som standard på {ORANGE}{STRING}{LTBLUE} av plattformen

@@ -1206,7 +1206,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Rovná plocha okolo fabrík: {ORANGE}{STRING} pol{P 0:1 e ia í}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Povoliť viac rovnakých závodov pri jednom meste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobraziť železničné signály na tej strane, ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zobraziť rozpočet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nové príkazy sú štandardne 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Vlaky zastavujú štandardne {ORANGE}{STRING}{LTBLUE} stanice.

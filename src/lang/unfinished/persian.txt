@@ -1138,7 +1138,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :همانند د
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :رونق گرفتن
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}تعداد قطعه بدون پستی و بلندی دور صنایع: {ORANGE}{STRING} قطعه
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}قابلیت به وجود آمدین جندین صنایع شبیه به هم به ازای هر شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}نشانه ها در راستای جهت رانندگی باشد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}نمایش پنجره مالی در پایان سال: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}توقف قطار ها به طور پیش فرض در: {ORANGE}{STRING}{LTBLUE} ایستگاه

@@ -1139,7 +1139,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikal
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Fabrikalar etrafındaki düz alan: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Yeni emirler için 'durmaksızın' varsayılır: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Yeni tren emirleri için varsayılan durma yeri platformun {ORANGE}{STRING}{LTBLUE} kısmıdır

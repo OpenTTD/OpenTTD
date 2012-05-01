@@ -1298,7 +1298,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и ос�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ровная область вокруг предприятий: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать сигналы на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Создавать задания с меткой «без остановок»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}По умолчанию поезда останавливаются {ORANGE}{STRING}{LTBLUE} станции

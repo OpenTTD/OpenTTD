@@ -1138,7 +1138,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المص
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}المساحة المستوية حول المصانع: {ORANGE}{STRING} مربع
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}السماح بوجود أكثر من مصنع من نفس النوع في المدينة الواحدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}إظهار الإشارات على جهة السائق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوامر القطار الجديدة تتوقف قياسيا في {ORANGE}{STRING}{LTBLUE} رصيف المحطة

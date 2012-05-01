@@ -1142,7 +1142,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut teht
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Tasainen alue teollisuuksien ympärillä: {ORANGE}{STRING} ruutu{P 0:1 "" a}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet käskyt ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uudet junien käskyt pysäyttävät junan aseman {ORANGE}{STRING}{LTBLUE}

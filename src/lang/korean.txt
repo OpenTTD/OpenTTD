@@ -1143,7 +1143,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :건설 가능 (무작위 위치)
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}산업 시설 주변의 평지: {ORANGE}{STRING}칸
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}한 도시에 비슷한 산업시설을 여러 개 건설할 수 있게 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}신호기를 차량이 통행하는 방향에 놓기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}연말에 자동으로 재정 창을 띄움: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 직통 처리: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}새로운 열차 정지 경로는 기본적으로 플랫폼의 {ORANGE}{STRING}{LTBLUE}에서 정지하도록 함

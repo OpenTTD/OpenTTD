@@ -1134,7 +1134,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :دوسری صن
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :توقعات
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}صنعتوں کے گرد سیدھی جگہ: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ایک شہر میں ایک جیسی ایک سے زیادہ صنعتیں لگانے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}اشعارے گاڑی چلنے والی طرف دکھاو: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}نئے احکامات شروع سے {ORANGE}{STRING}{LTBLUE} کے پلیٹ فارم پر اسٹاپ ہوں

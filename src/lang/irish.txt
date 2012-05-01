@@ -1136,7 +1136,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :cosúil le tion
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :cuardach
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ceantar réidh thart timpeall na dtionscal: {ORANGE}{STRING} {P 0:1 th th th dt t}íl
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Taispeáin comharthaí ar thaobh na tiomána: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Taispeáin an fhuinneoig airgeadais ag deireadh na bliana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Stopann orduithe traenach nua ag {ORANGE}{STRING}{LTBLUE} an ardáin mar reamhshocrú

@@ -1138,7 +1138,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุ
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :สำรวจ
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}ที่ราบรอบอุตสาหกรรม: {ORANGE}{STRING} ช่อง
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}อนุญาตให้มีหลายอุตสาหกรรมที่เหมือนกันต่อหนึ่งเมือง: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}แสดงสัญญาณในข้างที่ขับ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}แสดงหน้าต่างการเงินเมื่อสิ้นสุดแต่ละปี: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}ตั้งให้คำสั่งที่เพิ่มใหม่เป็น 'ไม่หยุด' โดยปริยาย: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}คำสั่งใหม่ หยุดโดยปริยายที่ {ORANGE}{STRING}{LTBLUE} ของชานชาลา

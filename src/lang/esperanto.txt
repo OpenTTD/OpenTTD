@@ -1127,7 +1127,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj indu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospektori
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebena areo ĉirkaŭ industrioj: {ORANGE}{STRING} kahelo{P 0:1 "" j}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novaj ordonoj estas 'sen-halte' per defaŭlto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Novaj trajnordonoj ĉesas defaŭlte ĉe la {ORANGE}{STRING}{LTBLUE} of the platform

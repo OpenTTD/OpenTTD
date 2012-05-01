@@ -1130,7 +1130,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като дру
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Равно място около индустрията: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Влковете спират по подрабиране {ORANGE}{STRING}{LTBLUE} на платформата

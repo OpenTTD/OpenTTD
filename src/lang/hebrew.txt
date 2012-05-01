@@ -1123,7 +1123,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר �
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}אזור שטוח סביב התעשיות: {ORANGE}{STRING} משבצות{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{ORANGE}{STRING}{LTBLUE} :אפשר יצירת מספר תעשיות זהות בשטחה של עיר אחת
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}הראה רמזורים בצד הנהיגה: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}הראה את חלון מערך הכספים בכל סוף שנה : {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}הוראות חדשות הם תמיד 'לא לעצור' כבחירת מחדל: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}הוראות לרכבת חדשה לעצירת ברירת מחדל ב-{ORANGE}{STRING}{LTBLUE} של הרציף

@@ -1142,7 +1142,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other indust
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flat area around industries: {ORANGE}{STRING1} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :On the left
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :On the driving side
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :On the right
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}New train orders stop by default at the {ORANGE}{STRING1}{LTBLUE} of the platform

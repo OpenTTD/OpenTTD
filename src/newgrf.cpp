@@ -7670,7 +7670,7 @@ static void InitializeGRFSpecial()
 	                   |                                                      (1 << 0x18)  // newrvs
 	                   |                                                      (1 << 0x19)  // newships
 	                   |                                                      (1 << 0x1A)  // newplanes
-	                   |      ((_settings_game.construction.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
+	                   | ((_settings_game.construction.train_signal_side == 1 ? 1 : 0) << 0x1B)  // signalsontrafficside
 	                   |       ((_settings_game.vehicle.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                                      (1 << 0x01)  // loadallgraphics - obsolote
