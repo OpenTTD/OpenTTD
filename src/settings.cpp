@@ -2161,7 +2161,7 @@ static void Load_PATS()
 {
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
-	 * signal_side stays when joining a network-server */
+	 * currency setting stays when joining a network-server */
 	LoadSettings(_settings, &_settings_game);
 }
 
