@@ -347,6 +347,12 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		case SDT_NUMX: {
 			char *end;
 			size_t val = strtoul(str, &end, 0);
+			if (end == str) {
+				SetDParamStr(0, str);
+				SetDParamStr(1, desc->name);
+				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+				return desc->def;
+			}
 			if (*end != '\0') {
 				SetDParamStr(0, desc->name);
 				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
