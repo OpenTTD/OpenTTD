@@ -485,34 +485,34 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Vagono talpą
 STR_SORT_BY_RANGE                                               :Atstumas
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Sustabdyti žaidimą
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pristabdyti žaidimą
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Pagreitinti laiko tekmę
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nustatymai
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Išsaugoti, sustabdyti, išeiti iš žaidimo
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rodyti žemėlapį
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Parinktys
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Išsaugoti/nutraukti žaidimą arba užverti programą
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rodyti žemėlapį, papildomą peržiūros langą arba ženklų sąrašą
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Rodyti miestų sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rodyti subsidijas
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rodyti subsidijų sąrašą
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rodyti stotelių sąrašą
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rodyti kompanijos finansinę informaciją
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rodyti pagrindinę kompanijos informaciją
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rodyti bendrąją kompanijos informaciją
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rodyti diagramas
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Transporto kompanijų vertinimas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Finansuoti pramonės įmonės statybas
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rodyti kompanijos traukinių sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rodyti kompanijos automobilių sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rodyti kompanijos laivų sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rodyti kompanijos lėktuvų sąrašą. Ctrl + pelės mygtukas perjungia grupę/transporto priemonių sąrašą
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rodyti kompanijų įvertinimus
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rodyti pramonės įmonių sąrašą arba finansuoti naują įmonę
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rodyti kompanijos traukinių, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rodyti kompanijos automobilių, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rodyti kompanijos laivų, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Rodyti kompanijos lėktuvų, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Priartinti vaizdą
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Nutolinti vaizdą
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tiesti geležinkelius
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Tiesti kelius
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Statyti uostus
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Statyti jūrų uostus
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Statyti oro uostus
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atidaro žemės tvarkymo įrankių juostą, skirtą pakelti/nuleisti žemės lygiui, sodinti medžius ir t.t.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rodyti garso/muzikos nustatymus
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rodyti paskutinę žinutę/naujienų pranešimus, rodyti žinučių nustatymus
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Žemės ploto informacija, konsolė, AI debug, ekrano nuotraukos, apie OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Perjungti įrankines
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atlikti žemės kasimo darbus, sodinti medžius, griauti objektus bei vykdyti kitą statybinę veiklą
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rodyti garsų bei muzikos parinktis
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rodyti paskutinę žinutę ar naujieną bei jų rodymo nuostatas
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Rodyti langelio informaciją, pultą, derinimo langą, daryti momentinę ekrano kopiją
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Perjungti įrankių juostas
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Išsaugoti scenarijų, įkelti scenarijų, išjungti scenarijų redaktorių, išeiti
@@ -1337,6 +1337,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamy
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Lygi vieta aplink gamyklas: {ORANGE}{STRING} langel{P 0:1 is iai ių}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Leisti kelias panašias pramonės įmones viename mieste: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Šviesoforus rodyti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kairėje
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :tiesioginio eismo pusėje
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :dešinėje
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Rodyti finansinę ataskaitą metų pabaigoje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nauji nurodymai yra 'non-stop' pagal nutylėjimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Numatytoji traukinių sustojimo stotyje vieta: {ORANGE}{STRING}{LTBLUE}

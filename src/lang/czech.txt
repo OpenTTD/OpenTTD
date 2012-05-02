@@ -1224,6 +1224,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatnih
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plochá oblast okolo průmyslu: {ORANGE}{STRING} čtvereček
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Povolit více stejného průmyslu kolem jednoho města: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zobrazit signály: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vlevo
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na straně řidiče
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Ukazovat finanční okno na konci každého roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Vydávat nové příkazy jako 'bez zastavení': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Vlaky normálně zastavují {ORANGE}{STRING}{LTBLUE} nástupiště

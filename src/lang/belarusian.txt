@@ -1459,6 +1459,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншы�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геалягiчная разьведка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Пляскаты рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Зьлева
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :На баку руху аўтатранспарту
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Справа
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Паказваць фінансавую статыстыку напрыканцы года: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ствараць заданні з пазнакай «без прыпынкаў»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Па змоўчаньні цягнікі спыняюцца {ORANGE}{STRING}{LTBLUE} станцыі
@@ -1803,8 +1807,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Пака
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Паказаць каляровыя схэмы аўтатранспарту
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Паказаць каляровыя схэмы караблёў
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Паказаць каляровыя схэмы самалётаў
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Выбраць асноўны колер
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Выбраць дадатковы колер
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Налада асноўнага колеру абранага тыпу транспарта. Ctrl+пстрычка ўсталюе абраны колер для ўсіх тыпаў транспарта.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Налада дадатковага колеру абранага тыпу транспарта. Ctrl+пстрычка ўсталюе абраны колер для ўсіх тыпаў транспарта.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберыце каляровую схэму ці некалькі схэмаў з Ctrl, пастаўце птушку для праверкі выбранай схэмы
 
 STR_LIVERY_DEFAULT                                              :Стандартная афарбоўка

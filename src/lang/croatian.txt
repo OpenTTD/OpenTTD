@@ -1238,6 +1238,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kao i druge ind
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prosperirajuća
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ravna površina oko industrija: {ORANGE}{STRING} polje
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dopusti više sličnih industrija po gradu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikaži signale: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na lijevoj strani
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strani vožnje
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na desnoj strani
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pokaži financijski prozor na kraju godine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Za nove naredbe početna je vrijednost 'neprekidno': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Naredbe za nove vlakove su zaustavljanje kod {ORANGE}{STRING}{LTBLUE} platforme

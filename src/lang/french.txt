@@ -1143,6 +1143,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Comme les autre
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospection
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Terrain plat autour des industries{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permettre plusieurs industries similaires par ville{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Montrer les signaux{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :à gauche de la voie
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :côté conducteur
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :à droite de la voie
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan financier en fin d'année{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les nouveaux ordres sont « sans arrêt » par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Les nouveaux ordres arrêtent les trains {G au au "à la"} {ORANGE}{STRING}{LTBLUE} du quai par défaut

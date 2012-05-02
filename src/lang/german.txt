@@ -1143,6 +1143,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Indu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Durch Prospektion
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebenes Gelände um Industrien: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Mehrere gleichartige Industrien pro Stadt erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Zeige Signale: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Auf der linken Seite
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Auf der Straßenverkehrsseite
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Auf der rechten Seite
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Aufträge standardmäßig ohne Zwischenhalt anfahren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Neue Aufträge: Zug hält standardmäßig {ORANGE}{STRING}{LTBLUE} des Bahnsteigs

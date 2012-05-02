@@ -772,7 +772,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLAC
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin ramp by {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Pad voertuig vernietig in 'VVV' botsing!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Olie raffineerdery ontploffing naby {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Olie raffinadery het ontplof naby {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}fabriek vernietig in agterdogtig omstandighede naby {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'VVV' beland naby {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Kool myn bedaaring los spoor van vernietiging naby {TOWN}!
@@ -1143,6 +1143,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerh
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plat area rondom bedrywe: {ORANGE}{STRING} teëls{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Laat meer as een soortgelyke nywerhede per dorp toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Wys seine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan die linkerkant
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan die bestuurskant
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan die regterkant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Toon finansies venster op die einde van die jaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuwe bevele is vooraf 'geen-stop' {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nuwe trein opdragte stop by verstek by die {ORANGE}{STRING}{LTBLUE} van die platform
@@ -1190,7 +1194,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Dikte v
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Land genereerder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oorspronklik
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks afstand van kant vir Olie Raffineerderye {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks afstand van kant vir Olie Raffinaderye {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeu lyn hoogte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Grofheif van terrein (slegs TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Baie Glad
@@ -1209,7 +1213,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aktivee
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer teëls op die Noordelike grens is nie leeg nie
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer teëls by een van die kante is nie water nie
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasie gesprei: {ORANGE}{STRING} {RED}Waarskuwing: hoë stel vertraag speletjie
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks stasie versprei: {ORANGE}{STRING} {RED}Waarskuwing: hoë waarde vertraag speletjie
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Diens helikopters by helihawes outomaties: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind landereye werktuigbaan na spoor/pad/water/lughawe werktuigbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Land kleur gebruik op die klein landkaart: {ORANGE}{STRING}
@@ -1277,6 +1281,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Sper vl
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Sper skepe vir rekenaar: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Laat AI in multispeler toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes voor die skripte gestaak word: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Diens pouse is in persente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standaard diens pouse vir treine: {ORANGE}{STRING} dae/%
@@ -1296,7 +1301,8 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Jaar om
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Aktiveer geleike ekonomie (meer, kleiner veranderings): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Laat die koop van aandeele van ander maatskappye toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Persentasie wins om te deel in die vervoer ketting: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer sleep, plaas seine elke: {ORANGE}{STRING} teel(e)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer sleep, plaas seine elke: {ORANGE}{STRING} teël{P "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Wanneer signale getrek word, behou konstante afstand: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Outomaties bou semaphores voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiveer die sein GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Sein tipe om te bou by verstek: {ORANGE}{STRING}
@@ -1329,7 +1335,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posisie van hoof werktuigbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posisie van statusbalk: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Venster slag straal: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Venster spring radius: {ORANGE}{STRING} pieksel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Venster slag straal: {ORANGE}strem
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimum nommer nie-taaierige vensters: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimum nommer nie-taaierige vensters: {ORANGE}ongeaktiveer
@@ -1386,6 +1392,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander
 STR_CONFIG_ERROR                                                :{WHITE}Fout met die konfigurasie lêer...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... fout in skikking '{STRING}'
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ongeldig waarde '{STRING}' vir '{STRING}'
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... sleep karakters aan die einde van die stelling '{STRING}'
 STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoreer NewGRF '{STRING}': duplikaat GRF ID met '{STRING}'
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoreer ongeldige NewGRF '{STRING}': {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nie gevind
@@ -1411,7 +1418,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Moeilikh
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Gevorderde stellings
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF Stellings
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kyk Na Aanlyn Inhoud
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / Spel Instellings
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/Spel Skript Instellings
 STR_INTRO_QUIT                                                  :{BLACK}Verlaat
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Begin nuwe spel. Ctrl+Kliek ignoreer kaart konfigurasie
@@ -1465,7 +1472,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Keuseblo
 STR_CHEATS_WARNING                                              :{BLACK}Waarskuwing! U staan op die punt om jou mededinger te veraai. Hou in gedagte dat so 'n skande vir ewigheid sal onthou word.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld by {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speel as maatskappy: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (uitwis nywerhede, onbeweegbares): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (verwyder nywerhede, onbeweegbare voorwerpe): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuie sal nie (dikwels) op klein lughawe bots nie: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Magtig landskap
@@ -1925,6 +1932,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... lêe
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon nie die afgelaaide lêer dekompakteer
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Vermis grafika
+STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD het grafike nodig om the funksioneer maar kon niks vind nie. Wil jy hê dat OpenTTD grafike aflaai en instaleer?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, laai die grafika af
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, verlaat OpenTTD
 
@@ -2131,6 +2139,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop lan
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Voorwerp Keuse
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selekteer voorwerp om te bou. Shift skakel gebou/wys koste beraaming
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Kies klas van die voorwerp te bou
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Voorskou van 'n voorwerp
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} teels
@@ -2491,6 +2500,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Hoeveel
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteer - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Ouer
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspekteer die voorwerp van die ouer bestek
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} by {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Voorwerp
@@ -2501,8 +2511,12 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Belyn sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Volgende sprite
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Gaan na die volgende "sprite", Ignoreer enige pseudo/her-kleur/font "sprites" en spring terug na die begin
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gaan na sprite
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gaan na gegewe sprite. As die sprite nie 'n normale sprite is nie, gaan na die volgende normale sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Vorige sprite
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gaan na vorige normale sprite. ignoreer enige pseudo/her-kleur/font sprite en spring terug na die einde
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Voorstelling van geselekteerde sprite. Die belyning word geignoreer waneer sprite geteken word
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Beweeg die sprite rond, verander die X en Y afwyking
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X afwyking: {NUM}, Y afwyking: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Kies sprite
@@ -2583,6 +2597,7 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :Skandering van 
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ooreenstemmende case
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Maak Filter Skoon
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Skakel ooreenstemmende kas wanneer teken naam vergelyk word teen die filter string
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Maak filter string skoon
 
 # Sign window
@@ -3089,6 +3104,8 @@ STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kos: {CU
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koste: {CURRENCY_LONG} Gewig: {WEIGHT_SHORT}{}Spoed: {VELOCITY}  Krag: {POWER}  Maks. Treg Krag: {6:FORCE}{}Lopende Koste: {4:CURRENCY_LONG}/jaar{}Kapasitiet: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Koste: {CURRENCY_LONG} Maks. Spoed: {VELOCITY}{}Kapasiteit: {CARGO_LONG}, {CARGO_LONG}{}Lopende Koste: {CURRENCY_LONG}/jaar
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koste: {CURRENCY_LONG} Maks. Spoed: {VELOCITY}{}Kapasiteit: {CARGO_LONG}{}Lopende Koste: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koste: {CURRENCY_LONG} Max. Spoed: {VELOCITY} Afstand: {COMMA} teëls{}Kapasiteit: {CARGO_LONG}, {CARGO_LONG}{}Hardloop Koste: {CURRENCY_LONG}/jaar
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koste: {CURRENCY_LONG} Max. Spoed: {VELOCITY} Afstand: {COMMA} teels{}Kapasiteit: {CARGO_LONG}{}Hardloop Koste: {CURRENCY_LONG}/jaar
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING} - {STRING}
@@ -3206,6 +3223,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} ja{P ar
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ja{P ar re} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maks. spoed: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Max. spoed: {LTBLUE}{VELOCITY} {BLACK}Afstand: {LTBLUE}{COMMA} teëls
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewig: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewig: {LTBLUE}{WEIGHT_SHORT} {BLACK}Krag: {LTBLUE}{POWER}{BLACK} Maks. spoed: {LTBLUE}{VELOCITY} {BLACK}Maks. T.E.: {LTBLUE}{FORCE}
 
@@ -3257,6 +3275,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Herbou)
 STR_REFIT_TITLE                                                 :{GOLD}Kies vrag tipe vir skip te ontvoer:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO_LONG}{}{BLACK}Herboukoste: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuwe Kapasiteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koste om te herbou: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selekteer die voertuig vir herbou. Trek met die muis om meer as een voertuig te selekteer. Kliek op 'n leë spasie sal die hele voertuig selekteer. Ctrl+Kliek sal 'n voertuig en daarop volgende ketting selekteer
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies vrag tipe vir trein te ontvoer
@@ -3311,6 +3330,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}verander
 STR_ORDER_REFIT                                                 :{BLACK}Herbou
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Kies watter vrag tipe te herbou na in die opdraag. CTRL-kliek om herbou instruksie te verwyder
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Outo-herbou
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Selekteer watter tipe vrag om hierdie bevel te outo-herbou. Ctrl-Kliek om hertbou instruksies te stop. Outo-herbou sal net toegelaat word as die voertuig die toelaat
 STR_ORDER_DROP_REFIT_AUTO                                       :Vaste vrag
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Beskikbare vrag
 
@@ -3351,6 +3371,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Uitvee
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Vee die verlig opdrag uit
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwyder alle opdragte
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop deeling
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop die deel van die bevel. Ctrl+kliek vee alle bevelle vir die voertuig uit
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gaan Na
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gaan na naaste diensstasie
@@ -3435,6 +3456,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Verander
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te selekteer
 
 STR_TIMETABLE_NO_TRAVEL                                         :Geen reis
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (outomaties; getabuleer volgens eiehandige bevel)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie op rooster nie)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reis op die meeste {2:VELOCITY} (nie gerooster)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
@@ -3499,9 +3521,12 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI stell
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Verander die stellings van die skrif
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Aktiveer/deaktiveer 'n breek wanneer 'n AI log boodskap 'n breek string ewenaar
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Breek op:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Breek op
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Pas kas
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wanneer 'n AI log boodskap die string ewenaar, word die spel onderbreuk
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ooreenstemmende kas
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Skakel ooreenstemmende kas wanneer AI log boodskap gemeet word teen die breek string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Gaan voort
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Hervat en gaan met die AI voort
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Kyk na die ontfout uitset van die AI

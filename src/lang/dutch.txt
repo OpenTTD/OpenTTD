@@ -911,8 +911,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Wegvoertuigen
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies aan welke kant de wegvoertuigen moeten rijden
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Rijden links
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rijden rechts
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Links rijden
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechts rijden
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsnamen
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Kies type plaatsnamen
@@ -1142,6 +1142,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere in
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vlakke omgeving rond industrieën: {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Toon seinen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan de linker kant
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan de rij zijde
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan de linker kant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het einde van het jaar weergeven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nieuwe orders zijn standaard 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nieuwe treinorders stoppen de trein standaard {ORANGE}{STRING}{LTBLUE} van het perron
@@ -1486,8 +1490,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Toon kle
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Toon kleurenschema's voor wegvoertuigen
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Toon kleurenschema's voor schepen
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Toon kleurenschema's voor vliegtuigen
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies de hoofdkleur voor het geselecteerde schema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies de tweede kleur voor het geselecteerde schema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies de hoofdkleur voor het geselecteerde schema. Ctrl+klik deze kleu bij alle schema's gebruiken
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies de tweede kleur voor het geselecteerde schema. Ctrl+klik om deze kleur in alle schema's te gebruiken
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Kies een kleurenschema om te wijzigen, of meerdere schema's met Ctrl+klik. Vink de keuzevakjes aan/uit om het gebruik van het schema aan/uit te zetten
 
 STR_LIVERY_DEFAULT                                              :Standaard kleurenschema
