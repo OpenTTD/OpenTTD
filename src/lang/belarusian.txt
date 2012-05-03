@@ -1459,7 +1459,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншы�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геалягiчная разьведка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Пляскаты рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказаць сыгналы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Зьлева
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :На баку руху аўтатранспарту
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Справа

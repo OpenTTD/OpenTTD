@@ -1267,6 +1267,8 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як і інш�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологічна розвідка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Пласка поверхня навколо підприємств: {ORANGE}{STRING} клітин{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дозволити декілька однотипних підприємств на місо: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Розташування сигналів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :На правій стороні
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Створювати накази з поміткою «без зупинки»: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Створювати накази для поїздів з зупинкою {ORANGE}{STRING}{LTBLUE} платформи
