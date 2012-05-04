@@ -1487,8 +1487,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}열차 �
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}자동차 색상 선택
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}선박 색상 선택
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}항공기 색상 선택
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}선택한 색상을 1차 색상으로 선택
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}선택한 색상을 2차 색상으로 선택
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}선택한 색상을 1차 색상으로 선택합니다. Ctrl+클릭하면 모든 항목에 적용됩니다.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}선택한 색상을 2차 색상으로 선택합니다. Ctrl+클릭하면 모든 항목에 적용됩니다.
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
 
 STR_LIVERY_DEFAULT                                              :기본 색상

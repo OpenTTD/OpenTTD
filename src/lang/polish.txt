@@ -911,9 +911,9 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarcz
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena działalności firmy (maks. ocena=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wartości firm
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za Ładunek
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za ładunek
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dni w transporcie
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Oplata za przewóz 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Dochód z przewozu 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Włącz wszystko
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Wyłącz wszystko
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie cen za ładunek
@@ -1218,8 +1218,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} już nie akceptuje {STRING.d}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} już nie akceptuje {STRING.d} ani {STRING.d}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} nie akceptuje już {STRING.d}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} nie akceptuje już {STRING.d} ani {STRING.d}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} już akceptuje {STRING.b}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} już akceptuje {STRING.b} i {STRING.b}
 
@@ -1502,7 +1502,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Pozwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksymalna długość pociągów: {ORANGE}{STRING} p{P ole ola ól}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksymalna długość pociągów: {ORANGE}{STRING} p{P 0:1 ole ola ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ilość dymu / iskier lokomotywy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model przyspieszania pociągu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model przyspieszania samochodów: {ORANGE}{STRING}
@@ -1514,8 +1514,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Użyj u
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Stopniowy załadunek pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksymalna długość mostu: {ORANGE}{STRING} p{P ole ola ól}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksymalna długość tunelu: {ORANGE}{STRING} p{P ole ola ól}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksymalna długość mostu: {ORANGE}{STRING} p{P 0:1 ole ola ól}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksymalna długość tunelu: {ORANGE}{STRING} p{P 0:1 ole ola ól}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Budowa przedsiębiorstw wydobywczych: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
@@ -1562,18 +1562,18 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich poja
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Powiadom, jeśli pojazd przynosi straty: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie są wycofywane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnawianie pojazdów gdy stają się stare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesi{P 0:1 ąc ące ęcy} przed/po maks. wieku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P 0:1 a y ""}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Po przytrzymaniu kursora przez {STRING} sekund{P 0:1 ę y ""}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Prawy przycisk myszy
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaż podpowiedzi: {ORANGE}po przytrzymaniu kursora przez {STRING} sekund{P 0:1 ę y ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaż podpowiedzi: {ORANGE}prawy przycisk myszy
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grubość linii na wykresie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odległość rafinerii od krawędzi mapy: {ORANGE}{STRING} segment{P "" y ów}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odległość rafinerii od krawędzi mapy: {ORANGE}{STRING} segment{P 0:1 "" y ów}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokość granicy wiecznych śniegów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Wyboistość terenu (w TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
@@ -1625,9 +1625,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :długiego (31 g
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkiego (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Domyślna paleta dla NewGRF które nie posiadają zdefiniowanej palety: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Domyślna paleta dla NewGRF, które nie posiadają zdefiniowanej palety: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :paleta DOS
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :paleta Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Zezwól w czasie wstrzymania gry na: {ORANGE}{STRING}
@@ -1680,7 +1680,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data ro
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól na łagodną ekonomię (więcej małych zmian): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Udział w zyskach w przypadku częściowego transportu (przeładunku): {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} krat{P kę ki ek}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} krat{P 0:1 kę ki ek}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Zachowaj stały odstęp między semaforami przy przeciąganiu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
@@ -3132,9 +3132,9 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruj 
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokazuje wszystkie pociągi, które mają tę stację w swoim rozkładzie
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokazuje wszystkie samochody, ktore mają tę stację w swoim rozkladzie
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokazuje wszystkie samoloty, ktore mają tę stację w swoim rozkladzie
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje wszystkie statki, ktore mają tę stację w swoim rozkladzie
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokazuje wszystkie samochody, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokazuje wszystkie samoloty, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje wszystkie statki, które mają tę stację w swoim rozkładzie
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
@@ -3277,10 +3277,10 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana p
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmiana poziomu produkcji (procentowo, do 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Pociąg{P "" i ów}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Samoch{P ód ody odów}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Stat{P ek ki ów}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Samolot
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} pociąg{P "" i ów}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} samoch{P ód ody odów}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} stat{P ek ki ków}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} samolot{P "" y ów}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Pociągi - klik na pojeździe aby uzyskać informacje
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Samochody - klik na pojeździe po więcej informacji
@@ -3293,22 +3293,22 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokom
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostępne pojazdy
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostępne statki
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępne samoloty
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę pojazdów dostępnych dla tego typu transportu
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liście
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do Serwisu
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do Zajezdni
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do Zajezdni
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Wyślij do Stoczni
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Wyślij do Hangaru
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do zajezdni
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do zajezdni
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Wyślij do stoczni
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Wyślij do hangaru
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Kliknij aby zatrzymać wszystkie pojazdy na liście
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Kliknij aby wystartować wszystkie pojazdy na liście
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Kliknij, aby zatrzymać wszystkie pojazdy z listy
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Kliknij, aby wystartować wszystkie pojazdy z listy
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Polecenia współdziel{P 0 i ą i} {COMMA} pojazd{P "" y ów}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Wszystkie pociągi
@@ -3597,10 +3597,10 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Uruchomi
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Szczegóły)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nazwa
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nazwa pociągu
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nazwij samochód
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nazwa statku
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nazwa samolotu
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zmień nazwę pociągu
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Zmień nazwę samochodu
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Zmień nazwę statku
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Zmień nazwę samolotu
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/rok
 # The next two need to stay in this order
@@ -3616,7 +3616,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w t
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}Żadna{STRING}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}żadna{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
@@ -3629,7 +3629,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa pociągu
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwij samochód
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwa samochodu
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nazwa statku
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nazwa samolotu
 
@@ -3763,7 +3763,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbli�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełny załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -3869,24 +3869,24 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień i
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czasu przeznaczoną na zaznaczone zadanie
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień Limit Prędkości
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość podróży wybranego polecenia
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość podróży w zaznaczonym poleceniu
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit Prędkości
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość podróży wybranego polecenia
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść limit prędkości
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość podróży w zaznaczonym poleceniu
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnego wyjazdu (CTRL-klik by spróbować utrzymać czasy oczekiwania))
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu (Ctrl+klik, aby spróbować utrzymać czasy oczekiwania)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między wymaganymi i zaplanowanymi
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
 
 
 # Date window (for timetable)
