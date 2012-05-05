@@ -887,11 +887,18 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	int sprite_y_offset = sprite_y_offsets[type] + step_size / 2;
 
 	Dimension replace_icon = {0, 0};
-	if (show_count) replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+	int count_width = 0;
+	if (show_count) {
+		replace_icon = GetSpriteSize(SPR_GROUP_REPLACE_ACTIVE);
+		SetDParam(0, 999);
+		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
+	}
 
-	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT + replace_icon.width : sprite_width);
-	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT + replace_icon.width);
+	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT + replace_icon.width + 8 + count_width : sprite_width);
+	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT + replace_icon.width + 8 + count_width);
 	int replace_icon_left = rtl ? l + WD_FRAMERECT_LEFT : r - WD_FRAMERECT_RIGHT - replace_icon.width;
+	int count_left = l;
+	int count_right = rtl ? text_left : r - WD_FRAMERECT_RIGHT - replace_icon.width - 8;
 
 	int normal_text_y_offset = (step_size - FONT_HEIGHT_NORMAL) / 2;
 	int small_text_y_offset  = step_size - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1;
@@ -907,7 +914,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		DrawVehicleEngine(l, r, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
 		if (show_count) {
 			SetDParam(0, num_engines);
-			DrawString(text_left, text_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
+			DrawString(count_left, count_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 			if (EngineHasReplacementForCompany(Company::Get(_local_company), engine, selected_group)) DrawSprite(SPR_GROUP_REPLACE_ACTIVE, num_engines == 0 ? PALETTE_CRASH : PAL_NONE, replace_icon_left, y + replace_icon_y_offset);
 		}
 	}
