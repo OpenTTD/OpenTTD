@@ -3212,7 +3212,7 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber ty
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zapnout vyměňování
 STR_REPLACE_VEHICLES_NOW                                        :Nahradit hned všechna vozidla
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nahradit pouze staré vozidla
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nahradit pouze stará vozidla
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Zmáčkni toto tlačítko, když chceš vyměňovat typ lokomotivy vybraný v levém seznamu lokomotivou vybranou v pravém seznamu
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}(nevyměňuje se)
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Není označeno žádné vozidlo

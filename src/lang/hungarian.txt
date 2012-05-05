@@ -958,9 +958,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Török Líra (
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Szlovák Korona (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazil Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Észt Korona (EKK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litván litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dél-koreai von (KRW)
-STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dél-afrikai rand (ZAR)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litván Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Dél-koreai Von (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dél-afrikai Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Saját...
 ############ end of currency region
 
@@ -1206,6 +1206,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általába
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Gazdasági épületek körüli sík terület: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Több ugyanolyan gazdasági épület településenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők elhelyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Bal oldalon
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Menetirány szerinti oldalon
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Jobb oldalon
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok az állomások {ORANGE}{STRING}{LTBLUE} állnak meg
@@ -1361,7 +1365,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Egyenle
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Más vállalatokból lehet részvényt vásárolni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Kifizetendő profitszázalék a ráhordó rendszereknek: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Húzáskor helyezzen jelzőket minden {ORANGE}{STRING}. mezőre
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Húzáskor a jelzők között legyen fix a távolság: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Húzáskor állandó távolság a jelzők között: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan alakjelző épüljön {ORANGE}{STRING}-ig.
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Jelzőépítés-kezelő engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett jelzőtípus: {ORANGE}{STRING}
@@ -2819,7 +2823,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Kilistá
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Állomás/rakodóhely átnevezése
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Reptér bezárása
-STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Repülőgépek leszállásának megakadályozása
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Repülőgép leszállásának megakadályozása ezen a reptéren
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3731,7 +3735,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... {STR
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a terület más vállalaté
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... tájrendezési limit elérve
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... mezőtörlési limit elérve
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... a faültetési korlát elérve
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... a faültetési korlátozás elérve
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}A névnek egyedinek kell lennie
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}...{1:STRING} van az útban
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Szünet közben nem megengedett
