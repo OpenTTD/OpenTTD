@@ -927,6 +927,8 @@ void EnginesMonthlyLoop()
 				}
 			}
 		}
+
+		InvalidateWindowClassesData(WC_BUILD_VEHICLE); // rebuild the purchase list (esp. when sorted by reliability)
 	}
 }
 
