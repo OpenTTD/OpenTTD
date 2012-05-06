@@ -1164,7 +1164,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ar gach feithic
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Tabhair rabhadh má tá ioncam feithicile diúltach: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ní imíonn feithiclí as dáta riamh: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uathathnuaigh feithicil agus é {STRING} mí roimh/i ndiaih a haois uasta
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Uathathnuachan: uasmhéid airgead a theastaíonn le hathnuachan: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Taispéain daonra an bhaile i lipéad ainm an bhaile: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiús na línte sna graif: {STRING}

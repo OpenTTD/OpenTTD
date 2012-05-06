@@ -1162,7 +1162,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :所有交通工
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :當交通工具收入為負時警告：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :運輸工具永不過期：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :交通工具自動翻新: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :當交通工具在使用年限 {STRING} 個月前／後自動更新
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動翻新所需最低餘額：{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :於標籤顯示市鎮人口：{STRING}
 

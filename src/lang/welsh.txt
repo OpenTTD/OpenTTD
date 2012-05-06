@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :o bob cerbyd
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Rhybuddio os yw cerbyd yn gwneud colled: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau'n darfod: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Awtoadnewyddu cerbyd {STRING} mis{P 0:2 "" oedd} cyn ei oedran eithaf
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Isafswm arian awtoadnewyddu ar gyfer adnewyddu: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Dangos poblogaeth tref yn label y dref: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Trwch llinellau graff: {STRING}

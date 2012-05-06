@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خ�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :هشدار هنگام منفی بودن درآمد خودرو: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نقلیه هیچگاه از بین نروند: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :نوکردن خودکار وسایل نقلیه کهنه شده: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :نوکردن وسایل نقلیه {STRING} ماه قبل/بعد از بیشترین سن مجاز خودرو
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :کمترین اندازه پول برای نو کردن وسایل نقلیه: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :نمایش جمعیت شهر در عنوان شهر: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :صخامت خط ها در گراف: {STRING}

@@ -1158,7 +1158,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :включен
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждение ако превозното средство е на загуба: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Подновяване {STRING} месец{P 0:2 "" а} преди/след амортизацията на ПС
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Минимална сума за начало на подновяване: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
 

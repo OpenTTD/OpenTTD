@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查 所有�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示： {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :车辆永不报废：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :当车辆在报废前(-)/后 {STRING} 个月时自动更新
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :启动自动更新需要的最少现金：{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :在城镇名称的标签中同时显示人口：{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽度: {STRING}

@@ -1159,7 +1159,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :入（すべて
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :車両の利益が損失になってから警告を表示：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車両の購入可能期限がない：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車両が古くなるとき自動交換：{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :車両が最高使用年数の {STRING} ヶ月前後に自動交換
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動交換するための最小資金：{STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :町名に人口を含む：{STRING}
 

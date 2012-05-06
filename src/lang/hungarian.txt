@@ -1239,7 +1239,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :minden járműr
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés veszteséges jármű esetén: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatikus járműfelújítás {STRING} hónappal a max. életkora előtt/után
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automatikus járműfelújításhoz szükséges min. pénz: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mutassa a település lakosságát a feliratban: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :A vonalak vastagsága a grafikonokon: {STRING}

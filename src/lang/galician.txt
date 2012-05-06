@@ -1122,7 +1122,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de tódolos veh
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se os ingresos dun vehículo son negativos: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Os vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova-los vehículos cando envellezan: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenovar {STRING} meses antes/despois da idade máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Diñeiro mínimo necesario para a autorenovación: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra-la poboación da cidade na etiqueta: {STRING}
 

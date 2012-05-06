@@ -1168,7 +1168,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefie
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefiert en negativen Akommes huet: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefiert automatesch ernéieren wann ët aal gët: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoerneiren wann Gefiert méi wéi {STRING} Méint firum/nom maximalen Alter ass
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimalen Budget fir d'automatesch Erneierung: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Weist Bewunnerzuel am Numm vun der Stadt: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Déckt vunn de Linnen vun den Graphen: {STRING}

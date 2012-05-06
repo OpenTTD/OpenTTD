@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fo
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fordons inkomst är negativ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när dom blir gamla: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Förnya automatiskt fordon {STRING} månad{P 0:2 "" er} före/efter maximal ålder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i grafer: {STRING}

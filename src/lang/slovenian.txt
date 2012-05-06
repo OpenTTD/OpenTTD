@@ -1320,7 +1320,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vseh vozil
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Opozori, če je prihodek vozila negativen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Samoobnovi vozila, ko se postarajo: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Samoobnovi, ko je vozilo {STRING} mesec{P 0:2 "" a e ev} pred/po največji starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Samoobnovi najmanj potrebnega denarja za obnovo: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikaz števila prebivalcev ob imenu mesta: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debelina črt grafov: {STRING}

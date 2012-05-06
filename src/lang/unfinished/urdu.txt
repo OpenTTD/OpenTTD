@@ -1163,7 +1163,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑ
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں کی معیاد کبھی ختم نہ ہو: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :گاڑی کو اسکی معیاد کے {STRING} مہینے{P 0:2 "" s} پہلے یا بعد خودکار طور پر بدل دیں
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :خودکار تبدیلی کے لئے ضروری کم سے کم رقم کو خودکار طریقے سے بدل دیں: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :شہر کی آبادی شہر کے نام کے ساتھ دکھائیں: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :مخطط میں لائینوں کی موٹائی: {STRING}

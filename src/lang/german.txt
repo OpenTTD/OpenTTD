@@ -1176,7 +1176,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Für alle Fahrz
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen, wenn Einnahmen eines Fahrzeuges negativ sind: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fahrzeuge automatisch erneuern, wenn sie alt werden: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Erneuere Fahrzeug {STRING} Monat{P 0:2 "" e} vor/nach Maximalalter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimaler Kontostand für automatisches Erneuern: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zeige die Einwohnerzahl von Städten neben ihrem Namen: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linienstärke in Diagrammen: {STRING}

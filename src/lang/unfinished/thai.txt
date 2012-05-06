@@ -1166,7 +1166,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ของทุ
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :เตือนเมือรายได้ของยานพาหนะเป็นลบ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ยานพาหนะไม่หมดอายุ: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อเก่าเกินไป: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อครบ {STRING} เดือน ก่อน/หลัง สิ้นสุดอายุ
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :จำนวนเงินขั้นต่ำที่ให้เปลี่ยนยานพาหนะโดยอัตโนมัติ: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :แสดงจำนวนประชากรของเมืองในป้ายชื่อเมือง: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :ความหนาของเส้นกราฟ: {STRING}

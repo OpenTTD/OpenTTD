@@ -1331,7 +1331,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждать, если доход ТС отрицателен: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплутации: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоозамена изношенного транспорта: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Замена через {STRING} месяц{P 0:2 "" а ев} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Сумма, необходимая для автозамены: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показывать количество жителей города в названии: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Толщина линий графиков: {STRING}

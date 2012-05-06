@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :لكل العر
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             : حذر عندما يكون الدخل سالبا :{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :جدد العربات عندما تصبح قديمة : {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :التجديد التلقائي عندما تكون العربة {STRING}شهر قبل / بعد العمر الافتراضي.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :أعرض عدد السكان مع الاسم على العلامة: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :سمك الخطوط في العرض: {STRING}

@@ -1172,7 +1172,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :예 (모든 차
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :차량의 수입이 적자일때 경고하기: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 오래되면 자동 교체: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :차량이 최고수명의 {STRING}개월 전/후이면 자동 교체
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :차량 자동교체시 최소 추가요구 자금: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시명 옆에 인구를 표시함: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :그래프 선의 두께: {STRING}

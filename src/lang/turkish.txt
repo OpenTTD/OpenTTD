@@ -1168,7 +1168,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tüm araçlar i
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Bir aracın geliri eksi olunca uyar: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Eski araçlar sürekli üretilsin: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Araç eskiyince otomatik olarak yenile: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Aracı, ömrünü doldurmadan/doldurduktan {STRING} ay önce/sonra yenile
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Yenileme icin gerekli en az parayı otomatik yenile: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Şehir nüfusunu isminin yanına yaz: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grafiklerdeki çizgi kalınlığı: {STRING}

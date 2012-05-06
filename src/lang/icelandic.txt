@@ -1140,7 +1140,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :allra farartæk
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Birta viðvörun ef tap er af rekstri farartækis: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Farartæki úreldast aldrei: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uppfæra faratæki sjálfvirkt þegar þau eldast: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Sjálfvirk uppfæring {STRING} {P 0:2 mánuði mánuðum} fyrir/eftir hámarksaldur
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Lágmarks bankainnistæða fyrir sjálfvirka uppfæringu: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Sýna íbúafjölda í bæjarmerki: {STRING}
 

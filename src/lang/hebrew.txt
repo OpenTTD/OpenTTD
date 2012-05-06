@@ -1151,7 +1151,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :עבור כל �
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{STRING} :התרע על רכבים בעלי הכנסה שלילית
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :חידוש עצמי של רכב כשהוא נהיה ישן: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :חידוש עצמי של כלי רכב כשהוא {STRING} חודשים לפני\אחרי הגיל המקסימלי.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :סכום הכסף המינימלי הנדרש בשביל חידוש: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :הראה את אוכלוסיית העיר בתוך תוית השם של העיר: {STRING}
 

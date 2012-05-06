@@ -1370,7 +1370,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visų tr. priem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, kai tr. priemonės pajamos yra neigiamos: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Tr. priemonės niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti tr. priemonę, kai ji pasensta: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatiskai atnaujinti tr. pr. kai bus {STRING} menes{P 0:2 io ių ių} iki/po maks. amžiaus
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimali suma reikalinga automatiniam atnaujinimui: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rodyti miestų gyventojų skaičių šalia pavadinimo: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linijų grafikuose storumas: {STRING}

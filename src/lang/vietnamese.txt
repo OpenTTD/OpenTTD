@@ -1175,7 +1175,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phư
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị âm: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ thành đồ cổ: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu nó hết tuổi: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Tự thay mới phương tiện vào {STRING} tháng trước/sau khi quá tuổi
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Hiện dân số đô thị trong nhãn tên của đô thị: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm của đường kẻ trong đồ thị: {STRING}

@@ -1155,7 +1155,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :fan alle reau
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warskôgje as de fertsjinsten fan in reau negatyf binne: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Reau ferrinne litte kin net: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Âlde reau automatysk ferfange: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatysk in Reau ferfange as er {STRING} moannen{P 0:2 "" s} foar/nei max. aldens
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum nedich bedrach by automatysk ferfange: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Ynwennertal sjen litte by in sted: {STRING}
 

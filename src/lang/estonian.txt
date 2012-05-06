@@ -1224,7 +1224,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kõikidest veov
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Hoiata kui rongi sissetulek on negatiivne: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Sõidukid ei aegu: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Piirvanuse saavutanud veovahendit uuendatakse {STRING} kuu piires
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Nõutud rahasumma uuendamiseks: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rahvaarv alevike nimesiltidel: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafiku joonte paksus: {STRING}

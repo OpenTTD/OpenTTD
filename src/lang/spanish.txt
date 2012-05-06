@@ -1170,7 +1170,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las ganancias de un vehículo son negativas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente vehículos que estén a {STRING} mes{P 0:2 "" es} antes/después de su edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mínimo de dinero requerido para renovación automática: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un pueblo en su etiqueta: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}

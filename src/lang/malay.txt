@@ -1168,7 +1168,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :semua kenderaan
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Beri amaran jika pendapatan kenderaan adalah negatif: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kenderaan tidak akan tamat tempohnya: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gunakan pembaharuan automatik apabila kenderaan usang : {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Lakukan pembaharuan automatik apabila kenderaan {STRING} bulan{P 0:2 "" s} sebelum/selepas umur maks
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Wang minimum yang diperlukan untuk pembaharuan automatik: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Tunjukkan jumlah penduduk dalam label nama bandar: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Ketebalan garisan di dalam graf: {STRING}

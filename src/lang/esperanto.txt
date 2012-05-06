@@ -1154,7 +1154,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de ĉiuj veturi
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertu se gajno de veturilo negativas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veturiloj neniam eluziĝas: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Aŭtomate anstataŭu veturilon se malnoviĝas: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Anstataŭu {STRING} monatojn antaŭ/post pleja veturilaĝo
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimuma mono por anstataŭado: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Montru enloĝantaron en urbnomindikilo: {STRING}
 

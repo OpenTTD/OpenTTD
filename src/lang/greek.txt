@@ -1262,7 +1262,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :από όλα �
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματος είναι αρνητικά: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη ανανέωση όταν ένα όχημα είναι {STRING} μήνες πρίν/μετά την μέγιστη ηλικία
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Πάχος γραμμών στα γραφήματα: {STRING}

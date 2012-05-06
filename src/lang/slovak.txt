@@ -1235,7 +1235,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :áno, u všetk�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovať, ak je vozidlo stratové: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nikdy neprestať s výrobou starých vozidiel: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatická obnova dopravných prostriedkov, keď sú staré: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Obnoviť vozidlo {STRING} mesiac{P 0:2 "" e ov} pred/po dosiahnutí max. veku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Potrebné financie pre automatickú obnovu vozidiel: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobraziť počet obyvateľov mesta v jeho názve: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Hrúbka čiar v grafe: {STRING}

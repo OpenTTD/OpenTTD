@@ -1492,7 +1492,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :правяра�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Папярэджваць, калі даход транспарту адмоўны: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспарт ніколі не выходзіць з ужытку: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Аўтазамена старых транспартных сродкаў: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Замена праз {STRING} месяц{P 0:2 "" ы аў} да/пасьля сканчэньня тэрміну службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Сума, неабходная для аўтазамены: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Паказваць колькасьць жыхароў горада ў назьве: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Таўшчыня лiнiяў у графiках: {STRING}

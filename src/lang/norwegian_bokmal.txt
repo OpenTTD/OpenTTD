@@ -1169,7 +1169,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Alle kjøretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis inntekten til et kjøretøy er negativ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Kjøretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny kjøretøy når det blir gammelt: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoforny kjøretøy når det er {STRING} måned{P 0:2 "" er} før/etter maksalder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornyelse av kjøretøy: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byers innbyggertall i tittelfeltet: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graflinjenes tykkelse: {STRING}

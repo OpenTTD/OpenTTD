@@ -1363,7 +1363,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :sva
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozorenje ukoliko vozilo pravi gubitke: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila su uvek dostupna: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatksa zamena kada vozilo ostari: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska zamena nakon {STRING} mesec{P 0:2 "" a i} pre/posle zastarenja
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Najmanja potrebna količina novca za zamenu: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikazivanje broja populacije pored naziva naselja: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}

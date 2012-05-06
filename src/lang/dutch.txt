@@ -1175,7 +1175,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuw als inkomsten van een voertuig negatief zijn: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen nooit: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vernieuw voertuig automatisch wanneer deze oud wordt: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Vernieuw voertuig automatisch {STRING} maand{P 0:2 "" en} voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum benodigd geld voor automatisch vernieuwen: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Geef het inwoneraantal bij een stad weer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de lijnen in grafieken: {STRING}

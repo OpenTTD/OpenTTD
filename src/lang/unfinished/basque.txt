@@ -1167,7 +1167,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztien
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ohartarazi ibilgailu baten irabazketak negatiboak badira: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ibilgailuei inoiz ez zaie epea amaitzen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Ibilgailu bat zaharra bihurtzen denean automatikoki berritzea: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Ibilgailuak haien gehienezko adina {STRING} {P 0:2 "" s} hilabete eta gero/baino lehen zaharberritzea
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Ibilgailuak berritzeko behar den gutxienezko dirua: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Herriaren bistanleria herriaren izen kartela erakutsi: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Marren lodiera grafikoetan: {STRING}

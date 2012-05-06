@@ -1300,7 +1300,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :так, для 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Попереджувати, якщо транспорт збитковий: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не старіє: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автооновлювати застарілий транспорт: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автооновлювати транспорт через {STRING} місяц{P 0:2 ь і ів} по закінченню строку експлуатації
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :При автооновленні не допускади падіння балансу нижче {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показувати населення в назві міста: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Товщина ліній на графіках: {STRING}

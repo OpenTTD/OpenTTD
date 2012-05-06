@@ -1169,7 +1169,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :alle køyretøy
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Åtvar dersom eit køyretøy har negativ inntekt: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køyretøy utgår aldri: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoforny køyretøy når det vert gamalt: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoforny køyretyg når det er {STRING} mnd. før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum formue for autofornying av køyretøy: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Syne innbyggjartalet til byane i tittel: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Bredde på linjer i grafar: {STRING}

@@ -1171,7 +1171,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :pentru toate ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dacă profitul unui vehicul este negativ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Înnoire automată cu {STRING} luni înainte de/după atingerea vechimii maxime
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Fonduri minime pentru înnoire automată: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosimea liniilor din grafice: {STRING}

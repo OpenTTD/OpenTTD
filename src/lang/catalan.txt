@@ -1176,7 +1176,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :per a tots els 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova el vehicle quan tingui {STRING} mes{P 0:2 "" os} abans/després antig. max.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenovació: mínim de diners per renovar: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a la etiqueta del nom de població: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}

@@ -1171,7 +1171,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :af alle køret�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Advar hvis et køretøjs indtjening er negativ: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Køretøjernes levealder udløber aldrig: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatisk fornyelse af gamle køretøjer: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Forny automatisk køretøj {STRING} md. før/efter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Min. kontanter før automatisk køretøjsfornyelse: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byens indbyggertal i bynavnet: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i grafer: {STRING}

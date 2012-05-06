@@ -1176,7 +1176,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tous les vé
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Alerter en cas de revenu négatif pour un véhicule{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules n'expirent jamais{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Auto-renouveler les véhicules {STRING} mois avant/après l'âge maximum
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Argent minimum avant auto-renouvellement{NBSP}: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afficher la population d'une ville dans son label{NBSP}: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Épaisseur des lignes dans les graphiques{NBSP}: {STRING}

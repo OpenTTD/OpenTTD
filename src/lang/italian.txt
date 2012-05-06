@@ -1199,7 +1199,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Sì, per tutti 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avvisa se il profitto di un veicolo è in negativo: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :I veicoli non diventano mai obsoleti: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Rinnova un veicolo quando diventa vecchio: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Rinnova un veicolo {STRING} mes{P 0:2 e i} prima/dopo l'età massima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Rinnova solo se disponibile il fondo minimo di {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra la popolazione di una città nell'etichetta del nome: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Spessore delle linee nei grafici: {STRING}

@@ -1175,7 +1175,6 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kaikille ajoneu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista ajoneuvo automaattisesti, kun se vanhenee: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uudista ajoneuvo automaattisesti {STRING} kuukau{P 0:2 si tta} ennen/jälkeen enimmäisiän
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä ajoneuvon automaattiseen uudistukseen: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kaupungin asukasluku kaupungin nimessä: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
