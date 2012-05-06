@@ -1274,12 +1274,13 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
 	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
+	SetDParam(0, STR_ORANGE_STRING1_LTBLUE);
 	if (sdb->cmd == SDT_BOOLX) {
 		/* Draw checkbox for boolean-value either on/off */
 		bool on = ReadValue(var, sd->save.conv) != 0;
 
 		DrawBoolButton(buttons_left, button_y, on, editable);
-		SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+		SetDParam(1, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
 		int32 value;
 
@@ -1289,20 +1290,15 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
 
 		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
-		if (disabled) {
-			SetDParam(0, STR_CONFIG_SETTING_DISABLED);
+
+		if ((sdb->flags & SGF_MULTISTRING) != 0) {
+			SetDParam(1, sdb->val_str - sdb->min + value);
 		} else {
-			if (sdb->flags & SGF_CURRENCY) {
-				SetDParam(0, STR_JUST_CURRENCY_LONG);
-			} else if (sdb->flags & SGF_MULTISTRING) {
-				SetDParam(0, sdb->val_str - sdb->min + value);
-			} else {
-				SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_JUST_INT : STR_JUST_COMMA);
-			}
-			SetDParam(1, value);
+			SetDParam(1, sdb->val_str + disabled);
 		}
+		SetDParam(2, value);
 	}
-	DrawString(text_left, text_right, y, (sdb->str) + disabled);
+	DrawString(text_left, text_right, y, sdb->str, TC_LIGHT_BLUE);
 }
 
 
