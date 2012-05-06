@@ -1185,7 +1185,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :of all vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehicle's income is negative: {STRING2}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING2}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING2}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING2} month{P 0:2 "" s} before/after max age
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING2} max age
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} month{P 0 "" s} before
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} month{P 0 "" s} after
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenew minimum needed money for renew: {STRING2}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of error message: {STRING2}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 "" s}

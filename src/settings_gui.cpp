@@ -1289,6 +1289,9 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 
 		if ((sdb->flags & SGF_MULTISTRING) != 0) {
 			SetDParam(1, sdb->val_str - sdb->min + value);
+		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
+			SetDParam(1, sdb->val_str + ((value >= 0) ? 1 : 0));
+			value = abs(value);
 		} else {
 			SetDParam(1, sdb->val_str + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
 		}
