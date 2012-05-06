@@ -1110,121 +1110,109 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :بائیں
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :درمیان
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :دائیں
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}ڈھلان اور ساحل پر تعمیر کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}تعمیرات کے نیچے منظر کشی کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}کوریج کے علاقے کے حقیقت پسندانہ سائز کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}شہروں کی ملکیت زیادہ سڑکوں، پلوں اور سرنگوں کو توڑنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ریل گاڑی کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}گاڑی کے دھوئیں/سپارک کی تعداد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ریل گاڑی کو تیز کرنے والا ماڈل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}گاڑی کو تیز کرنے کا ماڈل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}ڈھلان پر ریل گاڑی کی تیزی: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}ڈھلان پر گاڑیوں کی تیزی: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}ریل گاڑیوں اور بحری جہازوں کو 90° مڑنے سے روکیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}اسٹیشنوں کو جوڑنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}سامان لوڈ کرنے کا بہتر طریقہ استعمال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}گاڑیوں کو آہستہ آہستہ بھریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}افراط زر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}سامان صرف اُسی صورت میں کسی اسٹیشن تک پہنچایا جب وہ اُسے قبول کرتا ہو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}پُل کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}سرنگ کی زیادہ سے زیادہ لمبائی: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}خود بنیادی صنعت تعمیر کرنے کا طریقہ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :ڈھلان اور ساحل پر تعمیر کی اجازت: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :تعمیرات کے نیچے منظر کشی کی اجازت: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :کوریج کے علاقے کے حقیقت پسندانہ سائز کی اجازت: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :شہروں کی ملکیت زیادہ سڑکوں، پلوں اور سرنگوں کو توڑنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :گاڑی کے دھوئیں/سپارک کی تعداد: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :ریل گاڑی کو تیز کرنے والا ماڈل: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :گاڑی کو تیز کرنے کا ماڈل: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :ریل گاڑیوں اور بحری جہازوں کو 90° مڑنے سے روکیں: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :اسٹیشنوں کو جوڑنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :سامان لوڈ کرنے کا بہتر طریقہ استعمال کریں: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :گاڑیوں کو آہستہ آہستہ بھریں: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :افراط زر: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :سامان صرف اُسی صورت میں کسی اسٹیشن تک پہنچایا جب وہ اُسے قبول کرتا ہو: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :خود بنیادی صنعت تعمیر کرنے کا طریقہ: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :کوئی نہیں
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :دوسری صنعتوں کی طرح
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :توقعات
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}صنعتوں کے گرد سیدھی جگہ: {ORANGE}{STRING} ٹائل {P 0:1 "" s}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ایک شہر میں ایک جیسی ایک سے زیادہ صنعتیں لگانے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}نئے احکامات شروع سے {ORANGE}{STRING}{LTBLUE} کے پلیٹ فارم پر اسٹاپ ہوں
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :ایک شہر میں ایک جیسی ایک سے زیادہ صنعتیں لگانے کی اجازت: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :نئے احکامات شروع سے {STRING} کے پلیٹ فارم پر اسٹاپ ہوں
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :شروع میں
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :درمیان میں
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :آخر میں
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}گاڑیوں کی قطار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}ونڈو کو پین کرو جب ماؤس کنارے پر ہو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}مقامی اتھارٹی کی رشوت کی اجازت دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}فنڈنگ ​​عمارتوں کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}مقامی سڑکوں کی تعمیر نو فنڈنگ ​​کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}دوسری کمپنیوں کو پیسے بھیجنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مال گاڑیوں کو وزنی دکھانے کے لئے وزن کا ضارب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}ہوائی جہاز کی رفتار کا عنصر: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}ہوائی جہازوں کے حادثوں کی تعداد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :گاڑیوں کی قطار: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :ونڈو کو پین کرو جب ماؤس کنارے پر ہو: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :مقامی اتھارٹی کی رشوت کی اجازت دیں: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :خصوصی نقل و حمل کے حقوق کو خریدنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :فنڈنگ ​​عمارتوں کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :مقامی سڑکوں کی تعمیر نو فنڈنگ ​​کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :دوسری کمپنیوں کو پیسے بھیجنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مال گاڑیوں کو وزنی دکھانے کے لئے وزن کا ضارب: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :ہوائی جہازوں کے حادثوں کی تعداد: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :کوئی نہیں
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :نارمل
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}شہر کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}مد مقابلوں کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}اسٹیشن کے ساتھ اسٹیشں بنانے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}ایک سے زیادہ NewGRF انجن سیٹوں کو فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :شہر کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :مد مقابلوں کی ملکیت سڑکوں پر ڈرائیو تھرو اڈے بنانے کی اجازت: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :اسٹیشن کے ساتھ اسٹیشں بنانے کی اجازت: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :ایک سے زیادہ NewGRF انجن سیٹوں کو فعال کریں: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}جب گاڑیاں موجود ہوں تو یہ سیٹنگ بدلنا ممکن نہیں
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}انفراسٹرکچر کی بحالی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :انفراسٹرکچر کی بحالی: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}ہوائی اڈوں کی معیاد کبھی ختم نہ ہو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :ہوائی اڈوں کی معیاد کبھی ختم نہ ہو: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}اگر گاڑی کھو جاے تو انتباہ کیجئیے: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}گاڑیوں کے احکامات کا جائزہ لیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اگر گاڑی کھو جاے تو انتباہ کیجئیے: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :گاڑیوں کے احکامات کا جائزہ لیں: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :نہیں
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ہاں، لیکن رُکی ہوئی گاڑیاں نہیں
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :تمام گاڑیوں کے
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}گاڑیوں کی معیاد کبھی ختم نہ ہو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}گاڑی کو اسکی معیاد کے {ORANGE}{STRING}{LTBLUE} مہینے{P 0:1 "" s} پہلے یا بعد خودکار طور پر بدل دیں
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}خودکار تبدیلی کے لئے ضروری کم سے کم رقم کو خودکار طریقے سے بدل دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}خرابی کے پیغام کی مدت: {ORANGE}{STRING} سیکنڈ {P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}ٹول ٹپ دکھائیں: {ORANGE} {STRING} سیکنڈ کے لئے دکھائیں
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}ٹول ٹپ دکھائیں: {ORANGE}دائیاں بٹن دبائیں
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}شہر کی آبادی شہر کے نام کے ساتھ دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}مخطط میں لائینوں کی موٹائی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :گاڑی کو نقصان کی صورت میں انتباہ کیجئیے: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :گاڑیوں کی معیاد کبھی ختم نہ ہو: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :گاڑی پرانی ہونے کی صورت میں خودکار طریقے سے بدل دیں: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :گاڑی کو اسکی معیاد کے {STRING} مہینے{P 0:2 "" s} پہلے یا بعد خودکار طور پر بدل دیں
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :خودکار تبدیلی کے لئے ضروری کم سے کم رقم کو خودکار طریقے سے بدل دیں: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :شہر کی آبادی شہر کے نام کے ساتھ دکھائیں: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :مخطط میں لائینوں کی موٹائی: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}زمین بنانے والا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :زمین بنانے والا: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}نقشے کے کنارے سے تیل صاف کرنے والے کادخانے کا زیادہ سے زیادہ فاصلہ: {ORANGE}{STRING} ٹائل{P 0:1 "" یں}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}برف کی اونچائی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}علاقے کی کٹائی (صرف TerraGenesis میں) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :برف کی اونچائی: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :علاقے کی کٹائی (صرف TerraGenesis میں) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بہت ہموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ہموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :رف
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بہت رف
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}درخت لگانے کا طریقہ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :درخت لگانے کا طریقہ: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :کوئی نہیں
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بہتر بنایا ہوا
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}اونچائی والے نقشے کو گھمانا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اونچائی والے نقشے کو گھمانا: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :الٹی گھڑی وار
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :گھڑی وار
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}ایک سیدھے scenario والا نقشہ کتنا اونچا ہو گا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}نقشے کے کناروں پر منظر کشی فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :ایک سیدھے scenario والا نقشہ کتنا اونچا ہو گا: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :نقشے کے کناروں پر منظر کشی فعال کریں: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}جنوبی کنارے پر ایک یا ایک سے زیادہ ٹائلیں خالی نہیں ہیں
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}کسی کنارے پر ایک یا ایک سے زیادہ ٹائلیں پانی کی نہیں ہیں
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}اسٹیشن کا زیادہ سے زیادہ پھیلاو: {ORANGE}{STRING} ٹائل{P 0:1 "" یں} {RED}انتباہ: زیادہ پھیلاو سے کھیل آہستہ ہو جائے کا
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ہیلی کاپٹروں کی ہیلی پیڈ پر خودکار مرمت کر دی جائے: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}منظرکشی والی ٹول بار کو ریل گاڑی/سڑک/پانی/ہوائی اڈے والی ٹول بار سے ملا دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}چھوٹے نقشے میں زمین کا رنگ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ہیلی کاپٹروں کی ہیلی پیڈ پر خودکار مرمت کر دی جائے: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :منظرکشی والی ٹول بار کو ریل گاڑی/سڑک/پانی/ہوائی اڈے والی ٹول بار سے ملا دیں: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :چھوٹے نقشے میں زمین کا رنگ: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :گہرا سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفشی
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}کمپنی کے رنگ دکھائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :تعمیراتی کام کے دوران پیمائشی ٹول ٹپ دکھائیں: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :کمپنی کے رنگ دکھائیں: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :کوئی نہیں
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :اپنی کمپنی
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :تمام کمپنیاں
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}ٹیم سے بات چیت کے لئے <ENTER> دبائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}scrollwheel کا کام: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :ٹیم سے بات چیت کے لئے <ENTER> دبائیں: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :scrollwheel کا کام: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :نقشے کو قریب سے دیکھیں
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :نقشے کو ہلائیں
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :آف
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}نقشے پر scrollwheel کی رفتار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :نقشے پر scrollwheel کی رفتار: {STRING}
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :آف
 
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}کھیل کو محفوظ کرنے کے لئے تاریخ کا {ORANGE}{STRING}{LTBLUE} طریقہ استعمال کریں
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :کھیل کو محفوظ کرنے کے لئے تاریخ کا {STRING} طریقہ استعمال کریں
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1232,108 +1220,96 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}نیا کھیل شروع کرنے پر خودکار توقف: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}توقف کے دوران اجازت دیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :نیا کھیل شروع کرنے پر خودکار توقف: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :توقف کے دوران اجازت دیں: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :کوئی فعل نہیں
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :تمام غیر تعمیراتی افعال
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :تمام لیکن منظر کشی بدلنے والے افعال
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :تمام افعال
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}گاڑیوں کی ایڈوانسڈ فہرست دیکھیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}سامان بھرنے کی نشانی دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}اوقات کا جدول دنوں کی بجائے ٹِکس میں دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}قوقات کے جدول میں آمد اور روانگی دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}جلدی گاڑیوں کو احکامات دینا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}کھیل شروع کرنے یا لوڈ کرنے کے بعد ریل گاڑی کی شروعاتی قسم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :گاڑیوں کی ایڈوانسڈ فہرست دیکھیں: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :سامان بھرنے کی نشانی دکھائیں: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :اوقات کا جدول دنوں کی بجائے ٹِکس میں دکھائیں: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :قوقات کے جدول میں آمد اور روانگی دکھائیں: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :جلدی گاڑیوں کو احکامات دینا: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :کھیل شروع کرنے یا لوڈ کرنے کے بعد ریل گاڑی کی شروعاتی قسم: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :پہلی دستیاب
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :آخری دستیاب
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :زیادہ استعمال شدہ
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}مخصوص پٹریاں دکھائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :مخصوص پٹریاں دکھائیں: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :تعمیراتی ٹول کو استعمال کے بعد فعال رکھیں: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :کمپنی کی مالیاتی ونڈو میں اخراجات کو اکٹھا دکھائیں: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}کمپنی کی زیادہ سے زیادہ گاڑیاں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}کمپنی کے زیادہ سے زیادہ ہوائی جہاز: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}کمپنی کے زیادہ سے زیادہ بحری جہاز: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :موزوں گاڑیاں نہ ہونے کی صورت میں عمارت کو غیر فعال کر دیں: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :کمپنی کی زیادہ سے زیادہ ریل گاڑیاں: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :کمپنی کی زیادہ سے زیادہ گاڑیاں: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :کمپنی کے زیادہ سے زیادہ ہوائی جہاز: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :کمپنی کے زیادہ سے زیادہ بحری جہاز: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}کمپیوٹر کے لئے ریل گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}کمپیوٹر کے لئے گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}کمپیوٹر کے لئے ہوائی جہاز غیر فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}کمپیوٹر کے لئے بحری جہاز غیر فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :کمپیوٹر کے لئے ریل گاڑیاں غیر فعال کریں: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :کمپیوٹر کے لئے گاڑیاں غیر فعال کریں: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :کمپیوٹر کے لئے ہوائی جہاز غیر فعال کریں: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :کمپیوٹر کے لئے بحری جہاز غیر فعال کریں: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}زیادہ کھلاڑیوں والے کھیل میں AI کی اجازت دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}اسکرپٹس کے معطل ہونے سے پہلے #opcodes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :زیادہ کھلاڑیوں والے کھیل میں AI کی اجازت دیں: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :اسکرپٹس کے معطل ہونے سے پہلے #opcodes: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}مرمتی وقفے فیصد میں ہیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}ریل گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}ریل گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}گاڑیوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}ہوائی جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}ہوائی جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}بحری جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE}{STRING} دن/٪
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}بحری جہازوں کا شروعاتی مرمتی وقفہ: {ORANGE} غیر فعال
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}مال گاڑی کی حد رفتار فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}الیلٹرک ریل گاڑیاں غیر فعال کریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :مرمتی وقفے فیصد میں ہیں: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :گاڑیوں کی خرابی غیر فعال ہونے کی صورت میں مرمت بھی غیر فعال کر دیں: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :مال گاڑی کی حد رفتار فعال کریں: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :الیلٹرک ریل گاڑیاں غیر فعال کریں: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}رنگین خبریں کون سے سال سے شروع ہوں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}شروعاتی سال: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}مستحکم معیشت فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}دوسری کمپنیوں کے حصص خریدنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}منافع فیڈر نظام میں ادا کر نے کے لئے فیصد: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}کھینچ کر اشارے لگاتے ہوئے، اشارے لگائیں ہر: {ORANGE}{STRING} ٹائل{P 0:1 "" وں} کے بعد
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}پہلے خودکار طریقے سے semaphores بنائیں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}اشاروں والی GUI فعال کریں: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}تعمیر کے لئے اشاروں کی شروعاتی قسم: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :رنگین خبریں کون سے سال سے شروع ہوں: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی سال: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :مستحکم معیشت فعال کریں: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :دوسری کمپنیوں کے حصص خریدنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :پہلے خودکار طریقے سے semaphores بنائیں: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :اشاروں والی GUI فعال کریں: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :تعمیر کے لئے اشاروں کی شروعاتی قسم: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :روکنے والے اشارے
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :راستے کے اشارے
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :یک طرفہ راستے کے اشارے
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}اشعاروں کی اقسام میں سے گزریں: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :اشعاروں کی اقسام میں سے گزریں: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :صرف روکنے والے اشارے
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :صرف راستے کے اشارے
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :تمام
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}نئے شہروں میں سڑکوں کا پھیلاو: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :نئے شہروں میں سڑکوں کا پھیلاو: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :اصلی
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :اچھی سڑکیں
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 گرڈ
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 گرڈ
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :بے ترتیب
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}شہروں کو سڑکیں تعمیر کرنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}شہروں کو چوک تعمیر کرنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}شہروں کو ہوائی اڈوں کا صوتی شور کنٹرول کرنے کی اجازت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}کھیل میں نئے شہر تعمیر کرنے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :شہروں کو سڑکیں تعمیر کرنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :شہروں کو چوک تعمیر کرنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :شہروں کو ہوائی اڈوں کا صوتی شور کنٹرول کرنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :کھیل میں نئے شہر تعمیر کرنے کی اجازت: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ممنوع
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :اجازت ہے
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :اپنی مرضی کے شہر کے پھیلاو کی اجازت ہے
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}کھیل میں درخت لگانے کی اجازت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :کھیل میں درخت لگانے کی اجازت: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :کوئی نہیں {RED}(لکڑ مل ٹوٹ گئی)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :صرف بارش کے جنگلوں میں
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ہر جگہ
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}بنیادی ٹول بار کی جگہ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}اسٹیٹس بار کی جگہ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE} قریب سے دیکھنے کی حد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE} دور سے دیکھنے کی حد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :بنیادی ٹول بار کی جگہ: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :اسٹیٹس بار کی جگہ: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     : قریب سے دیکھنے کی حد: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     : دور سے دیکھنے کی حد: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}شہر کے بڑھنے کی رفتار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :شہر کے بڑھنے کی رفتار: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :کوئی نہیں
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :آہستہ
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :نارمل
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تیز
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بہت تیز
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}شہروں کے بڑا شہر بننے کی شرح: {ORANGE}{STRING} میں سے ایک
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}شہروں کے بڑا شہر بننے کی شرح: {ORANGE}کوئی نہیں
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}شہر کا شروعاتی ضارب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}سڑک کی تعمیر کے دوران غلط تعمیر شدہ حصوں کو ہٹا دے: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :شہر کا شروعاتی ضارب: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :سڑک کی تعمیر کے دوران غلط تعمیر شدہ حصوں کو ہٹا دے: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}انٹرفیس
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}تعمیرات
@@ -1358,10 +1334,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}گاڑیوں کا راستہ تلاش کرنے والا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}بحری جہازوں کا راستہ تلاش کرنے والا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}اشاروں پر خودکار ریورس ہونا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :ریل گاڑیوں کے لئے راستہ ڈھونڈنے والا: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :گاڑیوں کا راستہ تلاش کرنے والا: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :بحری جہازوں کا راستہ تلاش کرنے والا: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :اشاروں پر خودکار ریورس ہونا: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}سیٹنگ کی ولیو بدلیں
 
@@ -2938,6 +2914,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

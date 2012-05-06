@@ -1118,244 +1118,217 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Trái
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Giữa
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Cho phép xây dựng trên dốc và bờ biển: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mô phỏng thực tế diện tích khu vực đón hàng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Độ dài lớn nhất của tàu hỏa: {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lượng khói thải của phương tiện: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Kiểu tăng tốc của tàu hỏa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Kiểu tăng tốc cho ôtô: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép gộp ga, bến, cảng không sát nhau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán bốc/dỡ hàng cải tiến: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Bốc/dỡ hàng lên phương tiện dần dần: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Lạm phát: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Độ dài lớn nhất của cầu: {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Độ dài lớn nhất của đường hầm: {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tuỳ chỉnh phương thức xây dựng nhà máy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Mô phỏng thực tế diện tích khu vực đón hàng: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Lượng khói thải của phương tiện: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Kiểu tăng tốc của tàu hỏa: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kiểu tăng tốc cho ôtô: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Cho phép gộp ga, bến, cảng không sát nhau: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Sử dụng thuật toán bốc/dỡ hàng cải tiến: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Bốc/dỡ hàng lên phương tiện dần dần: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Lạm phát: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Tuỳ chỉnh phương thức xây dựng nhà máy: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vùng đất phẳng quanh khu công nghiệp: {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiện đèn báo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Hiện đèn báo: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Phía bên trái
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Phía xe chạy
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Phía bên phải
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Hiện bảng tài chính vào cuối năm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Lộ trình tàu hoả mặc định sẽ dừng lại vị trí {ORANGE}{STRING}{LTBLUE} tại sân ga
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Hiện bảng tài chính vào cuối năm: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Lộ trình tàu hoả mặc định sẽ dừng lại vị trí {STRING} tại sân ga
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :đầu gần
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :giữa
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu xa
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Xe ôtô xếp hàng (với hiệu ứng quantum): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Cuộn cửa sổ chính khi con trỏ gần mép: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Cho phép góp vốn cho các công trình: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Cho phép đầu tư hạ tầng giao thông địa phương : {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hệ số tốc độ máy bay: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Số vụ tai nạn máy bay: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Xe ôtô xếp hàng (với hiệu ứng quantum): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Cuộn cửa sổ chính khi con trỏ gần mép: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Cho phép đầu tư hạ tầng giao thông địa phương : {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Cho phép chuyển tiền cho các công ty khác: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Số vụ tai nạn máy bay: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :không
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Cho phép xây ga, bến, cảng sát nhau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Bật chạy nhiều gói NewGRF cho phương tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Cho phép xây ga, bến, cảng sát nhau: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Bật chạy nhiều gói NewGRF cho phương tiện: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không thể đổi thiết đặt này khi vẫn còn các phương tiện giao thông.
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Phí bảo trì cơ sở hạ tầng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân bay không bao giờ thành đồ cổ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Cảnh báo nếu phương tiện bị thất lạc: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kiểm soát lộ trình của các phương tiện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Cảnh báo nếu phương tiện bị thất lạc: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kiểm soát lộ trình của các phương tiện: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các phương tiện đang dừng
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Cảnh báo nếu thu nhập của phương tiện bị âm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Phương tiện không bao giờ thành đồ cổ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Tự thay mới phương tiện nếu nó hết tuổi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Tự thay mới phương tiện vào {ORANGE}{STRING}{LTBLUE} tháng trước/sau khi quá tuổi
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Khoảng thời gian hiện báo lỗi: {ORANGE}{STRING} giây
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Thông báo các sự kiện hiện ra: {ORANGE}{STRING} giây
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}THông báo các sự kiện hiện ra: {ORANGE}Click phải
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Hiện dân số đô thị trong nhãn tên của đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Độ đậm của đường kẻ trong đồ thị: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị âm: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ thành đồ cổ: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu nó hết tuổi: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Tự thay mới phương tiện vào {STRING} tháng trước/sau khi quá tuổi
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Hiện dân số đô thị trong nhãn tên của đô thị: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm của đường kẻ trong đồ thị: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tạo nền đất: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Tạo nền đất: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Khoảng cách tối đa từ mép bản đồ tới Nhà máy lọc dầu {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Độ cao tuyết phủ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Độ gồ ghề của địa chất (cho TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất (cho TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Phẳng
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Thuật toán đặt cây: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Thuật toán đặt cây: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Không
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gốc
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Xoay bản đồ địa hình: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Xoay bản đồ địa hình: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ngược chiều đồng hồ
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Xuôi chiều đồng hồ
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Độ cao của một màn chơi đồng bằng là: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Có thể tôn hạ nền đất ở mép bản đồ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Độ cao của một màn chơi đồng bằng là: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Có thể tôn hạ nền đất ở mép bản đồ: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Một hoặc nhiều ô đất ở mép bản đồ phía bắc không được trống
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một hoặc nhiều ô đất ở mép bản không phải là biển
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Vùng nhận hàng tối đa của ga, bến, cảng: {ORANGE}{STRING}ô {RED}Cảnh báo: giá trị cao làm chậm game
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Bảo trì trực thăng ở sân bay trực thăng một cách tự động: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Neo c.cụ tôn tạo nền đất vào c.cụ tàu hoả/xe/tàu thủy/máy bay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Màu đất hiển thị tại bản đồ nhỏ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Bảo trì trực thăng ở sân bay trực thăng một cách tự động: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Neo c.cụ tôn tạo nền đất vào c.cụ tàu hoả/xe/tàu thủy/máy bay: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Màu đất hiển thị tại bản đồ nhỏ: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Lục
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Lục tối
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Tím
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Đảo ngược hướng cuộn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Cuộn uyển chuyển cửa sổ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Hiện màu cờ sắc áo của công ty: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Đảo ngược hướng cuộn: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Hiện màu cờ sắc áo của công ty: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Không
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Công ty đang giữ
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Tất cả công ty
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Bắt đầu tán gẫu nội nhóm với phím <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Chức năng nút cuộn trên chuột: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Bắt đầu tán gẫu nội nhóm với phím <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Chức năng nút cuộn trên chuột: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Phóng to bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Cuộn bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Tắt
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Tốc độ cuộn bản đồ bằng chuột: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Tốc độ cuộn bản đồ bằng chuột: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Giả lập click chuột phải: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Giả lập click chuột phải: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Cuộn chuột trái: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Cuộn chuột trái: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Sử dụng định dạng ngày {ORANGE}{STRING}{LTBLUE} cho tên file lưu ván chơi.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Sử dụng định dạng ngày {STRING} cho tên file lưu ván chơi.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31 T12 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ngắn (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Bảng màu mặc định cho những NewGRF chưa đặt sẵn bảng màu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Bảng màu mặc định cho những NewGRF chưa đặt sẵn bảng màu: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Bảng màu DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Bảng màu Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Tự động tạm dừng khi bắt đầu game mới: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Khi tạm dừng thì cho phép: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Tự động tạm dừng khi bắt đầu game mới: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Khi tạm dừng thì cho phép: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :không có thao tác nào
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả những thao tác không liên quan đến xây dựng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tất cả ngoại trừ chỉnh sửa địa hình
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tất cả thao tác
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Danh sách phương tiện nâng cao: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Hiển thị quá trình nạp hàng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện lịch trình ở dạng số nhịp thay vì ngày: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị nơi đến và nơi đi trên lịch trình: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo nhanh lộ trình cho phương tiện: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Loại đường ray mặc định (sau game mới/nạp game): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Danh sách phương tiện nâng cao: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Hiển thị quá trình nạp hàng: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Hiện lịch trình ở dạng số nhịp thay vì ngày: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Hiển thị nơi đến và nơi đi trên lịch trình: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Tạo nhanh lộ trình cho phương tiện: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Loại đường ray mặc định (sau game mới/nạp game): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Có trước tiên
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Có sau cùng
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dùng nhiều
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Hiện đường ray dành trước: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Vẫn giữ công cụ xây dựng sau khi dùng: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Phân nhóm thu nhập/chi phí trong bảng tài chính: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Hiện đường ray dành trước: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Vẫn giữ công cụ xây dựng sau khi dùng: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Phân nhóm thu nhập/chi phí trong bảng tài chính: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Số tàu hỏa tối đa mỗi người chơi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Số xe ôtô tối đa mỗi người chơi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Số máy bay tối đa mỗi người chơi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Số tàu thủy tối đa mỗi người chơi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Số máy bay tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Số tàu thủy tối đa mỗi người chơi: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Nhân vật máy không được mua tàu hoả: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nhân vật máy không được mua xe ôtô: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Nhân vật máy không được mua máy bay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Nhân vật máy không được mua tàu thủy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nhân vật máy không được mua tàu hoả: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nhân vật máy không được mua xe ôtô: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nhân vật máy không được mua máy bay: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Cho phép AI ở chế độ nhiều người chơi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#mã lệnh trước kịch bản tạm ngưng: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Cho phép AI ở chế độ nhiều người chơi: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#mã lệnh trước kịch bản tạm ngưng: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Tần suất bảo trì theo đơn vị phần trăm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Thời gian bảo trì mặc định cho tàu hoả: {ORANGE}{STRING} ngày/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Thời gian bảo trì mặc định cho tàu hoả: {ORANGE}tắt
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Tần suất bảo trì mặc định cho xe ôtô: {ORANGE}{STRING} ngày/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Tần suất bảo trì mặc định cho xe ôtô: {ORANGE}tắt
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Tần suất bảo trì mặc định cho máy bay: {ORANGE}{STRING} ngày/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Tần suất bảo trì mặc định cho máy bay: {ORANGE}tắt
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Tần suất bảo trì mặc định cho tàu thủy: {ORANGE}{STRING} ngày/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Tần suất bảo trì mặc định cho tàu thủy: {ORANGE}tắt
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Bật giới hạn tốc độ toa tàu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Không dùng tàu điện: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Tần suất bảo trì theo đơn vị phần trăm: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Tắt bảo trì khi đặt tắt tuỳ chọn hỏng hóc: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Bật giới hạn tốc độ toa tàu: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Không dùng tàu điện: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Tin tức có màu xuất hiện vào năm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Năm bắt đầu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Nền kinh tế ít biến động: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Cho phép mua cổ phần của các công ty khác: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Tỉ lệ của nhánh lợi nhuận sẽ được trả cho hệ thống phụ trợ: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Khi kéo/thả, đặt đèn tín hiệu lên mỗi : {ORANGE}{STRING} ô
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Xây cờ hiệu thay vì đèn trước năm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bật GUI đèn tín hiệu : {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Kiểu đèn tín hiệu đc xây mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có màu xuất hiện vào năm: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Xây cờ hiệu thay vì đèn trước năm: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Bật GUI đèn tín hiệu : {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Kiểu đèn tín hiệu đc xây mặc định: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn hiệu khóa
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Đèn dẫn đường
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Đèn dẫn đường 1-chiều
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Đổi tuần hoàn các kiểu đèn báo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Đổi tuần hoàn các kiểu đèn báo: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Chỉ đèn hiệu khoá
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Đèn hiệu giành đường
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Kiểu đường sá của đô thị mới: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kiểu đường sá của đô thị mới: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :nguyên bản
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :nhiều đường
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :lưới 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :lưới 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ngẫu nhiên
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Đô thị có thể tự xây đường sá: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Đô thị cho phép xây giao nhau đồng mức: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Cho phép chính quyền địa phương kiểm soát độ ồn của sân bay: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Thành lập đô thị trong ván chơi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Đô thị có thể tự xây đường sá: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Đô thị cho phép xây giao nhau đồng mức: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Cho phép chính quyền địa phương kiểm soát độ ồn của sân bay: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Thành lập đô thị trong ván chơi: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :không cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :cho phép
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :cho phép, tùy chọn bố trí đô thị
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Trồng cây trong trò chơi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Trồng cây trong trò chơi: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :không có {RED}(nhà máy chế biến gỗ bị ngưng)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :chỉ trong rừng nhiệt đới
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mọi nơi
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị trí của thanh công cụ chính: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Vị trí thanh trạng thái: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}{STRING} pixel
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}tắt
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}tắt
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Độ phóng to tối đa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Độ thu nhỏ tối đa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Vị trí của thanh công cụ chính: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Vị trí thanh trạng thái: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Giới hạn số lượng cửa sổ (không-neo): {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Độ phóng to tối đa: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Độ thu nhỏ tối đa: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Bình thường
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Tốc độ phát triển của đô thị: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Tốc độ phát triển của đô thị: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Không
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Chậm
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Bình thường
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nhanh
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Cực nhanh
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Tỉ lệ thị trấn sẽ phát triển lên thành phố: {ORANGE}1 trên {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Tỉ lệ thị trấn sẽ phát triển lên thành phố: {ORANGE}Không
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Hệ số quy mô đô thị coi là thành phố: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Hệ số quy mô đô thị coi là thành phố: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
@@ -1380,10 +1353,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Nguyên bản
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Nên dùng)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cơ chế tìm đường cho tàu hoả: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Cơ chế tìm đường cho xe ôtô: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cơ chế tìm đường cho tàu thủy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Tự động đổi chiều chạy tại đèn hiệu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cơ chế tìm đường cho tàu hoả: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cơ chế tìm đường cho xe ôtô: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cơ chế tìm đường cho tàu thủy: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Tự động đổi chiều chạy tại đèn hiệu: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
@@ -4475,6 +4448,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

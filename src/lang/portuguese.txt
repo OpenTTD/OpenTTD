@@ -1115,239 +1115,212 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerda
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir remover das cidades mais estradas, pontes e túneis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprimento máximo de comboios: {ORANGE}{STRING} tile{P 0:1 "" s}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumo/faíscas de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de aceleração de comboios: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Tipo de aceleração dos veículos rodoviários: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Declive das inclinações para comboios: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Declive das inclinações para v. de estrada: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos fazer curvas de 90º: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir juntar estações não adjacentes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Comprimento máximo para pontes: {ORANGE}{STRING} tile{P 0:1 "" s}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Comprimento máximo para túneis: {ORANGE}{STRING} tile{P 0:1 "" s}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método de financiamento de indústrias primárias: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover das cidades mais estradas, pontes e túneis: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumo/faíscas de veículos: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleração de comboios: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Tipo de aceleração dos veículos rodoviários: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios e barcos fazer curvas de 90º: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carregar veículos gradualmente: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Entregar carga a uma estação só quando houver procura: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de financiamento de indústrias primárias: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mesmo método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecção
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Terra plana à volta de indústrias: {ORANGE}{STRING} quadrado{P 0:1 "" s}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permitir várias indústrias semelhantes por cidade: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostrar janela das finanças no fim do ano: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novas ordens são 'sem parar' por predefinição: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Ordens novas do comboio param {ORANGE}{STRING}{LTBLUE} da plataforma
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por cidade: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela das finanças no fim do ano: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de veículos rodoviários (com efeitos de quantidade): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar exclusivo dos direitos de transportes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permitir investir em edificios: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir o financiamento de reconstrução de estradas locais:{ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinheiro para outras empresas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocidade de aeronaves: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Número de acidentes de aeronaves: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de veículos rodoviários (com efeitos de quantidade): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da autoridade local: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar exclusivo dos direitos de transportes: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir investir em edificios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir o financiamento de reconstrução de estradas locais:{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular comboios pesados: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de aeronaves: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir estações de passagem em estradas do adversário: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Utilizar múltiplos conjuntos NewGRF de veículos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem em estradas das cidades: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações de passagem em estradas do adversário: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Utilizar múltiplos conjuntos NewGRF de veículos: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possível mudar quando já existem veículos.
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Manutenção de infraestruturas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de infraestruturas: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroportos nunca expiram: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avisar se o veículo está perdido: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar se o veículo está perdido: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens dos veículos: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os veículos
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar se o lucro de um veiculo for negativo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-renovação de veículos quando ficam velhos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} m{P 0:1 ês eses} antes/depois da idade máxima
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostrar dicas da ferramenta: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostrar dicas da ferramenta: {ORANGE}Click direito
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grossura das linhas nos gráficos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veiculo for negativo: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Auto-renovação do veículo {STRING} m{P 0:2 ês eses} antes/depois da idade máxima
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da cidade na janela da cidade: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de terra: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de terra: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distância máxima das bordas do mapa para Refinarias: {ORANGE}{STRING} quadrado{P 0:1 "" s}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rudeza do terreno (apenas TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura da linha de neve: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rudeza do terreno (apenas TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Acidentado
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentado
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocação de árvores: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritmo de colocação de árvores: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Melhorada
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação mapa de alt.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotação mapa de alt.: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altura com que um cenário plano fica: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activar formação de terra nas bordas do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altura com que um cenário plano fica: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Activar formação de terra nas bordas do mapa: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Um ou mais quadrados no canto norte não estão vazios
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Um ou mais quadrados num dos cantos não é água
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Alargamento máx. de estações: {ORANGE}{STRING} quadrado{P 0:1 "" s} {RED}Valores altos tornam o jogo lento!
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Cor do solo usada no mapa pequeno: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de paisagem com as de construção: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor do solo usada no mapa pequeno: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde Escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Suavizar deslocamento da navegação no mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas nas várias ferramentas de construção: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Mostrar estampagens da empresa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Ao deslizar com o rato, mover a vista na direcção oposta: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar deslocamento da navegação no mapa: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar medidas nas várias ferramentas de construção: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Mostrar estampagens da empresa: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Própria empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas as empresas
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Escolher chat de equipa com <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Função da roda do rato: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Escolher chat de equipa com <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função da roda do rato: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade da roda do rato no mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade da roda do rato no mapa: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulação de clique de botão direito: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação de clique de botão direito: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique para comando
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para controlo
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Deslocar com botão esquerdo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Deslocar com botão esquerdo: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Usar formato de data {ORANGE}{STRING}{LTBLUE} para jogos gravados.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Usar formato de data {STRING} para jogos gravados.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :longo (31 Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Paleta predefinida para NewGRFs que não especificam paleta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predefinida para NewGRFs que não especificam paleta: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palete DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palete Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Durante pausa permitir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automática ao iniciar um novo jogo: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Durante pausa permitir: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nenhuma acção
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas as acções sem construção
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas expecto acções que modificam o terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas as acções
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez de dias: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar chegada e partida nos horários: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Criação rápida de ordens de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou abrir jogo): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista avançada de veículos: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar horário em tics em vez de dias: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e partida nos horários: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Criação rápida de ordens de veículos: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo padrão de ferrovia (ao criar ou abrir jogo): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostrar caminho de ferro reservado: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Deixar ferramentas de construção activas depois de usadas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar despesas na janela de finanças da empresa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostrar caminho de ferro reservado: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Deixar ferramentas de construção activas depois de usadas: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar despesas na janela de finanças da empresa: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Desativar construção de infra-estrutura quando não estão disponíveis veículos adequados: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por empresa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de veículos rodoviários por empresa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por empresa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máximo de barcos por empresa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infra-estrutura quando não estão disponíveis veículos adequados: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de comboios por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de veículos rodoviários por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por empresa: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Máximo de barcos por empresa: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactivar comboios para o computador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactivar veículos rodoviários para o computador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactivar aeronaves para o computador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para o computador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactivar comboios para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar veículos rodoviários para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeronaves para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para o computador: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IAs em multi-jogador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes antes de os scripts serem suspensos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs em multi-jogador: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de os scripts serem suspensos: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}{STRING} dia{P 0:1 "" s}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para comboios: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para v. de estrada: {ORANGE}{STRING} dia{P 0:1 "" s}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de serviço predefinido para v. de estrada: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dia{P 0:1 "" s}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dia{P 0:1 "" s}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Não fazer manutenção quando não há avarias: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activar limites de velocidade para vagões: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactivar carris electrificados: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Não fazer manutenção quando não há avarias: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar limites de velocidade para vagões: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar carris electrificados: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar economia regular (alterações menores): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras empresas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentagem do lucro total a pagar em transferências: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar, colocar sinais a cada: {ORANGE}{STRING} quadrado{P 0:1 "" s}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Usar automaticamente sinais clássicos antes de: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de farol padrão para construir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias a cores aparecem em: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economia regular (alterações menores): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar acções de outras empresas: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Usar automaticamente sinais clássicos antes de: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar ferramenta de sinais: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de farol padrão para construir: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Sinais de bloqueio
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Sinais de rota
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sinais de sentido único
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Trocar tipos de faróis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Trocar tipos de faróis: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Apenas sinais de bloqueio
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Apenas sinais de rota
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todos
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Disposição de estradas para novas cidades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposição de estradas para novas cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :estradas melhores
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ao acaso
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}As cidades têm permissão para construir estradas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Cidades podem construir passagens de nível: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundar cidades no jogo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :As cidades têm permissão para construir estradas: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Cidades podem construir passagens de nível: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir que a cidade controle o nível de ruído dos aeroportos: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar cidades no jogo: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, estrutura personalizada da cidade
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Criação de árvores no decorrer do jogo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Criação de árvores no decorrer do jogo: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nenhuma {RED}(Serrações sem produção)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :apenas em florestas húmidas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lado
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posição da barra de estado: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} p{P 0:1 íxel íxeis}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Número máximo de janelas não-pegajosas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Número máximo de janelas não-pegajosas: {ORANGE}desactivado
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Nível maximo de ampliação: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Nível maximo de redução da câmara: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Posição da barra de estado: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não-pegajosas: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível maximo de ampliação: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível maximo de redução da câmara: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ritmo de crescimento de cidades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ritmo de crescimento de cidades: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lento
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial para dimensão da metrópole: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remover partes absurdas durante a constr. de estradas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial para dimensão da metrópole: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover partes absurdas durante a constr. de estradas: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
@@ -1372,10 +1345,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encaminhar comboios: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Sistema de encaminhar veículos rodoviários: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema de encaminhar barcos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Inversão automática nos sinais: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Sistema de encaminhar comboios: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Sistema de encaminhar veículos rodoviários: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Sistema de encaminhar barcos: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Inversão automática nos sinais: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor
 
@@ -4460,6 +4433,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

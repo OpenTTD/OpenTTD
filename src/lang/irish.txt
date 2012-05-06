@@ -1112,124 +1112,112 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Ar chlé
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sa lár
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Ar dheis
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Uasfhad na dtraenacha: {ORANGE}{STRING} {P th th t dt t}íl
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Méid deataigh/splancacha na bhfeithiclí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Samhail luasghéaraithe do thraenacha: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Samhail luasghéaraithe d'fheithiclí bóthair: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Géire na fána d'fheithiclí bóthair: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Úsáid an algartam lódála feabhsaithe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lódáil feithiclí de réir a chéile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Boilsciú: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Ná déan lastas a sheachadadh chuig stáisiún ach má tá éileamh ann: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Uasfhad na ndroichead: {ORANGE}{STRING} {P t th t dt t}íl
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Uasfhad na dtollán: {ORANGE}{STRING} {P t th t dt t}íl
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Modh tógála tionscail de láimh go príomhúil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ceadaigh tuilleadh bóithre, droichid agus tolláin ar le baile iad a bhaint: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Méid deataigh/splancacha na bhfeithiclí: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Samhail luasghéaraithe do thraenacha: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Samhail luasghéaraithe d'fheithiclí bóthair: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Úsáid an algartam lódála feabhsaithe: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lódáil feithiclí de réir a chéile: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Boilsciú: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Ná déan lastas a sheachadadh chuig stáisiún ach má tá éileamh ann: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Modh tógála tionscail de láimh go príomhúil: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ceann ar bith
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :cosúil le tionscail eile
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :cuardach
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ceantar réidh thart timpeall na dtionscal: {ORANGE}{STRING} {P 0:1 th th th dt t}íl
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Taispeáin an fhuinneoig airgeadais ag deireadh na bliana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Stopann orduithe traenach nua ag {ORANGE}{STRING}{LTBLUE} an ardáin mar reamhshocrú
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Taispeáin an fhuinneoig airgeadais ag deireadh na bliana: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Stopann orduithe traenach nua ag {STRING} an ardáin mar reamhshocrú
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :taobh abhus
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :lár
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :taobh thall
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Scuainí feithiclí bóthair (le maisíochtaí candamacha): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Peanáil an fhuinneog agus an luch ag an taobh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ceadaigh breabanna a thabhairt don údarás áitiúil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ceadaigh cearta eisiach iompair a cheannach: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Ceadaigh maoiniú do thógáil bóithre áitiúla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Ceadaigh airgead a sheoladh chuig cuideachtaí eile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Iolraitheoir meáchain don lastas le traenacha troma a ionsamhladh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fachtóir luais na n-eitleán: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Líon na dtimpistí eitleáin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Scuainí feithiclí bóthair (le maisíochtaí candamacha): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Peanáil an fhuinneog agus an luch ag an taobh: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Ceadaigh breabanna a thabhairt don údarás áitiúil: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ceadaigh cearta eisiach iompair a cheannach: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Ceadaigh maoiniú do thógáil bóithre áitiúla: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Ceadaigh airgead a sheoladh chuig cuideachtaí eile: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Iolraitheoir meáchain don lastas le traenacha troma a ionsamhladh: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Líon na dtimpistí eitleáin: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ceann ar bith
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :laghdaithe
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gnáth
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ceadaigh stadanna bóthair 'tiomáin tríd' ar bhóithre ar le bailte iad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Ceadaigh tógáil taobh le stáisiúin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Cumasaigh níos mó ná sraith innill NewGRF amháin: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Ceadaigh stadanna bóthair 'tiomáin tríd' ar bhóithre ar le bailte iad: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Ceadaigh stopanna bóthair 'tiomáin tríd' ar bhóithre ar le hiomaitheoirí iad: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Ceadaigh tógáil taobh le stáisiúin: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Cumasaigh níos mó ná sraith innill NewGRF amháin: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féidir an socrú seo a athrú nuair atá feithiclí ann
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Cothabháil bonneagair: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cothabháil bonneagair: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Ní imíonn aerfoirt as dáta riamh: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Ní imíonn aerfoirt as dáta riamh: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Tabhair rabhadh má tá an fheithicil caillte: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Féach ar orduithe feithicile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Tabhair rabhadh má tá an fheithicil caillte: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Féach ar orduithe feithicile: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :níl
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :déan é, ach ná tóg feiticlí stoptha san áireamh
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ar gach feithicil
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Tabhair rabhadh má tá ioncam feithicile diúltach: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ní imíonn feithiclí as dáta riamh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Uathathnuaigh feithicil agus é {ORANGE}{STRING}{LTBLUE} mí roimh/i ndiaih a haois uasta
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Uathathnuachan: uasmhéid airgead a theastaíonn le hathnuachan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Fad na teachtaireachta earráide: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Moill na n-imeachtaí ainlithe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Taispeán leideanna uirlise: {ORANGE}Deaschliceáil
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Taispéain daonra an bhaile i lipéad ainm an bhaile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Tiús na línte sna graif: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Tabhair rabhadh má tá ioncam feithicile diúltach: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ní imíonn feithiclí as dáta riamh: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Déan uathathnuachan ar an bhfeithicil nuair a éiríonn sé sean: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uathathnuaigh feithicil agus é {STRING} mí roimh/i ndiaih a haois uasta
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Uathathnuachan: uasmhéid airgead a theastaíonn le hathnuachan: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Taispéain daonra an bhaile i lipéad ainm an bhaile: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tiús na línte sna graif: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gineadóir talún: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Gineadóir talún: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Bunaidh
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Uasfhad ón taobh do Scaglanna Ola {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Airde na líne sneachta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Chomh garbh agus atá an tír-raon (TerraGenesis amháin) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Airde na líne sneachta: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Chomh garbh agus atá an tír-raon (TerraGenesis amháin) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :An-mhín
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Mín
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garbh
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :An-gharbh
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algartam le crainnte a chur: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Algartam le crainnte a chur: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Bunaidh
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Feabhsaithe
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rothlú an mhapa airde: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rothlú an mhapa airde: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tuathal
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Deiseal
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Leibhéal airde a fhaighann léarscáil scéil réidh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Ceadaigh athrú talún ar na tíleanna ag teorainneacha na léarscáile: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Leibhéal airde a fhaighann léarscáil scéil réidh: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Ceadaigh athrú talún ar na tíleanna ag teorainneacha na léarscáile: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Tá tíl amháin nó níos mó ag an taobh thuaidh nach bhfuil folamh
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Tá tíl amháin nó níos mó ag ceann de na taobhanna nach uisce é
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Uasleathadh stáisún: {ORANGE}{STRING} {P t t t dt t}íl {RED}Rabhadh: Cuireann socrú ard moill leis an gcluiche
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Déan seirbhísiú ar héileacaptair ag héileapadanna go huathoibríoch: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ceangail an barra uirlisí tírdhreacha leis na barraí uirlisí iarnróid/bóíthre/uisce/aerfort: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Dath na talún a úsáidtear sa léarscáil bheag: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Déan seirbhísiú ar héileacaptair ag héileapadanna go huathoibríoch: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ceangail an barra uirlisí tírdhreacha leis na barraí uirlisí iarnróid/bóíthre/uisce/aerfort: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Dath na talún a úsáidtear sa léarscáil bheag: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Uaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Ciaruaine
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Corcairghorm
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Aisiompaigh an treo scrollaithe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Scrollú mín do na fuinneoga amhairc: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Taispeáin libhréithe na gcuideachtaí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Aisiompaigh an treo scrollaithe: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Scrollú mín do na fuinneoga amhairc: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Taispeáin leid uirlise tomhais agu uirlisí tógála áirithe in úsáid: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Taispeáin libhréithe na gcuideachtaí: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ná taispeáin
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Do chuideachta féin
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Gach cuideachta
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Tús áite do chomhrá foirne le <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Feidhm an rotha scrollaithe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Tús áite do chomhrá foirne le <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Feidhm an rotha scrollaithe: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zúmáil an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrollaigh an léarscáil
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :As
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Luas roth scrollaithe an léarscáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Luas roth scrollaithe an léarscáil: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Aithris deaschliceála: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Aithris deaschliceála: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ordú+Cliceáil
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Cliceáil
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :As
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scrollú le cléchliceáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollú le cléchliceáil: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Úsáid an formáid dáta {ORANGE}{STRING}{LTBLUE} d'ainmneacha na gcluichí sábháilte
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Úsáid an formáid dáta {STRING} d'ainmneacha na gcluichí sábháilte
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :fada (31 Noll 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :gearr (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1237,103 +1225,88 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Pailéad DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Pailéad Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Cuir cluiche ar sos go huathoibríoch agus cluiche nua á thosú: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Agus an cluiche ar sos, ceadaigh: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Cuir cluiche ar sos go huathoibríoch agus cluiche nua á thosú: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Agus an cluiche ar sos, ceadaigh: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :gníomh ar bith
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :gach gníomh neamh-thógála
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :gach rud ach gníomhartha a mhionathraíonn an tírdhreach
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :gach gníomh
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bain úsáid as ardliosta na bhfeithiclí {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Úsáid táscairí lódála: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Taispeáin an t-amchlár i dticeanna seachas i laethanta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Taispeáin am teacht isteach agus fágála in amchláir: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Orduithe feithiclí a chruthú go scioptha: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Cineál ráille réamhshocraithe (tar éis cluiche nua/cluiche a lódáil): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Bain úsáid as ardliosta na bhfeithiclí {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Úsáid táscairí lódála: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Taispeáin an t-amchlár i dticeanna seachas i laethanta: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Taispeáin am teacht isteach agus fágála in amchláir: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Orduithe feithiclí a chruthú go scioptha: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Cineál ráille réamhshocraithe (tar éis cluiche nua/cluiche a lódáil): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :An chéad cheann atá ar fáil
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :An cheann deiridh atá ar fáil
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Ceann is mó a úsáidtear
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Taispeáin iarnróid forchoimeádta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Fág uirlisí tógála gníomhach i ndiaidh úsáide: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Taispeáin iarnróid forchoimeádta: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Fág uirlisí tógála gníomhach i ndiaidh úsáide: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uaslíon na dtraenacha in aghaidh na cuideachta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Uaslíon na n-eitleán in aghaidh na cuideachta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Uaslíon na long in aghaidh na cuideachta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Díchumasaigh tógáil bonneagair nuair nach bhfuil aon fheithicil oiriúnach ar fáil: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Uaslíon na dtraenacha in aghaidh na cuideachta: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uaslíon na bhfeithiclí bóthair in aghaidh na cuideachta: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Uaslíon na n-eitleán in aghaidh na cuideachta: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Uaslíon na long in aghaidh na cuideachta: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Díchumasaigh traenacha don ríomhare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Díchumasaigh feithiclí bóthair don ríomhaire: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Díchumasaigh aerárthaigh don ríomhare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Díchumasaigh longa don ríomhare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Díchumasaigh traenacha don ríomhare: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Díchumasaigh feithiclí bóthair don ríomhaire: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Díchumasaigh aerárthaigh don ríomhare: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Díchumasaigh longa don ríomhare: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Ceadaigh AIanna i gcluiche ilimreora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Ceadaigh AIanna i gcluiche ilimreora: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Eatraimh seirbhísithe i gcéatadán: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do thraenacha: {ORANGE}{STRING} lá/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do thraenacha: {ORANGE}díchumaithe
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'fheithiclí bóthair: {ORANGE}{STRING} lá/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'fheithiclí bóthair: {ORANGE}díchumasaithe
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'aerárthaigh: {ORANGE}{STRING} lá/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Eatramh seirbhísithe réamhshocraithe d'aerárthaigh: {ORANGE}díchumasaithe
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do longa: {ORANGE}{STRING} lá/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Eatramh seirbhísithe réamhshocraithe do longa: {ORANGE}díchumasaithe
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Díchumasaigh seirbhísiú nuair nach mbíonn aon bhriseadh síos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Cumasaigh teorainneacha luais vaigíní: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Díchumasaigh ráillí leictreacha: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Eatraimh seirbhísithe i gcéatadán: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Díchumasaigh seirbhísiú nuair nach mbíonn aon bhriseadh síos: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Cumasaigh teorainneacha luais vaigíní: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Díchumasaigh ráillí leictreacha: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Bíonn nuacht daite ann don chéad uair in: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Bliain tosaigh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Céatadán de bhrabús an turais le n-íoc i gcórais friothálacha: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Le linn tarraingte, cuir síos comharthaí gach: {ORANGE}{STRING} tíl
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Tóg séamafóir go huathoibríoch roimh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Cumasaigh GUI na gcomharthaí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Cineál comhartha le tógáil mar réamhshocrú: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bíonn nuacht daite ann don chéad uair in: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Bliain tosaigh: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Tóg séamafóir go huathoibríoch roimh: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Cumasaigh GUI na gcomharthaí: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Cineál comhartha le tógáil mar réamhshocrú: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Comharthaí bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Comharthaí cosán
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Comharthaí cosán aonbhealaigh
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Téigh trí na cineálacha comharthaí in ord: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Téigh trí na cineálacha comharthaí in ord: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Comharthaí bloc amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Comharthaí cosán amháin
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Gach
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Leagan amach na mbóithre do bhailte nua: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Leagan amach na mbóithre do bhailte nua: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :bunaidh
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bóithre níos fearr
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :greille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :greille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :randamach
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Ceadaítear do bhailte bóithre a thógáil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Ceadaítear do bhailte crosairí comhréidh a thógáil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Bailte a bhunú sa chluiche: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Ceadaítear do bhailte bóithre a thógáil: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Ceadaítear do bhailte crosairí comhréidh a thógáil: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Ceadaigh leibhéal fuaime rialaithe ag an mbaile d'aerfoirt: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Bailte a bhunú sa chluiche: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :coiscthe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :ceadaithe
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ceadaithe, leagan amach bailte saincheaptha
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Áit a chuirtear crainnte sa chluiche: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Áit a chuirtear crainnte sa chluiche: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ná dean{RED}(bristear an muileann adhmaid)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :i bhforaois bháistí amháin
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :gach áit
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Suíomh an phríomhbharra uirlisí: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Suíomh an bharra stádais: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} {P 0:1 ph ph ph bp p}ictilín
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Uaslíon na bhfuinneog neamh-ghreamaitheach: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Uaslíon na bhfuinneoig neamh-ghreamaitheach: {ORANGE}díchumasaithe
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ráta fáis na mbailte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Suíomh an phríomhbharra uirlisí: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Suíomh an bharra stádais: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uaslíon na bhfuinneog neamh-ghreamaitheach: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ráta fáis na mbailte: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Mall
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Gnáth
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Scioptha
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :An-scioptha
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Líon na mbailte a bheidh ina gcathracha: {ORANGE}1 as {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Líon na mbailte a bheidh ina gcathracha: {ORANGE}Ceann ar bith
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Iolraitheoir tosaigh mhéid na gcathracha: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bain gnéithe bóthair áiféiseacha agus bóithre á dtógáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Iolraitheoir tosaigh mhéid na gcathracha: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Bain gnéithe bóthair áiféiseacha agus bóithre á dtógáil: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Comhéadan
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Tógáil
@@ -1356,10 +1329,10 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Tionsca
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Molta)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Aimsitheoir bealaigh do thraenacha: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Aimsitheoir bealaigh d'fheithiclí bóthair: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Aimsitheoir bealaigh do longa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Aisiompú uathoibríoch ag comharthaí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Aimsitheoir bealaigh do thraenacha: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Aimsitheoir bealaigh d'fheithiclí bóthair: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Aimsitheoir bealaigh do longa: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Aisiompú uathoibríoch ag comharthaí: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Athraigh luach an tsocraithe
 
@@ -4260,6 +4233,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

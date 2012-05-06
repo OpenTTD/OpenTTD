@@ -1114,238 +1114,211 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :左侧
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :中央
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :右侧
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道等下方改变地形（自动斜坡）： {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁、隧道等：{ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}火车最大长度: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}汽车加速模型: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响： {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}坡度对汽车速度的影响： {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用进阶的装货算法：{ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}装货时循序渐进：{ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通货膨胀：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}仅在车站接受此货物时卸货：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}桥梁最大长度: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}隧道最大长度: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}原料工业建设方式： {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :允许在斜坡和河岸上建设：{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :允许更真实的客源范围：{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :允许拆除更多的由城镇所有的公路、桥梁、隧道等：{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :火车头产生的蒸气/火花数量: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :列车加速度： {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :汽车加速模型: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :禁止列车和轮船 90 度转弯：{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :允许非毗邻站台合并：{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :使用进阶的装货算法：{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :装货时循序渐进：{STRING}
+STR_CONFIG_SETTING_INFLATION                                    :通货膨胀：{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :仅在车站接受此货物时卸货：{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :原料工业建设方式： {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探矿式
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}工业周围生成平整的土地： {ORANGE}{STRING} 格
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}允许在一个城镇中建设多个同类工业设施：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}在年终显示财务报表：{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新的调度命令默认为“不停车”： {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}新列车调度计划中默认命令为停靠车站月台 {ORANGE}{STRING}{LTBLUE} 位置
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :允许在一个城镇中建设多个同类工业设施：{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :在年终显示财务报表：{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :新的调度命令默认为“不停车”： {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :新列车调度计划中默认命令为停靠车站月台 {STRING} 位置
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :近端
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :中间
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :远端
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}汽车自动排队 (有量子效应)： {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允许买断经营权： {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}允许新建房屋: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}允许使用资助地方道路修整功能: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允许向其他公司转移资金： {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飞机速度比例： {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}空难: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :汽车自动排队 (有量子效应)： {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :当鼠标移动到屏幕边缘时移动屏幕：{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :允许贿赂地方政府：{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :允许买断经营权： {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :允许新建房屋: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :允许使用资助地方道路修整功能: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :允许向其他公司转移资金： {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :根据装载货物的数量模拟超重列车：{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :空难: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :不出现
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :较少出现
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :正常
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}允许在城镇所属的道路上建通过式车站： {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}允许在竞争对手所属的道路上建通过式车站： {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允许建设临近站台： {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允许使用多GRF运输工具： {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :允许在城镇所属的道路上建通过式车站： {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :允许在竞争对手所属的道路上建通过式车站： {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :允许建设临近站台： {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :允许使用多GRF运输工具： {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有车辆时，不可能更改此设定。
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}加强版固定资产维护: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :加强版固定资产维护: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}总允许建设小型机场： {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :总允许建设小型机场： {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}当列车无法找到路线时提示: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}检查车辆的调度计划：{ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :当列车无法找到路线时提示: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :检查车辆的调度计划：{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :检查 不包括停运的车辆
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :检查 所有车辆
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}若线路亏损时发出提示： {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}车辆永不报废：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前(-)/后 {ORANGE}{STRING}{LTBLUE} 个月时自动更新
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}启动自动更新需要的最少现金：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}错误信息显示时间：{ORANGE}{STRING} 秒
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}鼠标停留时显示工具提示的延迟时间: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}显示提示： {ORANGE}右击
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}在城镇名称的标签中同时显示人口：{ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}图表曲线宽度: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :若线路亏损时发出提示： {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :车辆永不报废：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :当车辆报废时自动更新：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :当车辆在报废前(-)/后 {STRING} 个月时自动更新
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :启动自动更新需要的最少现金：{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :在城镇名称的标签中同时显示人口：{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :图表曲线宽度: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}生成地形：{ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :生成地形：{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :原始算法
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :新算法
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}炼油厂与地图边缘的最大距离 {ORANGE}{STRING} 格
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}雪线高度：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}地面粗糙度 (仅限 TerraGenesis)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地面粗糙度 (仅限 TerraGenesis)：{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :非常光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :光滑
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :粗糙
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :非常粗糙
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}森林算法：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :森林算法：{STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :没有
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :原始的
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :增强的
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}高度图旋转：{ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :高度图旋转：{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}由水面场景得到的高度：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}允许调整地图边缘的地块地形：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :由水面场景得到的高度：{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :允许调整地图边缘的地块地形：{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}站台最大尺寸：{ORANGE}{STRING} 格 {RED}警告：站台过大会影响速度
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}缩略地图颜色选择: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :直升机在降落平台自动保养：{STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :缩略地图颜色选择: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :深绿色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫色
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}拖动方向与屏幕移动方向相反：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}平滑视角滚动： {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}建设时显示测量数据：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}显示公司特别外观：{ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :拖动方向与屏幕移动方向相反：{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :平滑视角滚动： {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :建设时显示测量数据：{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :显示公司特别外观：{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :不显示
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :本公司
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :所有公司
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}使用<ENTER>与团队交谈：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}鼠标滚轮的作用：{ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :使用<ENTER>与团队交谈：{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :鼠标滚轮的作用：{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :缩放地图
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :滚动地图
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :关闭
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地图滚动速度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :地图滚动速度：{STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右键模拟： {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :右键模拟： {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :按住Ctrl键 点击
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}左击滚动： {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :左击滚动： {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 形式的文件名存档
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :使用 {STRING} 形式的文件名存档
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2008年12月31日)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}当NewGRF没有指定调色板时，使用: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :当NewGRF没有指定调色板时，使用: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS调色板
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows调色板
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}开始新游戏时自动暂停： {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}暂停时允许: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :开始新游戏时自动暂停： {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :暂停时允许: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :没有操作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :除建设面板外全部操作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :除景观面板操作外全部操作
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有操作
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用高级车辆列表： {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用装货进度指示： {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}使用时间标记而不是天为单位： {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}在时刻表中显示到达时间和出发时间： {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速创建车辆调度计划：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}默认铁路类型 (新建/读取游戏后)： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :使用高级车辆列表： {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :使用装货进度指示： {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :使用时间标记而不是天为单位： {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :在时刻表中显示到达时间和出发时间： {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :快速创建车辆调度计划：{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :默认铁路类型 (新建/读取游戏后)： {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :第一个可用的
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :第后一个可用的
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示预留的轨道： {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}建造工具使用后仍选中： {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}企业财政窗口中的组群支出：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :显示预留的轨道： {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建造工具使用后仍选中： {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :企业财政窗口中的组群支出：{STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}不显示没有对应车辆的轨道建设面板: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每间公司最大火车数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每间公司最大汽车数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每间公司最大飞机数量：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}每间公司最大船只数量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :不显示没有对应车辆的轨道建设面板: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :每间公司最大火车数量：{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :每间公司最大汽车数量：{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :每间公司最大飞机数量：{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :每间公司最大船只数量：{STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}禁止电脑使用火车：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}禁止电脑使用汽车：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}禁止电脑使用飞机：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}禁止电脑使用船只：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :禁止电脑使用火车：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :禁止电脑使用汽车：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :禁止电脑使用飞机：{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :禁止电脑使用船只：{STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}联机游戏时允许电脑玩家(AI)： {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :联机游戏时允许电脑玩家(AI)： {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}汽车的默认保养周期：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}汽车的默认保养周期：{ORANGE}禁用
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}飞机的默认保养周期：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}飞机的默认保养周期：{ORANGE}禁用
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}船只的默认保养周期：{ORANGE}{STRING} 天/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}船只的默认保养周期：{ORANGE}禁用
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}在无故障模式下禁用保养周期：{ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}启动车辆限速：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}禁用电气化铁路：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :保养周期(百分数)： {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :在无故障模式下禁用保养周期：{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :启动车辆限速：{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :禁用电气化铁路：{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}彩色新闻出现在 {ORANGE}{STRING} 年以后
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}开始年份：{ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}启用平滑经济模式 (更多小的经济变化)：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份：{ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}联运各运输方式的收入比例 (避免出现亏损): {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}当拖动的时候每 {ORANGE}{STRING} 个地块放置一个信号灯
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}在 {ORANGE}{STRING} 年前自动设置悬臂信号
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}使用信号GUI： {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}默认建造的信号灯类型： {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色新闻出现在 {STRING} 年以后
+STR_CONFIG_SETTING_STARTING_YEAR                                :开始年份：{STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :启用平滑经济模式 (更多小的经济变化)：{STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :允许购买其他公司的股份：{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :在 {STRING} 年前自动设置悬臂信号
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :使用信号GUI： {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :默认建造的信号灯类型： {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :普通
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :高级
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :高级单向
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}在以下信号类型中循环： {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :在以下信号类型中循环： {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :仅有普通
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :仅有高级
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :全部
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}新建城镇道路自动延伸： {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :新建城镇道路自动延伸： {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :默认
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :改良道路
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2格
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3格
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :随机
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}允许城镇建设道路： {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}允许城镇建设平交道: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}允许城镇控制机场噪音： {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}在游戏中建立城镇： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :允许城镇建设道路： {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :允许城镇建设平交道: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :允许城镇控制机场噪音： {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :在游戏中建立城镇： {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :禁止
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :允许
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允许，自定义城镇布局
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}树木自动生长： {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长： {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :无 {RED}(损坏伐木场)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :仅在雨林中
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :任意地点
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}状态栏位置: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}禁止
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}最大放大倍数: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}最大视角缩小倍数: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具栏位置：{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :状态栏位置: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :窗口软性限制（非粘滞）： {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :最大放大倍数: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :最大视角缩小倍数: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :普通
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8倍
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}城镇发展速度：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :城镇发展速度：{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :无
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :慢
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :正常
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :快
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :非常快
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}城镇发展为城市的比例：{ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}城镇发展为城市的比例：{ORANGE}无
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始城市规模因子：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}在道路建设过程中移除荒废的道路元素：{ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :初始城市规模因子：{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :在道路建设过程中移除荒废的道路元素：{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}界面
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}建设
@@ -1370,10 +1343,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :原始的
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(推荐)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车寻路： {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}汽车寻路： {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船只寻路： {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}遇到红灯时自动掉头 {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :火车寻路： {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :汽车寻路： {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :船只寻路： {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :遇到红灯时自动掉头 {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 
@@ -4458,6 +4431,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

@@ -1209,239 +1209,212 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Αριστερ�
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Μέγιστο μήκος τρένων: {ORANGE}{STRING} πλακιδι{P 0:1 ο α}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ποσότητα καπνού/σπινθύρων οχήματος: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Μοντέλο επιτάχυνσης οχημάτων δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Κλίση γραμμης για τρένων: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Κλίση για οχήματα δρόμου: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Μέγιστο μήκος γέφυρας: {ORANGE}{STRING} πλακίδι{P 0:1 ο α}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Μέγιστο μήκος τούνελ: {ORANGE}{STRING} πλακίδι{P 0:1 ο α}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ποσότητα καπνού/σπινθύρων οχήματος: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Μοντέλο επιτάχυνσης τρένων: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Μοντέλο επιτάχυνσης οχημάτων δρόμου: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Φόρτωση οχημάτων σταδιακά: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Πληθωρισμός: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Έπιπεδη περιοχή γύρω από βιομηχανίες: {ORANGE}{STRING} τετράγωνα
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Οι νέες οδηγίες είναι 'χωρίς στάση' από προεπιλογή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Οι εντόλες νέου τρένου σταματάει εξ ορισμού στο {ORANGE}{STRING}{LTBLUE} της πλατφόρμας
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι 'χωρίς στάση' από προεπιλογή: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Οι εντόλες νέου τρένου σταματάει εξ ορισμού στο {STRING} της πλατφόρμας
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντά στο τέλος
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :άκρη
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφέ): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Να επιτρέπεται η κατασκευή κτιρίων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Συντελεστής ταχύτητας αεροπλάνων: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Αριθμός των αεροπορικών ατυχυμάτων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ουρά οχημάτων (με κβαντικά εφέ): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Να επιτρέπεται η κατασκευή κτιρίων: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχυμάτων: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :καθόλου
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :μειωμένος
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :κανονικός
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Επιτρέπεται ένας διάμεσος δρόμος να σταματάει σε δρόμους που ανήκουν σε ανταγωνιστές: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπεται ένας διάμεσος δρόμος να σταματάει σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Συντήρηση υποδομής: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Τα αεροδρόμια δεν λήγουν ποτέ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδρόμια δεν λήγουν ποτέ: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Ειδοποίηση όταν ένα όχημα χαθεί: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ειδοποίηση όταν ένα όχημα χαθεί: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Επανεξέταση οδηγιών τρένων: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :από όλα τα οχήματα
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Ειδοποίηση όταν τα έσοδα ενός οχήματος είναι αρνητικά: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Τα οχήματα δεν λήγουν ποτέ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηλικία
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}Αναδυση για {STRING} δευτερολεπτ {P ο α}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}Αναδυση για {STRING} δευτερολεπτ{P ο α}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Εμφάνιση αναδυόμενων γεγονότων: {ORANGE}Δεξί κλικ
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Πάχος γραμμών στα γραφήματα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματος είναι αρνητικά: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη ανανέωση όταν ένα όχημα είναι {STRING} μήνες πρίν/μετά την μέγιστη ηλικία
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Πάχος γραμμών στα γραφήματα: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια Γης: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ΤεραΓένεση
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Μέγιστη απόσταση από την άκρη για τα Διυλιστήρια {ORANGE}{STRING} τετράγωνα
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Κορυφογραμμή χιονιού: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Σκληρότητα επιφάνειας (ΤεραΓέννεση μόνο) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Σκληρότητα επιφάνειας (ΤεραΓέννεση μόνο) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Απαλή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Σκληρή
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Πολύ ανώμαλη
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Αλγόριθμος τοποθέτησης Δέντρων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Αλγόριθμος τοποθέτησης Δέντρων: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Κανένας
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Αυθεντικό
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Βελτιωμένος
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Περιστροφή χάρτη υψομετρίας: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Περιστροφή χάρτη υψομετρίας: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετη Φορά Ρολογιού
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Να επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετράγωνα στην βόρεια άκρη δεν είναι κενά
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετράγωνα σε μια από τις άκρες δεν είναι στο νερό
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Μέγιστη διασπορά σταθμών: {ORANGE}{STRING} τετράγωνα {RED} Προσοχή: Υψηλή τιμή καθυστερεί το παιχνίδι
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηροτροχιάς/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Χρώμα εδάφους που χρησιμοποιείται στον μικροχάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηροτροχιάς/δρόμου/νερού/αεροδρομίου: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Χρώμα εδάφους που χρησιμοποιείται στον μικροχάρτη: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Ανάποδη μετακίνηση οθόνης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Ομαλή μετάβαση οθόνης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Εμφάνιση χρωμάτων των εταιριών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Ανάποδη μετακίνηση οθόνης: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Εμφάνιση χρωμάτων των εταιριών: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Προτίμηση ομαδικού chat με <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Λειτουργία ροδέλας κύλισης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Προτίμηση ομαδικού chat με <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Λειτουργία ροδέλας κύλισης: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom στο χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίνηση στο χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Κλειστό
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχύτητα ροδέλας μετακίνησης χάρτη: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Εξομοίωση δεξιού κλικ {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Κλικ Εντολών
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-Κλικ
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Μετάβαση με αριστερό κλικ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Χρήση της {ORANGE}{STRING}{LTBLUE} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνίδιών.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνίδιών.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Η προεπιλεγμένη παλέτα για NewGRFs δεν ορίζει ορθά παλέτα: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Η προεπιλεγμένη παλέτα για NewGRFs δεν ορίζει ορθά παλέτα: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Παλέτα DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Όταν το παιχνίδι είναι σε παύση επιτρέπονται: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Όταν το παιχνίδι είναι σε παύση επιτρέπονται: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :καμία ενέργεια
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι μη κατασκευαστικές ενέργειες
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Χρήση της προχωρημένης λίστας οχημάτων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρήση δεικτών φόρτωσης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Χρήση της προχωρημένης λίστας οχημάτων: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Χρήση δεικτών φόρτωσης: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Γρήγορη δημιουργία εντολών για τα οχήματα: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταίος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Πιο χρησιμοποιημένος
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Εμφάνιση κλεισμένων γραμμών: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση κλεισμένων γραμμών: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τρένων ανα εταιρία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα εταιρία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροπλάνα ανα εταιρία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Μέγιστα πλοία ανά εταιρία: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστα οχήματα ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστα αεροπλάνα ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Μέγιστα πλοία ανά εταιρία: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Απενεργοποίηση τρένων υπολογιστή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Απενεργοποίηση οχημάτων υπολογιστή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απενεργοποίηση αεροπλάνων υπολογιστή: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Απενεργοποίηση τρένων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Απενεργοποίηση οχημάτων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Απενεργοποίηση αεροπλάνων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται AI σε παιχνίδι για πολλούς παίκτες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#εντολών πριν τη παύση δεσμών ενεργειών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδι για πολλούς παίκτες: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών πριν τη παύση δεσμών ενεργειών: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} ημέρες/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα: {ORANGE}{STRING} ημέρες/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για οχήματα:: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροπλάνα: {ORANGE}{STRING} ημέρες/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για αεροπλάνα: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}{STRING} ημέρες/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για πλοία: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ενεργοποίηση ορίων ταχύτητας βαγονιών: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Τα έγχρωμα νέα εμφανίζονται από το: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Έτος εκκίνησης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Ποσοστό προμήθειας για πληρωμή στα συστήματα τροφοδοσίας: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά τη μεταφορά, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν από το: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ενεργοποίηση του μενού σηματοδοτών: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Τα έγχρωμα νέα εμφανίζονται από το: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Έτος εκκίνησης: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο χτίσιμο σηματοφόρων πρίν από το: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Σηματοδότες τροχιάς
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Σηματοδότες μονοδρομής τροχιάς
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Περιήγηση στους τύπους σηματοδότησης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Περιήγηση στους τύπους σηματοδότησης: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Μόνο σηματοδότες τμήματος
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σηματοδότες τροχιάς
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Σχέδιο δρόμων για νέες πόλεις: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Αρχικό
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ιδρύση πολέων στο παιχνίδι: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ιδρύση πολέων στο παιχνίδι: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Τοποθέτηση δέντρων εντός παιχνιδιού: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(Καταστρέφει το ξυλουργείο)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Θέση της μπάρας κατάστασης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} pixel{P 0:1 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Μέγιστο επίπεδο μεγέθυνσης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Μέγιστο επίπεδο σμίκρυνσης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Θέση κύριας εργαλειοθήκης: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Θέση της μπάρας κατάστασης: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Μέγιστο επίπεδο σμίκρυνσης: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Κανονικό
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλης: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ρυθμός ανάπτυξης πόλης: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Κανονικός
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Γρήγορος
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Πολύ γρήγορος
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Αναλογία κωμοπόλεων που θα γίνουν πόλεις: {ORANGE}1 στις {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Αναλογία κωμοπόλεων που θα γίνουν πόλεις: {ORANGE}Καμία
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Αρχικός πολλαπλασιαστής μεγέθους πόλης: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Αρχικός πολλαπλασιαστής μεγέθους πόλης: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
@@ -1466,10 +1439,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Αρχικό
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Συνίσταται)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Μέθοδος δρομολόγησης για τρένα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Μέθοδος δρομολόγησης για οχήματα δρόμου: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Μέθοδος δρομολόγησης για πλοία: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Αυτομάτη αναστροφή σε σηματοδότες: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτομάτη αναστροφή σε σηματοδότες: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -4512,6 +4485,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

@@ -1114,239 +1114,212 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :يسار
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :متوسط
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :يمين
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}السماح بالبناء على المنحدرات و السواحل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}اقصى طول لعربات القطار: {ORANGE}{STRING}مربع
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}كمية دخان/شرار القطارات:{ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}نمط تسارع عربات الطريق: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}نسبة الميلان للعربات {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}تحميل القطارات بالتدريج: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}التضخم: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}اقصى طول للجسور: {ORANGE}{STRING}مربع
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}اقصى طول للانفاق: {ORANGE}{STRING}مربع
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}طريقة بناء المصانع الأولية يدوية : {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :السماح بالبناء على المنحدرات و السواحل: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :كمية دخان/شرار القطارات:{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     : موديل تسارع القطارات: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :نمط تسارع عربات الطريق: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :منع القطارات والسفن من الدوران بزاوية تسعين درجة : {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        : السماح بربط محطتين غير متجاورتين : {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :أستخدام خوارزمية التحميل المحسنه: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :تحميل القطارات بالتدريج: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :التضخم: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :طريقة بناء المصانع الأولية يدوية : {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}المساحة المستوية حول المصانع: {ORANGE}{STRING} مربع
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}السماح بوجود أكثر من مصنع من نفس النوع في المدينة الواحدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}اوامر القطار الجديدة تتوقف قياسيا في {ORANGE}{STRING}{LTBLUE} رصيف المحطة
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :السماح بوجود أكثر من مصنع من نفس النوع في المدينة الواحدة: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :أعرض نافذة المالية في آخر السنة: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :الامر الجديد - بدون توقف - قياسيا: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :اوامر القطار الجديدة تتوقف قياسيا في {STRING} رصيف المحطة
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :قرب النهاية
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :وسط
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :النهاية القصوى
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}السماح بتمويل المباني: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}السماح بتمويل تعمير الطرق المحلية: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}السماح بتحويل المال للشركات الأخرى: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}معامل السرعة للطائرة : {ORANGE} 1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}عدد الطائرات المتحطمة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :تسلسل عربات الطريق - بالتأثير الكمي : {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :حرك الشاشة عندما تكون المؤشر على الحافة: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :السماح برشوة السلطات االمحليه: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :السماح بشراء حقوق النقل الحصري: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :السماح بتمويل المباني: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :السماح بتمويل تعمير الطرق المحلية: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :السماح بتحويل المال للشركات الأخرى: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :عدد الطائرات المتحطمة: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :بدون
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}السماح للعربات العبور خلال المواقف المملوكة داخل المدن {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE} السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}السماح ببناء محطات متلاصقة{ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}السماح بتعدد محركات NewGFR {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات العبور خلال المواقف المملوكة داخل المدن {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      : السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :السماح ببناء محطات متلاصقة{STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :السماح بتعدد محركات NewGFR {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}صيانة البنية التحتية: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة البنية التحتية: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE} المطارات لا تنتهي صلاحيتها {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        : المطارات لا تنتهي صلاحيتها {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}حذر إذا فقدت المركبة {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}استعراض اوامر العربات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :حذر إذا فقدت المركبة {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :استعراض اوامر العربات: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :لكل العربات
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE} حذر عندما يكون الدخل سالبا :{ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}المركبات لا تنتهي صلاحيتها ابدا : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}جدد العربات عندما تصبح قديمة : {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}زمن عرض الرسالة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}تاخير احداث الهوفر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}عرض التلميحات: {ORANGE}اضغط يمين
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}أعرض عدد السكان مع الاسم على العلامة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}سمك الخطوط في العرض: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             : حذر عندما يكون الدخل سالبا :{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :المركبات لا تنتهي صلاحيتها ابدا : {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :جدد العربات عندما تصبح قديمة : {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :التجديد التلقائي عندما تكون العربة {STRING}شهر قبل / بعد العمر الافتراضي.
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :أعرض عدد السكان مع الاسم على العلامة: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :سمك الخطوط في العرض: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}مولد الأرض: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :مولد الأرض: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}المسافة القصزى لمحطات التكرير من الحافة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط الثلج: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE} خشونة التضاريس (سفر التكوين فقط ) :({ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط الثلج: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         : خشونة التضاريس (سفر التكوين فقط ) :({STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :خشن جدا
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}طريقة وضع الاشجار: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :طريقة وضع الاشجار: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :بدون
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :الأصلي
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :المحسن
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}اتجاة خريطة المرتفعات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :اتجاة خريطة المرتفعات: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE} السماح بتعديل الحدود الحرة للخريطة: {ORANGE} {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        : السماح بتعديل الحدود الحرة للخريطة:  {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}مربع او اكثر غير فارغ في الحدود الشمالية
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}مربع او اكثر من حدود الخريطة لا يكون بحر
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}أكبر توسع للمحطه: {ORANGE}{STRING} {RED}تحذير: الإعدادات العاليه تبطئ اللعبه
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}صيانة الهيلوكبتر في مهبطها تلقائيا: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}لون الارضية المستخدم للخرائط الصغيرة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :صيانة الهيلوكبتر في مهبطها تلقائيا: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :لون الارضية المستخدم للخرائط الصغيرة: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :اخضر
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :اخضر غامق
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفسجي
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}عكس تحريك الشاشة : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}تحريك سلس في نوافذ المشاهدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}عرض المقاسات عند استخدام ادوات البناء المختلفة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}عرض لون و شعار الشركة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :عكس تحريك الشاشة : {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تحريك سلس في نوافذ المشاهدة: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :عرض المقاسات عند استخدام ادوات البناء المختلفة: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :عرض لون و شعار الشركة: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :بدون
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :شركتك الخاصة
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :كل الشركات
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة <ENTER> : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}وظيفة عجلة التحريك: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :تفضيل الدردشة <ENTER> : {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :وظيفة عجلة التحريك: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :تصغير تكبير الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :عدم استخدام
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}سرعة تحريك الخريطة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعة تحريك الخريطة: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}محاكاة الزر الأيمن : {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :محاكاة الزر الأيمن : {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخدام
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}تصفح بالزر الايسر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :تصفح بالزر الايسر: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE} استخدم {ORANGE}{STRING}{LTBLUE} نمط التاريخ لاسم اللعبة المحفوظة
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    : استخدم {STRING} نمط التاريخ لاسم اللعبة المحفوظة
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}النوافذ القياسية للاضافة غير محددة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :النوافذ القياسية للاضافة غير محددة: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :نوافذ الدوس
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :نوافذ الوندوز
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}عندمل توقف أسمح: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :إيقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :عندمل توقف أسمح: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :لا تصرف
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :الكل ما عدا عمليات البناء
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :الكل ما عدا خيارات تعديل الخريطة
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :كل تصرف
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}استخدام قائمة العربات المطورة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}عرض الوصول و المغادرة في جدولة الاعمال: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE} إنشاء سريع لأوامر المركبات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}سكة الحديد القياسية (بعد بدأ لعبة جديدة أو تحميل لعبة): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :استخدام قائمة العربات المطورة: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :تفعيل مؤشر التحميل: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :عرض جدولة الأعمال بالمهام بدلا من الأيام: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :عرض الوصول و المغادرة في جدولة الاعمال: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    : إنشاء سريع لأوامر المركبات: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :سكة الحديد القياسية (بعد بدأ لعبة جديدة أو تحميل لعبة): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :القديم
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}اظهار الطرق المحجوزة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE} ابقاء ادوات البناء فعالة بعد استخدامها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE} النفقات للمجموعة في النافذة المالية: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :اظهار الطرق المحجوزة: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     : ابقاء ادوات البناء فعالة بعد استخدامها: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              : النفقات للمجموعة في النافذة المالية: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}عطل ادوات البناء عند عدم وجود عربات متاحة لها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}الحد الأعلى لعدد العربات لكل لاعب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}الحد الأعلى لعدد الطائرات لكل لاعب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}الحد الأعلى لعدد السفن لكل لاعب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوات البناء عند عدم وجود عربات متاحة لها: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل لاعب: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل لاعب: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل لاعب: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل لاعب: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}حظر القطارات على الحاسوب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}حظر العربات على الكمبيوتر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر الطائرات على الحاسوب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الحاسوب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القطارات على الحاسوب: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العربات على الكمبيوتر: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطائرات على الحاسوب: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE} السماح بالذكاء الصناعي في اللعب الجماعي : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes قبل تعليق الاسكربت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            : السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes قبل تعليق الاسكربت: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}فترة الصيانة القياسية للعربات: {ORANGE}غير مفعلة
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE} فترات الصيانة القياسية للطائرات {ORANGE}غير مفعل
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فترات الصيانة القياسية للسفن: {ORANGE}{STRING} يوم / %
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فترات الصيانة القياسية للسفن {ORANGE}غير مفعل
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}السماح بتحديد سرعة العربات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}تعطيل سكة القطار الكهربائي: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :فترات الصيانة بالنسبة المئوية : {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :السماح بتحديد سرعة العربات: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :تعطيل سكة القطار الكهربائي: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}الاخبار الملونة تظهر في: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سنة البدايه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}السماح بأقتصاد ثابت )تغيرات صغيرة اكثر): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}السماح بشراء حصص من الشركات المنافسة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}نسبة ارباح الفرع لدفع انضمة المشاركة: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}عندما تسحب او توضع الاشارات كل: {ORANGE}{STRING} مربع
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}اتاحة استخدام الأشارات بالأعلام قبل :{ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}السماح باستخدام اشارات واجهة المستخدم الرسومية: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع الاشارة الذي يبنى قياسيا: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :السماح بأقتصاد ثابت )تغيرات صغيرة اكثر): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات المنافسة: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :السماح باستخدام اشارات واجهة المستخدم الرسومية: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :نوع الاشارة الذي يبنى قياسيا: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :اشارات التوقف
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :إشارات الطريق
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :إشارة طريق اتجاه واحد
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}الدوران خلال الاشارات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :الدوران خلال الاشارات: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :اشارات التوقف فقط
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :الكل
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE} تصميم الطرق للمدن الجديدة : {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  : تصميم الطرق للمدن الجديدة : {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :قياسي
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :طرق افضل
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}يسمح للمدن ببناء تقاطعات متعددة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم بضجيج المطارات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}انشاء المدن اثناء اللعب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             : السماح للمدن ببناء طرق: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :يسمح للمدن ببناء تقاطعات متعددة: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :السماح للمدن بالتحكم بضجيج المطارات: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :انشاء المدن اثناء اللعب: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :محذور
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مسموح
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قياسي
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}اضافة الاشجار اثناء اللعب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :اضافة الاشجار اثناء اللعب: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :بدون {RED}-المشغولات الخشبية معطل-
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :الغابات الماطرة فقط
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :كل مكان
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}موقع شريط المعلومات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار: {ORANGE}غير مفعل
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - :{ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - : {ORANGE} غير مفعل
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}اقصى حدود التقريب: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}اقصى حدود التقريب: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :موقع شريط الأدوات الرئيسي: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شريط المعلومات: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   : حدود نعومة النوافذ - غير ملتصقة - :{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :اقصى حدود التقريب: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :اقصى حدود التقريب: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :X4
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :X2
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :طبيعي
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :X2
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :X4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :X8
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعة نمو المدينه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :سرعة نمو المدينه: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :بدون
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :بطيء
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادي
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :سريع
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :سريع جدا
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}نسبة البلدات التي ستصبح مدنا كبيرة: {ORANGE}1 لكل {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}نسبة المدن التي ستصبح مدن كبيرة{ORANGE}بدون
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}مضاعف المدن المبدئي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}ازالة العوالق اثناء ترميم الطرق: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :ازالة العوالق اثناء ترميم الطرق: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}النظام البيني
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}البناء
@@ -1371,10 +1344,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلي
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(مفضل)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق- قصاص الطريق - للقطارات:{ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}موجد الطريق (قصاص الأثر) للعربات: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE} موجد طريق العبور للسفن: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}العكس عند الإشارات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :موجد الطريق- قصاص الطريق - للقطارات:{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :موجد الطريق (قصاص الأثر) للعربات: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         : موجد طريق العبور للسفن: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :العكس عند الإشارات: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
 
@@ -4361,6 +4334,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

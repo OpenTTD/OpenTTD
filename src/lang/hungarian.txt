@@ -1182,244 +1182,217 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Balra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Vonatok maximális hossza: {ORANGE}{STRING} mező
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Járművek kipufogógáz/füst mennyisége: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Közúti járművek gyorsulási módja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lejtő meredeksége közúti járműveknek: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tehetnek 90 fokos kanyart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telerakodása (egyidejű helyett): {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön rakomány az állomásra: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Hidak maximális hossza: {ORANGE}{STRING} mező
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Alagutak maximális hossza: {ORANGE}{STRING} mező
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi nyersanyaglelőhely-létesítési módszer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Járművek kipufogógáz/füst mennyisége: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vonatok gyorsulási módja: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Közúti járművek gyorsulási módja: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Vonatok és hajók nem tehetnek 90 fokos kanyart: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Nem közvetlen szomszédos állomások egyesítése: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Járművek egymás utáni telerakodása (egyidejű helyett): {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Járművek fokozatos rakodása: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Infláció: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Csak igény esetén kerüljön rakomány az állomásra: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Kézi nyersanyaglelőhely-létesítési módszer: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Gazdasági épületek körüli sík terület: {ORANGE}{STRING} mező
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Több ugyanolyan gazdasági épület településenként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők elhelyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Több ugyanolyan gazdasági épület településenként: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Jelzők elhelyezése: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Bal oldalon
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Menetirány szerinti oldalon
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Jobb oldalon
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok az állomások {ORANGE}{STRING}{LTBLUE} állnak meg
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Pénzügyi összesítés minden év végén: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Minden új utasítás alapból 'non-stop': {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :A vonatok az állomások {STRING} állnak meg
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kizárólagos szállítási jogok vételének engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Új épületek építtetésének engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Helyi útfelújítások finanszírozásának engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pénz küldésének engedélyezése másik vállalatok részére: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhanó repülőgépek száma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Közúti járművek sorbanállása: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Ablakmozgatás, ha az egér a képernyő szélén van: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Önkormányzatok lefizethetősége: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kizárólagos szállítási jogok vételének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Új épületek építtetésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Helyi útfelújítások finanszírozásának engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pénz küldésének engedélyezése másik vállalatok részére: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Lezuhanó repülőgépek száma: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthaladó megállóhelyek engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése vetélytárs tulajdonában lévő utakon: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Érintkező állomások építésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Több NewGRF járműgarnitúra engedélyezése: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Az infrastruktúra fenntartási költségének engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repülőterek nem avulnak el: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Figyelmeztessen, ha egy jármű eltévedt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Menetrend-ellenőrzés: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Figyelmeztessen, ha egy jármű eltévedt: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Menetrend-ellenőrzés: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nincs
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :minden járműre
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Figyelmeztetés veszteséges jármű esetén: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sosem avulnak el: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatikusan felújítja a járművet ha elöregedik: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatikus járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max. életkora előtt/után
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automatikus járműfelújításhoz szükséges min. pénz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING} másodperc
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Eszközinformációk megjelenítése: {ORANGE}Késleltetés {STRING} másodperccel
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Eszközinformációk megjelenítése: {ORANGE}Jobb egérgombbal
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}A vonalak vastagsága a grafikonokon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés veszteséges jármű esetén: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatikus járműfelújítás {STRING} hónappal a max. életkora előtt/után
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automatikus járműfelújításhoz szükséges min. pénz: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mutassa a település lakosságát a feliratban: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :A vonalak vastagsága a grafikonokon: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Terep generálás: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Terep generálás: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max. távolsága a térkép határaitól: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}A terep durvasága (csak TerraGenesisnél) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magassága: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága (csak TerraGenesisnél) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sima
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Durva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Nagyon durva
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Fa-elhelyező módszer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Fa-elhelyező módszer: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nincs
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Eredeti
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Javított
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Magasságtérkép forgatása: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Magasságtérkép forgatása: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal szemben
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A sík térképhez hozzáadandó magasság: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térkép határain lévő mezők tájrendezésének engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A sík térképhez hozzáadandó magasság: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :A térkép határain lévő mezők tájrendezésének engedélyezése: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} mező {RED}Figyelem: magas érték lelassítja a játékot
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Föld színe a térképen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopterek automatikus javítása a helikopter-leszállókon: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Tájrendező eszköztár megnyitása az építési eszköztárakkal: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Föld színe a térképen: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zöld
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Sötétzöld
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Sötétkék
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Finomított nézőpont-görgetés: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Területinformációk mutatása építési eszközök használatakor: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Vállalati járművek egyedi színezésének mutatása: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Egeres mozgáskor a táj a másik irányba mozdul el: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Finomított nézőpont-görgetés: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Területinformációk mutatása építési eszközök használatakor: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Vállalati járművek egyedi színezésének mutatása: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Csak a sajátét
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Minden vállalatét
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Alapesetben csapatban beszélsz <ENTER>-re: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Scrollgomb funkció: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Alapesetben csapatban beszélsz <ENTER>-re: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Scrollgomb funkció: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Térkép nagyítás
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Ki
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Scrollgomb sebessége a térképen: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Jobb egérgomb emuláció: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Jobb egérgomb emuláció: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Parancs+Kattintás
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Kattintás
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Bal gombos térképmozgatás: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Bal gombos térképmozgatás: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Dátum formátum a mentett játékok nevében: {ORANGE}{STRING}{LTBLUE}
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Dátum formátum a mentett játékok nevében: {STRING}
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hosszú (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :rövid (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Alapértelmezett paletta NewGRF-eknek ha nincs meghatározva: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Alapértelmezett paletta NewGRF-eknek ha nincs meghatározva: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paletta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paletta
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus szünettel kezdés új játék esetén: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Szünetben engedélyezett: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatikus szünettel kezdés új játék esetén: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Szünetben engedélyezett: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :semmilyen cselekvés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden ami nem építés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden ami nem tájrendezés
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :minden cselekvés
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Rakodásjelző használata: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Indulás és érkezés megjelenítése a menetrendekben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Gyors menetrend-készítés: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett vasúti pályatípus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Továbbfejlesztett járműlista használata: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Rakodásjelző használata: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Menetrendi idő-alapegység tick a nap helyett: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Indulás és érkezés megjelenítése a menetrendekben: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Gyors menetrend-készítés: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Alapértelmezett vasúti pályatípus: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközök aktívak maradnak használat után: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Vágányszakasz foglaltságának jelzése: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Építő eszközök aktívak maradnak használat után: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vonat cégenként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum közúti jármű cégenként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép cégenként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum hajó cégenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximum vonat cégenként: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximum közúti jármű cégenként: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximum repülőgép cégenként: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximum hajó cégenként: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Vonatok tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Közúti járművek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Repülőgépek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Vonatok tiltása a gépi ellenfeleknek: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Közúti járművek tiltása a gépi ellenfeleknek: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Repülőgépek tiltása a gépi ellenfeleknek: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Hajók tiltása a gépi ellenfeleknek: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Szkriptek felfüggesztéséhez szükséges opcode mennyiség: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Számítógépes ellenfelek a hálózati játékokban: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Szkriptek felfüggesztéséhez szükséges opcode mennyiség: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett javítási időköz vonatoknak: {ORANGE}{STRING} nap/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Alapértelmezett javítási időköz járműveknek: {ORANGE}{STRING} nap/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Alapértelmezett javítási időköz repülőgépeknek: {ORANGE}{STRING} nap/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett javítási időköz hajóknak: {ORANGE}{STRING} nap/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Villamosított vágányok letiltása: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Szervízintervallumok százalékban: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Ne legyen szervízelés ha lerobbanások sincsenek: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított vágányok letiltása: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Egyenletes gazdaság (több, kisebb változás): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Más vállalatokból lehet részvényt vásárolni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Kifizetendő profitszázalék a ráhordó rendszereknek: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Húzáskor helyezzen jelzőket minden {ORANGE}{STRING}. mezőre
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Húzáskor állandó távolság a jelzők között: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan alakjelző épüljön {ORANGE}{STRING}-ig.
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Jelzőépítés-kezelő engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett jelzőtípus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Színes újságcikkek megjelenése: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Játék induló dátuma: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Egyenletes gazdaság (több, kisebb változás): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Más vállalatokból lehet részvényt vásárolni: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Húzáskor állandó távolság a jelzők között: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikusan alakjelző épüljön {STRING}-ig.
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Jelzőépítés-kezelő engedélyezése: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Alapértelmezett jelzőtípus: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normál jelzők
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Irányjelzők
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Csak egyirányú irányjelzők
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Jelzők típusa átalakításkor: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Jelzők típusa átalakításkor: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Csak normál jelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések úthálózati elrendezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Új települések úthálózati elrendezése: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :alapértelmezett
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :véletlenszerű
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Települések építhetnek utakat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}A városok építhetnek vasúti átjárókat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Településtől függő zajszint engedélyezése a repülőterek számára: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Város alapítása játék közben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Települések építhetnek utakat: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :A városok építhetnek vasúti átjárókat: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Településtől függő zajszint engedélyezése a repülőterek számára: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Város alapítása játék közben: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :tiltott
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :megengedett
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :megengedett, egyéni városelrendezés
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Játékbeli faelhelyezkedés: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Játékbeli faelhelyezkedés: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :sehol {RED}(favágók ellehetetlenítése)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdőkben
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Állapotsor elhelyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}{STRING} képpont
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}nincs korlát
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}A nagyítás maximális mértéke: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}A kicsinyítés maximális mértéke: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :A fő eszközsor helye: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Állapotsor elhelyezése: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nem zárolt ablakok maximális száma: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :A nagyítás maximális mértéke: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :A kicsinyítés maximális mértéke: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normál
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Települések növekedési sebessége: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Települések növekedési sebessége: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nincs
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lassú
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normális
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Gyors
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}{STRING} településből 1
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}Nincsenek
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Abszurd útrészletek automatikus eltávolítása (települési tul. utakon): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kezdeti városméret-szorzó: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Abszurd útrészletek automatikus eltávolítása (települési tul. utakon): {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Megjelenítés
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Építkezés
@@ -1444,10 +1417,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Eredeti
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Ajánlott)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Útvonalkereső vonatokhoz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Útvonalkereső közúti járművekhez: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvonalkereső hajókhoz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatikus megfordulás jelzőknél: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Útvonalkereső vonatokhoz: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Útvonalkereső közúti járművekhez: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Útvonalkereső hajókhoz: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatikus megfordulás jelzőknél: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
@@ -4580,6 +4553,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

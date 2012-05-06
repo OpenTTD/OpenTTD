@@ -941,52 +941,46 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :இடது
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ரயில் வண்டியின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}இரயில் மற்றும் கப்பல்களை 90° வளைவுகள் எடுப்பதை அனுமதிக்காதே: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}நேரடியாக இணைக்கப்படாத நிலையங்களை இணைக்க அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}பொறுமையாக வாகனங்களை ஏற்று: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}விலைவாசி ஏற்றம்: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}தேவை இருந்தால் மட்டுமே அச்சரக்குகளை நிலையத்தில் இறக்கு: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}பாலத்தின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}அதிகபட்ச சுரங்க நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :இரயில் மற்றும் கப்பல்களை 90° வளைவுகள் எடுப்பதை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :நேரடியாக இணைக்கப்படாத நிலையங்களை இணைக்க அனுமதி: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :பொறுமையாக வாகனங்களை ஏற்று: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :விலைவாசி ஏற்றம்: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :தேவை இருந்தால் மட்டுமே அச்சரக்குகளை நிலையத்தில் இறக்கு: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ஒன்றுமில்லை
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :மற்ற தொழிற்சாலைகளைப்போல
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}தொழிற்சாலைகளை சுற்றி தட்டையான இடங்கள்: {ORANGE}{STRING} கட்டம்{P 0:1 "" கள்}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :நடு
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}கட்டடங்களை கட்ட அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}மற்ற நிறுவனங்களுக்கு பணம் அனுப்ப அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}விமான வேகம்: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}விமான விபத்துகளின் எண்ணிக்கை: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :கட்டடங்களை கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :மற்ற நிறுவனங்களுக்கு பணம் அனுப்ப அனுமதி: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :விமான விபத்துகளின் எண்ணிக்கை: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ஒன்றுமில்லை
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :குறைந்தபட்சம்
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :இயல்பான
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}நிலையங்களை ஒட்டி கட்ட அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :நிலையங்களை ஒட்டி கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}கட்டட பராமரிப்பு: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட பராமரிப்பு: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}விமான நிலையங்கள் என்றும் காலாவதியாகாது: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :விமான நிலையங்கள் என்றும் காலாவதியாகாது: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}வாகனங்களின் கட்டளைகளை பார்வையிடு: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :வாகனங்களின் கட்டளைகளை பார்வையிடு: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :இல்லை
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ஆம், ஆனால் நிறுத்தப்பட்டுள்ள வாகனங்களை விட்டுவிடு
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :அனைத்து வாகனங்கள்
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}வாகனம் நஷ்டத்தில் ஓடினால் எச்சரி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}வாகனங்கள் என்றும் காலாவதியாகாது: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}காலாவதியான வாகனங்களை மாற்றியமைக்கத் தேவையான பணம்: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}பிழைச் செய்தியின் காலம்: {ORANGE}{STRING} வினாடி{P 0:1 "" கள்}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}நகரத்தின் மக்கள்த் தொகையினை அதன் பெயருடன் காட்டு: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}வரைபடத்தில் கோடுகளின் எண்ணிக்கை: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :வாகனம் நஷ்டத்தில் ஓடினால் எச்சரி: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :வாகனங்கள் என்றும் காலாவதியாகாது: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :வாகனங்கள் காலாவதியானால் தானாக மாற்றியமை: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :காலாவதியான வாகனங்களை மாற்றியமைக்கத் தேவையான பணம்: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :நகரத்தின் மக்கள்த் தொகையினை அதன் பெயருடன் காட்டு: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :வரைபடத்தில் கோடுகளின் எண்ணிக்கை: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}பனி-கோடின் உயரம்: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
 
@@ -1002,15 +996,15 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :விண்ட
 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :அதிகமாக பயன்படுத்தியவை
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {STRING}
 
 
 
 
 
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}நகரங்கள் சாலைகளை கட்ட அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}ஆட்டத்தில் நகரங்களை நிறுவ அனுமதி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :நகரங்கள் சாலைகளை கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :ஆட்டத்தில் நகரங்களை நிறுவ அனுமதி: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :இயலாது
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமதிக்கப்பட்டுள்ளது
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
@@ -1042,7 +1036,7 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(பரிந்துரைக்கப்பட்டது)
 
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சிக்னல்களில் தானியங்கி மீட்சி: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :சிக்னல்களில் தானியங்கி மீட்சி: {STRING}
 
 
 # Config errors
@@ -2942,6 +2936,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

@@ -1114,239 +1114,212 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :چپ
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :مرکز
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :راست
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}اجازه ساخت در دامنه ها و سواحل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}واقع بینانه تر شدن اندازه حوضه آبریز: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}اجازه برای داشتن قابلیت بیشتر ازبین بردن راه ها،پلها و تونل های شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}بیشترین اندازه یک قطار: {ORANGE}{STRING} قطعه
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}مقدار دود/جرقه های خودرو : {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}روش سرعت گرفتن قطار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}روش سرعت گرفتن خودرو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}میزان کم شدن سرعت قطار در شیب ها {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}میزان کم شدن سرعت خودروهای جاده ای در شیب ها {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}غیر قابل پیچیدن سر پیچ های ۹۰° برای قطار و کشتی ها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}قابلیت اتصال ایستگاه هایی که مستقیما به هم وصل نیستند: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}استفاده از الگوریتم بهبود یافته برای بارگذاری : {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}بارگیری وسایل نقلیه به تدریج: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}تورم: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}بار را فقط زمانی به ایستگاه تحویل بده که درخواستی برای آن باشد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}بیشترین اندازه پل: {ORANGE}{STRING} قطعه
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}بیشترین اندازه تونل: {ORANGE}{STRING} قطعه
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}روش ساخت و ساز اولیه صنعت توسط کاربر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :اجازه ساخت در دامنه ها و سواحل: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :واقع بینانه تر شدن اندازه حوضه آبریز: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :اجازه برای داشتن قابلیت بیشتر ازبین بردن راه ها،پلها و تونل های شهر: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :مقدار دود/جرقه های خودرو : {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :روش سرعت گرفتن قطار: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :روش سرعت گرفتن خودرو: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :غیر قابل پیچیدن سر پیچ های ۹۰° برای قطار و کشتی ها: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :قابلیت اتصال ایستگاه هایی که مستقیما به هم وصل نیستند: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :استفاده از الگوریتم بهبود یافته برای بارگذاری : {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :بارگیری وسایل نقلیه به تدریج: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :تورم: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :بار را فقط زمانی به ایستگاه تحویل بده که درخواستی برای آن باشد: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :روش ساخت و ساز اولیه صنعت توسط کاربر: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :هیچکدام
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :همانند دیگر صنایع
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :رونق گرفتن
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}تعداد قطعه بدون پستی و بلندی دور صنایع: {ORANGE}{STRING} قطعه
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}قابلیت به وجود آمدین جندین صنایع شبیه به هم به ازای هر شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}نمایش پنجره مالی در پایان سال: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}توقف قطار ها به طور پیش فرض در: {ORANGE}{STRING}{LTBLUE} ایستگاه
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :قابلیت به وجود آمدین جندین صنایع شبیه به هم به ازای هر شهر: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :نمایش پنجره مالی در پایان سال: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :برنامه های حرکت به طور پیش فرض «بدون توقف» باشند: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :توقف قطار ها به طور پیش فرض در: {STRING} ایستگاه
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ابتدا
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :میانه
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :انتها
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}جاده صف‌بندی خودروی جاده‌ای (با اثرات کوانتومی): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}جابجا‌شدن نمایش هنگام نزدیک شدن نشانگر موس به لبه ها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}قابلیت رشوه دادن به مقامات محلی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}قابلیت انحصاری کردن حقوق حمل و نقل: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}اجازه ساخت و ساز ساختمان: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}قابلیت بازسازی خیابان‌های شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}قابلیت فرستادن پول به بقیه شرکت‌ها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مضرب برای بار قطار تا حس قطار سنگین به وجود آید: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}فاکتور سرعت هواپیما: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}تعداد سوانح هوایی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :جاده صف‌بندی خودروی جاده‌ای (با اثرات کوانتومی): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :جابجا‌شدن نمایش هنگام نزدیک شدن نشانگر موس به لبه ها: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :قابلیت رشوه دادن به مقامات محلی: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :اجازه ساخت و ساز ساختمان: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :قابلیت بازسازی خیابان‌های شهر: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :قابلیت فرستادن پول به بقیه شرکت‌ها: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :مضرب برای بار قطار تا حس قطار سنگین به وجود آید: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :تعداد سوانح هوایی: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :هیچکدام
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :کم
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :عادی
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}اجازه رانندگی در خیابان‌های شهر{ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}اجازه استفاده از جاده یک بازیکن توسط دیگر رقیبان: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}قابلیت ساخت ایستگاه‌های متصل به هم: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}قابلیت استفاده از چندین بسته NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :اجازه رانندگی در خیابان‌های شهر{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :اجازه استفاده از جاده یک بازیکن توسط دیگر رقیبان: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :قابلیت ساخت ایستگاه‌های متصل به هم: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :قابلیت استفاده از چندین بسته NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغییر دادن این تنظیم هنگامی که خودرو وجود دارد ممکن نیست
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}تعمیر و نگهداری زیرساخت ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :تعمیر و نگهداری زیرساخت ها: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}فرودگاه‌ها هیچ‌گاه از کار نیافتند: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :فرودگاه‌ها هیچ‌گاه از کار نیافتند: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}اعلام هشدار هنگام گم شدن وسیله نقلیه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}بازبینی برنامه حرکت وسایل نقلیه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :اعلام هشدار هنگام گم شدن وسیله نقلیه: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :بازبینی برنامه حرکت وسایل نقلیه: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :خیر
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :بله، ولی به غیر از خودروهای ایستاده
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :از همه خودرو‌ها
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}هشدار هنگام منفی بودن درآمد خودرو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}وسایل نقلیه هیچگاه از بین نروند: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}نوکردن خودکار وسایل نقلیه کهنه شده: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}نوکردن وسایل نقلیه {ORANGE}{STRING}{LTBLUE} ماه قبل/بعد از بیشترین سن مجاز خودرو
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}کمترین اندازه پول برای نو کردن وسایل نقلیه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}مدت زمان نمایش پیغام خطا: {ORANGE}{STRING} ثانیه
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}نمایش متن کمکی: {ORANGE}بعد از {STRING} ثانیه صبر
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}نمایش متن کمکی: {ORANGE}کلیک راست
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}نمایش جمعیت شهر در عنوان شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}صخامت خط ها در گراف: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :هشدار هنگام منفی بودن درآمد خودرو: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :وسایل نقلیه هیچگاه از بین نروند: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :نوکردن خودکار وسایل نقلیه کهنه شده: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :نوکردن وسایل نقلیه {STRING} ماه قبل/بعد از بیشترین سن مجاز خودرو
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :کمترین اندازه پول برای نو کردن وسایل نقلیه: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :نمایش جمعیت شهر در عنوان شهر: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :صخامت خط ها در گراف: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}طراح زمین: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :طراح زمین: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}بیشترین فاصله از لبه نقشه برای پالایشگاه‌ها: {ORANGE}{STRING} قطعه
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط برف: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط برف: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :هموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :ناهموار
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :بسیار ناهموار
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}الگوریتم قرار دهنده مکان درخت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :الگوریتم قرار دهنده مکان درخت‌ها: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :هیچکدام
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :اصلی
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :بهبودیافته
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}جهت چرخش نقشه بلندی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :جهت چرخش نقشه بلندی: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت‌گرد
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ساعت‌گرد
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}سطح ارتفاعی که نقشه‌ی سناریو می‌تواند داشته باشد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}فعال کردن محوطه سازی با قطعه‌ها در مرزهای نقشه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :سطح ارتفاعی که نقشه‌ی سناریو می‌تواند داشته باشد: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :فعال کردن محوطه سازی با قطعه‌ها در مرزهای نقشه: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}یک یا چند قطعه در لبه شمالی که خالی نیست
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}یک یا چند قطعه در لبه شمالی که آب نیست
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}بیشترین گستردگی ایستگاه: {ORANGE}{STRING} قطعه {RED}هشدار:مقدارهای بالا از سرعت بازی می‌کاهد
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}تعمیر و بازبینی بالگردها در فرودگاه به طور خودکار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}وصل بودن نوار ابزار محوطه سازی به نوار ابزار وسایل نقلیه‌ی ریلی/جاده‌ای/آبی/هوایی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}رنگ استفاده شده به عنوان زمین در نقشه کوچک: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :تعمیر و بازبینی بالگردها در فرودگاه به طور خودکار: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :وصل بودن نوار ابزار محوطه سازی به نوار ابزار وسایل نقلیه‌ی ریلی/جاده‌ای/آبی/هوایی: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :رنگ استفاده شده به عنوان زمین در نقشه کوچک: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :سبز
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :سبز تیره
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :بنفش
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}برعکس کردن جهت حرکت کردن صفحه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}تصویر صاف در نمای اضافه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}نمایش دخل و خرج شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :برعکس کردن جهت حرکت کردن صفحه: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :تصویر صاف در نمای اضافه: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :نمایش متن کمکی وقتی از چندین ابزار استفاده می شود: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :نمایش دخل و خرج شرکت: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :هیچکدام
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :شرکت خود
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :همه شرکت‌ها
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}چت با تیم با دکمه «Enter»: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}عمل غلطک ماوس: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :چت با تیم با دکمه «Enter»: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :عمل غلطک ماوس: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :بزرگنمایی نقشه
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :جابجا کردن نقشه
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :خاموش
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}سرعت حرکت نقشه با چرخاندن غلطک ماوس: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :سرعت حرکت نقشه با چرخاندن غلطک ماوس: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}شبیه سازی کلیک راست: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :شبیه سازی کلیک راست: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :دستور+کلیک
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :کنترل+کلیک
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :خاموش
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}حرکت در نقشه با کلیک چپ:: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :حرکت در نقشه با کلیک چپ:: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}از این {ORANGE}{STRING}{LTBLUE} برای نام فایل‌های ذخیره استفاده کن
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :از این {STRING} برای نام فایل‌های ذخیره استفاده کن
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طولانی (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :کوتاه(31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}پالت پیش فرض برای NewGRF هایی که پالتی برایشان مشخص نگردیده: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :پالت پیش فرض برای NewGRF هایی که پالتی برایشان مشخص نگردیده: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :پالت سیستم عامل داس
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :پالت ویندوز
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}توقف خودکار هنگام آغاز بازی جدید: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}قابلیت ها در زمان متوقف بودن بازی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :توقف خودکار هنگام آغاز بازی جدید: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :قابلیت ها در زمان متوقف بودن بازی: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :هیچ کار
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :همه کارها غیر از ساخت و ساز
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :همه کارها به جز تغییر پستی/بلندی زمین
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :همه کارها
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}اسنفاده از لیست پیشرفته خودرو: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}استفاده از نشانه‌های بارگیری/بارگذاری: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}نشان دادن ورود و خروج در جدول زمانی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}ساخت سریع برنامه حرکت وسایل نقلیه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}نوع پیش‌فرض ریل (بعد از بازی جدید/بارگزاری): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :اسنفاده از لیست پیشرفته خودرو: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :استفاده از نشانه‌های بارگیری/بارگذاری: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :استفاده از تیک(هزارم ثانیه) به جای روز در برنامه ساعتی: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :نشان دادن ورود و خروج در جدول زمانی: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :ساخت سریع برنامه حرکت وسایل نقلیه: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :نوع پیش‌فرض ریل (بعد از بازی جدید/بارگزاری): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :اولین نمونه در دسترس
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :آخرین نمونه در دسترس
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :نمونه با بیشترین استفاده
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}نمایش ریلهای محفوظ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}فعال ماندن ابزار ساخت و ساز پس از استفاده: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :نمایش ریلهای محفوظ: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :فعال ماندن ابزار ساخت و ساز پس از استفاده: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :گروه‌بندی هزینه‌ها در پنجره مالی شرکت: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}بیشترین قطار یک شرکت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}بیشترین خودروی‌جاده‌ای یک شرکت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}بیشترین هواپیمای یک شرکت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}بیشترین تعداد کشتی یک شرکت : {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :غیر فعال کردن ساختمان مربوط به خودرویی که در دسترس نیست: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :بیشترین قطار یک شرکت: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :بیشترین خودروی‌جاده‌ای یک شرکت: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :بیشترین هواپیمای یک شرکت: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :بیشترین تعداد کشتی یک شرکت : {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}غیرفعال بودن قطار برای رایانه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}غیر فعال بودن خودروی‌جاده‌ای برای رایانه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}غیر‌فعال بودن هواپیما برای رایانه: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}غیر فعال بودن کشتی برای رایانه: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :غیرفعال بودن قطار برای رایانه: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :غیر فعال بودن خودروی‌جاده‌ای برای رایانه: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :غیر‌فعال بودن هواپیما برای رایانه: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :غیر فعال بودن کشتی برای رایانه: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}امکان حضور هوش مصنوعی در بازی چندنفره: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes before scripts are suspended: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :امکان حضور هوش مصنوعی در بازی چندنفره: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}درصد زمان برای تعمیر/نگهداری به نسبت زمان کار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری قطار: {ORANGE}{STRING} روز/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}زمان پیش‌فرض برای تعمیر/بازنگری قطار : {ORANGE}غیر فعال
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای:: {ORANGE}{STRING} روز/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری خودروی جاده‌ای {ORANGE}غیرفعال
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}{STRING} روز/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری هواپیما: {ORANGE}غیرفعال
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}{STRING} روز/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فاصله زمانی پیش فرض برای تعمیر/بازنگری کشتی: {ORANGE}غیر‌فعال
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}غیرفعال کردن تعمیر/بازنگری کلیه وسایل نقلیه وقتی که طبق تنظیمات بازی خودرو ها خراب نشوند : {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}فعال کردن حد برای سرعت واگن: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}غیر فعال کردن ریل برقی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :درصد زمان برای تعمیر/نگهداری به نسبت زمان کار: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :غیرفعال کردن تعمیر/بازنگری کلیه وسایل نقلیه وقتی که طبق تنظیمات بازی خودرو ها خراب نشوند : {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :فعال کردن حد برای سرعت واگن: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :غیر فعال کردن ریل برقی: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}نمایش خبرهای رنگی در سال: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}سال شروع: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}فعال بودن اقتصاد ملایم (بیشتر،تغییرات کوچک انجام می‌شود): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}قابلیت خرید سهام بقیه شرکت‌ها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}درصد سود پایه برای پرداخت در سیستم های پرداخت: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}موقع کشیدن، هر : {ORANGE}{STRING} قطعه نصب یک نشانگر
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}نصب علمک مکانیکی به جای چراغ راهنمایی قبل از سال: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}فعال کردن صفحه واسط کاربری برای نشانگر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع نشانگر پیش فرض: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :نمایش خبرهای رنگی در سال: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :سال شروع: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :فعال بودن اقتصاد ملایم (بیشتر،تغییرات کوچک انجام می‌شود): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :قابلیت خرید سهام بقیه شرکت‌ها: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :نصب علمک مکانیکی به جای چراغ راهنمایی قبل از سال: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :فعال کردن صفحه واسط کاربری برای نشانگر: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :نوع نشانگر پیش فرض: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :نشانگر توقف
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :نشانگر مسیر
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :نشانگر مسیر یکطرفه
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}]تغییر نوع نشانگرها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :]تغییر نوع نشانگرها: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :فقط نشانگرهای توقف
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :فقط نشانگرهای مسیر
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :همه
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}نمایه خیابان‌های شهر جدید: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :نمایه خیابان‌های شهر جدید: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :اصلی
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :راه‌های بهتر
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :قطعه ۲x۲
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :قطعه ۳x۳
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :اتفاقی
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}قابلیت ساخت راه‌ توسط شهرها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}امکان ساخته شدن شهر در محل ناهموار: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}قابلیت کنترل سطح صدای فرودگاه‌ها توسط شهر: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}ساخت شهر در بازی: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :قابلیت ساخت راه‌ توسط شهرها: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :امکان ساخته شدن شهر در محل ناهموار: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :قابلیت کنترل سطح صدای فرودگاه‌ها توسط شهر: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :ساخت شهر در بازی: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ممنوع
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :آزاد
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :آزاد و با نمایه دلخواه
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}محل قرارگرفتن درخت‌ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :محل قرارگرفتن درخت‌ها: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :هیچکدام{RED}(سبب تعطیلی صنعت چوب والوار می‌شود)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :فقط در جنگلهای بارانی
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :همه جا
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}محل نوار ابزار اصلی: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}محل نوار وضعیت: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}چسبیدن پنجره ها به هم در نزدیک شدن به یکدیگر : {ORANGE}{STRING} پیکسل
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}چسبيدن پنجره ها به هم در نزديک شدن به يکديگر: {ORANGE}غیرفعال
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}بیشترین تعداد پنجره‌های غیرمهم: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}بیشترین مقدار پنجره های غیرمهم: {ORANGE}غیرفعال
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}بیشترین حد زوم به درون: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}بیشترین حد زوم به بیرون: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :محل نوار ابزار اصلی: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :محل نوار وضعیت: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :بیشترین تعداد پنجره‌های غیرمهم: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :بیشترین حد زوم به درون: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :بیشترین حد زوم به بیرون: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عادی
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}سرعت رشد شهر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :سرعت رشد شهر: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :هیچکدام
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :آهسته
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :عادی
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :تند
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :بسیار تند
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}نسبت شهرستانهایی که به شهر تبدیل می‌شوند: {ORANGE}۱ در {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}نسبت شهرستانهایی که به شهر تبدیل می‌شوند: {ORANGE}هیچکدام
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}مضرب ابتدایی اندازه شهرستان: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضرب ابتدایی اندازه شهرستان: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :حذف عناصر پوچ جاده در طول ساخت و ساز جاده: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}واسط کاربری
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}ساخت و ساز
@@ -1371,10 +1344,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :اصلی
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(توصیه می گردد)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}مسیریاب برای قطارها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}مسیریاب برای خودروهای جاده ای: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}مسیریاب برای کشتی ها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}برگشت خودکار با رسیدن به نشانه ها: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :مسیریاب برای قطارها: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :مسیریاب برای خودروهای جاده ای: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :مسیریاب برای کشتی ها: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :برگشت خودکار با رسیدن به نشانه ها: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}تغییر مقدار
 
@@ -3908,6 +3881,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

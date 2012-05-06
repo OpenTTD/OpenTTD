@@ -862,14 +862,11 @@ STR_CONFIG_SETTING_ORIGINAL                                     :Авторск�
 STR_CONFIG_SETTING_REALISTIC                                    :Реален
 
 
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Износ на локомотива чад / искри: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Рамна површина околу индустрии: {ORANGE}{STRING} плочка{P 0:1 "" s}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Инфраструктура за одржување: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Износ на локомотива чад / искри: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Инфраструктура за одржување: {STRING}
 
 
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Одложување на поставете настани: {ORANGE}{STRING} втора{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Одложување на поставете настани: {ORANGE}забрането
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Дебелина на линии во графици: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Дебелина на линии во графици: {STRING}
 
 
 
@@ -880,16 +877,16 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Деб�
 
 
 
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#ОПкодови пред скрипти се суспендирани: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#ОПкодови пред скрипти се суспендирани: {STRING}
 
 
 
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Градови смеете да изгради ниво премини: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Градови смеете да изгради ниво премини: {STRING}
 
 
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиција на статусната лента: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максимална зумирате ниво: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максимална одзумирате ниво: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Позиција на статусната лента: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Максимална зумирате ниво: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Максимална одзумирате ниво: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нормално
@@ -1906,6 +1903,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

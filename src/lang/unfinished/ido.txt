@@ -537,7 +537,6 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({N
 STR_CONFIG_SETTING_NONE                                         :Nulo
 
 
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plata areo cirkum industrii: {ORANGE}{STRING} karel{P 0:1 o i}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulo
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
 
@@ -1345,6 +1344,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

@@ -595,10 +595,10 @@ STR_CONFIG_SETTING_ORIGINAL                                     :मुळ
 STR_CONFIG_SETTING_REALISTIC                                    :खरेखुरे
 
 
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}वाहनांचा धूर/ठिणग्या: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :वाहनांचा धूर/ठिणग्या: {STRING}
 
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE} वाहन हरवल्यास सूचित करा: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            : वाहन हरवल्यास सूचित करा: {STRING}
 
 
 
@@ -616,7 +616,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व �
 
 
 
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}स्टेटसबार वरचं स्थान: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेटसबार वरचं स्थान: {STRING}
 
 
 
@@ -1597,6 +1597,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

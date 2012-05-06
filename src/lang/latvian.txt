@@ -1120,240 +1120,213 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut būvēt nogāzēs un piekrastēs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākas, palielinātas apkalpojamās platības: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimālais vilcienu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vilciena paātrinājuma modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Autotransporta līdzekļu paātrinājuma modelis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Nogāžu slīpums vilcieniem: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nogāžu slīpums autotransporta līdzekļiem: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Atļaut savienot stacijas, kas neatrodas tieši blakus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu piekraušanas algoritmu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Transportlīdzekļus piekraut pakāpeniski: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflācija: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimālais tiltu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimālais tuneļu garums: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Svarīgāko ražotņu manuālā būvniec. metode: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļa izmešu efektu daudzums: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilciena paātrinājuma modelis: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Svarīgāko ražotņu manuālā būvniec. metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citām ražotnēm
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Līdzens laukums ap ražotnēm: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Atļaut vairākas līdzīgas ražotnes vienā pilsētā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Gada beigās rādīt finanšu pārskatu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Jaunie rīkojumi noklusējumā ir 'bez pieturām': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Jaunu vilcienu noklus. rīkoj. liek apst. platformas {ORANGE}{STRING}{LTBLUE}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Atļaut vairākas līdzīgas ražotnes vienā pilsētā: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklus. rīkoj. liek apst. platformas {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :beigu tuvumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Autotransporta rindas (ar daudzuma efektiem): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Bīdīt logu, kad peles kursors atrodas tā malā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Atļaut vietējo varas iestāžu piekukuļošanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Atļaut pirkt pārvadājumu izņēmuma tiesības: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Atļaut ēku finansēšanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Atļaut finansēt vietējo ceļu atjaunošanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Atļaut pārsūtīt naudu citiem uzņēmumiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Svara koeficients kravām, lai simulētu smagus vilcienus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lidmašīnu ātruma pakāpe: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lidmašīnu avāriju daudzums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindas (ar daudzuma efektiem): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Atļaut vietējo varas iestāžu piekukuļošanu: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Lidmašīnu avāriju daudzums: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Atļaut būvēt vienu otrai piekļautas stacijas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Atļaut vairākus NewGRF transportlīdzekļu komplektus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Atļaut vairākus NewGRF transportlīdzekļu komplektus: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Infrastruktūras uzturēšana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūras uzturēšana: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lidostas darbosies mūžīgi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbosies mūžīgi: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Brīdināt, ja transportlīdzeklis ir noklīdis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportlīdzekļu rīkojumus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Brīdināt, ja transportlīdzeklis ir noklīdis: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārskatīt transportlīdzekļu rīkojumus: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transportlīdzekļi nekad "nemirst": {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atj. transportl. {ORANGE}{STRING}{LTBLUE} mēne{P 0:1 si šus šus} pirms/pēc maks. vecuma
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automātiski atjaunot minimālo naudu atjaunošanai: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Kļūdas ziņojuma ilgums: {ORANGE}{STRING} sekun{P 0:1 di des žu}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Rādīt skaidrojumus: {ORANGE}attēlot {STRING} sekund{P 0:1 i es es}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Rādīt skaidrojumus: {ORANGE}labais klikšķis
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Diagrammu līniju platums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atj. transportl. {STRING} mēne{P 0:2 si šus šus} pirms/pēc maks. vecuma
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Zemes radītājs: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītājs: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks. att. no kartes malas naftas pārstrādes rūpnīcām: {ORANGE}{STRING} lauciņ{P 0:1 š i u}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega līnijas augstums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Apvidus nelīdzenums (tikai TerraGenesis): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti līdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Līdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Nelīdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ļoti nelīdzena
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Koku izvietošanas algoritms: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Koku izvietošanas algoritms: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Nav
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Sākotnējais
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Uzlabotais
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Augstumu kartes pagriešana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Augstumu kartes pagriešana: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Pret pulksteņa rādītāja virzienu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pulksteņa rādītāja virzienā
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Augstuma līmenis līdzenai scenārija kartei: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Atļaut pārveidot lauciņus, kas atrodas kartes malās : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Augstuma līmenis līdzenai scenārija kartei: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārveidot lauciņus, kas atrodas kartes malās : {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maks. staciju lielums: {ORANGE}{STRING} lauciņ{P 0:1 š i u} {RED}Brīdinājums: lielas vērt. palēnina spēli
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Veikt helikopteru automātisko apkopi nolaišanās laukumos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sasaitēt ainavas rīkj. ar sliežu/ceļu/ūdens/lidostu rīkj.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartes zemes krāsa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkj. ar sliežu/ceļu/ūdens/lidostu rīkj.: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}tumši zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Pretējs ritināšanas virziens: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Plūdena skatvietas ritināšana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot būvniecības rīkus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rādīt uzņēmuma identitātes krāsas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Pretējs ritināšanas virziens: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plūdena skatvietas ritināšana: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rādīt mērījumu rīkjoslu, izmantojot būvniecības rīkus: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Rādīt uzņēmuma identitātes krāsas: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :visiem uzņēmumiem
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Dot priekšroku komandas tērzēšanai ar <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Peles ritenīša funkcija: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Dot priekšroku komandas tērzēšanai ar <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Peles ritenīša funkcija: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :pietuvināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :ritināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :izslēgts
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Peles ritenīša ātrums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Peles ritenīša ātrums: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Labā klikšķa emulēšana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Labā klikšķa emulēšana: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komanda+klikšķis
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikšķis
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Kreisā klikšķa ritināšana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kreisā klikšķa ritināšana: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Lietot {ORANGE}{STRING}{LTBLUE} datuma formātu sagl. spēļu nosaukumos
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Lietot {STRING} datuma formātu sagl. spēļu nosaukumos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garu (31. Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}NewGRF noklusējuma palete, kuriem tā nav norādīta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palete
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palete
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automātiski pauzēt sākot jaunu spēli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Pauzes režīmā atļaut: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automātiski pauzēt sākot jaunu spēli: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pauzes režīmā atļaut: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nē, neatļaut darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visas, izņemot būvniecības darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot ainavas pārveidošanas darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot papildināto transportlīdzekļu sarakstu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot piekraušanas indikatorus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu mirkļos nevis dienās: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Maršrutu sarakstos rādīt pienākšanu un atiešanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transportlīdzekļu norīkojumu ātrā veidošana: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Noklus. sliežu tips (pēc jaunas spēl./spēl. ielādes): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Lietot papildināto transportlīdzekļu sarakstu: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lietot piekraušanas indikatorus: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Rādīt sarakstu mirkļos nevis dienās: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Maršrutu sarakstos rādīt pienākšanu un atiešanu: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklus. sliežu tips (pēc jaunas spēl./spēl. ielādes): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rādīt rezervētās sliedes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Būvniecības rīkus pēc lietošanas paturēt darbīgus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupēt izdevumu sadaļas uzņēmuma finansu inform. logā: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezervētās sliedes: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Būvniecības rīkus pēc lietošanas paturēt darbīgus: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finansu inform. logā: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportl.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimālais vilcienu skaits uzņēmumā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimālais automašīnu skaits uzņēmumā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimālais lidaparātu skaits uzņēmumā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maksimālais kuģu skaits uzņēmumā: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportl.: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais automašīnu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimālais lidaparātu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimālais kuģu skaits uzņēmumā: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Atspējot datoram vilcienus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Atspējot datoram autotransporta līdzekļus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Atspējot datoram lidaparātus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Atspējot datoram kuģus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Atspējot datoram vilcienus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Atspējot datoram autotransporta līdzekļus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Atspējot datoram lidaparātus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Atspējot datoram kuģus: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Atļaut MI vairākspēlētāju spēlē: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#darbību kodi, pirms skripti tiek apstādināti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlē: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi, pirms skripti tiek apstādināti: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Apkopju starplaiks procentos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Noklusētais vilcienu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklusētais vilcienu apkopju starplaiks: {ORANGE}izslēgts
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Noklusētais autotransporta apkopju starplaiks: {ORANGE}izslēgts
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Noklusētais lidaparātu apkopju starplaiks: {ORANGE}izslēgts
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}{STRING} dien{P 0:1 a as u}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Noklusētais kuģu apkopju starplaiks: {ORANGE}izslēgts
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Aizliegt apkopi, kad sabojāšanās ir izslēgta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ieslēgt vagonu ātruma ierobežojumus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Atspējot eletrificēto dzelzceļu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad sabojāšanās ir izslēgta: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot eletrificēto dzelzceļu: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Krāsaini avīžu raksti parādās: {ORANGE}{STRING} gadā
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Atļaut vienmērīgas izmaiņas ekonomikā: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citiem uzņēmumiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procenti no kopējās peļņas, ko maksā tranzītstacijās: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot izvietot signālus uz katra {ORANGE}{STRING}. lauciņa
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Velkot paturēt vienādu attālumu starp signāliem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automātiski būvēt semaforus pirms: {ORANGE}{STRING} gada
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ieslēgt signālu grafisko lietotāju saskarni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Noklusētais signālu veids: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
+STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signāliem: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālu grafisko lietotāju saskarni: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Noklusētais signālu veids: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :vienvirziena ceļa signāli
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Braukt cauri sgnālu tipiem: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt cauri sgnālu tipiem: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tikai bloķēšanas signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Ceļu izskats jaunajām pilsētām: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Ceļu izskats jaunajām pilsētām: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :sākotnējais
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :labāki ceļi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nejaušs
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Pilsētu dibināšana: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Pilsētām ir atļauts būvēt ceļus: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Pilsētu dibināšana: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Koku izvietošana spēlē: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Koku izvietošana spēlē: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(bojā kokzāģētavu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusmežos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas novietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Stāvokļa joslas novietojums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}{STRING} pikse{P 0:1 lis ļi ļu}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Logu pielipšanas rādiuss: {ORANGE}atspējots
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimālais logu skaits: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimālais logu skaits: {ORANGE}izslēgts
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Maksimālais pietuvinājuma līmenis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Maksimālais attālinājuma līmenis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Galvenās rīkjoslas novietojums: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Stāvokļa joslas novietojums: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais logu skaits: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimālais attālinājuma līmenis: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Parasts
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Pilsētu attīstības ātrums: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Pilsētu attīstības ātrums: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :nav
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mazs
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :liels
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :ļoti liels
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Attiecīgā pilsētu daļa kas kļūs par lielpilsētām: {ORANGE}1 pret {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Attiecīgā pilsētu daļa kas kļūs par lielpilsētām: {ORANGE}neviena
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Lielpilsētu sākuma lieluma reizinātājs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvniecība
@@ -1378,10 +1351,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Sākotnējais
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(ieteicamais)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu ceļu meklētājs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Autotransporta līdzekļu ceļu meklētājs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Kuģu ceļu meklētājs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automātiska apgriešanās pie luksoforiem: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļu meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Autotransporta līdzekļu ceļu meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Kuģu ceļu meklētājs: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automātiska apgriešanās pie luksoforiem: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mainīt iestatījuma vērtību
 
@@ -4480,6 +4453,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

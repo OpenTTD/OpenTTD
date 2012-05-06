@@ -1119,244 +1119,217 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Esquerra
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet modelar el terreny sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Llargada màxima dels trens: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model d'acceleració del Tren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model d'acceleració per als vehicles: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinació de les pujades per als trens: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinació de les pujades per als vehicles: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permet ajuntar estacions no annexes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Utilitza algorisme millorat de càrrega: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Carrega els vehicles gradualment: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflació: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entrega càrregues en una estació només quan hi ha demananda: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Llargada màxima dels ponts: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Llargada màxima dels túnels: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Mètode de construcció de la indústria primària manual: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Permet construir en desnivells i costes: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet modelar el terreny sota edificis, rails, etc. (autopendent): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Permet una mida més real de l'àrea d'influència: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantitat de fum/xispes del vehicle: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model d'acceleració del Tren: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model d'acceleració per als vehicles: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carrega els vehicles gradualment: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Entrega càrregues en una estació només quan hi ha demananda: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :cap
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :com les altres indústries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospeccionant
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Zona plana al voltant de les indústries: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permet vàries indústries similars a cada població: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra les senyals: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permet vàries indústries similars a cada població: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostra les senyals: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A l'esquerra
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Al costat de conducció
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la dreta
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres predeterminades són 'sense parada': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Noves ordres del tren parar per defecte a {ORANGE}{STRING}{LTBLUE} de la plataforma
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra de balanç al finalitzar cada any: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les noves ordres predeterminades són 'sense parada': {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres del tren parar per defecte a {STRING} de la plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permet comprar els drets del transport en exclusiva: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permet finançar edificis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permet finançar la reconstrucció dels carrers locals: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permet enviar diners a altres companyies: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocitat dels avions: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombre d'accidents d'avió: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cues d'automòbils (amb efectes quàntics): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permet finançar edificis: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permet finançar la reconstrucció dels carrers locals: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permet enviar diners a altres companyies: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de pes per contenidor per simular trens pesats: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombre d'accidents d'avió: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :cap
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat de la població: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permet circular a través de les parades en carreteres propietat de competidors: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permet construir estacions annexes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activa diversos paquets de motors NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permet situar parades en carreteres que són propietat de la població: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permet circular a través de les parades en carreteres propietat de competidors: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permet construir estacions annexes: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Activa diversos paquets de motors NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Manteniment d'infrastructures: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment d'infrastructures: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Els aeroports mai caduquen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Els aeroports mai caduquen: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avisa si el vehicle es perd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa ordres dels vehicles: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisa si el vehicle es perd: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisa ordres dels vehicles: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :per a tots els vehicles
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisa si el benefici del vehicle és negatiu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Els vehicles mai caduquen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova el vehicle quan sigui vell: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mes{P 0:1 "" os} abans/després antig. max.
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autorenovació: mínim de diners per renovar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duració del missatge d'error: {ORANGE}{STRING} segon{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostra cartells: {ORANGE}Mantingues durant {STRING} segon{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostra cartells: {ORANGE}Botó dret
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra els habitants a la etiqueta del nom de població: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Gruix de les línies dels gràfics: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova el vehicle quan tingui {STRING} mes{P 0:2 "" os} abans/després antig. max.
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenovació: mínim de diners per renovar: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a la etiqueta del nom de població: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador de terrenys: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terrenys: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distància des de la vora per Refineries de Petroli: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Geografia del terreny (TerraGenesis només) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada de la cota de neu: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny (TerraGenesis només) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorisme per situar arbres: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Algorisme per situar arbres: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Cap
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Millorat
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotació del mapa d'alçades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotació del mapa d'alçades: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa modelar el terreny de les cel·les a les vores del mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Alçada que un escenari pla pren: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Activa modelar el terreny de les cel·les a les vores del mapa: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Màx extensió de les estacions: {ORANGE}{STRING} cel·l{P 0:1 a es} {RED}Avís: Un valor alt alenteix el joc
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Revisions automàtiques dels helicòpters als heliports: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Color del terra utilitzat al mapa petit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Revisions automàtiques dels helicòpters als heliports: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color del terra utilitzat al mapa petit: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Desplaçament suau de la vista: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Mostra la decoració de la companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Mostra la decoració de la companyia: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Cap
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Pròpia companyia
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Totes les companyies
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Prefereix fer un xat d'equip amb <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funció de la rodeta del ratolí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prefereix fer un xat d'equip amb <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funció de la rodeta del ratolí: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mou el mapa
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactiu
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocitat del mapa amb la rodeta del ratolí: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocitat del mapa amb la rodeta del ratolí: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulació del botó dret: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulació del botó dret: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Desplaçament amb el botó esquerre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplaçament amb el botó esquerre: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Utilitza el format de data curta {ORANGE}{STRING}{LTBLUE} en els jocs desats
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data curta {STRING} en els jocs desats
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Paleta predeterminada pels NewGRFs que no n'especifiquin una: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predeterminada pels NewGRFs que no n'especifiquin una: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un nou joc: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Quan s'estigui en pausa permet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament en començar un nou joc: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Quan s'estigui en pausa permet: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :sense accions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :totes les accions no-constructores
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tot menys les accions modificadores del paisatge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :totes les accions
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de càrrega: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris amb marques enlloc de dies: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra l'arribada i la sortida als horaris: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creació ràpida d'ordres per a vehicles: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipus de via predeterminada (en un joc nou/joc desat): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utilitza la llista de vehicles avançada: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilitza indicadors de càrrega: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra horaris amb marques enlloc de dies: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra l'arribada i la sortida als horaris: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Creació ràpida d'ordres per a vehicles: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipus de via predeterminada (en un joc nou/joc desat): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :La primera disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :La darrera disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitzada
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra les vies reservades: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantingues les eines de construcció actives després del seu us: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupa les despeses a la finestra de finances de la companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra les vies reservades: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantingues les eines de construcció actives després del seu us: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trens per companyia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max automòbils per companyia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max avions per companyia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max vaixells per companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trens per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max automòbils per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max avions per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Max vaixells per companyia: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactiva trens per l'ordinador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactiva automòbils per a l'ordinador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactiva els avions per l'ordinador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactiva trens per l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactiva automòbils per a l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva els avions per l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva vaixells per l'ordinador: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet IA en multijugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}#opcodes abans dels scripts estan suspesos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permet IA en multijugador: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes abans dels scripts estan suspesos: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de revisions es mostren en percentatges: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval predeterminat de les revisions dels trens: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval predeterminat de les revisions dels trens: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval predeterminat de les revisions dels automòbils: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Interval predeterminat de les revisions dels automòbils: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval predeterminat de les revisions dels avions: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval predeterminat de les revisions dels avions: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval predeterminat de les revisions dels vaixells: {ORANGE}{STRING} di{P 0:1 a es}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval predeterminat de les revisions dels vaixells: {ORANGE}desactivat
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactiva les revisions quan les avaries s'estableixen a cap: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactiva vies electrificades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals de revisions es mostren en percentatges: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa limit de velocitat per al vagó: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Les notícies en color apareixen el: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Any d'inici: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activa economia suau (més canvis però més petits): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permet comprar participacions d'altres empreses: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentatge del benefici total a pagar en les transferències: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, situa senyals cada: {ORANGE}{STRING} cel·l{P 0:1 a es}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Quan arrosseguis, mantingues fixada la distància entre senyals: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir semàfors automàticament abans de: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activa la interfície de les senyals: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipus de senyal a construir predeterminada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les notícies en color apareixen el: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Any d'inici: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activa economia suau (més canvis però més petits): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permet comprar participacions d'altres empreses: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors automàticament abans de: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de les senyals: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipus de senyal a construir predeterminada: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avançades
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avançades d'un sentit
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Canvia a través dels tipus de senyal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Canvia a través dels tipus de senyal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Només normal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Només avançada
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Totes
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Disposició de carreteres pels nous pobles: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres pels nous pobles: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :predeterminat
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :millors carreteres
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatori
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Els pobles poden construir carreteres: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Els pobles tenen permís per construir passos a nivell: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Fundant pobles al joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Els pobles poden construir carreteres: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Els pobles tenen permís per construir passos a nivell: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundant pobles al joc: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permès
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, disposició de poble personalitzada
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Situació dels arbres al joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Situació dels arbres al joc: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la fusteria)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les selves tropicals
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posició de la barra d'estat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radi de tall de la finestra: {ORANGE}{STRING} píxel{P 0:1 "" s}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de tall de la finestra: {ORANGE}desactivat
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre màxim de finestres no-enganxoses: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nombre màxim de finestres no-enganxoses: {ORANGE}desactivat
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Nivell màxim de zoom cap endavant: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Nivell màxim de zoom cap enrera: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posició de la barra d'eines principal: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Posició de la barra d'estat: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre màxim de finestres no-enganxoses: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivell màxim de zoom cap endavant: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivell màxim de zoom cap enrera: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocitat de creixement de les ciutats: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocitat de creixement de les ciutats: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Cap
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ràpida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt Ràpida
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}1 de cada {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}Cap
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Treu els elements de carretera absurds durant la reconstrucció de carretera: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida de ciutat inicial: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfície
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcció
@@ -1381,10 +1354,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Cerca de rutes per vehicles: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca de rutes per vaixells: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Canvi de sentit automàtic a les senyals: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cerca de rutes per trens: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cerca de rutes per vehicles: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cerca de rutes per vaixells: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit automàtic a les senyals: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
@@ -4476,6 +4449,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

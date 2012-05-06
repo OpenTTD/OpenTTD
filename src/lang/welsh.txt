@@ -1114,239 +1114,212 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Chwith
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Canol
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Caniatáu tirffurfio o dan adeiladau, traciau, etc. (awtolethru): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu mwy o ffyrdd, pontydd ayb. sy'n berthyn i drefi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Hyd uchafsymol trenau: {ORANGE}{STRING} teil
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Faint o fŵg/sbarciau gan gerbydau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model cyflymu trenau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Model cyflymiad cerbydau ffordd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Serthrwydd llethrau ar gyfer trenau: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Serthrwydd llethrau ar gyfer cerbydau ffordd: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Llwytho cerbydau'n raddol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Chwyddiant: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Danfon llwyth i orsaf dim ond pan fo galw: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Hyd pont uchafsymol: {ORANGE}{STRING} teil
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Hyd uchafsymol twneli: {ORANGE}{STRING} teil
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Prif ddull adeiladu diwydiannau cynradd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, etc. (awtolethru): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Caniatáu ardaloedd dalgylch mwy realistig eu maint: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Caniatáu chwalu mwy o ffyrdd, pontydd ayb. sy'n berthyn i drefi: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Faint o fŵg/sbarciau gan gerbydau: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model cyflymu trenau: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model cyflymiad cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Rhwystro trenau a llongau rhag troi 90 gradd: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Defnyddio'r algorithm llwytho gwell: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Llwytho cerbydau'n raddol: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Chwyddiant: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Danfon llwyth i orsaf dim ond pan fo galw: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Prif ddull adeiladu diwydiannau cynradd: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :dim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :fel diwydiannau eraill
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :mwynchwilio am adnoddau crai
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ardal fflat o amgylch diwydiannau: {ORANGE}{STRING} teil
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau unfath i bob tref: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Gorchmynion trenau newydd yn nodi aros ar y {ORANGE}{STRING}{LTBLUE} o'r platfform fel rhagosodiad
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Caniatáu nifer o ddiwydiannau unfath i bob tref: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Gorchmynion trenau newydd yn nodi aros ar y {STRING} o'r platfform fel rhagosodiad
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ochr agos
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :canol
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ochr hir
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Caniatáu prynu hawliau cludo unigryw: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Caniatáu ariannu adeiladau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Caniatáu ariannu gwaith ffordd lleol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Caniatáu trosglwyddo arian i gwmnïau eraill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Ffactor cyflymder awyrenau: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nifer o ddamweiniau awyren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Caniatáu llwgrwobrwyo'r awdurdod lleol: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Caniatáu prynu hawliau cludo unigryw: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Caniatáu ariannu adeiladau: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Caniatáu ariannu gwaith ffordd lleol: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Caniatáu trosglwyddo arian i gwmnïau eraill: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Nifer o ddamweiniau awyren: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Dim
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Llai
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :arferol
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Caniatáu adeiladu gorsafoedd cyfochrog: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Galluogi defnyddio mwy nag un o setiau injian NewGRF: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i drefi: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Caniatáu arosfannau gyrru-trwodd ar ffyrdd sy'n eiddo i gystadleuwyr: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Caniatáu adeiladu gorsafoedd cyfochrog: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Galluogi defnyddio mwy nag un o setiau injian NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw'n bosib newid y gosodiad yma pan fo cerbydau'n bodoli
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Cynnal a chadw tanadeiledd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Cynnal a chadw tanadeiledd: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Maes awyr ddim yn dibennu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Maes awyr ddim yn dibennu: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Rhybuddio os yw cerbyd ar goll: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Adolygu gorchmynion y cerbyd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Rhybuddio os yw cerbyd ar goll: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Adolygu gorchmynion y cerbyd: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :na
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :iawn, ond hepgor cerbydau sydd wedi aros
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :o bob cerbyd
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Rhybuddio os yw cerbyd yn gwneud colled: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nid yw cerbydau'n darfod: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Awtoadnewyddu cerbyd pan aiff yn hen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING}{LTBLUE} mis{P 0:1 "" oedd} cyn ei oedran eithaf
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Isafswm arian awtoadnewyddu ar gyfer adnewyddu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Cyfnod dangos neges wall: {ORANGE}{STRING} eiliad{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Dangos cymhorthlen: {ORANGE}Wrth oedi am {STRING} eiliad
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Dangos cymhorthlen: {ORANGE}Wrth dde-glicio
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Dangos poblogaeth tref yn label y dref: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Trwch llinellau graff: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Rhybuddio os yw cerbyd yn gwneud colled: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Nid yw cerbydau'n darfod: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Awtoadnewyddu cerbyd pan aiff yn hen: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Awtoadnewyddu cerbyd {STRING} mis{P 0:2 "" oedd} cyn ei oedran eithaf
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Isafswm arian awtoadnewyddu ar gyfer adnewyddu: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Dangos poblogaeth tref yn label y dref: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Trwch llinellau graff: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Cynhyrchydd Tir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Cynhyrchydd Tir: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Pellter uchafsymol o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING} sgwâr
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Uchder Llinell Eira: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Garwder y tirwedd (TerraGenesis yn unig) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Uchder Llinell Eira: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Garwder y tirwedd (TerraGenesis yn unig) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Garw Iawn
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algorithm gosod coed: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Algorithm gosod coed: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Dim
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gwreiddiol
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Gwell
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Tro Map Uchder: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Tro Map Uchder: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Gwrthglocwedd
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clocwedd
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Y lefel map uchder mae map senario fflat yn ei dderbyn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Galluogi tirffurfio'r teiliau ar ymylon y map: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Y lefel map uchder mae map senario fflat yn ei dderbyn: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Galluogi tirffurfio'r teiliau ar ymylon y map: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Nid yw un neu fwy o'r teiliau ar ymyl gogleddol y map yn wag
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Nid yw un neu fwy o'r teiliau ar un o'r ymylon yn ddŵr
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Ymlediad mwyaf gorsaf: {ORANGE}{STRING} teil {RED}Rhybudd: Bydd gwerth uchel yn arafu'r gêm
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Cyfuno'r bar offer tirwedd gyda'r bariau offer ffordd/rheilffordd/maes awyr: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Lliw tir a ddefnyddir ar y map bychan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Cyfuno'r bar offer tirwedd gyda'r bariau offer ffordd/rheilffordd/maes awyr: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Lliw tir a ddefnyddir ar y map bychan: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gwyrdd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}gwrthdroi'r cyfeiriad sgrolio: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Sgrolio prif ffenestr llyfn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Dangos lifrau cwmnïau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :gwrthdroi'r cyfeiriad sgrolio: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Dangos lifrau cwmnïau: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Dim
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eich Cwmni
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Pob cwmni
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Newid Sgwrsio Tîm i <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Gweithred yr olwyn sgrolio: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Newid Sgwrsio Tîm i <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Gweithred yr olwyn sgrolio: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mwyhau map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Sgrolio map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :I ffwrdd
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Cyflymder olwyn sgrolio map: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Cyflymder olwyn sgrolio map: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Efelychu de-glicio: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Efelychu de-glicio: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :I ffwrdd
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Sgrolio Clic-chwith: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgrolio Clic-chwith: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Defnyddio'r fformat dyddiad {ORANGE}{STRING}{LTBLUE} ar gyfer enwau gemau wedi'u cadw
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Defnyddio'r fformat dyddiad {STRING} ar gyfer enwau gemau wedi'u cadw
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :hir (31ain Rhag 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :byr(31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Palet rhagosodedig ar gyfer NewGRFau nad yw'n dynodi un: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Palet rhagosodedig ar gyfer NewGRFau nad yw'n dynodi un: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Palet DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Palet Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Oedi'n awtomatig wrth gychwyn gêm newydd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Tra fo wedi'i oedi, caniatáu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Oedi'n awtomatig wrth gychwyn gêm newydd: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Tra fo wedi'i oedi, caniatáu: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :dim gweithredoedd
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :pob gweithred ac eithro adeiladu
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :pob gweithred ac eithro addasu tirwedd
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :pob gweithred
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Defnyddio'r rhestr cerbydau uwch {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Dangos llwytho: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Dangos cyrraedd a gadael mewn amserlenni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Defnyddio'r rhestr cerbydau uwch {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Dangos llwytho: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Dangos amserlen fesul ticiau yn hytrach na dyddiau: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Dangos cyrraedd a gadael mewn amserlenni: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Creu cyflym ar gyfer gorchmynion cerbydau: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Y cyntaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Yr olaf sydd ar gael
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Defnydd mwyaf
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Dangos traciau wedi'u cadw: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Cadw'r offer adeiladu yn weithredol wedi ei ddefnydd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grwpio costau yn ffenestr cyllid y cwmni: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Dangos traciau wedi'u cadw: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Cadw'r offer adeiladu yn weithredol wedi ei ddefnydd: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grwpio costau yn ffenestr cyllid y cwmni: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uchafswm nifer trenau cwmni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Uchafswm cerbydau ffordd cwmni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Uchafswm awyrennau cwmni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Uchafswm llongau cwmni: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Analluogi adeiladu tanadeiledd pan nad oes cerbydau addas ar gael: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Uchafswm nifer trenau cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Uchafswm cerbydau ffordd cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Uchafswm awyrennau cwmni: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Uchafswm llongau cwmni: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Analluogi trenau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Analluogi trenau ar gyfer y cyfrifiadur: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Analluogi awyren ar gyfer y cyfrifiadur: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Analluogi llongau ar gyfer y cyfrifiadur: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Caniatáu AIau mewn gemau amlchwaraewr: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Nifer y gweithredoedd cyn diarddel sgriptiau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Caniatáu AIau mewn gemau amlchwaraewr: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nifer y gweithredoedd cyn diarddel sgriptiau: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethu ar gyfer trenau: {ORANGE}{STRING} diwrnod
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethu ar gyfer cerbyd ffordd: {ORANGE}{STRING} diwrnod
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethu ar gyfer awyrennau: {ORANGE}{STRING} diwrnod
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethu ar gyfer llongau: {ORANGE}{STRING} diwrnod
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer llongau: {ORANGE}disabled
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Galluogi terfynau cyflymder wagenni: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Analluogi cledrau trydan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Galluogi terfynau cyflymder wagenni: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Analluogi cledrau trydan: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Bydd newyddion lliw yn ymddangos yn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Blwyddyn dechreuol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Galluogi economi llyfn (mwy o newidiadau llai): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Canran o elw'r cymal i'w dalu mewn system fwydo: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn llusgo, gosod signalau bob: {ORANGE}{STRING} sgwâr{P 0:1 "" s}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Adeiladu semafforau cyn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Galluogi'r GUI signalau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Y math o signal i'w adeiladu fel rhagosodiad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bydd newyddion lliw yn ymddangos yn: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Galluogi economi llyfn (mwy o newidiadau llai): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Adeiladu semafforau cyn: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Galluogi'r GUI signalau: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Y math o signal i'w adeiladu fel rhagosodiad: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Signalau Bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Signalau Llwybr
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Signalau Llwybr Un-ffordd
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cylchu trwy mathau signal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cylchu trwy mathau signal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Signalau bloc yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Pob math
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Cynllun ffyrdd ar gyfer trefi newydd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Cynllun ffyrdd ar gyfer trefi newydd: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :rhagosodedig
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :ffyrdd gwell
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grid 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grid 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ar hap
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Caiff trefi adeiladu ffyrdd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Caniatáu i drefi adeiladau croesfannau rheilffordd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Caniatáu i drefi reoli lefel swn meysydd awyrenau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Sefydlu trefi mewn gêm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Caiff trefi adeiladu ffyrdd: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Caniatáu i drefi adeiladau croesfannau rheilffordd: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Caniatáu i drefi reoli lefel swn meysydd awyrenau: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Sefydlu trefi mewn gêm: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :gwahardd
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :caniatáu
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :caniatáu, cynllun tref addasiedig
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Gosod coed mewn gêm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Gosod coed mewn gêm: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :dim {RED}(yn torri'r felin goed)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :mewn glawgoedwigoedd yn unig
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :pob man
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Lleoliad y bar statws: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING} picsel
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radiws snap ffenestr: {ORANGE}analluogwyd
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Uchafswm ffenestri (nad yw'n ludiog): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Uchafswm ffenestri (nad yw'n ludiog): {ORANGE}wedi'i analluogi
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Lefel mwyháu uchafsymol: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Lefel mwyháu isafsymol: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Safle'r prif far offer: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Lleoliad y bar statws: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Uchafswm ffenestri (nad yw'n ludiog): {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Lefel mwyháu uchafsymol: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Lefel mwyháu isafsymol: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Arferol
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Cyflymder twf tref: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Cyflymder twf tref: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Dim
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Araf
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Arferol
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Cyflym
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Cyflym iawn
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Cyfran o drefi a fydd yn troi'n ddinasoedd: {ORANGE}1 o bob {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Cyfran o drefi a fydd yn datblygu'n ddinasoedd: {ORANGE}Dim
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Lluosydd cychwynol maint dinas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lluosydd cychwynol maint dinas: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Rhyngwyneb
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Adeiladu
@@ -1371,10 +1344,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Gwreiddiol
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Argymellir)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Llwybrwr ar gyfer cerbydau ffordd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrwr ar gyfer llongau: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Troi'n ôl yn awtomatig wrth signalau: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Llwybrwr ar gyfer trenau: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Llwybrwr ar gyfer cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Llwybrwr ar gyfer llongau: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Troi'n ôl yn awtomatig wrth signalau: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Newid gwerth gosodiad
 
@@ -4459,6 +4432,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

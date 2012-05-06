@@ -1118,240 +1118,213 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :stânga
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastă şi în pantă: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungimea maximă a trenurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelul de acceleraţie al trenurilor: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Modelul de acceleraţie pentru vehiculele rutiere: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Înclinarea pantei (pentru vehicule) {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă întoarceri la 90°: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite unirea staţiilor neînvecinate: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Foloseşte algoritm de încărcare îmbunătăţit: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Încarcă vehiculele gradual: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaţia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Livrează marfa doar în staţiile unde aceasta este cerută: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Lungimea maximă a podurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Lungimea maximă a tunelurilor: {ORANGE}{STRING} dal{P 0:1 ă e}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda manuală de construcţie a industriilor primare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite construirea pe coastă şi în pantă: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale locomotivei: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelul de acceleraţie al trenurilor: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelul de acceleraţie pentru vehiculele rutiere: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Interzice trenurilor şi navelor să facă întoarceri la 90°: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permite unirea staţiilor neînvecinate: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Foloseşte algoritm de încărcare îmbunătăţit: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Încarcă vehiculele gradual: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Livrează marfa doar în staţiile unde aceasta este cerută: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospecţie
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Suprafaţă plană în jurul industriilor: {ORANGE}{STRING} pătrăţel{P 0:1 "" e}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare în acelaşi oras: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afişează finanţele la sfârşitul fiecărui an: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ordinele noi sunt implicit 'fără oprire': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Ordinele noi pentru trenuri opresc implicit la {ORANGE}{STRING}{LTBLUE} platformei
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permite mai multe industrii similare în acelaşi oras: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Afişează finanţele la sfârşitul fiecărui an: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ordinele noi sunt implicit 'fără oprire': {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Ordinele noi pentru trenuri opresc implicit la {STRING} platformei
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :capătul apropiat al
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mijlocul
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :capătul îndepartat al
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Autovehiculele pot forma cozi (cu efecte cuantice): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permite cumpărarea de drepturi exclusive de transport: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Permite fondarea a noi clădiri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permite finanțarea reconstrucției străzilor locale: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite transfer de bani către alte companii: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de viteză pentru avioane: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Numărul avioanelor care se prăbușesc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autovehiculele pot forma cozi (cu efecte cuantice): {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Mută imaginea când mouse-ul este la marginea ecranului: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Permite mituirea autorităţilor locale: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite cumpărarea de drepturi exclusive de transport: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite fondarea a noi clădiri: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite finanțarea reconstrucției străzilor locale: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite transfer de bani către alte companii: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicator greutate pt marfar pt simularea trenurilor grele: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Numărul avioanelor care se prăbușesc: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nici unul
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite construirea staţiilor pe drumurile din proprietatea oraşului: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permite construirea staţiilor pe drumurile competitorilor: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permite construirea de staţii adiacente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Permite mai multe seturi NewGRF simultan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construirea staţiilor pe drumurile din proprietatea oraşului: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permite construirea staţiilor pe drumurile competitorilor: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permite construirea de staţii adiacente: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Permite mai multe seturi NewGRF simultan: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbarea acestei setări nu este permisă când există vehicule în joc
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Mentenanță infrastructură: {ORANGE}{STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mentenanță infrastructură: {STRING}
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroporturile nu expiră niciodată: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroporturile nu expiră niciodată: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avertisment dacă vehicolul s-a pierdut: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertisment dacă vehicolul s-a pierdut: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Verificarea ordinelor vehiculelor: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :pentru toate vehiculele
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avertisment dacă profitul unui vehicul este negativ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehiculele nu expiră niciodată: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoire automată pentru vehiculele învechite: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii maxime
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automată: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING} secunde
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Arată textele informative: {ORANGE}Ţine cursorul pe element pentru {STRING} secund{P 0:1 ă e}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Arată textele informative: {ORANGE}Click dreapta
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afişează populaţia unui oras lângă nume: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Grosimea liniilor din grafice: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avertisment dacă profitul unui vehicul este negativ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehiculele nu expiră niciodată: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automată pentru vehiculele învechite: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Înnoire automată cu {STRING} luni înainte de/după atingerea vechimii maxime
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Fonduri minime pentru înnoire automată: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosimea liniilor din grafice: {STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator teren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator teren: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distanţa maximă de la margine pt rafinăriile de petrol {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Grosimea stratului de zăpadă: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Duritatea terenului (doar pt TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratului de zăpadă: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Duritatea terenului (doar pt TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Algoritm amplasare arbori: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritm amplasare arbori: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Niciunul
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Îmbunătăţit
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaţie hartă înălţimi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă înălţimi: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Spre stânga
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Spre dreapta
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Nivelul înălţimii atins de o hartă plană: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permite terraformarea suprafeţelor din marginea hărţii: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Nivelul înălţimii atins de o hartă plană: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Permite terraformarea suprafeţelor din marginea hărţii: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una sau mai multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Întinderea maximă a staţiilor: {ORANGE}{STRING} pătrăţel{P 0:1 "" e} {RED}Atenţie: Valorile mari încetinesc jocul!
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/aeriane: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Culoarea terenului folosită pentru harta mică: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Service automat pentru elicoptere la helipaduri: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/aeriane: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Culoarea terenului folosită pentru harta mică: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Inversează direcţia de scroll: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Derulare uşoară ecran: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Arată culorile companiilor: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Inversează direcţia de scroll: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Arată culorile companiilor: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niciunul
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Propria companie
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Toate companiile
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Chat între membrii echipei folosind tasta <ENTER>: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funcţia roţii mouse-ului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Chat între membrii echipei folosind tasta <ENTER>: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funcţia roţii mouse-ului: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom hartă
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Derulează harta
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Inactivă
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Viteza de derulare a hărtii pt rotiţa mouse-ului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Viteza de derulare a hărtii pt rotiţa mouse-ului: {STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulare click-dreapta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulare click-dreapta: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Comandă+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Oprit
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Derulare ecran cu click-stânga: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Derulare ecran cu click-stânga: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Foloseşte formatul datei {ORANGE}{STRING}{LTBLUE} pentru numele salvărilor
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Foloseşte formatul datei {STRING} pentru numele salvărilor
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lung (31 Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :scurt (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}Paleta implicită pentru NewGRF-uri care nu specifică o paletă: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta implicită pentru NewGRF-uri care nu specifică o paletă: {STRING}
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paletă DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paletă Windows
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}La pornirea unui joc nou, pune-l pe pauză: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Când jocul este în pauză permite: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :La pornirea unui joc nou, pune-l pe pauză: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Când jocul este în pauză permite: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nici o acţiune
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toate acţiunile non-construcție
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toate exceptând modificarea terenului
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunile
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloseşte lista avansată de vehicule: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Foloseşte indicatorii de încărcare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arată orarul pe programări, nu pe zile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creare rapidă a ordinelor pentru vehicule: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipul implicit de şină (după joc nou/încarcare joc): {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Foloseşte lista avansată de vehicule: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Foloseşte indicatorii de încărcare: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Arată orarul pe programări, nu pe zile: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Afişează plecările şi sosirile în orare: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Creare rapidă a ordinelor pentru vehicule: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipul implicit de şină (după joc nou/încarcare joc): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibilă
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Arată liniile rezervate: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pastrează active instrumentele de construcţie după utilizare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Cheltuielile întregului grup de jucători în raportul financiar al companiei: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Arată liniile rezervate: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează active instrumentele de construcţie după utilizare: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Cheltuielile întregului grup de jucători în raportul financiar al companiei: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per companie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nr. max. de autovehicule per companie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave per companie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave per companie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Nr. max. de autovehicule per companie: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Nr. max. de aeronave per companie: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Nr. max. de nave per companie: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Dezactivează trenurile pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactivează navele pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Dezactivează trenurile pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Dezactivează aeronavele pentru jucătorii controlaţi de calculator: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Dezactivează navele pentru jucătorii controlaţi de calculator: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite Inteligenţă Artificială în multiplayer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Număr opcodes înainte de suspendarea scripturilor: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Inteligenţă Artificială în multiplayer: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Număr opcodes înainte de suspendarea scripturilor: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service în procente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}{STRING} zi{P 0:1 "" le}/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalul de service implicit pentru autovehicule: {ORANGE}{STRING} zi{P 0:1 "" le}/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalul de service implicit pentru autovehicule: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalul de service implicit pentru aeronave: {ORANGE}{STRING} zi{P 0:1 "" le}/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalul de service implicit pentru aeronave: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service implicit pentru nave: {ORANGE}{STRING} zi{P 0:1 "" le}/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service implicit pentru nave: {ORANGE}dezactivat
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Deactivare service când defecţiunile nu sunt active: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activează limite de viteză pentru vagoane: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Dezactivează şinele electrice: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :Deactivare service când defecţiunile nu sunt active: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activează limite de viteză pentru vagoane: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Dezactivează şinele electrice: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Ştirile color apar în: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Anul de început al jocului: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbări mai reduse, dar mai frecvente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite cumpărarea de acţiuni de la alte companii: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procentul din profitul final care va fi plătit intermediarilor: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasarea automată a semnalelor la fiecare: {ORANGE}{STRING} pătrăţele
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}La plasarea mai multor semale, păstrează distanţa fixă între acestea: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieşte automat semafoare înainte de: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tip semnal implicit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color apar în: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Economie cu schimbări mai reduse, dar mai frecvente: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activare GUI pentru semnale: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tip semnal implicit: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Semnal de bloc
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Semnale pentru linii
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Sens unic avansat
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ciclu prin tipurile de semnal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ciclu prin tipurile de semnal: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Doar normal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Doar avansat
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Toate
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Modelul drumurilor pentru oraşele noi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Modelul drumurilor pentru oraşele noi: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :implicit
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :drumuri mai bune
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grilă 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grilă 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleator
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Oraşele pot construi drumuri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Oraşele au voie să construiască treceri la nivel cu calea ferată: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot al aeroportului de către oras: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Crearea oraşelor în joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Oraşele pot construi drumuri: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Oraşele au voie să construiască treceri la nivel cu calea ferată: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permite controlarea nivelului de zgomot al aeroportului de către oras: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Crearea oraşelor în joc: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, layout particularizat al oraşului
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Poziţionarea copacilor în joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Poziţionarea copacilor în joc: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nici unul {RED}(afectează producţia fabricii de cherestea)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădurile tropicale
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Poziţia barei principale de instrumente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Poziţia barei de stare: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distanţa de lipire pentru ferestre: {ORANGE}{STRING} pixel{P 0:1 "" i}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}dezactivat
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Nivelul maxim de apropiere imagine: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Nivelul maxim de îndepărtare imagine: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Poziţia barei principale de instrumente: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivelul maxim de apropiere imagine: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivelul maxim de îndepărtare imagine: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :x4
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :x2
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :x2
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :x4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :x8
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a oraşului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Viteza de dezvoltare a oraşului: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Deloc
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lentă
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normală
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapidă
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Foarte rapidă
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}1 din {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporţia oraşelor care se vor dezvolta de două ori mai repede: {ORANGE}nici unul
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator iniţial dimensiune oraş: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Elimină elementele de drum absurde pe durata construcţiei drumului: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimină elementele de drum absurde pe durata construcţiei drumului: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaţă
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcţie
@@ -1376,10 +1349,10 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Original
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomandat)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Algoritm de rutare pentru autovehicule: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritm de rutare pentru nave: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Întoarcere automată la semafoare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritm de rutare pentru trenuri: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritm de rutare pentru autovehicule: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritm de rutare pentru nave: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Întoarcere automată la semafoare: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -4471,6 +4444,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}

@@ -1109,217 +1109,195 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :ляво
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :център
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :дясно
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модел на ускорение на влаковете: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Модел на ускорение на пътни превозни срества: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Стръмнина на склона за пътни превозни средства {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрани 90 градусовите завои: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Постепенно зареждане на автомобилите: {ORANGE}{STRING}
-STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Инфлация: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Доставяне на стока до станция само ако има търсене: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Ръчен строеж на първични индустрии: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Строене на склонове и брегове: {STRING.n}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :По-реалистична зона за обслужване: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Разрушаване на повече градска собственост: {STRING.n}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Количество на дим/искри от превозното средство: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Модел на ускорение на влаковете: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Модел на ускорение на пътни превозни срества: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :Забрани 90 градусовите завои: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Позволено е присъединяването на станции, които не се допират: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Подобрен алгоритъм за зареждане: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Постепенно зареждане на автомобилите: {STRING}
+STR_CONFIG_SETTING_INFLATION                                    :Инфлация: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Доставяне на стока до станция само ако има търсене: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Ръчен строеж на първични индустрии: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :нищо
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като други промишлености
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Равно място около индустрията: {ORANGE}{STRING} плочк{P а и}
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Влковете спират по подрабиране {ORANGE}{STRING}{LTBLUE} на платформата
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Няколко еднакви индустрии на град: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :Финансов отчет в края на годината: {STRING.m}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :По подразбиране новите зповеди са 'без спиране': {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Влковете спират по подрабиране {STRING} на платформата
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :в близкия край
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :по средата
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в далечния край
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Позволи купуване на изклучителни транспортни права: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител за симулация на тежки влакове: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Скоростен множител за самолети: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Разбивания на самолети: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Опашка на автомобилите (със сумарен ефект): {STRING.f}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :Местене на екрана когато мишката е в края: {STRING.n}
+STR_CONFIG_SETTING_BRIBE                                        :Подкупване на местната власт: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Позволи купуване на изклучителни транспортни права: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Позволи изпращане на пари до други компаний: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Теглови множител за симулация на тежки влакове: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Разбивания на самолети: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :никакви
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :намалени
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :нормални
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Преминаване през спирки на пътища, собственост на конкуренти: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Преминаване през спирки на градски пътища: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Преминаване през спирки на пътища, собственост на конкуренти: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Позвалявай допрени гари: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Няколко NewGRF алгоритъма едновременно: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има превозни средства.
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Летишата не губят валидност: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Летишата не губят валидност: {STRING}
 
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Преглед на заповеди: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Преглед на заповеди: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :изключен
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :включен, но без спрените ПС
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :включен
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение ако превозното средство е на загуба: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ПС не губят валидност: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматично поднови превозното средство, когато остарее: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Подновяване {ORANGE}{STRING}{LTBLUE} месец{P "" а} преди/след амортизацията на ПС
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Минимална сума за начало на подновяване: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Продължителност на съобщенията за грешки: {ORANGE}{STRING} сек.
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Население в табелата на града: {ORANGE}{STRING.n}
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждение ако превозното средство е на загуба: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :ПС не губят валидност: {STRING.n}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоматично поднови превозното средство, когато остарее: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Подновяване {STRING} месец{P 0:2 "" а} преди/след амортизацията на ПС
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Минимална сума за начало на подновяване: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Население в табелата на града: {STRING.n}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор на земя: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор на земя: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :оригинален
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :тера-генезис
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Разстояние на рафинериите от края на картата: {ORANGE}{STRING} плочк{P а и}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Снежната ивица: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Стръмност на терен (само за TerraGenesis): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Снежната ивица: {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Стръмност на терен (само за TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :много полегат
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :полегат
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :стръмен
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :много стръмен
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Алгоритъм за поставяне на дървета: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER                                  :Алгоритъм за поставяне на дървета: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :без дървета
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :оригинален
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :подобрен
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Завъртане на картата: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Завъртане на картата: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Височина на картата за плосък сценарий: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Разреши тераформирането на терена в краищата на картата: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Височина на картата за плосък сценарий: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Разреши тераформирането на терена в краищата на картата: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Една или повече плочи в северния край не са празни
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Един или повече от плочките в един от краищата не е вода
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. разпръснатост на станция: {ORANGE}{STRING} {RED}Внимание: високите стойности забавят играта
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Автоматичен сервиз на хеликоптерите при кацане на хелипад: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Инструменти за терен при другите инструменти: {ORANGE}{STRING.p}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвят на земята на малката карта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Автоматичен сервиз на хеликоптерите при кацане на хелипад: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Инструменти за терен при другите инструменти: {STRING.p}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Цвят на земята на малката карта: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Тъмно зелен
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Виолетов
-STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Обърната посока на преместване: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавно местене на камера: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Подсказка за разстояние при строене: {ORANGE}{STRING.f}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Показване ливреите на: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Обърната посока на преместване: {STRING.n}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавно местене на камера: {STRING.n}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Подсказка за разстояние при строене: {STRING.f}
+STR_CONFIG_SETTING_LIVERIES                                     :Показване ливреите на: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нито една компания
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :собствената компания
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :всички компании
-STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Разговор с отбора при натискане на <ENTER>: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Колелото на мишката: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Разговор с отбора при натискане на <ENTER>: {STRING.n}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Колелото на мишката: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :променя увеличението
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :превърта картата
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не прави нищо
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Превъртане на картата: {ORANGE}{STRING} клетк{P а и}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Превъртане на картата: {STRING} клетк{P 0:2 а и}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Дясно-щракане емулациа: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Дясно-щракане емулациа: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скролиране с ляв бутон: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скролиране с ляв бутон: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Използвай {ORANGE}{STRING}{LTBLUE} формат на датата за имена на записаните игри.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Използвай {STRING} формат на датата за имена на записаните игри.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Игрите започват в пауза: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}По време на пауза разреши: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Игрите започват в пауза: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :По време на пауза разреши: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :без действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :всички нестроителни действия
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :всичко без действия за промяна на терена
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :всички действия
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Разширен списък на ПС: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Товарни индикатори: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Разписанието в цикли вместо дни: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Покажи пристигането и заминаването в расписанията: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Бързо създаване на задачите на превозните средства: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Стандартни релси: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Разширен списък на ПС: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Товарни индикатори: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Разписанието в цикли вместо дни: {STRING.n}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Покажи пристигането и заминаването в расписанията: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Бързо създаване на задачите на превозните средства: {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Стандартни релси: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :първите налични
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :последните налични
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Покажи запазените линии/пътища: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Запази инстументите активни след употреба: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групирай разходите във финансовия прозорец на компанията: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Покажи запазените линии/пътища: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Запази инстументите активни след употреба: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групирай разходите във финансовия прозорец на компанията: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове за компания: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Макс. брой коли за компания: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Макс. брой самолети за компания: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Макс. брой кораби за компания: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Макс. брой влакове за компания: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Макс. брой коли за компания: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Макс. брой самолети за компания: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Макс. брой кораби за компания: {STRING}
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Премахване на влаковете за компютърния играч: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Премахване на пътните превозни средства за компютърния играч: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Премахване на летателните машини за компютърния играч: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Премахване на корабите за компютърния играч: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Премахване на влаковете за компютърния играч: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Премахване на пътните превозни средства за компютърния играч: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Премахване на летателните машини за компютърния играч: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Премахване на корабите за компютърния играч: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Позволи AI в мрежова игра: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Позволи AI в мрежова игра: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
-STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}без сервиз
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}{STRING} дни/%
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}без сервиз
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}{STRING} дни/%
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}без сервиз
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}{STRING} дни/%
-STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}без сервиз
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Без сервиз когато повредите са изключени: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Вагоните имат ограничение на скоростта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Без електрически влакове: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал на сервиз е в проценти: {STRING.n}
+STR_CONFIG_SETTING_NOSERVICE                                    :Без сервиз когато повредите са изключени: {STRING.n}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Вагоните имат ограничение на скоростта: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Без електрически влакове: {STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветни новини се появяват през: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Разреши плавна икономика (повече по-малки промени): {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разреши купуване на акции от други компании: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Процент на заплащане в помощните системи: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Инструменти за сигналите: {ORANGE}{STRING.p}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Подразбиращ се вид на сигнала при строене : {ORANGE}{STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветни новини се появяват през: {STRING}
+STR_CONFIG_SETTING_STARTING_YEAR                                :Начална година: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Разреши плавна икономика (повече по-малки промени): {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разреши купуване на акции от други компании: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Поставяне на семафори преди: {STRING} година
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Инструменти за сигналите: {STRING.p}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Подразбиращ се вид на сигнала при строене : {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Нормален
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Напреднат
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Еднопосочен напреднат
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Смяна на вида сигнал: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Смяна на вида сигнал: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Само нормален
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Само напреднат
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Всички
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Пътно оформление за нови градове: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Пътно оформление за нови градове: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :случаен
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Градове са разрешени да изграждат пътища: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}На градовете е позолено да строят кръстовища: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Градовете контролират нивото на шум от летищата: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Построяване на градове в играта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Градове са разрешени да изграждат пътища: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :На градовете е позолено да строят кръстовища: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Градовете контролират нивото на шум от летищата: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Построяване на градове в играта: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :забранено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с избираем план на града
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Разпределяне на дърветата в гората: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :без {RED}(разваля дъскорезницата)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :само в дъждовни гори
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :навсякъде
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Разположение на лентата за състоянието: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} пиксел{P 0:1 "" а}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Максимално количество на прозореците без залепване: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Максимално количество на прозореците без залепване: {ORANGE}изключено
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Скорост на разтеж на града: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Разположение на лентата за състоянието: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимално количество на прозореците без залепване: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Скорост на разтеж на града: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Никаква
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Бавна
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Нормална
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Бърза
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Много бърза
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Премахване на абсурдни разклонения при строене на пътища: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Множител за големината на града: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Премахване на абсурдни разклонения при строене на пътища: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строене
@@ -1342,9 +1320,9 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Инд�
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(препоръчва се)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Пътенамирач за влакове: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Пътенамирач за автомобили: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Пътенамирач за кораби: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Пътенамирач за влакове: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Пътенамирач за автомобили: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Пътенамирач за кораби: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
@@ -4249,6 +4227,7 @@ STR_ORANGE_STRING                                               :{ORANGE}{STRING
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_ORANGE_STRING1_LTBLUE                                       :{ORANGE}{STRING}{LTBLUE}
 STR_TINY_BLACK_HEIGHT                                           :{TINY_FONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINY_FONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINY_FONT}{RIGHT_ARROW}
