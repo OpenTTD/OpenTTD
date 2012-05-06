@@ -896,6 +896,8 @@ STR_GAME_OPTIONS_CURRENCY_SKK                                   :Corona Eslovaca
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brasileño (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonio (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituana (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Surcoreano (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand sudafricano (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizada...
 ############ end of currency region
 
@@ -1121,20 +1123,32 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la con
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo carreteras, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir tamaño del área de captación más realista: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir eliminar más propiedades de pueblos: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantidad de humo/chispas: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleración de trenes: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleración para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinación de cuestas para trenes: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinación de cuestas para vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibir a trenes y barcos realizar giros de 90 grados: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir unir estaciones no adyacentes: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo mejorado de carga: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Cargar vehículos gradualmente: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflación: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entregar mercancía a una estación sólo si hay demanda: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longitud máxima de puentes: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxima de túneles: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de construcción de industria primaria: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ninguno
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como las otras industrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospección
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana alrededor de industrias: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Construcción de más de una industria similar por pueblo: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar señales: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En el lado de conducción
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuevas órdenes son 'sin parada' por defecto: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuevos trenes paran por defecto en el {STRING} de la plataforma
@@ -1149,6 +1163,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la con
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocidad de aeronaves: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Cantidad de aviones estrellados: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ninguno
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducida
@@ -1170,13 +1186,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las ganancias de un vehículo son negativas: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente cuando el vehículo tenga {STRING} años como máximo
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" es} antes
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" es} después
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mínimo de dinero requerido para renovación automática: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de mensajes de error: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Mantener ratón durante {COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un pueblo en su etiqueta: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Aspereza del terreno (Sólo TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
@@ -1195,6 +1220,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Habilitar la mo
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Expansión máxima de estaciones: {STRING} {RED}Advertencia: Valores altos pueden ralentizar
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Mantener los helicópteros en helipuertos automáticamente: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Une la barra de terreno a la barra de construcción: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color de terreno usado en el mapa: {STRING}
@@ -1261,10 +1287,16 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactivar veh�
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactivar aeroplanos para el ordenador: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactivar barcos para el ordenador: {STRING}
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA en multijugador (experimental): {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IAs en multijugador: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de que los scripts sean suspendidos: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervalo de mantenimiento en porcentajes: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo de mantenimiento por defecto para trenes: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :deshabilitado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo de mantenimiento por defecto para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo de mantenimiento por defecto para aeronaves: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo de mantenimiento por defecto para barcos: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactivar mantenimiento cuando las averías están desactivadas: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad en vagones: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarriles eléctricos: {STRING}
@@ -1273,6 +1305,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias en col
 STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía suave (cambios más pequeños): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje del beneficio total a pagar en transferencias: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar la GUI de señales: {STRING}
@@ -1306,7 +1341,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición de la barra de herramientas principal: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posición de la barra de estado: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radio de fijación de ventana: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" se}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deshabilitado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número de ventanas no-ancladas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deshabilitado
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Máximo acercamiento: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Máximo alejamiento: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1321,6 +1361,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muy rápida
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirá en ciudades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ninguno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial tamaño de ciudad: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Quitar absurdos de la carretera durante su construcción: {STRING}
 
@@ -2698,6 +2741,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Esta estación tiene derechos de transporte exclusivos en este pueblo.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} compró derechos de transporte exclusivo en este pueblo.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ranking
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver calificación de la estación

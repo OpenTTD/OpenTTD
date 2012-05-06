@@ -1122,19 +1122,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Rakentaminen ri
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman kokoiset vaikutusalueet: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Kaupungin omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Junien maksimipituus: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ruutu{P 0 "" a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Kulkuneuvon savun/kipinöiden määrä: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Junien kiihdytysmalli: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Ajoneuvojen kiihdytysmalli: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Mäkien jyrkkyys junille: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Mäkien jyrkkyys ajoneuvoille: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :90 asteen käännökset kielletty junilta ja laivoilta: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Salli ei-vierekkäisten asemien yhdistäminen: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Käytä kehittyneempää lastausalgoritmia: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lataa kulkuneuvot vähitellen: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflaatio: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Pura rahti asemalle vain, kun on kysyntää: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Suurin sallittu sillan pituus: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Suurin sallittu tunnelin pituus: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuaalinen raakateollisuuden rakentamistapa: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ei mikään
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut tehtaat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Teollisuutta ympäröivä tasainen maasto: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Näytä opastimet: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasemmalla puolella
@@ -1154,6 +1162,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennust
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Salli paikallisen tieverkon uudelleenrakentamisen rahoitus: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Salli rahan lähettäminen muille yhtiöille: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Rahdin painokerroin raskaiden junien simulointia varten: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Lentokoneiden nopeuskerroin: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lentokoneonnettomuuksien määrä: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ei yhtään
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :vähennetty
@@ -1175,13 +1185,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :kaikille ajoneu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varoita, jos kulkuneuvon tulos on negatiivinen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Ajoneuvot eivät vanhene: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista ajoneuvo automaattisesti, kun se vanhenee: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uudista automaattisesti {STRING} ajoneuvon suurinta sallittua ikää
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuukau{P 0 si tta} ennen
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuukau{P 0 si tta} jälkeen
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä ajoneuvon automaattiseen uudistukseen: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoitusten näyttöaika: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekunti{P 0 "" a}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Näytä työkaluvihjeet: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Pidä hiirtä päällä {COMMA} sekunti{P 0 "" a}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Hiiren oikea näppäin
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Näytä kaupungin asukasluku kaupungin nimessä: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Viivojen paksuus kuvaajissa: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maastogeneraattori: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljynjalostamoille: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus (vain TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
@@ -1200,6 +1219,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Salli maanmuokk
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Suurin sallittu aseman levitteisyys: {STRING} {RED}Varoitus: Korkea arvo hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Huolla helikopterit helikopterialustoilla automaattisesti: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartassa käytettävä maan väri: {STRING}
@@ -1270,6 +1290,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Salli tekoälyt
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodet ennen skriptin pysäyttämistä: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Huoltovälit ovat prosentteina: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Junien huoltoväli oletuksena: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} päivä{P 0 "" ä}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :pois käytöstä
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Ajoneuvojen huoltoväli oletuksena: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lentokoneiden huoltoväli oletuksena: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivojen huoltoväli oletuksena: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Huollot pois käytöstä, kun rikkoutumiset on pois: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ota käyttöön vaunujen nopeusrajoitukset: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Poista sähköradat käytöstä: {STRING}
@@ -1278,6 +1304,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värilliset uut
 STR_CONFIG_SETTING_STARTING_YEAR                                :Aloitusvuosi: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tasainen talous (enemmän pieniä muutoksia): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Salli osakkeiden ostaminen muista yhtiöistä: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Syöttöjärjestelmään maksettavan tuoton osuus: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Opastimien väli vedettäessä: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruutu{P 0 "" a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Vedettäessä, pidä opastimien välinen matka vakiona: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Rakenna oletuksena siipiopastimia ennen vuotta: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Käytä graafista opastinkäyttöliittymää: {STRING}
@@ -1311,7 +1340,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Tilarivin sijainti: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ikkunoiden kiinnittymisetäisyys: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikseli{P 0 "" ä}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :pois käytöstä
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :pois käytöstä
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurin sallittu suurennustaso: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Suurin sallittu pienennystaso: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1326,6 +1360,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Tavallinen
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Suurkaupunkien osuus: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Poista turhat tie-elementit tienrakennuksen aikana: {STRING}
 
@@ -2703,6 +2740,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Ottaa vastaan
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näytä luettelo vastaanotettavasta rahdista.
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Vastaanottaa: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tällä asemalla on kuljetusyksinoikeus tässä kaupungissa.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} osti tämän kaupungin kuljetusyksinoikeuden.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Arviot
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä aseman arviot.

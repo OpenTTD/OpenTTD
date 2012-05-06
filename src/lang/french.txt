@@ -1123,19 +1123,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Construction c�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longueur maximum des trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} case{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantité de fumée/étincelles des véhicules{NBSP}: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modèle d'accélération des trains{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modèle d'accélération des véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinaison des pentes pour les trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinaison des pentes pour les véhicules routiers{NBSP}: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Interdire aux trains et aux navires les virages à 90°{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permettre de joindre des stations non adjacentes{NBSP}: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utiliser l'algorithme amélioré de chargement{NBSP}: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Charger les véhicules graduellement{NBSP}: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflation{NBSP}: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Livrer la cargaison seulement sur demande{NBSP}: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longueur maximum des ponts{NBSP}: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longueur maximum des tunnels{NBSP}: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Méthode de construction manuelle des industries primaires{NBSP}: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Aucune
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Comme les autres industries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospection
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Terrain plat autour des industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permettre plusieurs industries similaires par ville{NBSP}: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Montrer les signaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :à gauche de la voie
@@ -1155,6 +1163,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permettre le fi
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Autoriser le financement de la reconstruction de routes locales{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Autoriser l'envoi d'argent aux autres compagnies{NBSP}: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplier le poids pour les trains de fret (simule des trains lourds){NBSP}: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Facteur de vitesse des aéronefs{NBSP}: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombre d'accidents d'avion{NBSP}: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Aucun
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Réduit
@@ -1176,13 +1186,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De tous les vé
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Alerter en cas de revenu négatif pour un véhicule{NBSP}: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Les véhicules n'expirent jamais{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renouveler automatiquement les véhicules vieillissants{NBSP}: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renouveler automatiquement quand le véhicule est {STRING} l'âge maximum
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mois avant
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mois après
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Argent minimum avant auto-renouvellement{NBSP}: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Temps d'affichage des messages d'erreur{NBSP}: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Affichage des infobulles{NBSP}: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Survoler pendant {COMMA} seconde{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Clic droit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afficher la population d'une ville dans son label{NBSP}: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Épaisseur des lignes dans les graphiques{NBSP}: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Générateur de terrain{NBSP}: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les raffineries{NBSP}: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain (TerraGenesis seulement){NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
@@ -1201,6 +1220,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Autoriser le te
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord Nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Étendue maximum des gares{NBSP}: {STRING} {RED}Attention{NBSP}: valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Relier la barre d'outils paysage avec celle du rail/route/eau/aéroport{NBSP}: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Couleur utilisée pour le terrain sur la mini-carte{NBSP}: {STRING}
@@ -1271,6 +1291,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permettre les I
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Nombre d'opcodes avant d'interrompre les scripts{NBSP}: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Les intervalles de service sont en pourcentage{NBSP}: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalle d'entretien par défaut pour les trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} jour{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :désactivé
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalle d'entretien par défaut pour les navires{NBSP}: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Désactiver l'entretien quand les pannes sont inactives{NBSP}: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activer la vitesse limite des wagons{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Désactiver les rails électriques{NBSP}: {STRING}
@@ -1279,6 +1305,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les journaux en
 STR_CONFIG_SETTING_STARTING_YEAR                                :Année de départ{NBSP}: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Permettre une économie stable (petits changements plus nombreux){NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permettre d'acheter des actions d'autres compagnies{NBSP}: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Pourcentage du profit de branche à payer dans les systèmes multimodaux{NBSP}: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Espacement des signaux en mode glisser-déposer{NBSP}: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} case{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Espacement fixe entre les signaux en mode glisser-déposer{NBSP}: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construire automatiquement des sémaphores avant{NBSP}: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activer l'interface graphique pour les signaux{NBSP}: {STRING}
@@ -1312,7 +1341,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position de la barre d'outils principale{NBSP}: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position de la barre d'état{NBSP}: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Rayon d'attraction des fenêtres{NBSP}: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :désactivé
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre maximum de fenêtres non punaisées{NBSP}: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :désactivé
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Zoom avant maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Zoom arrière maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1327,6 +1361,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lente
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normale
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapide
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Très rapide
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportion des villes qui deviendront des métropoles{NBSP}: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 sur {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Retirer les éléments absurdes lors de la construction des routes{NBSP}: {STRING}
 
@@ -2704,6 +2741,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepte
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afficher les marchandises acceptées
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepte{NBSP}: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Cette station a les droits de transports exclusifs dans cette ville.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a acheté les droits de transports exclusifs dans cette ville..
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Qualité
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afficher la qualité de service de la station

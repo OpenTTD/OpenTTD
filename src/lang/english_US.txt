@@ -1122,19 +1122,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow terraforming under buildings, tracks, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Allow removal of more town-owned roads, bridges and tunnels: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum length of trains: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tile{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Amount of vehicle smoke/sparks: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Train acceleration model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Road vehicle acceleration model: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Slope steepness for trains: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Slope steepness for road vehicles: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains and ships to make 90 deg turns: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow joining stations not directly adjacent: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Use improved loading algorithm: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Load vehicles gradually: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Deliver cargo to a station only when there is a demand: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum bridge length: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel length: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primary industry construction method: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flat area around industries: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :On the left
@@ -1154,6 +1162,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Allow funding b
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Allow funding local road reconstruction: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Allow sending money to other companies: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Weight multiplier for freight to simulate heavy trains: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Plane speed factor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Number of plane crashes: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :none
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduced
@@ -1175,13 +1185,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :of all vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehicle's income is negative: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING} max age
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} month{P 0 "" s} before
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} month{P 0 "" s} after
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenew minimum needed money for renew: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of error message: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} second{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Right click
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Show town population in the town name label: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Thickness of lines in graphs: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max distance from edge for Oil Refineries: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain (TerraGenesis only) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
@@ -1200,6 +1219,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Enable terrafor
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Max station spread: {STRING} {RED}Warning: High value slows game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Perform maintenance on helicopters at helipads automatically: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Link landscape toolbar to rail/road/water/airport toolbars: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Land color used in the minimap: {STRING}
@@ -1270,6 +1290,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in mu
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Maintenance intervals are in percents: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default maintenance interval for trains: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} day{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :disabled
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Default maintenance interval for road vehicles: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default maintenance interval for aircraft: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default maintenance interval for ships: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Disable maintenance when breakdowns are set to none: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
@@ -1278,6 +1304,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Colored news ap
 STR_CONFIG_SETTING_STARTING_YEAR                                :Starting date: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Enable smooth economy (more, smaller changes): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :When dragging, place signals every: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tile{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :When dragging, keep fixed distance between signals: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically build semaphores before: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Enable the signal GUI: {STRING}
@@ -1311,7 +1340,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :everywhere
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position of main toolbar: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of statusbar: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :disabled
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum number of non-sticky windows: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :disabled
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximum zoom in level: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximum zoom out level: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1326,6 +1360,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slow
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Fast
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Very fast
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportion of towns that will become cities: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :none
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remove absurd road-elements during the road construction: {STRING}
 
@@ -2703,6 +2740,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepts
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Show list of accepted cargo
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepts: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}This station has exclusive transport rights in this town.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} bought exclusive transport rights in this town.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ratings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Show station ratings

@@ -894,6 +894,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türkësch Lire
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakësch Kroun (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasilianësch Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estnësch Kroun (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Lithauësch Litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Südkoreanëschen Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Südafrikanësche Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Eegen...
 ############ end of currency region
 
@@ -1133,6 +1136,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Erlaabt méi der selwecht Industrien pro Stad: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weis Signaler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Lénks
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Op der Fuerersäit
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Riets
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Weis d'Finanzen um Ënn vum Joër: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nei Opträg sinn 'non-stop' par defaut: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nei Zichuerder stoppen par defaut um {STRING} vun der Plate-Form
@@ -1271,6 +1278,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Faarweg News ab
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjoer: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gläichméisseg Economie aschalten (méi oft an kleg Wiessel): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firmen kafen: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Beim Zéien, behal eng fix Distanz tëscht Signaler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatesch Diksen bauen firun: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signal GUI erlaaben: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard Signal-Typ: {STRING}
@@ -1454,8 +1462,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Weist Zu
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Weist Stroossengefierer Faarwschemen
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Weist d'Schëff Faarwschemen
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Weist Fliger Faarwschemen
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wielt d'Primärfaarw fir den ausgewieltenen Schema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wielt d'Sekundärfaarw fir den ausgewieltenen Schema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Wielt d'Primärfaarw fir den ausgewieltenen Schema. Ctrl+Klick wielt dës Faarw fir all Schema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Wielt d'Sekundärfaarw fir den ausgewieltenen Schema. Ctrl+Klick wielt dës Faarw fir all Schema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Wielt en Faarwschema fir ze änneren, oder en puer Schemen mat CTRL+Klick. Klickt op d'Këscht fir d'Schemanotzung ze wieselen
 
 STR_LIVERY_DEFAULT                                              :Standard Tracht
@@ -2696,6 +2704,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepté
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Weis d'Lëscht vun den acceptéierten Wueren
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptéiert: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokal Bewertungen vun den Transporter:
@@ -2721,6 +2730,9 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Weis all
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Weis all Schëffer déi des Statioun an hierem Zaitplang hun
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :D'Gare ëmbenennen
+
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Fluchhafen zouman
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hal de Fliger dovun of op dësem Fluchhafen ze landen
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3078,9 +3090,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wielt de
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wielt den neien Typ den benotzt soll ginn amplaz vun der lénks gewielter Maschin
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefierterremplacement
+STR_REPLACE_VEHICLES_NOW                                        :All Gefier elo ersetzen
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nëmmen al Gefierer ersetzen
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drécken fir den Remplacement vun der lénker mat der rietser Maschin unzefenken
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Net remplacéiert:
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Keen gefier gewielt
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wann aal
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefierterremplacement
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir Remplacement ze stoppen
 
@@ -3629,6 +3644,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... am B
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... d'Plaz ass am Besëtz vun enger aanerer Firma
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... Limit fir d'Emformen vun Land erreescht
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... Limit fir d'Läschen vun Felder erreescht
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... Limit fir Beem ze planzen erreescht
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numm muss eenzegartëg sinn
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} am Wee
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net erlabt an der Paus
