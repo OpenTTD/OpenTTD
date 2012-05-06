@@ -1261,7 +1261,6 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	bool editable = true;
-	bool disabled = false;
 
 	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right - 19 : left;
@@ -1282,19 +1281,16 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		DrawBoolButton(buttons_left, button_y, on, editable);
 		SetDParam(1, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
-		int32 value;
-
-		value = (int32)ReadValue(var, sd->save.conv);
+		int32 value = (int32)ReadValue(var, sd->save.conv);
 
 		/* Draw [<][>] boxes for settings of an integer-type */
-		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
-
-		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
+		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
+				editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
 
 		if ((sdb->flags & SGF_MULTISTRING) != 0) {
 			SetDParam(1, sdb->val_str - sdb->min + value);
 		} else {
-			SetDParam(1, sdb->val_str + disabled);
+			SetDParam(1, sdb->val_str + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
 		}
 		SetDParam(2, value);
 	}
