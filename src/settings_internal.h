@@ -40,7 +40,6 @@ enum SettingGuiFlagLong {
 	 * Flags directing saving/loading of a variable */
 	SGF_NONE = 0,
 	SGF_0ISDISABLED  = 1 << 0, ///< a value of zero means the feature is disabled
-	SGF_NOCOMMA      = 1 << 1, ///< number without any thousand seperators (no formatting)
 	SGF_MULTISTRING  = 1 << 2, ///< the value represents a limited number of string-options (internally integer)
 	SGF_NETWORK_ONLY = 1 << 3, ///< this setting only applies to network games
 	SGF_CURRENCY     = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
