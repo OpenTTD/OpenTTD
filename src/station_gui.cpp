@@ -29,6 +29,7 @@
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
 #include "vehiclelist.h"
+#include "town.h"
 
 #include "widgets/station_widget.h"
 
@@ -1081,6 +1082,12 @@ struct StationViewWindow : public Window {
 	{
 		const Station *st = Station::Get(this->window_number);
 		int y = r.top + WD_FRAMERECT_TOP;
+
+		if (st->town->exclusive_counter > 0) {
+			SetDParam(0, st->town->exclusivity);
+			y = DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, r.bottom, st->town->exclusivity == st->owner ? STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF : STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY);
+			y += WD_PAR_VSEP_WIDE;
+		}
 
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_VIEW_CARGO_RATINGS_TITLE);
 		y += FONT_HEIGHT_NORMAL;

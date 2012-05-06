@@ -2822,6 +2822,8 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 		t->exclusivity = _current_company;
 
 		ModifyStationRatingAround(t->xy, _current_company, 130, 17);
+
+		SetWindowClassesDirty(WC_STATION_VIEW);
 	}
 	return CommandCost();
 }
