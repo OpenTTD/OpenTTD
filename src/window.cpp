@@ -557,7 +557,7 @@ static bool MayBeShown(const Window *w)
 	switch (w->window_class) {
 		case WC_MAIN_WINDOW:    ///< The background, i.e. the game.
 		case WC_MODAL_PROGRESS: ///< The actual progress window.
-		case WC_QUERY_STRING:   ///< The abort window.
+		case WC_CONFIRM_POPUP_QUERY: ///< The abort window.
 			return true;
 
 		default:
