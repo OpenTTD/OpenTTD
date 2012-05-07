@@ -1502,19 +1502,25 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budowa�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksymalna długość pociągów: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} p{P 0 ole ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ilość dymu / iskier lokomotywy: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model przyspieszania pociągu: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model przyspieszania samochodów: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabroń pociągom i statkom skręcać o 90 stopni: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Użyj ulepszonego algorytmu załadunku: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Stopniowy załadunek pojazdów: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksymalna długość mostu: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna długość tunelu: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Pokaż semafory: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Po lewej
@@ -1534,6 +1540,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fund
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Pozwalaj na sponsorowanie odbudowy lokalnych dróg: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pozwól na wysyłanie pieniędzy do innych firm: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Prędkość samolotów: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Liczba katastrof lotniczych: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brak
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zredukowana
@@ -1555,13 +1563,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich poja
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} miesi{P 0 ąc ęcy} przed
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} miesi{P 0 ąc ęcy} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Min. ilość pieniędzy potrzebna do autoodnowienia: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetlania komunikatów o błędach: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 a ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Prawy klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaż populację miasta w jego nazwie: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii na wykresie: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator krajobrazu: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Wyboistość terenu (w TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
@@ -1580,6 +1595,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Włącz kształ
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedno lub więcej pól na północnej krawędzi nie jest puste
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedno lub więcej pól na krawędzi nie jest wodą
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksymalna rozległość stacji: {STRING} {RED}Uwaga: Wysoka wartość spowalnia grę
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatycznie serwisuj helikoptery na lądowiskach: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia krajobrazu do okien środków transportu: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kolor lądu używany w minimapie: {STRING}
@@ -1650,6 +1666,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Pozwól na SI w
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :ilość #opcodes przed uśpieniem skryptu: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Okres między serwisowaniami w procentach: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 zień ni}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :wyłączone
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Domyślny interwał serwisowania pojazdów: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Domyślny interwał serwisowania samolotów: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Domyślny interwał serwisowania statków: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Wyłącz serwisowanie jeśli awarie pojazdów są wyłączone: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Włącz limity prędkości wagonów: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Zabroń korzystania z kolei elektrycznych: {STRING}
@@ -1658,6 +1680,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Pojawienie się
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data rozpoczęcia gry: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łagodną ekonomię (więcej małych zmian): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeciągania ustaw semafor co: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P 0 ole ola}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Zachowaj stały odstęp między semaforami przy przeciąganiu: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Uaktywnij okno budowania sygnałów: {STRING}
@@ -1691,7 +1715,11 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :wszędzie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozycja paska stanu: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" i}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :wyłączone
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksymalna liczba nie przyszpilonych okien: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :wyłączone
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksymalne przybliżenie: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksymalne oddalenie: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1706,6 +1734,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mała
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normalna
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :duża
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :bardzo duża
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miejscowości, które będą miastami: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg: {STRING}
 

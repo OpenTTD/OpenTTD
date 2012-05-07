@@ -1123,19 +1123,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Das Bauen an H�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Landschaftsbau unter Gebäuden, Gleisen, usw. erlauben: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Entfernung von weiteren Straßen, Brücken, usw. erlauben: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximale Länge von Zügen: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} Feld{P 0 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Menge an Rauch / Funken von Lokomotiven: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Beschleunigungsmodell für Züge: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Beschleunigungsmodell für Straßenfahrzeuge: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Steigung für Züge: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Steigung für Straßenfahrzeuge: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zügen und Schiffen 90°-Kurven verbieten: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaubt nicht direkt benachbarte Stationen zu verbinden: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Verbessertes Beladeverfahren nutzen: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Fahrzeuge schrittweise beladen: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Stationen werden nur mit Fracht beliefert, wenn ein Fahrzeug sie von dort abholt: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximallänge für Brücken: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximallänge für Tunnel: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manueller Bau von Rohstoffindustrien: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nicht erlaubt
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Durch Prospektion
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flaches Gelände um Industrien: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Mehrere gleichartige Industrien pro Stadt erlauben: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Zeige Signale: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Auf der linken Seite
@@ -1155,6 +1163,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Finanzieren von
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finanzierung von Straßenbauarbeiten erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Schenken von Geld an andere Firmen erlauben: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Frachtgewicht erhöhen, um schwere Züge zu simulieren: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Geschwindigkeitsfaktor für Flugzeuge: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Anzahl Flugzeugabstürze: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :keine
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verringert
@@ -1176,13 +1186,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Für alle Fahrz
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen, wenn Einnahmen eines Fahrzeuges negativ sind: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fahrzeuge veralten nie: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Fahrzeuge automatisch erneuern, wenn sie alt werden: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatisches Erneuern, wenn das Fahrzeug {STRING} dem Maximalalter
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} Monat{P 0 "" e} vor
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} Monat{P 0 "" e} über
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimaler Kontostand für automatisches Erneuern: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Anzeigedauer für Fehlermeldungen: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekunde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Zeige Hilfe-Texte: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover für {COMMA} Sekunde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zeige die Einwohnerzahl von Städten neben ihrem Namen: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linienstärke in Diagrammen: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Algorithmus zur Landschaftserzeugung: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölrafinerien: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze auf: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit (nur TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
@@ -1201,6 +1220,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Landschaftsbau 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ein oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maximale Bahnhofsgröße: {STRING} {RED}Warnung: Große Werte verlangsamen das Spiel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Hubschrauber auf Landeplatz automatisch warten: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Farbe für Land auf der Weltkarte: {STRING}
@@ -1271,6 +1291,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :KI im Mehrspiel
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#OpCodes bevor das Skript angehalten wird: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Wartungsintervalle in Prozent: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard-Serviceintervall für Züge: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} Tag{P 0 "" e}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :deaktiviert
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard-Serviceintervall für Straßenfahrzeuge: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard-Serviceintervall für Luftfahrzeuge: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard-Serviceintervall für Schiffe: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktivieren, wenn Pannen abgeschaltet: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
@@ -1279,6 +1305,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farbige Nachric
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startdatum: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Handel mit Firmenanteilen erlauben: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prozentsatz des Profits für Teilstrecken: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Signalabstand beim Ziehen: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} Feld{P 0 "" er}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Signalabstand nach Lücken (durch Tunnel, Brücken) nicht verkürzen : {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatischer Bau von Formsignalen bis: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiviere Signal-Menü: {STRING}
@@ -1312,7 +1341,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :überall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position der Werkzeugleiste: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position der Statuszeile: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Einfangradius für Fenster: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} Pixel
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deaktiviert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximale Fensteranzahl (nicht angepinnte): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiviert
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Hineinzoomstufe: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximale Herauszoomstufe: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1327,6 +1361,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langsam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Mittel
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Schnell
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Sehr schnell
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Anteil der Städte, die Großstädte werden: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 aus {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :keine
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Großstädten bei Spielbeginn: {STRING}x
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Entferne absurde Straßenteile während Straßenreparaturen: {STRING}
 
@@ -2704,6 +2741,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Angenommen
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zeige Liste der angenommenen Frachtarten
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Nimmt an: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dieser Bahnhof hat exlusive Transportrechte in dieser Stadt.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} hat die exklusiven Transportrechte in dieser Stadt erworben.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertung
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stationsbewertung anzeigen

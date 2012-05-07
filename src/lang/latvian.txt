@@ -1124,20 +1124,32 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimālais vilcienu garums: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauciņ{P 0 š i u}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļa izmešu efektu daudzums: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilciena paātrinājuma modelis: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nogāžu stāvums autotransportam: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Svarīgāko ražotņu manuālā būvniec. metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citām ražotnēm
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Līdzens laukums ap ražotnēm: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Atļaut vairākas līdzīgas ražotnes vienā pilsētā: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Rādīt signālus: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kreisajā pusē
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pusē
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklus. rīkoj. liek apst. platformas {STRING}
@@ -1152,6 +1164,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku fi
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lidmašīnu avāriju daudzums: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
@@ -1173,13 +1187,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transpor
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportl. {STRING} maks. vecuma
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņojuma ilgums: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt skaidrojumus: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :attēlot {COMMA} sekun{P 0 di des žu}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :labais klikšķis
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītājs: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks. att. no kartes malas naftas pārstrādes rūpnīcām: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti līdzena
@@ -1198,6 +1221,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārvei
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maks. staciju lielums: {STRING} {RED}Brīdinājums: lielas vērt. palēnina spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkj. ar sliežu/ceļu/ūdens/lidostu rīkj.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}
@@ -1268,6 +1292,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vair
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi, pirms skripti tiek apstādināti: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Noklusētais vilcienu apkopju starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P 0 a as u}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Noklusētais autotransporta apkopju starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Noklusētais lidaparātu apkopju starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Noklusētais kuģu apkopju starplaiks: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad sabojāšanās ir izslēgta: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot eletrificēto dzelzceļu: {STRING}
@@ -1276,6 +1306,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avī�
 STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālus uz katra: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signāliem: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālu grafisko lietotāju saskarni: {STRING}
@@ -1309,7 +1342,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Galvenās rīkjoslas novietojums: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Stāvokļa joslas novietojums: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Logu pielipšanas rādiuss: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikse{P 0 lis ļi ļu}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :izslēgts
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais logu skaits: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimālais attālinājuma līmenis: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1324,6 +1362,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mazs
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :liels
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :ļoti liels
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Pilsētu daļa kas kļūs par lielpilsētām: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 pret {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
 
@@ -2520,7 +2561,7 @@ STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur vairākus
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lasīt aiz pseidogariņa beigām (gariņš {3:NUM})
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašreiz lietotajā pamata grafikas pakā iztrūkst daļa materiāla.{}Lūdzu atjaunojiet pamata grafikas paku
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pieprasītie GRF resursi nav pieejami (gariņš {3:NUM})
-STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {STRING} tikai atspējots
+STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {2:STRING} tika atspējots
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nederīgs/nezināms gariņa izkārtojuma formāts (gariņš {3:NUM})
 
 # NewGRF related 'general' warnings
@@ -2707,6 +2748,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Pieņem
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rādīt pieņemamo kravu sarakstu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Pieņem: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šai stacijai pieder izņēmuma pārvadājumu tiesības šajā pilsētā.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ir nopirktas izņēmuma pārvadājumu tiesības šajā pilsētā.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vērtējumi
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt stacijas vērtējumus

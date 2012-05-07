@@ -502,7 +502,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavitve težavnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne nastavitve
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI/Nastavitve igre
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :UI/Nastavitve skriptov igre
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
@@ -606,6 +606,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vklop/izklop okvirjev
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Preklop barvanja umazanih blokov
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1046,6 +1047,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turška lira (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovaška krona (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonske krone (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvijske Lite (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafriški Rant (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Po meri...
 ############ end of currency region
 
@@ -1271,20 +1275,32 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Dovoli gradnjo 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Dovoli bolj resnični območni zajem postaj: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dovoli odstanitev mestnih cest in mostov: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Največja dolžina vlakov: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} plošč{P 0 a i e ""}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Količina dima/isker vozil: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model pospeškov vlakov: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model pospeškov cestnih vozil: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Naklon vzpona za vlake: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Naklon vzpona za cestna vozila: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prepreči vlakom in ladjam 90° zavoje: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Dovoli združevanje postaj, ki niso v dotiku: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Uporabi izboljšan algoritem polnjenja: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Postopno polni vozila: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflacija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostavi tovor postaji le ob povpraševanju: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Največja dolžina mostov: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Največja dolžina predorov: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Glavni ročni način gradnje industrij: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :obetaven
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ravnina okrog industrij: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Dovoli več enakih industrij na mesto: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Prikaz signalov: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na levi
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strani vožnje
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na desni
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Prikaz okna financ na koncu leta: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novi ukazi so privzeti 'non-stop': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novi ukazi predvidevajo postanek vlaka na {STRING} perona
@@ -1299,6 +1315,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dovoli naložbe
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dovoli financiranje obnove lokalnih cest: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Dovoli pošiljanje denarja drugim podjetjem: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Koeficient teže tovora za simulacijo težkih vlakov: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Faktor hitrosti na ravnini: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Število letalskih nesreč: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zmanjšano
@@ -1320,13 +1338,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vseh vozil
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Opozori, če je prihodek vozila negativen: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila nikoli ne dotrajajo: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Samoobnovi vozila, ko se postarajo: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Samoobnovi, ko je vozilo {STRING} obratovalne dobe
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesec{P 0 "" a e ev} pred
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesec{P 0 "" a e ev} pozneje
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Samoobnovi najmanj potrebnega denarja za obnovo: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poročila o napaki: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 o i e ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaz nasvetov orodij: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zadrži za {COMMA} sekund{P 0 o i e ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Prikaz števila prebivalcev ob imenu mesta: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debelina črt grafov: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Urejevalnik terena: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Največja oddaljenost rafinerij nafte od roba: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nadmorska višina snežne odeje: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Valovitost terena (samo TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Zelo zglajen
@@ -1345,6 +1372,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogoči obliko
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Eno ali več polj na severnem robu ni praznih
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali več polj na robu ni vodnatih
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Največje širjenje postaje: {STRING} {RED}Pozor: Velike vrednosti upočasnijo igro
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Avtomatski servis helikopterjev na pristajališču: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Barva zemlje uporabljena na zemljevidu: {STRING}
@@ -1415,6 +1443,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dovoli UI v ve�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkode pred skripti so zadržane: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Obdobja servisiranja so v procentih: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Privzeto servisno obdobje vlakov: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 an neva dni dni}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :onemogočeno
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Privzeto servisno obdobje cestnih vozil: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Privzeto servisno obdobje letal: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Privzeto servisno obdobje ladij: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Onemogoči servisiranje, če so onemogočene okvare: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogoči omejitve hitrosti vagonov: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogoči električne tire: {STRING}
@@ -1423,6 +1457,10 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Barvni časopis
 STR_CONFIG_SETTING_STARTING_YEAR                                :Začetno leto: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Omogoči gladko ekonomijo (več manjših sprememb): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dovoli kupovanje delnic od drugih podjetij: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procent osnovnega dobička za plačilo v sklade: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Med vlečenjem postavi signale v razmaku: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} plošč{P 0 o i e ""}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Med vlečenjem drži trajni razmak med signali: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Samodejno postavi semaforje pred: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogoči vmesnik signalov: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Privzet tip signalov za gradnjo: {STRING}
@@ -1455,7 +1493,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :povsod
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozicija glavne orodne vrstice: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Položaj statusne vrstice: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Območje lepljenja oken: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el la le lov}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :onemogočeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Največje število nelepljivih oken: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :onemogočeno
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Največji nivo povečave: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Največja oddaljenost pogleda: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1470,6 +1513,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Počasi
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hitro
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Zelo hitro
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Delež naselij, ki bodo postala mesta: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 na {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :brez
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Začetni faktor rasti mesta: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstrani absurdne cestne elemente med gradnjo cest: {STRING}
 
@@ -1533,7 +1579,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Težavno
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Napredne nastavitve
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF nastavitve
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Preveri razpoložljive vsebine
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / Nastavitve igre
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}UI / Nastavitve skriptov igre
 STR_INTRO_QUIT                                                  :{BLACK}Izhod
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Začni novo igro. Ctrl+Klik preskoči konfiguracijo sveta
@@ -1553,7 +1599,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Prikazi 
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Prikaz naprednih nastavitev
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Prikaži nastavitve NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Preveri posodobljene vsebine na strežniku,{} ki so na voljo za prenos
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI in Nastavitve igre
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Prikaži UI in Nastavitve skriptov igre
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Izhod iz 'OpenTTD'
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Temu prevodu manjka {NUM} vnos{P "" a i ov}. Prosimo pomagaj izboljšati OpenTTD in se vpiši za prevajanje. Preveri readme.txt za podrobnosti.
@@ -1606,8 +1652,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Prikaz b
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Prikaz barvnih shem cestnih vozil
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Prikaz barvnih shem ladij
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Prikaz barvnih shem letal
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izberi glavno barvo za izbrano shemo
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izberi drugo barvo za izbrano shemo
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Izberi glavno barvo za izbrano shemo. Ctrl+klik nastavi to barvo za vse sheme.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Izberi drugo barvo za izbrano shemo. Ctrl+klik izbere to barvo za vse sheme
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Izberi barvno shemo za zamenjati ali več shem s Ctrl+Klik. Klikni na okno za preklop sheme
 
 STR_LIVERY_DEFAULT                                              :Standardni pogon
@@ -2848,6 +2894,9 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Sprejema
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Prikaži seznam sprejetega tovora
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Sprejema: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Ta postaja ima ekskluzivne pravice v tem mestu.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} je odkupilo ekskluzivne prevozne pravice v tem mestu.
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaz ocen postaje
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokalne ocene transportnih storitev:
@@ -2873,6 +2922,9 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Prikaz v
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Prikaz vseh ladij, ki imajo to postajo na urniku
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Preimenuj postajo
+
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Zapri letališče
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Prepreči letalom pristajanje na tem letališču
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3230,9 +3282,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izberi t
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izberi vrsto lokomotive, ki jo hočeš prestaviti na levo označeno mesto
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Začni menjavo vozil
+STR_REPLACE_VEHICLES_NOW                                        :Zamenjaj vsa vozila zdaj
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Zamenjaj samo stara vozila
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Pritisni za začetek menjave levo označenega tipa lokomotive s tistim na desni.
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Ni menjave
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ni izbranih vozil
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} ko se postara
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Ustavi menjavo vozil
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Pritisni za zaustavitev zamenjave na levi izbranega tipa lokomotive
 
@@ -3647,7 +3702,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izme
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno razhroščevanja UI / skripte je na voljo samo za strežnik
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavitve UI / igre
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavitve UI / skript igre
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript igre, ki bo naložen v naslednji igri
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}UI, ki bodo naložene v naslednji igri
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Igralec
@@ -3659,13 +3714,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Premakni
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Premakni nižje
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Premakni izbran UI nižje po seznamu
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skripta igre
 STR_AI_CONFIG_AI                                                :{SILVER}UI-ji
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Izberi {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :UI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skripta igre
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Naloži drugi skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Nastavi
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi parametre Skripte
@@ -3673,7 +3728,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Na voljo je {STRING}
 STR_AI_LIST_CAPTION_AI                                          :UI-ji
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte igre
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni za izbor skripte
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Avtor: {STRING}
@@ -3688,7 +3743,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne sprem
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametri
 STR_AI_SETTINGS_CAPTION_AI                                      :UI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skripta igre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3781,6 +3836,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... v la
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljišče je last drugega podjetja
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dosežena omejitev izdelave terena
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dosežena omejitev čiščenja terena
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... dosežena meja sajenja dreves
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti edinstveno
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na poti
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni dovoljeno med pavzo
@@ -3841,7 +3897,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... samo
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... gradnja mogoča samo v mestih z vsaj 1200 ljudmi
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... gradnja mogoča samo v območju deževnega gozda
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... gradnja mogoča samo v puščavi
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gradnja možna samo v mestih
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... gradnja možna samo v mestih (zamenja hiše)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... gradnja možna samo blizu centra naselij
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... gradnja možna samo v nižjih predelih
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... mogoče zgraditi samo ob robu zemljevida
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... gozd je mogoče posaditi samo nad nivojem snežne odeje

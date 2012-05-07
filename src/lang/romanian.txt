@@ -1122,6 +1122,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite constru
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale locomotivei: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelul de acceleraţie al trenurilor: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelul de acceleraţie pentru vehiculele rutiere: {STRING}
@@ -2699,6 +2700,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptă: {WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei

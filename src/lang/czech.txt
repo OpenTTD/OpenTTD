@@ -1204,15 +1204,21 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Povolit výstav
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourání více městských silnic, mostů a tunelů: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrychlování silničních vozidel: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Strmost svahu pro vlaky: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Strmost svahu pro silniční vozidla: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázat vlakům a lodím otáčení o 90 stupňů: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Umožnit spojení nesousedících stanic: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Použít vylepšený algoritmus nakládání: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Nakládat vozidla postupně: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflace: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dodávat zboží do stanice jen když je poptávka: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximální délka mostu: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximální délka tunelu: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Způsob manuálního budování primárního průmyslu: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
@@ -1257,7 +1263,10 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud vozidlo prodělává: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P 0 "" s} před
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P 0 "" s} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimální částka pro automatické obnovení: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doba trvání chybové zprávy: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobrazovat populaci města v jeho popisku: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tloušťky čar v grafech: {STRING}
 
@@ -1352,6 +1361,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povolit AI v s�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes před skripty než budou pozastaveny: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaly servisů v procentech: {STRING}
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuto
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnout servisy, když jsou vypnuty poruchy: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Vypnout elektrickou železnici: {STRING}
@@ -2791,6 +2801,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijímá
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Přijímá: {WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnocení
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat hodnocení společností

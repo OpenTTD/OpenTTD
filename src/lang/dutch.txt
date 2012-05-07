@@ -1122,19 +1122,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op helli
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Sta verwijderen van meer stedelijke wegen, bruggen en tunnels toe: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treinen: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid rook/vonken: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein acceleratie model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Wegvoertuig acceleratie model: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Hellingsterkte voor treinen: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsterkte voor wegvoertuigen: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied treinen en schepen om 90° te draaien: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sta het samenvoegen van niet direct aaneensluitende stations toe: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verbeterd laadalgoritme: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Voertuigen geleidelijk laden: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Vracht alleen bezorgen aan een station als er vraag naar is: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel lengte: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige bouwmethode voor primaire industrieën: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat gebied rond industrieën: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Meerdere vergelijkbare industrieën per stad toestaan: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Toon seinen: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan de linker kant
@@ -1154,6 +1162,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Financiering va
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Financieren van lokale wegreconstructie toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Geld geven aan andere bedrijven toestaan: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfactor voor vracht om zware treinen te simuleren: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Vliegtuig snelheidsfactor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuigcrashes: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
@@ -1175,13 +1185,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuw als inkomsten van een voertuig negatief zijn: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen nooit: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vernieuw voertuig automatisch wanneer deze oud wordt: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Vernieuw voertuigen automatisch na {STRING} maximum leeftijd
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" en} voor
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" en} na
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum benodigd geld voor automatisch vernieuwen: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duur van foutbericht: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Toon tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Wijs aan voor {COMMA} seconde{P 0 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Geef het inwoneraantal bij een stad weer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de lijnen in grafieken: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand van de rand voor Olierafinaderijen: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein (alleen TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
@@ -1200,6 +1219,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aanpassen van d
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes aan de noordelijke rand zijn niet leeg
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Max stationsgebied: {STRING} {RED}Waarschuwing: Hoge waarde vertraagt spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopters automatisch repareren op helipads: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Verbind de knoppenbalk voor terreinvorming met die voor spoor/weg/water/vliegveld: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Gebruiker land kleur op de kleine kaart: {STRING}
@@ -1270,6 +1290,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat computersp
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voordat scripts worden gestopt: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Interval tussen onderhoud is een percentage: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard onderhoudsinterval voor treinen: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" en}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :uitgeschakeld
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard onderhoudsinterval voor wegvoertuigen: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard onderhoudsinterval voor vliegtuigen: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard onderhoudsinterval voor schepen: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Schakel onderhoud uit wanneer defecten uit staan: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Schakel snelheidslimieten voor wagons aan: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Schakel elektrische sporen uit: {STRING}
@@ -1278,6 +1304,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kleurenfoto's k
 STR_CONFIG_SETTING_STARTING_YEAR                                :Beginjaar: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sta het kopen van aandelen van andere bedrijven toe: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage van routeopbrengst in overdrachtssysteem: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Bij slepen, hou vaste afstand tussen seinen: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Plaats automatisch armseinen voor: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activeer sein-GUI: {STRING}
@@ -1311,7 +1339,11 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positie van algemene knoppenbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Positie van de statusbalk: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :uitgeschakeld
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum aantal (niet-sticky) vensters: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :uitgeschakeld
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoom niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximaal uitzoom niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1326,6 +1358,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langzaam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwijder rare weg-elementen tijdens het repareren van de weg: {STRING}
 
@@ -2703,6 +2737,8 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepteert
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Laat lijst van gevraagde goederen zien
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepteert: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kocht exclusieve transportrechten in deze gemeente
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk stationsreputaties

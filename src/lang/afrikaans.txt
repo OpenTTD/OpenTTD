@@ -1123,15 +1123,20 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Laat bou op sku
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat Landargitekteur toe onder geboue, spoore, ens. (outohelling): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Laat meer realisties grootte opvangsgebied toe: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Laat verwydering van meer stad-besite paaie, bruge, ens toe: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treine: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teël{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid motor rook/vonke: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein versnelling model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Pad voertuig versnelling model: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied triene en skepe om 90 graad draaie te maak: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Laat toe dat stasies lanks mekaar gebind kan word: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laai voertuie geleidelik: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primêre nywerheid konstruksie metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
@@ -1155,6 +1160,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Laat befondsing toe van plaaslike pad heropbou: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Laat die stuur van geld na ander maatskappye toe: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewig vermenivoud vir vrag om swaar treine te simuleer: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuig botsings: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verminderd
@@ -1176,7 +1182,11 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarsku as 'n voertuig se inkomste negatief is: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuie verval nooit nie: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Outohernuwe voertuig as hy oud raak: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Outoherbou wanneer voertuig is {STRING} max ouderdom
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" e} voor
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" e} later
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Outohernuwe minimum vereisde geld vir hernuwe: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon dorp populasie in die dorp naam etiket: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van lyn in grafieke: {STRING}
 
@@ -1271,6 +1281,8 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat AI in mult
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voor die skripte gestaak word: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Diens pouse is in persente: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} da{P g e}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :gedeaktiveer
 STR_CONFIG_SETTING_NOSERVICE                                    :Sper diens wanneer komplikasies is na geen gestel: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spoore: {STRING}
@@ -1279,6 +1291,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Gekleurde nuus 
 STR_CONFIG_SETTING_STARTING_YEAR                                :Jaar om te begin: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiveer geleike ekonomie (meer, kleiner veranderings): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Laat die koop van aandeele van ander maatskappye toe: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} teël{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Wanneer signale getrek word, behou konstante afstand: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Outomaties bou semaphores voor: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiveer die sein GUI: {STRING}
@@ -1312,7 +1325,11 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisie van hoof werktuigbaan: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posisie van statusbalk: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :gedeaktiveer
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimum nommer nie-taaierige vensters: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :gedeaktiveer
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximum zoem in level: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximum zoem uit level: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1327,6 +1344,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Stadig
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Vinnig
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Baie vinnig
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwyder absurde pad-elemente gedurende die pad konstruksie: {STRING}
 
@@ -2704,6 +2723,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aanvaar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Wys lys van aanvaarde vrag
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aanvaar: {WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Graderings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Toon stasie graderings

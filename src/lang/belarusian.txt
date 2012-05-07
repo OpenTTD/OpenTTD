@@ -1439,19 +1439,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Дазволі�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона пакрыцьця залежыць ад тыпу станцыі: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максымальная даўжыня цягнiкоў: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} клет{P ка кi ак}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Колькасьць дыму/іскраў у лакаматываў: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Мадэль паскарэньня цягнікоў: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Мадэль паскарэньня аўтатранспарту: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Крутасьць сьхiлаў для цягнiкоў: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Крутасьць сьхiлаў для аўтатранспарту: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Забараніць цягнікам і караблям 90-градусныя павароты: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Выкарыстоўваць палепшаны алгарытм загрузкі: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Паступовая загрузка транспарту: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Уключыць інфляцыю: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максымальная даўжыня мастоў: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максымальная даўжыня тунэляў: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Мэтад стварэньня сыравінных прадпрыемстваў: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геалягiчная разьведка
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Роўная зямля вакол прадпрыемстваў: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Паказаць сыгналы: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Зьлева
@@ -1471,6 +1479,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дазволі�
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Дазволіць фінансаваньне рэканструкцыі дарогаў: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Дазволіць перадачу грошай іншым кампаніям: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множнік вагі для сымуляцыі цяжкіх таварных цягнікоў: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Множнiк хуткасьцi самалётаў: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Верагоднасьць авіякатастрофаў: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :адсутнічае
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :зьніжаная
@@ -1492,13 +1502,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :правяра�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Папярэджваць, калі даход транспарту адмоўны: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспарт ніколі не выходзіць з ужытку: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Аўтазамена старых транспартных сродкаў: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Аўтаабнаўленьне, калi транспарт дасягне {STRING} макс. узросту
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} месяц{P "" ы аў} перад
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} месяц{P "" ы аў} пасьля
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Сума, неабходная для аўтазамены: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Працягласьць паведамленняў аб памылцы: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} сэкунд{P а ы аў}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Паказваць падказкi: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Вiсець {COMMA} сэкунд{P а ы аў}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Правы клiк
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Паказваць колькасьць жыхароў горада ў назьве: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Таўшчыня лiнiяў у графiках: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генэратар зямлі: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :арыгінальны
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. адлегласьць ад краю мапы да нафтаперапрацоўчых заводаў: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Вышыня сьнегавой лініі: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Нароўнасьць ляндшафту (толькі TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Вельмі гладкі
@@ -1517,6 +1536,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Дазволі�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна ці некалькі клетак ў паўночным куце мапы не пустыя
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Макс. працялегласьць станцыяў: {STRING} {RED}Увага: высокiя значэньнi запавольваюць гульню
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Уключыць абслугоўваньне на верталётных пляцоўках: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Зьвязаць ляндшафтную панэль з транспартнай: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Колер зямлі на мінімапе: {STRING}
@@ -1587,6 +1607,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дазволі�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Колькасьць апэрацыяў перад спыненьнем скрыптоў: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтэрвал абслугоўваньня ў адсотках (%): {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Iнтэрвал абслугоўваньня для цягнiкоў: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P зень днi дзён}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :адключана
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Iнтэрвал абслугоўваньня для аўтатранспарту: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Iнтэрвал абслугоўваньня для паветраных суднаў: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Iнтэрвал абслугоўваньня для караблёў: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Адключыць абслугоўваньне, калі скасаваны паломкі: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Уключыць абмежаваньне хуткасьці вагонаў: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Адключыць электрыфікаваную чыгунку: {STRING}
@@ -1595,6 +1621,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Каляров�
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год пачатку гульні: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Уключыць лагодную эканоміку (больш дробных зьменаў): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дазволіць купляць акцыі іншых кампаніяў: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Адсотак даходу, якi налiчваецца пры частковай перавозцы: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Пры цягненьнi з Ctrl расстаўляць сыгналы кожныя: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клет{P ка кi ак}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Захоўваць дыстанцыю памiж сыгналамi пры цягненьнi: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Будаваць сэмафоры (сыгналы старога стылю): да {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Уключыць адмысловае мэню сыгналаў: {STRING}
@@ -1628,7 +1657,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Разьмяшчэньне галоўнай панэлі: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Разьмяшчэньне радка стану: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} пiксэл{P "" ы аў}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :адключана
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Максымальны ўзровень набліжэньня: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Максымальны ўзровень падаленьня: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1643,6 +1677,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :павольн�
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :звычайная
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :шпаркая
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дужа шпаркая
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Частка мястэчкаў, якiя стануць гарадамi: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 з {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :нiводнае
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Першапачатковы множнік памеру населенага пункта: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Выдаляць абсурдныя элемэнты падчас дарожнага будаўніцтва: {STRING}
 
@@ -3040,6 +3077,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прымае
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Паказаць сьпіс прымаемых грузаў
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прымае: {WHITE}{CARGO_LIST}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Гэта станцыя мае эксклюзыўныя транспартныя правы ў гэтым населеным пункце.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} набыў эксклюзыўныя транспартныя правы ў гэтым населеным пункце.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рэйтынг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Паказаць рэйтынг станцыі
