@@ -1205,7 +1205,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Srovnání ter�
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourání více městských silnic, mostů a tunelů: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P 0 "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrychlování silničních vozidel: {STRING}
@@ -1263,8 +1263,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud vozidlo prodělává: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P 0 "" s} před
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P 0 "" s} po
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P "" e ů} před
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P "" e ů} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimální částka pro automatické obnovení: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doba trvání chybové zprávy: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobrazovat populaci města v jeho popisku: {STRING}

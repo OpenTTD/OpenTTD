@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmia
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksymalna długość pociągów: {STRING}
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} p{P 0 ole ól}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} p{P ole ola ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ilość dymu / iskier lokomotywy: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model przyspieszania pociągu: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model przyspieszania samochodów: {STRING}
@@ -1563,11 +1563,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich poja
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} miesi{P 0 ąc ęcy} przed
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} miesi{P 0 ąc ęcy} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Min. ilość pieniędzy potrzebna do autoodnowienia: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetlania komunikatów o błędach: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 a ""}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Prawy klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaż populację miasta w jego nazwie: {STRING}
@@ -1667,7 +1665,6 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :ilość #opcode
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Okres między serwisowaniami w procentach: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Domyślny interwał serwisowania pociągów: {STRING}
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} d{P 0 zień ni}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :wyłączone
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Domyślny interwał serwisowania pojazdów: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Domyślny interwał serwisowania samolotów: {STRING}
@@ -1681,7 +1678,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Data rozpoczęc
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łagodną ekonomię (więcej małych zmian): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeciągania ustaw semafor co: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P 0 ole ola}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Zachowaj stały odstęp między semaforami przy przeciąganiu: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatycznie buduj semafory przed: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Uaktywnij okno budowania sygnałów: {STRING}
@@ -1715,7 +1712,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :wszędzie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozycja paska stanu: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 "" i}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :wyłączone
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksymalna liczba nie przyszpilonych okien: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}

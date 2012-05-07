@@ -1136,7 +1136,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Erlaabt méi der selwecht Industrien pro Stad: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weis Signaler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Weis Signaler: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Lénks
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Op der Fuerersäit
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Riets
@@ -1278,7 +1278,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Faarweg News ab
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjoer: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gläichméisseg Economie aschalten (méi oft an kleg Wiessel): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firmen kafen: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :{LTBLUE}Beim Zéien, behal eng fix Distanz tëscht Signaler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Beim Zéien, behal eng fix Distanz tëscht Signaler: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatesch Diksen bauen firun: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signal GUI erlaaben: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard Signal-Typ: {STRING}
