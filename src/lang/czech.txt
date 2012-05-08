@@ -430,7 +430,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Zobrazovat popi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plné animace
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Průhledné budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Průhledná jména stanic
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Průhledné popisky
 ############ range ends here
 
 ############ range for file menu starts
@@ -1210,6 +1210,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kou�
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrychlování silničních vozidel: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Strmost svahu pro vlaky: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Strmost svahu pro silniční vozidla: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázat vlakům a lodím otáčení o 90 stupňů: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Umožnit spojení nesousedících stanic: {STRING}
@@ -1223,8 +1224,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Způsob manuál
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plochá oblast okolo průmyslu: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Povolit více stejného průmyslu kolem jednoho města: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE                                   :Zobrazit signály: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Zobrazit návěstidla: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vlevo
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na straně řidiče
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
@@ -1242,6 +1244,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Povolit dotová
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Povolit dotování rekonstrukce místních silnic: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Umožnit zasílání peněz ostatním společnostem: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {STRING}x
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Poměr rychlosti letadel k ostatním vozidlům: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Počet leteckých havárií: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulový
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :nižší
@@ -1263,16 +1267,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud vozidlo prodělává: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaticky nahradit vozidlo {STRING} před/po dosažení životnosti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P "" e ů} před
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P "" e ů} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimální částka pro automatické obnovení: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doba trvání chybové zprávy: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Doba zobrazení chybové zprávy: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Zobrazení kontextové nápovědy: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Podržet kurzor nad {COMMA} sekund
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Pravým klikem
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobrazovat populaci města v jeho popisku: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tloušťky čar v grafech: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tvůrce krajiny: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :původní
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximální vzdálenost rafinerie od okraje mapy: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Výška sněhové čáry: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitost krajiny (jen TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
@@ -1291,6 +1301,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Umožnit terén
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maximální rozsah stanice: {STRING} {RED}Varování: Vysoká hodnota zpomaluje hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Údržba vrtulníků na heliportech: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Barva země v mapě: {STRING}
@@ -1361,7 +1372,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Povolit AI v s�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes před skripty než budou pozastaveny: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaly servisů v procentech: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Základní servisní interval pro vlaky: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dní/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuto
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Základní servisní interval pro silniční vozidla: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Základní servisní interval pro letadla: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Základní servisní interval pro lodě: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnout servisy, když jsou vypnuty poruchy: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Zapnout omezení rychlosti vagonů: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Vypnout elektrickou železnici: {STRING}
@@ -1370,6 +1386,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Barevné noviny
 STR_CONFIG_SETTING_STARTING_YEAR                                :Počáteční datum: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Plynulé změny ekonomiky (více menších změn): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Povolit kupování podílu z ostatních společností: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Podíl ze zisku při překládce: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Při tažení umisťovat návěstidla každých: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polí
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Při přetahování udržovat stálou vzdálenost mezi signály: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Semafory automaticky stavět do roku: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Okno pro stavbu návěstidel: {STRING}
@@ -1403,7 +1422,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všude
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Umístění hlavní lišty: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozice statusbaru: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Okno se přichytí k druhému, když je blíž než: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixelů
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :vypnuto
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Omezit počet zavíratelných oken na: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :vypnuto
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximální úroveň přiblížení: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximální úroveň oddálení: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1418,6 +1442,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :pomalá
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normální
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :rychlá
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Podíl měst, ze kterých se stanou velkoměsta: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstraňovat nesmyslné prvky vozovky při výstavbě silnic: {STRING}
 
@@ -1554,8 +1581,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazit
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobrazit barevná schémata pro silniční vozidla
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobrazit barevná schémata pro lodě
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobrazit barevná schémata pro letadla
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vybrat primární barvu označeného schématu
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vybrat sekundární barvu označeného schématu
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vybrat primární barvu označeného schématu. Ctrl+kliknutí nastaví tuto barvu každému schématu
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vybrat sekundární barvu označeného schématu. Ctrl+Kliknutí nastaví tuto barvu každému schématu
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vyber, které barevné schéma chceš změnit (více označíš s Ctrl). Schéma změníš kliknutím na tlačítko
 
 STR_LIVERY_DEFAULT                                              :Výchozí barva
@@ -2001,7 +2028,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, ukon
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavení průhlednosti
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Změna průhlednosti jmen stanic. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Změna průhlednosti popisků. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Změna průhlednosti domů. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Změna průhlednosti továren. Nastavení se zamkne Ctrl+kliknutím
@@ -2212,7 +2239,7 @@ STR_OBJECT_CLASS_TRNS                                           :Vysílače
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Zvol typ stromu na vysazení
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Zvol druh stromu na vysazení. Pokud se na políčku už nějaký strom nachází, přidá se k němu několik různých druhů bez ohledu na výběr druhu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé stromy
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umístit nahodné stromy. Stisknutý Shift pro zobrazení odhadu ceny
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Náhodné stromy
@@ -2802,6 +2829,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Přijím
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Ukázat seznam přijímaného nákladu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Přijímá: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Tato stanice má v tomto městě výhradní přepravní práva.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :Společnost {YELLOW}{COMPANY}{BLACK} koupila v tomto městě výhradní přepravní práva.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnocení
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat hodnocení společností
@@ -2913,8 +2942,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Změnit 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Koupit 25% podíl ve společnosti
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodat 25% podíl ve společnosti
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koupit 25% podíl v této společnosti. Stisknutý Shift pro zobrazení odhadu ceny
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodat 25% podíl v této společnosti. Stisknutý Shift pro zobrazení odhadu ceny
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koupit 25% podíl v této společnosti. Stisknutý Shift+Kliknutí pro zobrazení odhadované ceny
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodat 25% podíl v této společnosti. Stisknutý Shift+Kliknutí pro zobrazení odhadované ceny
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Jméno společnosti
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Jméno prezidenta
@@ -3134,7 +3163,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonovat
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovat letadlo
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Vytvoří se kopie vlaku se všemi vagony. Klepni na toto tlačítko a pak na vlak v nebo vně depa. Se stisknutým Ctrl se budou sdílet příkazy. Stisknutý Shift pro zobrazení odhadu ceny
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Vytvoří se kopie silničního vozidla. Klepni na toto tlačítko a pak na vozidlo v nebo vně depa. Se stisknutým Ctrl se budou sdílet příkazy. Stisknutý Shift pro zobrazení odhadu ceny
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Vytvoří se kopie silničního vozidla. Klepni na toto tlačítko a pak na vozidlo v nebo vně depa. Se stisknutým Ctrl se budou sdílet příkazy. Stisknutý Shift pro zobrazení odhadované ceny
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Vytvoří se kopie lodě. Klepni na toto tlačítko a pak na loď v nebo vně lodního depa. Se stisknutým Ctrl se budou sdílet příkazy. Stisknutý Shift pro zobrazení odhadu ceny
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Vytvoří se kopie letadla. Klepni na toto tlačítko a pak na letadlo v nebo vně hangáru. Se stisknutým Ctrl se budou sdílet příkazy. Stisknutý Shift pro zobrazení odhadu ceny
 
@@ -3809,7 +3838,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... je p
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... může se vybudovat jedině v pralese
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... může se postavit jedině v poušti
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... může se postavit jedině ve městě
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... může se postavit jedině ve městě (místo nějakých domů)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... může být postaveno pouze poblíž centra města
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... může se postavit jen v nížinách
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... může být umístěno pouze poblíž okrajů mapy

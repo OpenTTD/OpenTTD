@@ -1460,6 +1460,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветные 
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год начала игры: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Включить плавную экономику (частые, небольшие изменения): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разрешить торговлю акциями других компаний: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент дохода, начисляемый при частичной перевозке: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При перетаскивании ставить сигналы каждые: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клет{P ку ки ок}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Равномерная расстановка сигналов при перетаскивании: {STRING}
@@ -1495,7 +1496,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Положение главной панели инструментов: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Расположение строки состояния: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радиус приклеивания окна: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радиус прилипания окна: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} точ{P ка ки ек}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :отключён
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Макс. количество открытых окон (не «приклеенных»): {STRING}

@@ -1317,19 +1317,27 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statyti 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Kurti tikroviškesnio dydžio mikrorajonus: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Didžiausias traukinio ilgis: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} langel{P 0 is iai ių}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transporto priemonių dūmų / žiežirbų kiekis: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Traukinių įsibėgėjimo nustatymas: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Automobilių greitėjimo modelis: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Šlaitų statumas traukiniams: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Šlaitų statumas automobiliams: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Drausti traukiniams/laivams pasisukti 90 laips.kampu: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leidžia sujungti stoteles, kurios nėra šalia: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Naudoti patobulintą krovimo algoritmą: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Pakrauti tr. priemones paeiliui: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Infliacija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Didžiausias tilto ilgis: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tunelio ilgis: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pagrindinis pramonės statymo būdas: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lygi vieta aplink gamyklas: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leisti kelias panašias pramonės įmones viename mieste: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Šviesoforus rodyti: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kairėje
@@ -1349,6 +1357,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leisti namų st
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Leisti paremti vietos kelių taisymą: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Leisti siųsti pinigus kitoms kompanijoms: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Krovinių svorio daugiklis skirtas imituoti pakrautus traukinius: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Lėktuvų greičio daugiklis: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lėktuvų avarijų kiekis: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :jokių
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :retesni
@@ -1370,13 +1380,22 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visų tr. priem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, kai tr. priemonės pajamos yra neigiamos: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Tr. priemonės niekada nepasensta: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti tr. priemonę, kai ji pasensta: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Atnaujinti transporto priemonę, kai jos amžius yra {STRING} už projektinį
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mėnesi{P 0 u ais ų} mažesnis
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mėnesi{P 0 u ais ų} didesnis
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimali suma reikalinga automatiniam atnaujinimui: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Klaidos pranešimo rodymo trukmė: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P ė ės žių}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Rodyti paaiškinimus: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :atvedus žymeklį po {COMMA} sekund{P ės žių žių}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :spragtelėjus dešinįjį pelės klavišą
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rodyti miestų gyventojų skaičių šalia pavadinimo: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linijų grafikuose storumas: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Sausumos kūrimas: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Standartinis
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniego linijos aukštis: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paviršiaus nelygumas (tik TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Labai lygus
@@ -1395,6 +1414,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Leisti keisti r
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Didžiasias stoties plotis: {STRING}{RED}Dėmesio: didelės vertės lėtina žaidimą
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Remontuoti sraigtasparnius automatiškai: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mažame žemėlapyje naudojama žemės spalva: {STRING}
@@ -1465,6 +1485,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti AIs Inte
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkodai prieš skriptus yra nevykdomi: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Remonto intervalas procentais: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Traukinių remonto intervalas: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P a os ų}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Išjungta
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Automobilių remonto intervalas: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lėktuvų remonto intervalas: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivų remonto intervalas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techninę apžiūrą, jei gedimai nenaudojami: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvuoti vagonų greičio apribojimą: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
@@ -1473,6 +1499,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos nauji
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Tempiant kopijuoti šviesoforus kas: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} langel{P 0 į ius ių}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Tempiant išlaikyti vienodą atstumą tarp signalų: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatiškai pastatyti semaforus prieš: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Įgalinti signalų vartotojų sąsają: {STRING}
@@ -1506,7 +1535,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pagrindinės įrankių juostos pozicija: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Būsenos juostos vieta: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Langų traukos atstumas: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 is iai ių}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Išjungta
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didž. skaičius langų (nelipnių): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Išjungta
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Didžiausias priartinimo lygis: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Didžiausias atitolinimo lygis: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4 kartai
@@ -1521,6 +1555,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lėtas
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Vidutinis
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Greitas
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Labai greitas
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Miestelių, tampančių miestais, santykis: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iš {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Išjungta
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pradinis miestų dydžio daugiklis: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
 
@@ -2898,6 +2935,9 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Priima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Rodyti priimamų krovinių sąrašą
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Priima: {WHITE}{CARGO_LIST.ka}
+
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Šiai stotelei priklauso išskirtinės šio miesto pervežimo teisės
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} įsigijo išskirtines pervežimo teises šiame mieste.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus

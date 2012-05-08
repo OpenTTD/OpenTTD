@@ -1657,7 +1657,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Разьмяшчэньне галоўнай панэлі: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Разьмяшчэньне радка стану: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радыус прыліпаньня акна: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} пiксэл{P "" ы аў}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {STRING}

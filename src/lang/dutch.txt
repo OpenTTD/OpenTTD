@@ -1305,6 +1305,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Beginjaar: {STR
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sta het kopen van aandelen van andere bedrijven toe: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage van routeopbrengst in overdrachtssysteem: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bij slepen, plaats seinen elke: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Bij slepen, hou vaste afstand tussen seinen: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Plaats automatisch armseinen voor: {STRING}
@@ -1339,6 +1340,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positie van algemene knoppenbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Positie van de statusbalk: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Windowssnap radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :uitgeschakeld
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum aantal (niet-sticky) vensters: {STRING}
@@ -1358,6 +1360,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langzaam
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van gemeenten die steden zullen worden: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
@@ -2738,6 +2741,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptee
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Laat lijst van gevraagde goederen zien
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepteert: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dit station heeft exclusieve transportrechten in deze gemeente.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kocht exclusieve transportrechten in deze gemeente
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rangen

@@ -686,7 +686,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vybrať 
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Zvoliť 'Ezy Street style music' program
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Zvoliť program 'Vlastný 1' (definovaný užívateľom)
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Zvoliť program 'Vlastný 2' (definovaný užívateľom)
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zapnúť / vypnúť náhodný výber
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Prepnúť náhodný výber
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zobraziť okno pre výber hudobných stôp
 
 STR_ERROR_NO_SONGS                                              :{WHITE}Bola zvolená sada hudby bez skladieb. Žiadne skladby nebudú hrať
@@ -2763,6 +2763,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Prijíma
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Zobraziť zoznam prijímaného nákladu
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Prijíma: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hodnotenie
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobraziť hodnotenia stanice
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Hodnotenie prepravy:
@@ -2788,6 +2789,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Zobrazi�
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Zobraziť všetky lode, ktoré majú túto stanicu v cestovnom poriadku
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Premenovať stanicu/vykládku
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3462,7 +3464,7 @@ STR_ORDER_AUTO_REFIT_ANY                                        :dostupný nákl
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[blízky koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[stred]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[blízky koniec]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[ďaleký koniec]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nasledovný ciel je mimo dosahu)
 
