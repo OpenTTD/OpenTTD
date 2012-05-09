@@ -1219,7 +1219,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Dopusti modelir
 STR_CONFIG_SETTING_CATCHMENT                                    :Dopusti realističnije veličine područja zahvaćanja: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Dopusti rušenje više cesta, mostova i tunela u vlasništvu grada: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Najveća dužina vlakova: {STRING}
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} polje{P 0 "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} polje
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Količina dima/iskri za lokomotive: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model ubrzanja vlaka: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model ubrzavanja za cestovna vozila: {STRING}
@@ -1282,13 +1282,13 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozori ako pri
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila ne zastarjevaju: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatski obnovi vozilo kada postane staro: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska obnova kada je vozilo {STRING} najveće starosti
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mjeseci{P 0 "" s} prije
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mjeseci{P 0 "" s} nakon
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mjeseci prije
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mjeseci nakon
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum novca potrebnih za automatsko obnavljanje: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke s greškom: {STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundi{P 0 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži pojašnjenja alata: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} sekundi{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaži broj stanovnika u oznaci imena grada: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
@@ -1387,7 +1387,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#op-kodova prij
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servisni su intervali u postotcima: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Zadani interval servisiranja za vlakove: {STRING}
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dana{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dana/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :isključeno
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Zadani interval servisiranja za cestovna vozila: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Zadani interval servisiranja za zrakoplove: {STRING}
@@ -1402,7 +1402,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi tečnu
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dopusti kupovanje udjela u drugim tvrtkama: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Postotak profita za dionicu koji se plaća kod sistema feeder-a: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Kod povlačenja, postavi signale svakih: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polje{P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polje
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Prilikom povlačenja, zadrži odabrani razmak između signala: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatski izgradi semafore prije: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogući signalni GUI: {STRING}
@@ -1437,7 +1437,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :posvuda
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Položaj glavne alatne trake: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozicija status trake: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius zahvata prozora: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksela{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksela
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :isključeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Najveći broj neljepljivih prozora: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
