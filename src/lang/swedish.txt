@@ -1118,20 +1118,30 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstru
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximal tåglängd: {STRING}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rut{P 0 a or}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mängden rök/gnistor från fordon: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Accelerationsmodell för tåg: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Accelerationsmodell för vägfordon: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Sluttningars lutningsgrad för tåg: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sluttningars lutningsgrad för vägfordon: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg och skepp att göra 90° svängar: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Använd förbättrad algoritm: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lasta fordon gradvis: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Leverera gods till en station enbart om någon frågar efter det: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolängd: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuell prioritering för industrins konstruktionsmetod: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillåt flera industrier av samma typ per stad: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Visa signaler: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :På vänster sida
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På höger sida
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Visa finansfönstret vid slutet av året: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya orders är 'non-stop' om inte annat anges.{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-orders stannar som standard vid {STRING} av platformen
@@ -1146,6 +1156,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byg
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt skicka pengar till andra företag: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för att simulera tunga tåg: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :inga
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducerad
@@ -1168,6 +1179,9 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fo
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när dom blir gamla: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i grafer: {STRING}
 
@@ -1262,6 +1276,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorsp
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" ar}/%
 STR_CONFIG_SETTING_NOSERVICE                                    :Avaktivera service när motorstopp är av: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
@@ -1270,6 +1285,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nyheter i färg
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (flera små ändringar): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} rut{P 0 a or}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg automatiskt semaforer innan: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Använd signal-GUI: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standardsignal-typ: {STRING}
@@ -1302,7 +1318,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position av verktygsraden: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusradens position: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pix{P 0 el lar}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximalt antal icke-klistrade fönster: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximal inzoomning: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximal utzoomning: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1317,6 +1335,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Långsamt
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalt
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snabbt
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks multiplikator: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 
@@ -2281,7 +2300,7 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Vägtunnel
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stålhängbro för järnväg
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Järnvägsbro av stålbalkstyp
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Järnvägsbro med utskjutande stålstöd
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Hängbro av betong för järnväg
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Järnvägshängbro av armerad betong
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Järnvägsbro av trä
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Järnvägsbro av betong
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Järnvägsrörbro
@@ -2521,7 +2540,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchande fil saknas (kompatibel GRF laddad)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF fil har stängts av
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF-fil har stängts av
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
@@ -2695,6 +2714,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepter
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Visa lista över accepterat gods
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepterar: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Värderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Visa stationens klassificering
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokal värdering av transporttjänster:
@@ -2720,6 +2740,8 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Visa all
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Visa alla skepp där denna station finns med i rutten
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Byt namn på station
+
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Stäng flygplats
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3628,6 +3650,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... ägs
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapsarkitektursbegränsning uppnådd
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutrensningsbegränsning uppnådd
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... trädplanteringsbegränsning uppnådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vägen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat
@@ -3688,7 +3711,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... enda
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan bara byggas i städer med minst 1200 invånare
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan bara byggas i regnskogsområden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan bara byggas i ökenområden
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan bara byggas i städer
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan bara byggas i städer (ersätter hus)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan bara byggas i låglandsområden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan bara placeras nära kartans kant
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snögränsen

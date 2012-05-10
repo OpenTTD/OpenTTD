@@ -1274,11 +1274,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Разрешить строительство на склонах и на берегу: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Разрешить строительство на склонах и берегах: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона покрытия зависит от типа станции: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Разрешить снос (почти) всех городских объектов: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максимальная длина поездов: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максимальная длина состава: {STRING}
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} клет{P ка ки ок}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Количество дыма/искр у локомотивов: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Модель ускорения поездов: {STRING.f}
@@ -1298,12 +1298,12 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Способ с
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не создавать
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и остальные
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Плоская поверхность вокруг промышленности: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Плоская поверхность вокруг предприятий: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Разрешить несколько предприятий одного типа на город: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Показывать сигналы: {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Слева
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :На стороне движения автотранспорта
-STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Справа
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :слева
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :на стороне движения автотранспорта
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :справа
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Показывать финансовую статистику каждый год: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Создавать задания с меткой «без остановок»: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :По умолчанию поезда останавливаются {STRING} станции
@@ -1339,18 +1339,18 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не прове
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждать, если доход ТС отрицателен: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплутации: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автоозамена изношенного транспорта: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозамена транспорта старше {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплуатации: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозамена изношенного транспорта: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозамена транспорта {STRING} истечения срока эксплуатации
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :за {COMMA} месяц{P "" а ев} до
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} месяц{P "" а ев} спустя
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :спустя {COMMA} месяц{P "" а ев} после
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Сумма, необходимая для автозамены: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Длительность сообщения об ошибке: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P а ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Показывать подсказки: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Навести на {COMMA} секунд{P у ы ""}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Правый щелчок
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показывать количество жителей города в названии: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :наведением указателя на {COMMA} секунд{P у ы ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :щелчком правой кнопкой мыши
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показывать количество жителей в названии города: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Толщина линий графиков: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор ландшафта: {STRING}
@@ -1448,8 +1448,8 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Количес�
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал обслуживания в процентах: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Интервал обслуживания по умолчанию для поездов: {STRING}
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P ень ня ей}/%
-STR_CONFIG_SETTING_SERVINT_DISABLED                             :отключён
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интервал обслуживания по умолчанию автотранспорта: {STRING}
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :отключен
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интервал обслуживания по умолчанию для автотранспорта: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интервал обслуживания по умолчанию для авиатранспорта: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал обслуживания по умолчанию для кораблей: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Не обслуживать транспорт, если отключены поломки: {STRING}
@@ -1461,8 +1461,9 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Год нача
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Включить плавную экономику (частые, небольшие изменения): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разрешить торговлю акциями других компаний: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент дохода, начисляемый при частичной перевозке: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При перетаскивании ставить сигналы каждые: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клет{P ку ки ок}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При перетаскивании ставить сигналы каждые: {STRING.acc}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клет{P ка ки ок}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE.acc               :{COMMA} клет{P ку ки ок}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Равномерная расстановка сигналов при перетаскивании: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Строить семафоры старого стиля: до {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Включить меню сигналов: {STRING}
@@ -1498,15 +1499,15 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Положен�
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Расположение строки состояния: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радиус прилипания окна: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} точ{P ка ки ек}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :отключён
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :отключен
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Макс. количество открытых окон (не «приклеенных»): {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :отключён
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :отключен
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Максимальный уровень приближения: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Максимальный уровень удаления: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нормальный
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :нормальный
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
@@ -2925,8 +2926,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прин
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показать список принимаемых грузов
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Принимается: {WHITE}{CARGO_LIST}
 
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Эта станция обладает эксклюзивными правами транспортировки в этом городе.
-STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} приобрела эксклюзивные права транспортировки в этом городе.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Компания-владелец этой станции обладает эксклюзивными правами перевозки пассажиров и грузов в этом городе.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} приобрела эксклюзивные права на перевозку пассажиров и грузов в этом городе.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показать рейтинг станции
