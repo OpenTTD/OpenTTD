@@ -528,6 +528,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 	ind.random = initial_random_bits;
 	ind.founder = founder;
+	ind.psa = NULL;
 
 	NewIndustryResolver(&object, tile, &ind, type);
 	object.GetVariable = IndustryLocationGetVariable;
