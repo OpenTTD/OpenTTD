@@ -1187,7 +1187,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transpor
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportl. {STRING} maks. vecuma
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportlīdz. {STRING} maks. vecuma
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
