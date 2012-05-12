@@ -343,6 +343,12 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 	case SDT_NUMX: {
 		char *end;
 		size_t val = strtoul(str, &end, 0);
+		if (end == str) {
+			SetDParamStr(0, str);
+			SetDParamStr(1, desc->name);
+			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			return desc->def;
+		}
 		if (*end != '\0') {
 			SetDParamStr(0, desc->name);
 			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
@@ -359,7 +365,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		SetDParamStr(0, str);
 		SetDParamStr(1, desc->name);
 		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return 0;
+		return desc->def;
 	}
 	case SDT_MANYOFMANY: {
 		size_t r = LookupManyOfMany(desc->many, str);
@@ -367,7 +373,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		SetDParamStr(0, str);
 		SetDParamStr(1, desc->name);
 		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return NULL;
+		return desc->def;
 	}
 	case SDT_BOOLX:
 		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
@@ -376,7 +382,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 		SetDParamStr(0, str);
 		SetDParamStr(1, desc->name);
 		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		break;
+		return desc->def;
 
 	case SDT_STRING: return orig_str;
 	case SDT_INTLIST: return str;
@@ -2137,7 +2143,7 @@ static void Load_PATS()
 {
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
-	 * signal_side stays when joining a network-server */
+	 * currency setting stays when joining a network-server */
 	LoadSettings(_settings, &_settings_game);
 }
 
