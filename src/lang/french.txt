@@ -1102,6 +1102,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette ac
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options avancées
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explication disponible)
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
@@ -1121,16 +1122,25 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Construction côtière et sur pentes{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Les zones de desserte ont des tailles différentes selon les types de stations et d'aéroports
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Simplifier le retrait d'éléments possédés par une ville
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longueur maximum des trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Définir la longueur maximum des trains
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} case{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantité de fumée/étincelles des véhicules{NBSP}: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Définir combien de fumée ou d'étincelles sont émises par les véhicules
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modèle d'accélération des trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Choisir le modèle physique pour l'accélération des trains. Le modèle "original" pénalise également les pentes pour tous les véhicules. Le modèle "réaliste" pénalise les pentes et les courbes en fonction des différentes propriétés de l'ensemble, tels que la longueur et l'effort de traction
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modèle d'accélération des véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Choisir le modèle physique pour l'accélération des véhicules routiers. Le modèle "original" pénalise également les pentes pour tous les véhicules. Le modèle "réaliste" pénalise les pentes en fonction des différentes propriétés de l'engin, par exemple l'effort de traction
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinaison des pentes pour les trains{NBSP}: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Inclinaison d'une case en pente pour un train. Les valeurs les plus hautes rendent l’ascension plus difficile
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinaison des pentes pour les véhicules routiers{NBSP}: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Inclinaison d'une case en pente pour un véhicule routier. Les valeurs les plus hautes rendent l’ascension plus difficile
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Interdire aux trains et aux navires les virages à 90°{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permettre de joindre des stations non adjacentes{NBSP}: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utiliser l'algorithme amélioré de chargement{NBSP}: {STRING}

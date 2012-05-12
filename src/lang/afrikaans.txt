@@ -1160,6 +1160,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Laat befondsing toe van plaaslike pad heropbou: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Laat die stuur van geld na ander maatskappye toe: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewig vermenivoud vir vrag om swaar treine te simuleer: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Vlegtuig spoed faktor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuig botsings: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
@@ -1186,6 +1187,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Outoherbou wann
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" e} voor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" e} later
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Outohernuwe minimum vereisde geld vir hernuwe: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tyd wat fout boodskap wys: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon dorp populasie in die dorp naam etiket: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van lyn in grafieke: {STRING}

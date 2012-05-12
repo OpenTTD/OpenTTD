@@ -1481,6 +1481,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zmienion
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawienia zaawansowane
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
 
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
@@ -1500,24 +1501,40 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budować na pochyłym terenie i wybrzeżach: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Pozwalaj na modyfikowanie terenu pod budynkami i torami bez usuwania ich
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Używaj różnych rozmiarów pokrywania obszaru dla różnych typów stacji i lotnisk
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Ułatwiaj usuwanie infrastruktury i budynków należących do miast
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksymalna długość pociągów: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Ustaw maksymalną długość pociągów
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} p{P ole ola ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ilość dymu / iskier lokomotywy: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ustaw jak dużo dymu lub iskier jest emitowanych przez pojazdy
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model przyspieszania pociągu: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wybierz model fizyki dla przyspieszania pociągów. Oryginalny model daje takie same mandaty na stokach dla wszystkich pojazdów. Realistyczny model daje mandaty na stokach i zakrętach biorąc pod uwagę różne właściwości, takie jak długość i siłę pociągową
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model przyspieszania samochodów: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wybierz model fizyki dla przyspieszania pojazdów drogowych. Oryginalny model daje takie same mandaty na stokach dla wszystkich pojazdów. Realistyczny model daje mandaty na stokach biorąc pod uwagę właściwości silnika, np. 'siłę pociągową'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nachylenie stoków dla pociągów: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pochylenie pola stoku dla pociągów. Wyższa wartość utrudnia podjazd pod górę
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nachylenie stoków dla pojazdów drogowych: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pochylenie pola stoku dla pojazdów drogowych. Wyższa wartość utrudnia podjazd pod górę
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zabroń pociągom i statkom skręcać o 90 stopni: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-stopniowy zakręt występuje wtedy, gdy bezpośrednio po poziomym odcinku toru występuje odcinek pionowy na sąsiadującym polu zmuszając pociąg do skrętu o 90 stopni pokonując krawędź pola zamiast normalnego, 45-stopniowego skrętu w innych kombinacjach torów. Dotyczy to również kąta skrętu dla statków
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Pozwól na łączenie stacji nie sąsiadujących bezpośrednio: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Pozwalaj na dodawanie części stacji nie stykających się ze sobą. Naciśnij Ctrl przed postawieniem nowej części
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Użyj ulepszonego algorytmu załadunku: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Gdy włączone, wiele pojazdów czekających na stacji jest ładowanych po kolei. Ładowanie następnego pojazdu rozpocznie się, jeśli jest wystarczająco dużo towaru do uzupełnienia pierwszego pojazdu
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Stopniowy załadunek pojazdów: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Załadunek pojazdów odbywa się stopniowo przy użyciu specyficznych czasów ładowania zamiast ładowania wszystkiego na raz w określonym czasie w zależności tylko od ilości załadowanego towaru
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Włącz inflację w ekonomii, gdzie koszty rosną nieco szybciej niż zapłaty
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksymalna długość mostu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksymalna długość budowanych mostów
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna długość tunelu: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksymalna długość budowanych tuneli
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
@@ -1525,6 +1542,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwa
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Pokaż semafory: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wybierz po której stronie torów stawiać semafory
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Po lewej
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Po stronie kierunku jazdy
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Po prawej

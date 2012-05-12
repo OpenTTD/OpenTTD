@@ -1102,6 +1102,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acc
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones avanzadas
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí

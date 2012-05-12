@@ -1101,6 +1101,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This act
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -1120,82 +1121,132 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building on slopes and coasts: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow terraforming under buildings, tracks, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow terraforming under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Have differently sized catchment areas for different types of stations and airports
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Allow removal of more town-owned roads, bridges and tunnels: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Make it easier to remove town-owned infrastructure and buildings
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum length of trains: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Set the maximum length of trains
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tile{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Amount of vehicle smoke/sparks: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Set how much smoke or how many sparks are emitted by vehicles
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Train acceleration model: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Select the physics model for train acceleration. The "original" model penalizes slopes equally for all vehicles. The "realistic" model penalizes slopes and curves depending on various properties of the consist, like length and tractive effort
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Road vehicle acceleration model: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Select the physics model for road vehicle acceleration. The "original" model penalizes slopes equally for all vehicles. The "realistic" model penalizes slopes depending on various properties of the engine, for example 'tractive effort'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Slope steepness for trains: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steepness of a sloped tile for a train. Higher values make it more difficult to climb a hill
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Slope steepness for road vehicles: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steepness of a sloped tile for a road vehicle. Higher values make it more difficult to climb a hill
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbid trains and ships to make 90 deg turns: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 degree turns occur when a horizontal track is directly followed by a vertical track piece on the adjacent tile, thus making the train turn by 90 degree when traversing the tile edge instead of the usual 45 degrees for other track combinations. This also applies to the turning radius of ships
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Allow joining stations not directly adjacent: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Allow adding parts to a station without directly touching the existing parts. Needs Ctrl+Click while placing the new parts
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Use improved loading algorithm: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :If enabled, multiple vehicles waiting at a station are loaded sequentially. Loading of the next vehicle only starts when there is enough cargo waiting to completely fill the first vehicle
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Load vehicles gradually: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradually load vehicles using vehicle specific loading durations, instead of loading everything at once with a fixed time depending only on the amount of cargo loaded
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Enable inflation in the economy, where costs are slightly faster rising than payments
 STR_CONFIG_SETTING_SELECTGOODS                                  :Deliver cargo to a station only when there is a demand: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Only deliver cargo to a station that was requested from a loading vehicle. This prevents bad ratings for cargoes that are not serviced at a station
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum bridge length: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum length for building bridges
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel length: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum length for building tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primary industry construction method: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Method of funding a primary industry. 'none' means it is not possible to fund any, 'prospecting' means funding is possible, but construction occurs in a random spot on the map and may as well fail, 'as other industries' means raw industries can be constructed by companies like processing industries in any position they like
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flat area around industries: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Amount of flat space around an industry. This ensures empty space will remain available around an industry for building tracks, et cetera
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Allow multiple similar industries per town: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normally, a town does not want more than one industry of each type. With this setting, it will allow several industries of the same type in the same town
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Show signals: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Select on which side of the track to place signals
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :On the left
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :On the driving side
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :On the right
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Show finances window at the end of the year: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :If enabled, the finances window pops up at the end of each year to allow easy inspection of the financial status of the company
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :New orders are 'non-stop' by default: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normally, a vehicle will stop at every station it passes. By enabling this setting, it will drive through all station on the way to its final destination without stopping. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
 STR_CONFIG_SETTING_STOP_LOCATION                                :New train orders stop by default at the {STRING} of the platform
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Place where a train will stop at the platform by default. The 'near end' means close to the entry point, 'middle' means in the middle of the platform, and 'far end' means far away from the entry point. Note, that this setting only defines a default value for new orders. Individual orders can be set explicitly to either behavior nevertheless
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :near end
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middle
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :far end
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Road vehicle queueing (with quantum effects): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Make road vehicle wait in front of occupied road stops until they are cleared
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pan window when mouse is at the edge: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :When enabled, the main display will start to scroll when the mouse is near the edge of the screen
 STR_CONFIG_SETTING_BRIBE                                        :Allow bribing of the local authority: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Allow companies to try bribing the local town authority. If the bribe is noticed by an inspector, the company will not be able to act in the town for six months
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Allow buying exclusive transport rights: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Allow funding buildings: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Allow companies to give money to towns for funding new houses
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Allow funding local road reconstruction: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Allow companies to give money to towns for road reconstruction to sabotage road-based services in the town
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Allow sending money to other companies: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Allow transfer of money between companies in multiplayer mode
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Weight multiplier for freight to simulate heavy trains: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Set the impact of carrying freight in trains. A higher value makes carrying freight more demanding for trains, especially at hills
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Plane speed factor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Set the relative speed of planes compared to other vehicle types, to reduce the amount of income of transport by aircraft
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Number of plane crashes: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Set the chance of an aircraft crash happening
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :none
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduced
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Allow drive-through road stops on town owned roads: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Allow construction of drive-through road stops on town-owned roads
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Allow drive-through road stops on roads owned by competitors: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Allow construction of drive-through road stops on roads owned by other companies
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Allow building adjacent stations: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Allow different stations to touch each other
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Enable multiple NewGRF engine sets: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Compatibility option for old NewGRFs. Do not disable this, unless you know exactly what you are doing!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Changing this setting is not possible when there are vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastructure maintenance: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :When enabled, infrastructure causes maintenance costs. The cost grows over-proportional with the network size, thus affecting bigger companies more than smaller ones
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Airports never expire: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Enabling this setting makes each airport type stay available forever after its introduction
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warn if vehicle is lost: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Trigger messages about vehicles unable to find a path to their ordered destination
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Review vehicles' orders: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :When enabled, the orders of the vehicles are periodically checked, and some obvious issues are reported with a news message when detected
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :of all vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warn if a vehicle's income is negative: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :When enabled, a news message gets sent when a vehicle has not made any profit within a calendar year
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehicles never expire: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :When enabled, all vehicle models remain available forever after their introduction
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenew vehicle when it gets old: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :When enabled, a vehicle nearing its end of life gets automatically replaced when the renew conditions are fulfilled
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenew when vehicle is {STRING} max age
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relative age when a vehicle should be considered for auto-renewing
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} month{P 0 "" s} before
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} month{P 0 "" s} after
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenew minimum needed money for renew: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimal amount of money that must remain in the bank before considering auto-renewing vehicles
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duration of error message: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duration for displaying error messages in a red window. Note that some (critical) error messages are not closed automatically after this time, but must be closed manually
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} second{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Show tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delay before tooltips are displayed when hovering the mouse over some interface element. Alternatively tooltips can be bound to the right mouse button
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Hover for {COMMA} second{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Right click
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Show town population in the town name label: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Display the population of towns in their label on the map
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Thickness of lines in graphs: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Width of the line in the graphs. A thin line is more precisely readable, a thicker line is easier to see and colors are easier to distinguish
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1220,134 +1271,201 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or m
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Max station spread: {STRING} {RED}Warning: High value slows game
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Perform maintenance on helicopters at helipads automatically: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Service helicopters after every landing, even if there is no depot at the airport
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Link landscape toolbar to rail/road/water/airport toolbars: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :When opening a construction toolbar for a transport type, also open the toolbar for terraforming
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Land color used in the minimap: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color of the terrain in the smallmap
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dark green
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Reverse scroll direction: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Behavior when scrolling the map with the right mouse button. When disabled, the mouse moves the camera. When enabled, the mouse moves the map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolles to a specific position when clicking on the smallmap on when issueing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Display tile-distances and height differences when dragging during construction operations
 STR_CONFIG_SETTING_LIVERIES                                     :Show company liveries: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Control usage of vehicle-type specific liveries for vehicles (in contrary to company specific)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :None
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Own company
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :All companies
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prefer team chat with <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Switch the binding of company-internal and public chat to <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Function of scrollwheel: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Enable scrolling with two-dimensional mouse-wheels
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Map scrollwheel speed: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Control the sensitivity of mouse-wheel scrolling
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Select the method to emulate right mouse-button clicks
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Enable scrolling the map by dragging it with the left mouse button. This is especially useful when using a touch-screen for scrolling
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Use the {STRING} date format for savegame names
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format of the date in save game filenames
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Default palette to assume for NewGRFs not specifying a palette: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Default palette to use for NewGRFs that do not specify which one they need
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palette
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatically pause when starting a new game: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :When enabled, the game will automatically pause when starting a new game, allowing for closer study of the map
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :When paused allow: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Select what actions may be done while the game is paused
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :no actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all non-construction actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all but landscape modifying actions
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :all actions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Use the advanced vehicle list: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Enable usage of the advanced vehicle lists for grouping vehicles
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Use loading indicators: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Select whether loading indicators are displayed above loading or unloading vehicles
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Show timetable in ticks rather than days: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Show travel times in time tables in game ticks instead of days
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Show arrival and departure in timetables: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Display anticipated arrival and departure times in timetables
 STR_CONFIG_SETTING_QUICKGOTO                                    :Quick creation of vehicle orders: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-select the 'goto cursor' when opening the orders window
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Default rail type (after new game/game load): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Rail type to select after starting or loading a game. 'first available' selects the oldest type of tracks, 'last available' selects the newest type of tracks, and 'most used' selects the type which is currently most in use
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :First available
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Last available
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Show reserved tracks: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Give reserved tracks a different color to assist in problems with trains refusing to enter path-based blocks
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Keep building tools active after usage: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Keep the building tools for bridges, tunnels, etc. open after use
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Group expenses in company finance window: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layout for the company expenses window
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disable infrastructure building when no suitable vehicles are available: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :When enabled, infrastructure is only available if there are also vehicles available, preventing waste of time and money on unusable infrastructure
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trains per company: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximum number of trains that a company can have
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max road vehicles per company: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximum number of road vehicles that a company can have
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max aircraft per company: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximum number of aircraft that a company can have
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Max ships per company: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximum number of ships that a company can have
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Disable trains for computer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Enabling this setting makes building trains impossible for a computer player
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Disable road vehicles for computer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Enabling this setting makes building road vehicles impossible for a computer player
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Disable aircraft for computer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Enabling this setting makes building aircraft impossible for a computer player
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Disable ships for computer: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Enabling this setting makes building ships impossible for a computer player
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Allow AIs in multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Allow AI computer players to participate in multiplayer games
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes before scripts are suspended: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximum number of computation steps that a script can take in one turn
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Maintenance intervals are in percents: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Choose whether maintenance of vehicles is triggered by the time passed since last maintenance or by reliability dropping by a certain percentage of the maximum reliability
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Default maintenance interval for trains: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Set the default maintenance interval for new rail vehicles, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} day{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :disabled
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Default maintenance interval for road vehicles: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Set the default maintenance interval for new road vehicles, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Default maintenance interval for aircraft: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default maintenance interval for new aircraft, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default maintenance interval for ships: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default maintenance interval for new ships, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_NOSERVICE                                    :Disable maintenance when breakdowns are set to none: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get maintenained if they cannot break down
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Colored news appears in: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the newspaper announcements get printed in color. Before this year, it uses monochrome black/white
 STR_CONFIG_SETTING_STARTING_YEAR                                :Starting date: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Enable smooth economy (more, smaller changes): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :When enabled, industry production changes more often, and in smaller steps. This setting has usually no effect, if industry types are provided by a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :When enabled, allow buying and selling of company shares. Shares will only be available for companies reaching a certain age
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage of income given to the intermediate legs in feeder systems, giving more control over the income
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :When dragging, place signals every: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Set the distance at which signals will be built on a track up to the next obstacle (signal, junction), if signals are dragged
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tile{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :When dragging, keep fixed distance between signals: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Select the behavior of signal placement when Ctrl+dragging signals. If disabled, signals are placed around tunnels or bridges to avoid long stretches without signals. If enabled, signals are placed every N tiles, making alignment of signals at parallel tracks easier
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatically build semaphores before: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Set the year when electric signals will be used for tracks. Before this year, non-electric signals will be used (which have the exact same function, but different looks)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Enable the signal GUI: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Display a window for choosing signal types to build, instead of only window-less signal-type rotation with Ctrl+clicking on build signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signal type to build by default: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Default signal type to use
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Block signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Path signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :One-way path signals
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through, when Ctrl+clicking on a build signal with the signal tooo
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Block signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Road layout for new towns: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout for the road network of towns
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :better roads
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Towns are allowed to build roads: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Allow towns to build roads for growth. Disable to disallow town authorities extending roads themself
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Towns are allowed to build grade crossings: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Enabling this setting allows towns to build grade crossings
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Allow town controlled noise level for airports: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :With this setting disabled, there can be two airports in each town. With this setting enabled, the number of airports in a city is limited by the noise acceptance of the town, which depends on population and airport size and distance
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Founding towns in game: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Enabling this setting allows players to found new towns in the game
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :forbidden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :allowed, custom town layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :In-game placement of trees: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Control random appearance of trees during the game. This might affect industries which rely on tree growth, e.g. lumber mills
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :none {RED}(breaks lumber mill)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :only in rain forests
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :everywhere
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position of main toolbar: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal position of the main toolbar at the top of the screen
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of statusbar: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontal position of the status bar at the bottom of the screen
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distance between windows before the window being moved is automatically aligned to nearby windows
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :disabled
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum number of non-sticky windows: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Number of non-sticky open windows before old windows get automatically closed to make room for new windows
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :disabled
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximum zoom in level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :The maximum zoom-in level for viewports. Note that enabling higher zoom-in levels increases memory requirements
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximum zoom out level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :The maximum zoom-out level for viewports. Higher zoom-out levels might cause lag when used
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1355,16 +1473,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Town growth speed: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Speed of town growth
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :None
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slow
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Fast
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Very fast
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportion of towns that will become cities: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Amount of towns which will become a city, thus a town which starts out larger and grows faster
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :none
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial city size multiplier: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Average size of cities relative to normal towns at start of the game
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remove absurd road-elements during the road construction: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remove dead road ends during funded road reconstruction
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construction
@@ -1390,9 +1512,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pathfinder for trains: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Path finder to use for trains
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pathfinder for road vehicles: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Path finder to use for road vehicles
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pathfinder for ships: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Path finder to use for ships
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatic reversing at signals: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Allow trains to reverse on a signal, if they waited there a long time
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
@@ -2519,11 +2645,11 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF v
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aligning sprite {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Next sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolour/font sprites and wrapping around at the end
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Proceed to the next normal sprite, skipping any pseudo/recolor/font sprites and wrapping around at the end
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Go to sprite
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Go to the given sprite. If the sprite is not a normal sprite, proceed to the next normal sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Previous sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolour/font sprites and wrapping around at the begin
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Proceed to the previous normal sprite, skipping any pseudo/recolor/font sprites and wrapping around at the begin
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representation of the currently selected sprite. The alignment is ignored when drawing this sprite
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Move the sprite around, changing the X and Y offsets
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X offset: {NUM}, Y offset: {NUM}
@@ -2578,7 +2704,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Found c
 STR_NEWGRF_LIST_MISSING                                         :{RED}Missing files
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:STRING}' is likely to cause desyncs and/or crashes
+STR_NEWGRF_BROKEN                                               :{WHITE}Behavior of NewGRF '{0:STRING}' is likely to cause desyncs and/or crashes
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}It changed powered-wagon state for '{1:ENGINE}' when not inside a depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changed vehicle length for '{1:ENGINE}' when not inside a depot
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash
@@ -3322,21 +3448,21 @@ STR_ORDER_GO_TO                                                 :Go to
 STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
 STR_ORDER_GO_VIA                                                :Go via
 STR_ORDER_GO_NON_STOP_VIA                                       :Go non-stop via
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Change the stopping behaviour of the highlighted order
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Change the stopping behavior of the highlighted order
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full load any cargo
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Load if available
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full load any cargo
 STR_ORDER_DROP_NO_LOADING                                       :No loading
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behaviour of the highlighted order
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behavior of the highlighted order
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Unload all
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unload if accepted
 STR_ORDER_DROP_UNLOAD                                           :Unload all
 STR_ORDER_DROP_TRANSFER                                         :Transfer
 STR_ORDER_DROP_NO_UNLOADING                                     :No unloading
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behaviour of the highlighted order
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behavior of the highlighted order
 
 STR_ORDER_REFIT                                                 :{BLACK}Refit
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Select what cargo type to refit to in this order. Ctrl+Click to remove refit instruction

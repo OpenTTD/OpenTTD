@@ -1193,8 +1193,8 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņojuma ilgums: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt skaidrojumus: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :attēlot {COMMA} sekun{P 0 di des žu}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :labais klikšķis
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
@@ -1205,8 +1205,8 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks. att. no kartes malas naftas pārstrādes rūpnīcām: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti līdzena
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Līdzena
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti gluda
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Gluda
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Nelīdzena
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Ļoti nelīdzena
 STR_CONFIG_SETTING_TREE_PLACER                                  :Koku izvietošanas algoritms: {STRING}
@@ -1377,7 +1377,7 @@ STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncen
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Saziņa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
-STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravas pārvietošana
+STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravu pārvietošana
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Automātiskā atjaunošana
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Apkope
@@ -1439,8 +1439,8 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Izveidot
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Sākt vairākspēlētāju spēli
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izvēlēties 'mērena klimata' ainavas stilu
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izvēlēties 'subarktiska klimata' ainavas stilu
-STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlēties 'subtropiska klimata' ainavas stilu
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Izvēlēties 'subarktikas klimata' ainavas stilu
+STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Izvēlēties 'subtropu klimata' ainavas stilu
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Izvēlēties 'rotaļlietu zemes' ainavas stilu
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Rādīt spēles opcijas
@@ -1485,10 +1485,10 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlē
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneļi drīkst krustoties: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktīvās lidmašīnas mazajās lidostās neavarēs (bieži): {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mērenais klimats
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktiskais klimats
-STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropiskais klimats
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Rotaļlietu zeme
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Mērena klimata ainava
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktikas klimata ainava
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropu klimata ainava
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Rotaļlietu zemes ainava
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Nomainīt datumu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mainīt pašreizējo gadu
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ieslēgt ražojumu vērtības maiņu: {ORANGE}{STRING}
