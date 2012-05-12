@@ -725,7 +725,7 @@ public:
 		uint i;
 		const SettingDesc *sd = GetSettingFromName("difficulty.max_no_competitors", &i) + widget;
 		int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
-		SetDParam(0, sd->desc.val_str + value);
+		SetDParam(0, sd->desc.str_val + value);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -743,7 +743,7 @@ public:
 		/* Get the string and try all strings from the smallest to the highest value */
 		StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
 		for (int32 value = sdb->min; (uint32)value <= sdb->max; value += sdb->interval) {
-			SetDParam(0, sdb->val_str + value);
+			SetDParam(0, sdb->str_val + value);
 			*size = maxdim(*size, GetStringBoundingBox(str));
 		}
 	}
@@ -1288,12 +1288,12 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 				editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
 
 		if ((sdb->flags & SGF_MULTISTRING) != 0) {
-			SetDParam(1, sdb->val_str - sdb->min + value);
+			SetDParam(1, sdb->str_val - sdb->min + value);
 		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
-			SetDParam(1, sdb->val_str + ((value >= 0) ? 1 : 0));
+			SetDParam(1, sdb->str_val + ((value >= 0) ? 1 : 0));
 			value = abs(value);
 		} else {
-			SetDParam(1, sdb->val_str + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
+			SetDParam(1, sdb->str_val + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
 		}
 		SetDParam(2, value);
 	}
