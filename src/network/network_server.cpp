@@ -450,6 +450,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 	if (this->status >= STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	this->status = STATUS_AUTH_GAME;
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
 
 	Packet *p = new Packet(PACKET_SERVER_NEED_GAME_PASSWORD);
 	this->SendPacket(p);
@@ -463,6 +465,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 	if (this->status >= STATUS_AUTH_COMPANY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	this->status = STATUS_AUTH_COMPANY;
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
 
 	Packet *p = new Packet(PACKET_SERVER_NEED_COMPANY_PASSWORD);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
@@ -481,6 +485,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 	if (this->status >= STATUS_AUTHORIZED) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	this->status = STATUS_AUTHORIZED;
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
+
 	_network_game_info.clients_on++;
 
 	p = new Packet(PACKET_SERVER_WELCOME);

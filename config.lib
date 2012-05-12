@@ -2864,7 +2864,7 @@ detect_icu() {
 
 	version=`$icu_config --version 2>/dev/null`
 	ret=$?
-	shortversion=`echo $version | cut -c 1,3`
+	shortversion=`echo $version | cut -d\. -f1,2 | sed "s/\.//g" | cut -c1-2`
 	log 2 "executing $icu_config --version"
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
