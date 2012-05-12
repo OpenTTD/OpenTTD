@@ -40,20 +40,27 @@ static const uint16 TOWN_GROW_RATE_CUSTOM = 0x8000; ///< If this mask is applied
 typedef Pool<Town, TownID, 64, 64000> TownPool;
 extern TownPool _town_pool;
 
+/** Data structure with cached data of towns. */
+struct TownCache {
+	uint32 num_houses;                        ///< Amount of houses
+	uint32 population;                        ///< Current population of people
+	ViewportSign sign;                        ///< Location of name sign, UpdateVirtCoord updates this
+	PartOfSubsidyByte part_of_subsidy;        ///< Is this town a source/destination of a subsidy?
+	uint32 squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
+	BuildingCounts<uint16> building_counts;   ///< The number of each type of building in the town
+};
+
 /** Town data structure. */
 struct Town : TownPool::PoolItem<&_town_pool> {
 	TileIndex xy;                  ///< town center tile
 
-	uint32 num_houses;             ///< amount of houses
-	uint32 population;             ///< current population of people
+	TownCache cache; ///< Container for all cacheable data.
 
 	/* Town name */
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
 	char *name;
-
-	ViewportSign sign;             ///< NOSAVE: Location of name sign, UpdateVirtCoord updates this
 
 	/* Makes sure we don't build certain house types twice.
 	 * bit 0 = Building funds received
@@ -98,12 +105,6 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	std::list<PersistentStorage *> psa_list;
 
-	PartOfSubsidyByte part_of_subsidy; ///< NOSAVE: is this town a source/destination of a subsidy?
-
-	uint32 squared_town_zone_radius[HZB_END]; ///< NOSAVE: UpdateTownRadius updates this given the house count
-
-	BuildingCounts<uint16> building_counts; ///< NOSAVE: the number of each type of building in the town
-
 	/**
 	 * Creates a new town.
 	 * @param tile center tile of the town
@@ -123,10 +124,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	 */
 	inline uint16 MaxTownNoise() const
 	{
-		if (this->population == 0) return 0; // no population? no noise
+		if (this->cache.population == 0) return 0; // no population? no noise
 
 		/* 3 is added (the noise of the lowest airport), so the  user can at least build a small airfield. */
-		return (this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3;
+		return (this->cache.population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3;
 	}
 
 	void UpdateVirtCoord();

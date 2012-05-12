@@ -52,14 +52,14 @@
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
-	return t->population;
+	return t->cache.population;
 }
 
 /* static */ int32 ScriptTown::GetHouseCount(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;
 	const Town *t = ::Town::Get(town_id);
-	return t->num_houses;
+	return t->cache.num_houses;
 }
 
 /* static */ TileIndex ScriptTown::GetLocation(TownID town_id)
@@ -125,11 +125,11 @@
 
 	switch (t->goal[towneffect_id]) {
 		case TOWN_GROWTH_WINTER:
-			if (TileHeight(t->xy) >= GetSnowLine() && t->population > 90) return 1;
+			if (TileHeight(t->xy) >= GetSnowLine() && t->cache.population > 90) return 1;
 			return 0;
 
 		case TOWN_GROWTH_DESERT:
-			if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->population > 60) return 1;
+			if (GetTropicZone(t->xy) == TROPICZONE_DESERT && t->cache.population > 60) return 1;
 			return 0;
 
 		default: return t->goal[towneffect_id];
@@ -170,7 +170,7 @@
 	if (!IsValidTown(town_id)) return false;
 
 	const Town *t = ::Town::Get(town_id);
-	return ((uint32)GetDistanceSquareToTile(town_id, tile) <= t->squared_town_zone_radius[0]);
+	return ((uint32)GetDistanceSquareToTile(town_id, tile) <= t->cache.squared_town_zone_radius[0]);
 }
 
 /* static */ bool ScriptTown::HasStatue(TownID town_id)

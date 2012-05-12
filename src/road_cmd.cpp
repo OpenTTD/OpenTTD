@@ -493,7 +493,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			company = OWNER_TOWN;
 
 			/* If we are not within a town, we are not owned by the town */
-			if (town == NULL || DistanceSquare(tile, town->xy) > town->squared_town_zone_radius[HZB_TOWN_EDGE]) {
+			if (town == NULL || DistanceSquare(tile, town->xy) > town->cache.squared_town_zone_radius[HZB_TOWN_EDGE]) {
 				company = OWNER_NONE;
 			}
 		}

@@ -49,6 +49,11 @@ HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid)
 void InitializeBuildingCounts()
 {
 	memset(&_building_counts, 0, sizeof(_building_counts));
+
+	Town *t;
+	FOR_ALL_TOWNS(t) {
+		memset(&t->cache.building_counts, 0, sizeof(t->cache.building_counts));
+	}
 }
 
 /**
@@ -63,12 +68,12 @@ void IncreaseBuildingCount(Town *t, HouseID house_id)
 
 	if (!_loaded_newgrf_features.has_newhouses) return;
 
-	t->building_counts.id_count[house_id]++;
+	t->cache.building_counts.id_count[house_id]++;
 	_building_counts.id_count[house_id]++;
 
 	if (class_id == HOUSE_NO_CLASS) return;
 
-	t->building_counts.class_count[class_id]++;
+	t->cache.building_counts.class_count[class_id]++;
 	_building_counts.class_count[class_id]++;
 }
 
@@ -84,13 +89,13 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 
 	if (!_loaded_newgrf_features.has_newhouses) return;
 
-	if (t->building_counts.id_count[house_id] > 0) t->building_counts.id_count[house_id]--;
-	if (_building_counts.id_count[house_id] > 0)   _building_counts.id_count[house_id]--;
+	if (t->cache.building_counts.id_count[house_id] > 0) t->cache.building_counts.id_count[house_id]--;
+	if (_building_counts.id_count[house_id] > 0) _building_counts.id_count[house_id]--;
 
 	if (class_id == HOUSE_NO_CLASS) return;
 
-	if (t->building_counts.class_count[class_id] > 0) t->building_counts.class_count[class_id]--;
-	if (_building_counts.class_count[class_id] > 0)   _building_counts.class_count[class_id]--;
+	if (t->cache.building_counts.class_count[class_id] > 0) t->cache.building_counts.class_count[class_id]--;
+	if (_building_counts.class_count[class_id] > 0) _building_counts.class_count[class_id]--;
 }
 
 static uint32 HouseGetRandomBits(const ResolverObject *object)
@@ -123,8 +128,8 @@ static uint32 GetNumHouses(HouseID house_id, const Town *town)
 
 	map_id_count     = ClampU(_building_counts.id_count[house_id], 0, 255);
 	map_class_count  = ClampU(_building_counts.class_count[class_id], 0, 255);
-	town_id_count    = ClampU(town->building_counts.id_count[house_id], 0, 255);
-	town_class_count = ClampU(town->building_counts.class_count[class_id], 0, 255);
+	town_id_count    = ClampU(town->cache.building_counts.id_count[house_id], 0, 255);
+	town_class_count = ClampU(town->cache.building_counts.class_count[class_id], 0, 255);
 
 	return map_class_count << 24 | town_class_count << 16 | map_id_count << 8 | town_id_count;
 }

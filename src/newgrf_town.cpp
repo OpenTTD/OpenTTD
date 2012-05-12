@@ -55,21 +55,21 @@ uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t
 		/* Town properties */
 		case 0x80: return t->xy;
 		case 0x81: return GB(t->xy, 8, 8);
-		case 0x82: return ClampToU16(t->population);
-		case 0x83: return GB(ClampToU16(t->population), 8, 8);
+		case 0x82: return ClampToU16(t->cache.population);
+		case 0x83: return GB(ClampToU16(t->cache.population), 8, 8);
 		case 0x8A: return t->grow_counter;
 		case 0x92: return t->flags;  // In original game, 0x92 and 0x93 are really one word. Since flags is a byte, this is to adjust
 		case 0x93: return 0;
-		case 0x94: return ClampToU16(t->squared_town_zone_radius[0]);
-		case 0x95: return GB(ClampToU16(t->squared_town_zone_radius[0]), 8, 8);
-		case 0x96: return ClampToU16(t->squared_town_zone_radius[1]);
-		case 0x97: return GB(ClampToU16(t->squared_town_zone_radius[1]), 8, 8);
-		case 0x98: return ClampToU16(t->squared_town_zone_radius[2]);
-		case 0x99: return GB(ClampToU16(t->squared_town_zone_radius[2]), 8, 8);
-		case 0x9A: return ClampToU16(t->squared_town_zone_radius[3]);
-		case 0x9B: return GB(ClampToU16(t->squared_town_zone_radius[3]), 8, 8);
-		case 0x9C: return ClampToU16(t->squared_town_zone_radius[4]);
-		case 0x9D: return GB(ClampToU16(t->squared_town_zone_radius[4]), 8, 8);
+		case 0x94: return ClampToU16(t->cache.squared_town_zone_radius[0]);
+		case 0x95: return GB(ClampToU16(t->cache.squared_town_zone_radius[0]), 8, 8);
+		case 0x96: return ClampToU16(t->cache.squared_town_zone_radius[1]);
+		case 0x97: return GB(ClampToU16(t->cache.squared_town_zone_radius[1]), 8, 8);
+		case 0x98: return ClampToU16(t->cache.squared_town_zone_radius[2]);
+		case 0x99: return GB(ClampToU16(t->cache.squared_town_zone_radius[2]), 8, 8);
+		case 0x9A: return ClampToU16(t->cache.squared_town_zone_radius[3]);
+		case 0x9B: return GB(ClampToU16(t->cache.squared_town_zone_radius[3]), 8, 8);
+		case 0x9C: return ClampToU16(t->cache.squared_town_zone_radius[4]);
+		case 0x9D: return GB(ClampToU16(t->cache.squared_town_zone_radius[4]), 8, 8);
 		case 0x9E: return t->ratings[0];
 		case 0x9F: return GB(t->ratings[0], 8, 8);
 		case 0xA0: return t->ratings[1];
@@ -88,7 +88,7 @@ uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t
 		case 0xAD: return GB(t->ratings[7], 8, 8);
 		case 0xAE: return t->have_ratings;
 		case 0xB2: return t->statues;
-		case 0xB6: return ClampToU16(t->num_houses);
+		case 0xB6: return ClampToU16(t->cache.num_houses);
 		case 0xB9: return t->growth_rate & (~TOWN_GROW_RATE_CUSTOM);
 		case 0xBA: return ClampToU16(t->supplied[CT_PASSENGERS].new_max);
 		case 0xBB: return GB(ClampToU16(t->supplied[CT_PASSENGERS].new_max), 8, 8);

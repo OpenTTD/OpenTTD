@@ -815,6 +815,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_SCROLLBAR,                          "WID_BO_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_OBJECT_MATRIX,                      "WID_BO_OBJECT_MATRIX");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_OBJECT_SPRITE,                      "WID_BO_OBJECT_SPRITE");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_OBJECT_NAME,                        "WID_BO_OBJECT_NAME");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_OBJECT_SIZE,                        "WID_BO_OBJECT_SIZE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_INFO,                               "WID_BO_INFO");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_BO_SELECT_MATRIX,                      "WID_BO_SELECT_MATRIX");

@@ -879,17 +879,17 @@ class SmallMapWindow : public Window {
 		FOR_ALL_TOWNS(t) {
 			/* Remap the town coordinate */
 			Point pt = this->RemapTile(TileX(t->xy), TileY(t->xy));
-			int x = pt.x - this->subscroll - (t->sign.width_small >> 1);
+			int x = pt.x - this->subscroll - (t->cache.sign.width_small >> 1);
 			int y = pt.y;
 
 			/* Check if the town sign is within bounds */
-			if (x + t->sign.width_small > dpi->left &&
+			if (x + t->cache.sign.width_small > dpi->left &&
 					x < dpi->left + dpi->width &&
 					y + FONT_HEIGHT_SMALL > dpi->top &&
 					y < dpi->top + dpi->height) {
 				/* And draw it. */
 				SetDParam(0, t->index);
-				DrawString(x, x + t->sign.width_small, y, STR_SMALLMAP_TOWN);
+				DrawString(x, x + t->cache.sign.width_small, y, STR_SMALLMAP_TOWN);
 			}
 		}
 	}

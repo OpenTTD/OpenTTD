@@ -121,7 +121,7 @@ static inline void SetPartOfSubsidyFlag(SourceType type, SourceID index, PartOfS
 {
 	switch (type) {
 		case ST_INDUSTRY: Industry::Get(index)->part_of_subsidy |= flag; return;
-		case ST_TOWN:         Town::Get(index)->part_of_subsidy |= flag; return;
+		case ST_TOWN:   Town::Get(index)->cache.part_of_subsidy |= flag; return;
 		default: NOT_REACHED();
 	}
 }
@@ -130,7 +130,7 @@ static inline void SetPartOfSubsidyFlag(SourceType type, SourceID index, PartOfS
 void RebuildSubsidisedSourceAndDestinationCache()
 {
 	Town *t;
-	FOR_ALL_TOWNS(t) t->part_of_subsidy = POS_NONE;
+	FOR_ALL_TOWNS(t) t->cache.part_of_subsidy = POS_NONE;
 
 	Industry *i;
 	FOR_ALL_INDUSTRIES(i) i->part_of_subsidy = POS_NONE;
@@ -297,13 +297,13 @@ bool FindSubsidyPassengerRoute()
 	if (!Subsidy::CanAllocateItem()) return false;
 
 	const Town *src = Town::GetRandom();
-	if (src->population < SUBSIDY_PAX_MIN_POPULATION ||
+	if (src->cache.population < SUBSIDY_PAX_MIN_POPULATION ||
 			src->GetPercentTransported(CT_PASSENGERS) > SUBSIDY_MAX_PCT_TRANSPORTED) {
 		return false;
 	}
 
 	const Town *dst = Town::GetRandom();
-	if (dst->population < SUBSIDY_PAX_MIN_POPULATION || src == dst) {
+	if (dst->cache.population < SUBSIDY_PAX_MIN_POPULATION || src == dst) {
 		return false;
 	}
 
@@ -534,7 +534,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 			if (!(Industry::Get(src)->part_of_subsidy & POS_SRC)) return false;
 			break;
 		case ST_TOWN:
-			if (!(    Town::Get(src)->part_of_subsidy & POS_SRC)) return false;
+			if (!(Town::Get(src)->cache.part_of_subsidy & POS_SRC)) return false;
 			break;
 		default: return false;
 	}
@@ -557,7 +557,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 					TileIndex tile = TileXY(x, y);
 					if (!IsTileType(tile, MP_HOUSE)) continue;
 					const Town *t = Town::GetByTile(tile);
-					if (t->part_of_subsidy & POS_DST) towns_near.Include(t);
+					if (t->cache.part_of_subsidy & POS_DST) towns_near.Include(t);
 				}
 			}
 			break;
@@ -584,7 +584,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 				case ST_TOWN:
 					for (const Town * const *tp = towns_near.Begin(); tp != towns_near.End(); tp++) {
 						if (s->dst == (*tp)->index) {
-							assert((*tp)->part_of_subsidy & POS_DST);
+							assert((*tp)->cache.part_of_subsidy & POS_DST);
 							subsidised = true;
 							if (!s->IsAwarded()) s->AwardTo(company);
 						}
