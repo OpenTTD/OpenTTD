@@ -48,7 +48,7 @@ struct ViewportSign {
 	uint16 width_small;  ///< The width when zoomed out (small font)
 
 	void UpdatePosition(int center, int top, StringID str);
-	void MarkDirty() const;
+	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
 };
 
 /**

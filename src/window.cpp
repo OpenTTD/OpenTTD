@@ -1753,16 +1753,19 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
  * @param w       Window to resize
  * @param delta_x Delta x-size of changed window (positive if larger, etc.)
  * @param delta_y Delta y-size of changed window
+ * @param clamp_to_screen Whether to make sure the whole window stays visible
  */
-void ResizeWindow(Window *w, int delta_x, int delta_y)
+void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen)
 {
 	if (delta_x != 0 || delta_y != 0) {
-		/* Determine the new right/bottom position. If that is outside of the bounds of
-		 * the resolution clamp it in such a manner that it stays within the bounds. */
-		int new_right  = w->left + w->width  + delta_x;
-		int new_bottom = w->top  + w->height + delta_y;
-		if (new_right  >= (int)_cur_resolution.width)  delta_x -= Ceil(new_right  - _cur_resolution.width,  max(1U, w->nested_root->resize_x));
-		if (new_bottom >= (int)_cur_resolution.height) delta_y -= Ceil(new_bottom - _cur_resolution.height, max(1U, w->nested_root->resize_y));
+		if (clamp_to_screen) {
+			/* Determine the new right/bottom position. If that is outside of the bounds of
+			 * the resolution clamp it in such a manner that it stays within the bounds. */
+			int new_right  = w->left + w->width  + delta_x;
+			int new_bottom = w->top  + w->height + delta_y;
+			if (new_right  >= (int)_cur_resolution.width)  delta_x -= Ceil(new_right  - _cur_resolution.width,  max(1U, w->nested_root->resize_x));
+			if (new_bottom >= (int)_cur_resolution.height) delta_y -= Ceil(new_bottom - _cur_resolution.height, max(1U, w->nested_root->resize_y));
+		}
 
 		w->SetDirty();
 
@@ -2988,7 +2991,7 @@ void RelocateAllWindows(int neww, int newh)
 				continue;
 
 			case WC_MAIN_TOOLBAR:
-				ResizeWindow(w, min(neww, *_preferred_toolbar_size) - w->width, 0);
+				ResizeWindow(w, min(neww, *_preferred_toolbar_size) - w->width, 0, false);
 
 				top = w->top;
 				left = PositionMainToolbar(w); // changes toolbar orientation
@@ -3000,14 +3003,14 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_STATUS_BAR:
-				ResizeWindow(w, min(neww, *_preferred_statusbar_size) - w->width, 0);
+				ResizeWindow(w, min(neww, *_preferred_statusbar_size) - w->width, 0, false);
 
 				top = newh - w->height;
 				left = PositionStatusbar(w);
 				break;
 
 			case WC_SEND_NETWORK_MSG:
-				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0);
+				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0, false);
 				top = newh - w->height - FindWindowById(WC_STATUS_BAR, 0)->height;
 				left = PositionNetworkChatWindow(w);
 				break;

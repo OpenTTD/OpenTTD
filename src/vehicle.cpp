@@ -1416,12 +1416,16 @@ void VehicleUpdateViewport(Vehicle *v, bool dirty)
 	v->coord.bottom = pt.y + spr->height + 2 * ZOOM_LVL_BASE;
 
 	if (dirty) {
-		MarkAllViewportsDirty(
-			min(old_coord.left,   v->coord.left),
-			min(old_coord.top,    v->coord.top),
-			max(old_coord.right,  v->coord.right) + 1 * ZOOM_LVL_BASE,
-			max(old_coord.bottom, v->coord.bottom) + 1 * ZOOM_LVL_BASE
-		);
+		if (old_coord.left == INVALID_COORD) {
+			MarkSingleVehicleDirty(v);
+		} else {
+			MarkAllViewportsDirty(
+				min(old_coord.left,   v->coord.left),
+				min(old_coord.top,    v->coord.top),
+				max(old_coord.right,  v->coord.right) + 1 * ZOOM_LVL_BASE,
+				max(old_coord.bottom, v->coord.bottom) + 1 * ZOOM_LVL_BASE
+			);
+		}
 	}
 }
 
