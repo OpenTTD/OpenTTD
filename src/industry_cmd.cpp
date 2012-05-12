@@ -254,9 +254,8 @@ static void IndustryDrawBubbleGenerator( const TileInfo *ti)
 {
 	if (IsIndustryCompleted(ti->tile)) {
 		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_BUBBLE, PAL_NONE, 5, _industry_anim_offs_bubbles[GetAnimationFrame(ti->tile)]);
-	} else {
-		AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, PAL_NONE, 3, 67);
 	}
+	AddChildSpriteScreen(SPR_IT_BUBBLE_GENERATOR_SPRING, PAL_NONE, 3, 67);
 }
 
 static void IndustryDrawToyFactory(const TileInfo *ti)

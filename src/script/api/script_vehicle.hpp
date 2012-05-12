@@ -213,7 +213,7 @@ public:
 
 	/**
 	 * Get the current speed of a vehicle.
-	 * @param vehicle_id The vehicle to get the age of.
+	 * @param vehicle_id The vehicle to get the speed of.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The current speed of the vehicle.
 	 * @note The speed is in OpenTTD's internal speed unit.
@@ -232,7 +232,7 @@ public:
 
 	/**
 	 * Get the running cost of this vehicle.
-	 * @param vehicle_id The vehicle to get the age of.
+	 * @param vehicle_id The vehicle to get the running cost of.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The running cost of the vehicle per year.
 	 * @note Cost is per year; divide by 365 to get per day.

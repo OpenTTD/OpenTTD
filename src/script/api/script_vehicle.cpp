@@ -311,7 +311,8 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
-	return ::Vehicle::Get(vehicle_id)->GetDisplaySpeed(); // km-ish/h
+	const ::Vehicle *v = ::Vehicle::Get(vehicle_id);
+	return (v->vehstatus & (::VS_STOPPED | ::VS_CRASHED)) == 0 ? v->GetDisplaySpeed() : 0; // km-ish/h
 }
 
 /* static */ ScriptVehicle::VehicleState ScriptVehicle::GetState(VehicleID vehicle_id)

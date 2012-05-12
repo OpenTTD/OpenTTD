@@ -210,16 +210,22 @@ static SQInteger base_suspend(HSQUIRRELVM v)
 static SQInteger base_array(HSQUIRRELVM v)
 {
 	SQArray *a;
-	SQObject &size = stack_get(v,2);
+	SQInteger nInitialSize = tointeger(stack_get(v,2));
+	SQInteger ret = 1;
+	if (nInitialSize < 0) {
+		v->Raise_Error(_SC("can't create/resize array with/to size %d"), nInitialSize);
+		nInitialSize = 0;
+		ret = -1;
+	}
 	if(sq_gettop(v) > 2) {
 		a = SQArray::Create(_ss(v),0);
-		a->Resize(tointeger(size),stack_get(v,3));
+		a->Resize(nInitialSize,stack_get(v,3));
 	}
 	else {
-		a = SQArray::Create(_ss(v),tointeger(size));
+		a = SQArray::Create(_ss(v),nInitialSize);
 	}
 	v->Push(a);
-	return 1;
+	return ret;
 }
 
 static SQInteger base_type(HSQUIRRELVM v)
