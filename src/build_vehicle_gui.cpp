@@ -885,8 +885,16 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	int sprite_x        = (rtl ? r - sprite_width / 2 : l + sprite_width / 2) - 1;
 	int sprite_y_offset = sprite_y_offsets[type] + step_size / 2;
 
-	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT : sprite_width);
-	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT);
+	int count_width = 0;
+	if (show_count) {
+		SetDParam(0, 999);
+		count_width = GetStringBoundingBox(STR_TINY_BLACK_COMA).width;
+	}
+
+	int text_left  = l + (rtl ? WD_FRAMERECT_LEFT + count_width : sprite_width);
+	int text_right = r - (rtl ? sprite_width : WD_FRAMERECT_RIGHT + count_width);
+	int count_left = l;
+	int count_right = rtl ? text_left : r - WD_FRAMERECT_RIGHT;
 
 	int normal_text_y_offset = (step_size - FONT_HEIGHT_NORMAL) / 2;
 	int small_text_y_offset  = step_size - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1;
@@ -901,7 +909,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 		DrawVehicleEngine(l, r, sprite_x, y + sprite_y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company), EIT_PURCHASE);
 		if (show_count) {
 			SetDParam(0, num_engines);
-			DrawString(text_left, text_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT);
+			DrawString(count_left, count_right, y + small_text_y_offset, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 		}
 	}
 }
