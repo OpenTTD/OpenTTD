@@ -360,7 +360,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 	if (new_owner == INVALID_OWNER) RebuildSubsidisedSourceAndDestinationCache();
 
-	/* Take care of rating in towns */
+	/* Take care of rating and transport rights in towns */
 	FOR_ALL_TOWNS(t) {
 		/* If a company takes over, give the ratings to that company. */
 		if (new_owner != INVALID_OWNER) {
@@ -378,6 +378,16 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		/* Reset the ratings for the old owner */
 		t->ratings[old_owner] = RATING_INITIAL;
 		ClrBit(t->have_ratings, old_owner);
+
+		/* Transfer exclusive rights */
+		if (t->exclusive_counter > 0 && t->exclusivity == old_owner) {
+			if (new_owner != INVALID_OWNER) {
+				t->exclusivity = new_owner;
+			} else {
+				t->exclusive_counter = 0;
+				t->exclusivity = INVALID_COMPANY;
+			}
+		}
 	}
 
 	{
