@@ -336,6 +336,9 @@ bool FindSubsidyTownCargoRoute()
 	/* Passenger subsidies are not handled here. */
 	ClrBit(town_cargo_produced, CT_PASSENGERS);
 
+	/* No cargo produced at all? */
+	if (town_cargo_produced == 0) return false;
+
 	/* Choose a random cargo that is produced in the town. */
 	uint8 cargo_number = RandomRange(CountBits(town_cargo_produced));
 	CargoID cid;
