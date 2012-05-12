@@ -1011,8 +1011,19 @@ struct SettingEntry {
 
 	uint Length() const;
 	SettingEntry *FindEntry(uint row, uint *cur_row);
+	uint GetMaxHelpHeight(int maxw);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last);
+
+	/**
+	 * Get the help text of a single setting.
+	 * @return The requested help text.
+	 */
+	inline StringID GetHelpText()
+	{
+		assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
+		return this->d.entry.setting->desc.str_help;
+	}
 
 private:
 	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state);
@@ -1028,6 +1039,7 @@ struct SettingsPage {
 
 	uint Length() const;
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
+	uint GetMaxHelpHeight(int maxw);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
 };
@@ -1151,6 +1163,20 @@ SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
 		default: NOT_REACHED();
 	}
 	return NULL;
+}
+
+/**
+ * Get the biggest height of the help text(s), if the width is at least \a maxw. Help text gets wrapped if needed.
+ * @param maxw Maximal width of a line help text.
+ * @return Biggest height needed to display any help text of this node (and its descendants).
+ */
+uint SettingEntry::GetMaxHelpHeight(int maxw)
+{
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND: return GetStringHeight(this->GetHelpText(), maxw);
+		case SEF_SUBTREE_KIND: return this->d.sub.page->GetMaxHelpHeight(maxw);
+		default:               NOT_REACHED();
+	}
 }
 
 /**
@@ -1349,6 +1375,20 @@ SettingEntry *SettingsPage::FindEntry(uint row_num, uint *cur_row) const
 		}
 	}
 	return pe;
+}
+
+/**
+ * Get the biggest height of the help texts, if the width is at least \a maxw. Help text gets wrapped if needed.
+ * @param maxw Maximal width of a line help text.
+ * @return Biggest height needed to display any help text of this (sub-)tree.
+ */
+uint SettingsPage::GetMaxHelpHeight(int maxw)
+{
+	uint biggest = 0;
+	for (uint field = 0; field < this->num; field++) {
+		biggest = max(biggest, this->entries[field].GetMaxHelpHeight(maxw));
+	}
+	return biggest;
 }
 
 /**
