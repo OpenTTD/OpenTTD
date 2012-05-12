@@ -1013,7 +1013,7 @@ struct SettingEntry {
 	SettingEntry *FindEntry(uint row, uint *cur_row);
 	uint GetMaxHelpHeight(int maxw);
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last);
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected);
 
 	/**
 	 * Get the help text of a single setting.
@@ -1026,7 +1026,7 @@ struct SettingEntry {
 	}
 
 private:
-	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state);
+	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state, bool highlight);
 };
 
 /** Data structure describing one page of settings in the settings window. */
@@ -1041,7 +1041,7 @@ struct SettingsPage {
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 	uint GetMaxHelpHeight(int maxw);
 
-	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
+	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, SettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
 };
 
 
@@ -1203,9 +1203,10 @@ uint SettingEntry::GetMaxHelpHeight(int maxw)
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @param selected     Selected entry by the user.
  * @return Row number of the next row to draw
  */
-uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
+uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected)
 {
 	if (cur_row >= max_row) return cur_row;
 
@@ -1236,7 +1237,8 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int bas
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
-				DrawSetting(settings_ptr, this->d.entry.setting, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK);
+				this->DrawSetting(settings_ptr, this->d.entry.setting, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK,
+						this == selected);
 			}
 			cur_row++;
 			break;
@@ -1252,7 +1254,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int bas
 					SetBit(parent_last, this->level); // Add own last-field state
 				}
 
-				cur_row = this->d.sub.page->Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last);
+				cur_row = this->d.sub.page->Draw(settings_ptr, left, right, base_y, first_row, max_row, selected, cur_row, parent_last);
 			}
 			break;
 		default: NOT_REACHED();
@@ -1281,8 +1283,9 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  * @param right        Right-most position in window/panel to draw
  * @param y            Upper-most position in window/panel to start drawing
  * @param state        State of the left + right arrow buttons to draw for the setting
+ * @param highlight    Highlight entry.
  */
-void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int left, int right, int y, int state)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int left, int right, int y, int state, bool highlight)
 {
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
@@ -1299,7 +1302,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
 	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
-	SetDParam(0, STR_ORANGE_STRING1_LTBLUE);
+	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
 	if (sdb->cmd == SDT_BOOLX) {
 		/* Draw checkbox for boolean-value either on/off */
 		bool on = ReadValue(var, sd->save.conv) != 0;
@@ -1323,7 +1326,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 		}
 		SetDParam(2, value);
 	}
-	DrawString(text_left, text_right, y, sdb->str, TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y, sdb->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 
@@ -1406,14 +1409,15 @@ uint SettingsPage::GetMaxHelpHeight(int maxw)
  * @param max_row      Row-number to stop drawing (the row-number of the row below the last row to draw)
  * @param cur_row      Current row number (internal variable)
  * @param parent_last  Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @param selected     Selected entry by the user.
  * @return Row number of the next row to draw
  */
-uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
+uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, SettingEntry *selected, uint cur_row, uint parent_last) const
 {
 	if (cur_row >= max_row) return cur_row;
 
 	for (uint i = 0; i < this->num; i++) {
-		cur_row = this->entries[i].Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last);
+		cur_row = this->entries[i].Draw(settings_ptr, left, right, base_y, first_row, max_row, cur_row, parent_last, selected);
 		if (cur_row >= max_row) {
 			break;
 		}
@@ -1734,7 +1738,7 @@ struct GameSettingsWindow : Window {
 		switch (widget) {
 			case WID_GS_OPTIONSPANEL:
 				_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
-						this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity());
+						this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->last_clicked);
 				break;
 
 			case WID_GS_HELP_TEXT:
