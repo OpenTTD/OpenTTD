@@ -1677,10 +1677,11 @@ struct GameSettingsWindow : Window {
 	static const int SETTINGTREE_TOP_OFFSET    = 5; ///< Position of top edge of setting values
 	static const int SETTINGTREE_BOTTOM_OFFSET = 5; ///< Position of bottom edge of setting values
 
-	static GameSettings *settings_ptr;  ///< Pointer to the game settings being displayed and modified
+	static GameSettings *settings_ptr; ///< Pointer to the game settings being displayed and modified.
 
-	SettingEntry *valuewindow_entry; ///< If non-NULL, pointer to setting for which a value-entering window has been opened
-	SettingEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button)
+	SettingEntry *valuewindow_entry;   ///< If non-NULL, pointer to setting for which a value-entering window has been opened.
+	SettingEntry *clicked_entry;       ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button).
+	SettingEntry *last_clicked;        ///< If non-NULL, pointer to the last clicked setting.
 
 	Scrollbar *vscroll;
 
@@ -1700,6 +1701,7 @@ struct GameSettingsWindow : Window {
 
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
+		this->last_clicked = NULL;
 
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
@@ -1710,20 +1712,50 @@ struct GameSettingsWindow : Window {
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != WID_GS_OPTIONSPANEL) return;
+		switch (widget) {
+			case WID_GS_OPTIONSPANEL:
+				resize->height = SETTING_HEIGHT = max(11, FONT_HEIGHT_NORMAL + 1);
+				resize->width  = 1;
 
-		resize->height = SETTING_HEIGHT = max(11, FONT_HEIGHT_NORMAL + 1);
-		resize->width  = 1;
+				size->height = 5 * resize->height + SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET;
+				break;
 
-		size->height = 5 * resize->height + SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET;
+			case WID_GS_HELP_TEXT:
+				size->height = max(size->height, _settings_main_page.GetMaxHelpHeight(size->width));
+				break;
+
+			default:
+				break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != WID_GS_OPTIONSPANEL) return;
+		switch (widget) {
+			case WID_GS_OPTIONSPANEL:
+				_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
+						this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity());
+				break;
 
-		_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
-				this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity());
+			case WID_GS_HELP_TEXT:
+				if (this->last_clicked != NULL) {
+					DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->last_clicked->GetHelpText(), TC_WHITE);
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	/**
+	 * Set the entry that should have its help text displayed, and mark the window dirty so it gets repainted.
+	 * @param pe Setting to display help text of, use \c NULL to stop displaying help of the currently displayed setting.
+	 */
+	void SetDisplayedHelpText(SettingEntry *pe)
+	{
+		if (this->last_clicked != pe) this->SetDirty();
+		this->last_clicked = pe;
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1742,6 +1774,7 @@ struct GameSettingsWindow : Window {
 		if (x < 0) return;  // Clicked left of the entry
 
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
+			this->SetDisplayedHelpText(NULL);
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
 			this->vscroll->SetCount(_settings_main_page.Length());
@@ -1753,15 +1786,18 @@ struct GameSettingsWindow : Window {
 		const SettingDesc *sd = pe->d.entry.setting;
 
 		/* return if action is only active in network, or only settable by server */
-		if (!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sd->desc.flags & SGF_PER_COMPANY)) return;
-		if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
-		if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
+		if ((!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sd->desc.flags & SGF_PER_COMPANY)) ||
+				((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) || ((sd->desc.flags & SGF_NO_NETWORK) && _networking)) {
+			this->SetDisplayedHelpText(pe);
+			return;
+		}
 
 		const void *var = ResolveVariableAddress(settings_ptr, sd);
 		int32 value = (int32)ReadValue(var, sd->save.conv);
 
 		/* clicked on the icon on the left side. Either scroller or bool on/off */
 		if (x < 21) {
+			this->SetDisplayedHelpText(pe);
 			const SettingDescBase *sdb = &sd->desc;
 			int32 oldvalue = value;
 
@@ -1822,8 +1858,8 @@ struct GameSettingsWindow : Window {
 				this->SetDirty();
 			}
 		} else {
-			/* only open editbox for types that its sensible for */
-			if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
+			if (this->last_clicked == pe && sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
 				/* Show the correct currency-translated value */
 				if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
 
@@ -1831,6 +1867,7 @@ struct GameSettingsWindow : Window {
 				SetDParam(0, value);
 				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 			}
+			this->SetDisplayedHelpText(pe);
 		}
 	}
 
@@ -1887,13 +1924,20 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_MAUVE, WID_GS_OPTIONSPANEL), SetMinimalSize(400, 174), SetScrollbar(WID_GS_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, WID_GS_SCROLLBAR),
+		EndContainer(),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_MAUVE), SetMinimalSize(400, 40),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GS_HELP_TEXT), SetMinimalSize(300, 25), SetFill(1, 1), SetResize(1, 0),
+				SetPadding(WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM, WD_FRAMETEXT_LEFT),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_SPACER, INVALID_COLOUR), SetFill(1, 1), SetResize(1, 0),
 			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 		EndContainer(),
 	EndContainer(),
 };
 
 static const WindowDesc _settings_selection_desc(
-	WDP_CENTER, 450, 397,
+	WDP_CENTER, 510, 450,
 	WC_GAME_OPTIONS, WC_NONE,
 	0,
 	_nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)

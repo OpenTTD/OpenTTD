@@ -1989,6 +1989,7 @@ public:
 	enum GameSettingsWidgets {
 		WID_GS_OPTIONSPANEL                  = ::WID_GS_OPTIONSPANEL,                  ///< Panel widget containing the option lists.
 		WID_GS_SCROLLBAR                     = ::WID_GS_SCROLLBAR,                     ///< Scrollbar.
+		WID_GS_HELP_TEXT                     = ::WID_GS_HELP_TEXT,                     ///< Information area to display help text of the selected option.
 	};
 
 	/** Widgets of the #CustomCurrencyWindow class. */
