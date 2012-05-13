@@ -676,7 +676,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Показать все
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Спрятать все
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показать все виды грузов на графике
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Спрятать все виды грузов на графике
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрыть все виды грузов на графике
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/выключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1255,6 +1255,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ваши
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Расширенные настройки
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(нет описания)
 
 STR_CONFIG_SETTING_OFF                                          :нет
 STR_CONFIG_SETTING_ON                                           :да
@@ -1276,82 +1277,132 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Разрешить строительство на склонах и берегах: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разрешить изменение ландшафта под домами и дорогами, не требуя их сноса
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона покрытия зависит от типа станции: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Установить различный размер зоны покрытия для различных типов станций и аэропортов
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Разрешить снос (почти) всех городских объектов: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Упростить снос городских зданий и инфраструктуры
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максимальная длина состава: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Настройка максимальной длины состава
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} клет{P ка ки ок}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Количество дыма/искр у локомотивов: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Количество дыма или искр, появляющихся над локомотивом
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Модель ускорения поездов: {STRING.f}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Настройка модели ускорения поездов. При использовании «оригинальной» модели все поезда одинаково замедляются при движении в гору. При использовании «реалистичной» модели поезда замедляются на подъёмах и поворотах в зависимости от различных характеристик, например, длины состава и тягового усилия локомотива
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Модель ускорения автотранспорта: {STRING.f}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Настройка модели ускорения автотранспорта. При использовании «оригинальной» модели все автомобили одинаково замедляются при движении в гору. При использовании «реалистичной» модели автомобили замедляются на подъёмах в зависимости от различных характеристик двигателя, например, тягового усилия
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Крутизна склона для поездов: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Настройка крутизны склона для поездов. Высокие значения делают подъём более тяжёлым.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Крутизна склона для автотранспорта: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Настройка крутизны склона для автотранспорта. Высокие значения делают подъём более тяжёлым.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Запретить 90-градусные повороты на ж/д и море: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Поворот на 90° происходит, когда к горизонтальному участку рельсов примыкает вертикальный, либо при пересечении диагональных участков рельса внутри одной клетки. В остальных случаях поезда поворачивают на 45°. Запрет поворота на 90° относится также и к кораблям.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Разрешить объединение не примыкающих друг к другу станций: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Разрешить объединять несколько станций в одну, даже если они не примыкают друг к другу. Требуется нажать Ctrl+щелчок при расширении станции.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Использовать улучшенный алгоритм загрузки: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :При включении транспортные средства загружаются последовательно одно за другим. Только тот груз, который не поместится на первый транспорт, будет погружен на второй транспорт в очереди на станции.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Постепенная загрузка транспорта: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Если включено - транспорт загружается постепенно; время погрузки зависит от типа транспорта.{}Если отключено - весь доступный груз перемещается на транспорт; время погрузки зависит от количества груза.
 STR_CONFIG_SETTING_INFLATION                                    :Включить инфляцию: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Включить инфляцию, при которой затраты растут немного быстрее, чем доходы
 STR_CONFIG_SETTING_SELECTGOODS                                  :Поставлять груз на станцию, только если на него был спрос: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Доставлять на станцию только тот груз, за которым хоть раз пришёл транспорт. Это позволяет избежать плохих рейтингов доставки для грузов, перевозка которых не осуществляется.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максимальная длина моста: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Ограничение на длину строящихся мостов
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максимальная длина туннеля: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Ограничение на длину строящихся туннелей
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Способ создания сырьевых предприятий: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Способ создания сырьевых предприятий.{}«Не создавать» - отключить возможность их создания транспортными компаниями.{}«Геологоразведка» - предприятие будет создано в случайном месте на карте; иногда геологи не находят месторождений, и постройка предприятия отменяется.{}«Как и остальные» - сырьевые предприятия строятся как и перерабатывающие, с выбором места постройки.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не создавать
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и остальные
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Плоская поверхность вокруг предприятий: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Ровная поверхность вокруг предприятий: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Радиус выравниваемой местности вокруг новых предприятий. Это позволяет подготовить место для постройки станций, дорог и{NBSP}т.{NBSP}п.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Разрешить несколько предприятий одного типа на город: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Обычно к каждому городу относится не более одного предприятия каждого типа. Включение данной настройки снимает это ограничение.
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Показывать сигналы: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Выберите сторону железнодорожного полотна, на которой будут устанавливаться сигналы
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :слева
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :на стороне движения автотранспорта
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :справа
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Показывать финансовую статистику каждый год: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :При включении окно с финансовой информацией будет показываться в конце каждого года для простоты слежения за финансовым состоянием компании
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Создавать задания с меткой «без остановок»: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Обычно транспортное средство останавливается на каждой станции, через которое проезжает. Если в задании стоит метка «без остановки», то ТС не останавливается на промежуточных станциях. Эта настройка влияет только на вновь создаваемые задания; после создания маршрута каждое задание можно настроить индивидуально.
 STR_CONFIG_SETTING_STOP_LOCATION                                :По умолчанию поезда останавливаются {STRING} станции
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Укажите, в какой части станции должны останавливаться поезда. «Начало станции» обозначает тот край платформы, куда поезд прибывает; «середина станции» - середину платформы; «конец станции» - край платформы, противоположный тому, куда прибыл поезд.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :в начале
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :в середине
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в конце
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Автотранспорт строится в очередь у станции: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Если остановка или грузовой терминал заняты, то автотранспорт будет ждать своей очереди у въезда на станцию.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Смещать обзор, когда курсор находится у края экрана: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Включает смещение обзора, когда указатель мыши находится у края экрана
 STR_CONFIG_SETTING_BRIBE                                        :Разрешить подкупать местные власти: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволять компаниям подкупать городскую администрацию. Если факт подкупа раскроется, рейтинг компании в городе падает и взимодействие с местной администрацией прекращается на 6 месяцев.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные трансп. права: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Разрешить финансирование строительства зданий: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Разрешить транспортым компаниям финансировать строительство новых городских зданий
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Разрешить финансирование реконструкции дорог: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Позволить компаниям финансировать в городах дорожные работы, парализующие работу автотранспорта
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Разрешить передачу денег другим компаниям: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множитель увеличения веса груза для товарных поездов: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Позволить компаниям в сетевой игре передавать друг другу деньги
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множитель веса груза для товарных поездов: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Множитель веса груза в поездах. Высокие значения увеличат нагрузку на локомотивы, особенно при подъёме в гору.
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Множитель скорости самолётов: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ограничить скорость воздушных судов относительно другого транспорта для снижения сверхприбылей от использования самолётов
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Вероятность падения самолётов: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Настройка вероятности падения самолёта
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :отсутствует
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :сниженная
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :обычная
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Позволять строить остановки на городских дорогах: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Разрешить компаниям строить сквозные остановки на муниципальных дорогах
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Разрешить проезд через остановки соперников по их дорогам: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Разрешить компаниям строить сквозные остановки на дорогах, принадлежащих другим транспортным компаниям
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Разрешить строительство смежных станций: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Разрешить размещение различных станций на соседних клетках
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Включить поддержку нескольких наборов NewGRF с транспортом: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Эта настройка требуется для совместимости со старыми модулями NewGRF. Не отключайте её без необходимости.
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изменение этого параметра невозможно, если в игре есть транспортные средства.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Обслуживание инфраструктуры: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Включает затраты на содержание инфраструктуры. Стоимость непропорционально увеличивается с ростом транспортной сети, оказывая, таким образом, большее влияние на большие компании, чем на малые.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Аэропорты не устаревают: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :При включении все типы аэропортов доступны для строительства в любое время после их первоначального появления
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Предупреждать, если ТС потерялось: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Включает сообщения о транспортых средствах, которые не могут найти путь к месту назначения
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Проверять маршруты на правильность: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Включает периодическую проверку маршрутов транспорта и сообщения о наличии некоторых очевидных проблем в них
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не проверять
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Предупреждать, если доход ТС отрицателен: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Включает сообщения о транспортых средствах, не принёсших прибыли по итогам прошедшего года
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не будет выходить из эксплуатации: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :При включении все транспортные средства остаются доступными для покупки в любое время после начала производства
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автозамена изношенного транспорта: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Включает автоматическую замену устаревших транспортных средств
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозамена транспорта {STRING} истечения срока эксплуатации
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Относительный возраст транспортного средства, после которого оно подлежит автозамене
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :за {COMMA} месяц{P "" а ев} до
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :спустя {COMMA} месяц{P "" а ев} после
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Сумма, необходимая для автозамены: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Минимальная сумма денег на счёте компании, необходимая для начала автозамены
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Длительность сообщения об ошибке: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Длительность показа красных окон с сообщениями об ошибках. Эта настройка не действует на некоторые сообщения (о критических ошибках) - они не закрываются автоматически, только вручную.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P а ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Показывать подсказки: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Задержка между наведением указателя мыши на элемент интерфейса и появлением подсказки. Можно привязать появление подсказки к щелчку правой кнопкой мыши.
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :при наведении указателя на {COMMA} секунд{P у ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :щелчком правой кнопкой мыши
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показывать количество жителей в названии города: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Показывать количество жителей городов в названиях
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Толщина линий графиков: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Толщина линий в графиках. Тонкие линии более точны; толстые линии лучше видны и их цвета лучше различимы.
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор ландшафта: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
@@ -1376,16 +1427,24 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Максимальный размер станции: {STRING} {RED}Внимание: большие значения замедляют игру
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Максимальный размер области, которую может занимать станция (или её составляющие)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Включить обслуживание на вертолётных площадках: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Проводить техническое обслуживание вертолётов при каждой посадке, в том числе на вертолётных площадках, где нет ангара
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Связать ландшафтную панель с транспортной: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Цвет земли на миникарте: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Открывать панель инструментов для изменения ландшафта вместе с панелью создания транспортных коммуникаций
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Цвет ландшафта на миникарте: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Цвет ландшафта на миникарте
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Обратить направление перемещения обзора мышью: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Настройка смещения обзора правой кнопкой мыши.{}Если отключено, мышь двигает камеру.{}Если включено, мышь двигает карту.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавный скроллинг окна просмотра: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Настройка перемещения обзора в основном окне при щелчке по миникарте или по команде обзора какого-нибудь элемента. Если включено, то обзор смещается плавно; если отключено - то мгновенно.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показывать замеры при строительстве: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показывать расстояния и разницу высот при строительстве
 STR_CONFIG_SETTING_LIVERIES                                     :Показывать индивидуальную окраску транспорта: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Включить индивидуальную раскраску различных видов транспорта вместо общего цвета компании
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нет
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :только для своей компании
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для всех компаний

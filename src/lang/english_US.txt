@@ -1284,7 +1284,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Reverse scroll direction: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Behavior when scrolling the map with the right mouse button. When disabled, the mouse moves the camera. When enabled, the mouse moves the map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolles to a specific position when clicking on the smallmap on when issueing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap on when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Display tile-distances and height differences when dragging during construction operations
 STR_CONFIG_SETTING_LIVERIES                                     :Show company liveries: {STRING}
@@ -1390,7 +1390,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Set the default
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Default maintenance interval for ships: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Set the default maintenance interval for new ships, if no explicit maintenance interval is set for the vehicle
 STR_CONFIG_SETTING_NOSERVICE                                    :Disable maintenance when breakdowns are set to none: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get maintenained if they cannot break down
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get maintained if they cannot break down
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable railroad car speed limits: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING}
@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :everywhere
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position of main toolbar: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal position of the main toolbar at the top of the screen
-STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of statusbar: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Position of status bar: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontal position of the status bar at the bottom of the screen
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window snap radius: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distance between windows before the window being moved is automatically aligned to nearby windows
@@ -1713,7 +1713,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Change t
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Connection:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choose between an internet game or a local area nework game
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Choose between an internet game or a local area network game
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Player name:
@@ -3269,7 +3269,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Switch b
 STR_REPLACE_ENGINES                                             :Engines
 STR_REPLACE_WAGONS                                              :Cars
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the rail type you want to replace engines for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_RAIL_VEHICLES                                       :Rail Vehicles
 STR_REPLACE_ELRAIL_VEHICLES                                     :Electrified Rail Vehicles
@@ -3871,7 +3871,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... can 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... can only be built in rainforest areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... can only be built in desert areas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... can only be built in towns (replacing houses)
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... can only be built near the centre of towns
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... can only be built near the center of towns
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... can only be built in low areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... can only be positioned near edges of map
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... forest can only be planted above snow-line
@@ -3979,7 +3979,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Can't co
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... there is no railroad track
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... there are no signals
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Can't convert railtype here...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Can't convert rail type here...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Must remove road first

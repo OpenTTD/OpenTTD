@@ -1102,6 +1102,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Aquesta 
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmetres avançats
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Cap explicació disponible)
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
@@ -1121,21 +1122,33 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dreta
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permet construir en desnivells i costes: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet modelar el terreny sota edificis, rails, etc. (autopendent): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permetre modelar el terreny sota edificis i rails, sense eliminar-los
 STR_CONFIG_SETTING_CATCHMENT                                    :Permet una mida més real de l'àrea d'influència: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Tenir diferents mides de zones de captació per a diferents tipus d'estacions i aeroports
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Que sigui més fàcil esborrar infraesctuctures i construccions propietat de la població
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud màxima dels trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Establir la longitud màxima dels trens
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} cel·la{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantitat de fum/xispes del vehicle: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Establir la quantitat de fums o quantes espurnes són emeses pels vehicles
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model d'acceleració del Tren: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleccioneu el model físic per a l'acceleració del tren. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realístic" penalitza les pujades i les corbes en funció de diverses propietats del compost, al igual que la longitud i la força de tracció
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model d'acceleració per als vehicles: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleccioneu el model físic per a l'acceleració d'un vehicle de carretera. El model "original" penalitza les pujades per igual a tots els vehicles. El model "realista" penalitza les pendents en funció de les diferents propietats de la màquina, com per exemple "l'esforç de tracció"
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Pendent d'inclinació per als trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :La inclinació d'una celda en pendent per a un tren. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent d'inclinació per als automòbils: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una celda en pendent per a un vehicle de carretera. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Si està activat, múltiples vehicles esperant a una estació es carreguen de forma seqüencial.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carrega els vehicles gradualment: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entrega càrregues en una estació només quan hi ha demananda: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud del pont: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
@@ -1354,6 +1367,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 en {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida de ciutat inicial: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Treu els elements de carretera absurds durant la reconstrucció de carretera: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina les carreteres sense sortida durant les reconstruccions de carreteres finançades
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfície
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcció
@@ -1379,9 +1393,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomanat)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cerca de rutes per trens: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Cercar rutes per a utilitzar als trens
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cerca de rutes per vehicles: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Cercar rutes per a utilitzar per a vehícles de carretera
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cerca de rutes per vaixells: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Cercar rutes per a utilitzar als vaixells
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Canvi de sentit automàtic a les senyals: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permetre als trens girar en una senyal, si esperaven allà durant molt temps
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 

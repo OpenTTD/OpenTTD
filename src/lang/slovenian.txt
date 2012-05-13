@@ -957,7 +957,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} povečuje proizvodnjo!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nova žila premoga odkrita v {INDUSTRY}!{}Pričakuje se podvojitev proizvodnje!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Nove rezerve nafte odkrite v {INDUSTRY}!{}Predvidena podvojitev proizvodnje!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Izboljšane metode pridelovanja v {INDUSTRY} naj bi podvojile proizvodnjo!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Izboljšane metode pridelovanja v {INDUSTRY.r} naj bi podvojile proizvodnjo!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :Proizvodnja {BIG_FONT}{BLACK}{STRING.r} v {INDUSTRY.d} narašča za {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY.d} proizvodnja upada za 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY.d}!{}Proizvodnja zmanjšana za 50%
@@ -998,7 +998,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Ponudba subvencije potekla: {}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING} do {STRING} bo{}subvencioniran s strani mestnega sveta!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING.r} do {STRING.r} bo{}subvencioniran s strani mestnega sveta!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvencija podeljena podjetju {STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel 50% večji prihodek{}za naslednje leto!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Podjetje {STRING} je prejelo subvencijo!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel dvakratni prihodek{}za naslednje leto!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvencija odobrena podjetju {STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel trikratni prihodek{}za naslednje leto!
@@ -1612,10 +1612,13 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Razmak med okni
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el la le lov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :onemogočeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Največje število nelepljivih oken: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Število nelepljivih odprtih oken preden se stara začno zapirati.
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :onemogočeno
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Največji nivo povečave: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Največja povečava pogleda. Prevelika povečava zaseda spomin.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Največja oddaljenost pogleda: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Največja pomanjšava pogleda. Večje nastavitve lahko povzročijo slabe učinke.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normalno
@@ -1623,16 +1626,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Hitrost rasti mesta: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hitrost rasti mest
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Brez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Počasi
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Hitro
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Zelo hitro
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Delež naselij, ki bodo postala mesta: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Količina naselij, ki bodo postala mesta, ne glede na to, da mesta, ki startajo večja, rastejo hitreje.
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 na {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :brez
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Začetni faktor rasti mesta: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Povprečna velikost mest relativno gledano na normalna naselja na začetku igre.
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstrani absurdne cestne elemente med gradnjo cest: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstrani slepe odseke cest med financirano obnovo cest.
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vmesnik
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Gradnja
@@ -1658,9 +1665,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Priporočeno)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Iskalnik poti za vlake: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Iskalnik poti za vlake.
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Iskalnik poti za vozila: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Iskalnik poti za cestna vozila.
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Logaritem poti za ladje: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Iskalnik poti za ladje.
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Avtomatično obračanje pri signalih: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Dovoli vlakom obračanje na signalih, če so tam čakali že dolgo.
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
@@ -4340,6 +4351,7 @@ STR_INDUSTRY_NAME_STEEL_MILL                                    :Jeklarna
 STR_INDUSTRY_NAME_STEEL_MILL.r                                  :Jeklarne
 STR_INDUSTRY_NAME_FARM                                          :Kmetija
 STR_INDUSTRY_NAME_FARM.r                                        :Kmetije
+STR_INDUSTRY_NAME_FARM.d                                        :Kmetiji
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Rudnik bakra
 STR_INDUSTRY_NAME_COPPER_ORE_MINE.r                             :Rudnika bakra
 STR_INDUSTRY_NAME_OIL_WELLS                                     :Naftni vrelci
@@ -4372,6 +4384,7 @@ STR_INDUSTRY_NAME_FACTORY_2.r                                   :Tovarne
 STR_INDUSTRY_NAME_FACTORY_2.d                                   :Tovarni
 STR_INDUSTRY_NAME_FARM_2                                        :Kmetija
 STR_INDUSTRY_NAME_FARM_2.r                                      :Kmetije
+STR_INDUSTRY_NAME_FARM_2.d                                      :Kmetiji
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Gozdarski obrat
 STR_INDUSTRY_NAME_LUMBER_MILL.r                                 :Gozdarskega obrata
 STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :Gozdarskem obratu
