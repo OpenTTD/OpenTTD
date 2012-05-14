@@ -66,72 +66,57 @@ static const WindowDesc _errmsg_face_desc(
 	_nested_errmsg_face_widgets, lengthof(_nested_errmsg_face_widgets)
 );
 
-/** The data of the error message. */
-class ErrorMessageData {
-protected:
-	uint duration;                  ///< Length of display of the message. 0 means forever,
-	uint64 decode_params[20];       ///< Parameters of the message strings.
-	const char *strings[20];        ///< Copies of raw strings that were used.
-	uint textref_stack_size;        ///< Number of uint32 values to put on the #TextRefStack for the error message.
-	uint32 textref_stack[16];       ///< Values to put on the #TextRefStack for the error message.
-	StringID summary_msg;           ///< General error message showed in first line. Must be valid.
-	StringID detailed_msg;          ///< Detailed error message showed in second line. Can be #INVALID_STRING_ID.
-	Point position;                 ///< Position of the error message window.
-	CompanyID face;                 ///< Company belonging to the face being shown. #INVALID_COMPANY if no face present.
-
-public:
-	/**
-	 * Copy the given data into our instace.
-	 * @param data The data to copy.
-	 */
-	ErrorMessageData(const ErrorMessageData &data)
-	{
-		*this = data;
-		for (size_t i = 0; i < lengthof(this->strings); i++) {
-			if (this->strings[i] != NULL) {
-				this->strings[i] = strdup(this->strings[i]);
-				this->decode_params[i] = (size_t)this->strings[i];
-			}
+/**
+ * Copy the given data into our instace.
+ * @param data The data to copy.
+ */
+ErrorMessageData::ErrorMessageData(const ErrorMessageData &data)
+{
+	*this = data;
+	for (size_t i = 0; i < lengthof(this->strings); i++) {
+		if (this->strings[i] != NULL) {
+			this->strings[i] = strdup(this->strings[i]);
+			this->decode_params[i] = (size_t)this->strings[i];
 		}
 	}
+}
 
-	/** Free all the strings. */
-	~ErrorMessageData()
-	{
-		for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
+/** Free all the strings. */
+ErrorMessageData::~ErrorMessageData()
+{
+	for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
+}
+
+/**
+ * Display an error message in a window.
+ * @param summary_msg  General error message showed in first line. Must be valid.
+ * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
+ * @param duration     The amount of time to show this error message.
+ * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
+ * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
+ * @param textref_stack Values to put on the #TextRefStack.
+ */
+ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, uint textref_stack_size, const uint32 *textref_stack) :
+	duration(duration),
+	textref_stack_size(textref_stack_size),
+	summary_msg(summary_msg),
+	detailed_msg(detailed_msg)
+{
+	this->position.x = x;
+	this->position.y = y;
+	if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
+	CopyOutDParam(this->decode_params, this->strings, detailed_msg == INVALID_STRING_ID ? summary_msg : detailed_msg, lengthof(this->decode_params));
+	if (textref_stack_size > 0) {
+		StopTextRefStackUsage();
+		MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 	}
 
-	/**
-	 * Display an error message in a window.
-	 * @param summary_msg  General error message showed in first line. Must be valid.
-	 * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
-	 * @param duration     The amount of time to show this error message.
-	 * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
-	 * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
-	 * @param textref_stack_size Number of uint32 values to put on the #TextRefStack for the error message; 0 if the #TextRefStack shall not be used.
-	 * @param textref_stack Values to put on the #TextRefStack.
-	 */
-	ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, uint textref_stack_size, const uint32 *textref_stack) :
-		duration(duration),
-		textref_stack_size(textref_stack_size),
-		summary_msg(summary_msg),
-		detailed_msg(detailed_msg)
-	{
-		this->position.x = x;
-		this->position.y = y;
-		if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
-		CopyOutDParam(this->decode_params, this->strings, detailed_msg == INVALID_STRING_ID ? summary_msg : detailed_msg, lengthof(this->decode_params));
-		if (textref_stack_size > 0) {
-			StopTextRefStackUsage();
-			MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
-		}
+	CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
+	this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
 
-		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
-		this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
-
-		assert(summary_msg != INVALID_STRING_ID);
-	}
-};
+	assert(summary_msg != INVALID_STRING_ID);
+}
 
 /** Define a queue with errors. */
 typedef std::list<ErrorMessageData> ErrorList;
