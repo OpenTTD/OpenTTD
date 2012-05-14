@@ -101,21 +101,39 @@ ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, 
 	duration(duration),
 	textref_stack_size(textref_stack_size),
 	summary_msg(summary_msg),
-	detailed_msg(detailed_msg)
+	detailed_msg(detailed_msg),
+	face(INVALID_COMPANY)
 {
 	this->position.x = x;
 	this->position.y = y;
-	if (textref_stack_size > 0) StartTextRefStackUsage(textref_stack_size, textref_stack);
-	CopyOutDParam(this->decode_params, this->strings, detailed_msg == INVALID_STRING_ID ? summary_msg : detailed_msg, lengthof(this->decode_params));
-	if (textref_stack_size > 0) {
-		StopTextRefStackUsage();
-		MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
-	}
 
-	CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
-	this->face = (this->detailed_msg == STR_ERROR_OWNED_BY && company < MAX_COMPANIES) ? company : INVALID_COMPANY;
+	memset(this->decode_params, 0, sizeof(this->decode_params));
+	memset(this->strings, 0, sizeof(this->strings));
+
+	if (textref_stack_size > 0) MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 
 	assert(summary_msg != INVALID_STRING_ID);
+}
+
+/**
+ * Copy error parameters from current DParams.
+ */
+void ErrorMessageData::CopyOutDParams()
+{
+	/* Reset parameters */
+	for (size_t i = 0; i < lengthof(this->strings); i++) free(this->strings[i]);
+	memset(this->decode_params, 0, sizeof(this->decode_params));
+	memset(this->strings, 0, sizeof(this->strings));
+
+	/* Get parameters using type information */
+	if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_size, this->textref_stack);
+	CopyOutDParam(this->decode_params, this->strings, this->detailed_msg == INVALID_STRING_ID ? this->summary_msg : this->detailed_msg, lengthof(this->decode_params));
+	if (this->textref_stack_size > 0) StopTextRefStackUsage();
+
+	if (this->detailed_msg == STR_ERROR_OWNED_BY) {
+		CompanyID company = (CompanyID)GetDParamX(this->decode_params, 2);
+		if (company < MAX_COMPANIES) face = company;
+	}
 }
 
 /** Define a queue with errors. */
@@ -352,6 +370,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
 	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? 0 : _settings_client.gui.errmsg_duration, x, y, textref_stack_size, textref_stack);
+	data.CopyOutDParams();
 
 	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
 	if (w != NULL && w->IsCritical()) {
