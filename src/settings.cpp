@@ -77,6 +77,10 @@ GameSettings _settings_newgame;  ///< Game settings for new games (updated from 
 VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames
 char *_config_file; ///< Configuration file of OpenTTD
 
+typedef std::list<ErrorMessageData> ErrorList;
+static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
+
+
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);
 
@@ -348,14 +352,16 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			char *end;
 			size_t val = strtoul(str, &end, 0);
 			if (end == str) {
-				SetDParamStr(0, str);
-				SetDParamStr(1, desc->name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+				msg.SetDParamStr(0, str);
+				msg.SetDParamStr(1, desc->name);
+				_settings_error_list.push_back(msg);
 				return desc->def;
 			}
 			if (*end != '\0') {
-				SetDParamStr(0, desc->name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
+				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
+				msg.SetDParamStr(0, desc->name);
+				_settings_error_list.push_back(msg);
 			}
 			return (void*)val;
 		}
@@ -367,29 +373,33 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
 			if (r != (size_t)-1) return (void*)r; // and here goes converted value
 
-			SetDParamStr(0, str);
-			SetDParamStr(1, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
 			return desc->def;
 		}
 
 		case SDT_MANYOFMANY: {
 			size_t r = LookupManyOfMany(desc->many, str);
 			if (r != (size_t)-1) return (void*)r;
-			SetDParamStr(0, str);
-			SetDParamStr(1, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
 			return desc->def;
 		}
 
-		case SDT_BOOLX:
+		case SDT_BOOLX: {
 			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
 			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
 
-			SetDParamStr(0, str);
-			SetDParamStr(1, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
 			return desc->def;
+		}
 
 		case SDT_STRING: return orig_str;
 		case SDT_INTLIST: return str;
@@ -531,8 +541,9 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 
 			case SDT_INTLIST: {
 				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
-					SetDParamStr(0, sdb->name);
-					ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+					ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
+					msg.SetDParamStr(0, sdb->name);
+					_settings_error_list.push_back(msg);
 
 					/* Use default */
 					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
@@ -1648,6 +1659,11 @@ void LoadFromConfig(bool minimal)
 		HandleOldDiffCustom(false);
 
 		ValidateSettings();
+
+		/* Display sheduled errors */
+		extern void ScheduleErrorMessage(ErrorList &datas);
+		ScheduleErrorMessage(_settings_error_list);
+		if (FindWindowById(WC_ERRMSG, 0) == NULL) ShowFirstError();
 	}
 
 	delete ini;

@@ -136,6 +136,27 @@ void ErrorMessageData::CopyOutDParams()
 	}
 }
 
+/**
+ * Set a error string parameter.
+ * @param n Parameter index
+ * @param v Parameter value
+ */
+void ErrorMessageData::SetDParam(uint n, uint64 v)
+{
+	this->decode_params[n] = v;
+}
+
+/**
+ * Set a rawstring parameter.
+ * @param n Parameter index
+ * @param str Raw string
+ */
+void ErrorMessageData::SetDParamStr(uint n, const char *str)
+{
+	free(this->strings[n]);
+	this->strings[n] = strdup(str);
+}
+
 /** Define a queue with errors. */
 typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */
@@ -385,4 +406,14 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		delete w;
 		new ErrmsgWindow(data);
 	}
+}
+
+/**
+ * Schedule a list of errors.
+ * Note: This does not try to display the error now. This is useful if the window system is not yet running.
+ * @param data Error message datas; cleared afterwards
+ */
+void ScheduleErrorMessage(ErrorList &datas)
+{
+	_error_list.splice(_error_list.end(), datas);
 }
