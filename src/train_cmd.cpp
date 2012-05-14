@@ -369,6 +369,8 @@ int Train::GetCurveSpeedLimit() const
  */
 int Train::GetCurrentMaxSpeed() const
 {
+	if (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) return min(this->gcache.cached_max_track_speed, this->current_order.max_speed);
+
 	int max_speed = this->tcache.cached_max_curve_speed;
 	assert(max_speed == this->GetCurveSpeedLimit());
 

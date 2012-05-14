@@ -76,6 +76,7 @@ struct Aircraft FINAL : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	int GetDisplaySpeed() const    { return this->cur_speed; }
 	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
 	int GetSpeedOldUnits() const   { return this->vcache.cached_max_speed * 10 / 128; }
+	int GetCurrentMaxSpeed() const { return this->GetSpeedOldUnits(); }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	bool Tick();

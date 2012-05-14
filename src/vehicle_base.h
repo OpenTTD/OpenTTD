@@ -399,6 +399,12 @@ public:
 	virtual int GetDisplayMaxSpeed() const { return 0; }
 
 	/**
+	 * Calculates the maximum speed of the vehicle under its current conditions.
+	 * @return Current maximum speed in native units.
+	 */
+	virtual int GetCurrentMaxSpeed() const { return 0; }
+
+	/**
 	 * Gets the running cost of a vehicle
 	 * @return the vehicle's running cost
 	 */

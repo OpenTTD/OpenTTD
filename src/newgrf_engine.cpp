@@ -619,6 +619,10 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		case 0x4B: // Long date of last service
 			return v->date_of_last_service;
 
+		case 0x4C: // Current maximum speed in NewGRF units
+			if (!v->IsPrimaryVehicle()) return 0;
+			return v->GetCurrentMaxSpeed();
+
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
 			if (v->type != VEH_TRAIN) return v->GetEngine()->grf_prop.local_id == parameter ? 1 : 0;
