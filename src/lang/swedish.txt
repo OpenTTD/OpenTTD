@@ -1097,6 +1097,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna å
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1116,8 +1117,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Höger
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillåt konstruktion på sluttningar och kuster: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillåt landskapsarkitektur under byggnader och spår utan att ta bort dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha olika stora uppsamlingsområden för olika typer av stationer och flygplatser
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Underlätta borttagning av stadsägd infrastruktur och byggnader
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximal tåglängd: {STRING}
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rut{P 0 a or}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mängden rök/gnistor från fordon: {STRING}
@@ -1139,7 +1143,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillåt flera industrier av samma typ per stad: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :I normala fall vill en stad inte ha mer än en industri av varje typ.
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Visa signaler: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Välj vilken sida av spåren signalerna ska placeras på
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :På vänster sida
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På höger sida
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Visa finansfönstret vid slutet av året: {STRING}
@@ -1151,17 +1157,22 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :slutet
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vägfordonsköer (med kvanteffekter): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scrolla vyn när musen är vid kanten: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Tillåt mutning av de lokala myndigheterna: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillåt företag att försöka muta de lokala myndigheterna. Om mutan upptäcks av en inspektör kommer företaget inte ha möjlighet att verka i staden i sex månader
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillåt köp av exklusiva transporträttigheter: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byggnader bekostas: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillåt företag att ge pengar till städer för att bekosta nybyggnation av hus
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt skicka pengar till andra företag: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillåt överföring av pengar mellan företag i flerspelarläge
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för att simulera tunga tåg: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Hastighetsfaktor för flygplan: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :inga
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfarts-stop på stadsägda vägar: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfarts-stopp på stadsägda vägar: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfarts-stopp på stadsägda vägar
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillåt konstruktion av närliggande stationer: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Tillåt flera NewGRF-set: {STRING}
@@ -1273,6 +1284,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Förbjud luftfa
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Förbjud skepp för datorn: {STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorspelare i flerspelarläge: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorstyrda AI-spelare att delta i spel för flera spelare
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
@@ -1407,7 +1419,7 @@ STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ladda et
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starta nytt spel, som använder ett eget scenario
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Skapa en egen spelvärld/scenario
-STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Starta ett multispelar spel
+STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Starta ett spel i flerspelarläge
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Välj 'tempererad' som typ av landskap
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Välj 'sub-arktiskt' som typ av landskap
@@ -1614,7 +1626,7 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Mata in 
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}IP-adressen till servern
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Starta ett nytt multiplayer spel
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Starta ett nytt spel i flerspelarläge
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Namn:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Namnet på nätverksspelet kommer att synas för andra spelare i multiplayer menyn

@@ -1284,7 +1284,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Purple
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Reverse scroll direction: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Behavior when scrolling the map with the right mouse button. When disabled, the mouse moves the camera. When enabled, the mouse moves the map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Smooth viewport scrolling: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap on when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Control how the main view scrolls to a specific position when clicking on the smallmap or when issuing a command to scroll to a specific object on the map. If enabled, the viewport scrolls smoothly, if disabled it jumps directly to the targeted spot
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Show a measurement tooltip when using various build-tools: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Display tile-distances and height differences when dragging during construction operations
 STR_CONFIG_SETTING_LIVERIES                                     :Show company liveries: {STRING}
@@ -1420,7 +1420,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Block signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Path signals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :One-way path signals
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cycle through signal types: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through, when Ctrl+clicking on a build signal with the signal tooo
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Select which signal types to cycle through, when Ctrl+clicking on a build signal with the signal tool
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Block signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :All
@@ -1433,7 +1433,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :random
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Towns are allowed to build roads: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Allow towns to build roads for growth. Disable to disallow town authorities extending roads themself
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Allow towns to build roads for growth. Disable to prevent town authorities from building roads themselves
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Towns are allowed to build grade crossings: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Enabling this setting allows towns to build grade crossings
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Allow town controlled noise level for airports: {STRING}

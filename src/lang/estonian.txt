@@ -373,7 +373,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Ehita le
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maastiku tööriistade avamine maa tõstmiseks/langetamiseks, puude istutamiseks, jne.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Näita heli/muusika akent
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Näita viimast teadet, kuva teadete valikud
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-ala andmed, konsool, tehismõistuse silumine, ekraanitõmmised, OpenTTD versiooniinfo
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Maa-ala andmed, konsool, skriptide debug, ekraanitõmmised, OpenTTDst
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Tööriistaribade vahetamine
 
 # Extra tooltips for the scenario editor toolbar
@@ -406,7 +406,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu valikud
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Raskusastme seadistused
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehismõistuse / mängu seaded
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehismõistuse / Mängu skriptide seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse valikud
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
@@ -502,7 +502,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maaala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
-STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse / GameScript-i silumine
+STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse / Mänguskriptide silumine
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suurendatud ekraanitõmmis
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Tavasuurendusega ekraanitõmmis
@@ -1437,7 +1437,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Raskusas
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Täpsemad seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF seadistused
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Internetisisu kontrollimine
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tehismõistuse / mängu seaded
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Tehismõistuse / Mänguskriptide seaded
 STR_INTRO_QUIT                                                  :{BLACK}Välju
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu. Ctrl+klõps jätab kaardi seadistamise vahele
@@ -2752,6 +2752,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab v
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näita vastuvõetavate veoste nimistut
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Võtab vastu: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hinnangud
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita jaamahinnangut
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Kohaliku veoteenuse hinnang:
@@ -2777,6 +2778,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näita k
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näita kõiki laevu, mille sõidugraafik sisaldab seda sadamat
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Jaama nime vahetamine
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

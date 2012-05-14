@@ -1101,6 +1101,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze act
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
 
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -1120,9 +1121,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat het aanpassen van funderingne onder gebouwen en spoor toe zonder deze te verwijderen
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Sta verwijderen van meer stedelijke wegen, bruggen en tunnels toe: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treinen: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Stel de maximum lengte van treinen in
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid rook/vonken: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein acceleratie model: {STRING}
@@ -1137,7 +1140,9 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Voertuigen gele
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Vracht alleen bezorgen aan een station als er vraag naar is: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen bruggen
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel lengte: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige bouwmethode voor primaire industrieën: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
@@ -1145,6 +1150,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat gebied rond industrieën: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Meerdere vergelijkbare industrieën per stad toestaan: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Toon seinen: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Kies aan welke kans van het sppor de seinen worden geplaatst
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan de linker kant
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan de rij zijde
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan de linker kant
@@ -1165,12 +1171,14 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfactor 
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Vliegtuig snelheidsfactor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuigcrashes: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Kies de kans op een vliegtuigcrash
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Sta toe dat doorrijwegstops worden geplaatst op door stad beheerde wegen: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Sta doorrijhaltes op wegen van tegenstanders toe: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bouwen van aangrenzende stations toestaan: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Laat het aaneen bouwen van verschillende stations toe
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Maak het mogelijk om meerdere NewGRF-voertuigsets te gebruiken: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Onderhoud infrastructuur: {STRING}
@@ -3143,7 +3151,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wissel t
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagons
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt selecteren
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selecteer een spoortype waar je locomotieven voor wilt vervangen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geeft weer waarmee de aan de linkerkant geselecteerde locomotief vervangen wordt
 STR_REPLACE_RAIL_VEHICLES                                       :Railvoertuigen
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrische railvoertuigen

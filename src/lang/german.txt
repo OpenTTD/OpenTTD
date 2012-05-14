@@ -1434,7 +1434,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2×2-Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3×3-Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zufällig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Städten das Bauen von Straßen erlauben: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Erlaube Städten, Straßen zu bauen. Deaktiviere dieses, um Städten zu verbieten, Straßen eigentständig zu bauen
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Erlaube Städten, Straßen zu bauen. Deaktiviere dieses, um Städten zu verbieten, Straßen eigenständig zu bauen
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städte dürfen Bahnübergänge bauen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Erlaube Städten, Bahnübergänge zu bauen
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Stadt kontrolliert Lärmbelastung der Flughäfen: {STRING}

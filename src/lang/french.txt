@@ -1434,7 +1434,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Autoriser la construction des routes par les villes{NBSP}: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les villes à construire des routes pour se développer. Désactiver pour empêcher les villes de construire d'étendre les routes
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les villes à construire des routes pour se développer. Désactiver pour empêcher les villes de construire elles-même des routes
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Autoriser la construction des passages à niveau par les villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activer ce paramètre pour autoriser les villes à construire des passages à niveau
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permettre plus d'aéroports par ville, selon les nuisances sonores{NBSP}: {STRING}
