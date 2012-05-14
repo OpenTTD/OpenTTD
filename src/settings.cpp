@@ -507,7 +507,8 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 			case SDT_NUMX:
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
-				Write_ValidateSetting(ptr, sd, (int32)(size_t)p); break;
+				Write_ValidateSetting(ptr, sd, (int32)(size_t)p);
+				break;
 
 			case SDT_STRING:
 				switch (GetVarMemType(sld->conv)) {
@@ -532,6 +533,9 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
 					SetDParamStr(0, sdb->name);
 					ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
+
+					/* Use default */
+					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
 				} else if (sd->desc.proc_cnvt != NULL) {
 					sd->desc.proc_cnvt((const char*)p);
 				}
