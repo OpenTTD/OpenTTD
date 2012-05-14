@@ -1227,7 +1227,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aanpassen van d
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes aan de noordelijke rand zijn niet leeg
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Max stationsgebied: {STRING} {RED}Waarschuwing: Hoge waarde vertraagt spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopters automatisch repareren op helipads: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Verbind de knoppenbalk voor terreinvorming met die voor spoor/weg/water/vliegveld: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Gebruiker land kleur op de kleine kaart: {STRING}

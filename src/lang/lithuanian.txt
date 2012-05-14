@@ -1414,7 +1414,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Leisti keisti r
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Didžiasias stoties plotis: {STRING}{RED}Dėmesio: didelės vertės lėtina žaidimą
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Remontuoti sraigtasparnius automatiškai: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mažame žemėlapyje naudojama žemės spalva: {STRING}

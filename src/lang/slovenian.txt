@@ -1423,8 +1423,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogoči obliko
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Eno ali več polj na severnem robu ni praznih
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali več polj na robu ni vodnatih
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Največje širjenje postaje: {STRING} {RED}Pozor: Velike vrednosti upočasnijo igro
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Največja površina na kateri se lahko razširi postaja.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Avtomatski servis helikopterjev na pristajališču: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Servisiranje helikopterjev po vsakem pristanku, tudi če ni hangarja na letališču.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {STRING}

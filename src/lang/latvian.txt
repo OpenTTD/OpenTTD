@@ -1221,7 +1221,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārvei
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Maks. staciju lielums: {STRING} {RED}Brīdinājums: lielas vērt. palēnina spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkj. ar sliežu/ceļu/ūdens/lidostu rīkj.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}

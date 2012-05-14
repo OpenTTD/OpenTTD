@@ -1301,7 +1301,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Umožnit terén
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Maximální rozsah stanice: {STRING} {RED}Varování: Vysoká hodnota zpomaluje hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Údržba vrtulníků na heliportech: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Barva země v mapě: {STRING}

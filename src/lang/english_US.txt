@@ -1270,8 +1270,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Enable terrafor
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Max station spread: {STRING} {RED}Warning: High value slows game
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum area the parts of a single station may be spread out on
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Perform maintenance on helicopters at helipads automatically: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Service helicopters after every landing, even if there is no depot at the airport
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Link landscape toolbar to rail/road/water/airport toolbars: {STRING}

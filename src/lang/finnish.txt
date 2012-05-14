@@ -1270,8 +1270,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Salli maanmuokk
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Suurin sallittu aseman levitteisyys: {STRING} {RED}Varoitus: Korkea arvo hidastaa peliä
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Suurin mahdollinen alue, jolla yhden aseman osat voivat sijaita
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Huolla helikopterit helikopterialustoilla automaattisesti: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Huolla helikopterit jokaisella laskeutumiskerralla vaikka lentokentällä ei olisi varikkoa
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {STRING}

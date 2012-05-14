@@ -1271,8 +1271,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Landschaftsbau 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ein oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Maximale Bahnhofsgröße: {STRING} {RED}Warnung: Große Werte verlangsamen das Spiel
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximalgröße für eine einzelne Station
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Hubschrauber auf Landeplatz automatisch warten: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Warte Helikoper nach jeder Landung, auch wenn es keine Wartungshalle an dem Flughafen gibt
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {STRING}

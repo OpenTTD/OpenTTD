@@ -1315,7 +1315,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogući terafo
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Najveće rasprostiranje stanica: {STRING} {RED}Upozorenje: Visoka vrijednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatski servisiraj helikoptere na heliodromima: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Boja polja korištena na maloj karti: {STRING}

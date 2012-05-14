@@ -1617,7 +1617,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Włącz kształ
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedno lub więcej pól na północnej krawędzi nie jest puste
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedno lub więcej pól na krawędzi nie jest wodą
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Maksymalna rozległość stacji: {STRING} {RED}Uwaga: Wysoka wartość spowalnia grę
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatycznie serwisuj helikoptery na lądowiskach: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia krajobrazu do okien środków transportu: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kolor lądu używany w minimapie: {STRING}

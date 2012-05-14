@@ -1271,8 +1271,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Autoriser le te
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord Nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Étendue maximum des gares{NBSP}: {STRING} {RED}Attention{NBSP}: valeur élevée = jeu lent
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Zone maximum sur laquelle les morceaux d'une station peuvent s'étendre
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Entretenir les hélicoptères à chaque atterrissage, même s'il n'y a pas de dépôt à l'aéroport
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Relier la barre d'outils paysage avec celle du rail/route/eau/aéroport{NBSP}: {STRING}

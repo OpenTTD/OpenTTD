@@ -1221,7 +1221,6 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Habilitar la mo
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Expansión máxima de estaciones: {STRING} {RED}Advertencia: Valores altos pueden ralentizar
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Mantener los helicópteros en helipuertos automáticamente: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Une la barra de terreno a la barra de construcción: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color de terreno usado en el mapa: {STRING}
