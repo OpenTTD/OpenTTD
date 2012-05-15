@@ -79,6 +79,7 @@ struct MemBlock {
 
 static uint _sprite_lru_counter;
 static MemBlock *_spritecache_ptr;
+static uint _allocated_sprite_cache_size = 0;
 static int _compact_cache_counter;
 
 static void CompactSpriteCache();
@@ -843,10 +844,17 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator)
 static void GfxInitSpriteCache()
 {
 	/* initialize sprite cache heap */
-	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)MallocT<byte>(_sprite_cache_size * 1024 * 1024);
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	uint target_size = _sprite_cache_size * 1024 * 1024 * max(1, bpp / 8);
+
+	if (_spritecache_ptr == NULL || _allocated_sprite_cache_size != target_size) {
+		free(_spritecache_ptr);
+		_allocated_sprite_cache_size = target_size;
+		_spritecache_ptr = (MemBlock*)MallocT<byte>(_allocated_sprite_cache_size);
+	}
 
 	/* A big free block */
-	_spritecache_ptr->size = ((_sprite_cache_size * 1024 * 1024) - sizeof(MemBlock)) | S_FREE_MASK;
+	_spritecache_ptr->size = (_allocated_sprite_cache_size - sizeof(MemBlock)) | S_FREE_MASK;
 	/* Sentinel block (identified by size == 0) */
 	NextBlock(_spritecache_ptr)->size = 0;
 }
