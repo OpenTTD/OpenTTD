@@ -192,8 +192,6 @@ public:
 			}
 
 			case WID_BO_SELECT_IMAGE: {
-				if (_selected_object_index < 0) break;
-
 				int obj_index = GB(widget, 16, 16);
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, obj_index);
 				if (spec == NULL) break;

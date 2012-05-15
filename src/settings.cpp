@@ -77,6 +77,10 @@ GameSettings _settings_newgame;  ///< Game settings for new games (updated from 
 VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames
 char *_config_file; ///< Configuration file of OpenTTD
 
+typedef std::list<ErrorMessageData> ErrorList;
+static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
+
+
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList *list);
 
@@ -340,53 +344,59 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 {
 	const char *str = orig_str == NULL ? "" : orig_str;
 	switch (desc->cmd) {
-	case SDT_NUMX: {
-		char *end;
-		size_t val = strtoul(str, &end, 0);
-		if (end == str) {
-			SetDParamStr(0, str);
-			SetDParamStr(1, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
+		case SDT_NUMX: {
+			char *end;
+			size_t val = strtoul(str, &end, 0);
+			if (end == str) {
+				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+				msg.SetDParamStr(0, str);
+				msg.SetDParamStr(1, desc->name);
+				_settings_error_list.push_back(msg);
+				return desc->def;
+			}
+			if (*end != '\0') {
+				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
+				msg.SetDParamStr(0, desc->name);
+				_settings_error_list.push_back(msg);
+			}
+			return (void*)val;
+		}
+		case SDT_ONEOFMANY: {
+			size_t r = LookupOneOfMany(desc->many, str);
+			/* if the first attempt of conversion from string to the appropriate value fails,
+			* look if we have defined a converter from old value to new value. */
+			if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
+			if (r != (size_t)-1) return (void*)r; // and here goes converted value
+
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
 			return desc->def;
 		}
-		if (*end != '\0') {
-			SetDParamStr(0, desc->name);
-			ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS, WL_CRITICAL);
+		case SDT_MANYOFMANY: {
+			size_t r = LookupManyOfMany(desc->many, str);
+			if (r != (size_t)-1) return (void*)r;
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
+			return desc->def;
 		}
-		return (void*)val;
-	}
-	case SDT_ONEOFMANY: {
-		size_t r = LookupOneOfMany(desc->many, str);
-		/* if the first attempt of conversion from string to the appropriate value fails,
-		 * look if we have defined a converter from old value to new value. */
-		if (r == (size_t)-1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
-		if (r != (size_t)-1) return (void*)r; // and here goes converted value
+		case SDT_BOOLX: {
+			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
+			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
 
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return desc->def;
-	}
-	case SDT_MANYOFMANY: {
-		size_t r = LookupManyOfMany(desc->many, str);
-		if (r != (size_t)-1) return (void*)r;
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return desc->def;
-	}
-	case SDT_BOOLX:
-		if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
-		if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+			msg.SetDParamStr(0, str);
+			msg.SetDParamStr(1, desc->name);
+			_settings_error_list.push_back(msg);
+			return desc->def;
+		}
 
-		SetDParamStr(0, str);
-		SetDParamStr(1, desc->name);
-		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE, WL_CRITICAL);
-		return desc->def;
-
-	case SDT_STRING: return orig_str;
-	case SDT_INTLIST: return str;
-	default: break;
+		case SDT_STRING: return orig_str;
+		case SDT_INTLIST: return str;
+		default: break;
 	}
 
 	return NULL;
@@ -496,38 +506,43 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 		ptr = GetVariableAddress(object, sld);
 
 		switch (sdb->cmd) {
-		case SDT_BOOLX: // All four are various types of (integer) numbers
-		case SDT_NUMX:
-		case SDT_ONEOFMANY:
-		case SDT_MANYOFMANY:
-			Write_ValidateSetting(ptr, sd, (int32)(size_t)p); break;
+			case SDT_BOOLX: // All four are various types of (integer) numbers
+			case SDT_NUMX:
+			case SDT_ONEOFMANY:
+			case SDT_MANYOFMANY:
+				Write_ValidateSetting(ptr, sd, (int32)(size_t)p);
+				break;
 
-		case SDT_STRING:
-			switch (GetVarMemType(sld->conv)) {
-				case SLE_VAR_STRB:
-				case SLE_VAR_STRBQ:
-					if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
-					break;
-				case SLE_VAR_STR:
-				case SLE_VAR_STRQ:
-					free(*(char**)ptr);
-					*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
-					break;
-				case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
-				default: NOT_REACHED();
-			}
-			break;
+			case SDT_STRING:
+				switch (GetVarMemType(sld->conv)) {
+					case SLE_VAR_STRB:
+					case SLE_VAR_STRBQ:
+						if (p != NULL) ttd_strlcpy((char*)ptr, (const char*)p, sld->length);
+						break;
+					case SLE_VAR_STR:
+					case SLE_VAR_STRQ:
+						free(*(char**)ptr);
+						*(char**)ptr = p == NULL ? NULL : strdup((const char*)p);
+						break;
+					case SLE_VAR_CHAR: if (p != NULL) *(char *)ptr = *(const char *)p; break;
+					default: NOT_REACHED();
+				}
+				break;
 
-		case SDT_INTLIST: {
-			if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
-				SetDParamStr(0, sdb->name);
-				ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY, WL_CRITICAL);
-			} else if (sd->desc.proc_cnvt != NULL) {
-				sd->desc.proc_cnvt((const char*)p);
+			case SDT_INTLIST: {
+				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
+					ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
+					msg.SetDParamStr(0, sdb->name);
+					_settings_error_list.push_back(msg);
+
+					/* Use default */
+					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
+				} else if (sd->desc.proc_cnvt != NULL) {
+					sd->desc.proc_cnvt((const char*)p);
+				}
+				break;
 			}
-			break;
-		}
-		default: NOT_REACHED();
+			default: NOT_REACHED();
 		}
 	}
 }
@@ -1626,6 +1641,11 @@ void LoadFromConfig(bool minimal)
 		HandleOldDiffCustom(false);
 
 		ValidateSettings();
+
+		/* Display sheduled errors */
+		extern void ScheduleErrorMessage(ErrorList &datas);
+		ScheduleErrorMessage(_settings_error_list);
+		if (FindWindowById(WC_ERRMSG, 0) == NULL) ShowFirstError();
 	}
 
 	delete ini;
