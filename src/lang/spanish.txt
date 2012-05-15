@@ -1122,57 +1122,93 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo carreteras, raíles, etc.: {STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :Permitir tamaño del área de captación más realista: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
+STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite tener diferentes áreas de captación para distintos tipos de estaciones y aeropuertos
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir eliminar más propiedades de pueblos: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hace que sea más fácil eliminar infraestructuras y edificios de pueblos
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Permite cambiar la longitud máxima de trenes
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantidad de humo/chispas: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Permite indicar la cantidad de humo o chispas que son emitidos por vehículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleración de trenes: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selecciona el modelo físico a emplear para la aceleración de trenes. El modelo "original" penaliza las pendientes de forma idéntica para todos los vehículos. El modelo "realista" penaliza cuestas y curvas dependiendo de varias propiedades del tren, como su longitud, fuerza de tracción, etcétera
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleración para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Selecciona el modelo físico a emplear para la aceleración de vehículos de carretera. El modelo "original" penaliza las pendientes de forma idéntica para todos los vehículos. El modelo "realista" penaliza cuestas y curvas dependiendo de varias propiedades del vehículo, como su potencia, fuerza de tracción, etcétera.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinación de cuestas para trenes: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pendiente de las casillas con cuesta para los trenes. Los valores altos hacen que sea mas difícil subir las colinas
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinación de cuestas para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Pendiente de las casillas con cuesta para los vehículos de carretera. Los valores altos hacen que sea mas difícil subir las colinas
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibir a trenes y barcos realizar giros de 90 grados: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Los giros de 90 grados ocurren cuando una vía en sentido horizontal está seguida por una vía en sentido vertical, haciendo que el tren gire 90 grados al pasar de una a otra en lugar de los 45 grados habituales en otras combinaciones. Esto también se aplica al radio de giro de los barcos
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir unir estaciones no adyacentes: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite añadir partes a una estación sin tener que estar en contacto directamente con las partes existentes. Necesita pulsar Ctrl+Click al añadir las nuevas partes
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo mejorado de carga: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Si se activa, cuando haya múltiples vehículos en una estación se cargarán secuencialmente. Los vehículos solamente empezarán a cargar cuando haya suficiente carga esperando como para llenar por completo al vehículo anterior
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Cargar vehículos gradualmente: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Carga los vehículos de forma gradual usando duraciones específicas de cada tipo de vehículo, en lugar de cargar todo a la vez en un tiempo fijo que depende solamente de la cantidad de carga a tomar
 STR_CONFIG_SETTING_INFLATION                                    :Inflación: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activa la inflación económica, lo cual hace que los costes aumenten ligeramente más rápido que los beneficios
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entregar mercancía a una estación sólo si hay demanda: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Solamente se lleva carga a las estaciones cuando un vehículo la haya solicitado. Esto evita malos rendimientos para las cargas que no tienen servicio cada una estación
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Longitud máxima de puentes: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Máxima longitud permitida para puentes
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longitud máxima de túneles: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Máxima longitud permitida para túneles
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de construcción de industria primaria: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Forma de fundar industrias primarias. 'ninguno' significa que no se puede crear ninguna, 'prospeccón' significa que es posible crear nuevas industrias, pero que éstas aparecen en un lugar aleatorio del mapa y pueden fallar. 'como las otras industrias' significa que las industrias primarias pueden construirse como el resto de industrias en cualquier lugar que se quiera
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ninguno
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como las otras industrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospección
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana alrededor de industrias: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cantidad de espacio plano alrededor de las industrias. Esto permite que haya espacio libre alrededor de las industrias para construir
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Construcción de más de una industria similar por pueblo: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, no se permite más de una industria del mismo tipo por pueblo. Con esta opción, se permiten múltiples industrias del mismo tipo en el mismo pueblo
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar señales: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selecciona en qué lado de la vía se colocarán las señales
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A la izquierda
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :En el lado de conducción
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la derecha
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar ventana de finanzas al final del año: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si se activa, la ventana de finanzas aparecerá al final de cada año para permitir inspeccionar de forma fácil el estado financiero de la compañía
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuevas órdenes son 'sin parada' por defecto: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, un vehículo se detendrá en todas las estaciones por las que pase. Si se activa esta opción, pasará sin detenerse a través de todas las estaciones hasta llegar a su destino. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuevos trenes paran por defecto en el {STRING} de la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Permite seleccionar en que parte de la plataforma se detendrán los trenes por defecto. 'cerca del fin' significa cerca del punto de entrada, 'centro' significa en el punto medio de la estación y 'lejos del fin' significa el punto más lejano de la estación. Esta opción solamente cambia el comportamiento por defecto de las órdenes nuevas. Es posible especificar para cada orden el comportamiento que se desea
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :centro
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :final
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lejos del fin
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cola de vehículos de carretera (con efecto cuantificador): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Hace que los vehículos de carretera esperen en frente de las paradas ocupadas hasta que queden libres
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplazar ventana mediante el cursor en los bordes: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si se activa, la pantalla principal se desplazará cuando el ratón se coloque cerca de los bordes de la pantalla
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el pueblo durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las compañías dar dinero a los pueblos para crear nuevas casas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite a las compañías dar dinero a los pueblos para que reconstruyan sus carreteras, saboteando los servicios de carretera en la zona
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite la transferencia de dinero entre compañías en modo multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Permite fijar el impacto de llevar mercancías en los trenes. Un valor alto hace que a los trenes les cueste más llevar carga, especialmente en colinas
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocidad de aeronaves: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Permite fijar la velocidad relativa de las aeronaves en comparación con otros vehículos, para reducir los beneficios del transporte aéreo
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Cantidad de aviones estrellados: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Fija la probabilidad de que ocurran accidentes aéreos
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ninguno
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permite construir paradas sobre carreteras de pueblo: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de pueblos
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir pasar a través de las paradas de carretera de los competidores: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite construir estaciones de carretera de paso en carreteras que sean propiedad de otras compañías
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construcción de estaciones contiguas : {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite que diferentes estaciones estén en contacto
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Permitir múltiples NewGRFs de vehículos: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cambiar esta opción no es posible cuando ya existen vehículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructuras: {STRING}
@@ -3449,7 +3485,7 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y
 STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
-STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[centro]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[lejos del fin]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (El próximo destino está fuera de alcance)

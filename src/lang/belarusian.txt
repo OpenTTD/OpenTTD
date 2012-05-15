@@ -144,7 +144,7 @@ STR_CARGO_PLURAL_WATER.dat                                      :вадзе
 STR_CARGO_PLURAL_WATER.acc                                      :ваду
 STR_CARGO_PLURAL_WATER.abl                                      :вадой
 STR_CARGO_PLURAL_WATER.pre                                      :вадзе
-STR_CARGO_PLURAL_WHEAT                                          :{G=f}Пшанiца
+STR_CARGO_PLURAL_WHEAT                                          :{G=f}Пшаніца
 STR_CARGO_PLURAL_WHEAT.gen                                      :пшаніцы
 STR_CARGO_PLURAL_WHEAT.dat                                      :пшаніцы
 STR_CARGO_PLURAL_WHEAT.acc                                      :пшаніцу
@@ -192,7 +192,7 @@ STR_CARGO_PLURAL_BUBBLES.dat                                    :бурбалк�
 STR_CARGO_PLURAL_BUBBLES.acc                                    :бурбалкі
 STR_CARGO_PLURAL_BUBBLES.abl                                    :бурбалкамі
 STR_CARGO_PLURAL_BUBBLES.pre                                    :бурбалках
-STR_CARGO_PLURAL_TOFFEE                                         :{G=p}Iрыскi
+STR_CARGO_PLURAL_TOFFEE                                         :{G=p}Ірыскі
 STR_CARGO_PLURAL_TOFFEE.gen                                     :ірысак
 STR_CARGO_PLURAL_TOFFEE.dat                                     :ірыскам
 STR_CARGO_PLURAL_TOFFEE.acc                                     :ірыскі
@@ -210,7 +210,7 @@ STR_CARGO_PLURAL_PLASTIC.dat                                    :плястык�
 STR_CARGO_PLURAL_PLASTIC.acc                                    :плястык
 STR_CARGO_PLURAL_PLASTIC.abl                                    :плястыкам
 STR_CARGO_PLURAL_PLASTIC.pre                                    :плястыку
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Газiроўка
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=f}Газіроўка
 STR_CARGO_PLURAL_FIZZY_DRINKS.gen                               :газіроўкі
 STR_CARGO_PLURAL_FIZZY_DRINKS.dat                               :газіроўцы
 STR_CARGO_PLURAL_FIZZY_DRINKS.acc                               :газіроўку
@@ -333,7 +333,7 @@ STR_CARGO_SINGULAR_WATER.dat                                    :вадзе
 STR_CARGO_SINGULAR_WATER.acc                                    :ваду
 STR_CARGO_SINGULAR_WATER.abl                                    :вадой
 STR_CARGO_SINGULAR_WATER.pre                                    :вадзе
-STR_CARGO_SINGULAR_WHEAT                                        :{G=f}Пшанiца
+STR_CARGO_SINGULAR_WHEAT                                        :{G=f}Пшаніца
 STR_CARGO_SINGULAR_WHEAT.gen                                    :пшаніцы
 STR_CARGO_SINGULAR_WHEAT.dat                                    :пшаніцы
 STR_CARGO_SINGULAR_WHEAT.acc                                    :пшаніцу
@@ -381,7 +381,7 @@ STR_CARGO_SINGULAR_BUBBLE.dat                                   :бурбалц�
 STR_CARGO_SINGULAR_BUBBLE.acc                                   :бурбалку
 STR_CARGO_SINGULAR_BUBBLE.abl                                   :бурбалкай
 STR_CARGO_SINGULAR_BUBBLE.pre                                   :бурбалцы
-STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}Iрыска
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=f}Ірыска
 STR_CARGO_SINGULAR_TOFFEE.gen                                   :ірыскі
 STR_CARGO_SINGULAR_TOFFEE.dat                                   :ірысцы
 STR_CARGO_SINGULAR_TOFFEE.acc                                   :ірыску
@@ -399,7 +399,7 @@ STR_CARGO_SINGULAR_PLASTIC.dat                                  :плястык�
 STR_CARGO_SINGULAR_PLASTIC.acc                                  :плястык
 STR_CARGO_SINGULAR_PLASTIC.abl                                  :плястыкам
 STR_CARGO_SINGULAR_PLASTIC.pre                                  :плястыку
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Газiроўка
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=f}Газіроўка
 STR_CARGO_SINGULAR_FIZZY_DRINK.gen                              :газіроўкі
 STR_CARGO_SINGULAR_FIZZY_DRINK.dat                              :газіроўцы
 STR_CARGO_SINGULAR_FIZZY_DRINK.acc                              :газіроўку
@@ -427,7 +427,7 @@ STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} �
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} паперы
 STR_QUANTITY_GOLD                                               :{COMMA} мяш{P ок кi коў} золата
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} вады
-STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} пшанiцы
+STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} пшаніцы
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} каўчуку
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} цукру
 STR_QUANTITY_TOYS                                               :{COMMA} цац{P ка кi ак}
@@ -435,10 +435,10 @@ STR_QUANTITY_SWEETS                                             :{COMMA} скр�
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} колы
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} цукровай баўны
 STR_QUANTITY_BUBBLES                                            :{COMMA} бурбал{P ка кi ак}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} iрысак
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} ірысак
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарэ{P йка йкi ек}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} плястыку
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} слоi{P к кi каў} газiроўкi
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} слоі{P к кі каў} газіроўкi
 STR_QUANTITY_N_A                                                :адсутнiчае
 
 # Two letter abbreviation of cargo name
@@ -470,7 +470,7 @@ STR_ABBREV_SWEETS                                               :{TINY_FONT}ЦУ
 STR_ABBREV_COLA                                                 :{TINY_FONT}КЛ
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}ЦВ
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}БУ
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}IР
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}ІР
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}БА
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}ГЗ
@@ -541,11 +541,11 @@ STR_BUTTON_LOCATION                                             :{BLACK}Агля
 STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыць вакно
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак вакна — цягнiце яго для перамяшчэньня вакна
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Загаловак вакна — цягніце яго для перамяшчэньня вакна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згарнуць вакно, пакінуўшы загаловак
 STR_TOOLTIP_DEBUG                                               :{BLACK}Паказаць наладачную iнфармацыю NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Іґнараваць націск клявішы «Закрыць усе вокны»
-STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягнiце для зьмяненьня памеру вакна
+STR_TOOLTIP_RESIZE                                              :{BLACK}Націсьніце ды цягніце для зьмяненьня памеру вакна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўверх/уніз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка налева/направа
@@ -564,11 +564,11 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_MEASURE_LENGTH                                              :{BLACK}Даўжыня: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Плошча: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Даўжыня: {NUM}{}Розніца вышыняў: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Розьнiца вышыняў: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Плошча: {NUM} x {NUM}{}Розьніца вышыняў: {HEIGHT}
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Насельнiцтва
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Насельніцтва
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Назва
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Дата
 # These are used in dropdowns
@@ -646,7 +646,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ґенэ
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Пасадзіць дрэвы. Пры націснутым Shift — ацэнка кошту высадкі.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць метку
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разьмясьцiць аб'ект. Пры націснутым Shift — ацэнка кошту будаўніцтва.
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разьмясьціць аб'ект. Пры націснутым Shift — ацэнка кошту будаўніцтва.
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захаваць сцэнар
@@ -679,7 +679,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Празрыс�
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Захаваць гульню
 STR_FILE_MENU_LOAD_GAME                                         :Загрузіць гульню
-STR_FILE_MENU_QUIT_GAME                                         :У галоўнае меню
+STR_FILE_MENU_QUIT_GAME                                         :Да галоўнага мэню
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Выхад
 ############ range ends here
@@ -1438,11 +1438,11 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :правару�
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Дазволіць будаўніцтва на сьхілах і на беразе: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Дазволiць зьмену ляндшафту пад будынками й рэйкамi, не выдаляючы ix
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Дазволіць зьмену ляндшафту пад будынкамі й рэйкамi, не выдаляючы іx
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона пакрыцьця залежыць ад тыпу станцыі: {STRING}
-STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Мець розныя памеры тэрыторыi, на якiх розныя тыпы станцыяў ды аэрапортаў зьбiраюць пасажыраў i грузы
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Мець розныя памеры тэрыторыі, на якіх розныя тыпы станцыяў ды аэрапортаў зьбіраюць пасажыраў і грузы.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Спрасьцiць знос гарадзкiх будынкаў ды iнфраструктуры
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Спрасьціць знос гарадзкіх будынкаў ды інфраструктуры
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максымальная даўжыня цягнiкоў: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Усталяваць максымальную даўжыню цягнiкоў
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} клет{P ка кi ак}
@@ -1462,9 +1462,9 @@ STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-ґрадус
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Дазволіць дадаць частку станцыі, якая непасрэдна не прылягае да існуючых частак. Патрабуе Ctrl+пстрычку пры разьмяшчэньні новых частак.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Выкарыстоўваць палепшаны алгарытм загрузкі: {STRING}
-STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Калі ўключана, некалькі транспартных сродкаў, якія чакаюць на станцыі, загружаюцца пасьлядоўна. Загрузка наступнага пачынаецца, калі на станцыі ёсьць досыць груза, каб запоўніць парядэдні транспарт.
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Калі ўключана, некалькі транспартных сродкаў, якія чакаюць на станцыі, загружаюцца пасьлядоўна. Загрузка наступнага пачынаецца, калі на станцыі ёсьць досыць грузу, каб запоўніць парядэдні транспарт.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Паступовая загрузка транспарту: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Паступова загружаць транспартныя сродкі, выкарыстоўваючы іх спецыфічную працялегласьць загрузкі, замест таго каб загрузіць усё адразу за сталы час, які можа залежыць толькі ад колькасьці груза
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Паступова загружаць транспартныя сродкі, выкарыстоўваючы іх спецыфічную працялегласьць загрузкі, замест таго каб загрузіць усё адразу за сталы час, які можа залежыць толькі ад колькасьці грузу.
 STR_CONFIG_SETTING_INFLATION                                    :Уключыць інфляцыю: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Уключыць інфляцыю ў эканоміцы, калі кошты растуць нязначна хутчэй за выплаты
 STR_CONFIG_SETTING_SELECTGOODS                                  :Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {STRING}
@@ -1496,7 +1496,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Усталяв�
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :на пачатку
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ў сярэдзіне
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ў канцы
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Аўтатранспарт зьбiраецца ў чаргу каля прыпынка: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Аўтатранспарт зьбіраецца ў чаргу каля прыпынка: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Аўтатранспарт будзе чакаць перад прыпынкам, пакуль ён вызваліцца ад іншых машынаў.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Перамяшчаць агляд, калі курсор знаходзіцца на краі экрана: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Калі ўключана, галоўнае вакно будзе рухацца, калi курсор дасягне краю экрана.
@@ -1566,7 +1566,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Таўшчын�
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Таўшчыня лініяў ґрафікаў. Тонкая лінія дакладней, тоўстую лягчэй убачыць і адрозніць колер.
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Ґенэратар зямлі: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :арыґінальны
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Арыґінальны
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Макс. адлегласьць ад краю мапы да нафтаперапрацоўчых заводаў: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Вышыня сьнегавой лініі: {STRING}
@@ -1576,9 +1576,9 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкі
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубы
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Вельмі грубы
 STR_CONFIG_SETTING_TREE_PLACER                                  :Альґарытм расстаноўкі дрэваў: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :няма
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :арыґінальны
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :палепшаны
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Няма
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Арыґінальны
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Палепшаны
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Кручэньне мапы вышыняў: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :супраць руху гадзіньнікавай стрэлкі
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :па гадзіньнікавай стрэлцы
@@ -1587,6 +1587,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Дазволі�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна ці некалькі клетак ў паўночным куце мапы не пустыя
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Максымальная працялегласьць станцыяў: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Максымальная плошча, на якую могуць распаўсюджвацца часткі адной станцыі. Зазначце, што вышэйшыя значэньні замаруджваюць гульню.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Уключыць абслугоўваньне на шрубалётных пляцоўках: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Абслугоўваць шрубалёты пры кожнай пасадцы, нават калі ў аэрапорце няма анґару.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Зьвязаць ляндшафтную панэль з транспартнай: {STRING}
@@ -1639,10 +1641,10 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :палітру 
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Аўтаматычнае ўключэньне паўзы напачатку гульні: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Калі ўключана, распачатая гульня будзе аўтаматычна стаяць на паўзе, дазваляючы блізкае вывучэньне мапы.
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Падчас паўзы дазволiць: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Падчас паўзы дазволіць: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Выбраць дзеяньні, якія будуць дазволены, калі гульня на паўзе.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :нiчога
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :усе дзеяньнi, акрамя будаўнiцтва
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :усе дзеяньні, акрамя будаўніцтва
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :усе дзеяньнi, акрамя зьмяненьня ляндшафту
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :усе дзеяньнi
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Выкарыстоўваць пашыраны сьпіс транспорту: {STRING}
@@ -1856,9 +1858,9 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фа
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Новая гульня
-STR_INTRO_LOAD_GAME                                             :{BLACK}Загрузiць гульню
+STR_INTRO_LOAD_GAME                                             :{BLACK}Загрузіць гульню
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Гуляць сцэнар
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загрузiць мапу вышыняў
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загрузіць мапу вышыняў
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Рэдактар сцэнараў
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сеткавая гульня
 
@@ -1886,8 +1888,8 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Пака
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Паказаць наладкі складанасьці
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Паказаць пашыраныя наладкі
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Паказаць наладкі NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы і абноўлены кантэнт, каб спампаваць
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Зьмяніць наладкі ШІ і гульнёвага скрыпту
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Праверыць новы й абноўлены кантэнт, каб спампаваць
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Зьмяніць наладкі ШІ ды гульнёвага скрыпту
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Выйсьці з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}На гэту мову не перакладзен{P 0 ы ы а} {NUM} рад{P ок кі коў}. Вы можаце дапамагчы праекту, калi зарэґіструецеся як перакладчык. Інструкцыі ў файле readme.txt.
@@ -1929,7 +1931,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :субаркт�
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :субтрапічны ляндшафт
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :цацачны ляндшафт
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Зьмяненьне даты: {ORANGE}{DATE_SHORT}
-STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмянiць бягучы год
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Зьмяніць бягучы год
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 # Livery window
@@ -2028,7 +2030,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмя
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Злучэньне:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Выберыце паміж гульнёй па Інтэрнэце і па лакальнай сетцы (LAN)
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Выберыце паміж гульнёй па Інтэрнэце й па лакальнай сетцы (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :Лакальная сетка (LAN)
 STR_NETWORK_SERVER_LIST_INTERNET                                :Інтэрнэт
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Імя гульца:
@@ -2046,7 +2048,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Бягучая дата
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Гады
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Колькасьць год{}у гульні
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, вэрсія сэрвэра і г.д.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Мова, вэрсія сэрвэра й г.д.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберыце гульню са сьпіса й клікніце
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Апошні сэрвэр, да якога вы далучаліся:
@@ -2068,8 +2070,8 @@ STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}ВЭР�
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}НЕ СУПАДАЕ НАБОР NEWGRF
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Далучыцца да гульні
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Абнавiць сэрвэр
-STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Абнавiць iнфармацыю аб сэрвэры
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Абнавіць сэрвэр
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Абнавіць iнфармацыю аб сэрвэры
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Знайсьці сэрвэр
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Знайсьці сэрвэры, якія зараз ёсьць у сетцы
@@ -2079,7 +2081,7 @@ STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запу
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Запуск сэрвэра на вашым кампутары. Да гэтае гульні змогуць далучыцца іншыя гульцы.
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Увядзіце вашае імя
-STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Увядзiце адрас сэрвэра
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Увядзіце адрас сэрвэра
 
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Запуск новай сеткавай гульні
@@ -2098,7 +2100,7 @@ STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} к
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. кампанiяў:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Абмежаваць максымальную колькасьць кампаніяў на сэрвэры
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} назіральнік{P "" i аў}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. назiральнiкаў:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. назіральнiкаў:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Абмежаваць максымальную колькасьць назіральнікаў на сэрвэры
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова зносінаў:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Іншыя гульцы будуць ведаць, на якой мове размаўляюць на сэрвэры
@@ -2338,7 +2340,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Агу�
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ІНФАРМАЦЫЯ АБ КАНТЭНЦЕ
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Вы гэтага не выбіралі для запампоўваньня
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Вы выбралі гэта для запампоўваньня
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Гэты модуль залежыць ад іншага і будзе спампаваны
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Гэты модуль залежыць ад іншага й будзе спампаваны
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ўжо маеце гэта
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Гэты кантэнт невядомы й ня можа быць спампаваны ў OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Гэта абнаўленьне існуюч{G ага ай ага ых} {STRING.gen}
@@ -2482,13 +2484,13 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Выба
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Звычайны сэмафор.{}Не дазваляе некалькім цягнікам адначасова знаходзіцца на адным блёк-участку.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Уваходны сэмафор (прэсыґнал).{}Адкрыты, калі хаця б адзін з выхадных сыґналаў на наступнай сэкцыі каляіны адкрыты. У астатніх выпадках закрыты.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Выхадны сэмафор (прэсыґнал).{}Працуе як звычайны сэмафор, але яго стан улічваецца ў працы ўваходных і камбінаваных сыґналаў.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Камбінаваны сэмафор (прэсыґнал).{}Працуе адначасова як уваходны і выхадны сэмафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыґналамі.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Камбінаваны сэмафор (прэсыґнал).{}Працуе адначасова як уваходны й выхадны сэмафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыґналамі.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Маршрутны сэмафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыґнальным блёку, калі кожны зь іх можа зарэзэрваваць сабе бясьпечны шлях. Дазваляе праходжаньне цягнікоў у абодва бакі.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Аднабаковы маршрутны сэмафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыґнальным блёку, калі кожны зь іх можа зарэзэрваваць сабе бясьпечны шлях. Не дазваляе цягнікам праходзіць з адваротнага боку.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Звычайны сьветлафор.{}Не дазваляе некалькім цягнікам адначасова знаходзіцца на адным блёк-участку.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Уваходны сьветлафор (прэсыґнал).{}Адкрыты, калі хаця б адзін з выхадных сыґналаў на наступнай сэкцыі каляіны адкрыты. У астатніх выпадках закрыты.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Выхадны сьветлафор (прэсыґнал).{}Працуе як звычайны сьветлафор, але яго стан улічваецца ў працы ўваходных і камбінаваных сыґналаў.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Камбінаваны сьветлафор (прэсыґнал).{}Працуе адначасова як уваходны і выхадны сьветлафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыґналамі.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Камбінаваны сьветлафор (прэсыґнал).{}Працуе адначасова як уваходны й выхадны сьветлафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыґналамі.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутны сьветлафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыґнальным блёку, калі кожны зь іх можа зарэзэрваваць сабе бясьпечны шлях. Дазваляе праходжаньне цягнікоў у абодва бакі.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Аднабаковы маршрутны сьветлафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыґнальным блёку, калі кожны зь іх можа зарэзэрваваць сабе бясьпечны шлях. Не дазваляе цягнікам праходзіць з адваротнага боку.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Зьмяненьне тыпаў сыґналаў.{}Калі кнопка націснута, пстрыкніце для пераўтварэньня існуючага сыґнала ў сыґнал выбранага тыпу й віду, або пстрыкніце з націснутым Ctrl для перабіраньня існуючых варыянтаў. Shift+пстрычка — ацэнка кошту пераўтварэньня.
@@ -2689,7 +2691,7 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Гара
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстрычка па прадпрыемстве пакажа ягоных пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпе грузу пакажа ягоных пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Паказаць ланцужок
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны і спажыўцоў прадукцыі гэтага прадпрыемства
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны й спажыўцоў прадукцыі гэтага прадпрыемства
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выберыце паказаныя прадпрыемствы таксама й на мiнiмапе
 
@@ -2895,8 +2897,8 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Зьмя
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Стварэньне сусьвету...
-STR_GENERATION_ABORT                                            :{BLACK}Перапынiць
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Перапынiць стварэньне гульнявога сьвету
+STR_GENERATION_ABORT                                            :{BLACK}Перапыніць
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Перапыніць стварэньне гульнявога сьвету
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы сур'ёзна жадаеце перапыніць стварэньне сьвету?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% гатова
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
@@ -2917,7 +2919,7 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Акты
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Неактыўныя файлы NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Набор файлаў:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Фільтар:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Загрузiць выбраны набор
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Загрузіць выбраны набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Захаваць набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Захаваць гэты сьпіс як набор
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Назва набору
@@ -2927,7 +2929,7 @@ STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Дада
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Дадаць выбраны файл NewGRF у вашую канфігурацыю
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Абнавіць файлы
 STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Абнавіць сьпіс даступных файлаў NewGRF
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Выдалiць
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Выдаліць
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Выдаліць вылучаны файл NewGRF са сьпісу
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Уверх
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перамясьціць выбраны файл NewGRF вышэй
@@ -2958,7 +2960,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Адклю
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумяшчальна з дадзенай вэрсіяй OpenTTD
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмянiць парамэтры NewGRF
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмяніць парамэтры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыць
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ськiд
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ськінуць значэньнi ўсіх парамэтраў
@@ -3059,7 +3061,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядом
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Ідзе сканаваньне NewGRF. Гэта зойме некаторы час...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P 0 ы ы а} {NUM} з {NUM} модул{P я ёў ёў} NewGRF
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P ы ы а} {NUM} з {NUM} модул{P я яў яў} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Пошук архіваў
 
 # Sign list window
@@ -3157,13 +3159,13 @@ STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Адмова
 STR_GOAL_QUESTION_BUTTON_OK                                     :Так
 STR_GOAL_QUESTION_BUTTON_NO                                     :Не
 STR_GOAL_QUESTION_BUTTON_YES                                    :Так
-STR_GOAL_QUESTION_BUTTON_DECLINE                                :Адхiлiць
+STR_GOAL_QUESTION_BUTTON_DECLINE                                :Адхіліць
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Прыняць
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Iґнараваць
 STR_GOAL_QUESTION_BUTTON_RETRY                                  :Спрабаваць iзноў
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Папярэднi
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Наступны
-STR_GOAL_QUESTION_BUTTON_STOP                                   :Спынiць
+STR_GOAL_QUESTION_BUTTON_STOP                                   :Спыніць
 STR_GOAL_QUESTION_BUTTON_START                                  :Пачаць
 STR_GOAL_QUESTION_BUTTON_GO                                     :Iсьцi
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Працягнуць
@@ -3247,7 +3249,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назв
 STR_FINANCES_CAPTION                                            :{WHITE}Фінансы — {COMPANY} {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Выдаткі/даходы
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
-STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Будаўнiцтва
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Будаўніцтва
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая тэхніка
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Эксплуатацыя цягнiкоў
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Эксплуатацыя аўтамабiляў
@@ -3313,7 +3315,7 @@ STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Зьмя
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Дырэктар
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Зьмяніць імя дырэктара
 
-STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купiць 25% акцыяў кампаніі
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купіць 25% акцыяў кампаніі
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Прадаць 25% акцыяў кампаніі
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Набыць 25% акцыяў гэтай кампаніі. Shift+пстрычка — ацэнка кошту акцыяў.
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прадаць 25% акцыяў гэтай кампаніі. Shift+пстрычка — ацэнка кошту акцыяў.
@@ -3389,7 +3391,7 @@ STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Даступн�
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Сьпіс даступных рухавікоў для абранага тыпу транспарта
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Арганізацыя
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Упраўленьне транспартам, які знаходзiцца ў гэтым сьпісе
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Упраўленьне транспартам, які знаходзіцца ў гэтым сьпісе
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспарту
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Накіраваць на абслугоўваньне
 
@@ -3416,7 +3418,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Бяз груп
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Клікніце па назьве групы, каб убачыць сьпіс транспарту
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Стварыць групу
-STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдалiць выбраную групу
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдаліць выбраную групу
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перайменаваць выбраную групу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Абарона транспарту ў групе ад глабальнай аўтазамены
 
@@ -3462,10 +3464,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Сьпi�
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Сьпiс караблёў: націсьніце для атрыманьня даведкі
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Сьпіс паветраных судоў: пстрыкніце для атрыманьня інфармацыі
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купiць
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купiць
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купiць
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купiць
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купіць
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купіць
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купіць
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купіць
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Набыць абраны лякаматыў/ваґон. Shift+пстрычка — ацэнка кошту набыцьця.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Набыць абраны аўтамабіль. Shift+пстрычка — ацэнка кошту набыцьця.
@@ -3503,12 +3505,12 @@ STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Аўта
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Караблi: правы клік для атрыманьня інфармацыі
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авiятранспарт: правы клік для атрыманьня інфармацыі
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перацягнiце сюды цягнiк, каб прадаць яго
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перацягнiце сюды аўтамабiль, каб прадаць яго
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перацягнiце сюды карабель, каб прадаць яго
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перацягнiце сюды авiятранспарт, каб прадаць яго
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перацягніце сюды цягнік, каб прадаць яго
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перацягніце сюды аўтамабіль, каб прадаць яго
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перацягніце сюды карабель, каб прадаць яго
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перацягніце сюды авіятранспарт, каб прадаць яго
 
-STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перацягнiце сюды лякаматыў для продажу ўсяго цягніка
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перацягніце сюды лякаматыў для продажу ўсяго цягніка
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Прадаць усе цягнiкi ў дэпо
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Прадаць усе аўтамабiлi ў гаражы
@@ -3610,8 +3612,8 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выба
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбар тыпу транспарту, на які варта замяніць
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Пачаць замену
-STR_REPLACE_VEHICLES_NOW                                        :Замянiць увесь транспарт
-STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замянiць толькi старыя транспартныя сродкi
+STR_REPLACE_VEHICLES_NOW                                        :Замяніць увесь транспарт
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Замяніць толькi старыя транспартныя сродкі
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Пачаць замену выбраных тыпаў транспарту
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Няма замены
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Транспарт ня выбраны
@@ -3812,9 +3814,9 @@ STR_ORDER_DROP_FULL_LOAD_ANY                                    :Поўная з
 STR_ORDER_DROP_NO_LOADING                                       :Не грузіцца
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Зьмяніць спосаб пагрузкі на гэтай станцыі
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузiць усё
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузіць усё
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разгрузіцца, калі груз прымаецца
-STR_ORDER_DROP_UNLOAD                                           :Выгрузiць усё
+STR_ORDER_DROP_UNLOAD                                           :Выгрузіць усё
 STR_ORDER_DROP_TRANSFER                                         :Перадаць
 STR_ORDER_DROP_NO_UNLOADING                                     :Не разгружацца
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Зьмяніць спосаб разгрузкі на гэтай станцыі
@@ -3856,12 +3858,12 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :хлусьня
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Значэньне для параўнаньня з дадзенымі транспарту
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Увядзіце значэньне для параўнаньня
 
-STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Прапусьцiць
+STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Прапусьціць
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Перайсьці да наступнага заданьня. Ctrl+клік — перайсьці да выдзеленага заданьня.
 
-STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Выдалiць
+STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Выдаліць
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Выдаліць вылучанае заданьне
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Выдалiць усе заданьнi
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Выдаліць усе заданьні
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Індывідуальны сьпіс
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Зрабіць агульны сьпіс заданьняў індывідуальным. Ctrl+пстрычка ачысьціць сьпіс заданьняў.
 
@@ -3870,7 +3872,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ісьці да
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ісьці да бліжэйшага анґара
 STR_ORDER_CONDITIONAL                                           :Умоўны пераход да заданьня
 STR_ORDER_SHARE                                                 :Агульныя заданьнi
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьнi» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьнi з вылучаным транспартам. Пстрычка па транспарце капiруе заданьнi гэтага транспарту. Заданьне «ў дэпо» адключае аўтаматычнае абслугоўваньне гэтага транспарту.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьні» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьні з вылучаным транспартам. Пстрычка па транспарце капіюе заданьнi гэтага транспарту. Заданьне «ў дэпо» адключае аўтаматычнае абслугоўваньне гэтага транспарту.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Паказаць ўвесь транспарт з агульнымі заданьнямі
 
@@ -3911,14 +3913,14 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Перадац
 STR_ORDER_NO_UNLOAD                                             :(Не разгружацца й забраць груз)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разгружацца й чакаць поўнай загрузкі)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружацца й чакаць поўнай загрузкі любым грузам)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Не разгружацца й не грузiцца)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Не разгружацца й не грузіцца)
 
 STR_ORDER_AUTO_REFIT                                            :(Пераабсталяваньне для {STRING})
 STR_ORDER_FULL_LOAD_REFIT                                       :(Поўная загрузка з пераабсталяваньнем для {STRING})
 STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Поўная загрузка любым грузам з пераабсталяваньнем для {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Разгрузiць i забраць груз з пераабсталяваньнем для {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Разгрузiць i чакаць поўнай загрузкi з пераабсталяваньнем для {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Разгрузiць i чакаць любой поўнай загрузкi з пераабсталяваньнем для {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Разгрузіць і забраць груз з пераабсталяваньнем для {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Разгрузіць і чакаць поўнай загрузкі з пераабсталяваньнем для {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Разгрузіць і чакаць любой поўнай загрузкі з пераабсталяваньнем для {STRING})
 STR_ORDER_TRANSFER_REFIT                                        :(Перадаць i забраць груз з пераабсталяваньнем для {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Перадаць i чакаць поўнай загрузкi з пераабсталяваньнем для {STRING})
 STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Перадаць i чакаць любой поўнай загрузкi з пераабсталяваньнем для {STRING})
@@ -3976,11 +3978,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Зьмя
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Ськінуць час
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Ськінуць час у вылучаным заданьні
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Зьмянiць абмежаваньне хуткасьцi
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Зьмянiць макс. хуткасьць руху для выдзеленага заданьня
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Зьмяніць абмежаваньне хуткасьцi
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Зьмяніць макс. хуткасьць руху для выдзеленага заданьня
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Ачысьцiць абмежаваньне хуткасьцi
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ачысьцiць макс. хуткасьць руху для выдзеленага заданьня
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Ачысьціць абмежаваньне хуткасьці
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Ачысьціць макс. хуткасьць руху для выдзеленага заданьня
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Ськід лічыльніка
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Ськінуць лічыльнік так, каб транспарт прыбыў своечасова
@@ -3990,7 +3992,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запо
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Чакаецца
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Па раскладзе
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Пераключэньне паміж ґрафікам руху і чаканым часам прыбыцьця/адпраўленьня
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Пераключэньне паміж ґрафікам руху й чаканым часам прыбыцьця/адпраўленьня
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :П:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :А:
@@ -4081,10 +4083,10 @@ STR_AI_SETTINGS_START_DELAY                                     :Колькас�
 # Textfile window
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING} iнструкцыя {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} сьпiс зьменаў {STRING}
-STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} лiцэнзiя {STRING}
+STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} ліцэнзія {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Прагледзець iнструкцыю
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Журнал зьменаў
-STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Лiцэнзiя
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцэнзія
 
 
 # Vehicle loading indicators
@@ -4156,7 +4158,7 @@ STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Неда
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Неабходна роўнае месца
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Няправільны ўхіл зямлі
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Гэта немагчыма...
-STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Спачатку зьнясiце будынкi
+STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Спачатку зьнясіце будынкi
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Немагчыма расчысьціць дадзены ўчастак...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... непрыдатнае месца
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ужо пабудавана
@@ -4267,13 +4269,13 @@ STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Нема
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Спачатку выдаліце прыпынак
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...тут няма станцыі
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку зьнясiце чыгуначную станцыю
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку зьнясiце аўтобусны прыпынак
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спачатку зьнясiце грузавы тэрмiнал
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спачатку зьнясiце трамвайны прыпынак
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спачатку зьнясiце прыпынак грузавых трамваяў
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спачатку зьнясiце прыстань
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку зьнясiце аэрапорт
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку зьнясіце чыгуначную станцыю
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку зьнясіце аўтобусны прыпынак
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спачатку зьнясіце грузавы тэрмiнал
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спачатку зьнясіце трамвайны прыпынак
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спачатку зьнясіце прыпынак грузавых трамваяў
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спачатку зьнясіце прыстань
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку зьнясіце аэрапорт
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Прымыкае да некалькіх пунктаў шляху
@@ -4326,7 +4328,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Няма
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спачатку выдаліце чыгунку
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дарога аднабаковая або блякаваная
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Праз гэты від рэйкаў забаронена будаваць пераезды
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставiць сьветлафор...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставіць сьветлафор...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тут немагчыма пракласьцi рэйкі...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не атрымалася выдаліць чыгунку...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не атрымалася выдаліць сьветлафор...
@@ -4365,8 +4367,8 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Нема
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Тут немагчыма пабудаваць мост...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спачатку зьнясiце мост
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ня можа пачынацца і заканчвацца ў той жа кропцы
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спачатку зьнясіце мост
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ня можа пачынацца й заканчвацца ў той жа кропцы
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Апоры моста павінны быць на адным узроўні
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Занадта нізкі мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Пачатак і канец павінны быць на адной лініі
@@ -4377,7 +4379,7 @@ STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Тут немагчыма пабудаваць тунэль...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Непрыдатнае месца для будаўніцтва тунэля
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спачатку зьнясiце тунэль
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спачатку зьнясіце тунэль
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Іншы тунэль на шляху
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэль заканчваецца па-за межамі мапы
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусьціць зямлю для іншага канца тунэля
@@ -4403,7 +4405,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не а�
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Цягнiк на шляху
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Аўтамабiль на шляху
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Карабель на шляху
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ЁН ЛЯЦIЦЬ!
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}ЁН ЛЯЦІЦЬ!
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Не атрымалася пераабсталяваць цягнiк...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Не атрымалася пераабсталяваць аўтамабiль...
@@ -4554,8 +4556,8 @@ STR_INDUSTRY_NAME_FACTORY.acc                                   :завод
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Тыпаграфiя
 STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :тыпаграфii
 STR_INDUSTRY_NAME_PRINTING_WORKS.acc                            :тыпаграфію
-STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталелiцейны завод
-STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталелiцейнага завода
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталеліцейны завод
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталеліцейнага завода
 STR_INDUSTRY_NAME_STEEL_MILL.acc                                :сталеліцейны завод
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
 STR_INDUSTRY_NAME_FARM.gen                                      :фермы
@@ -4629,14 +4631,14 @@ STR_INDUSTRY_NAME_TOY_FACTORY.acc                               :завод ца
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=p}Фантаны плястыку
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :фантанаў плястыку
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.acc                         :фантан плястыку
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод газiроўкi
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :завода газiроўкi
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод газіроўкi
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :завода газіроўкi
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.acc                       :завод газіроўкі
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Ґенэратар бурбалак
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :генератара бурбалак
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR.acc                          :генэратар бурбалак
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Iрысавы кар'ер
-STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :iрысавага кар'еру
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Ірысавы кар'ер
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :ірысавага кар'еру
 STR_INDUSTRY_NAME_TOFFEE_QUARRY.acc                             :ірысавы кар'ер
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Цукровая шахта
 STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :цукровай шахты
@@ -4767,7 +4769,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хопер дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Ваґон для драўнiны
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Ваґон для сталi
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бранiраваны ваґон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Браніраваны ваґон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рэфрыжэратар (прадукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Ваґон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Хопер для меднай руды
@@ -4776,13 +4778,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рэфрыжэ�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Ваґон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Ваґон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хопер для цукровай баўны
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Хопер для ірысак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Ваґон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цыстэрна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Ваґон для цукерак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Ваґон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Ваґон для батарэек
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Ваґон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Ваґон для газіроўкi
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Ваґон для плястыку
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электравоз X2001
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электравоз Millennium Z1
@@ -4797,7 +4799,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хопер дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Ваґон для драўнiны
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Ваґон для сталi
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бранiраваны ваґон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Браніраваны ваґон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рэфрыжэратар (прадукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Ваґон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Хопер для меднай руды
@@ -4806,13 +4808,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рэфрыжэ�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Ваґон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Ваґон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хопер для цукровай баўны
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Хопер для ірысак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Ваґон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цыстэрна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Ваґон для цукерак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Ваґон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Ваґон для батарэек
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Ваґон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Ваґон для газіроўкi
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Ваґон для плястыку
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Левияфан»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Цыклоп»
@@ -4829,7 +4831,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хопер дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Ваґон для драўнiны
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Ваґон для сталi
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бранiраваны ваґон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Браніраваны ваґон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рэфрыжэратар (ежа)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Ваґон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Хопер для меднай руды
@@ -4838,13 +4840,13 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рэфрыжэ�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Ваґон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Ваґон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хопер для цукровай баўны
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Хопер для iрысак
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Хопер для ірысак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Ваґон для бурбалак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Цыстэрна для колы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Ваґон для цукерак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Ваґон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Ваґон для батарэек
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Ваґон для газiроўкi
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Ваґон для газіроўкi
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Ваґон для плястыку
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Аўтобус MPS Regal
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Аўтобус Hereford Leopard
@@ -4913,9 +4915,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Цыстэрн�
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Грузавiк MightyMover (цук. баўна)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Грузавiк Powernaught (цук. баўна)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Грузавiк Wizzowow (цук. баўна)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузавiк MightyMover (iрыскi)
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Грузавiк Powernaught (iрыскi)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузавiк Wizzowow (iрыскi)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Грузавік MightyMover (ірыскі)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Грузавік Powernaught (ірыскі)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Грузавік Wizzowow (ірыскі)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :Грузавiк MightyMover (цацкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :Грузавiк Powernaught (цацкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :Грузавiк Wizzowow (цацкi)
@@ -4925,9 +4927,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Грузавiк
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Грузавiк MightyMover (батарэйкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Грузавiк Powernaught (батарэйкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Грузавiк Wizzowow (батарэйкi)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузавiк MightyMover (газiроўка)
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Грузавiк Powernaught (газiроўка)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузавiк Wizzowow (газiроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузавік MightyMover (газіроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Грузавік Powernaught (газіроўка)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузавік Wizzowow (газіроўка)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузавiк MightyMover (плястык)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Грузавiк Powernaught (плястык)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузавiк Wizzowow (плястык)

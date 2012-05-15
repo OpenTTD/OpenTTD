@@ -798,7 +798,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLAC
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Europeiska Valutasystemet!{}{}Euron introduceras som enda valuta i ditt land!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin rasar!
-STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Lågkonjuktur över!{}{}Uppsving i handeln ger tillförsikt till industrier när ekonomin stärks!
+STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Lågkonjunkturen över!{}{}Uppsving i handeln ger tillförsikt till industrier när ekonomin stärks!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} ökar produktionen!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Nytt lager av kol funnet vid {INDUSTRY}!{}Produktionen fördubblas!
@@ -893,6 +893,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turkisk Lire (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk Koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estniska Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauisk litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sydkoreansk won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sydafrikansk rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egen...
 ############ end of currency region
 
@@ -1123,8 +1126,10 @@ STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha olika stora 
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Underlätta borttagning av stadsägd infrastruktur och byggnader
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximal tåglängd: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Sätt maximal tåglängd
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rut{P 0 a or}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mängden rök/gnistor från fordon: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Sätt hur mycket rök och gnistor fordon ger ifrån sig
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Accelerationsmodell för tåg: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Accelerationsmodell för vägfordon: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Sluttningars lutningsgrad för tåg: {STRING}
@@ -1137,7 +1142,9 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lasta fordon gr
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Leverera gods till en station enbart om någon frågar efter det: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolängd: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal längd för broar
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal längd för tunnlar
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuell prioritering för industrins konstruktionsmetod: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
@@ -1330,6 +1337,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position av verktygsraden: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusradens position: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Statusradens horisontella position i skärmens nederkant
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pix{P 0 el lar}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximalt antal icke-klistrade fönster: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1342,12 +1350,14 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Stadens tillväxthastighet: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hastigheten städer växer med
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Långsamt
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalt
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snabbt
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks multiplikator: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 
@@ -3111,6 +3121,8 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Välj fo
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Välj den nya fordonstyp du vill använda i stället för den till vänster valda typen
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
+STR_REPLACE_VEHICLES_NOW                                        :Byt ut alla fordon nu
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Byt endast ut gamla fordon
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryck för att börja byta ut fordonstypen vald på vänster sida med fordonstypen på höger sida
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Byter inte ut
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Inget fordon valt
@@ -3122,7 +3134,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Välj me
 STR_REPLACE_ENGINES                                             :Lok
 STR_REPLACE_WAGONS                                              :Vagnar
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Välj järnvägstyp för att byta ut fordon
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Välj vilken järnvägstyp du vill byta ut lok för
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Visa vilket fordon det vänstra fordonet byts ut till, om något
 STR_REPLACE_RAIL_VEHICLES                                       :Järnvägsfordon
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektriska järnvägsfordon

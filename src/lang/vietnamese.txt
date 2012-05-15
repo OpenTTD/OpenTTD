@@ -1101,6 +1101,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành đ
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
@@ -1120,6 +1121,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Cho phép thay đổi nền đất dưới công trình và đường mà không cần phá hủy chúng
 STR_CONFIG_SETTING_CATCHMENT                                    :Mô phỏng thực tế diện tích khu vực đón hàng: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Chiều dài tối đa của đoàn tàu: {STRING}

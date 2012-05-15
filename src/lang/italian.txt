@@ -1294,6 +1294,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Consenti la rim
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Max estensione stazioni: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutieni automaticamente gli elicotteri presso gli eliporti: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Apri strumenti terreno assieme a quelli di costruzione: {STRING}
