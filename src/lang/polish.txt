@@ -503,37 +503,37 @@ STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}CL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
-STR_ABBREV_GOODS                                                :{TINY_FONT}GD
-STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PŻ
+STR_ABBREV_COAL                                                 :{TINY_FONT}WG
+STR_ABBREV_MAIL                                                 :{TINY_FONT}PC
+STR_ABBREV_OIL                                                  :{TINY_FONT}RP
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ŻC
+STR_ABBREV_GOODS                                                :{TINY_FONT}TW
+STR_ABBREV_GRAIN                                                :{TINY_FONT}ZB
+STR_ABBREV_WOOD                                                 :{TINY_FONT}DR
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}RŻ
 STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}KS
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}RM
+STR_ABBREV_MAIZE                                                :{TINY_FONT}KK
+STR_ABBREV_FRUIT                                                :{TINY_FONT}OW
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
-STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
-STR_ABBREV_WATER                                                :{TINY_FONT}WR
-STR_ABBREV_WHEAT                                                :{TINY_FONT}WH
-STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SG
-STR_ABBREV_TOYS                                                 :{TINY_FONT}TY
-STR_ABBREV_SWEETS                                               :{TINY_FONT}SW
+STR_ABBREV_FOOD                                                 :{TINY_FONT}ŻN
+STR_ABBREV_PAPER                                                :{TINY_FONT}PP
+STR_ABBREV_GOLD                                                 :{TINY_FONT}ZŁ
+STR_ABBREV_WATER                                                :{TINY_FONT}WD
+STR_ABBREV_WHEAT                                                :{TINY_FONT}PS
+STR_ABBREV_RUBBER                                               :{TINY_FONT}KC
+STR_ABBREV_SUGAR                                                :{TINY_FONT}CK
+STR_ABBREV_TOYS                                                 :{TINY_FONT}ZA
+STR_ABBREV_SWEETS                                               :{TINY_FONT}SŁ
 STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}WC
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}BB
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}BT
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}NG
 STR_ABBREV_NONE                                                 :{TINY_FONT}0
 STR_ABBREV_ALL                                                  :{TINY_FONT}+
 
@@ -647,7 +647,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodność
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita pojemność typu ładunku
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita ładowność typu ładunku
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maksymalna
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
@@ -663,9 +663,9 @@ STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Siła pociągowa
 STR_SORT_BY_INTRO_DATE                                          :Data wprowadzenia
-STR_SORT_BY_RUNNING_COST                                        :Koszty użytkowania
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszty użytkowania
-STR_SORT_BY_CARGO_CAPACITY                                      :Pojemność
+STR_SORT_BY_RUNNING_COST                                        :Koszt utrzymania
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszt utrzymania
+STR_SORT_BY_CARGO_CAPACITY                                      :Ładowność
 STR_SORT_BY_RANGE                                               :Zasięg
 
 # Tooltips for the main toolbar
@@ -907,12 +907,12 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Wykres obrotów
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Wykres przychodów
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Dostarczonych jednostek ładunku
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena działalności firmy (max. ocena=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ocena działalności firmy (maks. ocena=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Wartości firm
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za Ładunek
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Stawki za ładunek
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Dni w transporcie
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Oplata za przewóz 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Dochód z przewozu 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Włącz wszystko
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Wyłącz wszystko
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie cen za ładunek
@@ -1219,8 +1219,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Dostępn
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} nie akceptuje już {STRING.d}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} nie akceptuje już {STRING.d} ani {STRING.d}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akceptuje już {STRING.b}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akceptuje już {STRING.b} i {STRING.b}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} już akceptuje {STRING.b}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} już akceptuje {STRING.b} i {STRING.b}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsydiowanie wygasło:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już subsydiowany
@@ -2936,7 +2936,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nic
-STR_NEWGRF_LIST_ALL_FOUND                                       :Wszystkie pliki są na dostępne
+STR_NEWGRF_LIST_ALL_FOUND                                       :Wszystkie pliki są dostępne
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Znaleziono kompatybilne pliki
 STR_NEWGRF_LIST_MISSING                                         :{RED}Brakujące pliki
 
@@ -3038,7 +3038,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Ufunduj
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia Twojej firmy.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufundowanie nowych budynków komercyjnych w mieście.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ Swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele
@@ -3124,9 +3124,9 @@ STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruj 
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Zmień nazwę stacji
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Pokazuje wszystkie pociągi, które mają tę stację w swoim rozkładzie
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokazuje wszystkie samochody, ktore mają tę stację w swoim rozkladzie
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokazuje wszystkie samoloty, ktore mają tę stację w swoim rozkladzie
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje wszystkie statki, ktore mają tę stację w swoim rozkladzie
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Pokazuje wszystkie samochody, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Pokazuje wszystkie samoloty, które mają tę stację w swoim rozkładzie
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Pokazuje wszystkie statki, które mają tę stację w swoim rozkładzie
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Zmień nazwę stacji
 
@@ -3196,12 +3196,12 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Zobacz SG
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobacz siedzibę firmy
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Przenieś SG
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główna w innym miejscu za cenę 1% wartości firmy. Shift+Click pokazuje szacunkowy koszt bez przenoszenia siedziby
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Zbuduj siedzibę główną w innym miejscu za cenę 1% wartości firmy. Shift+klik pokazuje szacunkowy koszt bez przenoszenia siedziby
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Szczegóły
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobacz szczegółowe wartości infrastruktury
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nowa twarz
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nowa twarz prezesa
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wybierz nową twarz prezesa
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Schemat kolorów
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Zmień kolor pojazdów firmy
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nazwa Firmy
@@ -3266,10 +3266,10 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana p
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmiana poziomu produkcji (procentowo, do 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Pociąg{P "" i ów}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Samoch{P ód ody odów}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Stat{P ek ki ów}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Samolot
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} pociąg{P "" i ów}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} samoch{P ód ody odów}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} stat{P ek ki ków}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} samolot{P "" y ów}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Pociągi - klik na pojeździe aby uzyskać informacje
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Samochody - klik na pojeździe po więcej informacji
@@ -3281,23 +3281,23 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLA
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokomotywy
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostępne pojazdy
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostępne statki
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępny samolot
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępne samoloty
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę pojazdów dostępnych dla tego typu transportu
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liĹ›cie
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Wyślij instrukcje wszystkim pojazdom na tej liście
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Zastąp pojazdy
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do Serwisu
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Wyślij do serwisu
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do Zajezdni
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do Zajezdni
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Wyślij do Stoczni
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Wyślij do Hangaru
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Wyślij do zajezdni
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Wyślij do zajezdni
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Wyślij do stoczni
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Wyślij do hangaru
 
-STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Kliknij aby zatrzymać wszystkie pojazdy na liście
-STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Kliknij aby wystartować wszystkie pojazdy na liście
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Kliknij, aby zatrzymać wszystkie pojazdy z listy
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Kliknij, aby wystartować wszystkie pojazdy z listy
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Polecenia współdziel{P 0 i ą i} {COMMA} pojazd{P "" y ów}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Wszystkie pociągi
@@ -3332,25 +3332,25 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd dro
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Waga: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Masa: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Prędkość na oceanie: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Prędkość na kanale/rzece: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty użytkowania: {GOLD}{CURRENCY_LONG}/rok
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Pojemność: {GOLD}{CARGO_LONG} {STRING}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszt utrzymania: {GOLD}{CURRENCY_LONG}/rok
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ładowność: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodność: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Masa: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY_LONG}{BLACK} Prędkość: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{CARGO_LONG}, {CARGO_LONG}
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_SHORT}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ładowność: {GOLD}{CARGO_LONG}, {CARGO_LONG}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Masa: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przystosować do: {GOLD}{STRING}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
-STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {CARGO_LIST}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
+STR_PURCHASE_INFO_ALL_TYPES                                     :wszystkie typy ładunków
+STR_PURCHASE_INFO_ALL_BUT                                       :wszystko oprócz {CARGO_LIST}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. siła pociągowa: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Zasięg: {GOLD}{COMMA} pól
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista wyboru pociągów - kliknij na pojeździe, aby uzyskać informacje
@@ -3474,12 +3474,12 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.b                        :{G=f}lokomotyw�
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}lokomotywa MagLev
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :{G=f}lokomotywę MagLev
 
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Waga: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY_LONG}/rok{}Pojemność: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszty użytkowania: {4:CURRENCY_LONG}/rok{}Pojemność: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Kosztuje: {CURRENCY_LONG} Maksymalna prędkość: {VELOCITY}{}Pojemność: {CARGO_LONG}, {CARGO_LONG}{}Koszt używania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Koszt utrzymania: {CURRENCY_LONG}/rok{}Ładowność: {CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Koszt: {CURRENCY_LONG} Masa: {WEIGHT_SHORT}{}Prędkość: {VELOCITY}  Moc: {POWER}  Maksymalna siła pociągowa: {6:FORCE}{}Koszt utrzymania: {4:CURRENCY_LONG}/rok{}Ładowność: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY}{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Maks. szybkość: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}{}Koszty utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}, {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Koszt: {CURRENCY_LONG} Prędkość maksymalna: {VELOCITY} Zasięg: {COMMA} pól{}Ładowność: {CARGO_LONG}{}Koszt utrzymania: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastąp {STRING}
@@ -3583,39 +3583,39 @@ STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Uruchomi
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Szczegóły)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Nazwa
 
-STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Nazwa pociągu
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Nazwij samochód
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Nazwa statku
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Nazwa samolotu
+STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Zmień nazwę pociągu
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Zmień nazwę samochodu
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Zmień nazwę statku
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Zmień nazwę samolotu
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt używania: {LTBLUE}{CURRENCY_LONG}/rok
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Wiek: {LTBLUE}{STRING}{BLACK}   Koszt utrzymania: {LTBLUE}{CURRENCY_LONG}/rok
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} {P rok lata lat} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} {P rok lata lat} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Maksymalna prędkość: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Maks. szybkość: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Waga: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Maksymalna prędkość: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Zasięg: {LTBLUE}{COMMA} pól
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Masa: {LTBLUE}{WEIGHT_SHORT} {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Prędkość maksymalna: {LTBLUE}{VELOCITY} {BLACK}Maksymalna siła pociągowa: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Zysk w tym roku: {LTBLUE}{CURRENCY_LONG} (w zeszłym roku: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Niezawodność: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Zakupiony: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
-STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Pojemność: {LTBLUE}Żadna{STRING}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Ładowność: {LTBLUE}żadna{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniem o 10. Ctrl+klik zwiększa okres między serwisowaniem o 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniem o 10. Ctrl+klik zmniejsza okres między serwisowaniem o 5
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisami: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zwiększ okres między serwisowaniami o 10. Ctrl+klik zwiększa okres między serwisowaniami o 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Zmniejsz okres między serwisowaniami o 10. Ctrl+klik zmniejsza okres między serwisowaniami o 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Nazwa pociągu
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwij samochód
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Nazwa samochodu
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Nazwa statku
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nazwa samolotu
 
@@ -3623,7 +3623,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Nazwa sa
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Budowa: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Wartość: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Całkowita pojemność tego pociągu:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Całkowita ładowność tego pociągu:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
 
@@ -3635,18 +3635,18 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ładunek
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Pokaż szczegóły przewożonych ładunków
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacje
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Pokaż szczegóły pociągu
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Pojemność
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż pojemność każdego wagonu
-STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Całkowity ładunek
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Pokaż całkowitą pojemność pociągu, według typu ładunku
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Ładowność
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż ładowność każdego wagonu
+STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Całkowita ładowność
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Pokaż całkowitą ładowność pociągu, według typu ładunku
 
-STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Pojemność: {LTBLUE}
+STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowność: {LTBLUE}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa pojemność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przekształcenia: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
@@ -3682,27 +3682,27 @@ STR_ORDER_GO_TO                                                 :Idź do
 STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
 STR_ORDER_GO_VIA                                                :Idź przez
 STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień zachowanie hamowania podświetlonych rozkazów
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień sposób przejazdu w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny załadunek któregoś z towarów
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pełny załadunek wszystkiego
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek któregoś z towarów
 STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień zachowanie załadunku podświetlonego rozkazu
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
 STR_ORDER_DROP_UNLOAD                                           :Rozładuj i załaduj
 STR_ORDER_DROP_TRANSFER                                         :Przeładunek
 STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozładowuj
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień zachowanie wyładunku podświetlonego rozkazu
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmień sposób wyładunku w podświetlonym poleceniu
 
-STR_ORDER_REFIT                                                 :{BLACK}Przeksztalc
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przekształcenia. Ctrl+klik usuwa zmianę
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczne odnowienie
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznego odnowienia w tym poleceniu.Ctrl+Click by usunąć instrukcję odnowienia. Automatyczne odnowienie zostanie wykonane jedynie, jeśli dany pojazd na to pozwala
-STR_ORDER_DROP_REFIT_AUTO                                       :Naprawiony ładunek
+STR_ORDER_REFIT                                                 :{BLACK}Przebudowa
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Wybierz typ ładunku do przebudowy. Ctrl+klik usuwa polecenie
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Automatyczna przebudowa
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Wybierz typ ładunku do automatycznej przebudowy. Ctrl+klik usuwa polecenie. Automatyczna przebudowa zostanie wykonana jedynie, jeśli dany pojazd na to pozwala
+STR_ORDER_DROP_REFIT_AUTO                                       :Ustalony ładunek
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostępny ładunek
 
 STR_ORDER_SERVICE                                               :{BLACK}Serwis
@@ -3736,7 +3736,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartoś�
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Pomiń
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie, i rozpocznij kolejne. Ctrl+klik pomija aż do zaznaczonego polecenia
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń obecne polecenie i rozpocznij kolejne. Ctrl+klik pomija aż do zaznaczonego polecenia
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
@@ -3745,11 +3745,11 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Przesta�
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Przestań dzielić listę poleceń. Ctrl+Klik dodatkowo usuwa wszystkie polecenia tego pojazdu
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższej zajezdni
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbliższej zajezdni
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełny załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -3768,42 +3768,42 @@ STR_ORDER_SHIP_DEPOT                                            :Doku
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Przekształć na {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Remontuj w {STRING} i zatrzymaj)
+STR_ORDER_REFIT_ORDER                                           :(Przebuduj na {STRING.b})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Przebuduj na {STRING.b} i zatrzymaj)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Sugerujący)
 
-STR_ORDER_FULL_LOAD                                             :(Pełen załadunek)
-STR_ORDER_FULL_LOAD_ANY                                         :(Pełen załadunek dowolnego towaru)
+STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
 STR_ORDER_NO_LOAD                                               :(Nie ładować)
-STR_ORDER_UNLOAD                                                :(Rozładuj i weź towar)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełen załadunek)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_UNLOAD                                                :(Rozładuj i zabierz ładunek)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Rozładuj i pozostaw pusty)
 STR_ORDER_TRANSFER                                              :(Przeładuj i zabierz ładunek)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładuj i czekaj na pełen załadunek)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeładuj i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeładuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeładuj i pozostaw pusty)
-STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i weź ładunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełen załadunek)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i zabierz ładunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełny załadunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełny załadunek któregoś z towarów)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
 
-STR_ORDER_AUTO_REFIT                                            :(Automatyczne odnowienie do {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Załaduj do pełna z automatycznym odnowieniem do {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Załaduj do pełna dowolny ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj i zaczekaj na dowolny pełny ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Przetwórz i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przewie i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przewieź i poczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj i zabierz ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj i zaczekaj na pełen ładunek z automatycznym odnowieniem do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj i zaczekaj na dowolny pełen ładunek z automatycznym odnowieniem do {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Przebuduj na {STRING.b})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_UNLOAD_REFIT                                          :(Rozładuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Rozładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Rozładuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_TRANSFER_REFIT                                        :(Przeładuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Przeładuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Przeładuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nie rozładowuj, przebuduj na {STRING.b} i zabierz ładunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na pełny załadunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nie rozładowuj, przebuduj na {STRING.b} i czekaj na dowolny pełny załadunek)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostępny ładunek
 
@@ -3855,24 +3855,24 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień i
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Usuń czas
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czasu przeznaczoną na zaznaczone zadanie
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień Limit Prędkości
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość podróży wybranego polecenia
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmień limit prędkości
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmień maksymalną prędkość podróży w zaznaczonym poleceniu
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść Limit Prędkości
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość podróży wybranego polecenia
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Wyczyść limit prędkości
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Wyczyść maksymalną prędkość podróży w zaznaczonym poleceniu
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Wyzeruj spóźnienia
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnego wyjazdu (CTRL-klik by spróbować utrzymać czasy oczekiwania))
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automat. wypełnienie
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij automatycznie rozkład jazdy wartościami z następnego przejazdu (Ctrl+klik, aby spróbować utrzymać czasy oczekiwania)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Wymagany
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Zaplanowany
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Przełącz między wymaganymi i zaplanowanymi
 
-STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :O:
 
 
 # Date window (for timetable)
@@ -4324,7 +4324,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Statek j
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Samolot jest niedostępny
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Za dużo pojazdów w grze
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniem...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Nie można zmienić okresu między serwisowaniami...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... pojazd jest zniszczony
 
@@ -4408,7 +4408,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Świnka-skarbon
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia Węgla
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Kopalnia węgla
 STR_INDUSTRY_NAME_COAL_MINE.d                                   :{G=f}kopalni węgla
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrownia
 STR_INDUSTRY_NAME_POWER_STATION.d                               :{G=f}elektrowni
@@ -4418,7 +4418,7 @@ STR_INDUSTRY_NAME_FOREST                                        :{G=m}Las
 STR_INDUSTRY_NAME_FOREST.d                                      :{G=m}lasu
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafineria
 STR_INDUSTRY_NAME_OIL_REFINERY.d                                :{G=f}rafinerii
-STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma Wiertnicza
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Platforma wiertnicza
 STR_INDUSTRY_NAME_OIL_RIG.d                                     :{G=f}platformy wiertniczej
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fabryka
 STR_INDUSTRY_NAME_FACTORY.d                                     :{G=f}fabryki
@@ -4428,30 +4428,31 @@ STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Huta
 STR_INDUSTRY_NAME_STEEL_MILL.d                                  :{G=f}huty
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
 STR_INDUSTRY_NAME_FARM.d                                        :{G=f}farmy
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia Rudy Miedzi
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Kopalnia rudy miedzi
 STR_INDUSTRY_NAME_COPPER_ORE_MINE.d                             :{G=f}kopalni rudy miedzi
-STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole Naftowe
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pole naftowe
 STR_INDUSTRY_NAME_OIL_WELLS.d                                   :{G=m}pola naftowego
 STR_INDUSTRY_NAME_BANK                                          :{G=m}Bank
 STR_INDUSTRY_NAME_BANK.d                                        :{G=m}banku
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia Żywności
-STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład Papierniczy
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Przetwórnia żywności
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.d                       :{G=f}przetwórni żywności
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=m}Zakład papierniczy
 STR_INDUSTRY_NAME_PAPER_MILL.d                                  :{G=m}zakładu papierniczego
-STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia Złota
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Kopalnia złota
 STR_INDUSTRY_NAME_GOLD_MINE.d                                   :{G=f}kopalni złota
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Bank
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.d                          :{G=m}banku
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia Diamentów
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Kopalnia diamentów
 STR_INDUSTRY_NAME_DIAMOND_MINE.d                                :{G=f}kopalni diamentów
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia Rudy Żelaza
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Kopalnia rudy żelaza
 STR_INDUSTRY_NAME_IRON_ORE_MINE.d                               :{G=f}kopalni rudy żelaza
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja Owoców
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantacja owoców
 STR_INDUSTRY_NAME_FRUIT_PLANTATION.d                            :{G=f}plantacji owoców
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja Kauczuku
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantacja kauczuku
 STR_INDUSTRY_NAME_RUBBER_PLANTATION.d                           :{G=f}plantacji kauczuku
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie Wody
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=n}Ujęcie wody
 STR_INDUSTRY_NAME_WATER_SUPPLY.d                                :{G=n}ujęcia wody
-STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża Ciśnień
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Wieża ciśnień
 STR_INDUSTRY_NAME_WATER_TOWER.d                                 :{G=f}wieży ciśnień
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fabryka
 STR_INDUSTRY_NAME_FACTORY_2.d                                   :{G=f}fabryki
@@ -4459,27 +4460,27 @@ STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
 STR_INDUSTRY_NAME_FARM_2.d                                      :{G=f}farmy
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=m}Tartak
 STR_INDUSTRY_NAME_LUMBER_MILL.d                                 :{G=m}tartaku
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las Waty Cukrowej
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Las waty cukrowej
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.d                         :{G=m}lasu waty cukrowej
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład Cukierniczy
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=m}Zakład cukierniczy
 STR_INDUSTRY_NAME_CANDY_FACTORY.d                               :{G=m}zakładu cukierniczego
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma Baterii
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma baterii
 STR_INDUSTRY_NAME_BATTERY_FARM.d                                :{G=f}farmy baterii
-STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia Coli
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=f}Studnia coli
 STR_INDUSTRY_NAME_COLA_WELLS.d                                  :{G=f}studni coli
-STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z Zabawkami
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=m}Sklep z zabawkami
 STR_INDUSTRY_NAME_TOY_SHOP.d                                    :{G=m}sklepu z zabawkami
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka Zabawek
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fabryka zabawek
 STR_INDUSTRY_NAME_TOY_FACTORY.d                                 :{G=f}fabryki zabawek
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny Plastiku
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fontanny plastiku
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.d                           :{G=f}fontann plastiku
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka Napojów Gazowanych
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fabryka napojów gazowanych
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.d                         :{G=f}fabryki napojów gazowanych
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator Bąbelków
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generator bąbelków
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR.d                            :{G=m}generatora bąbelków
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka Toffi
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Odkrywka toffi
 STR_INDUSTRY_NAME_TOFFEE_QUARRY.d                               :{G=f}odkrywkę toffi
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia Cukru
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Kopalnia cukru
 STR_INDUSTRY_NAME_SUGAR_MINE.d                                  :{G=f}kopalni cukru
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame

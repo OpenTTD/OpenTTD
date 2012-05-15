@@ -767,7 +767,7 @@ STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLAC
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Incidente ferroviario!{}In {COMMA} muoiono nell'incendio seguito alla collisione
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aeroplano precipitato!{}In {COMMA} muoiono nell'incendio {G "a " all' "alla "}{STATION}
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Aereo precipitato!{}In {COMMA} muoiono nell'incendio {G "a " all' "alla "}{STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Incidente aereo!{}L'aeromobile resta senza carburante: in {COMMA} muoiono fra le fiamme!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin distrutto! Disastro {G "a " all' "alla "}{STATION}!
@@ -1529,8 +1529,8 @@ STR_LIVERY_TRUCK                                                :Camion
 STR_LIVERY_PASSENGER_SHIP                                       :Traghetto
 STR_LIVERY_FREIGHT_SHIP                                         :Mercantile
 STR_LIVERY_HELICOPTER                                           :Elicottero
-STR_LIVERY_SMALL_PLANE                                          :Aeroplano piccolo
-STR_LIVERY_LARGE_PLANE                                          :Aeroplano grande
+STR_LIVERY_SMALL_PLANE                                          :Aereo piccolo
+STR_LIVERY_LARGE_PLANE                                          :Aereo grande
 STR_LIVERY_PASSENGER_TRAM                                       :Tram passeggeri
 STR_LIVERY_FREIGHT_TRAM                                         :Tram merci
 

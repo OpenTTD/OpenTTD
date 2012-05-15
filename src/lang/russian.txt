@@ -429,10 +429,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показать графики
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показать рейтинги компаний
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Список существующих предприятий; создание новых
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов. Ctrl+клик переключает отображение по группам.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта. Ctrl+клик переключает отображение по группам.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список кораблей. Ctrl+клик переключает отображение по группам.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Список авиатранспорта. Ctrl+клик переключает отображение по группам.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов. Ctrl+щелчок переключает отображение по группам.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта. Ctrl+щелчок переключает отображение по группам.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список кораблей. Ctrl+щелчок переключает отображение по группам.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Список авиатранспорта. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приблизить
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Отдалить
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Строительство железных дорог
@@ -675,7 +675,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Показать все
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Спрятать все
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показать все виды грузов на графике
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Спрятать все виды грузов на графике
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Скрыть все виды грузов на графике
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Включить/выключить отображение груза на графике
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -951,7 +951,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}«{INDUSTRY}» внедряет новые методы ведения с/х, что позволит удвоить производительность!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Предприятие «{1:INDUSTRY}» увеличивает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Производительность предприятия «{INDUSTRY}» упала на 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}«{INDUSTRY}» снижает производительность на 50% из-за нашествия вредителей!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Из-за нашествия вредителей «{INDUSTRY}» снижает производительность на 50%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Предприятие «{1:INDUSTRY}» снижает производство {0:STRING.gen} на{NBSP}{2:COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}ТС «{VEHICLE}» ждёт в депо
@@ -978,9 +978,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}ТС «{
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}ТС «{VEHICLE}» остановлено из-за сбоя переоборудования
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Сбой автообновления ТС «{VEHICLE}»{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Появился новый {STRING}!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Начато серийное производство новой модели {STRING.gen}!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Появился новый {STRING}!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Начато серийное производство новой модели {STRING.gen}! - {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} больше не принимает {STRING.acc}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} больше не принимает {STRING.acc} и {STRING.acc}
@@ -1568,7 +1568,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Пров
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Настройки ИИ / скрипта
 STR_INTRO_QUIT                                                  :{BLACK}Выход
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Начать новую игру. Ctrl+клик пропускает этап настройки карты
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Начать новую игру. Ctrl+щелчок пропускает этап настройки карты.
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Загрузить сохранённую игру
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Начать новую игру, используя карту высот в качестве шаблона карты
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Начать новую игру, используя сценарий
@@ -1642,7 +1642,7 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Наст
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Настройка дополнительного цвета
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберите цветовую схему для изменения, либо несколько схем с Ctrl. Щёлкните по флажку для использования выбранной схемы.
 
-STR_LIVERY_DEFAULT                                              :Стандарт. раскраска
+STR_LIVERY_DEFAULT                                              :Стандарт. окраска
 STR_LIVERY_STEAM                                                :Паровоз
 STR_LIVERY_DIESEL                                               :Тепловоз
 STR_LIVERY_ELECTRIC                                             :Электровоз
@@ -2805,7 +2805,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Горо
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Город растёт раз в {ORANGE}{COMMA}{BLACK} д{P ень ня ней} (профинансировано)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Город {RED}не{BLACK} развивается
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+клик - показать в дополнительном окне.
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать город в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Местные власти
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Информация о местных властях
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Переименовать город
@@ -2924,7 +2924,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Отличны�
 STR_CARGO_RATING_OUTSTANDING                                    :Великолепный
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне. Ctrl+клик - показать в дополнительном окне.
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Показать станцию в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Переименовать станцию
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показать все поезда, в расписании которых есть эта станция
@@ -2934,11 +2934,12 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Пока
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Название станции
 
+
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать точку пути в основном окне. Ctrl+клик - показать в дополнительном окне.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Показать точку пути в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Переименовать точку пути
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+клик - показать в дополнительном окне.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показать буй в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Изменить название буя
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Название точки пути
@@ -3050,7 +3051,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Спис
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Произведено за прошлый месяц:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% перевезено)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне. Ctrl+клик - показать в дополнительном окне.
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Показать предприятие в основном окне. Ctrl+щелчок - показать в дополнительном окне.
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производительность: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3073,7 +3074,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Изме
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поезд{P "" а ов}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} автомобил{P ь я ей}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} корабл{P ь я ей}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} единиц{P а ы ""} авиатранспорта
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} воздушн{P ое ых ых} суд{P но на ов}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - щёлкните для получения информации
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - щёлкните для получения информации
@@ -3091,17 +3092,17 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Спис
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Организация
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Управление транспортом, находящимся в этом списке
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспорта
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Послать обслужить
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Отправить на техобслуживание
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Послать в депо
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Послать в гараж
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Послать в док
-STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Послать в ангар
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Отправить в депо
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Отправить в гараж
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Отправить в док
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Отправить в ангар
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Нажмите для остановки всего транспорта в списке
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Нажмите для запуска всего транспорта в списке
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Общие задания для {COMMA} ед. транспорта
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Общий маршрут для {COMMA} ед. транспорта
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Все поезда
@@ -3120,7 +3121,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Удал
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Переименовать выбранную группу
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Защита транспорта в группе от глобальной автозамены
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить транспорт с общими заданиями
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить транспорт с общим маршрутом
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить все
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Название группы
@@ -3223,7 +3224,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Авто
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новый состав
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Новый автомобиль
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Новое судно
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое судно
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое возд. судно
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купить новый поезд
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купить новый автомобиль
@@ -3235,20 +3236,20 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Копи
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Копировать
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Копировать
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Создать копию состава. Нажмите на кнопку, а затем на поезд внутри или снаружи депо. Ctrl+щелчок создаст поезд с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Создать копию автомобиля. Нажмите на кнопку, а затем на машину внутри или снаружи гаража. Ctrl+щелчок создаст автомобиль с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Создать копию корабля. Нажмите на кнопку, а затем на корабль внутри или снаружи дока. Control+щелчок создаст корабль с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Создать копию возд. судна. Нажмите на кнопку, а потом на возд. судно внутри или снаружи ангара. Ctrl+щелчок создаст копию с общими заданиями. Shift+щелчок - оценка стоимости покупки.
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Создать копию состава. Нажмите на кнопку, а затем на поезд внутри или снаружи депо. Ctrl+щелчок создаст поезд с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Создать копию автомобиля. Нажмите на кнопку, а затем на машину внутри или снаружи гаража. Ctrl+щелчок создаст автомобиль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Создать копию корабля. Нажмите на кнопку, а затем на корабль внутри или снаружи дока. Ctrl+щелчок создаст корабль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Создать копию воздушного судна. Нажмите на кнопку, а потом на воздушное судно внутри или снаружи ангара. Ctrl+щелчок создаст копию с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показать депо в основном окне. Ctrl+клик - показать в дополнительном окне.
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Показать гараж в главном окне. Ctrl+клик - показать в дополнительном окне.
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показать док в основном окне. Ctrl+клик - показать в дополнительном окне.
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Показать ангар в главном окне. Ctrl+клик - показать в дополнительном окне.
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показать депо в основном окне. Ctrl+щелчок - показать в дополнительном окне.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Показать гараж в главном окне. Ctrl+щелчок - показать в дополнительном окне.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Показать док в основном окне. Ctrl+щелчок - показать в дополнительном окне.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Показать ангар в главном окне. Ctrl+щелчок - показать в дополнительном окне.
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Получить список поездов, у которых в заданиях есть это депо
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Получить список автомобилей, у которых в заданиях есть этот гараж
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Получить список судов, у которых в заданиях есть этот док
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Получить список авиатранспорта, у которого в заданиях есть этот ангар
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Получить список поездов, у которых в маршруте есть это депо
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Получить список автомобилей, у которых в маршруте есть этот гараж
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Получить список судов, у которых в маршруте есть этот док
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Получить список воздушных судов, у которых в маршруте есть этот ангар
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Нажмите для остановки всех поездов в депо
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Нажмите для остановки всех авто в гараже
@@ -3269,8 +3270,8 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :ж/д локо�
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :ж/д локомотива
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :автомобиль
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :автомобиля
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :авиатранспорт
-STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авиатранспорта
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
+STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
 STR_ENGINE_PREVIEW_SHIP                                         :корабль
 STR_ENGINE_PREVIEW_SHIP.gen                                     :корабля
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :монорельсовый локомотив
@@ -3324,20 +3325,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разр
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне. Ctrl+клик будет следить за поездом в главном окне
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показать автомобиль в главном окне. Ctrl+клик будет следить за автомобилем в главном окне
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Показать поезд в основном окне. Ctrl+щелчок включит слежение за поездом в главном окне.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Показать автомобиль в главном окне. Ctrl+щелчок включит слежение за автомобилем в главном окне.
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Показать корабль в главном окне. Ctrl+Click будет следить за кораблем в главном окне
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать самолёт в главном окне. Ctrl+клик будет следить за самолётом в главном окне
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Показать самолёт в главном окне. Ctrl+щелчок включит слежение за самолётом в главном окне.
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+клик - только для обслуживания.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+клик - только для обслуживания.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить корабль в док. Ctrl+клик - только для обслуживания
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Послать авиатранспорт в ангар. Ctrl+клик - только для обслуживания.
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+щелчок - только для обслуживания.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+щелчок - только для обслуживания.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить корабль в док. Ctrl+щелчок - только для обслуживания.
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Отправить воздушное судно в ангар. Ctrl+щелчок - только для обслуживания.
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Ctrl+щелчок создаст корабль с общими заданиями. Shift+щелчок - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию возд. судна. Ctrl+щелчок создаст копию с общими заданиями. Shift+щелчок - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Ctrl+щелчок создаст корабль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию воздушного судна. Ctrl+щелчок создаст копию с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
 
@@ -3349,10 +3350,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Пере
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Развернуть поезд
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Принудительно развернуть автомобиль
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать задания. Ctrl+клик - показать расписание
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показать задания. Ctrl+клик - показать расписание
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать задания. Ctrl+клик - показать расписание
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать задания. Ctrl+клик - показать расписание
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Показать маршрут поезда. Ctrl+щелчок - показать расписание.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Показать маршрут автомобиля. Ctrl+щелчок - показать расписание.
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Показать маршрут судна. Ctrl+щелчок - показать расписание.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Показать маршрут воздушного судна. Ctrl+щелчок - показать расписание.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показать информацию о поезде
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показать информацию об автомобиле
@@ -3473,9 +3474,9 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Пере
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Переоборудовать авиатранспорт для перевозки выбранного типа груза
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Задания)
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Маршрут)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Расписание
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Просмотр расписания
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Показать расписание
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Список заданий - щёлкните задание для выделения. Ctrl+щелчок - обзор станции назначения.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -3544,7 +3545,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Знач
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введите значение для сравнения
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Пропустить
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Перейти к следующему заданию. Ctrl+клик - перейти к выделенному заданию
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Перейти к следующему заданию. Ctrl+щелчок - перейти к выделенному заданию.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
@@ -3557,9 +3558,9 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Идти к б�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Идти к ближайшему ангару
 STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
 STR_ORDER_SHARE                                                 :Общий список заданий
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, либо в конец списка. Зажатый Ctrl добавляет на станциях «полную погрузку любым грузом», на точках пути - «без остановки», на депо - «прохождение ТО». «Общий список заданий» или Ctrl создаст общий список заданий с т/с, на которое вы укажите. Щелчок по любому т/с скопирует его задания. Любое задание с депо отключает автоматическое ТО для этого т/с
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, либо в конец списка. Зажатый Ctrl добавляет на станциях «полную погрузку любым грузом», на точках пути - «без остановки», на депо - «прохождение ТО». «Общий список заданий» или Ctrl+щелчок создаст общий список заданий с ТС, на которое вы укажете. Щелчок по любому ТС скопирует его задания. Если в списке заданий есть депо, автоматическое ТО для этого ТС отключается.
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показать весь транспорт с общими заданиями
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показать весь транспорт с общим маршрутом
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Ехать через {WAYPOINT}
@@ -3629,8 +3630,8 @@ STR_INVALID_ORDER                                               :{RED} (Неве
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Расписание)
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Задания
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Переключиться на просмотр заданий
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Маршрут
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Показать маршрут
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
 
@@ -3673,7 +3674,7 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Сбро
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить счётчик отклонения от графика, чтобы транспорт снова считался приходящим вовремя
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Авторасчёт
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить расписание автоматически временем, затраченным на движение в следующей поездке. Ctrl+клик, чтобы при этом не изменялось время ожидания.
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить расписание автоматически временем, затраченным на движение в следующей поездке. Ctrl+щелчок - не изменять время ожидания.
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Ожидаемое время
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Расписание
@@ -4083,7 +4084,7 @@ STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Не у�
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Не удалось переименовать группу...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Не удалось удалить весь транспорт из группы...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Не удалось добавить транспорт в группу...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не удалось добавить транспорт с общими заданиями в группу...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не удалось добавить транспорт с общим маршрутом в группу...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Поезд мешает
@@ -4114,7 +4115,7 @@ STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не у�
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Не удалось купить ж/д транспорт...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Невозможно купить автомобиль...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не удалось купить корабль...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не удалось купить возд. транспорт...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не удалось купить воздушное судно...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно изменить название модели поезда...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Невозможно изменить название модели автомобиля...

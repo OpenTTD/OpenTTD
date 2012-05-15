@@ -34,7 +34,7 @@ STR_CARGO_PLURAL_OIL                                            :Öljyä
 STR_CARGO_PLURAL_LIVESTOCK                                      :Karjaa
 STR_CARGO_PLURAL_GOODS                                          :Tavaroita
 STR_CARGO_PLURAL_GRAIN                                          :Viljaa
-STR_CARGO_PLURAL_WOOD                                           :Puutavaraa
+STR_CARGO_PLURAL_WOOD                                           :Raakapuuta
 STR_CARGO_PLURAL_IRON_ORE                                       :Rautamalmia
 STR_CARGO_PLURAL_STEEL                                          :Terästä
 STR_CARGO_PLURAL_VALUABLES                                      :Arvotavaroita
@@ -68,7 +68,7 @@ STR_CARGO_SINGULAR_OIL                                          :Öljy
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Karja
 STR_CARGO_SINGULAR_GOODS                                        :Tavara
 STR_CARGO_SINGULAR_GRAIN                                        :Vilja
-STR_CARGO_SINGULAR_WOOD                                         :Puutavara
+STR_CARGO_SINGULAR_WOOD                                         :Raakapuu
 STR_CARGO_SINGULAR_IRON_ORE                                     :Rautamalmi
 STR_CARGO_SINGULAR_STEEL                                        :Teräs
 STR_CARGO_SINGULAR_VALUABLES                                    :Arvotavara
@@ -102,7 +102,7 @@ STR_QUANTITY_OIL                                                :{VOLUME_LONG} �
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} erä{P "" ä} karjaa
 STR_QUANTITY_GOODS                                              :{COMMA} laatikko{P "" a} tavaraa
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} viljaa
-STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} puutavaraa
+STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} raakapuuta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} rautamalmia
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} terästä
 STR_QUANTITY_VALUABLES                                          :{COMMA} säkki{P "" ä} arvotavaraa
