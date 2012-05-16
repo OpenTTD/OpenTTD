@@ -72,7 +72,7 @@ STR_CARGO_PLURAL_GRAIN.dat                                      :зерню
 STR_CARGO_PLURAL_GRAIN.acc                                      :зерне
 STR_CARGO_PLURAL_GRAIN.abl                                      :зернем
 STR_CARGO_PLURAL_GRAIN.pre                                      :зерні
-STR_CARGO_PLURAL_WOOD                                           :{G=f}Драўнiна
+STR_CARGO_PLURAL_WOOD                                           :{G=f}Драўніна
 STR_CARGO_PLURAL_WOOD.gen                                       :драўніны
 STR_CARGO_PLURAL_WOOD.dat                                       :драўніне
 STR_CARGO_PLURAL_WOOD.acc                                       :драўніну
@@ -90,7 +90,7 @@ STR_CARGO_PLURAL_STEEL.dat                                      :сталі
 STR_CARGO_PLURAL_STEEL.acc                                      :сталь
 STR_CARGO_PLURAL_STEEL.abl                                      :стальлю
 STR_CARGO_PLURAL_STEEL.pre                                      :сталі
-STR_CARGO_PLURAL_VALUABLES                                      :{G=p}Каштоўнасьцi
+STR_CARGO_PLURAL_VALUABLES                                      :{G=p}Каштоўнасьці
 STR_CARGO_PLURAL_VALUABLES.gen                                  :каштоўнасьцяў
 STR_CARGO_PLURAL_VALUABLES.dat                                  :каштоўнасьцям
 STR_CARGO_PLURAL_VALUABLES.acc                                  :каштоўнасьці
@@ -1366,7 +1366,7 @@ STR_NUM_CUSTOM_NUMBER                                           :Зададзе�
 
 STR_VARIETY_NONE                                                :Няма
 STR_VARIETY_VERY_LOW                                            :Вельмі нізкае
-STR_VARIETY_LOW                                                 :Нiзкае
+STR_VARIETY_LOW                                                 :Нізкае
 STR_VARIETY_MEDIUM                                              :Сярэдняе
 STR_VARIETY_HIGH                                                :Шмат
 STR_VARIETY_VERY_HIGH                                           :Вельмі шмат
@@ -2546,7 +2546,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Кіру
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберыце кірунак аўтобуснага прыпынка
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Кірунак грузавога тэрмінала
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберыце кірунак грузавога тэрмінала
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак прыпынку пасажырскiх трамваяў
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак прыпынку пасажырскіх трамваяў
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберыце кірунак трамвайнага прыпынка
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Кірунак прыпынка грузавых трамваяў
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберыце кірунак прыпынка грузавых трамваяў
@@ -2933,7 +2933,7 @@ STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Выда
 STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Выдаліць вылучаны файл NewGRF са сьпісу
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Уверх
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Перамясьціць выбраны файл NewGRF вышэй
-STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Унiз
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Уніз
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Перамясьціць выбраны файл NewGRF ніжэй
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Сьпіс устаноўленых файлаў NewGRF.
 
@@ -3162,14 +3162,14 @@ STR_GOAL_QUESTION_BUTTON_YES                                    :Так
 STR_GOAL_QUESTION_BUTTON_DECLINE                                :Адхіліць
 STR_GOAL_QUESTION_BUTTON_ACCEPT                                 :Прыняць
 STR_GOAL_QUESTION_BUTTON_IGNORE                                 :Iґнараваць
-STR_GOAL_QUESTION_BUTTON_RETRY                                  :Спрабаваць iзноў
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :Спрабаваць ізноў
 STR_GOAL_QUESTION_BUTTON_PREVIOUS                               :Папярэднi
 STR_GOAL_QUESTION_BUTTON_NEXT                                   :Наступны
 STR_GOAL_QUESTION_BUTTON_STOP                                   :Спыніць
 STR_GOAL_QUESTION_BUTTON_START                                  :Пачаць
 STR_GOAL_QUESTION_BUTTON_GO                                     :Iсьцi
 STR_GOAL_QUESTION_BUTTON_CONTINUE                               :Працягнуць
-STR_GOAL_QUESTION_BUTTON_RESTART                                :Пачаць iзноў
+STR_GOAL_QUESTION_BUTTON_RESTART                                :Пачаць ізноў
 STR_GOAL_QUESTION_BUTTON_POSTPONE                               :Адкласьцi
 STR_GOAL_QUESTION_BUTTON_SURRENDER                              :Здацца
 STR_GOAL_QUESTION_BUTTON_CLOSE                                  :Закрыць
@@ -3517,9 +3517,9 @@ STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Прад
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Прадаць усе караблi ў доку
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Прадаць увесь авiятранспарт у анґары
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Аўтазамена ўсiх цягнiкоў у дэпо
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Аўтазамена ўсiх аўтамабiляў у гаражы
-STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Аўтазамена ўсiх караблёў у доку
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Аўтазамена ўсіх цягнiкоў у дэпо
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Аўтазамена ўсіх аўтамабіляў у гаражы
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Аўтазамена ўсіх караблёў у доку
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Аўтазамена ўсяго авiятранспарту ў анґары
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новы цягнік
@@ -3552,14 +3552,14 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Атры
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Атрымаць сьпіс караблёў, якія маюць у заданьнях гэты док
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Атрымаць сьпіс авiятранспарту, які мае ў заданьнях гэты анґар
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Націсьніце для спыненьня ўсiх цягнiкоў у дэпо
-STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Націсьніце для спыненьня ўсiх аўтамабiляў у гаражы
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Націсьніце для спыненьня ўсiх караблёў у доку
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Націсьніце для спыненьня ўсіх цягнікоў у дэпо
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Націсьніце для спыненьня ўсіх аўтамабіляў у гаражы
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Націсьніце для спыненьня ўсіх караблёў у доку
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Націсьніце для спыненьня ўсяго авiятранспарту ў анґары
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Націсьніце для запуску ўсiх цягнiкоў у дэпо
-STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Націсьніце для запуску ўсiх аўтамабiляў у гаражы
-STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Націсьніце для запуску ўсiх караблёў у доку
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Націсьніце для запуску ўсіх цягнікоў у дэпо
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Націсьніце для запуску ўсіх аўтамабіляў у гаражы
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Націсьніце для запуску ўсіх караблёў у доку
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Націсьніце для запуску ўсяго авiятранспарту ў анґары
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Увесь транспарт у дэпо будзе прададзены. Вы ўпэўнены?
@@ -4041,7 +4041,7 @@ STR_AI_CONFIG_NONE                                              :(няма)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Уверх
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Перамясьціць гэты модуль ШI ўверх па сьпісе
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Унiз
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Уніз
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Перамясьціць гэты модуль ШI ўніз па сьпісе
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Гульнёвы скрыпт

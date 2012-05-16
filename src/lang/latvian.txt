@@ -1103,6 +1103,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rī
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildu iestatījumi
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(skaidrojums nav pieejams)
 
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts
@@ -1121,7 +1122,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut zemes transformācijas zem ekām, ceļiem, utt.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimālais vilcienu garums: {STRING}
@@ -1139,8 +1140,10 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdze
 STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Svarīgāko ražotņu manuālā būvniec. metode: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Būvējamo tuneļu maksimālais garums
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Svarīgāko ražotņu manuālā būvniecības metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citām ražotnēm
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
@@ -1152,17 +1155,18 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pus
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklus. rīkoj. liek apst. platformas {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklusējuma rīkojumi liek apstāties platformas {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :beigu tuvumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindas (ar daudzuma efektiem): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindošana (ar daudzuma efektiem): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut vietējo varas iestāžu piekukuļošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļaut pārsūtīt naudu starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1186,8 +1190,8 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot a
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdz., kad tie kļuvuši veci: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportlīdz. {STRING} maks. vecuma
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie kļuvuši veci: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportlīdzekļus {STRING} maksimālā vecuma
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
@@ -1202,7 +1206,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līni
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītājs: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks. att. no kartes malas naftas pārstrādes rūpnīcām: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimālais attālums no kartes malas naftas pārstrādes rūpnīcām: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti gluda
@@ -1221,15 +1225,18 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārvei
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimālais staciju lielums: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimālais laukums kuru var aizņemt atsevišķas stacijas izvietotās daļas. Jāņem vērā ka lielas vērtības palēninās spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkj. ar sliežu/ceļu/ūdens/lidostu rīkj.: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkjoslu ar sliežu/ceļu/ūdens/lidostu rīkjoslām: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Apvidus krāsa minikartē
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}tumši zaļa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Pretējs ritināšanas virziens: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plūdena skatvietas ritināšana: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rādīt mērījumu rīkjoslu, izmantojot būvniecības rīkus: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Rādīt uzņēmuma identitātes krāsas: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
@@ -1248,7 +1255,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Kreisā klikšķa ritināšana: {STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Lietot {STRING} datuma formātu sagl. spēļu nosaukumos
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Lietot {STRING} datuma formātu saglabāto spēļu nosaukumos
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datuma formāts spēļu saglabājuma failu nosaukumos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garu (31. Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1268,26 +1276,32 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lietot piekrau�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Rādīt sarakstu mirkļos nevis dienās: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Maršrutu sarakstos rādīt pienākšanu un atiešanu: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklus. sliežu tips (pēc jaunas spēl./spēl. ielādes): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu tips (pēc jaunas spēles/spēles ielādes): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezervētās sliedes: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Būvniecības rīkus pēc lietošanas paturēt darbīgus: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finansu inform. logā: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pēc lietošanas patur atvērtus tiltu, tuneļu un citus būvniecības rīkus
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finansu informācijas logā: {STRING}
 
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atsp. infrastruktūras būvēšanu, ja nav piemērotu transportl.: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais automašīnu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimālais lidaparātu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimālais kuģu skaits uzņēmumā: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Atspējot datoram vilcienus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Šā iestatījuma ieslēgšana padara neiespējamu vilcienu būvēšanu datoram
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Atspējot datoram autotransporta līdzekļus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Šā iestatījuma ieslēgšana padara neiespējamu autotransporta līdzekļu būvēšanu datoram
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Atspējot datoram lidaparātus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Šā iestatījuma ieslēgšana padara neiespējamu lidaparātu būvēšanu datoram
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Atspējot datoram kuģus: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Šā iestatījuma ieslēgšana padara neiespējamu kuģu būvēšanu datoram
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlē: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vairākspēlētāju spēlēs: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI nespēlētāju tēliem (datora vadītiem) piedalīties vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi, pirms skripti tiek apstādināti: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
@@ -1320,7 +1334,8 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tikai bloķēš
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Ceļu izskats jaunajām pilsētām: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Ceļu izkārtojums jaunajām pilsētām: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Pilsētu ceļu tīkla izkārtojums
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :sākotnējais
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :labāki ceļi
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
@@ -1328,8 +1343,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nejaušs
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Pilsētām ir atļauts būvēt ceļus: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Šā iestatījuma ieslēgšana pilsētām atļauj būvēt vienlīmeņa krustojumus
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Pilsētu dibināšana: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Šā iestatījuma ieslēgšana atļauj spēlētājiem spēlē nodibināt jaunas pilsētas
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
@@ -1340,7 +1357,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusme�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Galvenās rīkjoslas novietojums: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Galvenās rīkjoslas horizontālais novietojums ekrāna augšējā daļā
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Stāvokļa joslas novietojums: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Stāvokļa joslas horizontālais novietojums ekrāna apakšējā daļā
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Logu pielipšanas rādiuss: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikse{P 0 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :izslēgts
@@ -1356,15 +1375,18 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Pilsētu attīstības ātrums: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Ātrums ar kuru attīstīsies pilsētas
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :nav
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mazs
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :liels
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :ļoti liels
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Pilsētu daļa kas kļūs par lielpilsētām: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Pilsētu daudzums kas kļūs par lielpilsētām, tādēļ tās sākumā ir lielākas un attīstās ātrāk
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 pret {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vidējais lielums attiecībā pret parastām pilsētām spēles sākumā
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
@@ -1390,9 +1412,12 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :Sākotnējais
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(ieteicamais)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļu meklētājs: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Autotransporta līdzekļu ceļu meklētājs: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Kuģu ceļu meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vilcienu ceļa meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vilcieniem pielietotais ceļa meklētājs
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Autotransporta līdzekļu ceļa meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Autotransporta līdzekļiem pielietotais ceļa meklētājs
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Kuģu ceļa meklētājs: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kuģiem pielietotais ceļa meklētājs
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automātiska apgriešanās pie luksoforiem: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mainīt iestatījuma vērtību
@@ -2641,7 +2666,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u} (finansēta)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neaug{BLACK}
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neattīstās{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu ierobežojums pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pašvaldība

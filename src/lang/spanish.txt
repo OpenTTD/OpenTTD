@@ -1210,30 +1210,44 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite constru
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construcción de estaciones contiguas : {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite que diferentes estaciones estén en contacto
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Permitir múltiples NewGRFs de vehículos: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opción de compatibilidad para NewGRFs antiguos. No debe de desactivarse, ¡a menos que sepas exactamente lo que estás haciendo!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Cambiar esta opción no es posible cuando ya existen vehículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructuras: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cuando se activa, las infraestructuras tienen costes de mantenimiento. Los costes de la infraestructura aumentan con el tamaño de la red, con lo cual afectan a compañías grandes en mayor grado que a las pequeñas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeropuertos nunca caducan: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Permite a todos los aeropuertos estar disponibles permanentemente una vez han sido introducidos
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Muestra mensajes indicando aquellos vehículos que no sean capaces de encontrar una ruta a su destino
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisar órdenes de los vehículos: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Cuando se activa, se comprueban periódicamente las órdenes de los vehículos, y los problemas que se encuentren se reportan con un mensaje
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :sí, pero excluye los detenidos
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los vehículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar si las ganancias de un vehículo son negativas: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Si se activa, se muestra un mensaje cuando un vehículo no haya obtenido ningún beneficio durante un año
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Los vehículos nunca caducan: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Cuando se activa, todos los modelos de vehículos permanecen disponibles para siempre una vez han sido introducidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovación automática de vehículos cuando se vuelven viejos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Cuando se activa, los vehículos que se acerquen al final de su vida útil serán reemplazados automáticamente cuando las condiciones de renovación se cumplan
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente cuando el vehículo tenga {STRING} años como máximo
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edad relativa con la cual un vehículo debería de ser considerado para ser autorenovado
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" es} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" es} después
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Mínimo de dinero requerido para renovación automática: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Mínima cantidad de dinero que se debe de tener en el banco para poder considerar la renovación automática de vehículos
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de mensajes de error: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en ventanas rojas. Algunos mensajes de error críticos no se cierran automáticamente, y deben de ser cerrados manualmente
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar mensajes de ayuda: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo que hace falta mantener el ratón encima de un elemento de la interfaz para mostrar su mensaje de ayuda. De forma alternativa, se puede escoger mostrar estos mensajes al pulsar el botón derecho
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Mantener ratón durante {COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Muestra la población de un pueblo en su etiqueta: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Muestra el número de habitantes de los pueblos en su etiqueta sobre el mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosor de las líneas en los gráficos: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosor de las líneas en los gráficos. Una línea fina es más precisa, una línea más gruesa es más fácil de distinguir
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1257,9 +1271,14 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Habilitar la mo
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Máxima extensión de estaciones: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Máxima área que pueden ocupar las partes de una estación. Valores muy altos pueden ralentizar el juego
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Mantener los helicópteros en helipuertos automáticamente: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Dar servicio a los helicópteros después de cada aterrizaje, aunque no haya hangar en el aeropuerto
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Une la barra de terreno a la barra de construcción: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Cuando se abre una barra de herramientas de construcción, se abre también la barra de terraformación
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color de terreno usado en el mapa: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color que usar para el terreno en el mapa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde oscuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta

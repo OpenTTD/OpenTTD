@@ -1207,6 +1207,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourán
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Množštví kouře či jisker emitovaných vozidly
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerace vlaků: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrychlování silničních vozidel: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Strmost svahu pro vlaky: {STRING}
@@ -1301,6 +1302,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Umožnit terén
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maximální rozsah stanice: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Údržba vrtulníků na heliportech: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Barva země v mapě: {STRING}

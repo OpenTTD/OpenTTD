@@ -1271,6 +1271,8 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Autoriser le te
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord Nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Étendue maximale d'une station{NBSP}: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Surface maximale sur laquelle les différents morceaux d'une station unique peuvent être répartis. Noter qu'une valeur élevée ralentira le jeu.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Entretenir les hélicoptères à chaque atterrissage, même s'il n'y a pas de dépôt à l'aéroport
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Relier la barre d'outils paysage avec celle du rail/route/eau/aéroport{NBSP}: {STRING}
@@ -1432,7 +1434,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aléatoire
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Autoriser la construction des routes par les villes{NBSP}: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les villes à construire des routes pour se développer. Désactiver pour empêcher les villes de construire elles-même des routes
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Autoriser les villes à construire des routes pour se développer. Désactiver pour empêcher les villes de construire elles-mêmes des routes.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Autoriser la construction des passages à niveau par les villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activer ce paramètre pour autoriser les villes à construire des passages à niveau
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permettre plus d'aéroports par ville, selon les nuisances sonores{NBSP}: {STRING}

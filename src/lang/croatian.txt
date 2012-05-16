@@ -1323,18 +1323,26 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :od svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Upozori ako prihod vozila postane negativan: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kada je uključeno, poruka vijesti se prikazuje kada vozilo nije uprihodilo ništa tijekom kalendarske godine
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozila ne zastarjevaju: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kada je uključeno, svi modeli vozila zauvijek ostaju dostupni nakon njihovog uvođenja
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatski obnovi vozilo kada postane staro: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kada je uključeno, vozilo kojem se bliži kraj vijeka trajanja se automatski obnavlja ukoliko su uvjeti za obnavljanje ispunjeni
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatska obnova kada je vozilo {STRING} najveće starosti
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativna starost kod koje bi trebalo razmotriti automatsko obnavljanje vozila
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mjeseci prije
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mjeseci nakon
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum novca potrebnih za automatsko obnavljanje: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalni iznos novca koji mora ostati u banci prije razmatranja automatske obnove vozila
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trajanje poruke s greškom: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trajanje prikaza poruke s greškom u crvenom prozoru. Uzmite u obzir da se neke (kritične) poruke s greškom ne zatvaraju automatski nakon isteka ovog vremena, nego ih je potrebno zatvoriti ručno
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Prikaži pojašnjenja alata: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Odgoda prije prikaza objašnjenja alata kada se miš postavi iznad nekog elementa sučelja. Alternativno, objašnjena alata se mogu vezati uz desnu tipku na mišu
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Lebdi na {COMMA} sekundi
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaži broj stanovnika u oznaci imena grada: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikaži populaciju gradova u njihovim oznakama na mapi
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Debljina linije u grafikonima. Tanja linija je preciznija za čitanje, deblja linija je lakša za vidjeti i boje su lakše za razabrati
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator zemlje: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
@@ -1358,134 +1366,202 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogući terafo
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Najveći raspon stanice: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Najveća površina na kojoj mogu biti dijelovi jedne stanice. Uzmite u obzir da visoke vrijednosti mogu usporiti igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatski servisiraj helikoptere na heliodromima: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Servisiraj helikoptere nakon svakog slijetanja, čak i ako nema depoa na aerodromu
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Kada se otvara alatna traka za građenje neke vrste transporta, istodobno se otvara i alatna traka za uređivanje terena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Boja polja korištena na maloj karti: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Boja terena na maloj mapi
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :{G=female}Zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=female}Tamno zelena
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=female}Ljubičasta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Promijeni smjer klizanja: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Ponašanje kod pomicanja mape sa desnom tipkom na mišu. Kada je isključeno, miš pomiče kameru. Kada je uključeno, miš pomiče mapu
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glatko klizanje kroz mini pogled: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontroliraj kako se glavni prikaz pomiče na neku lokaciju kada se klikne na malu mapu ili kada se izda naredba za pomicanje na određeni objekt na mapi. Ako je uključeno, prikaz se pomiče glatko, ako je isključeno, prikaz odmah preskoči na ciljnu lokaciju
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaži mjerni naputak prilikom korištenja raznih alata za izgradnju: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Prikaži udaljenosu u pločicama i visinsku razliku kod povlačenja prilikom operacija gradnje
 STR_CONFIG_SETTING_LIVERIES                                     :Pokaži tvrtkine boje: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontroliraj korištenje shema boja tipa vozila za određena vozila (u suprotnosti sa shemama boja kompanija)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nijedna
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Vlastita tvrtka
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Sve tvrtke
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferiraj ekipni razgovor s <ENTER>:{STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Prebacivanje vezivanja kompanijskog internog i javnog razgovota na <ENTER> odnosno <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcija kotačića za klizanje: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Uključi pomicanje sa dvodimenzionalnim kotačićima miša
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zumiraj kartu
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kliži kartom
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Isključeno
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Brzina kotačića za klizanje: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroliraj osjetljivost pomicanja kotačićima miša
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulacija desnog klika mišem: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Odaberi metodu imitiranja klika na desnu tipku miša
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Isključeno
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Skrolanje lijevim klikom: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Uključi pomicanje mape povlačenjem sa lijevom tipkom miša. Ovo je posebno korisno kada se koristi ekran na dodir za pomicanje
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Koristi {STRING} format datuma za ime snimljene pozicije
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format datuma u imenima datoteka sa snimljenom igrom
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dugo (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratko (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Osnovna paleta će biti postavljena za NewGRFove koji ne odrede paletu: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Osnovna paleta koju će koristiti NewGRF-ovi koji nemaju specificirano koju paletu trebaju
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paleta
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paleta
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatski pauziraj prilikom pokretanja nove igre: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kada je uključeno, igra će se automatski pauzirati priliko pokretanja nove igre, dozvoljavajući bolje proučavanje mape
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Kod pauze dozvoli: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Odaberi koje se akcije mogu koristiti dok je igra pauzirana
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nijedna akcija
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :sve ne-konstrukcijske akcije
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :sve osim akcija za izmjenu krajolika
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :sve akcije
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Koristi napredni popis vozila: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Uključi korištenje naprednih lista vozila za grupiranje vozila
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Koristi pokazatelje utovara: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Odaberi da li će prikazivači utovara biti prikazani iznad vozila koja se utovaruju ili iznad vozila koja se istovaruju
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Pokaži vozni red u otkucajima rađe nego u danima: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Prikaži trajanje putovanja u voznim redovima u otkucajima igre umjesto u danima
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokaži dolaske i odlaske u voznim redovima: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Prikaži predviđena vremena dolaska i odlaska u voznim redovima
 STR_CONFIG_SETTING_QUICKGOTO                                    :Brzo kreiranje naredbi vozila: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pred-odaberi kursor naredbe "otiđi na" kod otvaranja prozora s naredbama
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Inicijalna vrsta pruge (poslije nove igre/podizanja igre): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vrsta željeznice koja će biti odabrana prilikom pokretanja ili učitavanja igre. "Prva dostupna" odabire najstariju vrstu, "zadnja dostupna" odabire najnoviju vrstu, "najčešće korištena" odabire vrstu koja je trenutno najviše u upotrebi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Prva dostupna
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Zadnja dostupna
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Najčešće korištena
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Pokaži rezervirane tračnice: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Prikaži rezervirane pruge u drugoj boji kako bi se olakšalo rješavanje problema sa vlakovima koji ne žele ući u određenu dionicu puta
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Zadrži alate za izradu aktivnima nakon upotrebe: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zadrži otvorenim alate za mostove, tunele itd. i nakon upotrebe
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupiraj troškove u financijskom prozoru tvrtke: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Odredi izgled prozora troškova kompanije
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Isključi gradnju infrastrukture kada odgovarajuća vozila nisu dostupna: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kada je uključeno, infrastruktura je dostupna samo ako su dostupna i vozila za nju, sprečavajući trošenje vremena i novca na neupotrebljivu infrastrukturu
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimalan broj vlakova po kompaniji: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Najveći broj vlakova koje može imati kompanija
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimalan broj cestovnih vozila po kompaniji: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Najveći broj cestovnih vozila koje može imati kompanija
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimalan broj zrakoplova po kompaniji: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Najveći broj zrakoplova koje može imati kompanija
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimalan broj brodova po kompaniji: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Najveći broj brodova koje može imati kompanija
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Isključi vlakove za računalo: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Uključivanjem ove postavke, računalo-igrač neće moći koristiti vlakove
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Isključi cestovna vozila za računalo: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Uključivanjem ove postavke, računalo-igrač neće moći koristiti cestovna vozila
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Isključi zrakoplove za računalo: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Uključivanjem ove postavke, računalo-igrač neće moći koristiti zrakoplove
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Isključi brodove za računalo: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Uključivanjem ove postavke, računalo-igrač neće moći koristiti brodove
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Dopusti UI u mrežnoj igri: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Dozvoli UI računalnim-igračima da sudjeluju u igrama za više igrača
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#op-kodova prije suspendiranja skripti: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Najveći broj računalnih koraka koje skripta može poduzeti u jednom krugu
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servisni su intervali u postotcima: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Odaberi da li će se servisiranje vozila pokrenuti nakon isteka vremena od zadnjeg servisa ili padom pouzdanosti za određenu vrijednost od najveće pouzdanosti
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Zadani interval servisiranja za vlakove: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Postavi osnovni interval servisa za nova pružna vozila, ako nije postavljen drugi specifični interval za određeno vozilo
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dana/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :isključeno
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Zadani interval servisiranja za cestovna vozila: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Postavi osnovni interval servisa za nova cestovna vozila, ako nije postavljen drugi specifični interval za određeno vozilo
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Zadani interval servisiranja za zrakoplove: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Postavi osnovni interval servisa za nove zrakoplove, ako nije postavljen drugi specifični interval za određeno vozilo
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Zadani interval servisiranja za brodove: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Postavi osnovni interval servisa za nove brodove, ako nije postavljen drugi specifični interval za određeno vozilo
 STR_CONFIG_SETTING_NOSERVICE                                    :Isključi servisiranje kada su kvarovi postavljeni na nula: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Kada je uključeno, vozila se ne servisiraju kada se ne mogu pokvariti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Omogući ograničenje brzine za vagone: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Kada je uključeno, koristiti će se i limit brzine vagona kod određivanja najveće brzine nekog vlaka
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Onemogući električnu prugu: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Uključivanjem ove postavke, isključuje se potreba elektrificiranja pruge da bi po njoj mogli voziti električni vlakovi
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vijesti u boji pojavljuju se: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina u kojoj će se novine početi izdavati u boji. Prije ove godine, koriste se crno/bijele novine
 STR_CONFIG_SETTING_STARTING_YEAR                                :Početna godina: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi tečnu ekonomiju (više manjih izazova): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kada je uključeno, promjene u industrijskoj proizvodnji su češće ali u manjim rasponima. Ova postavka obično nema efekta ukoliko su industrije postavljene iz nekog NewGRF-a
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dopusti kupovanje udjela u drugim tvrtkama: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kada je uključeno, dozvoljava se kupnja i prodaja dionica kompanija. Dionice će postati dostupne samo za kompanije određene starosti
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Postotak profita za dionicu koji se plaća kod sistema feeder-a: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Postotak prihoda koji će biti predan srednjim dionicama prijevoza feeder sustavima, daje više kontrole nad prihodima
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Kod povlačenja, postavi signale svakih: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Postavi razmak između signala koji će se graditi do sljedeće prepreke (signal, raskrižje), ukoliko se signali povlače
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} polje
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Prilikom povlačenja, zadrži odabrani razmak između signala: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Odabire ponašanje kod postavljanja signala putem Ctrl+povlačenja. Ukoliko je isključeno, signali se postavljaju oko tunela i mostova kako bi se izbjegla veća područja bez signala. Ukoliko je uključeno, signali se postavljaju svakih N pločica, olakšavajući poravnanje signala kod paralelnih pruga
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatski izgradi semafore prije: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Postavi godinu kada će se koristiti električni signali za pruge. Prije ove godine, koristiti će se ne-električni signali (imaju iste funkcije samo izgledaju drugačije)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Omogući signalni GUI: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Prikaži prozor za odabir tipova signala za gradnju, umjesto samo prikaza tipa signala bez prozora sa Ctrl+klikanjem kod gradnje
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Predodređeni signal za izgradnju: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Osnovni tip signala za korištenje
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokirajući signali
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Putni signali
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmjerni putni signali
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Kruži kroz vrste signala: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Odaberi kroz koje tipove signala se može kružiti, kod Ctrl+klikanja na izgrađeni signal uz pomoć alata za signale
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Samo blokirajući signali
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Samo putni signali
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Sve
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Dizajn ceste za nove gradove: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Izgled cestovne mreže gradova
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :inicijalno
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nasumično
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Gradovi mogu graditi ceste: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Dozvoli gradovima građenje cesta za rast i širenje. Isključi za sprečavanje da gradske vlasti same grade ceste
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Gradovi smiju graditi pružne prijelaze: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Uključivanje ove postavke dozvoljava se gradovima da grade cestovno-pružne prijelaze
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Omogući određivanje razine buke za zračne luke od strane gradova: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kada je ova postavka isključena, mogu postojati dve zračne luke u svakom gradu. Kada je ova postavka uključena, broj zračnih luka u nekom gradu je limitirana količinom dozvoljene buke u gradu, koja ovisi o populaciji i udaljenosti i veličini zračnih luka
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Osnivanje gradova tijekom igre: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Uklučivanje ove postavke dozvoljava igračima osnivanje novih gradova tijekom igre
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :zabranjeno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dopušteno
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dopušteno, proizvoljan raspored grada
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Smještaj drveća u igri: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroliraj nasumično pojavljivanje stabala tijekom igre. Ovo može utjecati na industrije koje ovise o rastu stabala, npr. pilane
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ništa {RED}(uništava pilanu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u kišnim šumama
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :posvuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Položaj glavne alatne trake: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vodoravna pozicija glavne alatne trake na vrhu ekrana
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozicija status trake: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Vodoravna pozicija statusne trake na dnu ekrana
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius zahvata prozora: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Razmak između prozora prije nego se pomicani prozor automatski poravna sa drugima prozorima u blizini
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksela
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :isključeno
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Najveći broj neljepljivih prozora: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Broj ne-fiksnih otvorenih prozora prije nego se stariji prozori ne počnu automatski zatvarati da bi napravili mjesta za nove prozore
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :isključeno
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Najveći nivo zumiranja prema unutra: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Najveći nivo zumiranja prema unutra u prikazima. Uzmite u obzir da uključivanje većih nivoa zumiranja prema unutra povećava i korištenje zahtjeva za memorijom
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Najveći nivo zumiranja prema van: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Najveći nivo zumiranja na van za prikaze. Veći nivoi zumiranja na van mogu prouzročiti usporavanje igre kada se koriste
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normalno
@@ -1493,16 +1569,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Brzina rasta gradova: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Brzina rasta gradova
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nema
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalno
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Brzo
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Vrlo brzo
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Postotak naselja koji će postati gradovi: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Broj naselja koji će postati grad, na taj način naselje koje počinje veći i raste brže
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 od {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nijedan
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Početni množitelj veličine grada: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Prosječna veličina gradova u donosu na naselja kod početka igre
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ukloni besmislene cestovne elemente tijekom izgradnje prometnica: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Uklanjanje slijepih ulica kod financirane rekonstrukcije cesta
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Sučelje
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Izgradnja
@@ -1528,9 +1608,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Preporučljivo)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pronalaženje putanje za vlakove: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pronalazač puteva koji će se koristiti za vlakove
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pronalaženje putanje za cestovna vozila: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pronalazač puteva koji će se koristiti za cestovna vozila
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pronalaženje putanje za brodove: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pronalazač puteva koji će se koristiti za brodove
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatsko okretanje na signalima: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Dozvoli vlakovima okretanje kod signala ako tamo čekaju duže vrijeme
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promijeni vrijednost postavke
 

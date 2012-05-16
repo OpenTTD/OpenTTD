@@ -1147,11 +1147,15 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Si està activat, múltiples vehicles esperant a una estació es carreguen de forma seqüencial.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carrega els vehicles gradualment: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :De mica en mica, carregar els vehícles que utilitzen duracions específiques de vehícles, en comptes de carregar-los tots alhora en un temps fix que només depén de la quantitat de càrrega carregada
 STR_CONFIG_SETTING_INFLATION                                    :Inflació: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Habilita la inflació a l'economia, on l'augment dels costos són una mica més ràpids que els dels pagaments
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entrega càrregues en una estació només quan hi ha demananda: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Només entregar la càrrega en una estació que ha demanat el vehícle de càrrega. Això evita ratis erronis per les càrregues que no han estat demanades per l'estació
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Màxima longitud del pont: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxima per a la construcció de ponts
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a construir tunels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :cap
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :com les altres indústries
