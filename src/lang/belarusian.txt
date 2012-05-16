@@ -3061,7 +3061,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядом
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Сканаваньне NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Ідзе сканаваньне NewGRF. Гэта зойме некаторы час...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P ы ы а} {NUM} з {NUM} модул{P я яў яў} NewGRF
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}Прасканаван{P 0 ы ы а} {NUM} з {NUM} модул{P я яў яў} NewGRF
 STR_NEWGRF_SCAN_ARCHIVES                                        :Пошук архіваў
 
 # Sign list window
