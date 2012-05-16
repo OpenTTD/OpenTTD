@@ -80,8 +80,10 @@ After you have done all that you can report the bug. Please include the
 following information in your bug report:
  * OpenTTD version (PLEASE test the latest SVN/nightly build)
  * Bug details, including instructions how to reproduce it
- * Platform (Win32, Linux, FreeBSD, ...) and compiler (including version) if
+ * Platform (Windows, Linux, FreeBSD, ...) and compiler (including version) if
    you compiled OpenTTD yourself.
+ * The processor architecture of your OS (32 bits Windows, 64 bits Windows,
+   Linux on an ARM, Mac OS X on a PowerPC, ...)
  * Attach a saved game *and* a screenshot if possible
  * If this bug only occurred recently please note the last version without
    the bug and the first version including the bug. That way we can fix it
@@ -145,9 +147,9 @@ will not be able to reproduce the desync and thus will be unable to fix it.
 
 3.0) Supported platforms
 ---- -------------------
-OpenTTD has been ported to several platforms and operating systems. It shouldn't
-be very difficult to port it to a new platform. The currently working platforms
-are:
+OpenTTD has been ported to several platforms and operating systems. It should
+not be very difficult to port it to a new platform. The currently working
+platforms are:
 
   BeOS                 - SDL or Allegro
   DOS                  - Allegro
@@ -168,7 +170,7 @@ be installed, or you have downloaded an installer, which will automatically
 extract OpenTTD in the given directory.
 
 OpenTTD looks in multiple locations to find the required data files (described
-in section 4.2). Installing any 3rd party files into a "shared" location has
+in section 4.2). Installing any 3rd party files into a 'shared' location has
 the advantage that you only need to do this step once, rather than copying the
 data files into all OpenTTD versions you have.
 Savegames, screenshots, etc are saved relative to the config file (openttd.cfg)
@@ -177,15 +179,16 @@ shared directories, savegames will reside in the save/ directory next to the
 openttd.cfg file there.
 If you want savegames and screenshots in the directory where the OpenTTD binary
 resides, simply have your config file in that location. But if you remove this
-config file, savegames will still be in this directory (see notes in section 4.2)
+config file, savegames will still be in this directory (see notes in
+section 4.2 'OpenTTD directories')
 
 OpenTTD comes without AIs, so if you want to play with AIs you have to download
-them. The easiest way is via the "Check Online Content" button in the main menu.
+them. The easiest way is via the 'Check Online Content' button in the main menu.
 You can select some AIs that you think are compatible with your playing style.
 Another way is manually downloading the AIs from the forum although then you
 need to make sure that you install all the required AI libraries too; they get
-automatically selected (and downloaded) if you get the AIs via the "Check
-Online Content". If you do not have an AI but have configured OpenTTD to start
+automatically selected (and downloaded) if you get the AIs via the 'Check
+Online Content'. If you do not have an AI but have configured OpenTTD to start
 an AI a message will be shown that the 'dummy' AI has been started.
 
 4.1) (Required) 3rd party files
@@ -198,7 +201,7 @@ For OpenTTD you need to acquire some third party data files. For this you have
 the choice of using the original Transport Tycoon Deluxe data files or a set
 of free data files.
 
-Do NOT copy files included with OpenTTD into "shared" directories (explained in
+Do NOT copy files included with OpenTTD into 'shared' directories (explained in
 the following sections) as sooner or later you will run into graphical glitches
 when using other versions of the game.
 
@@ -239,7 +242,7 @@ not work.
 If you want AIs use the in-game content downloader. If for some reason that is
 not possible or you want to use an AI that has not been uploaded to the content
 download system download the tar file and place it in the ai/ directory. If the
-AI needs libraries you'll have to download those too and put them in the
+AI needs libraries you will have to download those too and put them in the
 ai/library/ directory. All AIs and AI Libraries that have been uploaded to
 the content download system can be found at http://noai.openttd.org/downloads/
 The AIs and libraries can be found their in the form of .tar.gz packages.
@@ -247,20 +250,32 @@ OpenTTD can read inside tar files but it does not extract .tar.gz files by
 itself.
 To figure out which libraries you need for an AI you have to start the AI and
 wait for an error message to pop up. The error message will tell you
-"couldn't find library 'lib-name'". Download that library and try again.
+'could not find library "lib-name"'. Download that library and try again.
+
+4.1.5) Game scripts
+------ ------------
+If you want an extra challenge in OpenTTD you can download so-called game
+scripts via the in-game content downloader. These game scripts have varying
+functionality, though they can generally influence town growth, subsidies, add
+goals to reach or provide a different ranking system.
+If you download a game script manually you have to follow the same rules as for
+AIs, except that game scripts are placed in the game/ directory instead of the
+ai/ directory.
+
 
 4.2) OpenTTD directories
 ---- -------------------
-OpenTTD uses its own directory to store its required 3rd party base set files (see section
-4.1 "Required 3rd party files") and non-compulsory extension and configuration files. See
-below for their proper place within this OpenTTD main data directory.
+OpenTTD uses its own directory to store its required 3rd party base set files
+(see section 4.1 'Required 3rd party files') and non-compulsory extension and
+configuration files. See below for their proper place within this OpenTTD main
+data directory.
 
-The main OpenTTD directories can be found in various locations, depending on your operating
-system:
+The main OpenTTD directories can be found in various locations, depending on
+your operating system:
 	1. The current working directory (from where you started OpenTTD)
 		For non-Windows operating systems OpenTTD will not scan for files in this
-		directory if it is your personal directory, i.e. "~/", or when it is the
-		root directory, i.e. "/".
+		directory if it is your personal directory, i.e. '~/', or when it is the
+		root directory, i.e. '/'.
 	2. Your personal directory
 		Windows: C:\My Documents\OpenTTD (95, 98, ME)
 		         C:\Documents and Settings\<username>\My Documents\OpenTTD (2000, XP)
@@ -278,11 +293,11 @@ system:
 	5. The installation directory (Linux only)
 		Linux:   /usr/share/games/openttd
 	6. The application bundle (Mac OSX only)
-		It includes the OpenTTD files (grf+lng) and it will work as long as they aren't
-		touched
+		It includes the OpenTTD files (grf+lng) and it will work as long as they
+		are not touched
 
-Different types of data or extensions go into different subdirectories of the chosen main
-OpenTTD directory:
+Different types of data or extensions go into different subdirectories of the
+chosen main OpenTTD directory:
 	Config File:         (no subdirectory)
 	Screenshots:         (no subdirectory)
 	Base Graphics:       baseset                 (or a subdirectory thereof)
@@ -298,21 +313,24 @@ OpenTTD directory:
 	Automatic Savegames: save/autosave
 	Scenarios:           scenario
 
-The (automatically created) directory content_download is for OpenTTD's internal use and
-no files should be added to it or its subdirectories manually.
+The (automatically created) directory content_download is for OpenTTD's internal
+use and no files should be added to it or its subdirectories manually.
 
 Notes:
-	- Linux in the previous list means .deb, but most paths should be similar for others.
+	- Linux in the previous list means .deb, but most paths should be similar for
+	  others.
 	- The previous search order is also used for NewGRFs and openttd.cfg.
-	- If openttd.cfg is not found, then it will be created using the 2, 4, 1, 3, 5 order.
+	- If openttd.cfg is not found, then it will be created using the 2, 4, 1, 3,
+	  5 order.
 	- Savegames will be relative to the config file only if there is no save/
 	  directory in paths with higher priority than the config file path, but
 	  autosaves and screenshots will always be relative to the config file.
 
 The preferred setup:
-Place 3rd party files in shared directory (or in personal directory if you don't
-have write access on shared directory) and have your openttd.cfg config file in
-personal directory (where the game will then also place savegames and screenshots).
+Place 3rd party files in shared directory (or in personal directory if you do
+not have write access on shared directory) and have your openttd.cfg config
+file in personal directory (where the game will then also place savegames and
+screenshots).
 
 4.3) Portable installations (portable media)
 ---- ---------------------------------------
@@ -334,12 +352,10 @@ makes it easy to bundle files belonging to the same script, NewGRF or base
 set. Music sets are the only exception as they cannot be stored in a tar
 file due to being played by external applications.
 
-OpenTTD sees each tar archive as the 'root' of its search path. This means
-that having a file with the same path in two different tar files means that
-one cannot be opened, after all only one file will be found first. This is
-done to make it possible to have the large 32bpp zoomed graphics in a separate
-file to the (relatively small) unzoomed 8bpp NewGRF. As such it is advisable
-to put an uniquely named folder in the root of the tar and put all the
+OpenTTD sees each tar archive as the 'root' of its search path. This means that
+having a file with the same path in two different tar files means that one
+cannot be opened, after all only one file will be found first. As such it is
+advisable to put an uniquely named folder in the root of the tar and put all the
 content in that folder. For example, all downloaded content has a path that
 concatenates the name of the content and the version, which makes the path
 unique. For custom tar files it is advised to do this as well.
@@ -405,7 +421,7 @@ OpenTTD in debug mode.
 6.0) Configuration file
 ---- ------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
-.INI format. It's mostly undocumented. Almost all settings can be changed
+.INI format. It is mostly undocumented. Almost all settings can be changed
 ingame by using the 'Advanced Settings' window.
 When you cannot find openttd.cfg you should look in the directories as
 described in section 4.2. If you do not have an openttd.cfg OpenTTD will
@@ -429,24 +445,24 @@ Windows:
   Please read the Makefile for more information.
 
 Solaris, FreeBSD, OpenBSD:
-  Use "gmake", but do a "./configure" before the first build.
+  Use 'gmake', but do a './configure' before the first build.
 
 Linux/Unix:
-  OpenTTD can be built with GNU "make". On non-GNU systems it's called "gmake".
-  However, for the first build one has to do a "./configure" first.
+  OpenTTD can be built with GNU 'make'. On non-GNU systems it is called 'gmake'.
+  However, for the first build one has to do a './configure' first.
 
 MacOS X:
-  Use "make" or Xcode (which will then call make for you)
+  Use 'make' or Xcode (which will then call make for you)
   This will give you a binary for your CPU type (PPC/Intel)
-  However, for the first build one has to do a "./configure" first.
-  To make a universal binary type "./configure --enabled-universal"
-  instead of "./configure".
+  However, for the first build one has to do a './configure' first.
+  To make a universal binary type './configure --enabled-universal'
+  instead of './configure'.
 
 BeOS:
-  Use "make", but do a "./configure" before the first build.
+  Use 'make', but do a './configure' before the first build.
 
 MorphOS:
-  Use "make". However, for the first build one has to do a "./configure" first.
+  Use 'make'. However, for the first build one has to do a './configure' first.
   Note that you need the MorphOS SDK, latest libnix updates (else C++ parts of
   OpenTTD will not build) and the powersdl.library SDK. Optionally libz,
   libpng and freetype2 developer files.
@@ -458,7 +474,7 @@ OS/2:
 DOS:
   A build environment with DJGPP is needed as well as libraries such as
   Allegro, zlib and libpng, which all can be downloaded from the DJGPP
-  website. Compilation is straight forward: use make, but do a "./configure"
+  website. Compilation is straight forward: use make, but do a './configure'
   before the first build. The build binary will need cwsdpmi.exe to be in
   the same directory as the openttd executable. cwsdpmi.exe can be found in
   the os/dos subdirectory. If you compile with stripping turned on a binary
@@ -489,7 +505,7 @@ To recompile the extra graphics needed to play with the original Transport
 Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
 GRFCodec can be found at: http://www.openttd.org/download-grfcodec
 The compilation of these extra graphics does generally not happen, unless
-you remove the graphics file using "make maintainer-clean".
+you remove the graphics file using 'make maintainer-clean'.
 
 7.2) Supported compilers
 ---- -------------------
@@ -537,7 +553,7 @@ someone else may have already started translating to the same language.
 
 8.1) Translation
 ---- -----------
-So, now that you've notified the development team about your intention to
+So, now that you have notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
 (found in the SVN repository under /src/lang) and translate.
 
@@ -571,17 +587,17 @@ Any missing strings are replaced with the English strings. Note that it looks
 for english.txt in the lang subdirectory, which is where your language file
 should also be.
 
-That's all! You should now be able to select the language in the game options.
+That is all! You should now be able to select the language in the game options.
 
 
 9.0) Troubleshooting
 ---- ---------------
 To see all startup options available to you, start OpenTTD with the
-"./openttd -h" option. This might help you tweak some of the settings.
+'./openttd -h' option. This might help you tweak some of the settings.
 
 If the game is acting strange and you feel adventurous you can try the
-"-d [[<name>]=[<level>]" flag, where the higher levels will give you more
-debugging output. The "name" variable can help you to display only some type of
+'-d [[<name>=]<level>]' flag, where the higher levels will give you more
+debugging output. The 'name' variable can help you to display only some type of
 debugging messages. This is mostly undocumented so best is to look in the
 source code file debug.c for the various debugging types. For more information
 look at http://wiki.openttd.org/index.php/Command_line.
@@ -604,17 +620,17 @@ and add a suitable font for the small, medium and / or large font, e.g.:
 	small_font = "Tahoma"
 	medium_font = "Tahoma"
 	large_font = "Tahoma"
-You should use a font name like "Tahoma" or a path to the desired font.
+You should use a font name like 'Tahoma' or a path to the desired font.
 
 Any NewGRF file used in a game is stored inside the savegame and will refuse
-to load if you don't have that NewGRF file available. A list of missing files
+to load if you do not have that NewGRF file available. A list of missing files
 can be viewed in the NewGRF window accessible from the file load dialogue window.
 
 You can try to obtain the missing files from that NewGRF dialogue or - if they
 are not available online - you can search manually through our forum's graphics
 development section (http://www.tt-forums.net/viewforum.php?f=66) or GrfCrawler
 (http://grfcrawler.tt-forums.net/). Put the NewGRF files in OpenTTD's newgrf folder
-(see section 4.2 "OpenTTD directories") and rescan the list of available NewGRFs.
+(see section 4.2 'OpenTTD directories') and rescan the list of available NewGRFs.
 Once you have all missing files, you are set to go.
 
 
@@ -667,7 +683,7 @@ Thanks to:
   George                          - Canal graphics
   Andrew Parkhouse (andythenorth) - River graphics
   David Dallaston (Pikka)         - Tram tracks
-  Marcin Grzegorczyk              - Foundations for tracks on slopes",
+  Marcin Grzegorczyk              - Foundations for tracks on slopes,
   All Translators                 - For their support to make OpenTTD a truly international game
   Bug Reporters                   - Thanks for all bug reports
   Chris Sawyer                    - For an amazing game!

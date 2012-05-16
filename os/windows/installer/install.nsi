@@ -143,9 +143,6 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}docs\multiplayer.txt
 	Push "$INSTDIR\docs\multiplayer.txt"
 	Call unix2dos
-	File ${PATH_ROOT}docs\32bpp.txt
-	Push "$INSTDIR\docs\32bpp.txt"
-	Call unix2dos
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
@@ -217,7 +214,6 @@ Section "!OpenTTD" Section1
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk" "$INSTDIR\known-bugs.txt"
 	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Docs"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\Multiplayer.lnk" "$INSTDIR\docs\multiplayer.txt"
-	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\32bpp.lnk" "$INSTDIR\docs\32bpp.txt"
 	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Scripts"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Scripts\Readme.lnk" "$INSTDIR\scripts\readme.txt"
 	!insertmacro MUI_STARTMENU_WRITE_END
