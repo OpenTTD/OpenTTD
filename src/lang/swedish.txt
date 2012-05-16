@@ -2315,7 +2315,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Järnvägsbro a
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Järnvägsbro av betong
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Järnvägsrörbro
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Hängbro av stål med vägbana
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stålhängbro för vägbana
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Vägbro med stålbalkar
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Vägbro med utskjutande stålstöd
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Väghängbro av armerad betong
@@ -3662,8 +3662,8 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokala myndigheterna tillåter inte detta
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} de lokala myndigheterna tillåter inte att en till flygplats byggs i staden
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte detta
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}De lokala myndigheterna i {TOWN} tillåter inte att ytterligare en flygplats byggs i staden
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}'s lokala myndigheter vägrar ge tillåtelse att bygga en flygplats på grund av ljudproblem
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Ditt mutningsförsök upptäcktes av en regional granskare
 
@@ -3718,6 +3718,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan bara byggas i regnskogsområden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan bara byggas i ökenområden
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan bara byggas i städer (ersätter hus)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan bara byggas nära stadskärnor
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan bara byggas i låglandsområden
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan bara placeras nära kartans kant
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bara planteras ovanför snögränsen

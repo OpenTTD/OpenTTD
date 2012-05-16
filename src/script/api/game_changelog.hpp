@@ -15,6 +15,10 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.2.1
+ *
+ * No changes
+ *
  * \b 1.2.0
  * \li First stable release with the NoGo framework.
  */

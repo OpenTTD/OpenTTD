@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2012-04-15
-Release version: 1.2.0
+Last updated:    2012-05-16
+Release version: 1.2.1-RC1
 ------------------------------------------------------------------------
 
 

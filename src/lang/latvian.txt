@@ -2625,7 +2625,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (piegādāts)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u}
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Pilsēta aug katr{P 0 u as u} {ORANGE}{COMMA}{BLACK} dien{P u as u} (finansēta)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neaug{BLACK}
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Pilsēta {RED}neattīstās{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Trokšņu ierobežojums pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrēt galveno skatu uz pilsētu. Ctrl+klikšķis atvērs skatu uz pilsētu jaunā skatlaukā
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Pašvaldība
