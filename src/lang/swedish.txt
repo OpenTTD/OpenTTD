@@ -1154,9 +1154,11 @@ STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :I normala fall 
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Visa signaler: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Välj vilken sida av spåren signalerna ska placeras på
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :På vänster sida
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På förarsidan
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På höger sida
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Visa finansfönstret vid slutet av året: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya orders är 'non-stop' om inte annat anges.{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :I normala fall stannar ett fordon vid varje station det passerar. Aktiveras den här inställningen kommer det istället att köra igenom alla stationer på väg till dess slutdestination utan att stanna. Tänk på att den här inställningen bara definierar ett förinställt värde för nya order. Individuella order kan uttryckligen definiera båda typerna av beteende oavsett inställning
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-orders stannar som standard vid {STRING} av platformen
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
@@ -1175,6 +1177,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Hastighetsfaktor för flygplan: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur stor risken för en flygolycka ska vara
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :inga
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducerad
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal

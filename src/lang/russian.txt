@@ -3464,7 +3464,7 @@ STR_REPLACE_ENGINES                                             :Локомот�
 STR_REPLACE_WAGONS                                              :Вагоны
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой транспорт происходит замена
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Транспорт, на который происходит замена
 STR_REPLACE_RAIL_VEHICLES                                       :Поезда
 STR_REPLACE_ELRAIL_VEHICLES                                     :Электропоезда
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсовые
@@ -4313,7 +4313,7 @@ STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}...ТС 
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Невозможно использовать общий маршрут...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Невозможно создать индивидуальный маршрут...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Невозможно скопировать маршрут
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Невозможно скопировать маршрут...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... слишком далеко от предыдущей точки
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... дальность полёта воздушного судна недостаточна
 

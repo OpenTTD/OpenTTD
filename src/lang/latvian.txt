@@ -1123,11 +1123,15 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Padara vieglāku pilsētai piederošas infrastruktūras un ēku nojaukšanu
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimālais vilcienu garums: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Izvēlēties vilcienu maksimālo garumu
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauciņ{P 0 š i u}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļa izmešu efektu daudzums: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļu izmešu efektu daudzums: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nosaka transportlīdzekļu izmesto dūmu un dzirksteļu daudzumu
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilciena paātrinājuma modelis: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
@@ -1150,6 +1154,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Līdzens laukums ap ražotnēm: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Atļaut vairākas līdzīgas ražotnes vienā pilsētā: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Rādīt signālus: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Izvēlēties kurā ceļa pusē izvietot signālierīces
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kreisajā pusē
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pusē
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
@@ -1177,7 +1182,9 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Atļauj atšķirīgas stacijas piekļaut vienu otrai
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Atļaut vairākus NewGRF transportlīdzekļu komplektus: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Saderības izvēle veciem NewGRF failiem. Neatspējojiet šo, izņemot ja jūs zinat ko darat!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iestatījumu nav iespējams mainīt, kad tur ir transportlīdzekļi
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūras uzturēšana: {STRING}
 
@@ -1267,6 +1274,7 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palete
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automātiski pauzēt sākot jaunu spēli: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pauzes režīmā atļaut: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Izvēlēties veicamās darbības pauzētas spēles brīdī
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nē, neatļaut darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visas, izņemot būvniecības darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot ainavas pārveidošanas darbības
@@ -1287,9 +1295,13 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevum
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais automašīnu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimālais vilcienu skaits, kas var piederēt uzņēmumam
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais autotransporta līdzekļu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimālais autotransporta līdzekļu skaits, kas var piederēt uzņēmumam
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maksimālais lidaparātu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimālais lidaparātu skaits, kas var piederēt uzņēmumam
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maksimālais kuģu skaits uzņēmumā: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimālais kuģu skaits, kas var piederēt uzņēmumam
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Atspējot datoram vilcienus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Šā iestatījuma ieslēgšana padara neiespējamu vilcienu būvēšanu datoram
@@ -1320,11 +1332,11 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālus uz katra: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālierīces uz katra: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signāliem: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālu grafisko lietotāju saskarni: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālierīču grafisko lietotāja saskarni: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Noklusētais signālu veids: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
@@ -1419,6 +1431,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Autotransporta 
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Kuģu ceļa meklētājs: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Kuģiem pielietotais ceļa meklētājs
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automātiska apgriešanās pie luksoforiem: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Atļauj vilcieniem apgriezties pie signālierīcēm, ja tie te ir gaidījuši ilgu laiku
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Mainīt iestatījuma vērtību
 
