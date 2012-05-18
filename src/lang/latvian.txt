@@ -450,7 +450,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Atvērt/aizvēr
 STR_ABOUT_MENU_AI_DEBUG                                         :MI/spēles skriptu atkļūdošana
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekrānuzņēmums
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pilnībā tuvināts ekrānuzņēmums
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Noklusētā mēroga ekrānuzņēmums
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Noklusējuma mēroga ekrānuzņēmums
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Visas kartes ekrānuzņēmums
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Par 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Gariņu līdzinātājs
@@ -1199,6 +1199,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie kļuvuši veci: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportlīdzekļus {STRING} maksimālā vecuma
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Nosacītais vecums, kad transportlīdzeklis ir uzskatāms par automātiski atjaunojamu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
@@ -1207,8 +1208,10 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :labais klikšķis
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma apzīmējuma: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rāda pilsētu iedzīvotāju daudzumu pie to apzīmējuma uz kartes
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Diagrammu līniju platums. Šauras līnijas ir precīzāk nolasāmas, platākas vieglāk saskatīt un atšķirt to krāsas
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītājs: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
@@ -1244,6 +1247,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Pretējs ritināšanas virziens: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plūdena skatvietas ritināšana: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Rāda lauciņu attālumus un augstumu starpības, ar vilkšanu veicot būvniecības darbības
 STR_CONFIG_SETTING_LIVERIES                                     :Rādīt uzņēmuma identitātes krāsas: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
@@ -1269,6 +1273,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete lietošanai priekš NewGRF failiem, kura no tām ir nepieciešama
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palete
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palete
 
@@ -1291,7 +1296,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lie
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezervētās sliedes: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Būvniecības rīkus pēc lietošanas paturēt darbīgus: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pēc lietošanas patur atvērtus tiltu, tuneļu un citus būvniecības rīkus
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finansu informācijas logā: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finanšu informācijas logā: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Noteikt uzņēmuma izdevumu loga izkārtojumu
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
@@ -1317,17 +1323,23 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI nesp
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi, pirms skripti tiek apstādināti: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Noklusētais vilcienu apkopju starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vilcienu apkopju noklusējuma starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jauniem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P 0 a as u}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Noklusētais autotransporta apkopju starplaiks: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Noklusētais lidaparātu apkopju starplaiks: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Noklusētais kuģu apkopju starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Autotransporta līdzekļu apkopju noklusējuma starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Izvēlēties jauniem autotransporta līdzekļiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lidaparātu apkopju noklusējuma starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Izvēlēties jauniem lidaparātiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Kuģu apkopju noklusējuma starplaiks: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Izvēlēties jauniem kuģiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
 STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad sabojāšanās ir izslēgta: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot eletrificēto dzelzceļu: {STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk drukāt krāsainas avīzes. Pirms šā gada tās ir melnbaltas
 STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
@@ -1337,7 +1349,8 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālierīču grafisko lietotāja saskarni: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Noklusētais signālu veids: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Noklusējuma signālu veids: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Izmantotais noklusējuma signālu veids
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :vienvirziena ceļa signāli
@@ -1814,8 +1827,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Piešķirt uzņēmumam jaunu paroli
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Uzņēmuma parole
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Uzņēmuma noklusētā parole
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Izmantot šo paroli kā noklusēto jauniem uzņēmumiem
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Uzņēmuma noklusējuma parole
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Izmantot šo paroli kā noklusējuma jauniem uzņēmumiem
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pievienoties
@@ -2056,7 +2069,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Būvēt 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izvēlēties kuru stacijas klasi rādīt
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Izvēlēties kuru stacijas veidu būvēt
 
-STR_STATION_CLASS_DFLT                                          :Noklusētā stacija
+STR_STATION_CLASS_DFLT                                          :Noklusējuma stacija
 STR_STATION_CLASS_WAYP                                          :Pieturas punkti
 
 # Signal window
@@ -2540,7 +2553,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nav saviet
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Mainīt NewGRF parametrus
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Aizvērt
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Atjaunot
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Iestatīt visiem parametriem to noklusētās vērtības
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Iestatīt visiem parametriem to noklusējuma vērtības
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :{NUM}. parametrs
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametru skaits: {ORANGE}{NUM}

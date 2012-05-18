@@ -1123,6 +1123,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op helli
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat het aanpassen van funderingne onder gebouwen en spoor toe zonder deze te verwijderen
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Heb verschillende grootte verzorgingsgebied voor verschillende typen stations en luchthavens
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Sta verwijderen van meer stedelijke wegen, bruggen en tunnels toe: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Maakt het gemakkelijker om door de stad beheerde infrastructuur en gebouwen te verwijderen.
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treinen: {STRING}
@@ -1131,16 +1132,24 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} tegel{P
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid rook/vonken: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Bepaal hoeveel rook of hoeveel vonken door de voertuigen worden uitgestoten.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein acceleratie model: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selecteer de physics model voor de trein acceleratie. Het "originele" model straft hellingen gelijk voor alle voertuigen. Het "realistische" model bestraft hellingen en bochten, afhankelijk van de verschillende eigenschappen van de inhoud, zoals lengte en trekkracht
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Wegvoertuig acceleratie model: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Selecteer de physics model voor wegvoertuigacceleratie. Het "originele" model straft hellingen gelijk voor alle voertuigen. Het "realistische" model bestraft hellingen, afhankelijk van verschillende eigenschappen van het voertuig, bijvoorbeeld 'trekkracht'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Hellingsterkte voor treinen: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steilheid van een schuine tegel voor een trein. Hogere waarden maken het moeilijker om een ​​heuvel te beklimmen
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsterkte voor wegvoertuigen: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een ​​heuvel te beklimmen
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied treinen en schepen om 90° te draaien: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graden draaien treden op wanneer een horizontale baan direct gevolgd door een verticale baan stuk op de aangrenzende tegel, waardoor de trein daarna 90 graad wanneer het doorlopen van de tegel rand plaats van de gebruikelijke 45 graden voor andere spoor combinaties. Dit geldt ook voor de draaicirkel van schepen
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sta het samenvoegen van niet direct aaneensluitende stations toe: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Sta toe dat er aanvullende onderdelen aan een station worden geplaatst, zonder dat reed bestaande onderdelen beïnvloed worden. Gebruikt Ctrl+Click tijdens het plaatsen van nieuwe onderdelen.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verbeterd laadalgoritme: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Indien ingeschakeld, meerdere voertuigen die wachten op een station worden achter elkaar geplaatst. Het laden van het volgende voertuig start pas als er voldoende lading is om het eerste voertuig volledig te vullen
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Voertuigen geleidelijk laden: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Geleidelijk laadt voertuigen die gebruikmaken van het voertuig specifieke laad-duur, in plaats van laden alles in een keer met een vaste tijd die alleen afhangt van de hoeveelheid te laden vracht
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Schakel de inflatie in de economie in, waar de kosten iets sneller stijgen dan de betalingen
 STR_CONFIG_SETTING_SELECTGOODS                                  :Vracht alleen bezorgen aan een station als er vraag naar is: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen bruggen
