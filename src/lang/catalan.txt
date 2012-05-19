@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Pendent d'inclinació per als automòbils: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :La inclinació d'una celda en pendent per a un vehicle de carretera. Els valors més alts fan que sigui més difícil escalar un turó
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Prohibeix fer girs de 90 graus als trens i vaixells: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Els girs de 90 graus succeeixen quan una via horitzontal està seguida d'una vertical a la cel·la annexa, provocant que el tren giri 90 graus quan atravessi la vora de la cel·la enlloc dels 45 graus usuals en les altres combinacions. Això també s'aplica al radi de gir dels vaixells
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permet ajuntar estacions no annexes: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permetre afegir parts a una estació sense contacte directe amb les parts existents. Fa falta Ctrl + Clic, mentre és col·loquen les peces noves
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utilitza algorisme millorat de càrrega: {STRING}
@@ -1157,23 +1158,32 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longitud màxim
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Màxima longitud del túnel: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longitud màxima per a construir tunels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Mètode de construcció de la indústria primària manual: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Mètode de finançament d'indústria primària. 'cap' significa que no serà possible fundar-ne cap, 'prospecció' significa que serà possible fundar-ne, però la construcció succeirà en un lloc aleatori del mapa i també podria passar que fracassi, 'com les altre indústries' significa que les indústries de matèries primeres poden ser construides a qualsevol lloc per les companyies igual que les indústries manufactureres
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :cap
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :com les altres indústries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospeccionant
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Àrea plana al voltant de les indústries: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantitat d'espai pla al voltant d'una indústira. Això assegura que quedarà espai buit al voltant de la indústria per a construir vies, etc.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permet vàries indústries similars a cada població: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalment, un poble no vol més d'un tipus d'indústria de cada tipus. Amb aquest paràmetre es permetrà diverses indústries del mateix tipus al mateix poble
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostra les senyals: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selecciona a quin costat de la via s'han de posar les senyals
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :A l'esquerra
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Al costat de conducció
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :A la dreta
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostra la finestra de balanç al finalitzar cada any: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si està activat, la finestra de finances apareix al final de cada any per permetre una inspecció fàcil de l'estat financer de la companyia
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les noves ordres predeterminades són 'sense parada': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalment, un vehicle pararà a cada estació que passi. Activant aquest paràmetre no pararà a cap estació fins arribar a la seu destí. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
 STR_CONFIG_SETTING_STOP_LOCATION                                :Noves ordres del tren parar per defecte a {STRING} de la plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Situa en quin lloc de la plataforma el tren pararà per defecte. 'Extrem més proper' significa a prop del punt d'entrada, 'al mig' significa al mig de la plataforma, i 'extrem més llunyà' significa lluny del punt d'entrada. Nota, aquest paràmetre només defineix el valor predeterminat per les noves ordres. De totes maneres les ordres individuals poden establir explícitament qualsevol dels comportaments
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :a l'extrem més proper
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :a la meitat
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més llunyà
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cues d'automòbils (amb efectes quàntics): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fes que un vehicle esperi davant d'una parada plena fins que estigui lliure
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, la finestra principal començarà a desplaçar-se quan el ratolí sigui a prop de la vora de la pantalla
 STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn es detectat per un inspector, la companyia no podrà actuar al poble durant sis mesos
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
@@ -1184,9 +1194,12 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permet a les co
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permet enviar diners a altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permet transferir diners entre companyies en el mode multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de pes per contenidor per simular trens pesats: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Estableix l'impacte de transportar contenidors en trens. Un valor més alt fa que transportar contenidors sigui més exigent amb els trens, especialment als turons
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocitat dels avions: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Estableix la velocitat relativa dels avions en comparació amb els altres tipus de vehicles, per reduir la quantitat de guanys de transport dels avions
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Nombre d'accidents d'avió: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Estableix les probabilitats de que succeeixi un accident d'avió
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :cap
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduït
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
@@ -1197,25 +1210,35 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permet la const
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permet construir estacions annexes: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permet que diferents estacions es toquin l'una a l'altra
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Activa diversos paquets de motors NewGRF: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opció de compatibilitat per NewGRFs vells. No desactivis això, a menys que sàpigues exactament el que estàs fent!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manteniment d'infrastructures: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quan està activat, la infrastructura provoca costos de manteniment. El cost creix proporcionalment al tamany de la xarxa de transport, afectant en conseqüència més a les companyies grosses que a les petites
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Els aeroports mai caduquen: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activant aquesta opció fa que cada tipus aeroport estigui disponible per sempre després de la seva introducció
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisa si el vehicle es perd: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Alerta amb missatges quan els vehicles no siguin capaços de trobar el camí al seu destí indicat
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Revisa ordres dels vehicles: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quan està activat, les ordres dels vehicles són verificades periòdicament, i alguns problemes evidents seran informats amb missatges de noticia quan siguin detectats
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :per a tots els vehicles
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisa si el benefici del vehicle és negatiu: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quan està activat, un missatge de noticia és enviat quan un vehicle no ha tingut beneficis durant l'any
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Els vehicles mai caduquen: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quan està activat, tots els models de vehicles continuen disponibles per sempre després de la seva introducció
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autorenova el vehicle quan sigui vell: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quan està activat, un vehicle que arriba al seu final de vida útil és automàticament substituït quan es compleixen les condicions d'autorenovació
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autorenova quan el vehicle tingui {STRING} anys max
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edat relativa quan el vehicle hagi de ser considerat per l'autorenovació
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesos{P 0 "" s} abans
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesos{P 0 "" s} després
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Autorenovació: mínim de diners per renovar: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantitat mínima de diners que han de quedar al banc abans de considerar l'autorenovació de vehicles
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duració del missatge d'error: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duració d'exhibició dels missatges d'error a la finestra vermella. Alguns missatges d'error (crítics) no són tancats automàticament després d'una estona, i han de ser tancats manualment
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segon{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostra descripcions emergents: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Retard abans que les descripcions emergents siguin mostrades quan el ratolí sigui sobre algun element de l'interfície. Alternativament les descripcions emergents poden ser vinculades al botó dret del ratolí
@@ -1224,6 +1247,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botó dret
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habitants a la etiqueta del nom de població: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostra la població a l'etiqueta dels pobles dins el mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la línia als gràfics. Una línia més fina és més llegible, una línia més gruixuda és més fàcil de veure i els colors són més fàcils de distingir
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terrenys: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1248,21 +1272,29 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o m�
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Max extensió de l'estació: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Àrea màxima en que les parts d'una sola estació es poden extendre. Un valor alt farà alentir el joc
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Revisions automàtiques dels helicòpters als heliports: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Inspecciona els helicòpters cada vegada que aterrin, encara que no hi hagi hangar a l'aeroport
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quan s'obre la barra d'eines de construcció per un tipus de transport, també s'obre la barra d'eines de remodelació del paisatge
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Color del terra utilitzat al mapa petit: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Color del terreny al mapa petit
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verd fosc
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violat
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Comportament quan es desplaci el mapa amb el botó dret del ratolí. Quan està desactivat, el ratolí mou la càmera. Quan està activat, el ratolí mou el mapa
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplaçament suau de la vista: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla com la vista principal es desplaça a una posició específica quan es clica al mapa petit o quan s'envia una ordre de desplaçar-se a un objecte específic al mapa. Si està activat, la vista es desplaça suaument, si està desactivat salta directament al punt assenyalat
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostra un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostra les distàncies-cel·la i les diferències d'alçada quan s'arrossegui durant la construcció
 STR_CONFIG_SETTING_LIVERIES                                     :Mostra la decoració de la companyia: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Controla la utilització de les decoracions específiques d'un tipus de vehicle (en oposició a específic d'una companyia)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Cap
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Pròpia companyia
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Totes les companyies
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prefereix fer un xat d'equip amb <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Canvia la vinculació del xat intern de la companyia i el públic <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funció de la rodeta del ratolí: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Activa el desplaçament en les rodetes del ratolí de dues dimensions
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom mapa
@@ -1272,11 +1304,13 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocitat del m
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla la sensibilitat de la rodeta de desplaçament del ratolí
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulació del botó dret: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecciona el mètode per emular els clics amb el botó dret del ratolí
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Desplaçament amb el botó esquerre: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Activa el desplaçament del mapa arrossegant-lo amb el botó esquerre del ratolí. Això és especialment útil quan s'utilitzen pantalles tàctils
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Utilitza el format de data curta {STRING} en els jocs desats
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format de la data en els noms dels arxius dels jocs desats
@@ -1285,10 +1319,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta predeterminada pels NewGRFs que no n'especifiquin una: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta predeterminada a utilitzar als NewGRFs que no especifiquen quina necessiten
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament en començar un nou joc: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es pausarà automàticament quan es comenci un joc nou, permetent a l'usuari estudiar el mapa més detalladament
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Quan s'estigui en pausa permet: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecciona quines accions poden fer-se quan el joc està pausat
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :sense accions
@@ -1296,76 +1332,121 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :totes les accio
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tot menys les accions modificadores del paisatge
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :totes les accions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Utilitza la llista de vehicles avançada: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa la utilització de llistes de vehicles avançades per agrupar vehicles
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Utilitza indicadors de càrrega: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Selecciona si els indicadors de càrrega seran mostrats sobre els vehicles en càrrega o descàrrega
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostra horaris amb marques enlloc de dies: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra els temps de viatge als horaris en marques enlloc de dies
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra l'arribada i la sortida als horaris: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra als horaris l'arribada anticipadament i les hores de sortida
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creació ràpida d'ordres per a vehicles: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selecciona el 'cursor ves a' quan s'obri la finestra d'ordres
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipus de via predeterminada (en un joc nou/joc desat): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipus de via a seleccionar després de començar o carregar un joc. 'primer disponible' selecciona el tipus de vies més antic, 'darrer disponible' selecciona el tipus de vies més modern, i 'més utilitzat' selecciona el tipus de vies que s'utilitzi més actualment
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :La primera disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :La darrera disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitzada
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Mostra les vies reservades: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dóna a les vies reservades un color diferent per ajudar en problemes de trens que refusen entrar en blocs basats en camí
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantingues les eines de construcció actives després del seu us: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les eines de construcció pels ponts, túnels, etc. obertes després d'utilitzar-les
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desactiva la construcció d'infrastructures quan no hi hagi disponibles vehicles adequats: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quan està activat, la infrastructura només està disponible si hi ha també vehicles disponibles, prevenint perdre temps i diners en infraestructures no utilitzables
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max trens per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Màxim nombre de trens que pot tenir una companyia
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max automòbils per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Màxim nombre de vehicles de carretera que pot tenir una companyia
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max avions per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Màxim nombre d'avions que pot tenir una companyia
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Max vaixells per companyia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Màxim nombre de vaixells que pot tenir una companyia
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desactiva trens per l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Activant aquesta opció fa que sigui impossible construir trens al jugador de l'ordenador
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desactiva automòbils per a l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Activant aquesta opció fa que sigui impossible construir vehicles de carretera al jugador de l'ordenador
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desactiva els avions per l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Activant aquesta opció fa que sigui impossible construir avions al jugador de l'ordenador
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva vaixells per l'ordinador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells al jugador de l'ordenador
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permet IA en multijugador: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permet al jugadors IA de l'ordenador participar en jocs multijugador
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes abans dels scripts estan suspesos: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Màxim nombre de passos de càlcul que un script pot fer en un torn
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals de revisions es mostren en percentatges: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles són disparades pel temps passat des de la darrera revisió o per la caiguda d'un cert percentatge de la fiabilitat màxima
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Interval per defecte de servei per als trens: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'interval de revisió predeterminat pels nous ferrocarrils, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :desactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval per defecte de servei per als vehicles: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels nous vehicles de caretera, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval per defecte de servei per a les aeronaus: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Estableix l'interval de revisió predeterminat pels nous avions, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per defecte de servei per als vaixells: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels nous vaixells, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quan està activat, els vehicles no són revisats si no es poden espatllar
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa limit de velocitat per al vagó: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Quan està activat, també utilitza els límits de velocitat dels vagons per decidir la velocitat màxima del tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactiva vies electrificades: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Activant aquest paràmetre es desactiva el requeriment d'electrificar les vies per poder fer-hi circular locomotores elèctriques
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les notícies en color apareixen el: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Any en que els diaris comencen a fer els anunciaments impresos en color. Abans d'aquest any, s'utilitza el blanc i negre
 STR_CONFIG_SETTING_STARTING_YEAR                                :Any d'inici: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activa economia suau (més canvis però més petits): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quan està activat, els canvis de producció de la indústria són més habituals, i en passos més petits. Aquest paràmetre usualment no té efecte, si el tipus d'indústria estan proveïts per un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permet comprar participacions d'altres empreses: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Quan està activat, permet comprar i vendre accions de les companyis. Les accions només estan disponibles per companyies d'una certa edat
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentatge del benefici total a pagar en transferències: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentatge del benefici donat a branques intermediàries dins els sistemes, donant més control sobre els beneficis
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, col·locar senyals cada: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Estableix la distància en les quals les senyals seran construïdes a la via fins al següent obstacle (senyal, desviament), si les senyals són arrossegades
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} cel·la{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Quan arrosseguis, mantingues fixada la distància entre senyals: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecciona el comportament de la situació de senyals quan Ctrl+arrossega senyals. Si es desactiva les senyals són situades al voltant dels túnels o ponts per evitar grans troços sense senyals. Si s'activa, les senyals són situades cada N cel·les, fent l'alineament de senyals en vies paral·leles més fàcil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir semàfors automàticament abans de: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Estableix l'any quan les senyals eléctriques seran utilitzades a les vies. Abans d'aquest any s'utilitzaran senyals no-elèctriques (que tenen exactament la mateixa funció, però amb diferent aspecte)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activa la interfície de les senyals: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostra una finestra per escollir els tipus de senyals a construir, enlloc de només la rotació sense finestra de tipus de senyals amb Ctrl+clic sobre les senyals
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipus de senyal a construir predeterminada: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipus de senyal predeterminada a utilitzar
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avançades
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Avançades d'un sentit
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Canvia a través dels tipus de senyal: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecciona entre quins tipus de senyals es ciclarà, quan es faci Ctrl+clic sobre una senyal amb l'eina de construir senyals
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Només normal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Només avançada
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Totes
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres pels nous pobles: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposició per la xarxa de carreteres dels pobles
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :predeterminat
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :millors carreteres
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatori
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Els pobles poden construir carreteres: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet als pobles construir carreteres per créixer. Desactiva-ho per prevenir que les autoritats del poble construeixin carreteres
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Els pobles tenen permís per construir passos a nivell: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Activant aquesta opció permets als pobles construir passos a nivell
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permet a la ciutat controlar el nivell de soroll dels aeroports: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Amb aquesta opció desactivada, no hi podran haver dos aeroports en un poble. Amb aquesta opció activada, el nombre d'aeroports en una ciutat està limitat pels límits d'acceptació de sorolls de la ciutat que depen de la població, la mida de l'aeroport i la distància
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundant pobles al joc: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Activant aquesta opció permets els jugadors fundar nous pobles durant el joc
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibit
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permès
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permès, disposició de poble personalitzada
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Situació dels arbres al joc: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla l'aparició aleatoria dels arbres durant el joc. Això podria afectar a les indústries que es basen en el creixement dels arbres, per ex. les serralleries
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :cap {RED}(inhabilita la fusteria)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :només a les selves tropicals
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :a tot arreu
@@ -1374,13 +1455,18 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posició de la 
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posició horitzontal de la barra principal a la part superior de la pantalla
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posició de la barra d'estat: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posició horitzontal de la barra d'estat a la part inferior de la pantalla
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radi d'acció de la finestra: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distància entre finestres abans que la finestra moguda sigui automàticament alineada a una finestra propera
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :desactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nombre màxim de finestres no-enganxoses: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Nombre de finestres no-enganxoses obertes abans que les finestres antigues es tanquin automàticament per fer lloc a les noves finestres
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desactivat
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nivell màxim de zoom cap endavant: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivell màxim de zoom cap endins a les vistes. Activant els nivells de zoom cap endins elevats incrementa les necessitats de memòria
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nivell màxim de zoom cap enrera: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :El nivell de zoom cap enfora màxim a les vistes. Un nivell més elevat de zoom cap enfora pot causar alentiments
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1395,6 +1481,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Ràpida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Molt Ràpida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporció de pobles que es convertiran en ciutats: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Quantitat de pobles que esdevenen una ciutat, es a dir un poble que comença més gran i creix més ràpidament
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 en {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :cap
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador de mida de ciutat inicial: {STRING}
@@ -3179,7 +3266,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de 
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna entre finestres de substitució de vagons i de motors
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Canvia entre finestres de substitució de vagons i de motors
 STR_REPLACE_ENGINES                                             :Motors
 STR_REPLACE_WAGONS                                              :Vagons
 

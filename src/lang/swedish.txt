@@ -453,6 +453,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skärmdump av h
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Justering av spriteobjekt
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Slå av/på yttre gränser för grafiska element
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Slå av/på färgläggning av smutsiga block
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1131,24 +1132,37 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rut{P 0
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mängden rök/gnistor från fordon: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Sätt hur mycket rök och gnistor fordon ger ifrån sig
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Accelerationsmodell för tåg: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Välj fysikmodell för acceleration av tåg. "original"-modellen bestraffar lutningar och kurvor beroende på olika egenskaper av tåget, t.ex. längd och dragkraft
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Accelerationsmodell för vägfordon: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Välj fysikmodell för acceleration av vägfordon. "original"-modellen bestraffar lutningar beroende på olika egenskaper av tåget, t.ex. dragkraft
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Sluttningars lutningsgrad för tåg: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Lutningsgrad för lutande rutor för tåg. Högre värden gör det svårare att komma upp för en backe
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sluttningars lutningsgrad för vägfordon: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Lutningsgrad för lutande rutor för vägfordon. Högre värden gör det svårare att komma upp för en backe
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Förbjud tåg och skepp att göra 90° svängar: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90-graderssvängar inträffar då ett horisontellt spår följs direkt av ett vertikalt spår på angränsande ruta och därmed gör så att tåget svänger 90-grader om de kör längs med spåret. Detta i motsats till andra kombinationer av spårbitar där tåget svänger 45 grader i taget. Denna inställning påverkar även svängradien för fartyg
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillåt att lägga till delar till en station utan att de är i direktkontakt med existerande delar. Kräver Ctrl+klick vid placering av nya stationsdelar.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Använd förbättrad algoritm: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Om aktiverad och flera fordon befinner sig på stationen, kommer de att lastas på en efter en. Lastning av nästa fordon startar först när det finns tillräckligt med gods för att fylla det första fordonet.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lasta fordon gradvis: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Lasta på fordon gradvis genom att använda fordonsspecifika tider för lastning istället för att lasta på allt samtidigt med en fast tid som endast beror på mängden gods att lasta på.
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktivera inflation i ekonomin. Kostnaderna stiger något fortare än inkomsterna.
 STR_CONFIG_SETTING_SELECTGOODS                                  :Leverera gods till en station enbart om någon frågar efter det: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Leverera endast gods till en station där godstypen har efterfrågats av ett fordon genom att försöka lasta på gods. Detta förhindrar dåliga värderingar för godstyper som inte betjänas på en station.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal brolängd: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal längd för broar
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal tunnellängd: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal längd för tunnlar
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuell prioritering för industrins konstruktionsmetod: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metod för att finansiera en primär industri. 'Inget' betyder att det inte är tillåtet att finansiera några primära industrier. 'Prospekterande' betyder att finansiering är möjligt men industrin byggs på en slumpvis plats och kan även misslyckas. 'Som andra industrier' betyder att industrier som genererar råmaterial kan byggas av företag på samma sätt som industrier som processar material, dvs på valfri plats.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Platt yta runt industrier: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Hur mycket platt yta som finns runt en industri. Detta säkerställer att tom yta finns tillgängligt runt en industri för byggnation av spår mm.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillåt flera industrier av samma typ per stad: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :I normala fall vill en stad inte ha mer än en industri av varje typ. Med den här inställningen tillåts flera industrier av samma typ i samma stad
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Visa signaler: {STRING}
@@ -1157,24 +1171,31 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :På vänster si
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På förarsidan
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På höger sida
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Visa finansfönstret vid slutet av året: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Om aktiverad kommer finans-fönstret att visas vid slutet av varje år för att möjliggöra enkel granskning av den finansiella statusen för företaget.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya orders är 'non-stop' om inte annat anges.{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :I normala fall stannar ett fordon vid varje station det passerar. Aktiveras den här inställningen kommer det istället att köra igenom alla stationer på väg till dess slutdestination utan att stanna. Tänk på att den här inställningen bara definierar ett förinställt värde för nya order. Individuella order kan uttryckligen definiera båda typerna av beteende oavsett inställning
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-orders stannar som standard vid {STRING} av platformen
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Grundinställning för var tåg stannar utmed plattformar. 'början' betyder i början av plattformen sett från var tåget kommer ifrån. 'mitten' betyder i mitten av plattformen och 'slutet' betyder så långt bort som möjligt. Notera att denna inställning endast anger grundvärdet för nya ordrar. Individuella instruktioner kan ges per orderrad explicit till valfritt värde oberoende av denna inställning.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :slutet
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Vägfordonsköer (med kvanteffekter): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Gör så att vägfordon väntar framför ett upptaget genomfarts-stopp tills dess att det är ledigt.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scrolla vyn när musen är vid kanten: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Om aktiverad så kommer huvudvyn att förflyttas då musen är nära skärmens kant.
 STR_CONFIG_SETTING_BRIBE                                        :Tillåt mutning av de lokala myndigheterna: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillåt företag att försöka muta de lokala myndigheterna. Om mutan upptäcks av en inspektör kommer företaget inte ha möjlighet att verka i staden i sex månader
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillåt köp av exklusiva transporträttigheter: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byggnader bekostas: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillåt företag att ge pengar till städer för att bekosta nybyggnation av hus
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillåt att företag ger pengar till städer för vägbyggen och därmed saboterar för vägtransporter i staden.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt skicka pengar till andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillåt överföring av pengar mellan företag i flerspelarläge
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för att simulera tunga tåg: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ställ in påverkan av att frakta gods i tåg. Ett högre värde gör att frakt-gods är mer krävande för tågen, speciellt vid lutningar
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Hastighetsfaktor för flygplan: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ställ in relativ hastighet för flygplan relativt övriga fordonstyper. Detta reducerar inkomsterna för flygtransporter.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Antal flygplanskrascher: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ställ in hur stor risken för en flygolycka ska vara
@@ -1184,31 +1205,45 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Tillåt genomfarts-stopp på stadsägda vägar: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Tillåt konstruktion av genomfarts-stopp på stadsägda vägar
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Tillåt dina fordon att köra genom motståndarens hållplatser: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstruktion av genomfarts-stopp på vägar som ägs av andra företag
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillåt konstruktion av närliggande stationer: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillåt att olika stationer rör vid varandra
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Tillåt flera NewGRF-set: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitetsinställning för gamla NewGRFer. Avaktivera inte detta såvida du inte vet exakt vad du håller på med!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om forden är vilse: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till deras destination.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Granska fordonens destinationer: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras orderraderna fordon periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande.
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fordon
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fordons inkomst är negativ: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Om det är aktiverat skickas ett nyhetsmeddelande när ett fordon inte har gett vinst under ett kalenderår
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när dom blir gamla: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Om det är aktiverat kommer ett fordon som närmar sig slutet av sin livslängd automatiskt att bytas ut när villkoren för förnyelse är uppfyllda
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp som måste finnas i banken för att automatiskt förnyande av fordon ska vara möjligt
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Visa antal invånare efter stadsnamnen på kartan
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i grafer: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd i grafernas kurvor. En tunn linje är lättare att läsa av mer precist, medan en tjockare linje är lättare att se och gör det lättare att skilja mellan de olika färgerna
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeraffinaderier och kartans kant: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snölinjeshöjd: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad (TerraGenesis endast) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
@@ -1246,6 +1281,7 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alla företag
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prioritera lagchat med <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Mushjulsfunktion: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Möjliggör skrollning med tvådimensionella mushjul
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zooma kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Avstängd
@@ -2753,6 +2789,7 @@ STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Visa lis
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepterar: {WHITE}{CARGO_LIST}
 
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Den här stationen har exklusiva transporträttigheter i den här staden.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} har köpt exklusiva transporträttigheter i den här staden.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Värderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Visa stationens klassificering
