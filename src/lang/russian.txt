@@ -923,7 +923,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Потоп!{}По крайней мере {COMMA} человек{P "" а ""} признан{P "" о о} пропавшим{P "" и и} без вести в результате наводнения!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Транспортная компания в опасном положении!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не начнёт приносить прибыль!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} будет продана или объявлена банкротом, если не улучшит финансовые показатели!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Объединение компаний!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} продана {STRING} за {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Банкрот!
@@ -1458,13 +1458,13 @@ STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не испол
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Скорость смещения обзора прокруткой колеса мыши: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Настройка скорости смещения обзора с помощью колеса прокрутки
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляция правого клика мыши: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Эмуляция нажатия правой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Выбор способа эмуляции нажатия правой кнопки мыши
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команд.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скроллинг по клику левой кнопкой мыши: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скроллинг по нажатию левой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Смещение обзора левой кнопкой мыши. Это удобно при использовании сенсорного экрана.
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений

@@ -1105,7 +1105,7 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklar
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
-STR_CONFIG_SETTING_DISABLED                                     :Avaktiverat
+STR_CONFIG_SETTING_DISABLED                                     :Inaktiverat
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Av
 STR_CONFIG_SETTING_COMPANIES_OWN                                :Eget företag
@@ -1209,7 +1209,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Tillåt konstru
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Tillåt konstruktion av närliggande stationer: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Tillåt att olika stationer rör vid varandra
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Tillåt flera NewGRF-set: {STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitetsinställning för gamla NewGRFer. Avaktivera inte detta såvida du inte vet exakt vad du håller på med!
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitetsinställning för gamla NewGRFer. Inaktivera inte detta såvida du inte vet exakt vad du håller på med!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är inte möjligt att ändra denna inställning när det finns fordon
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Underhåll av infrastruktur: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är aktiverat så kostar underhåll av infrastruktur. Kostnaden ökar mer än proportionellt mot nätverkets storlek, vilket innebär att större företag drabbas hårdare än små företag av underhållskostnader.
@@ -1230,6 +1230,10 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir ald
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Om det är aktiverat förblir alla fordonstyper tillgängliga i obegränsad tid efter att de introducerats
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Förnya fordon automatiskt när dom blir gamla: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Om det är aktiverat kommer ett fordon som närmar sig slutet av sin livslängd automatiskt att bytas ut när villkoren för förnyelse är uppfyllda
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Förnya automatiskt när fordon är {STRING} än beräknad livslängd
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativ ålder då ett fordon ska bli aktuellt för att förnyas automatiskt
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} månad{P 0 "" er} yngre
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{P 0 "" er} äldre
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp som måste finnas i banken för att automatiskt förnyande av fordon ska vara möjligt
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
@@ -1274,8 +1278,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omvänd scrollriktning: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk skrollning av vy: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Visa rutavstånd och höjdskillnader vid dragning med musen under byggoperationer
 STR_CONFIG_SETTING_LIVERIES                                     :Visa färgschema för företag: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrollera användning av fordonstyp-specifika färgscheman för fordon (till skillnad från företagsspecifika)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Inga
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alla företag
@@ -1286,8 +1293,10 @@ STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zooma kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mushjulshastighet: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrollera känsligheten hos skrollning med mushjulet
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Högerklicksemulering: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Välj metod för att emulera klick med musens högra knapp
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
@@ -1305,6 +1314,7 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-palett
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausa automatiskt vid start av nytt spel: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Om det är aktiverat kommer OpenTTD automatiskt att pausa vid start av ett nytt spel, så att kartan kan studeras noggrannare
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Tillåt när spelet är pausat: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Välj vilka handlingar som är tillåtna att utföra medan spelet är pausat
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :inga åtgärder
@@ -1312,8 +1322,11 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allt förutom a
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :allt förutom landskapsarkitektur
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Använd den avancerade fordonslistan: {STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Använd lastningsindikatörer: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Möjliggör användning av avancerade fordonslistor för gruppering av fordon
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Använd lastningsindikatorer: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Välj om lastningsindikatorer visas ovanför lastande och avlastande fordon, eller ej
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Visa tidtabeller räknat i ticks istället för dagar: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Visa restider i tidtabeller i antal tick istället för dagar
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Visa ankomster och avgångar i tidtabeller: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Visa förväntade ankomst- och avgångstider i tidtabeller
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snabbskapande av fordonsorder: {STRING}
@@ -1336,9 +1349,13 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Max antal skepp
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximalt antal skepp som ett företag kan ha
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Förbjud tåg för datorn: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga tåg
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Förbjud vägfordon för datorn: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga vägfordon
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Förbjud luftfarkoster för datorn: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga flygplan
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Förbjud skepp för datorn: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :När denna inställning aktiveras blir det omöjligt för datorspelare att bygga skepp
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorspelare i flerspelarläge: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorstyrda AI-spelare att delta i spel för flera spelare
@@ -1346,8 +1363,17 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan 
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med en viss procentsats av den maximala tillförlitligheten
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Normalt serviceintervall för tåg: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Välj vilket serviceintervall som normalt sett ska användas för nya tåg, om inget annat serviceintervall uttryckligen anges
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" ar}/%
-STR_CONFIG_SETTING_NOSERVICE                                    :Avaktivera service när motorstopp är av: {STRING}
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Normalt serviceintervall för vägfordon: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Välj vilket serviceintervall som normalt sett ska användas för nya vägfordon, om inget annat serviceintervall uttryckligen anges
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Normalt serviceintervall för flygplan: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Välj vilket serviceintervall som normalt sett ska användas för nya flygplan, om inget annat serviceintervall uttryckligen anges
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Normalt serviceintervall för skepp: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket serviceintervall som normalt sett ska användas för nya skepp, om inget annat serviceintervall uttryckligen anges
+STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera service när motorstopp är av: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
 
@@ -1550,12 +1576,12 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Välj hu
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Välj andravalsfärgen för det aktuella schemat. Ctrl+Click kommer att välja färgen för alla scheman
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Välj ett färgschema att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
 
-STR_LIVERY_DEFAULT                                              :Normalt Färgschema
+STR_LIVERY_DEFAULT                                              :Normalt färgschema
 STR_LIVERY_STEAM                                                :Ånglok
 STR_LIVERY_DIESEL                                               :Dieseltåg
 STR_LIVERY_ELECTRIC                                             :Elektriskt tåg
-STR_LIVERY_MONORAIL                                             :Monorail-Tåg
-STR_LIVERY_MAGLEV                                               :Maglev-Tåg
+STR_LIVERY_MONORAIL                                             :Monorail-tåg
+STR_LIVERY_MAGLEV                                               :Maglev-tåg
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagerarvagn (Ånga)
@@ -2115,7 +2141,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg bus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passagerarspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lastbrygga. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg godsspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Avaktivera enkelriktade vägar
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Inaktivera enkelriktade vägar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg vägbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg spårvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg vägtunnel. Shift växlar mellan att bygga/visa beräknad kostnad
@@ -2627,7 +2653,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade fi
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonlängd för '{1:ENGINE}' ändrades utanför en depå
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depå
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
@@ -3185,7 +3211,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta by
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryck för att sluta byta ut fordonstypen vald på vänster sida
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Välj mellan lok och vagn ersättnings-fönster
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Växla mellan lok- och vagnersättningsfönster
 STR_REPLACE_ENGINES                                             :Lok
 STR_REPLACE_WAGONS                                              :Vagnar
 

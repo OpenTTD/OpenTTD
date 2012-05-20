@@ -1454,7 +1454,7 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibir e
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Exibir esquemas de cores dos veículos rodoviários
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Exibir esquemas de cores dos barcos
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Exibir esquema de cores da aeronave
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Seleccione a cor primária para o veículo seleccionado. Ctrl+Clique vai usar esta cor para todos os esquemas
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seleccione a cor secundária para o esquema seleccionado
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
 
@@ -2696,6 +2696,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceita
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar lista de carga aceite
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceita: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostrar avaliações da estação
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Avaliação local do serviço de transporte:
@@ -2721,6 +2722,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Mostrar 
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Mostrar todos os barcos que têm esta estação nas ordens de serviço
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Alterar nome de estação/local de carga
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

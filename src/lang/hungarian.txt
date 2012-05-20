@@ -1165,6 +1165,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ez a mó
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó beállítások
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
@@ -1184,17 +1185,41 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
 STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :A különböző állomások és repterek más vonzáskörzettel rendelkeznek
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Városi tulajdonú infrastruktúra és épületek könnyebb eltávolíthatósága
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Vonatok maximális hossza: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Vonatok maximális hosszának beállítása
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} mező
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Járművek kipufogógáz/füst mennyisége: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Járművek által kibocsátott füst vagy szikra mennyiségének beállítása
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vonatok gyorsulási módja: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vonatok gyorsulásának fizikai modelljének beállítása. Az "eredeti" modellben a járművek egyenlően kapnak emelkedő általi büntetést. A "valósághű" modell a járművek különböző tulajdonságai alapján bünteti az emelkedőket és az íveket, úgymint hossz és vonóerő
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Közúti járművek gyorsulási módja: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Közúti járművek gyorsulásának fizikai modelljének beállítása. Az "eredeti" modellben a járművek egyenlően kapnak emelkedő általi büntetést. A "valósághű" modell a járművek különböző tulajdonságai alapján bünteti az emelkedőket és az íveket, pl. vonóerő
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Emelkedő meredeksége vonatoknak: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Egy emelkedő mező meredeksége vonatoknak. Nagyobb érték esetén a vonat nehezebben mássza meg az emelkedőt
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Emelkedő meredeksége közúti járműveknek: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Egy emelkedő mező meredeksége közúti járműveknek. Nagyobb érték esetén a jármű nehezebben mássza meg az emelkedőt
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Vonatok és hajók nem tehetnek 90 fokos kanyart: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 fokos kanyarok akkor fordulnak elő, ha egy vízszintes pályaelemet egy függőleges elem követ közvetlenül a következő mezőn, ami által a vonat egy 90 fokos kanyart tesz a szokásos 45 fokos helyett. Ez ugyanígy előfordulhat hajók esetében is
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Nem közvetlen szomszédos állomások egyesítése: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Állomásrészek hozzáadásának engedélyezése úgy, hogy az nem érinti közvetlenül a meglévő részeket. Ctrl+Kattintás szükséges hozzá az új részek elhelyezése közben
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Járművek egymás utáni telerakodása (egyidejű helyett): {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ha engedélyezett, az egyszerre az állomáson tartózkodó járművek egymás után kerülnek berakodásra. A következő jármű berakodása csak akkor kezdődik el, ha van elegendő áru az előző jármű teljes megtöltésére
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Járművek fokozatos rakodása: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Járművek fokozatos rakodása meghatározott rakodási időkkel ahelyett, hogy minden egyszerre lenne berakodva egy adott ideig az áru mennyiségétől függően
 STR_CONFIG_SETTING_INFLATION                                    :Infláció: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Infláció engedélyezése a gazdaságban, ahol a költségek jobban emelkednek, mint a bevételek
 STR_CONFIG_SETTING_SELECTGOODS                                  :Csak igény esetén kerüljön rakomány az állomásra: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Csak akkor kerül az állomásra az áru, ha arra igény van egy berakandó jármű által. Ez megelőzi a rossz értékelés kialakulását azokra az árufajtákra, amik nem kerülnek az állomáson kiszolgálásra
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Hidak maximális hossza: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Az építendő hidak maximális hossza
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Alagutak maximális hossza: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Az építendő alagutak maximális hossza
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Kézi nyersanyaglelőhely-létesítési módszer: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
@@ -1374,7 +1399,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdők
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :A fő eszközsor helye: {STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :Állapotsor elhelyezése: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :Állapotsor elhelyezkedése: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Nem zárolt ablakok maximális száma: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :A nagyítás maximális mértéke: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :A kicsinyítés maximális mértéke: {STRING}
@@ -2768,6 +2793,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Elfogad�
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Az elfogadott áruk listájának mutatása
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Elfogad:{WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vélemény
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemény megmutatása az állomásról
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}A szállítás helyi megítélése:
@@ -3877,7 +3903,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Itt nem 
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... nincs itt vasúti pálya
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nincs itt jelző
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Itt nem lehet átalakítani a vasúti pályát...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nem lehet itt vasúti pálya típust átalakítani...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Előbb le kell rombolnod az utat

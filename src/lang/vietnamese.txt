@@ -537,8 +537,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cho phép toàn bộ
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Bỏ toàn bộ
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ toa xe trên đồ thị tỉ lệ trả tiền của toa xe
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các toa xe trên đồ thị tỉ lệ trả tiền của toa xe
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -2711,6 +2711,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Chấp n
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Liệt kê hàng hoá được chấp nhận
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Chấp nhận: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} đã mua quyền vận tải độc quyền ở đô thị này.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Uy tín
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện uy tín ga, bến, cảng
