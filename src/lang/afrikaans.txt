@@ -1189,6 +1189,9 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Outohernuwe minimum vereisde geld vir hernuwe: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tyd wat fout boodskap wys: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-leidraad: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweef vir {COMMA} sekonde{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Regs kliek
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon dorp populasie in die dorp naam etiket: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van lyn in grafieke: {STRING}
 
@@ -1213,9 +1216,11 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aktiveer terra 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer teëls op die Noordelike grens is nie leeg nie
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer teëls by een van die kante is nie water nie
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Max stasie sprei: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Diens helikopters by helihawes outomaties: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Verbind landereye werktuigbaan na spoor/pad/water/lughawe werktuigbaan: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Land kleur gebruik op die klein landkaart: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van die terrein in die klein landkaart
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkergroen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
@@ -1241,6 +1246,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Links-kliek kykpoort beweegings: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Gebruik die {STRING} datum formaat vir gestoorde spel name.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formaat van datum van spaar-speletjie naam
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lank (31ste Des 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1259,6 +1265,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik die voo
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gebruik laai aanwysers: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vertoon rooster in tike liewer as dae: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Toon aankoms en vertrek in tydroosters: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vertoon verwagte aankoms en vertrek tye in tydroosters
 STR_CONFIG_SETTING_QUICKGOTO                                    :Vinnige skepping van voertuig opdragte: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Verstek spoor tipe (na nuwe spel/spel laai): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar
@@ -1270,9 +1277,13 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Groep uitgawes 
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deaktiveer infrastruktuur bouery as geen geskikte voertuie beskikbaar is nie: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max treine per speler: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimum hoeveelheid treine was 'n besigheid kan hê
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max pad voertuie per speler: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maksimum hoeveelheid pad voertuie was 'n besigheid kan hê
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max vliegtuie per speler: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maksimum hoeveelheid vliegtuie was 'n besigheid kan hê
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Max skepe per speler: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimum hoeveelheid bote was 'n besigheid kan hê
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Sper treine vir rekenaar: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Sper pad voertuie vir rekenaar: {STRING}
@@ -1280,11 +1291,16 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Sper vliegtuie 
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Sper skepe vir rekenaar: {STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Laat AI in multispeler toe: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Laat AI Rekenaaar spelers by 'n multi-speler spel toe
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes voor die skripte gestaak word: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Diens pouse is in persente: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard diens interval vir treine: {STRING}
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} da{P g e}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :gedeaktiveer
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard diens interval vir pad voertuie: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard diens interval vir vliegtuie: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard diens interval vir bote: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Sper diens wanneer komplikasies is na geen gestel: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Laat wa spoed beperkings toe: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiveer elektriese spoore: {STRING}
@@ -1298,6 +1314,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Wanneer signale
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Outomaties bou semaphores voor: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Aktiveer die sein GUI: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Sein tipe om te bou by verstek: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standaard sein tipe om te gebruik
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blok seine
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Pad seine
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Een-rigting seine
@@ -1307,6 +1324,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Pad seinligte a
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Pad uitleg vir nuwe dorpe: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Pad netwerk uitleg van paaie vir dorpe
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :oorspronkilik
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :beter paaie
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
@@ -1316,6 +1334,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Dorpe word toeg
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Dorpe word toegelaat om vlak kruising te bou: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Laat dorp-beheerede klankvlak vir lughawes toe: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stigting van dorpe binne speletjie: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktiveering van die stelling laat spelers toe om dorpe te stig in die speletjie
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbode
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toegelaat
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toegelaat, eie dorp uitleg
@@ -1341,11 +1360,13 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Dorp groei spoed: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Spoed van dorp groei
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Geen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Stadig
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Vinnig
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Baie vinnig
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van dorpe wat stede sal word: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}

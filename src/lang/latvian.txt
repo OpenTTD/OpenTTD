@@ -1197,12 +1197,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot a
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie kļuvuši veci: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ja ieslēgts, kad ir atbilstoši atjaunošanas apstākļi, automātiski tiek nomainīti transportlīdzekļi kuru kalpošanas laiks tuvojas beigām
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski atjaunot transportlīdzekļus {STRING} maksimālā vecuma
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Nosacītais vecums, kad transportlīdzeklis ir uzskatāms par automātiski atjaunojamu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimālā naudas summa kas atliek bankā, pirms apsver transportlīdzekļu automātisko atjaunošanu
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņojuma ilgums: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
@@ -1238,7 +1240,9 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam v
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimālais staciju lielums: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimālais laukums kuru var aizņemt atsevišķas stacijas izvietotās daļas. Jāņem vērā ka lielas vērtības palēninās spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Translation: Helikopteriem veikt apkopi pēc katras nolaišanās, arī ja lidostā nav helikopteru bāzes
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkjoslu ar sliežu/ceļu/ūdens/lidostu rīkjoslām: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Atverot būvniecības rīkjoslas transportlīdzekļu veidiem, tiek atvērta arī ainavu veidošanas rīkjosla
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Apvidus krāsa minikartē
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zaļa
@@ -1273,11 +1277,12 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īsu (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :NewGRF noklusējuma palete, kuriem tā nav norādīta: {STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete lietošanai priekš NewGRF failiem, kura no tām ir nepieciešama
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Noklusējuma palete NewGRF failiem, ja nav norādīta nepieciešamā
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS palete
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palete
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automātiski pauzēt sākot jaunu spēli: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ja ir ieslēgts, sākot jaunu spēli, tā tiek automātiski pauzēta. Tas ļauj rūpīgāk izpētīt karti
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pauzes režīmā atļaut: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Izvēlēties veicamās darbības pauzētas spēles brīdī
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nē, neatļaut darbības
@@ -1285,9 +1290,12 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visas, izņemot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot ainavas pārveidošanas darbības
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Lietot papildināto transportlīdzekļu sarakstu: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ieslēgt papildināto transportlīdzekļu sarakstu grupētiem transportlīdzekļiem
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lietot piekraušanas indikatorus: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Rādīt sarakstu mirkļos nevis dienās: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Maršrutu sarakstos rādīt pienākšanu un atiešanu: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Kustības sarakstu rādīt mirkļos nevis dienās: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Kustības sarakstos laikus rādīt spēles mirkļos, nevis dienās
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Kustības sarakstos rādīt pienākšanu un atiešanu: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kustības sarakstos rādīt paredzamos pienākšanas un atiešanas laikus
 STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu tips (pēc jaunas spēles/spēles ielādes): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
@@ -1345,6 +1353,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmē
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālierīces uz katra: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīce, dzelzceļa mezgls) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
@@ -1354,7 +1363,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Izmantotais nok
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :vienvirziena ceļa signāli
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt cauri sgnālu tipiem: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām sgnālu veidiem: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tikai bloķēšanas signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
@@ -2088,8 +2097,8 @@ STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Ceļa si
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Vienvirziena ceļa signālierīce (elektriska){}Ceļa signāls ļauj iebraukt signāla blokā vairāk kā vienam vilcienam vienlaicīgi, ja vien vilciens var rezervēt drošu apstāšanās punktu. Vienvirziena ceļa signālierīcēm nevar pabraukt garām no aizmugures
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signālierīču pārveidotājs{}Kad ieslēgts, klikšķis uz jau esošas signālierīces pārveidos to uz norādīto signāla tipu un variantu. Ctrl+klikšķis pārslēgs pašreizējo variantu. Shift+klikšķis rāda pārveidošanas tāmes vērtību
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Vilkt signālu biežumu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Samazināt signālu biežumu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Palielināt signālu biežumu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Samazināt signālierīču biežumu
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Palielināt signālierīču biežumu
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izvēlēties dzelzceļa tiltu
@@ -2609,7 +2618,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģinājums i
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu gariņu. Visi bojātie gariņi tiks parādīti ar sarkanu jautājuma zīmi (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur vairākus Action 8 ierakstus (gariņš {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lasīt aiz pseidogariņa beigām (gariņš {3:NUM})
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašreiz lietotajā pamata grafikas pakā iztrūkst daļa materiāla.{}Lūdzu atjaunojiet pamata grafikas paku
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Pašlaik lietotajai pamata grafikas kopai trūkst daļa gariņu.{}Lūdzu atjauniniet pamata grafikas kopu
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Pieprasītie GRF resursi nav pieejami (gariņš {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} ar {2:STRING} tika atspējots
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nederīgs/nezināms gariņa izkārtojuma formāts (gariņš {3:NUM})
@@ -3904,10 +3913,10 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nav piem
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vispirms ir jānoņem dzelzceļa sliedes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Ceļs ir bloķēts vai vienvirziena
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Vienlīmeņa krustojumi šīm sliedēm nav atļauti
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Šeit nevar būvēt signālus...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Šeit nevar būvēt signālierīces...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Šeit nevar būvēt dzelzceļa posmu...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Šeit nevar nojaukt dzelzceļa posmu...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Šeit nevar nojaukt signālus...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Šeit nevar nojaukt signālierīces...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Šeit nevar pārveidot signālus,,,
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... tur nav dzelzsceļa sliežu
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... tur nav signālu

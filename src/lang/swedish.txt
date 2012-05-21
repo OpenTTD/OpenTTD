@@ -1220,7 +1220,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av d
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om forden är vilse: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till deras destination.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Granska fordonens destinationer: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras orderraderna fordon periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande.
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras fordonens order periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fordon
@@ -1237,7 +1237,9 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp som måste finnas i banken för att automatiskt förnyande av fordon ska vara möjligt
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Visa antal invånare efter stadsnamnen på kartan
@@ -1271,6 +1273,7 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximalt områd
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Serva helikoptrar vid landningplattor automatiskt: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Serva helikoptrar efter varje landning, även om det inte finns någon hangar på flygplatsen
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Koppla landskapsverktyget till övriga verktygsfält: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :När ett konstruktionsverktyg för en transporttyp öppnas, öppna även verktyget för landskapsarkitektur
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Markfärg som används på minikartan: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Terrängens färg på minikartan
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
@@ -1287,6 +1290,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Inga
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alla företag
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Prioritera lagchat med <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Växla mellan bindning av intern företagschatt och offentlig chatt till <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Mushjulsfunktion: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Möjliggör skrollning med tvådimensionella mushjul
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zooma kartan
@@ -1302,6 +1306,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrolla med vänster musknappsklick: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Aktivera skrollning av kartan genom att dra den med den vänstra musknappen. Detta är särskilt användbart för skrollning vid användning av en pekskärm
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Använd {STRING} som datumformat för sparfilsnamn
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format för datum i filnamnen för sparade spel
@@ -1310,6 +1315,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standardpalett för NewGRF när ingen annan palett är angiven: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalett att använda med NewGRFer som inte anger vilken palett de behöver
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS-palett
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows-palett
 
@@ -1465,7 +1471,9 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rek
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vägfinnare för vägfordon: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vägfinnare för skepp: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vägfinnare som skepp ska använda
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Backa automatiskt vid signaler: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Tillåt att tåg backar vid en signal om de har väntat där länge
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -2107,7 +2115,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägssignal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten. SHIFT-klick visar beräknad konverteringskostnad
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera signal{}När den är markerad, klicka på en existerande signal för att konvertera den till vald signaltyp och -variant. Ctrl-klick ändrar den existerande varianten. Shift-klick visar beräknad konverteringskostnad
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minska avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka avstånd mellan signaler

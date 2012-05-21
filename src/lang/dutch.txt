@@ -1151,11 +1151,13 @@ STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Geleidelijk laa
 STR_CONFIG_SETTING_INFLATION                                    :Inflatie: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Schakel de inflatie in de economie in, waar de kosten iets sneller stijgen dan de betalingen
 STR_CONFIG_SETTING_SELECTGOODS                                  :Vracht alleen bezorgen aan een station als er vraag naar is: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Leveren alleen vracht naar een station dat werd aangevraagd bij een laad-voertuig. Dit voorkomt een slechte score voor ladingen die niet wordt opgehaald bij een station
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen bruggen
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel lengte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte voor te bouwen tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Handmatige bouwmethode voor primaire industrieën: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Wijze van financiering van een primaire industrie. 'geen' betekent dat het niet mogelijk is om te financieren, 'prospectie' betekent dat financiering mogelijk is, maar de bouw vindt plaats in een willekeurige plek op de kaart en kan mislukken ook, "als andere bedrijfstakken": ruwe industrieën kan worden geconstrueerd door bedrijven als verwerkende industrie in elke positie zij willen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
@@ -1169,7 +1171,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan de linker k
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan de rij zijde
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan de linker kant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Financieel overzicht aan het einde van het jaar weergeven: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien ingeschakeld, de financiën venster verschijnt aan het eind van elk jaar voor een gemakkelijke controle van de financiële status van het bedrijf
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nieuwe orders zijn standaard 'non-stop': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaal gesproken zal een voertuig stoppen op elk station dit wordt gepasseerd. Door het inschakelen van deze instelling, zal het rijden door alle station op weg naar de eindbestemming zonder te stoppen. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kan expliciet worden ingesteld op het gedrag
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nieuwe treinorders stoppen de trein standaard {STRING} van het perron
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
@@ -1186,6 +1190,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Deze optie staa
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Geld geven aan andere bedrijven toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Sta toe dat bedrijven geld naar elkaar overmaken in een multiplayer spel.
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfactor voor vracht om zware treinen te simuleren: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Stel de impact van het vervoer van vracht bij treinen. Een hogere waarde maakt het vervoer van vracht veeleisender voor treinen, met name in heuvels
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Vliegtuig snelheidsfactor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuigcrashes: {STRING}
