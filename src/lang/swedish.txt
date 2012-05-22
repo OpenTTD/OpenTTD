@@ -1240,6 +1240,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid fö
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Visa tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Fördröjning innan tooltips visas när muspekaren hålls över ett gränssnittselement. Alternativt kan tooltips bindas till den högra musknappen
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Håll muspekaren i {COMMA} sekund{P 0 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Högerklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånarantal i stadsnamnet: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Visa antal invånare efter stadsnamnen på kartan
@@ -1336,13 +1338,17 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Visa restider i
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Visa ankomster och avgångar i tidtabeller: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Visa förväntade ankomst- och avgångstider i tidtabeller
 STR_CONFIG_SETTING_QUICKGOTO                                    :Snabbskapande av fordonsorder: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Förvälj 'åk till'-pekaren när orderfönstret öppnas
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard järnvägsräls (efter nytt/laddat spel): {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Första tillgängliga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Sista tillgängliga
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använd
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Spårtyp som ska förväljas efter att ett spel startas eller laddas. 'Först tillgängliga' väljer den äldsta spårtypen, 'Senast tillgängliga' väljer den nyaste spårtypen och 'Mest använda' väljer den spårtyp som för närvarande är mest använd
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Först tillgängliga
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Senast tillgängliga
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använda
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Visa reserverat spår: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Behåll byggnadsverktyg aktiva efter att de använts: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgifter i företagets finansfönster: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Håll verktygen för byggnation av broar, tunnlar, etc. öppna efter användning
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgifter i företagens finansfönster: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Välj layout för företagens utgiftsfönster
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max antal tåg per företag: {STRING}
@@ -1366,6 +1372,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :När denna inst
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tillåt datorspelare i flerspelarläge: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Tillåt datorstyrda AI-spelare att delta i spel för flera spelare
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes innan skript sätts i viloläge: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximalt antal beräkningssteg ett skript kan utföra i en omgång
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Visa serviceintervall i procent: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Välj om fordonsservice ska triggas av hur lång tid som har gått sedan senaste service eller av att tillförlitligheten faller med en viss procentsats av den maximala tillförlitligheten
@@ -1380,6 +1387,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Välj vilket se
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Normalt serviceintervall för skepp: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket serviceintervall som normalt sett ska användas för nya skepp, om inget annat serviceintervall uttryckligen anges
 STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera service när motorstopp är av: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :När det är aktiverat servas inte fordon om de inte kan få motorstopp
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
 
@@ -1400,6 +1408,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Endast avancera
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alla
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Vägnätslayout för nya städer: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout för städernas vägnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bättre vägar
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
@@ -1440,6 +1449,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Långsamt
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normalt
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snabbt
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel av städerna som ska växa till storstäder: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Andel av alla städer som med tiden ska bli storstäder; alltså städer som är större från början och växer snabbare än andra
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks multiplikator: {STRING}
@@ -1469,7 +1480,9 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekommenderad)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Vägfinnare för tåg: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vägfinnare som tåg ska använda
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Vägfinnare för vägfordon: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vägfinnare som vägfordon ska använda
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Vägfinnare för skepp: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vägfinnare som skepp ska använda
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Backa automatiskt vid signaler: {STRING}

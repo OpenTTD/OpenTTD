@@ -1135,6 +1135,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nosaka transpor
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilciena paātrinājuma modelis: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Slīpu lauciņu nogāžu stāvums vilcieniem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nogāžu stāvums autotransportam: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
@@ -1169,6 +1170,7 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, k
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut vietējo varas iestāžu piekukuļošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu pilsētām jaunu ēku finansēšanai
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļaut pārsūtīt naudu starp uzņēmumiem vairākspēlētāju spēlēs
@@ -1240,7 +1242,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam v
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maksimālais staciju lielums: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksimālais laukums kuru var aizņemt atsevišķas stacijas izvietotās daļas. Jāņem vērā ka lielas vērtības palēninās spēli
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Veikt helikopteru automātisko apkopi nolaišanās laukumos: {STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Translation: Helikopteriem veikt apkopi pēc katras nolaišanās, arī ja lidostā nav helikopteru bāzes
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Helikopteriem veikt apkopi pēc katras nolaišanās, arī ja lidostā nav helikopteru bāzes
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Sasaitēt ainavas rīkjoslu ar sliežu/ceļu/ūdens/lidostu rīkjoslām: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Atverot būvniecības rīkjoslas transportlīdzekļu veidiem, tiek atvērta arī ainavu veidošanas rīkjosla
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kartes zemes krāsa: {STRING}
@@ -1344,6 +1346,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Izvēlēties ja
 STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi, kad sabojāšanās ir izslēgta: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot eletrificēto dzelzceļu: {STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
@@ -1422,6 +1425,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vidējais lielums attiecībā pret parastām pilsētām spēles sākumā
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ceļu būves laikā novākt bezjēdzīgus ceļu elementus: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Finansētās ceļu rekonstrukcijas laikā noņem vairs neizmantojamos ceļu nobeiguma posmus
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Būvniecība
