@@ -3525,9 +3525,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIar
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spelscript
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikk for å velje ein AI
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Forfattar: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versjon: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Forfattar: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versjon: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Merk utheva AI

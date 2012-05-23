@@ -3704,9 +3704,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click to select a script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Author: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Author: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Version: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accept
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Select highlighted script

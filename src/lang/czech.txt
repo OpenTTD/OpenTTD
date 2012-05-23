@@ -3673,9 +3673,9 @@ STR_AI_LIST_CAPTION_AI                                          :AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :herní skripty
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Skript vybereš kliknutím
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Verze: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Verze: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potvrdit
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrat označený skript

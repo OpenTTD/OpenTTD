@@ -3346,9 +3346,9 @@ STR_AI_LIST_CAPTION_AI                                          :AI-та
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Програмни езици на играта
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Кликнете за да изберете AI
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Версия: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Автор: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Версия: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Приеми
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Избери маркирания AI

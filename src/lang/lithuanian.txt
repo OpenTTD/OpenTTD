@@ -3828,9 +3828,9 @@ STR_AI_LIST_CAPTION_AI                                          :DI'ai
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Žaidimo skriptai
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Pasirinkite skriptą paspausdami
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autorius: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versija: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autorius: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versija: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Priimti
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pasirinkti pažymėtą skriptą

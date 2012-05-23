@@ -3705,9 +3705,9 @@ STR_AI_LIST_CAPTION_AI                                          :{G=f}AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :{G=f}게임 스크립트
 STR_AI_LIST_TOOLTIP                                             :{BLACK}클릭하여 AI를 선택하세요
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}저자: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}버젼: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}주소: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}저자: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}버젼: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}주소: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}적용
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}선택한 AI 선택

@@ -3299,9 +3299,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Agordi p
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klaki por elekti AI
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Aŭtoro: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versio: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Aŭtoro: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versio: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akcepti
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazitan AI

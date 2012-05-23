@@ -3394,9 +3394,9 @@ STR_AI_LIST_CAPTION_AI                                          :AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :遊戲腳本
 STR_AI_LIST_TOOLTIP                                             :{BLACK}點選以選擇腳本
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}作者： {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}版本： {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}作者： {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}版本： {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}接受
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選擇標示到的腳本

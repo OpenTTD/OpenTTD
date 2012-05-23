@@ -3639,9 +3639,9 @@ STR_AI_LIST_CAPTION_AI                                          :AI's
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik om een script te selecteren
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Auteur: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versie: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Auteur: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versie: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepteer
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecteer gemarkeerd script

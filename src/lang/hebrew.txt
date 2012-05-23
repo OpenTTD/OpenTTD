@@ -3242,9 +3242,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}שנה �
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK} לחץ לבחירת בינה מלאכותית
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}יוצר: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}גרסה: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}קישור: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}יוצר: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}גרסה: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}קישור: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}אשר
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} בחר סוג בינה מלאכותית שהודגש

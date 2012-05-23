@@ -3735,9 +3735,9 @@ STR_AI_LIST_CAPTION_AI                                          :VIe
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte Partije
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikom se označava skripta
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Izdanje: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Izdanje: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Prihvati
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izabira označenu skriptu

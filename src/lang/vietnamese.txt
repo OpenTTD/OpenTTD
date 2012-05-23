@@ -3547,9 +3547,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Scripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Chọn một AI
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Tác giả: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Phiên bản: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Tác giả: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Phiên bản: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Chấp nhận
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp nhận AI đã chọn

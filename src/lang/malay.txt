@@ -3522,9 +3522,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkripPermainan
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk pilih skrip
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Penulis: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versi: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Penulis: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versi: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Terima
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pilih skrip yang diserlahkan

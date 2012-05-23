@@ -3539,9 +3539,9 @@ STR_AI_LIST_CAPTION_AI                                          :KIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spill-Scripter
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klickt fir en Script ze selectéieren
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versioun: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versioun: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptéiert
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selectéiert ungewielte Script

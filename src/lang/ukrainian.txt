@@ -3663,9 +3663,9 @@ STR_AI_LIST_CAPTION_AI                                          :Модулі А
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Ігрові Скрипти
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Клікніть, щоб вибрати скрипт
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Версія: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Автор: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Версія: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Прийняти
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Вибрати виділений скрипт

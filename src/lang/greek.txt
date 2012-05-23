@@ -3577,9 +3577,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Δέσμες ενεργειών Παιχνιδιού
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Πατήστε για επιλέξετε ένα script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Συγγραφέας: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Έκδοση: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}Ιστιοσελίδα: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Συγγραφέας: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Έκδοση: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}Ιστιοσελίδα: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Αποδοχή
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Αποδοχή του επιλεγμένου script

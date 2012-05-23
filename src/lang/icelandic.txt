@@ -3272,9 +3272,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Stilltu 
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Smelltu til að merkja gervigreind
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Höfundur: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Útgáfa: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}Vefslóð: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Höfundur: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Útgáfa: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}Vefslóð: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Í lagi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velja merkta gervigreind

@@ -3732,9 +3732,9 @@ STR_AI_LIST_CAPTION_AI                                          :IA
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Script
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Fare clic per selezionare uno script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autore: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versione: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autore: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versione: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accetta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Sceglie lo script selezionato

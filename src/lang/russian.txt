@@ -3898,9 +3898,9 @@ STR_AI_LIST_CAPTION_AI                                          :модули И
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :игровые скрипты
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Щёлкните для выбора скрипта
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Автор: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Версия: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Автор: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Версия: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Выбрать
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбрать подсвеченный скрипт

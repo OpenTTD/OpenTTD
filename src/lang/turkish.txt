@@ -3523,9 +3523,9 @@ STR_AI_LIST_CAPTION_AI                                          :YZ'ler
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :OyunBetikleri
 STR_AI_LIST_TOOLTIP                                             :{BLACK}YZ seçmek için bir tuşa basın
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Yazar: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Sürüm: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Yazar: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Sürüm: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Kabul et
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulanan YZ'yi seç

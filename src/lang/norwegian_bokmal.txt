@@ -3525,9 +3525,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIer
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spillskript
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikk for å velge et skript
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Forfatter: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versjon: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Forfatter: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versjon: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velg det merkede skript

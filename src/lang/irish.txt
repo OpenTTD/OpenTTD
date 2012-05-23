@@ -3337,9 +3337,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cumraigh
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliceáil chun AI a roghnú
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Údar: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Leagan: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Údar: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Leagan: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Glac leis
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Roghnaigh an AI aibhsithe

@@ -3702,9 +3702,9 @@ STR_AI_LIST_CAPTION_AI                                          :Tekoälyt
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Peliskriptit
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Napsauta valitaksesi skriptin
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Tekijä: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versio: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Tekijä: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versio: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Hyväksy
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Valitse korostettu skripti

@@ -3536,9 +3536,9 @@ STR_AI_LIST_CAPTION_AI                                          :IA
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripturi Joc
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click pentru a alege un script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versiune: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versiune: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptă
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Alege scriptul marcat

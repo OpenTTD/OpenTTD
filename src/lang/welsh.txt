@@ -3523,9 +3523,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIau
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Sgriptiau Gêm
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Cliciwch i ddewis sgript
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Awdur: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Fersiwn: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Awdur: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Fersiwn: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Derbyn
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y sgript a amlygwyd

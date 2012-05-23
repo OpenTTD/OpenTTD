@@ -3138,8 +3138,8 @@ STR_AI_LIST_CAPTION_AI                                          :هوش های �
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :کدهای بازی
 STR_AI_LIST_TOOLTIP                                             :{BLACK}برای انتخاب روی یک کد کلیک کنید
 
-STR_AI_LIST_VERSION                                             :{BLACK}ویرایش: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}آدرس اینترنتی: {STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}ویرایش: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}آدرس اینترنتی: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}قبول
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}انتخاب کد مشخص شده

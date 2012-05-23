@@ -3335,9 +3335,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}AI の�
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK}クリックして AI を選択します。
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}作成者： {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}バージョン： {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}作成者： {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}バージョン： {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}OK
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択した AI を使用します。

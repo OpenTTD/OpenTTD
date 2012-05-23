@@ -3705,9 +3705,9 @@ STR_AI_LIST_CAPTION_AI                                          :IAs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts del Joc
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clica per a seleccionar un script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versió: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versió: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecciona l'script realçat

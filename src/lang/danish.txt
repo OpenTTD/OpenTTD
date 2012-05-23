@@ -3534,9 +3534,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIer
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spilscripts
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik for at vælge et script
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Skaber: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Skaber: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Version: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Accepter
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vælg markeret script

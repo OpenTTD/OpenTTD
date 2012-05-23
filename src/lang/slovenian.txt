@@ -3855,9 +3855,9 @@ STR_AI_LIST_CAPTION_AI                                          :UI-ji
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte igre
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni za izbor skripte
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Avtor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Verzija: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Avtor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Verzija: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Potrdi
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izberi označeno skripto

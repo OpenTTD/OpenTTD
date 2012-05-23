@@ -3582,9 +3582,9 @@ STR_AI_LIST_CAPTION_AI                                          :AIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Speletjie Skrifte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliek om 'n skrif te kies
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Skrywer: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Weergawe: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Skrywer: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Weergawe: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aanvaar
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Kies beligte skrif

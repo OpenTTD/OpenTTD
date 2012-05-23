@@ -3703,9 +3703,9 @@ STR_AI_LIST_CAPTION_AI                                          :KIs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skripte
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicken, um ein Skript auszuwählen
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Version: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Anwenden
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Ausgewähltes Skript verwenden

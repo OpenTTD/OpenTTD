@@ -3671,9 +3671,9 @@ STR_AI_LIST_CAPTION_AI                                          :Datorspelare
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spelskript
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klicka för att välja en datorspelare
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Upphovsman: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Version: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Upphovsman: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Version: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Acceptera
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Välj markerad datorspelare

@@ -3981,9 +3981,9 @@ STR_AI_LIST_CAPTION_AI                                          :Gracze SI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Game Script'y
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kliknij, aby wybrać skrypt
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Wersja: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}Adres: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Wersja: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}Adres: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Zaakceptuj
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Wybierz zaznaczony skrypt

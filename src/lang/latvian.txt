@@ -3650,9 +3650,9 @@ STR_AI_LIST_CAPTION_AI                                          :MI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Spēles skripti
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Uzklikšķināt, lai izvēlētos skriptu
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autors: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versija: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}Tīmekļa adrese: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autors: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versija: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}Tīmekļa adrese: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Apstiprināt
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Izvēlēties izcelto skriptu

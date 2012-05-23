@@ -3431,9 +3431,9 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK} اعد�
 # Available AIs window
 STR_AI_LIST_TOOLTIP                                             :{BLACK} اضغط لاختيار ذكاء اصطناعي
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}المؤلف: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}الاصدار: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}العنوان : {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}المؤلف: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}الاصدار: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}العنوان : {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK} اقبل
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اختر الذكاء الصناعي المنتقى

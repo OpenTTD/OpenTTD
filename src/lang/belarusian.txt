@@ -4061,9 +4061,9 @@ STR_AI_LIST_CAPTION_AI                                          :модулі Ш
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :гульнёвыя скрыпты
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Пстрыкніце для выбару скрыпту
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Аўтар: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Вэрсiя: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Аўтар: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Вэрсiя: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Выбраць
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбраць падсьвечаны скрыпт

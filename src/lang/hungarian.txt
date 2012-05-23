@@ -3628,9 +3628,9 @@ STR_AI_LIST_CAPTION_AI                                          :MI-k
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Játékszkriptek
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Kattints ide a szkript kiválasztásához
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Készítő: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Verzió: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Készítő: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Verzió: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Elfogad
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}A kijelölt szkript kiválasztása

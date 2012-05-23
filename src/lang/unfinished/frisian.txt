@@ -2464,8 +2464,8 @@ STR_AI_CONFIG_CHANGE_AI                                         :AI
 # Available AIs window
 STR_AI_LIST_CAPTION_AI                                          :AIs
 
-STR_AI_LIST_VERSION                                             :{BLACK}Ferzje: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Ferzje: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Akseptearje
 STR_AI_LIST_CANCEL                                              :{BLACK}Annulearje

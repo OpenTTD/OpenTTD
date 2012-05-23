@@ -3582,9 +3582,9 @@ STR_AI_LIST_CAPTION_AI                                          :Tehismõistused
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScript-id
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klõpsa skripti valimiseks
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
-STR_AI_LIST_VERSION                                             :{BLACK}Versioon: {NUM}
-STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Versioon: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Nõustu
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vali esiletõstetud skript
