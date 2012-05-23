@@ -1142,7 +1142,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinaison des pentes pour les véhicules routiers{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Inclinaison d'une case en pente pour un véhicule routier. Les valeurs les plus hautes rendent l’ascension plus difficile
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Interdire aux trains et aux navires les virages à 90°{NBSP}: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Les virages à 90° se produisent lorsqu'une voie horizontale est directement suivie par une voie verticale, impliquant que le train tourne de 90° en traversant la bordure de la case au lieu des 45° habituels pour les autres combinaisons de voies. S'applique également à la rotation des navires.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Les virages à 90° se produisent lorsqu'une voie horizontale est directement suivie par une voie verticale, impliquant que le train tourne de 90° en traversant la bordure de la case au lieu des 45° habituels pour les autres combinaisons de voies.{}S'applique également à la rotation des navires.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permettre de joindre des stations non adjacentes{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Autoriser l'ajout à une station de morceaux ne touchant pas directement les morceaux existants. Un Ctrl-clic est requis pour placer les nouveaux morceaux.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Utiliser l'algorithme amélioré de chargement{NBSP}: {STRING}
@@ -1158,21 +1158,21 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Longueur maximu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Longueur maximum des tunnels{NBSP}: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Longueur maximum pour la construction des tunnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Méthode de construction manuelle des industries primaires{NBSP}: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Méthode de fondation d'une industrie primaire. "aucune" signifie qu'il n'est pas possible d'en fonder. "prospection" signifie que la fondation est possible, mais la construction se produit aléatoirement sur la carte et peux aussi bien échouer. "comme les autres industries" signifie que les industries primaires peuvent être construites par les compagnies où elles le désirent comme les industries secondaires
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Méthode de fondation d'une industrie primaire{NBSP}:{}«{NBSP}Aucune{NBSP}» signifie qu'il n'est pas possible d'en fonder.{}«{NBSP}Prospection{NBSP} signifie que la fondation est possible, mais la construction sera placée aléatoirement sur la carte et peut tout aussi bien échouer.{NBSP}«{NBSP}Comme les autres industries{NBSP}» signifie que les industries primaires peuvent être construites par les compagnies où elles le désirent comme les industries secondaires.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :aucune
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :comme les autres industries
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospection
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :par prospection
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Terrain plat autour des industries{NBSP}: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Quantité de terrain plat autour d'une industrie. Cela assure qu'un espace vide sera disponible autour d'une industrie pour construire des voies, etc.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permettre plusieurs industries similaires par ville{NBSP}: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalement, une ville ne veut pas plus d'une industrie de chaque type. Avec ce paramètre, il sera possible d'avoir plusieurs industries du même type dans la même ville
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalement, une ville ne veut pas plus d'une industrie de chaque type dans sa zone d'influence. En activant ce paramètre, il sera possible d'avoir plusieurs industries du même type dans la même ville.
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Montrer les signaux{NBSP}: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Choisir de quel coté de la voie placer les signaux
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :à gauche de la voie
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :côté conducteur
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :à droite de la voie
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afficher le bilan financier en fin d'année{NBSP}: {STRING}
-STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si activé, le bilan financier sera affiché à la fin de chaque année pour permettre un contrôle rapide de l'état de la compagnie
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Si activé, le bilan financier sera affiché à la fin de chaque année pour permettre un contrôle rapide de l'état de la compagnie.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Les nouveaux ordres sont « sans arrêt » par défaut{NBSP}: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalement, un véhicule s'arrête dans chaque station qu'il traverse. En activant ce paramètre, il traversera toutes les stations sur le chemin de sa destination finale sans s'arrêter. Noter que ce paramètre défini uniquement une valeur par défaut pour les nouveaux ordres. Les ordres peuvent par ailleurs être réglés individuellement avec un autre comportement
 STR_CONFIG_SETTING_STOP_LOCATION                                :Les nouveaux ordres arrêtent les trains {G 0:2 au au "à la"} {STRING} du quai par défaut

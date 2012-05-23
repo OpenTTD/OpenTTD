@@ -1175,13 +1175,16 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien ingescha
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nieuwe orders zijn standaard 'non-stop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaal gesproken zal een voertuig stoppen op elk station dit wordt gepasseerd. Door het inschakelen van deze instelling, zal het rijden door alle station op weg naar de eindbestemming zonder te stoppen. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kan expliciet worden ingesteld op het gedrag
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nieuwe treinorders stoppen de trein standaard {STRING} van het perron
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaats waar een trein standaard stopt bij het platform . De 'bij einde' betekent in de buurt van de ingang, 'midden' betekent in het midden van het platform, en 'einde' betekent ver weg van de ingang. Merk op dat deze instelling alleen een standaardwaarde voor nieuwe orders bepaalt. Individuele opdrachten kunnen expliciet worden ingesteld op het gedrag
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in het midden
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijvorming bij wegvoertuigen (met bijwerkingen): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Wegvoertuigen laten stoppen voor een bezet wegstation tot ze toestemming krijgen om door te gaan.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Verschuif scherm als muis aan de rand is: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer ingeschakeld, begint het hoofddisplay te schuiven als de muis bij de rand van het scherm is
 STR_CONFIG_SETTING_BRIBE                                        :Omkopen van de gemeente toestaan: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Toestaan dat bedrijven mogen proberen de plaatselijke gemeente autoriteit om te kopen. Als de omkoping wordt opgemerkt door een inspecteur, zal de onderneming niet in staat zijn om in de stad actie te ondernemen voor zes maanden
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kopen van exclusieve transportrechten toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Financiering van gebouwen toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Deze optie staat bedrijven toe meer geld te geven aan steden voor de financiering van nieuwe huizen.
@@ -1192,6 +1195,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Sta toe dat bed
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewichtsfactor voor vracht om zware treinen te simuleren: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Stel de impact van het vervoer van vracht bij treinen. Een hogere waarde maakt het vervoer van vracht veeleisender voor treinen, met name in heuvels
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Vliegtuig snelheidsfactor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stel de relatieve snelheid van de vliegtuigen in vergelijking met andere typen voertuigen, om de hoogte van het inkomen van het vervoer door vliegtuigen te verminderen
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuigcrashes: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Kies de kans op een vliegtuigcrash
@@ -1208,15 +1212,20 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Maak het mogeli
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Compatibiliteit optie voor oude NewGRFs. Schakel dit niet uit, tenzij je precies weet wat je doet!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Onderhoud infrastructuur: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wanneer ingeschakeld, infrastructuur veroorzaakt onderhoudskosten. De kosten groeit boven-proportioneel met de grootte van het netwerk, hetgeen van hogere invloed is op grotere bedrijven dan kleinere
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Vliegvelden verlopen niet: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Het inschakelen van deze instelling zorgt ervoor dat elke luchthaven soort altijd beschikbaar blijft na de introductie
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Waarschuw wanneer voertuig verdwaald is: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Veroorzaakt berichten over voertuigen die niet in staat zijn om een pad naar hun bestemming te vinden
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Controleer orders van voertuigen: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wanneer ingeschakeld, worden de orders van de voertuigen regelmatig gecontroleerd, en sommige voor de hand liggende problemen worden gemeld met een nieuwsbericht bij detectie
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertuigen
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuw als inkomsten van een voertuig negatief zijn: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuws-bericht verstuurd wanneer een voertuig geen winst heeft gemaakt in een kalenderjaar
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen nooit: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vernieuw voertuig automatisch wanneer deze oud wordt: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Vernieuw voertuigen automatisch na {STRING} maximum leeftijd

@@ -1393,7 +1393,9 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Fija el interva
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactivar mantenimiento cuando las averías están desactivadas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Cuando se activa, los vehículos no reciben mantenimiento si no pueden romperse
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad en vagones: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Si se activa, se tienen en cuenta los límites de velocidad de los vagones a la hora de decidir la máxima velocidad de un tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarriles eléctricos: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar los ferrocarriles para hacer que los trenes eléctricos puedan recorrerlos
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias en color aparecen en: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio: {STRING}

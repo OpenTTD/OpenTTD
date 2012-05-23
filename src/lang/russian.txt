@@ -1439,7 +1439,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зе
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Обратить направление перемещения обзора мышью: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Настройка смещения обзора правой кнопкой мыши.{}Если отключено, мышь двигает камеру.{}Если включено, мышь двигает карту.
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавный скроллинг окна просмотра: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавное смещение обзора: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Настройка перемещения обзора в основном окне при щелчке по миникарте или по команде обзора какого-нибудь объекта. Если включено, то обзор смещается плавно; если отключено - то мгновенно.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показывать замеры при строительстве: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Показывать расстояния и разницу высот при строительстве
@@ -1464,7 +1464,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команд.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Скроллинг по нажатию левой кнопки мыши: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Смещение обзора по нажатию левой кнопки мыши: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Смещение обзора левой кнопкой мыши. Это удобно при использовании сенсорного экрана.
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Использовать {STRING} формат даты для имён сохранений
