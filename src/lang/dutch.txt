@@ -1227,15 +1227,20 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarschuw als inkomsten van een voertuig negatief zijn: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wanneer ingeschakeld, wordt een nieuws-bericht verstuurd wanneer een voertuig geen winst heeft gemaakt in een kalenderjaar
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuigen verlopen nooit: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wanneer ingeschakeld, alle voertuig modellen blijven voor altijd beschikbaar na hun introductie
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vernieuw voertuig automatisch wanneer deze oud wordt: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wanneer ingeschakeld, wordt een voertuig die het einde van zijn levensduur nadert automatisch vervangen als aan de vernieuw voorwaarden worden voldaan
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Vernieuw voertuigen automatisch na {STRING} maximum leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatieve leeftijd van een voertuig wanneer deze in aanmerking komt voor automatisch vervangen
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" en} voor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" en} na
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimum benodigd geld voor automatisch vernieuwen: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimale hoeveelheid geld die op de bank moet blijven alvorens automatisch vernieuwen voertuigen te starten
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duur van foutbericht: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duur voor het weergeven van foutmeldingen in een rood venster. Merk op dat sommige (kritische) foutmeldingen niet automatisch wordt gesloten na deze tijd, deze moeten handmatig worden gesloten
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} seconde{P 0 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Toon tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Vertraging voordat tooltips worden weergegeven wanneer de muis over een interface-element. Als alternatief kunnen tooltips worden gebonden aan de rechter muisknop
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Wijs aan voor {COMMA} seconde{P 0 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Geef het inwoneraantal bij een stad weer: {STRING}

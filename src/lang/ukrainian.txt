@@ -570,7 +570,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового скрипта
+STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового Скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -663,7 +663,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включити всі
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Відключити усі
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показувати всі види вантажів на графіку
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати всі види вантажів на графіку
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати ніякі типи вантажів на графіку
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вкл/відкл графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -1226,6 +1226,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Змін
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(пояснення відсутнє)
 
 STR_CONFIG_SETTING_OFF                                          :ні
 STR_CONFIG_SETTING_ON                                           :так
@@ -1245,21 +1246,38 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :правору�
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Будувати на схилах та узбережжях: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дозволити міняти схили під будівлями, дорогами тощо (автосхил): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Можливість змінювати ландшафт під будівлями та дорогами без необхідності їх зносу
 STR_CONFIG_SETTING_CATCHMENT                                    :Більш реалістічні розміри зон покріття для станцій: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Залежність розміру зони покриття від типу станції та розміру аеропорту
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Дозволити видаляти більше доріг, мостів та тунелів міста: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Можливість спрощеного видалення міських будівель та інфраструктури
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максимальна довжина потягів: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Налаштування максимальної довжини потягів
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} клітин{P ка ки ок}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Кількість диму/іскр від транспорту: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Вібір кількості диму та іскр, що генерує транспорт під час руху
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Модель прискорення поїзда: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Вибір фізичної моделі прискорення залізничного транспорту. В "оригінальній" моделі сповільнення на схилах не залежить від характеристик транспорту. В "реалістичній" моделі сповільнення на схилах та поворатах залежить від різних характеристик, таких як довжина потяга або потужність локомотива.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Модель прискорення автомобілів: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Вібір фізичної моделі прискорення дорожнього транспорту. В "оригінальній" моделі сповільнення на схилах не залежить від характеристик транспорту. В "реалістичній" моделі сповільнення на схилах залежить від різних характеристик, таких як потужність двигуна, тощо.
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Крутизна схилів для залізничного транспорту: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Налаштування крутизни схилів для залізничного транспорту. Чим вище значення, тим складніше підйом на схилах.
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Крутизна схилів для дорожнього транспорту: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Налаштування крутизни схилів для дорожнього транспорту. Чим вище значення, тим складніше підйом на схилах.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Заборонити поїздам і кораблям повертати на 90°: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Дозволити об'єднувати не безпосередньо суміжні станції: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Використовувати покращений алгоритм завантаження: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Завантажувати поступово: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Інфляція: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Наповнювати станцію тільки тими видами вантажу, на які був попит: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Максимальна довжина мостів: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Максимальна довжина тунелів: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Спосіб створення сировинних підприємств: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не створювати
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як і інші підприємства
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологічна розвідка
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Вірівняний простір навколо підприємств: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Дозволити декілька однотипних підприємств на місо: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Розташування сигналів: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :По лівій стороні
@@ -1279,6 +1297,8 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Дозволи�
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Дозволити фінансувати реконструкцію місцевих доріг: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Дозволити передавати гроші іншим компаніям: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Множник ваги для імітації важких потягів: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Множник швидкості повітрянного транспорту: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Кількість авіакатастроф: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :нема
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :знижена
@@ -1300,7 +1320,15 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :так, для 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Попереджувати, якщо транспорт збитковий: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Транспорт не старіє: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Автооновлювати застарілий транспорт: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Автозаміна транспрорту {STRING} закінчення строку експлуатаціі
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} місяц{P ь я ів} до
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} місяц{P ь я ів} після
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :При автооновленні не допускади падіння балансу нижче {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Тривалість повідомлення про помилку: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} секунд{P а и ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Відображати підказки: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :При наведенні, через {COMMA} секунд{P у и ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :По правому кліку
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показувати населення в назві міста: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Товщина ліній на графіках: {STRING}
 
@@ -1325,6 +1353,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Дозволи�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна або більше клітинок з північного краю не є пустими
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна або більше клітинок на одному з країв - не вода
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Максимальний розмір станцій: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Автоматичний техогляд гелікоптерів на площадках: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Приєднати меню рельєфу до меню будування: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Колір поверхні на малій карті: {STRING}
@@ -1395,6 +1424,12 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дозволи�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Кількість #opcodes до призупинення скриптів: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтервал техогляду у відсотках: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Інтервал техогляду залізничного транспорту: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} д{P ень ні нів}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :відключено
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Інтервал техогляду дорожнього транспорту: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Інтервал техогляду повітряного транспорту: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Інтервал техогляду водного транспорту: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Не робити техогляд, коли вимкнено аварії: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Враховувати обмеження швидкості вагонів: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Відключити електрички: {STRING}
@@ -1403,6 +1438,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Кольоро�
 STR_CONFIG_SETTING_STARTING_YEAR                                :Початкова дата: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Економіка спокійна (більше змін, але маленьких): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Можна купувати інші компанії: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Відсоток прибутку при частковому перевезенні: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :При протягуванні встановлювати сигнали кожні: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} клітин{P ку ки ок}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :При протягуванні дотримуватись фіксованої дистанціі між сигналами: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Автоматично будувати семафори до: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Використовувати меню сигналів: {STRING}
@@ -1436,7 +1474,12 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Позиція панелі статусу: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Радіус прилипання вікон: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} піксел{P ь і ів}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :відключено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Максимальна кількість вікон (що не прилипають): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :відключено
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Максимальний рівень наближення: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Максимальний рівень віддалення: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1451,6 +1494,9 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :повільн�
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :середня
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :швидка
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дуже швидка
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Співвідношення кількості мегаполісів: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 з {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :жодного
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Початковий коефіцієнт розміру мегаполісів: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Прибрати безглузді елементи доріг під час будівництва доріг: {STRING}
 
@@ -1514,7 +1560,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / Ігрового Скрипта
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / GS
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
@@ -1534,7 +1580,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового скрипта
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Переклад має {NUM} неперекладених рядків. Зареєструйтесь як перекладач вашої мови та покращіть OpenTTD. Детальніше читайте в readme.txt.
@@ -2829,6 +2875,9 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прий
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Показати список приймання вантажів
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Приймає: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Ця станція має ексклюзивні права на перевезення.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} отримала ексклюзивні права на перевезення.
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рейтинг
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Показати рейтинг станції
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Місцевий рейтинг транспортної компанії:
@@ -3228,7 +3277,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пере
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якого ви збираєтесь оновити потяги
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
 STR_REPLACE_RAIL_VEHICLES                                       :Неелектрифіковані поїзди
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
@@ -3627,7 +3676,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Прод
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Відобразити результати дебагу цього АІ
 STR_AI_GAME_SCRIPT                                              :{BLACK}Ігровий Скрипт
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипту
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипта
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один із запущених скриптів перестав працювати. Будь ласка, повідомте про це автору скрипта (разом зі знімком вікна налагодження АІ/Ігрового Скрипта)
