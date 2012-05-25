@@ -2417,6 +2417,32 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 }
 
 /**
+ * Load a cargo- or railtype-translation table.
+ * @param gvid ID of the global variable. This is basically only checked for zerones.
+ * @param numinfo Number of subsequent IDs to change the property for.
+ * @param buf The property value.
+ * @param [in,out] translation_table Storage location for the translation table.
+ * @param name Name of the table for debug output.
+ * @return ChangeInfoResult.
+ */
+template <typename T>
+static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader *buf, T &translation_table, const char *name)
+{
+	if (gvid != 0) {
+		grfmsg(1, "LoadTranslationTable: %s translation table must start at zero", name);
+		return CIR_INVALID_ID;
+	}
+
+	translation_table.Clear();
+	for (int i = 0; i < numinfo; i++) {
+		uint32 item = buf->ReadDWord();
+		*translation_table.Append() = BSWAP32(item);
+	}
+
+	return CIR_SUCCESS;
+}
+
+/**
  * Define properties for global variables
  * @param gvid ID of the global variable.
  * @param numinfo Number of subsequent IDs to change the property for.
@@ -2426,8 +2452,20 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
  */
 static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	/* Properties which are handled as a whole */
+	switch (prop) {
+		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
+			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->cargo_list, "Cargo");
 
+		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
+			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->railtype_list, "Rail type");
+
+		default:
+			break;
+	}
+
+	/* Properties which are handled per item */
+	ChangeInfoResult ret = CIR_SUCCESS;
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: { // Cost base factor
@@ -2439,22 +2477,6 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Price %d out of range, ignoring", price);
 				}
-				break;
-			}
-
-			case 0x09: { // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
-				if (i == 0) {
-					if (gvid != 0) {
-						grfmsg(1, "GlobalVarChangeInfo: Cargo translation table must start at zero");
-						return CIR_INVALID_ID;
-					}
-
-					_cur.grffile->cargo_list.Clear();
-					_cur.grffile->cargo_list.Append(numinfo);
-				}
-
-				CargoLabel cl = buf->ReadDWord();
-				_cur.grffile->cargo_list[i] = BSWAP32(cl);
 				break;
 			}
 
@@ -2570,22 +2592,6 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				buf->Skip(8);
 				break;
 
-			case 0x12: { // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
-				if (i == 0) {
-					if (gvid != 0) {
-						grfmsg(1, "GlobalVarChangeInfo: Rail type translation table must start at zero");
-						return CIR_INVALID_ID;
-					}
-
-					_cur.grffile->railtype_list.Clear();
-					_cur.grffile->railtype_list.Append(numinfo);
-				}
-
-				RailTypeLabel rtl = buf->ReadDWord();
-				_cur.grffile->railtype_list[i] = BSWAP32(rtl);
-				break;
-			}
-
 			case 0x13:   // Gender translation table
 			case 0x14:   // Case translation table
 			case 0x15: { // Plural form translation
@@ -2661,30 +2667,26 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
-	ChangeInfoResult ret = CIR_SUCCESS;
+	/* Properties which are handled as a whole */
+	switch (prop) {
+		case 0x09: // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
+			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->cargo_list, "Cargo");
 
+		case 0x12: // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
+			return LoadTranslationTable(gvid, numinfo, buf, _cur.grffile->railtype_list, "Rail type");
+
+		default:
+			break;
+	}
+
+	/* Properties which are handled per item */
+	ChangeInfoResult ret = CIR_SUCCESS;
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: // Cost base factor
 			case 0x15: // Plural form translation
 				buf->ReadByte();
 				break;
-
-			case 0x09: { // Cargo Translation Table
-				if (i == 0) {
-					if (gvid != 0) {
-						grfmsg(1, "ReserveChangeInfo: Cargo translation table must start at zero");
-						return CIR_INVALID_ID;
-					}
-
-					_cur.grffile->cargo_list.Clear();
-					_cur.grffile->cargo_list.Append(numinfo);
-				}
-
-				CargoLabel cl = buf->ReadDWord();
-				_cur.grffile->cargo_list[i] = BSWAP32(cl);
-				break;
-			}
 
 			case 0x0A: // Currency display names
 			case 0x0C: // Currency options
@@ -2706,22 +2708,6 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 				uint32 s = buf->ReadDWord();
 				uint32 t = buf->ReadDWord();
 				SetNewGRFOverride(s, t);
-				break;
-			}
-
-			case 0x12: { // Rail type translation table
-				if (i == 0) {
-					if (gvid != 0) {
-						grfmsg(1, "ReserveChangeInfo: Rail type translation table must start at zero");
-						return CIR_INVALID_ID;
-					}
-
-					_cur.grffile->railtype_list.Clear();
-					_cur.grffile->railtype_list.Append(numinfo);
-				}
-
-				RailTypeLabel rtl = buf->ReadDWord();
-				_cur.grffile->railtype_list[i] = BSWAP32(rtl);
 				break;
 			}
 
