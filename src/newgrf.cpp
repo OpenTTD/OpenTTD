@@ -7898,12 +7898,7 @@ static void ResetNewGRF()
 {
 	const GRFFile * const *end = _grf_files.End();
 	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
-		GRFFile *f = *file;
-		free(f->filename);
-		free(f->cargo_list);
-		free(f->railtype_list);
-		delete [] f->language_map;
-		free(f);
+		delete *file;
 	}
 
 	_grf_files.Clear();
@@ -8069,39 +8064,52 @@ static void InitNewGRFFile(const GRFConfig *config)
 		return;
 	}
 
-	newfile = CallocT<GRFFile>(1);
+	newfile = new GRFFile(config);
+	*_grf_files.Append() = _cur.grffile = newfile;
+}
 
-	newfile->filename = strdup(config->filename);
-	newfile->grfid = config->ident.grfid;
+/**
+ * Constructor for GRFFile
+ * @param config GRFConfig to copy name, grfid and parameters from.
+ */
+GRFFile::GRFFile(const GRFConfig *config)
+{
+	this->filename = strdup(config->filename);
+	this->grfid = config->ident.grfid;
 
 	/* Initialise local settings to defaults */
-	newfile->traininfo_vehicle_pitch = 0;
-	newfile->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
+	this->traininfo_vehicle_pitch = 0;
+	this->traininfo_vehicle_width = TRAININFO_DEFAULT_VEHICLE_WIDTH;
 
 	/* Mark price_base_multipliers as 'not set' */
 	for (Price i = PR_BEGIN; i < PR_END; i++) {
-		newfile->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
+		this->price_base_multipliers[i] = INVALID_PRICE_MODIFIER;
 	}
 
 	/* Initialise rail type map with default rail types */
-	memset(newfile->railtype_map, INVALID_RAILTYPE, sizeof newfile->railtype_map);
-	newfile->railtype_map[0] = RAILTYPE_RAIL;
-	newfile->railtype_map[1] = RAILTYPE_ELECTRIC;
-	newfile->railtype_map[2] = RAILTYPE_MONO;
-	newfile->railtype_map[3] = RAILTYPE_MAGLEV;
+	memset(this->railtype_map, INVALID_RAILTYPE, sizeof(this->railtype_map));
+	this->railtype_map[0] = RAILTYPE_RAIL;
+	this->railtype_map[1] = RAILTYPE_ELECTRIC;
+	this->railtype_map[2] = RAILTYPE_MONO;
+	this->railtype_map[3] = RAILTYPE_MAGLEV;
 
 	/* Copy the initial parameter list
 	 * 'Uninitialised' parameters are zeroed as that is their default value when dynamically creating them. */
-	assert_compile(lengthof(newfile->param) == lengthof(config->param) && lengthof(config->param) == 0x80);
-	memset(newfile->param, 0, sizeof(newfile->param));
+	assert_compile(lengthof(this->param) == lengthof(config->param) && lengthof(this->param) == 0x80);
 
 	assert(config->num_params <= lengthof(config->param));
-	newfile->param_end = config->num_params;
-	if (newfile->param_end > 0) {
-		MemCpyT(newfile->param, config->param, newfile->param_end);
+	this->param_end = config->num_params;
+	if (this->param_end > 0) {
+		MemCpyT(this->param, config->param, this->param_end);
 	}
+}
 
-	*_grf_files.Append() = _cur.grffile = newfile;
+GRFFile::~GRFFile()
+{
+	free(this->filename);
+	free(this->cargo_list);
+	free(this->railtype_list);
+	delete[] this->language_map;
 }
 
 

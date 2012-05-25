@@ -16,6 +16,7 @@
 #include "rail_type.h"
 #include "fileio_type.h"
 #include "core/bitmath_func.hpp"
+#include "core/alloc_type.hpp"
 
 /**
  * List of different canal 'features'.
@@ -98,7 +99,7 @@ struct GRFLabel {
 };
 
 /** Dynamic data of a loaded NewGRF */
-struct GRFFile {
+struct GRFFile : ZeroedMemoryAllocator {
 	char *filename;
 	bool is_ottdfile;
 	uint32 grfid;
@@ -137,6 +138,9 @@ struct GRFFile {
 
 	uint32 grf_features;                     ///< Bitset of GrfSpecFeature the grf uses
 	PriceMultipliers price_base_multipliers; ///< Price base multipliers as set by the grf.
+
+	GRFFile(const struct GRFConfig *config);
+	~GRFFile();
 
 	/** Get GRF Parameter with range checking */
 	uint32 GetParam(uint number) const
