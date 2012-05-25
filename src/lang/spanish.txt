@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos que obtuvieron beneficios el año pasado. Incluye vehículos de carretera, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Cada parte de una estación (ej. estaciones de tren, paradas de autobús, aeropuertos, etc.) es contabilizado, incluso si están unidas en una estación
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobus, aeropuertos y demás son contabilizadas por separado incluso si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo con menores ingresos (de entre todos los vehículos con más de 2 años)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más bajo de los pasados 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más alto de los pasados 12 trimestres
@@ -1121,6 +1121,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Derecha
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir la construcción en cuestas y orillas: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si se habilita, las vías y estaciones pueden construirse sobre pendiente. Si se deshabilita, las vías solamente pueden construirse sobre pendientes que sigan la misma dirección
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno bajo carreteras, raíles, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir modificar el terreno debajo de edificios y raíles sin eliminarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Tamaño del área de captación realista: {STRING}
@@ -1187,6 +1188,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si se activa, l
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el pueblo durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una compañía compra derechos de transporte exclusivos en un pueblo, las estaciones de sus oponentes (pasajeros o carga) no recibirán nada para transportar durante un año
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite a las compañías dar dinero a los pueblos para crear nuevas casas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir pagar la reconstrucción de las carreteras locales: {STRING}
@@ -1253,6 +1255,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador terre
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Máxima distancia de Refinerías de Petróleo con los bordes: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Las refinerías de petróleo solamente se construyen cerca del borde del mapa, el cual es costa para los mapas con borde de océano
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altura línea nieve: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Aspereza del terreno (Sólo TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
@@ -1268,6 +1271,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :El nivel de la altura del mapa plano tiene: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Habilitar la modificación del terreno en los bordes del mapa: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Si se deshabilita, los bordes del mapa siempre serán océano
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
@@ -1398,53 +1402,75 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferr
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar los ferrocarriles para hacer que los trenes eléctricos puedan recorrerlos
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias en color aparecen en: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Año en el cual los periódicos empezarán a imprimirse en color. Antes de ese año solamente usarán una escala de grises
 STR_CONFIG_SETTING_STARTING_YEAR                                :Fecha de inicio: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía suave (cambios más pequeños): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Si se activa, se producirán cambios de producción en las industrias más frecuentemente y en pasos menores. Si se usa un NewGRF para proveer industrias, esta opción generalmente no tiene efecto
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cuando se activa, permite comprar y vender acciones de empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa una edad determinada
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje del beneficio total a pagar en transferencias: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de los beneficios dados a los transportes intermedios en sistemas de transferencias, dando un mayor control sobre el beneficio de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Fija la distancia de separación entre señales al construir señales hasta el próximo obstáculo al arrastrar el ratón
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Fija el comportamiento de la construcción de señales cuando se usa Ctrl+Arrastrar. Si se deshabilita, se colocan señales cerca de túneles y puentes para evitar largos trozos de vía sin señales. Si se activa, se colocan señales cada N casillas, haciendo que el alineamiento de vías paralelas sea más sencillo
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Fija el año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas (tienen la misma funcionalidad pero distinto aspecto)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar la GUI de señales: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Muestra una ventana para escoger los tipos de señales a construir, en lugar de no usar ventana y permitir cambiar de tipo de señal solamente mediante Ctrl+Click
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal a construir por defecto: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal a usar por defecto
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de bloque
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Señales de ruta
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Señales de ruta de un sentido
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Cambiar entre tipos de señales: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Permite seleccionar entre qué señales se debe de cambiar al usar Ctrl+Click con la herramienta de señales
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Solo señales de bloque
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Solo señales de ruta
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Patrón de carreteras para los nuevos pueblos: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Patrón de carreteras a usar para las redes de transporte de los pueblos
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :por defecto
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :mejorado
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir que los pueblos construyan carreteras: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permite a los pueblos construir carreteras para crecer. Si se deshabilita, las autoridades del pueblo no podrán construir ninguna carretera
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir a las ciudades construir pasos a nivel: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Permite a los pueblos construir pasos a nivel
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir al pueblo controlar el nivel de ruido de los aeropuertos: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Con esta opción desactivada, solamente puede haber dos aeropuertos por pueblo. Si se activa, el número de aeropuertos en un pueblo depende del nivel de aceptación de ruido del mismo, el cual depende de la población, del tamaño de los aeropuertos y de la distancia a la que estén
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar pueblos: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Permite a los jugadores crear nuevos pueblos durante la partida
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permitido, patrón de carreteras personalizado
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Crecimiento de árboles durante el juego: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla la aparición aleatoria de árboles durante la partida. Esto puede afectar a industrias que dependen del crecimiento de árboles, como los aserraderos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ninguno {RED}(rompe aserradero subtropical)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :solo en selva
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :todas partes
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición de la barra de herramientas principal: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posicionamiento horizontal de la barra de herramientas principal en la parte superior de la pantalla
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posición de la barra de estado: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posición horizontal de la barra de estado en la parte inferior de la pantalla
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radio de fijación de ventana: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distancia máxima entre ventanas antes de que la ventana que se está moviendo sea alineada automáticamente con las ventanas cercanas
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" se}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :deshabilitado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número de ventanas no-ancladas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Máximo número de ventanas sin anclar: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número máximo de ventanas sin anclar que pueden estar abiertas antes de que las más antiguas se cierren automáticamente para dejar paso a las nuevas
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deshabilitado
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Máximo acercamiento: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Máximo nivel de acercamiento para las ventanas de vista y la vista principal. Aumentar el nivel de acercamiento aumenta el consumo de memoria del juego
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Máximo alejamiento: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Máximo nivel de alejamiento para las ventanas de vista y la vista principal. Niveles altos de alejamiento pueden hacer que el juego se ralentize
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1452,16 +1478,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad crecimiento pueblo: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidad de crecimiento de los pueblos
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápida
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muy rápida
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporción de pueblos que se convertirá en ciudades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Número de pueblos que se convertirán en ciudades. Las ciudades comienzan siendo más grandes y crecen más rápido
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 de cada {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ninguno
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial tamaño de ciudad: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamaño medio de las ciudades en relación a los pueblos normales al comienzo de la partida
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Quitar absurdos de la carretera durante su construcción: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimina carreteras sin salida durante la reconstrucción de carreteras de los pueblos
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaz
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcción
@@ -1487,9 +1517,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomendado)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Encaminador para trenes: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Encaminador a emplear para trenes
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Encaminador para vehículos de carretera: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Encaminador a emplear para vehículos de carretera
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Encaminador para barcos: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Encaminador a emplear para barcos
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Cambio de sentido automático en señales: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite a los trenes darse la vuelta ante una señal, si han esperado durante un tiempo lo suficientemente largo
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambiar valor de la opción
 

@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si toutes ces parties ne forment qu'une seule station.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Les gares, arrêts de bus, aéroports et autres sont comptées séparément même si elles font partie de la même station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers trimestres
@@ -1121,6 +1121,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrée
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :À droite
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Construction côtière et sur pentes{NBSP}: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Si activé, les voies et les stations peuvent être construites sur la plupart des pentes. Si désactivé, elles sont autorisées uniquement sur les pentes correspondant à la direction de la voie et ne requérant pas de fondations
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc. (Autoslope){NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
@@ -1187,6 +1188,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si activé, la 
 STR_CONFIG_SETTING_BRIBE                                        :Permettre la corruption de la municipalité{NBSP}: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six mois
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si une compagnie achète les droits de transport exclusifs dans une ville, les stations des compétiteurs (passager et marchandise) ne recevront aucune cargaison pendant une année entière
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permettre le financement de bâtiments{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Autoriser les compagnie à donner de l'argent aux villes pour financer de nouveaux bâtiments
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Autoriser le financement de la reconstruction de routes locales{NBSP}: {STRING}
@@ -1253,6 +1255,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Générateur de
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les raffineries{NBSP}: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les raffineries ne sont construite que près du bord de la carte, sur la côte pour les cartes d'iles
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain (TerraGenesis seulement){NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
@@ -1268,6 +1271,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horaire
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horaire
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Le terrain d'un scénario plat a pour altitude{NBSP}: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Autoriser le terrassement sur les bords de la carte{NBSP}: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Si désactivé, les bords de la carte seront toujours de l'océan
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord Nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
