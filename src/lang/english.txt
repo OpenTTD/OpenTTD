@@ -1120,6 +1120,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centre
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Right
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Allow building on slopes and coasts: {STRING2}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :If enabled, tracks and stations can be build on most slopes. If disabled, they are only allowed on slopes which match the direction of the track and thus require no foundations
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow landscaping under buildings, tracks, etc. (autoslope): {STRING2}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscaping under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING2}
@@ -1186,6 +1187,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :When enabled, t
 STR_CONFIG_SETTING_BRIBE                                        :Allow bribing of the local authority: {STRING2}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Allow companies to try bribing the local town authority. If the bribe is noticed by an inspector, the company will not be able to act in the town for six months
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Allow buying exclusive transport rights: {STRING2}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :If a company buys exclusive transport rights for a town, opponents' stations (passenger and cargo) won't receive any cargo for a whole year
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Allow funding buildings: {STRING2}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Allow companies to give money to towns for funding new houses
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Allow funding local road reconstruction: {STRING2}
@@ -1252,6 +1254,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator:
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max distance from edge for Oil Refineries: {STRING2}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oil refineries are only constructed near the map border, that is at the coast for island maps
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING2}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain (TerraGenesis only) : {STRING2}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
@@ -1267,6 +1270,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :The height level a flat scenario map gets: {STRING2}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Enable landscaping the tiles at the map borders: {STRING2}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :If disabled, the map borders will always be ocean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
