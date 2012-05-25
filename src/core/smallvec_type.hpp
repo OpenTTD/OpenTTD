@@ -148,10 +148,10 @@ public:
 	 * @param item Item to search for
 	 * @return The position of the item, or -1 when not present
 	 */
-	inline int FindIndex(const T &item)
+	inline int FindIndex(const T &item) const
 	{
 		int index = 0;
-		T *pos = this->Begin();
+		const T *pos = this->Begin();
 		const T *end = this->End();
 		while (pos != end && *pos != item) {
 			pos++;
