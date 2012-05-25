@@ -2442,11 +2442,22 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				break;
 			}
 
-			case 0x09: // Cargo translation table
-				/* This is loaded during the reservation stage, so just skip it here. */
-				/* Each entry is 4 bytes. */
-				buf->Skip(4);
+			case 0x09: { // Cargo Translation Table; loading during both reservation and activation stage (in case it is selected depending on defined cargos)
+				if (i == 0) {
+					if (gvid != 0) {
+						grfmsg(1, "GlobalVarChangeInfo: Cargo translation table must start at zero");
+						return CIR_INVALID_ID;
+					}
+
+					free(_cur.grffile->cargo_list);
+					_cur.grffile->cargo_max = numinfo;
+					_cur.grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+				}
+
+				CargoLabel cl = buf->ReadDWord();
+				_cur.grffile->cargo_list[i] = BSWAP32(cl);
 				break;
+			}
 
 			case 0x0A: { // Currency display names
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -2560,11 +2571,22 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				buf->Skip(8);
 				break;
 
-			case 0x12: // Rail type translation table
-				/* This is loaded during the reservation stage, so just skip it here. */
-				/* Each entry is 4 bytes. */
-				buf->Skip(4);
+			case 0x12: { // Rail type translation table; loading during both reservation and activation stage (in case it is selected depending on defined railtypes)
+				if (i == 0) {
+					if (gvid != 0) {
+						grfmsg(1, "GlobalVarChangeInfo: Rail type translation table must start at zero");
+						return CIR_INVALID_ID;
+					}
+
+					free(_cur.grffile->railtype_list);
+					_cur.grffile->railtype_max = numinfo;
+					_cur.grffile->railtype_list = MallocT<RailTypeLabel>(numinfo);
+				}
+
+				RailTypeLabel rtl = buf->ReadDWord();
+				_cur.grffile->railtype_list[i] = BSWAP32(rtl);
 				break;
+			}
 
 			case 0x13:   // Gender translation table
 			case 0x14:   // Case translation table
