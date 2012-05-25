@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Loan:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Number of vehicles that turned a profit last year. This includes road vehicles, trains, ships and aircraft
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected as one station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number of recently-serviced stations. Train stations, bus stops, airports and so on are counted separately even if they belong to the same station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the last 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the last 12 quarters
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :allowed
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :allowed, custom town layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :In game placement of trees: {STRING2}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Control random appearance of trees during the game. This might affect industries which rely on tree growth, e.g. lumber mills
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Control random appearance of trees during the game. This might affect industries which rely on tree growth, for example lumber mills
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :none {RED}(breaks lumber mill)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :only in rain forests
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :everywhere
