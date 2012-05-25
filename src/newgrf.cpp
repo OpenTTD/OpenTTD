@@ -953,7 +953,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x05: { // Track type
 				uint8 tracktype = buf->ReadByte();
 
-				if (tracktype < _cur.grffile->railtype_max) {
+				if (tracktype < _cur.grffile->railtype_list.Length()) {
 					_gted[e->index].railtypelabel = _cur.grffile->railtype_list[tracktype];
 					break;
 				}
@@ -1089,7 +1089,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 					break;
 				}
 
-				if (_cur.grffile->railtype_max == 0) {
+				if (_cur.grffile->railtype_list.Length() == 0) {
 					/* Use traction type to select between normal and electrified
 					 * rail only when no translation list is in place. */
 					if (_gted[e->index].railtypelabel == RAILTYPE_RAIL_LABEL     && engclass >= EC_ELECTRIC) _gted[e->index].railtypelabel = RAILTYPE_ELECTRIC_LABEL;
@@ -2449,9 +2449,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 						return CIR_INVALID_ID;
 					}
 
-					free(_cur.grffile->cargo_list);
-					_cur.grffile->cargo_max = numinfo;
-					_cur.grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+					_cur.grffile->cargo_list.Clear();
+					_cur.grffile->cargo_list.Append(numinfo);
 				}
 
 				CargoLabel cl = buf->ReadDWord();
@@ -2578,9 +2577,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 						return CIR_INVALID_ID;
 					}
 
-					free(_cur.grffile->railtype_list);
-					_cur.grffile->railtype_max = numinfo;
-					_cur.grffile->railtype_list = MallocT<RailTypeLabel>(numinfo);
+					_cur.grffile->railtype_list.Clear();
+					_cur.grffile->railtype_list.Append(numinfo);
 				}
 
 				RailTypeLabel rtl = buf->ReadDWord();
@@ -2679,9 +2677,8 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 						return CIR_INVALID_ID;
 					}
 
-					free(_cur.grffile->cargo_list);
-					_cur.grffile->cargo_max = numinfo;
-					_cur.grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+					_cur.grffile->cargo_list.Clear();
+					_cur.grffile->cargo_list.Append(numinfo);
 				}
 
 				CargoLabel cl = buf->ReadDWord();
@@ -2719,9 +2716,8 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 						return CIR_INVALID_ID;
 					}
 
-					free(_cur.grffile->railtype_list);
-					_cur.grffile->railtype_max = numinfo;
-					_cur.grffile->railtype_list = MallocT<RailTypeLabel>(numinfo);
+					_cur.grffile->railtype_list.Clear();
+					_cur.grffile->railtype_list.Append(numinfo);
 				}
 
 				RailTypeLabel rtl = buf->ReadDWord();
@@ -4725,7 +4721,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	if (feature == GSF_STATIONS && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
 
-	if (_cur.grffile->cargo_max == 0) {
+	if (_cur.grffile->cargo_list.Length() == 0) {
 		/* No cargo table, so use bitnum values */
 		if (ctype >= 32) {
 			grfmsg(1, "TranslateCargo: Cargo bitnum %d out of range (max 31), skipping.", ctype);
@@ -4745,8 +4741,8 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 	}
 
 	/* Check if the cargo type is out of bounds of the cargo translation table */
-	if (ctype >= _cur.grffile->cargo_max) {
-		grfmsg(1, "TranslateCargo: Cargo type %d out of range (max %d), skipping.", ctype, _cur.grffile->cargo_max - 1);
+	if (ctype >= _cur.grffile->cargo_list.Length()) {
+		grfmsg(1, "TranslateCargo: Cargo type %d out of range (max %d), skipping.", ctype, _cur.grffile->cargo_list.Length() - 1);
 		return CT_INVALID;
 	}
 
@@ -8036,17 +8032,13 @@ static void BuildCargoTranslationMap()
 		const CargoSpec *cs = CargoSpec::Get(c);
 		if (!cs->IsValid()) continue;
 
-		if (_cur.grffile->cargo_max == 0) {
+		if (_cur.grffile->cargo_list.Length() == 0) {
 			/* Default translation table, so just a straight mapping to bitnum */
 			_cur.grffile->cargo_map[c] = cs->bitnum;
 		} else {
 			/* Check the translation table for this cargo's label */
-			for (uint i = 0; i < _cur.grffile->cargo_max; i++) {
-				if (cs->label == _cur.grffile->cargo_list[i]) {
-					_cur.grffile->cargo_map[c] = i;
-					break;
-				}
-			}
+			int index = _cur.grffile->cargo_list.FindIndex(cs->label);
+			if (index >= 0) _cur.grffile->cargo_map[c] = index;
 		}
 	}
 }
@@ -8107,8 +8099,6 @@ GRFFile::GRFFile(const GRFConfig *config)
 GRFFile::~GRFFile()
 {
 	free(this->filename);
-	free(this->cargo_list);
-	free(this->railtype_list);
 	delete[] this->language_map;
 }
 
@@ -8219,7 +8209,7 @@ static void CalculateRefitMasks()
 			{
 				const GRFFile *file = _gted[engine].defaultcargo_grf;
 				if (file == NULL) file = e->GetGRF();
-				if (file != NULL && file->grf_version >= 8 && file->cargo_max != 0) {
+				if (file != NULL && file->grf_version >= 8 && file->cargo_list.Length() != 0) {
 					cargo_map_for_first_refittable = file->cargo_map;
 				}
 			}

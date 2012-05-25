@@ -17,6 +17,7 @@
 #include "fileio_type.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_type.hpp"
+#include "core/smallvec_type.hpp"
 
 /**
  * List of different canal 'features'.
@@ -121,12 +122,10 @@ struct GRFFile : ZeroedMemoryAllocator {
 
 	GRFLabel *label; ///< Pointer to the first label. This is a linked list, not an array.
 
-	uint8 cargo_max;
-	CargoLabel *cargo_list;
-	uint8 cargo_map[NUM_CARGO];
+	SmallVector<CargoLabel, 4> cargo_list;          ///< Cargo translation table (local ID -> label)
+	uint8 cargo_map[NUM_CARGO];                     ///< Inverse cargo translation table (CargoID -> local ID)
 
-	uint8 railtype_max;
-	RailTypeLabel *railtype_list;
+	SmallVector<RailTypeLabel, 4> railtype_list;    ///< Railtype translation table
 	RailType railtype_map[RAILTYPE_END];
 
 	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF

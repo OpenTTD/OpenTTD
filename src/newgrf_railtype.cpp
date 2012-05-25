@@ -130,13 +130,12 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
 {
 	/* No rail type table present, return rail type as-is */
-	if (grffile == NULL || grffile->railtype_max == 0) return railtype;
+	if (grffile == NULL || grffile->railtype_list.Length() == 0) return railtype;
 
 	/* Look for a matching rail type label in the table */
 	RailTypeLabel label = GetRailTypeInfo(railtype)->label;
-	for (uint i = 0; i < grffile->railtype_max; i++) {
-		if (label == grffile->railtype_list[i]) return i;
-	}
+	int index = grffile->railtype_list.FindIndex(label);
+	if (index >= 0) return index;
 
 	/* If not found, return as invalid */
 	return 0xFF;
