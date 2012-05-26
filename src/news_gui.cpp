@@ -278,26 +278,10 @@ struct NewsWindow : Window {
 		this->flags |= WF_DISABLE_VP_SCROLL;
 
 		this->CreateNestedTree(desc);
-		switch (this->ni->subtype) {
-			case NS_COMPANY_TROUBLE:
-				this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = STR_NEWS_COMPANY_IN_TROUBLE_TITLE;
-				break;
 
-			case NS_COMPANY_MERGER:
-				this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = STR_NEWS_COMPANY_MERGER_TITLE;
-				break;
+		/* For company news with a face we have a separate headline in param[0] */
+		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0];
 
-			case NS_COMPANY_BANKRUPT:
-				this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = STR_NEWS_COMPANY_BANKRUPT_TITLE;
-				break;
-
-			case NS_COMPANY_NEW:
-				this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = STR_NEWS_COMPANY_LAUNCH_TITLE;
-				break;
-
-			default:
-				break;
-		}
 		this->FinishInitNested(desc, 0);
 
 		/* Initialize viewport if it exists. */
@@ -520,29 +504,9 @@ private:
 
 	StringID GetCompanyMessageString() const
 	{
-		switch (this->ni->subtype) {
-			case NS_COMPANY_TROUBLE:
-				SetDParam(0, this->ni->params[2]);
-				return STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION;
-
-			case NS_COMPANY_MERGER:
-				SetDParam(0, this->ni->params[2]);
-				SetDParam(1, this->ni->params[3]);
-				SetDParam(2, this->ni->params[4]);
-				return this->ni->params[4] == 0 ? STR_NEWS_MERGER_TAKEOVER_TITLE : STR_NEWS_COMPANY_MERGER_DESCRIPTION;
-
-			case NS_COMPANY_BANKRUPT:
-				SetDParam(0, this->ni->params[2]);
-				return STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION;
-
-			case NS_COMPANY_NEW:
-				SetDParam(0, this->ni->params[2]);
-				SetDParam(1, this->ni->params[3]);
-				return STR_NEWS_COMPANY_LAUNCH_DESCRIPTION;
-
-			default:
-				NOT_REACHED();
-		}
+		/* Company news with a face have a separate headline, so the normal message is shifted by two params */
+		CopyInDParam(0, this->ni->params + 2, lengthof(this->ni->params) - 2);
+		return this->ni->params[1];
 	}
 
 	StringID GetNewVehicleMessageString(int widget) const
