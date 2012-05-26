@@ -17,11 +17,11 @@
 #include "station_type.h"
 #include "industry_type.h"
 
-void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, void *free_data = NULL);
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, void *free_data = NULL);
 
 static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
 {
-	AddNewsItem(string, NS_COMPANY_INFO, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
+	AddNewsItem(string, NT_COMPANY_INFO, NF_COMPANY, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
 }
 
 /**
@@ -29,9 +29,9 @@ static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *c
  *
  * @warning The DParams may not reference the vehicle due to autoreplace stuff. See AddVehicleAdviceNewsItem for how that can be done.
  */
-static inline void AddVehicleNewsItem(StringID string, NewsSubtype subtype, VehicleID vehicle, StationID station = INVALID_STATION)
+static inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID vehicle, StationID station = INVALID_STATION)
 {
-	AddNewsItem(string, subtype, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);
 }
 
 /**
@@ -41,17 +41,17 @@ static inline void AddVehicleNewsItem(StringID string, NewsSubtype subtype, Vehi
  */
 static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 {
-	AddNewsItem(string, NS_ADVICE, NR_VEHICLE, vehicle);
+	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL, NR_VEHICLE, vehicle);
 }
 
-static inline void AddTileNewsItem(StringID string, NewsSubtype subtype, TileIndex tile, void *free_data = NULL)
+static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = NULL)
 {
-	AddNewsItem(string, subtype, NR_TILE, tile, NR_NONE, UINT32_MAX, free_data);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile, NR_NONE, UINT32_MAX, free_data);
 }
 
-static inline void AddIndustryNewsItem(StringID string, NewsSubtype subtype, IndustryID industry)
+static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry)
 {
-	AddNewsItem(string, subtype, NR_INDUSTRY, industry);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_INDUSTRY, industry);
 }
 
 void NewsLoop();

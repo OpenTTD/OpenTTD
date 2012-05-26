@@ -34,8 +34,8 @@ enum MessageOptionsSpace {
  * Type of news.
  */
 enum NewsType {
-	NT_ARRIVAL_COMPANY, ///< Cargo arrived for company
-	NT_ARRIVAL_OTHER,   ///< Cargo arrived for competitor
+	NT_ARRIVAL_COMPANY, ///< First vehicle arrived for company
+	NT_ARRIVAL_OTHER,   ///< First vehicle arrived for competitor
 	NT_ACCIDENT,        ///< An accident or disaster has occurred
 	NT_COMPANY_INFO,    ///< Company info (new companies, bankruptcy messages)
 	NT_INDUSTRY_OPEN,   ///< Opening of industries
@@ -50,28 +50,6 @@ enum NewsType {
 	NT_SUBSIDIES,       ///< News about subsidies (announcements, expirations, acceptance)
 	NT_GENERAL,         ///< General news (from towns)
 	NT_END,             ///< end-of-array marker
-};
-
-/**
- * News subtypes.
- */
-enum NewsSubtype {
-	NS_ARRIVAL_COMPANY,  ///< NT_ARRIVAL_COMPANY
-	NS_ARRIVAL_OTHER,    ///< NT_ARRIVAL_OTHER
-	NS_ACCIDENT,         ///< NT_ACCIDENT
-	NS_COMPANY_INFO,     ///< NT_COMPANY_INFO
-	NS_INDUSTRY_OPEN,    ///< NT_INDUSTRY_OPEN
-	NS_INDUSTRY_CLOSE,   ///< NT_INDUSTRY_CLOSE
-	NS_ECONOMY,          ///< NT_ECONOMY
-	NS_INDUSTRY_COMPANY, ///< NT_INDUSTRY_COMPANY
-	NS_INDUSTRY_OTHER,   ///< NT_INDUSTRY_OTHER
-	NS_INDUSTRY_NOBODY,  ///< NT_INDUSTRY_NOBODY
-	NS_ADVICE,           ///< NT_ADVICE
-	NS_NEW_VEHICLES,     ///< NT_NEW_VEHICLES
-	NS_ACCEPTANCE,       ///< NT_ACCEPTANCE
-	NS_SUBSIDIES,        ///< NT_SUBSIDIES
-	NS_GENERAL,          ///< NT_GENERAL
-	NS_END,              ///< end-of-array marker
 };
 
 /**
@@ -98,14 +76,21 @@ enum NewsReferenceType {
  * @note #NF_INCOLOUR is set automatically if needed.
  */
 enum NewsFlag {
-	NFB_INCOLOUR       = 0, ///< News item is shown in colour (otherwise it is shown in black & white).
-	NFB_NO_TRANSPARENT = 1, ///< News item disables transparency in the viewport.
-	NFB_SHADE          = 2, ///< News item uses shaded colours.
+	NFB_INCOLOUR       = 0,                      ///< News item is shown in colour (otherwise it is shown in black & white).
+	NFB_NO_TRANSPARENT = 1,                      ///< News item disables transparency in the viewport.
+	NFB_SHADE          = 2,                      ///< News item uses shaded colours.
+	NFB_WINDOW_LAYOUT  = 3,                      ///< First bit for window layout.
+	NFB_WINDOW_LAYOUT_COUNT = 3,                 ///< Number of bits for window layout.
 
-	NF_NONE           = 0,      ///< No flag is set.
-	NF_INCOLOUR       = 1 << 0, ///< Bit value for coloured news.
-	NF_NO_TRANSPARENT = 1 << 1, ///< Bit value for disabling transparency.
-	NF_SHADE          = 1 << 2, ///< Bit value for enabling shading.
+	NF_INCOLOUR       = 1 << NFB_INCOLOUR,       ///< Bit value for coloured news.
+	NF_NO_TRANSPARENT = 1 << NFB_NO_TRANSPARENT, ///< Bit value for disabling transparency.
+	NF_SHADE          = 1 << NFB_SHADE,          ///< Bit value for enabling shading.
+
+	NF_THIN           = 0 << NFB_WINDOW_LAYOUT,  ///< Thin news item. (Newspaper with headline and viewport)
+	NF_SMALL          = 1 << NFB_WINDOW_LAYOUT,  ///< Small news item. (Information window with text and viewport)
+	NF_NORMAL         = 2 << NFB_WINDOW_LAYOUT,  ///< Normal news item. (Newspaper with text only)
+	NF_VEHICLE        = 3 << NFB_WINDOW_LAYOUT,  ///< Vehicle news item. (new engine available)
+	NF_COMPANY        = 4 << NFB_WINDOW_LAYOUT,  ///< Company news item. (Newspaper with face)
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag)
 
@@ -152,7 +137,7 @@ struct NewsItem {
 	NewsItem *next;              ///< Next news item
 	StringID string_id;          ///< Message text
 	Date date;                   ///< Date of the news
-	NewsSubtype subtype;         ///< News subtype @see NewsSubtype
+	NewsType type;               ///< Type of the news
 	NewsFlag flags;              ///< NewsFlags bits @see NewsFlag
 
 	NewsReferenceType reftype1;  ///< Type of ref1

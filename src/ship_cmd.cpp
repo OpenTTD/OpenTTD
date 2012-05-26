@@ -375,7 +375,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 		SetDParam(0, st->index);
 		AddVehicleNewsItem(
 			STR_NEWS_FIRST_SHIP_ARRIVAL,
-			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
+			(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
 			v->index,
 			st->index
 		);

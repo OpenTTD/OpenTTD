@@ -25,10 +25,9 @@ public:
 	 * Enumeration for the news types that a script can create news for.
 	 */
 	enum NewsType {
-		/* Note: these values represent part of the in-game NewsSubtype enum */
-		NT_ECONOMY           = ::NS_ECONOMY,          ///< Category economy.
-		NT_SUBSIDIES         = ::NS_SUBSIDIES,        ///< Category subsidies.
-		NT_GENERAL           = ::NS_GENERAL,          ///< Category general.
+		NT_ECONOMY           = ::NT_ECONOMY,          ///< Category economy.
+		NT_SUBSIDIES         = ::NT_SUBSIDIES,        ///< Category subsidies.
+		NT_GENERAL           = ::NT_GENERAL,          ///< Category general.
 	};
 
 	/**

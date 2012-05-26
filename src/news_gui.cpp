@@ -202,37 +202,22 @@ static const WindowDesc _small_news_desc(
 );
 
 /**
- * Data common to all news items of a given subtype (structure)
+ * Window layouts for news items.
  */
-struct NewsSubtypeData {
-	NewsType type;          ///< News category @see NewsType
-	NewsFlag flags;         ///< Initial NewsFlags bits @see NewsFlag
-	const WindowDesc *desc; ///< Window description for displaying this news.
+static const WindowDesc* _news_window_layout[] = {
+	&_thin_news_desc,    ///< NF_THIN
+	&_small_news_desc,   ///< NF_SMALL
+	&_normal_news_desc,  ///< NF_NORMAL
+	&_vehicle_news_desc, ///< NF_VEHICLE
+	&_company_news_desc, ///< NF_COMPANY
 };
 
-/**
- * Data common to all news items of a given subtype (actual data)
- */
-static const NewsSubtypeData _news_subtype_data[] = {
-	/* type,               display_mode, flags,                         window description,            callback */
-	{ NT_ARRIVAL_COMPANY,  (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_COMPANY
-	{ NT_ARRIVAL_OTHER,    (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,         (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_ACCIDENT
-	{ NT_COMPANY_INFO,     NF_NONE,                        &_company_news_desc }, ///< NS_COMPANY_INFO
-	{ NT_INDUSTRY_OPEN,    (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,   (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,          NF_NONE,                        &_normal_news_desc  }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_COMPANY, (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_COMPANY
-	{ NT_INDUSTRY_OTHER,   (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY,  (NF_NO_TRANSPARENT | NF_SHADE), &_thin_news_desc    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,           NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,     NF_NONE,                        &_vehicle_news_desc }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,       NF_INCOLOUR,                    &_small_news_desc   }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,        NF_NONE,                        &_normal_news_desc  }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,          NF_NONE,                        &_normal_news_desc  }, ///< NS_GENERAL
-};
-
-assert_compile(lengthof(_news_subtype_data) == NS_END);
+const WindowDesc* GetNewsWindowLayout(NewsFlag flags)
+{
+	uint layout = GB(flags, NFB_WINDOW_LAYOUT, NFB_WINDOW_LAYOUT_COUNT);
+	assert(layout < lengthof(_news_window_layout));
+	return _news_window_layout[layout];
+}
 
 /**
  * Per-NewsType data
@@ -532,10 +517,10 @@ private:
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(const NewsItem *ni)
 {
-	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
+	SoundFx sound = _news_type_data[ni->type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
-	new NewsWindow(_news_subtype_data[ni->subtype].desc, ni);
+	new NewsWindow(GetNewsWindowLayout(ni->flags), ni);
 }
 
 /** Show news item in the ticker */
@@ -597,7 +582,7 @@ static void MoveToNextItem()
 	if (_current_news != _latest_news) {
 		_current_news = (_current_news == NULL) ? _oldest_news : _current_news->next;
 		const NewsItem *ni = _current_news;
-		const NewsType type = _news_subtype_data[ni->subtype].type;
+		const NewsType type = ni->type;
 
 		/* check the date, don't show too old items */
 		if (_date - _news_type_data[type].age > ni->date) return;
@@ -622,7 +607,8 @@ static void MoveToNextItem()
 /**
  * Add a new newsitem to be shown.
  * @param string String to display
- * @param subtype news category, any of the NewsSubtype enums (NS_)
+ * @param type news category
+ * @param flags display flags for the news
  * @param reftype1 Type of ref1
  * @param ref1     Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleteing the news when the object is deleted.
  * @param reftype2 Type of ref2
@@ -631,7 +617,7 @@ static void MoveToNextItem()
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, void *free_data)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, void *free_data)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -639,8 +625,8 @@ void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype
 	NewsItem *ni = new NewsItem;
 
 	ni->string_id = string;
-	ni->subtype = subtype;
-	ni->flags = _news_subtype_data[subtype].flags;
+	ni->type = type;
+	ni->flags = flags;
 
 	/* show this news message in colour? */
 	if (_cur_year >= _settings_client.gui.coloured_news_year) ni->flags |= NF_INCOLOUR;
@@ -674,7 +660,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype
  * @param tile unused
  * @param flags type of operation
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 -  7) - NewsSubtype of the message.
+ * - p1 = (bit  0 -  7) - NewsType of the message.
  * - p1 = (bit  8 - 15) - NewsReferenceType of first reference.
  * - p1 = (bit 16 - 23) - Company this news message is for.
  * @param p2 First reference of the news message.
@@ -685,12 +671,12 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
-	NewsSubtype subtype = (NewsSubtype)GB(p1, 0, 8);
+	NewsType type = (NewsType)GB(p1, 0, 8);
 	NewsReferenceType reftype1 = (NewsReferenceType)GB(p1, 8, 8);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
 
 	if (company != INVALID_OWNER && !Company::IsValidID(company)) return CMD_ERROR;
-	if (subtype >= NS_END) return CMD_ERROR;
+	if (type >= NT_END) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
 
 	switch (reftype1) {
@@ -722,34 +708,12 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		default: return CMD_ERROR;
 	}
 
-	const WindowDesc *desc = _news_subtype_data[subtype].desc;
-	for (int i = 0; i < desc->nwid_length; i++) {
-		if (desc->nwid_parts[i].type == NWID_VIEWPORT && reftype1 != NR_VEHICLE && GetReferenceTile(reftype1, p2) == INVALID_TILE) {
-			return CMD_ERROR;
-		}
-	}
-
-	switch (subtype) {
-		/* These sub types require more parameters that are never passed. */
-		case NS_COMPANY_INFO:
-			return CMD_ERROR;
-
-		/* This one only accepts engines. */
-		case NS_NEW_VEHICLES:
-			if (reftype1 != NR_ENGINE) return CMD_ERROR;
-			break;
-
-		/* The rest, in theory, accepts everything. */
-		default:
-			break;
-	}
-
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags & DC_EXEC) {
 		char *news = strdup(text);
 		SetDParamStr(0, news);
-		AddNewsItem(STR_NEWS_CUSTOM_ITEM, subtype, reftype1, p2, NR_NONE, UINT32_MAX, news);
+		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, p2, NR_NONE, UINT32_MAX, news);
 	}
 
 	return CommandCost();
@@ -867,7 +831,7 @@ static void RemoveOldNewsItems()
 	NewsItem *next;
 	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != NULL; cur = next) {
 		next = cur->next;
-		if (_date - _news_type_data[_news_subtype_data[cur->subtype].type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
+		if (_date - _news_type_data[cur->type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
 	}
 }
 
@@ -887,10 +851,10 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 		 * Autoreplace is breaking the whole news-reference concept here, as we want to keep the news,
 		 * but do not know which DParams to change.
 		 *
-		 * Currently only NS_ADVICE news have vehicle IDs in their DParams.
-		 * And all NS_ADVICE news have the ID in param 0.
+		 * Currently only NT_ADVICE news have vehicle IDs in their DParams.
+		 * And all NT_ADVICE news have the ID in param 0.
 		 */
-		if (ni->subtype == NS_ADVICE && ni->params[0] == from_index) ni->params[0] = to_index;
+		if (ni->type == NT_ADVICE && ni->params[0] == from_index) ni->params[0] = to_index;
 	}
 }
 

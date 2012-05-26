@@ -1595,7 +1595,7 @@ static void AdvertiseIndustryOpening(const Industry *ind)
 	} else {
 		SetDParam(1, ind->town->index);
 	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
+	AddIndustryNewsItem(ind_spc->new_industry_text, NT_INDUSTRY_OPEN, ind->index);
 	AI::BroadcastNewEvent(new ScriptEventIndustryOpen(ind->index));
 	Game::NewEvent(new ScriptEventIndustryOpen(ind->index));
 }
@@ -2415,12 +2415,12 @@ static int WhoCanServiceIndustry(Industry *ind)
  */
 static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int percent)
 {
-	NewsSubtype ns;
+	NewsType nt;
 
 	switch (WhoCanServiceIndustry(ind)) {
-		case 0: ns = NS_INDUSTRY_NOBODY;  break;
-		case 1: ns = NS_INDUSTRY_OTHER;   break;
-		case 2: ns = NS_INDUSTRY_COMPANY; break;
+		case 0: nt = NT_INDUSTRY_NOBODY;  break;
+		case 1: nt = NT_INDUSTRY_OTHER;   break;
+		case 2: nt = NT_INDUSTRY_COMPANY; break;
 		default: NOT_REACHED();
 	}
 	SetDParam(2, abs(percent));
@@ -2428,7 +2428,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	SetDParam(1, ind->index);
 	AddIndustryNewsItem(
 		percent >= 0 ? STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH : STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH,
-		ns,
+		nt,
 		ind->index
 	);
 }
@@ -2600,17 +2600,17 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (!suppress_message && str != STR_NULL) {
-		NewsSubtype ns;
+		NewsType nt;
 		/* Compute news category */
 		if (closeit) {
-			ns = NS_INDUSTRY_CLOSE;
+			nt = NT_INDUSTRY_CLOSE;
 			AI::BroadcastNewEvent(new ScriptEventIndustryClose(i->index));
 			Game::NewEvent(new ScriptEventIndustryClose(i->index));
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
-				case 0: ns = NS_INDUSTRY_NOBODY;  break;
-				case 1: ns = NS_INDUSTRY_OTHER;   break;
-				case 2: ns = NS_INDUSTRY_COMPANY; break;
+				case 0: nt = NT_INDUSTRY_NOBODY;  break;
+				case 1: nt = NT_INDUSTRY_OTHER;   break;
+				case 2: nt = NT_INDUSTRY_COMPANY; break;
 				default: NOT_REACHED();
 			}
 		}
@@ -2628,9 +2628,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 		/* and report the news to the user */
 		if (closeit) {
-			AddTileNewsItem(str, ns, i->location.tile + TileDiffXY(1, 1));
+			AddTileNewsItem(str, nt, i->location.tile + TileDiffXY(1, 1));
 		} else {
-			AddIndustryNewsItem(str, ns, i->index);
+			AddIndustryNewsItem(str, nt, i->index);
 		}
 	}
 }

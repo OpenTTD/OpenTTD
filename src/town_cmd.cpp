@@ -1694,7 +1694,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			SetDParamStr(0, cn);
 			SetDParam(1, t->index);
 
-			AddTileNewsItem(STR_NEWS_NEW_TOWN, NS_INDUSTRY_OPEN, tile, cn);
+			AddTileNewsItem(STR_NEWS_NEW_TOWN, NT_INDUSTRY_OPEN, tile, cn);
 			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
 		}
@@ -2700,7 +2700,7 @@ static CommandCost TownActionRoadRebuild(Town *t, DoCommandFlag flags)
 		SetDParam(0, t->index);
 		SetDParamStr(1, cn);
 
-		AddNewsItem(STR_NEWS_ROAD_REBUILDING, NS_GENERAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cn);
+		AddNewsItem(STR_NEWS_ROAD_REBUILDING, NT_GENERAL, NF_NORMAL, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cn);
 	}
 	return CommandCost();
 }

@@ -526,7 +526,7 @@ static void RoadVehCrash(RoadVehicle *v)
 	AddVehicleNewsItem(
 		(pass == 1) ?
 			STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER : STR_NEWS_ROAD_VEHICLE_CRASH,
-		NS_ACCIDENT,
+		NT_ACCIDENT,
 		v->index
 	);
 
@@ -664,7 +664,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
 				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_BUS_ARRIVAL : STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL,
-				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
 				v->index,
 				st->index
 			);
@@ -678,7 +678,7 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 			SetDParam(0, st->index);
 			AddVehicleNewsItem(
 				v->roadtype == ROADTYPE_ROAD ? STR_NEWS_FIRST_TRUCK_ARRIVAL : STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL,
-				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NT_ARRIVAL_COMPANY : NT_ARRIVAL_OTHER,
 				v->index,
 				st->index
 			);
