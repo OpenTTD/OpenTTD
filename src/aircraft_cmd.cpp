@@ -1862,7 +1862,7 @@ static void AircraftHandleDestTooFar(Aircraft *v, bool too_far)
 			if (v->owner == _local_company) {
 				/* Post a news message. */
 				SetDParam(0, v->index);
-				AddVehicleNewsItem(STR_NEWS_AIRCRAFT_DEST_TOO_FAR, NS_ADVICE, v->index);
+				AddVehicleAdviceNewsItem(STR_NEWS_AIRCRAFT_DEST_TOO_FAR, v->index);
 			}
 		}
 		return;

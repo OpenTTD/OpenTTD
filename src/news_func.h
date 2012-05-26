@@ -27,15 +27,21 @@ static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *c
 /**
  * Adds a newsitem referencing a vehicle.
  *
- * @warning
- * Be careful!
- * Vehicles are a special case, as news are kept when vehicles are autoreplaced/renewed.
- * You have to make sure, #ChangeVehicleNews catches the DParams of your message.
- * This is NOT ensured by the references.
+ * @warning The DParams may not reference the vehicle due to autoreplace stuff. See AddVehicleAdviceNewsItem for how that can be done.
  */
 static inline void AddVehicleNewsItem(StringID string, NewsSubtype subtype, VehicleID vehicle, StationID station = INVALID_STATION)
 {
 	AddNewsItem(string, subtype, NR_VEHICLE, vehicle, station == INVALID_STATION ? NR_NONE : NR_STATION, station);
+}
+
+/**
+ * Adds a vehicle-advice news item.
+ *
+ * @warning DParam 0 must reference the vehicle!
+ */
+static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
+{
+	AddNewsItem(string, NS_ADVICE, NR_VEHICLE, vehicle);
 }
 
 static inline void AddIndustryNewsItem(StringID string, NewsSubtype subtype, IndustryID industry)

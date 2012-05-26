@@ -710,7 +710,7 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 	AI::NewEvent(this->owner, new ScriptEventVehicleLost(this->index));
 	if (_settings_client.gui.lost_vehicle_warn && this->owner == _local_company) {
 		SetDParam(0, this->index);
-		AddVehicleNewsItem(STR_NEWS_VEHICLE_IS_LOST, NS_ADVICE, this->index);
+		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_IS_LOST, this->index);
 	}
 }
 
@@ -939,7 +939,7 @@ void CallVehicleTicks()
 
 		SetDParam(0, v->index);
 		SetDParam(1, error_message);
-		AddVehicleNewsItem(message, NS_ADVICE, v->index);
+		AddVehicleAdviceNewsItem(message, v->index);
 	}
 
 	cur_company.Restore();
@@ -1225,7 +1225,7 @@ void AgeVehicle(Vehicle *v)
 	}
 
 	SetDParam(0, v->index);
-	AddVehicleNewsItem(str, NS_ADVICE, v->index);
+	AddVehicleAdviceNewsItem(str, v->index);
 }
 
 /**
@@ -1362,7 +1362,7 @@ void VehicleEnterDepot(Vehicle *v)
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, v->index);
-					AddVehicleNewsItem(STR_NEWS_ORDER_REFIT_FAILED, NS_ADVICE, v->index);
+					AddVehicleAdviceNewsItem(STR_NEWS_ORDER_REFIT_FAILED, v->index);
 				}
 			} else if (cost.GetCost() != 0) {
 				v->profit_this_year -= cost.GetCost() << 8;
@@ -1383,7 +1383,7 @@ void VehicleEnterDepot(Vehicle *v)
 			_vehicles_to_autoreplace[v] = false;
 			if (v->owner == _local_company) {
 				SetDParam(0, v->index);
-				AddVehicleNewsItem(STR_NEWS_TRAIN_IS_WAITING + v->type, NS_ADVICE, v->index);
+				AddVehicleAdviceNewsItem(STR_NEWS_TRAIN_IS_WAITING + v->type, v->index);
 			}
 			AI::NewEvent(v->owner, new ScriptEventVehicleWaitingInDepot(v->index));
 		}
@@ -2413,11 +2413,7 @@ void VehiclesYearlyLoop()
 				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					SetDParam(1, profit);
-					AddVehicleNewsItem(
-						STR_NEWS_VEHICLE_IS_UNPROFITABLE,
-						NS_ADVICE,
-						v->index
-					);
+					AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_IS_UNPROFITABLE, v->index);
 				}
 				AI::NewEvent(v->owner, new ScriptEventVehicleUnprofitable(v->index));
 			}
