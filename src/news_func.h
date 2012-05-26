@@ -19,9 +19,9 @@
 
 void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype1 = NR_NONE, uint32 ref1 = UINT32_MAX, NewsReferenceType reftype2 = NR_NONE, uint32 ref2 = UINT32_MAX, void *free_data = NULL);
 
-static inline void AddCompanyNewsItem(StringID string, NewsSubtype subtype, CompanyNewsInformation *cni)
+static inline void AddCompanyNewsItem(StringID string, CompanyNewsInformation *cni)
 {
-	AddNewsItem(string, subtype, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
+	AddNewsItem(string, NS_COMPANY_INFO, NR_NONE, UINT32_MAX, NR_NONE, UINT32_MAX, cni);
 }
 
 /**
