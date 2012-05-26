@@ -2833,6 +2833,8 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 		SetDParam(2, t->index);
 		SetDParamStr(3, cni->company_name);
 		AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NT_GENERAL, NF_COMPANY, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cni);
+		AI::BroadcastNewEvent(new ScriptEventExclusiveTransportRights((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
+		Game::NewEvent(new ScriptEventExclusiveTransportRights((ScriptCompany::CompanyID)(Owner)_current_company, t->index));
 	}
 	return CommandCost();
 }

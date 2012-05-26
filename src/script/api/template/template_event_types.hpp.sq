@@ -248,3 +248,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventCompanyTown &GetParam(ForceType<const ScriptEventCompanyTown &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventCompanyTown *)instance; }
 	template <> inline int Return<ScriptEventCompanyTown *>(HSQUIRRELVM vm, ScriptEventCompanyTown *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventCompanyTown", res, NULL, DefSQDestructorCallback<ScriptEventCompanyTown>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventExclusiveTransportRights to be used as Squirrel parameter */
+	template <> inline ScriptEventExclusiveTransportRights *GetParam(ForceType<ScriptEventExclusiveTransportRights *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventExclusiveTransportRights *)instance; }
+	template <> inline ScriptEventExclusiveTransportRights &GetParam(ForceType<ScriptEventExclusiveTransportRights &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventExclusiveTransportRights *)instance; }
+	template <> inline const ScriptEventExclusiveTransportRights *GetParam(ForceType<const ScriptEventExclusiveTransportRights *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventExclusiveTransportRights *)instance; }
+	template <> inline const ScriptEventExclusiveTransportRights &GetParam(ForceType<const ScriptEventExclusiveTransportRights &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventExclusiveTransportRights *)instance; }
+	template <> inline int Return<ScriptEventExclusiveTransportRights *>(HSQUIRRELVM vm, ScriptEventExclusiveTransportRights *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventExclusiveTransportRights", res, NULL, DefSQDestructorCallback<ScriptEventExclusiveTransportRights>, true); return 1; }
+} // namespace SQConvert

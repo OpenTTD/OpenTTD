@@ -282,3 +282,17 @@ void SQGSEventCompanyTown_Register(Squirrel *engine)
 
 	SQGSEventCompanyTown.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventExclusiveTransportRights, ST_GS>() { return "GSEventExclusiveTransportRights"; }
+
+void SQGSEventExclusiveTransportRights_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventExclusiveTransportRights, ST_GS> SQGSEventExclusiveTransportRights("GSEventExclusiveTransportRights");
+	SQGSEventExclusiveTransportRights.PreRegister(engine, "GSEventCompanyTown");
+	SQGSEventExclusiveTransportRights.AddConstructor<void (ScriptEventExclusiveTransportRights::*)(ScriptCompany::CompanyID company, TownID town), 3>(engine, "xii");
+
+	SQGSEventExclusiveTransportRights.DefSQStaticMethod(engine, &ScriptEventExclusiveTransportRights::Convert, "Convert", 2, ".x");
+
+	SQGSEventExclusiveTransportRights.PostRegister(engine);
+}

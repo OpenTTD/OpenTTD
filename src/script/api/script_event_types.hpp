@@ -1021,6 +1021,28 @@ private:
 	TownID town;                      ///< The town involved into the event.
 };
 
+/**
+ * Event Exclusive Transport Rights, indicating that company bought
+ * exclusive transport rights in a town.
+ * @api ai game
+ */
+class ScriptEventExclusiveTransportRights : public ScriptEventCompanyTown {
+public:
+	/**
+	 * @param company The company.
+	 * @param town The town.
+	 */
+	ScriptEventExclusiveTransportRights(ScriptCompany::CompanyID company, TownID town) :
+		ScriptEventCompanyTown(ET_EXCLUSIVE_TRANSPORT_RIGHTS, company, town)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventExclusiveTransportRights *Convert(ScriptEventCompanyTown *instance) { return (ScriptEventExclusiveTransportRights *)instance; }
+};
 
 
 #endif /* SCRIPT_EVENT_TYPES_HPP */

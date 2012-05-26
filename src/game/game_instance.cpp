@@ -128,6 +128,7 @@ void GameInstance::RegisterAPI()
 	SQGSEventCompanyNew_Register(this->engine);
 	SQGSEventCompanyTown_Register(this->engine);
 	SQGSEventController_Register(this->engine);
+	SQGSEventExclusiveTransportRights_Register(this->engine);
 	SQGSEventGoalQuestionAnswer_Register(this->engine);
 	SQGSEventIndustryClose_Register(this->engine);
 	SQGSEventIndustryOpen_Register(this->engine);

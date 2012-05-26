@@ -134,6 +134,7 @@ void AIInstance::RegisterAPI()
 	SQAIEventDisasterZeppelinerCrashed_Register(this->engine);
 	SQAIEventEngineAvailable_Register(this->engine);
 	SQAIEventEnginePreview_Register(this->engine);
+	SQAIEventExclusiveTransportRights_Register(this->engine);
 	SQAIEventIndustryClose_Register(this->engine);
 	SQAIEventIndustryOpen_Register(this->engine);
 	SQAIEventStationFirstVehicle_Register(this->engine);

@@ -20,6 +20,7 @@
  * 1.3.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li AIEventExclusiveTransportRights
  * \li AIStation::IsAirportClosed
  * \li AIStation::OpenCloseAirport
  *
