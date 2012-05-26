@@ -719,7 +719,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Займ
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всего:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Количество транспортных средств, принёсших доход в прошлом году.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Количество обслуживаемых станций. Если несколько типов станций связаны в одну, они все учитываются отдельно.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибыль транспорта с самым низким доходом (среди транспортных средств старше 2-х лет)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Наименьший квартальный доход за последние 3 года
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Наибольший квартальный доход за последние 3 года
@@ -1410,6 +1410,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Генерат�
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Максимальное расстояние от края карты до нефтезаводов: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Нефтеперерабатывающие заводы всегда строятся у краёв карты или на берегах островов, находящихся недалеко от края
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Высота снеговой линии: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Неровность земли (только для TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
@@ -1425,6 +1426,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против ч
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Уровень высоты для карт с плоским рельефом: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Разрешить изменение ландшафта на краю карты: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :При отключении края карты всегда будут водными
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 

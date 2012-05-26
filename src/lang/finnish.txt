@@ -1120,6 +1120,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :keskellä
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :oikealla
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Rakentaminen rinteisiin ja rannikolle sallittu: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Mikäli käytössä, ratoja ja asemia voidaan rakentaa useimmille rinteille. Mikäli pois käytöstä, niitä voidaan rakentaa vain radalle sopivaan maastoon joka ei vaadi perustuksia
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
 STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman kokoiset vaikutusalueet: {STRING}
@@ -1186,6 +1187,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Mikäli käytö
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kaupungissa kuuteen kuukauteen
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jos yhtiö ostaa kuljetusyksinoikeudet kaupunkiin, vastustajien asemat (matkustaja ja rahti) eivät vastaanota rahtia vuoden ajan
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Salli rakennusten rahoittaminen: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Sallii yhtiöiden rahoittaa uusien talojen rakentamista kaupungeissa
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Salli paikallisen tieverkon uudelleenrakentamisen rahoitus: {STRING}
@@ -1252,6 +1254,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Maastogeneraatt
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljynjalostamoille: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamoja rakennetaan ainoastaan kartan reunoille eli rannikoille saarikartoilla
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus (vain TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
@@ -1267,9 +1270,12 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Litteälle maisemalle annettava korkeus: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Salli maanmuokkaus kartan reunoilla: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Mikäli pois käytöstä, kartan reunat ovat aina merta
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Suurin sallittu aseman levittäytyneisyys: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Suurin sallittu alue jolle yhden aseman osat voivat sijoittua. Huomioi, että suuret arvot hidastavat peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Huolla helikopterit helikopterialustoilla automaattisesti: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Huolla helikopterit jokaisella laskeutumiskerralla vaikka lentokentällä ei olisi varikkoa
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {STRING}

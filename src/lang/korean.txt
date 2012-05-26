@@ -1121,6 +1121,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :가운데
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :오른쪽
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :경사/해안가 위의 건설을 허용: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :이 옵션을 켜면 도로, 철도, 역 등을 대부분의 경사에 설치할 수 있게 됩니다. 이 옵션을 끄면 오직 트랙의 방향과 일치하는 경사에만 설치가 가능하기 때문에 기반 지형을 만들 필요가 없습니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더욱 현실적인 역세권 지정 허용: {STRING}
@@ -1187,6 +1188,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :이 옵션을 �
 STR_CONFIG_SETTING_BRIBE                                        :지역 당국에 뇌물을 주는 행위 허용: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 어떤 도시의 독점수송권을 구매하면, 그 도시에 있는 상대편의 역에서는 그 해동안 (승객을 포함한) 그 어떠한 화물도 받을 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시의 건물에 투자하는 기능: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :지역 도로 재공사 투자 행위를 허용: {STRING}
@@ -1253,6 +1255,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :지형 만들�
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 정제소의 최대 건설 범위: 지도 맨 끝에서부터 {STRING}칸 이내
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :석유 정제소는 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :만년설의 높이: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
@@ -1268,6 +1271,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :평지 시나리오의 평지 높이: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :지도 가장자리의 지형 변경을 허용: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :이 옵션을 끄면, 지도의 동서남북 끝이 반드시 모두 물이어야 합니다.
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}북쪽 가장자리에 있는 한 개 이상의 타일이 비어있지 않습니다
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}가장자리에 있는 한 개 이상의 타일이 물이 아닙니다
 

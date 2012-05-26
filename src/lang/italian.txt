@@ -1144,6 +1144,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Destra
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Consenti la costruzione su pendii e coste: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se abilitato, binari e stazioni possono essere costruiti sulla maggior parte dei pendii. Se disabilitato, è permesso costruirli solo su pendii rivolti nella stessa direzione, per i quali non è necessario costruire fondamenta
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Consenti rimodellazione terreno sotto a edifici, rotaie, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Consente la rimodellazione del terreno sotto edifici e rotaie senza doverli rimuovere
 STR_CONFIG_SETTING_CATCHMENT                                    :Consenti aree di copertura più realistiche: {STRING}
@@ -1210,6 +1211,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Se abilitato, l
 STR_CONFIG_SETTING_BRIBE                                        :Consenti la corruzione dell'autorità locale: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Consente alle compagnie di provare a corrompere l'autorità locale delle città. Se il tentativo viene notato da un ispettore, la compagnia è interdetta dall'operare nella città per sei mesi
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Consenti l'acquisto dell'esclusiva sui trasporti: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se una compagnia acquista i diritti esclusivi di trasporto in una città, le stazioni degli avversari (passeggeri e merci) non ricevono alcun carico per un anno intero
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Consenti finanziamento di nuove costruzioni: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Consente alle compagnie di fornire denaro alle città per il finanziamento di nuove abitazioni
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Consenti finanziamento della riscostruzione delle strade: {STRING}
@@ -1275,7 +1277,8 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Larghezza delle
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generatore terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max distanza delle raffinerie dal bordo della mappa: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Massima distanza delle raffinerie dal bordo della mappa: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Le raffinerie sono costruite solo vicino ai bordi della mappa, ovvero sulla costa nel caso di mappe insulari
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altezza delle nevi perenni: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregolarità del terreno (solo TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molto morbido
@@ -1291,10 +1294,11 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Altitudine delle mappe pianeggiante: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Consenti la rimodellazione del riquadri di terreno ai bordi della mappa: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se disabilitato, ai bordi della mappa è sempre presente dell'acqua
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Max estensione stazioni: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD                               :Massima estensione delle stazioni: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Area massima su cui possono essere distribuite le parti di una singola stazione. Nota: valori elevati rallentano il gioco
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutieni automaticamente gli elicotteri presso gli eliporti: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Effettua la manutenzione degli elicotteri dopo ogni atterraggio, anche se l'aeroporto non ha un deposito
@@ -1378,13 +1382,13 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Determina l'org
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Disabilita costruzione delle infrastrutture quando non sono disponibili veicoli adatti: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Se abilitata, le infrastrutture sono disponibili solo se ci sono veicoli adatta disponibili, evitando così lo spreco di tempo e denaro in infrastrutture inutilizzabili
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Max treni per compagnia: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Numero massimo di treni per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Numero massimo di treni che una compagnia può possedere
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max automezzi per compagnia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Numero massimo di automezzi per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Numero massimo di automezzi che una compagnia può possedere
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max aeromobili per compagnia: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Numero massimo di aeromobili per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Numero massimo di aeromobili che una compagnia può possedere
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Max navi per compagnia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Numero massimo di navi per compagnia: {STRING}
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Numero massimo di navi che una compagnia può possedere
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Disabilita treni delle IA: {STRING}
@@ -1398,7 +1402,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Abilitando ques
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Consenti le IA nelle partite multigiocatore: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Consente ai giocatori controllati dal computer di partecipare alle partite multigiocatore
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Max. numero di opcode prima della sospensione degli script: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Numero massimo di opcode prima della sospensione degli script: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Numero massimo di passi elementari che uno script può eseguire in una volta sola
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Gli intervalli di manutenzione sono in percentuale: {STRING}
@@ -1801,13 +1805,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (pubblicizza)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max client:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Limite client:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta il numero massimo di client. Non tutti i posti dovranno essere occupati
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagni{P a e}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max compagnie:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Limite compagnie:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita il server a un certo numero di compagnie
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spettator{P e i}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spettatori:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Limite spettatori:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita il server a un certo numero di spettatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
