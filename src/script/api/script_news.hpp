@@ -25,7 +25,12 @@ public:
 	 * Enumeration for the news types that a script can create news for.
 	 */
 	enum NewsType {
+		/* Arbitrary selection of NewsTypes which might make sense for scripts */
+		NT_ACCIDENT          = ::NT_ACCIDENT,         ///< Category accidents.
+		NT_COMPANY_INFO      = ::NT_COMPANY_INFO,     ///< Category company info.
 		NT_ECONOMY           = ::NT_ECONOMY,          ///< Category economy.
+		NT_ADVICE            = ::NT_ADVICE,           ///< Category vehicle advice.
+		NT_ACCEPTANCE        = ::NT_ACCEPTANCE,       ///< Category acceptance changes.
 		NT_SUBSIDIES         = ::NT_SUBSIDIES,        ///< Category subsidies.
 		NT_GENERAL           = ::NT_GENERAL,          ///< Category general.
 	};
