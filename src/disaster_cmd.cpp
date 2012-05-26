@@ -530,10 +530,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		Town *t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
-		AddNewsItem(STR_NEWS_DISASTER_BIG_UFO,
-			NS_ACCIDENT,
-			NR_TILE,
-			v->tile);
+		AddTileNewsItem(STR_NEWS_DISASTER_BIG_UFO, NS_ACCIDENT, v->tile);
 
 		if (!Vehicle::CanAllocateItem(2)) {
 			delete v;
@@ -878,8 +875,7 @@ static void Disaster_CoalMine_Init()
 		FOR_ALL_INDUSTRIES(i) {
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
-				AddNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE,
-					NS_ACCIDENT, NR_TILE, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
+				AddTileNewsItem(STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE, NS_ACCIDENT, i->location.tile + TileDiffXY(1, 1)); // keep the news, even when the mine closes
 
 				{
 					TileIndex tile = i->location.tile;

@@ -1694,7 +1694,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			SetDParamStr(0, cn);
 			SetDParam(1, t->index);
 
-			AddNewsItem(STR_NEWS_NEW_TOWN, NS_INDUSTRY_OPEN, NR_TILE, tile, NR_NONE, UINT32_MAX, cn);
+			AddTileNewsItem(STR_NEWS_NEW_TOWN, NS_INDUSTRY_OPEN, tile, cn);
 			AI::BroadcastNewEvent(new ScriptEventTownFounded(t->index));
 			Game::NewEvent(new ScriptEventTownFounded(t->index));
 		}

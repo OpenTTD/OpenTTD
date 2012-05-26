@@ -44,6 +44,11 @@ static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 	AddNewsItem(string, NS_ADVICE, NR_VEHICLE, vehicle);
 }
 
+static inline void AddTileNewsItem(StringID string, NewsSubtype subtype, TileIndex tile, void *free_data = NULL)
+{
+	AddNewsItem(string, subtype, NR_TILE, tile, NR_NONE, UINT32_MAX, free_data);
+}
+
 static inline void AddIndustryNewsItem(StringID string, NewsSubtype subtype, IndustryID industry)
 {
 	AddNewsItem(string, subtype, NR_INDUSTRY, industry);

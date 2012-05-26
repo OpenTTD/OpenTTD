@@ -2627,10 +2627,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			SetDParam(0, i->index);
 		}
 		/* and report the news to the user */
-		AddNewsItem(str,
-			ns,
-			closeit ? NR_TILE : NR_INDUSTRY,
-			closeit ? i->location.tile + TileDiffXY(1, 1) : i->index);
+		if (closeit) {
+			AddTileNewsItem(str, ns, i->location.tile + TileDiffXY(1, 1));
+		} else {
+			AddIndustryNewsItem(str, ns, i->index);
+		}
 	}
 }
 
