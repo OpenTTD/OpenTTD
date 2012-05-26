@@ -492,9 +492,9 @@ BEGIN {
 	if (match($0, "virtual")) {
 		virtual_class = "true"
 	}
-	gsub("virtual", "", $0)
-	gsub("static", "", $0)
-	gsub("const", "", $0)
+	gsub("\\yvirtual\\y", "", $0)
+	gsub("\\ystatic\\y", "", $0)
+	gsub("\\yconst\\y", "", $0)
 	gsub("{.*", "", $0)
 	param_s = $0
 	gsub("\\*", "", $0)
