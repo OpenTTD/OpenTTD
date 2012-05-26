@@ -990,6 +990,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GD_OPTIONS_START,                      "WID_GD_OPTIONS_START");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_OPTIONSPANEL,                       "WID_GS_OPTIONSPANEL");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_SCROLLBAR,                          "WID_GS_SCROLLBAR");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_GS_HELP_TEXT,                          "WID_GS_HELP_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE_DOWN,                          "WID_CC_RATE_DOWN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE_UP,                            "WID_CC_RATE_UP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_CC_RATE,                               "WID_CC_RATE");
