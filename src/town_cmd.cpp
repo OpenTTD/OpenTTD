@@ -2824,6 +2824,15 @@ static CommandCost TownActionBuyRights(Town *t, DoCommandFlag flags)
 		ModifyStationRatingAround(t->xy, _current_company, 130, 17);
 
 		SetWindowClassesDirty(WC_STATION_VIEW);
+
+		/* Spawn news message */
+		CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+		cni->FillData(Company::Get(_current_company));
+		SetDParam(0, STR_NEWS_EXCLUSIVE_RIGHTS_TITLE);
+		SetDParam(1, STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION);
+		SetDParam(2, t->index);
+		SetDParamStr(3, cni->company_name);
+		AddNewsItem(STR_MESSAGE_NEWS_FORMAT, NT_GENERAL, NF_COMPANY, NR_TOWN, t->index, NR_NONE, UINT32_MAX, cni);
 	}
 	return CommandCost();
 }
