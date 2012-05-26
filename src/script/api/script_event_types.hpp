@@ -1044,5 +1044,27 @@ public:
 	static ScriptEventExclusiveTransportRights *Convert(ScriptEventCompanyTown *instance) { return (ScriptEventExclusiveTransportRights *)instance; }
 };
 
+/**
+ * Event Road Reconstruction, indicating that company triggered
+ * road reconstructions in a town.
+ * @api ai game
+ */
+class ScriptEventRoadReconstruction : public ScriptEventCompanyTown {
+public:
+	/**
+	 * @param company The company.
+	 * @param town The town.
+	 */
+	ScriptEventRoadReconstruction(ScriptCompany::CompanyID company, TownID town) :
+		ScriptEventCompanyTown(ET_ROAD_RECONSTRUCTION, company, town)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventRoadReconstruction *Convert(ScriptEventCompanyTown *instance) { return (ScriptEventRoadReconstruction *)instance; }
+};
 
 #endif /* SCRIPT_EVENT_TYPES_HPP */

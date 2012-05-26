@@ -132,6 +132,7 @@ void GameInstance::RegisterAPI()
 	SQGSEventGoalQuestionAnswer_Register(this->engine);
 	SQGSEventIndustryClose_Register(this->engine);
 	SQGSEventIndustryOpen_Register(this->engine);
+	SQGSEventRoadReconstruction_Register(this->engine);
 	SQGSEventStationFirstVehicle_Register(this->engine);
 	SQGSEventSubsidyAwarded_Register(this->engine);
 	SQGSEventSubsidyExpired_Register(this->engine);

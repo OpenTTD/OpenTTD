@@ -21,6 +21,7 @@
  *
  * API additions:
  * \li AIEventExclusiveTransportRights
+ * \li AIEventRoadReconstruction
  * \li AIStation::IsAirportClosed
  * \li AIStation::OpenCloseAirport
  *

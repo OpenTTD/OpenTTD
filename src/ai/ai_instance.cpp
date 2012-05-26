@@ -137,6 +137,7 @@ void AIInstance::RegisterAPI()
 	SQAIEventExclusiveTransportRights_Register(this->engine);
 	SQAIEventIndustryClose_Register(this->engine);
 	SQAIEventIndustryOpen_Register(this->engine);
+	SQAIEventRoadReconstruction_Register(this->engine);
 	SQAIEventStationFirstVehicle_Register(this->engine);
 	SQAIEventSubsidyAwarded_Register(this->engine);
 	SQAIEventSubsidyExpired_Register(this->engine);

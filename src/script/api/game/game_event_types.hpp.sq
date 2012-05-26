@@ -296,3 +296,17 @@ void SQGSEventExclusiveTransportRights_Register(Squirrel *engine)
 
 	SQGSEventExclusiveTransportRights.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventRoadReconstruction, ST_GS>() { return "GSEventRoadReconstruction"; }
+
+void SQGSEventRoadReconstruction_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventRoadReconstruction, ST_GS> SQGSEventRoadReconstruction("GSEventRoadReconstruction");
+	SQGSEventRoadReconstruction.PreRegister(engine, "GSEventCompanyTown");
+	SQGSEventRoadReconstruction.AddConstructor<void (ScriptEventRoadReconstruction::*)(ScriptCompany::CompanyID company, TownID town), 3>(engine, "xii");
+
+	SQGSEventRoadReconstruction.DefSQStaticMethod(engine, &ScriptEventRoadReconstruction::Convert, "Convert", 2, ".x");
+
+	SQGSEventRoadReconstruction.PostRegister(engine);
+}
