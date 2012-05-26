@@ -41,7 +41,7 @@ static inline void AddVehicleNewsItem(StringID string, NewsType type, VehicleID 
  */
 static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 {
-	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL, NR_VEHICLE, vehicle);
+	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle);
 }
 
 static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = NULL)

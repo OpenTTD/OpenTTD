@@ -81,10 +81,12 @@ enum NewsFlag {
 	NFB_SHADE          = 2,                      ///< News item uses shaded colours.
 	NFB_WINDOW_LAYOUT  = 3,                      ///< First bit for window layout.
 	NFB_WINDOW_LAYOUT_COUNT = 3,                 ///< Number of bits for window layout.
+	NFB_VEHICLE_PARAM0 = 6,                      ///< String param 0 contains a vehicle ID. (special autoreplace behaviour)
 
 	NF_INCOLOUR       = 1 << NFB_INCOLOUR,       ///< Bit value for coloured news.
 	NF_NO_TRANSPARENT = 1 << NFB_NO_TRANSPARENT, ///< Bit value for disabling transparency.
 	NF_SHADE          = 1 << NFB_SHADE,          ///< Bit value for enabling shading.
+	NF_VEHICLE_PARAM0 = 1 << NFB_VEHICLE_PARAM0, ///< Bit value for specifying that string param 0 contains a vehicle ID. (special autoreplace behaviour)
 
 	NF_THIN           = 0 << NFB_WINDOW_LAYOUT,  ///< Thin news item. (Newspaper with headline and viewport)
 	NF_SMALL          = 1 << NFB_WINDOW_LAYOUT,  ///< Small news item. (Information window with text and viewport)

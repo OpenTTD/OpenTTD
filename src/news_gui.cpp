@@ -846,15 +846,7 @@ void ChangeVehicleNews(VehicleID from_index, VehicleID to_index)
 	for (NewsItem *ni = _oldest_news; ni != NULL; ni = ni->next) {
 		if (ni->reftype1 == NR_VEHICLE && ni->ref1 == from_index) ni->ref1 = to_index;
 		if (ni->reftype2 == NR_VEHICLE && ni->ref2 == from_index) ni->ref2 = to_index;
-
-		/* Oh noes :(
-		 * Autoreplace is breaking the whole news-reference concept here, as we want to keep the news,
-		 * but do not know which DParams to change.
-		 *
-		 * Currently only NT_ADVICE news have vehicle IDs in their DParams.
-		 * And all NT_ADVICE news have the ID in param 0.
-		 */
-		if (ni->type == NT_ADVICE && ni->params[0] == from_index) ni->params[0] = to_index;
+		if (ni->flags & NF_VEHICLE_PARAM0 && ni->params[0] == from_index) ni->params[0] = to_index;
 	}
 }
 
