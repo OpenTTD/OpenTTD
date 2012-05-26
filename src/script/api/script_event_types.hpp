@@ -980,5 +980,47 @@ private:
 	ScriptGoal::QuestionButton button; ///< The button he pressed.
 };
 
+/**
+ * Base class for events involving a town and a company.
+ * @api ai game
+ */
+class ScriptEventCompanyTown : public ScriptEvent {
+public:
+	/**
+	 * @param event The eventtype.
+	 * @param company The company.
+	 * @param town The town.
+	 */
+	ScriptEventCompanyTown(ScriptEventType event, ScriptCompany::CompanyID company, TownID town) :
+		ScriptEvent(event),
+		company(company),
+		town(town)
+	{}
+
+	/**
+	 * Convert an ScriptEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static ScriptEventCompanyTown *Convert(ScriptEvent *instance) { return (ScriptEventCompanyTown *)instance; }
+
+	/**
+	 * Get the CompanyID of the company.
+	 * @return The CompanyID of the company involved into the event.
+	 */
+	ScriptCompany::CompanyID GetCompanyID() { return this->company; }
+
+	/**
+	 * Get the TownID of the town.
+	 * @return The TownID of the town involved into the event.
+	 */
+	TownID GetTownID() { return this->town; }
+
+private:
+	ScriptCompany::CompanyID company; ///< The company involved into the event.
+	TownID town;                      ///< The town involved into the event.
+};
+
+
 
 #endif /* SCRIPT_EVENT_TYPES_HPP */

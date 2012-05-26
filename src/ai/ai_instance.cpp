@@ -128,6 +128,7 @@ void AIInstance::RegisterAPI()
 	SQAIEventCompanyInTrouble_Register(this->engine);
 	SQAIEventCompanyMerger_Register(this->engine);
 	SQAIEventCompanyNew_Register(this->engine);
+	SQAIEventCompanyTown_Register(this->engine);
 	SQAIEventController_Register(this->engine);
 	SQAIEventDisasterZeppelinerCleared_Register(this->engine);
 	SQAIEventDisasterZeppelinerCrashed_Register(this->engine);

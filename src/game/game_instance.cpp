@@ -126,6 +126,7 @@ void GameInstance::RegisterAPI()
 	SQGSEventCompanyInTrouble_Register(this->engine);
 	SQGSEventCompanyMerger_Register(this->engine);
 	SQGSEventCompanyNew_Register(this->engine);
+	SQGSEventCompanyTown_Register(this->engine);
 	SQGSEventController_Register(this->engine);
 	SQGSEventGoalQuestionAnswer_Register(this->engine);
 	SQGSEventIndustryClose_Register(this->engine);

@@ -239,3 +239,12 @@ namespace SQConvert {
 	template <> inline const ScriptEventGoalQuestionAnswer &GetParam(ForceType<const ScriptEventGoalQuestionAnswer &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventGoalQuestionAnswer *)instance; }
 	template <> inline int Return<ScriptEventGoalQuestionAnswer *>(HSQUIRRELVM vm, ScriptEventGoalQuestionAnswer *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventGoalQuestionAnswer", res, NULL, DefSQDestructorCallback<ScriptEventGoalQuestionAnswer>, true); return 1; }
 } // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventCompanyTown to be used as Squirrel parameter */
+	template <> inline ScriptEventCompanyTown *GetParam(ForceType<ScriptEventCompanyTown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventCompanyTown *)instance; }
+	template <> inline ScriptEventCompanyTown &GetParam(ForceType<ScriptEventCompanyTown &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventCompanyTown *)instance; }
+	template <> inline const ScriptEventCompanyTown *GetParam(ForceType<const ScriptEventCompanyTown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptEventCompanyTown *)instance; }
+	template <> inline const ScriptEventCompanyTown &GetParam(ForceType<const ScriptEventCompanyTown &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptEventCompanyTown *)instance; }
+	template <> inline int Return<ScriptEventCompanyTown *>(HSQUIRRELVM vm, ScriptEventCompanyTown *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventCompanyTown", res, NULL, DefSQDestructorCallback<ScriptEventCompanyTown>, true); return 1; }
+} // namespace SQConvert

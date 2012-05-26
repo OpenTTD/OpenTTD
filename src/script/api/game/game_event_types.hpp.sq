@@ -266,3 +266,19 @@ void SQGSEventGoalQuestionAnswer_Register(Squirrel *engine)
 
 	SQGSEventGoalQuestionAnswer.PostRegister(engine);
 }
+
+
+template <> const char *GetClassName<ScriptEventCompanyTown, ST_GS>() { return "GSEventCompanyTown"; }
+
+void SQGSEventCompanyTown_Register(Squirrel *engine)
+{
+	DefSQClass<ScriptEventCompanyTown, ST_GS> SQGSEventCompanyTown("GSEventCompanyTown");
+	SQGSEventCompanyTown.PreRegister(engine, "GSEvent");
+
+	SQGSEventCompanyTown.DefSQStaticMethod(engine, &ScriptEventCompanyTown::Convert, "Convert", 2, ".x");
+
+	SQGSEventCompanyTown.DefSQMethod(engine, &ScriptEventCompanyTown::GetCompanyID, "GetCompanyID", 1, "x");
+	SQGSEventCompanyTown.DefSQMethod(engine, &ScriptEventCompanyTown::GetTownID,    "GetTownID",    1, "x");
+
+	SQGSEventCompanyTown.PostRegister(engine);
+}
