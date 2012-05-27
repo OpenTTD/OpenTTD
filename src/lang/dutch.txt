@@ -1120,6 +1120,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Midden
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Rechts
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Bouwen op hellingen en kusten toestaan: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Indien ingeschakeld kunnen sporen en stations gebouwd worden op hellingen. Indien uitgeschakeld kunnen stations en sporen alleen gebouwd worden op hellingen waar geen fundering nodig is en alleen in de richting van het spoor.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat het aanpassen van funderingne onder gebouwen en spoor toe zonder deze te verwijderen
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebruik meer realistische handelsgebieden: {STRING}
@@ -1186,6 +1187,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer ingesch
 STR_CONFIG_SETTING_BRIBE                                        :Omkopen van de gemeente toestaan: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Toestaan dat bedrijven mogen proberen de plaatselijke gemeente autoriteit om te kopen. Als de omkoping wordt opgemerkt door een inspecteur, zal de onderneming niet in staat zijn om in de stad actie te ondernemen voor zes maanden
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kopen van exclusieve transportrechten toestaan: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wanneer een bedrijf de exclusieve transportrechten van een stad koopt, ontvangen de stations (zowel passagiers als vracht) van tegenstander geen vracht voor één heel jaar.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Financiering van gebouwen toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Deze optie staat bedrijven toe meer geld te geven aan steden voor de financiering van nieuwe huizen.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Financieren van lokale wegreconstructie toestaan: {STRING}
@@ -1246,6 +1248,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rechtsklik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Geef het inwoneraantal bij een stad weer: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Toon de populatie van een stad in hun tekst op de kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van de lijnen in grafieken: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breedte van de lijnen in de grafiek. Een dunne lijn is preciezer leesbaar, een dikke lijn is makkelijker te zien en kleuren zijn gemakkelijker herkenbaar.e lijn
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
@@ -1270,16 +1273,22 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of m
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximale stationsgrootte: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximum gebied waar onderdelen van één station op verspreid mogen zijn. Grotere gebieden vertragen het spel!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopters automatisch repareren op helipads: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Pleeg onderhoud aan elke helikopter na een landing, ook wanneer er geen depot aanwezig is op de luchthaven.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Verbind de knoppenbalk voor terreinvorming met die voor spoor/weg/water/vliegveld: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Bij het openen van een werkbalk voor constructie van transport ook een werkbalk openen voor landschapsvorming.
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Gebruiker land kleur op de kleine kaart: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kleur van het terrein op de kleine kaart.
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donker groen
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omgekeerde scrollrichting: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Gedrag wanneer gescrolld wordt door de map met de rechter muisknop. Indien uitgeschakeld bestuurd de muis de camera. Indien ingeschakeld bestuurd de muis de kaart.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scrollen kijkvenster: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Laat alle bedrijfskleuren zien: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Beheer het gebruik van voertuigspecifieke levering voor voertuigen (in tegenstelling tot bedrijfsspecifieke leveringen).
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niets
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigen bedrijf
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle bedrijven

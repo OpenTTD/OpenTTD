@@ -845,6 +845,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後一年收到四倍運費補助！
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} 交通大亂！{}{}{STRING} 出資的道路重建計劃為用路人帶來六個月的惡夢！
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}運輸大亨!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
@@ -2602,6 +2603,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}接受貨物
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}顯示接受的貨物種類
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}接受：{WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評價
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}顯示車站評價

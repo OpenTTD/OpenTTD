@@ -853,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el quàdruple de la tarifa durant el pròxim any!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Caos de trànsit a {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {STRING} porta 6 mesos de misèria als motoristes!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transport!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}L'autoritat local de {TOWN} signa un contracte amb {STRING} per l'exclusiva dels drets de transport durant un any!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}

@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Anzahl an Fahrzeugen (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Hubschrauber), die letztes Jahr Gewinn gemacht haben
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl an regelmäßig genutzten Stationen (Jeder Teil einer Station zählt einzeln: Bahnhof, Ladeplatz, Busbahnhof, Flugplatz, Hafen)
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl vor kurzem genutzter Stationen (wenn Stationen verschiedener Typen verbunden sind, werden sie trotzdem einzeln gezählt)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als zwei Jahre sind
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Höchste Monatseinnahmen in den letzten 12 Quartalen

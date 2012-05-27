@@ -677,7 +677,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila dobit prošle godine. Ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno održavanih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (u obzir su uzeta samo vozila starija od dvije godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najnižom dobiti u zadnjih 12 kvartala
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
@@ -948,6 +948,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvencija je dodijeljena tvrtki {STRING}!{}{}Prijevoz {STRING.gen} od postaje {STRING} do postaje {STRING} plaćat će se četverostruko sljedećih godinu dana!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Grad {TOWN} zahvatio je prometni kaos!{}{}Program rekonstrukcije cesta koji financira tvrtka {STRING} sljedećih će 6 mjeseci zadavati glavobolje motoriziranima!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transporta!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokalna vlast {TOWN} potpisuje ugovor sa {STRING} za jednogodišnja ekskluzivna prava transporta!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini pogled {COMMA}
@@ -1216,6 +1218,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Sredina
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Desno
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Dopusti izgradnju na kosinama i obalama: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ukoliko je uključenom, tračnice i stanice se mogu graditi na većini nagiba. Ukoliko je isključeni, dozvoljava se njihova gradnja samo na nagibima koji se podudaraju smjerom tračnica i tada ne trebaju temelje
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dopusti modeliranje zemlje ispod građevina, tračnica, itd (autonagib): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dozvoli uređivanje terena ispod građevina i pruga bez njihovog uklanjanja
 STR_CONFIG_SETTING_CATCHMENT                                    :Dopusti realističnije veličine područja zahvaćanja: {STRING}
@@ -1282,6 +1285,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kada je uključ
 STR_CONFIG_SETTING_BRIBE                                        :Dopusti potkupljivanje lokalne samouprave: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Omogućiti tvrtkama pokušavanje podmićivanja lokalne gradske vlasti. Ako mito je primjećeno od strane inspektora, tvrtka neće biti u mogućnosti djelovati u gradu na šest mjeseci
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dopusti kupovinu ekskluzivnih prijevoznih prava: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ako kompanije kupi eksluzivna prava transporta za neki grad, protivničke stanice (putničke i teretne) neće dobivati ništa tereta tijekom cijele godine
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Dozvoli financiranje zgrada: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Dozvoli kompanijama davanje novca gradovima za financiranje novih kuća
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Dozvoli financiranje rekonstrukcije lokalnih cesta: {STRING}
@@ -1348,6 +1352,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator zemlj
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Najveća udaljenost Rafinerija Nafte od rubova: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerije nafte se grade samo uz rubove mape odnosno na obali za otočne mape
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Visina linije snijega: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grubost terena (samo TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Vrlo glatko
@@ -1363,6 +1368,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto od smje
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Visinski nivo koji ravna mapa u scenariju dobiva: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Omogući teraformiranje polja na rubovima karte: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ako je isključeno, rubovi mape će uvijek biti ocean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 

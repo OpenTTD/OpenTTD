@@ -1296,6 +1296,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis vei
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(paaiškinimo nėra)
 
 STR_CONFIG_SETTING_OFF                                          :Išjungta
 STR_CONFIG_SETTING_ON                                           :Įjungta
@@ -1315,30 +1316,45 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statyti pastatus pakrantėse ir ant šlaitų: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
 STR_CONFIG_SETTING_CATCHMENT                                    :Kurti tikroviškesnio dydžio mikrorajonus: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Palengvinti miestams priklausančios infrastruktūros (kelių, tiltų, namų ir kitų objektų) pašalinimą
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Didžiausias traukinio ilgis: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Didžiausias galimas traukinio ilgis
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} langel{P 0 is iai ių}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transporto priemonių dūmų / žiežirbų kiekis: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nustatyti transporto priemonių išmetamų dūmų ir žiežirbų kiekio algoritmą
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Traukinių įsibėgėjimo nustatymas: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Nustatyti fizikinį traukinių greitėjimo modelį. „Originalus“ modelis visas įkalnes ir nuokalnes traktuoja vienodai visiems traukiniams, tuo tarpu „Tikroviškas“ modelis atsižvelgia į įvairius traukinio parametrus, pvz., vagonų skaičių, traukos jėgą, masę ir kitus
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Automobilių greitėjimo modelis: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Nustatyti fizikinį automobilių greitėjimo modelį. „Originalus“ modelis visas įkalnes ir nuokalnes traktuoja vienodai visiems automobiliams, traukiniams, tuo tarpu „Tikroviškas“ modelis atsižvelgia į įvairius automobilio parametrus, pvz., traukos jėgą, masę ir kitus
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Šlaitų statumas traukiniams: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Šlaitų statumas traukiniams. Kuo didesnė vertė, tuo sunkiau bus traukiniui įveiktį įkalnę
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Šlaitų statumas automobiliams: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Šlaitų statumas automobiliams. Kuo didesnė vertė, tuo sunkiau bus automobiliui įveiktį įkalnę
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Drausti traukiniams/laivams pasisukti 90 laips.kampu: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90° posūkis susidaro, kai horizontalus bėgių elementas yra sujungiamas su gretimame langelyje esančiu vertikaliu elementu. Ši nuostata taip pat galioja ir laivams
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leidžia sujungti stoteles, kurios nėra šalia: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Leisti praplėsti stotelę naujomis krovos aikštelėmis jas statant ne šalia jau esančiųjų, bet tolėliau. Statant reikia laikyti nuspaustą Ctrl klavišą
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Naudoti patobulintą krovimo algoritmą: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Pakrauti tr. priemones paeiliui: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Infliacija: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Įjungti/išjungti infliaciją (išlaidos augs truputį greičiau už atlygius)
 STR_CONFIG_SETTING_SELECTGOODS                                  :Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Didžiausias tilto ilgis: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Didžiausias galimas tilto ilgis
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tunelio ilgis: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Didžiausias galimas tunelio ilgis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pagrindinis pramonės statymo būdas: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lygi vieta aplink gamyklas: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Privalomo lygaus paviršiaus, supančio gamyklą, kiekis. Taip užtikrinama, kad, pastačius gamykla, dar liks vietos stotelėms, keliams, bėgiams ir kitai infrastruktūrai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leisti kelias panašias pramonės įmones viename mieste: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Įprastai miestai nepageidauja dviejų tos pačios rūšies gamyklų. Įgalinus šią nuostatą, vienams miestui priklausančioje teritorijoje galės egzistuoti dvi ar daugiau tos pačios rūšies gamyklų
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Šviesoforus rodyti: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kairėje
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :tiesioginio eismo pusėje
@@ -1353,6 +1369,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vi
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Leisti pirkti išskirtines transporto teises: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jei kuri nors kompanija išsipirks išimtines transporto teises, kitų kompanijų stotelės vienerius metus nebesulauks naujų keleivių ir/ar krovinių
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leisti namų statybos rėmimą: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Leisti paremti vietos kelių taisymą: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Leisti siųsti pinigus kitoms kompanijoms: {STRING}
@@ -1396,6 +1413,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Sausumos kūrim
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Standartinis
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftos perdirbimo gamyklos statomos tik žemėlapio pakraščiuose, netoli kranto
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniego linijos aukštis: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paviršiaus nelygumas (tik TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Labai lygus
@@ -1414,6 +1432,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Leisti keisti r
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas ar daugiau blokų šiauriniame krašte yra ne tušti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Didžiausias stotelės matmuo: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Remontuoti sraigtasparnius automatiškai: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mažame žemėlapyje naudojama žemės spalva: {STRING}

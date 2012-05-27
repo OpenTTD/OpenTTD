@@ -852,6 +852,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Tuki myönnetty yhtiölle {STRING}!{}{}{STRING}kuljetus välillä {STRING}-{STRING} tuottaa nelinkertaisesti seuraavan vuoden ajan!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}: liikennekaaos!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Kuljetusmonopoli!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Kaupungin {TOWN} paikallisviranomaiset allekirjoittavat sopimuksen yhtiön {STRING} kanssa vuoden pituisesta kuljetusyksinoikeudesta!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}

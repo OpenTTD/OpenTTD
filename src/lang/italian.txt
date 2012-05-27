@@ -854,6 +854,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il quadruplo per il prossimo anno!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {STRING} porterà 6 mesi di disagio agli automobilisti!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopolio dei trasporti!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}L'autorità locale di {TOWN} firma un accordo con la {STRING} per un anno di diritti di trasporto esclusivi!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}

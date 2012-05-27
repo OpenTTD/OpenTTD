@@ -997,6 +997,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Компания «{STRING}» получает субсидию!{}{}Перевозка {STRING.gen} по маршруту {STRING} - {STRING} будет оплачиваться в четырёхкратном размере в течение года!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Хаос на дорогах города{NBSP}{TOWN}!{}{}Профинансированная {STRING} реконструкция дорог на 6 месяцев парализовала работу автотранспорта!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспортный монополист!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Администрация г.{NBSP}{TOWN} заключила контракт с компанией «{STRING}», предоставляющий ей эксклюзивные права на транспортные услуги в городе сроком на 1{NBSP}год!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Окно просмотра {COMMA}

@@ -537,8 +537,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activează tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate cargo-urile în graficul de plăţi
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa nici un cargo în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate mărfurile în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa niciun tip de marfă în graficul de plăţi
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile pe anul precedent. Include autovehicule, trenuri, nave şi aeronave
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse din gări, aeroporturi, porturi, staţii de autobuz, etc.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse simultan din gări, aeroporturi, porturi, staţii de autobuz, etc.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mic profit din ultimele 12 trimestre.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mare profit din ultimele 12 trimestre.
@@ -852,6 +852,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenţie acordată companiei {STRING}!{}{}Transportul de {STRING} de la {STRING} la {STRING} va aduce încasări de patru ori mai mari timp de un an!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanţat de {STRING} pentru reconstrucţia străzilor aduce 6 luni de haos participanţilor la trafic!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol de transport!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Autoritatea locală a oraşului {TOWN} semnează un contract cu {STRING} pentru un an de drepturi exclusive de transport!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran {COMMA}
@@ -1101,6 +1103,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări avansate
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
@@ -1119,24 +1122,49 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centru
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :dreapta
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permite construirea pe coastă şi în pantă: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Dacă este activat, şinele şi staţiile pot fi construite pe majoritatea pantelor. Dacă este dezactivat, acestea pot fi construite doar pe pante care coincid cu direcţia şinelor şi astfel nu necesită fundaţie
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite zone diferite de captare pentru tipuri diferite de staţii şi aeroporturi
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitează eliminarea de clădiri şi infrastructură deţinute de oraş
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale locomotivei: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Configurează lungimea maximă a trenurilor
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pătrăţel{P 0 "" e}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale vehiculului: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Configurează cât de mult fum sau cât de multe scântei sunt emise de vehicule
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelul de acceleraţie al trenurilor: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelul de acceleraţie pentru vehiculele rutiere: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selectează modelul fizic pentru accelerarea trenurilor. Modelul "original" penalizează pantele în mod egal pentru toate vehiculele. Modelul "realistic" penalizează pantele şi curbele în funcţie de mai mulţi parametrii, cum ar fi lungimea şi efortul tractor
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelul de acceleraţie al vehiculelor rutiere: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Selectează modelul fizic pentru accelerarea autovehiculelor. Modelul "original" penalizează pantele în mod egal pentru toate autovehiculele. Modelul "realistic" penalizează pantele şi curbele în funcţie de mai mulţi parametrii ai motorului, cum ar fi efortul tractor
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Înclinarea pantelor pentru trenuri: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Înclinarea unui pătrăţel de pantă pentru trenuri. O valoare mai mare face urcarea mai dificilă
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Înclinarea pantelor pentru autovehicule: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Înclinarea unui pătrăţel de pantă pentru autovehicule. O valoare mai mare face urcarea mai dificilă
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Interzice trenurilor şi navelor să facă întoarceri la 90°: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permite unirea staţiilor neînvecinate: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Foloseşte algoritm de încărcare îmbunătăţit: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Încarcă vehiculele gradual: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Livrează marfa doar în staţiile unde aceasta este cerută: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lungimea maximă a podurilor: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de poduri
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maximă a tunelurilor: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de tuneluri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospecţie
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Zonă plată în jurul industriilor: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Suprafaţa zonei plate din jurul industriilor. Aceasta asigură că există spaţiu liber în jurul industriilor pentru construcţia de şine, etc
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permite mai multe industrii similare în acelaşi oras: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Arată semnalele: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selectează pe care parte a şinei să fie plasate semnalele
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Pe partea stângă
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :În direcţia de mers
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Pe partea dreaptă
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afişează finanţele la sfârşitul fiecărui an: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ordinele noi sunt implicit 'fără oprire': {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordinele noi pentru trenuri opresc implicit la {STRING} platformei
@@ -1147,7 +1175,8 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autovehiculele 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Mută imaginea când mouse-ul este la marginea ecranului: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Permite mituirea autorităţilor locale: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite cumpărarea de drepturi exclusive de transport: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite fondarea a noi clădiri: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Dacă o companie cumpără drepturi exclusive de transport într-un oras, staţiilor oponenţilor (de pasageri şi mărfuri) nu vor primi niciun fel de cargo pentru un an întreg
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite finaţarea clădirilor noi: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite finanțarea reconstrucției străzilor locale: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite transfer de bani către alte companii: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicator greutate pt marfar pt simularea trenurilor grele: {STRING}
@@ -1164,7 +1193,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mentenanță in
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroporturile nu expiră niciodată: {STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertisment dacă vehicolul s-a pierdut: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avertisment dacă vehiculul s-a pierdut: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Verificarea ordinelor vehiculelor: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
@@ -1179,6 +1208,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grosimea liniil
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator teren: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinăriile de petrol vor fi construite doar la marginea hărţii, sau pe coastă, în cazul harţilor insulare
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratului de zăpadă: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Duritatea terenului (doar pt TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
@@ -1192,13 +1222,14 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Îmbunătăţit
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotaţie hartă înălţimi: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Spre stânga
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Spre dreapta
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Nivelul înălţimii atins de o hartă plană: {STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Nivelul înălţimii pentru hărţile plane: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Permite terraformarea suprafeţelor din marginea hărţii: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Dacă este dezactivat, marginile hărţii vor fi întotdeauna ocean
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una sau mai multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Service automat pentru elicoptere la helipaduri: {STRING}
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/aeriane: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/navale/aeriene: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Culoarea terenului folosită pentru harta mică: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
@@ -1250,7 +1281,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponib
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosită
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Arată liniile rezervate: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează active instrumentele de construcţie după utilizare: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Cheltuielile întregului grup de jucători în raportul financiar al companiei: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupează cheltuielile în raportul financiar al companiei: {STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Dezactivează construcția de infrastructuri pentru care nu există vehicule disponibile: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Nr. max. de trenuri per companie: {STRING}
@@ -1318,13 +1349,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :x2
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :x4
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :x8
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Viteza de dezvoltare a oraşului: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Viteza creşterii oraşelor
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Deloc
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lentă
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normală
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rapidă
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Foarte rapidă
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporţia oraşelor care vor deveni mari: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Numărul de oraşe care devin mari, astfel un oraş care porneşte prin a fi mai mare şi creşte mai rapid
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 din {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :deloc
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Elimină elementele de drum absurde pe durata construcţiei drumului: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Elimină capatul drumurilor înfundate în timpul reconstrucţiei finanţată a drumurilor
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfaţă
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construcţie
@@ -1350,9 +1388,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recomandat)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritm de rutare pentru trenuri: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Algoritm de rutare pentru trenuri
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritm de rutare pentru autovehicule: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Algoritmul de rutare folosit pentru autovehicule
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritm de rutare pentru nave: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Algoritmul de rutare folosit pentru nave
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Întoarcere automată la semafoare: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Permite trenurilor să întoarcă la semafor, dacă aşteaptă de mult timp
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -2701,6 +2743,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acceptă
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Afişează lista de încărcături acceptate
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptă: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Această staţie are drepturi exclusive de transport în acest oraş.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} a cumpărat drepturi exclusive de transport în acest oraş.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Evaluări
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Afişează evaluările staţiei
@@ -3101,7 +3145,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã 
 STR_REPLACE_ENGINES                                             :Motoare
 STR_REPLACE_WAGONS                                              :Vagoane
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care să înlocuieşti motoarele
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care doreşti să înlocuieşti locomotivele
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicule feroviare
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electrificate pe Sine
@@ -3811,7 +3855,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nu se po
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nu există cale ferată aici
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nu există semafoare
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nu pot converti linia aici...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tipul de şină nu poate fi convertit aici...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Mai întâi trebuie înlăturată şoseaua
