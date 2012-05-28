@@ -1026,7 +1026,7 @@ struct SettingEntry {
 	}
 
 private:
-	void DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int x, int y, int max_x, int state, bool highlight);
+	void DrawSetting(GameSettings *settings_ptr, int x, int y, int max_x, int state, bool highlight);
 };
 
 /** Data structure describing one page of settings in the settings window. */
@@ -1237,7 +1237,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int bas
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			if (cur_row >= first_row) {
-				this->DrawSetting(settings_ptr, this->d.entry.setting, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK,
+				this->DrawSetting(settings_ptr, rtl ? left : x, rtl ? x : right, y, this->flags & SEF_BUTTONS_MASK,
 						this == selected);
 			}
 			cur_row++;
@@ -1278,15 +1278,15 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
 /**
  * Private function to draw setting value (button + text + current value)
  * @param settings_ptr Pointer to current values of all settings
- * @param sd           Pointer to value description of setting to draw
  * @param left         Left-most position in window/panel to start drawing
  * @param right        Right-most position in window/panel to draw
  * @param y            Upper-most position in window/panel to start drawing
  * @param state        State of the left + right arrow buttons to draw for the setting
  * @param highlight    Highlight entry.
  */
-void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd, int left, int right, int y, int state, bool highlight)
+void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, int state, bool highlight)
 {
+	const SettingDesc *sd = this->d.entry.setting;
 	const SettingDescBase *sdb = &sd->desc;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	bool editable = true;
