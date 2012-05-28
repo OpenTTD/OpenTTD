@@ -1191,6 +1191,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo iest
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūras uzturēšana: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbosies mūžīgi: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Brīdināt, ja transportlīdzeklis ir noklīdis: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārskatīt transportlīdzekļu rīkojumus: {STRING}
@@ -1399,9 +1400,11 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Galvenās rīkj
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Stāvokļa joslas novietojums: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Stāvokļa joslas horizontālais novietojums ekrāna apakšējā daļā
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Logu pielipšanas rādiuss: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Attālums starp logiem, kad pārvietojamais logs tiek automātiski pielīdzināts tuvākajiem logiem
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikse{P 0 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :izslēgts
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais logu skaits: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepielipušo logu skaits, pirms tie tiek automātiski aizvērti lai izveidotu vietu jauniem logiem
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}

@@ -1188,6 +1188,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Om aktiverad s�
 STR_CONFIG_SETTING_BRIBE                                        :Tillåt mutning av de lokala myndigheterna: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Tillåt företag att försöka muta de lokala myndigheterna. Om mutan upptäcks av en inspektör kommer företaget inte ha möjlighet att verka i staden i sex månader
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillåt köp av exklusiva transporträttigheter: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om ett företag köper exklusiva transporträttigheter i en stad kommer konkurrenternas stationer (för passagerare och last) inte ta emot någon last under ett helt år
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byggnader bekostas: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillåt företag att ge pengar till städer för att bekosta nybyggnation av hus
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
@@ -1254,6 +1255,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Land generator:
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeraffinaderier och kartans kant: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oljeraffinaderier byggs bara nära kartans kanter, alltså vid kusten om det är en ö-karta
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snölinjeshöjd: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad (TerraGenesis endast) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
@@ -1269,6 +1271,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Vilken nivåhöjd en platt scenario-karta får: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillåt landskapsarkitektur på rutorna vid kartans kanter: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Om det är inaktiverat kommer kartans kanter alltid att vara hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller fler rutor vid den norra gränsen är inte tomma
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller fler rutor vid en av gränserna är inte vatten
 
@@ -1284,6 +1287,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mörkgrön
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omvänd scrollriktning: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Beteende för skrollning av kartan med den högra musknappen. När det är inaktiverat rör musen kameran. När det är aktiverat rör musen kartan
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Mjuk skrollning av vy: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrollera hur huvudvyn skrollar till en specifik position vid klick på minikartan eller när ett kommando används för att skrolla till ett specifikt objekt på kartan. Om det är aktiverat skrollar vyn mjukt, om det är inaktiverat hoppar den direkt till målet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Visa måtthjälptext vid användning av byggverktyg: {STRING}
@@ -1353,6 +1357,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgift
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Välj layout för företagens utgiftsfönster
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :När det är aktiverat blir infrastruktur bara tillgänglig om det också finns därtill avsedda fordon tillgängliga, vilket förhindrar slöseri med tid och pengar på oanvändbar infrastruktur
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max antal tåg per företag: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximalt antal tåg som ett företag kan ha
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max antal vägfordon per företag: {STRING}
@@ -1391,11 +1396,13 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket se
 STR_CONFIG_SETTING_NOSERVICE                                    :Inaktivera service när motorstopp är av: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :När det är aktiverat servas inte fordon om de inte kan få motorstopp
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Använd hastighetsbegränsningar för tågvagnar: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är aktiverat tas även hänsyn till vagnarnas hastighetsbegränsningar när ett tågs maxhastighet beräknas
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nyheter i färg visas efter: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (flera små ändringar): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} rut{P 0 a or}
@@ -1438,7 +1445,9 @@ STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pix{P 0
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximalt antal icke-klistrade fönster: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximal inzoomning: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Den maximala inzoomningsnivån för vyer. Tänk på att högre möjliga inzoomningsnivåer kräver högre minneskapacitet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximal utzoomning: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Den maximala utzoomningsnivån för vyer. Tänk på att användning av högre utzoomningsnivåer kan få spelet att lagga
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal

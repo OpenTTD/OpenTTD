@@ -853,6 +853,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {STRING} forårsager 6 måneders kaos i trafikken!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Myndighederne i {TOWN} skriver kontrakt med {STRING} på et års eksklusive transportrettigheder!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
@@ -1526,7 +1527,7 @@ STR_FACE_HAIR_TOOLTIP                                           :{BLACK}Ændre h
 STR_FACE_EYEBROWS                                               :Øjenbryn:
 STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}Ændre øjenbryn
 STR_FACE_EYECOLOUR                                              :Øjenfarve:
-STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Ændrer øjenfarve
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}Skift øjenfarve
 STR_FACE_GLASSES                                                :Briller:
 STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Slå briller til
 STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Ændre briller
@@ -2786,11 +2787,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Selskabsværdi: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% ejes af {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infrastruktur:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spor-stykker{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vej-stykker{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vand-felter{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} station-felter{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lufthavn{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} spor-stykke{P "" r}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} vej-stykke{P "" r}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vand-felt{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} station-felt{P "" er}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lufthavn{P "" e}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Ingen
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byg HK
@@ -2805,11 +2806,11 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Se detal
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nyt ansigt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vælg nyt ansigt til direktøren
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Farvetema
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Ændrer selskabets farve på køretøjer
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Skift selskabets farve på køretøjer
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Selskabsnavn
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Ændrer selskabets navn
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Skift selskabets navn
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Direktørnavn
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ændrer direktørens navn
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Skift direktørens navn
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Køb 25% aktier i selskabet
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sælg 25% aktier i selskabet

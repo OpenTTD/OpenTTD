@@ -1104,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This act
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On

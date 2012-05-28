@@ -619,7 +619,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Platba za doručeni 10 jednotek (nebo 10 000 litru) nákladu do vzdálenosti 20 čtverecků
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Zobraz vše
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Vypni vše
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny položky na grafu přepravních sazeb
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny druhy nákladu na grafu přepravních sazeb
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skryje všechny položky na grafu přepravních sazeb
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}

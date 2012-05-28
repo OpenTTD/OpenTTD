@@ -1104,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tehty to
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäasetukset
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä

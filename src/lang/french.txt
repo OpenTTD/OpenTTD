@@ -1105,6 +1105,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Cette ac
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options avancées
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explication disponible)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valeur par défaut{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé

@@ -1368,15 +1368,18 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ties tolimuoju 
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vilkstinė (su kvantavimo efektu): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Leisti kompanijoms papirkinėti vietinę valdžią. Jei bandymas papirti bus išaiškintas, kompanijai šešiems mėnesiams bus atimta galimybė vykdyti veiklą mieste (pvz., pradėti reklamos kampanija, remontuoti kelius ir pan.)
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Leisti pirkti išskirtines transporto teises: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Jei kuri nors kompanija išsipirks išimtines transporto teises, kitų kompanijų stotelės vienerius metus nebesulauks naujų keleivių ir/ar krovinių
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Leisti namų statybos rėmimą: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Leisti kompanijoms finansuoti naujų pastatų statybą
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Leisti paremti vietos kelių taisymą: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Leisti siųsti pinigus kitoms kompanijoms: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Krovinių svorio daugiklis skirtas imituoti pakrautus traukinius: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lėktuvų greičio daugiklis: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lėktuvų avarijų kiekis: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Nustatyti lėktuvo sudužimo tikimybę
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :jokių
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :retesni
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalūs

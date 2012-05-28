@@ -1165,6 +1165,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} — {STRING} будзе аплочана ў чатырохразовым памеры на працягу года!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Хаос на дарогах г. {NBSP}{TOWN}!{}{}Рэканструкцыя дарогаў, прафінансаваная {STRING}, прынясе кіроўцам 6 месяцаў пакут!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспартная манаполія!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Мясцовыя ўлады г. {TOWN} падпісалі кантракт з {STRING} на адзін год эксклюзыўных транспартных правоў!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
