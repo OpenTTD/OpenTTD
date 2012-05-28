@@ -1738,7 +1738,8 @@ struct GameSettingsWindow : Window {
 				break;
 
 			case WID_GS_HELP_TEXT:
-				size->height = max(size->height, _settings_main_page.GetMaxHelpHeight(size->width));
+				size->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL +
+						max(size->height, _settings_main_page.GetMaxHelpHeight(size->width));
 				break;
 
 			default:
@@ -1756,7 +1757,15 @@ struct GameSettingsWindow : Window {
 
 			case WID_GS_HELP_TEXT:
 				if (this->last_clicked != NULL) {
-					DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->last_clicked->GetHelpText(), TC_WHITE);
+					const SettingDesc *sd = this->last_clicked->d.entry.setting;
+					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
+					this->last_clicked->SetValueDParams(0, default_value);
+
+					int y = r.top;
+					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
+					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+
+					DrawStringMultiLine(r.left, r.right, y, r.bottom, this->last_clicked->GetHelpText(), TC_WHITE);
 				}
 				break;
 
