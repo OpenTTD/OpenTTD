@@ -181,6 +181,13 @@ public:
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
 				if (spec == NULL) break;
 
+				/* Height of the selection matrix.
+				 * Depending on the number of views, the matrix has a 1x1, 1x2, 2x1 or 2x2 layout. To make the previews
+				 * look nice in all layouts, we use the 4x4 layout (smallest previews) as starting point. For the bigger
+				 * previews in the layouts with less views we add space homogenously on all sides, so the 4x4 preview-rectangle
+				 * is centered in the 2x1, 1x2 resp. 1x1 buttons. */
+				uint matrix_height = this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->current_y;
+
 				DrawPixelInfo tmp_dpi;
 				/* Set up a clipping area for the preview. */
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
@@ -189,9 +196,9 @@ public:
 					if (spec->grf_prop.grffile == NULL) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, spec, GB(widget, 16, 16));
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, (r.bottom - r.top + matrix_height / 2) / 2 - OBJECT_MARGIN - TILE_PIXELS, spec, GB(widget, 16, 16));
 					}
 					_cur_dpi = old_dpi;
 				}
