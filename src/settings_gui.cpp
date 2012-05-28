@@ -1025,6 +1025,8 @@ struct SettingEntry {
 		return this->d.entry.setting->desc.str_help;
 	}
 
+	void SetValueDParams(uint first_param, int32 value);
+
 private:
 	void DrawSetting(GameSettings *settings_ptr, int x, int y, int max_x, int state, bool highlight);
 };
@@ -1276,6 +1278,30 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
 }
 
 /**
+ * Set the DParams for drawing the value of a setting.
+ * @param first_param First DParam to use
+ * @param value Setting value to set params for.
+ */
+void SettingEntry::SetValueDParams(uint first_param, int32 value)
+{
+	assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
+	const SettingDescBase *sdb = &this->d.entry.setting->desc;
+	if (sdb->cmd == SDT_BOOLX) {
+		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+	} else {
+		if ((sdb->flags & SGF_MULTISTRING) != 0) {
+			SetDParam(first_param++, sdb->str_val - sdb->min + value);
+		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
+			SetDParam(first_param++, sdb->str_val + ((value >= 0) ? 1 : 0));
+			value = abs(value);
+		} else {
+			SetDParam(first_param++, sdb->str_val + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
+		}
+		SetDParam(first_param++, value);
+	}
+}
+
+/**
  * Private function to draw setting value (button + text + current value)
  * @param settings_ptr Pointer to current values of all settings
  * @param left         Left-most position in window/panel to start drawing
@@ -1303,29 +1329,16 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
 	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
+	int32 value = (int32)ReadValue(var, sd->save.conv);
 	if (sdb->cmd == SDT_BOOLX) {
 		/* Draw checkbox for boolean-value either on/off */
-		bool on = ReadValue(var, sd->save.conv) != 0;
-
-		DrawBoolButton(buttons_left, button_y, on, editable);
-		SetDParam(1, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+		DrawBoolButton(buttons_left, button_y, value != 0, editable);
 	} else {
-		int32 value = (int32)ReadValue(var, sd->save.conv);
-
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
 				editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
-
-		if ((sdb->flags & SGF_MULTISTRING) != 0) {
-			SetDParam(1, sdb->str_val - sdb->min + value);
-		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
-			SetDParam(1, sdb->str_val + ((value >= 0) ? 1 : 0));
-			value = abs(value);
-		} else {
-			SetDParam(1, sdb->str_val + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
-		}
-		SetDParam(2, value);
 	}
+	this->SetValueDParams(1, value);
 	DrawString(text_left, text_right, y, sdb->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
