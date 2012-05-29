@@ -1104,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări avansate
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
@@ -1144,8 +1145,11 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Înclinarea pantelor pentru autovehicule: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Înclinarea unui pătrăţel de pantă pentru autovehicule. O valoare mai mare face urcarea mai dificilă
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Interzice trenurilor şi navelor să facă întoarceri la 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Întoarcerile la 90 de grade au loc atunci când o bucată orizontală de şină este urmată imediat de o bucată verticală, astfel făcând trenul să întoarcă la 90 de grade când traversează muchia unui pătrăţel faţă de întoarcerile obişnuite de la 45 de grade pentru alte combinaţii de şină. Aceasta se aplică şi unghiului de întoarcere al navelor
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permite unirea staţiilor neînvecinate: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adăugarea de elemente unei staţii fără a atinge direct elemente existente. Necesită Ctrl+Click pentru adăugărea elementelor noi
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Foloseşte algoritm de încărcare îmbunătăţit: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Dacă este activată, încărcarea vehiculelor care aşteaptă în aceeaşi staţie se va face în secvenţă. Încărcarea următorului vehicul începe doar dacă există destul cargo pentru a umple complet primul vehicul
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Încarcă vehiculele gradual: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Livrează marfa doar în staţiile unde aceasta este cerută: {STRING}

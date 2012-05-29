@@ -934,6 +934,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z{NBSP}{STRING.gen} do {STRING.gen} bude po jeden rok vynášet čtyřnásobek normální ceny!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {STRING} přináší motoristům 6 měsíců utrpení!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportní monopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Místní správa města {TOWN} podepsala dohodu s {STRING} na jeden rok exkluzivní dopravy!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
@@ -1183,6 +1185,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tato akc
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pokročilé nastavení
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Výchozí hodnota: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :vypnuto
 STR_CONFIG_SETTING_ON                                           :zapnuto
@@ -1202,9 +1205,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Povolit výstavbu na svazích kopců a na pobřežích: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Srovnání terénu pod budovami, kolejemi atd. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Povoluje změnu terénu pod budovami a tratěmi bez jejich odstranění
 STR_CONFIG_SETTING_CATCHMENT                                    :Povolit u oblasti pokrytí realističtější velikost: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Povolit bourání více městských silnic, mostů a tunelů: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Usnadňuje odstranění městských staveb a silnic
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximální délka vlaků: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Určuje maximální délku vlaků
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pole{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :množství kouře/jisker u stroje: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Množštví kouře či jisker emitovaných vozidly
@@ -1220,7 +1226,9 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Nakládat vozid
 STR_CONFIG_SETTING_INFLATION                                    :Inflace: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dodávat zboží do stanice jen když je poptávka: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximální délka mostu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Určuje maximální délku mostů
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximální délka tunelu: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Určuje maximální délku tunelů
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Způsob manuálního budování primárního průmyslu: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
@@ -1228,6 +1236,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plochá oblast okolo průmyslu: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Povolit více stejného průmyslu kolem jednoho města: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Zobrazit návěstidla: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Určete na kterou stranu tratě umístíte návěstidlo
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vlevo
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na straně řidiče
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
@@ -1240,20 +1249,26 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Silniční vozidla stojí fronty (s kvantovým efektem): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posouvat okno, když je kurzor na okraji: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Povolit úplatek místní správě: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Umožňuje společnostem pokusit se podplatit místní správu. Pokud na to přijde inspekce, nebude možno ve městě 6 měsíců nic dělat
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Umožnit kupování výhradních přepravních práv: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Povolit dotování nových budov: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Umožňuje společnostem darovat městu peníze na nové domy
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Povolit dotování rekonstrukce místních silnic: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Umožnit zasílání peněz ostatním společnostem: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Umožňuje darování peněz ve hře s více hráči
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Poměr rychlosti letadel k ostatním vozidlům: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Počet leteckých havárií: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Určuje šanci na havárii letadel
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulový
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :nižší
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :obvyklý
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Stavba průjezdných zastávek na obecních silnicích: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Povoluje stavbu průjezdných stanic na městem vlastněných silnicích
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Povolit stavění přilehlých stanic: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Povoluje stavbu stanic dotýkajících se jiných
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Více grafických setů s vozidly vedle sebe: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Udržování infrastruktury: {STRING}
@@ -1269,6 +1284,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varovat, pokud 
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vozidlům se nikdy nezastaví výroba ('nezastarají'): {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automaticky nahradit dopravní prostředek, když zestárne: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaticky nahradit vozidlo {STRING} před/po dosažení životnosti
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativní věk kdy by měli být vozidlo automaticky vyměněno za nové
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} měsíc{P "" e ů} před
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} měsíc{P "" e ů} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimální částka pro automatické obnovení: {STRING}
@@ -1278,6 +1294,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Zobrazení kont
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Podržet kurzor nad {COMMA} sekund
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Pravým klikem
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobrazovat populaci města v jeho popisku: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazovat městskou populaci u názvu města na mapě
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Tloušťky čar v grafech: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tvůrce krajiny: {STRING}
@@ -1299,6 +1316,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Výšková úroveň pro plochou krajinu: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Umožnit terénní úpravy na okrajích mapy: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Pokud je deaktivován, okraje mapy budou vždy tvořeny oceánem
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
@@ -1473,9 +1491,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(doporučený)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Hledač cesty pro vlaky: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Hledač cesty pro vlaky
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Hledač cesty pro silniční vozidla: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Hledač cesty pro vozidla
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Hledač cesty pro lodě: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Hledač cesty pro lodě
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické otáčení vlaků na semaforech: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoluje vlakům otočit se na semaforech, pokud čekají příliš dlouho
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 

@@ -1103,6 +1103,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne ha
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerede indstillinger
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til

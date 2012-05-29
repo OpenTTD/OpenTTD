@@ -706,7 +706,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кред
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Кількість транспорту, який приніс прибуток торік. Враховуються автомобілі, поїзди, кораблі та літаки
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується, навіть якщо вони об'єднані в одну станцію
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується окремо, навіть якщо вони об'єднані в одну станцію
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибуток транспорту з найменшим доходом (тільки транспорт старіший 2 років)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший квартальний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найбільший квартальний прибуток за останні 12 кварталів
@@ -977,6 +977,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Субсидію надано {STRING}!{}{}Перевезення {STRING.r} з {STRING} до {STRING} принесе вчетверо більше прибутків наступного року!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Транспортний безлад у місті {TOWN}!{}{}Реконструкція доріг, фінансована компанією {STRING} принесе транспорту незручності протягом 6 місяців!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Транспортна монополія!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Адміністрація м. {TOWN} підписала угоду з "{STRING}" щодо ексклюзивних транспортних прав строком на один рік!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
@@ -1227,6 +1229,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Змін
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(пояснення відсутнє)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Значення за умовчанням: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :ні
 STR_CONFIG_SETTING_ON                                           :так
