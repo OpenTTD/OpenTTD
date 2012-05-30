@@ -908,6 +908,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Teenusetoetust makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STRING} kohta {STRING} teenuse eest makstakse järgmisel aastal neljakordselt!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {STRING} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transpordimonopol!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vaateaken {COMMA}
@@ -950,6 +951,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türgi Liir (TR
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakkia Kroon (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiilia Reaal (BRL
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Eesti Kroon (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Leedu litt (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Lõuna-Korea vonn (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Lõuna-Aafrika rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Omatehtud...
 ############ end of currency region
 
@@ -1154,6 +1158,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}See tege
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Täpsemad seaded
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
 STR_CONFIG_SETTING_ON                                           :Sees
@@ -1173,8 +1179,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Nõlvadele ja kallastele ehitamine: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
 STR_CONFIG_SETTING_CATCHMENT                                    :Reaalsemad veekogud: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Linnateede, -sildade, -tunnelite jne lammutamine: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Tee linnale kuuluva infrastruktuuri ja majade eemaldamine lihtsamaks
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Suurim rongipikkus: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määra suurim rongipikkus
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Vedurisuitsu ja -sädemete hulk: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Rongide kiirendusmudel: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Maanteesõidukite kiirendusmudel: {STRING}
