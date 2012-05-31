@@ -152,7 +152,7 @@
 
 	const Town *t = ::Town::Get(town_id);
 
-	return (t->growth_rate * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS;
+	return ((t->growth_rate & ~TOWN_GROW_RATE_CUSTOM) * TOWN_GROWTH_TICKS + DAY_TICKS) / DAY_TICKS;
 }
 
 /* static */ int32 ScriptTown::GetDistanceManhattanToTile(TownID town_id, TileIndex tile)

@@ -1,3 +1,8 @@
+1.2.1 (2012-06-01)
+------------------------------------------------------------------------
+- Fix: [Script] ScriptTown::GetGrowthRate() returned wrong values after usage of SetGrowthRate() (r24302)
+
+
 1.2.1-RC1 (2012-05-16)
 ------------------------------------------------------------------------
 - Fix: Change the unit of the sprite-cache size setting from megabytes to megapixels, so it depends on the blitter being used. Also increase it from 64 to 128, and change the name in the cfg file, so everyone gets the new default [FS#5162] (r24252)
