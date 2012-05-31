@@ -687,7 +687,7 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Bahnhof
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Lkw-Ladestation
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Bushaltestelle
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flughafen / Hubschrauberlandeplatz
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Flughafen/Hubschrauberlandeplatz
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Hafen
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Unebenes Land
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Wiesen
@@ -703,7 +703,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Schnee
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Städtenamen anzeigen ein/aus
-STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzansicht zur akutellen Position scrollen
+STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzansicht zur aktuellen Position scrollen
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
@@ -739,14 +739,14 @@ STR_NEWS_MESSAGES_FULL                                          :Zeitung
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Ankunft des ersten Fahrzeugs an Station des Spielers
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Gegners
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Mitbewerbers
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Unfälle/Katastrophen
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Firmenmitteilungen
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Eröffnung von Industrien
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Schließung von Industrien
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Änderungen der Wirtschaftslage
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produktionsänderung von Industrien, die der Spieler bedient
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktionsänderung von Industrien, die ein Wettbewerber bedient
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produktionsänderung von Industrien, die ein Mitbewerber bedient
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Produktionsänderungen anderer Industrien
 STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Rat / Informationen zu Fahrzeugen der Firma
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Neue Fahrzeuge
@@ -832,7 +832,7 @@ STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Der Ertrag von {VEHICLE} lag im letzten Jahr bei {CURRENCY_LONG}
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann sein Ziel nicht erreichen, da es außer Reichweite liegt
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstungsauftrag fehlgeschlagen bei {VEHICLE}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstung fehlgeschlagen bei {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automatisches Ersetzen für {VEHICLE} fehlgeschlagen{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!
@@ -972,7 +972,7 @@ STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fehl
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzinformationen zu den Basisgrafiken
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basissounds
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zu benutzende Basissounds auswählen
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Basissounds auswählen
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Zusatzinformationen zu den Basissounds
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Musikset
@@ -1022,13 +1022,13 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Highscor
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Speichern
 
 ############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max. Gegenspielerzahl: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max. Mitbewerber-Zahl: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Städteanzahl: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Industriedichte: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Höhe des Anfangskredites: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Anfänglicher Zinssatz auf Kredite: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Fahrzeugbetriebskosten: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Baugeschwindigkeit der Gegenspieler: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Baugeschwindigkeit der Mitbewerber: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Fahrzeugpannen: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subventionsmultiplikator: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Baukosten: {ORANGE}{STRING}
@@ -1191,11 +1191,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Scrolle die Kar
 STR_CONFIG_SETTING_BRIBE                                        :Bestechen der Stadtverwaltung erlauben: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Firmen das Bestechen von lokalen Behörden erlauben. Wenn die Bestechung von einem Staatsanwalt bemerkt wird, wird die Firma für die nächsten sechs Monate in der Stadt keine weiteren Aktionen starten können.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Den Erwerb exklusiver Transportrechte erlauben: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wenn eine Firma exklusive Transportrechte in einer Stadt kauft, wird ein Jahr lang keine Fracht an gegnerische Stationen im Stadtgebiet geliefert
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wenn eine Firma exklusive Transportrechte in einer Stadt kauft, wird ein Jahr lang keine Fracht an Stationen von Wettbewerbern im Stadtgebiet geliefert
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Finanzieren von Gebäuden erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Erlaubt Firmen, der Stadtverwaltung Geld für das Errichten neuer Häuser zur Verfügung zu stellen
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finanzierung von Straßenbauarbeiten erlauben: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Erlaube, Firmen den lokalen Verwaltungen Geld für den Straßenbau zur Verfügung zu stellen, um den dortigen Straßentransport zu sabotieren
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Erlaube Firmen, den lokalen Verwaltungen Geld für den Straßenbau zur Verfügung zu stellen, um den dortigen Straßentransport zu sabotieren
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Schenken von Geld an andere Firmen erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Erlaube, im Mehrspielermodus Geld zwischen Firmen zu transferieren
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Frachtgewicht erhöhen, um schwere Züge zu simulieren: {STRING}
@@ -1210,7 +1210,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verringert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Bus- und Lkw-Haltestellen auf städtischen Straßen erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaubt die Errichtung von Bus- und Lkw-Haltestellen auf städtischen Straßen
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Bus- und Lkw-Haltestellen auf Straßen von Wettbewerbern erlauben: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Bus- und Lkw-Haltestellen auf Straßen von Mitbewerbern erlauben: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Erlaube die Errichtung von Bus- und Lkw-Haltestellen auf Straßen, die Mitbewerbern gehören
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Bau angrenzender Stationen erlauben: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Den Bau von aneinandergrenzenden Stationen erlauben
@@ -1274,18 +1274,18 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Nach links
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Nach rechts
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Höhenstufe des Spielfeldes in einem flachen Szenario: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Landschaftsbau am Spielfeldrand erlauben: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Falls deaktiviert, liegt immer Wasser am Kartenrand
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Falls deaktiviert, wird die Karte immer von Wasser begrenzt
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ein oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maximale Stationsgröße: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Der maximale Bereich, über den sich eine einzelne Station erstrecken darf. Hohe Werte könnten das Spiel verlangsamen.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Hubschrauber auf Landeplatz automatisch warten: {STRING}
-STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Warte Helikopter nach jeder Landung, auch wenn es am Flughafen keinen Hangar gibt
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Warte Helikopter nach jeder Landung, auch wenn es am Landeplatz keinen Hangar gibt
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Öffne gemeinsam mit der Bauleiste für eine Transportart auch die Bauleiste für Landschaftsgestaltung
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Farbe für Land auf der Weltkarte: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farbe des Landes auf der Weltkarte
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farbe von Landflächen auf der Weltkarte
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Dunkelgrün
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Lila
@@ -1301,7 +1301,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Keine
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigene Firma
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle Firmen
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Bevorzuge Teamchat mit <ENTER>: {STRING}
-STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Schalten zwischen firmeninternem Chat und öffentlichem Chat für <ENTER> bzw. <Strg+ENTER> um
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Mit <ENTER> oder mit <Strg+ENTER> zwischen firmeninternem und öffentlichem Chat umschalten
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funktion des Mausrads: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Erlaube Scrollen mit zweidimensionalem Mausrad
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Spielfeld vergrößern
@@ -1369,7 +1369,7 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximale Anzahl
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximale Anzahl der Flugzeuge pro Firma: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximale Anzahl Luftfahrzeuge, die eine Firma besitzen kann
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximale Anzahl der Schiffe pro Firma: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximale Anzahl Schiffe, die ein Firma besitzen kann
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximale Anzahl Schiffe, die eine Firma besitzen kann
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Züge für den Computer abschalten: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Verbiete Computerspielern, Züge zu kaufen
@@ -1471,9 +1471,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Anzahl nicht an
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :deaktiviert
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Hineinzoomstufe: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximaler Vergrößerung für Karten-Ansichten. Bedenke, dass höhere Vergrößerungsstufen größere Anforderungen an verfügbaren Arbeitsspeicher stellen
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximaler Vergrößerung für Kartenansichten. Bedenke, dass höhere Vergrößerungsstufen größere Anforderungen an verfügbaren Arbeitsspeicher stellen
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximale Herauszoomstufe: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximale Verkleinerungsstufe für Karten-Ansichten. Höherer Verkleinerungsstufen können Ruckeln verursachen
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximale Verkleinerungsstufe für Kartenansichten. Höherer Verkleinerungsstufen können Ruckeln verursachen
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Fahrzeuge
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stationen
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Wirtschaft
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Gegenspieler
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Mitbewerber
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Darstellung
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interaktion
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
@@ -1611,7 +1611,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Soll da
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist
-STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitspieler. Man sollte bedenken, dass sie das niemals verzeihen werden
+STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitbewerber. Man sollte bedenken, dass sie das niemals verzeihen werden
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY_LONG} erhöhen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele die Firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug (entfernt Industrien und unbewegliche Objekte): {ORANGE}{STRING}
@@ -1800,7 +1800,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Namen f�
 
 # Network game languages
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Alle
+STR_NETWORK_LANG_ANY                                            :Egal
 STR_NETWORK_LANG_ENGLISH                                        :Englisch
 STR_NETWORK_LANG_GERMAN                                         :Deutsch
 STR_NETWORK_LANG_FRENCH                                         :Französisch
@@ -1914,7 +1914,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Benutze 
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Beitreten
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Beitreten und diese Firma spielen
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Beitreten und mit der ausgewählten Firma spielen
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passwort
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Die Firma durch ein Passwort schützen, sodass nur ausgewählte Spieler beitreten können
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Firmenpasswort setzen
@@ -2161,13 +2161,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrs
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes "frei" zu melden
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Ein-Richtungs-Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Dies ist der einfachste Signaltyp. Bei Verwendung dieses Signaltyps darf sich immer nur ein Zug im Signalabschnitt aufhalten
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Normale Pfadsignale können von hinten durchfahren werden
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Ein-Richtungs-Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform. Shift+Klick zeigt Kostenvoranschlag
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signalabstand beim automatischen Bau durch Ziehen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Signalabstand verringern
@@ -2261,9 +2261,9 @@ STR_AIRPORT_METRO                                               :Großraum
 STR_AIRPORT_INTERNATIONAL                                       :International
 STR_AIRPORT_COMMUTER                                            :Nahverkehr
 STR_AIRPORT_INTERCONTINENTAL                                    :Interkontinental
-STR_AIRPORT_HELIPORT                                            :Landeplatz
-STR_AIRPORT_HELIDEPOT                                           :Hubschrauberlandepl. + Depot
-STR_AIRPORT_HELISTATION                                         :Hubschrauberflughafen
+STR_AIRPORT_HELIPORT                                            :Heliport
+STR_AIRPORT_HELIDEPOT                                           :Heliport mit Hangar
+STR_AIRPORT_HELISTATION                                         :Flughafen mit Heliport
 
 STR_AIRPORT_CLASS_SMALL                                         :Kleine Flughäfen
 STR_AIRPORT_CLASS_LARGE                                         :Große Flughäfen
@@ -2405,22 +2405,22 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING}: Gleis
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING}: Gleise mit Ausfahrtsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING}: Gleise mit Kombinationssignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING}: Gleise mit Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING}: Gleise mit Ein-Richtungs-Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING}: Gleise mit einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING}: Gleise mit Block- und Vorsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING}: Gleise mit Block- und Ausfahrtsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING}: Gleise mit Block- und Kombinationssignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING}: Gleise mit Block- und Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING}: Gleise mit Blocksignal und Ein-Richtungs-Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING}: Gleise mit Blocksignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING}: Gleise mit Vor- und Ausfahrtsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING}: Gleise mit Vor- und Kombinationssignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING}: Gleise mit Vor- und Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING}: Gleise mit Vorsignal und Ein-Richtungs-Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING}: Gleise mit Vorsignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING}: Gleise mit Ausfahrts- und Kombinationssignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING}: Gleise mit Ausfahrts- und Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING}: Gleise mit Ausfahrtssignal und Ein-Richtungs-Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING}: Gleise mit Ausfahrtssignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING}: Gleise mit Kombinations- und Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING}: Gleise mit Kombinationssignal und Ein-RIchtungs-Pfadsignal
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING}: Gleise mit Pfadsignal und Ein-Richtungs-Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING}: Gleise mit Kombinationssignal und einseitigem Pfadsignal
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING}: Gleise mit Pfadsignal und einseitigem Pfadsignal
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING}: Zugdepot
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Straße
@@ -2928,7 +2928,7 @@ STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Flugzeugb
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Schiffbetriebskosten
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Betriebskosten Gebäude
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Einnahmen Züge
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}EinnahmenStraßenfahrzeuge
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Einnahmen Straßenfahrzeuge
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Einnahmen Flugzeuge
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Einnahmen Schiffe
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Kreditzinsen
@@ -3247,8 +3247,8 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=w}Magnetschw
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kosten: {CURRENCY_LONG}   Gewicht: {WEIGHT_SHORT}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY_LONG} pro Jahr{}Kapazität: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Preis: {CURRENCY_LONG} Gewicht: {WEIGHT_SHORT}{}Max. Geschwindigkeit: {VELOCITY}  Leistung: {POWER}  Max. Zugkraft: {6:FORCE}{}Betriebskosten: {4:CURRENCY_LONG}/yr{}Kapazität: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Preis: {CURRENCY_LONG} Höchstges.: {VELOCITY}{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/yr
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Preis: {CURRENCY_LONG} Höchstges.: {VELOCITY}{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Preis: {CURRENCY_LONG} Höchstgeschw.: {VELOCITY}{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/yr
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Preis: {CURRENCY_LONG} Höchstgeschw.: {VELOCITY}{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/Jahr
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Kosten: {CURRENCY_LONG} Höchstgeschwindigkeit: {VELOCITY} Reichweite: {COMMA} Felder{}Kapazität: {CARGO_LONG}, {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/a
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Höchstgeschwindigkeit: {VELOCITY} Reichweite: {COMMA} Felder{}Kapazität: {CARGO_LONG}{}Betriebskosten: {CURRENCY_LONG}/a
 
@@ -3381,7 +3381,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapazit�
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapazität: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Kapazität: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Umlade-Einnahmen: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer-Einnahmen: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}Tag{P "" e} {BLACK} Letzte Wartung: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Wartungsintervall: {LTBLUE}{COMMA}%{BLACK}   Letzte Wartung: {LTBLUE}{DATE_LONG}
@@ -3492,7 +3492,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ladezustand (Pr
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zuverlässigkeit
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Höchstgeschwindigkeit
 STR_ORDER_CONDITIONAL_AGE                                       :Fahrzeugalter (Jahre)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Muss gewartet werden
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wartung erforderlich
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Verbleibende Laufzeit (Jahre)
 
@@ -3863,7 +3863,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu d
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden
-STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gang
+STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden...{}Eine Station oder ein Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... es gibt keinen geeigneten Standort für die Statue im Zentrum dieser Stadt
 
@@ -4132,7 +4132,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu w
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... Luftfahrzeug hat zu geringe Reichweite
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kein Fahrplan für das Fahrzeug...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Fahrplan kann nicht erstellt werden...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fahrzeuge halten nur an Stationen
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Das Fahrzeug hält nicht an dieser Station
 
@@ -4256,7 +4256,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Nebeng
 STR_SV_STNAME_BRANCH                                            :{STRING} Abzweig
 STR_SV_STNAME_UPPER                                             :Ober-{STRING}
 STR_SV_STNAME_LOWER                                             :Unter-{STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Landeplatz
+STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
 STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 ############ end of savegame specific region!

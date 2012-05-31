@@ -1571,6 +1571,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2 kartai
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4 kartai
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8 kartai
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Miestų augimo greitis: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Miestų augimo greitis
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Joks
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lėtas
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Vidutinis

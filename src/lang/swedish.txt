@@ -1104,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna å
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1400,6 +1401,7 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :När det är ak
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Använd inte elektriska spår: {STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nyheter i färg visas efter: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Årtal då tidningens nyhetsartiklar börjar tryckas i färg. Innan detta år används monokromt svart/vitt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (flera små ändringar): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
@@ -1425,6 +1427,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slumpmässig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Städer tillåts bygga vägar: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillåt städer att bygga vägar för att kunna växa. Stäng av för att hindra städernas lokala myndigheter från att själva bygga vägar
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer är tillåtna att bygga planskilda korsningar: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillåt stadskontrollerade bullernivåer för flygplatser: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunda städer i spelet: {STRING}
@@ -1441,9 +1444,13 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Verktygsradens 
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Verktygsradens horisontella position i skärmens överkant
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusradens position: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Statusradens horisontella position i skärmens nederkant
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Det avstånd mellan fönstren då det fönster som flyttas automatiskt fästs mot närliggande fönster
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pix{P 0 el lar}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :avstängd
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximalt antal icke-klistrade fönster: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Antal icke-klistrade fönster som kan vara öppna innan gamla fönster börjar stängas automatiskt för att ge plats åt nya
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :avstängd
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximal inzoomning: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Den maximala inzoomningsnivån för vyer. Tänk på att högre möjliga inzoomningsnivåer kräver högre minneskapacitet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximal utzoomning: {STRING}
@@ -1465,7 +1472,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS                                 :Andel av städe
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Andel av alla städer som med tiden ska bli storstäder; alltså städer som är större från början och växer snabbare än andra
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :inga
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks multiplikator: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Ta bort absurda väg-element under vägkonstruktion: {STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Gränssnitt
