@@ -57,8 +57,8 @@ set_default() {
 	enable_translator="0"
 	enable_unicode="1"
 	enable_console="1";
-	enable_assert="1"
-	enable_strip="0"
+	enable_assert="0"
+	enable_strip="1"
 	enable_universal="0"
 	enable_osx_g5="0"
 	enable_cocoa_quartz="1"
