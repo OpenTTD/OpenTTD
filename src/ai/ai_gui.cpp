@@ -12,7 +12,7 @@
 #include "../stdafx.h"
 #include "../table/sprites.h"
 #include "../error.h"
-#include "../gui.h"
+#include "../settings_gui.h"
 #include "../querystring_gui.h"
 #include "../company_base.h"
 #include "../company_gui.h"

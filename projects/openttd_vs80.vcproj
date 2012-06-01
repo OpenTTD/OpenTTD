@@ -1431,6 +1431,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\settings_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\settings_internal.h"
 				>
 			</File>

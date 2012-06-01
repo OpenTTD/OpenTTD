@@ -539,6 +539,7 @@
     <ClInclude Include="..\src\sound\sdl_s.h" />
     <ClInclude Include="..\src\video\sdl_v.h" />
     <ClInclude Include="..\src\settings_func.h" />
+    <ClInclude Include="..\src\settings_gui.h" />
     <ClInclude Include="..\src\settings_internal.h" />
     <ClInclude Include="..\src\settings_type.h" />
     <ClInclude Include="..\src\ship.h" />

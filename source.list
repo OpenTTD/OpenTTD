@@ -272,6 +272,7 @@ sdl.h
 sound/sdl_s.h
 video/sdl_v.h
 settings_func.h
+settings_gui.h
 settings_internal.h
 settings_type.h
 ship.h

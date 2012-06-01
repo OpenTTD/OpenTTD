@@ -22,7 +22,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "rail_gui.h"
-#include "gui.h"
+#include "settings_gui.h"
 #include "company_gui.h"
 
 #include "widgets/cheat_widget.h"

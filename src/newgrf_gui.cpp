@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 #include "error.h"
-#include "gui.h"
+#include "settings_gui.h"
 #include "newgrf.h"
 #include "strings_func.h"
 #include "window_func.h"

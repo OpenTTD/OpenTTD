@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "error.h"
 #include "gui.h"
+#include "settings_gui.h"
 #include "sound_func.h"
 #include "window_func.h"
 #include "textbuf_gui.h"

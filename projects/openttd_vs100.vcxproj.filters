@@ -846,6 +846,9 @@
     <ClInclude Include="..\src\settings_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\settings_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\settings_internal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
