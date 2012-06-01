@@ -1333,6 +1333,9 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	if (sdb->cmd == SDT_BOOLX) {
 		/* Draw checkbox for boolean-value either on/off */
 		DrawBoolButton(buttons_left, button_y, value != 0, editable);
+	} else if ((sdb->flags & SGF_MULTISTRING) != 0) {
+		/* Draw [v] button for settings of an enum-type */
+		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
@@ -1699,6 +1702,8 @@ struct GameSettingsWindow : Window {
 	SettingEntry *valuewindow_entry;   ///< If non-NULL, pointer to setting for which a value-entering window has been opened.
 	SettingEntry *clicked_entry;       ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button).
 	SettingEntry *last_clicked;        ///< If non-NULL, pointer to the last clicked setting.
+	SettingEntry *valuedropdown_entry; ///< If non-NULL, pointer to the value for which a dropdown window is currently opened.
+	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
 
 	Scrollbar *vscroll;
 
@@ -1719,6 +1724,8 @@ struct GameSettingsWindow : Window {
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
 		this->last_clicked = NULL;
+		this->valuedropdown_entry = NULL;
+		this->closing_dropdown = false;
 
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
@@ -1745,6 +1752,17 @@ struct GameSettingsWindow : Window {
 			default:
 				break;
 		}
+	}
+
+	virtual void OnPaint()
+	{
+		if (this->closing_dropdown) {
+			this->closing_dropdown = false;
+			assert(this->valuedropdown_entry != NULL);
+			this->valuedropdown_entry->SetButtons(0);
+			this->valuedropdown_entry = NULL;
+		}
+		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -1821,8 +1839,45 @@ struct GameSettingsWindow : Window {
 		const void *var = ResolveVariableAddress(settings_ptr, sd);
 		int32 value = (int32)ReadValue(var, sd->save.conv);
 
-		/* clicked on the icon on the left side. Either scroller or bool on/off */
-		if (x < SETTING_BUTTON_WIDTH) {
+		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
+		if (x < SETTING_BUTTON_WIDTH && (sd->desc.flags & SGF_MULTISTRING)) {
+			const SettingDescBase *sdb = &sd->desc;
+			this->SetDisplayedHelpText(pe);
+
+			if (this->valuedropdown_entry == pe) {
+				/* unclick the dropdown */
+				HideDropDownMenu(this);
+				this->closing_dropdown = false;
+				this->valuedropdown_entry->SetButtons(0);
+				this->valuedropdown_entry = NULL;
+			} else {
+				if (this->valuedropdown_entry != NULL) this->valuedropdown_entry->SetButtons(0);
+				this->closing_dropdown = false;
+
+				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GS_OPTIONSPANEL);
+				int rel_y = (pt.y - (int)wid->pos_y - SETTINGTREE_TOP_OFFSET) % wid->resize_y;
+
+				Rect wi_rect;
+				wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
+				wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
+				wi_rect.top = pt.y - rel_y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
+				wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+
+				/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
+				if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
+					this->valuedropdown_entry = pe;
+					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
+
+					DropDownList *list = new DropDownList();
+					for (int i = sdb->min; i <= (int)sdb->max; i++) {
+						list->push_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
+					}
+
+					ShowDropDownListAt(this, list, value, -1, wi_rect, COLOUR_ORANGE, true);
+				}
+			}
+			this->SetDirty();
+		} else if (x < SETTING_BUTTON_WIDTH) {
 			this->SetDisplayedHelpText(pe);
 			const SettingDescBase *sdb = &sd->desc;
 			int32 oldvalue = value;
@@ -1860,7 +1915,7 @@ struct GameSettingsWindow : Window {
 					}
 
 					/* Set up scroller timeout for numeric values */
-					if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
+					if (value != oldvalue) {
 						if (this->clicked_entry != NULL) { // Release previous buttons if any
 							this->clicked_entry->SetButtons(0);
 						}
@@ -1930,6 +1985,32 @@ struct GameSettingsWindow : Window {
 		} else {
 			SetSettingValue(this->valuewindow_entry->d.entry.index, value);
 		}
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		assert(this->valuedropdown_entry != NULL);
+		const SettingDesc *sd = this->valuedropdown_entry->d.entry.setting;
+		assert(sd->desc.flags & SGF_MULTISTRING);
+
+		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+			SetCompanySetting(this->valuedropdown_entry->d.entry.index, index);
+		} else {
+			SetSettingValue(this->valuedropdown_entry->d.entry.index, index);
+		}
+
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+	{
+		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
+		 * the same dropdown button was clicked again, and then not open the dropdown again.
+		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
+		 * after OnClick. */
+		assert(this->valuedropdown_entry != NULL);
+		this->closing_dropdown = true;
 		this->SetDirty();
 	}
 
