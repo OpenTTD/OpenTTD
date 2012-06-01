@@ -1788,7 +1788,7 @@ struct GameSettingsWindow : Window {
 	{
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
-		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET - 1);
+		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET);
 		if (btn == INT_MAX) return;
 
 		uint cur_row = 0;
@@ -1796,7 +1796,7 @@ struct GameSettingsWindow : Window {
 
 		if (pe == NULL) return;  // Clicked below the last setting of the page
 
-		int x = (_current_text_dir == TD_RTL ? this->width - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_current_text_dir == TD_RTL ? this->width - 1 - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {

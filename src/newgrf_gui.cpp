@@ -321,7 +321,7 @@ struct NewGRFParametersWindow : public Window {
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_NP_BACKGROUND);
 				int x = pt.x - wid->pos_x;
-				if (_current_text_dir == TD_RTL) x = wid->current_x - x;
+				if (_current_text_dir == TD_RTL) x = wid->current_x - 1 - x;
 				x -= 4;
 
 				GRFParameterInfo *par_info = (num < this->grf_config->param_info.Length()) ? this->grf_config->param_info[num] : NULL;
