@@ -355,9 +355,9 @@ struct AISettingsWindow : public Window {
 		for (; !this->vscroll->IsVisible(i); i++) it++;
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
-		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
+		uint buttons_left = rtl ? r.right - SETTING_BUTTON_WIDTH - 3 : r.left + 4;
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : SETTING_BUTTON_WIDTH + 8);
+		uint text_right   = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
 
 
 		int y = r.top;
@@ -437,12 +437,12 @@ struct AISettingsWindow : public Window {
 				if (_current_text_dir == TD_RTL) x = wid->current_x - x;
 				x -= 4;
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
-				if (IsInsideMM(x, 0, 21)) {
+				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
 					int new_val = this->ai_config->GetSetting(config_item.name);
 					int old_val = new_val;
 					if (bool_item) {
 						new_val = !new_val;
-					} else if (x >= 10) {
+					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
 						/* Increase button clicked */
 						new_val += config_item.step_size;
 						if (new_val > config_item.max_value) new_val = config_item.max_value;

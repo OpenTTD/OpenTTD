@@ -749,7 +749,7 @@ public:
 			SetDParam(1, i->last_month_production[j]);
 			SetDParamStr(2, cargo_suffix[j]);
 			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
-			uint x = left + WD_FRAMETEXT_LEFT + (this->editable == EA_RATE ? 30 : 0);
+			uint x = left + WD_FRAMETEXT_LEFT + (this->editable == EA_RATE ? SETTING_BUTTON_WIDTH + 10 : 0);
 			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (this->editable == EA_RATE) {
@@ -764,7 +764,7 @@ public:
 			y += WD_PAR_VSEP_WIDE;
 			this->production_offset_y = y;
 			SetDParam(0, RoundDivSU(i->prod_level * 100, PRODLEVEL_DEFAULT));
-			uint x = left + WD_FRAMETEXT_LEFT + 30;
+			uint x = left + WD_FRAMETEXT_LEFT + SETTING_BUTTON_WIDTH + 10;
 			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_PRODUCTION_LEVEL);
 			DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == IL_MULTIPLIER) ? this->clicked_button : 0,
 					i->prod_level > PRODLEVEL_MINIMUM, i->prod_level < PRODLEVEL_MAXIMUM);
@@ -838,9 +838,9 @@ public:
 				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
 				int left = nwi->pos_x + WD_FRAMETEXT_LEFT;
 				int right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
-				if (IsInsideMM(pt.x, left, left + 20)) {
+				if (IsInsideMM(pt.x, left, left + SETTING_BUTTON_WIDTH)) {
 					/* Clicked buttons, decrease or increase production */
-					byte button = (pt.x < left + 10) ? 1 : 2;
+					byte button = (pt.x < left + SETTING_BUTTON_WIDTH / 2) ? 1 : 2;
 					switch (this->editable) {
 						case EA_MULTIPLIER:
 							if (button == 1) {
@@ -872,7 +872,7 @@ public:
 					this->SetTimeout();
 					this->clicked_line = line;
 					this->clicked_button = button;
-				} else if (IsInsideMM(pt.x, left + 30, right)) {
+				} else if (IsInsideMM(pt.x, left + SETTING_BUTTON_WIDTH + 10, right)) {
 					/* clicked the text */
 					this->editbox_line = line;
 					switch (this->editable) {

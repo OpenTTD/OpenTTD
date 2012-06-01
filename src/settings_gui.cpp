@@ -1318,10 +1318,10 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	bool editable = true;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	uint buttons_left = rtl ? right - 19 : left;
-	uint text_left  = left + (rtl ? 0 : 25);
-	uint text_right = right - (rtl ? 25 : 0);
-	uint button_y = y + (SETTING_HEIGHT - 11) / 2;
+	uint buttons_left = rtl ? right + 1 - SETTING_BUTTON_WIDTH : left;
+	uint text_left  = left + (rtl ? 0 : SETTING_BUTTON_WIDTH + 5);
+	uint text_right = right - (rtl ? SETTING_BUTTON_WIDTH + 5 : 0);
+	uint button_y = y + (SETTING_HEIGHT - SETTING_BUTTON_HEIGHT) / 2;
 
 	/* We do not allow changes of some items when we are a client in a networkgame */
 	if (!(sd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(sdb->flags & SGF_PER_COMPANY)) editable = false;
@@ -1822,7 +1822,7 @@ struct GameSettingsWindow : Window {
 		int32 value = (int32)ReadValue(var, sd->save.conv);
 
 		/* clicked on the icon on the left side. Either scroller or bool on/off */
-		if (x < 21) {
+		if (x < SETTING_BUTTON_WIDTH) {
 			this->SetDisplayedHelpText(pe);
 			const SettingDescBase *sdb = &sd->desc;
 			int32 oldvalue = value;
@@ -1845,7 +1845,7 @@ struct GameSettingsWindow : Window {
 					}
 
 					/* Increase or decrease the value and clamp it to extremes */
-					if (x >= 10) {
+					if (x >= SETTING_BUTTON_WIDTH / 2) {
 						value += step;
 						if (sdb->min < 0) {
 							assert((int32)sdb->max >= 0);
@@ -1865,7 +1865,7 @@ struct GameSettingsWindow : Window {
 							this->clicked_entry->SetButtons(0);
 						}
 						this->clicked_entry = pe;
-						this->clicked_entry->SetButtons((x >= 10) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
+						this->clicked_entry->SetButtons((x >= SETTING_BUTTON_WIDTH / 2) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
 						this->SetTimeout();
 						_left_button_clicked = false;
 					}
@@ -1990,18 +1990,18 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 {
 	int colour = _colour_gradient[button_colour][2];
 
-	DrawFrameRect(x,      y + 1, x +  9, y + 9, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
-	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x,                            y, x + SETTING_BUTTON_WIDTH / 2 - 1, y + SETTING_BUTTON_HEIGHT - 1, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x + SETTING_BUTTON_WIDTH / 2, y, x + SETTING_BUTTON_WIDTH     - 1, y + SETTING_BUTTON_HEIGHT - 1, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
 	DrawSprite(SPR_ARROW_LEFT, PAL_NONE, x + WD_IMGBTN_LEFT, y + WD_IMGBTN_TOP);
-	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + 10, y + WD_IMGBTN_TOP);
+	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + SETTING_BUTTON_WIDTH / 2, y + WD_IMGBTN_TOP);
 
 	/* Grey out the buttons that aren't clickable */
 	bool rtl = _current_text_dir == TD_RTL;
 	if (rtl ? !clickable_right : !clickable_left) {
-		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, colour, FILLRECT_CHECKER);
+		GfxFillRect(x                            + 1, y, x + SETTING_BUTTON_WIDTH / 2 - 1, y + SETTING_BUTTON_HEIGHT - 2, colour, FILLRECT_CHECKER);
 	}
 	if (rtl ? !clickable_left : !clickable_right) {
-		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, colour, FILLRECT_CHECKER);
+		GfxFillRect(x + SETTING_BUTTON_WIDTH / 2 + 1, y, x + SETTING_BUTTON_WIDTH     - 1, y + SETTING_BUTTON_HEIGHT - 2, colour, FILLRECT_CHECKER);
 	}
 }
 
@@ -2015,7 +2015,7 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 void DrawBoolButton(int x, int y, bool state, bool clickable)
 {
 	static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
-	DrawFrameRect(x, y + 1, x + 19, y + 9, _bool_ctabs[state][clickable], state ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1, _bool_ctabs[state][clickable], state ? FR_LOWERED : FR_NONE);
 }
 
 struct CustomCurrencyWindow : Window {

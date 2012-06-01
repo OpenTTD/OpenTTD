@@ -247,9 +247,9 @@ struct NewGRFParametersWindow : public Window {
 		}
 
 		bool rtl = _current_text_dir == TD_RTL;
-		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
-		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
+		uint buttons_left = rtl ? r.right - SETTING_BUTTON_WIDTH - 3 : r.left + 4;
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : SETTING_BUTTON_WIDTH + 8);
+		uint text_right   = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
 
 		int y = r.top;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
@@ -327,13 +327,13 @@ struct NewGRFParametersWindow : public Window {
 				if (par_info == NULL) par_info = GetDummyParameterInfo(num);
 
 				/* One of the arrows is clicked */
-				if (IsInsideMM(x, 0, 21)) {
+				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
 					uint32 val = par_info->GetValue(this->grf_config);
 					uint32 old_val = val;
 					if (par_info->type == PTYPE_BOOL) {
 						val = !val;
 					} else {
-						if (x >= 10) {
+						if (x >= SETTING_BUTTON_WIDTH / 2) {
 							/* Increase button clicked */
 							if (val < par_info->max_value) val++;
 							this->clicked_increase = true;

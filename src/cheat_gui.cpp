@@ -184,9 +184,9 @@ struct CheatWindow : Window {
 
 		bool rtl = _current_text_dir == TD_RTL;
 		uint box_left    = rtl ? r.right - 12 : r.left + 5;
-		uint button_left = rtl ? r.right - 40 : r.left + 20;
-		uint text_left   = r.left + (rtl ? WD_FRAMERECT_LEFT: 50);
-		uint text_right  = r.right - (rtl ? 50 : WD_FRAMERECT_RIGHT);
+		uint button_left = rtl ? r.right - 20 - SETTING_BUTTON_WIDTH : r.left + 20;
+		uint text_left   = r.left + (rtl ? WD_FRAMERECT_LEFT : 30 + SETTING_BUTTON_WIDTH);
+		uint text_right  = r.right - (rtl ? 30 + SETTING_BUTTON_WIDTH : WD_FRAMERECT_RIGHT);
 
 		for (int i = 0; i != lengthof(_cheats_ui); i++) {
 			const CheatEntry *ce = &_cheats_ui[i];
@@ -291,7 +291,7 @@ struct CheatWindow : Window {
 		int value = (int32)ReadValue(ce->variable, ce->type);
 		int oldvalue = value;
 
-		if (btn == CHT_CHANGE_DATE && x >= 40) {
+		if (btn == CHT_CHANGE_DATE && x >= 20 + SETTING_BUTTON_WIDTH) {
 			/* Click at the date text directly. */
 			SetDParam(0, value);
 			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
@@ -299,7 +299,7 @@ struct CheatWindow : Window {
 		}
 
 		/* Not clicking a button? */
-		if (!IsInsideMM(x, 20, 40)) return;
+		if (!IsInsideMM(x, 20, 20 + SETTING_BUTTON_WIDTH)) return;
 
 		*ce->been_used = true;
 
@@ -311,10 +311,10 @@ struct CheatWindow : Window {
 
 			default:
 				/* Take whatever the function returns */
-				value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
+				value = ce->proc(value + ((x >= 20 + SETTING_BUTTON_WIDTH / 2) ? 1 : -1), (x >= 20 + SETTING_BUTTON_WIDTH / 2) ? 1 : -1);
 
 				/* The first cheat (money), doesn't return a different value. */
-				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= 30) != rtl ? 1 : 0);
+				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= 20 + SETTING_BUTTON_WIDTH / 2) != rtl ? 1 : 0);
 				break;
 		}
 
