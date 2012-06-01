@@ -361,6 +361,7 @@ struct AISettingsWindow : public Window {
 
 
 		int y = r.top;
+		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		for (; this->vscroll->IsVisible(i) && it != visible_settings.end(); i++, it++) {
 			const ScriptConfigItem &config_item = **it;
 			int current_value = config->GetSetting((config_item).name);
@@ -385,10 +386,10 @@ struct AISettingsWindow : public Window {
 			}
 
 			if ((config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0) {
-				DrawBoolButton(buttons_left, y + 2, current_value != 0, editable);
+				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, editable);
 				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
-				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+				DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
 				if (config_item.labels != NULL && config_item.labels->Contains(current_value)) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
 					SetDParamStr(idx++, config_item.labels->Find(current_value)->second);

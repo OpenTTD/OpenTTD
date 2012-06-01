@@ -252,6 +252,7 @@ struct NewGRFParametersWindow : public Window {
 		uint text_right   = r.right - (rtl ? SETTING_BUTTON_WIDTH + 8 : WD_FRAMERECT_RIGHT);
 
 		int y = r.top;
+		int button_y_offset = (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo *par_info = (i < this->grf_config->param_info.Length()) ? this->grf_config->param_info[i] : NULL;
 			if (par_info == NULL) par_info = GetDummyParameterInfo(i);
@@ -259,10 +260,10 @@ struct NewGRFParametersWindow : public Window {
 			bool selected = (i == this->clicked_row);
 
 			if (par_info->type == PTYPE_BOOL) {
-				DrawBoolButton(buttons_left, y + 2, current_value != 0, this->editable);
+				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, this->editable);
 				SetDParam(2, par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info->type == PTYPE_UINT_ENUM) {
-				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
+				DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
 				if (par_info->value_names.Contains(current_value)) {
