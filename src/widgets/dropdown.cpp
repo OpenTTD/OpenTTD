@@ -328,32 +328,29 @@ struct DropdownWindow : Window {
 	}
 };
 
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool auto_width, bool instant_close)
+/**
+ * Show a drop down list.
+ * @param w        Parent window for the list.
+ * @param list     Prepopulated DropDownList. Will be deleted when the list is
+ *                 closed.
+ * @param selected The initially selected list item.
+ * @param button   The widget which is passed to Window::OnDropdownSelect and OnDropdownClose.
+ *                 Unless you override those functions, this should be then widget index of the dropdown button.
+ * @param wi_rect  Coord of the parent drop down button, used to position the dropdown menu.
+ * @param auto_width The width is determined by the widest item in the list,
+ *                   in this case only one of \a left or \a right is used (depending on text direction).
+ * @param instant_close Set to true if releasing mouse button should close the
+ *                      list regardless of where the cursor is.
+ */
+void ShowDropDownListAt(Window *w, DropDownList *list, int selected, int button, Rect wi_rect, Colours wi_colour, bool auto_width, bool instant_close)
 {
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
-
-	/* Our parent's button widget is used to determine where to place the drop
-	 * down list window. */
-	Rect wi_rect;
-	Colours wi_colour;
-	NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
-	wi_rect.left   = nwi->pos_x;
-	wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
-	wi_rect.top    = nwi->pos_y;
-	wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
-	wi_colour = nwi->colour;
-
-	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
-		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
-	} else {
-		w->LowerWidget(button);
-	}
-	w->SetWidgetDirty(button);
 
 	/* The preferred position is just below the dropdown calling widget */
 	int top = w->top + wi_rect.bottom + 1;
 
-	if (width == 0) width = wi_rect.right - wi_rect.left + 1;
+	/* The preferred width equals the calling widget */
+	uint width = wi_rect.right - wi_rect.left + 1;
 
 	uint max_item_width = 0;
 
@@ -403,6 +400,49 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - width : wi_rect.left), top};
 	Dimension dw_size = {width, height};
 	new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
+}
+
+/**
+ * Show a drop down list.
+ * @param w        Parent window for the list.
+ * @param list     Prepopulated DropDownList. Will be deleted when the list is
+ *                 closed.
+ * @param selected The initially selected list item.
+ * @param button   The widget within the parent window that is used to determine
+ *                 the list's location.
+ * @param width    Override the width determined by the selected widget.
+ * @param auto_width Maximum width is determined by the widest item in the list.
+ * @param instant_close Set to true if releasing mouse button should close the
+ *                      list regardless of where the cursor is.
+ */
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool auto_width, bool instant_close)
+{
+	/* Our parent's button widget is used to determine where to place the drop
+	 * down list window. */
+	Rect wi_rect;
+	NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
+	wi_rect.left   = nwi->pos_x;
+	wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
+	wi_rect.top    = nwi->pos_y;
+	wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
+	Colours wi_colour = nwi->colour;
+
+	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
+		nwi->disp_flags |= ND_DROPDOWN_ACTIVE;
+	} else {
+		w->LowerWidget(button);
+	}
+	w->SetWidgetDirty(button);
+
+	if (width != 0) {
+		if (_current_text_dir == TD_RTL) {
+			wi_rect.left = wi_rect.right + 1 - width;
+		} else {
+			wi_rect.right = wi_rect.left + width - 1;
+		}
+	}
+
+	ShowDropDownListAt(w, list, selected, button, wi_rect, wi_colour, auto_width, instant_close);
 }
 
 /**
