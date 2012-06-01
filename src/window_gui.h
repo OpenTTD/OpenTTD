@@ -665,6 +665,8 @@ public:
 	 */
 	virtual void OnDropdownSelect(int widget, int index) {}
 
+	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close);
+
 	/**
 	 * The query window opened from this window has closed.
 	 * @param str the new value of the string, NULL if the window

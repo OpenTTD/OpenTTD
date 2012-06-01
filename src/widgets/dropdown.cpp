@@ -101,7 +101,7 @@ const WindowDesc _dropdown_desc(
 struct DropdownWindow : Window {
 	WindowClass parent_wnd_class; ///< Parent window class.
 	WindowNumber parent_wnd_num;  ///< Parent window number.
-	byte parent_button;           ///< Parent widget number where the window is dropped from.
+	int parent_button;            ///< Parent widget number where the window is dropped from.
 	DropDownList *list;           ///< List with dropdown menu items.
 	int selected_index;           ///< Index of the selected item in the list.
 	byte click_delay;             ///< Timer to delay selection.
@@ -168,21 +168,18 @@ struct DropdownWindow : Window {
 
 	~DropdownWindow()
 	{
+		/* Make the dropdown "invisible", so it doesn't affect new window placement.
+		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
+		this->window_class = WC_INVALID;
+		this->SetDirty();
+
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
 		if (w2 != NULL) {
-			if (w2->nested_array != NULL) {
-				NWidgetCore *nwi2 = w2->GetWidget<NWidgetCore>(this->parent_button);
-				if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
-					nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
-				} else {
-					w2->RaiseWidget(this->parent_button);
-				}
-			} else {
-				w2->RaiseWidget(this->parent_button);
-			}
-			w2->SetWidgetDirty(this->parent_button);
+			Point pt = _cursor.pos;
+			pt.x -= w2->left;
+			pt.y -= w2->top;
+			w2->OnDropdownClose(pt, this->parent_button, this->selected_index, this->instant_close);
 		}
-
 		DeleteDropDownList(this->list);
 	}
 
@@ -305,19 +302,7 @@ struct DropdownWindow : Window {
 			if (!_left_button_clicked) {
 				this->drag_mode = false;
 				if (!this->GetDropDownItem(item)) {
-					if (this->instant_close) {
-						/* Make the dropdown "invisible", so it doesn't affect new window placement.
-						 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-						this->window_class = WC_INVALID;
-						this->SetDirty();
-
-						if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == this->parent_button) {
-							/* Send event for selected option if we're still
-							 * on the parent button of the list. */
-							w2->OnDropdownSelect(this->parent_button, this->selected_index);
-						}
-						delete this;
-					}
+					if (this->instant_close) delete this;
 					return;
 				}
 				this->click_delay = 2;

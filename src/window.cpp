@@ -168,6 +168,39 @@ bool Window::IsWidgetHighlighted(byte widget_index) const
 }
 
 /**
+ * A dropdown window associated to this window has been closed.
+ * @param pt the point inside the window the mouse resides on after closure.
+ * @param widget the widget (button) that the dropdown is associated with.
+ * @param index the element in the dropdown that is selected.
+ * @param instant_close whether the dropdown was configured to close on mouse up.
+ */
+void Window::OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+{
+	if (widget < 0) return;
+
+	if (instant_close) {
+		/* Send event for selected option if we're still
+		 * on the parent button of the dropdown (behaviour of the dropdowns in the main toolbar). */
+		if (GetWidgetFromPos(this, pt.x, pt.y) == widget) {
+			this->OnDropdownSelect(widget, index);
+		}
+	}
+
+	/* Raise the dropdown button */
+	if (this->nested_array != NULL) {
+		NWidgetCore *nwi2 = this->GetWidget<NWidgetCore>(widget);
+		if ((nwi2->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
+			nwi2->disp_flags &= ~ND_DROPDOWN_ACTIVE;
+		} else {
+			this->RaiseWidget(widget);
+		}
+	} else {
+		this->RaiseWidget(widget);
+	}
+	this->SetWidgetDirty(widget);
+}
+
+/**
  * Return the Scrollbar to a widget index.
  * @param widnum Scrollbar widget index
  * @return Scrollbar to the widget
