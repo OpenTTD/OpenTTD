@@ -328,9 +328,9 @@ struct NewGRFParametersWindow : public Window {
 				if (par_info == NULL) par_info = GetDummyParameterInfo(num);
 
 				/* One of the arrows is clicked */
+				uint32 old_val = par_info->GetValue(this->grf_config);
 				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
-					uint32 val = par_info->GetValue(this->grf_config);
-					uint32 old_val = val;
+					uint32 val = old_val;
 					if (par_info->type == PTYPE_BOOL) {
 						val = !val;
 					} else {
@@ -352,7 +352,7 @@ struct NewGRFParametersWindow : public Window {
 					}
 				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
-					SetDParam(0, this->grf_config->param[num]);
+					SetDParam(0, old_val);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
 				this->SetDirty();
