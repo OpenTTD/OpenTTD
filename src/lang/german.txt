@@ -1191,7 +1191,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Scrolle die Kar
 STR_CONFIG_SETTING_BRIBE                                        :Bestechen der Stadtverwaltung erlauben: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Firmen das Bestechen von lokalen Behörden erlauben. Wenn die Bestechung von einem Staatsanwalt bemerkt wird, wird die Firma für die nächsten sechs Monate in der Stadt keine weiteren Aktionen starten können.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Den Erwerb exklusiver Transportrechte erlauben: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wenn eine Firma exklusive Transportrechte in einer Stadt kauft, wird ein Jahr lang keine Fracht an Stationen von Wettbewerbern im Stadtgebiet geliefert
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wenn eine Firma exklusive Transportrechte in einer Stadt kauft, wird ein Jahr lang keine Fracht an Stationen von Mitbewerbern im Stadtgebiet geliefert
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Finanzieren von Gebäuden erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Erlaubt Firmen, der Stadtverwaltung Geld für das Errichten neuer Häuser zur Verfügung zu stellen
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Finanzierung von Straßenbauarbeiten erlauben: {STRING}

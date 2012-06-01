@@ -853,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Diens subsidie toeken aan {STRING}!{}{}{STRING} diens van {STRING} tot {STRING} sal nou viervoud pryse vir die volgende jaar betaal!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Verkeer warboel in {TOWN}!{}{}Pad heropbou program befonds deur {STRING} bring 6 maande van ellende na motoriste!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Vervoer monopoly!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} die dorpsraad van {TOWN} het 'n kontrak met {STRING} aan gegaan vir een jaaar se eksklusiewe vervoer regte
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Gesigswerf {COMMA}
@@ -1102,6 +1104,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdie 
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -1124,11 +1128,14 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat Landargite
 STR_CONFIG_SETTING_CATCHMENT                                    :Laat meer realisties grootte opvangsgebied toe: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Laat verwydering van meer stad-besite paaie, bruge, ens toe: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treine: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Stel die maximum lente van treine
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teël{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid motor rook/vonke: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein versnelling model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Pad voertuig versnelling model: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Krans helling vir treine: {STRING}
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Krans helling vir pad vervoer: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied triene en skepe om 90 graad draaie te maak: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Laat toe dat stasies lanks mekaar gebind kan word: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
@@ -1136,13 +1143,17 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laai voertuie g
 STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van tonnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primêre nywerheid konstruksie metode: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat area rondom nywerhede: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Laat meer as een soortgelyke nywerhede per dorp toe: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Wys seine: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selekteer watter kand van die spoor om die seine te plaas
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan die linkerkant
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan die bestuurskant
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan die regterkant
@@ -1157,12 +1168,15 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as mu
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing van geboue: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Laat geld donasies aan dorpe, deur maatskappye toe, vir die bou van huise
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Laat befondsing toe van plaaslike pad heropbou: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Laat die stuur van geld na ander maatskappye toe: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Laat die oordra van geld, tussen maatskappye, toe in multi-speler modus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewig vermenivoud vir vrag om swaar treine te simuleer: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Vlegtuig spoed faktor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuig botsings: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stel die kans van 'n vliegtuig ongeluk om te gebeur
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normaal
@@ -1396,8 +1410,11 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Aanbevole)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Padvinder vir treine: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pad speurder om vir teine te gebruik
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Padvinder vir pad voertuie: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pad speurder om vir pad vervoer te gebruik
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padvinder vir skepe: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pad speurder om vir skepe te gebruik
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Outomatiese rigting verandering op seine: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander stel waarde
@@ -2747,6 +2764,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aanvaar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Wys lys van aanvaarde vrag
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aanvaar: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Die stasie het eksklusiewe vervoer regte vir die dorp
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} het eksklusiewe vervoer regte in die dorp gekoop.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Graderings
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Toon stasie graderings

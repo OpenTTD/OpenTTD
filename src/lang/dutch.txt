@@ -852,6 +852,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar vierdubbel betaald!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transport monopoly!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokale overheid van {TOWN} tekend contract met {STRING} voor een jaar exclusieve transportrechten!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
@@ -1102,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze act
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -1254,6 +1257,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand van de rand voor Olierafinaderijen: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaart grens, dat is aan de kust van eiland kaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein (alleen TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
@@ -1269,6 +1273,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok i
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :De hoogte van een plat scenario wordt: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aanpassen van de hoogte van de randen van de kaart toestaan: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Indien uitgeschakeld, zijn de kaart grenzen altijd oceaan
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes aan de noordelijke rand zijn niet leeg
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
@@ -1286,20 +1291,26 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Omgekeerde scrollrichting: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Gedrag wanneer gescrolld wordt door de map met de rechter muisknop. Indien uitgeschakeld bestuurd de muis de camera. Indien ingeschakeld bestuurd de muis de kaart.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Vloeiend scrollen kijkvenster: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Bepalen hoe de hoofdweergave schuift naar een specifieke positie bij het klikken op de minikaart of bij de afgifte van een opdracht om naar een specifiek object op de kaart. Indien ingeschakeld, de viewport scrollt soepel, als deze uitgeschakeld gaat u rechtstreeks naar de beoogde plek
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Toon dimensie-informatie bij het gebruik van diverse bouwgereedschappen: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Geef tegel-afstanden en hoogteverschillen bij het slepen tijdens de bouw werkzaamheden
 STR_CONFIG_SETTING_LIVERIES                                     :Laat alle bedrijfskleuren zien: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Beheer het gebruik van voertuigspecifieke levering voor voertuigen (in tegenstelling tot bedrijfsspecifieke leveringen).
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Niets
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eigen bedrijf
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle bedrijven
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Voorkeur voor team chat met <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Schakel de binding van bedrijfs-interne en publieke chat om <ENTER> resp. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Functie van muiswiel: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Scrollen inschakelen met twee-dimensioneel muis-wielen
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Muiswielsnelheid: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Regel de gevoeligheid van het muis-wiel scrollen
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rechtsklikemulatie: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Selecteer de methode die rechter muisknop klikken nabootst
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
