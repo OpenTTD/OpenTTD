@@ -432,15 +432,21 @@ struct AISettingsWindow : public Window {
 				const ScriptConfigItem config_item = **it;
 				if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (config_item.flags & SCRIPTCONFIG_INGAME) == 0) return;
 
+				if (this->clicked_row != num) {
+					DeleteChildWindows(WC_QUERY_STRING);
+					this->clicked_row = num;
+				}
+
 				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
 
 				int x = pt.x - wid->pos_x;
 				if (_current_text_dir == TD_RTL) x = wid->current_x - 1 - x;
 				x -= 4;
+
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
+				int old_val = this->ai_config->GetSetting(config_item.name);
 				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
-					int new_val = this->ai_config->GetSetting(config_item.name);
-					int old_val = new_val;
+					int new_val = old_val;
 					if (bool_item) {
 						new_val = !new_val;
 					} else if (x >= SETTING_BUTTON_WIDTH / 2) {
@@ -464,8 +470,7 @@ struct AISettingsWindow : public Window {
 					}
 				} else if (!bool_item) {
 					/* Display a query box so users can enter a custom value. */
-					this->clicked_row = num;
-					SetDParam(0, this->ai_config->GetSetting(config_item.name));
+					SetDParam(0, old_val);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
 				}
 				this->SetDirty();
