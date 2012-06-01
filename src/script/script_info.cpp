@@ -263,6 +263,15 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 	}
 	sq_pop(vm, 1);
 
+	/* Check labels for completeness */
+	config->complete_labels = true;
+	for (int value = config->min_value; value <= config->max_value; value++) {
+		if (!config->labels->Contains(value)) {
+			config->complete_labels = false;
+			break;
+		}
+	}
+
 	return 0;
 }
 

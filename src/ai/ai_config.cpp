@@ -28,7 +28,8 @@ ScriptConfigItem _start_date_config = {
 	AI::START_NEXT_DEVIATION,
 	30,
 	SCRIPTCONFIG_NONE,
-	NULL
+	NULL,
+	false
 };
 
 /* static */ AIConfig *AIConfig::GetConfig(CompanyID company, ScriptSettingSource source)

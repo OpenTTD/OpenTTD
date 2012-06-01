@@ -44,6 +44,7 @@ struct ScriptConfigItem {
 	int step_size;           ///< The step size in the gui.
 	ScriptConfigFlags flags; ///< Flags for the configuration setting.
 	LabelMapping *labels;    ///< Text labels for the integer values.
+	bool complete_labels;    ///< True if all values have a label.
 };
 
 typedef std::list<ScriptConfigItem> ScriptConfigItemList; ///< List of ScriptConfig items.

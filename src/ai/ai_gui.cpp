@@ -24,6 +24,8 @@
 #include "../settings_func.h"
 #include "../network/network_content.h"
 #include "../textfile_gui.h"
+#include "../widgets/dropdown_type.h"
+#include "../widgets/dropdown_func.h"
 
 #include "ai.hpp"
 #include "../script/api/script_log.hpp"
@@ -278,6 +280,8 @@ struct AISettingsWindow : public Window {
 	ScriptConfig *ai_config;              ///< The configuration we're modifying.
 	int clicked_button;                   ///< The button we clicked.
 	bool clicked_increase;                ///< Whether we clicked the increase or decrease button.
+	bool clicked_dropdown;                ///< Whether the dropdown is open.
+	bool closing_dropdown;                ///< True, if the dropdown list is currently closing.
 	int timeout;                          ///< Timeout for unclicking the button.
 	int clicked_row;                      ///< The clicked row of settings.
 	int line_height;                      ///< Height of a row in the matrix widget.
@@ -293,6 +297,8 @@ struct AISettingsWindow : public Window {
 	AISettingsWindow(const WindowDesc *desc, CompanyID slot) : Window(),
 		slot(slot),
 		clicked_button(-1),
+		clicked_dropdown(false),
+		closing_dropdown(false),
 		timeout(0)
 	{
 		this->ai_config = GetConfig(slot);
@@ -389,7 +395,11 @@ struct AISettingsWindow : public Window {
 				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, editable);
 				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
-				DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+				if (config_item.complete_labels) {
+					DrawDropDownButton(buttons_left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && clicked_dropdown, editable);
+				} else {
+					DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > config_item.min_value, editable && current_value < config_item.max_value);
+				}
 				if (config_item.labels != NULL && config_item.labels->Contains(current_value)) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
 					SetDParamStr(idx++, config_item.labels->Find(current_value)->second);
@@ -419,6 +429,15 @@ struct AISettingsWindow : public Window {
 		}
 	}
 
+	virtual void OnPaint()
+	{
+		if (this->closing_dropdown) {
+			this->closing_dropdown = false;
+			this->clicked_dropdown = false;
+		}
+		this->DrawWidgets();
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -434,7 +453,9 @@ struct AISettingsWindow : public Window {
 
 				if (this->clicked_row != num) {
 					DeleteChildWindows(WC_QUERY_STRING);
+					HideDropDownMenu(this);
 					this->clicked_row = num;
+					this->clicked_dropdown = false;
 				}
 
 				bool bool_item = (config_item.flags & SCRIPTCONFIG_BOOLEAN) != 0;
@@ -445,7 +466,36 @@ struct AISettingsWindow : public Window {
 
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				int old_val = this->ai_config->GetSetting(config_item.name);
-				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
+				if (!bool_item && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && config_item.complete_labels) {
+					if (this->clicked_dropdown) {
+						/* unclick the dropdown */
+						HideDropDownMenu(this);
+						this->clicked_dropdown = false;
+						this->closing_dropdown = false;
+					} else {
+						const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_AIS_BACKGROUND);
+						int rel_y = (pt.y - (int)wid->pos_y) % this->line_height;
+
+						Rect wi_rect;
+						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);
+						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
+						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+
+						/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
+						if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
+							this->clicked_dropdown = true;
+							this->closing_dropdown = false;
+
+							DropDownList *list = new DropDownList();
+							for (int i = config_item.min_value; i <= config_item.max_value; i++) {
+								list->push_back(new DropDownListCharStringItem(config_item.labels->Find(i)->second, i, false));
+							}
+
+							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
+						}
+					}
+				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
 					int new_val = old_val;
 					if (bool_item) {
 						new_val = !new_val;
@@ -468,7 +518,7 @@ struct AISettingsWindow : public Window {
 
 						this->CheckDifficultyLevel();
 					}
-				} else if (!bool_item) {
+				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, old_val);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
@@ -499,6 +549,28 @@ struct AISettingsWindow : public Window {
 		int32 value = atoi(str);
 		this->ai_config->SetSetting((*it).name, value);
 		this->CheckDifficultyLevel();
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		assert(this->clicked_dropdown);
+		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		for (int i = 0; i < this->clicked_row; i++) it++;
+		if (_game_mode == GM_NORMAL && ((this->slot == OWNER_DEITY) || Company::IsValidID(this->slot)) && (it->flags & SCRIPTCONFIG_INGAME) == 0) return;
+		this->ai_config->SetSetting((*it).name, index);
+		this->CheckDifficultyLevel();
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+	{
+		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
+		 * the same dropdown button was clicked again, and then not open the dropdown again.
+		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
+		 * after OnClick. */
+		assert(this->clicked_dropdown);
+		this->closing_dropdown = true;
 		this->SetDirty();
 	}
 
