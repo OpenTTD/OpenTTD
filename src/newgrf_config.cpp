@@ -164,6 +164,17 @@ void GRFConfig::SetSuitablePalette()
 	SB(this->palette, GRFP_USE_BIT, 1, pal == PAL_WINDOWS ? GRFP_USE_WINDOWS : GRFP_USE_DOS);
 }
 
+/**
+ * Finalize Action 14 info after file scan is finished.
+ */
+void GRFConfig::FinalizeParameterInfo()
+{
+	for (GRFParameterInfo **info = this->param_info.Begin(); info != this->param_info.End(); ++info) {
+		if (*info == NULL) continue;
+		(*info)->Finalize();
+	}
+}
+
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
 GRFConfig *_grfconfig_newgame;
@@ -232,7 +243,8 @@ GRFParameterInfo::GRFParameterInfo(GRFParameterInfo &info) :
 	def_value(info.def_value),
 	param_nr(info.param_nr),
 	first_bit(info.first_bit),
-	num_bit(info.num_bit)
+	num_bit(info.num_bit),
+	complete_labels(info.complete_labels)
 {
 	for (uint i = 0; i < info.value_names.Length(); i++) {
 		SmallPair<uint32, GRFText *> *data = info.value_names.Get(i);
@@ -278,6 +290,20 @@ void GRFParameterInfo::SetValue(struct GRFConfig *config, uint32 value)
 	}
 	config->num_params = max<uint>(config->num_params, this->param_nr + 1);
 	SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
+}
+
+/**
+ * Finalize Action 14 info after file scan is finished.
+ */
+void GRFParameterInfo::Finalize()
+{
+	this->complete_labels = true;
+	for (uint32 value = this->min_value; value <= this->max_value; value++) {
+		if (!this->value_names.Contains(value)) {
+			this->complete_labels = false;
+			break;
+		}
+	}
 }
 
 /**
@@ -367,6 +393,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 	/* Find and load the Action 8 information */
 	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN, subdir);
 	config->SetSuitablePalette();
+	config->FinalizeParameterInfo();
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
 	if (config->ident.grfid == 0 || config->ident.grfid == 0xFFFFFFFF || config->IsOpenTTDBaseGRF()) return false;

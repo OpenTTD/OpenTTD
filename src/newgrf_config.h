@@ -133,9 +133,11 @@ struct GRFParameterInfo {
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
 	SmallMap<uint32, struct GRFText *, 8> value_names; ///< Names for each value.
+	bool complete_labels;  ///< True if all values have a label.
 
 	uint32 GetValue(struct GRFConfig *config) const;
 	void SetValue(struct GRFConfig *config, uint32 value);
+	void Finalize();
 };
 
 /** Reference counted wrapper around a GRFText pointer. */
@@ -183,6 +185,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 
 	void SetParameterDefaults();
 	void SetSuitablePalette();
+	void FinalizeParameterInfo();
 };
 
 /** Method to find GRFs using FindGRFConfig */

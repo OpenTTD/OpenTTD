@@ -19,6 +19,7 @@
 #include "settings_type.h"
 #include "settings_func.h"
 #include "widgets/dropdown_type.h"
+#include "widgets/dropdown_func.h"
 #include "network/network.h"
 #include "network/network_content.h"
 #include "sortlist_type.h"
@@ -143,6 +144,8 @@ struct NewGRFParametersWindow : public Window {
 	GRFConfig *grf_config; ///< Set the parameters of this GRFConfig.
 	uint clicked_button;   ///< The row in which a button was clicked or UINT_MAX.
 	bool clicked_increase; ///< True if the increase button was clicked, false for the decrease button.
+	bool clicked_dropdown; ///< Whether the dropdown is open.
+	bool closing_dropdown; ///< True, if the dropdown list is currently closing.
 	int timeout;           ///< How long before we unpress the last-pressed button?
 	uint clicked_row;      ///< The selected parameter
 	int line_height;       ///< Height of a row in the matrix widget.
@@ -153,6 +156,8 @@ struct NewGRFParametersWindow : public Window {
 	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c, bool editable) : Window(),
 		grf_config(c),
 		clicked_button(UINT_MAX),
+		clicked_dropdown(false),
+		closing_dropdown(false),
 		timeout(0),
 		clicked_row(UINT_MAX),
 		editable(editable)
@@ -263,7 +268,11 @@ struct NewGRFParametersWindow : public Window {
 				DrawBoolButton(buttons_left, y + button_y_offset, current_value != 0, this->editable);
 				SetDParam(2, par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info->type == PTYPE_UINT_ENUM) {
-				DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
+				if (par_info->complete_labels) {
+					DrawDropDownButton(buttons_left, y + button_y_offset, COLOUR_YELLOW, this->clicked_row == i && this->clicked_dropdown, this->editable);
+				} else {
+					DrawArrowButtons(buttons_left, y + button_y_offset, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, this->editable && current_value > par_info->min_value, this->editable && current_value < par_info->max_value);
+				}
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
 				if (par_info->value_names.Contains(current_value)) {
@@ -287,6 +296,15 @@ struct NewGRFParametersWindow : public Window {
 			DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_SETTING, selected ? TC_WHITE : TC_LIGHT_BLUE);
 			y += this->line_height;
 		}
+	}
+
+	virtual void OnPaint()
+	{
+		if (this->closing_dropdown) {
+			this->closing_dropdown = false;
+			this->clicked_dropdown = false;
+		}
+		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -316,7 +334,9 @@ struct NewGRFParametersWindow : public Window {
 				if (num >= this->vscroll->GetCount()) break;
 				if (this->clicked_row != num) {
 					DeleteChildWindows(WC_QUERY_STRING);
+					HideDropDownMenu(this);
 					this->clicked_row = num;
+					this->clicked_dropdown = false;
 				}
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_NP_BACKGROUND);
@@ -329,7 +349,36 @@ struct NewGRFParametersWindow : public Window {
 
 				/* One of the arrows is clicked */
 				uint32 old_val = par_info->GetValue(this->grf_config);
-				if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
+				if (par_info->type != PTYPE_BOOL && IsInsideMM(x, 0, SETTING_BUTTON_WIDTH) && par_info->complete_labels) {
+					if (this->clicked_dropdown) {
+						/* unclick the dropdown */
+						HideDropDownMenu(this);
+						this->clicked_dropdown = false;
+						this->closing_dropdown = false;
+					} else {
+						const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_NP_BACKGROUND);
+						int rel_y = (pt.y - (int)wid->pos_y) % this->line_height;
+
+						Rect wi_rect;
+						wi_rect.left = pt.x - (_current_text_dir == TD_RTL ? SETTING_BUTTON_WIDTH - 1 - x : x);;
+						wi_rect.right = wi_rect.left + SETTING_BUTTON_WIDTH - 1;
+						wi_rect.top = pt.y - rel_y + (this->line_height - SETTING_BUTTON_HEIGHT) / 2;
+						wi_rect.bottom = wi_rect.top + SETTING_BUTTON_HEIGHT - 1;
+
+						/* For dropdowns we also have to check the y position thoroughly, the mouse may not above the just opening dropdown */
+						if (pt.y >= wi_rect.top && pt.y <= wi_rect.bottom) {
+							this->clicked_dropdown = true;
+							this->closing_dropdown = false;
+
+							DropDownList *list = new DropDownList();
+							for (uint32 i = par_info->min_value; i <= par_info->max_value; i++) {
+								list->push_back(new DropDownListCharStringItem(GetGRFStringFromGRFText(par_info->value_names.Find(i)->second), i, false));
+							}
+
+							ShowDropDownListAt(this, list, old_val, -1, wi_rect, COLOUR_ORANGE, true);
+						}
+					}
+				} else if (IsInsideMM(x, 0, SETTING_BUTTON_WIDTH)) {
 					uint32 val = old_val;
 					if (par_info->type == PTYPE_BOOL) {
 						val = !val;
@@ -350,7 +399,7 @@ struct NewGRFParametersWindow : public Window {
 						this->clicked_button = num;
 						this->timeout = 5;
 					}
-				} else if (par_info->type == PTYPE_UINT_ENUM && click_count >= 2) {
+				} else if (par_info->type == PTYPE_UINT_ENUM && !par_info->complete_labels && click_count >= 2) {
 					/* Display a query box so users can enter a custom value. */
 					SetDParam(0, old_val);
 					ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_NONE);
@@ -380,6 +429,26 @@ struct NewGRFParametersWindow : public Window {
 		if (par_info == NULL) par_info = GetDummyParameterInfo(this->clicked_row);
 		uint32 val = Clamp<uint32>(value, par_info->min_value, par_info->max_value);
 		par_info->SetValue(this->grf_config, val);
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		assert(this->clicked_dropdown);
+		GRFParameterInfo *par_info = ((uint)this->clicked_row < this->grf_config->param_info.Length()) ? this->grf_config->param_info[this->clicked_row] : NULL;
+		if (par_info == NULL) par_info = GetDummyParameterInfo(this->clicked_row);
+		par_info->SetValue(this->grf_config, index);
+		this->SetDirty();
+	}
+
+	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
+	{
+		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
+		 * the same dropdown button was clicked again, and then not open the dropdown again.
+		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
+		 * after OnClick. */
+		assert(this->clicked_dropdown);
+		this->closing_dropdown = true;
 		this->SetDirty();
 	}
 
