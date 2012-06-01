@@ -18,6 +18,7 @@ static const int SETTING_BUTTON_WIDTH  = 20; ///< Width of setting buttons
 static const int SETTING_BUTTON_HEIGHT = 10; ///< Height of setting buttons
 
 void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right);
+void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable);
 void DrawBoolButton(int x, int y, bool state, bool clickable);
 
 #endif /* SETTING_GUI_H */

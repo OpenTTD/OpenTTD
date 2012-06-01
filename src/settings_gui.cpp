@@ -2006,6 +2006,28 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 }
 
 /**
+ * Draw a dropdown button.
+ * @param x the x position to draw
+ * @param y the y position to draw
+ * @param button_colour the colour of the button
+ * @param state true = lowered
+ * @param clickable is the button clickable?
+ */
+void DrawDropDownButton(int x, int y, Colours button_colour, bool state, bool clickable)
+{
+	static const char *DOWNARROW = "\xEE\x8A\xAA";
+
+	int colour = _colour_gradient[button_colour][2];
+
+	DrawFrameRect(x, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 1, button_colour, state ? FR_LOWERED : FR_NONE);
+	DrawString(x + (state ? 1 : 0), x + SETTING_BUTTON_WIDTH - (state ? 0 : 1), y + (state ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
+
+	if (!clickable) {
+		GfxFillRect(x +  1, y, x + SETTING_BUTTON_WIDTH - 1, y + SETTING_BUTTON_HEIGHT - 2, colour, FILLRECT_CHECKER);
+	}
+}
+
+/**
  * Draw a toggle button.
  * @param x the x position to draw
  * @param y the y position to draw
