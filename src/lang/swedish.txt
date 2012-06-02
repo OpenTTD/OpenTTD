@@ -1407,9 +1407,12 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (f
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Vid dragning med verktyget, placera en signal per: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} rut{P 0 a or}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Vid dragning med verktyget, håll ett fast avstånd mellan signalerna: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bygg automatiskt semaforer innan: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Använd signal-GUI: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Visa ett fönster med de signaltyper som går att bygga, istället för enbart fönsterlös signaltyps-rotation genom Ctrl+klick på byggda signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standardsignal-typ: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Avancerad
@@ -1431,6 +1434,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Tillåt städer
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Städer är tillåtna att bygga planskilda korsningar: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Tillåt stadskontrollerade bullernivåer för flygplatser: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Grunda städer i spelet: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Om denna inställning aktiveras blir det möjligt för spelare att grunda nya städer i spelet
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillåten, vanlig stads-layout

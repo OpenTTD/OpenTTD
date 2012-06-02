@@ -1104,6 +1104,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rī
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildu iestatījumi
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(skaidrojums nav pieejams)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Noklusējuma vērtība: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts

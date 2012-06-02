@@ -1226,8 +1226,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Па якім баку дарогі рухаецца аўтатранспарт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ездзіць па левым
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Ездзіць па правым
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць па левым
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Езьдзіць па правым
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На якой мове будуць назвы населеных пунктаў
@@ -2242,7 +2242,7 @@ STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Прыватн
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Усім] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[Каманда] {STRING}: {WHITE}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Камандзе] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Каманьдзе] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_CLIENT                                         :[Прыватнае] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Прыватнае] для {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_ALL                                            :[Усім] {STRING}: {WHITE}{STRING}

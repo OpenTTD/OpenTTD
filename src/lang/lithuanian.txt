@@ -780,7 +780,7 @@ STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Stoteli�
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Mažiausiai pajamų atnešusios tr. priemonės pelnas (iš visų tr. priermonių, senesnių nei 2 metai)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Kiekis uždirbtų pinigų per ketvirtį su žemiausiu pelno rodikliu per paskutinius 12 ketvirčių
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Kiekis uždirbtų pinigų per ketvirtį su didžiausiu paskutiniu 12 ketvirčių pelnu
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Per paskutinius metus (4 ketv.) kroviniu kiekis
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Per paskutinius metus (4 ketv.) krovinių kiekis
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Paskutiniojo ketvirčio pervežtų krovinių rušių kiekis
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Kompanijos pinigų kiekis banko sąskaitoje
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Kompanijos pasiskolintu pinigų kiekis
@@ -1241,8 +1241,8 @@ STR_NUM_VERY_LOW                                                :Labai mažas
 STR_NUM_LOW                                                     :Žemas
 STR_NUM_NORMAL                                                  :Vidutinis
 STR_NUM_HIGH                                                    :Aukštas
-STR_NUM_CUSTOM                                                  :Tinkintas
-STR_NUM_CUSTOM_NUMBER                                           :Nurodytas ({NUM})
+STR_NUM_CUSTOM                                                  :Pasirinktinis
+STR_NUM_CUSTOM_NUMBER                                           :Pasirinktinis ({NUM})
 
 STR_VARIETY_NONE                                                :Joks
 STR_VARIETY_VERY_LOW                                            :Labai mažas
@@ -1261,11 +1261,11 @@ STR_SEA_LEVEL_VERY_LOW                                          :Labai žemas
 STR_SEA_LEVEL_LOW                                               :Žemas
 STR_SEA_LEVEL_MEDIUM                                            :Vidutinis
 STR_SEA_LEVEL_HIGH                                              :Aukštas
-STR_SEA_LEVEL_CUSTOM                                            :Nurodytas
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Nurodytas ({NUM}%)
+STR_SEA_LEVEL_CUSTOM                                            :Pasirinktinis
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Pasirinktinis ({NUM}%)
 
-STR_RIVERS_NONE                                                 :{G=vyr}Nei vienas
-STR_RIVERS_FEW                                                  :Keli
+STR_RIVERS_NONE                                                 :{G=vyr}Nėra
+STR_RIVERS_FEW                                                  :Mažai
 STR_RIVERS_MODERATE                                             :Vidutiniškai
 STR_RIVERS_LOT                                                  :Daug
 
@@ -1479,6 +1479,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Naudoti {STRING} datos formatą pavadinimuose, saugant žaidimą
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ilgąjį (31 Gruo 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpąjį (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1528,7 +1529,9 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Uždrausti komp
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Įjungus šį nustatymą, statyti laivų kompiuterio žaidėjui bus neįmanoma
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti AIs Interneto režime: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkodai prieš skriptus yra nevykdomi: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimalus skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Remonto intervalas procentais: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Traukinių remonto intervalas: {STRING}
@@ -1552,6 +1555,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Tempiant išlai
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatiškai pastatyti semaforus prieš: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Įgalinti signalų vartotojų sąsają: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signalai pagal nutylėjimą: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Numatytas signalo tipas naudojimui
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokiniai signalai (tradiciniai)
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Kelio signalai
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Vienpusiai kelio signalai
@@ -1561,15 +1565,20 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kelio signalų
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Kelių išdėstymas naujiems miestams: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Kelių tinklų planas miestuose
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :numatytas
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :atsitiktinis
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Miestams leidžiama tiesti kelius: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Leisti miestams statyti kelius miesto augimui. Išjungti, kad užkirstų kelią miesto institucijoms statyti kelius patiems
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Miestams leidžiama statyti sankryžas tame pačiame lygyje: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Įjungus šį nustatymą miestams bus galima statyti pervažas
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Leisti miestams kontroliuoti oro uostų triukšmo lygį: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Išjungus šį nustatymą, gali būti tik du oro uostai kiekviename mieste. Įjungus šį nustatymą, oro uostų skaičius mieste yra ribojamas pagal miesto triukšmo lygio palankumo, kurį nurodo gyventojų skaičius, oro uosto dydis bei atstumas
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Naujų miestų kurimas žaidime: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Įjungiant šį nustatymą, žaidėjai gali įkurti naujus miestus žaidime
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :uždrausta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :leista
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leista, pasirinktinis miestų išdėstymas
@@ -1580,11 +1589,15 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pagrindinės įrankių juostos pozicija: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pagrindinės įrankių lentelės horizontali padėtis ekrano viršuje
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Būsenos juostos vieta: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Būsenos juostos horizontali padėtis ekrano apačioje
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Langų traukos atstumas: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Atstumas tarp langelių. Prieš tai pajudintas langelis automatiškai sulygiuojamas su šalia esančiu langeliu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piksel{P 0 is iai ių}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Išjungta
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Didž. skaičius langų (nelipnių): {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Skaičius nelipnių atidarytų langelių. Prieš tai seni atidaryti langeliai automatiškai užsidarys, kad paliktų daugiau vietos ekrane naujiems langeliams
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Išjungta
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Didžiausias priartinimo lygis: {STRING}
@@ -1632,8 +1645,11 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Rekomenduojama)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Traukinių maršrutų paieškos algoritmas: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Maršruto naudojamas ieškotojas traukiniams
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Automobilių maršrutų paieškos algoritmas: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Maršruto naudojamas ieškotojas kelių transporto priemonėms
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Laivų maršrutų paieškos algoritmas: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Maršruto naudojamas ieškotojas laivams
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Apsisukimas prie šviesoforų: {STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Keisti reikšmes
@@ -1833,7 +1849,7 @@ STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Pasirink
 STR_NETWORK_SERVER_LIST_LAN                                     :Vietinis tinklas
 STR_NETWORK_SERVER_LIST_INTERNET                                :Internetas
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Žaidėjo vardas:
-STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Tai vardas, pagal kuri kiti žaidejai tave pažins
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Tai vardas, pagal kurį kiti žaidėjai jus atpažins
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Vardas
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Žaidimo pavadinimas
@@ -2637,7 +2653,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Pasaulio
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
-STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upės:
+STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Jautrumas:
 STR_MAPGEN_VARIETY                                              :{BLACK}Įvairovės paskirstymas:
 STR_MAPGEN_GENERATE                                             :{WHITE}Sukurti
@@ -2652,10 +2668,10 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Laisva f
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vanduo
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Atsitiktinis
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Atsitiktinai
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Rankinio valdymo
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Pasirinktinai
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Zemelapio rotacija:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Zemelapio vardas:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėlapio vardas:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
@@ -3002,7 +3018,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Puikus
 STR_CARGO_RATING_OUTSTANDING                                    :Nuostabus
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šią stotį
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centruoti stotį pagrindiniame ekrane. Ctrl+Click atidaro naują peržiūros langą su vaizdu į šią stotį
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Pakeisti stoties pavadinimą
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Rodyti visus traukinius, į kurių užduotis yra įtraukta ši stotis
@@ -3224,7 +3240,7 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Greitis 
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Greitis kanale/upėje: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Eksploatavimo išlaidos: {GOLD}{CURRENCY_LONG} per metus
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(galima pertvarkyti)
+STR_PURCHASE_INFO_REFITTABLE                                    :(permontuojamas)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Sukurtas: {GOLD}{NUM}{BLACK} Tarnavimo laikas: {GOLD}{COMMA} met{P ai ai ų}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Didž. Patikimumas: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {GOLD}{CURRENCY_LONG}
@@ -3232,7 +3248,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svoris: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kaina: {GOLD}{CURRENCY_LONG}{BLACK} Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Talpa: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pajungta vagonų: {GOLD}+{POWER}{BLACK} Svoris: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Galima pertvarkyti {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Permontuojamas kroviniams: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :visiems krovinių tipams
 STR_PURCHASE_INFO_ALL_BUT                                       :visiems krovinių tipams, išskyrus {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Didž. traukos jėga: {GOLD}{FORCE}
@@ -3261,12 +3277,12 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Pervardi
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Pervardinti traukinio tipa
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Pervardinti automobiliu tipa
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Pakeisti laivo tipa
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pakeisti lektuvo varda
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Pakeisti lėktuvo vardą
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Pervardinti traukinio tipa
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Pervardinti automobilių tipą
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pakeisti laivo varda
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Pakeisti lektuvo varda
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Pakeisti laivo vardą
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Pakeisti lėktuvo vardą
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3570,26 +3586,26 @@ STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja ta
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias pertvarkysite. Vilkdami galite pažymėti keletą jų. Spragtelėję tuščiame plote, pasirinksite visas transporto priemones. Spragtelėję laikydami nuspaustą Ctrl klavišą, pasirinksite transporto priemonę ir visas, esančias už jos
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirinkite traukiniu gabenamo krovinio tipą
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pasirinkite automobiliu gabenamo krovinio tipą
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pasirinkite laivu gabenamo krovinio tipą
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pasirinkite lėktuvu gabenamo krovinio tipą
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pasirinkite automobilių gabenamo krovinio tipą
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Pasirinkite laivų gabenamo krovinio tipą
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pasirinkite lėktuvų gabenamo krovinio tipą
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Pertvarkyti traukinį
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pertvarkyti automobilį
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Pertvarkyti laivą
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Pertvarkyti lėktuvą
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pakeisti traukiniu gabenamo krovinio tipą į pažymėtąjį sąraše
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pakeisti automobiliu gabenamo krovinio tipą į pažymėtąjį sąraše
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pakeisti laivu gabenamo krovinio tipą į pažymėtąjį sąraše
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pakeisti lėktuvu gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pakeisti traukinių gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pakeisti automobilių gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pakeisti laivų gabenamo krovinio tipą į pažymėtąjį sąraše
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pakeisti lėktuvų gabenamo krovinio tipą į pažymėtąjį sąraše
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Užduotys)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Tvarkaraštis
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Pereiti į tvarkaraštį
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, užduoties tikslo vieta bus centruojama pagrindiniame ekranes
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Užduočių sąrašas — užduotis pažymima ant jos spragtelėjus. Spragtelėjus laikant nuspaustą Ctrl klavišą, užduoties tikslo vieta bus centruojama pagrindiniame ekrane
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3662,7 +3678,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Šalinti
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Šalinti pažymėtąją užduotį
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Šalinti visas užduotis
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Atšaukti užduočių bendrinimą
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebebendrinti užduočių su kitomis transporto priemonėmis. Spragtelėjus laikant nuspaustą Ctrl klavišą, papildomai dar bus pašalintos visos šios transporto priemonės užduotys
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Nebendrinti užduočių su kitomis transporto priemonėmis. Spragtelėjus laikant nuspaustą Ctrl klavišą, papildomai dar bus pašalintos visos šios transporto priemonės užduotys
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vykti į
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vykti į artimiausią depą/garažą
@@ -3852,7 +3868,7 @@ STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Žaidimo
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}DI'ai bus įkelti sekančiame žaidime
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Žaidėjas Žmogus
 STR_AI_CONFIG_RANDOM_AI                                         :Atsitiktinis DI
-STR_AI_CONFIG_NONE                                              :nieko)
+STR_AI_CONFIG_NONE                                              :(tusčia)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Perkelti aukščiau
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Perkelti pasirinktą DI aukščiau
@@ -4450,10 +4466,10 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (D
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Dyzelis)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Dyzelis)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Dyzelis)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektra)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektra)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektra)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektra)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektrinis)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Keleivinis vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Pašto vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Anglies vagonas
@@ -4481,8 +4497,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Žaislų vagona
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Baterijų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Putojančių gėrimų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastmasės vagonas
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektra)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektra)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrinis)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Keleivinis vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Pašto vagonas
@@ -4511,10 +4527,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Žaislų vagona
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Baterijų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Putojančių gėrimų vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastmasės vagonas
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Electric)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Electric)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Electric)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Electric)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektrinis)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Elektrinis)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Keleivinis vagonas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Pašto vagonas
