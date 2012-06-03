@@ -1181,8 +1181,10 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :verminderd
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Laat deur-ry padhalte op dorp besite paaie toe: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat Bouery van deur-ry pad stasies op dorp beheerde paaie
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Laat die bou van aangrensende stasies toe: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Laat verskeie stasies toe om mekaar te raak
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiveer veeltallige NewGRF enjin stelle: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verandering van die stelling is nie moontlik wanneer daar voertuie is nie
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
@@ -1198,6 +1200,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarsku as 'n v
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuie verval nooit nie: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Outohernuwe voertuig as hy oud raak: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Outoherbou wanneer voertuig is {STRING} max ouderdom
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatiewe ouderdom waneer voertuie herweeg moet word ver outo-vervanging
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" e} voor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" e} later
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Outohernuwe minimum vereisde geld vir hernuwe: {STRING}
@@ -1207,11 +1210,13 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-lei
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Sweef vir {COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Regs kliek
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Toon dorp populasie in die dorp naam etiket: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vertoon die populasie van 'n dorp in die naam etiket op die kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Dikte van lyn in grafieke: {STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Land genereerder: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oorspronklik
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand van kaart einde vir Olieraffinaderye : {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeu lyn hoogte: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grofheif van terrein (slegs TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Baie Glad
@@ -1227,6 +1232,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Teller vooruit
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Vooruit
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Die hoogte vlak wat 'n plat scenario kaart kry: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Aktiveer terra vorming van teëls op die kaart rant: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :wanneer gedeaktiveer, die kaart se kante sal altyd see wees
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer teëls op die Noordelike grens is nie leeg nie
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer teëls by een van die kante is nie water nie
 
@@ -1247,12 +1253,15 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eie maatskappy
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Alle maatskappye
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Verkies span klets met <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funksie van rolwiel: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Aktiveer "scrolling" met twee-dimensieële muis-wiele
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoem kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Rol kaart
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Af
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Kaart rolwiel spoed: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontroleer die sensitiwiteit van die muis-wiel "scrolling"
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Regs-kliek emulasie: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :selekteer die metode om the regter muis-knoppie kliek te emuleer
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-kliek
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-kliek
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
@@ -1271,16 +1280,20 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows palet
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Outomaties pouse wanneer om te begin 'n nuwe speletjie: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wanneer gepouseer laat toe: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selekteer watter aksies mag gedoen word terwyl die speletjie onderbreek word
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :geen aksies
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle nie-konstruksie aksies
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalwe landskap veranderings aksies
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle aksies
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Gebruik die voorloopende voertuiglys: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Aktiveer die gebruik van die gevorderde voertuig lys vir groepering van voertuie
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Gebruik laai aanwysers: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vertoon rooster in tike liewer as dae: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Vertoon rooster in "ticks" liewer as dae: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Wys die rystye in tydroosters in speletjie "ticks" inplaas van dae
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Toon aankoms en vertrek in tydroosters: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Vertoon verwagte aankoms en vertrek tye in tydroosters
 STR_CONFIG_SETTING_QUICKGOTO                                    :Vinnige skepping van voertuig opdragte: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-selekteer die "gaan na wyser" wanneer didie bevele venster oop gemaak word
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Verstek spoor tipe (na nuwe spel/spel laai): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Laas beskikbaar
@@ -1384,7 +1397,9 @@ STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van 
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Normale stede groote relatief na normale dorpe aan die begin van speletjie
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Verwyder absurde pad-elemente gedurende die pad konstruksie: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Verwyder doodloop strate, wanner befondse pad konstruksie plaasvind
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}koppelvlak
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksie
@@ -1416,6 +1431,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pad speurder om
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Padvinder vir skepe: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pad speurder om vir skepe te gebruik
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Outomatiese rigting verandering op seine: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Laat treine toe om agteruit te gaan by signale, as hulle daar lank gewag het
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander stel waarde
 
@@ -2081,7 +2097,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pad Konstruksie
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tremweg Konstruksie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou pad afdeling
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou pad afdeling. Ctrl skakel bou/verwydering van pad konstruksie. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bou tremweg afdeling. Ctrl skakel bou/verwydering van tremweg konstruksie. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bou pad seksie gebruikend Outopad metode
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bou tremweg gebruikend die Outotrem metode
@@ -2092,9 +2108,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bou pass
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bou vraagmotor laai area
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bou vrag trem stasie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktifeer/Deaktifeer ee-rigting paaie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou pad brug
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou pad brug. Shift skakel tussen bou/aanduiding koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bou tremweg brug. Shift skakel Bou/wys koste beraming
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou pad tonnel
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou pad tonnel. Shift skakel tussen bou/aanduiding koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou tremweg tonnel
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skakel bou/verwydering van pad konstruksie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skakel bou/verwyder vir tremweg konstruksie
@@ -2118,8 +2134,8 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Kies vra
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterweg konstruksie
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterweë
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bou kanaale.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou sluite
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bou kanaale. Shift skakel tussen bou/aanduiding koste beraming
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou sluite. Shift skakel Bou/wys koste beraming
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bou skip depot (vir opbou en diens van skepe)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bou skip werf
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaas baken wat kan as 'n wegpunt gebruik word

@@ -1168,7 +1168,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindošana (ar daudzuma efektiem): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
-STR_CONFIG_SETTING_BRIBE                                        :Atļaut vietējo varas iestāžu piekukuļošanu: {STRING}
+STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu pilsētām jaunu ēku finansēšanai
@@ -1302,7 +1302,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Kustības sarak
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Kustības sarakstos rādīt pienākšanu un atiešanu: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kustības sarakstos rādīt paredzamos pienākšanas un atiešanas laikus
 STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu tips (pēc jaunas spēles/spēles ielādes): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu veids (pēc jaunas spēles/spēles ielādes): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
@@ -2583,7 +2583,7 @@ STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Pārbaud
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} adresē {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekts
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Sliežu tips
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Sliežu veids
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF mainīgā 60+x parametrs (heksadecimāls)
 

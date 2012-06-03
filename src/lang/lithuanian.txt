@@ -1299,10 +1299,10 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis vei
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(paaiškinimo nėra)
-STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Numatyta reikšmė: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Numatytoji reikšmė: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_OFF                                          :Išjungta
-STR_CONFIG_SETTING_ON                                           :Įjungta
+STR_CONFIG_SETTING_OFF                                          :Ne
+STR_CONFIG_SETTING_ON                                           :Taip
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Išjungta
@@ -1317,10 +1317,12 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Kairėje
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centruoti
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Dešinėje
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statyti pastatus pakrantėse ir ant šlaitų: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :Leisti statybas pakrantėse ir ant šlaitų: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Leisti statyti bėgius, stoteles bei kitus objektus ant šlaitų. Priešingu atveju ant šlaito bus galima tiesti tik bėgius ir tik šlaito kryptimi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
-STR_CONFIG_SETTING_CATCHMENT                                    :Kurti tikroviškesnio dydžio mikrorajonus: {STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :Aptarnaujamos teritorijos dydis priklauso nuo stotelė tipo: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Skirtingų tipų (traukinių, automobilių, laivų bei lėktuvų) stotelės aptarnauja skirtingo dydžio teritorijas. Paprastai automobilių stotelė aprėpia mažiausią plotą, o oro uostas — didžiausią
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Palengvinti miestams priklausančios infrastruktūros (kelių, tiltų, namų ir kitų objektų) pašalinimą
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Didžiausias traukinio ilgis: {STRING}
@@ -1339,21 +1341,25 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Šlaitų statum
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Šlaitų statumas automobiliams. Kuo didesnė vertė, tuo sunkiau bus automobiliui įveiktį įkalnę
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Drausti traukiniams/laivams pasisukti 90 laips.kampu: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90° posūkis susidaro, kai horizontalus bėgių elementas yra sujungiamas su gretimame langelyje esančiu vertikaliu elementu. Ši nuostata taip pat galioja ir laivams
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leidžia sujungti stoteles, kurios nėra šalia: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Leisti sujungti stoteles, kurios nėra šalia: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Leisti praplėsti stotelę naujomis krovos aikštelėmis jas statant ne šalia jau esančiųjų, bet tolėliau. Statant reikia laikyti nuspaustą Ctrl klavišą
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Naudoti patobulintą krovimo algoritmą: {STRING}
-STR_CONFIG_SETTING_GRADUAL_LOADING                              :Pakrauti tr. priemones paeiliui: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Transporto priemonės, laukiančios stotelėje, bus aptarnaujamos paeiliui: tik prikrovus vieną transporto priemonę bus pradedama krauti kita transporto priemonė
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :Pakrauti transporto priemones palaipsniui: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Transporto priemonę pakrauti, atsižvelgiant į įvairius krovos parametrus, palaipsniui, vietoj to, kad transporto priemonė būtų pakrauta vienu ypu, atsižvegiant tik į krovinio kiekį
 STR_CONFIG_SETTING_INFLATION                                    :Infliacija: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Įjungti/išjungti infliaciją (išlaidos augs truputį greičiau už atlygius)
 STR_CONFIG_SETTING_SELECTGOODS                                  :Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Pramonės įmonės tieks stotelei tik tuos krovinius, kuriuos mėgins paimti į stotelę atvykstančios transporto priemonės. Tokiu būdu bus išvengta prastų stotelės krovos reitingų tiems kroviniams, kurių žaidėjas net neketino gabenti iš pasirinktos stotelės
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Didžiausias tilto ilgis: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Didžiausias galimas tilto ilgis
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Didžiausias tunelio ilgis: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Didžiausias galimas tunelio ilgis
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pagrindinis pramonės statymo būdas: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Pirminių pramonės įmonių statybos būdas: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Pirminių, t.y. tiekiančių žaliavas, pramonės įmonių statybos būdas. „Negalimas“ reiškia, jog pirminės pramonės įmonės įkurti neleidžiama. „Resursų žvalgyba“ reiškia, kad įkūrimas yra įmanomas, bet pati įmonė bus pastatyta atsitiktinėje žemėlapio vietoje. Be to, yra galimybė, kad žvalgyba nenusiseks ir įmonės bus nepastatyta iš viso. „Kaip kitų gamyklų“ reiškia, kad žaliavas tiekianti įmonė gali būti pastatyta bet kurioje pageidautinoje vietoje
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :negalimas
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip ir kitų gamyklų
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :resursų žvalgyba
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Lygi vieta aplink gamyklas: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Privalomo lygaus paviršiaus, supančio gamyklą, kiekis. Taip užtikrinama, kad, pastačius gamykla, dar liks vietos stotelėms, keliams, bėgiams ir kitai infrastruktūrai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Leisti kelias panašias pramonės įmones viename mieste: {STRING}
@@ -1364,12 +1370,16 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kairėje
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :tiesioginio eismo pusėje
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :dešinėje
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Rodyti finansinę ataskaitą metų pabaigoje: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nauji nurodymai yra 'non-stop' pagal nutylėjimą: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Finansinės kompanijos informacijos langas bus automatiškai atvertas kiekvienų metų pabaigoje.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Naujos užduotys yra „vykti nesustojant“ tipo: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Įprastai transporto priemonė sustoja kiekvienoje stotelėje, į kurią tik įvažiuoja. Įgalinus šią nuostatą, transporto priemonė sustos tik toje stotelėje, kuri nurodyta užduotyse, o visose tarpinėse, jei tokių pasitaikys, nestos. Atkreipkite dėmesį, kad tai yra numatytoji nuostata ir ji galioja tik naujoms užduotims. Bet kuriuo atveju, kiekvienos transporto priemonės elgsena užduočių lange gali būti nustatyta individualiai
 STR_CONFIG_SETTING_STOP_LOCATION                                :Numatytoji traukinių sustojimo stotyje vieta: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Numatytoji traukinio sustojimo vieta. „Ties artimuoju kraštu“ reiškia, kad traukinys sustos taip, kad jo galinis vagonas susilygiuotų su stotelės įvažiavimu. Analogiškai „ties tolimuoju kraštu“ reiškia, jog traukinys važiuos iki pat stotelės galo ir sustos ten. „Viduryje“ reiškia, jog traukinys sustos tiksliai stotelės viduryje. Atkreipkite dėmesį, kad tai yra numatytoji elgsena; kiekvienas traukinys užduočių lange gali būti suderintas individualiai
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ties artimuoju kraštu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :viduryje
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ties tolimuoju kraštu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vilkstinė (su kvantavimo efektu): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Jei kelyje pasitaikys kliūtis (ar tiesiog krovos aikštelė bus užimta), automobiliai nebandys grūstis, o stos į tvarkingą eilę
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kai įjungta, ekrano vaizdas judės, kai pelė bus šalia ekrano krašto
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
@@ -1383,45 +1393,60 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Leisti kompanij
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Leisti siųsti pinigus kitoms kompanijoms: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Leisti persiųsti pinigus tarp kompanijų Interneto režime.
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Krovinių svorio daugiklis skirtas imituoti pakrautus traukinius: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Nustato krovinio įtaką traukiniui. Kuo didesnė vertė, tuo lokomotyvui bus sunkiau įsibėgėti (ypač įkalnėse)
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lėktuvų greičio daugiklis: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Lyginant su kitomis transporto priemonėmis, lėktuvai gabena krovinius daug kartų greičiau ir dėlto įgyja nesąžiningą pranašumą. Šis daugiklis leidžia sumažinti faktinį lėktuvų greitį ir taip subalansuoti žaidimą
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lėktuvų avarijų kiekis: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Nustatyti lėktuvo sudužimo tikimybę
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :jokių
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :retesni
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalūs
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravažiuojamas stoteles viduryje miesto kelio: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leidžia pravažiuojamas stoteles ant priešininko kelių: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Leisti pravažiuojamąsias stoteles miesto keliuose: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Leidžia statyti pravažiuojamojo tipo stoteles miestams priklausiančiuose keliuose
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Leisti pravažiuojamąsias stoteles priešininko keliuose: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Leidžia statyti pravažiuojamojo tipo stoteles kitiems priešininkams priklausiančiuose keliuose
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Leisti statyti susiliečiančias stoteles: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Leisti skirtingas stoteles liestis viena su kita
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Leisti kelis NewGRF transporto pr. rinkinius vienu metu: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Suderinamumo pasirinktis seniems NewGRFs. Neišjunkite, nebent žinote, ką tiksliai darote!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmanoma pakeisti nuostatos kai yra tr. priemonių.
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūros priežiūra: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūros priežiūra reikalauja išlaidų: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Infrastruktūros (kelių, geležinkelių, stotelių, angarą ir kitų objektų) priežiūra kainuoja. Kaštai auga proporcingai kompanijos dydžiui, taigi didesnėms kompanijoms infrastruktūros priežiūra kainuos daugiau, nei mažesnėms
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Oro uostai niekada nepasensta: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Kartą atsiradę, oro uostų tipai niekada nebepasens ir galimybė juos statyti niekuomet nebus pašalinta
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Pranešti, jei transporto priemonė pasiklys: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Peržiūrėti tr. pr. užduotis: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :taip, bet išskyrus sustabdytas tr. pr.
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visų tr. priemonių
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, kai tr. priemonės pajamos yra neigiamos: {STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Tr. priemonės niekada nepasensta: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti tr. priemonę, kai ji pasensta: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Pranešti apie pasiklydusią transporto priemonę: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Jei kuri nors transporto priemonė neberas kelio link užduoties tikslo ir pasiklys, bus parodytas informacinis pranešimas
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Transporto priemonių užduočių peržiūra: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Transporto priemonių užduotys yra reguliariai peržiūrimos ir, suradus kokių nors problemų (pvz., neteisinga stotelė), parodomas informacinis pranešimas
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :neperžiūrėti
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :peržiūrėti tik aktyvias
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :peržiūrėti visas
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Perspėti, jei transporto priemonė yra nuostolinga: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Jei transporto priemonė kalendorinius metus baigė nuostolingai, parodomas atitinkamas informacinis pranešimas
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transporto priemonės niekada nepasensta: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kartą atsiradę, transporto priemonės niekuomet nebepasens ir jas visada bus galima nusipirkti
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatiškai atnaujinti transporto priemonę, kai ji pasensta: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Transporto priemonė, eksploatacijos laikotarpiui artėjant prie pabaigos, bus automatiškai bus atnaujinta, jei tik atnaujinimo sąlygos bus išpildytos
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Atnaujinti transporto priemonę, kai jos amžius yra {STRING} už projektinį
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Atitinkamas gyvenimas, kai transporto priemonės turėtų būti atnaujinamos
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mėnesi{P 0 u ais ų} mažesnis
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mėnesi{P 0 u ais ų} didesnis
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimali suma reikalinga automatiniam atnaujinimui: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalus būtinas banko sąskaitos likutis automatiniam transporto priemonės atnaujinimui vykdyti
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Klaidos pranešimo rodymo trukmė: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Klaidos pranešimų rodymo trukmė, po kurios pranešimas langas bus automatiškai užvertas. Atkreipkite dėmesį, kai kai kurie kritiniai pranešimai automatiškai nėra užveriami
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P ė ės žių}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rodyti paaiškinimus: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Delsos laikas prieš parodant paaiškinimą, kai pelės žymeklis yra užvedamas virš kurio nors vartotojo sąsajos elemento. Paaiškinimas taip pat gali būti susietas ir su dešiniuoju pelės klavišu
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :atvedus žymeklį po {COMMA} sekund{P ės žių žių}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :spragtelėjus dešinįjį pelės klavišą
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rodyti miestų gyventojų skaičių šalia pavadinimo: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rodyti miestų gyventojų skaičių žemėlapio pažymėtoje vietoje
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linijų grafikuose storumas: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grafikų linijų storis: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grafikų linijų storis. Plonesnė linija yra tikslesnė, tačiau storesnę lengviau pastebėti bei atskirti jos spalvą
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Sausumos kūrimas: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Standartinis
@@ -1448,7 +1473,9 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Vienas a
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Viena ar daugiau plokštumų nėra ant vandens
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Didžiausias stotelės matmuo: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Nusako didžiausią galimą stotelės dydį kuria nors kryptimi. Atkreipkite dėmesį, kad didelės vertės gali lėtinti žaidimą
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Remontuoti sraigtasparnius automatiškai: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Nusiųsti sraigtasparnius techninei apžiūrai po kiekvieno nusileidimo, net jei oro uoste nėra angaro
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mažame žemėlapyje naudojama žemės spalva: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Reljefo spalva mažajame žemėlapyje
@@ -1456,8 +1483,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamsiai žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetinė
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Priešinga slinkties kryptis: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Vaizdo slinkties elgsena, tempiant nuspaudus dešinįjį pelės klavišą: pasirinkus „ne“, judės stebėtojas. Pasirinkus „taip“, judės žemėlapis
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Tolydi žemėlapio slinktis: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Velkant statybos operacijų metu rodyti atstumus ir aukščių skirtumus tarp pradinio ir galutinio taškų
 STR_CONFIG_SETTING_LIVERIES                                     :Rodyti kompanijos ženklus: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Jokių
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savo kompanijos
@@ -1477,6 +1506,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį tempiant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Naudoti {STRING} datos formatą pavadinimuose, saugant žaidimą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
@@ -1485,17 +1515,20 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpąjį (31-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Įprastinė paletė taikoma NewGRF, nenurodžius paletės: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Numatytoji spalvų paletė tiems NewGRF objektams, kurie nenurodo, kokios konkrečiai paletės jiems reikia
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS paletė
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows paletė
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatinė pauzė paleidžiant naują žaidimą: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Pradėjus naują žaidimą, laiko tėkmė bus pristabdyta, taip suteikiant progą atidžiau išstudijuoti žemėlapį
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Kuomet pristabdytas, leisti: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Pasirinkite, kokius veiksmus galėsite atlikti, kai žaidimas yra sustabdytas
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :jokių veiksmų
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visi ne statybiniai veiksmai
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visi, išskyrus landšafto, modifikavimo veiksmai
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visi pasirinkimai
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Naudoti pagerintą automobilių sąrašą: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Naudoti išplėstinį transporto priemonių sąrašą: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Išplėstinio (su grupavimo funkcijomis) transporto priemonių sąrašo naudojimo parinktys
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Naudotį krovimo indikatorius: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Rodyti laiką tvarkaraštyje užuot dienas: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Rodyti arvykimą ir išvykimą tvarkaraščiuose: {STRING}
@@ -1545,10 +1578,13 @@ STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvuoti vagon
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos naujienos atsiranda: {STRING} metais
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Pelno dalis, tenkanti tarpinėms tiekėjų sistemoms
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Tempiant kopijuoti šviesoforus kas: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} langel{P 0 į ius ių}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Tempiant išlaikyti vienodą atstumą tarp signalų: {STRING}
@@ -1584,6 +1620,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :leista
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leista, pasirinktinis miestų išdėstymas
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Savaiminis medžių atsiradimas: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Savaiminio medžių išdygimo nuostatos. Atkreipkite dėmesį, kad šios nuostatos gali paveikti kai kurių pramonės įmonių, pvz., lentpjūvių, darbą
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nėra {RED}(trukdo lentpjūvėms)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
@@ -1601,7 +1638,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Skaičius nelip
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Išjungta
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Didžiausias priartinimo lygis: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Didžiausias galimas vaizdo padidinimas peržiūros lange. Atkreipkite dėmesį, kad didesnė vertė gali padidinti operatyviosios atminties suvartojimą
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Didžiausias atitolinimo lygis: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Didžiausias galimas vaizdo sumažinimas peržiūros lange. Atkreipkite dėmesį, kad didesnė vertė gali sulėtinti žaidimą
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4 kartai
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2 kartai
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normalus
@@ -1651,6 +1690,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Maršruto naudo
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Laivų maršrutų paieškos algoritmas: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Maršruto naudojamas ieškotojas laivams
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Apsisukimas prie šviesoforų: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Leisti traukiniams apsisukti ir bandyti važiuoti priešinga kryptimi, jei ties šviesoforu jiems tenka laukti pernelyg ilgai
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Keisti reikšmes
 
