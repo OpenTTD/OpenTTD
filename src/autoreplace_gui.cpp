@@ -34,7 +34,7 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 
 static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
-	int r = ListPositionOfEngine(*a) - ListPositionOfEngine(*b);
+	int r = Engine::Get(*a)->list_position - Engine::Get(*b)->list_position;
 
 	return r;
 }

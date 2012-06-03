@@ -99,7 +99,7 @@ static CargoID _last_filter_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY};
  */
 static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
-	int r = ListPositionOfEngine(*a) - ListPositionOfEngine(*b);
+	int r = Engine::Get(*a)->list_position - Engine::Get(*b)->list_position;
 
 	return _internal_sort_order ? -r : r;
 }
@@ -1100,7 +1100,7 @@ struct BuildVehicleWindow : Window {
 
 		this->sel_engine = sel_id;
 
-		/* make engines first, and then wagons, sorted by ListPositionOfEngine() */
+		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_internal_sort_order = false;
 		EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
 

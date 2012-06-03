@@ -1179,30 +1179,22 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 	v->InvalidateNewGRFCacheOfChain();
 }
 
-/* Functions for changing the order of vehicle purchase lists
- * This is currently only implemented for rail vehicles. */
-
-/**
- * Get the list position of an engine.
- * Used when sorting a list of engines.
- * @param engine ID of the engine.
- * @return The list position of the engine.
- */
-uint ListPositionOfEngine(EngineID engine)
-{
-	const Engine *e = Engine::Get(engine);
-	/* Crude sorting to group by GRF ID */
-	return (e->GetGRFID() * 256) + e->list_position;
-}
+/* Functions for changing the order of vehicle purchase lists */
 
 struct ListOrderChange {
 	EngineID engine;
-	EngineID target;
+	uint target;      ///< local ID
 };
 
 static SmallVector<ListOrderChange, 16> _list_order_changes;
 
-void AlterVehicleListOrder(EngineID engine, EngineID target)
+/**
+ * Record a vehicle ListOrderChange.
+ * @param engine Engine to move
+ * @param target Local engine ID to move \a engine in front of
+ * @note All sorting is done later in CommitVehicleListOrderChanges
+ */
+void AlterVehicleListOrder(EngineID engine, uint target)
 {
 	/* Add the list order change to a queue */
 	ListOrderChange *loc = _list_order_changes.Append();
@@ -1210,53 +1202,75 @@ void AlterVehicleListOrder(EngineID engine, EngineID target)
 	loc->target = target;
 }
 
+/**
+ * Comparator function to sort engines via scope-GRFID and local ID.
+ * @param a left side
+ * @param b right side
+ * @return comparison result
+ */
+static int CDECL EnginePreSort(const EngineID *a, const EngineID *b)
+{
+	const EngineIDMapping *id_a = _engine_mngr.Get(*a);
+	const EngineIDMapping *id_b = _engine_mngr.Get(*b);
+
+	/* 1. Sort by engine type */
+	if (id_a->type != id_b->type) return (int)id_a->type - (int)id_b->type;
+
+	/* 2. Sort by scope-GRFID */
+	if (id_a->grfid != id_b->grfid) return id_a->grfid < id_b->grfid ? -1 : 1;
+
+	/* 3. Sort by local ID */
+	return (int)id_a->internal_id - (int)id_b->internal_id;
+}
+
+/**
+ * Deternine default engine sorting and execute recorded ListOrderChanges from AlterVehicleListOrder.
+ */
 void CommitVehicleListOrderChanges()
 {
-	/* List position to Engine map */
-	typedef SmallMap<uint16, Engine *, 16> ListPositionMap;
-	ListPositionMap lptr_map;
+	/* Pre-sort engines by scope-grfid and local index */
+	SmallVector<EngineID, 16> ordering;
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		*ordering.Append() = e->index;
+	}
+	QSortT(ordering.Begin(), ordering.Length(), EnginePreSort);
 
+	/* Apply Insertion-Sort opeations */
 	const ListOrderChange *end = _list_order_changes.End();
 	for (const ListOrderChange *it = _list_order_changes.Begin(); it != end; ++it) {
-		EngineID engine = it->engine;
-		EngineID target = it->target;
+		EngineID source = it->engine;
+		uint local_target = it->target;
 
-		if (engine == target) continue;
+		const EngineIDMapping *id_source = _engine_mngr.Get(source);
+		if (id_source->internal_id == local_target) continue;
 
-		Engine *source_e = Engine::Get(engine);
-		Engine *target_e = NULL;
+		EngineID target = _engine_mngr.GetID(id_source->type, local_target, id_source->grfid);
+		if (target == INVALID_ENGINE) continue;
 
-		/* Populate map with current list positions */
-		Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, source_e->type) {
-			if (!_settings_game.vehicle.dynamic_engines || e->GetGRF() == source_e->GetGRF()) {
-				if (e->grf_prop.local_id == target) target_e = e;
-				lptr_map[e->list_position] = e;
-			}
+		int source_index = ordering.FindIndex(source);
+		int target_index = ordering.FindIndex(target);
+
+		assert(source_index >= 0 && target_index >= 0);
+		assert(source_index != target_index);
+
+		EngineID *list = ordering.Begin();
+		if (source_index < target_index) {
+			--target_index;
+			for (int i = source_index; i < target_index; ++i) list[i] = list[i + 1];
+			list[target_index] = source;
+		} else {
+			for (int i = source_index; i > target_index; --i) list[i] = list[i - 1];
+			list[target_index] = source;
 		}
-
-		/* std::map sorted by default, SmallMap does not */
-		lptr_map.SortByKey();
-
-		/* Get the target position, if it exists */
-		if (target_e != NULL) {
-			uint16 target_position = target_e->list_position;
-
-			bool moving = false;
-			const ListPositionMap::Pair *end = lptr_map.End();
-			for (ListPositionMap::Pair *it = lptr_map.Begin(); it != end; ++it) {
-				if (it->first == target_position) moving = true;
-				if (moving) it->second->list_position++;
-			}
-
-			source_e->list_position = target_position;
-		}
-
-		lptr_map.Clear();
 	}
 
-	/* Clear out the queue */
-	_list_order_changes.Reset();
+	/* Store final sort-order */
+	const EngineID *idend = ordering.End();
+	uint index = 0;
+	for (const EngineID *it = ordering.Begin(); it != idend; ++it, ++index) {
+		Engine::Get(*it)->list_position = index;
+	}
 }
 
 /**
