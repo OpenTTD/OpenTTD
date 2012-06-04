@@ -362,6 +362,7 @@
     <ClCompile Include="..\src\string.cpp" />
     <ClCompile Include="..\src\strings.cpp" />
     <ClCompile Include="..\src\subsidy.cpp" />
+    <ClCompile Include="..\src\textbuf.cpp" />
     <ClCompile Include="..\src\texteff.cpp" />
     <ClCompile Include="..\src\tgp.cpp" />
     <ClCompile Include="..\src\tile_map.cpp" />
@@ -573,6 +574,7 @@
     <ClInclude Include="..\src\tar_type.h" />
     <ClInclude Include="..\src\terraform_gui.h" />
     <ClInclude Include="..\src\textbuf_gui.h" />
+    <ClInclude Include="..\src\textbuf_type.h" />
     <ClInclude Include="..\src\texteff.hpp" />
     <ClInclude Include="..\src\textfile_gui.h" />
     <ClInclude Include="..\src\textfile_type.h" />

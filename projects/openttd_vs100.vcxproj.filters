@@ -315,6 +315,9 @@
     <ClCompile Include="..\src\subsidy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\textbuf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\texteff.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -946,6 +949,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\textbuf_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\textbuf_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\texteff.hpp">

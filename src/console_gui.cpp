@@ -10,7 +10,7 @@
 /** @file console_gui.cpp Handling the GUI of the in-game console. */
 
 #include "stdafx.h"
-#include "textbuf_gui.h"
+#include "textbuf_type.h"
 #include "window_gui.h"
 #include "console_gui.h"
 #include "console_internal.h"

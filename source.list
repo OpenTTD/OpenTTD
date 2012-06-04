@@ -72,6 +72,7 @@ strgen/strgen_base.cpp
 string.cpp
 strings.cpp
 subsidy.cpp
+textbuf.cpp
 texteff.cpp
 tgp.cpp
 tile_map.cpp
@@ -306,6 +307,7 @@ subsidy_type.h
 tar_type.h
 terraform_gui.h
 textbuf_gui.h
+textbuf_type.h
 texteff.hpp
 textfile_gui.h
 textfile_type.h

@@ -16,30 +16,6 @@
 #include "string_type.h"
 #include "strings_type.h"
 
-/** Helper/buffer for input fields. */
-struct Textbuf {
-	char *buf;                ///< buffer in which text is saved
-	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
-	uint16 max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
-	uint16 bytes;             ///< the current size of the string in bytes (including terminating '\0')
-	uint16 chars;             ///< the current size of the string in characters (including terminating '\0')
-	uint16 pixels;            ///< the current size of the string in pixels
-	bool caret;               ///< is the caret ("_") visible or not
-	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
-	uint16 caretxoffs;        ///< the current position of the caret in pixels
-};
-
-bool HandleCaret(Textbuf *tb);
-
-void DeleteTextBufferAll(Textbuf *tb);
-bool DeleteTextBufferChar(Textbuf *tb, int delmode);
-bool InsertTextBufferChar(Textbuf *tb, uint32 key);
-bool InsertTextBufferClipboard(Textbuf *tb);
-bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars);
-void UpdateTextBufferSize(Textbuf *tb);
-
 /** Flags used in ShowQueryString() call */
 enum QueryStringFlags {
 	QSF_NONE             =    0,

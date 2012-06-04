@@ -716,6 +716,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\textbuf.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\texteff.cpp"
 				>
 			</File>
@@ -1561,6 +1565,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\textbuf_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\textbuf_type.h"
 				>
 			</File>
 			<File
