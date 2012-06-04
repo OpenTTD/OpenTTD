@@ -1102,6 +1102,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành đ
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật

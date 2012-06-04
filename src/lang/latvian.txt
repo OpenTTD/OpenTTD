@@ -683,7 +683,7 @@ STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Autotransporta līdzekļi
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Kuģi
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Lidaparāti
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Transporta maršruti
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Pārvadājumu maršruti
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Mežs
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Dzelzsceļa stacija
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kravas automobiļu iekrautuve
@@ -854,6 +854,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Pārvadājumu subsīdija piešķirta {STRING}!{}{}{STRING} pārvadājumi no {STRING} uz {STRING} saņems četrkāršu samaksu vienu gadu!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Satiksmes haoss {TOWN}!{}{}{STRING} apmaksātie ielu pārbūves darbi rada vājprātu uz ielām pusgada garumā!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Pārvadājumu monopols!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} vietējā pašvaldība panāk vienošanos ar {STRING} par pārvadājumu izņēmuma tiesībām uz vienu gadu!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Skatvieta {COMMA}
@@ -1238,7 +1240,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Augstumu kartes
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Pret pulksteņa rādītāja virzienu
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pulksteņa rādītāja virzienā
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Augstuma līmenis līdzenai scenārija kartei: {STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārveidot lauciņus, kas atrodas kartes malās : {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Atļaut pārveidot lauciņus kas atrodas kartes malās : {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ja izslēgts, kartes malās vienmēr būs okeāns
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Viens vai vairāki lauciņi pie ziemeļu malas nav tukši
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Vienam vai vairākiem lauciņiem kādā malā nav ūdens
 
@@ -1263,10 +1266,12 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmum
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :visiem uzņēmumiem
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Dot priekšroku komandas tērzēšanai ar <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Peles ritenīša funkcija: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ieslēgt ritināšanu ar divdimensiju peles ritenīti
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :pietuvināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :ritināt karti
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :izslēgts
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Peles ritenīša ātrums: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Vadīt peles ritenīša ritināšanas jutīgumu
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Labā klikšķa emulēšana: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komanda+klikšķis
@@ -1350,7 +1355,8 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Aizliegt apkopi
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ja ieslēgts, transportlīdzekļiem netiek veikta apkope. Jo tie nebojājas
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ieslēgt vagonu ātruma ierobežojumus: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ja ieslēgts, var izmantot vagonu ātruma ierobežojumus, lai lemtu par vilcienu maksimālo ātrumu
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot eletrificēto dzelzceļu: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Atspējot elektrificēto dzelzceļu: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Šī iestatījuma ieslēgšana atcels ceļu elektrifikācijas prasību, lai pa tiem varētu pārvietoties elektrolokomotīves
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk drukāt krāsainas avīzes. Pirms šā gada tās ir melnbaltas
@@ -1369,7 +1375,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Izmantotais nok
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :vienvirziena ceļa signāli
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām sgnālu veidiem: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām signālu veidiem: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tikai bloķēšanas signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
@@ -1405,7 +1411,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Attālums starp
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikse{P 0 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :izslēgts
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais logu skaits: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepielipušo logu skaits, pirms tie tiek automātiski aizvērti lai izveidotu vietu jauniem logiem
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepielipušo logu skaits, pirms tie tiek automātiski aizvērti lai atbrīvotu vietu jauniem logiem
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}

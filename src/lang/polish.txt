@@ -1500,6 +1500,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :wyśrodkowany
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :z prawej strony
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Pozwól budować na pochyłym terenie i wybrzeżach: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Jeśli włączone, to tory i stacje można budować na większości stoków. Jeśli wyłączone, można je budować tylko na stokach w tym samym kierunku, co tory, tak, że nie potrzeba fundamentów
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Pozwalaj na modyfikowanie terenu pod budynkami i torami bez usuwania ich
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
@@ -1617,6 +1618,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Włącz kształ
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedno lub więcej pól na północnej krawędzi nie jest puste
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedno lub więcej pól na krawędzi nie jest wodą
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maksymalna rozpiętość stacji: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatycznie serwisuj helikoptery na lądowiskach: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia krajobrazu do okien środków transportu: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kolor lądu używany w minimapie: {STRING}

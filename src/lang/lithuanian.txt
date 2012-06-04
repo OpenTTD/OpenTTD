@@ -1477,6 +1477,7 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Nusako didžiau
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Remontuoti sraigtasparnius automatiškai: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Nusiųsti sraigtasparnius techninei apžiūrai po kiekvieno nusileidimo, net jei oro uoste nėra angaro
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Kai atidaromas statybų įrankių juosta transporto tipui, taip pat atidaroma žemės kasimų įrankių juosta
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Mažame žemėlapyje naudojama žemės spalva: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Reljefo spalva mažajame žemėlapyje
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Žalia
