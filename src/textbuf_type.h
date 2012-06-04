@@ -23,17 +23,21 @@ struct Textbuf {
 	bool caret;               ///< is the caret ("_") visible or not
 	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
 	uint16 caretxoffs;        ///< the current position of the caret in pixels
+
+	void Initialize(char *buf, uint16 max_bytes);
+	void Initialize(char *buf, uint16 max_bytes, uint16 max_chars);
+
+	void DeleteAll();
+	bool DeleteChar(int delmode);
+	bool InsertChar(uint32 key);
+	bool InsertClipboard();
+	bool MovePos(int navmode);
+
+	bool HandleCaret();
+	void UpdateSize();
+
+private:
+	void DelChar(bool backspace);
 };
-
-bool HandleCaret(Textbuf *tb);
-
-void DeleteTextBufferAll(Textbuf *tb);
-bool DeleteTextBufferChar(Textbuf *tb, int delmode);
-bool InsertTextBufferChar(Textbuf *tb, uint32 key);
-bool InsertTextBufferClipboard(Textbuf *tb);
-bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars);
-void UpdateTextBufferSize(Textbuf *tb);
 
 #endif /* TEXTBUF_TYPE_H */

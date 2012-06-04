@@ -995,7 +995,7 @@ public:
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size, this->max_chars);
 		this->RandomTownName();
 		this->UpdateButtons(true);
 	}
@@ -1009,7 +1009,7 @@ public:
 		} else {
 			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
 		}
-		UpdateTextBufferSize(&this->text);
+		this->text.UpdateSize();
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
 		this->SetWidgetDirty(WID_TF_TOWN_NAME_EDITBOX);

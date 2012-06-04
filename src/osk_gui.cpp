@@ -124,7 +124,7 @@ struct OskWindow : public Window {
 
 			if (!IsValidChar(c, this->qs->afilter)) return;
 
-			if (InsertTextBufferChar(&this->qs->text, c)) this->InvalidateParent();
+			if (this->qs->text.InsertChar(c)) this->InvalidateParent();
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
@@ -139,7 +139,7 @@ struct OskWindow : public Window {
 
 		switch (widget) {
 			case WID_OSK_BACKSPACE:
-				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateParent();
+				if (this->qs->text.DeleteChar(WKC_BACKSPACE)) this->InvalidateParent();
 				break;
 
 			case WID_OSK_SPECIAL:
@@ -163,15 +163,15 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_SPACE:
-				if (InsertTextBufferChar(&this->qs->text, ' ')) this->InvalidateParent();
+				if (this->qs->text.InsertChar(' ')) this->InvalidateParent();
 				break;
 
 			case WID_OSK_LEFT:
-				if (MoveTextBufferPos(&this->qs->text, WKC_LEFT)) this->InvalidateParent();
+				if (this->qs->text.MovePos(WKC_LEFT)) this->InvalidateParent();
 				break;
 
 			case WID_OSK_RIGHT:
-				if (MoveTextBufferPos(&this->qs->text, WKC_RIGHT)) this->InvalidateParent();
+				if (this->qs->text.MovePos(WKC_RIGHT)) this->InvalidateParent();
 				break;
 
 			case WID_OSK_OK:
@@ -193,8 +193,8 @@ struct OskWindow : public Window {
 					return;
 				} else { // or reset to original string
 					strcpy(qs->text.buf, this->orig_str_buf);
-					UpdateTextBufferSize(&qs->text);
-					MoveTextBufferPos(&qs->text, WKC_END);
+					qs->text.UpdateSize();
+					qs->text.MovePos(WKC_END);
 					this->InvalidateParent();
 					delete this;
 				}

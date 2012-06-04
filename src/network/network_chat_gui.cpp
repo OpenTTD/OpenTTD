@@ -300,7 +300,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->dtype   = type;
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
 		static const StringID chat_captions[] = {
 			STR_NETWORK_CHAT_ALL_CAPTION,
@@ -442,7 +442,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 				}
 
 				/* Update the textbuffer */
-				UpdateTextBufferSize(&this->text);
+				this->text.UpdateSize();
 
 				this->SetDirty();
 				free(pre_buf);
@@ -456,7 +456,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			_chat_tab_completion_active = false;
 
 			/* Update the textbuffer */
-			UpdateTextBufferSize(&this->text);
+			this->text.UpdateSize();
 
 			this->SetDirty();
 		}

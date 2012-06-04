@@ -30,42 +30,41 @@ int _caret_timer;
 /* Delete a character at the caret position in a text buf.
  * If backspace is set, delete the character before the caret,
  * else delete the character after it. */
-static void DelChar(Textbuf *tb, bool backspace)
+void Textbuf::DelChar(bool backspace)
 {
 	WChar c;
-	char *s = tb->buf + tb->caretpos;
+	char *s = this->buf + this->caretpos;
 
 	if (backspace) s = Utf8PrevChar(s);
 
 	uint16 len = (uint16)Utf8Decode(&c, s);
 	uint width = GetCharacterWidth(FS_NORMAL, c);
 
-	tb->pixels -= width;
+	this->pixels -= width;
 	if (backspace) {
-		tb->caretpos   -= len;
-		tb->caretxoffs -= width;
+		this->caretpos   -= len;
+		this->caretxoffs -= width;
 	}
 
 	/* Move the remaining characters over the marker */
-	memmove(s, s + len, tb->bytes - (s - tb->buf) - len);
-	tb->bytes -= len;
-	tb->chars--;
+	memmove(s, s + len, this->bytes - (s - this->buf) - len);
+	this->bytes -= len;
+	this->chars--;
 }
 
 /**
  * Delete a character from a textbuffer, either with 'Delete' or 'Backspace'
  * The character is delete from the position the caret is at
- * @param tb Textbuf type to be changed
  * @param delmode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
  * @return Return true on successful change of Textbuf, or false otherwise
  */
-bool DeleteTextBufferChar(Textbuf *tb, int delmode)
+bool Textbuf::DeleteChar(int delmode)
 {
-	if (delmode == WKC_BACKSPACE && tb->caretpos != 0) {
-		DelChar(tb, true);
+	if (delmode == WKC_BACKSPACE && this->caretpos != 0) {
+		this->DelChar(true);
 		return true;
-	} else if (delmode == WKC_DELETE && tb->caretpos < tb->bytes - 1) {
-		DelChar(tb, false);
+	} else if (delmode == WKC_DELETE && this->caretpos < this->bytes - 1) {
+		this->DelChar(false);
 		return true;
 	}
 
@@ -74,36 +73,34 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 
 /**
  * Delete every character in the textbuffer
- * @param tb Textbuf buffer to be emptied
  */
-void DeleteTextBufferAll(Textbuf *tb)
+void Textbuf::DeleteAll()
 {
-	memset(tb->buf, 0, tb->max_bytes);
-	tb->bytes = tb->chars = 1;
-	tb->pixels = tb->caretpos = tb->caretxoffs = 0;
+	memset(this->buf, 0, this->max_bytes);
+	this->bytes = this->chars = 1;
+	this->pixels = this->caretpos = this->caretxoffs = 0;
 }
 
 /**
  * Insert a character to a textbuffer. If maxwidth of the Textbuf is zero,
  * we don't care about the visual-length but only about the physical
  * length of the string
- * @param tb Textbuf type to be changed
  * @param key Character to be inserted
  * @return Return true on successful change of Textbuf, or false otherwise
  */
-bool InsertTextBufferChar(Textbuf *tb, WChar key)
+bool Textbuf::InsertChar(WChar key)
 {
 	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
 	uint16 len = (uint16)Utf8CharLen(key);
-	if (tb->bytes + len <= tb->max_bytes && tb->chars + 1 <= tb->max_chars) {
-		memmove(tb->buf + tb->caretpos + len, tb->buf + tb->caretpos, tb->bytes - tb->caretpos);
-		Utf8Encode(tb->buf + tb->caretpos, key);
-		tb->chars++;
-		tb->bytes  += len;
-		tb->pixels += charwidth;
+	if (this->bytes + len <= this->max_bytes && this->chars + 1 <= this->max_chars) {
+		memmove(this->buf + this->caretpos + len, this->buf + this->caretpos, this->bytes - this->caretpos);
+		Utf8Encode(this->buf + this->caretpos, key);
+		this->chars++;
+		this->bytes  += len;
+		this->pixels += charwidth;
 
-		tb->caretpos   += len;
-		tb->caretxoffs += charwidth;
+		this->caretpos   += len;
+		this->caretxoffs += charwidth;
 		return true;
 	}
 	return false;
@@ -113,10 +110,9 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
  * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
  * and append this up to the maximum length (either absolute or screenlength). If maxlength
  * is zero, we don't care about the screenlength but only about the physical length of the string
- * @param tb Textbuf type to be changed
  * @return true on successful change of Textbuf, or false otherwise
  */
-bool InsertTextBufferClipboard(Textbuf *tb)
+bool Textbuf::InsertClipboard()
 {
 	char utf8_buf[512];
 
@@ -128,8 +124,8 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		if (!IsPrintable(c)) break;
 
 		byte len = Utf8CharLen(c);
-		if (tb->bytes + bytes + len > tb->max_bytes) break;
-		if (tb->chars + chars + 1   > tb->max_chars) break;
+		if (this->bytes + bytes + len > this->max_bytes) break;
+		if (this->chars + chars + 1   > this->max_chars) break;
 
 		byte char_pixels = GetCharacterWidth(FS_NORMAL, c);
 
@@ -140,17 +136,17 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 	if (bytes == 0) return false;
 
-	memmove(tb->buf + tb->caretpos + bytes, tb->buf + tb->caretpos, tb->bytes - tb->caretpos);
-	memcpy(tb->buf + tb->caretpos, utf8_buf, bytes);
-	tb->pixels += pixels;
-	tb->caretxoffs += pixels;
+	memmove(this->buf + this->caretpos + bytes, this->buf + this->caretpos, this->bytes - this->caretpos);
+	memcpy(this->buf + this->caretpos, utf8_buf, bytes);
+	this->pixels += pixels;
+	this->caretxoffs += pixels;
 
-	tb->bytes += bytes;
-	tb->chars += chars;
-	tb->caretpos += bytes;
-	assert(tb->bytes <= tb->max_bytes);
-	assert(tb->chars <= tb->max_chars);
-	tb->buf[tb->bytes - 1] = '\0'; // terminating zero
+	this->bytes += bytes;
+	this->chars += chars;
+	this->caretpos += bytes;
+	assert(this->bytes <= this->max_bytes);
+	assert(this->chars <= this->max_chars);
+	this->buf[this->bytes - 1] = '\0'; // terminating zero
 
 	return true;
 }
@@ -158,44 +154,43 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 /**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next characer interaction will occur
- * @param tb Textbuf type where navigation occurs
  * @param navmode Direction in which navigation occurs WKC_LEFT, WKC_RIGHT, WKC_END, WKC_HOME
  * @return Return true on successful change of Textbuf, or false otherwise
  */
-bool MoveTextBufferPos(Textbuf *tb, int navmode)
+bool Textbuf::MovePos(int navmode)
 {
 	switch (navmode) {
 		case WKC_LEFT:
-			if (tb->caretpos != 0) {
+			if (this->caretpos != 0) {
 				WChar c;
-				const char *s = Utf8PrevChar(tb->buf + tb->caretpos);
+				const char *s = Utf8PrevChar(this->buf + this->caretpos);
 				Utf8Decode(&c, s);
-				tb->caretpos    = s - tb->buf; // -= (tb->buf + tb->caretpos - s)
-				tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
+				this->caretpos    = s - this->buf; // -= (this->buf + this->caretpos - s)
+				this->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
 
 				return true;
 			}
 			break;
 
 		case WKC_RIGHT:
-			if (tb->caretpos < tb->bytes - 1) {
+			if (this->caretpos < this->bytes - 1) {
 				WChar c;
 
-				tb->caretpos   += (uint16)Utf8Decode(&c, tb->buf + tb->caretpos);
-				tb->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
+				this->caretpos   += (uint16)Utf8Decode(&c, this->buf + this->caretpos);
+				this->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
 
 				return true;
 			}
 			break;
 
 		case WKC_HOME:
-			tb->caretpos = 0;
-			tb->caretxoffs = 0;
+			this->caretpos = 0;
+			this->caretxoffs = 0;
 			return true;
 
 		case WKC_END:
-			tb->caretpos = tb->bytes - 1;
-			tb->caretxoffs = tb->pixels;
+			this->caretpos = this->bytes - 1;
+			this->caretxoffs = this->pixels;
 			return true;
 
 		default:
@@ -208,74 +203,70 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 /**
  * Initialize the textbuffer by supplying it the buffer to write into
  * and the maximum length of this buffer
- * @param tb Textbuf type which is getting initialized
  * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
  */
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes)
+void Textbuf::Initialize(char *buf, uint16 max_bytes)
 {
-	InitializeTextBuffer(tb, buf, max_bytes, max_bytes);
+	this->Initialize(buf, max_bytes, max_bytes);
 }
 
 /**
  * Initialize the textbuffer by supplying it the buffer to write into
  * and the maximum length of this buffer
- * @param tb Textbuf type which is getting initialized
  * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
  * @param max_chars maximum size in chars, including terminating '\0'
  */
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars)
+void Textbuf::Initialize(char *buf, uint16 max_bytes, uint16 max_chars)
 {
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
-	tb->buf        = buf;
-	tb->max_bytes  = max_bytes;
-	tb->max_chars  = max_chars;
-	tb->caret      = true;
-	UpdateTextBufferSize(tb);
+	this->buf        = buf;
+	this->max_bytes  = max_bytes;
+	this->max_chars  = max_chars;
+	this->caret      = true;
+	this->UpdateSize();
 }
 
 /**
  * Update Textbuf type with its actual physical character and screenlength
  * Get the count of characters in the string as well as the width in pixels.
  * Useful when copying in a larger amount of text at once
- * @param tb Textbuf type which length is calculated
  */
-void UpdateTextBufferSize(Textbuf *tb)
+void Textbuf::UpdateSize()
 {
-	const char *buf = tb->buf;
+	const char *buf = this->buf;
 
-	tb->pixels = 0;
-	tb->chars = tb->bytes = 1; // terminating zero
+	this->pixels = 0;
+	this->chars = this->bytes = 1; // terminating zero
 
 	WChar c;
 	while ((c = Utf8Consume(&buf)) != '\0') {
-		tb->pixels += GetCharacterWidth(FS_NORMAL, c);
-		tb->bytes += Utf8CharLen(c);
-		tb->chars++;
+		this->pixels += GetCharacterWidth(FS_NORMAL, c);
+		this->bytes += Utf8CharLen(c);
+		this->chars++;
 	}
 
-	assert(tb->bytes <= tb->max_bytes);
-	assert(tb->chars <= tb->max_chars);
+	assert(this->bytes <= this->max_bytes);
+	assert(this->chars <= this->max_chars);
 
-	tb->caretpos = tb->bytes - 1;
-	tb->caretxoffs = tb->pixels;
+	this->caretpos = this->bytes - 1;
+	this->caretxoffs = this->pixels;
 }
 
 /**
  * Handle the flashing of the caret.
- * @param tb The text buffer to handle the caret of.
  * @return True if the caret state changes.
  */
-bool HandleCaret(Textbuf *tb)
+bool Textbuf::HandleCaret()
 {
 	/* caret changed? */
 	bool b = !!(_caret_timer & 0x20);
 
-	if (b != tb->caret) {
-		tb->caret = b;
+	if (b != this->caret) {
+		this->caret = b;
 		return true;
 	}
 	return false;

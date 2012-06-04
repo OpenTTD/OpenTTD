@@ -447,7 +447,7 @@ public:
 
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size, 120);
 		this->SetFocusedWidget(WID_NG_CLIENT);
 
 		this->field = WID_NG_CLIENT;
@@ -1019,7 +1019,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, this->edit_str_size);
 
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 160);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size, 160);
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 
 		this->field = WID_NSS_GAMENAME;
@@ -2142,7 +2142,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
 	}
 

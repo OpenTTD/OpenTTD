@@ -1009,11 +1009,11 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
 		this->highlight_row = -1;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_BREAK_STR_STRING_LENGTH);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size, MAX_BREAK_STR_STRING_LENGTH);
 
 		/* Restore the break string value from static variable */
 		strecpy(this->edit_str_buf, this->break_string, this->edit_str_buf + MAX_BREAK_STR_STRING_LENGTH);
-		UpdateTextBufferSize(&this->text);
+		this->text.UpdateSize();
 
 		/* Restore button state from static class variables */
 		if (ai_debug_company == OWNER_DEITY) {

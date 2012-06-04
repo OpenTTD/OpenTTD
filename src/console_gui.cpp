@@ -233,7 +233,7 @@ struct IConsoleWindow : Window
 
 	virtual void OnMouseLoop()
 	{
-		if (HandleCaret(&_iconsole_cmdline)) this->SetDirty();
+		if (_iconsole_cmdline.HandleCaret()) this->SetDirty();
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -294,7 +294,7 @@ struct IConsoleWindow : Window
 			case (WKC_META | 'V'):
 #endif
 			case (WKC_CTRL | 'V'):
-				if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
+				if (_iconsole_cmdline.InsertClipboard()) {
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				}
@@ -308,19 +308,19 @@ struct IConsoleWindow : Window
 			case (WKC_META | 'U'):
 #endif
 			case (WKC_CTRL | 'U'):
-				DeleteTextBufferAll(&_iconsole_cmdline);
+				_iconsole_cmdline.DeleteAll();
 				this->SetDirty();
 				break;
 
 			case WKC_BACKSPACE: case WKC_DELETE:
-				if (DeleteTextBufferChar(&_iconsole_cmdline, keycode)) {
+				if (_iconsole_cmdline.DeleteChar(keycode)) {
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				}
 				break;
 
 			case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-				if (MoveTextBufferPos(&_iconsole_cmdline, keycode)) {
+				if (_iconsole_cmdline.MovePos(keycode)) {
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				}
@@ -329,7 +329,7 @@ struct IConsoleWindow : Window
 			default:
 				if (IsValidChar(key, CS_ALPHANUMERAL)) {
 					IConsoleWindow::scroll = 0;
-					InsertTextBufferChar(&_iconsole_cmdline, key);
+					_iconsole_cmdline.InsertChar(key);
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				} else {
@@ -460,7 +460,7 @@ static void IConsoleHistoryNavigate(int direction)
 	} else {
 		ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[_iconsole_historypos], _iconsole_cmdline.max_bytes);
 	}
-	UpdateTextBufferSize(&_iconsole_cmdline);
+	_iconsole_cmdline.UpdateSize();
 }
 
 /**

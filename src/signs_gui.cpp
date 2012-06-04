@@ -167,7 +167,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 		/* Initialize the text edit widget */
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS);
+		this->text.Initialize(this->edit_str_buf, MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS);
 		ClearFilterTextWidget();
 
 		/* Initialize the filtering variables */
@@ -186,7 +186,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	void ClearFilterTextWidget()
 	{
 		this->edit_str_buf[0] = '\0';
-		UpdateTextBufferSize(&this->text);
+		this->text.UpdateSize();
 
 		this->SetWidgetDirty(WID_SIL_FILTER_TEXT);
 	}
@@ -500,7 +500,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		*last_of = '\0';
 
 		this->cur_sign = si->index;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size, this->max_chars);
 
 		this->SetWidgetDirty(WID_QES_TEXT);
 		this->SetFocusedWidget(WID_QES_TEXT);

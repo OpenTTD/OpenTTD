@@ -263,7 +263,7 @@ public:
 		}
 
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
 		this->CreateNestedTree(desc, true);
 		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -571,7 +571,7 @@ public:
 						if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) {
 							/* Copy clicked name to editbox */
 							ttd_strlcpy(this->text.buf, file->title, this->text.max_bytes);
-							UpdateTextBufferSize(&this->text);
+							this->text.UpdateSize();
 							this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 						}
 					} else if (!_load_check_data.HasErrors()) {
@@ -651,7 +651,7 @@ public:
 				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
 			}
 
-			UpdateTextBufferSize(&this->text);
+			this->text.UpdateSize();
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (_saveload_mode  == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 				_switch_mode = SM_SAVE_GAME;

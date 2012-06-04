@@ -727,28 +727,28 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 		case (WKC_META | 'V'):
 #endif
 		case (WKC_CTRL | 'V'):
-			if (InsertTextBufferClipboard(&this->text)) w->SetWidgetDirty(wid);
+			if (this->text.InsertClipboard()) w->SetWidgetDirty(wid);
 			break;
 
 #ifdef WITH_COCOA
 		case (WKC_META | 'U'):
 #endif
 		case (WKC_CTRL | 'U'):
-			DeleteTextBufferAll(&this->text);
+			this->text.DeleteAll();
 			w->SetWidgetDirty(wid);
 			break;
 
 		case WKC_BACKSPACE: case WKC_DELETE:
-			if (DeleteTextBufferChar(&this->text, keycode)) w->SetWidgetDirty(wid);
+			if (this->text.DeleteChar(keycode)) w->SetWidgetDirty(wid);
 			break;
 
 		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-			if (MoveTextBufferPos(&this->text, keycode)) w->SetWidgetDirty(wid);
+			if (this->text.MovePos(keycode)) w->SetWidgetDirty(wid);
 			break;
 
 		default:
 			if (IsValidChar(key, this->afilter)) {
-				if (InsertTextBufferChar(&this->text, key)) w->SetWidgetDirty(wid);
+				if (this->text.InsertChar(key)) w->SetWidgetDirty(wid);
 			} else {
 				state = ES_NOT_HANDLED;
 			}
@@ -759,7 +759,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 
 void QueryString::HandleEditBox(Window *w, int wid)
 {
-	if (HasEditBoxFocus(w, wid) && HandleCaret(&this->text)) {
+	if (HasEditBoxFocus(w, wid) && this->text.HandleCaret()) {
 		w->SetWidgetDirty(wid);
 		/* When we're not the OSK, notify 'our' OSK to redraw the widget,
 		 * so the caret changes appropriately. */
@@ -847,7 +847,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->caption = caption;
 		this->afilter = afilter;
 		this->flags = flags;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars);
+		this->text.Initialize(this->edit_str_buf, max_bytes, max_chars);
 
 		this->InitNested(desc, WN_QUERY_STRING);
 
