@@ -1387,17 +1387,24 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximum aantal 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Interval tussen onderhoud is een percentage: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Kies of onderhoud van de voertuigen wordt geactiveerd door verstreken tijd sinds het laatste onderhoud of door het zakken van de betrouwbaarheid met een bepaald percentage van de maximale betrouwbaarheid
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standaard onderhoudsinterval voor treinen: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Stel de standaard service-interval voor nieuwe railvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0 "" en}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :uitgeschakeld
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standaard onderhoudsinterval voor wegvoertuigen: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Stel de standaard service-interval voor nieuwe wegvoertuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standaard onderhoudsinterval voor vliegtuigen: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Stel de standaard service-interval voor nieuwe vliegtuigen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standaard onderhoudsinterval voor schepen: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Stel de standaard service-interval voor nieuwe schepen, als er geen expliciete service-interval is ingesteld voor het voertuig
 STR_CONFIG_SETTING_NOSERVICE                                    :Schakel onderhoud uit wanneer defecten uit staan: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Als deze optie is ingeschakeld zullen voertuigen niet onderhouden worden als niet kapot kunnen gaan.
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Schakel snelheidslimieten voor wagons aan: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wanneer ingeschakeld, ook gebruik maken van snelheidsbeperkingen van wagons voor het bepalen van de maximale snelheid van een trein
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Schakel elektrische sporen uit: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Het inschakelen van deze instelling schakelt de verplichting voor spoorelektrificatie voor elektrische treinen uit
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kleurenfoto's komen in: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de krant aankondigingen in kleur worden afgedrukt. Voor dit jaar wordt zwart-wit gebruikt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Beginjaar: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sta het kopen van aandelen van andere bedrijven toe: {STRING}

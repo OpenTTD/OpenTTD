@@ -314,7 +314,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou spoo
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bou paaie
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bou skip hawe
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou lughawens
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Oppe die landargitekteur werktuigbaan om land te verhoog/verlaag, boome beplant, ens.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maak die landargitekteur nutsbalk oop om, land te verhoog/verlaag, boome beplant, ens.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vertoon klank/musiek venster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vertoon laaste boodskap/nuus verslag, vertoon boodskap opsies
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land gebied informasie, konsole, skrip ontfouting, skermkiekie, omtrent OpenTTD
@@ -428,7 +428,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lughawe konstru
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitekteur
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Boome beplant
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant bome
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plaas teken
 ############ range ends here
 
@@ -1124,13 +1124,18 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Senter
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Regs
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Laat bou op skuinstes en kuslyn toe: {STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat Landargitekteur toe onder geboue, spoore, ens. (outohelling): {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :As geaktiveer, kan spore en stasies op meeste hellings gebou word. Indien gedeaktiveer, kan hulle net gebou work op hellings wat die rigting van die spoor volg, en dus geen fondasies verg nie
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat landargitektuur toe onder geboue, spore, ens. (outohelling): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat Landargitektuur onder geboue en spore sonder om dit te verwyder
 STR_CONFIG_SETTING_CATCHMENT                                    :Laat meer realisties grootte opvangsgebied toe: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Laat verskillende groote opvang gebiede toe vir verskillende tipes stasies en lughawens
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Laat verwydering van meer stad-besite paaie, bruge, ens toe: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Maak dit makliker om dorps eiendom en infrastruktuur te verwyder
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximum lengte van treine: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Stel die maximum lente van treine
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teël{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid motor rook/vonke: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Stel vas hoeveel rook en hoeveel vonke deur voertuie gemaak word
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein versnelling model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Pad voertuig versnelling model: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Krans helling vir treine: {STRING}
@@ -1167,6 +1172,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig to
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :As 'n maatskapy alleen transportreg koop vir n' dorp. Die teenstanders se stasies (passesiers en vrag) sal geen vrag kry vir n' jaar
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing van geboue: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Laat geld donasies aan dorpe, deur maatskappye toe, vir die bou van huise
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Laat befondsing toe van plaaslike pad heropbou: {STRING}
@@ -1217,6 +1223,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Land genereerde
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oorspronklik
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Max afstand van kaart einde vir Olieraffinaderye : {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderye word net naby die kaart kant gebou, dit is, teen die kus vir eiland kaarte
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeu lyn hoogte: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grofheif van terrein (slegs TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Baie Glad
@@ -4108,7 +4115,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamant Myn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Yster Erts Myn
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Vrugte Plantasie
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Gomlastiek Plantasie
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Rubber Plantasie
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Water Verskaf
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Water Toring
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabriek

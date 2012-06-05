@@ -1575,6 +1575,7 @@ STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Automobilių re
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Lėktuvų remonto intervalas: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Laivų remonto intervalas: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techninę apžiūrą, jei gedimai nenaudojami: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta, tada automobiliams nebus atliekama techninė apžiūra, jeigu jie negalės sugesti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvuoti vagonų greičio apribojimą: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
 
@@ -1656,10 +1657,13 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Vidutinis
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Greitas
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Labai greitas
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Miestelių, tampančių miestais, santykis: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Kiekis miestų, kurie taps miestais, kurie yra didesni ir auga greitai
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iš {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Išjungta
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pradinis miestų dydžio daugiklis: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Vidutinis miestų dydis santykiu su normaliais miestais žaidimo pradžioje
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Panaikinti beprasmius kelio elementus kelių statybos metu: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Panaikinti aklavietes po finansuojamų kelių rekonstrukcijos
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Vaizdas
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstrukcijos

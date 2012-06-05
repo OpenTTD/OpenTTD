@@ -169,20 +169,20 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} �
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} ξύλου
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} μεταλλεύματος σιδήρου
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} χάλυβα
-STR_QUANTITY_VALUABLES                                          :{COMMA} τσάντ{P α ες} με πολύτιμα είδη
+STR_QUANTITY_VALUABLES                                          :{COMMA} σάκ{P ος οι} με πολύτιμα είδη
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} μεταλλεύματος χαλκού
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} καλαμποκιού
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} φρούτων
-STR_QUANTITY_DIAMONDS                                           :{COMMA} τσάντ{P α ες} με διαμάντια
+STR_QUANTITY_DIAMONDS                                           :{COMMA} σάκ{P ος οι} με διαμάντια
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} τροφίμων
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} χαρτιού
-STR_QUANTITY_GOLD                                               :{COMMA} τσάντ{P α ες} με χρυσό
+STR_QUANTITY_GOLD                                               :{COMMA} σάκ{P ος οι} με χρυσό
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} νερού
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} σιταριού
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} λάστιχου
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} ζάχαρης
 STR_QUANTITY_TOYS                                               :{COMMA} παιχνίδι{P "" α}
-STR_QUANTITY_SWEETS                                             :{COMMA} τσάντ{P α ες} με γλυκά
+STR_QUANTITY_SWEETS                                             :{COMMA} σάκ{P ος οι} με γλυκά
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} κόλας
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} μαλλιού της γριάς
 STR_QUANTITY_BUBBLES                                            :{COMMA} φυσαλίδ{P α ες}
@@ -348,8 +348,8 @@ STR_SORT_BY_COST                                                :Κόστος
 STR_SORT_BY_POWER                                               :Δύναμη
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Δύναμη έλξης
 STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία Παρουσιάσης
-STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Κόστος Λειτουργίας
+STR_SORT_BY_RUNNING_COST                                        :Λειτουργικό Κόστος
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Ισχύς/Λειτουργικό Κόστος
 STR_SORT_BY_CARGO_CAPACITY                                      :Χωρητικότητα Φορτίου
 STR_SORT_BY_RANGE                                               :Εύρος
 
@@ -370,7 +370,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Χρημ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Εμφάνιση λίστας τρένων της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρίας. Ctrl+κλικ εναλλάσει το άνοιγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροπλάνα της εταιρίας. Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρίας. Το Ctrl+κλικ εναλλάσει το ανοίγμα της λίστας ομάδων/οχημάτων
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Μεγέθυνση εικόνας
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Σμίκρυνση εικόνας
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Κατασκευή σιδηροτροχιάς
@@ -675,8 +675,8 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Χρήμ
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Δάνειο:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Σύνολο:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που ανέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων κομματιών σταθμών. Κάθε κομμάτι ενός σταθμού (π.χ. στάθμος τρένου, στάση λεωφορείου, αεροδρόμιο) προσμετριέται, ακόμα και αν είναι συνδεμένα ως ένας σταθμός
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Απαρίθμηση των οχημάτων που απέφεραν κέρδος πέρσι. Περιλαμβανομένων των επιγείων οχημάτων, τρένων, πλοίων και αεροσκαφών.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Αριθμός των πρόσφατα επισκευασμένων σταθμών. Σταιμοί τραίνων, στάσεις λεωφορείων, αεροδρόμια, κ.ο.κ. προσμετρώνται ξεχωριστά, ακόμα κι αν ανήκουν στον ίδιο σταθμό.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Το κέρδος του οχήματος με το μικρότερο εισόδημα (μόνο οχήματα παλιότερα των 2 ετών θα λαμβάνονται υπόψην)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μικρότερο κέρδος των τελευταίων 12 τριμήνων
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Το ποσό των χρημάτων που έγιναν σε ένα τρίμηνο με το μεγαλύτερο κέρδος των τελευταίων 12 τριμήνων
@@ -775,7 +775,7 @@ STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLACK}Τρένα
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Οχήματα
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Πλοία
-STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Αεροπλάνο
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Αεροσκάφος
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Διαδρομές Μεταφορών
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Δάσος
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Σιδηροδρομικός Σταθμός
@@ -856,7 +856,7 @@ STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο επιβάτικο τραμ φτάνει στη στάση {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο εμπορευματικό τραμ φτάνει στο σταθμό {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο πλοίο φτάνει στο λιμάνι {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροπλάνο φτάνει στο {STATION}!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Οι πολίτες το γιορτάζουν . . .{}Το πρώτο αεροσκάφος φτάνει στο {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Σύγκρουση Τρένων!{}{COMMA} σκοτώθηκαν σε σύγκρουση
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Σύγκρουση Οχήματος!{}Ο οδηγός σκοτώθησε σε σύγκρουση με τρένο
@@ -908,7 +908,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLAC
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Το {VEHICLE} περιμένει στο αμαξόστασιο
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Το {VEHICLE} περιμένει στο ναυπήγειο
-STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Το {VEHICLE} περιμένει στο υπόστεγο αεροπλάνων
+STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Το {VEHICLE} περιμένει στο υπόστεγο αεροσκαφών
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
@@ -924,7 +924,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} δε μπορεί να μεταφερθεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} δεν μπορεί να μεταβεί στον επόμενο προορισμό λόγω υπερβολικής απόστασης
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
@@ -947,6 +947,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Οι τοπικές αρχές της πόλης {TOWN} υπογράφουν συμβόλαιο με την εταιρεία {STRING} για αποκλειστικά δικαιώματα μεταφορών ενός έτους!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
@@ -1119,7 +1121,7 @@ STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Αρ. �
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Αρ. βιομηχανιών: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Μέγιστο αρχικό δάνειο: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Αρχικό επιτόκιο: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Έξοδα συντήρησης οχημάτων: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Λειτουργικά έξοδα οχημάτων: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Ταχύτητα κατασκευής αντιπάλων: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Βλάβες οχημάτων: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Πολλαπλασιαστής χρηματοδότησης: {ORANGE}{STRING}
@@ -1197,6 +1199,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Αυτή
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(δεν υπάρχει διαθέσιμη επεξήγηση)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Προκαθορισμένη τιμή: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
@@ -1215,6 +1218,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Κέντρο
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Δεξιά
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Όταν είναι ενεργοποιημένο, σιδηροτροχιές και σταθμοί μπορούν να κτισθούν στις περισσότερες κλίσεις. Όταν είναι απενεργοποιημένο, επιτρέπονται μόνο που αντιστοιχούν στην κατεύθυνση της σιδηροτροχιάς και γι' αυτό δεν χρειάζονται θεμέλια.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
 STR_CONFIG_SETTING_CATCHMENT                                    :Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {STRING}
@@ -1227,17 +1231,22 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} τετ�
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ποσότητα καπνού/σπινθύρων οχήματος: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ορίστε τον όγκο του καπνού ή τον αριθμό των σπιθών που παράγωνται από τα οχήματα
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Μοντέλο επιτάχυνσης τρένων: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των τραίνων. Στο "αρχικό" μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Στο "ρεαλιστικό" μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το εκλτικό φορτίο
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Μοντέλο επιτάχυνσης οχημάτων δρόμου: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Επιλέξτε το μοντέλο φυσικής για την επιτάχυνση των οχημάτων. "αρχικό" μοντέλο οι κλίσεις επιβαρύνουν το ίδιο όλα τα οχήματα. Στο "ρεαλιστικό" μοντέλο οι κλίσεις και οι στροφές τα επιβαρύνουν ανάλογα με διάφορες ιδιότητες όπως το μήκος και το εκλτικό φορτίο
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Κλίση εδάφους για τα τραίνα: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Η κλίση ενός κεκλιμένου τετραγωνιδίου για τα τραίνα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα σε κάποιο λόφο.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Κλίση εδάφους για τα οδικά οχήματα: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Η κλίση ενός κεκλιμένου τετραγωνιδίου για τα οδικά οχήματα. Μεγαλύτερες τιμές καθιστούν δυσκολότερο το ανέβασμα σε κάποιο λόφο.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Στροφές 90 μοιρών προκύπτουν όταν μια οριζόντια σιδηροτροχιά ακολουθείται από μια κάθετη στο επόμενο τετραγωνίδιο, κάνοντας το τραίνο να στρίψει κατά 90 μοίρες όταν αλλάζει τετραγωγνίδιο, αντί για τις συνηθισμένες 45 μοίρες σε άλλους συνδυασμούς σιδηροτροχιών. Αυτό έχει επίσης εφαρμογή στην ακτίνα στροφής των πλοίων.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Επιτρέπεται η προσθήκη τμημάτων σε σταθμό χωρίς αυτά να αγγίζουν τα ήδη υπάρχοντα τμήματα. Χρειάζεται Ctrl+Κλικ κατά την τοποθέτηση των νέων τμημάτων
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Όταν ενεργοποιείται, τα οχήματα που περιμένουν σε ένα σταθμό φορτώνονται με τη σειρά. Η φόρτωση του επόμενου οχήματος αρχίζει μόνο όταν υπάρχει αρκετό φορτίο σε αναμονή ώστε να γεμίσει πλήρως το πρώτο όχημα.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Φόρτωση οχημάτων σταδιακά: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Σταδιακή φόρτωση των οχημάτων χρησιμοποιώντας τους χρόνους φόρτωσής τους, αντί της φόρτωσης όλων δια μιας σε ορισμένο χρόνο που εξαρτάται μόνο από την ποσότητα του φορτίου που φορτώθηκε
 STR_CONFIG_SETTING_INFLATION                                    :Πληθωρισμός: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ενεργοποίηση του πληθωρισμού στην οικονομία, όπου τα κόστη αυξάνονται ελάχιστα ταχύτερα από τις πληρωμές
 STR_CONFIG_SETTING_SELECTGOODS                                  :Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {STRING}
@@ -1250,7 +1259,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Επίπεδη περιοχή γύρω από βιομηχανίες: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Επίπεδος χώρος γύρω από μια βιομηχανία. Αυτό εξασφαλίζει ότι θα παραμείνει διαθέσιμος κενός χώρος γύρω από μια βιομηχανία για να κτισθούν γραμμές, κ.ο.κ.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Συνήθως, μια πόλη δεν επιθυμεί περισσότερες από μία βιομηχανία κάθε είδους. Αυτή τη ρύθμιση, θα επιτρέψει περισσότερες βιομηχανίες του ίδιου είδους στην ίδια πόλη.
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Εμφάνιση σηματοδοτών: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Επιλέξτε την πλευρά στην οποία τοποθετούνται οι σηματοδότες
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Στα αριστερά
@@ -1261,55 +1272,81 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Όταν ενε
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Οι νέες οδηγίες είναι 'χωρίς στάση' από προεπιλογή: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Κανονικά, ένα όχημα σταματά σε κάθε σταθμό που περνά. Ενεργοποιώντας αυτή τη ρύθμιση, δεν θα σταματήσει σε κανένα σταθμό που θα βρει στη διαδρομή του για τον τελικό προορισμό. Σημείωστε, ότι αυτή η ρύθμιση ορίζει μόνο μια καθορισμένη τιμή για νέες εντολές. Ειδικές εντολές μπορούν να δοθούν για οποιαδήποτε συμπεριφορά, άσχετα από την προκαθορισμένη
 STR_CONFIG_SETTING_STOP_LOCATION                                :Οι εντόλες νέου τρένου σταματάει εξ ορισμού στο {STRING} της πλατφόρμας
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντά στο τέλος
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Το προεπιλεγμένο σημείο όπου θα σταματούν τα τραίνα στην πλατφόρμα . Το "κοντινό άκρο"σημαίνει κοντά στο σημείο εισόδου, "μέση" σημαίνει στο μέσο της πλατφόρμας και "μακρινό άκρο" σημαίνει στο άλλο άκρο από το σημείο εισόδου. Σημειώστε ότι αυτή η ρύθμιση ορίζει μόνο την προκαθορισμένη τιμή για νέες εντολές. Παρ' όλ' αυτά, είναι δυνατό να δοθούν διαφορετικές εντολές για οποιαδήποτε συμπεριφορά.
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :κοντινό άκρο
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :στη μέση
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :άκρη
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :μακρινό άκρο
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ουρά οχημάτων (με κβαντικά εφέ): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Υποχρεώνεται το όχημα να περιμένει μπροστά από τις κατειλημμένες στάσεις μέχρι να ελευθερωθούν
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Όταν είναι ενεργοποιημένο, η κύρια οθόνη θα αρχίσει να κυλά όταν το ποντίκι βρίσκεται κοντά στο άκρο της
 STR_CONFIG_SETTING_BRIBE                                        :Επιτρέπεται η δωροδοκία της τοπικής αρχής: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Επιτρέπεται στις εταιρείες να προσπαθήσουν να δωροδοκήσουν την τοπική αρχή. Αν η δωροδοκία γίνει αντιληπτή από τον ελεγκτή, η εταιρεία δε θα μπορεί να ενεργήσει στην πόλη για έξι μήνες
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Αν μια εταιρεία αγοράσει τα αποκλειστικά δικαιώματα μεταφορών σε μια πόλη, οι σταθμοί των αντιπάλων δε θα λαμβάνουν φορτία (επιβάτες και εμπορεύματα) για έναν ολόκληρο χρόνο
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Να επιτρέπεται η κατασκευή κτιρίων: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Επιτρέπεται στις εταιρείες να δίνουν χρήματα στις πόλεις για να χρηματοδοτήσουν νέα σπίτια
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Να επιτρέπεται η ανακατασκευή των τοπικών δρόμων: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Επιτρέπεται στις εταιρείες να δίνουν χρήματα στις πόλεις για επανακατασκευή των δρόμων ώστε να σαμποτάρονται οι οδικές υπηρεσίες στην πόλη
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Επιτρέπεται η μεταφορά χρημάτων μεταξύ των εταιρειών στους πολλαπλούς παίκτες
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ορίζεται ο αντίκτυπος της μεταφοράς φορτίων στα τραίνα. Υψηλότερη τιμή κάνει τη μεταφορά φορτίων πιο απαιτητική γι' αυτά, ειδικά στους λόφους
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Παράγοντας ταχύτητας αεροπλάνων: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ορίζεται η σχετική ταχύτητα των αεροπλάνων συγκριτικά με τους άλλους τύπους οχημάτων, ώστε να μειώνεται το ποσό του εισοδήματος από μεταφορές με αεροσκάφη
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Αριθμός των αεροπορικών ατυχυμάτων: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ορίστε την πιθανότητα συντριβής ενός αεροσκάφους
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :καθόλου
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :μειωμένος
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :κανονικός
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπεται ένας διάμεσος δρόμος να σταματάει σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Επιτρέππνται οι στάσεις σε δρόμους ιδιοκτησίας των πόλεων : {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους ιδιοκτησίας των πόλεων
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Επιτρέπονται οι στάσεις σε δρόμους που ανήκουν σε ανταγωνιστές: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπεται η κατασκευή στάσεων πάνω σε δρόμους ιδιοκτησίας των ανταγωνιστών
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Επιτρέπεται διαφορετικοί σταθμοί να ακουμπούν μεταξύ τους
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένο, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδρόμια δεν λήγουν ποτέ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτή τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ειδοποίηση όταν ένα όχημα χαθεί: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Επανεξέταση οδηγιών τρένων: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Όταν είναι ενεργοποιημένο, οι εντολές των οχημάτων ελέγχονται περιοδικά και μερικά προφανή προβλήματα αναφέρονται με ένα μήνυμα νέων όταν διαπιστώνονται
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :από όλα τα οχήματα
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Ειδοποίηση όταν τα έσοδα ενός οχήματος είναι αρνητικά: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Όταν είναι ενεργοποιημένο, στέλνεται μήνυμα νέων όταν κάποιο όχημα δεν έχει αποφέρει κέρδος εντός ενός ημερολογιακού έτους
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Τα οχήματα δεν λήγουν ποτέ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Όταν είναι ενεργοποιημένο, όλα τα μοντέλα οχημάτων παραμένουν διαθέσιμα για πάντα μετά την παρουσίασή τους
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Όταν είναι ενεργοποιημένο, τα οχήματα που πλησιάζουν το τέλος της ζωής τους αντικαθίσταται αυτόματα όταν πληρούνται οι προϋποθέσεις αντικατάστασής του
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Αυτόματη αντικατάστηση όταν κάποιο όχημα είναι {STRING} μέγιστης ηλικίας
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Σχετική ηλικία κατά την οποία κάποιο όχημα θα πρέπει να εξετάζεται για αυτόματη ανανέωνση
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} μήν{P 0 α ες} πριν
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} μήν{P 0 α ες} μετά
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Ελάχιστο χρηματικό ποσό που θα πρέπει να υπολείπεται στην τράπεζα πριν εξεταστεί η αυτόματη ανανέωση των οχημάτων
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Διάρκεια μηνύματος σφάλματος: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκεια εμφάνισης μηνύματων σφάλματος σε κόκκινο παράθυρο. Σημειώστε ότι μερικά (κρίσιμα) μηνύματα σφάλματος δεν κλείνουν αυτόματα μετά από αυτόν τον χρόνο, αλλά πρέπει να κλείσουν χειροκίνητα
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} δευτερόλεπτ{P 0 ο α}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Δεξί κουμπί
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Εμφάνιση του πληθυσμού των πόλεων στην ετικέτα τους πάνω στο χάρτη
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Πάχος γραμμών στα γραφήματα: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Πάχος γραμμών στα γραφήματα. Οι λεπτές γραμμές διαβάζονται με μεγαλύτερη ακρίβεια, οι παχύτερες είναι πιο ευδιάκριτες κα να τα χρώματα ξεχωρίσουν ευκολότερα
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Γεννήτρια Γης: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ΤεραΓένεση
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Μέγιστη απόσταση από την άκρη του χάρτη για τα Διυλιστήρια: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Τα Διυλιστήρια κατασκευάζονται κοντά στην άκρη του χάρτη, το οποίο είναι ακτή για τους νησιωτικούς χάρτες
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Κορυφογραμμή χιονιού: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Σκληρότητα επιφάνειας (ΤεραΓέννεση μόνο) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Πολύ απαλή
@@ -1325,37 +1362,47 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετ�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Να επιτρέπεται η διαμόρφωση εδάφους στις άκρες του χάρτη: {STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετράγωνα στην βόρεια άκρη δεν είναι κενά
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετράγωνα σε μια από τις άκρες δεν είναι στο νερό
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Όταν είναι απενεργοποιημένο, τα όρια του χάρτη θα είναι πάντα ωκεανός
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ένα ή περισσότερα τετράγωνίδια στην βόρεια άκρη δεν είναι κενά
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Ένα ή περισσότερα τετράγωνίδια σε μια από τις άκρες δεν είναι στο νερό
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Μέγιστη έκταση σταθμού: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Επισκευή ελικοπτέρων μετά από κάθε προσγείωση, ακόμη κι αν δεν υπάρχει υπόστεγο στο αεροδρόμιο
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηροτροχιάς/δρόμου/νερού/αεροδρομίου: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Χρώμα εδάφους που χρησιμοποιείται στον μικροχάρτη: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Χρώμα εδάφους στο μικρό χάρτη
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Σκούρο πράσινο
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Βιολετί
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Ανάποδη μετακίνηση οθόνης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Ομαλή μετάβαση οθόνης: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Εμφάνιση εργαλείου μετρήσεως όταν χρησιμοποιούνται διάφορα εργαλεία: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Εμφάνιση αποστάσεων τετραγωνιδίων και υψομετρικών διαφορών όταν γίνονται λειτουργίες κατασκευών σύροντας
 STR_CONFIG_SETTING_LIVERIES                                     :Εμφάνιση χρωμάτων των εταιριών: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Προτίμηση ομαδικού chat με <ENTER>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Λειτουργία ροδέλας κύλισης: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ενεργοποίηση κύλισης με δισδιάστατους τροχούς ποντικιών
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom στο χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Μετακίνηση στο χάρτη
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Κλειστό
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Ταχύτητα ροδέλας μετακίνησης χάρτη: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Έλεγχος της ευαισθησίας του τροχού του ποντικιού κατά την κύλιση
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Εξομοίωση δεξιού κλικ {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Επιλέξτε τον τρόπο μίμησης των πατημάτων του δεξιού κουμπιού του ποντικιού
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Κλικ
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-Κλικ
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Μετάβαση με αριστερό κλικ: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ενεργοποίηση της κύλισης του χάρτη σύροντας τον με το αριστερό κουμπί του ποντικιού. Αυτό είναι ιδιαίτερα χρήσιμο για την κύλιση όταν χρησιμοποιείται οθόνη αφής
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Χρήση της {STRING} ημερολογιακής μορφής στα ονόματα αποθηκευμένων παιχνίδιών.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Μορφή της ημερομηνίας στα αρχεία αποθήκευσης παιχνιδιών
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1366,14 +1413,18 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Παλέτα Wi
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Όταν το παιχνίδι είναι σε παύση επιτρέπονται: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Επιλογή των ενεργειών που μπορούν να εκτελεστούν όταν το παιχνίδι είναι σε παύση
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :καμία ενέργεια
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι μη κατασκευαστικές ενέργειες
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Χρήση της προχωρημένης λίστας οχημάτων: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ενεργοποίηση χρήσης των προχωρημένων καταλόγων οχημάτων για την ομαδοποίηση των οχημάτων
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Χρήση δεικτών φόρτωσης: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Εμφάνιση χρόνων ταξιδιού στα χρονοδιαγράμματα σε χρόνο παιχνιδιού αντί σε ημέρες
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Εμφάνιση αναμενώμενης ώρας άφιξης και αναχώρησης στα χρονοδιαγράμματα
 STR_CONFIG_SETTING_QUICKGOTO                                    :Γρήγορη δημιουργία εντολών για τα οχήματα: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
@@ -1381,23 +1432,40 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευτα�
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Πιο χρησιμοποιημένος
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση κλεισμένων γραμμών: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Διατήρηση ανοικτών των εργαλείων για γέφυρες, σήραγγες, κλπ. μετά από τη χρήση
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Ορίστε τη μορφή για το παράθυρο των εξόδων της εταιρείας
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Μέγιστος αριθμός τρένων ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Μέγιστος αριθμός τραίνων που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Μέγιστα οχήματα ανα εταιρία: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστα αεροπλάνα ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Μέγιστος αριθμός οδικών οχημάτων που μπορεί να έχει μια εταιρεία
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Μέγιστα αεροσκάφη ανα εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Μέγιστος αριθμός αεροσκαφών που μπορεί να έχει μια εταιρεία
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Μέγιστα πλοία ανά εταιρία: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Μέγιστος αριθμός πλοίων που μπορεί να έχει μια εταιρεία
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Απενεργοποίηση τρένων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή τραίνων από παίκτη του υπολογιστή
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Απενεργοποίηση οχημάτων υπολογιστή: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Απενεργοποίηση αεροπλάνων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή οδικών οχημάτων από παίκτη του υπολογιστή
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Απενεργοποίηση αεροσκαφών υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή αεροσκαφών από παίκτη του υπολογιστή
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Απενεργοποίηση πλοίων υπολογιστή: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ενεργοποιώντας αυτήν τη ρύθμιση κάνει αδύνατη την κατασκευή πλοίων από παίκτη του υπολογιστή
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Επιτρέπονται AI σε παιχνίδι για πολλούς παίκτες: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών πριν τη παύση δεσμών ενεργειών: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Μέγιστος αριθμός βημάτων υπολογισμού που κάνει κάποιο σενάριο σε κάθε σειρά
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τραίνα: {STRING}
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ημέρ{P 0 α ες}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :απενεργοποιημένο
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Προκαθορισμένο διάστημα μεταξύ συντηρήσεων για οδικά οχήματα: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Προκαθορισμένο διάστημα επισκευών αεροσκαφών: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα πλοία: {STRING}
 STR_CONFIG_SETTING_NOSERVICE                                    :Απενεργοποίηση επισκευών όταν οι βλάβες είναι απενεργοποιημένες: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ενεργοποίηση ορίων ταχύτητας βαγονιών: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Απενεργοποίηση ηλεκτρικών σιδηροτροχιών: {STRING}
@@ -1406,9 +1474,11 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Τα έγχρω
 STR_CONFIG_SETTING_STARTING_YEAR                                :Έτος εκκίνησης: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} τετραγωνίδι{P 0 ο α}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Αυτόματο χτίσιμο σηματοφόρων πρίν από το: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ενεργοποίηση του μενού σηματοδοτών: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Τύπος σηματοδότη που θα χρησιμοποιείται ως προεπιλογή: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Προκαθορισμένος τύπος σημάτων που χρησιμοποιείται
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Σηματοδότες τμήματος
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Σηματοδότες τροχιάς
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Σηματοδότες μονοδρομής τροχιάς
@@ -1418,6 +1488,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Μόνο σημ
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Όλα
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Σχέδιο δρόμων για νέες πόλεις: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Μορφή οδικών δικτύων για τις πόλεις
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Αρχικό
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Καλύτεροι δρόμοι
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Πλέγμα 2x2
@@ -1425,8 +1496,10 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Πλέγμα 3x
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :τυχαίο
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Οι πόλεις επιτρέπεται να χτίσουν δρόμους: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στις πόλεις να κατασκευάζουν επίπεδες διαβάσεις
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ιδρύση πολέων στο παιχνίδι: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στους παίκτες να ιδρύουν νέες πόλεις στο παιχνίδι
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπεται
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
@@ -1437,8 +1510,13 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε �
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Θέση κύριας εργαλειοθήκης: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Οριζόντια τοποθέτηση της κύριας γραμμής εργαλείων στο επάνω μέρος της οθόνης
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Θέση της μπάρας κατάστασης: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Οριζόντια τοποθέτηση της γραμμής κατάστασης στο κάτω μέρος της οθόνης
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :απενεργοποιημένο
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Μέγιστο επίπεδο σμίκρυνσης: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1448,13 +1526,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ρυθμός ανάπτυξης πόλης: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Ταχύτητα μεγέθυνσης πόλεων
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Κανονικός
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Γρήγορος
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Πολύ γρήγορος
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Αναλογία πόλεων που θα γίνουν μεγάλες: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Αριθμός πόλεων που θα γίνουν μεγάλες, ώστε μια πόλη που ξεκινά μεγαλύτερη να μεγαλώνει ταχύτερα
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 σε {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :κανένα
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Αρχικός πολλαπλασιαστής μεγέθους πόλης: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Μέσο μέγεθος μεγάλων πόλεων σε σχέση με τις κανονικές στην αρχή του παιχνιδιού
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Να αφαιρούνται παράλογα στοιχεία δρόμων κατά την κατασκευή τους: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Αφαίρεση αδιέξοδων άκρων κατά την χρηματοδοτούμενη ανακατασκευή δρόμων
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Περιβάλλον Λειτουργίας
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Κατασκευή
@@ -1483,6 +1568,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος 
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτομάτη αναστροφή σε σηματοδότες: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τραίνα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Αλλαγή τιμής ρύθμισης
 
@@ -1588,7 +1674,7 @@ STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Εμφά
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Εμφάνιση χρωματικών μοτίβων τρένων
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Εμφάνιση χρωματικών μοτίβων οχημάτων δρόμου
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Εμφάνιση χρωματικών μοτίβων πλοίων
-STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροπλάνων
+STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Εμφάνιση χρωματικών μοτίβων αεροσκαφών
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Επιλογή του βασικού χρώματος για το επιλεγμένο θέμα. Με Ctrl+Κλικ ορίζεται το χρώμα σε κάθε θέμα.
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Επιλογή του δευτερεύοντος χρώματος για το επιλεγμένο μοτίβο. Με Ctrl+Κλικ ορίζεται το χρώμα για κάθε θέμα
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Επιλέξτε το χρωματικό μοτίβο για αλλαγή ή πολλά μοτίβα με Ctrl+Κλικ. Κάντε κλικ στο κουτάκι για να επιλέξετε τη χρήση του μοτίβου
@@ -2167,7 +2253,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλ
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός Σταθμού Οχημάτων
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου οχημάτων
 STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Προσανατολισμός αμαξοστασίου τραμ
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου τραμ
@@ -2247,7 +2333,7 @@ STR_OBJECT_CLASS_TRNS                                           :Αναμετα�
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το κελί έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το τετραγωνίδιο έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Βάλε δέντρα τυχαίου τύπου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
@@ -2373,7 +2459,7 @@ STR_LAI_TREE_NAME_RAINFOREST                                    :Δάσος
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :Κάκτοι
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :Σιδηροδρομικός σταθμός
-STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Υπόστεγο αεροπλάνων
+STR_LAI_STATION_DESCRIPTION_AIRCRAFT_HANGAR                     :Υπόστεγο αεροσκαφών
 STR_LAI_STATION_DESCRIPTION_AIRPORT                             :Αεροδρόμιο
 STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Χώρος φόρτωσης φορτηγών
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Στάση λεωφορείων
@@ -2514,7 +2600,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημι
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου πλακιδίων
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόχου τετραγωνιδίων
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Τρέχουσα δέσμη ενεργειών
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Προετοιμασία παιχνιδιού
 
@@ -2693,8 +2779,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} παραδόθηκε
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ακόμη απαιτείται)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (παραδόθηκε)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} μέρα{P "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} μέρα{P "" s} (χρηματοδοτούμενη)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} ημέρ{P α ες}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Η πόλη επεκτείνεται κάθε {ORANGE}{COMMA}{BLACK} ημέρ{P α ες} (χρηματοδοτούμενη)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Η πόλη {RED}δεν{BLACK} επεκτείνεται
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Επίπεδο θορύβου στη πόλη: {ORANGE}{COMMA}{BLACK}  μέγιστο: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της πόλης
@@ -2742,7 +2828,7 @@ STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Καθο
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Κανένας -
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Εταιρικοί στόχοι:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κλικ στον στόχο για να επικεντροθεί η οθόνη στη βιομηχανία/πόλη/πεδίο. Ctrl+Κλικ ανοίγει οθόνη θέασης στη τοποθεσία της βιομηχανίας/πόλης/πεδίου
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Κλικ στον στόχο για να επικεντρωθεί η οθόνη στη βιομηχανία/πόλη/τετραγωνίδιο. Με Ctrl+Κλικ ανοίγει το παράθυρο θέασης στην τοποθεσία της βιομηχανίας/πόλης/τετραγωνίδιο
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Ερώτηση
@@ -2800,6 +2886,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Δέχε
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Δέχεται: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Αυτός ο σταθμός έχει αποκλειστικά δικαιώματα μεταφοράς σε αυτήν την πόλη.
 STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} αγοράστηκαν αποκλειστικά δικαιώματα γι' αυτήν την πόλη.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Βαθμολογίες
@@ -2823,8 +2910,8 @@ STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Αλλα
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Εμφάνιση όλων των τρένων που έχουν αυτό το σταθμό στο δρομολόγιο τους
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Εμφάνιση όλων των οχημάτων που έχουν αυτό το σταθμό στο δρομολόγιο τους
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροπλάνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των αεροπλάνων που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Εμφάνιση όλων των αεροσκαφών που έχουν αυτό το σταθμό στο δρομολόγιο τους
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Εμφάνιση όλων των πλοίων που έχουν αυτό το σταθμό στο δρομολόγιο τους
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Μετονομασία περιοχής σταθμού/φόρτωσης
 
@@ -2846,21 +2933,21 @@ STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Έξοδ
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Κατασκευές
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Νέα Οχήματα
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Τρέχοντα Έξοδα Τρέν.
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Τρέχοντα Έξοδα Οχημάτων
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Τρέχοντα Έξοδα Αεροπ.
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Τρέχοντα Έξοδα Πλοίων
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Λειτουργικά Έξοδα Τραίνων
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Λειτουργικά Έξοδα Οχημάτων
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Λειτουργικά Έξοδα Αεροσκαφών
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Λειτουργικά Έξοδα Πλοίων
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Συντήρηση Ιδιοκτησίας
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Έσοδα Τρένων
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Έσοδα Οχημάτων
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Έσοδα Αεροπλάνων
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Έσοδα Αεροσκαφών
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Έσοδα Πλοίων
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Τόκοι Δανείου
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Άλλα
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Σύνολο:
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Ισολογισμός Τραπέζης
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Υπόλοιπο τραπέζης
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Δάνειο
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Μέγιστο Δάνειο: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
@@ -2879,16 +2966,16 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Χρωμ�
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Οχήματα:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} τρέν{P ο α}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} {P όχημα οχήματα} δρόμου
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροπλάνο
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} αεροσκάφος
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} πλοί{P ο α}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Κανένα
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Αξία εταιρίας: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Υποδομή:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} κομμάτι σιδηροτροχιάς{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} κομμάτι δρόμου{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} πεδίο νερού{P "" s}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} πεδίο σταθμού{P "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} κομμάτι{P "" α} σιδηροτροχιάς
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} κομμάτι{P "" α} δρόμου
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} πεδί{P ο α} νερού
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} πεδί{P ο α} σταθμού
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} αεροδρόμι{P ο α}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Τίποτα
 
@@ -2970,19 +3057,19 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλα
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τρέν{P ο α}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} {P Όχημα Οχήματα} δρόμου
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Πλοί{P ο α}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροπλάνο
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Αεροσκάφος
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Τρένα- Κάντε κλικ στο τρένο για πληροφορίες
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Όχηματα δρόμου - κάντε κλικ στο όχημα για πληροφορίες
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Πλοία - κάντε κλικ στο πλοίο για πληροφορίες
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροπλάνα - κάντε κλικ στο αεροπλάνο για πληροφορίες
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Αεροσκάφη - πατήστε στο αεροσκάφος για πληροφορίες
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY_LONG} (προηγούμενο έτος: {CURRENCY_LONG})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Διαθέσιμα Τρένα
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Διαθέσιμα Οχήματα
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Διαθέσιμα Πλοία
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Διαθέσιμα Αεροπλάνα
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Διαθέσιμα Αεροσκάφη
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Προβολή λίστας διαθέσιμων σχεδίων μηχανών για αυτον τύπο οχήματος
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Διαχείριση λίστας
@@ -3004,12 +3091,12 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Κοίν
 STR_GROUP_ALL_TRAINS                                            :Όλα τα τρένα
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Όλα τα οχήματα δρόμου
 STR_GROUP_ALL_SHIPS                                             :Όλα τα πλοία
-STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα αεροπλάνα
+STR_GROUP_ALL_AIRCRAFTS                                         :Όλα τα αεροσκάφη
 
 STR_GROUP_DEFAULT_TRAINS                                        :Αγκρουπάριστα τρένα
 STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Αγκρουπάριστα όχηματα δρόμου
 STR_GROUP_DEFAULT_SHIPS                                         :Αγκρουπάριστα πλοία
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Αγκρουπάριστα αεροπλάνα
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Μη-ομαδοποιημένα αεροσκάφη
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Γκρουπς - Κάντε κλικ σε ένα γκρουπ για δείτε όλα τα οχήματα που ανήκουν στο γκρουπ
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Κάντε κλικ για δημιουργήσετε ένα γκρουπ
@@ -3031,14 +3118,14 @@ STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Νέα Οχήμ
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Νέα Οχήματα Σιδηρόδρομου
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Νέα Οχήματα Δρόμου
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Νέα Πλοία
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροπλάνα
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Νέα Αεροσκάφη
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Κόστος: {GOLD}{CURRENCY_LONG}{BLACK} Βάρος: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}{BLACK} Ιπποδύναμη: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Ταχύτητα: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Ταχύτητα στον ωκεανό: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Ταχύτητα σε κανάλι/ποταμό: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Κόστος λειτουργίας: {GOLD}{CURRENCY_LONG}/χρ
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Λειτουργικό Κόστος: {GOLD}{CURRENCY_LONG}/χρ
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Χωρητικότητα: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(μετατρέψιμο)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Έτος σχεδίασης: {GOLD}{NUM}{BLACK} Χρόνος ζώης: {GOLD}{COMMA} χρόν{P ο ια}
@@ -3057,17 +3144,17 @@ STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Εύρο
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Λίστα επιλεγμένων βαγονιών τρένων - κάντε κλικ σε ένα βαγόνι για πληροφορίες
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Λίστα επιλεγμένων οχήματα δρόμου - κάντε κλικ σε ένα όχημα για πληροφορίες
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Λίστα επιλεγμένων πλοίων - κάντε κλικ σε ένα πλοίων για πληροφορίες
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλεγμένων αεροπλάνων - κάντε κλικ σε ένα αεροπλάνο για πληροφορίες
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Λίστα επιλεγμένων αεροσκαφών - πατήστε σε ένα αεροσκάφος για πληροφορίες
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Αγορά Οχήματος
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Αγορά Οχήματος
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Αγορά Πλοίου
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορά Αεροπλάνου
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Αγορά Αεροσκάφους
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Αγοράστε το επιλεγμένο οχήμα τρένου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Αγοράστε το επιλεγμένο οχήμα δρόμου. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Αγοράστε το επιλεγμένο πλοίο. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροπλάνο. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Αγοράστε το επιλεγμένο αεροσκάφος. Με Shift+κλικ εμφναίζεται το εκτιμώμενο κόστος χωρίς την αγορά
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Μετανομασία
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Μετανομασία
@@ -3077,12 +3164,12 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Μετα
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Μετονομάζει τον τύπο οχήματος τρένου
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Μετονομάζει τον τύπο οχήματος δρόμου
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Μετανομάζει τον τύπο πλοίο
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροπλάνου
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Μετανομάζει τον τύπο αεροσκάφους
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Μετονομασία του τύπου τρένου
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Μετονομασία του τύπου οχήματος δρόμου
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Μετονομασία του τύπου πλοίου
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία του τύπου αεροπλάνου
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Μετονομασία τύπου αεροσκάφους
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -3098,44 +3185,44 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Τρένα - τραβήξτε ένα όχημα με αριστερό κλικ για να το προσθέστε/αφαιρέσετε από ένα τρένο, δεξί κλικ για πληροφορίες. Κρατήστε το Ctrl για να κάνετε και τις δυο λειτουργίες να ισχύσουν για τις ακόλουθες αλυσίδες
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Οχήματα δρόμου - δέξι κλικ σε ένα όχημα για πληροφορίες
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Πλοία - δέξι κλικ σε ένα πλοίο για πληροφορίες
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροπλάνα - δέξι κλικ σε ένα αεροπλάνο για πληροφορίες
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Αεροσκάφη - δέξι κλικ σε ένα αεροσκάφος για πληροφορίες
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Μεταφέρετε το όχημα τρένου εδώ για το πουλήσετε
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Μεταφέρετε το όχημα δρόμου εδώ για το πουλήσετε
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Μεταφέρετε το πλοίο εδώ για το πουλήσετε
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Μεταφέρετε το αεροπλάνο εδώ για το πουλήσετε
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Μεταφέρετε το αεροσκάφος εδώ για το πουλήσετε
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Σύρε την μηχανή του τρένου για να διαγραφεί ολόκληρο το τρένο
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Πουλήστε όλα τα τρένα στο αμαξοστάσιο
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Πουλήστε όλα τα οχήματα δρόμου στο αμαξοστάσιο
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Πουλήστε όλα τα πλοία στο ναυπηγείο
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροπλάνα στο υπόστεγο
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Πουλήστε όλα τα αεροσκάφη του υποστέγου
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Αυτόματη αντικατάσταση όλων των τρένων στο αμαξοστάσιο
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Αυτόματη αντικατάσταση όλων των οχήματων στο αμαξοστάσιο
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Αυτόματη αντικατάσταση όλων των πλοίων στο ναυπηγείο
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροπλάνων στο υπόστεγο
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Αυτόματη αντικατάσταση όλων των αεροσκαφών του υποστέγου
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Νεα τρένα-βαγόνια
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Νεα οχήματα
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Νεα Πλοία
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νεο Αεροπλάνο
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Νεο Αεροσκάφος
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Αγοράστε ένα νέο όχημα τρένου
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Αγοράστε ένα νεο όχημα δρόμου
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Αγοράστε ένα νεο πλοίο
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Αγοράστε ένα νεο αεροπλάνο
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Αγορά νέου αεροσκάφους
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Κλωνοποίηση τρένου
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Κλωνοποίηση όχηματος δρόμου
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Κλωνοποίηση πλοίου
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση αεροπλάνου
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Κλωνοποίηση αεροσκάφους
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τραίνου μαζί με τα όλα τα βαγόνια. Πατήστε αυτό το κουμπί και μετά σε κάποιο τραίνο μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Πατήστε αυτό το κουμπί και μετά σε κάποιο όχημα μέσα ή έξω από το αμαξοστάσιο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Πατήστε αυτό το κουμπί και μετά σε κάποιο πλοίο μέσα ή έξω από το ναυπηγείο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροπλάνο μέσα στο ή έξω από το υπόστεγο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Πατήστε αυτό το κουμπί και μετά σε κάποιο αεροσκάφος μέσα στο ή έξω από το υπόστεγο. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία του αμαξοστάσιου. Ctrl+κλικ ανοίγει ένα νεο παράθυρο εμφάνισης στην τοποθεσία του αμαξοστάσιου
@@ -3145,17 +3232,17 @@ STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Κεντ
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Παίρνετε μια λίστα με όλα τα τρένα με το επιλεγμένο αμαξοστάσιο στις εντολές τους
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Παίρνετε μια λίστα με όλα τα οχήματα δρόμου με το επιλεγμένο αμαξοστάσιο στις εντολές τους
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Παίρνετε μια λίστα με όλα τα πλοία με το επιλεγμένο ναυπηγείο στις εντολές τους
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Παίρνετε μια λίστα με όλα τα αεροπλάνα με το επιλεγμένο υπόστεγο στις εντολές τους
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Παίρνετε μια λίστα με όλα τα αεροσκάφη που έχουν οποιοδήποτε υπόστεγο αυτού του αεροδρομίου στις εντολές τους
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα τρένα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα οχήματα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα πλοία μέσα στο ναυπηγείο
-STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα αεροπλάνα μέσα στο υπόστεγο
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Κάντε κλικ για να σταματήσουν όλα τα αεροσκάφη μέσα στο υπόστεγο
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα τρένα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα οχήματα μέσα στο αμαξοστάσιο
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα πλοία μέσα στο ναυπήγειο
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα αεροπλάνα μέσα στο υπόστεγο
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Κάντε κλικ για να ξεκινήσουν όλα τα αεροσκάφη μέσα στο υπόστεγο
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Πρόκεται να πουλήσετε όλα τα οχήματα στο αμαξοστάσιο. Είστε σίγουρος/η;
 
@@ -3166,7 +3253,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}ατμομ
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.geniki                   :{G=f}ατμομηχανής
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=n}Όχημα δρόμου
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.geniki                          :{G=n}Οχήματος δρόμου
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροπλάνο
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=n}αεροσκάφος
 STR_ENGINE_PREVIEW_AIRCRAFT.geniki                              :{G=n}αεροπλάνου
 STR_ENGINE_PREVIEW_SHIP                                         :{G=n}πλοιο
 STR_ENGINE_PREVIEW_SHIP.geniki                                  :{G=n}πλοιού
@@ -3176,7 +3263,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}μηχαν
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.geniki                     :{G=f}μηχανής maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ{}Χωρητικότητα: {CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Κόστος Λειτουργίας: {4:CURRENCY_LONG}/yr{}Χωρητικότητα: {5:CARGO_LONG}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Κόστος: {CURRENCY_LONG} Βάρος: {WEIGHT_SHORT}{}Ταχύτητα: {VELOCITY}  Ιπποδύναμη: {POWER}  Μεγ. Ε.Δ: {6:FORCE}{}Λειτουργικό Κόστος: {4:CURRENCY_LONG}/yr{}Χωρητικότητα: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Κόστος: {CURRENCY_LONG} Μεγ. Ταχύτητα: {VELOCITY}{}Χωρητικότητα: {CARGO_LONG}{}Κόστος Λειτουργίας: {CURRENCY_LONG}/χρ
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Κόστος: {CURRENCY_LONG} Μέγ. ταχύτητα: {VELOCITY} Εμβέλεια: {COMMA} τετραγωνίδια{}Χωρητικότητα: {CARGO_LONG}, {CARGO_LONG}{}Κόστος λειτουργίας: {CURRENCY_LONG}/έτος
@@ -3187,7 +3274,7 @@ STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Αντι
 STR_REPLACE_VEHICLE_TRAIN                                       :Τρένο
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Όχημα
 STR_REPLACE_VEHICLE_SHIP                                        :Πλοίο
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροπλάνο
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Αεροσκάφος
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Επιλέξτε το τύπο μηχανής για αντικατάσταση
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Επιλέξτε το νέο τύπο μηχανής που θέλετε να χρησιμοποιηθεί στην θέση του επιλεγμένου στα αριστερα τύπου μηχανής
@@ -3223,24 +3310,24 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του τρένου. Ctrl+κλικ για να ακολουθήσει το τρένου στη κύρια προβολή
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του οχήματος δρόμου. Ctrl+κλικ για να ακολουθήσει το όχημα στη κύρια προβολή
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του πλοίου. Ctrl+κλικ για να ακολουθήσει το πλοίο στη κύρια προβολή
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του αεροπλάνου. Ctrl+κλικ για να ακολουθήσει το αεροπλάνο στη κύρια προβολή
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Κεντράρισμα της κυριας προβολης στη τοποθεσία του αεροσκάφους. Ctrl+κλικ για να ακολουθήσει το αεροσκάφος στη κύρια προβολή
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Στέλνει το τρένο στο αμαξοστάσιο. Ctrl+κλικ για να κάνει μόνο επισκευή
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Στέλνει το όχημα δρόμου στο αμαξοστάσιο. Ctrl+κλικ για να κάνει μόνο επισκευή
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Στέλνει το πλοίο στο ναυπηγείο. Ctrl+κλικ για να κάνει μόνο επισκευή
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροπλάνο στο υπόστεγο. Ctrl+κλικ για να κάνει μόνο επισκευή
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Στέλνει το αεροσκάφος στο υπόστεγο. Ctrl+κλικ για να κάνει μόνο επισκευή
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του τρένου μαζί με όλα τα βαγόνια. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift+κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να αγοράζεται.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του οχήματος. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του πλοίου. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροπλάνου. Με Ctrl+κλικ θα έχιε τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό θα αγοράσει ένα αντίγραφο του αεροσκάφους. Με Ctrl+κλικ θα έχει τις ίδιες εντολές. Με Shift + κλικ εμφανίζεται το εκτιμώμενο κόστος χωρίς να γίνει η αγορά
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χώρις να περιμένει το σηματοδότη να το επιτρέψει
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ανακατασκευή του τρένου για μεταφορά διαφορετικού φορτίου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροπλάνου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροσκάφους για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Αναστροφή
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Εξανάγκαση του οχήματος να γυρίσει ανάποδα
@@ -3253,12 +3340,12 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Εμφά
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Εμφάνιση λεπτομεριών τρένου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Εμφάνιση λεπτομερειών οχήματος δρόμου
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Εμφάνιση λεπτομερειών πλοίου
-STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροπλάνου
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Εμφάνιση λεπτομερειών αεροσκάφους
 
 STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Τρέχουσα ενέργεια τρένου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το τρένο. Ctrl+Click για να πάτε στο προορισμό
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Τρέχουσα ενέργεια οχήματος - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το όχημα. Ctrl+Click για να πάτε στο προορισμό
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Τρέχουσα ενέργεια πλοίου - κάντε κλικ εδώ για ξεκινήσετε/σταματήσετε το πλοίο. Ctrl+Click για να πάτε στο προορισμό
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροπλάνου - κάντε κλικ για ξεκινήσετε/σταματήσετε το αεροσκάφος. Ctrl + Κλικ για να κυλήσετε στον προορισμό
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Τρέχουσα ενέργεια αεροσκάφους - πατήστε για ξεκινήσετε/σταματήσετε το αεροσκάφος. Ctrl + Κλικ για να κυλήσετε στον προορισμό
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Φόρτωση / Ξεφόρτωση
@@ -3290,9 +3377,9 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Όνομ
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Όνομα τρένου
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Όνομα οχήματος δρόμου
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Όνομα πλοίου
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Όνομα αεροπλάνου
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Όνομα αεροσκάφους
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Κόστος Λειτουργίας: {LTBLUE}{CURRENCY_LONG}/χρ
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Ηλικία: {LTBLUE}{STRING}{BLACK}   Λειτουργικό Κόστος: {LTBLUE}{CURRENCY_LONG}/χρ
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA} χρόν{P ος ια} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
@@ -3321,7 +3408,7 @@ STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Μείω
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Όνομα τρένου
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Όνομα οχήματος δρόμου
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Όνομα πλοίου
-STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Όνομα αεροπλάνου
+STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Όνομα αεροσκάφους
 
 # Extra buttons for train details windows
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Κατασκευασμένο: {LTBLUE}{NUM}{BLACK} Αξία: {LTBLUE}{CURRENCY_LONG}
@@ -3356,17 +3443,17 @@ STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλ
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το όχημα δρόμου θα μεταφέρει
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το πλοίο θα μεταφέρει
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το αεροπλάνο θα μεταφέρει
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Επιλέξτε το τύπο εμπορεύματος που θα μεταφέρει το αεροσκάφος
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ανακατασκευή τρένου
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Μετατροπή οχήματος δρόμου
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Μετατροπή πλοίου
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Μετατροπή αεροπλάνου
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Μετατροπή αεροσκάφους
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ανακατασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Μετατροπή του αεροπλάνου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Μετατροπή του αεροσκάφους για να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Εντολές)
@@ -3498,9 +3585,9 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Χώρις ξ�
 
 STR_ORDER_AUTO_REFIT_ANY                                        :διαθέσιμο φορτίο
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντά στο τέλος]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[κοντινό άκρο]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[μέση]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[στην άκρη]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[μακρινό άκρο]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (Ο επόμενος προορισμός είναι υπερβολικά μακριά)
 
@@ -3732,6 +3819,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ακ
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδη χτισμένο
 STR_ERROR_OWNED_BY                                              :{WHITE}... ιδιοκτησία του {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρίας
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... υπερβαίνει το όριο καθαρισμού τετραγωνιδίων
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} στη μέση
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν επιτρέπεται όσο είναι το παιχνίδι σε παύση
@@ -3778,7 +3866,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πά
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει αλλος χώρος στον χάρτη
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιϊας σε εξέλιξη
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα κομμάτι της πόλης δεν μπορεί να αφαιρεθεί
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα τετραγωνίδιο της πόλης δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
 
 # Industry related errors
@@ -3970,47 +4058,47 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Δεν �
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Τρένο καθ'οδόν
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Όχημα δρόμου καθ'οδόν
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Πλοίο καθ'οδόν
-STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Αεροπλάνο καθ'οδόν
+STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Αεροσκάφος καθ'οδόν
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν μπορεί να ανακατασκευαστεί το τρένο...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα δρόμου...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Δεν μπορεί να υποστεί μετατροπή το πλοίο...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Δεν μπορεί να υποστεί μετατροπή το αεροπλάνο...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Δεν μπορεί να μετατραπεί το αεροσκάφος...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Δεν μπορεί να ονομαστεί το τρένο...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Δεν μπορεί να ονομαστεί το όχημα δρόμου...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Δεν μπορεί να ονομαστεί το πλοίο...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Δεν μπορεί να ονομαστεί το αεροπλάνο...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Δεν μπορεί να ονομαστεί το αεροσκάφος...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το τρένο...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το όχημα δρόμου...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το πλοίο...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροπλάνο...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Δεν μπορεί να σταματήσει/ξεκινήσει το αεροσκάφος...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Δεν μπορεί να στάλθει το τρένο στο αμαξοστάσιο...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Δεν μπορεί να στάλει το όχημα δρόμου στο αμαξοστάσιο...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Δεν μπορεί να στάλει το πλοίο στο ναυπηγείο...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να στάλει το αεροπλάνο στο υπόστεγο...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Δεν μπορεί να στάλει το αεροσκάφος στο υπόστεγο...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Δεν μπορεί να αγοραστεί όχημα σιδηρόδρομου...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Δεν μπορεί να αγοραστεί όχημα δρόμου...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Δεν μπορεί να αγοραστεί πλοίο...
-STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπόρει να αγοραστεί αεροπλάνο...
+STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Δεν μπόρει να αγοραστεί αεροσκάφος...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος τρένου...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος οχήματος δρόμου...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος πλοίου...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος αεροπλάνου...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Δεν μπορεί να μετονομαστεί ο τύπος αεροσκάφους...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Δεν μπορεί να πωληθεί το όχημα σιδηρόδρομου...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Δεν μπορεί να πωληθεί το όχημα δρόμου...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Δεν μπορεί να πωληθεί το πλοίο...
-STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Δεν μπορεί να πωληθεί το αεροπλάνο...
+STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Δεν μπορεί να πωληθεί το αεροσκάφος...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Το όχημα δεν είναι διαθέσιμο
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Το όχημα δεν είναι διαθέσιμο
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Το πλοίο δεν είναι διαθέσιμο
-STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Αεροπλάνο μη διαθέσιμο
+STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Μη διαθέσιμο αεροσκάφος
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
@@ -4024,7 +4112,7 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :Το τραίν
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Δεν γίνεται το όχημα να αλάξει πορεία...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Το αεροπλάνο είναι σε πτήση
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Το αεροσκάφος είναι σε πτήση
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Δεν υπάρχει άλλος χώρος για εντολές
@@ -4146,8 +4234,8 @@ STR_SV_ROAD_VEHICLE_NAME                                        :{G=n}Όχημα
 STR_SV_ROAD_VEHICLE_NAME.geniki                                 :Οχήματος Δρόμου {COMMA}
 STR_SV_SHIP_NAME                                                :{G=n}Πλοίο {COMMA}
 STR_SV_SHIP_NAME.geniki                                         :Πλοίου {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :{G=n}Αεροπλάνο {COMMA}
-STR_SV_AIRCRAFT_NAME.geniki                                     :Αεροπλάνου {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=n}Αεροσκάφος {COMMA}
+STR_SV_AIRCRAFT_NAME.geniki                                     :Αεροσκάφους {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Βόρειο {STRING}

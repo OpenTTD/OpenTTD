@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Gesamt:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Anzahl der Fahrzeuge (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Hubschrauber), die letztes Jahr Gewinn gemacht haben
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Anzahl der Fahrzeuge (Straßenfahrzeuge, Züge, Schiffe und Flugzeuge/Hubschrauber), die im letzten Jahr Gewinn gemacht haben
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Anzahl vor kurzem genutzter Stationen (wenn Stationen verschiedener Typen verbunden sind, werden sie trotzdem einzeln gezählt)
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Geringster Gewinn der Fahrzeuge, die älter als zwei Jahre sind
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Geringste Monatseinnahmen in den letzten 12 Quartalen
@@ -1180,7 +1180,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Blende am Ende 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Aufträge standardmäßig ohne Zwischenhalt anfahren: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweise hält ein Fahrzeug an jeder Station, die es passiert. Wird diese Einstellung aktiviert, hält das Fahrzeug nur an den Stationen, die explizit in den Aufträgen angeführt sind. Bedenke, dass dieses nur das Standard-Verhalten für neue Aufträge beschreibt. Einzelne Aufträge können explizit auf jedes gewünschte Verhalten geändert werden
 STR_CONFIG_SETTING_STOP_LOCATION                                :Neue Aufträge: Zug hält standardmäßig {STRING} des Bahnsteigs
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei 'am Anfang' hält der Zug an, sobald er mit allen Wagons in den Bahnhof eingefahren ist. Bei 'in der Mitte' hält er zentral in der Mitte des Bahnsteigs und bei 'am Ende' durchfährt der Zug den Bahnhof soweit wie möglich. Die hier gewählte Einstellung wird bei allen neu erstellten Aufträgen verwendet. Bei bestehenden Aufträgen kann der Haltepunkt jederzeit im Auftragsfenster verändert werden.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei 'am Anfang' hält der Zug an, sobald er mit allen Waggons in den Bahnhof eingefahren ist. Bei 'in der Mitte' hält er zentral in der Mitte des Bahnsteigs und bei 'am Ende' durchfährt der Zug den Bahnhof soweit wie möglich. Die hier gewählte Einstellung wird bei allen neu erstellten Aufträgen verwendet. Bei bestehenden Aufträgen kann der Haltepunkt jederzeit im Auftragsfenster verändert werden.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :am Anfang
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in der Mitte
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :am Ende
@@ -1218,7 +1218,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Mehrere NewGRF-
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibilitätseinstellung für veraltete NewGRFs. NICHT deaktivieren, wenn der Einfluss dieser Einstellung nicht genau bekannt ist!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Instandhaltung der Infrastruktur: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Unterhaltkosten für Infrastruktur einschalten. Die Kosten wachsen überproportional mit der Netzwerkgröße, so dass sie große Firmen stärker beeinflussen als kleine
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Unterhaltskosten für Infrastruktur einschalten. Die Unterhaltskosten wachsen mit zunehmender Netzwerkgröße überproportional an, so dass sie größere Firmen stärker belasten als kleinere
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flughäfen veralten nie: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Mit Hilfe dieser Option können Flughäfen, die einmal eingeführt wurden, das ganze Spiel über gebaut werden und veralten nie
@@ -1317,7 +1317,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Strg+Klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Scrollen mit linker Maustaste: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Scrolle die Karte, indem mit der linken Maustaste gezogen wird. Dies ist besonders sinnvoll, wenn ein Touch-Screen zum Scrollen genutzt wird
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Scrolle die Karte, indem mit der linken Maustaste gezogen wird. Dies ist besonders sinnvoll, wenn ein Touchscreen zum Scrollen genutzt wird
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Verwende {STRING} Datumsformat beim Benennen der Spielstände
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Lege das Datumsformat für Spielstandsdateien fest
@@ -1400,7 +1400,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Setze das Stand
 STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktivieren, wenn Pannen abgeschaltet: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Schicke Fahrzeuge nicht zur Wartung, wenn Pannen ausgeschaltet sind
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit von Zügen durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Wagons
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons, auch wenn der Zug eigentlich schneller fahren könnte
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Erlaube Elektrolokomotiven das Fahren auf nicht elektrifizierten Gleisen
 
