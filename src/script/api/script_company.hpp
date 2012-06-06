@@ -166,6 +166,8 @@ public:
 
 	/**
 	 * Get the income of the company in the given quarter.
+	 * Note that this function only considers recurring income from vehicles;
+	 * it does not include one-time income from selling stuff.
 	 * @param company The company to get the quarterly income of.
 	 * @param quarter The quarter to get the income of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
@@ -176,6 +178,9 @@ public:
 
 	/**
 	 * Get the expenses of the company in the given quarter.
+	 * Note that this function only considers recurring expensens from vehicle
+	 * running cost, maintenance and interests; it does not include one-time
+	 * expenses from construction and buying stuff.
 	 * @param company The company to get the quarterly expenses of.
 	 * @param quarter The quarter to get the expenses of.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
