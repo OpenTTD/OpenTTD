@@ -644,7 +644,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kölcsö
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Összesen:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Az előző évben profitot hozó járművek száma, beleértve a közúti, vasúti, vízi és légi járművek
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban kiszolgált állomásrészek száma. Minden rész számít (pl. vasútállomás, buszmegálló, repülőtér), még akkor is, ha egy állomáshoz tartoznak.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Közelmúltban kiszolgált állomásrészek száma. Vasútállomás, buszmegálló, repülőtér külön számolódik, még akkor is, ha egy állomáshoz tartoznak
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}A legalacsonyabb bevételt hozó jármű profitja (csak 2 évnél idősebb járművek)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legkisebb profitnál az utolsó 12 negyedévben.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Megkeresett pénz a negyedévben a legnagyobb profitnál az utolsó 12 negyedévben
@@ -916,6 +916,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STRING} és {STRING} között négyszeres hasznot hoz neki!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Közlekedési zűrzavar {TOWN} városában!{}{}{STRING} által indított útfelújítás keseríti meg hat hónapig az autóvezetők életét!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Szállítási monopólium!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} önkormányzata és {STRING} szerződést kötött egy éves kizárólagos szállítási jogokra!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
@@ -1166,6 +1168,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ez a mó
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó beállítások
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Alapértelmezett érték: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
@@ -1184,6 +1187,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Középen
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
 STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
@@ -1221,56 +1225,103 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Az építendő 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Alagutak maximális hossza: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Az építendő alagutak maximális hossza
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Kézi nyersanyaglelőhely-létesítési módszer: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Nyersanyaglelőhelyek létesítésének módszere. "Nincs" azt jelenti, hogy nem lehetséges új alapítása, "kutatás támogatása" azt jelenti, hogy az alapítási lehetséges, de véletlenszerűen bukkan fel valahol a térképen, mint ahogy az magától történne, "mint általában" azt jelenti, hogy úgy alapíthatóak, mint a többi, feldolgozással foglalkozó gazdasági épület
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Gazdasági épületek körüli sík terület: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Egy gazdasági épület körüli sík terület mennyisége. Ez biztosít fennmaradó üres helyet az épület körül pl. pálya építésére stb.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Több ugyanolyan gazdasági épület településenként: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Alapvetően egy település nem szeretne egy fajta gazdasági épületből többet. Ezzel a beállítással engedélyezni lehet hogy több ugyanolyan típusú gazdasági épület is tartozzon egy településhez
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Jelzők elhelyezése: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Válaszd ki, hogy a jelzőket a vágányok melyik oldalára helyezed
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Bal oldalon
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Menetirány szerinti oldalon
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Jobb oldalon
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Pénzügyi összesítés minden év végén: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Bekapcsolva a pénzügyi összesítő ablak minden év végén felbukkan, elősegítve a cég anyagi helyzetének könnyű ellenőrzését
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Minden új utasítás alapból 'non-stop': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Alapvetően egy jármű megáll minden útjába eső állomáson. Ezzel a beállítással a járművek a következő célpontjukig nem állnak meg egy útjukba eső állomáson sem. Ez a beállítás csak az újonnan kijelölt célpontok esetén működik. Az egyes célpontok viszont beállíthatók másfajta működésmódra is természetesen
 STR_CONFIG_SETTING_STOP_LOCATION                                :A vonatok az állomások {STRING} állnak meg
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :A hely, ahol a vonat az állomási peron mellett alapértelmezetten megáll. Az 'elején' jelentése, hogy a vonat a peron belépéshez legközelebbi pontján fog megállni, 'közepén' jelentése, hogy a vonat a peron közepén fog megállni, 'végén' jelentése, hogy a vonat a peron belépéshez ellentétes végén fog megállni. Ez a beállítás csak egy alapértelmezett értéket jelent új célpontok részére, az egyes célpontok viszont beállíthatóak másfajta működésmódra is természetesen
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Közúti járművek sorbanállása: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Közúti járművek megállítása foglalt útszakasz előtt, míg az fel nem szabadul
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ablakmozgatás, ha az egér a képernyő szélén van: {STRING}
-STR_CONFIG_SETTING_BRIBE                                        :Önkormányzatok lefizethetősége: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Bekapcsolva a főképernyő mozogni kezd, ha az egér a képernyő széléhez közel van
+STR_CONFIG_SETTING_BRIBE                                        :Önkormányzatok megvesztegethetősége: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Önkormányzatok megvesztegethetőségének engedélyezése. Ha a megvesztegetési kisérletedet leleplezi egy felügyelő, a céged nem építkezhet a településen hat hónapig
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kizárólagos szállítási jogok vételének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ha egy cég kizárólagos szállítási jogokat vásárol egy településtől, az ellenfelek állomásai nem fognak se utast, se rakományt kapni egy évig
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Új épületek építtetésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Pénz adományozásának engedélyezése cégektől településeknek új házak építésére
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Helyi útfelújítások finanszírozásának engedélyezése: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Pénz adományozásának engedélyezése cégektől településeknek útfelújításra, hogy szabotálják a közúti közlekedést a településen
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pénz küldésének engedélyezése másik vállalatok részére: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Pénzátutalások engedélyezése cégek között többjátékos módban
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :Lezuhanó repülőgépek száma: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Tehervonatok terhelési szorzójának beállítása. Magasabb érték esetén a teherkocsik jobban igénybe veszik a vontatójárművet, főleg dombokon
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Repülőgép sebességszorzó: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Repülőgépek relatív sebességének beállítása más járműtípusokhoz viszonyítva, a légi szállítás bevételének csökkentéséhez
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :Repülőgép-szerencsétlenségek száma: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Repülőgép-szerencsétlenség esélyének beállítása
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése vetélytárs tulajdonában lévő utakon: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Áthaladó megállóhelyek építésének engedélyezése települési tulajdonú utakon
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Áthaladó megállóhelyek engedélyezése ellenfél tulajdonában lévő utakon: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Áthaladó megállóhelyek építésének engedélyezése olyan utakon, melyek más cégek birtokában vannak
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Érintkező állomások építésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Különböző állomások érintkezésének engedélyezése
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Több NewGRF járműgarnitúra engedélyezése: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompatibilitási lehetőség régi NewGRF-ekhez. Ne kapcsold ki, ha nem tudod mit csinálsz!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Az infrastruktúra fenntartási költségének engedélyezése: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Bekapcsolva az infrastruktúrának fenntartási költsége van. A költség hatványozottan nő a hálózatnagysággal, nagyobb hatással a nagyobb cégekre mint a kisebbekre
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Repülőterek nem avulnak el: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bekapcsolva minden repülőtértípus örökké elérhető marad bevezetése után
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Figyelmeztessen, ha egy jármű eltévedt: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Üzenetek megjelenítése azokról a járművekről, melyek nem képesek eljutni következő célpontjukba
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Menetrend-ellenőrzés: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Bekapcsolva a járművek menetrendje rendszeresen ellenőrzésre kerül, és bizonyos különös kimenetelek hírüzenetben jelentésre kerülnek
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nincs
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :minden járműre
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Figyelmeztetés veszteséges jármű esetén: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Üzenetek megjelenítése azokról a járművekről, melyek nem termeltek profitot egy naptári év alatt
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Járművek sosem avulnak el: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Bekapcsolva minden járműmodell örökké elérhető marad bevezetése után
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatikusan felújítja a járművet ha elöregedik: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Bekapcsolva a jármű élettartamának végén automatikusan cserére kerül, ha a lecserélési feltételek teljesülnek
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatikus járműfelújítás ha a jármű max {STRING} éves
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Járműfelújításhoz szükséges relatív kor
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} hónappal előtte
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} hónappal utána
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automatikus járműfelújításhoz szükséges min. pénz: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :A bankban maradó legkisebb pénzösszeg mennyisége járműfelújítás előtt
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Hibaüzenetek időtartama: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :A piros ablakban megjelenő hibaüzenetek kijelzésének időtartama. Bizonyos (kritikus) hibaüzenetek nem záródnak be automatikusan egy idő után, hanem kézzel kell őket bezárni
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} másodperc
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Leírás megjelenítése: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Késleltetés mielőtt megjelenne az eszközleírás az egér ráhúzása után egy felületi elemen. A leírás elérhető még az egér jobb gombjával is
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Várakozás {COMMA} másodpercig
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Jobb klikk
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mutassa a település lakosságát a feliratban: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Település lakosságának kijelzése a címkéjén
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :A vonalak vastagsága a grafikonokon: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Vonalak szélessége a grafikonokon. A vékony vonal precízebben olvasható, míg a vastagabb jobban látható és a színek jobban megkülönböztethetőek
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Terep generálás: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olajfinomítók csak a térkép határaihoz közel építhetőek, ami sziget jellegű térképeknél a partvidék
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magassága: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága (csak TerraGenesisnél) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
@@ -1286,11 +1337,16 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal s
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A sík térképhez hozzáadandó magasság: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :A térkép határain lévő mezők tájrendezésének engedélyezése: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kikapcsolva a térkép határain mindig óceán lesz
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Max állomás kiterjedés: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :A legnagyobb terület mérete, melyen egy adott állomás terjeszkedhet. Nagyobb érték lelassítja a játékot
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Helikopterek automatikus javítása a helikopter-leszállókon: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Helikopterek automatikus javítása minden leszálláskor, még ha nincs is járműtelep a reptéren
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Tájrendező eszköztár megnyitása az építési eszköztárakkal: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Egy közlekedési ág építési eszköztárának megnyitásakor a tájrendező eszköztárat is nyissa meg
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Föld színe a térképen: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zöld
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Sötétzöld
@@ -2727,7 +2783,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}A váro
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Szobor építése a vállalatod tiszteletére.{}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és a rakományoknak.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha az kiderül.{}Ára: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Célok
@@ -3497,9 +3553,9 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ki nem rakodá
 
 STR_ORDER_AUTO_REFIT_ANY                                        :elérhető rakomány
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[közeli vég]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[eleje]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[távoli vég]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[végén]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (A következő állomás túl messze van)
 

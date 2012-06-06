@@ -1535,6 +1535,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Załadunek poja
 STR_CONFIG_SETTING_INFLATION                                    :Inflacja: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Włącz inflację w ekonomii, gdzie koszty rosną nieco szybciej niż zapłaty
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Dostarczaj towar tylko do tej stacji, która została zlecona dla załadowanego pojazdu. To zapobiega złym notowaniom dla towarów, które nie są obsługiwane na stacji
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksymalna długość mostu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksymalna długość budowanych mostów
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna długość tunelu: {STRING}
@@ -1544,7 +1545,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedost�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ilość płaskiej przestrzeni wokół zakładu. To zapewnia puste miejsce dostępne przy zakładach do budowy torów itp.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnie każde miasto nie chce mieć więcej niż jedno przedsiębiorstwo jednego typu. Ta opcja pozwala na kilka takich samych przedsiębiorstw w jednym mieście
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Pokaż semafory: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wybierz po której stronie torów stawiać semafory
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Po lewej
@@ -1555,6 +1558,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączo
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie 'bez zatrzymywania się': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Włączając tę opcję, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe rozkazy. Indywidualne rozkazy mogą być ustalane bez względu na wartość tej opcji
 STR_CONFIG_SETTING_STOP_LOCATION                                :Rozkazy nowego pociągu kończą się domyślnie na {STRING} peronu
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. 'Bliższy koniec' oznacza blisko kierunku przyjazdu, 'środek' oznacza środkową część peronu, a 'daleki koniec' oznacza daleko od kierunku przyjazdu. Zapamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych rozkazów. Wszystkie rozkazy mogą być zmienione, bez względu na wartość ustawienia
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :początku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :środku
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :końcu
@@ -1565,6 +1569,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Jeśli włączo
 STR_CONFIG_SETTING_BRIBE                                        :Pozwól dawać łapówki lokalnym władzom: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom na próby przekupienia lokalnych władz miast. Jeśli przekupstwo zostanie wykryte przez inspektora, firma nie będzie mogła działać w danym mieście przez 6 miesięcy
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kiedy firma wykupuje wyłączność na transport w mieście, to stacje i przystanki przeciwników (pasażerskie i towarowe) nie otrzymają żadnego towaru przez cały rok
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Pozwól na fundowywanie budynków: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Pozwalaj firmom na sponsorowanie budowy nowych budynków w miastach
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Pozwalaj na sponsorowanie odbudowy lokalnych dróg: {STRING}
@@ -1572,7 +1577,9 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Pozwalaj firmom
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Pozwól na wysyłanie pieniędzy do innych firm: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Pozwalaj na przelewy pieniężne pomiędzy firmami w trybie gry dla wielu graczy
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ustaw wpływ przewożenia towaru przez pociągi. Wyższa wartość utrudnia transport towarów przez pociągi, w szczególności na wzniesieniach
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Prędkość samolotów: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Ustaw zależną prędkość samolotów w porównaniu do innych typów pojazdów, aby zmniejszyć przychód generowany przez transport samolotami
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Liczba katastrof lotniczych: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Ustaw szanse na katastrofy lotnicze
@@ -1582,15 +1589,19 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalna
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Pozwól na budowę przystanków przelotowych na drogach miejskich: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Pozwalaj budować przystanki przelotowe na drogach własnościowych miast
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Pozwól na przejazd przez przystanki należące do przeciwników: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Pozwalaj budować przystanki przelotowe na drogach własnościowych innych graczy
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Pozwól na budowę przylegających stacji: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Pozwalaj, by różne stacje stykały się ze sobą
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Zezwól na wiele zestawów NewGRF: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opcja kompatybilności dla starych NewGRFów. Nie wyłączaj jej, chyba, że wiesz, co robisz
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Utrzymywanie infrastruktury: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzeż, jeśli pojazd zostanie utracony: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Pokazuj wiadomości o pojazdach, które nie są w stanie znaleźć ścieżki do swoich wyznaczonych celów
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroluj polecenia pojazdów: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane

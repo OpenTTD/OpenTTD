@@ -448,7 +448,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
 STR_ABOUT_MENU_AI_DEBUG                                         :KI / Skript-Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Standard: Strg+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Hineingezoomter Screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Screenshot in Nahaufnahme
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Screenshot mit normalem Zoom
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Standard: Strg+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Über OpenTTD
@@ -1400,7 +1400,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Setze das Stand
 STR_CONFIG_SETTING_NOSERVICE                                    :Wartung deaktivieren, wenn Pannen abgeschaltet: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Schicke Fahrzeuge nicht zur Wartung, wenn Pannen ausgeschaltet sind
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Berücksichtige Waggonhöchstgeschwindigkeit: {STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons, auch wenn der Zug eigentlich schneller fahren könnte
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Begrenze die Höchstgeschwindigkeit eines Zuges durch die jeweiligen Höchstgeschwindigkeiten der mitgeführten Waggons
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Deaktiviere elektrifizierte Strecken: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Erlaube Elektrolokomotiven das Fahren auf nicht elektrifizierten Gleisen
 

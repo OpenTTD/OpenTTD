@@ -1139,8 +1139,10 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Stel vas hoevee
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein versnelling model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Pad voertuig versnelling model: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Krans helling vir treine: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Die steilte van die helling vir treine. Hoër waardes maak dit moeliker om teen die helling uit te klim
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Krans helling vir pad vervoer: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Die steilte van die helling vir 'n pad voertuig. Hoër waardes maak dit moeliker om teen die helling uit te klim
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied triene en skepe om 90 graad draaie te maak: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Laat toe dat stasies lanks mekaar gebind kan word: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
