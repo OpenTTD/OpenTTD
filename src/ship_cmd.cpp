@@ -271,24 +271,23 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 
 void Ship::UpdateDeltaXY(Direction direction)
 {
-#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
-	static const uint32 _delta_xy_table[8] = {
-		MKIT( 6,  6,  -3,  -3),
-		MKIT( 6, 32,  -3, -16),
-		MKIT( 6,  6,  -3,  -3),
-		MKIT(32,  6, -16,  -3),
-		MKIT( 6,  6,  -3,  -3),
-		MKIT( 6, 32,  -3, -16),
-		MKIT( 6,  6,  -3,  -3),
-		MKIT(32,  6, -16,  -3),
+	static const int8 _delta_xy_table[8][4] = {
+		/* y_extent, x_extent, y_offs, x_offs */
+		{ 6,  6,  -3,  -3}, // N
+		{ 6, 32,  -3, -16}, // NE
+		{ 6,  6,  -3,  -3}, // E
+		{32,  6, -16,  -3}, // SE
+		{ 6,  6,  -3,  -3}, // S
+		{ 6, 32,  -3, -16}, // SW
+		{ 6,  6,  -3,  -3}, // W
+		{32,  6, -16,  -3}, // NW
 	};
-#undef MKIT
 
-	uint32 x = _delta_xy_table[direction];
-	this->x_offs        = GB(x,  0, 8);
-	this->y_offs        = GB(x,  8, 8);
-	this->x_extent      = GB(x, 16, 8);
-	this->y_extent      = GB(x, 24, 8);
+	const int8 *bb = _delta_xy_table[direction];
+	this->x_offs        = bb[3];
+	this->y_offs        = bb[2];
+	this->x_extent      = bb[1];
+	this->y_extent      = bb[0];
 	this->z_extent      = 6;
 }
 

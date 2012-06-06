@@ -389,24 +389,23 @@ void RoadVehicle::MarkDirty()
 
 void RoadVehicle::UpdateDeltaXY(Direction direction)
 {
-#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
-	static const uint32 _delta_xy_table[8] = {
-		MKIT(3, 3, -1, -1),
-		MKIT(3, 7, -1, -3),
-		MKIT(3, 3, -1, -1),
-		MKIT(7, 3, -3, -1),
-		MKIT(3, 3, -1, -1),
-		MKIT(3, 7, -1, -3),
-		MKIT(3, 3, -1, -1),
-		MKIT(7, 3, -3, -1),
+	static const int8 _delta_xy_table[8][4] = {
+		/* y_extent, x_extent, y_offs, x_offs */
+		{3, 3, -1, -1}, // N
+		{3, 7, -1, -3}, // NE
+		{3, 3, -1, -1}, // E
+		{7, 3, -3, -1}, // SE
+		{3, 3, -1, -1}, // S
+		{3, 7, -1, -3}, // SW
+		{3, 3, -1, -1}, // W
+		{7, 3, -3, -1}, // NW
 	};
-#undef MKIT
 
-	uint32 x = _delta_xy_table[direction];
-	this->x_offs        = GB(x,  0, 8);
-	this->y_offs        = GB(x,  8, 8);
-	this->x_extent      = GB(x, 16, 8);
-	this->y_extent      = GB(x, 24, 8);
+	const int8 *bb = _delta_xy_table[direction];
+	this->x_offs        = bb[3];
+	this->y_offs        = bb[2];
+	this->x_extent      = bb[1];
+	this->y_extent      = bb[0];
 	this->z_extent      = 6;
 }
 
