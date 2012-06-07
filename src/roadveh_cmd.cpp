@@ -389,23 +389,28 @@ void RoadVehicle::MarkDirty()
 
 void RoadVehicle::UpdateDeltaXY(Direction direction)
 {
-	static const int8 _delta_xy_table[8][4] = {
-		/* y_extent, x_extent, y_offs, x_offs */
-		{3, 3, -1, -1}, // N
-		{3, 7, -1, -3}, // NE
-		{3, 3, -1, -1}, // E
-		{7, 3, -3, -1}, // SE
-		{3, 3, -1, -1}, // S
-		{3, 7, -1, -3}, // SW
-		{3, 3, -1, -1}, // W
-		{7, 3, -3, -1}, // NW
+	static const int8 _delta_xy_table[8][10] = {
+		/* y_extent, x_extent, y_offs, x_offs, y_bb_offs, x_bb_offs, y_extent_shorten, x_extent_shorten, y_bb_offs_shorten, x_bb_offs_shorten */
+		{3, 3, -1, -1,  0,  0, -1, -1, -1, -1}, // N
+		{3, 7, -1, -3,  0, -1,  0, -1,  0,  0}, // NE
+		{3, 3, -1, -1,  0,  0,  1, -1,  1, -1}, // E
+		{7, 3, -3, -1, -1,  0,  0,  0,  1,  0}, // SE
+		{3, 3, -1, -1,  0,  0,  1,  1,  1,  1}, // S
+		{3, 7, -1, -3,  0, -1,  0,  0,  0,  1}, // SW
+		{3, 3, -1, -1,  0,  0, -1,  1, -1,  1}, // W
+		{7, 3, -3, -1, -1,  0, -1,  0,  0,  0}, // NW
 	};
 
+	int shorten = VEHICLE_LENGTH - this->gcache.cached_veh_length;
+	if (!IsDiagonalDirection(direction)) shorten >>= 1;
+
 	const int8 *bb = _delta_xy_table[direction];
+	this->x_bb_offs     = bb[5] + bb[9] * shorten;
+	this->y_bb_offs     = bb[4] + bb[8] * shorten;;
 	this->x_offs        = bb[3];
 	this->y_offs        = bb[2];
-	this->x_extent      = bb[1];
-	this->y_extent      = bb[0];
+	this->x_extent      = bb[1] + bb[7] * shorten;
+	this->y_extent      = bb[0] + bb[6] * shorten;
 	this->z_extent      = 6;
 }
 
