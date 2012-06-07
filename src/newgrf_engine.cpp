@@ -1271,6 +1271,9 @@ void CommitVehicleListOrderChanges()
 	for (const EngineID *it = ordering.Begin(); it != idend; ++it, ++index) {
 		Engine::Get(*it)->list_position = index;
 	}
+
+	/* Clear out the queue */
+	_list_order_changes.Reset();
 }
 
 /**
