@@ -1493,6 +1493,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Jokių
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savo kompanijos
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Visų kompanijų
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Rašyti komandai naudojant <ĮVESTI> (ENTER): {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Perjungti siejimą vidaus kompanijos ir viešojo kalbėjimo <ENTER> ats. <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Pelės rutuliuko funkcija: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Įjungti judėjimą su dviejų krypčių pelės ratuku
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Artinti žemėlapį
@@ -1502,6 +1503,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Žemėlapio sli
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Valdyti pelės ratuko judėjimo jautrumą
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Dešiniojo pelės mygtuko emuliacija: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Pasirinkite būdą, kurį atliks dešinio pelės klavišo paspaudimas
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
@@ -1542,8 +1544,10 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Parodyti užimt
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Palikti statymo priemones aktyviomis po panaudojimo: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Laikyti statybų įrankius tiltams, tuneliams ir pnš. atidarytus po panaudojimo
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupuoti išlaidas finansinės ataskaitos lange: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Nustatyti kompanijos išlaidų lango planą
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Drausti infrastruktūros plėtimą kai nėra tam tinkamų transporto priemonių: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Kai įjungta, infrastruktūra yra galima, jeigu ten taip pat yra galimų automobilių. Tam kad užkirstų kelią, laiko ir pinigų švaistimo nereikalingai infrastruktūrai
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Didžiausias traukinių skaičius vienam žaidėjui: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimalus skaičius traukinių, kuriuos kompanija gali turėti
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Didžiausias automobilių skaičius vienam žaidėjui: {STRING}
@@ -1578,11 +1582,13 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Atjungti techni
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Jeigu įjungta, tada automobiliams nebus atliekama techninė apžiūra, jeigu jie negalės sugesti
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Aktyvuoti vagonų greičio apribojimą: {STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Uždrausti elektrinius bėgius: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Įjungiant šį nustatymą išjungia elektrifikuotų bėgių reikalavimą padaryti elektrinius variklius veikti ant jų
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos naujienos atsiranda: {STRING} metais
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Jeigu įjungta, pramonės gamybos pajėgumas kis dažniau ir mažesniais žingsniais. Šis nustatymas dažniausiai neturi efekto, jeigu pramonės tipai yra numatyti NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
@@ -1598,6 +1604,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokiniai signa
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Kelio signalai
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Vienpusiai kelio signalai
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Pereiti tam tikrus signalų tipus: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Pasirinkite, kurie signalų tipai vykdys ciklą, kai Ctrl+paspaudę statyti signalą signalų įrankiuose
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Tik tradicinių signalų
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Kelio signalų
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Visus

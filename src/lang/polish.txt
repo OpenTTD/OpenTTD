@@ -1603,17 +1603,21 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcj
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ostrzeż, jeśli pojazd zostanie utracony: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Pokazuj wiadomości o pojazdach, które nie są w stanie znaleźć ścieżki do swoich wyznaczonych celów
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kontroluj polecenia pojazdów: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kiedy włączone, rozkazy wszystkich pojazdów są sprawdzane co jakiś czas, a wykryte nieprawidłowości są zgłaszane w oknach wiadomości
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich pojazdów
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kiedy włączone, pojazd zbliżający się do końca swojej żywotności zostaje automatycznie zastąpiony, gdy warunki jego odnowienia są spełnione
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatyczna odnowa, gdy pojazd ma {STRING} maks. wieku
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Odpowiedni wiek pojazdu, kiedy powinien on zostać automatycznie odnowiony
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} miesi{P ąc ące ęcy} do
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} miesi{P ąc ące ęcy} po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Min. ilość pieniędzy potrzebna do autoodnowienia: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalna ilość pieniędzy, która musi znajdować się w banku zanim auto-odnawianie będzie brane pod uwagę
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetlania komunikatów o błędach: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}

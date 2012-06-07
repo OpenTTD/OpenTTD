@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal fordon som gick med vinst förra året. Inkluderar vägfordon, tåg, skepp och flygplan
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen betjänade stationsdelar. Varje del av en station (t.ex. tågstation, bushållplats, flygplats) räknas, även om de är sammanbyggda till en station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen betjänade stationer. Tågstationer, busshållplatser, flygplatser osv räknas var för sig även om de tillhör samma station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinsten för fordonet med lägst inkomst (endast fordon äldre än två år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med lägst vinst av de senaste 12 kvartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med högst vinst de senaste 12 kvartalen
@@ -1459,6 +1459,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Verktygsradens 
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Verktygsradens horisontella position i skärmens överkant
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Statusradens position: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Statusradens horisontella position i skärmens nederkant
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Fäst-radie för fönster: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Det avstånd mellan fönstren då det fönster som flyttas automatiskt fästs mot närliggande fönster
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pix{P 0 el lar}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :avstängd

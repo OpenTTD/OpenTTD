@@ -1407,7 +1407,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kleurenfoto's k
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jaar dat de krant aankondigingen in kleur worden afgedrukt. Voor dit jaar wordt zwart-wit gebruikt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Beginjaar: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wanneer ingeschakeld, industrie produktie verandert vaker en in kleinere stappen. Deze instelling heeft meestal geen effect, als de industrie soorten worden geleverd door een NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sta het kopen van aandelen van andere bedrijven toe: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wanneer ingeschakeld, toestaan kopen en verkopen van bedrijfsaandelen. Aandelen zullen alleen beschikbaar zijn voor bedrijven die een bepaalde leeftijd hebben bereikt
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage van routeopbrengst in overdrachtssysteem: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bij slepen, plaats seinen elke: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
