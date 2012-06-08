@@ -1411,17 +1411,23 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wanneer ingesch
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sta het kopen van aandelen van andere bedrijven toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wanneer ingeschakeld, toestaan kopen en verkopen van bedrijfsaandelen. Aandelen zullen alleen beschikbaar zijn voor bedrijven die een bepaalde leeftijd hebben bereikt
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage van routeopbrengst in overdrachtssysteem: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentage van het inkomen besteed aan de intermediaire delen in feeder-systemen, waardoor meer controle over de inkomsten is
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Bij slepen, plaats seinen elke: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Stel de afstand waarop signalen worden gebouwd op een spoor tot aan de volgende hindernis (signaal, kruising), als signalen worden gesleept
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Bij slepen, hou vaste afstand tussen seinen: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecteer het gedrag van het sein plaatsing bij Ctrl + slepen seinen. Indien uitgeschakeld, worden seinen rondom tunnels of bruggen om lange stukken te vermijden, zonder seinen. Indien ingeschakeld, worden seinen geplaatst elke N tegels, waardoor de uitlijning van de seinen op parallelle sporen makkelijker is
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Plaats automatisch armseinen voor: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Stel het jaar waarin elektrische seinen zal worden gebruikt voor sporen. Voor dit jaar zal niet-elektrische seinen worden gebruikt (die exact dezelfde functie hebben, maar verschillend uiterlijk)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activeer sein-GUI: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Toon een venster voor het kiezen van soorten seinen om te bouwen, in plaats van alleen window-loos sein-type rotatie met Ctrl + klikken op bouwen seinen
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Seintype dat standaard moet worden gebouwd: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standaard te gebruiken sein.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Normale seinen
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Routeseinen
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Eenrichtingsrouteseinen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Blader door seintypen: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Selecteer welke soorten seinen worden gebruikt, wanneer Ctrl + klikken op een buildsein met het sein gereedschap
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Alleen normaal
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Alleen routeseinen
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Allemaal
@@ -1438,6 +1444,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Sta steden toe 
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Steden mogen gelijkvloerse kruisingen bouwen: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Door deze optie in te schakelen, kunnen steden gelijkvloerse kruisingen bouwen.
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Geluidsniveaucontrole door steden voor vliegvelden toestaan: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Met deze instelling uitgeschakeld kunnen er twee luchthavens in elke stad zijn. Als deze instelling is ingeschakeld, wordt het aantal luchthavens in een stad beperkt door het lawaai tollerantie van de stad, die afhankelijk is van de bevolking en de luchthaven grootte en afstand
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Steden stichten in spel: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Het inschakelen van deze instelling laat spelers toe om nieuwe steden op te richten tijdens het spel.
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verboden
@@ -1445,6 +1452,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toestaan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toestaan, eigen wegpatroon
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plaatsing van bomen in het spel: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheer willekeurig verschijnen van bomen tijdens het spel. Dit kan gevolgen hebben voor industrietakken die afhankelijk zijn van groei van bomen, bijvoorbeeld houtzagerijen
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(houtzagerij werkt niet)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :alleen in regenwouden
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :overal
@@ -1454,12 +1462,15 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontale pos
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Positie van de statusbalk: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :De horizontale positie van de statusbalk aan de onderkant van het scherm.
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Windowssnap radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen vensters voordat het venster wordt verplaatst wordt automatisch uitgelijnd naar de nabijgelegen vensters
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :uitgeschakeld
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximum aantal (niet-sticky) vensters: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-klevende open vensters voor oude vensters automatisch worden gesloten om ruimte voor nieuwe vensters te maken
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :uitgeschakeld
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoom niveau: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :De maximale zoom-in niveau voor kijkvensters. Merk op dat mogelijkheden voor het hoger zoom-in levels verhoogt geheugenvereisten
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximaal uitzoom niveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x

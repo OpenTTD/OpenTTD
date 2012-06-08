@@ -1125,6 +1125,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :pa labi
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Atļaut būvēt nogāzēs un piekrastēs: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, ceļus un stacijas var būvēt uz vairums nogāzēm. Ja izslēgts, tas ir atļauts tikai uz ceļu virzienam atbilstošām nogāzēm un tādēļ nav nepieciešami ieguldījumi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
@@ -1146,6 +1147,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savieno
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Atļaut inflāciju ekonomikā, kur izmaksu celšanās nedaudz apsteidz ienākumus
 STR_CONFIG_SETTING_SELECTGOODS                                  :Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
@@ -1179,8 +1181,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsū
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļaut pārsūtīt naudu starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidmašīnu nosacīto ātrumu salīdzinājumā ar citiem transportlīdzekļu veidiem, lai samazinātu aviācijas transportlīdzekļu ienākumus
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lidmašīnu avāriju daudzums: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt aviācijas transportlīdzekļu avāriju notikšanas iespējamību
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
@@ -1197,11 +1201,13 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbos
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Brīdināt, ja transportlīdzeklis ir noklīdis: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ieslēgt ziņojumus par transportlīdzekļiem kas nespēj atrast ceļu uz norīkoto galamērķi
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārskatīt transportlīdzekļu rīkojumus: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Brīdināt, ja transportlīdzekļa ienākumi ir negatīvi: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Ja ieslēgts, tiks sūtīts ziņojums gadījumā kad transportlīdzeklis negūst nekādu peļņu kalendārā gada laikā
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Transportlīdzekļi nekad "nemirst": {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kad ieslēgts, visi transportlīdzekļu modeļi pēc to ieviešanas vienmēr ir pieejami
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automātiski atjaunot transportlīdzekļus, kad tie ir kļuvuši veci: {STRING}
@@ -1226,6 +1232,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Zemes radītāj
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Sākotnējais
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimālais attālums no kartes malas naftas pārstrādes rūpnīcām: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftas pārstrādes rūpnīcas ir būvējamas tikai kartes malu tuvumā, salu kartēm tas ir pie krasta
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniega līnijas augstums: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Apvidus nelīdzenums (tikai TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ļoti gluda
@@ -1365,7 +1372,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmē
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālierīces uz katra: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīce, dzelzceļa mezgls) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
@@ -1397,8 +1404,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Koku izvietošana spēlē: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(bojā kokzāģētavu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Koku izvietojums spēlē: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Vadīt nejaušu koku parādīšanos spēles laikā. Tas var ietekmēt no kokaudzēšanas atkarīgas ražotnes, piemēram kokzāģētavas
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(nedarbosies kokzāģētavas)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusmežos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
@@ -3167,10 +3175,10 @@ STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrēt
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrēt galveno skatu uz kuģu depo. Ctrl+klikšķis atvērs skatu uz depo jaunā skatlaukā
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrēt galveno skatu uz angāru. Ctrl+klikšķis atvērs skatu uz angāru jaunā skatlaukā
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Iegūt vilcienu sarakstu, kuru rīkojumos ir pašreizējais depo
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Iegūt transportu sarakstu, kuru rīkojumos ir pašreizējais depo
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Iegūt visu vilcienu sarakstu, kuru rīkojumos ir pašreizējais depo
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Iegūt visu autotransporta līdzekļu sarakstu, kuru rīkojumos ir pašreizējais depo
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Iegūt visu kuģu sarakstu, kuru rīkojumos ir pašreizējais depo
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Iegūt lidaparātu sarakstu, kuru rīkojumos ir angāri no šīs lidostas
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Iegūt visu lidaparātu sarakstu, kuru rīkojumos ir šīs lidostas angāri
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klikšķināt lai apturētu visus vilcienus, kas atrodas depo
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klikšķināt lai apturētu visus autotransporta līdzekļus, kas atrodas depo
