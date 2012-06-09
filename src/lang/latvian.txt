@@ -614,8 +614,8 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Nosaukums
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Sajaukt
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Programma
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pārlēkt uz iepriekšējo celiņu
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pārlēkt uz nākamo celiņu
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Pārlekt uz iepriekšējo celiņu
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Pārlekt uz nākamo celiņu
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Apturēt mūzikas atskaņošanu
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Sākt mūzikas atskaņošanu
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Bīdīt slīdņus, lai mainītu mūzikas un skaņas efektu skaļumu
@@ -1117,8 +1117,8 @@ STR_CONFIG_SETTING_COMPANIES_OWN                                :savam uzņēmum
 STR_CONFIG_SETTING_COMPANIES_ALL                                :visiem uzņēmumiem
 
 STR_CONFIG_SETTING_NONE                                         :nekāds
-STR_CONFIG_SETTING_ORIGINAL                                     :oriģinālais
-STR_CONFIG_SETTING_REALISTIC                                    :reālistisks
+STR_CONFIG_SETTING_ORIGINAL                                     :sākotnējais
+STR_CONFIG_SETTING_REALISTIC                                    :reālistiskais
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :pa kreisi
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :centrā
@@ -1137,7 +1137,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauciņ
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļu izmešu efektu daudzums: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nosaka transportlīdzekļu izmesto dūmu un dzirksteļu daudzumu
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilcienu paātrinājuma modelis: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Autotransporta līdzekļu paātrinājuma fizikas modeļa izvēle. "Sākotnējais" modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. "Reālistiskais" modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām dzinēja īpašībām. Piemēram, no vilcējspēka
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Izvēlēties autotransporta līdzekļu paātrinājuma fizikas modeli. "Sākotnējais" modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. "Reālistiskais" modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām dzinēja īpašībām. Piemēram, no vilcējspēka
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Slīpu lauciņu nogāžu stāvums vilcieniem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1181,10 +1183,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsū
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļaut pārsūtīt naudu starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidmašīnu nosacīto ātrumu salīdzinājumā ar citiem transportlīdzekļu veidiem, lai samazinātu aviācijas transportlīdzekļu ienākumus
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidmašīnu nosacīto ātrumu salīdzinājumā ar citu veidu transportlīdzekļiem, lai samazinātu lidaparātu ienākumus
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lidmašīnu avāriju daudzums: {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt aviācijas transportlīdzekļu avāriju notikšanas iespējamību
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt lidaparātu avāriju notikšanas iespējamību
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
@@ -1423,7 +1425,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepiel
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimālais pietuvinājuma līmenis skatvietām. Ir jāievēro ka paaugstinot pietuvinājuma līmeni, pieaug atmiņas prasības
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimālais attālinājuma līmenis: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maksimālais attālinājuma līmenis skatvietām. Lielāka attālinājuma līmeņa pielietošana var būt iemesls aizkavējumiem
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Parasts
@@ -1994,7 +1998,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Lejupie
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Atlasīts, jo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Atkarības: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Atzīmes: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ir būvēts bez ''zlib'' palīdzības...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD ir būvēta bez ''zlib'' atbalsta...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... lejuplādēt saturu nav iespējams!
 
 # Order of these is important!
@@ -2436,7 +2440,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Uzņēmumam pie
 STR_ABOUT_OPENTTD                                               :{WHITE}Par OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Oriģināla autortiesības {COPYRIGHT} 1995 Kriss Sojers. Visas tiesības paturētas
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versija {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2012 OpenTTD grupa
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2012 OpenTTD darba grupa
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Saglabāt spēli
@@ -4486,7 +4490,7 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} boja
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} boja Nr. #{COMMA}
-STR_FORMAT_COMPANY_NUM                                          :(uzņēmums {COMMA})
+STR_FORMAT_COMPANY_NUM                                          :({COMMA}. uzņēmums)
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Pieturas punkts {TOWN}

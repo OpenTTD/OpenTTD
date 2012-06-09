@@ -1116,7 +1116,7 @@ STR_CONFIG_SETTING_COMPANIES_ALL                                :Alla företag
 
 STR_CONFIG_SETTING_NONE                                         :Ingen
 STR_CONFIG_SETTING_ORIGINAL                                     :Original
-STR_CONFIG_SETTING_REALISTIC                                    :Realistiskt
+STR_CONFIG_SETTING_REALISTIC                                    :Realistisk
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vänster
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centrerad
@@ -1222,13 +1222,13 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Om det är akti
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser blir aldrig gamla: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om forden är vilse: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om fordon är vilse: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till deras destination.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Granska fordonens destinationer: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras fordonens order periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fordon
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, förutom för stannade fordon
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ja, för alla fordon
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Varna om ett fordons inkomst är negativ: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Om det är aktiverat skickas ett nyhetsmeddelande när ett fordon inte har gett vinst under ett kalenderår
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Fordon blir aldrig gamla: {STRING}
@@ -1239,7 +1239,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Förnya automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativ ålder då ett fordon ska bli aktuellt för att förnyas automatiskt
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} månad{P 0 "" er} yngre
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} månad{P 0 "" er} äldre
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minst mängd pengar för auto-förnyelse av fordon: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minsta mängd pengar för auto-förnyelse av fordon: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minsta belopp som måste finnas i banken för att automatiskt förnyande av fordon ska vara möjligt
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Visningstid för felmeddelanden: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Tid som felmeddelanden i ett rött fönster ska visas. Notera att vissa (kritiska) felmeddelanden inte stängs automatiskt efter denna tid, utan måste stängas manuellt
@@ -1392,7 +1392,7 @@ STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dag{P 0
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Inaktiverat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Normalt serviceintervall för vägfordon: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Välj vilket serviceintervall som normalt sett ska användas för nya vägfordon, om inget annat serviceintervall uttryckligen anges
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Normalt serviceintervall för flygplan: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Normalt serviceintervall för luftfarkoster: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Välj vilket serviceintervall som normalt sett ska användas för nya flygplan, om inget annat serviceintervall uttryckligen anges
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Normalt serviceintervall för skepp: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Välj vilket serviceintervall som normalt sett ska användas för nya skepp, om inget annat serviceintervall uttryckligen anges

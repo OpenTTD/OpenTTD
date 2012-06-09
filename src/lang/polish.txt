@@ -1596,6 +1596,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Zezwól na wiel
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opcja kompatybilności dla starych NewGRFów. Nie wyłączaj jej, chyba, że wiesz, co robisz
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana tego ustawienia nie jest możliwa, gdy znajdują się tutaj pojazdy
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Utrzymywanie infrastruktury: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kiedy włączone, utrzymanie infrastruktury jest naliczane w kosztach. Koszty wzrastają nadproporcjonalnie do rozmiarów sieci połączeń, a więc dotykają bardziej duże niż małe firmy
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Pozwól budować stare lotniska: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Włączona opcja sprawia, że każdy typ lotniska będzie dostępny na zawsze od chwili wprowadzenia
@@ -1608,6 +1609,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :wszystkich pojazdów
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Powiadom, jeśli pojazd przynosi straty: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Kiedy włączone, otrzymasz wiadomość o tym, że pojazd nie przyniósł żadnych zysków w całym roku kalendarzowym
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Pojazdy nigdy nie są wycofywane: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kiedy włączone, wszystkie modele pojazdów pozostają dostępne na zawsze od daty ich wprowadzenia
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Autoodnawianie pojazdów gdy stają się stare: {STRING}
@@ -1621,11 +1623,13 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalna iloś
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Czas wyświetlania komunikatów o błędach: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Pokaż wskazówki: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Opóźnienie, zanim wskazówka zostanie wyświetlona po najechaniu myszką na element interfejsu. Alternatywnie wskazówki mogą zostać przypisane do prawego przycisku myszki
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :po zatrzymaniu kursora przez {COMMA} sekund{P ę y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :prawy klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Pokaż populację miasta w jego nazwie: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Wyświetlaj populację miast w ich etykietach na mapie
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grubość linii na wykresie: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grubość linii na wykresach. Cienka linia jest dokładniejsza, grubsza linia jest bardziej widoczna a kolory łatwiejsze do odróżnienia
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator krajobrazu: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
@@ -1652,8 +1656,11 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedno lu
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedno lub więcej pól na krawędzi nie jest wodą
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :Maksymalna rozpiętość stacji: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maksymalny obszar na jakim mogą znajdować się poszczególne elementy stacji. Pamiętaj, że wysoka wartość spowalnia grę
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatycznie serwisuj helikoptery na lądowiskach: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Serwisuj helikoptery po każdym lądowaniu, nawet jeśli na lądowisku nie ma hangaru
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Przyłącz narzędzia krajobrazu do okien środków transportu: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Otwierając pasek konstrukcji typu transportu, otwieraj też pasek formowania terenu
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Kolor lądu używany w minimapie: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Kolor terenu na mini-mapie
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony

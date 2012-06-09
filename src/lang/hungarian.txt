@@ -376,7 +376,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Vasúti 
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Út építése
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Vízi út építése
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Repülőtér építése
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj emeléséhez vagy süllyesztéséhez, faültetéshez, stb.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Nyisd meg a tájrendező ablakot a talaj emeléséhez vagy süllyesztéséhez, faültetéshez stb.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Hang/zene beállításai
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Legutóbbi üzenet/újsághír, üzenetek beállításai
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Terület-információ, konzol, MI/Játékszkript nyomkövetés, képmentések, az OpenTTD-ről
@@ -1188,7 +1188,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Jobbra
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Lejtőre és partokra építés: {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Bekapcsolva utak, vasutak és állomások lejtőre is építhetőek. Kikapcsolva csak olyan lejtőre építhetőek, melyek megegyeznek a lejtő irányával és nem igényelnek egyéb létesítményeket
-STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
 STR_CONFIG_SETTING_CATCHMENT                                    :Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :A különböző állomások és repterek más vonzáskörzettel rendelkeznek
@@ -1465,7 +1465,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Bekapcsolva a j
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :A vagonok sebessége korlátozható: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Bekapcsolva a szerelvényben lévő vasúti kocsik maximális sebessége is korlátozza a vonat maximális sebességét
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Villamosított vágányok letiltása: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok járhassanak
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Bekapcsolva nem szükséges villamosítani egy vágányt ahhoz, hogy azon villanymozdonyok közlekedhessenek
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Színes újságcikkek megjelenése: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Az év, melytől az újságok színesben jelennek meg. Az adott év előtt azok fekete-fehérek
@@ -1478,7 +1478,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Ráhordó rends
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A bevételek százaléka, mely a közbenső szállítóknak, ráhordó járatoknak kerül kifizetésre, nagyobb ellenőrzést adva a bevétel felett
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Húzáskor helyezzen jelzőket minden {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Az építendő jelzők közötti távolság beállítása a pályán a következő akadályig (jelző, elágazás), jelzők húzásakor
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} mezőre
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}. mezőre
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Húzáskor állandó távolság tartása a jelzők között: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Jelzők építési viselkedésének kiválasztása Ctrl+húzás esetére. Kikapcsolva a jelzők alagutak és hidak körül kerülnek telepítésre, elkerülve a hosszú szakaszokat jelző nélkül. Bekapcsolva a jelzők minden n-edik mezőre kerülnek telepítésre, a párhuzamos vágányok elhelyezését megkönnyítendő
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatikusan alakjelző épüljön {STRING}-ig.
@@ -1525,7 +1525,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :A fő eszközso
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :A fő eszközsor vízszintes elhelyezésének beállítása a képernyő tetején
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Állapotsor elhelyezkedése: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Az állapotsor vízszintes elhelyezésének beállítása a képernyő alján
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ablakzár távolság: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ablakillesztés távolsága: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Ablakok közti távolság mielőtt az ablak automatikusan a közeli ablakhoz kerül igazításra
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :kikapcsolva
@@ -1802,7 +1802,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dátum
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Az aktuális dátum
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Évek
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}A játékban eltelt évek száma
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Nyelv, szerver verzió, stb.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Nyelv, szerver verzió stb.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kattintással a listában szereplő játék kiválasztása
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}A szerver amihez legutóbb csatlakoztál:
@@ -2149,7 +2149,7 @@ STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Épület
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok stb.) átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
