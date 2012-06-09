@@ -70,6 +70,7 @@ spritecache.cpp
 station.cpp
 strgen/strgen_base.cpp
 string.cpp
+stringfilter.cpp
 strings.cpp
 subsidy.cpp
 textbuf.cpp
@@ -299,6 +300,7 @@ stdafx.h
 strgen/strgen.h
 string_func.h
 string_type.h
+stringfilter_type.h
 strings_func.h
 strings_type.h
 subsidy_base.h

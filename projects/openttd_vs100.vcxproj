@@ -360,6 +360,7 @@
     <ClCompile Include="..\src\station.cpp" />
     <ClCompile Include="..\src\strgen\strgen_base.cpp" />
     <ClCompile Include="..\src\string.cpp" />
+    <ClCompile Include="..\src\stringfilter.cpp" />
     <ClCompile Include="..\src\strings.cpp" />
     <ClCompile Include="..\src\subsidy.cpp" />
     <ClCompile Include="..\src\textbuf.cpp" />
@@ -566,6 +567,7 @@
     <ClInclude Include="..\src\strgen\strgen.h" />
     <ClInclude Include="..\src\string_func.h" />
     <ClInclude Include="..\src\string_type.h" />
+    <ClInclude Include="..\src\stringfilter_type.h" />
     <ClInclude Include="..\src\strings_func.h" />
     <ClInclude Include="..\src\strings_type.h" />
     <ClInclude Include="..\src\subsidy_base.h" />

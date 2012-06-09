@@ -22,6 +22,7 @@
 #include "viewport_func.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
+#include "stringfilter_type.h"
 #include "string_func.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
@@ -32,35 +33,23 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-/**
- * Contains the necessary information to decide if a sign should
- * be filtered out or not. This struct is sent as parameter to the
- * sort functions of the GUISignList.
- */
-struct FilterInfo {
-	const char *string;  ///< String to match sign names against
-	bool case_sensitive; ///< Should case sensitive matching be used?
-};
-
 struct SignList {
 	/**
-	 * A GUIList contains signs and uses a custom data structure called #FilterInfo for
-	 * passing data to the sort functions.
+	 * A GUIList contains signs and uses a StringFilter for filtering.
 	 */
-	typedef GUIList<const Sign *, FilterInfo> GUISignList;
+	typedef GUIList<const Sign *, StringFilter &> GUISignList;
 
 	static const Sign *last_sign;
 	GUISignList signs;
 
-	char filter_string[MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH]; ///< The match string to be used when the GUIList is (re)-sorted.
+	StringFilter string_filter;                                       ///< The match string to be used when the GUIList is (re)-sorted.
 	static bool match_case;                                           ///< Should case sensitive matching be used?
 
 	/**
 	 * Creates a SignList with filtering disabled by default.
 	 */
-	SignList()
+	SignList() : string_filter(&match_case)
 	{
-		filter_string[0] = '\0';
 	}
 
 	void BuildSignsList()
@@ -108,26 +97,28 @@ struct SignList {
 		this->last_sign = NULL;
 	}
 
-	/** Filter sign list by sign name (case sensitive setting in FilterInfo) */
-	static bool CDECL SignNameFilter(const Sign * const *a, FilterInfo filter_info)
+	/** Filter sign list by sign name */
+	static bool CDECL SignNameFilter(const Sign * const *a, StringFilter &filter)
 	{
 		/* Get sign string */
 		char buf1[MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH];
 		SetDParam(0, (*a)->index);
 		GetString(buf1, STR_SIGN_NAME, lastof(buf1));
 
-		return (filter_info.case_sensitive ? strstr(buf1, filter_info.string) : strcasestr(buf1, filter_info.string)) != NULL;
+		filter.ResetState();
+		filter.AddLine(buf1);
+		return filter.GetState();
 	}
 
 	/** Filter sign list excluding OWNER_DEITY */
-	static bool CDECL OwnerDeityFilter(const Sign * const *a, FilterInfo filter_info)
+	static bool CDECL OwnerDeityFilter(const Sign * const *a, StringFilter &filter)
 	{
 		/* You should never be able to edit signs of owner DEITY */
 		return (*a)->owner != OWNER_DEITY;
 	}
 
 	/** Filter sign list by owner */
-	static bool CDECL OwnerVisibilityFilter(const Sign * const *a, FilterInfo filter_info)
+	static bool CDECL OwnerVisibilityFilter(const Sign * const *a, StringFilter &filter)
 	{
 		assert(!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS));
 		/* Hide sign if non-own signs are hidden in the viewport */
@@ -137,11 +128,10 @@ struct SignList {
 	/** Filter out signs from the sign list that does not match the name filter */
 	void FilterSignList()
 	{
-		FilterInfo filter_info = {this->filter_string, this->match_case};
-		this->signs.Filter(&SignNameFilter, filter_info);
-		if (_game_mode != GM_EDITOR) this->signs.Filter(&OwnerDeityFilter, filter_info);
+		this->signs.Filter(&SignNameFilter, this->string_filter);
+		if (_game_mode != GM_EDITOR) this->signs.Filter(&OwnerDeityFilter, this->string_filter);
 		if (!HasBit(_display_opt, DO_SHOW_COMPETITOR_SIGNS)) {
-			this->signs.Filter(&OwnerVisibilityFilter, filter_info);
+			this->signs.Filter(&OwnerVisibilityFilter, this->string_filter);
 		}
 	}
 };
@@ -200,17 +190,8 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	void SetFilterString(const char *new_filter_string)
 	{
 		/* check if there is a new filter string */
-		if (!StrEmpty(new_filter_string)) {
-			/* Copy new filter string */
-			strecpy(this->filter_string, new_filter_string, lastof(this->filter_string));
-
-			this->EnableWidget(WID_SIL_FILTER_CLEAR_BTN);
-		} else {
-			/* There is no new string -> clear this->filter_string */
-			this->filter_string[0] = '\0';
-
-			this->DisableWidget(WID_SIL_FILTER_CLEAR_BTN);
-		}
+		this->string_filter.SetFilterTerm(new_filter_string);
+		this->SetWidgetDisabledState(WID_SIL_FILTER_CLEAR_BTN, StrEmpty(new_filter_string));
 
 		/* Repaint the clear button since its disabled state may have changed */
 		this->SetWidgetDirty(WID_SIL_FILTER_CLEAR_BTN);
@@ -386,7 +367,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		/* When there is a filter string, we always need to rebuild the list even if
 		 * the amount of signs in total is unchanged, as the subset of signs that is
 		 * accepted by the filter might has changed. */
-		if (data == 0 || data == -1 || !StrEmpty(this->filter_string)) { // New or deleted sign, changed visibility setting or there is a filter string
+		if (data == 0 || data == -1 || !this->string_filter.IsEmpty()) { // New or deleted sign, changed visibility setting or there is a filter string
 			/* This needs to be done in command-scope to enforce rebuilding before resorting invalid data */
 			this->signs.ForceRebuild();
 		} else { // Change of sign contents while there is no filter string

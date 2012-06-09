@@ -711,6 +711,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\stringfilter.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\strings.cpp"
 				>
 			</File>
@@ -1536,6 +1540,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\string_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\stringfilter_type.h"
 				>
 			</File>
 			<File

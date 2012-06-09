@@ -19,6 +19,7 @@
 #include "../game/game.hpp"
 #include "../base_media_base.h"
 #include "../sortlist_type.h"
+#include "../stringfilter_type.h"
 #include "../querystring_gui.h"
 #include "../core/geometry_func.hpp"
 #include "network_content_gui.h"
@@ -234,7 +235,7 @@ public:
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	/** List with content infos. */
-	typedef GUIList<const ContentInfo*> GUIContentList;
+	typedef GUIList<const ContentInfo *, StringFilter &> GUIContentList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
 	static const uint EDITBOX_MAX_LENGTH = 300; ///< Maximum size of the editbox in pixels.
@@ -245,6 +246,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	static GUIContentList::FilterFunction * const filter_funcs[]; ///< Filter functions.
 	GUIContentList content;      ///< List with content
 	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
+	StringFilter string_filter;  ///< Filter for content list
 
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
@@ -318,18 +320,20 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	}
 
 	/** Filter content by tags/name */
-	static bool CDECL TagNameFilter(const ContentInfo * const *a, const char *filter_string)
+	static bool CDECL TagNameFilter(const ContentInfo * const *a, StringFilter &filter)
 	{
+		filter.ResetState();
 		for (int i = 0; i < (*a)->tag_count; i++) {
-			if (strcasestr((*a)->tags[i], filter_string) != NULL) return true;
+			filter.AddLine((*a)->tags[i]);
 		}
-		return strcasestr((*a)->name, filter_string) != NULL;
+		filter.AddLine((*a)->name);
+		return filter.GetState();
 	}
 
 	/** Filter the content list */
 	void FilterContentList()
 	{
-		if (!this->content.Filter(this->edit_str_buf)) return;
+		if (!this->content.Filter(this->string_filter)) return;
 
 		/* update list position */
 		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
@@ -742,7 +746,8 @@ public:
 
 	virtual void OnOSKInput(int wid)
 	{
-		this->content.SetFilterState(!StrEmpty(this->edit_str_buf));
+		this->string_filter.SetFilterTerm(this->edit_str_buf);
+		this->content.SetFilterState(!this->string_filter.IsEmpty());
 		this->content.ForceRebuild();
 		this->InvalidateData();
 	}

@@ -23,6 +23,7 @@
 #include "network/network.h"
 #include "network/network_content.h"
 #include "sortlist_type.h"
+#include "stringfilter_type.h"
 #include "querystring_gui.h"
 #include "core/geometry_func.hpp"
 #include "newgrf_text.h"
@@ -587,7 +588,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed);
  * Window for showing NewGRF files
  */
 struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
-	typedef GUIList<const GRFConfig *> GUIGRFConfigList;
+	typedef GUIList<const GRFConfig *, StringFilter &> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
 
@@ -599,6 +600,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	GUIGRFConfigList avails;    ///< Available (non-active) grfs.
 	const GRFConfig *avail_sel; ///< Currently selected available grf. \c NULL is none is selected.
 	int avail_pos;              ///< Index of #avail_sel if existing, else \c -1.
+	StringFilter string_filter; ///< Filter for available grf.
 
 	GRFConfig *actives;         ///< Temporary active grf list to which changes are made.
 	GRFConfig *active_sel;      ///< Selected active grf item.
@@ -1297,7 +1299,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	{
 		if (!this->editable) return;
 
-		this->avails.SetFilterState(!StrEmpty(this->edit_str_buf));
+		string_filter.SetFilterTerm(this->edit_str_buf);
+		this->avails.SetFilterState(!string_filter.IsEmpty());
 		this->avails.ForceRebuild();
 		this->InvalidateData(0);
 	}
@@ -1387,12 +1390,13 @@ private:
 	}
 
 	/** Filter grfs by tags/name */
-	static bool CDECL TagNameFilter(const GRFConfig * const *a, const char *filter_string)
+	static bool CDECL TagNameFilter(const GRFConfig * const *a, StringFilter &filter)
 	{
-		if (strcasestr((*a)->GetName(), filter_string) != NULL) return true;
-		if ((*a)->filename != NULL && strcasestr((*a)->filename, filter_string) != NULL) return true;
-		if ((*a)->GetDescription() != NULL && strcasestr((*a)->GetDescription(), filter_string) != NULL) return true;
-		return false;
+		filter.ResetState();
+		filter.AddLine((*a)->GetName());
+		filter.AddLine((*a)->filename);
+		filter.AddLine((*a)->GetDescription());
+		return filter.GetState();;
 	}
 
 	void BuildAvailables()
@@ -1423,7 +1427,7 @@ private:
 			}
 		}
 
-		this->avails.Filter(this->edit_str_buf);
+		this->avails.Filter(this->string_filter);
 		this->avails.Compact();
 		this->avails.RebuildDone();
 		this->avails.Sort();
