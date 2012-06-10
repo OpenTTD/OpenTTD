@@ -4492,7 +4492,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} boja
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} boja Nr. #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. uzņēmums)
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
-STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Pieturas punkts {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pieturas punkts {TOWN} #{COMMA}
 
