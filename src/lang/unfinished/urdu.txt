@@ -294,7 +294,7 @@ STR_SORT_BY_RANGE                                               :پہنچ
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK} کھیل کو تیزی سے بڑھایئں
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK} اختیارات
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل بچایئے، کھیل دستبردار کیجیئے، منقطع کیجئے
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل محفوظ کیجئے، کھیل دستبردار کیجیئے، منقطع کیجئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK} نقشھ، اضافی منظر یا اشاروں کی فھرست
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK} قصبوں کی کتاب دیکھیئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK} امداد دیکھیئے
@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمین
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول بآر منتقل کیجیئے
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر بچایئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر محفوظ کیجئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :مقابلے ب
 STR_SETTINGS_MENU_FULL_ANIMATION                                :مکمل animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :مکمل تفصیل
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عمارات
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اسٹیشن کے اشارے
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اشارے
 ############ range ends here
 
 ############ range for file menu starts
@@ -448,12 +448,13 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :اسکرین کی تصویر
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :قریب سے اسکرین کی تصویر
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :مکمل قریب سے اسکرین کی تصویر
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :پہلے سے طے شدہ قربت سے اسکرین کی تصویر
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :پورے نقشے کی اسکرین کی تصویر
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :sprite صف بندھ
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :احاطہ کرنے والے ڈبوں کی تدویم کیجئیے
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :گندے بلاکوں کا رنگ تبدیل کرو
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -890,6 +891,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :ٹرکش لیر
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :سلواک کرونا (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :برازیلین رئیل (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :اِسٹونین کرونی (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :لتھوینیا کے لٹاس (لٹل)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :جنوبی کوریا کے ون(KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی افریقہ کے رنڈ (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 ############ end of currency region
 
@@ -1093,6 +1097,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}اس ع�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}ایڈوانسڈ سیٹنگ
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(کوئی وضاحت موجود نہیں)
 
 STR_CONFIG_SETTING_OFF                                          :بند
 STR_CONFIG_SETTING_ON                                           :آن
@@ -1114,20 +1119,30 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :ڈھلان او
 STR_CONFIG_SETTING_AUTOSLOPE                                    :تعمیرات کے نیچے منظر کشی کی اجازت: {STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :کوریج کے علاقے کے حقیقت پسندانہ سائز کی اجازت: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :شہروں کی ملکیت زیادہ سڑکوں، پلوں اور سرنگوں کو توڑنے کی اجازت: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :ریل گاڑیوں کی زیادہ سے زیادہ لمبائی: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :ریل گاڑیوں کی زیادہ سے زیادہ لمبائی طے کریں
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ٹائل{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :گاڑی کے دھوئیں/سپارک کی تعداد: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :ریل گاڑی کو تیز کرنے والا ماڈل: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :گاڑی کو تیز کرنے کا ماڈل: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :ریل گاڑیوں اور بحری جہازوں کو 90° مڑنے سے روکیں: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :اسٹیشنوں کو جوڑنے کی اجازت: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :سامان لوڈ کرنے کا بہتر طریقہ استعمال کریں: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :گاڑیوں کو آہستہ آہستہ بھریں: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :افراط زر: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :سامان صرف اُسی صورت میں کسی اسٹیشن تک پہنچایا جب وہ اُسے قبول کرتا ہو: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :پل کی زیادہ سے زیادہ لمبائی: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :پل بنانے کی زیادہ سے زیادہ لمبائی
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :سرنگ کی زیادہ سے زیادہ لمبائی: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :سرنگیں بنانے کی زیادہ سے زیادہ لمبائی
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :خود بنیادی صنعت تعمیر کرنے کا طریقہ: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :کوئی نہیں
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :دوسری صنعتوں کی طرح
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :توقعات
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :کارخانوں کے آس پاس ہموار علاقہ: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :ایک شہر میں ایک جیسی ایک سے زیادہ صنعتیں لگانے کی اجازت: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :ریل کے اشارے دکھائو: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :ہر سال کے آخر پر کھاتے والی ونڈو دکھاو: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :نئے احکامات شروع سے 'نان اسٹاپ' ہوں: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :نئے احکامات شروع سے {STRING} کے پلیٹ فارم پر اسٹاپ ہوں
@@ -1170,6 +1185,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :مخطط میں
 STR_CONFIG_SETTING_LAND_GENERATOR                               :زمین بنانے والا: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تیل کے کارخانے صرف نقسے کی حدود کے قریب بنتے ہیں، جزیرہ والے نقشوں کیلئے یہ ساحل پر ہے
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :برف کی اونچائی: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :علاقے کی کٹائی (صرف TerraGenesis میں) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بہت ہموار
@@ -1185,6 +1201,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :الٹی گھڑ
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :گھڑی وار
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :ایک سیدھے scenario والا نقشہ کتنا اونچا ہو گا: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :نقشے کے کناروں پر منظر کشی فعال کریں: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :اگر منع کر دیا، تو نقسے کی حدود ہمیشہ سمندر ہوں گی
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}جنوبی کنارے پر ایک یا ایک سے زیادہ ٹائلیں خالی نہیں ہیں
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}کسی کنارے پر ایک یا ایک سے زیادہ ٹائلیں پانی کی نہیں ہیں
 
@@ -1292,9 +1309,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :صرف بارش
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ہر جگہ
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :بنیادی ٹول بار کی جگہ: {STRING}
-STR_CONFIG_SETTING_STATUSBAR_POS                                :اسٹیٹس بار کی جگہ: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN                                     : قریب سے دیکھنے کی حد: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     : دور سے دیکھنے کی حد: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS                                :حالات کی پٹی: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :قریب سے دیکھنے کی حد: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :دور سے دیکھنے کی حد: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی
@@ -1443,8 +1460,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}ریل �
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}گاڑیوں کے رنگوں کا انتخاب دکھائیں
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}بحری جہازوں کے رنگوں کا انتخاب دکھائیں
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}ہوائی جہازوں کے رنگوں کا انتخاب دکھائیں
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}اختیار شدہ رنگوں میں سے بنیادی دنگ اختیار کریں
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}اختیار شدہ رنگوں میں سے دوسرا دنگ اختیار کریں
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}اختیار شدہ منصوبے کیلئے بنیادی دنگ اختیار کریں
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}اختیار شدہ منصوبے کیلئے دوسرا دنگ اختیار کریں
 
 STR_LIVERY_DEFAULT                                              :عمومی رنگ
 STR_LIVERY_STEAM                                                :اسٹیم انجن
@@ -2068,8 +2085,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}پیدا
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}منظر نامہ
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ نیچے ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ اونچا ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}زمین کے ایک رقبے کو پہلے اختیار شدہ کنارہ کے برابر کر دو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ نیچے ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}مستقبل میں استعمال کے لئے زمین خریدیں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 
 # Object construction window
@@ -2274,10 +2292,12 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}منظور کرتا ہے: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 

@@ -1256,6 +1256,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Μέγιστο 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Μέγιστο μήκος σήραγγας: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Μέγιστο μήκος για κτίσιμο συράγγων
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Μέθοδος χρηματοδότησης πρωτογενούς βιομηχανίας. "Κανένας" σημαίνει ότι δεν γίνεται να χρηματοδοτηθεί καμία, "Αναζήτηση" σημαίνει ότι η χρηματοδότηση είναι εφικτή, αλλά η κατασκευή πραγματοποιείται σε τυχαίο σημείο του χάρτη και είναι πιθανό να αποτυχει, "όπως οι άλλες βιομηχανίες" σημαίνει οι πρωτογενείς βιομηχανίες είναι εφικτό να κατασκευαστούν από εταιρείες όπως οι δευτερογενείς βιομηχανίες σε οποιαδήποτε θέση θέλουν
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
@@ -1435,10 +1436,12 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Εμφάνισ�
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Εμφάνιση αναμενώμενης ώρας άφιξης και αναχώρησης στα χρονοδιαγράμματα
 STR_CONFIG_SETTING_QUICKGOTO                                    :Γρήγορη δημιουργία εντολών για τα οχήματα: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Προ-επιλογή του "Μετάβαση σε" όταν ανοίγει το παράθυρο των εντολών
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Προεπιλογή τύπου σιδηροτροχιάς (μετά από νέο παιχνίδι/φόρτωση παιχνιδιού): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Επιλογή τύπου ραγών που επιλέγεται όταν αρχίζει ή φορτώνεται ένα παιχνίδι. Με το "Πρώτος διαθέσιμος" επιλέγεται ο παλαιότερος τύπος ραγών, με το "τελευταίος διαθέσιμος" επιλέγεται ο νεότερος τύπος ραγών και με το "περισσότερης χρήσης" επιλέγεται ο τύπος που χρησιμοποιείται περισσότερο την τρέχουσα στιγμή
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτος διαθέσιμος
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Τελευταίος διαθέσιμος
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Πιο χρησιμοποιημένος
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Περισσότερο χρησιμοποιούμενος
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Εμφάνιση κλεισμένων γραμμών: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Δίνεται ένα διαφορετικό χρώμα στις κατειλημμένες ράγες για να σας βοηθήσουν με προβλήματα όταν τα τραίνα αρνούνται να εισέλθουν σε τμήματα με βάση τροχιές
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {STRING}
@@ -1530,6 +1533,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Επιτρέπ�
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Οι πόλεις επιτρέπουν το χτίσιμο ισοπέδων διασταυρώσεων: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στις πόλεις να κατασκευάζουν επίπεδες διαβάσεις
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Επιτρεπεται η πόλη να ελέγχει το επίπεδο θορύβου των αεροδρομίων: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Με αυτήν τη ρύθμιση απενεργοποιημένη, μπορεί να υπάρχουν δύο αεροδρόμια σε κάθε πόλη. Με αυτήν τη ρύθμιση ενεργοποιημένη, ο αριθμός των αεροδρομίων σε μια πόλη περιορίζεται από την αποδοχή του θορύβου από την πόλη, η οποία εξαρτάται από τον πληθυσμό, το μέγεθος του αεροδρομίου και από την απόστασή του
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Ιδρύση πολέων στο παιχνίδι: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Ενεργοποιώντας αυτήν την ρύθμιση επιτρέπει στους παίκτες να ιδρύουν νέες πόλεις στο παιχνίδι
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :δεν επιτρέπεται

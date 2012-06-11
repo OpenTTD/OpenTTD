@@ -1541,6 +1541,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksymalna dłu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksymalna długość tunelu: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksymalna długość budowanych tuneli
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Budowa przedsiębiorstw wydobywczych: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda finansowania podstawowego przemysłu. 'żadne' oznacza brak możliwości finansowania czegokolwiek, 'obiecujące' oznacza, że finansowanie jest możliwe, ale konstrukcja pojawi się w losowym miejscu na mapie oraz losowo budowa może zakończyć się porażką, 'jak inne gałęzi przemysłu' oznacza, że przemysł wydobywczy może być budowany tak jak fabryki przetwórcze, w dowolnym miejscu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
@@ -1667,6 +1668,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :zielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :ciemnozielony
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :fioletowy
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Przewijaj obraz myszką w przeciwnym kierunku: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Zachowanie podczas przewijania mapy za pomocą prawego przycisku myszy. W przypadku wyłączenia mysz porusza kamerą. Po włączeniu mysz przesuwa mapę
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Wygładź przesuwanie widoku: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Pokaż dymek z pomiarem podczas używania różnych narzędzi: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Pokaż barwy firm: {STRING}
@@ -1675,6 +1677,7 @@ STR_CONFIG_SETTING_LIVERIES_OWN                                 :własnej firmy
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :wszystkich firm
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferuj czat drużynowy po użyciu <ENTER> lub <T>: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcja rolki myszy: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Włączenie przewijania z użyciem dwu-wymiarowych rolek myszy
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :powiększ widok
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :przesuń widok
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :wył.
@@ -1710,7 +1713,9 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Używaj zaawans
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsługę zaawansowanych list pojazdów do grupowania pojazdów
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Pokazuj rozkłady jazdy w tickach, a nie w dniach: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czasu, czas podróży pokaż w tyknięciach gry zamiast w dniach
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Domyślny typ torowiska: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pierwszy dostępny
@@ -1735,7 +1740,9 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksymalna ilo�
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Pociągi niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Włączona opcja nie pozwala na budowanie pociągów graczom komputerowym
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Samochody niedostępne dla komputera: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Włączona opcja nie pozwala na budowanie dróg graczom komputerowym
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Samoloty niedostępne dla komputera: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Włączona opcja nie pozwala na budowanie lotnisk graczom komputerowym
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Statki niedostępne dla komputera: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Włączona opcja nie pozwala na budowanie statków graczom komputerowym
 
