@@ -1410,6 +1410,8 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (f
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Inkomstprocent per etapp i matarsystem: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentandel av inkomsten som ges till de mellanliggande etapperna i matarsystem. Ger mer kontroll över inkomsterna
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Vid dragning med verktyget, placera en signal per: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ställ in med vilket avstånd signaler ska byggas utmed ett spår, fram till nästa hinder (signal, korsning), om signalverktyget dras
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} rut{P 0 a or}
@@ -3517,7 +3519,7 @@ STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sluta de
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Åk Till
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
-STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_CONDITIONAL                                           :Villkorat order-hopp
 STR_ORDER_SHARE                                                 :Dela order
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Håll in Ctrl för att välja 'full last någon frakttyp' vid stationer, 'åk non-stop via' vid riktmärken, och 'service' vid tågdepåer. Använd knappen 'Dela order' eller Ctrl+klicka på fordon för att dela order från annat fordon. En depåorder stänger av automatisk service av fordonet
 

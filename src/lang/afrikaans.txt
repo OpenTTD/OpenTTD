@@ -100,7 +100,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} passasi
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} steenkool
 STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} van lewende hawe
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} eenhe{P id de} lewende hawe
 STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" te} goedere
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout

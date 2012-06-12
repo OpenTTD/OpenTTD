@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}대출:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}종합:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}작년에 수익을 낸 차량의 수를 나타냅니다. 자동차, 열차, 선박, 항공기를 포함합니다.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}총 역사의 수를 나타냅니다. 한개의 역으로 묶여있다고 해도 모든 역의 부분(열차역, 버스정류장, 항구, 공항)은 개별적으로 셉니다.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}최근에 서비스된 역사의 수를 나타냅니다. 기차 역, 버스 정류장, 공항 등은 같은 역으로 묶여있어도 따로 집계됩니다.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}가장 낮은 수입을 가진 차량의 이익입니다. (2년 이상된 열차에 한함)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최소 이익을 달성한 열차가 번 돈의 양입니다.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}지난 12분기동안 최대 이익을 달성한 열차가 번 돈의 양입니다.
@@ -853,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}독점 수송!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{0:TOWN} 지역 당국이 {1:STRING}과 1년 간의 수송 독점권 계약을 체결하였습니다!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
@@ -1103,6 +1105,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행�
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :아니오
 STR_CONFIG_SETTING_ON                                           :예

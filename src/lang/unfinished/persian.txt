@@ -851,6 +851,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}یارانه خدمات به {STRING}هدیه داده شد!{}{}{STRING} خدمات ترابری از {STRING} به {STRING} تا یک سال آینده چهار برابر پرداخت خواهد شد!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}ترافیک شدید در {TOWN}!{}{}هزینه روکش کردن آسفالت توسط {STRING} پرداخت گردیده و باعث 6 ماه بدبختی و دردسر برای رانندگان شده است!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}حمل و نقل انحصاری!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}مقامات محلی {TOWN} قرارداد حمل و نقل انحصاری را با {STRING} به مدت یکسال امضاء کردند!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}نمای اضافه {COMMA}
@@ -893,6 +895,8 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :لیره ترک
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :کرونای اسلواکی (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :رئال برزیل (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :کرونی استونی (EEK)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :وان کره جنوبی (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :رند آفریقای جنوبی (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :دلخواه...
 ############ end of currency region
 
@@ -1097,6 +1101,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}این �
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}تنظیمات پیشرفته
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(بدون شرح)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}مقدار پیش فرض: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :خاموش
 STR_CONFIG_SETTING_ON                                           :روشن
@@ -1116,6 +1122,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :راست
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :اجازه ساخت در دامنه ها و سواحل: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره (شیب خودکار): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :اجازه محوطه سازی در زیر ساختمان ، ریلها، و غیره بدون نیاز به تخریب
 STR_CONFIG_SETTING_CATCHMENT                                    :واقع بینانه تر شدن اندازه حوضه آبریز: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :اجازه برای داشتن قابلیت بیشتر ازبین بردن راه ها،پلها و تونل های شهر: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :مقدار دود/جرقه های خودرو : {STRING}
@@ -1142,6 +1149,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :جاده صف�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :جابجا‌شدن نمایش هنگام نزدیک شدن نشانگر موس به لبه ها: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :قابلیت رشوه دادن به مقامات محلی: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :قابلیت انحصاری کردن حقوق حمل و نقل: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :اگز یک شرکت حقوق انحصاری حمل و نقل یک شهر را بخرد، ایستگاه های دیگر بازیکنان(از جمله مسافربری و باربری) دیگر هیچگونه باری را طی یکسال قبول نمی کنند
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :اجازه ساخت و ساز ساختمان: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :قابلیت بازسازی خیابان‌های شهر: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :قابلیت فرستادن پول به بقیه شرکت‌ها: {STRING}
@@ -1174,6 +1182,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :صخامت خط
 STR_CONFIG_SETTING_LAND_GENERATOR                               :طراح زمین: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :اصلی
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :پیدایش زمین
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :تمام پالایشگاه ها در لبه های تقشه ساخته می شوند که ساحل جزیره است
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :ارتفاع خط برف: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :پستی و بلندی های شدید (فقط در حالت «پیدایش زمین») : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :بسیار هموار
@@ -1189,6 +1198,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :پادساعت�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ساعت‌گرد
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :سطح ارتفاعی که نقشه‌ی سناریو می‌تواند داشته باشد: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :فعال کردن محوطه سازی با قطعه‌ها در مرزهای نقشه: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :در صورت غیر فعال شدن، تمامی لبه های نقشه دریا خواهد بود
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}یک یا چند قطعه در لبه شمالی که خالی نیست
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}یک یا چند قطعه در لبه شمالی که آب نیست
 
@@ -2684,6 +2694,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}قبول
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}نشان دادن لیست کالاهای قابل دریافت
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}قبول می کند: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
@@ -2709,6 +2720,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}همه �
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}همه کشتی هایی هایی که در ایستگاه هایشان دارای زمانبندی می باشند را نشان می دهد.
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :نام گذاری محوطه ایستگاه/بارگیری
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

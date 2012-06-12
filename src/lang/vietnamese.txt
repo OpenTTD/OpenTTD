@@ -852,6 +852,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Trợ cấp dịch vụ được trao cho {STRING}!{}{}Dịch vụ {STRING} từ {STRING} đến {STRING} sẽ thu lợi gấp tư đến năm sau!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Giao thông hỗn loạn tại {TOWN}!{}{}Chương trình sửa đường đầu tư bởi {STRING} mang 6 tháng khốn đốn cho người chạy mô tô!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Độc quyền vận tải!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Chính quyền địa phương {TOWN} ký hợp đồng với {STRING} cho phép độc quyền vận tải trong vòng 1 năm!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Cửa sổ {COMMA}
@@ -1155,6 +1157,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Xe ôtô xếp 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Cuộn cửa sổ chính khi con trỏ gần mép: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua quyền vân tải độc quyền tại địa phương, thì các trạm của đối thủ sẽ không nhận được hàng hóa và hành khách trong vòng 1 năm
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Cho phép đầu tư hạ tầng giao thông địa phương : {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Cho phép chuyển tiền cho các công ty khác: {STRING}
@@ -1190,6 +1193,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm c�
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tạo nền đất: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Nhà máy hóa dầu chỉ có thể xây gần rìa bản đồ, tương ứng là ven biển với những bản đồ dạng đảo
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất (cho TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
@@ -1205,6 +1209,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ngược chiề
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Xuôi chiều đồng hồ
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Độ cao của một màn chơi đồng bằng là: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Có thể tôn hạ nền đất ở mép bản đồ: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Nếu tắt, rìa bản đồ sẽ luôn là biển
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Một hoặc nhiều ô đất ở mép bản đồ phía bắc không được trống
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một hoặc nhiều ô đất ở mép bản không phải là biển
 

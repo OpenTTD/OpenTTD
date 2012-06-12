@@ -1831,9 +1831,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normalna
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :duża
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :bardzo duża
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporcje miejscowości, które będą miastami: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Liczba miasteczek, które staną się miastami, czyli miasteczka od początku większe i rozwijające się szybciej
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :żadne
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Początkowy mnożnik rozmiarów metropolii: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Średni rozmiar dużych miast w porównaniu do normalnych miast na początku gry
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg: {STRING}
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Usuń ślepe zaułki podczas sponsorowanych remontów dróg
 

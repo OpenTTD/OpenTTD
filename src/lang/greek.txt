@@ -2767,7 +2767,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Άλλα
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Το τρενο'{VEHICLE}' που ανήκει στην εταιρία '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το παιχνίδι μπορεί να αποσυγχρονιστεί ή να κρασάρει.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Το NewGRF '{0:STRING}' δίνει λάθος πληροφορίες
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/ανακατασκευής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αυτόματη ανανέωση/αντικατάσταση να αποτύχει στην σωστή ανακατασκευή
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Η πληροφορία εμπορεύματος/μετατροπής για το '{1:ENGINE}' διαφέρει από την λίστα αγοράς μετά την κατασκευή. Αυτό μπορεί να προκαλέσει την αποτυχία της αυτόματης ανανέωσης/αντικατάστασης για σωστή μετατροπή
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' προκάλεσε ένα ατέρμονο βρόχο στην ανακοίνωση παραγωγής.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Η κλήση {1:HEX} επέστρεψε άγνωστο/άκυρο αποτέλεσμα {2:HEX}
 
@@ -3361,7 +3361,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Αυτό
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Αναγκάστε το τρένο να προχωρήσει χώρις να περιμένει το σηματοδότη να το επιτρέψει
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Ανακατασκευή του τρένου για μεταφορά διαφορετικού φορτίου
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Μετατροπή του τρένου για μεταφορά διαφορετικού φορτίου
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Μετατροπή του αεροσκάφους για να γίνει μεταφορά ενός διαφορετικού τύπου εμπορεύματος
@@ -3482,12 +3482,12 @@ STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Επιλ
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το πλοίο θα μεταφέρει
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Επιλέξτε το τύπο εμπορεύματος που θα μεταφέρει το αεροσκάφος
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Ανακατασκευή τρένου
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Μετατροπή τρένου
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Μετατροπή οχήματος δρόμου
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Μετατροπή πλοίου
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Μετατροπή αεροσκάφους
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Ανακατασκευή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Μετατροπή του τρένου ώστε να μεταφέρει το επιλεγμένο φορτίο
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Μετατροπή οχήματος δρόμου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Μετατροπή του πλοίου για να γίνει μεταφορά του επιλεγμένου τύπου εμπορεύματος
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Μετατροπή του αεροσκάφους για να μεταφέρει τον επιλεγμένο τύπο εμπορεύματος
@@ -3529,6 +3529,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Αλλά
 STR_ORDER_REFIT                                                 :{BLACK}Μετατροπή
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Επιλέξτε τι τύπο εμπορεύματος για τη μετατροπή σε αυτή την εντολή. Ctrl+κλικ για να αφαιρέσετε την εντολή μετατροπής
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Αυτόματη-ανακατασκευή
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Επιλογή του τύπου φορτίου για αυτόματη μετατροπή σε αυτήν την εντολή. Πατήστε Ctrl+κλικ για να αφαιρέσετε την οδηγία μετατροπής. Η αυτόματη μετατροπή θα γίνεται μόνο όταν το επιτρέπει το όχημα
 STR_ORDER_DROP_REFIT_AUTO                                       :Προκαθορισμένο φορτίο
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Διαθέσιμο φορτίο
 
@@ -4111,7 +4112,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Όχημ
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Πλοίο καθ'οδόν
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Αεροσκάφος καθ'οδόν
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν μπορεί να ανακατασκευαστεί το τρένο...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Δεν μπορεί να μετατραπεί το τρένο...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Δεν μπορεί να υποστεί μετατροπή το όχημα δρόμου...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Δεν μπορεί να υποστεί μετατροπή το πλοίο...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Δεν μπορεί να μετατραπεί το αεροσκάφος...
