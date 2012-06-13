@@ -14,6 +14,7 @@
 #include "../error.h"
 #include "../settings_gui.h"
 #include "../querystring_gui.h"
+#include "../stringfilter_type.h"
 #include "../company_base.h"
 #include "../company_gui.h"
 #include "../strings_func.h"
@@ -973,6 +974,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
+	static StringFilter break_string_filter;               ///< Log filter for break.
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
 	Scrollbar *vscroll;                                    ///< Cache of the vertical scrollbar.
@@ -1286,6 +1288,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		if (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state) != HEBR_NOT_FOCUSED) {
 			/* Save the current string to static member so it can be restored next time the window is opened */
 			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
+			break_string_filter.SetFilterTerm(this->break_string);
 		}
 		return state;
 	}
@@ -1313,25 +1316,26 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
-		if (ai_debug_company != OWNER_DEITY && !gui_scope && data == ai_debug_company && this->break_check_enabled && !StrEmpty(this->edit_str_buf)) {
+		if (ai_debug_company != OWNER_DEITY && !gui_scope && data == ai_debug_company && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
 			ScriptLog::LogData *log = this->GetLogPointer();
 
-			if (log != NULL && case_sensitive_break_check?
-					strstr(log->lines[log->pos], this->edit_str_buf) != 0 :
-					strcasestr(log->lines[log->pos], this->edit_str_buf) != 0) {
+			if (log != NULL) {
+				this->break_string_filter.ResetState();
+				this->break_string_filter.AddLine(log->lines[log->pos]);
+				if (this->break_string_filter.GetState()) {
+					AI::Suspend(ai_debug_company);
+					if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
+						DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+					}
 
-				AI::Suspend(ai_debug_company);
-				if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
-					DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+					/* Make it possible to click on the continue button */
+					this->EnableWidget(WID_AID_CONTINUE_BTN);
+					this->SetWidgetDirty(WID_AID_CONTINUE_BTN);
+
+					/* Highlight row that matched */
+					this->highlight_row = log->pos;
 				}
-
-				/* Make it possible to click on the continue button */
-				this->EnableWidget(WID_AID_CONTINUE_BTN);
-				this->SetWidgetDirty(WID_AID_CONTINUE_BTN);
-
-				/* Highlight row that matched */
-				this->highlight_row = log->pos;
 			}
 		}
 	}
@@ -1348,6 +1352,7 @@ CompanyID AIDebugWindow::ai_debug_company = INVALID_COMPANY;
 char AIDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
 bool AIDebugWindow::break_check_enabled = true;
 bool AIDebugWindow::case_sensitive_break_check = false;
+StringFilter AIDebugWindow::break_string_filter(&AIDebugWindow::case_sensitive_break_check);
 
 /** Make a number of rows with buttons for each company for the AI debug window. */
 NWidgetBase *MakeCompanyButtonRowsAIDebug(int *biggest_index)
