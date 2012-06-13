@@ -510,6 +510,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ek
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Kontuuride kuvamine
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Vaheta toon määrdunud plokil
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -909,6 +910,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {STRING} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transpordimonopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Kohalik linnavõim{TOWN} allkirjastab lepingu {STRING} transpordi ainuõiguseks üheks aastaks!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vaateaken {COMMA}
@@ -1178,49 +1180,98 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Nõlvadele ja kallastele ehitamine: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Kui lubatud, saab teid ja jaamu ehitada enamikle nõlvadele. Kui keelatud, siis on need lubatud ainult nõlvadel, mis vastavad rööbastee suunale ja mis eeldavad seega vundamenti.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
 STR_CONFIG_SETTING_CATCHMENT                                    :Reaalsemad veekogud: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Erineva suurusega püüdmisala erinevat tüüpi jaamadele ja lennujaamadele.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Linnateede, -sildade, -tunnelite jne lammutamine: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Tee linnale kuuluva infrastruktuuri ja majade eemaldamine lihtsamaks
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Suurim rongipikkus: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määra suurim rongipikkus
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} plaat{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Vedurisuitsu ja -sädemete hulk: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Määra kui palju suitsu või sädemeid eraldub sõidukist
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Rongide kiirendusmudel: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vali rongi kiirenduse füüsikaline mudel. "Originaal" karistab kõiki sõidukeid võrdselt. "Realistlik" karistab nõlvadel ja kurvides olenevalt erinevatest seadetest, nagu pikkusest ja lükke/tõuke jõust!
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Maanteesõidukite kiirendusmudel: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Vali sõidukite kiirenduse füüsikaline mudel. "Originaal" karistab kõiki sõidukeid võrdselt. "Realistlik" karistab nõlvadel ja kurvides olenevalt erinevatest seadetest, nagu pikkusest ja lükke/tõuke jõust!
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nõlva kalle rongidele: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kaldus ruudu kalle rongidele. Mida kõrgem on valik seda raskem on mäest ronida
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kaldus ruudu kalle sõidukitele: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kaldus ruudu kalle sõidukitele. Mida kõrgem on valik seda raskem on mäest ronida
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Rongidel ja laevadel keelatakse 90 kraadised pöörded: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 kraadine pööre ilmub kui horisontaalne rööbastee järgneb kohe vertikaalse rööbastee tükkile, seega peab rong tegema 90 kraadise pöörde tavalise 45 kraadise pöörde asemel. See lisandub ka laevade pöörderaadiusele!
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Mitte kõrvuti asetsevate jaamade liitmine: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Lubab lisada uusi jaamade osi ilma puudutamata olemasolevaid osi. Vajalik Ctrl+Vajutus, kui asetada uut osa
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Täiustatud laadimisalgoritm: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Kui lubatud, laaditakse ootel sõidukid jaamas järjestikkul. Järgmise sõiduki laadimine käivitub ainult siis, kui on piisavalt lasti, et täielikult täita esimese sõiduk
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Veovahendite järkjärguline laadimine: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Järk-järgult laetud sõidukitel kasutatakse sõiduki kindlalt laadimis aega, selle asemel et pealelaadida kõik korraga kindlaks määratud ajaga, mis oleneb ainult laetud lasti summast
 STR_CONFIG_SETTING_INFLATION                                    :Inflatsioon: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Võimaldada inflatsioon majanduses, kui kulud suurenevad veidi kiiremini kui maksed
 STR_CONFIG_SETTING_SELECTGOODS                                  :Kauba toimetamine jaama ainult nõudluse korral: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Jaama tuleb ainult kaup mis on nõutud vastava sõiduki poolt. See välistab halvad reitingud teistele kaupadele mida sellest jaamast ei transpordita
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimaalne silla pikkus: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud sildadele
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimaalne tunneli pikkus: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud tunnelitele
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Põhitööstuse rajamismeetod: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Peamise tootmisharu rahastamise meetod. 'ei ole' tähendab ei ole võimalik rahastada, 'geoloogiliste' tähendab rahastamine on võimalik, kuid ehitis kaardil tekib suvalise kohapeal või võib üldse ebaõnnestuda. 'nagu muid tööstusharud,' tähendab toorest tööstusharu saab ehitada nagu töötleva tööstuse harusid
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :pole
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :nagu muud tööstused
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :eeluuringutega
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Tasane ala ümber tehaste: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Summa kui palju tasast maad on ümber tehase. See tagab et ruumi jääb saadavale ehitiste jaoks
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Samalaadsed tööstused ühes linnas: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Tavaliselt, linn ei taha rohkem kui ühte tööstustharu igast tüübist. See seade lubab rohkem kui ühe tööstusharu samasse linna
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Näita foore: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Märgi kuhu poole rada asetada foore
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasakule
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Vastavalt sõidusuunale
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Paremale
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Aastalõpu rahavoogude aruanne: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Kui lubatud, siis ilmub finantside aken iga aasta lõpus lubades lihtsalt jälgida oma ettevõtte staatust
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uued sihtpunktid on vaikimisi 'peatusteta': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt, peatub sõiduk igas peatuses mida ta läbib. Lubades seda seadet sõidab sõiduk peatumata läbi jaamade viimasesse sihtkohta. NB! See seade määrab ainult vaikimisi määratud väärtusi uutele käskutele. Individuaalseid käske saab lisada nii või naa
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vaikimisi platvormiosa peatumiseks uute rongikäskudega: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Koht jaamas kus rong peatub vaikimisi. 'Lõpu lähedal' tähendab sisenemis koha lähistel. 'Keskel' tähendab keset jaama platvormi. 'Kaugel lõpus' tähendab kaugel sisenemis kohast. NB! See seade paneb paika vaikimisi kus peatuda, seda saab käskudes individuaalselt muuta!
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :lõpu lähedal
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate kerimine osutiga ekraaniserva puudutamisel: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kui lubatud, alustab põhiekraani kerimist, kui hiir on ekraani serva lähedal
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Luba anda altkäemaksu kohalikule linnavõimule. Kui altkäemaks on inspektori poolt avastatud, siis ei saa ettevõte 6 kuu jooksul linnas mitte midagi ette võtta
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab linnalt ainuõiguse kaupu transportida, siis vastase jaamadesse (reisijad ja last) ei ilmu kaupu terve aasta
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Luba ehitiste rahastamine: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Luba ettevõtetel rahastada uute hoonete ehitamist linnas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Kohaliku omavalitsuse teede rekonstrueerimise rahastamine: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Luba ettevõtetel rahastada teede parandust, et saboteerida maantee põhist transporti selles linnas
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Raha saatmine teistele ettevõtetele: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Luba võrgumängus kanda raha erinevate ettevõtete vahel
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Raskete rongide simuleerimiseks kasutatav raskustegur: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Seadke kaupa vedavate rongide mõju. Suurem väärtus muudab kauba vedamise rongide jaoks raskemaks, eriti mägedes
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Kiiruse tegur lennukitele: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Määra suhteline kiirus lennukitele võrreldes teiste sõiduki tüüpidega, et vähendada lennukite sissetulekut
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lennuõnnetuste hulk: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Võimalus kui tihti lennuõnnetus võib juhtuda
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :puuduvad
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :vähendatud
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :tavaline
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused linnateedel: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Luba ehitada läbi sõidu peatused linna omandis teedele
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Läbisõidupeatused konkurentide teedel: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Luba ehitada läbi sõidu peatused teiste ettevõtete teedele
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Jaamade kõrvutiehitamine: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Luba erinevaid jaamu omavahel kokku puutuda
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Mitme NewGRF sõidukikomplekti lubamine: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Ühilduvuse suvand vanadele NewGRF'le. Ärge keelake seda, juhul kui Sa tead täpselt mida sa teed!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuuri korrashoid: {STRING}
 
@@ -1241,6 +1292,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafiku joonte
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maaala Generaator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maa mägisus (TerraGenesis ainult) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga sile
@@ -1256,6 +1308,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapid
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kõrguse level kui kõrgele lapik kaart läheb: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Maastikukujundus kaardiäärsetel ruutudel: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Kui välja lülitatud, siis kaardi piirid on alati maailmameri
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
 
