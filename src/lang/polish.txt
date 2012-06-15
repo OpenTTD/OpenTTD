@@ -1791,7 +1791,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kiedy włączon
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kiedy włączone, pozwala na kupowanie i sprzedawanie udziałów w firmie. Udziały będą dostępne tylko dla firm z odpowiednim stażem
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Udział w zyskach w przypadku częściowego transportu (przeładunku): {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Rodzaj torów wybierany przy rozpoczęciu lub załadowaniu gry. 'Pierwszy dostępny' wybiera najstarszy rodzaj torów, 'najnowszy' wybiera najnowszy rodzaj torów, a 'najczęściej używany' wybiera ten, który jest używany najczęściej
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Udział procentowy dochodu pośrednika otrzymywany za transfer towaru. Umożliwia kontrolę nad całościowym dochodem za dowóz towarów w łańcuchu dowozowym
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Podczas przeciągania ustaw semafor co: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Ustaw dystans, na jakim semafory będą budowane przy torach aż do następnej przeszkody (semafor, zwrotnica), przy przeciąganiu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} p{P ole ola ól}

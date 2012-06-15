@@ -818,7 +818,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로가 너무 적습니다
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로가 하나밖에 지정되어 있지 않습니다
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
@@ -1777,7 +1777,7 @@ STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}호스�
 # Start new multiplayer server
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}새로운 멀티플레이 게임을 시작
 
-STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}게임 제목:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}게임 이름:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티플레이 게임 선택 메뉴에서 보여질 게임 제목입니다.
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}암호 설정
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}자유로운 접근을 막고 싶을 때 암호를 설정할 수 있습니다
@@ -3093,10 +3093,10 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택�
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}선택한 그룹 이름 바꾸기
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하여 전체 자동 교체로부터 이 그룹을 보호합니다.
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :공유된 차량 추가
+STR_GROUP_ADD_SHARED_VEHICLE                                    :경로를 공유하는 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 설정
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :새 열차
