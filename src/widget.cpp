@@ -1153,7 +1153,17 @@ void NWidgetHorizontal::AssignSizePosition(SizingType sizing, uint x, uint y, ui
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
-	uint additional_length = given_width - this->smallest_x; // Additional width given to us.
+	/* Compute additional width given to us. */
+	uint additional_length = given_width;
+	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
+		/* For EQUALSIZE containers this does not sum to smallest_x during initialisation */
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			additional_length -= child_wid->smallest_x + child_wid->padding_right + child_wid->padding_left;
+		}
+	} else {
+		additional_length -= this->smallest_x;
+	}
+
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	/* In principle, the additional horizontal space is distributed evenly over the available resizable childs. Due to step sizes, this may not always be feasible.
@@ -1305,7 +1315,17 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 {
 	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
 
-	int additional_length = given_height - this->smallest_y; // Additional height given to us.
+	/* Compute additional height given to us. */
+	uint additional_length = given_height;
+	if (sizing == ST_SMALLEST && (this->flags & NC_EQUALSIZE)) {
+		/* For EQUALSIZE containers this does not sum to smallest_y during initialisation */
+		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
+			additional_length -= child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom;
+		}
+	} else {
+		additional_length -= this->smallest_y;
+	}
+
 	this->StoreSizePosition(sizing, x, y, given_width, given_height);
 
 	/* Like the horizontal container, the vertical container also distributes additional height evenly, starting with the childs with the biggest resize steps.
