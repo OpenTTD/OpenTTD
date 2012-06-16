@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Vay:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Tổng cộng:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Số lượng phương tiện đã làm ra lợi nhuận năm trước ; bao gồm xe cộ, tàu hoả, tàu thủy và máy bay
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới hoạt động tách ra. Mỗi phần của một trạm (nhà ga, trạm xe buýt, sân bay) đều được tính, dù chúng hợp lại thành một trạm
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới được phục vụ.Nhà ga, trạm xe buýt và sân bay ... đều được tính riêng, dù chúng có chung một trạm
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Lợi nhuận của những phương tiện có thu nhập thấp nhất (chỉ tính các phương tiện hơn 2 năm tuổi)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong quý với lợi nhuận thấp nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong tháng với lợi nhuận cao nhất trong 12 quý gần đây
@@ -920,7 +920,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên th�
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thị trấn
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Gốc)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Nguyên bản)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Pháp
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Đức
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ Sung)
@@ -1123,14 +1123,20 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Giữa
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Phải
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Cho phép xây dựng trên dốc và bờ biển: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Nếu bật, đường đi và trạm có thể được xây trên hầu hết các loại dốc. Nếu tắt, chúng chỉ có thể được xây trên đoạn dốc có cùng chiều với đường đi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Cho phép thay đổi nền đất dưới công trình và đường mà không cần phá hủy chúng
 STR_CONFIG_SETTING_CATCHMENT                                    :Mô phỏng thực tế diện tích khu vực đón hàng: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Diện tích khu vực đón hàng khác nhau cho từng loại trạm và sân bay
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Dễ dàng hơn trong việc loại bỏ các công trình thuộc sở hữu thành phố
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Chiều dài tối đa của đoàn tàu: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Đặt lại chiều dài tối đa của đoàn tàu
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ô
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Lượng khói thải của phương tiện: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Điều chỉnh lượng khói hoặc tia điện phát ra từ các phương tiện
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Kiểu tăng tốc của tàu hỏa: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Chọn cơ chế tăng tốc vật lý cho tàu hỏa. Kiểu "nguyên bản" thì sự giảm tốc tại dốc là như nhau cho tất cả các phương tiện. Kiều "thực tê" thì sự giảm tốc tại dốc và khúc cua dựa vào nhiều yếu tố, đơn cử là chiều dài tàu và tải trọng
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kiểu tăng tốc cho ôtô: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Cho phép gộp ga, bến, cảng không sát nhau: {STRING}
@@ -1202,7 +1208,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Gồ Ghề
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Rất Gồ Ghề
 STR_CONFIG_SETTING_TREE_PLACER                                  :Thuật toán đặt cây: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Không
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Gốc
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Nguyên bản
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Tối Ưu Hóa
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Xoay bản đồ địa hình: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ngược chiều đồng hồ
@@ -1366,7 +1372,9 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Nên dùng)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Cơ chế tìm đường cho tàu hoả: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Cơ chế tìm đường cho tàu hỏa
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Cơ chế tìm đường cho xe ôtô: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Cơ chế tìm đường cho xe ôtô
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Cơ chế tìm đường cho tàu thủy: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Cơ chế tìm đường dùng cho tàu thủy
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Tự động đổi chiều chạy tại đèn hiệu: {STRING}
