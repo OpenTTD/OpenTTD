@@ -779,7 +779,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Hochwasser!{}Mindestens {COMMA} Mensch{P "" en} vermisst oder tot nach schwerer Flut!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Transportfirma in der Krise!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} Falls die Firmenleitung sich nicht bessert, wird der Verkauf oder die Insolvenz eingeleitet!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} ist von Übernahme oder Insolvenz bedroht, wenn sich das Betriebsergebnis nicht umgehend verbessert.
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Transportfirmen fusionieren!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} ist verkauft worden an {STRING} für {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Insolvenz!
