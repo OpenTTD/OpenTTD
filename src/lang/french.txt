@@ -854,7 +854,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopole des transports{NBSP}!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Les autorités locales de {TOWN} signe avec {STRING} un contrat d'exclusivité des transports valable un an{NBSP}!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Les autorités locales de {TOWN} signent avec {STRING} un contrat d'exclusivité des transports valable un an{NBSP}!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
@@ -1258,7 +1258,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR                               :Générateur de
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les raffineries{NBSP}: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les raffineries pétrolières ne sont construites que près du bord de la carte, et sur la côte pour les cartes d'îles.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Les raffineries pétrolières ne sont construites que près du bord de la carte, ou sur la côte pour les cartes d'îles.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain (TerraGenesis seulement){NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
