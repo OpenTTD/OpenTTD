@@ -1138,6 +1138,11 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Điều chỉnh
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Kiểu tăng tốc của tàu hỏa: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Chọn cơ chế tăng tốc vật lý cho tàu hỏa. Kiểu "nguyên bản" thì sự giảm tốc tại dốc là như nhau cho tất cả các phương tiện. Kiều "thực tê" thì sự giảm tốc tại dốc và khúc cua dựa vào nhiều yếu tố, đơn cử là chiều dài tàu và tải trọng
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kiểu tăng tốc cho ôtô: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Sự giảm tốc tại dốc của tàu hỏa: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Sự giảm tốc cho tàu hỏa tại một ô dốc. Giá trị càng cao thì càng khó leo dốc
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sự giảm tốc tại dốc của ôtô: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Sự giảm tốc cho ôtô tại một ô dốc. Giá trị càng cao thì càng khó leo dốc
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Cho phép gộp ga, bến, cảng không sát nhau: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Sử dụng thuật toán bốc/dỡ hàng cải tiến: {STRING}
