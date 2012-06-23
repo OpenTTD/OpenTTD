@@ -986,13 +986,10 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			!HasTrack(tile, track)) {
 		return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 	}
-	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-	if (ret.Failed()) return ret;
-
 	/* Protect against invalid signal copying */
 	if (p2 != 0 && (p2 & SignalOnTrack(track)) == 0) return CMD_ERROR;
 
-	ret = CheckTileOwnership(tile);
+	CommandCost ret = CheckTileOwnership(tile);
 	if (ret.Failed()) return ret;
 
 	{
@@ -1400,8 +1397,6 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, DoCommandFlag flags, uint32 p1
 	if (!HasSignalOnTrack(tile, track)) {
 		return_cmd_error(STR_ERROR_THERE_ARE_NO_SIGNALS);
 	}
-	CommandCost ret = EnsureNoTrainOnTrack(tile, track);
-	if (ret.Failed()) return ret;
 
 	/* Only water can remove signals from anyone */
 	if (_current_company != OWNER_WATER) {
