@@ -630,6 +630,45 @@ static void UpdateStationSignCoord(BaseStation *st)
 }
 
 /**
+ * Common part of building various station parts and possibly attaching them to an existing one.
+ * @param [in,out] st Station to attach to
+ * @param flags Command flags
+ * @param reuse Whether to try to reuse a deleted station (gray sign) if possible
+ * @param area Area occupied by the new part
+ * @param name_class Station naming class to use to generate the new station's name
+ * @return Command error that occured, if any
+ */
+static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reuse, TileArea area, StationNaming name_class)
+{
+	/* Find a deleted station close to us */
+	if (*st == NULL && reuse) *st = GetClosestDeletedStation(area.tile);
+
+	if (*st != NULL) {
+		if ((*st)->owner != _current_company) {
+			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
+		}
+
+		CommandCost ret = (*st)->rect.BeforeAddRect(area.tile, area.w, area.h, StationRect::ADD_TEST);
+		if (ret.Failed()) return ret;
+	} else {
+		/* allocate and initialize new station */
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
+
+		if (flags & DC_EXEC) {
+			*st = new Station(area.tile);
+
+			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
+			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
+
+			if (Company::IsValidID(_current_company)) {
+				SetBit((*st)->town->have_ratings, _current_company);
+			}
+		}
+	}
+	return CommandCost();
+}
+
+/**
  * This is called right after a station was deleted.
  * It checks if the whole station is free of substations, and if so, the station will be
  * deleted after a little while.
@@ -1133,7 +1172,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	StationID est = INVALID_STATION;
 	SmallVector<Train *, 4> affected_vehicles;
 	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandRailStation(TileArea(tile_org, w_org, h_org), flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
+	CommandCost cost = CheckFlatLandRailStation(new_location, flags, axis, &est, rt, affected_vehicles, spec_class, spec_index, plat_len, numtracks);
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
@@ -1143,35 +1182,12 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	ret = FindJoiningStation(est, station_to_join, adjacent, new_location, &st);
 	if (ret.Failed()) return ret;
 
-	/* See if there is a deleted station close to us. */
-	if (st == NULL && reuse) st = GetClosestDeletedStation(tile_org);
+	ret = BuildStationPart(&st, flags, reuse, new_location, STATIONNAMING_RAIL);
+	if (ret.Failed()) return ret;
 
-	if (st != NULL) {
-		/* Reuse an existing station. */
-		if (st->owner != _current_company) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
-
-		if (st->train_station.tile != INVALID_TILE) {
-			CommandCost ret = CanExpandRailStation(st, new_location, axis);
-			if (ret.Failed()) return ret;
-		}
-
-		/* XXX can't we pack this in the "else" part of the if above? */
-		CommandCost ret = st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST);
+	if (st != NULL && st->train_station.tile != INVALID_TILE) {
+		CommandCost ret = CanExpandRailStation(st, new_location, axis);
 		if (ret.Failed()) return ret;
-	} else {
-		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
-
-		if (flags & DC_EXEC) {
-			st = new Station(tile_org);
-
-			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
-			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
-
-			if (Company::IsValidID(_current_company)) {
-				SetBit(st->town->have_ratings, _current_company);
-			}
-		}
 	}
 
 	/* Check if we can allocate a custom stationspec to this station */
@@ -1739,34 +1755,11 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	ret = FindJoiningRoadStop(est, station_to_join, HasBit(p2, 5), roadstop_area, &st);
 	if (ret.Failed()) return ret;
 
-	/* Find a deleted station close to us */
-	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
-
 	/* Check if this number of road stops can be allocated. */
 	if (!RoadStop::CanAllocateItem(roadstop_area.w * roadstop_area.h)) return_cmd_error(type ? STR_ERROR_TOO_MANY_TRUCK_STOPS : STR_ERROR_TOO_MANY_BUS_STOPS);
 
-	if (st != NULL) {
-		if (st->owner != _current_company) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
-		}
-
-		CommandCost ret = st->rect.BeforeAddRect(roadstop_area.tile, roadstop_area.w, roadstop_area.h, StationRect::ADD_TEST);
-		if (ret.Failed()) return ret;
-	} else {
-		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
-
-		if (flags & DC_EXEC) {
-			st = new Station(tile);
-
-			st->town = ClosestTownFromTile(tile, UINT_MAX);
-			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
-
-			if (Company::IsValidID(_current_company)) {
-				SetBit(st->town->have_ratings, _current_company);
-			}
-		}
-	}
+	ret = BuildStationPart(&st, flags, reuse, roadstop_area, STATIONNAMING_ROAD);
+	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
 		/* Check every tile in the area. */
@@ -2146,16 +2139,16 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
 
 	Direction rotation = as->rotation[layout];
-	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	int w = as->size_x;
 	int h = as->size_y;
 	if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
+	TileArea airport_area = TileArea(tile, w, h);
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
 		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
 	}
 
-	CommandCost cost = CheckFlatLand(TileArea(tile, w, h), flags);
+	CommandCost cost = CheckFlatLand(airport_area, flags);
 	if (cost.Failed()) return cost;
 
 	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
@@ -2174,6 +2167,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			authority_refuse_town = nearest;
 		}
 	} else {
+		Town *t = ClosestTownFromTile(tile, UINT_MAX);
 		uint num = 0;
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
@@ -2191,40 +2185,17 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	Station *st = NULL;
-	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), TileArea(tile, w, h), &st);
+	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p2, 0), airport_area, &st);
 	if (ret.Failed()) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
-	/* Find a deleted station close to us */
-	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
+	ret = BuildStationPart(&st, flags, reuse, airport_area, (GetAirport(airport_type)->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_AIRPORT : STATIONNAMING_HELIPORT);
+	if (ret.Failed()) return ret;
 
-	if (st != NULL) {
-		if (st->owner != _current_company) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
-		}
-
-		CommandCost ret = st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST);
-		if (ret.Failed()) return ret;
-
-		if (st->airport.tile != INVALID_TILE) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
-		}
-	} else {
-		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
-
-		if (flags & DC_EXEC) {
-			st = new Station(tile);
-
-			st->town = t;
-			st->string_id = GenerateStationName(st, tile, !(GetAirport(airport_type)->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
-
-			if (Company::IsValidID(_current_company)) {
-				SetBit(st->town->have_ratings, _current_company);
-			}
-		}
+	if (st != NULL && st->airport.tile != INVALID_TILE) {
+		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 	}
 
 	for (AirportTileTableIterator iter(as->table[layout], tile); iter != INVALID_TILE; ++iter) {
@@ -2469,53 +2440,27 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
+	TileArea dock_area = TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
+			_dock_w_chk[direction], _dock_h_chk[direction]);
+
 	/* middle */
 	Station *st = NULL;
-	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0),
-			TileArea(tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-					_dock_w_chk[direction], _dock_h_chk[direction]), &st);
+	ret = FindJoiningStation(INVALID_STATION, station_to_join, HasBit(p1, 0), dock_area, &st);
 	if (ret.Failed()) return ret;
 
 	/* Distant join */
 	if (st == NULL && distant_join) st = Station::GetIfValid(station_to_join);
 
-	/* Find a deleted station close to us */
-	if (st == NULL && reuse) st = GetClosestDeletedStation(tile);
+	ret = BuildStationPart(&st, flags, reuse, dock_area, STATIONNAMING_DOCK);
+	if (ret.Failed()) return ret;
 
-	if (st != NULL) {
-		if (st->owner != _current_company) {
-			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
-		}
-
-		CommandCost ret = st->rect.BeforeAddRect(
-				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST);
-		if (ret.Failed()) return ret;
-
-		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
-	} else {
-		/* allocate and initialize new station */
-		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
-
-		if (flags & DC_EXEC) {
-			st = new Station(tile);
-
-			st->town = ClosestTownFromTile(tile, UINT_MAX);
-			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
-
-			if (Company::IsValidID(_current_company)) {
-				SetBit(st->town->have_ratings, _current_company);
-			}
-		}
-	}
+	if (st != NULL && st->dock_tile != INVALID_TILE) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK);
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = tile;
 		st->AddFacility(FACIL_DOCK, tile);
 
-		st->rect.BeforeAddRect(
-				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
+		st->rect.BeforeAddRect(dock_area.tile, dock_area.w, dock_area.h, StationRect::ADD_TRY);
 
 		/* If the water part of the dock is on a canal, update infrastructure counts.
 		 * This is needed as we've unconditionally cleared that tile before. */
