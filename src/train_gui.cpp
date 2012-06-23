@@ -61,8 +61,10 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection)
 	bool rtl = _current_text_dir == TD_RTL;
 
 	assert(selection != INVALID_VEHICLE);
-	Point offset;
-	int dragged_width = Train::Get(selection)->GetDisplayImageWidth(&offset) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	int dragged_width = WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	for (Train *t = Train::Get(selection); t != NULL; t = t->HasArticulatedPart() ? t->GetNextArticulatedPart() : NULL) {
+		dragged_width += t->GetDisplayImageWidth(NULL);
+	}
 
 	int drag_hlight_left = rtl ? max(px -dragged_width, 0) : px;
 	int drag_hlight_right = rtl ? px : min(px + dragged_width, max_width);
