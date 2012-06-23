@@ -659,8 +659,8 @@ static void _DoCommandReturnSetOrderFlags(class ScriptInstance *instance)
 /* static */ uint ScriptOrder::GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile)
 {
 	if (vehicle_type == ScriptVehicle::VT_AIR) {
-		if (ScriptTile::IsStationTile(origin_tile) && ::Station::Get(origin_tile)->airport.tile != INVALID_TILE) origin_tile = ::Station::Get(origin_tile)->airport.tile;
-		if (ScriptTile::IsStationTile(dest_tile) && ::Station::Get(dest_tile)->airport.tile != INVALID_TILE) dest_tile = ::Station::Get(dest_tile)->airport.tile;
+		if (ScriptTile::IsStationTile(origin_tile) && ::Station::GetByTile(origin_tile)->airport.tile != INVALID_TILE) origin_tile = ::Station::GetByTile(origin_tile)->airport.tile;
+		if (ScriptTile::IsStationTile(dest_tile) && ::Station::GetByTile(dest_tile)->airport.tile != INVALID_TILE) dest_tile = ::Station::GetByTile(dest_tile)->airport.tile;
 
 		return ScriptMap::DistanceSquare(origin_tile, dest_tile);
 	} else {
