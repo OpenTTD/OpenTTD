@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprést
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado. Isto inckui automóveis, trens, embarcações e aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estações recentemente atendidas. Cada parte de uma estação (ex. estação de trem, ponto de ônibus, aeroporto) é contado, mesmo se eles estão conectados como uma estação
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de estações recentemente atendidas. Estações de trem, pontos de ônibus, aeroportos, etc. são contados individualmente, mesmo que pertençam à mesma estação.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o menor rendimento (apenas veículos com mais de dois anos são considerados)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o menor lucro dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o maior lucro dos últimos 12 trimestres
@@ -846,13 +846,15 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} agora não irá atrair um subsídio
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não é mais subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{} Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de um ano da autoridade local!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsídio de serviço oferecido:{}{} Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de um ano da prefeitura local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará 50% extra durante o próximo ano ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o dobro de tarifas durante o próximo ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o triplo de tarifas durante o próximo ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o quadruplo de tarifas durante o próximo ano!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Tráfego caótico em {TOWN}!{}{} Programa de reconstrução rodoviária financiado por {STRING} provoca 6 meses de miséria aos condutores!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopólio dos transportes!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Prefeitura de {TOWN} assina contrato de exclusividade com {STRING} por um ano!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Janela {COMMA}
@@ -1035,7 +1037,7 @@ STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Quantid
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Economia: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Inverter trem: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Atitude das autoridades sobre reestruturamentos: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Atitude das prefeituras sobre reestruturamentos: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nenhum
@@ -1102,6 +1104,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Essa aç
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Configurações avançadas
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(não há explicação disponível)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor padrão: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
 STR_CONFIG_SETTING_ON                                           :Lig.
@@ -1120,33 +1124,74 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Centro
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Direita
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Permitir a construção em declives e encostas: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ativado, trilhos e estações podem ser construídas na maioria das inclinações. Se desativado, são permitidas apenas em inclinações correspondentes à direção da via, sem precisar de fundações
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir dimensionamento mais realista das áreas de abrangência: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Exibe áreas de abrangência de para diferentes tipos de estações e aeroportos
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remoção de mais rodovias, pontes, etc. das cidades: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover infraestrutura e edifícios de cidades
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Define o tamanho máximo dos trens
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}quadrado{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumaça/fagulhas das locomotivas: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Define a quantidade de fumaça ou fagulhas emitidas pelos veículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Sistema de aceleração de trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Seleciona o modelo físico para aceleração de trem. O modelo "original" penaliza inclinações igualmente para todos os veículos. O modelo "realista" penaliza inclinações e curvas dependendo de várias propriedades do trem, como tamanho e tração
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Modelo de aceleração para automóveis: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Seleciona o modelo físico para aceleração de automóveis. O modelo "original" penaliza inclinações igualmente para todos os veículos. O modelo "realista" penaliza inclinações e curvas dependendo de várias propriedades do trem, como tração
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Inclinação dos aclives/declives para trens: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Inclinação dos quadrados inclinados para trens. Valores mais altos tornam mais difícil para um trem subir uma colina
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Inclinação dos aclives/declives para automóveis: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Inclinação dos quadrados inclinados para automóveis. Valores mais altos tornam mais difícil para um automóvel subir uma colina
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir trens e embarcações girar em angulos de 90° graus: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Curvas em 90 graus ocorrem quando um trilho horizontal é seguido imediatamente por um trilho vertical, fazendo com que o trem vire 90 graus, ao invés dos 45 graus padrão para as outras combinações de trilhos. Isso também afeta as embarcações
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitie unir estações não adjacentes: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adicionar partes a uma estação sem que aquelas encostem diretamente nestas. Pressione Ctrl+clique para fazer isso
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Se ativado, veículos múltiplos aguardando em uma estação são carregados um por vez. Carregamento do próximo veículo só começa quando houver carga o bastante para encher o primeiro veículo
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carregar veículos gradualmente: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradualmente carrega veículos usando durações de carregamento específicos de cada veículo, ao invés de carregar tudo de uma vez durante um intervalo fixo dependendo apenas da carga carregada
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativa inflação na economia, de forma que custos sobem um pouco mais do que recebidos
 STR_CONFIG_SETTING_SELECTGOODS                                  :Somente entregar carga a uma estação quando houver procura: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Apenas entrega carga a uma estação com um veículo que a requisitou. Isso impede más avaliações para cargas que não são coletadas numa estação
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de pontes: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tamanho máximo de túneis: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Tamanho máximo para construção de túneis
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método manual de constução de indústria primária: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Método de fundação de indústrias primárias. 'nenhum' significa que não é possível fundar novas indústrias. 'prospecção' permite a fundação, mas o local de construção é aleatório, e pode falhar, 'como as outras' permite que você escolha onde construir
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :em prospecção
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana ao redor de indústrias: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Área plana ao redor de uma indústria. Isso garante uma área disponível para se construir estações, vias, etc
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por cidade: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, cidades não querem mais de uma indústria de cada tipo. Se ativado, essa config. permite várias indústrias do mesmo tipo por cidade
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar sinais: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Seleciona em que lado dos trilhos pôr os semáforos
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Esquerda
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Do lado que se dirige
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Direita
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Exibir janela das finanças no fim do ano: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, a janela de finanças é aberta ao final de cada ano para permitir uma inspeção fácil das economias da companhia
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por padrão: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo para em todas as estações por qual passa. Ativando essa configuração fará com que o veículo pule todas as estações até chegar no seu destino final. Note que isso se aplica para novas ordens padrão. É possível alterar esse comportamento individualmente para cada ordem
 STR_CONFIG_SETTING_STOP_LOCATION                                :Novas ordens de trem param no {STRING} da plataforma
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Define onde um trem irá parar na plataforma por padrão. 'Fim' significa parar próximo da saída da estação. 'Meio' significa no meio da plataforma e 'Início' significa próximo à entrada da estação. Isso apenas afeta as novas ordens padrão. Esse comportamento pode ser definido individualmente para cada ordem
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :início
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fim
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de automóveis (com efeitos de quantidade): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Faz com que automóveis aguardem na frente de paradas de rua até que sejam liberados
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o cursor está na borda do mapa: {STRING}
-STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da autoridade local: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Se ativado, a tela irá rolar se o mouse encostar na borda da tela
+STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da prefeitura: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companhias subornar prefeituras. Se o suborno for notado por um inspetor, a companhia não poderá subornar a prefeitura por seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permtir compra de direitos exclusivos de transporte: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma companhia compra direitos exclusivos de transporte de uma cidade, as estações dos oponentes não receberão carga por 1 ano
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir o patrocínio de edifícios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir financiamento de reconstrução de estrada local: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir o envio de dinheiro a outras empresas: {STRING}
@@ -1179,6 +1224,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das li
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de Terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude da linha de neve: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno (TerraGenesis apenas) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito Regular
@@ -1194,6 +1240,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-Ho
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :A altitude de um mapa regular é de: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Permitir paisagismo nos quadrados na bordas do mapa: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se desativado, as bordas do mapa serão sempre oceanos
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
@@ -2202,7 +2249,7 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Dono da estrada: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Dono da linha de bonde: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dono da linha ferroviária: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Prefeitura: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nenhum
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído: {LTBLUE}{DATE_LONG}
@@ -2599,8 +2646,8 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Cidade c
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A cidade {RED}não{BLACK} está crescendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da cidade. Ctrl+Clique abre uma nova janela no local da cidade
-STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
-STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Exibir informações sobre a autoridade local
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Prefeitura
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Exibir informações sobre a prefeitura
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renomear cidade
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandir
@@ -2611,7 +2658,7 @@ STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Remove e
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Renomear Cidade
 
 # Town local authority window
-STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}autoridade local de {TOWN}
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Prefeitura de {TOWN}
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Avaliações das empresas
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Ações disponíveis:
@@ -2626,7 +2673,7 @@ STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Financiar a rec
 STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Construir estátua do proprietário da empresa
 STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos edifícios
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
-STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a prefeitura
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Preço: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar uma campanha publicitária média, para atrair mais passageiros e carga para seus serviços de transporte.{}Preço: {CURRENCY_LONG}
@@ -2634,8 +2681,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financiar a reconstrução da malha rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}Preço: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Construir uma estátua em honra para sua empresa.{} Preço: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A autoridade da cidade permitirá que os passageiros e cargas usem somente estações de sua empresa.{} Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a autoridade local para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A prefeitura da cidade permitirá que os passageiros e cargas usem somente estações de sua empresa.{} Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a prefeitura para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{G=m}{WHITE}Objetivos
@@ -2700,6 +2747,7 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aceita
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Exibir lista de carga aceita
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Aceita: {WHITE}{CARGO_LIST}
+
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Avaliações
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Exibir avaliações da estação
@@ -3100,7 +3148,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Troca en
 STR_REPLACE_ENGINES                                             :Motores
 STR_REPLACE_WAGONS                                              :Vagões
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Escolha o tipo de carga para o qual deseja efetuar a substituição dos motores
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Escolha o tipo de ferrovia para o qual deseja efetuar a substituição dos motores
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está selecionado à esquerda, se algum
 STR_REPLACE_RAIL_VEHICLES                                       :Trens
 STR_REPLACE_ELRAIL_VEHICLES                                     :Locomotivas Elétricas
@@ -3646,8 +3694,8 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não permitido enquanto pausado
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A autoridade local de {TOWN} não autoriza
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}A prefeitura de {TOWN} não autoriza
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}a prefeitura de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}A prefeitura de {TOWN} reclama do barulho que será gerado pelo aeroporto
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Sua tentativa de suborno foi descoberta pela polícia regional
 

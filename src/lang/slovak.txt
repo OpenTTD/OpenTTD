@@ -517,6 +517,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Veľká snímka
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O hre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite zarovnávač
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Prepnúť okrajové boxy
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Prepnutie zafarbenia blokov hliny
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -919,6 +920,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Dotácia udelená spoločnosti {STRING}!{}{}Preprava {STRING.g} z {STRING} do {STRING} bude budúci rok 4x výnosnejšia!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {STRING} prinesie 6 mesiacov utrpenia pre motoristov!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Prepravné monopoly!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Miestna samospráva mesta {TOWN} podpísala exkluzívnu zmluvu na prepravu so spoločnosťou {STRING} na 1 rok !!!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohľad {COMMA}
@@ -961,6 +964,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turecke Liry (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovenske Koruny (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazílske Realy (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estónsky (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litovsky (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Juzná Korea - WON (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južná Afrika - RAND (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Vlastná ...
 ############ end of currency region
 
@@ -1165,6 +1171,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažn
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je potrebné vysvetlenie)
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
@@ -1183,12 +1191,21 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :v strede
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :vpravo
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Umožniť výstavbu na svahoch a na pobreží: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ak je zapnuté, trate a stanice môžu byť stavané na svahoch. Ak je vypnuté, stavanie je možné len na svahoch ktoré su rovnakého smeru ako trate čiže nepotrebujú podporu
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úpravy terénu pod budovami, koľajami, a pod.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Umožňuje úpravy terénu pod budovami a traťami bez potreby ich odstránenia
 STR_CONFIG_SETTING_CATCHMENT                                    :Povoliť realistickejšiu veľkosť oblasti pokrytia: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Má úchytné plochy rôznych veľkostí pre rôzne typy staníc a letísk
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Odstrániť viaceré mestské cesty, mosty a tunely: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Uľahči odstraňovanie mestom vlastnených budov a infraštruktúry
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximálna dĺžka vlakov: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Nastav maximálnu dĺžku vlakov
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} dielec{P 0 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Množstvo dymu/iskier z lokomotív: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nastav koľko dymu alebo iskier budú vozidlá produkovať
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerácie vlaku: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrýchlenia pre cestné vozidlá: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Zakázať vlakom a lodiam otáčanie o 90°: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Povoliť spájať stanice nepriamo hraničiace: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Použiť vylepšený algoritmus nakladania: {STRING}
@@ -1210,6 +1227,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cestné vozidl�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posúvať pohľad, keď je kurzor myši na okraji okna: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Umožniť podplácanie miestnej správy: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Povoliť zakúpenie exkluzívnych dopravných práv: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ak si spoločnosť zakúpi exkluzívne prepravné práva od mesta, stanice protihráčov (pasažieri a náklad) nebudú prijímať žiaden náklad po celý rok !
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Povoliť financovanie stavieb: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Povoliť financovanie rekonštrukcie miestných ciest: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Umožniť posielanie peňazí ostatným spoločnostiam: {STRING}
@@ -1242,6 +1260,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Hrúbka čiar v
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generátor uzemia: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Úroveň čiary snehu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu (len pre TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
@@ -1257,6 +1276,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hod
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :V smere hodinových ručičiek
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Výšková uroveň pre rovinatý scenár: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Povoliť formovanie povrchu kociek na okrajoch mapy: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Ak je vypnuté, okraje mapy budú vždy oceán
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna alebo viacero kociek na severnom okraji nie sú prázdne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna alebo viacero kociek na jedom z okrajov nie je voda
 
