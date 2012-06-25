@@ -1309,6 +1309,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Επιτρέπ�
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Επιτρέπεται διαφορετικοί σταθμοί να ακουμπούν μεταξύ τους
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Επιλογή συμβατότητας για παλιά NewGRF. Μην το απενεργοποιείτε, εκτός αν ξέρετε ακριβώς τι κάνετε!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν είναι δυνατή η αλλαγή αυτής της ρύθμισης όταν υπάρχουν οχήματα.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Συντήρηση υποδομής: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Όταν είναι ενεργοποιημένο, οι υποδομές προκαλούν έξοδα συντήρησης. Το κόστος μεγαλώνει δυσανάλογα με το μέγεθος του δικτύου, επηρεάζοντας έτσι τις μεγάλες εταιρείες περισσότερο από τις μικρότερες
@@ -1317,6 +1318,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Τα αεροδ
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ενεργοποιώντας αυτή τη ρύθμιση κάθε τύπος αεροδρομίου παραμένει διαθέσιμο για πάντα μετά την παρουσίασή του
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Ειδοποίηση όταν ένα όχημα χαθεί: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ενεργοποίηση μηνυμάτων σχετικά με οχήματα που δεν καταφέρνουν να βρουν διαδρομή για τον προορισμό τους
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Επανεξέταση οδηγιών τρένων: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Όταν είναι ενεργοποιημένο, οι εντολές των οχημάτων ελέγχονται περιοδικά και μερικά προφανή προβλήματα αναφέρονται με ένα μήνυμα νέων όταν διαπιστώνονται
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
@@ -1338,6 +1340,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Διάρκει�
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Διάρκεια εμφάνισης μηνύματων σφάλματος σε κόκκινο παράθυρο. Σημειώστε ότι μερικά (κρίσιμα) μηνύματα σφάλματος δεν κλείνουν αυτόματα μετά από αυτόν τον χρόνο, αλλά πρέπει να κλείσουν χειροκίνητα
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Εμφάνιση αναδυόμενων μηνυμάτων: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Καθυστέρηση πριν την εμφάνιση των επεξηγήσεων όταν o κέρσορας βρίσκεται πάνω από κάποιο στοιχείο της διεπαφής. Εναλλακτικά οι επεξηγήσεις μπορούν να συνδεθούν με το δεξί κουμπί του ποντικιού
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Ο κέρσορας βρίσκεται από πάνω για {COMMA} δευτερόλεπτ{P 0 ο α}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Δεξί κουμπί
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Εμφάνιση του πληθυσμού των πόλεων στην ετικέτα τους πάνω στο χάρτη
@@ -1475,6 +1479,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#εντολών
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Μέγιστος αριθμός βημάτων υπολογισμού που κάνει κάποιο σενάριο σε κάθε σειρά
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Τα διαστήματα μεταξύ συντήρησης είναι σε ποσοστά: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Επιλέξτε εάν η επισκευή των οχημάτων εξαρτάται από τον χρόνο που πέρασε από την τελευταία επισκευτή ή από την μείωση της αξιοπιστίας κατά ένα συγκεκριμένο ποσοστό της μέγιστης αξιοπιστίας
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Προκαθορισμένο διάστημα μεταξύ επισκευών για τα τραίνα: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Ορίστε το προκαθορισμένο διάστημα μεταξύ συντηρήσεων για τα νέα οχήματα τραίνων, όταν δεν δίνεται άλλο διάστημα για το όχημα
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} ημέρ{P 0 α ες}/%
@@ -1541,6 +1546,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :επιτρέπ�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :επιτρεπέται, προσαρμοσμένο σχέδιο πόλης
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομείες
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(Καταστρέφει το ξυλουργείο)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :μόνο σε δάση
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :παντού
@@ -1549,13 +1555,17 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :Θέση κύρ
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Οριζόντια τοποθέτηση της κύριας γραμμής εργαλείων στο επάνω μέρος της οθόνης
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Θέση της μπάρας κατάστασης: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Οριζόντια τοποθέτηση της γραμμής κατάστασης στο κάτω μέρος της οθόνης
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Ακτίνα έλξης παράθυρου: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Απόσταση μεταξύ παραθύρων πριν το παράθυρο που μετακινείται ευθυγραμμιστεί αυτόματα με τα γειτονικά
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} εικονοστοιχεί{P 0 ο α}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :απενεργοποιημένο
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Το μέγιστο επίπεδο μεγέθυνσης στα παράθυρα προβολών. Σημειώστε ότι ενεργοποιώντας υψηλότερα επίπεδα μεγενθύσεων αυξάνονται οι απαιτήσεις σε μνήμη
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Μέγιστο επίπεδο σμίκρυνσης: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Το μέγιστο επίπεδο σμίκρυνσης στα παράθυρα προβολών. Υψηλότερα επίπεδα σημικρύνσεων είναι πιθανό να προκαλέσουν υστερήσεις
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Κανονικό
@@ -1602,8 +1612,11 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Συνίσταται)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Μέθοδος δρομολόγησης για τρένα: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Αναζήτηση διαδρομής που χρησιμοποιείται στα τραίνα
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Μέθοδος δρομολόγησης για οχήματα δρόμου: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Αναζήτηση διαδρομής που χρησιμοποιείται στα οδικά οχήματα
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Μέθοδος δρομολόγησης για πλοία: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Αναζήτηση διαδρομής που χρησιμοποιείται στα πλοία
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Αυτομάτη αναστροφή σε σηματοδότες: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Επιτρέπεται στα τραίνα να αντιστραφούν σε σήμα, εάν περιμένουν εκεί για πολύ ώρα
 
