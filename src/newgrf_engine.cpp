@@ -23,6 +23,7 @@
 #include "station_base.h"
 #include "company_base.h"
 #include "newgrf_railtype.h"
+#include "ship.h"
 
 struct WagonOverride {
 	EngineID *train_id;
@@ -830,6 +831,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 				case 0x67: return rv->overtaking_ctr;
 				case 0x68: return rv->crashed_ctr;
 				case 0x69: return GB(rv->crashed_ctr, 8, 8);
+			}
+			break;
+		}
+
+		case VEH_SHIP: {
+			Ship *s = Ship::From(v);
+			switch (variable - 0x80) {
+				case 0x62: return s->state;
 			}
 			break;
 		}
