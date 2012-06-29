@@ -4367,11 +4367,13 @@ static void ReserveChangeInfo(ByteReader *buf)
 /* Action 0x01 */
 static void NewSpriteSet(ByteReader *buf)
 {
-	/* <01> <feature> <num-sets> <num-ent>
+	/* Basic format:    <01> <feature> <num-sets> <num-ent>
+	 * Extended format: <01> <feature> 00 <first-set> <num-sets> <num-ent>
 	 *
 	 * B feature       feature to define sprites for
 	 *                 0, 1, 2, 3: veh-type, 4: train stations
-	 * B num-sets      number of sprite sets
+	 * E first-set     first sprite set to define
+	 * B num-sets      number of sprite sets (extended byte in extended format)
 	 * E num-ent       how many entries per sprite set
 	 *                 For vehicles, this is the number of different
 	 *                         vehicle directions in each sprite set
@@ -4379,11 +4381,11 @@ static void NewSpriteSet(ByteReader *buf)
 	 *                         In that case, use num-dirs=4.
 	 */
 
-	uint8 feature   = buf->ReadByte();
-	uint8 num_sets  = buf->ReadByte();
+	uint8  feature   = buf->ReadByte();
+	uint16 num_sets  = buf->ReadByte();
 	uint16 first_set = 0;
 
-	if (num_sets == 0 && buf->HasData(2)) {
+	if (num_sets == 0 && buf->HasData(3)) {
 		/* Extended Action1 format.
 		 * Some GRFs define zero sets of zero sprites, though there is actually no use in that. Ignore them. */
 		first_set = buf->ReadExtendedByte();
@@ -4407,7 +4409,15 @@ static void NewSpriteSet(ByteReader *buf)
 static void SkipAct1(ByteReader *buf)
 {
 	buf->ReadByte();
-	uint8 num_sets  = buf->ReadByte();
+	uint16 num_sets  = buf->ReadByte();
+	uint16 first_set = 0;
+
+	if (num_sets == 0 && buf->HasData(3)) {
+		/* Extended Action1 format.
+		 * Some GRFs define zero sets of zero sprites, though there is actually no use in that. Ignore them. */
+		first_set = buf->ReadExtendedByte();
+		num_sets = buf->ReadExtendedByte();
+	}
 	uint16 num_ents = buf->ReadExtendedByte();
 
 	_cur.skip_sprites = num_sets * num_ents;
