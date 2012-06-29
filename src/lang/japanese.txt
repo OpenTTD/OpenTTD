@@ -287,6 +287,7 @@ STR_SORT_BY_INTRO_DATE                                          :導入日
 STR_SORT_BY_RUNNING_COST                                        :運転費用
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :動力／運転費用
 STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
+STR_SORT_BY_RANGE                                               :距離
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします。
@@ -348,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加機能の設定
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AIとかスクリプトの設定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :町の名前を表示する
@@ -381,6 +383,7 @@ STR_TOWN_MENU_FOUND_TOWN                                        :町の新設に
 
 ############ range for subsidies menu starts
 STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
+STR_SUBSIDIES_MENU_GOAL                                         :現在の目的
 ############ range ends here
 
 ############ range for graph menu starts
@@ -1090,6 +1093,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}この�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張設定･パッチ設定
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :切
 STR_CONFIG_SETTING_ON                                           :入
@@ -2571,6 +2575,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}受入�
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}受入れる貨物のリストを表示します
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}受入れ貨物：{WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}評価
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}駅の評価を表示します
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}近所の交通の評価：
@@ -2596,6 +2601,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}この�
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}この埠頭が指令リストに入っているすべての船舶を表示します
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :駅／荷役所の名称の変更
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

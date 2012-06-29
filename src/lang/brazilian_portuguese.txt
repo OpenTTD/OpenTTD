@@ -1193,37 +1193,71 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companh
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permtir compra de direitos exclusivos de transporte: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma companhia compra direitos exclusivos de transporte de uma cidade, as estações dos oponentes não receberão carga por 1 ano
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir o patrocínio de edifícios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite companhias darem dinheiro a cidades para a fundação de novas casas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir financiamento de reconstrução de estrada local: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Permite companhias darem dinheiro a cidades para reconstruição das ruas para sabotar a rede viária da cidade
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir o envio de dinheiro a outras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permite a transferência de dinheiro entre companhias no modo multijogador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para trens simulando trens pesados: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Define o impacto da carga nos trens. Um valor alto torna cargas mais difícies de serem transportadas, especialmente em inclinações
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de vel. de aviões: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Define a vel. relativa de aviões comparado aos outros veículos, para reduzir os lucros de transporte por aeronaves
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de avião: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Define a chance de um acidente aéreo
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações drive-through em ruas locais: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Permite a construção de paradas nas laterais das ruas em vias locais
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações drive-through nas ruas de outros competidores: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Permite a construção de paradas nas laterais das ruas em vias de outras companhias
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permite estações diferentes adjacentes
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Ativar múltiplos conjuntos NewGRF de locomotivas: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Opção de compatibilidade para NewGRFs velhos. Não desative isso a não ser que você saiba o que está fazendo!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de Infraestrutura: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado, infraestrutura gera custos de manutenção. O custo aumenta proporcionalmente à malha de transportes, afetando companhias maiores mais do que as menores
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativando essa config. mantém todos os tipos de aeroportos disponíveis à construção após sua introdução
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Alerta na perda do veículo: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ativa mensagens sobre veículos que não podem calcular uma rota para o destino ordenado
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens dos veículos: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando ativado, as ordens dos veículos são periodicamente checadas, e problemas óbvios são relatados com mensagens quando detectados
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os veículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veículo se torna negativo: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Quando ativado, uma mensagem é enviada quando um veículo não gerou lucro durante um ano-calendário
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Quanto ativado, mantém todos os modelos de veículos disponíveis após serem introduzidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Quando ativado, os veículos próximos do fim da vida útil são automaticamente substituídos quando as condições forem atingidas
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar a {STRING} da vida útil
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa para quando um veículo deva ser renovado
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} m{P 0 ês eses} antes
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} m{P 0 ês eses} depois
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mínima de dinheiro mínimo que deva ter em caixa antes de considerar renovação automática
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Define quanto tempo as janelas de erro (vermelhas) ficam abertas antes de fecharem automaticamente. Erros críticos devem ser fechados manualmente.
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Exibir dicas: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Intervalo antes das dicas de ferramentas aparecerem ao deixar o mouse sobre algum botão na interface
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Aguardar {COMMA} segundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Exibir população da cidade na janela da cidade: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Exibe a população das cidades nos nomes, no mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grossura da linha nos gráficos. Linhas finas são mais precisas, enquanto linhas grossas são mais fáceis de distinguir.
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Gerador de Terreno: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Dist. máx. da borda para Refinarias de Óleo: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Refinarias são construídas apenas nas bordas, ou no litoral, para ilhas
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude da linha de neve: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidade do terreno (TerraGenesis apenas) : {STRING}
@@ -1244,81 +1278,134 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Se desativado, 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Tam. máx. de estações compostas {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Área máxima que uma só estação pode ocupar com partes de estação. Valores altos tornam o jogo lento
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Manutenção automática de helicópteros em heliportos: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Faz manutenção de helicópteros a cada pouso, mesmo que não haja depósito no local de pouso
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Ligar ferramentas de terreno às ferramentas de transportes: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Quando abrir uma barra de feramentas para um tipo de transporte, abre também a barra de terraformação
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Cor da terra usado no minimapa: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Cor do terreno no minimapa
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Rolar a tela no sentido oposto ao movimento do mouse: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Comportamento quando rolar o mapa com o botão direito. Quando desativado, o mouse move a câmera. Ativado, o mouse move o mapa.
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Suavizar rolamento da janela: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controla como a janela principal rola para uma posição específica quando clicado no minimapa ou após localizar um objeto. Ativado torna o rolamento suave. Desativado torna o rolamento instanâneo
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Exibe distâncias quando usar ferramentas de construção: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Exibe distâncias e diferenças de altitude quando clicando e arrastando enquanto constrói
 STR_CONFIG_SETTING_LIVERIES                                     :Exibir cores das empresas: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Contra o uso de cores de veículos dependentes do tipo (ao invés de cores específicas à companhia)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Minha empresa
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Todas as empresas
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Falar em time com <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Alterna a ativação da conversa entre público e só-companhia entre <ENTER> e <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Função do scrollwheel: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ativa rolamento com rodas de mouse de duas dimensões
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Velocidade do scrollwheel do mapa: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Controla a sensitividade do rolamento com a roda do mouser
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Emulação do clique direito: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Seleciona o método para emular cliques com o botão direito
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique de comando
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique de controle
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Mover a tela com o botão esquerdo: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Ativa rolamento do mapa por clique e arraste com o botão esquerdo. Especialmente útil ao usar um touchscreen para o rolamento
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Use o formato de data {STRING} para criar arquivos de salvamento
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formato da data nos nomes dos jogos salvos
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :comprido (31 Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Paleta padrão a ser usada para NewGRF's sem paletas específicas: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Paleta padrão a ser usada por NewGRFs que não a especificarem
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Paleta do DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Paleta do Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Pausar automaticamente ao inicar um novo jogo: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ativado, pausa o jogo ao iniciar um jogo novo, permitindo um estudo do mapa antes do jogo
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Permite enquanto pausado: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Selecione quais ações podem ser feitas com o jogo pausado
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nenhuma ação
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas ações não-construentes
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas ações além de modificações de terreno
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas ações
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar a lista avançada de veículos: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ativa o uso da listagem avançada para agrupamento de veículos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Seleciona se os indicadores de carga são exibidos sobre os veículos (des)carregando
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Exibir plano de horário em tiques ao invés de dias: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Mostra tempos de viagem, nos planos de horário, em tiques, ao invés de dias
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar chegada e saída nos planos de horário: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Exibe tempos de chegada e partida anticipados nos planos de horário
 STR_CONFIG_SETTING_QUICKGOTO                                    :Criar rapidamente ordens para um veículo: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Pre-seleciona a opção 'ir para' ao abrir a janelas de ordens
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipo padrão de ferrovia (ao criar ou carregar um jogo): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipo de trilho a ser selecionado ao carregar/iniciar o jogo. 'primeiro disponível' seleciona o mais antigo. 'último disponível' seleciona o mais novo. 'mais usado' seleciona o que é atualmente mais usado
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Exibir vias reservadas: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Escurece as vias reservadas para ajudar a lidar com problemas de trens não funcionando em blocos baseados em destinos
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Manter a barra de construção aberta: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantém as ferramentas de construção para pontes, túneis, etc abertas após o uso
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar despesas na janela de financas da companhia: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define o layout para os gastos da companhia
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Desativar construção de infraestrutura quando nenhum veículo adequado estiver disponível: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Quando ativado, a infraestrutura só é disponível se há veículos disponíveis para usá-la, prevenindo gasto de tempo e dinheiro com infraestrutura inútil.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Máximo de trens por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Máx. de trens que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Máximo de automóveis por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Máx de automóveis que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Máximo de aeronaves por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Máx de aeronaves que uma companhia pode ter
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Máximo de embarcações por companhia: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Máx de embarcações que uma companhia pode ter
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Desativar trens para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Ativado, impede que jogadores controlados pelo computador construam trens
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Desativar automóveis para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Ativado, impede que jogadores controlados pelo computador construam automóvieis
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Desativar aeronaves para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Ativado, impede que jogadores controlados pelo computador construam aeronaves
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desativar embarcação para o computador: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Ativado, impede que jogadores controlados pelo computador construam embarcações
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA em multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite jogadores controlados pelo computador participar em jogos multijogador
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de scripts serem suspensos: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos de computação que um script pode tomar em um turno
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Define se a manutenção de veículos é ativada pelo tempo passado desde a última manutenção ou quando a confiabilidade alcança um certo valor
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo padrão de manutenção para trens: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Define o intervalo padrão de manutenção para novos trens, se não for definido individualmente
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :desativado
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo padrão de manutenção para automóveis: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Define o intervalo padrão de manutenção para novos automóveis, se não for definido individualmente
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Intervalo padrão de manutenção para aeronaves: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Define o intervalo padrão de manutenção para novos aeronaves, se não for definido individualmente
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Intervalo padrão de manutenção para embarcações: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Define o intervalo padrão de manutenção para novas embarcações, se não for definido individualmente
 STR_CONFIG_SETTING_NOSERVICE                                    :Desativar manutenção quando as quebras estão desativadas: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quando ativado, veículos não sofrem manutenção se não puderem quebrar
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Ativar limite de velocidade dos vagões: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Ativado, usa limites de velocidade para vagões para decidir a velocidade máx. de um trem
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desativar ferrovias elétricas: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Ativado, remove a necessidade de trilhos elétricos para locomotivas elétricas
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias coloridas aparecem em: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano a partir do qual os jornais são impressos em cor. Antes disso, serão em preto-e-branco
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ativar economia regular (alterações menores): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
