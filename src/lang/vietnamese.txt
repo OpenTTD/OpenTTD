@@ -1136,8 +1136,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ô
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Lượng khói thải của phương tiện: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Điều chỉnh lượng khói hoặc tia điện phát ra từ các phương tiện
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Kiểu tăng tốc của tàu hỏa: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Chọn cơ chế tăng tốc vật lý cho tàu hỏa. Kiểu "nguyên bản" thì sự giảm tốc tại dốc là như nhau cho tất cả các phương tiện. Kiều "thực tê" thì sự giảm tốc tại dốc và khúc cua dựa vào nhiều yếu tố, đơn cử là chiều dài tàu và tải trọng
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Chọn cơ chế tăng tốc vật lý cho tàu hỏa. Kiểu "nguyên bản" thì sự giảm tốc tại dốc là như nhau cho tất cả các phương tiện. Kiều "thực tê" thì sự giảm tốc tại dốc và khúc cua dựa vào nhiều yếu tố, đơn cử là chiều dài tàu và tải trọng hàng hóa
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kiểu tăng tốc cho ôtô: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Chọn cơ chế tăng tốc vật lý cho ôtô. Kiểu "nguyên bản" thì sự giảm tốc tại dốc là như nhau cho tất cả các phương tiện. Kiều "thực tê" thì sự giảm tốc tại dốc và khúc cua dựa vào nhiều yếu tố của động cơ, đơn cử là tải trọng hàng hóa
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Sự giảm tốc tại dốc của tàu hỏa: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Sự giảm tốc cho tàu hỏa tại một ô dốc. Giá trị càng cao thì càng khó leo dốc
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
