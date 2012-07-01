@@ -1200,7 +1200,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Odstrániť via
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Uľahči odstraňovanie mestom vlastnených budov a infraštruktúry
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximálna dĺžka vlakov: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Nastav maximálnu dĺžku vlakov
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} dielec{P 0 "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} dielec
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Množstvo dymu/iskier z lokomotív: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nastav koľko dymu alebo iskier budú vozidlá produkovať
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerácie vlaku: {STRING}
