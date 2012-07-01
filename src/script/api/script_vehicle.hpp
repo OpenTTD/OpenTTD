@@ -506,12 +506,12 @@ public:
 	static int GetLength(VehicleID vehicle_id);
 
 	/**
-	 * Get the amount of a specific cargo the given vehicle transports.
+	 * Get the amount of a specific cargo the given vehicle is transporting.
 	 * @param vehicle_id The vehicle to get the load amount of.
-	 * @param cargo The cargo to get the load amount for.
+	 * @param cargo The cargo to get the loaded amount for.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @pre ScriptCargo::IsValidCargo(cargo).
-	 * @return The amount of the given cargo the vehicle currently transports.
+	 * @return The amount of the given cargo the vehicle is currently transporting.
 	 */
 	static int32 GetCargoLoad(VehicleID vehicle_id, CargoID cargo);
 
