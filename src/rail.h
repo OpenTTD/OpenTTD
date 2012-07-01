@@ -20,6 +20,7 @@
 #include "slope_type.h"
 #include "strings_type.h"
 #include "date_type.h"
+#include "signal_type.h"
 
 /** Railtype flags. */
 enum RailTypeFlags {
@@ -47,6 +48,7 @@ enum RailTypeSpriteGroup {
 	RTSG_DEPOT,       ///< Depot images
 	RTSG_FENCES,      ///< Fence images
 	RTSG_TUNNEL_PORTAL, ///< Tunnel portal overlay
+	RTSG_SIGNALS,     ///< Signal images
 	RTSG_END,
 };
 
@@ -136,6 +138,7 @@ struct RailtypeInfo {
 		SpriteID build_depot;        ///< button for building depots
 		SpriteID build_tunnel;       ///< button for building a tunnel
 		SpriteID convert_rail;       ///< button for converting rail
+		SpriteID signals[SIGTYPE_END][2][2]; ///< signal GUI sprites (type, variant, state)
 	} gui_sprites;
 
 	struct {

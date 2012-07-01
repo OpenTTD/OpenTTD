@@ -38,4 +38,14 @@ enum SignalType {
 template <> struct EnumPropsT<SignalType> : MakeEnumPropsT<SignalType, byte, SIGTYPE_NORMAL, SIGTYPE_END, SIGTYPE_END, 3> {};
 
 
+/**
+ * These are states in which a signal can be. Currently these are only two, so
+ * simple boolean logic will do. But do try to compare to this enum instead of
+ * normal boolean evaluation, since that will make future additions easier.
+ */
+enum SignalState {
+	SIGNAL_STATE_RED   = 0, ///< The signal is red
+	SIGNAL_STATE_GREEN = 1, ///< The signal is green
+};
+
 #endif /* SIGNAL_TYPE_H */

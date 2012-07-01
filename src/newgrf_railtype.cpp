@@ -77,7 +77,7 @@ static const SpriteGroup *RailTypeResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
-static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, TileContext context, const GRFFile *grffile)
+static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1 = 0, uint32 param2 = 0)
 {
 	res->GetRandomBits = &RailTypeGetRandomBits;
 	res->GetTriggers   = &RailTypeGetTriggers;
@@ -89,8 +89,8 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, Tile
 	res->u.routes.context = context;
 
 	res->callback        = CBID_NO_CALLBACK;
-	res->callback_param1 = 0;
-	res->callback_param2 = 0;
+	res->callback_param1 = param1;
+	res->callback_param2 = param2;
 	res->ResetState();
 
 	res->grffile         = grffile;
@@ -116,6 +116,32 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	NewRailTypeResolver(&object, tile, context, rti->grffile[rtsg]);
 
 	group = SpriteGroup::Resolve(rti->group[rtsg], &object);
+	if (group == NULL || group->GetNumResults() == 0) return 0;
+
+	return group->GetResult();
+}
+
+/**
+ * Get the sprite to draw for a given signal.
+ * @param rti The rail type data (spec).
+ * @param tile The tile to get the sprite for.
+ * @param type Signal type.
+ * @param var Signal variant.
+ * @param state Signal state.
+ * @param gui Is the sprite being used on the map or in the GUI?
+ * @return The sprite to draw.
+ */
+SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui)
+{
+	if (rti->group[RTSG_SIGNALS] == NULL) return 0;
+
+	ResolverObject object;
+
+	uint32 param1 = gui ? 0x10 : 0x00;
+	uint32 param2 = (type << 16) | (var << 8) | state;
+	NewRailTypeResolver(&object, tile, TCX_NORMAL, rti->grffile[RTSG_SIGNALS], param1, param2);
+
+	const SpriteGroup *group = SpriteGroup::Resolve(rti->group[RTSG_SIGNALS], &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult();

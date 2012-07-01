@@ -346,16 +346,6 @@ static inline void SetSignalVariant(TileIndex t, Track track, SignalVariant v)
 }
 
 /**
- * These are states in which a signal can be. Currently these are only two, so
- * simple boolean logic will do. But do try to compare to this enum instead of
- * normal boolean evaluation, since that will make future additions easier.
- */
-enum SignalState {
-	SIGNAL_STATE_RED   = 0, ///< The signal is red
-	SIGNAL_STATE_GREEN = 1, ///< The signal is green
-};
-
-/**
  * Set the states of the signals (Along/AgainstTrackDir)
  * @param tile  the tile to set the states for
  * @param state the new state

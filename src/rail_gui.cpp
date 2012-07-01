@@ -1445,16 +1445,13 @@ struct BuildSignalWindow : public PickerWindowBase {
 private:
 	/**
 	 * Draw dynamic a signal-sprite in a button in the signal GUI
-	 * Draw the sprite +1px to the right and down if the button is lowered and change the sprite to sprite + 1 (red to green light)
+	 * Draw the sprite +1px to the right and down if the button is lowered
 	 *
 	 * @param widget_index index of this widget in the window
 	 * @param image        the sprite to draw
 	 */
 	void DrawSignalSprite(byte widget_index, SpriteID image) const
 	{
-		/* First get the right image, which is one later for 'green' signals. */
-		image += this->IsWidgetLowered(widget_index);
-
 		/* Next get the actual sprite so we can calculate the right offsets. */
 		const Sprite *sprite = GetSprite(image, ST_NORMAL);
 
@@ -1501,16 +1498,12 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
-			/* We need to do some custom sprite widget drawing for the signals. */
-			const SpriteID _signal_lookup[] = {
-				SPR_IMG_SIGNAL_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_EXIT,
-				SPR_IMG_SIGNAL_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY,
+			/* Extract signal from widget number. */
+			int type = (widget - WID_BS_SEMAPHORE_NORM) % SIGTYPE_END;
+			int var = SIG_SEMAPHORE - (widget - WID_BS_SEMAPHORE_NORM) / SIGTYPE_END; // SignalVariant order is reversed compared to the widgets.
+			SpriteID sprite = GetRailTypeInfo(_cur_railtype)->gui_sprites.signals[type][var][this->IsWidgetLowered(widget)];
 
-				SPR_IMG_SIGNAL_ELECTRIC_NORM,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY, SPR_IMG_SIGNAL_ELECTRIC_EXIT,
-				SPR_IMG_SIGNAL_ELECTRIC_COMBO, SPR_IMG_SIGNAL_ELECTRIC_PBS,   SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY
-			};
-
-			this->DrawSignalSprite(widget, _signal_lookup[widget - WID_BS_SEMAPHORE_NORM]);
+			this->DrawSignalSprite(widget, sprite);
 		}
 	}
 

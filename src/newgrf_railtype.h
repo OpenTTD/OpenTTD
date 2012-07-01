@@ -16,6 +16,7 @@
 #include "newgrf_commons.h"
 
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL);
+SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui = false);
 
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile);
 
