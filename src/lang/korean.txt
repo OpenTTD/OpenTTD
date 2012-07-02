@@ -223,16 +223,16 @@ STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색�
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오 (내림차순/오름차순)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준 선택
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}필터링 기준 선택
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}검색 기준 선택
 STR_BUTTON_SORT_BY                                              :{BLACK}정렬
 STR_BUTTON_LOCATION                                             :{BLACK}위치
 STR_BUTTON_RENAME                                               :{BLACK}이름 바꾸기
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창 닫기
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}창을 닫습니다
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
-STR_TOOLTIP_SHADE                                               :{BLACK}윈도우 숨기기 - 타이틀바만 표시
+STR_TOOLTIP_SHADE                                               :{BLACK}윈도우 접기 - 창 제목에만 나타납니다
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF 디버그 정보를 보여주기
-STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
+STR_TOOLTIP_STICKY                                              :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 고정합니다
 STR_TOOLTIP_RESIZE                                              :{BLACK}이 창의 크기를 조절하려면 여기를 클릭하고 드래그하세요
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 토글
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
@@ -2589,7 +2589,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF �
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}활성화된 NewGRF 파일
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}비활성화된 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}필터링할 문자열:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}프리셋 저장
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}현재 목록을 프리셋으로 저장
@@ -2737,10 +2737,10 @@ STR_NEWGRF_SCAN_ARCHIVES                                        :자료 검색
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소문자 매치
-STR_SIGN_LIST_CLEAR                                             :{BLACK}필터링 초기화
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}이름 비교시 필터링 문자열에 대소문자 구별 전환
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}필터링 문자열 초기화
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}대소문자 구분
+STR_SIGN_LIST_CLEAR                                             :{BLACK}검색 초기화
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}팻말의 이름을 비교할 때 검색 문자열의 대소문자 구분 여부를 선택합니다
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}검색 문자열을 초기화합니다
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}팻말 내용 고치기
@@ -3126,7 +3126,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
-STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}을 제외한 모든 화물
+STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}{G "을" "를"} 제외한 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
