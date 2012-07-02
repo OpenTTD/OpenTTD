@@ -33,7 +33,8 @@ static const RailtypeInfo _original_railtypes[] = {
 			SPR_IMG_AUTORAIL,
 			SPR_IMG_DEPOT_RAIL,
 			SPR_IMG_TUNNEL_RAIL,
-			SPR_IMG_CONVERT_RAIL
+			SPR_IMG_CONVERT_RAIL,
+			{}
 		},
 
 		{
@@ -133,7 +134,8 @@ static const RailtypeInfo _original_railtypes[] = {
 			SPR_IMG_AUTOELRAIL,
 			SPR_IMG_DEPOT_ELRAIL,
 			SPR_BUILD_TUNNEL_ELRAIL,
-			SPR_IMG_CONVERT_ELRAIL
+			SPR_IMG_CONVERT_ELRAIL,
+			{}
 		},
 
 		{
@@ -229,7 +231,8 @@ static const RailtypeInfo _original_railtypes[] = {
 			SPR_IMG_AUTOMONO,
 			SPR_IMG_DEPOT_MONO,
 			SPR_IMG_TUNNEL_MONO,
-			SPR_IMG_CONVERT_MONO
+			SPR_IMG_CONVERT_MONO,
+			{}
 		},
 
 		{
@@ -325,7 +328,8 @@ static const RailtypeInfo _original_railtypes[] = {
 			SPR_IMG_AUTOMAGLEV,
 			SPR_IMG_DEPOT_MAGLEV,
 			SPR_IMG_TUNNEL_MAGLEV,
-			SPR_IMG_CONVERT_MAGLEV
+			SPR_IMG_CONVERT_MAGLEV,
+			{}
 		},
 
 		{
