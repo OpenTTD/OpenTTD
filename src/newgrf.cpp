@@ -4410,12 +4410,11 @@ static void SkipAct1(ByteReader *buf)
 {
 	buf->ReadByte();
 	uint16 num_sets  = buf->ReadByte();
-	uint16 first_set = 0;
 
 	if (num_sets == 0 && buf->HasData(3)) {
 		/* Extended Action1 format.
 		 * Some GRFs define zero sets of zero sprites, though there is actually no use in that. Ignore them. */
-		first_set = buf->ReadExtendedByte();
+		buf->ReadExtendedByte(); // first_set
 		num_sets = buf->ReadExtendedByte();
 	}
 	uint16 num_ents = buf->ReadExtendedByte();
