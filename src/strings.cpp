@@ -469,75 +469,74 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		default:
 			NOT_REACHED();
 
-		/* Two forms, singular used for one only
+		/* Two forms: singular used for one only.
 		 * Used in:
 		 *   Danish, Dutch, English, German, Norwegian, Swedish, Estonian, Finnish,
 		 *   Greek, Hebrew, Italian, Portuguese, Spanish, Esperanto */
 		case 0:
 			return n != 1;
 
-		/* Only one form
+		/* Only one form.
 		 * Used in:
 		 *   Hungarian, Japanese, Korean, Turkish */
 		case 1:
 			return 0;
 
-		/* Two forms, singular used for zero and one
+		/* Two forms: singular used for 0 and 1.
 		 * Used in:
 		 *   French, Brazilian Portuguese */
 		case 2:
 			return n > 1;
 
-		/* Three forms, special case for 0 and ending in 1, except those ending in 11
+		/* Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.
 		 * Used in:
 		 *   Latvian */
 		case 3:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n != 0 ? 1 : 2;
 
-		/* Five forms, special case for one, two, 3 to 6 and 7 to 10
+		/* Five forms: special cases for 1, 2, 3 to 6, and 7 to 10.
 		 * Used in:
 		 *   Gaelige (Irish) */
 		case 4:
 			return n == 1 ? 0 : n == 2 ? 1 : n < 7 ? 2 : n < 11 ? 3 : 4;
 
-		/* Three forms, special case for numbers ending in 1[2-9]
+		/* Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 9 except when ending in 12 to 19.
 		 * Used in:
 		 *   Lithuanian */
 		case 5:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
-		/* Three forms, special cases for numbers ending in 1 and 2, 3, 4, except those ending in 1[1-4]
+		/* Three forms: special cases for numbers ending in 1 except wehn ending in 11, and 2 to 4 except when ending in 12 to 14.
 		 * Used in:
 		 *   Croatian, Russian, Ukrainian */
 		case 6:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
-		/* Three forms, special case for one and some numbers ending in 2, 3, or 4
+		/* Three forms: special cases for 1, and numbers ending in 2 to 4 except when ending in 12 to 14.
 		 * Used in:
 		 *   Polish */
 		case 7:
 			return n == 1 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 
-		/* Four forms, special case for one and all numbers ending in 02, 03, or 04
+		/* Four forms: special cases for numbers ending in 01, 02, and 03 to 04.
 		 * Used in:
 		 *   Slovenian */
 		case 8:
 			return n % 100 == 1 ? 0 : n % 100 == 2 ? 1 : n % 100 == 3 || n % 100 == 4 ? 2 : 3;
 
-		/* Two forms; singular used for everything ending in 1 but not in 11.
+		/* Two forms: singular used for numbers ending in 1 except when ending in 11.
 		 * Used in:
 		 *   Icelandic */
 		case 9:
 			return n % 10 == 1 && n % 100 != 11 ? 0 : 1;
 
-		/* Three forms, special cases for one and 2, 3, or 4
+		/* Three forms: special cases for 1, and 2 to 4
 		 * Used in:
 		 *   Czech, Slovak */
 		case 10:
 			return n == 1 ? 0 : n >= 2 && n <= 4 ? 1 : 2;
 
-		/* Two forms, special 'hack' for Korean; singular for numbers ending
-		 *   in a consonant and plural for numbers ending in a vowel.
+		/* Two forms: cases for numbers ending with a consonant, and with a vowel.
 		 * Korean doesn't have the concept of plural, but depending on how a
 		 * number is pronounced it needs another version of a particle.
 		 * As such the plural system is misused to give this distinction.
@@ -562,7 +561,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 					NOT_REACHED();
 			}
 
-		/* Four forms: one, 0 and everything ending in 02..10, everything ending in 11..19.
+		/* Four forms: special cases for 1, 0 and numbers ending in 02 to 10, and numbers ending in 11 to 19.
 		 * Used in:
 		 *  Maltese */
 		case 12:
