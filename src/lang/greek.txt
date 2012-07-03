@@ -1395,6 +1395,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Κανένας
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Η Εταιρία μου
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Όλες οι εταιρίες
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Προτίμηση ομαδικού chat με <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Αλλαγή της σύνδεσης του εσωετρικού και του κοινού chat της εταιρείας σε <ENTER> αντίστοιχα <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Λειτουργία ροδέλας κύλισης: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ενεργοποίηση κύλισης με δισδιάστατους τροχούς ποντικιών
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Zoom στο χάρτη
@@ -1560,6 +1561,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Απόστασ�
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} εικονοστοιχεί{P 0 ο α}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :απενεργοποιημένο
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Μέγιστο όριο μη καρφωμένων παραθύρων: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Αριθμός μη μόνιμων ανοικτών παράθυρων πριν παλαιότερα παράθυρα κλείσουν αυτόματα για να κάνουν χώρα για τα νεότερα
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :απενεργοποιημένο
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Μέγιστο επίπεδο μεγέθυνσης: {STRING}
@@ -2492,6 +2494,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Χιονισμ�
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Έρημος
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} σιδηροτροχιά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} σιδηροτροχιά με σήματα τμήματος
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} σιδηροτροχιά με σήματα ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} σιδηροτροχιά με σήματα εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} σιδηροτροχιά με συνδυαστικά σήματα
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} σιδηροτροχιά με σήματα διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} σιδηροτροχιά με σήματα μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} σιδηροτροχιά με σήματα τμήματος και ειδοποίησης
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} σιδηροτροχιά με σήματα τμήματος και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} σιδηροτροχιά με σήματα τμήματος και συνδιαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} σιδηροτροχιά με σήματα τμήματος και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} σιδηροτροχιά με σήματα τμήματος και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και εξόδου
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και συνδιαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} σιδηροτροχιά με σήματα ειδοποίησης και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} σιδηροτροχιά με σήματα εξόδου και συνδιαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} σιδηροτροχιά με σήματα εξόδου και διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} σιδηροτροχιά με σήματα εξόδου και μονόδρομης διαδρομής
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} σιδηροτροχιά με σήματα διαδρομής και συνδιαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} σιδηροτροχιά σήματα μονόδρομης διαδρομής και συνδιαστικά
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} σιδηροτροχιά με σήματα διαδρομής και μονόδρομης διαδρομής
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} αμαξοστάσιο τρένων
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Δρόμος
