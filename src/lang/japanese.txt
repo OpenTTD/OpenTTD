@@ -39,7 +39,7 @@ STR_CARGO_PLURAL_IRON_ORE                                       :鉄鉱石
 STR_CARGO_PLURAL_STEEL                                          :鋼鉄
 STR_CARGO_PLURAL_VALUABLES                                      :貴重品
 STR_CARGO_PLURAL_COPPER_ORE                                     :銅鉱石
-STR_CARGO_PLURAL_MAIZE                                          :トウモロコシ
+STR_CARGO_PLURAL_MAIZE                                          :コーン
 STR_CARGO_PLURAL_FRUIT                                          :果物
 STR_CARGO_PLURAL_DIAMONDS                                       :ダイヤモンド
 STR_CARGO_PLURAL_FOOD                                           :食品
@@ -107,7 +107,7 @@ STR_QUANTITY_IRON_ORE                                           :鉄鉱石{WEIGH
 STR_QUANTITY_STEEL                                              :鋼鉄{WEIGHT_LONG}
 STR_QUANTITY_VALUABLES                                          :貴重品{COMMA}袋
 STR_QUANTITY_COPPER_ORE                                         :銅鉱石{WEIGHT_LONG}
-STR_QUANTITY_MAIZE                                              :トウモロコシ{WEIGHT_LONG}
+STR_QUANTITY_MAIZE                                              :コーン{WEIGHT_LONG}
 STR_QUANTITY_FRUIT                                              :果物{WEIGHT_LONG}
 STR_QUANTITY_DIAMONDS                                           :ダイヤモンド{COMMA}袋
 STR_QUANTITY_FOOD                                               :食品{WEIGHT_LONG}
@@ -142,9 +142,9 @@ STR_ABBREV_IRON_ORE                                             :{TINY_FONT}鉄
 STR_ABBREV_STEEL                                                :{TINY_FONT}鋼
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}貴
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}銅
-STR_ABBREV_MAIZE                                                :{TINY_FONT}ﾄｳ
+STR_ABBREV_MAIZE                                                :{TINY_FONT}黍
 STR_ABBREV_FRUIT                                                :{TINY_FONT}果
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}ダ
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}宝
 STR_ABBREV_FOOD                                                 :{TINY_FONT}食
 STR_ABBREV_PAPER                                                :{TINY_FONT}紙
 STR_ABBREV_GOLD                                                 :{TINY_FONT}金
@@ -713,7 +713,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}全て�
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}全ての会社の所有物を表示します。
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／ニュースを表示します。
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最近のメッセージ／ニュースを表示します。
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}＊＊ポーズ中＊＊
 STR_STATUSBAR_AUTOSAVE                                          :{RED}オートセーブ
@@ -750,6 +750,7 @@ STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}受入�
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}助成金
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般情報
 
+STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}{STATION}に初めて列車が到着！{}住民から歓声が湧き上がっている模様。
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}{STATION}に初めてバスが到着！{}住民から歓声が湧き上がっている模様。
@@ -847,6 +848,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}が助成金を獲得！{}今後一年間{2:STRING}から{3:STRING}へ{1:STRING}を運ぶ便に{}300％の助成金が支給されます！
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}で渋滞！{}{}{STRING}が出資した道路工事は６ヶ月間続く！
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}輸送の独占になりました！
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
@@ -889,7 +891,10 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :トルコリー
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :スロバキアコルナ（SKK）
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :ブラジルレアル（BRL）
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :エストニアクローン(EEK)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :カスタム...
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :リトアニアリタス (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓国ウォン (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南アフリカランド (ZAR)
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :カスタム・・・
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}測定単位
@@ -1093,6 +1098,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}この�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張設定･パッチ設定
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :（説明がありません）
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}デフォルト設定：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_OFF                                          :切
@@ -1115,20 +1121,30 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :傾斜地／海
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物、道路、鉄道などの下の地形変更を許容：{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :より現実的な受入れ地域を許容：{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :より多くの町有の道路／橋などの破壊を許容：{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :電車のマックス長さ：{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :電車のマックス長さを決めりことができる
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :車両の 煙/火の粉 の量{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :電車の加速モデル：{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :道路車両の加速モデル: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :列車／船舶が直角に曲がらないようにする：{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :互いに隣接していない駅の統合を許容する：{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :改良された積載アルゴリズムを使用：{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :車両に段階的に積載: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :インフレ：{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :需要のあるときのみ駅へ貨物を運送：{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :橋のマックス長さ：{STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :トンネルのマックス長さ：{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :第一次産業の手動の建設方法：{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探鉱
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :町内に重複している産業の建設を許容：{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :信号が見える: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :左へ
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :運転の方へ
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :右へ
 STR_CONFIG_SETTING_SHOWFINANCES                                 :年末に財政ウインドウを表示：{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :新規指令にデフォルトで 'non-stop'をつける: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :新規鉄道車両は初期設定によりプラットホームの{STRING}に停車します
@@ -1142,6 +1158,8 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :独占的運送
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :地方の道路の再建に出資するのを許容: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :他社への送金を許容：{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :重い列車のシミュレーションのための重量乗数の設定：{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :飛行機の速さの約数：{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :{COMMA}分の１
 STR_CONFIG_SETTING_PLANE_CRASHES                                :墜落事故数: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :なし
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :軽減
@@ -1163,7 +1181,12 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :入（すべて
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :車両の利益が損失になってから警告を表示：{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :車両の購入可能期限がない：{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :車両が古くなるとき自動交換：{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA}ヶ月前
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA}ヶ月後
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :自動交換するための最小資金：{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}秒
+STR_CONFIG_SETTING_HOVER_DELAY                                  :ツールチップを見せる：{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :町名に人口を含む：{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :地形作成：{STRING}
@@ -1190,6 +1213,7 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}マッ�
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :ヘリコプターを自動的ヘリパッドで修理：{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :地形のツールバーを鉄道／道路／船舶／空港のツールバーに付ける：{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :ミニマップに表示する土地の色： {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :ミニマップの地形の色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :緑色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :濃い緑色
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :スミレ色
@@ -1215,11 +1239,13 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :右クリックスクロール：{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :セーブ時に{STRING} の日付フォーマットを使用します。
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :セーブデータ名の年月日系
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO 標準
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :パレット指定のないNewGRFに対して前提とするデフォルトパレット: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :NewGRFにデフォルトパレットが定義されていない場合、このデフォルトパレットを使う
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOSパレット
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windowsパレット
 
@@ -3357,6 +3383,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Textfile window
+STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}<TODO: Can't be translated without knowing more about the context. ie. What kind of licence? Driver's licence? EULA kind of licence? Registration key kind of licence? Where is this used in the English version?>
 
 
 # Vehicle loading indicators
@@ -3745,6 +3772,7 @@ STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}指令�
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}（エーラ）リストの共有を止める事ができません。
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}指令リストをコピーできません...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 前の目的地から遠すぎます
+STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE} 飛行機の距離が足りません
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}この車両に時刻表を設定できません...
