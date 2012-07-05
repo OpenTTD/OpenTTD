@@ -2130,7 +2130,7 @@ STR_RAIL_NAME_MONORAIL                                          :모노레일
 STR_RAIL_NAME_MAGLEV                                            :자기부상열차
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량 기지 방향
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}차량기지 방향 선택
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}차량기지의 방향을 선택하세요
 
 # Rail waypoint construction window
@@ -3126,7 +3126,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}수용�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 화물차: {GOLD}+{POWER}{BLACK} 중량: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류의 화물
-STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}를 제외한 모든 화물
+STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA} 칸
 
@@ -3163,7 +3163,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공�
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}차량 기지 이름을 변경합니다.
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}이 차량기지의 이름을 변경합니다.
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :차량기지 이름 변경
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -3947,7 +3947,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}여기�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기에 정박소를 지을 수 없습니다...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}차량 기지의 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}차량기지의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... 차량기지 안에 정지되어 있어야 합니다
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고 안에 정지해 있어야 합니다
@@ -4535,10 +4535,10 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 경유지
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 경유지 #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 차량 기지
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 차량 기지 #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 차량 기지
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 차량 기지 #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} 차량기지
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} 차량기지 #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} 차고지
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} 차고지 #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} 정박소
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} 정박소 #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} 격납고
