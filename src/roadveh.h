@@ -112,7 +112,7 @@ struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
-	bool IsInDepot() const;
+	bool IsInDepot() const { return this->state == RVSB_IN_DEPOT; }
 	bool IsStoppedInDepot() const;
 	bool Tick();
 	void OnNewDay();

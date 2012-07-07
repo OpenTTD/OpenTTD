@@ -308,15 +308,10 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 
 bool RoadVehicle::IsStoppedInDepot() const
 {
-	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
-
-	return this->IsInDepot();
-}
-
-bool RoadVehicle::IsInDepot() const
-{
 	TileIndex tile = this->tile;
+
 	if (!IsRoadDepotTile(tile)) return false;
+	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
 
 	for (const RoadVehicle *v = this; v != NULL; v = v->Next()) {
 		if (v->state != RVSB_IN_DEPOT || v->tile != tile) return false;
