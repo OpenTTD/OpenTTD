@@ -954,7 +954,7 @@ struct RoadDriveEntry {
 
 static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 {
-	/* Don't leave if not all the wagons are in the depot. */
+	/* Don't leave unless v and following wagons are in the depot. */
 	for (const RoadVehicle *u = v; u != NULL; u = u->Next()) {
 		if (u->state != RVSB_IN_DEPOT || u->tile != v->tile) return false;
 	}
