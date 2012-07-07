@@ -142,7 +142,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 static void CheckIfShipNeedsService(Vehicle *v)
 {
 	if (Company::Get(v->owner)->settings.vehicle.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
-	if (v->IsInDepot()) {
+	if (v->IsChainInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
@@ -298,7 +298,7 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 
 static bool CheckShipLeaveDepot(Ship *v)
 {
-	if (!v->IsInDepot()) return false;
+	if (!v->IsChainInDepot()) return false;
 
 	/* We are leaving a depot, but have to go to the exact same one; re-enter */
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&

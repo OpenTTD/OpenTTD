@@ -601,13 +601,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 
 		if (!!(v->vehstatus & VS_STOPPED) != do_start) continue;
 
-		if (!vehicle_list_window) {
-			if (vli.vtype == VEH_TRAIN) {
-				if (!Train::From(v)->IsInDepot()) continue;
-			} else {
-				if (!(v->vehstatus & VS_HIDDEN)) continue;
-			}
-		}
+		if (!vehicle_list_window && !v->IsChainInDepot()) continue;
 
 		/* Just try and don't care if some vehicle's can't be stopped. */
 		DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
@@ -679,7 +673,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 		const Vehicle *v = list[i];
 
 		/* Ensure that the vehicle completely in the depot */
-		if (!v->IsInDepot()) continue;
+		if (!v->IsChainInDepot()) continue;
 
 		CommandCost ret = DoCommand(0, v->index, 0, flags, CMD_AUTOREPLACE_VEHICLE);
 

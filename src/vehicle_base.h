@@ -417,10 +417,22 @@ public:
 	virtual bool IsInDepot() const { return false; }
 
 	/**
+	 * Check whether the whole vehicle chain is in the depot.
+	 * @return true if and only if the whole chain is in the depot.
+	 */
+	virtual bool IsChainInDepot() const { return this->IsInDepot(); }
+
+	/**
 	 * Check whether the vehicle is in the depot *and* stopped.
 	 * @return true if and only if the vehicle is in the depot and stopped.
 	 */
-	virtual bool IsStoppedInDepot() const { return this->IsInDepot() && (this->vehstatus & VS_STOPPED) != 0; }
+	bool IsStoppedInDepot() const
+	{
+		assert(this == this->First());
+		/* Free wagons have no VS_STOPPED state */
+		if (this->IsPrimaryVehicle() && !(this->vehstatus & VS_STOPPED)) return false;
+		return this->IsChainInDepot();
+	}
 
 	/**
 	 * Calls the tick handler of the vehicle

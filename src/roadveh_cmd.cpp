@@ -306,19 +306,6 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 	return CommandCost();
 }
 
-bool RoadVehicle::IsStoppedInDepot() const
-{
-	TileIndex tile = this->tile;
-
-	if (!IsRoadDepotTile(tile)) return false;
-	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
-
-	for (const RoadVehicle *v = this; v != NULL; v = v->Next()) {
-		if (v->state != RVSB_IN_DEPOT || v->tile != tile) return false;
-	}
-	return true;
-}
-
 static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
 {
 	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);
@@ -1582,7 +1569,7 @@ static void CheckIfRoadVehNeedsService(RoadVehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
 	if (Company::Get(v->owner)->settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
-	if (v->IsInDepot()) {
+	if (v->IsChainInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}

@@ -1292,7 +1292,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, v->cur_real_order_index);
 
-		if (v->IsInDepot()) {
+		if (v->IsChainInDepot()) {
 			str = STR_BLUE_COMMA;
 		} else {
 			str = (v->age > v->max_age - DAYS_IN_LEAP_YEAR) ? STR_RED_COMMA : STR_BLACK_COMMA;

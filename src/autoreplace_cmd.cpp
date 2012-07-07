@@ -665,7 +665,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if (!v->IsInDepot()) return CMD_ERROR;
+	if (!v->IsChainInDepot()) return CMD_ERROR;
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	bool free_wagon = false;
