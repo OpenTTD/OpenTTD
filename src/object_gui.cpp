@@ -96,6 +96,12 @@ public:
 				break;
 			}
 
+			case WID_BO_OBJECT_NAME:
+			case WID_BO_OBJECT_SIZE:
+				/* We do not want the window to resize when selecting objects; better clip texts */
+				size->width = 0;
+				break;
+
 			case WID_BO_OBJECT_MATRIX: {
 				/* Get the right amount of buttons based on the current spec. */
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
