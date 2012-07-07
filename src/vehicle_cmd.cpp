@@ -991,6 +991,7 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
 	if (v == NULL) return CMD_ERROR;
+	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	return v->SendToDepot(flags, (DepotCommand)(p1 & DEPOT_COMMAND_MASK));
 }

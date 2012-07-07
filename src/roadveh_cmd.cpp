@@ -356,6 +356,8 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
 	if (v == NULL) return CMD_ERROR;
 
+	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
+
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 

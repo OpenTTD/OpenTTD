@@ -702,7 +702,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 		if (!was_stopped) cost.AddCost(CmdStartStopVehicle(v, true));
 		if (cost.Failed()) return cost;
 
-		assert(v->IsStoppedInDepot());
+		assert(free_wagon || v->IsStoppedInDepot());
 
 		/* We have to construct the new vehicle chain to test whether it is valid.
 		 * Vehicle construction needs random bits, so we have to save the random seeds

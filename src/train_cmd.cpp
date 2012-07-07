@@ -1934,6 +1934,8 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	Train *t = Train::GetIfValid(p1);
 	if (t == NULL) return CMD_ERROR;
 
+	if (!t->IsPrimaryVehicle()) return CMD_ERROR;
+
 	CommandCost ret = CheckOwnership(t->owner);
 	if (ret.Failed()) return ret;
 
