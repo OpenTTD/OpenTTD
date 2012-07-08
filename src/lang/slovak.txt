@@ -1301,16 +1301,16 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Automatická ob
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Ak je zapnuté, vozidlá blížiace sa ku koncu svojej životnosti budú automaticky vymenené ak sú splnené podmienky na výmenu.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatická obnova ak je vozidlo {STRING} maximálnej zivotnosti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatívny vek kedy je vozidlo považované za staré a preto je potrebná automatická obnova
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesiac{P 0 "" s} pred
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesiac{P 0 "" s} po
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mesiac pred
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mesiac po
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Potrebné financie pre automatickú obnovu vozidiel: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimálna suma ktorá musí zostať na účte pred plánovanou automatickou výmenou vozidiel.
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trvanie zobrazenia chybovej hlášky: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trvanie zobrazenia chybovej hlášky v červenom okne. Uvedomte si že niektoré "kritické" správy nezmiznú po uplynutí času, ale musia byť zatvorené ručne.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund(y){P 0 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund(y)
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Ukáž nápovedu: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oneskorenie pred tým ako bude zobrazená nápoveda po ukázaní myšou. Nápoveda môže byť eventuálne nastavené aj na PRAVÉ tlačítko myši.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zobrazenie na {COMMA} sekúnd{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zobrazenie na {COMMA} sekúnd
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klick pravým tlačítkom
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobraziť počet obyvateľov mesta v jeho názve: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazí populáciu mesta v jeho názve.
@@ -1449,7 +1449,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servisné inter
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Zvoľte či servisovanie vozidiel bude podliehať času od posledného servisu, alebo poklesom percenta návratnosti z celkovej maximálnej návratnosti.
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Štandardný interval servisu pre vlaky: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Nastav štandardný interval pre nové vlaky.Ak nie je nastavený podrobnejší interval.
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} deň{P 0 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} deň/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuté
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Štandardný interval servisu pre automobily: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Nastav štandardný interval pre nové automobily. Ak nie je nastavený podrobnejší interval.
@@ -1474,7 +1474,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ak je zapnuté,
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentáž profitu na zaplatenie podávacieho systému: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Pri ťahaní, umiestni semafóry každý: {STRING} diel
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdialenosť ako ďaleko budú umiestnené semafóry po prekážke na trati (most/tunel/rozcestie) pri ťahaní.
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} diel(ov){P 0 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} diel(ov)
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pri ťahaní, zachovaj fixnú medzeru medzi semafórmi: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvoľte ako sa zachová umiestňovanie semafórov pri CTRL+posun. AK je vypnuté, semafóry sú umiestnené okolo tunelov alebo mostov aby sa zabránilo dlhým úsekom bez signalizácie. Ak je zapnuité, semafóry sú umiestňované každých N dielov čím sa umožní lepšie rozloženie na paralelných tratiach.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automaticky stavať semafóry namiesto signálov pred rokom: {STRING}
@@ -1523,7 +1523,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Pozícia inform
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontálna poloha stavového riadku na spodu obrazovky
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Rádius uchytenia okna: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Vzdialenosť medzi oknami pred tým ako je okno pripojené automaticky k vedľajšiemu oknu
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel(ov){P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel(ov)
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :vypnuté
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximálný počet nepriľnavých okien: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Počet otvorených neprilepených okien pred tým ako sa najstrašie okno automatický zatvorí
