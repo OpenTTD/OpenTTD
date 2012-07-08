@@ -417,3 +417,13 @@ void ScheduleErrorMessage(ErrorList &datas)
 {
 	_error_list.splice(_error_list.end(), datas);
 }
+
+/**
+ * Schedule an error.
+ * Note: This does not try to display the error now. This is useful if the window system is not yet running.
+ * @param data Error message data; cleared afterwards
+ */
+void ScheduleErrorMessage(const ErrorMessageData &data)
+{
+	_error_list.push_back(data);
+}

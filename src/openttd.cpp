@@ -725,8 +725,14 @@ int ttd_main(int argc, char *argv[])
 
 	BaseGraphics::FindSets();
 	if (graphics_set == NULL && BaseGraphics::ini_set != NULL) graphics_set = strdup(BaseGraphics::ini_set);
-	if (!BaseGraphics::SetSet(graphics_set) && !StrEmpty(graphics_set)) {
-		usererror("Failed to select requested graphics set '%s'", graphics_set);
+	if (!BaseGraphics::SetSet(graphics_set)) {
+		if (!StrEmpty(graphics_set)) {
+			BaseGraphics::SetSet(NULL);
+
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
+			msg.SetDParamStr(0, graphics_set);
+			ScheduleErrorMessage(msg);
+		}
 	}
 	free(graphics_set);
 
@@ -785,18 +791,26 @@ int ttd_main(int argc, char *argv[])
 	BaseSounds::FindSets();
 	if (sounds_set == NULL && BaseSounds::ini_set != NULL) sounds_set = strdup(BaseSounds::ini_set);
 	if (!BaseSounds::SetSet(sounds_set)) {
-		StrEmpty(sounds_set) ?
-			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.") :
-			usererror("Failed to select requested sounds set '%s'", sounds_set);
+		if (StrEmpty(sounds_set) || !BaseSounds::SetSet(NULL)) {
+			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 4.1 of readme.txt.");
+		} else {
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
+			msg.SetDParamStr(0, sounds_set);
+			ScheduleErrorMessage(msg);
+		}
 	}
 	free(sounds_set);
 
 	BaseMusic::FindSets();
 	if (music_set == NULL && BaseMusic::ini_set != NULL) music_set = strdup(BaseMusic::ini_set);
 	if (!BaseMusic::SetSet(music_set)) {
-		StrEmpty(music_set) ?
-			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.") :
-			usererror("Failed to select requested music set '%s'", music_set);
+		if (StrEmpty(music_set) || !BaseMusic::SetSet(NULL)) {
+			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 4.1 of readme.txt.");
+		} else {
+			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
+			msg.SetDParamStr(0, music_set);
+			ScheduleErrorMessage(msg);
+		}
 	}
 	free(music_set);
 
