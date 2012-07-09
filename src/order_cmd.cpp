@@ -1472,8 +1472,13 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(src, order) {
-				if (OrderGoesToStation(dst, order) &&
-						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
+				if (!OrderGoesToStation(dst, order)) continue;
+
+				/* Allow copying unreachable destinations if they were already unreachable for the source.
+				 * This is basically to allow cloning / autorenewing / autoreplacing vehicles, while the stations
+				 * are temporarily invalid due to reconstruction. */
+				const Station *st = Station::Get(order->GetDestination());
+				if (CanVehicleUseStation(src, st) && !CanVehicleUseStation(dst, st)) {
 					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
