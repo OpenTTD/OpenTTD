@@ -1544,6 +1544,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible am
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... el nivell de compressió '{STRING}' no és vàlid
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el format de joc desat '{STRING}' no està disponible. Tornant a '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorant el conjunt de gràfics base '{STRING}': no trobats
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorant el conjunt de sons base '{STRING}': no trobats
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorant el conjunt de músiques base '{STRING}': no trobats
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

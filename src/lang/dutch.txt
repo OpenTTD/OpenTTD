@@ -1543,6 +1543,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niet compatibel
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... compressie niveau '{STRING}' is niet geldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is niet beschikbaar. Valt terug naar '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... negeert Basis Grafische set '{STRING}': niet gevonden
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... negeert Basis Geluid set '{STRING}': niet gevonden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negeerd Basis Muziek set '{STRING}': niet gevonden
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

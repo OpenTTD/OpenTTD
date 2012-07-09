@@ -1543,6 +1543,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible to
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :unknown
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... compression level '{STRING}' is not valid
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame format '{STRING}' is not available. Reverting to '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoring Base Graphics set '{STRING}': not found
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoring Base Sounds set '{STRING}': not found
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoring Base Music set '{STRING}': not found
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

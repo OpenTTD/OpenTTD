@@ -131,39 +131,39 @@ STR_QUANTITY_N_A                                                :없음
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
-STR_ABBREV_COAL                                                 :{TINY_FONT}CL
-STR_ABBREV_MAIL                                                 :{TINY_FONT}ML
-STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LV
-STR_ABBREV_GOODS                                                :{TINY_FONT}GD
-STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
-STR_ABBREV_WOOD                                                 :{TINY_FONT}WD
-STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
-STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
-STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
-STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
-STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
-STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
-STR_ABBREV_PAPER                                                :{TINY_FONT}PR
-STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
-STR_ABBREV_WATER                                                :{TINY_FONT}WR
-STR_ABBREV_WHEAT                                                :{TINY_FONT}WH
-STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SG
-STR_ABBREV_TOYS                                                 :{TINY_FONT}TY
-STR_ABBREV_SWEETS                                               :{TINY_FONT}SW
-STR_ABBREV_COLA                                                 :{TINY_FONT}CL
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}CF
-STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
-STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}FZ
-STR_ABBREV_NONE                                                 :{TINY_FONT}NO
-STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}승
+STR_ABBREV_COAL                                                 :{TINY_FONT}석
+STR_ABBREV_MAIL                                                 :{TINY_FONT}우
+STR_ABBREV_OIL                                                  :{TINY_FONT}유
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}축
+STR_ABBREV_GOODS                                                :{TINY_FONT}품
+STR_ABBREV_GRAIN                                                :{TINY_FONT}곡
+STR_ABBREV_WOOD                                                 :{TINY_FONT}목
+STR_ABBREV_IRON_ORE                                             :{TINY_FONT}광
+STR_ABBREV_STEEL                                                :{TINY_FONT}철
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}귀
+STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}구
+STR_ABBREV_MAIZE                                                :{TINY_FONT}옥
+STR_ABBREV_FRUIT                                                :{TINY_FONT}과
+STR_ABBREV_DIAMONDS                                             :{TINY_FONT}다
+STR_ABBREV_FOOD                                                 :{TINY_FONT}식
+STR_ABBREV_PAPER                                                :{TINY_FONT}종
+STR_ABBREV_GOLD                                                 :{TINY_FONT}금
+STR_ABBREV_WATER                                                :{TINY_FONT}물
+STR_ABBREV_WHEAT                                                :{TINY_FONT}밀
+STR_ABBREV_RUBBER                                               :{TINY_FONT}고
+STR_ABBREV_SUGAR                                                :{TINY_FONT}설
+STR_ABBREV_TOYS                                                 :{TINY_FONT}장
+STR_ABBREV_SWEETS                                               :{TINY_FONT}사
+STR_ABBREV_COLA                                                 :{TINY_FONT}콜
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}솜
+STR_ABBREV_BUBBLES                                              :{TINY_FONT}거
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}태
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}배
+STR_ABBREV_PLASTIC                                              :{TINY_FONT}플
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}탄
+STR_ABBREV_NONE                                                 :{TINY_FONT}X
+STR_ABBREV_ALL                                                  :{TINY_FONT}모두
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{G=m}{COMMA} 승객
@@ -174,8 +174,8 @@ STR_ITEMS                                                       :{G=m}{COMMA} �
 STR_CRATES                                                      :{G=f}{COMMA} 상자
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :짙은 파랑
-STR_COLOUR_PALE_GREEN                                           :엷은 녹색
+STR_COLOUR_DARK_BLUE                                            :어두운 파랑
+STR_COLOUR_PALE_GREEN                                           :연한 초록
 STR_COLOUR_PINK                                                 :분홍
 STR_COLOUR_YELLOW                                               :{G=m}노랑
 STR_COLOUR_RED                                                  :빨강
@@ -183,10 +183,10 @@ STR_COLOUR_LIGHT_BLUE                                           :밝은 파랑
 STR_COLOUR_GREEN                                                :녹색
 STR_COLOUR_DARK_GREEN                                           :어두운 녹색
 STR_COLOUR_BLUE                                                 :파랑
-STR_COLOUR_CREAM                                                :크림색
-STR_COLOUR_MAUVE                                                :엷은 자주색
-STR_COLOUR_PURPLE                                               :자주색
-STR_COLOUR_ORANGE                                               :주황색
+STR_COLOUR_CREAM                                                :연한 분홍
+STR_COLOUR_MAUVE                                                :연한 보라
+STR_COLOUR_PURPLE                                               :보라
+STR_COLOUR_ORANGE                                               :주황
 STR_COLOUR_BROWN                                                :갈색
 STR_COLOUR_GREY                                                 :회색
 STR_COLOUR_WHITE                                                :흰색
@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}이 창�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}대형/소형 창 크기 토글
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 상/하로 스크롤하세요
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}스크롤바 - 목록을 좌/우로 스크롤하세요
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}사각형 모양의 땅에 있는 건물과 땅 등을 부숩니다. CTRL을 누르면 다각형으로 선택 가능합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}직사각형 모양의 영역에 있는 건물과 땅 등을 부숩니다. CTRL을 누른 채로 사용하면 대각선 영역 선택이 가능합니다. SHIFT를 누른채로 사용하면 예상 가격을 볼 수 있습니다.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}기본값
@@ -245,8 +245,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}취소
 STR_BUTTON_OK                                                   :{BLACK}확인
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;'  ㅋㅌㅊㅍㅠㅜㅡ,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ{{}}ㅁㄴㅇㄹㅎㅗㅓㅏㅣ:"  ㅋㅌㅊㅍㅠㅜㅡ<>? .
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}길이: {NUM}
@@ -267,7 +267,7 @@ STR_SORT_BY_TRANSPORTED                                         :수송량
 STR_SORT_BY_NUMBER                                              :번호
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :작년 수익
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :올해 수익
-STR_SORT_BY_AGE                                                 :수명
+STR_SORT_BY_AGE                                                 :연령
 STR_SORT_BY_RELIABILITY                                         :신뢰도
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :화물당 총 수송량
 STR_SORT_BY_MAX_SPEED                                           :최고 속력
@@ -280,7 +280,7 @@ STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :높은 화물 등급순
 STR_SORT_BY_RATING_MIN                                          :낮은 화물 등급순
-STR_SORT_BY_ENGINE_ID                                           :이름 (기본 정렬)
+STR_SORT_BY_ENGINE_ID                                           :종류 (기본 정렬)
 STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
 STR_SORT_BY_TRACTIVE_EFFORT                                     :견인 효과
@@ -291,30 +291,30 @@ STR_SORT_BY_CARGO_CAPACITY                                      :화물 수송�
 STR_SORT_BY_RANGE                                               :항속거리
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임 일시정지
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 고속 진행
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임을 일시정지합니다.
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 시간을 빠르게 가도록 합니다.
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}옵션
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}게임을 저장하거나, 그만두거나, 게임을 종료합니다
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}지도, 외부화면, 팻말 목록 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 목록 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 표시
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}회사의 역 목록을 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}회사 재정 정보 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}회사 기본 정보 보여주기
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 표시
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위 표시
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}회사의 열차 목록 표시. Ctrl+Click 토글시 그룹/운송기구의 리스트를 엽니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}회사의 자동차 목록 표시. Ctrl+Click 토글시 그룹/차량의 리스트를 엽니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}회사의 선박 목록 표시. Ctrl+Click 토글시 그룹/선박의 리스트를 엽니다.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}회사의 항공기 목록 표시. Ctrl+Click 토글시 그룹/항공기의 목록을 엽니다.
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면을 확대합니다
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}화면을 축소합니다
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철로 건설
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 건설
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 건설
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}공항 건설
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}도시 메뉴를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}보조금 메뉴를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}각 회사의 정거장 목록을 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}각 회사의 재정 정보를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}각 회사의 기본 정보를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}그래프 메뉴를 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}회사의 성취도 순위를 표시합니다.
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}새 산업시설에 투자하거나 산업시설의 목록을 표시합니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}각 회사의 열차 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}각 회사의 자동차 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}각 회사의 선박 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}각 회사의 항공기 목록을 표시합니다. Ctrl+클릭하면 그룹화된 창은 일반 창으로, 일반 창은 그룹화된 창으로 표시됩니다.
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}화면을 확대합니다.
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}화면을 축소합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}철도 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}도로 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}항만 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}항공 시설을 건설합니다.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}땅 올리기/내리기, 나무 심기 등의 일를 하기 위한 지형편집창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}사운드/음악 창을 엽니다.
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}최근 메시지/뉴스 기록이나 메시지 설정을 엽니다.
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}지역 정보, 콘솔, 스크립트 디버그, 스크린샷, OpenTTD에 대한 정보를 보여줍니다.
@@ -1544,6 +1544,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :현재 OpenTTD 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :{G=m}알 수 없음
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... 압축 레벨 '{STRING}' : 유효하지 않습니다
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... '{STRING}' 형식으로 게임을 저장할 수 없습니다. '{STRING}' 형식으로 변환합니다
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... 기본 그래픽 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 기본 효과음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 기본 배경음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1638,26 +1641,26 @@ STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}선택�
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
 
 STR_LIVERY_DEFAULT                                              :기본 색상
-STR_LIVERY_STEAM                                                :증기 기관차
-STR_LIVERY_DIESEL                                               :디젤 기관차
-STR_LIVERY_ELECTRIC                                             :전기 기관차
-STR_LIVERY_MONORAIL                                             :모노레일
-STR_LIVERY_MAGLEV                                               :자기부상
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :객차 (증기)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :객차 (디젤)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :객차 (전기)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :승객 객차 (모노레일)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :승객 객차 (자기부상열차)
-STR_LIVERY_FREIGHT_WAGON                                        :화물차
-STR_LIVERY_BUS                                                  :버스
-STR_LIVERY_TRUCK                                                :트럭
-STR_LIVERY_PASSENGER_SHIP                                       :여객선
-STR_LIVERY_FREIGHT_SHIP                                         :화물선
-STR_LIVERY_HELICOPTER                                           :헬리콥터
-STR_LIVERY_SMALL_PLANE                                          :소형 항공기
-STR_LIVERY_LARGE_PLANE                                          :대형 항공기
+STR_LIVERY_STEAM                                                :{G=f}증기 기관차
+STR_LIVERY_DIESEL                                               :{G=f}디젤 기관차
+STR_LIVERY_ELECTRIC                                             :{G=f}전기 기관차
+STR_LIVERY_MONORAIL                                             :{G=m}모노레일 기관차
+STR_LIVERY_MAGLEV                                               :{G=m}자기부상 기관차
+STR_LIVERY_DMU                                                  :{G=f}DMU
+STR_LIVERY_EMU                                                  :{G=f}EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :{G=f}객차 (증기)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :{G=f}객차 (디젤)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :{G=f}객차 (전기)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :객차 (모노레일)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :객차 (자기부상)
+STR_LIVERY_FREIGHT_WAGON                                        :{G=f}화물차
+STR_LIVERY_BUS                                                  :{G=f}버스
+STR_LIVERY_TRUCK                                                :{G=m}트럭
+STR_LIVERY_PASSENGER_SHIP                                       :{G=m}여객선
+STR_LIVERY_FREIGHT_SHIP                                         :{G=m}화물선
+STR_LIVERY_HELICOPTER                                           :{G=f}헬리콥터
+STR_LIVERY_SMALL_PLANE                                          :{G=f}소형 항공기
+STR_LIVERY_LARGE_PLANE                                          :{G=f}대형 항공기
 STR_LIVERY_PASSENGER_TRAM                                       :승객 전차
 STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 
@@ -1923,7 +1926,7 @@ STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 �
 STR_NETWORK_CHAT_SEND                                           :{BLACK}보내기
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[팀] :
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[귓속말] {STRING}:
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[모두] :
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[전체] :
 
 STR_NETWORK_CHAT_COMPANY                                        :[팀] {STRING}: {WHITE}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}에게: {WHITE}{STRING}
@@ -2292,7 +2295,7 @@ STR_OBJECT_CLASS_TRNS                                           :송신기
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심고싶은 나무의 종류를 선택합니다. 이미 나무가 심어져있는 경우에는 선택한 나무의 크기를 키웁니다.
-STR_TREES_RANDOM_TYPE                                           :{BLACK}무작위 나무
+STR_TREES_RANDOM_TYPE                                           :{BLACK}여러 종류의 나무 같이 심기
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. SHIFT를 누르고 나무를 심으면 예상 가격을 볼 수 있습니다.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지역에 걸쳐 무작위로 나무를 심습니다.
@@ -2569,8 +2572,8 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}평지�
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}세계 만드는 중..
 STR_GENERATION_ABORT                                            :{BLACK}중지
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 만들기 중단
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 만들기를 중단하시겠습니까?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 만들기 중지
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 만들기를 중지하시겠습니까?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}지형 만드는 중
@@ -2862,8 +2865,8 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- 없음 -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}모든 시설 선택
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}모든 종류의 화물을 선택 (대기하지 않는 화물 포함)
-STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}대기 중인 화물이 없습니다.
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}모든 종류의 화물이 있는 역을 목록에 포함시킵니다. (화물이 없는 역도 포함)
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}화물이 하나도 없는 역을 목록에 포함시킵니다.
 
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
@@ -3259,18 +3262,18 @@ STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=f}자동차
 STR_REPLACE_VEHICLE_SHIP                                        :{G=m}선박
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=f}항공기
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하십시오
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}좌측에서 선택한 기관차 종류를 교체할 새로운 기관차로 선택하십시오.
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하십시오.
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하십시오.
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
 STR_REPLACE_VEHICLES_NOW                                        :모든 차량을 지금 교체
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :오래된 차량만 교체
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}좌측에서 선택한 기관차 종류를 우측의 새 기관차로 교체하려면 누르세요
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}왼쪽에서 선택한 기관차를 오른쪽의 새 기관차로 교체하려면 누르세요
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}교체 안됨
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}차량이 선택되지 않았음
 STR_REPLACE_REPLACING_WHEN_OLD                                  :오래되면 {ENGINE}(으)로 교체
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}차량 교체 중지
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}좌측에서 선택한 기관차 종류의 교체를 중지하려면 누르세요
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}왼쪽에서 선택한 기관차 종류의 차량교체를 중지하려면 이 버튼을 누르세요.
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}교체중: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}기관차/화물차 교체 창을 번갈아 띄웁니다
@@ -3278,14 +3281,14 @@ STR_REPLACE_ENGINES                                             :기관차
 STR_REPLACE_WAGONS                                              :화물차
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차의 철도 종류를 고르세요
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}좌측의 선택된 기관차가 어떤 기관차로 교체되고 있는지 표시합니다
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}왼쪽의 선택한 기관차가 어떤 기관차로 교체되고 있는지 표시합니다.
 STR_REPLACE_RAIL_VEHICLES                                       :철도 차량
 STR_REPLACE_ELRAIL_VEHICLES                                     :전기 철도
 STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 차량
 STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시에 열차가 기존보다 길어지면 화물차를 제거함으로써 교체시 달라지는 열차의 길이를 같게 조정합니다 (앞쪽부터 시작됨)
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차 길이가 달라지지 않도록 합니다.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3341,10 +3344,10 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}다음 목적지가 너무 멀리 있습니다.
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}다음 목적지: {STATION} ({VELOCITY})
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 목적지: {WAYPOINT} ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
 
 # Vehicle stopped/started animations
@@ -3362,7 +3365,7 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}자동�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}선박 이름 지정
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}항공기 이름 지정
 
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY_LONG}/yr
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}연령: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY_LONG}/년
 # The next two need to stay in this order
 STR_VEHICLE_INFO_AGE                                            :{COMMA}년 ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}년 ({COMMA})
@@ -3483,34 +3486,34 @@ STR_ORDER_SERVICE                                               :{BLACK}점검
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
 STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 점검
 STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}점검이 필요하지 않으면 이 경로를 건너뜁니다.
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 차량값
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 비교조건을 선택합니다.
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :적재율
 STR_ORDER_CONDITIONAL_RELIABILITY                               :신뢰도
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :최고 속력
-STR_ORDER_CONDITIONAL_AGE                                       :연식 (년)
+STR_ORDER_CONDITIONAL_AGE                                       :연령 (년)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :점검 필요성
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :남은 수명 (년)
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}차량 데이터와 주어진 값을 비교하는 방법
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}왼쪽의 비교조건과 오른쪽의 입력값을 비교할 연산자를 선택합니다.
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :=
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :≠
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :＜
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :≤
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :＞
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :≥
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :이 있을 때
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :이 없을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :있을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :없을 때
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}차량 데이터에 대해 비교하기 위한 값
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}비교조건에 대한 입력값입니다.
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}건너뛰기
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}현재 경로를 건너 뜁니다, 그리고 다음 경로를 시작합니다. Ctrl + 클릭은 선택된 경로로 건너 뜁니다.
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}현재 경로를 건너뜁니다, 그리고 다음 경로를 시작합니다. Ctrl+클릭하면 선택한 경로로 건너뜁니다.
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}삭제
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}선택된 경로를 삭제합니다.
@@ -3519,10 +3522,10 @@ STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}경로 �
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}경로 공유를 해제합니다. 추가적으로 CTRL+클릭하시면 모든 경로가 삭제됩니다.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}행선지
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차량기지로
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차량기지/차고지로
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
-STR_ORDER_SHARE                                                 :경로 공유
+STR_ORDER_SHARE                                                 :경로 공유하기
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. Ctrl키와 함께 누르면, 역에서는 '아무 화물이나 가득 싣기'로, 경유지에서는 '직행'으로, 차량기지에서는 '점검'으로 지정됩니다. '공유된 경로'를 클릭하거나 Ctrl키를 누르면 선택했던 차량과 이 차량의 경로를 공유하게 됩니다. 단순히 클릭하면 그 차량의 경로를 복사하기만 합니다. 차량기지를 경로에 포함시키면 이 차량은 자동 점검을 할 수 없게 됩니다.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
@@ -3537,7 +3540,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 점검
 STR_ORDER_NEAREST_DEPOT                                         :가까운
 STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
 STR_ORDER_TRAIN_DEPOT                                           :차량기지
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :차고
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :차고지
 STR_ORDER_SHIP_DEPOT                                            :정박소
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
@@ -3591,7 +3594,7 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA}(으)로
 STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING})
 
-STR_INVALID_ORDER                                               :{RED} (잘못된 경로)
+STR_INVALID_ORDER                                               :{RED} (잘못된 행선지)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
@@ -4635,10 +4638,10 @@ STR_BLACK_5                                                     :{G=f}{BLACK}5
 STR_BLACK_6                                                     :{G=m}{BLACK}6
 STR_BLACK_7                                                     :{G=m}{BLACK}7
 
-STR_TRAIN                                                       :{BLACK}{TRAIN}
-STR_BUS                                                         :{BLACK}{BUS}
-STR_LORRY                                                       :{BLACK}{LORRY}
-STR_PLANE                                                       :{BLACK}{PLANE}
-STR_SHIP                                                        :{BLACK}{SHIP}
+STR_TRAIN                                                       :{G=f}{BLACK}{TRAIN}
+STR_BUS                                                         :{G=f}{BLACK}{BUS}
+STR_LORRY                                                       :{G=m}{BLACK}{LORRY}
+STR_PLANE                                                       :{G=f}{BLACK}{PLANE}
+STR_SHIP                                                        :{G=f}{BLACK}{SHIP}
 
 STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

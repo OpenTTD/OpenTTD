@@ -1738,6 +1738,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nesuderinamas s
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nežinomas
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... netinkamas suspaudimo lygis '{STRING}'
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... neprieinamas išsaugojimo formatas '{STRING}'. Grįžtama į '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... nerastas grafikos rinkinys „{STRING}“
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... nerastas garsų rinkinys „{STRING}“
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... nerastas muzikos įrašų rinkinys „{STRING}“
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
