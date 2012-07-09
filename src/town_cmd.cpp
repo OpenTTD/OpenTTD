@@ -847,6 +847,9 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 {
 	if (DistanceFromEdge(tile) == 0) return false;
 
+	/* Prevent towns from building roads under bridges along the bridge. Looks silly. */
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && GetBridgeAxis(tile) == DiagDirToAxis(dir)) return false;
+
 	/* Check if there already is a road at this point? */
 	if (GetTownRoadBits(tile) == ROAD_NONE) {
 		/* No, try if we are able to build a road piece there.
