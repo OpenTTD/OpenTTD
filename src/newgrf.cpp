@@ -856,7 +856,7 @@ static uint32 TranslateRefitMask(uint32 refit_mask)
  * See http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
  * @param base_pointer TTD(P) Base Price Pointer
  * @param error_location Function name for grf error messages
- * @param index If #base_pointer is valid, #index is assigned to the matching price; else it is left unchanged
+ * @param[out] index If \a base_pointer is valid, \a index is assigned to the matching price; else it is left unchanged
  */
 static void ConvertTTDBasePrice(uint32 base_pointer, const char *error_location, Price *index)
 {

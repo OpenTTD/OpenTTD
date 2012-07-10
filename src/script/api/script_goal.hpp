@@ -86,7 +86,7 @@ public:
 	 * @param company The company to create the goal for, or ScriptCompany::COMPANY_INVALID for all.
 	 * @param goal The goal to add to the GUI (can be either a raw string, or a ScriptText object).
 	 * @param type The type of the goal.
-	 * @param destination The destination of the #type type.
+	 * @param destination The destination of the \a type type.
 	 * @return The new GoalID, or GOAL_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
 	 * @pre goal != NULL && len(goal) != 0.

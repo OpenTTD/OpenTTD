@@ -1548,7 +1548,7 @@ struct CargoesField {
 	/**
 	 * Make a piece of cargo column.
 	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
-	 * @param length     Number of cargoes in #cargoes.
+	 * @param length     Number of cargoes in \a cargoes.
 	 * @param count      Number of cargoes to display (should be at least the number of valid cargoes, or \c -1 to let the method compute it).
 	 * @param top_end    This is the first cargo field of this column.
 	 * @param bottom_end This is the last cargo field of this column.
@@ -1576,7 +1576,7 @@ struct CargoesField {
 	/**
 	 * Make a field displaying cargo type names.
 	 * @param cargoes    Array of #CargoID (may contain #INVALID_CARGO).
-	 * @param length     Number of cargoes in #cargoes.
+	 * @param length     Number of cargoes in \a cargoes.
 	 * @param left_align ALign texts to the left (else to the right).
 	 */
 	void MakeCargoLabel(const CargoID *cargoes, uint length, bool left_align)
@@ -2158,7 +2158,7 @@ struct IndustryCargoesWindow : public Window {
 	/**
 	 * Count how many industries have accepted cargoes in common with one of the supplied set.
 	 * @param cargoes Cargoes to search.
-	 * @param length  Number of cargoes in #cargoes.
+	 * @param length  Number of cargoes in \a cargoes.
 	 * @return Number of industries that have an accepted cargo in common with the supplied set.
 	 */
 	static int CountMatchingAcceptingIndustries(const CargoID *cargoes, uint length)
@@ -2176,7 +2176,7 @@ struct IndustryCargoesWindow : public Window {
 	/**
 	 * Count how many industries have produced cargoes in common with one of the supplied set.
 	 * @param cargoes Cargoes to search.
-	 * @param length  Number of cargoes in #cargoes.
+	 * @param length  Number of cargoes in \a cargoes.
 	 * @return Number of industries that have a produced cargo in common with the supplied set.
 	 */
 	static int CountMatchingProducingIndustries(const CargoID *cargoes, uint length)

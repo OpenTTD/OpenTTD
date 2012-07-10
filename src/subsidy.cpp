@@ -189,9 +189,9 @@ static bool CheckSubsidyDuplicate(CargoID cargo, SourceType src_type, SourceID s
 
 /**
  * Checks if the source and destination of a subsidy are inside the distance limit.
- * @param src_type Type of #src.
+ * @param src_type Type of \a src.
  * @param src      Index of source.
- * @param dst_type Type of #dst.
+ * @param dst_type Type of \a dst.
  * @param dst      Index of destination.
  * @return True if they are inside the distance limit.
  */
@@ -206,9 +206,9 @@ static bool CheckSubsidyDistance(SourceType src_type, SourceID src, SourceType d
 /**
  * Creates a subsidy with the given parameters.
  * @param cid      Subsidised cargo.
- * @param src_type Type of #src.
+ * @param src_type Type of \a src.
  * @param src      Index of source.
- * @param dst_type Type of #dst.
+ * @param dst_type Type of \a dst.
  * @param dst      Index of destination.
  */
 void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
@@ -399,7 +399,7 @@ bool FindSubsidyIndustryCargoRoute()
 /**
  * Tries to find a suitable destination for the given source and cargo.
  * @param cid      Subsidized cargo.
- * @param src_type Type of #src.
+ * @param src_type Type of \a src.
  * @param src      Index of source.
  * @return True iff the subsidy was created.
  */
@@ -520,7 +520,7 @@ void SubsidyMonthlyLoop()
  * Tests whether given delivery is subsidised and possibly awards the subsidy to delivering company
  * @param cargo_type type of cargo
  * @param company company delivering the cargo
- * @param src_type type of #src
+ * @param src_type type of \a src
  * @param src index of source
  * @param st station where the cargo is delivered to
  * @return is the delivery subsidised?

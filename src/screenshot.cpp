@@ -50,7 +50,7 @@ typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, u
  * Function signature for a screenshot generation routine for one of the available formats.
  * @param name        Filename, including extension.
  * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to #callb.
+ * @param userdata    User data, passed on to \a callb.
  * @param w           Width of the image in pixels.
  * @param h           Height of the image in pixels.
  * @param pixelformat Bits per pixel (bpp), either 8 or 32.
@@ -106,7 +106,7 @@ assert_compile(sizeof(RgbQuad) == 4);
  * Generic .BMP writer
  * @param name file name including extension
  * @param callb callback used for gathering rendered image
- * @param userdata parameters forwarded to #callb
+ * @param userdata parameters forwarded to \a callb
  * @param w width in pixels
  * @param h height in pixels
  * @param pixelformat bits per pixel
@@ -252,7 +252,7 @@ static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
  * Generic .PNG file image writer.
  * @param name        Filename, including extension.
  * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to #callb.
+ * @param userdata    User data, passed on to \a callb.
  * @param w           Width of the image in pixels.
  * @param h           Height of the image in pixels.
  * @param pixelformat Bits per pixel (bpp), either 8 or 32.
@@ -430,7 +430,7 @@ assert_compile(sizeof(PcxHeader) == 128);
  * Generic .PCX file image writer.
  * @param name        Filename, including extension.
  * @param callb       Callback function for generating lines of pixels.
- * @param userdata    User data, passed on to #callb.
+ * @param userdata    User data, passed on to \a callb.
  * @param w           Width of the image in pixels.
  * @param h           Height of the image in pixels.
  * @param pixelformat Bits per pixel (bpp), either 8 or 32.

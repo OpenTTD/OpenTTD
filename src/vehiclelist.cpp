@@ -60,7 +60,7 @@ VehicleListIdentifier::VehicleListIdentifier(uint32 data)
  * @param tile    The tile the depot is located on
  * @param engines Pointer to list to add vehicles to
  * @param wagons  Pointer to list to add wagons to (can be NULL)
- * @param individual_wagons If true add every wagon to #wagons which is not attached to an engine. If false only add the first wagon of every row.
+ * @param individual_wagons If true add every wagon to \a wagons which is not attached to an engine. If false only add the first wagon of every row.
  */
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons, bool individual_wagons)
 {
