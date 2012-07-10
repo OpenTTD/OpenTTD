@@ -1607,6 +1607,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nem kompatibili
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ismeretlen
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... a(z) '{STRING}' tömörítési szint érvénytelen
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... a(z) '{STRING}' játékmentési formátum nem elérhető. Mentés '{STRING}' formátumban
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... érvénytelen grafikus alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... érvénytelen hang alapcsomag nem került betöltésre - '{STRING}': nem található
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... érvénytelen zenei alapcsomag nem került betöltésre - '{STRING}': nem található
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3316,11 +3319,11 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Ár: {C
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Ár: {CURRENCY_LONG} Végsebesség: {VELOCITY} Hatótávolság: {COMMA} mező{}Kapacitás: {CARGO_LONG}{}Üzemeltetés: {CURRENCY_LONG}/év
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING} - {STRING}
-STR_REPLACE_VEHICLE_TRAIN                                       :vonat
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :közúti jármű
-STR_REPLACE_VEHICLE_SHIP                                        :hajó
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :repülőgép
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} lecserélése - {STRING}
+STR_REPLACE_VEHICLE_TRAIN                                       :Vonatok
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Közúti járművek
+STR_REPLACE_VEHICLE_SHIP                                        :Hajók
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Repülőgépek
 
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Cserélendő mozdonytípus kiválasztása
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}A bal oldalon kiválasztott mozdonytípus helyett kívánt új mozdonytípus kiválasztása

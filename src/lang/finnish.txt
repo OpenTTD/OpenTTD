@@ -1543,6 +1543,7 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :epäyhteensopiv
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso '{STRING}' on kelvoton
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto '{STRING}' ei ole saatavilla. Palataan muotoon '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ohitetaan perusgrafiikkapaketti '{STRING}': ei löydetty
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ohitetaan äänipaketti '{STRING}': ei löydetty
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ohitetaan musiikkipaketti '{STRING}': ei löydetty
 

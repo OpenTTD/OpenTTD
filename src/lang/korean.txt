@@ -3604,11 +3604,11 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}행선�
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
 
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 시간표상 다음 순서로)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표 작성 안됨)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속도로 운행 (시간표 작성 안됨)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}까지 최대 {1:VELOCITY}의 속도로 운행
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속도로 운행
 STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}동안 머무름
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G 0 "으로" "로"} 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일
@@ -3632,8 +3632,8 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택�
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간 초기화
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간을 초기화합니다
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한 초기화
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다.
 
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한 초기화
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
