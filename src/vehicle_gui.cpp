@@ -1544,7 +1544,7 @@ public:
 
 				switch (index) {
 					case ADI_REPLACE: // Replace window
-						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vli.vtype);
+						ShowReplaceGroupVehicleWindow(ALL_GROUP, this->vli.vtype);
 						break;
 					case ADI_SERVICE: // Send for servicing
 					case ADI_DEPOT: // Send to Depots
