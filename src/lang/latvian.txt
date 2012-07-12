@@ -1498,6 +1498,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nav savietojams
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nezināms
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... saspiešanas līmenis '{STRING}' nav derīgs
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... spēles saglabāšanas formāts '{STRING}' nav pieejams. Atkāpjas uz '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorē pamata grafikas kopu '{STRING}': nav atrasta
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorē pamata skaņas kopu '{STRING}': nav atrasta
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorē pamata mūzikas kopu '{STRING}': nav atrasta
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
