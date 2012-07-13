@@ -835,9 +835,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리�
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING} 이(가) 출시되었습니다!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING}{G "이" "가"} 출시되었습니다!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING}{G "이" "가"} 출시되었습니다!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION}에서 더 이상 {STRING}{G 1 "을" "를"} 받지 않습니다.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION}에서 더 이상 {STRING}/{STRING}{G 2 "을" "를"} 받지 않습니다.
@@ -1200,10 +1200,10 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :다른 회사�
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레이 모드에서 회사 사이에 돈을 보내는 것을 허용합니다.
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게가중치 (무거운 열차를 구현할 때 사용): {STRING}배
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :열차가 싣고 있는 화물이 열차 속도에 미치는 영향에 대해 설정합니다. 값을 높게 설정하면 화물을 수송하는데 더 큰 힘이 필요합니다. (특히 언덕을 오를 때 심해집니다)
-STR_CONFIG_SETTING_PLANE_SPEED                                  :비행기 속도 조절: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 낮추기 위해, 자동차/철도/선박에 대한 비행기의 속도 비율을 설정합니다.
+STR_CONFIG_SETTING_PLANE_SPEED                                  :항공기 속도 조절: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :항공 수송에 대한 수익을 제한하기 위해, 자동차/철도/선박에 대한 항공기의 속도 비율을 설정합니다.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :(실제 속도) x {COMMA}분의 1
-STR_CONFIG_SETTING_PLANE_CRASHES                                :비행기 추락 횟수: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :항공기 추락 빈도수: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :항공기 충돌 사고가 일어날 수 있는지 여부를 설정합니다.
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
@@ -3241,12 +3241,12 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자로부터의 메시지
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :철도 기관차
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :자동차
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :항공기
-STR_ENGINE_PREVIEW_SHIP                                         :선박
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :모노레일 기관차
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :자기부상열차
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}철도 기관차
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=f}자동차
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}항공기
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}선박
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}모노레일 기관차
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}자기부상열차
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}가격: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY_LONG}/년{}수송량: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}비용: {CURRENCY_LONG} 무게: {WEIGHT_SHORT}{}속력: {VELOCITY}  힘: {POWER}  최대 T.E.: {6:FORCE}{}유지비: {4:CURRENCY_LONG}/년{}용량: {5:CARGO_LONG}

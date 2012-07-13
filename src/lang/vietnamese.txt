@@ -1313,6 +1313,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Đèn hiệu kh
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Đèn dẫn đường
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Đèn dẫn đường 1-chiều
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Đổi tuần hoàn các kiểu đèn báo: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Chọn kiểu đèn báo để tuần hoàn, khi Ctrl+click vào một đèn báo đã được xây bằng công cụ đèn báo
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Chỉ đèn hiệu khoá
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Đèn hiệu giành đường
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Tất cả

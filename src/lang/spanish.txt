@@ -2997,7 +2997,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del Pres
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos buscando una empresa de transportes para adquirir la nuestra{}{}¿Desea comprar {COMPANY} por {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura of {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trozos de ferrocarril:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Señales
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Trozos de carretera:
