@@ -756,13 +756,13 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}일반 
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}사람들이 환호합니다!{}{STATION}에 처음으로 열차가 도착했습니다!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}첫 항공기가 {STATION}공항에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 열차가 도착했습니다!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 버스가 도착했습니다!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 트럭이 도착했습니다!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 여객 전차가 도착했습니다!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 화물 전차가 도착했습니다!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 선박이 도착했습니다!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}시민들이 축하하고 있습니다 . . .{}{STATION}에 처음으로 항공기가 도착했습니다!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}열차 충돌 사고!{}충돌로 인한 폭발로 {COMMA}명의 사망자가 발생하였습니다!
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!

@@ -431,7 +431,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Tempkite
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango matmenis
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Stačioji slankjuostė — paslenka sąrašą aukštyn ar žemyn
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Gulščioji slakjuostė — paslenka sąrašą kairėn ar dešinėn
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus, bėgius ar kitus objektus pasirinktame žemės plote. Tempiant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus, bėgius ar kitus objektus pasirinktame žemės plote. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Nutylint
@@ -508,7 +508,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tiesti g
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Tiesti kelius ir tramvajaus linijas
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Tiesti vandens kelius
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Statyti oro uostus
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Atlikti žemės kasimo darbus, sodinti medžius, griauti objektus bei vykdyti kitą statybinę veiklą
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Formuoti kraštovaizdį, sodinti medžius arba statyti ženklus
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Rodyti garsų bei muzikos parinktis
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Rodyti paskutinę žinutę ar naujieną bei jų rodymo nuostatas
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Rodyti langelio informaciją, pultą, derinimo langą, daryti momentinę ekrano kopiją
@@ -526,9 +526,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Kraštov
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Miesto įkūrimas
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Pramonės kūrimas
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Kelio tiesimas
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sodinti medžius. Shift perjungia tarp statymo/kainos parodymo
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Statyti ženklą
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Statyti objektą. Shift perjungia tarp statymo/kainos parodymo
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sodinti medžius. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Statyti ženklus
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Statyti objektus. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Išsaugoti scenarijų
@@ -613,17 +613,17 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tiesti tramvaja
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Kanalų konstrukcija
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Tiesti vandens kelius
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Oro uostu konstr.
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Statyti oro uostus
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Reljefinimas
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Formuoti kraštovaizdį
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Sodinti medžius
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Statyti ženklą
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Statyti ženklus
 ############ range ends here
 
 ############ range for music menu starts
@@ -1484,7 +1484,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamsiai žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetinė
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Priešinga slinkties kryptis: {STRING}
-STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Vaizdo slinkties elgsena, tempiant nuspaudus dešinįjį pelės klavišą: pasirinkus „ne“, judės stebėtojas. Pasirinkus „taip“, judės žemėlapis
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Vaizdo slinkties elgsena, laikant nuspaudus dešinįjį pelės klavišą: pasirinkus „ne“, judės stebėtojas. Pasirinkus „taip“, judės žemėlapis
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Tolydi vaizdo slinktis: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Įjungus šią nuostatą ir pakeitus pagrindinio lango rodomą vietą (pvz., spragtelėjus žemėlapyje), vaizdas slinksis tolydžiai. Priešingu atveju vaizdas pasikeis akimirksniu, šuoliškai.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {STRING}
@@ -1511,7 +1511,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį tempiant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį velkant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Naudoti {STRING} datos formatą pavadinimuose, saugant žaidimą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
@@ -1607,10 +1607,10 @@ STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti k
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Pelno dalis, tenkanti tarpinėms tiekėjų sistemoms
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Tempiant kopijuoti šviesoforus kas: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkant kopijuoti šviesoforus kas: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Atstumas tarp signalų, statomų vilkimo būdu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} langel{P 0 į ius ių}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Tempiant išlaikyti vienodą atstumą tarp signalų: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkant išlaikyti vienodą atstumą tarp signalų: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Nustato signalų statymo velkant ir laikant nuspaustą Ctrl klavišą, ypatybes. Išjungus šia nuostatą, signalai bus statomi abipus tunelio ar tilto (kad nesusidarytų ilgos atkarpos be signalų). Įjungus šią nuostatą, signalai bus pastatyti tiksliai vienodais atstumais (nebūtinai prie pat tunelio ar tilto)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatiškai statyti semaforus iki: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Metai, kuriais elektriniai signalai pakeičia semaforus (abiejų rūšių signalai veikia visiškai vienodai, tik skirtingai atrodo)
@@ -2470,27 +2470,27 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Heliportai
 STR_STATION_BUILD_NOISE                                         :{BLACK}Sukeliamas triukšmas: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Žemės tvarkymas
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Pažeminti žemės lygį. Tempiant pirmas segmentas bus pažemintas, kiti pažymėti segmentai išlyginti pagal pirmąjį. Nuspaudus 'Ctrl', plotas bus žymimas įstrižai. 'Shift' parodys statybos kainą
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Pakelti žemės lygį. Tempiant bus pakeliamas pažymėtas kampas ir suvienodinama visa pažymėta vieta. Ctrl žymi vietą įstryžai. Shift keičia tarp kasimo ir kainos rodymo rėžimų
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Išlygina žemę pagal pirmą pažymėtą kampą. Ctrl žymi vietą įstryžai. Shift keičia tarp statymo ir kainos rodymo rėžimų
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirkti žemę vėlesniam naudojimui. Shift perjungia tarp statymo/kainos parodymo
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Kraštovaizdžio formavimas
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Pažeminti žemės lygmenį. Velkant pirmasis segmentas bus pažemintas, kiti pažymėtieji segmentai išlyginti pagal pirmąjį. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Paaukštinti žemės lygmenį. Velkant pirmasis segmentas bus paaukštintas, kiti pažymėtieji segmentai išlyginti pagal pirmąjį. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Išlyginti žemę pagal pirmą pažymėtą segmentą. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirkti žemę vėlesniam naudojimui. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekto pasirinkimas
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirink norimą objektą statymui. Shift perjungia tarp statymo/kainos parodymo
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pasirink statomo objekto tipą
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pasirinkite objektą
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirinkite norimą objektą statymui. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Pasirinkite objekto tipą
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekto peržiūra
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis: {GOLD}{NUM} x {NUM} kvad.
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis langeliais: {GOLD}{NUM} x {NUM}
 
 STR_OBJECT_CLASS_LTHS                                           :Švyturiai
 STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 
 # Tree planting window (last two for SE only)
-STR_PLANT_TREE_CAPTION                                          :{WHITE}Medžiai
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinkto tipo, medžiai
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Pasirinkite medžio rūšį
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinktos rūšies, medžiai
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodina atsitiktinės rūšies medžius. Shift perjungia tarp kainos parodymo/statymo
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodinti atsitiktinės rūšies medžius. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Atsitiktinai apsodinti sausumą medžiais
 

@@ -1260,6 +1260,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začátku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :uprostřed
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Silniční vozidla stojí fronty (s kvantovým efektem): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Vozidlo bude stát před zastávkou dokud se neuvolní
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posouvat okno, když je kurzor na okraji: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Povolit úplatek místní správě: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Umožňuje společnostem pokusit se podplatit místní správu. Pokud na to přijde inspekce, nebude možno ve městě 6 měsíců nic dělat
@@ -1486,7 +1487,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT                                   :Omezit počet z
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :vypnuto
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximální úroveň přiblížení: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximální přiblížení pohledu. Nastavení většího přiblížení má větší nároky na paměť počítače
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximální úroveň oddálení: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximální oddálení pohledu. Příliš velké nastavení může způsobovat velké odezvy
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normální
@@ -1501,11 +1504,13 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normální
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :rychlá
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Podíl měst, ze kterých se stanou velkoměsta: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Počet měst které se stanou velkoměsty, tedy počet měst které se rozvíjí a rostou rychleji
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :žádné
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Činitel základní velikosti města: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Průměrná velikost větších měst v porovnání s ostatními městy na začátku hry
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Odstraňovat nesmyslné prvky vozovky při výstavbě silnic: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Odstraní mrtvé konce silnice při rekonstrukci silnic
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Ovládaní
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Výstavba
@@ -1555,6 +1560,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilní
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznámé
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... úroveň komprese '{STRING}' není platná
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formát uložené hry '{STRING}' není dostupný. Návrat na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorování základní grafické sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorování základní hudební sady '{STRING}': nenalazeno
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorování základní hudební sady '{STRING}': nenalezeno
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
