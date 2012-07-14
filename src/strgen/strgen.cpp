@@ -463,9 +463,9 @@ int CDECL main(int argc, char *argv[])
 				return 0;
 
 			case 'L':
-				printf("count\tdescription\n");
+				printf("count\tdescription\tnames\n");
 				for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
-					printf("%i\t\"%s\"\n", pf->plural_count, pf->description);
+					printf("%i\t\"%s\"\t%s\n", pf->plural_count, pf->description, pf->names);
 				}
 				return 0;
 

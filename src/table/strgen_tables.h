@@ -156,23 +156,24 @@ static const CmdStruct _cmd_structs[] = {
 struct PluralForm {
 	int plural_count;        ///< The number of plural forms
 	const char *description; ///< Human readable description of the form
+	const char *names;       ///< Plural names
 };
 
 /** All plural forms used */
 static const PluralForm _plural_forms[] = {
-	{ 2, "Two forms: singular used for 1 only." },
-	{ 1, "Only one form." },
-	{ 2, "Two forms: singular used for 0 and 1." },
-	{ 3, "Three forms: special cases for 0, and numbers ending in 1 except when ending in 11." },
-	{ 5, "Five forms: special cases for 1, 2, 3 to 6, and 7 to 10." },
-	{ 3, "Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 9 except when ending in 12 to 19." },
-	{ 3, "Three forms: special cases for numbers ending in 1 except wehn ending in 11, and 2 to 4 except when ending in 12 to 14." },
-	{ 3, "Three forms: special cases for 1, and numbers ending in 2 to 4 except when ending in 12 to 14." },
-	{ 4, "Four forms: special cases for numbers ending in 01, 02, and 03 to 04." },
-	{ 2, "Two forms: singular used for numbers ending in 1 except when ending in 11." },
-	{ 3, "Three forms: special cases for 1, and 2 to 4." },
-	{ 2, "Two forms: cases for numbers ending with a consonant, and with a vowel." },
-	{ 4, "Four forms: special cases for 1, 0 and numbers ending in 02 to 10, and numbers ending in 11 to 19." },
+	{ 2, "Two forms: special case for 1.", "\"1\" \"other\"" },
+	{ 1, "Only one form.", "\"other\"" },
+	{ 2, "Two forms: special case for 0 to 1.", "\"0..1\" \"other\"" },
+	{ 3, "Three forms: special cases for 0, and numbers ending in 1 except when ending in 11.", "\"0\" \"1,21,31,...\" \"other\"" },
+	{ 5, "Five forms: special cases for 1, 2, 3 to 6, and 7 to 10.", "\"1\" \"2\" \"3..6\" \"7..10\" \"other\"" },
+	{ 3, "Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 9 except when ending in 12 to 19.", "\"1,21,31,...\" \"2..9,22..29,32..39,...\" \"other\"" },
+	{ 3, "Three forms: special cases for numbers ending in 1 except when ending in 11, and 2 to 4 except when ending in 12 to 14.", "\"1,21,31,...\" \"2..4,22..24,32..34,...\" \"other\"" },
+	{ 3, "Three forms: special cases for 1, and numbers ending in 2 to 4 except when ending in 12 to 14.", "\"1\" \"2..4,22..24,32..34,...\" \"other\"" },
+	{ 4, "Four forms: special cases for numbers ending in 01, 02, and 03 to 04.", "\"1,101,201,...\" \"2,102,202,...\" \"3..4,103..104,203..204,...\" \"other\"" },
+	{ 2, "Two forms: special case for numbers ending in 1 except when ending in 11.", "\"1,21,31,...\" \"other\"" },
+	{ 3, "Three forms: special cases for 1, and 2 to 4.", "\"1\" \"2..4\" \"other\"" },
+	{ 2, "Two forms: cases for numbers ending with a consonant, and with a vowel.", "\"yeong,il,sam,yuk,chil,pal\" \"i,sa,o,gu\"" },
+	{ 4, "Four forms: special cases for 1, 0 and numbers ending in 02 to 10, and numbers ending in 11 to 19.", "\"1\" \"0,2..10,102..110,202..210,...\" \"11..19,111..119,211..219,...\" \"other\"" },
 };
 
 /* Flags:
