@@ -96,37 +96,37 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigeran
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P 2 "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P 2 "" s} de correspondência
+STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P "" s} de correspondência
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeça{P 2 "" s} de gado
-STR_QUANTITY_GOODS                                              :{COMMA} caixa{P 2 "" s} de mercadorias
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeça{P "" s} de gado
+STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de mercadorias
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minério de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P 2 "" s} de objetos de valor
+STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P 2 "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de papel
-STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P 2 "" s} de ouro
+STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de água
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de açúcar
-STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P 2 "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} pacote{P 2 "" s} de doces
+STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} pacote{P "" s} de doces
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodão doce
-STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P 2 "" s}
+STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramelo
-STR_QUANTITY_BATTERIES                                          :{COMMA} pilha{P 2 "" s}
+STR_QUANTITY_BATTERIES                                          :{COMMA} pilha{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plástico
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refrigerante{P 2 "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refrigerante{P "" s}
 STR_QUANTITY_N_A                                                :N/D
 
 # Two letter abbreviation of cargo name
@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NADA
 STR_ABBREV_ALL                                                  :{TINY_FONT}TUDO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passageiro{P 2 "" s}
-STR_BAGS                                                        :{COMMA} bolsa{P 2 "" s}
-STR_TONS                                                        :{COMMA} tonelada{P 2 "" s}
-STR_LITERS                                                      :{COMMA} litro{P 2 "" s}
-STR_ITEMS                                                       :{COMMA} cabeça{P 2 "" s}
-STR_CRATES                                                      :{COMMA} engradado{P 2 "" s}
+STR_PASSENGERS                                                  :{COMMA} passageiro{P "" s}
+STR_BAGS                                                        :{COMMA} bolsa{P "" s}
+STR_TONS                                                        :{COMMA} tonelada{P "" s}
+STR_LITERS                                                      :{COMMA} litro{P "" s}
+STR_ITEMS                                                       :{COMMA} cabeça{P "" s}
+STR_CRATES                                                      :{COMMA} engradado{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
@@ -203,13 +203,13 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P 2 "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P 2 "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -968,7 +968,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecion
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar o conjunto de gráficos base para usar
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P 2 "" s} faltando/corrompido{P 2 "" s}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P "" s} faltando/corrompido{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o conjunto de gráficos base
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
@@ -977,7 +977,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informa�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de músicas base
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecionar o conjunto de músicas base para usar
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo{P 2 "" s} corrompido{P 2 "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo{P "" s} corrompido{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de tela cheia falhou
@@ -1133,7 +1133,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remo
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover infraestrutura e edifícios de cidades
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de trens: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Define o tamanho máximo dos trens
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}quadrado{P 2 "" s}
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}quadrado{P "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumaça/fagulhas das locomotivas: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Define a quantidade de fumaça ou fagulhas emitidas pelos veículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Sistema de aceleração de trens: {STRING}
@@ -1244,10 +1244,10 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínim
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Quantidade mínima de dinheiro mínimo que deva ter em caixa antes de considerar renovação automática
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Define quanto tempo as janelas de erro (vermelhas) ficam abertas antes de fecharem automaticamente. Erros críticos devem ser fechados manualmente.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 2 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Exibir dicas: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Intervalo antes das dicas de ferramentas aparecerem ao deixar o mouse sobre algum botão na interface
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Aguardar {COMMA} segundo{P 2 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Aguardar {COMMA} segundo{P "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botão direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Exibir população da cidade na janela da cidade: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Exibe a população das cidades nos nomes, no mapa
@@ -1389,7 +1389,7 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos d
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Define se a manutenção de veículos é ativada pelo tempo passado desde a última manutenção ou quando a confiabilidade alcança um certo valor
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalo padrão de manutenção para trens: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Define o intervalo padrão de manutenção para novos trens, se não for definido individualmente
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P 2 "" s}/%
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dia{P "" s}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :desativado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalo padrão de manutenção para automóveis: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Define o intervalo padrão de manutenção para novos automóveis, se não for definido individualmente
@@ -1415,7 +1415,7 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentagem pag
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentagem do lucro dado a cada estação de baldeação em sistemas de mais de um transporte, dando mais controle de lucro
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ao arrastar, colocar sinais a cada: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Define a distância a cada qual sinais serão construídos até o próximo obstáculo (sinal, intersecção), ao clicar e arrastar sinais
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P 2 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} quadrado{P "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Ao arrastar, manter distância fixa entre os sinais: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Selecione o comportamento da construção de sinais ao Ctrl+Clicar. Se desativado, sinais são colocados ao redor de túneis ou pontes para evitar trechos compridos sem sinalização. Se ativado, sinais são colocados a cada N quadrados, tornando o alinhamento de sinais em trilhos paralelos mais fácil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construir sinaleiros até: {STRING}
@@ -1464,7 +1464,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :Posição da ba
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Posição horizontal da barra de status no fim da tela
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Dist. mín para autoalinhamento das janelas: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distância mínima entre janelas arrastadas para que sejam automaticamente alinhadas e juntas para organização
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 2 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :desativ.
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Limite de janelas não presas: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Número de janelas não presas antes que janelas antigas sejam fechadas para darem lugar a janelas mais novas
@@ -1586,7 +1586,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar p
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Exibe configurações de IA e script do jogo
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair do 'OpenTTD'
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P 2 "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
+STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {NUM} string{P "" s} nessa tradução. Por favor faça o OpenTTD melhor se inscrevendo como tradutor. Leia Readme.txt para mais detalhes.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
@@ -1787,13 +1787,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja 
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Rede Local / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (divulgar)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P 2 "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Máx de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Escolha o número máximo de clientes. Não é necessário estarem todos preenchidos
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} empresa{P 2 "" s}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} empresa{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Máximo de empresas:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita o servidor para uma certa quantia de empresas
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P 2 "" es}
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} espectador{P "" es}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Máx de espectadores:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
@@ -1880,7 +1880,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo informações do jogo...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da empresa...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P 2 "" s} à sua frente
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} baixado até agora
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} obtidos até agora
 
@@ -1983,7 +1983,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :o processamento
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possível perda de conexão
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nos últimos {NUM} segundo{P 2 "" s} nenhum dado chegou do servidor
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nos últimos {NUM} segundo{P "" s} nenhum dado chegou do servidor
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2735,11 +2735,11 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inv
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Escaneando NewGRFs
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Escaneando NewGRFs. Dependendo da quantidade, isso pode levar um tempo...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P 2 "" s} escaneados, de estimados {NUM} NewGRF{P 2 "" s}
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} escaneados, de estimados {NUM} NewGRF{P "" s}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Procurando arquivos
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P 2 "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenciar caixa alta
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Limpar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativa/Desativa a diferenciação de caixa alta na comparação dos nomes pelo filtro
@@ -2768,11 +2768,11 @@ STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Cartas n
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Carga necessária para prover o crescimento:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} necessário(a)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregue{P 2 "" s}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} entregues
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ainda necessário)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue{P 2 "" s})
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P 2 "" s}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P 2 "" s} (patrocinado)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (entregue{P "" s})
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P "" s}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Cidade cresce a cada {ORANGE}{COMMA}{BLACK} dia{P "" s} (patrocinado)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}A cidade {RED}não{BLACK} está crescendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da cidade. Ctrl+Clique abre uma nova janela no local da cidade
@@ -2958,17 +2958,17 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Cores:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Veículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tre{P m ns}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} automóve{P l is}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronave{P 2 "" s}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronave{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} embarcaç{P ão ões}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Nenhum
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor da empresa: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% propriedade de {COMPANY})
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraestrutura:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} parte{P 2 "" s} de ferrovia
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} parte{P 2 "" s} de rodovia
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} parte{P 2 "" s} de água
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} parte{P 2 "" s} de estação
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P 2 "" s}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} parte{P "" s} de ferrovia
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} parte{P "" s} de rodovia
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} parte{P "" s} de água
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} parte{P "" s} de estação
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroporto{P "" s}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nenhum
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Construir sede
@@ -3077,7 +3077,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Enviar para Han
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Clique para mandar todos os veículos pararem
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Clique para mandar todos os veículos para o trabalho
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens compartilhadas de {COMMA} veículo{P 2 "" s}
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Ordens compartilhadas de {COMMA} veículo{P "" s}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Todos os trens
@@ -3120,7 +3120,7 @@ STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Velocida
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Manutenção: {GOLD}{CURRENCY_LONG}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(adaptável)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} ano{P 2 "" s}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} ano{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabilidade Máx.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Preço: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
@@ -3171,7 +3171,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Renomear depós
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P 2 "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arraste um veículo para adicionar/remover do trem, clique com o botão direito num trem para informações. Segurar Ctrl aplica ambas funções na composição
@@ -3367,8 +3367,8 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Renomear
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de manutenção: {LTBLUE}{CURRENCY_LONG}/ano
 # The next two need to stay in this order
-STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P 2 "" s} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P 2 "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade Max: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{G=f}{BLACK}Vel. máx.: {LTBLUE}{VELOCITY} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
@@ -3611,8 +3611,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {ST
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viaje por {STRING} em até {VELOCITY}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dia{P 2 "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} tique{P 2 "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário levará {STRING} para completar
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário levará no mínimo {STRING} para completar (nem todos calendarizados)
