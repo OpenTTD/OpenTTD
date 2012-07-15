@@ -4,6 +4,7 @@ animated_tile.cpp
 articulated_vehicles.cpp
 autoreplace.cpp
 bmp.cpp
+cargomonitor.cpp
 cargopacket.cpp
 cargotype.cpp
 cheat.cpp
@@ -123,6 +124,7 @@ base_station_base.h
 bmp.h
 bridge.h
 cargo_type.h
+cargomonitor.h
 cargopacket.h
 cargotype.h
 cheat_func.h

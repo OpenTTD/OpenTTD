@@ -44,6 +44,7 @@
 #include "core/backup_type.hpp"
 #include "water.h"
 #include "game/game.hpp"
+#include "cargomonitor.h"
 
 #include "table/strings.h"
 #include "table/pricebase.h"
@@ -1026,6 +1027,9 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID dest, Ti
 
 	/* Determine profit */
 	Money profit = GetTransportedGoodsIncome(accepted, DistanceManhattan(source_tile, st->xy), days_in_transit, cargo_type);
+
+	/* Update the cargo monitor. */
+	AddCargoDelivery(cargo_type, company->index, accepted, src_type, src, st);
 
 	/* Modify profit if a subsidy is in effect */
 	if (CheckSubsidised(cargo_type, company->index, src_type, src, st))  {
