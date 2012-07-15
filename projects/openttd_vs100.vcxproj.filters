@@ -1599,6 +1599,9 @@
     <ClCompile Include="..\src\saveload\autoreplace_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\saveload\cargomonitor_sl.cpp">
+      <Filter>Save/Load handlers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\saveload\cargopacket_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>

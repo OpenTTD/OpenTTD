@@ -409,6 +409,7 @@ extern const ChunkHandler _station_chunk_handlers[];
 extern const ChunkHandler _industry_chunk_handlers[];
 extern const ChunkHandler _economy_chunk_handlers[];
 extern const ChunkHandler _subsidy_chunk_handlers[];
+extern const ChunkHandler _cargomonitor_chunk_handlers[];
 extern const ChunkHandler _goal_chunk_handlers[];
 extern const ChunkHandler _ai_chunk_handlers[];
 extern const ChunkHandler _game_chunk_handlers[];
@@ -437,6 +438,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_industry_chunk_handlers,
 	_economy_chunk_handlers,
 	_subsidy_chunk_handlers,
+	_cargomonitor_chunk_handlers,
 	_goal_chunk_handlers,
 	_engine_chunk_handlers,
 	_town_chunk_handlers,

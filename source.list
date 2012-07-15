@@ -548,6 +548,7 @@ saveload/ai_sl.cpp
 saveload/airport_sl.cpp
 saveload/animated_tile_sl.cpp
 saveload/autoreplace_sl.cpp
+saveload/cargomonitor_sl.cpp
 saveload/cargopacket_sl.cpp
 saveload/cheat_sl.cpp
 saveload/company_sl.cpp

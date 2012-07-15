@@ -863,6 +863,8 @@ void StartupEconomy()
 void InitializeEconomy()
 {
 	_economy.inflation_prices = _economy.inflation_payment = 1 << 16;
+	ClearCargoPickupMonitoring();
+	ClearCargoDeliveryMonitoring();
 }
 
 /**

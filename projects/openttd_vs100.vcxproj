@@ -790,6 +790,7 @@
     <ClCompile Include="..\src\saveload\airport_sl.cpp" />
     <ClCompile Include="..\src\saveload\animated_tile_sl.cpp" />
     <ClCompile Include="..\src\saveload\autoreplace_sl.cpp" />
+    <ClCompile Include="..\src\saveload\cargomonitor_sl.cpp" />
     <ClCompile Include="..\src\saveload\cargopacket_sl.cpp" />
     <ClCompile Include="..\src\saveload\cheat_sl.cpp" />
     <ClCompile Include="..\src\saveload\company_sl.cpp" />
