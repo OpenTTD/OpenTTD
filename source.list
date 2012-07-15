@@ -733,6 +733,7 @@ script/api/script_bridge.hpp
 script/api/script_bridgelist.hpp
 script/api/script_cargo.hpp
 script/api/script_cargolist.hpp
+script/api/script_cargomonitor.hpp
 script/api/script_company.hpp
 script/api/script_companymode.hpp
 script/api/script_controller.hpp
@@ -796,6 +797,7 @@ script/api/script_bridge.cpp
 script/api/script_bridgelist.cpp
 script/api/script_cargo.cpp
 script/api/script_cargolist.cpp
+script/api/script_cargomonitor.cpp
 script/api/script_company.cpp
 script/api/script_companymode.cpp
 script/api/script_controller.cpp

@@ -20,6 +20,7 @@
  * 1.3.0 is not yet released. The following changes are not set in stone yet.
  *
  * API additions:
+ * \li GSCargoMonitor
  * \li GSEventExclusiveTransportRights
  * \li GSEventRoadReconstruction
  * \li GSNews::NT_ACCIDENT, GSNews::NT_COMPANY_INFO, GSNews::NT_ADVICE, GSNews::NT_ACCEPTANCE

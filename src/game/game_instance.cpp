@@ -33,6 +33,7 @@
 #include "../script/api/game/game_bridgelist.hpp.sq"
 #include "../script/api/game/game_cargo.hpp.sq"
 #include "../script/api/game/game_cargolist.hpp.sq"
+#include "../script/api/game/game_cargomonitor.hpp.sq"
 #include "../script/api/game/game_company.hpp.sq"
 #include "../script/api/game/game_companymode.hpp.sq"
 #include "../script/api/game/game_controller.hpp.sq"
@@ -113,6 +114,7 @@ void GameInstance::RegisterAPI()
 	SQGSCargoList_IndustryAccepting_Register(this->engine);
 	SQGSCargoList_IndustryProducing_Register(this->engine);
 	SQGSCargoList_StationAccepting_Register(this->engine);
+	SQGSCargoMonitor_Register(this->engine);
 	SQGSCompany_Register(this->engine);
 	SQGSCompanyMode_Register(this->engine);
 	SQGSDate_Register(this->engine);
