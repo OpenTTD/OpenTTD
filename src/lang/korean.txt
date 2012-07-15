@@ -1562,7 +1562,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}게임 �
 STR_INTRO_DIFFICULTY                                            :{BLACK}난이도 ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}고급 설정
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF 설정
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 체크
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}온라인 콘텐츠 다운로드
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI / 게임 스크립트 설정
 STR_INTRO_QUIT                                                  :{BLACK}종료
 
@@ -1950,10 +1950,10 @@ STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로�
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 교정내용이 서버의 것과 일치하지 않습니다.
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 암호입니다
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버가 가득 찼습니다.
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}당신은 서버에서 영구 접속 차단되었습니다.
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}당신은 서버에서 강제 추방 되었습니다.
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버로부터 영구 접속 차단되었습니다.
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제 추방 되었습니다.
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}이 서버에서 치트를 사용할 수 없습니다!
-STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}당신은 서버에 너무 많은 명령을 보냈습니다.
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}서버에 너무 많은 명령을 보냈습니다.
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}비밀번호 입력 시간을 초과하였습니다.
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}사용자의 컴퓨터가 서버와의 연결을 유지할 수 있을만큼 빠르지 않습니다.
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}지도 다운로드 시간을 초과하였습니다
@@ -2007,8 +2007,8 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING}님
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING}님이 새 회사 #{2:NUM}을 창업하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING}님이 게임에서 나갔습니다 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 가 당신의 회사에게 {2:CURRENCY_LONG}를 송금하였습니다
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 당신은 {1:STRING} 에게 {2:CURRENCY_LONG}를 송금하였습니다
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 님이 당신에게 {2:CURRENCY_LONG}만큼의 돈을 보내셨습니다.
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} 님에게 {2:CURRENCY_LONG}만큼의 돈을 보냈습니다.
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 세션을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버 재가동중...{}기다려주세요...
 
@@ -2030,12 +2030,12 @@ STR_CONTENT_OPEN_URL                                            :{BLACK}웹사�
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}이 컨텐츠의 웹사이트를 방문합니다.
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다.
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}다운로드 할 파일의 총 용량: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}콘텐츠 정보
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}당신은 이것을 선택하지 않았습니다
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신은 이것을 선택했습니다
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}이 콘텐츠를 선택하지 않았습니다. (다운로드 안 함)
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘텐츠를 선택하였습니다. (다운로드함)
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
-STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}이미 가지고 있는 콘텐츠입니다.
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 콘텐츠는 알려지지 않은 콘텐츠이고 OpenTTD 게임 상에서 받을 수 없는 것입니다
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}를 대체합니다.
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
@@ -2908,7 +2908,7 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}이 역�
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :역 이름 변경
 
 STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}공항 폐쇄
-STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공항에서 항공기가 이륙하는 것을 막습니다.
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}이 공항에 항공기가 착륙하는 것을 금지합니다.
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

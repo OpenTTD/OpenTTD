@@ -1367,8 +1367,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ewekansige
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Dorpe word toegelaat om paaie te bou: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Laat dorpe toe om paaie te bou vir groei. Deaktiveer om stad owerhede te verhoed om paaie hulself te bou
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Dorpe word toegelaat om vlak kruising te bou: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Aktivering van die stelling laat dorpe toe om vlak kruisings te bou
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Laat dorp-beheerede klankvlak vir lughawes toe: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Met deaktivering van hierdie stelling, kan daar twee lughawens in elke dorp wees. Met hierdie stelling word die getal van lughawens in 'n stad beperk deur die geluid aanvaarding van die dorp, wat afhanklik is van die bevolking en die lughawe grootte en afstand tussen van mekaar
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stigting van dorpe binne speletjie: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Aktiveering van die stelling laat spelers toe om dorpe te stig in die speletjie
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbode
@@ -1376,19 +1379,27 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :toegelaat
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :toegelaat, eie dorp uitleg
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Binne speletjie plasing van bome: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheer die ewekansige voorkoms van bome tydens die spel. Dit kan 'n invloed op nywerhede hê wat staatmaak op die groei van bome, byvoorbeeld hout meulens
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :geen {RED}(breek timmerhout meul)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënwoude
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisie van hoof werktuigbaan: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontale posisie van die hoof nutsbalk aan die bokant van die skerm
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posisie van statusbalk: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horisontale posisie van die statusbalk aan die onderkant van die skerm
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Window klamp radius: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Afstand tussen vensters voor dat die venster outomaties in lyn met die nabygeleë vensters geskuif word
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :gedeaktiveer
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimum nommer nie-taaierige vensters: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal non-sticky oop vensters voordat ou vensters outomaties toe gemaak word om die ruimte te maak vir nuwe vensters
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :gedeaktiveer
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximum zoem in level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Die maksimum zoom-vlak vir vertoon-venster. Let daarop dat hoër Zoom-vlakke verhoogte geheue vereistes te volge het
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximum zoem uit level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Die maksimum zoom-vlak vir vertoon-venster. Hoër zoom-vlakke kan tot vertragings lei, wanneer dit gebruik word
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
@@ -1403,6 +1414,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Vinnig
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Baie vinnig
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van dorpe wat stede sal word: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Hoeveelheid van dorpe wat 'n stad sal word, dus 'n dorp wat groot begin en vinniger groei
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Aanvanklike stad grootte multiplier: {STRING}
@@ -1458,6 +1470,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :onversoenbaar m
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressie vlak '{STRING}' is ongeldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is nie beskikbaar. Keer terug na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoreer Basis Grafiek stel '{STRING}': nie gevind nie
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreer Basis Klank stel '{STRING}': nie gevind nie
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
