@@ -111,7 +111,6 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 		case MP_STATION:
 			if (!HasStationRail(t)) return TRACK_BIT_NONE;
 			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
-			if (!IsStationTileElectrifiable(t)) return TRACK_BIT_NONE;
 			return TrackToTrackBits(GetRailStationTrack(t));
 
 		default:
@@ -409,7 +408,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			}
 		}
 
-		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i)) {
+		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i) &&
+				(!IsRailStationTile(ti->tile) || CanStationTileHavePylons(ti->tile))) {
 			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
 
@@ -442,6 +442,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		if (height <= GetTileMaxZ(ti->tile) + 1) return;
 	}
+
+	/* Don't draw a wire if the station tile does not want any */
+	if (IsRailStationTile(ti->tile) && !CanStationTileHaveWires(ti->tile)) return;
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
 	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, TCX_UPPER_HALFTILE) : wire_normal;

@@ -895,18 +895,29 @@ bool IsStationTileBlocked(TileIndex tile)
 }
 
 /**
- * Check if a rail station tile can be electrified.
+ * Check if a rail station tile shall have pylons when electrified.
  * @param tile %Tile to test.
- * @return Tile can be electrified.
+ * @return Tile shall have pylons.
  * @note This could be cached (during build) in the map array to save on all the dereferencing.
  */
-bool IsStationTileElectrifiable(TileIndex tile)
+bool CanStationTileHavePylons(TileIndex tile)
 {
 	const StationSpec *statspec = GetStationSpec(tile);
+	uint gfx = GetStationGfx(tile);
+	/* Default stations do not draw pylons under roofs (gfx >= 4) */
+	return statspec != NULL ? HasBit(statspec->pylons, gfx) : gfx < 4;
+}
 
-	return statspec == NULL ||
-			HasBit(statspec->pylons, GetStationGfx(tile)) ||
-			!HasBit(statspec->wires, GetStationGfx(tile));
+/**
+ * Check if a rail station tile shall have wires when electrified.
+ * @param tile %Tile to test.
+ * @return Tile shall have wires.
+ * @note This could be cached (during build) in the map array to save on all the dereferencing.
+ */
+bool CanStationTileHaveWires(TileIndex tile)
+{
+	const StationSpec *statspec = GetStationSpec(tile);
+	return statspec == NULL || !HasBit(statspec->wires, GetStationGfx(tile));
 }
 
 /** Wrapper for animation control, see #GetStationCallback. */

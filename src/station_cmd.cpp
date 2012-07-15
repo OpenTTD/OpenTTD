@@ -2774,7 +2774,7 @@ draw_default_foundation:
 		}
 	}
 
-	if (HasStationRail(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+	if (HasStationRail(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
 	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;

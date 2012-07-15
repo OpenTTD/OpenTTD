@@ -39,8 +39,8 @@ void DeleteOilRig(TileIndex t);
 /* Check if a rail station tile is traversable. */
 bool IsStationTileBlocked(TileIndex tile);
 
-/* Check if a rail station tile is electrifiable. */
-bool IsStationTileElectrifiable(TileIndex tile);
+bool CanStationTileHavePylons(TileIndex tile);
+bool CanStationTileHaveWires(TileIndex tile);
 
 void UpdateAirportsNoise();
 
