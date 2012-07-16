@@ -3155,6 +3155,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\script\api\script_cargomonitor.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\script\api\script_company.hpp"
 				>
 			</File>
@@ -3400,6 +3404,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\script\api\script_cargolist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\api\script_cargomonitor.cpp"
 				>
 			</File>
 			<File
