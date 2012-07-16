@@ -3590,9 +3590,9 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[먼쪽]
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (다음 목적지가 항속거리제한을 벗어납니다.)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA}(으)로 건너뛰기
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA}번째 경로로 건너뛰기
 STR_ORDER_CONDITIONAL_NUM                                       :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING})
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING}{STRING})
 
 STR_INVALID_ORDER                                               :{RED} (잘못된 행선지)
 
