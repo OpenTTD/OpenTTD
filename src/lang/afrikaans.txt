@@ -1137,17 +1137,23 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teël{P
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Hoeveelheid motor rook/vonke: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Stel vas hoeveel rook en hoeveel vonke deur voertuie gemaak word
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Trein versnelling model: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Kies 'n fisiese model vir die trein versnelling. Die "oorspronklike" model benadeel steilheid ewe vir alle voertuie. Die "realistiese" model benadeel hellings en kurwes, afhangende van die verskillende eienskappe, soos lengte en "tractive force"
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Pad voertuig versnelling model: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Kies 'n fisiese model vir pad vervoer versnelling. Die "oorspronklike" model benadeel steilheid ewe vir alle voertuie. Die "realistiese" model benadeel hellings en kurwes, afhangende van die verskillende eienskappe van die engin, byvoorbeeld "tractive force"
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Krans helling vir treine: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Die steilte van die helling vir treine. Hoër waardes maak dit moeliker om teen die helling uit te klim
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Krans helling vir pad vervoer: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Die steilte van die helling vir 'n pad voertuig. Hoër waardes maak dit moeliker om teen die helling uit te klim
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied triene en skepe om 90 graad draaie te maak: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grade draaie kom voor wanneer 'n horisontale spoor direk gevolg deur 'n vertikale spoor op die aangrensende teël, dus waardeur die trein 'n 90 grade draai maak deur die teël rand in plaas van die gewone 45 grade vir 'n ander spoor kombinasies. Dit geld ook vir die draai radius van skepe
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Laat toe dat stasies lanks mekaar gebind kan word: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Laat die toevoeging van dele van 'n stasie sonder om direk aan die bestaande dele te raak. het Ctrl+Kliek nodig terwyl die plasing van die nuwe dele
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Indien geaktiveer, verskeie voertuie wat by 'n stasie wag sal opeenvolgend gelaai word. Die laai van die volgende voertuig begin eers wanneer daar is genoeg vrag is wat wag om die eerste voertuig te vul
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laai voertuie geleidelik: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiveer inflasie in die ekonomie, waar die kostes vinniger styg as betalings
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
@@ -1158,7 +1164,9 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Plat area rondom nywerhede: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Hoeveelheid van plat ruimte om 'n bedryf. Dit verseker dat leë ruimte beskikbaar sal bly, om 'n bedryf, vir die bou van spore, ensovoorts
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Laat meer as een soortgelyke nywerhede per dorp toe: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Gewoonlik sal 'n dorp nie meer as een bedryf van elke tipe wil hê nie. Met hierdie stelling, sal dorpe toelaat dat verskeie bedrywe van dieselfde tipe gebou word
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Wys seine: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selekteer watter kand van die spoor om die seine te plaas
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan die linkerkant
@@ -1171,6 +1179,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig toustaan (met kwantum effekte): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
@@ -1345,6 +1354,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Gekleurde nuus 
 STR_CONFIG_SETTING_STARTING_YEAR                                :Jaar om te begin: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiveer geleike ekonomie (meer, kleiner veranderings): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Laat die koop van aandeele van ander maatskappye toe: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Persentasie van wins om te betaal in voerder systeem: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} teël{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Wanneer signale getrek word, behou konstante afstand: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Outomaties bou semaphores voor: {STRING}
