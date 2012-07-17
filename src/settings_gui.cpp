@@ -1744,10 +1744,20 @@ struct GameSettingsWindow : Window {
 				size->height = 5 * resize->height + SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET;
 				break;
 
-			case WID_GS_HELP_TEXT:
-				size->height = FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL +
+			case WID_GS_HELP_TEXT: {
+				static const StringID setting_types[] = {
+					STR_CONFIG_SETTING_TYPE_CLIENT,
+					STR_CONFIG_SETTING_TYPE_COMPANY_MENU, STR_CONFIG_SETTING_TYPE_COMPANY_INGAME,
+					STR_CONFIG_SETTING_TYPE_GAME_MENU, STR_CONFIG_SETTING_TYPE_GAME_INGAME,
+				};
+				for (uint i = 0; i < lengthof(setting_types); i++) {
+					SetDParam(0, setting_types[i]);
+					size->width = max(size->width, GetStringBoundingBox(STR_CONFIG_SETTING_TYPE).width);
+				}
+				size->height = 2 * FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL +
 						max(size->height, _settings_main_page.GetMaxHelpHeight(size->width));
 				break;
+			}
 
 			default:
 				break;
@@ -1776,10 +1786,20 @@ struct GameSettingsWindow : Window {
 			case WID_GS_HELP_TEXT:
 				if (this->last_clicked != NULL) {
 					const SettingDesc *sd = this->last_clicked->d.entry.setting;
-					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
-					this->last_clicked->SetValueDParams(0, default_value);
 
 					int y = r.top;
+					if (sd->desc.flags & SGF_PER_COMPANY) {
+						SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_COMPANY_MENU : STR_CONFIG_SETTING_TYPE_COMPANY_INGAME);
+					} else if (sd->save.conv & SLF_NOT_IN_SAVE) {
+						SetDParam(0, STR_CONFIG_SETTING_TYPE_CLIENT);
+					} else {
+						SetDParam(0, _game_mode == GM_MENU ? STR_CONFIG_SETTING_TYPE_GAME_MENU : STR_CONFIG_SETTING_TYPE_GAME_INGAME);
+					}
+					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
+					y += FONT_HEIGHT_NORMAL;
+
+					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
+					this->last_clicked->SetValueDParams(0, default_value);
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
