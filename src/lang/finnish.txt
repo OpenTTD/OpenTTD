@@ -1105,6 +1105,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tehty to
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäasetukset
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Asetuksen tyyppi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Yleinen asetus (ei tallenneta tallenteisiin; vaikuttaa kaikkiin peleihin)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Pelin asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Pelin asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen peliin)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Yhtiön asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen yhtiöön)
 
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä

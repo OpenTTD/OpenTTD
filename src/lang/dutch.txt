@@ -1105,6 +1105,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze act
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instellingstype: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Gebruiker instellingen (niet opgeslagen in bestand; heeft invloed op alle spellen)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinstellingen (opgeslagen in bestand; hebben alleen invloed op nieuw spel)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellingen (opgeslagen in bestand; hebben alleen invloed op huidig spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op nieuw spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (Opgeslagen in bestand; hebben alleen invloed op huidig bedrijf)
 
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan

@@ -775,7 +775,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} 근처의 석유 정제소가 폭발하였습니다!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} 근처의 공장이 의심스러운 상황으로 인해 파괴되었습니다!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}UFO가 {TOWN} 근처에 착륙했습니다!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} 근처의 석탄 광산이 함몰되어 그 파괴의 흔적을 남겼습니다!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} 근처 탄광이 함몰되어 그 파괴의 흔적을 남겼습니다!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}홍수 발생!{}최소 {COMMA}명의 실종자가 발생하였으며, 범람 후에 사상자도 발생할 것입니다!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}운송회사에 문제가 생김!
@@ -833,7 +833,7 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동 교체에 실패하였습니다{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING}{G 0 "이" "가"} 출시되었습니다!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
@@ -1106,6 +1106,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행�
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}설정 종류: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :접속자 설정 (세이브 파일에 저장 안됨; 모든 게임에 영향이 있음)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :게임 설정 (세이브 파일에 저장; 새 게임에만 영향이 있음)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :게임 설정 (세이브 파일에 저장; 현재 게임에만 영향이 있음)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :회사 설정 (세이브 파일에 저장; 새 게임에 영향이 있음)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (세이브 파일에 저장; 현재 회사에만 영향이 있음)
 
 STR_CONFIG_SETTING_OFF                                          :아니오
 STR_CONFIG_SETTING_ON                                           :예
@@ -1237,11 +1243,11 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :이 옵션을 �
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :차량이 오래되면 자동 교체: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :이 옵션을 켜면 제한 수명에 다다른 차량이 교체 조건을 만족할 경우 자동으로 차량을 교체할 수 있게 됩니다.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :차량이 최대 수명의 {STRING}이면 자동 교체
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :자동교체가 필요한 차량의 상대적인 연령을 설정합니다.
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :자동 교체가 필요한 차량의 상대적인 연령을 설정합니다.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA}개월 전
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA}개월 후
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :차량 자동교체시 최소 추가요구 자금: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :차량을 자동교체하기 위해 최소한으로 있어야 하는 자금의 양을 설정합니다.
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :자동 교체를 위해 최소한으로 갖고 있어야 할 자금: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :차량을 자동 교체하기 위해 최소한으로 있어야 하는 자금의 양을 설정합니다.
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :오류 메시지 표시: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :오류 메시지를 표시할 시간을 설정합니다. 일부 (중요한) 오류 메시지는 이 시간이 지나도 자동으로 사라지지 않고 수동으로 꺼야할 수도 있음을 알아두십시오.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}초 동안
@@ -1507,7 +1513,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 옵션
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동교체
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}점검
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로탐색
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
@@ -1724,7 +1730,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타�
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}접속방법:
-STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}인터넷/네트워크 게임중에 하나를 선택하세요.
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}인터넷과 LAN 게임 중에 하나를 선택하세요.
 STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 STR_NETWORK_SERVER_LIST_INTERNET                                :인터넷
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}플레이어 이름:
@@ -1733,8 +1739,8 @@ STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}다른 �
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}이름
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}게임 이름
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}클라이언트
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}클라이언트 온라인 / 최대 접속자수{}회사 온라인 / 최대 회사수
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}접속자
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}현재 접속자 수 / 최대 접속자 수{}현재 회사 개수 / 최대 회사 개수
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}지도 크기
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}게임의 지도 크기{}크기별로 정렬하려면 클릭
@@ -1749,7 +1755,7 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}최근�
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}최근에 플레이한 서버를 선택하려면 클릭하세요
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}게임 정보
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}클라이언트: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}접속현황: 접속자 {WHITE}{COMMA} / {COMMA}명 - 회사 {COMMA} / {COMMA}개
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}언어: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}기후: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}지도 크기: {WHITE}{COMMA}x{COMMA}
@@ -1768,9 +1774,9 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}새로�
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}서버 정보를 새로 고칩니다.
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}서버 검색
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}서버를 네트워크에서 검색합니다
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}네트워크에 등록되어 있는 서버를 검색합니다.
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}서버 추가
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}(게임이 실행되는 동안 항상 체크될) 서버를 목록에 추가합니다.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}서버를 목록에 수동으로 추가합니다.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}서버 열기
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}당신이 서버가 되어 게임을 진행합니다.
 
@@ -1936,12 +1942,12 @@ STR_NETWORK_CHAT_ALL                                            :[모두] {STRIN
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}네트워크 채팅을 위한 텍스트를 입력하세요
 
 # Network messages
-STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}네트워크 장치를 찾을수 없거나 컴파일되지 않았습니다.
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}네트워크 장치를 찾을수 없거나 게임 자체가 네트워크를 사용할 수 없는 버전으로 컴파일되었습니다.
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}네트워크 게임이 존재하지 않습니다.
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}서버가 요청을 받지 않습니다.
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}네트워크 게임 동기화 실패
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크 게임 연결 손실
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}네트워크와 게임을 동기화하는 데 실패하였습니다.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크와 연결이 끊어졌습니다.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}세이브 게임을 불러올 수 없습니다
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버를 시작할 수 없습니다
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
@@ -1950,8 +1956,8 @@ STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로�
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 교정내용이 서버의 것과 일치하지 않습니다.
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 암호입니다
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버가 가득 찼습니다.
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버로부터 영구 접속 차단되었습니다.
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제 추방 되었습니다.
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}서버 관리자에 의해 접속이 차단되었습니다.
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}서버에서 강제로 추방되었습니다.
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}이 서버에서 치트를 사용할 수 없습니다!
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}서버에 너무 많은 명령을 보냈습니다.
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}비밀번호 입력 시간을 초과하였습니다.
@@ -1988,28 +1994,28 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}마지�
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :게임 일시 중지됨 ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :게임이 아직 일시 중지 중 ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :게임이 아직 일시 중지 중 ({STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :게임이 아직 일시 중지 중 ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :게임이 아직 일시정지중입니다 ({STRING}, {STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :게임 재개됨 ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :게임이 일시정지되었습니다. ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :게임이 아직 일시정지 상태입니다. ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :게임이 아직 일시정지 상태입니다. ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :게임이 아직 일시정지 상태입니다. ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :게임이 아직 일시정지중입니다. ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :게임이 재개되었습니다. ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :충분한 플레이어가 없습니다
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :클라이언트 연결중
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :접속자와 연결중
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :수동
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :게임 스크립트
 ############ End of leave-in-this-order
-STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :떠남
-STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING}님이 게임에 참여했습니다
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING}(이)가 게임에 참여하셨습니다 (클라이언트 #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING}님이 회사 #{2:NUM}에 참가하셨습니다
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING}님이 관전을 시작하셨습니다
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING}님이 새 회사 #{2:NUM}을 창업하셨습니다
-STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING}님이 게임에서 나갔습니다 ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :게임 종료
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} 님이 입장하셨습니다.
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} 님이 입장하셨습니다. ({2:NUM}번 접속자)
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} 님이 {2:NUM}번 회사에 참여하셨습니다.
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 님이 관전을 시작하셨습니다.
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 님이 새로운 회사(({2:NUM}번)를 창설하셨습니다.
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 님이 퇴장하셨습니다. (사유: {2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님이 이름을 {STRING}(으)로 바꿨습니다
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 님이 당신에게 {2:CURRENCY_LONG}만큼의 돈을 보내셨습니다.
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} 님에게 {2:CURRENCY_LONG}만큼의 돈을 보냈습니다.
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 세션을 종료하였습니다
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다.
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버 재가동중...{}기다려주세요...
 
 # Content downloading window
@@ -2721,7 +2727,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGI
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}을 위한 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이것은 자동교체에서 개조를 실패를 초래할 수 있습니다.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}의 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이 경우 자동 교체시 개조에 실패할 수도 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 함수 {1:HEX}가 알 수없는/잘못된 결과값 {2:HEX}을 반환했습니다.
 
@@ -3288,7 +3294,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :모노레일 �
 STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차 길이가 달라지지 않도록 합니다.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 앞쪽부터 화물칸를 제거하여 열차의 전체 길이가 달라지지 않도록 합니다.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3672,7 +3678,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 �
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AI 로그 메세지가 중단 문자열과 일치할때 AI 중단을 활성화/비활성화
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}인공지능 로그 메세지가 이 문자열과 일치할때, 게임이 일시 정지합니다.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}인공지능 로그 메시지가 이 문자열과 일치하면 게임을 일시정지시킵니다.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}일치 케이스
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI 로그 메세지를 중단 문자열과 비교할때 일치 케이스 검색으로 전환.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
@@ -3972,7 +3978,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차�
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}{P "가" "이"} 교체된지 너무 오래되었습니다
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}자동교체/갱신 규칙이 적용되지 않았습니다.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}자동 교체/갱신 규칙이 적용되지 않았습니다.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 제한)
 
 # Rail construction errors
@@ -4186,7 +4192,7 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :돼지 저금�
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}석탄 광산
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}탄광
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}발전소
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}제재소
 STR_INDUSTRY_NAME_FOREST                                        :숲
@@ -4201,7 +4207,7 @@ STR_INDUSTRY_NAME_OIL_WELLS                                     :유정
 STR_INDUSTRY_NAME_BANK                                          :은행
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :식품 처리 공장
 STR_INDUSTRY_NAME_PAPER_MILL                                    :제지소
-STR_INDUSTRY_NAME_GOLD_MINE                                     :금 광산
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}금광
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :은행
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :다이아몬드 광산
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :철 광산

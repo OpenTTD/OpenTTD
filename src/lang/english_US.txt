@@ -1105,6 +1105,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}This act
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced Settings
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no explanation available)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Default value: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Setting type: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Client setting (not stored in saves; affects all games)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Game setting (stored in saves; affects only new games)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Game setting (stored in save; affects only current game)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Company setting (stored in saves; affects only new games)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting (stored in save; affects only current company)
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
