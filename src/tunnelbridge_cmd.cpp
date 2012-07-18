@@ -319,7 +319,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		/* Do not replace the bridge with the same bridge type. */
-		if (!(flags & DC_QUERY_COST) && bridge_type == GetBridgeType(tile_start)) {
+		if (!(flags & DC_QUERY_COST) && (bridge_type == GetBridgeType(tile_start)) && (transport_type != TRANSPORT_ROAD || (roadtypes & ~GetRoadTypes(tile_start)) == 0)) {
 			return_cmd_error(STR_ERROR_ALREADY_BUILT);
 		}
 
