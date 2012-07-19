@@ -1201,6 +1201,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova je r
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne postavke
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema dostupnog pojašnjenja)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Osnovna vrijednost: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta postavki: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Postavke klijenta (nisu pohranjene u snimljenoj datoteci; utječu na sve igre)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Postavke igre (pohranjene u snimljenoj datoteci; utječu samo na nove igre)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Postavke igre (pohranjene u snimljenoj datoteci; utječu samo na trenutnu igru)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na nove igre)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na trenutnu kompaniju)
 
 STR_CONFIG_SETTING_OFF                                          :Isključeno
 STR_CONFIG_SETTING_ON                                           :Uključeno

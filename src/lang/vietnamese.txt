@@ -1105,6 +1105,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành đ
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
@@ -1303,6 +1304,8 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có m
 STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Khi kéo, đặt đèn tín hiệu mỗi: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Đặt khoảng cách để xây liên tiếp các đèn tín hiệu khi được kéo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ô
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Khi kéo-thả, giữ khoảng cách cố định giữa các đèn tín hiệu: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Xây cờ hiệu thay vì đèn trước năm: {STRING}

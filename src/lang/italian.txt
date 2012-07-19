@@ -1107,6 +1107,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Questa a
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Impostazioni avanzate
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrizione non disponibile)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valore predefinito: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo impostazione: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Impostazione del client (non conservata nei salvataggi; influenza tutte le partite)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Impostazione di gioco (conservata nei salvataggi; influenza solo le nuove partite)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Impostazione di gioco (conservata nel salvataggio; influenza solo la partita corrente)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_OFF.ms                                       :No
