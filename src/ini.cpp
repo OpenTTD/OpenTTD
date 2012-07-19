@@ -21,6 +21,7 @@
 #endif
 
 #ifdef WIN32
+# include <windows.h>
 # include <shellapi.h>
 # include "core/mem_func.hpp"
 #endif
