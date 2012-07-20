@@ -1265,7 +1265,7 @@ STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Available AIs window
 
-STR_AI_LIST_VERSION                                             :{BLACK}Верси: {NUM}
+STR_AI_LIST_VERSION                                             :{LTBLUE}Верси: {ORANGE}{NUM}
 
 
 # AI Parameters

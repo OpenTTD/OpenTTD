@@ -1358,7 +1358,7 @@ public:
 		}
 
 		this->FinishInitNested(desc, window_number);
-		this->owner = this->vli.company;
+		if (this->vli.company != OWNER_NONE) this->owner = this->vli.company;
 
 		if (this->vli.vtype == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
@@ -1609,7 +1609,7 @@ static WindowDesc _vehicle_list_desc(
 
 static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint16 unique_number)
 {
-	if (!Company::IsValidID(company)) return;
+	if (!Company::IsValidID(company) && company != OWNER_NONE) return;
 
 	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
 	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, VehicleListIdentifier(vlt, vehicle_type, company, unique_number).Pack());
@@ -1636,15 +1636,7 @@ void ShowVehicleListWindow(const Vehicle *v)
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)
 {
-	if (!Company::IsValidID(company)) {
-		company = _local_company;
-		/* This can happen when opening the vehicle list as a spectator. */
-		if (!Company::IsValidID(company)) return;
-		_vehicle_list_desc.flags |= WDF_CONSTRUCTION;
-	} else {
-		_vehicle_list_desc.flags &= ~WDF_CONSTRUCTION;
-	}
-
+	_vehicle_list_desc.flags &= ~WDF_CONSTRUCTION;
 	ShowVehicleListWindowLocal(company, VL_STATION_LIST, vehicle_type, station);
 }
 
