@@ -113,7 +113,6 @@ struct RoadVehicle FINAL : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const { return this->state == RVSB_IN_DEPOT; }
-	bool IsStoppedInDepot() const;
 	bool Tick();
 	void OnNewDay();
 	uint Crash(bool flooded = false);

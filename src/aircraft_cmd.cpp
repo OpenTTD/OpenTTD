@@ -365,7 +365,7 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
 static void CheckIfAircraftNeedsService(Aircraft *v)
 {
 	if (Company::Get(v->owner)->settings.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
-	if (v->IsInDepot()) {
+	if (v->IsChainInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}

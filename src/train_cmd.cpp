@@ -730,34 +730,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 	return CommandCost();
 }
 
-/**
- * Is the whole consist the in a depot?
- * @return \c true iff all vehicles of the train are in a depot.
- */
-bool Train::IsInDepot() const
-{
-	/* Is the front engine stationary in the depot? */
-	if (!IsRailDepotTile(this->tile) || this->cur_speed != 0) return false;
-
-	/* Check whether the rest is also already trying to enter the depot. */
-	for (const Train *v = this; v != NULL; v = v->Next()) {
-		if (v->track != TRACK_BIT_DEPOT || v->tile != this->tile) return false;
-	}
-
-	return true;
-}
-
-/**
- * Is the train stopped in a depot?
- * @return True if the train is stopped in a depot, else false.
- */
-bool Train::IsStoppedInDepot() const
-{
-	/* Are we stopped? Of course wagons don't really care... */
-	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
-	return this->IsInDepot();
-}
-
 static Train *FindGoodVehiclePos(const Train *src)
 {
 	EngineID eng = src->engine_type;
@@ -1932,6 +1904,8 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	Train *t = Train::GetIfValid(p1);
 	if (t == NULL) return CMD_ERROR;
 
+	if (!t->IsPrimaryVehicle()) return CMD_ERROR;
+
 	CommandCost ret = CheckOwnership(t->owner);
 	if (ret.Failed()) return ret;
 
@@ -1942,7 +1916,7 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 		 * to proceed to the next signal. In the other cases we
 		 * would like to pass the signal at danger and run till the
 		 * next signal we encounter. */
-		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : HasBit(t->flags, VRF_TRAIN_STUCK) || t->IsInDepot() ? TFP_STUCK : TFP_SIGNAL;
+		t->force_proceed = t->force_proceed == TFP_SIGNAL ? TFP_NONE : HasBit(t->flags, VRF_TRAIN_STUCK) || t->IsChainInDepot() ? TFP_STUCK : TFP_SIGNAL;
 		SetWindowDirty(WC_VEHICLE_VIEW, t->index);
 	}
 
@@ -3900,7 +3874,7 @@ bool Train::Tick()
 static void CheckIfTrainNeedsService(Train *v)
 {
 	if (Company::Get(v->owner)->settings.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
-	if (v->IsInDepot()) {
+	if (v->IsChainInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}

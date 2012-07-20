@@ -182,7 +182,7 @@
 /* static */ bool ScriptVehicle::IsInDepot(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return false;
-	return ::Vehicle::Get(vehicle_id)->IsInDepot();
+	return ::Vehicle::Get(vehicle_id)->IsChainInDepot();
 }
 
 /* static */ bool ScriptVehicle::IsStoppedInDepot(VehicleID vehicle_id)

@@ -92,6 +92,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	void PowerChanged();
 	void CargoChanged();
 	int GetAcceleration() const;
+	bool IsChainInDepot() const;
 
 	/**
 	 * Common code executed for crashed ground vehicles

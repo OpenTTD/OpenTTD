@@ -12,6 +12,7 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
+#include "depot_map.h"
 
 /**
  * Recalculates the cached total power of a vehicle. Should be called when the consist is changed.
@@ -162,6 +163,27 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	} else {
 		return min(-force - resistance, -10000) / mass;
 	}
+}
+
+/**
+ * Check whether the whole vehicle chain is in the depot.
+ * @return true if and only if the whole chain is in the depot.
+ */
+template <class T, VehicleType Type>
+bool GroundVehicle<T, Type>::IsChainInDepot() const
+{
+	const T *v = this->First();
+	/* Is the front engine stationary in the depot? */
+	assert_compile((int)TRANSPORT_RAIL == (int)VEH_TRAIN);
+	assert_compile((int)TRANSPORT_ROAD == (int)VEH_ROAD);
+	if (!IsDepotTypeTile(v->tile, (TransportType)Type) || v->cur_speed != 0) return false;
+
+	/* Check whether the rest is also already trying to enter the depot. */
+	for (; v != NULL; v = v->Next()) {
+		if (!v->T::IsInDepot() || v->tile != this->tile) return false;
+	}
+
+	return true;
 }
 
 /* Instantiation for Train */
