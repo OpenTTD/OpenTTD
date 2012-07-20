@@ -1298,8 +1298,8 @@ struct QueryWindow : public Window {
 		if (widget != WID_Q_TEXT) return;
 
 		Dimension d = GetStringMultiLineBoundingBox(this->message, *size);
-		d.width += padding.width;
-		d.height += padding.height;
+		d.width += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 		*size = d;
 	}
 
@@ -1307,7 +1307,8 @@ struct QueryWindow : public Window {
 	{
 		if (widget != WID_Q_TEXT) return;
 
-		DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->message, TC_FROMSTRING, SA_CENTER);
+		DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM,
+				this->message, TC_FROMSTRING, SA_CENTER);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
