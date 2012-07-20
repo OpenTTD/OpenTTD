@@ -1300,6 +1300,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis vei
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(paaiškinimo nėra)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Numatytoji reikšmė: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nuostatos galiojimo lygmuo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :programos (galioja visiems žaidimams)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :žaidimo (įrašoma pradedant naują žaidimą)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą ir galioja tik šiuo metu aktyviai kompanijai ir galioja tik aktyviam žaidimui)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :kompanijos (įrašoma pradedant naują žaidimą)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įrašoma kiekvieną kartą išsaugant žaidimą ir galioja tik šiuo metu aktyviai kompanijai)
 
 STR_CONFIG_SETTING_OFF                                          :Ne
 STR_CONFIG_SETTING_ON                                           :Taip

@@ -1485,6 +1485,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zmienion
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawienia zaawansowane
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Domyślna wartość: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ ustawienia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Ustawienie klienta (nie przechowywane w plikach zapisu; ma wpływ na wszystkie gry)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Ustawienie gry (przechowywane w plikach zapisu; ma wpływ tylko na nowe gry)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Ustawienie gry (przechowywane w pliku zapisu; ma wpływ tylko na aktualną grę)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ustawienie firmy (przechowywane w plikach zapisu; ma wpływ tylko na nowe gry)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ustawienie firmy (przechowywane w pliku zapisu; ma wpływ tylko na aktualną firmę)
 
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.

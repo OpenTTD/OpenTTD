@@ -974,7 +974,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Bộ nhạc chuẩn
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nhạc chuẩn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file bị hỏng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
@@ -1105,6 +1105,11 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành đ
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Kiểu thiết lập: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Cấu hình máy khách (không được lưu trong save; tác động tới tất cả các ván chơi)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Thiết lập trò chơi (chứa trong save; chỉ tác động tới các ván chơi mới)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Thiết lập trò chơi (chứa trong save; chỉ tác động tới ván chơi hiện tại)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Thiết lập công ty (chứa trong save; chỉ tác động tới các ván chơi mới)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
@@ -1151,6 +1156,10 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Sử dụng thu
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Bốc/dỡ hàng lên phương tiện dần dần: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Lạm phát: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Độ dài tối đa của cầu: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Độ dài tối đa khi xây cầu
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Độ dài tối đa của hầm: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Độ dài tối đa khi xây hầm
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Tuỳ chỉnh phương thức xây dựng nhà máy: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
@@ -1432,6 +1441,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :không tương 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :không rõ
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... mức độ nén '{STRING}' không hợp lệ
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... không thể lưu game dạng '{STRING}'. Lưu dạng '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... từ chối gói đồ họa chuẩn '{STRING}': không tìm thấy
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... từ chối gói âm thanh chuẩn '{STRING}': không tìm thấy
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... từ chối gói nhạc chuẩn '{STRING}': không tìm thấy
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1943,7 +1955,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Thư viện AI
 STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi kịch bản
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ địa hình
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Nhạc chuẩn
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Gói nhạc chuẩn
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Tập lệnh trò chơi
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Thư viện GS
 

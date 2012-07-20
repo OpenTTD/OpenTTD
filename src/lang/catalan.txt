@@ -1106,6 +1106,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Aquesta 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmetres avançats
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Cap explicació disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paràmetres del client (no s'emmagatzemen als jocs desats; afecta tots els jocs)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paràmetres del joc (emmagatzemats al jocs desats; afecta només als jocs nous)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paràmetres del joc (emmagatzemats al joc desat; afecta només al joc actual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paràmetres de la companyia (emmagatzemats al jocs desats; afecta només als jocs nous)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetres de la companyia (emmagatzemats al joc desat; afecta només la companyia actual)
 
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
