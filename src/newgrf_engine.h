@@ -20,7 +20,7 @@
 #include "gfx_type.h"
 
 static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
-static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 28;
+static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 32;
 static const uint VEHICLEINFO_FULL_VEHICLE_WIDTH    = 32;
 
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
@@ -63,8 +63,7 @@ void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
 void UnloadWagonOverrides(Engine *e);
 
-uint ListPositionOfEngine(EngineID engine);
-void AlterVehicleListOrder(EngineID engine, EngineID target);
+void AlterVehicleListOrder(EngineID engine, uint target);
 void CommitVehicleListOrderChanges();
 
 EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id);

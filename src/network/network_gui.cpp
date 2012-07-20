@@ -2181,7 +2181,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(4);
+		this->HandleEditBox(WID_NCP_PASSWORD);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
