@@ -1771,6 +1771,7 @@ make_cflags_and_ldflags() {
 
 	if [ "$enable_assert" = "0" ]; then
 		CFLAGS="$CFLAGS -DNDEBUG"
+		CFLAGS_BUILD="$CFLAGS_BUILD -DNDEBUG"
 	fi
 
 	if [ "$enable_desync_debug" != "0" ]; then

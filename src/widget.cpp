@@ -1528,9 +1528,7 @@ void NWidgetMatrix::AssignSizePosition(SizingType sizing, uint x, uint y, uint g
 	/* When resizing, update the scrollbar's count. E.g. with a vertical
 	 * scrollbar becoming wider or narrower means the amount of rows in
 	 * the scrollbar becomes respectively smaller or higher. */
-	if (sizing == ST_RESIZE) {
-		this->SetCount(this->count);
-	}
+	this->SetCount(this->count);
 }
 
 void NWidgetMatrix::FillNestedArray(NWidgetBase **array, uint length)

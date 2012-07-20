@@ -10,6 +10,7 @@ ENDIAN_CHECK     = !!ENDIAN_CHECK!!
 SRC_DIR          = !!SRC_DIR!!
 CXX_BUILD        = !!CXX_BUILD!!
 CFLAGS_BUILD     = !!CFLAGS_BUILD!!
+CXXFLAGS_BUILD   = !!CXXFLAGS_BUILD!!
 LDFLAGS_BUILD    = !!LDFLAGS_BUILD!!
 STAGE            = !!STAGE!!
 SETTING_OBJS_DIR = !!SETTING_OBJS_DIR!!
@@ -29,27 +30,27 @@ all: table/settings.h
 
 settingsgen.o: $(SRC_DIR)/settingsgen/settingsgen.cpp $(SRC_DIR)/string_func.h $(SRC_DIR)/strings_type.h $(SRC_DIR)/misc/getoptdata.h $(SRC_DIR)/ini_type.h $(SRC_DIR)/core/smallvec_type.hpp
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
 alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
 getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
 string.o: $(SRC_DIR)/string.cpp endian_host.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
 ini_load.o: $(SRC_DIR)/ini_load.cpp $(SRC_DIR)/core/alloc_func.hpp $(SRC_DIR)/core/mem_func.hpp $(SRC_DIR)/ini_type.h $(SRC_DIR)/string_func.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) -DSETTINGSGEN -c -o $@ $<
 
 $(SETTINGSGEN): alloc_func.o string.o ini_load.o settingsgen.o getoptdata.o
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $(LDFLAGS_BUILD) $^ -o $@
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) $^ -o $@
 
 table/settings.h: $(SETTINGSGEN) $(SRC_DIR)/table/settings.h.preamble $(SRC_DIR)/table/settings.h.postamble $(SRC_DIR)/table/*.ini
 	$(E) '$(STAGE) Generating $@'
@@ -64,7 +65,7 @@ endian_host.h: $(ENDIAN_CHECK)
 
 $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $< -o $@
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) $(CXXFLAGS_BUILD) $(LDFLAGS_BUILD) $< -o $@
 
 depend:
 
