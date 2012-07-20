@@ -305,7 +305,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 	{
 		RECT r;
 		DWORD style, showstyle;
-		int x, y, w, h;
+		int w, h;
 
 		showstyle = SW_SHOWNORMAL;
 		_wnd.fullscreen = full_screen;
@@ -322,14 +322,15 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 #if !defined(WINCE)
 		AdjustWindowRect(&r, style, FALSE);
 #endif
+		w = r.right - r.left;
+		h = r.bottom - r.top;
 
-		if (_wnd.main_wnd == NULL) {
-			w = r.right - r.left;
-			h = r.bottom - r.top;
-			x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
-			y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
-
+		if (_wnd.main_wnd != NULL) {
+			if (!_window_maximize) SetWindowPos(_wnd.main_wnd, 0, 0, 0, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOMOVE);
+		} else {
 			TCHAR Windowtitle[50];
+			int x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
+			int y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
 			_sntprintf(Windowtitle, lengthof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
 
@@ -1055,6 +1056,8 @@ void VideoDriver_Win32::MainLoop()
 
 bool VideoDriver_Win32::ChangeResolution(int w, int h)
 {
+	if (_window_maximize) ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL);
+
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
