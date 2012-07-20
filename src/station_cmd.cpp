@@ -2165,11 +2165,13 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	/* Check if local auth would allow a new airport */
 	StringID authority_refuse_message = STR_NULL;
+	Town *authority_refuse_town = NULL;
 
 	if (_settings_game.economy.station_noise_level) {
 		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
 		if ((nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise()) {
 			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE;
+			authority_refuse_town = nearest;
 		}
 	} else {
 		uint num = 0;
@@ -2179,11 +2181,12 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 		if (num >= 2) {
 			authority_refuse_message = STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT;
+			authority_refuse_town = t;
 		}
 	}
 
 	if (authority_refuse_message != STR_NULL) {
-		SetDParam(0, t->index);
+		SetDParam(0, authority_refuse_town->index);
 		return_cmd_error(authority_refuse_message);
 	}
 
