@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Quantitat de vehicles que han donat beneficis el darrer any. Inclou els automòbils, trens, vaixells i avions
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat de parts d'una es estació revisades. Cada part d'una estació (ex. estació de tren, parada d'autobús, aeroport) es compta, encara que estigui connectada com una sola estació.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Quantitat d'estacions revisades recentment. Estacions, parades d'autobús, aeroports, etc. es compten separadament, fins hi tot si pertanyen a la mateixa estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}El benefici del vehicle amb els menors ingressos (només s'han considerat els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el mínim benefici dels darrers 12 quatrimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantitat de diners fets durant el quatrimestre amb el màxim benefici dels darrers 12 quatrimestres
@@ -1394,6 +1394,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible am
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconegut
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... el nivell de compressió '{STRING}' no és vàlid
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el format de joc desat '{STRING}' no està disponible. Tornant a '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorant el conjunt de gràfics base '{STRING}': no trobats
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorant el conjunt de sons base '{STRING}': no trobats
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorant el conjunt de músiques base '{STRING}': no trobats
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3114,7 +3117,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Para de 
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituint: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Alterna entre finestres de substitució de vagons i de motors
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Canvia entre finestres de substitució de vagons i de motors
 STR_REPLACE_ENGINES                                             :Motors
 STR_REPLACE_WAGONS                                              :Vagons
 

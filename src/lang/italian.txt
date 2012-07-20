@@ -1417,6 +1417,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :non compatibile
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :motivo sconosciuto
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... il livello di compressione '{STRING}' non è valido
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formato di salvataggio '{STRING}' non disponibile. Ritorno a '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorato pacchetto grafico di base '{STRING}': non trovato
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorato pacchetto sonoro di base '{STRING}': non trovato
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorato pachetto musicale di base '{STRING}': non trovato
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1658,13 +1661,13 @@ STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (pubblicizza)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max client:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Limite client:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Imposta il numero massimo di client. Non tutti i posti dovranno essere occupati
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagni{P a e}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max compagnie:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Limite compagnie:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limita il server a un certo numero di compagnie
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spettator{P e i}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spettatori:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Limite spettatori:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita il server a un certo numero di spettatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server

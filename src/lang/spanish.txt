@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstam
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Cantidad de vehículos que obtuvieron beneficios el año pasado. Incluye vehículos de carretera, trenes, barcos y aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Cada parte de una estación (ej. estaciones de tren, paradas de autobús, aeropuertos, etc.) es contabilizado, incluso si están unidas en una estación
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Cantidad de partes de estación que han tenido servicio. Las estaciones de tren, paradas de autobus, aeropuertos y demás son contabilizadas por separado incluso si pertenecen a la misma estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Beneficio del vehículo con menores ingresos (de entre todos los vehículos con más de 2 años)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más bajo de los pasados 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Cantidad de dinero ganado en el trimestre con el beneficio más alto de los pasados 12 trimestres
@@ -2841,7 +2841,7 @@ STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del Pres
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos buscando una empresa de transportes para adquirir la nuestra{}{}¿Desea comprar {COMPANY} por {CURRENCY_LONG}?
 
 # Company infrastructure window
-STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura of {COMPANY}
+STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraestructura de {COMPANY}
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trozos de ferrocarril:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Señales
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Trozos de carretera:
@@ -3548,7 +3548,7 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Configur
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configura los parámetros del script
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Disponible {STRING}
+STR_AI_LIST_CAPTION                                             :{WHITE}{STRING} disponibles
 STR_AI_LIST_CAPTION_AI                                          :IAs
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Scripts de Juego
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Click para seleccionar un script

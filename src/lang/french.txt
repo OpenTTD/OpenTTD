@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si toutes ces parties ne forment qu'une seule station.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Les gares, arrêts de bus, aéroports et autres sont comptés séparément même si ils font partie de la même station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers trimestres
@@ -1394,6 +1394,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible av
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :inconnu
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... le niveau de compression '{STRING}' n'est pas valide
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... le format de sauvegarde '{STRING}' n'est pas disponible. Retour à '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... graphiques de base '{STRING}' ignorés{NBSP}: non trouvés
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sons de base '{STRING}' ignorés{NBSP}: non trouvés
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... musique de base '{STRING}' ignorée{NBSP}: non trouvé
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

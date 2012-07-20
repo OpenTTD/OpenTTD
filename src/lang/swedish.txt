@@ -580,8 +580,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totalt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal fordon som gick med vinst förra året. Inkluderar vägfordon, tåg, skepp och flygplan
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen betjänade stationsdelar. Varje del av en station (t.ex. tågstation, bushållplats, flygplats) räknas, även om de är sammanbyggda till en station
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinsten för det fordon med lägst inkomst (endast fordon äldre än två år)
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antalet nyligen betjänade stationer. Tågstationer, busshållplatser, flygplatser osv räknas var för sig även om de tillhör samma station
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Vinsten för fordonet med lägst inkomst (endast fordon äldre än två år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med lägst vinst av de senaste 12 kvartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Intjänade pengar det kvartal med högst vinst de senaste 12 kvartalen
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Antalet enheter gods levererat de senaste fyra kvartalen.
@@ -754,9 +754,9 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Övergr
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer {STATION}!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första lastbilen ankommer {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första lastbilen ankommer till {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första passagerarspårvagnen anländer till {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första godsspårvagnen anländer till {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Invånarna firar . . .{}Första fartyget ankommer till {STATION}!
@@ -1486,12 +1486,12 @@ STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Välj hu
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Välj andravalsfärgen för det aktuella schemat
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Välj ett färgschema att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
 
-STR_LIVERY_DEFAULT                                              :Normalt Färgschema
+STR_LIVERY_DEFAULT                                              :Normalt färgschema
 STR_LIVERY_STEAM                                                :Ånglok
 STR_LIVERY_DIESEL                                               :Dieseltåg
 STR_LIVERY_ELECTRIC                                             :Elektriskt tåg
-STR_LIVERY_MONORAIL                                             :Monorail-Tåg
-STR_LIVERY_MAGLEV                                               :Maglev-Tåg
+STR_LIVERY_MONORAIL                                             :Monorail-tåg
+STR_LIVERY_MAGLEV                                               :Maglev-tåg
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagerarvagn (Ånga)
@@ -1629,11 +1629,11 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Starta e
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Namn:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Namnet på nätverksspelet kommer att synas för andra spelare i multiplayer menyn
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Bestäm lösenord
-STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Skydda spelet med ett lösenord så att inte andra än dem som har lösenordet kan gå med i spelet
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publik)
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" s}
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} företag{P y ies}
@@ -1835,11 +1835,11 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De senas
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spel pausad ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel fortfarande pausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spelet är fortfarande pausat ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel fortfarande pausad ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel fortfarande pausad ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel opausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spelet är opausat ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :antal spelare
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ansluter klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
@@ -2017,7 +2017,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utfartss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Avancerad envägssignal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade envägs-signaler kan inte passeras bakifrån
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten. SHIFT-klick visar beräknad konverteringskostnad
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konvertera signal{}När den är markerad, klicka på en existerande signal för att konvertera den till vald signaltyp och -variant. Ctrl-klick ändrar den existerande varianten. Shift-klick visar beräknad konverteringskostnad
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Minska avstånd mellan signaler
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Öka avstånd mellan signaler
@@ -2051,7 +2051,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bygg bus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bygg passagerarspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bygg lastbrygga. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bygg godsspårvagnsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Avaktivera enkelriktade vägar
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktivera/Inaktivera enkelriktade vägar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bygg vägbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bygg spårvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bygg vägtunnel. Shift växlar mellan att bygga/visa beräknad kostnad
@@ -2563,7 +2563,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade fi
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{0:STRING}' kommer troligen orsaka desynkronisering och/eller krascher
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonlängd för '{1:ENGINE}' ändrades utanför en depå
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonslängd för '{1:ENGINE}' ändrades utanför en depå
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
@@ -3113,7 +3113,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta by
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryck för att sluta byta ut fordonstypen vald på vänster sida
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Välj mellan lok och vagn ersättnings-fönster
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Växla mellan lok- och vagnersättningsfönster
 STR_REPLACE_ENGINES                                             :Lok
 STR_REPLACE_WAGONS                                              :Vagnar
 
@@ -3361,7 +3361,7 @@ STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sluta de
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Åk Till
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
-STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_CONDITIONAL                                           :Villkorat order-hopp
 STR_ORDER_SHARE                                                 :Dela order
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Håll in Ctrl för att välja 'full last någon frakttyp' vid stationer, 'åk non-stop via' vid riktmärken, och 'service' vid tågdepåer. Använd knappen 'Dela order' eller Ctrl+klicka på fordon för att dela order från annat fordon. En depåorder stänger av automatisk service av fordonet
 

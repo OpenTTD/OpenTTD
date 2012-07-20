@@ -580,7 +580,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen met winst in het afgelopen jaar. Hierbij tellen wegvoertuigen, treinen, schepen en vliegtuigen allemaal mee
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijk bezochte stationsonderdelen. Elk deel van een station (bijv. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze met elkaar zijn verbonden tot één station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijk bezochte stationsonderdelen. Elk deel van een station (bijv. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze tot een station behoren
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst van het voertuig met het laagste inkomen (van alle voertuigen ouder dan 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdiend in het kwartaal met de laagste winst van de afgelopen 12 kwartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdiend in het kwartaal met de hoogste winst van de afgelopen 12 kwartalen
@@ -1393,6 +1393,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niet compatibel
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... compressie niveau '{STRING}' is niet geldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is niet beschikbaar. Valt terug naar '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... negeert Basis Grafische set '{STRING}': niet gevonden
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... negeert Basis Geluid set '{STRING}': niet gevonden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negeerd Basis Muziek set '{STRING}': niet gevonden
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

@@ -228,7 +228,7 @@ STR_BUTTON_LOCATION                                             :{BLACK}Sijainti
 STR_BUTTON_RENAME                                               :{BLACK}Nimeä uudelleen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulje ikkuna
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan otsake - vedä tästä siirtääksesi ikkunaa
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ikkunan otsake - siirrä ikkunaa vetämällä tästä
 STR_TOOLTIP_SHADE                                               :{BLACK}Pienennä ikkuna - näytä vain otsikko
 STR_TOOLTIP_DEBUG                                               :{BLACK}Näytä NewGRF-vianmääritystiedot
 STR_TOOLTIP_STICKY                                              :{BLACK}'Sulje Kaikki Ikkunat'-nappi ei vaikuta tähän ikkunaan.
@@ -1393,6 +1393,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :epäyhteensopiv
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tuntematon
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... pakkaustaso '{STRING}' on kelvoton
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... pelitallennemuoto '{STRING}' ei ole saatavilla. Palataan muotoon '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ohitetaan perusgrafiikkapaketti '{STRING}': ei löydetty
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ohitetaan äänipaketti '{STRING}': ei löydetty
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ohitetaan musiikkipaketti '{STRING}': ei löydetty
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

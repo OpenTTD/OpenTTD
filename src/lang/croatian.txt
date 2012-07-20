@@ -676,7 +676,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Zajam:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Ukupno:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Broj vozila koja su ostvarila dobit prošle godine. Ovo uključuje cestovna vozila, vlakove, brodove i zrakoplove.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno održavanih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Broj nedavno servisiranih dijelova postaje. Svaki dio postaje (npr. željeznički kolodvor, autobusna postaja, zračna luka) se računa, čak i ako su spojene kao jedna postaja
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Dobit vozila s najnižim prihodom (u obzir su uzeta samo vozila starija od dvije godine)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najnižom dobiti u zadnjih 12 kvartala
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Količina gotovine uprihodovana u mjesecu s najvišom dobiti u zadnjih 12 kvartala
@@ -1489,6 +1489,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilno 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nepoznat
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivo sažimanja '{STRING}' nije važeći
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format snimljene igre '{STRING}' nije dostupan. Vraćam u '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... zaobilazim Osnovni Grafički set '{STRING}': nije pronađen
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... zaobilazim Osnovni Zvukovni set '{STRING}': nije pronađen
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... zaobilazim Osnovni Muzički set '{STRING}': nije pronađen
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

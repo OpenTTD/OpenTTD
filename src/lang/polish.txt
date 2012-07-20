@@ -916,7 +916,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Włącz wszystko
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Wyłącz wszystko
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Wyświetl wszystkie ładunki na wykresie cen za ładunek
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nie wyświetlaj ładunków na wykresie cen za ładunek
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nie wyświetlaj towarów na wykresie cen towarów
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Przełącznik wykresu ładunku wł./wył.
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -959,7 +959,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczk
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Liczba pojazdów, które przyniosły zysk w zeszłym roku: dotyczy pojazdów drogowych, pociągów, statków i samolotów
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych elementów stacji. Wliczany jest każdy element stacji (np. dworzec, przystanek, lotnisko), nawet jeśli są połączone w jedną stację
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Liczba ostatnio obsłużonych stacji. Dworce, przystanki, lotniska itp. są liczone osobno, nawet jeśli są połączone w jedną stację
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zysk pojazdu o najniższym dochodzie (dotyczy pojazdów, które mają co najmniej 2 lata)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z najmniejszym zyskiem z ostatnich 12 kwartałów
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ilość zarobionych pieniędzy w kwartale z największym zyskiem z ostatnich 12 kwartałów
@@ -1773,6 +1773,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :niezgodne z tą
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :nieznany
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... poziom kompresji '{STRING}' nie jest poprawny
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... format zapisu gry '{STRING}' jest niedostępny. Powracanie do '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoruję zestaw Base Graphics '{STRING}': nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoruję zestaw Base Sounds '{STRING}': nie odnaleziono
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoruję zestaw Base Music '{STRING}': nie odnaleziono
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3503,7 +3506,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Przejdź
 STR_REPLACE_ENGINES                                             :Lokomotywy
 STR_REPLACE_WAGONS                                              :Wagony
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu szyn chcesz zastąpić pojazdy
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu torów chcesz zastąpić lokomotywy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyświetla typ pojazdu na jaki będzie zastąpiony pojazd zaznaczony po lewej stronie
 STR_REPLACE_RAIL_VEHICLES                                       :Kolej
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kolej elektryczna

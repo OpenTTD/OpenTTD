@@ -536,8 +536,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Cho phép toàn bộ
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Bỏ toàn bộ
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ toa xe trên đồ thị tỉ lệ trả tiền của toa xe
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các toa xe trên đồ thị tỉ lệ trả tiền của toa xe
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Hiển thị toàn bộ loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Không hiển thị các loại hàng trên đồ thị tỉ lệ trả tiền của loại hàng
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Bật/tắt đồ thị hàng hóa
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -580,7 +580,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Vay:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Tổng cộng:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Số lượng phương tiện đã làm ra lợi nhuận năm trước ; bao gồm xe cộ, tàu hoả, tàu thủy và máy bay
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới hoạt động tách ra. Mỗi phần của một trạm (nhà ga, trạm xe buýt, sân bay) đều được tính, dù chúng hợp lại thành một trạm
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Số trạm mới được phục vụ.Nhà ga, trạm xe buýt và sân bay ... đều được tính riêng, dù chúng có chung một trạm
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Lợi nhuận của những phương tiện có thu nhập thấp nhất (chỉ tính các phương tiện hơn 2 năm tuổi)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong quý với lợi nhuận thấp nhất trong 12 quý gần đây
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Doanh thu trong tháng với lợi nhuận cao nhất trong 12 quý gần đây
@@ -658,7 +658,7 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Bản Đ
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Địa hình
 STR_SMALLMAP_TYPE_VEHICLES                                      :Phương tiện
-STR_SMALLMAP_TYPE_INDUSTRIES                                    :Ngành kinh doanh
+STR_SMALLMAP_TYPE_INDUSTRIES                                    :Nhà máy
 STR_SMALLMAP_TYPE_ROUTES                                        :Tuyến
 STR_SMALLMAP_TYPE_VEGETATION                                    :Cây cối
 STR_SMALLMAP_TYPE_OWNERS                                        :Chủ sở hữu
@@ -914,7 +914,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Tên th�
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa chọn kiểu tên thị trấn
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Gốc)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Nguyên bản)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Pháp
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Đức
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ Sung)
@@ -968,7 +968,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Bộ âm
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Chọn bộ âm thanh chuẩn để dùng
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Thông tin thêm về bộ âm thanh chuẩn
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Bộ nhạc chuẩn
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Gói nhạc chuẩn
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Chọn gói nhạc để sử dụng
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} file bị hỏng
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Thông tin thêm về gói nhạc chuẩn
@@ -1393,6 +1393,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :không tương 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :không rõ
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... mức độ nén '{STRING}' không hợp lệ
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... không thể lưu game dạng '{STRING}'. Lưu dạng '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... từ chối gói đồ họa chuẩn '{STRING}': không tìm thấy
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... từ chối gói âm thanh chuẩn '{STRING}': không tìm thấy
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... từ chối gói nhạc chuẩn '{STRING}': không tìm thấy
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1463,7 +1466,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đán
 STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư? Những hành động đó của bạn sẽ là vết nhơ suốt đời!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xúc văng nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xóa bỏ nhà máy, vật không thể di chuyển): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Đường ngầm có thể vượt lẫn nhau : {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Máy bay phản lực sẽ không tai nạn (thường xuyên) ở các sân bay nhỏ: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Địa hình vừa phải
@@ -1904,7 +1907,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Thư viện AI
 STR_CONTENT_TYPE_SCENARIO                                       :Màn chơi kịch bản
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Bản đồ địa hình
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Âm thanh chuẩn
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Nhạc chuẩn
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Gói nhạc chuẩn
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Tập lệnh trò chơi
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Thư viện GS
 

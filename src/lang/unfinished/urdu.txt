@@ -294,7 +294,7 @@ STR_SORT_BY_RANGE                                               :پہنچ
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK} کھیل کو تیزی سے بڑھایئں
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK} اختیارات
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل بچایئے، کھیل دستبردار کیجیئے، منقطع کیجئے
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK} کھیل محفوظ کیجئے، کھیل دستبردار کیجیئے، منقطع کیجئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK} نقشھ، اضافی منظر یا اشاروں کی فھرست
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK} قصبوں کی کتاب دیکھیئے
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK} امداد دیکھیئے
@@ -321,7 +321,7 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}زمین
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK} ٹول بآر منتقل کیجیئے
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر بچایئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK} منظر محفوظ کیجئے، منظر کھولیں، منظر دست بردار کیجیئے، منظر چھوڑیئے
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW} منظر نامھ
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}شروع کرنے کی تاریخ کو ایک سال پیچھے کرو
@@ -361,7 +361,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :مقابلے ب
 STR_SETTINGS_MENU_FULL_ANIMATION                                :مکمل animation
 STR_SETTINGS_MENU_FULL_DETAIL                                   :مکمل تفصیل
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :شفاف عمارات
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اسٹیشن کے اشارے
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :شفاف اشارے
 ############ range ends here
 
 ############ range for file menu starts
@@ -448,7 +448,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :حائطھ تدویم
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :اسکرین کی تصویر
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :قریب سے اسکرین کی تصویر
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :مکمل قریب سے اسکرین کی تصویر
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :پہلے سے طے شدہ قربت سے اسکرین کی تصویر
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :پورے نقشے کی اسکرین کی تصویر
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Open TTD کے بارے میں
@@ -2094,8 +2094,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}پیدا
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}منظر نامہ
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ نیچے ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ اونچا ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}زمین کے ایک رقبے کو پہلے اختیار شدہ کنارہ کے برابر کر دو۔ گھسیٹنے سے پہلا اختیار شدہ کنارہ نیچے ہو گا اور اختیار شدہ رقبہ کو نئے کنارے کی اونچائی کے برابر ہو جائے گا۔ کنٹرول بٹن سے ترچھا رقبہ اختیار ہو گا۔ شفٹ بٹن سے عمارت اور خرچہ کے اندازے کے درمیان تبدیلی ہو گی
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}مستقبل میں استعمال کے لئے زمین خریدیں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔
 
 # Object construction window

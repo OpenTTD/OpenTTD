@@ -618,7 +618,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Platba za doručeni 10 jednotek (nebo 10 000 litru) nákladu do vzdálenosti 20 čtverecků
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Zobraz vše
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Vypni vše
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny položky na grafu přepravních sazeb
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraz všechny druhy nákladu na grafu přepravních sazeb
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Skryje všechny položky na grafu přepravních sazeb
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
@@ -662,7 +662,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Dluh:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Celkem:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet dopravních prostředků, které vykázaly poslední rok zisk; zahrnuje silniční vozidla, vlaky, lodě a letadla
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet součástí obsluhovaných stanic. Každá součást stanice (napr. nádraží, autobusová zastávka, letiště) se započítává, i když patří jediné stanici
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet nedávno obsloužených stanic. Nádraží, autobusové zastávky, letiště a podobně se počítají zvlášť, i když patří k jediné stanici
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Minimální hrubý zisk (= s provoz. náklady) vozidla s nejnižším příjmem (staršího 2 let)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Čistý zisk (= bez provoz. nakladů) v nejslabším čtvrtletí za posledních 12 čtvrtletí
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Čistý zisk ve čtvrtletí s největším příjmem za posledních 12 čtvrtletí
@@ -1475,6 +1475,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilní
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :neznámé
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... úroveň komprese '{STRING}' není platná
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formát uložené hry '{STRING}' není dostupný. Návrat na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorování základní grafické sady '{STRING}': nenalezeno
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorování základní hudební sady '{STRING}': nenalazeno
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorování základní hudební sady '{STRING}': nenalezeno
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3061,13 +3064,13 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tažná síla: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Dosah: {GOLD}{COMMA} polí
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Seznam lodí - informace získáš klepnutím na jméno lodi
-STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Seznam letadel - klepni na letadlo pro informace
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Seznam vlaků - pro informace klikni na název vlaku
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Seznam silničních vozidel - klikni na vozidlo pro informace
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Seznam lodí - informace získáš kliknutím na jméno lodi
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Seznam letadel - klikni na letadlo pro informace
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Koupit vůz
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koupit silniční vozidlo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Koupit vozidlo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koupit vozidlo
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koupit loď
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koupit letadlo
 
@@ -3211,7 +3214,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Přepne 
 STR_REPLACE_ENGINES                                             :lokomotivy
 STR_REPLACE_WAGONS                                              :vagony
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolejí, pro které chceš vybírat lokomotivy na výměnu
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolejí, pro které chceš měnit lokomotivy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vyměňuje
 STR_REPLACE_RAIL_VEHICLES                                       :Železniční lokomotivy
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrické lokomotivy
@@ -3224,13 +3227,13 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce a
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vystředit pohled na vlak. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vystředit pohled na vozidlo. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vystředit pohled na loď. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vystředit pohled na letadlo. Ctrl+Klik otevře nový pohled
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vycentrovat pohled na vlak. Ctrl+Klik otevře nový pohled
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovat pohled na vozidlo. Ctrl+Klik otevře nový pohled
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovat pohled na loď. Ctrl+Klik otevře nový pohled
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovat pohled na letadlo. Ctrl+Klik otevře nový pohled
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošli vlak do depa
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošli vozidlo do garáže
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslat vlak do depa. Ctrl+Klik pouze pro provedení oprav
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošli vozidlo do garáže. Ctrl+Klik pouze provede opravy
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat loď do doku
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat letadlo do hangáru
 

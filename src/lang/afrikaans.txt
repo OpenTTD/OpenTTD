@@ -100,7 +100,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} passasi
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} steenkool
 STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} van lewende hawe
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} eenhe{P id de} lewende hawe
 STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" te} goedere
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout
@@ -314,7 +314,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou spoo
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bou paaie
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bou skip hawe
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou lughawens
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Oppe die landargitekteur werktuigbaan om land te verhoog/verlaag, boome beplant, ens.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Maak die landargitekteur nutsbalk oop om, land te verhoog/verlaag, boome beplant, ens.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Vertoon klank/musiek venster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Vertoon laaste boodskap/nuus verslag, vertoon boodskap opsies
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Land gebied informasie, konsole, skrip ontfouting, skermkiekie, omtrent OpenTTD
@@ -428,7 +428,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Lughawe konstru
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Landargitekteur
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Boome beplant
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Plant bome
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Plaas teken
 ############ range ends here
 
@@ -1367,6 +1367,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :onversoenbaar m
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekend
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressie vlak '{STRING}' is ongeldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is nie beskikbaar. Keer terug na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoreer Basis Grafiek stel '{STRING}': nie gevind nie
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoreer Basis Klank stel '{STRING}': nie gevind nie
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2015,7 +2018,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Buis, Silicon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pad Konstruksie
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tremweg Konstruksie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou pad afdeling
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bou pad afdeling. Ctrl skakel bou/verwydering van pad konstruksie. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bou tremweg afdeling. Ctrl skakel bou/verwydering van tremweg konstruksie. Shift skakel Bou/wys koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bou pad seksie gebruikend Outopad metode
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bou tremweg gebruikend die Outotrem metode
@@ -2026,9 +2029,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bou pass
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bou vraagmotor laai area
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bou vrag trem stasie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktifeer/Deaktifeer ee-rigting paaie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou pad brug
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Bou pad brug. Shift skakel tussen bou/aanduiding koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Bou tremweg brug. Shift skakel Bou/wys koste beraming
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou pad tonnel
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Bou pad tonnel. Shift skakel tussen bou/aanduiding koste beraming
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Bou tremweg tonnel
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Skakel bou/verwydering van pad konstruksie
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Skakel bou/verwyder vir tremweg konstruksie
@@ -2052,8 +2055,8 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Kies vra
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Waterweg konstruksie
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterweë
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bou kanaale.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou sluite
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bou kanaale. Shift skakel tussen bou/aanduiding koste beraming
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bou sluite. Shift skakel Bou/wys koste beraming
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bou skip depot (vir opbou en diens van skepe)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bou skip werf
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaas baken wat kan as 'n wegpunt gebruik word
@@ -4016,7 +4019,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Bank
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamant Myn
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Yster Erts Myn
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Vrugte Plantasie
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Gomlastiek Plantasie
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Rubber Plantasie
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Water Verskaf
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Water Toring
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabriek

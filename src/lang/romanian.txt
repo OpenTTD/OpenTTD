@@ -536,8 +536,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Plata pentru livrarea a 10 unităţi (sau 10.000 de litri) de marfă pe o distanţă de 20 de pătrăţele
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activează tot
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Dezactivează tot
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate cargo-urile în graficul de plăţi
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa nici un cargo în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Afişează toate mărfurile în graficul de plăţi
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nu afişa niciun tip de marfă în graficul de plăţi
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Comutator pentru afişarea graficului de marfă
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -580,7 +580,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Credite:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numărul de vehicule profitabile pe anul precedent. Include autovehicule, trenuri, nave şi aeronave
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse din gări, aeroporturi, porturi, staţii de autobuz, etc.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numărul staţiilor. Se numără fiecare componentă în cazul unor staţii compuse simultan din gări, aeroporturi, porturi, staţii de autobuz, etc.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitul vehiculului cu cele mai mici încasări (doar vehiculele mai vechi de 2 ani sunt listate)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mic profit din ultimele 12 trimestre.
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Suma de bani obţinută în trimestrul cu cel mai mare profit din ultimele 12 trimestre.
@@ -3117,7 +3117,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Comutã 
 STR_REPLACE_ENGINES                                             :Motoare
 STR_REPLACE_WAGONS                                              :Vagoane
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care să înlocuieşti motoarele
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un tip de cale ferată pentru care doreşti să înlocuieşti locomotivele
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Arată locomotiva ceva înlocui locomotiva selectată în stânga
 STR_REPLACE_RAIL_VEHICLES                                       :Vehicule feroviare
 STR_REPLACE_ELRAIL_VEHICLES                                     :Vehicule Electrificate pe Sine
@@ -3826,7 +3826,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nu se po
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nu există cale ferată aici
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...nu există semafoare
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nu pot converti linia aici...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tipul de şină nu poate fi convertit aici...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Mai întâi trebuie înlăturată şoseaua

@@ -570,7 +570,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Історія 
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Інформація про ділянку
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Вкл./відкл. консоль
-STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового скрипта
+STR_ABOUT_MENU_AI_DEBUG                                         :Налагодження АІ / Ігрового Скрипта
 STR_ABOUT_MENU_SCREENSHOT                                       :Знімок екрану
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Знімок екрану з максимальним збільшенням
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Знімок екрану зі стандартним збільшенням
@@ -662,7 +662,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Включити всі
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Відключити усі
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Показувати всі види вантажів на графіку
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати всі види вантажів на графіку
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Не показувати ніякі типи вантажів на графіку
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Вкл/відкл графік типів вантажу
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -705,7 +705,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кред
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Кількість транспорту, який приніс прибуток торік. Враховуються автомобілі, поїзди, кораблі та літаки
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується, навіть якщо вони об'єднані в одну станцію
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Кількість нещодавно обслуговуваних частин станцій. Кожна частина станції (залізнична станція, автобусна зупинка, аеропорт) враховується окремо, навіть якщо вони об'єднані в одну станцію
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прибуток транспорту з найменшим доходом (тільки транспорт старіший 2 років)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменший квартальний прибуток за останні 12 кварталів
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найбільший квартальний прибуток за останні 12 кварталів
@@ -1534,7 +1534,7 @@ STR_INTRO_DIFFICULTY                                            :{BLACK}Скла
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Розширені налаштування
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Налаштування NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Додатковий контент
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / Ігрового Скрипта
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Налаштування AI / GS
 STR_INTRO_QUIT                                                  :{BLACK}Вихід
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Почати нову гру. Ctrl+клік пропускає конфігурацію карти
@@ -1554,7 +1554,7 @@ STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Пока
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Показати розширені налаштування
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показати настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Перевірити доступний для завантаження додатковий контент
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового скрипта
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Показати налаштування AI / Ігрового Скрипта
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Вийти з OpenTTD
 
 STR_INTRO_TRANSLATION                                           :{BLACK}Переклад має {NUM} неперекладених рядків. Зареєструйтесь як перекладач вашої мови та покращіть OpenTTD. Детальніше читайте в readme.txt.
@@ -3242,7 +3242,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пере
 STR_REPLACE_ENGINES                                             :Локомотиви
 STR_REPLACE_WAGONS                                              :Вагони
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якого ви збираєтесь оновити потяги
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показує, яким потягом буде замінено потяг, вибраний ліворуч
 STR_REPLACE_RAIL_VEHICLES                                       :Неелектрифіковані поїзди
 STR_REPLACE_ELRAIL_VEHICLES                                     :Електрифіковані поїзди
@@ -3641,7 +3641,7 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Прод
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Зняти з паузи і продовжити AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Відобразити результати дебагу цього АІ
 STR_AI_GAME_SCRIPT                                              :{BLACK}Ігровий Скрипт
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипту
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Перевірити журнал Ігрового Скрипта
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не знайдено відповідних AI для завантаження.{}Цей AI тимчасовий і нічого не робить.{}Ви можете завантажити кілька AI через систему 'Вмісту в Інтернет'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один із запущених скриптів перестав працювати. Будь ласка, повідомте про це автору скрипта (разом зі знімком вікна налагодження АІ/Ігрового Скрипта)
