@@ -1106,6 +1106,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Essa aç
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Configurações avançadas
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(não há explicação disponível)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor padrão: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de config.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Config. do cliente (não é guardado em savegames; afeta todos os jogos)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Config. do jogo (guardado no savegame; afeta apenas jogos novos)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Config. do jogo (guardado no savegame; afeta apenas jogo atual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Config. da companhia (guardado no savegame; afeta apenas novos jogos)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Config. da companhia (guardado no savegame; afeta apenas a comp. atual)
 
 STR_CONFIG_SETTING_OFF                                          :Desl.
 STR_CONFIG_SETTING_ON                                           :Lig.

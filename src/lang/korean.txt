@@ -1432,7 +1432,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :기본적으로
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :기본으로 설치할 신호기의 종류를 선택합니다.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :경로 신호기
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :단방향 경로 신호기
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Ctrl+신호기 건설시 바뀌는 신호기 종류: {STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :신호기 건설에서 Ctrl+클릭할 때 바뀌는 신호기 사이클의 종류를 선택합니다.
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
@@ -2170,13 +2170,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 �
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}일방통행 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}단방향 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구,출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지식 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}단방향 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다. SHIFT+클릭을 사용하면 예상 가격을 볼 수 있습니다.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}드래그시 신호기 간격
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}드래그시 신호기 간격 감소
@@ -2409,27 +2409,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :눈덮인 땅
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} 선로(폐색 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 선로(입구-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 선로(출구-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 선로(콤보-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 선로(경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 선로(일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 선로(폐색 & 입구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 선로(폐색 & 출구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 선로(폐색 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 선로(폐색 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 선로(폐색 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 선로(입구 & 출구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 선로(입구 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 선로(입구 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 선로(입구 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 선로(출구 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 선로(출구 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 선로(출구 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} 선로(콤보 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} 선로(콤보 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} 선로(경로 & 일방통행 경로 신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :일반 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :입구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :일반 신호기와 입구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :일반 신호기와 출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :일반 신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :일반 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :일반 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :입구-신호기와 출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :입구-신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :입구 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :입구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :출구-신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :출구-신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :출구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :콤보-신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :콤보-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :경로 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량기지
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
@@ -2478,7 +2478,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :원통형 철�
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :강철 현수교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :강철 들보교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :강철 캔틸레버교
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :철근 콘트리트 현수교 (도로용)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :철근 콘트리트 현수교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :나무 다리
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :콘크리트교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :원통형 다리
@@ -4170,7 +4170,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :사무 구획
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :상점과 사무실
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :현대적 사무 건물
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :창고
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :사무구획
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :사무 구획
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :운동장
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :오래된 집
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :아담한 집
