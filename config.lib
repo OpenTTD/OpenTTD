@@ -164,7 +164,7 @@ set_default() {
 		with_ccache
 		with_grfcodec
 		with_nforenum
-	CC CXX CFLAGS CXXFLAGS LDFLAGS"
+	CC CXX CFLAGS CXXFLAGS LDFLAGS CFLAGS_BUILD CXXFLAGS_BUILD LDFLAGS_BUILD"
 }
 
 detect_params() {
@@ -442,6 +442,9 @@ detect_params() {
 			CFLAGS=* | --CFLAGS=*)        CFLAGS="$optarg";;
 			CXXFLAGS=* | --CXXFLAGS=*)    CXXFLAGS="$optarg";;
 			LDFLAGS=* | --LDFLAGS=*)      LDFLAGS="$optarg";;
+			CFLAGS_BUILD=* | --CFLAGS_BUILD=*)     CFLAGS_BUILD="$optarg";;
+			CXXFLAGS_BUILD=* | --CXXFLAGS_BUILD=*) CXXFLAGS_BUILD="$optarg";;
+			LDFLAGS_BUILD=* | --LDFLAGS_BUILD=*)   LDFLAGS_BUILD="$optarg";;
 
 			--ignore-extra-parameters)    ignore_extra_parameters="1";;
 
@@ -1386,11 +1389,11 @@ make_compiler_cflags() {
 
 make_cflags_and_ldflags() {
 	# General CFlags for BUILD
-	CFLAGS_BUILD=""
+	CFLAGS_BUILD="$CFLAGS_BUILD"
 	# Special CXXFlags for BUILD
-	CXXFLAGS_BUILD=""
+	CXXFLAGS_BUILD="$CXXFLAGS_BUILD"
 	# LDFLAGS for BUILD
-	LDFLAGS_BUILD=""
+	LDFLAGS_BUILD="$LDFLAGS_BUILD"
 	# FEATURES for BUILD (lto)
 	FEATURES_BUILD=""
 	# General CFlags for HOST
@@ -1807,6 +1810,9 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
+	log 1 "using CFLAGS_BUILD... $CFLAGS_BUILD"
+	log 1 "using CXXFLAGS_BUILD... $CXXFLAGS_BUILD"
+	log 1 "using LDFLAGS_BUILD... $LDFLAGS_BUILD"
 	log 1 "using CFLAGS... $CFLAGS"
 	log 1 "using CXXFLAGS... $CXXFLAGS"
 	log 1 "using LDFLAGS... $LIBS $LDFLAGS"
