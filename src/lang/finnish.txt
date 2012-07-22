@@ -1300,11 +1300,11 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Näkymän tasai
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Hallitse miten päänäkymä siirtyy valittuun paikkaan karttaa klikattaessa tai käytettäessä komentoa joka muuttaa näkymän sijaintia. Mikäli käytössä, päänäkymä siirtyy uuteen sijaintiin pehmeäesti, muutoin se hyppää suoraan valittuun sijaintiin
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Näytä etäisyydet ja korkeuserot vedettäessä rakennustoimintojen aikana
-STR_CONFIG_SETTING_LIVERIES                                     :Näytä yrityksen tunnukset: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :Näytä yhtiön tunnukset: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Hallitse kulkuneuvokohtaisten tunnusten käyttöä (yhtiökohtaisten tunnusten sijaan)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ei yhtään
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma yritys
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Kaikki yritykset
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Oma yhtiö
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Kaikki yhtiöt
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Suosi ryhmäkeskustelua <ENTER>-näppäimellä: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Vaihtaa yhtiön sisäisen ja julkisen keskustelun näppäintä <ENTER> ja <Ctrl+ENTER> välillä
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Hiiren rullan toiminta: {STRING}
@@ -1322,7 +1322,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Vasemmalla hiiren painikkeella liikkuminen: {STRING}
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Tämä on erityisen kätevää käytettäessä kosketusnäyttöä
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Salli näkymän siirtäminen vetämällä hiiren vasemmalla näppäimellä. Hyödyllinen erityisesti kosketusnäyttöä käytettäessä
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Käytä {STRING} päivämäärämuotoa tallennettujen pelien niminä
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Pelitallenteiden tiedostonimissä käytettävä päivämäärän muoto
@@ -1345,7 +1345,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kaikki paitsi m
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kaikki toiminnot
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Edistynyt ajoneuvolista: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Salli kehittyneiden kulkuneuvolistojen käyttö kulkuneuvojen ryhmittelyssä
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausindikaattorit: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lastausilmaisimet: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Määritä näytetäänkö lastausilmaisimet kulkuneuvojen yläpuolella lastatessa ja purettaessa rahtia
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Näytä aikataulu tickseissä päivien sijaan: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Näytä aikataulun ajat päivien sijasta tickeinä
@@ -1363,7 +1363,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Värjää varat
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pidä rakennustyökalut aktiivisina käytön jälkeen: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pidä siltojen, tunneleiden, jne. rakennustyökalut käytössä käytön jälkeen
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ryhmitä kulut yhtiön rahoitusikkunassa: {STRING}
-STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määritä asettelu yhtiön kulut-ikkunalle
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määritä asettelu yhtiön rahoitusikkunalle
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Poista käytöstä infrastruktuurin rakennus kun sopivia kulkuneuvoja ei ole saatavilla: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Mikäli käytössä, infrastruktuuri on saatavilla vain jos sille on saatavilla kulkuneuvoja, välttäen ajan ja rahan tuhlaamisen infrastruktuuriin, jota ei voida käyttää
@@ -1621,7 +1621,7 @@ STR_CHEATS                                                      :{WHITE}Huijauks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin.
 STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY_LONG}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yritys: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yhtiö: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta, liikuttamattomia kohteita): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat mennä ristiin: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkukoneet eivät syöksy (usein) pienille lentokentille: {ORANGE}{STRING}
@@ -1795,7 +1795,7 @@ STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (maino
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yritys{P "" tä}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yhtiö{P "" tä}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Rajoita yhtiöiden määrää palvelimella
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} katsoja{P "" a}
@@ -1918,7 +1918,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä ta
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Anna yhtiölle uusi salasana
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Yhtiön salasana
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Yhtiön oletussalasana
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Käytä tätä yhtiön salasanaa oletuksena uusissa yrityksissä
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Käytä tätä yhtiön salasanaa oletuksena uusissa yhtiöissä
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Liity
@@ -2012,7 +2012,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yrityksellesi {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yhtiöllesi {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit henkilölle {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
