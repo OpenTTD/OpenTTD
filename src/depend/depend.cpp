@@ -910,7 +910,10 @@ int main(int argc, char *argv[])
 		size = ftell(src);
 		rewind(src);
 		content = (char*)malloc(size * sizeof(*content));
-		fread(content, 1, size, src);
+		if (fread(content, 1, size, src) != (size_t)size) {
+			fprintf(stderr, "Could not read %s\n", filename);
+			exit(-2);
+		}
 		fclose(src);
 	}
 

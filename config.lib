@@ -1302,8 +1302,8 @@ make_compiler_cflags() {
 
 		flags="$flags -Wall -Wno-multichar -Wsign-compare -Wundef"
 		flags="$flags -Wwrite-strings -Wpointer-arith"
-		flags="$flags -W -Wno-unused-parameter -Wformat=2"
-		flags="$flags -Wredundant-decls"
+		flags="$flags -W -Wno-unused-parameter -Wredundant-decls"
+		flags="$flags -Wformat=2 -Wformat-security -Werror=format-security"
 
 		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
@@ -1427,12 +1427,6 @@ make_cflags_and_ldflags() {
 		# Each debug level reduces the optimization by a bit
 		if [ $enable_debug -ge 1 ]; then
 			CFLAGS="$CFLAGS -g -D_DEBUG"
-			if basename "$cc_host" | grep "gcc" &>/dev/null; then
-				# Define only when compiling with GCC, some
-				# GLIBC versions use GNU extensions in a way
-				# that breaks build with at least ICC
-				CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
-			fi
 			if [ "$os" = "PSP" ]; then
 				CFLAGS="$CFLAGS -G0"
 			fi
@@ -1444,6 +1438,18 @@ make_cflags_and_ldflags() {
 			CFLAGS="$CFLAGS -O0"
 		else
 			CFLAGS="$CFLAGS -O2"
+		fi
+	fi
+
+	if [ $enable_debug -le 2 ]; then
+		if basename "$cc_host" | grep "gcc" &>/dev/null; then
+			# Define only when compiling with GCC. Some GLIBC versions use GNU
+			# extensions in a way that breaks build with at least ICC.
+			# This requires -O1 or more, so debug level 3 (-O0) is excluded.
+			CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2"
+
+			# Just add -O1 to the tools needed for building.
+			CFLAGS_BUILD="$CFLAGS_BUILD -D_FORTIFY_SOURCE=2 -O1"
 		fi
 	fi
 
