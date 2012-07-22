@@ -1303,7 +1303,7 @@ make_compiler_cflags() {
 		flags="$flags -Wall -Wno-multichar -Wsign-compare -Wundef"
 		flags="$flags -Wwrite-strings -Wpointer-arith"
 		flags="$flags -W -Wno-unused-parameter -Wredundant-decls"
-		flags="$flags -Wformat=2 -Wformat-security -Werror=format-security"
+		flags="$flags -Wformat=2 -Wformat-security"
 
 		if [ $enable_assert -eq 0 ]; then
 			# Do not warn about unused variables when building without asserts
