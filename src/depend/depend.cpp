@@ -922,7 +922,10 @@ int main(int argc, char *argv[])
 
 	if (size != 0) {
 		src = fopen(backup, "wb");
-		fwrite(content, 1, size, src);
+		if (fwrite(content, 1, size, src) != (size_t)size) {
+			fprintf(stderr, "Could not write %s\n", filename);
+			exit(-2);
+		}
 		fclose(src);
 
 		/* Then append it to the real file. */
