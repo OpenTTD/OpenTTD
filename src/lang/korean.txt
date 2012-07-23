@@ -977,7 +977,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 �
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 음악 세트
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 음악 세트를 선택하세요
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일{P "" "들"}이 손상되었습니다.
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 음악 세트에 대한 추가 정보
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
@@ -1152,9 +1152,9 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :경사도 (자동차용): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :자동차에 적용시킬 경사도를 설정합니다. 값이 높을수록 자동차가 언덕을 오를 때 더 힘이 듭니다.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :열차/선박의 90도 회전을 금지함: {STRING}
-STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 옵션을 켜면 열차가 타일 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 옵션은 선박의 회전 반경에도 적용됩니다.
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :─ 모양의 수평 선로와 │ 모양의 수직 선로가 바로 이어져 만날 때 90도 회전이 발생합니다. 이 옵션을 켜면 열차가 칸 가장자리를 통과할 때 90도로 회전할 수 있도록 허용합니다. 이 옵션은 선박의 회전 반경에도 적용됩니다.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :역이 같은 방향으로 붙어있지 않아도 같은 이름의 역 짓기 허용: {STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 타일에 기존과 다른 새로운 역을 놓을 때에는 Ctrl+클릭이 필요합니다.
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :이미 존재하는 역을 직접 건드리지 않고도 역의 일부분을 새로 추가/확장하는 것을 허용합니다. 인접한 칸에 기존과 다른 새로운 역을 놓을 때에는 Ctrl+클릭이 필요합니다.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :향상된 수송 알고리즘 사용: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :이 옵션을 켜면 역에서 대기하는 여러 대의 차량이 순서대로 화물을 싣게 됩니다. 다음에 도착하는 차량의 화물 적재는 기존에 정차한 차량에 완벽히 적재할 수 있을 정도의 충분한 화물이 있어야 시작될 것입니다.
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :화물을 차량에 단계적으로 싣기: {STRING}
@@ -1201,7 +1201,7 @@ STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :한 회사가 �
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :도시의 건물에 투자하는 기능: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :회사가 도시가 새로운 건물에 투자할 수 있도록 자금을 주는 것을 허용합니다.
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :지역 도로 재공사 투자 행위를 허용: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖춘 도시에 상주한 타 회사를 방해하기 위해 도시가 도로 재건축을 하도록 회사가 도시에 돈을 지불하는 것을 허용합니다.
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :도로 기반의 수송 체계를 갖추고 있는 다른 회사를 방해하기 위해 해당 도시가 도로 재건축을 시작하도록 회사가 도시에 돈을 지불하는 행위를 허용합니다.
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :다른 회사에게 돈을 송금하는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :멀티 플레이 모드에서 회사 사이에 돈을 보내는 것을 허용합니다.
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :화물 무게가중치 (무거운 열차를 구현할 때 사용): {STRING}배
@@ -1281,8 +1281,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :평지 시나리오의 평지 높이: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :지도 가장자리의 지형 변경을 허용: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :이 옵션을 끄면, 지도의 동서남북 끝이 반드시 모두 물이어야 합니다.
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}북쪽 가장자리에 있는 한 개 이상의 타일이 비어있지 않습니다
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}가장자리에 있는 한 개 이상의 타일이 물이 아닙니다
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}지도 북쪽 맨 가장자리에 있는 지형의 칸 한 개 이상이 비어있지 않습니다.
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}지도 맨 가장자리에 있는 칸 한 개 이상이 물이 아닙니다.
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :역의 최대 크기: {STRING}
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :역의 최대 크기를 설정합니다. 값이 높으면 게임이 느려짐을 알아두십시오.
@@ -2293,7 +2293,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}오브�
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트를 선택합니다.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}건설할 오브젝트의 등급을 선택합니다
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 타일
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 칸
 
 STR_OBJECT_CLASS_LTHS                                           :등대
 STR_OBJECT_CLASS_TRNS                                           :송신기
@@ -2393,7 +2393,7 @@ STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}정거�
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}정거장 종류: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}공항 등급: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}공항 이름: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 타일 이름: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 칸 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2588,7 +2588,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 �
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 작동중
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 실행중
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}스크립트 생성중
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 준비중
 
@@ -2970,21 +2970,21 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}기반시설:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA}타일의 철도
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA}타일의 도로
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA}타일의 운하
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA}타일의 역
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA}개의 공항
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}철도 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}도로 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}운하시설 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}정거장 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {COMMA}개
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 지부 건설
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 지부 보기.
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 재위치
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격으로 본사를 다른 위치에 재건축합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 위치 변경
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭하면 예상 가격을 볼 수 있습니다.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}회사 기반시설 상세내역 창을 엽니다
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니저의 얼굴을 선택합니다.
@@ -3083,7 +3083,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :격납고로 �
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}이 목록의 모든 차량의 운행을 중지시킵니다.
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}이 목록에 있는 모든 차량의 운행을 시작합니다.
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} 차량의 공유된 경로 목록
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}경로를 공유하고 있는 차량 {COMMA}대의 목록
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :모든 열차
@@ -3825,7 +3825,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 이�
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 다른 회사의 소유지입니다!
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 지형 편집 제한에 다다랐습니다
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 타일 제거 제한에 다다랐습니다
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 칸 제거 제한에 다다랐습니다
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... 나무 심기 제한에 다다랐습니다
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
@@ -3873,7 +3873,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 땅에 역이나 차고가 존재합니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다.
 
 # Industry related errors
@@ -3927,7 +3927,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}트럭 �
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 제거할 수 없습니다...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 철도역이 없습니다.
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 정거장이 없습니다.
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하십시오.

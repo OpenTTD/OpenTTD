@@ -1422,6 +1422,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Вашы
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(няма тлумачэньня)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Значэньне па змоўчаньні: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Тып наладак: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Наладкі кліента (не ўтрымоўваюцца ў файлах захаваньняў; уплываюць на ўсе гульні)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Наладкі гульні (утрымоўваюцца ў файлах захаваньняў; сапраўдныя толькі для новых гульняў)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Наладкі гульні (утрымоўваюцца ў файлах захаваньняў; сапраўдныя толькі для бягучай гульні)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Наладкі кампаніі (утрымоўваюцца ў файлах захаваньняў; сапраўдныя толькі для новых гульняў)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Наладкі кампаніі (утрымоўваюцца ў файлах захаваньняў; сапраўдныя толькі для бягучай гульні)
 
 STR_CONFIG_SETTING_OFF                                          :не
 STR_CONFIG_SETTING_ON                                           :так
@@ -1860,6 +1866,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несумяш�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невядомы
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... узровень сьцiсканьня (кампрэсii) '{STRING}' няправiльны
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фармат захаванай гульнi '{STRING}' недаступны. Зварот да '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор графікі "{STRING}" не знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" не знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" не знойдзены
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
