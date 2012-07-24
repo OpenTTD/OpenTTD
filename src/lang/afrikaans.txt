@@ -1106,6 +1106,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hierdie 
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorderde stellings
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen verduideliking beskikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Stelling tipe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliënt instelling (word nie gestoor in spaarspeletjie nie; raak alle speletjies)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Maatskappy instelling (word gestoor in spaarspeletjie; raak net nuwe speletjies)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Maatskappy instelling (word gestoor in Spaarspeletjies; raak net nuwe speletjies)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Maatskappy instelling (word gestoor in spaarspeletjie; raak net die huidige maatskappy)
 
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
@@ -1152,9 +1158,11 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Laat die toevoe
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gebruik verebeterde laai algoritme: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Indien geaktiveer, verskeie voertuie wat by 'n stasie wag sal opeenvolgend gelaai word. Die laai van die volgende voertuig begin eers wanneer daar is genoeg vrag is wat wag om die eerste voertuig te vul
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Laai voertuie geleidelik: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Geleidelik laai vanvoertuie deur die gebruik van die voertuig se spesifieke laai tydsduur, in plaas van om alles op eenslag te laai met 'n vaste tydduur, afhangende van diehoeveelheid vrag gelaai
 STR_CONFIG_SETTING_INFLATION                                    :Inflasie: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiveer inflasie in die ekonomie, waar die kostes vinniger styg as betalings
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Lewer slegs 'n vrag af by 'n stasie wat die vrag van die voertuig versoek het. Dit verhoed dat slegte graderings vir ladings wat nie benodig word by 'n stasie nie
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximum brug lengte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van bruë
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
@@ -1173,6 +1181,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Aan die linkerk
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Aan die bestuurskant
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan die regterkant
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Toon finansies venster op die einde van die jaar: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien geaktiveer, sal die finansies venster verskyn aan die einde van elke jaar om maklik inspeksie van die finansiële state, van die maatskappy, toe te laat
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuwe bevele is vooraf 'geen-stop' {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuwe trein opdragte stop by verstek by die {STRING} van die platform
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
@@ -1181,12 +1190,14 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig toustaan (met kwantum effekte): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer geaktiveer, sal die hoof skerm begin om te beweeg wanneer die muis naby die rand van die skerm is
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :As 'n maatskapy alleen transportreg koop vir n' dorp. Die teenstanders se stasies (passesiers en vrag) sal geen vrag kry vir n' jaar
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing van geboue: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Laat geld donasies aan dorpe, deur maatskappye toe, vir die bou van huise
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Laat befondsing toe van plaaslike pad heropbou: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Laat maatskappye toe om geld te gee aan dorpe vir pad rekonstruksie om pad-gebaseerde dienste te saboteer
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Laat die stuur van geld na ander maatskappye toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Laat die oordra van geld, tussen maatskappye, toe in multi-speler modus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewig vermenivoud vir vrag om swaar treine te simuleer: {STRING}
@@ -2823,9 +2834,9 @@ STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Plaaslik
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Onsettend
-STR_CARGO_RATING_VERY_POOR                                      :Baie Arm
-STR_CARGO_RATING_POOR                                           :Arm
+STR_CARGO_RATING_APPALLING                                      :Haglik
+STR_CARGO_RATING_VERY_POOR                                      :Baie Swak
+STR_CARGO_RATING_POOR                                           :Swak
 STR_CARGO_RATING_MEDIOCRE                                       :Middelmagtig
 STR_CARGO_RATING_GOOD                                           :Goed
 STR_CARGO_RATING_VERY_GOOD                                      :Baie Goed
