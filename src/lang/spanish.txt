@@ -1106,6 +1106,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acc
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones avanzadas
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Opción de cliente (no se almacena en partidas guardadas, afecta a todas las partidas)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de partida (se almacena en las partidas guardadas, afecta solamente a nuevas partidas)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de partida (almacenada en la partida guardada, afecta solamente a la partida actual)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente a las nuevas partidas)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente a la empresa actual)
 
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí
@@ -1544,6 +1550,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatible co
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :desconocido
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... el nivel de compresión '{STRING}' no es válido
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... el formato de guardado '{STRING}' no está disponible. Revertiendo a '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorando conjunto de gráficos base '{STRING}': no encontrado
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorando conjunto de sonidos base '{STRING}': no encontrado
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorando conjunto de música base '{STRING}': no encontrado
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
