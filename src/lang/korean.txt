@@ -1184,9 +1184,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄움: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 옵션을 켜면 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새 경로는 기본으로 직통 처리: {STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 옵션을 켜면 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 그럼에도 불구하고 각 차량의 경로는 두 가지 방법 중에 하나로 명백히 설정 가능합니다.
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 옵션을 켜면 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
 STR_CONFIG_SETTING_STOP_LOCATION                                :새로운 열차 정지 경로는 기본적으로 플랫폼의 {STRING}에서 정지하도록 함
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 그럼에도 불구하고 각 차량의 경로는 두 가지 방법 중에 하나로 명백히 설정 가능합니다.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :열차가 기본적으로 정거장의 어느 위치에 정차할 것인지를 설정합니다. '가까운 쪽'은 역에 진입하는 곳과 가까운 곳에, '중간'은 역 중앙에, '먼쪽'은 진입하는 곳과 먼 곳에 정차합니다. 이 옵션은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :가까운쪽
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :중간
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
@@ -1230,7 +1230,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항�
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 옵션을 켜면 소형 공항을 포함한 모든 공항 종류를 도입 이후 계속 사용할 수 있게 됩니다.
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길을 잃으면 경고: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :다음 목적지로 가기 위한 경로를 찾을 수 없는 차량이 있으면 상태표시줄에 메시지로 알려줍니다.
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :다음 목적지로 가기 위한 경로를 찾을 수 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :차량의 경로를 검사: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :이 옵션을 켜면 차량의 경로를 주기적으로 검사하여 문제가 발견되면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :아니요
@@ -1263,7 +1263,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :그래프의 �
 STR_CONFIG_SETTING_LAND_GENERATOR                               :지형 만들기: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 정제소의 최대 건설 범위: 지도 맨 끝에서부터 {STRING}칸 이내
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 정제소의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :석유 정제소는 지도의 동서남북 끝 경계 근처에만 건설할 수 있습니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :만년설의 높이: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도 ('천지창조' 전용): {STRING}
@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집�
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :고급화된 차량 목록 사용: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :고급화된 차량 목록의 사용 여부를 설정합니다.
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재 정도 표시: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :적재율 표시: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :적재나 하차하는 차량 위에 적재/하자 상태를 표시할지 말지를 선택합니다.
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :열차 시간표의 1일을 74틱으로 바꿔 표시: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :열차 시간표에서 열차의 운행 시간을 '일'보다 자세한 '틱'으로 표시합니다. 1일은 74틱과 같습니다.
@@ -1479,7 +1479,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :제한 없음
 STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 줌 인 배율: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 줌 인 배율을 설정합니다. 줌 인 배율이 커질 수록 메모리가 더 필요합니다.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 줌 아웃 배율: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 줌 아웃 배율을 설정합니다. 줌 어윳 배율이 커질 수록 게임이 버벅거릴 수 있습니다.
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 줌 아웃 배율을 설정합니다. 줌 아웃 배율이 커질 수록 게임이 버벅거릴 수 있습니다.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :기본값
@@ -2097,7 +2097,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}정거�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}다리를 투명하게 합니다. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}등대나 안테나 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재율 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 # Base for station construction window(s)
