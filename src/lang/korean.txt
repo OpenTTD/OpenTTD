@@ -2326,7 +2326,7 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}새 도�
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}새 도시를 건설합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다.
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}도시 여러개를 무작위 건설
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다.
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
@@ -3354,7 +3354,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}다음 
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 목적지: {WAYPOINT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}점검: {DEPOT} ({VELOCITY})
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}정지
@@ -3607,16 +3607,16 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}행선지표
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}행선지표 창으로 전환
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하여 선택하세요.
 
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표 작성 안됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속도로 운행 (시간표 작성 안됨)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속도로 운행
-STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}동안 머무름
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G 0 "으로" "로"} 이동
+STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일
 STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
@@ -3632,20 +3632,20 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시�
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요.
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 필요한 소요시간을 변경합니다
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다.
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간 초기화
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간을 초기화합니다
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간값 초기화
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 값을 초기화합니다.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다.
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한 초기화
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한값 초기화
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력 제한값을 초기화합니다.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 시간 초기화
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간을 초기화하여 정시운행으로 바꿉니다.
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간값을 초기화하여 정시운행 상태로 바꿉니다.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동 시간 설정
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음에 운행하면서 자동으로 값을 얻어 시간표를 채웁니다 (머무르는 시간을 유지하려면 CTRL-클릭하십시오)
