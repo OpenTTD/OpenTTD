@@ -1041,7 +1041,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				} else if (_cur.grffile->grf_version >= 8) {
 					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
@@ -1276,7 +1276,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				} else if (_cur.grffile->grf_version >= 8) {
 					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
@@ -1454,7 +1454,7 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 				} else if (_cur.grffile->grf_version >= 8) {
 					/* Use translated cargo. Might result in CT_INVALID (first refittable), if cargo is not defined. */
 					ei->cargo_type = GetCargoTranslation(ctype, _cur.grffile);
-				} else if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
+				} else if (ctype < NUM_CARGO) {
 					/* Use untranslated cargo. */
 					ei->cargo_type = ctype;
 				} else {
@@ -8189,6 +8189,9 @@ static void CalculateRefitMasks()
 			/* If the mask is zero, the vehicle shall only carry the default cargo */
 			only_defaultcargo = (ei->refit_mask == 0);
 		}
+
+		/* Clear invalid cargoslots (from default vehicles or pre-NewCargo GRFs) */
+		if (!HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = CT_INVALID;
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
