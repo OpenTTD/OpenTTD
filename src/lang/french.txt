@@ -1107,11 +1107,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Options 
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explication disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valeur par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Type de paramètre{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paramètre du client (n'est pas enregistré dans les sauvegardes; affecte toutes les parties)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paramètre de jeu (enregistré dans le sauvegardes; affecte uniquement les nouvelles parties)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de jeu (enregistré dans la sauvegarde; affecte uniquement la partie actuelle)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagine (enregistré dans les sauvegardes; affecte uniquement les nouvelles parties)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagine (enregistré dans la sauvegarde; affecte uniquement la compagnie actuelle)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paramètre du client (n'est pas enregistré dans les sauvegardes{NBSP}; affecte toutes les parties)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paramètre de jeu (enregistré dans le sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de jeu (enregistré dans la sauvegarde{NBSP}; affecte uniquement la partie actuelle)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagnie (enregistré dans la sauvegarde{NBSP}; affecte uniquement la compagnie actuelle)
 
 STR_CONFIG_SETTING_OFF                                          :Désactivé
 STR_CONFIG_SETTING_ON                                           :Activé
@@ -1552,7 +1552,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... le n
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... le format de sauvegarde '{STRING}' n'est pas disponible. Retour à '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... graphiques de base '{STRING}' ignorés{NBSP}: non trouvés
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... sons de base '{STRING}' ignorés{NBSP}: non trouvés
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... musique de base '{STRING}' ignorée{NBSP}: non trouvé
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... musique de base '{STRING}' ignorée{NBSP}: non trouvée
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
