@@ -21,6 +21,7 @@
 #include "order_func.h"
 #include "transport_type.h"
 #include "group_type.h"
+#include "base_consist.h"
 
 /** Vehicle status bits in #Vehicle::vehstatus. */
 enum VehStatus {
@@ -121,7 +122,7 @@ extern void FixOldVehicles();
 struct GRFFile;
 
 /** %Vehicle data structure. */
-struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
+struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle, BaseConsist {
 private:
 	Vehicle *next;                      ///< pointer to the next vehicle in the chain
 	Vehicle *previous;                  ///< NOSAVE: pointer to the previous vehicle in the chain
@@ -173,7 +174,6 @@ public:
 	Date age;                           ///< Age in days
 	Date max_age;                       ///< Maximum age
 	Date date_of_last_service;          ///< Last date the vehicle had a service at a depot.
-	Date service_interval;              ///< The interval for (automatic) servicing; either in days or %.
 	uint16 reliability;                 ///< Reliability.
 	uint16 reliability_spd_dec;         ///< Reliability decrease speed.
 	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
@@ -229,7 +229,6 @@ public:
 
 	byte vehstatus;                     ///< Status
 	Order current_order;                ///< The current order (+ status, like: loading)
-	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
 	VehicleOrderID cur_implicit_order_index;///< The index to the current implicit order
 
 	union {
@@ -597,9 +596,10 @@ public:
 	 */
 	inline void CopyVehicleConfigAndStatistics(const Vehicle *src)
 	{
+		this->CopyConsistPropertiesFrom(src);
+
 		this->unitnumber = src->unitnumber;
 
-		this->cur_real_order_index = src->cur_real_order_index;
 		this->cur_implicit_order_index = src->cur_implicit_order_index;
 		this->current_order = src->current_order;
 		this->dest_tile  = src->dest_tile;
@@ -614,8 +614,6 @@ public:
 		if (HasBit(src->vehicle_flags, VF_TIMETABLE_STARTED)) SetBit(this->vehicle_flags, VF_TIMETABLE_STARTED);
 		if (HasBit(src->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(this->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 		if (HasBit(src->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) SetBit(this->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
-
-		this->service_interval = src->service_interval;
 	}
 
 

@@ -539,6 +539,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\base_consist.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\gamelog.cpp"
 				>
 			</File>
@@ -1028,6 +1032,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\fontcache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\base_consist.h"
 				>
 			</File>
 			<File

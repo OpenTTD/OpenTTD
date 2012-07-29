@@ -25,6 +25,7 @@ engine.cpp
 fileio.cpp
 fios.cpp
 fontcache.cpp
+base_consist.cpp
 gamelog.cpp
 genworld.cpp
 gfx.cpp
@@ -172,6 +173,7 @@ fileio_func.h
 fileio_type.h
 fios.h
 fontcache.h
+base_consist.h
 gamelog.h
 gamelog_internal.h
 genworld.h

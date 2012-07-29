@@ -180,6 +180,9 @@
     <ClCompile Include="..\src\fontcache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\base_consist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\gamelog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -544,6 +547,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\fontcache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\base_consist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gamelog.h">
