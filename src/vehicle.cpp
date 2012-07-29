@@ -781,8 +781,6 @@ void Vehicle::PreDestructor()
 
 Vehicle::~Vehicle()
 {
-	free(this->name);
-
 	if (CleaningPool()) {
 		this->cargo.OnCleanPool();
 		return;

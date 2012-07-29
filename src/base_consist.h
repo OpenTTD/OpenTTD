@@ -17,8 +17,12 @@
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {
+	char *name;                         ///< Name of vehicle
 	Date service_interval;              ///< The interval for (automatic) servicing; either in days or %.
 	VehicleOrderID cur_real_order_index;///< The index to the current real (non-implicit) order
+
+	BaseConsist() : name(NULL) {}
+	virtual ~BaseConsist();
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);
 };

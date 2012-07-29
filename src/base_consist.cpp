@@ -12,6 +12,11 @@
 #include "stdafx.h"
 #include "base_consist.h"
 
+BaseConsist::~BaseConsist()
+{
+	free(this->name);
+}
+
 /**
  * Copy properties of other BaseConsist.
  * @param src Source for copying
@@ -19,6 +24,9 @@
 void BaseConsist::CopyConsistPropertiesFrom(const BaseConsist *src)
 {
 	if (this == src) return;
+
+	free(this->name);
+	this->name = src->name != NULL ? strdup(src->name) : NULL;
 
 	this->service_interval = src->service_interval;
 	this->cur_real_order_index = src->cur_real_order_index;
