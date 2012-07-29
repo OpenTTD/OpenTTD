@@ -239,8 +239,9 @@
  *  173   23967   1.2.0-RC1
  *  174   23973   1.2.x
  *  175   24136
+ *  176   24446
  */
-extern const uint16 SAVEGAME_VERSION = 175; ///< Current savegame version of OpenTTD.
+extern const uint16 SAVEGAME_VERSION = 176; ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 

@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "base_consist.h"
+#include "vehicle_base.h"
 
 BaseConsist::~BaseConsist()
 {
@@ -28,6 +29,16 @@ void BaseConsist::CopyConsistPropertiesFrom(const BaseConsist *src)
 	free(this->name);
 	this->name = src->name != NULL ? strdup(src->name) : NULL;
 
+	this->current_order_time = src->current_order_time;
+	this->lateness_counter = src->lateness_counter;
+	this->timetable_start = src->timetable_start;
+
 	this->service_interval = src->service_interval;
+
 	this->cur_real_order_index = src->cur_real_order_index;
+	this->cur_implicit_order_index = src->cur_implicit_order_index;
+
+	if (HasBit(src->vehicle_flags, VF_TIMETABLE_STARTED)) SetBit(this->vehicle_flags, VF_TIMETABLE_STARTED);
+	if (HasBit(src->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(this->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+	if (HasBit(src->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) SetBit(this->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 }

@@ -86,7 +86,7 @@ void OrderBackup::DoRestore(Vehicle *v)
 
 	/* Make sure orders are in range */
 	v->UpdateRealOrderIndex();
-	v->cur_implicit_order_index = v->cur_real_order_index;
+	if (v->cur_implicit_order_index >= v->GetNumOrders()) v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
 	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);
