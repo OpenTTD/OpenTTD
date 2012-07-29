@@ -1108,7 +1108,7 @@ STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explicat
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valeur par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Type de paramètre{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Paramètre du client (n'est pas enregistré dans les sauvegardes{NBSP}; affecte toutes les parties)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paramètre de jeu (enregistré dans le sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paramètre de jeu (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de jeu (enregistré dans la sauvegarde{NBSP}; affecte uniquement la partie actuelle)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagnie (enregistré dans la sauvegarde{NBSP}; affecte uniquement la compagnie actuelle)

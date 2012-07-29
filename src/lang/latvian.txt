@@ -1107,6 +1107,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rī
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildu iestatījumi
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(skaidrojums nav pieejams)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Noklusējuma vērtība: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Iestatījuma veids: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :lietotāja iestatījums (netiek iekļauts saglabājumos, ietekmē visas spēles)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :spēles iestatījums (tiek iekļauts saglabājumos, ietekmē tikai jaunās spēles)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :spēles iestatījums (tiek iekļauts saglabājumā, ietekmē tikai pašreizējo spēli)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :uzņēmuma iestatījums (tiek iekļauts saglabājumos, ietekmē tikai jaunās spēles)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :uzņēmuma iestatījums (tiek iekļauts saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
 
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts
