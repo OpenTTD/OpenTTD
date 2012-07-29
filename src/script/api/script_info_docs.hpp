@@ -168,6 +168,7 @@ public:
 	 * - "1.0" (for AI only)
 	 * - "1.1" (for AI only)
 	 * - "1.2" (for both AI and GS)
+	 * - "1.3" (for both AI and GS)
 	 *
 	 * @return The version this Script is compatible with.
 	 */
