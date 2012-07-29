@@ -282,10 +282,11 @@ void Load_BKOR()
 		SlObject(ob, GetOrderBackupDescription());
 	}
 
-	/* If we are a network server, then we just loaded
+	/* Only load order-backups for network clients.
+	 * If we are a network server or not networking, then we just loaded
 	 * a previously saved-by-server savegame. There are
 	 * no clients with a backup anymore, so clear it. */
-	if (_networking && _network_server) {
+	if (!_networking || _network_server) {
 		_order_backup_pool.CleanPool();
 	}
 }
