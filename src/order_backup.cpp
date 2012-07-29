@@ -25,8 +25,6 @@ INSTANTIATE_POOL_METHODS(OrderBackup)
 /** Free everything that is allocated. */
 OrderBackup::~OrderBackup()
 {
-	free(this->name);
-
 	if (CleaningPool()) return;
 
 	Order *o = this->orders;
@@ -46,11 +44,9 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 {
 	this->user             = user;
 	this->tile             = v->tile;
-	this->orderindex       = v->cur_implicit_order_index;
 	this->group            = v->group_id;
-	this->service_interval = v->service_interval;
 
-	if (v->name != NULL) this->name = strdup(v->name);
+	this->CopyConsistPropertiesFrom(v);
 
 	/* If we have shared orders, store the vehicle we share the order with. */
 	if (v->IsOrderListShared()) {
@@ -76,10 +72,6 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
  */
 void OrderBackup::DoRestore(Vehicle *v)
 {
-	/* If we have a custom name, process that */
-	v->name = this->name;
-	this->name = NULL;
-
 	/* If we had shared orders, recover that */
 	if (this->clone != NULL) {
 		DoCommand(0, v->index | CO_SHARE << 30, this->clone->index, DC_EXEC, CMD_CLONE_ORDER);
@@ -90,12 +82,11 @@ void OrderBackup::DoRestore(Vehicle *v)
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	}
 
-	uint num_orders = v->GetNumOrders();
-	if (num_orders != 0) {
-		v->cur_real_order_index = v->cur_implicit_order_index = this->orderindex % num_orders;
-		v->UpdateRealOrderIndex();
-	}
-	v->service_interval = this->service_interval;
+	v->CopyConsistPropertiesFrom(this);
+
+	/* Make sure orders are in range */
+	v->UpdateRealOrderIndex();
+	v->cur_implicit_order_index = v->cur_real_order_index;
 
 	/* Restore vehicle group */
 	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);

@@ -13,11 +13,10 @@
 #define ORDER_BACKUP_H
 
 #include "core/pool_type.hpp"
-#include "date_type.h"
 #include "group_type.h"
-#include "order_type.h"
 #include "tile_type.h"
 #include "vehicle_type.h"
+#include "base_consist.h"
 
 /** Unique identifier for an order backup. */
 typedef uint8 OrderBackupID;
@@ -35,18 +34,15 @@ static const uint32 MAKE_ORDER_BACKUP_FLAG = 1U << 31;
  * Data for backing up an order of a vehicle so it can be
  * restored after a vehicle is rebuilt in the same depot.
  */
-struct OrderBackup : OrderBackupPool::PoolItem<&_order_backup_pool> {
+struct OrderBackup : OrderBackupPool::PoolItem<&_order_backup_pool>, BaseConsist {
 private:
 	friend const struct SaveLoad *GetOrderBackupDescription(); ///< Saving and loading of order backups.
 	friend void Load_BKOR();   ///< Creating empty orders upon savegame loading.
 	uint32 user;               ///< The user that requested the backup.
 	TileIndex tile;            ///< Tile of the depot where the order was changed.
 	GroupID group;             ///< The group the vehicle was part of.
-	Date service_interval;     ///< The service interval of the vehicle.
-	char *name;                ///< The custom name of the vehicle.
 
 	const Vehicle *clone;      ///< Vehicle this vehicle was a clone of.
-	VehicleOrderID orderindex; ///< The order-index the vehicle had.
 	Order *orders;             ///< The actual orders if the vehicle was not a clone.
 
 	/** Creation for savegame restoration. */
