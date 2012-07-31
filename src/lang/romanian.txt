@@ -1105,6 +1105,10 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări avansate
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setări joc (stocate în fişierele de salvare; afectează doar jocurile noi)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setări joc (stocate în fişierul de salvare; afectează doar jocul curent)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setări companie (stocate în fişierele de salvare; afectează doar jocurile noi)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Setări companie (stocate în fişierul de salvare; afectează doar compania curentă)
 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
@@ -1184,6 +1188,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite finaţa
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite finanțarea reconstrucției străzilor locale: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permite transfer de bani către alte companii: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicator greutate pt marfar pt simularea trenurilor grele: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Numărul avioanelor care se prăbușesc: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nici unul
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :redus

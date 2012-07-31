@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredit:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Unzuel Gefierter déi lescht Joer Profit gemet hun; dëst betrëfft Stroossengefierter, Zich, Schëffer an Fligeren.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Unzuel un kierzlechservéiert Statiounsdeeler. All Deel vun enger Statioun (e.g. Gare,Busarret,Fluchhafen)gëtt gezielt,och wann déi als eng Statioun connectéiert sinn.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Unzuel un kierzlechservéiert Statiounsdeeler. All Deel vun enger Statioun (z.B. Gare, Busarret, Fluchhafen) gëtt gezielt,och wann déi als eng Statioun connectéiert sinn.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profit vum Gefiert mam mannsten Akommes (vun allen Gefierter déi méi wéi 2 Joer aal sin)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Betrag un Geld den am Mount mam mansten Profit gemet gouf an den leschten 12 Quartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Betrag un Geld den am Mount mam héchsten Profit gemet gouf an den leschten 12 Quartaler
@@ -852,6 +852,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subventioun geet un {STRING}!{}{}{STRING} Service vun {STRING} op {STRING} gëtt nächst Joer mat 400% bezuelt!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafficchaos an {TOWN}!{}{}Stroosenneibau deen vun {STRING} finanzéiert ginn ass bréngt 6 Méint Misère fir d'Autosfuerer!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokal Authoritéit vun {TOWN} ënnerschreiwt Kontrakt mat {STRING} fir ee Joër laang exklusiv Transportrechter!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Unsicht {COMMA}
@@ -1101,6 +1103,13 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Akti
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwert: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Astellungstyp: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Clientastellung (net am Save gespäichert; betrëfft all Spiller)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spillastellung (am Save gespäichert; betrëfft just nei Spiller)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung (am Save gespäichert; betrëfft just aktuellt Spill)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
 
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
@@ -1373,6 +1382,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :net mat dëser 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekannt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressiounslevel '{STRING}' ass net gültëg.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Savegameformat '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': nët fonnt
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': nët fonnt
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Music Set '{STRING}': nët fonnt
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3104,7 +3116,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel 
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagonen
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen remplacéiert gin
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen remplacéiert ginn
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Maschin vun der lénks selectéierter Maschin remplacéiert soll gin, wann et zoutrëfft
 STR_REPLACE_RAIL_VEHICLES                                       :Schinnengefierter
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Schinnen Gefierer
