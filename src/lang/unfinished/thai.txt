@@ -173,22 +173,22 @@ STR_ITEMS                                                       :{COMMA} ชิ�
 STR_CRATES                                                      :{COMMA} ลัง
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :สีกรมท่า
-STR_COLOUR_PALE_GREEN                                           :สีเขียวอ่อน
-STR_COLOUR_PINK                                                 :สีชมพู
-STR_COLOUR_YELLOW                                               :สีเหลือง
-STR_COLOUR_RED                                                  :สีแดง
-STR_COLOUR_LIGHT_BLUE                                           :สีฟ้าอ่อน
-STR_COLOUR_GREEN                                                :สีเขียว
-STR_COLOUR_DARK_GREEN                                           :สีเขียวเข้ม
-STR_COLOUR_BLUE                                                 :สีฟ้า
-STR_COLOUR_CREAM                                                :สีครีม
-STR_COLOUR_MAUVE                                                :สีม่วงอ่อน
-STR_COLOUR_PURPLE                                               :สีม่วง
-STR_COLOUR_ORANGE                                               :สีส้ม
-STR_COLOUR_BROWN                                                :สีน้ำตาล
-STR_COLOUR_GREY                                                 :สีเทา
-STR_COLOUR_WHITE                                                :สีขาว
+STR_COLOUR_DARK_BLUE                                            :น้ำเงินเข้ม
+STR_COLOUR_PALE_GREEN                                           :เขียวอ่อน
+STR_COLOUR_PINK                                                 :ชมพู
+STR_COLOUR_YELLOW                                               :เหลือง
+STR_COLOUR_RED                                                  :แดง
+STR_COLOUR_LIGHT_BLUE                                           :ฟ้า
+STR_COLOUR_GREEN                                                :เขียว
+STR_COLOUR_DARK_GREEN                                           :เขียวเข้ม
+STR_COLOUR_BLUE                                                 :น้ำเงิน
+STR_COLOUR_CREAM                                                :ครีม
+STR_COLOUR_MAUVE                                                :ม่วงอ่อน
+STR_COLOUR_PURPLE                                               :ม่วง
+STR_COLOUR_ORANGE                                               :ส้ม
+STR_COLOUR_BROWN                                                :น้ำตาล
+STR_COLOUR_GREY                                                 :เทา
+STR_COLOUR_WHITE                                                :ขาว
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์/ชม.
@@ -209,7 +209,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิ�
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} ลบ.ม.
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ลิตร
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลูกบาศก์เมตร
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลบ.ม.
 
 STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
@@ -220,7 +220,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} ม.
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}ใส่คำกรอง
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}ป้อนคำค้นเพื่อกรองรายการ
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เลือกเรียงลำดับ (จากบนลงล่าง/จากล่างขึ้นบน)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เลือกการเรียงลำดับ (จากบนลงล่าง/จากล่างขึ้นบน)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}เลือกเกณฑ์การเรียงลำดับ
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}เลือกเกณฑ์การกรอง
 STR_BUTTON_SORT_BY                                              :{BLACK}เรียงตาม
@@ -229,9 +229,9 @@ STR_BUTTON_RENAME                                               :{BLACK}เป�
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ชื่อของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
-STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - แสดงเฉพาะที่ title bar
+STR_TOOLTIP_SHADE                                               :{BLACK}Shade window - แสดงเฉพาะแถบด้านบน
 STR_TOOLTIP_DEBUG                                               :{BLACK}แสดงข้อมูล debug NewGRF
-STR_TOOLTIP_STICKY                                              :{BLACK}ทำเครื่องหมายหน้าต่างนี้เพื่อตรึงไว้ป้องกันการปิดจากการกดปุ่ม 'ปิดทุกหน้าต่าง'
+STR_TOOLTIP_STICKY                                              :{BLACK}กำหนดไม่ให้ปิดหน้าต่างนี้เมื่อใช้ปุ่ม 'ปิดทุกหน้าต่าง'
 STR_TOOLTIP_RESIZE                                              :{BLACK}คลิกค้างแล้วลากเพื่อเปลี่ยนขนาดของหน้าต่าง
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}เปลี่ยนขนาดหน้าต่าง ใหญ่/เล็ก
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ขึ้น/ลง
@@ -262,7 +262,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}วั�
 STR_SORT_BY_NAME                                                :ชื่อ
 STR_SORT_BY_PRODUCTION                                          :ผลผลิต
 STR_SORT_BY_TYPE                                                :ประเภท
-STR_SORT_BY_TRANSPORTED                                         :จำนวนที่ขนส่ง
+STR_SORT_BY_TRANSPORTED                                         :ขนส่งแล้ว
 STR_SORT_BY_NUMBER                                              :หมายเลข
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
@@ -279,10 +279,10 @@ STR_SORT_BY_FACILITY                                            :ประเภ
 STR_SORT_BY_WAITING                                             :มูลค่าสินค้าที่ค้างอยู่
 STR_SORT_BY_RATING_MAX                                          :สินค้ายอดนิยม
 STR_SORT_BY_RATING_MIN                                          :สินค้านิยมน้อยสุด
-STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)
+STR_SORT_BY_ENGINE_ID                                           :EngineID (เรียงแบบดั้งเดิม)
 STR_SORT_BY_COST                                                :ราคา
 STR_SORT_BY_POWER                                               :กำลัง
-STR_SORT_BY_TRACTIVE_EFFORT                                     :กำลังขับ
+STR_SORT_BY_TRACTIVE_EFFORT                                     :กำลังลากจูง
 STR_SORT_BY_INTRO_DATE                                          :วันเปิดตัว
 STR_SORT_BY_RUNNING_COST                                        :ค่าใช้จ่าย
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :อัตตราส่วน กำลัง/ค่าใช้จ่าย
@@ -291,7 +291,7 @@ STR_SORT_BY_RANGE                                               :ช่วง
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกมเดินหน้า
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}เร่งความเร็วเกม
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ตัวเลือก
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}บันทึกและออกจากเกม
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}แสดงจุดสังเกต, แผนที่และป้าย
@@ -300,9 +300,9 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}แส�
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}แสดงรายการสถานีของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟทั้งหลาย
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}แสดงกราฟ
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}แสดงตารางอันดับบริษัท
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ลงทุนก่อสร้างอุตสาหกรรมใหม่ หรือ แดงอุตสาหกรรมทั้งหมด
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}ลงทุนก่อสร้างอุตสาหกรรมใหม่ หรือ แสดงรายชื่ออุตสาหกรรมทั้งหมด
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}แสดงรายการรถไฟของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}แสดงรายการรถยนต์ของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}แสดงรายการเรือของบริษัท, Ctrl+คลิก เพื่อเปลี่ยนดู กลุ่ม/รายการ ยานพาหนะ
@@ -316,7 +316,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}สร�
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}เปิดแถบเครื่องมือภูมิประเทศเพื่อปรับความสูงต่ำของพื้นดิน, ปลูกต้นไม้ ฯลฯ
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}แสดงหน้าต่างเสียงและดนตรี
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}แสดงข้อความล่าสุด/รายงานข่าว, แสดงตัวเลือกข้อความ
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน, console, AI debug, screenshots, เกี่ยวกับ OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}ข้อมูลที่ดิน, คอนโซล, ดีบัก AI, จับภาพหน้าจอ, เกี่ยวกับ OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}เปลี่ยนกล่องเครื่องมือ
 
 # Extra tooltips for the scenario editor toolbar
@@ -338,7 +338,7 @@ STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}วา�
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกฉาก
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :โหลดฉาก
-STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :บันทึกแผนที่จำลองเสมือนจริง
+STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :บันทึกแผนที่ความสูง
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :โหลดแผนที่ความสูง
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :ออกจากตัวแก้ไขฉาก
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
@@ -349,16 +349,16 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :ออก
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ตัวเลือกเกม
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :กำหนดระดับความยาก
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :กำหนดค่าขั้นสูง
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ตั้งค่า AI/Game script
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :ตั้งค่าสคริปต์ AI/Game
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :กำหนดค่า NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :ตัวเลือกค่าโปร่งใส
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :แสดงชื่อเมือง
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :แสดงชื่อสถานี
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :แสดงจุดผ่าน
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :แสดงป้าย
-STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :ชื่อและป้ายของคู่แข่ง
-STR_SETTINGS_MENU_FULL_ANIMATION                                :ภาพเคลื่อนไหวเต็มที่
-STR_SETTINGS_MENU_FULL_DETAIL                                   :รายละเอียดเต็มที่
+STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :แสดงชื่อและป้ายของคู่แข่ง
+STR_SETTINGS_MENU_FULL_ANIMATION                                :แสดงภาพเคลื่อนไหวทั้งหมด
+STR_SETTINGS_MENU_FULL_DETAIL                                   :แสดงรายละเอียดทั้งหมด
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :สิ่งก่อสร้างแบบโปร่งใส
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :ป้ายแบบโปร่งใส
 ############ range ends here
@@ -438,21 +438,22 @@ STR_TOOLBAR_SOUND_MUSIC                                         :เสียง
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :ข้อความล่าสุด/รายงานข่าว
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :กำหนดค่าการแสดงข้อความ
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ูข้อความย้อนหลัง
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :ดูข้อความย้อนหลัง
 ############ range ends here
 
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :ข้อมูลพื้นที่
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
-STR_ABOUT_MENU_AI_DEBUG                                         :ดีบัก AI/Game script
+STR_ABOUT_MENU_AI_DEBUG                                         :ดีบัก สคริปต์ AI/Game
 STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :จับภาพหน้าจอในแบบขยายใหญ่สุด
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :ค่าเริ่มต้นของการขยายภาพในการจับหน้าจอ
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอทั้งหมด (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอทั้งแผนที่ (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจัดแนว Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :เปิด/ปิด bounding boxes
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :เปิด/เปิด สีของ dirty blocks
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -962,7 +963,7 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}เล�
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ตั้งฐานกราฟิก
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}เลือกและตั้งค่าฐานกราฟิกที่จะใช้
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ไฟล์สูญหายหรือไม่สมบูรณ์
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}สร้างข้อมูลเพิ่มเติมเกี่ยวกับฐานกราฟิก
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}ข้อมูลเพิ่มเติมเกี่ยวกับชุดกราฟฟิคพื้นฐาน
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}ปรับเสียง
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}ปรับและเลือกเสียงที่จะใช้
@@ -2431,10 +2432,12 @@ STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({CARGO
 
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำลังต้องการ: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
 ############ range for rating ends
+
 
 
 
