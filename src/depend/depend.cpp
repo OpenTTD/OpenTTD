@@ -910,7 +910,10 @@ int main(int argc, char *argv[])
 		size = ftell(src);
 		rewind(src);
 		content = (char*)malloc(size * sizeof(*content));
-		fread(content, 1, size, src);
+		if (fread(content, 1, size, src) != (size_t)size) {
+			fprintf(stderr, "Could not read %s\n", filename);
+			exit(-2);
+		}
 		fclose(src);
 	}
 
@@ -919,7 +922,10 @@ int main(int argc, char *argv[])
 
 	if (size != 0) {
 		src = fopen(backup, "wb");
-		fwrite(content, 1, size, src);
+		if (fwrite(content, 1, size, src) != (size_t)size) {
+			fprintf(stderr, "Could not write %s\n", filename);
+			exit(-2);
+		}
 		fclose(src);
 
 		/* Then append it to the real file. */
