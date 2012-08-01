@@ -971,7 +971,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 �
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 음악 세트
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용할 기본 음악 세트를 선택하세요
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일{P "" "들"}이 손상되었습니다.
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 음악 세트에 대한 추가 정보
 
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}풀스크린 모드 실패
@@ -1941,7 +1941,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}정거�
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}다리를 투명하게 합니다. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}등대나 안테나 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}적재율 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 # Base for station construction window(s)
@@ -2014,13 +2014,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 �
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}일방통행 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}단방향 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구,출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지식 구조"를 건설할 수 있게 도와줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}단방향 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다. SHIFT+클릭을 사용하면 예상 가격을 볼 수 있습니다.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}드래그시 신호기 간격
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}드래그시 신호기 간격 감소
@@ -2137,7 +2137,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}오브�
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트를 선택합니다.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}건설할 오브젝트의 등급을 선택합니다
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 타일
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 칸
 
 STR_OBJECT_CLASS_LTHS                                           :등대
 STR_OBJECT_CLASS_TRNS                                           :송신기
@@ -2170,7 +2170,7 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}새 도�
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}새 도시를 건설합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다.
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}도시 여러개를 무작위 건설
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다.
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
@@ -2237,7 +2237,7 @@ STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}정거�
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}정거장 종류: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}공항 등급: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}공항 이름: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 타일 이름: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}공항 칸 이름: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}화물 인수: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2253,27 +2253,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :눈덮인 땅
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :사막
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} 선로
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} 선로(폐색 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} 선로(입구-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} 선로(출구-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} 선로(콤보-신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} 선로(경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} 선로(일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} 선로(폐색 & 입구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} 선로(폐색 & 출구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :{STRING} 선로(폐색 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :{STRING} 선로(폐색 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :{STRING} 선로(폐색 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :{STRING} 선로(입구 & 출구 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :{STRING} 선로(입구 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :{STRING} 선로(입구 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :{STRING} 선로(입구 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :{STRING} 선로(출구 & 콤보 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :{STRING} 선로(출구 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :{STRING} 선로(출구 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :{STRING} 선로(콤보 & 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :{STRING} 선로(콤보 & 일방통행 경로 신호기 설치)
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :{STRING} 선로(경로 & 일방통행 경로 신호기 설치)
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :일반 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :입구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :일반 신호기와 입구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :일반 신호기와 출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :일반 신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :일반 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :일반 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :입구-신호기와 출구-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :입구-신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :입구 신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :입구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :출구-신호기와 콤보-신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :출구-신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :출구-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :콤보-신호기와 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :콤보-신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :경로 신호기와 단방향 경로 신호기가 설치된 {STRING} 선로
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :{STRING} 차량기지
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :도로
@@ -2322,7 +2322,7 @@ STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :원통형 철�
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :강철 현수교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :강철 들보교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :강철 캔틸레버교
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :철근 콘트리트 현수교 (도로용)
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :철근 콘트리트 현수교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :나무 다리
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :콘크리트교
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :원통형 다리
@@ -2432,7 +2432,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 �
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 작동중
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 실행중
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}스크립트 생성중
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 준비중
 
@@ -2808,21 +2808,21 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}없음
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}회사가치: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% {COMPANY}의 소유)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}기반시설:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA}타일의 철도
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA}타일의 도로
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA}타일의 운하
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA}타일의 역
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA}개의 공항
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}철도 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}도로 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}운하시설 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}정거장 {COMMA}칸
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {COMMA}개
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 지부 건설
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 지부 보기.
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 재위치
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격으로 본사를 다른 위치에 재건축합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 위치 변경
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭하면 예상 가격을 볼 수 있습니다.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}회사 기반시설 상세내역 창을 엽니다
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니저의 얼굴을 선택합니다.
@@ -2921,7 +2921,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :격납고로 �
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}이 목록의 모든 차량의 운행을 중지시킵니다.
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}이 목록에 있는 모든 차량의 운행을 시작합니다.
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} 차량의 공유된 경로 목록
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}경로를 공유하고 있는 차량 {COMMA}대의 목록
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :모든 열차
@@ -3189,7 +3189,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}다음 
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}다음 목적지: {WAYPOINT} ({VELOCITY})
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}다음 목적지: {DEPOT} ({VELOCITY})
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}점검: {DEPOT} ({VELOCITY})
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}정지
@@ -3442,16 +3442,16 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}행선지표
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}행선지표 창으로 전환
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하여 선택하세요.
 
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :이동 (자동; 다음 경로에 의해 시간표 작성)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표 작성 안됨)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :운행 (시간표가 작성되지 않음)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :최대 {2:VELOCITY}의 속도로 운행 (시간표 작성 안됨)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}에 걸쳐 운행
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{0:STRING}동안 최대 {1:VELOCITY}의 속도로 운행
-STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}동안 머무름
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}{G 0 "으로" "로"} 이동
+STR_TIMETABLE_STAY_FOR                                          :& {STRING} 동안 정차
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :& 다음 목적지({STRING})로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA}일
 STR_TIMETABLE_TICKS                                             :{COMMA}틱
 
@@ -3467,20 +3467,20 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}이 시�
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}시작 날짜
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}이 시간표의 시작 날짜를 선택하세요.
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 필요한 소요시간을 변경합니다
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간값 변경
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로에서 소요되는 시간 값을 변경합니다.
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간 초기화
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간을 초기화합니다
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}시간값 초기화
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 값을 초기화합니다.
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}속도 제한
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}선택한 경로의 최대 여행 속력을 제한합니다.
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한 초기화
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력을 초기화합니다.
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}속도 제한값 초기화
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}선택한 경로의 최대 여행 속력 제한값을 초기화합니다.
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}지연 시간 초기화
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간을 초기화하여 정시운행으로 바꿉니다.
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}이 차량의 지연 시간값을 초기화하여 정시운행 상태로 바꿉니다.
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동 시간 설정
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}다음에 운행하면서 자동으로 값을 얻어 시간표를 채웁니다 (머무르는 시간을 유지하려면 CTRL-클릭하십시오)
@@ -3660,7 +3660,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 이�
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 다른 회사의 소유지입니다!
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 지형 편집 제한에 다다랐습니다
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 타일 제거 제한에 다다랐습니다
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... 칸 제거 제한에 다다랐습니다
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}일시정지 중에는 할 수 없습니다
@@ -3707,7 +3707,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 도�
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 지도에 더이상 공간이 없습니다!
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}도시가 도로를 짓지 않을 것입니다. [고급설정->경제->도시]에서 도로를 지을 수 있도록 설정을 변경하실 수 있습니다.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}도로 작업이 진행중입니다
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 타일에 있는 역이나 차고때문에 제거할 수 없습니다.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}이 도시를 삭제할 수 없습니다...{}도시 또는 도시가 소유하고 있는 땅에 역이나 차고가 존재합니다.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 이 도시의 중심에 동상을 세우기 적합한 장소가 없습니다.
 
 # Industry related errors
@@ -3761,7 +3761,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}트럭 �
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 제거할 수 없습니다...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}정류장을 먼저 제거하십시오
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 철도역이 없습니다.
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 여기에는 정거장이 없습니다.
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}철도역을 먼저 제거하십시오.
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}버스 정류장을 먼저 제거하십시오.
@@ -4004,7 +4004,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :사무 구획
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :상점과 사무실
 STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :현대적 사무 건물
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :창고
-STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :사무구획
+STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :사무 구획
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :운동장
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :오래된 집
 STR_TOWN_BUILDING_NAME_COTTAGES_1                               :아담한 집

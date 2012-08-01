@@ -1710,6 +1710,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несумяш�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невядомы
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... узровень сьцiсканьня (кампрэсii) '{STRING}' няправiльны
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фармат захаванай гульнi '{STRING}' недаступны. Зварот да '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор графікі "{STRING}" не знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" не знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" не знойдзены
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

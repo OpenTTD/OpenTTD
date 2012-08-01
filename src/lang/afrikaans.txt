@@ -2707,9 +2707,9 @@ STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Plaaslik
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
-STR_CARGO_RATING_APPALLING                                      :Onsettend
-STR_CARGO_RATING_VERY_POOR                                      :Baie Arm
-STR_CARGO_RATING_POOR                                           :Arm
+STR_CARGO_RATING_APPALLING                                      :Haglik
+STR_CARGO_RATING_VERY_POOR                                      :Baie Swak
+STR_CARGO_RATING_POOR                                           :Swak
 STR_CARGO_RATING_MEDIOCRE                                       :Middelmagtig
 STR_CARGO_RATING_GOOD                                           :Goed
 STR_CARGO_RATING_VERY_GOOD                                      :Baie Goed

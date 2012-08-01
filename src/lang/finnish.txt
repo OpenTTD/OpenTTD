@@ -1465,7 +1465,7 @@ STR_CHEATS                                                      :{WHITE}Huijauks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin.
 STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY_LONG}
-STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yritys: {ORANGE}{COMMA}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yhtiö: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta, liikuttamattomia kohteita): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat mennä ristiin: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkukoneet eivät syöksy (usein) pienille lentokentille: {ORANGE}{STRING}
@@ -1639,7 +1639,7 @@ STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (maino
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yritys{P "" tä}
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} yhtiö{P "" tä}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Rajoita yhtiöiden määrää palvelimella
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} katsoja{P "" a}
@@ -1762,7 +1762,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä ta
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Anna yhtiölle uusi salasana
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Yhtiön salasana
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Yhtiön oletussalasana
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Käytä tätä yhtiön salasanaa oletuksena uusissa yrityksissä
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Käytä tätä yhtiön salasanaa oletuksena uusissa yhtiöissä
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Liity
@@ -1856,7 +1856,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yrityksellesi {2:CURRENCY_LONG}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yhtiöllesi {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit henkilölle {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
