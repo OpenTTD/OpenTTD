@@ -1211,9 +1211,11 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normaal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Laat deur-ry padhalte op dorp besite paaie toe: {STRING}
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Laat Bouery van deur-ry pad stasies op dorp beheerde paaie
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Laat deur-ry padhalte toe op paaie wat deur ander deelnemers besit word: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Laat die konstruksie van die ry-deur pad stasies op paaie toe wat deur ander maatskappye besit word
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Laat die bou van aangrensende stasies toe: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Laat verskeie stasies toe om mekaar te raak
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiveer veeltallige NewGRF enjin stelle: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :versoenbaarheid opsie vir ou NewGRFs. Moenie deaktiveer, behalwe as jy weet wat jy doen!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verandering van die stelling is nie moontlik wanneer daar voertuie is nie
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
 
