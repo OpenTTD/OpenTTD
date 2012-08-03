@@ -787,7 +787,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새 운송회사 등장!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(매니저)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(사장)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
 
@@ -2324,9 +2324,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}이 작�
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}도시 만들기
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}새 도시
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}새 도시를 건설합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위 도시 건설
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위로 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다.
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 도시 건설
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 여러 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다.
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
@@ -2957,7 +2957,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}기반�
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(매니저)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(사장)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
@@ -2978,22 +2978,22 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 지부 건설
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 본사를 건설합니다.
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 지부 보기.
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 본사 위치로 이동합니다.
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 위치 변경
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭하면 예상 가격을 볼 수 있습니다.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니저의 얼굴을 선택합니다.
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}사장의 얼굴을 선택합니다.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}색상
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}회사 차량의 색상을 변경합니다.
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}회사 이름
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}회사 이름을 변경합니다.
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}매니저 이름
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}매니저의 이름을 변경합니다.
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}사장 이름
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}사장의 이름을 변경합니다.
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}회사 지분의 25%를 매입
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}회사 지분의 25%를 매도
@@ -3001,7 +3001,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}이 회�
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회사 지분의 25%를 매도합니다. SHIFT+클릭으로 예상 매도 가격을 볼 수 있습니다.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :매니저 이름
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :사장 이름
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
@@ -3848,7 +3848,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이�
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}매니저 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}사장의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY_LONG} 입니다.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}더이상 돈을 빌릴 수 없습니다...

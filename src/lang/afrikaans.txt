@@ -1168,6 +1168,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximum lengte 
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tonnel lengte: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum lengte vir die bou van tonnels
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primêre nywerheid konstruksie metode: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode van befondsing van 'n primêre bedryf."Niks" beteken dit nie moontlik is om enige bedryf te finansier, "prospekteer" beteken befondsing is moontlik, maar konstruksie vind plaas in 'n toevallige plek op die kaart en dit kan ook misluk, "ander nywerhede" beteken rou bedrywe kan opgerig word deur ander maatskappye soos verwerking nywerhede.
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
@@ -1183,7 +1184,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Aan die regterk
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Toon finansies venster op die einde van die jaar: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Indien geaktiveer, sal die finansies venster verskyn aan die einde van elke jaar om maklik inspeksie van die finansiële state, van die maatskappy, toe te laat
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nuwe bevele is vooraf 'geen-stop' {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normaalweg stop 'n voertuig by elke stasie wat dit verby gaan. Deur gebruik te maak van hierdie instelling, sal dit verby elke stasie ry oppad na sy finale bestemming sonder om te stop. Let wel, dat hierdie verstelling slegs 'n standaard waarde definieer vir nuwe bevele. Individuele bevele kan uitdruklik gestel word na belang van gedrag
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nuwe trein opdragte stop by verstek by die {STRING} van die platform
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plek waar 'n trein stop by die platform by verstek. Die "naby die einde" naby aan die beginpunt van die platform, "middel", beteken in die middel van die platform, en "ander kant" beteken ver weg van die beginpunt van die platform. Let wel, dat hierdie verstelling definieer slegs 'n standaard waarde vir nuwe bevele. Individuele bevele kan nog ingestel word.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :naby einde
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :middel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
@@ -1192,6 +1195,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voe
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer geaktiveer, sal die hoof skerm begin om te beweeg wanneer die muis naby die rand van die skerm is
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Laat maatskappye die plaaslike dorpsraad probeer omkoop. Indien 'n inspekteur die omkoopgeld opgemerk, sal die maatskappy nie in staat wees om in die dorp te werk vir ses maande.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :As 'n maatskapy alleen transportreg koop vir n' dorp. Die teenstanders se stasies (passesiers en vrag) sal geen vrag kry vir n' jaar
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Laat befondsing van geboue: {STRING}
@@ -1201,7 +1205,9 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Laat maatskappy
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Laat die stuur van geld na ander maatskappye toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Laat die oordra van geld, tussen maatskappye, toe in multi-speler modus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewig vermenivoud vir vrag om swaar treine te simuleer: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Stel die impak van die dravrag op treine. Hoe hoër die hoeveelheid vrag wat gedra word, hoe meer veeleisend is dit vir die treine, veral teen die heuwels uit.
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Vlegtuig spoed faktor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Stel die relatiewe spoed van vliegtuie, met vergelyking van ander voertuig tipes, om so die bedrag van die inkomste van vliegtuie te verminder.
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Aantal vliegtuig botsings: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Stel die kans van 'n vliegtuig ongeluk om te gebeur
@@ -1218,22 +1224,30 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Aktiveer veelta
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :versoenbaarheid opsie vir ou NewGRFs. Moenie deaktiveer, behalwe as jy weet wat jy doen!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Verandering van die stelling is nie moontlik wanneer daar voertuie is nie
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktuur onderhoud: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :As dit geaktiveer is sal dit veroorsaak dat infrastruktuur onderhoudskoste verhoog. Die koste groei oor-proporsioneel met die netwerk grootte, wat groter maatskappye meer as kleiner maatskappye benadeel
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lughawes verval nooit nie: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wanner hierdie stelling geaktiveer is, maak dit dat alle lughawens ewig beskikbaar bly, na hul bekendstelling datum
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Waarsku indien voertuig verloor: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :veroorsaak boodskappe oor voertuie wat nie in staat is om 'n pad na hul bestel bestemming te vind nie
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Hersien voertuig se opdrae: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :As dit geaktiveer is, word die voertuie se bevel van tyd tot tyd nagegaan, en 'n paar ooglopende kwessies sal berig word, met 'n nuus boodskap, as dit opgespoor word
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit stil staande voertuie uit
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertuie
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Waarsku as 'n voertuig se inkomste negatief is: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :As dit geaktiveer is, word daar 'n nuus boodskap gestuur wanneer, in 'n kalenderjaar, 'n voertuig nie wins gemaak het nie.
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Voertuie verval nooit nie: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :As dit geaktiveer is, sal voertuig modelle altyd beskikbaar bly, na die bekendstelling daarvan
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Outohernuwe voertuig as hy oud raak: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :As dit geaktiveer is, word 'n voertuig wat naby die einde van sy werkslewe kom outomaties vervang, wanneer die hernu voorwaardes vervul is.
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Outoherbou wanneer voertuig is {STRING} max ouderdom
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatiewe ouderdom waneer voertuie herweeg moet word ver outo-vervanging
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} maand{P 0 "" e} voor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} maand{P 0 "" e} later
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Outohernuwe minimum vereisde geld vir hernuwe: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimale bedrag geld wat in die bank moet bly, voor die oorweging van motor-vernuwing voertuie
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Tyd wat fout boodskap wys: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekonde{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :wys sleutel-leidraad: {STRING}
