@@ -1103,6 +1103,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Akti
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keng Erklärung verfügbar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwert: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Astellungstyp: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Clientastellung (net am Save gespäichert; betrëfft all Spiller)
@@ -1128,14 +1129,31 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Zentréiert
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Riets
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Erlaabt d'Bauen op Küsten an op Ofhäng: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Wann ugeschalt, kënnen Schinnen an Statiounen op den meeschten Häng gebaut ginn. Wann ausgeschalt, kënnen se just an der Richtung vum Hang gebaut ginn an brauchen dann keen Fundament
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlabt Terraintransformatioun ënnert Gebaier an Schinnen ouni dës ewechzehuelen
 STR_CONFIG_SETTING_CATCHMENT                                    :Erlaabt méi realistësch Staugréisstplazen: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Statiounen an Fluchhäfen hun verschidden grouss Opfanggebidder
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Erlaabt d'Ewechhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Mach et méi einfach fir Infrastruktur oder Gebaier ewechzehuelen déi enger Stad gehéiren
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximal Längt vun Zich: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Maximal Längt vun Zich fixéiren
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} Feld{P 0 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Unzuel vun Gefiererdamp/partikel: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Fixéiert wéivill Damp oder Funken vun Gefierer ausgestouss ginn
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Zuchbeschleunegung: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wielt de physësche Modell fir d'Zuchbeschleunegung. Den "Orginalmodell" bestroft Häng fir all Gefierer d'selwëscht. Den "realistëschen" bestroft Häng an Kéiren ofhängeg vun verschiddenen Eegenschaften, wéi Längt an Stärkt vum Gefiert
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Stroossengefier Beschleunigungsmodell: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wielt de physësche Modell fir d'Stroossegefiertbeschleunegung. Den "Orginalmodell" bestroft Häng fir all Gefierer d'selwëscht. Den "realistëschen" bestroft Häng an Kéiren ofhängeg vun verschiddenen Eegenschaften, wéi Längt an Stärkt vum Gefiert
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Hangsteigung fir Zich: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steigung vun engem Hang fir Zich. Méi grouss Werter mëscht et méi schwéier den Hang ropzefueren
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hangsteigung fir Stroossegefierer: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steigung vun engem Hang fir Stroossegefierer. Méi grouss Werter mëscht et méi schwéier den Hang ropzefueren
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbidd Zich an Schëffer fir 90 Grad Kéieren ze maachen: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90gradkéiren entstinn wann eng horizontal Spur direkt op eng vertikal trëfft, sou dass den Zuch misst ëm 90 Grad dréinen fir op dat nächst Stéck ze kommen, amplaz vun den üblechen 45 Grad. Dëst zielt och fir d'Weeër vun Schëffer
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlabt Statiounsdeeler un eng Statioun unzehenken ouni déi existéiernd Statioun ze beréiren. Ctr+Klick fir déi nei Deeler unzehenken
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Benotz verbesserten Luedalgorithmus: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lued d'Gefierer schrëttweis: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflatioun: {STRING}
@@ -1159,6 +1177,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefier
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt Bestiechung vun den Gemengen: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wann eng Firma exklusiv Transportrechter fir eng Stad keeft, kréien géignerësch Statiounen (Passagéier an Wueren) keng Wueren fir e ganzt Joer
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebaier finanzéiren erlaben: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Erlab Stroossenrenovatiounen ze finanzéiren: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Erlaabt d'Schécken vun Suen un aner Firmen: {STRING}

@@ -1476,9 +1476,9 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Aantal niet-kle
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :uitgeschakeld
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoom niveau: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :De maximale zoom-in niveau voor kijkvensters. Merk op dat mogelijkheden voor het hoger zoom-in levels verhoogt geheugenvereisten
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :De maximale zoom-in niveau voor kijkvensters. Merk op dat mogelijkheden voor het hogere zoom-in levels de geheugenvereisten verhoogt
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximaal uitzoom niveau: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :De maximale zoom-uit niveau voor kijkvensters. Hogere zoom-uit niveaus kan leiden tot vertraging bij gebruik
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :De maximale zoom-uit niveau voor kijkvensters. Hogere zoom-uit niveaus kunnen leiden tot vertraging bij gebruik
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
@@ -1493,7 +1493,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Snel
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Heel snel
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Verhouding van gemeenten die steden zullen worden: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Aantal van steden die een stad te worden, dus een stad die begint groter en groeit sneller
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Aantal steden dat een stad wordt, dus een stad die begint groter en groeit sneller
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 op {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :geen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Stadsgroei-indicator: {STRING}
@@ -1551,7 +1551,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... comp
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame formaat '{STRING}' is niet beschikbaar. Valt terug naar '{STRING}'
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... negeert Basis Grafische set '{STRING}': niet gevonden
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... negeert Basis Geluid set '{STRING}': niet gevonden
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negeerd Basis Muziek set '{STRING}': niet gevonden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negeert Basis Muziek set '{STRING}': niet gevonden
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

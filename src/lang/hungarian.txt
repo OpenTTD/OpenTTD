@@ -3420,10 +3420,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Útban 
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Javítás {DEPOT} helyen, {VELOCITY}
 
 # Vehicle stopped/started animations
-STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Megállított
-STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Megállított
-STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Elkezdett
-STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Elkezdett
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}Megállítva
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Megállítva
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GREEN}Elindítva
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Elindítva
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} adatai
