@@ -1155,32 +1155,54 @@ STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90gradkéiren e
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlabt Statiounsdeeler un eng Statioun unzehenken ouni déi existéiernd Statioun ze beréiren. Ctr+Klick fir déi nei Deeler unzehenken
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Benotz verbesserten Luedalgorithmus: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Wann ugeschalt, ginn Gefierter déi op enger Statioun warden een nom aneren belueden. D'Belueden fänkt just un, wann genuch Wueren verfügbar sinn fir dat éischt Gefiert ganz ze belueden
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Lued d'Gefierer schrëttweis: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gefierter ginn regelméisseg belueden während enger spezifëscher Dauer, amplaz alles beieneen ze lueden mat enger fixer Wardezäit déi vun der Unzuel Wueren ofhänkt
 STR_CONFIG_SETTING_INFLATION                                    :Inflatioun: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Erlab Inflatioun an der Economie, wou d'Käschten méi séier klammen wéi d'Bezuelungen
 STR_CONFIG_SETTING_SELECTGOODS                                  :Luedung nëmmen ofliwweren wann et gebraucht gëtt: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Liwwer nëmmen Wueren op eng Statioun déi ugefrot gouf vun engem ze beluedenen Gefiert. Dëst verhënnert schlecht Bewertungen fir Wueren déi net vun der Statioun ungeholl ginn
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal Bréckelängt: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal Längt déi eng Bréck dierf hunn
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximal Tunnellängt: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximal Längt déi en Tunnel dierf hunn
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manuel Primär Industriebau Method: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Method fir eng primär Industrie ze finanzéiren. 'keng' heescht, dass een guer keng kann finanzéiren. 'fördern' bedeit, dass eng nei Industrie gebaut gëtt, op enger zoufällëger Plaz op der Kaart, mee kann och schief goën. 'wéi aner Industrien' bedeit, dass Quellenindustrien kënnen vun Firmen op enger gewënschter Plaz gebaut ginn wéi verschaffend Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flaacht Land ronderëm Industrien: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Unzuel vun flaachen Felder ronderëm eng Industrie. Dëst garantéiert, dass eidel Felder ronderëm eng Industrie frai bleiwen fir Schinnen etc. ze bauen
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Erlaabt méi der selwecht Industrien pro Stad: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalerweis well eng Stad net méi wéi eng Industrie vun all Typ. Mat dëser Astellung erlabt d'Stad méi Industrien vun dem selwëschten Typ
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Weis Signaler: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wielt opp wéienger Säit vun der Schinn d'Signaler plazéiert ginn
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Lénks
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Op der Fuerersäit
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Riets
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Weis d'Finanzen um Ënn vum Joër: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Wann ugeschalt, gëtt eng Fënster um Enn vum Joer gewisen, déi eng einfach Iwwersicht iwwert d'Finanzen vun der Firma erlabt
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nei Opträg sinn 'non-stop' par defaut: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweis stoppt en Gefier op all Statioun op sengem Wee. Wann des Astellung ageschalt ass, bleift et op kenger Statioun stoen bis op seng final Statioun
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nei Zichuerder stoppen par defaut um {STRING} vun der Plate-Form
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Plaz wou en Zuch par Defaut op enger Gare stoen bleift. 'No um Ufank' bedeit no beim Agangspunkt, 'an der Mëtt' bedeit an der Mëtt vun der Plattform, 'wäit Enn' bedeit wäit ewech vum Agangspunkt. Dëst gëllt fir Standardopträg, individuell Opträg kënnen explizit gesat ginn
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no um Enn
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :an der Mëtt
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :um Enn
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefiererschlaang (mat Quanteneffekter): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Looss Stroossgefierer am Ufank vun engem besaten Stroossestopp waarden, bis se eidel sinn.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wann ugeschalt, scrollt d'Haaptfënster wann d'Maus um Rand vum Schierm ass
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt Bestiechung vun den Gemengen: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Wann eng Firma exklusiv Transportrechter fir eng Stad keeft, kréien géignerësch Statiounen (Passagéier an Wueren) keng Wueren fir e ganzt Joer
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Gebaier finanzéiren erlaben: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Erlaabt Firmen den Stied Geld ze ginn fir nei Haiser ze bauen
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Erlab Stroossenrenovatiounen ze finanzéiren: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Erlaabt Firmen den Stied Geld ze ginn fir d'Stroossen ze renovéieren an sou den Stroosseverkéier ze sabotéieren
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Erlaabt d'Schécken vun Suen un aner Firmen: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Erlaabt den Transfert vun Geld tëschent Firmen am Multiplayermodus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Unzuel Fligercrashen: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :keng
@@ -1189,11 +1211,15 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Stad: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Erlaabt ugrenzent Statiounen: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Erlaabt verschiddenen Statiounen sech ze beréiren
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :E puer NewGRF-Päk aktivéiren: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Kompabilitéitsoptioun fir al NewGRFen. Net ausschalten, et sief et weess een genau wat een mëscht
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Déi Astellung kann net geännert ginn wann et Gefierer gëtt
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastrukturënnerhalt {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Wann ugeschalt, kaschten Infrastrukturen Ennerhaltskäschten. D'Käschten wuessen iwwerproportional zu der Netzwierkgréisst, an treffen sou grouss Firmen méi wéi klenger
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen lafen nie of: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en Gefier verluer ass: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun den Gefierer nopréifen: {STRING}
