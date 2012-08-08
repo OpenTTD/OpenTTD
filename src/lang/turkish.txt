@@ -38,7 +38,7 @@ STR_CARGO_PLURAL_GRAIN                                          :Tahıl
 STR_CARGO_PLURAL_WOOD                                           :Odun
 STR_CARGO_PLURAL_IRON_ORE                                       :Demir
 STR_CARGO_PLURAL_STEEL                                          :Çelik
-STR_CARGO_PLURAL_VALUABLES                                      :Mücevher
+STR_CARGO_PLURAL_VALUABLES                                      :Değerli eşya
 STR_CARGO_PLURAL_COPPER_ORE                                     :Bakır
 STR_CARGO_PLURAL_MAIZE                                          :Mısır
 STR_CARGO_PLURAL_FRUIT                                          :Meyve
@@ -53,12 +53,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Şeker
 STR_CARGO_PLURAL_TOYS                                           :Oyuncak
 STR_CARGO_PLURAL_CANDY                                          :Tatlı
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Pamuk helva
-STR_CARGO_PLURAL_BUBBLES                                        :Balon
-STR_CARGO_PLURAL_TOFFEE                                         :Bonbon
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Pamuk şeker
+STR_CARGO_PLURAL_BUBBLES                                        :Baloncuk
+STR_CARGO_PLURAL_TOFFEE                                         :Şekerleme
 STR_CARGO_PLURAL_BATTERIES                                      :Pil
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :İçecek
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gazlı İçecek
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -89,10 +89,10 @@ STR_CARGO_SINGULAR_CANDY                                        :Tatlı
 STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Pamuk helva
 STR_CARGO_SINGULAR_BUBBLE                                       :Balon
-STR_CARGO_SINGULAR_TOFFEE                                       :Bonbon
+STR_CARGO_SINGULAR_TOFFEE                                       :Şekerleme
 STR_CARGO_SINGULAR_BATTERY                                      :Pil
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :İçecek
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gazlı İçecek
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -106,12 +106,12 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} t
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} odun
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} demir
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} çelik
-STR_QUANTITY_VALUABLES                                          :{COMMA} çanta mücevher
+STR_QUANTITY_VALUABLES                                          :{COMMA} çanta değerli eşya
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} bakır
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} mısır
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} meyve
 STR_QUANTITY_DIAMONDS                                           :{COMMA} çanta elmas
-STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} yiyecek
+STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} gıda
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} kağıt
 STR_QUANTITY_GOLD                                               :{COMMA} çanta altın
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} su
@@ -121,12 +121,12 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} �
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
 STR_QUANTITY_SWEETS                                             :{COMMA} çanta tatlı
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} pamuk helva
-STR_QUANTITY_BUBBLES                                            :{COMMA} balon
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} bonbon
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} pamuk şeker
+STR_QUANTITY_BUBBLES                                            :{COMMA} baloncuk
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} şekerleme
 STR_QUANTITY_BATTERIES                                          :{COMMA} pil
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastik
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} içecek
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gazlı içecek
 STR_QUANTITY_N_A                                                :yok
 
 # Two letter abbreviation of cargo name
@@ -136,34 +136,34 @@ STR_ABBREV_COAL                                                 :{TINY_FONT}KÖ
 STR_ABBREV_MAIL                                                 :{TINY_FONT}PO
 STR_ABBREV_OIL                                                  :{TINY_FONT}PE
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}HV
-STR_ABBREV_GOODS                                                :{TINY_FONT}ES
+STR_ABBREV_GOODS                                                :{TINY_FONT}EŞ
 STR_ABBREV_GRAIN                                                :{TINY_FONT}TH
 STR_ABBREV_WOOD                                                 :{TINY_FONT}OD
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}DM
 STR_ABBREV_STEEL                                                :{TINY_FONT}ÇE
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}MÜ
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}DE
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}BK
 STR_ABBREV_MAIZE                                                :{TINY_FONT}MS
 STR_ABBREV_FRUIT                                                :{TINY_FONT}MV
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}EL
-STR_ABBREV_FOOD                                                 :{TINY_FONT}YE
-STR_ABBREV_PAPER                                                :{TINY_FONT}KA
-STR_ABBREV_GOLD                                                 :{TINY_FONT}ES
+STR_ABBREV_FOOD                                                 :{TINY_FONT}GI
+STR_ABBREV_PAPER                                                :{TINY_FONT}KĞ
+STR_ABBREV_GOLD                                                 :{TINY_FONT}AL
 STR_ABBREV_WATER                                                :{TINY_FONT}SU
-STR_ABBREV_WHEAT                                                :{TINY_FONT}UN
+STR_ABBREV_WHEAT                                                :{TINY_FONT}BĞ
 STR_ABBREV_RUBBER                                               :{TINY_FONT}KA
-STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
+STR_ABBREV_SUGAR                                                :{TINY_FONT}ŞK
 STR_ABBREV_TOYS                                                 :{TINY_FONT}OY
 STR_ABBREV_SWEETS                                               :{TINY_FONT}TA
 STR_ABBREV_COLA                                                 :{TINY_FONT}KO
-STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}PH
+STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}PŞ
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BA
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}PH
-STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}ŞL
+STR_ABBREV_BATTERIES                                            :{TINY_FONT}Pİ
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}İÇ
 STR_ABBREV_NONE                                                 :{TINY_FONT}YOK
-STR_ABBREV_ALL                                                  :{TINY_FONT}HEPSI
+STR_ABBREV_ALL                                                  :{TINY_FONT}HEPSİ
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} yolcu
@@ -207,10 +207,10 @@ STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -221,8 +221,8 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Süzgeç metnini girin
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Listeyi filtrelemek için bir anahtar sözcük girin
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sıralama türü seçin (azalan/artan)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sıralama kriteri seçin
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Sıralama türünü seçin (azalan/artan)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sıralama kriterini seçin
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Süzme kriterini seçin
 STR_BUTTON_SORT_BY                                              :{BLACK}Sırala
 STR_BUTTON_LOCATION                                             :{BLACK}Göster
@@ -231,7 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Yeni ad
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pencereyi kapat
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
 STR_TOOLTIP_SHADE                                               :{BLACK}Pencereyi gizle - yalnız başlık çubuğunu göster
-STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF hata ayıklama bilgisi göster
+STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF hata ayıklama bilgisini göster
 STR_TOOLTIP_STICKY                                              :{BLACK}'Tüm pencereleri kapat' tuşuyla kapanmasın
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pencereyi boyutlandirmak için tıklayıp sürükle
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pencere boyutunu büyült/küçült
@@ -270,7 +270,7 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Bu seneki kâr
 STR_SORT_BY_AGE                                                 :Yaş
 STR_SORT_BY_RELIABILITY                                         :Güvenilirlik
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Her kargo için toplam kapasite
-STR_SORT_BY_MAX_SPEED                                           :En yüksek hız
+STR_SORT_BY_MAX_SPEED                                           :Azami hız
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Fiyat
 STR_SORT_BY_LENGTH                                              :Uzunluk
@@ -280,7 +280,7 @@ STR_SORT_BY_FACILITY                                            :İstasyon tür�
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
 STR_SORT_BY_RATING_MAX                                          :En yüksek kargo puanı
 STR_SORT_BY_RATING_MIN                                          :En düşük kargo puanı
-STR_SORT_BY_ENGINE_ID                                           :Lokoismi (klasik sira)
+STR_SORT_BY_ENGINE_ID                                           :LokoAdı (klasik sıra)
 STR_SORT_BY_COST                                                :Fiyat
 STR_SORT_BY_POWER                                               :Güç
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Tork
@@ -299,20 +299,20 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Haritay�
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Şehir listesini göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Teşvikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Şirkete ait istasyonları listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Şirketin ekonomik durumunu göster
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Şirketin mâli durumunu göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Şirketin genel durumunu göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikleri göster
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Şirketler ligini göster
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+sol tuş ile grup/araç listesini aç/kapa
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl-tık grup/araç listesini açıp kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Tık grup/araç listesini açar/kapatır
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Tık grup/araç listesini açar/kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Şirkete ait trenleri listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Şirkete ait karayolu taşıtlarını listele. Ctrl+Sol tık ile grup yada araç listesini açıp kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Şirkete ait gemileri listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Şirkete ait uçakları listele. Ctrl+Sol tık ile grup yada araç listesini açar veya kapatır
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Yakınlaş
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Uzaklaş
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Tren rayı yapımı
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Demiryolu yapımı
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Karayolu yapımı
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}İskele yapımı
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Rıhtım yapımı
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Havalimanı yapımı
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Arazi düzenleme araç çubuğunu aç (ağaç dikme, alçaltma/yükseltme vb. için).
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Ses/müzik penceresini göster
@@ -328,7 +328,7 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Başlang
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Başlangıç tarihini 1 yıl ilerlet
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Başlangıç yılını girmek için tıklayın
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Haritayı, şehir listesini göster
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Harita yapımı
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Peyzaj yapımı
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Şehir yapımı
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika yapımı
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Yol yapımı
@@ -351,7 +351,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Seçenekler
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zorluk Ayarları
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Gelişmiş ayarlar
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :YZ / Oyun ayarları
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf ayarları
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ayarları
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Şeffaflık seçenekleri
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Şehir isimlerini göster
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :İstasyon isimlerini göster
@@ -359,9 +359,9 @@ STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Yolimlerini gö
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Tabelaları göster
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Rakip tabela ve isimlerini göster
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Tüm animasyonlar
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Tam detay
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Tüm detaylar
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Şeffaf binalar
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparan istasyon tabelaları
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Şeffaf Tabelalar
 ############ range ends here
 
 ############ range for file menu starts
@@ -388,7 +388,7 @@ STR_SUBSIDIES_MENU_GOAL                                         :Mevcut hedefler
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Karlılık grafiği
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Faaliyet kâr grafiği
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gelir grafiği
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Taşınan kargo grafiği
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Başarı geçmişi grafiği
@@ -398,7 +398,7 @@ STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Kargo ödeme ta
 
 ############ range for company league menu starts
 STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Şirketler ligi tablosu
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı Performans
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Ayrıntılı performans seviyesi
 ############ range ends here
 
 ############ range for industry menu starts
@@ -408,9 +408,9 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Yeni fabrika ku
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Demiryolu yapımı
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli ray yapımı
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monoray yapımı
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev yapımı
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektrikli demiryolu yapımı
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Tekli ray yapımı
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Manyetik ray yapımı
 ############ range ends here
 
 ############ range for road construction menu starts
@@ -423,11 +423,11 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Suyolu inşaat�
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Havalimanı binasi
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Havalimanı inşası
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Arazi
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Peyzaj
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Ağaç dik
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Tabela dik
 ############ range ends here
@@ -445,49 +445,50 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Mesaj Geçmişi
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Arazi bilgisi
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol aç/kapa
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsolü aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran fotoğrafında yaklaşıldı
 STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Varsayılan yakınlıkta ekran görüntüsü
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tüm harita ekran görüntüsü
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprayt hizalayıcı
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite hizalayıcı
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Çerçeveleri aç/kapa
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Kirli blokları renklendir/renklendirme
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+STR_ORDINAL_NUMBER_1ST                                          :1inci
+STR_ORDINAL_NUMBER_2ND                                          :2nci
+STR_ORDINAL_NUMBER_3RD                                          :3üncü
+STR_ORDINAL_NUMBER_4TH                                          :4üncü
+STR_ORDINAL_NUMBER_5TH                                          :5inci
+STR_ORDINAL_NUMBER_6TH                                          :6ncı
+STR_ORDINAL_NUMBER_7TH                                          :7nci
+STR_ORDINAL_NUMBER_8TH                                          :8inci
+STR_ORDINAL_NUMBER_9TH                                          :9uncu
+STR_ORDINAL_NUMBER_10TH                                         :10uncu
+STR_ORDINAL_NUMBER_11TH                                         :11inci
+STR_ORDINAL_NUMBER_12TH                                         :12nci
+STR_ORDINAL_NUMBER_13TH                                         :13üncü
+STR_ORDINAL_NUMBER_14TH                                         :14üncü
+STR_ORDINAL_NUMBER_15TH                                         :15inci
+STR_ORDINAL_NUMBER_16TH                                         :16ncı
+STR_ORDINAL_NUMBER_17TH                                         :17nci
+STR_ORDINAL_NUMBER_18TH                                         :18inci
+STR_ORDINAL_NUMBER_19TH                                         :19uncu
+STR_ORDINAL_NUMBER_20TH                                         :20nci
+STR_ORDINAL_NUMBER_21ST                                         :21inci
+STR_ORDINAL_NUMBER_22ND                                         :22nci
+STR_ORDINAL_NUMBER_23RD                                         :23üncü
+STR_ORDINAL_NUMBER_24TH                                         :24üncü
+STR_ORDINAL_NUMBER_25TH                                         :25inci
+STR_ORDINAL_NUMBER_26TH                                         :26ncı
+STR_ORDINAL_NUMBER_27TH                                         :27nci
+STR_ORDINAL_NUMBER_28TH                                         :28inci
+STR_ORDINAL_NUMBER_29TH                                         :29uncu
+STR_ORDINAL_NUMBER_30TH                                         :30uncu
+STR_ORDINAL_NUMBER_31ST                                         :31inci
 ############ range for days ends
 
 ############ range for months starts
@@ -505,7 +506,7 @@ STR_MONTH_ABBREV_NOV                                            :Kas
 STR_MONTH_ABBREV_DEC                                            :Ara
 
 STR_MONTH_JAN                                                   :Ocak
-STR_MONTH_FEB                                                   :Subat
+STR_MONTH_FEB                                                   :Şubat
 STR_MONTH_MAR                                                   :Mart
 STR_MONTH_APR                                                   :Nisan
 STR_MONTH_MAY                                                   :Mayıs
@@ -526,15 +527,15 @@ STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Çalıştirma Geliri Grafiği
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Faaliyet Kâr Grafiği
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gelir Grafiği
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Taşınan kargo
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Performans (en fazla=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Performans seviyesi (azami=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Şirket Değerleri
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo ödemeleri
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Taşıma süresi
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}20 karelik yolda 10 birim için ödeme (ya da 10,000 litre)
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Kargo Ödeme Seviyeleri
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Taşınma süresi
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}20 karelik yolda 10 birim (ya da 10,000 litre) için ödeme
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Tümünü aç
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Tümünü kapat
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Kargo ödeme tablosunda tüm kargo tiplerini göster
@@ -545,24 +546,24 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Detaylı performans oranlarını göster
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Şirket grafikleri anahtari
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Grafikte şirketi göstermek/gizlemek için tıkla
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Şirket grafik anahtarı
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Grafikte şirketi göstermek/gizlemek için buraya tıkla
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Şirketler Ligi
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Mühendis
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Trafik Müdürü
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Nakliyeci
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rota Yöneticisi
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Yönetmen
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Ulaşım Koordinatörü
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Güzergâh Yöneticisi
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Yönetici
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Baş Yönetici
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Başkan
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Başbakan
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Kodaman(Tycoon)
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Genel Müdür
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Kodaman
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans oranı
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRENCY_SHORT}/{CURRENCY_SHORT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -571,28 +572,28 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Bu şirk
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Araçlar:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}İstasyonlar:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. kâr:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. gelir:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Mak. gelir:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Asg. kâr:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Asg. gelir:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Azm. gelir:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Taşınan:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Kargo:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Para:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Kredi:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Toplam:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Geçen yıl kar eden araç sayısı. Araba, tren, uçak ve gemileri kapsar
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Yakın zamanda hizmet almış istasyon parçaları. Tek bir istasyon halinde olsa bile istasyonun her parçası ayrı olarak sayılır (ör: tren istasyonu, otobüs durağı, havalimanı)
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelirli aracın kârı (Sadece 2 yıldan yaşlı araçlar için)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en az kârlı çeyrekteki gelir
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyreğin en kârlı olanında kazanılan para
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son 4 çeyrekte taşınan kargo miktar
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Son çeyrekte taşınan farkli kargo türleri
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Geçen yıl kâr eden araç sayısı. Kara araçları, trenler, uçak ve gemiler dâhil.
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Yakın zamanda hizmet almış istasyon sayısı. Tren garları, otobüs durakları, havalimanları vb. aynı istasyona bağlı olsa da ayrı olarak sayılır.
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}En az gelir getiren aracın kârı (2 yaş ve yukarı araçlar için)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en az kârlı çeyrek
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Son 12 çeyrek içindeki en kârlı çeyrekte kazanılan para
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Son dört çeyrekte taşınan kargo miktarı
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Son çeyrekte taşınan farklı kargo türü sayısı
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Bu şirketin bankadaki para miktarı
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Bu şirketin bankadan aldığı kredi miktarı
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Toplam puan
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Caz Paketi
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Caz Müzik Kutusu
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}Hepsi
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Eski Stil
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Yeni Stil
@@ -601,8 +602,8 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Özel 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Müzik Sesi
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Efekt Sesi
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}EN AZ
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}EN ÇOK
+STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}ASGARİ
+STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}AZAMİ
 STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
@@ -612,15 +613,15 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Başlığı
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Rastgele
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Önceki şarkı
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sonraki şarkı
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Önceki şarkıya atla
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sonraki şarkıya atla
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Müziği kapat
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Müziği başlat
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Sesi ayarlamak için sürükleyin
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Efekt ve müzik sesini ayarlamak için sürükleyin
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}'Tüm şarkılar' programını seç
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}'Eski stil' programını seç
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'Yeni stil' programını seç
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Sokagi stili müzik' programını seç
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Sokağı stili müzik' programını seç
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Özel 1' (kullanıcı-tanımlı) programı seç
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Özel 2' (kullanıcı-tanımlı) programı seç
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Rastgele programı aç/kapa
@@ -634,21 +635,21 @@ STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTB
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Parça Listesi
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Program - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Temizle
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Şimdiki programı temizle (Sadece Özel1 ve Özel2 için)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Şu anki programa eklenecek parçayı seçin (Sadece Özel1 ve Özel2 için)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kullanilan programdan kaldırilacak müzige tıklayın(Custom1 veya Custom2 için geçerli)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Kullanılan programı temizle (Özel1 veya Özel2 için)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kullanılan programa eklenecek parçayı seçin (Özel1 veya Özel2 için)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kullanılan programdan kaldırılacak parçaya tıklayın (Özel1 veya Özel2 için)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK} {NUM}{} yılına kalan en iyi şirketler ({STRING} Seviye)
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK} {NUM}{} yılına erişen en iyi şirketler ({STRING} Seviye)
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK} {NUM} senesindeki şirket ligi
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :İşadamı
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Girişimci
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Sanayici
-STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
+STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Sermayedar
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Patron
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Uzman işadamı
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Asrın En Büyük işadamı
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Önemli adam
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Yüzyılın Kodamanı
 STR_HIGHSCORE_NAME                                              :{BIG_FONT}{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} '{STRING}' ünvanını kazandı!
@@ -660,20 +661,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Harita -
 STR_SMALLMAP_TYPE_CONTOURS                                      :Dış Hatlar
 STR_SMALLMAP_TYPE_VEHICLES                                      :Araçlar
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Fabrikalar
-STR_SMALLMAP_TYPE_ROUTES                                        :Rotalar
-STR_SMALLMAP_TYPE_VEGETATION                                    :Bitkiler
+STR_SMALLMAP_TYPE_ROUTES                                        :Güzergahlar
+STR_SMALLMAP_TYPE_VEGETATION                                    :Nebatat
 STR_SMALLMAP_TYPE_OWNERS                                        :Sahipler
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Harita üzerinde eşyükselti eğrilerini göster
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Harita üzerinde araçları göster
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Harita üzerinde fabrikaları göster
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Harita üzerinde taşıma rotalarını göster
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Harita üzerinde güzergahları göster
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Harita üzerinde bitki örtüsünü göster
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Harita üzerinde arazi sahiplerini göster
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Bir fabrika türünü gösterip gizlemek için üzerine tıklayın. Ctrl-Tık seçili tür dışında hepsini kapatır. Tekrar Ctrl+Tık ile tüm fabrika türleri görünür hale gelir
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Bir şirketin mülklerini gösterip gizlemek için üzerine tıklayın. Ctrl+Tık seçili dışındaki tüm şirketleri gizler. Aynı şirket üzerinde tekrar Ctrl+Tıklarsanız tüm şirketler tekrar görüntülenir
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Bir fabrika türünü gösterip gizlemek için üzerine tıklayın. Ctrl-Sol tık seçili tür dışında hepsini kapatır. Tekrar Ctrl+Sol tık ile tüm fabrika türleri görünür hale gelir.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Bir şirketin malvarlığını gösterip gizlemek için üzerine tıklayın. Ctrl+Sol tık seçili dışındaki tüm şirketleri gizler. Aynı şirket üzerinde tekrar Ctrl+Sol tıklarsanız tüm şirketler tekrar görüntülenir.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Yollar
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Raylar
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Demiryolları
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Garlar/Havalimanları/Limanlar
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Binalar/Fabrikalar
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Araçlar
@@ -681,16 +682,16 @@ STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINY_FONT}{BLACK}Karayolu Taşıtları
 STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINY_FONT}{BLACK}Gemiler
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLACK}Uçaklar
-STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Taşıma Rotaları
+STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Güzergahlar
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Orman
-STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Tren İstasyonu
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamyon Yükleme Yeri
+STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Gar
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Kamyon Yükleme Alanı
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Otobüs Durağı
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Havalimanı/Helikopter Pisti
-STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}İskele
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Engebeli Zemin
-STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Çim Zemin
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Çıplak Zemin
+STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Rıhtım
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Engebeli Alan
+STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Çim alan
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Çıplak Arazi
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Meralar
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Ağaçlar
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kayalar
@@ -1466,11 +1467,11 @@ STR_LIVERY_MONORAIL                                             :Monoray Lokomot
 STR_LIVERY_MAGLEV                                               :Maglev Lokomotifi
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Tramvay (Buhar)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Tramvay (Dizel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Tramvay (Elektrik)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Yolcu Vagonu (Monoray)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Yolcu Vagonu (Maglev)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Yolcu Vagonu (Buhar)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Yolcu Vagonu (Dizel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Yolcu Vagonu (Elektrik)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Yolcu Vagonu (Tekli Ray)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Yolcu Vagonu (Manyetik)
 STR_LIVERY_FREIGHT_WAGON                                        :Yük Vagonu
 STR_LIVERY_BUS                                                  :Otobüs
 STR_LIVERY_TRUCK                                                :Kamyon
@@ -2696,6 +2697,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}İstenen
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}İstenen kargoların listesini göster
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}İstenen: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reyting
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyonun reytinglerini göster
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Yerel nakliyat reyitngleri:
@@ -2721,6 +2723,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Talimat 
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Talimat listesinde bu durak olan gemileri listele
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :İstasyonu yeniden adlandır
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3183,7 +3186,7 @@ STR_VEHICLE_INFO_MAX_SPEED_RANGE                                :{BLACK}Azami h�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_SHORT} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Azami Hız: {LTBLUE}{VELOCITY} {BLACK}Azami Tork: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yıldaki kar: {LTBLUE}{CURRENCY_LONG} (geçen yıl: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Bu yılki kar: {LTBLUE}{CURRENCY_LONG} (geçen yıl: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Güvenilirlik: {LTBLUE}{COMMA}%  {BLACK}Son bakımdan beri bozulma sayısı: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Üretim: {LTBLUE}{NUM}{BLACK} Değer: {LTBLUE}{CURRENCY_LONG}
@@ -3578,7 +3581,7 @@ STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Dosya si
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Dosya yüklenemedi{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :İç hata: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Kayıtlı oyun yeni bir sürümle yapılmış
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Oyun yeni bir sürümle kaydedilmiş.
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlık kontrolü başarısız
@@ -4027,17 +4030,17 @@ STR_INDUSTRY_NAME_FARM_2                                        :Çiftlik
 STR_INDUSTRY_NAME_FARM_2.tamlanan                               :Çiftliği
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Oduncu
 STR_INDUSTRY_NAME_LUMBER_MILL.tamlanan                          :Oduncusu
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Pamukhelva Ormanı
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Pamuk Şeker Ormanı
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Tatlı Fabrikası
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Pil Çiftliği
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kola Kuyuları
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Oyuncakçı
 STR_INDUSTRY_NAME_TOY_SHOP.tamlanan                             :Oyuncakçısı
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Oyuncak Fabrikası
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastik Fıskiyesi
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :İçecek Fabrikası
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastik Çeşmesi
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Gazlı İçecek Fabrikası
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Balon Yapıcısı
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Bonbon Madeni
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Şekerleme Madeni
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Şeker Madeni
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -4120,21 +4123,21 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Odun Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Demir Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Çelik Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Zırhlı Vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Yiyecek Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Gıda Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Kağıt Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Bakır Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Su Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Su Tankeri
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Meyve Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Kauçuk Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Şeker Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Pamukhelva Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Bonbon Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Balon Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Pamuk Şeker Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Şekerleme Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Baloncuk Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Kola Tankeri
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Tatlı Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Oyuncak Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Pil Vagonu
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :İçecek Vagonu
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Gazlı İçecek Vagonu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastik Vagonu
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrik)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrik)

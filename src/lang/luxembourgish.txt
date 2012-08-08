@@ -1222,6 +1222,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Fluchhäfen laf
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt, bleift all Fluchhafentyp säit senger Aféierung bestoen
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en Gefier verluer ass: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun den Gefierer nopréifen: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee net déi gestoppten Gefierer
