@@ -1142,9 +1142,13 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} quadrad
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Quantidade de fumo/faíscas de veículos: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Assignar quanto fumo ou quantas faíscas são emitidas pelos veículos
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelo de aceleração de comboios: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Escolha o modelo de física para a aceleração de comboios. O modelo "original" penalisa as inclinações para todos os veículos. O modelo "realista" penalisa as curvas e inclinações tendo em conta várias propriedades do objecto, como o tamanho e esforço tractivo
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Tipo de aceleração dos veículos rodoviários: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Escolha o modelo de física para a aceleração de veículos de estrada. O modelo "original" penalisa as inclinações para todos os veículos. O modelo "realista" penalisa as curvas e inclinações tendo em conta várias propriedades do motor, como o esforço tractivo
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Ângulo de inclinação para comboios: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Ângulo de inclinação de um quadrado para um comboio. Valores mais elevados tornam a subida mais difícil
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de inclínação para veículos rodoviários: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios e barcos fazer curvas de 90º: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
@@ -1159,9 +1163,12 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Método de fina
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mesmo método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecção
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana à volta das industrias: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por cidade: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar sínais: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Escolha em que lado da via colocar sinais
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na esquerda
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Do lado da condução
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na direita
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela das finanças no fim do ano: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
@@ -1170,21 +1177,28 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo pert
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de veículos rodoviários (com efeitos de quantidade): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fazer com que os veículos rodoviários esperem até que as estradas bloqueadas sejam desocupadas
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o rato está na borda do mapa: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da autoridade local: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar exclusivo dos direitos de transportes: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Se uma empresa compra direitos exclusivos de transporte para uma cidade, as estações dos concorrentes (passageiros e carga) não receberão cargo durante um ano
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir investir em edificios: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permitir que empresas doem dinheiro às cidades para financiar creação de novas casas
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir o financiamento de reconstrução de estradas locais:{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinheiro para outras empresas: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permitir transferencias de dinheiro entre empresas em modo multi-jogador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular comboios pesados: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Fator de velocidade de avião: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Número de acidentes de aeronaves: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Indicar a hipótese da ocorrência de um acidente aéreo
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nenhum
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzido
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Permitir estações de passagem em estradas das cidades: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir estações de passagem em estradas do adversário: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Permitir construção de estações adjacentes: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Permitir que estações diferentes se toquem
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Utilizar múltiplos conjuntos NewGRF de veículos: {STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possível mudar quando já existem veículos.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de infraestruturas: {STRING}
@@ -1199,7 +1213,11 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os ve�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Avisar se o lucro de um veiculo for negativo: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Veículos nunca expiram: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Auto-renovação de veículos quando ficam velhos: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automaticamente quando um veículo chega a {STRING} de idade
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Idade relativa a partir da qual um veículo deva ser indicado para auto-renovação
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mês{P 0 "" es} antes
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Dinheiro mínimo para fazer auto-renovação: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duração da mensagem de erro: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra população da cidade na janela da cidade: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Grossura das linhas nos gráficos: {STRING}
 

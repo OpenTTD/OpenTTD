@@ -720,7 +720,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Haritada
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Son mesajı ya da haberi göster
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  DURAKLATILDI  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}OTOKAYDET
+STR_STATUSBAR_AUTOSAVE                                          :{RED}OTOMATİK KAYDET
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  KAYDEDiYOR  *  *
 
 # News message history
@@ -732,14 +732,14 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mesaj
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mesaj Seçenekleri
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Tüm mesajlar (kapalı/özet/tam)
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Özet geçerken ses çıkar
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Özet haberler geçerken sesli uyar
 STR_NEWS_MESSAGES_OFF                                           :Kapalı
 STR_NEWS_MESSAGES_SUMMARY                                       :Özet
 STR_NEWS_MESSAGES_FULL                                          :Tam
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Mesaj türleri:
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oyuncunun durağına ilk aracın gelişi
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Rakibin durağına ilk aracın gelişi
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Oyuncunun istasyonuna ilk aracın gelişi
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Rakibin istasyonuna ilk aracın gelişi
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Kazalar / felaketler
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Şirket bilgisi
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Fabrikaların açılışı
@@ -756,9 +756,9 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Genel b
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Halk kutlama yaptı . . .{} {STATION} istasyonuna ilk kez tren geldi!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Halk kutlama yatı . . .{}{STATION} durağına ilk otobüs geldi!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} durağına ilk kamyon geldi!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}Şuraya ilk kez gemi geldi: {STATION}!
