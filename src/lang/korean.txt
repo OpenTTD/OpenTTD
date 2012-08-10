@@ -818,7 +818,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로가 하나밖에 지정되어 있지 않습니다
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로를 하나 이상 지정해주십시오
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
