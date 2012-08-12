@@ -1161,7 +1161,7 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :화물을 차�
 STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :적재된 화물의 양에 따라 고정된 시간이 지나면 한 번에 모두 적재하는 대신, 차량의 적재 상황을 시간이 지남에 따라 단계별로 표시합니다.
 STR_CONFIG_SETTING_INFLATION                                    :인플레이션(화폐가치하락) 켜기: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :비용이 지불하는 것보다 약간 더 빠르게 성장하고 있는 경제가 되면 인플레이션을 활성화합니다.
-STR_CONFIG_SETTING_SELECTGOODS                                  :수요가 있을때만 화물을 역에 옮겨놓음: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :수요가 있을 때만 화물을 역에 옮겨놓음: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :역으로 수송되는 화물만 차량에 적재가 가능해집니다. 이 옵션을 켜면 역에서 수송되지 않는 화물이 낮은 수송등급을 받는 것을 막아줍니다.
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :다리의 최대 건설 길이: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :다리의 최대 길이를 제한할 수 있습니다.
@@ -2623,8 +2623,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}색상�
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}NewGRF의 색상표를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}변경사항 적용
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}빠져있는 콘텐츠를 온라인으로 찾습니다.
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}빠져있는 콘텐츠를 온라인으로 찾을 수 있는지 검사합니다.
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}온라인에서 없는 파일 검색
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}온라인에서 없는 파일을 검색하여 다운로드할 수 있는지 확인합니다.
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2709,8 +2709,8 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 추가 불가: 중복된 GRF 아이디
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치되는 파일을 찾을 수 없음 (호환되는 GRF 불러옴)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}빠진 파일 대신에 호환되는 GRF를 불러왔습니다
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용이 불가능합니다
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}없는 파일 대신에 호환되는 GRF를 불러왔습니다.
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}나에게 없는 GRF 파일은 비활성화되었습니다.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 

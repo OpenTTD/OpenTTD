@@ -601,8 +601,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Platba za prepravu 10 jednotiek (alebo 10 000 litrov) nákladu cez 20 štvorcov
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Povoliť všetky
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Zakázať všetky
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraziť všetky náklady v grafe cien nákladu
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nezobraziť žiadne náklady v grafe cien nákladu
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Zobraziť všetky tovary v grafickom prehľade cien
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Nezobraziť žiadne tovary v grafickom prehľade cien
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Graf pre typ nákladu zap./vyp.
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
@@ -645,7 +645,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Úver:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Spolu:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel (automobilov, vlakov, lodí a lietadiel), ktoré zmenili zisk minulý rok
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet častí staníc. Každá časť stanice (napr. železničná, autobusová, letisko) je započítaná, aj keď sú spojené do jednej stanice
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet nedávno obsluhovaných staníc. Železničná stanica, autobus. zastávka, letisko sa počítajú oddelenie aj keď patria do rovnakej stanice
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zisk vozidla s najnižším príjmom (zo všetkých vozidiel starších ako 2 roky)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najmenším ziskom v posledných 12 kvartáloch
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najväčším ziskom v posledných 12 kvartáloch
@@ -1173,6 +1173,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Obtiažn
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Rozšírené nastavenia
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je potrebné vysvetlenie)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nastavenie typu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenia klienta (neuložia sa; ovplyvní všetky hry)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavenia hry (uložia sa; ovplyvní iba nové hry)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenia hry (uložia sa; ovplyvní iba aktuálnu hru)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spoločnosti (uložia sa; ovplyvní iba nové hry)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spoločnosti (uložia sa; ovplyvní iba aktuálnu firmu)
 
 STR_CONFIG_SETTING_OFF                                          :nie
 STR_CONFIG_SETTING_ON                                           :áno
@@ -1206,6 +1212,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nastav koľko d
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akcelerácie vlaku: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Zvolte model zrýchlenia vlakov. Pôvodný model penalizuje za prejazd svahov pre všetky vozidlá súpravy. "Realistický" model penalizuje prejazd svahov a zákrut v závislosti na rôznych vlastnostiach a zložitosti ako je dĺžka vlaku a ťažná sila.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model zrýchlenia pre cestné vozidlá: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Vyberte fyzikálny model pre akceleráciu cestných vozidiel. "Pôvodný" model postihuje svahy rovnako pre všetky vozidlá. "Realistický" model postihuje zjazdovky v závislosti na rôznych vlastnostiach motora, napríklad 'ťažnej sile "
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Strmosť svahu pre vlaky: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Strmosť svahu na diel pre vlaky. Vyššia hodnota spôsobuje väčší problém pri prejazde cez vrcholce.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1228,10 +1235,12 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximálna dĺ�
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximálna dĺžka tunela: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximálna dĺžka na budovanie tunelov
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Spôsob výstavby priemyslu produkujúceho suroviny: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Spôsob financovania primárneho priemyslu. "Žiadna" znamená, že nie je možné financovať vôbec, "prieskumu" znamená že je možné financovať, ale stavba bude postavená na náhodnom mieste a môže tiež zlyhať, "ako ostatné odvetvia priemyslu" sa rozumie že nový závod môže byť financovaný spoločnosťou, a postavený vedľa spracovateľského priemyslu na mieste kde sa mi páči
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Rovné územie v okolí priemyslu: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cena voľného priestoru vedľa priemyslu. Týmto sa zabezpečí voľné miesto pre výstavbu ciest atď.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Povoliť viac rovnakých závodov pri jednom meste: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Ukáž signály (semafory): {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Zvolte stranu trate na ktorej sa budú umiestňovať semafory
@@ -1603,6 +1612,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :nekompatibilné
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :také nepoznám
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... hodnota kompresie '{STRING}' je zle zadaná
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formát uloženej hry '{STRING}' je nedostupný. Zmeniť späť na '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorujem základnú grafickú sadu '{STRING}': nenájdené
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorujem základnú sadu zvukov '{STRING}': nenájdené
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorujem základnú sadu hudby '{STRING}': nenájdené
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1692,8 +1704,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zobrazi�
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Zobraziť farebné schémy pre cestné vozidlá
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Zobraziť farebné schémy pre lode
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Zobraziť farebné schémy pre lietadlá
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyber primárnu farbu pre vybranú schému
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vyber sekundárnu farbu pre vybranú schému
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vyber primárnu farbu pre vybranú schému. Ctrl + klik nastaví túto farbu pre každú schému
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vyber sekundárnu farbu pre vybranú schému. Ctrl + klik nastaví túto farbu pre každý schému
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vyber farebnú schému, ktorá sa má meniť (CTRL+klik pre viacero schém). Zaškrtávacie pole prepína používanie schémy
 
 STR_LIVERY_DEFAULT                                              :Štandardná schéma
@@ -2350,7 +2362,7 @@ STR_OBJECT_CLASS_TRNS                                           :Vysielače
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať typ stromu pre sadenie
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať typ stromu pre sadenie. Ak sa už strom na mieste nachádza, pridá viac stromov zmiešaných typov nezávisle od vybraného
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne stromy
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift prepína nakúp a zobrazenie ceny bez nákupu
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodné stromy
@@ -4046,7 +4058,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je m
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nenašli sa železničné koľaje
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nenašlo sa návestidlo
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tu nemožno z konvertovať typ železnice...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nemôžeš tu konvertovať železnicu...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprv treba odstrániť cestu
