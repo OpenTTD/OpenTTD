@@ -29,17 +29,10 @@ public:
 	/* virtual */ ScriptInfo *FindLibrary(const char *library, int version);
 
 private:
-	const char *versionAPI; ///< Current API used by this script.
-
 	/* virtual */ void RegisterAPI();
 	/* virtual */ void Died();
 	/* virtual */ CommandCallback *GetDoCommandCallback();
 	/* virtual */ void LoadDummyScript();
-
-	/**
-	 * Load squirrel scripts to emulate an older API.
-	 */
-	bool LoadCompatibilityScripts(const char *api_version);
 };
 
 #endif /* AI_INSTANCE_HPP */

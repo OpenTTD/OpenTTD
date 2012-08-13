@@ -17,6 +17,7 @@
 
 #include "../command_type.h"
 #include "../company_type.h"
+#include "../fileio_type.h"
 
 static const uint SQUIRREL_MAX_DEPTH = 25; ///< The maximum recursive depth for items stored in the savegame.
 
@@ -176,11 +177,20 @@ public:
 
 protected:
 	class Squirrel *engine;               ///< A wrapper around the squirrel vm.
+	const char *versionAPI;               ///< Current API used by this script.
 
 	/**
 	 * Register all API functions to the VM.
 	 */
 	virtual void RegisterAPI();
+
+	/**
+	 * Load squirrel scripts to emulate an older API.
+	 * @param api_version: API version to load scripts for
+	 * @param dir Subdirectory to find the scripts in
+	 * @return true iff script loading should proceed
+	 */
+	bool LoadCompatibilityScripts(const char *api_version, Subdirectory dir);
 
 	/**
 	 * Tell the script it died.

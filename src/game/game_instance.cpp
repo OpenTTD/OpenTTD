@@ -89,6 +89,8 @@ GameInstance::GameInstance() :
 
 void GameInstance::Initialize(GameInfo *info)
 {
+	this->versionAPI = info->GetAPIVersion();
+
 	/* Register the GameController */
 	SQGSController_Register(this->engine);
 
@@ -192,6 +194,8 @@ void GameInstance::RegisterAPI()
 	SQGSWindow_Register(this->engine);
 
 	RegisterGameTranslation(this->engine);
+
+	if (!this->LoadCompatibilityScripts(this->versionAPI, GAME_DIR)) this->Died();
 }
 
 int GameInstance::GetSetting(const char *name)
