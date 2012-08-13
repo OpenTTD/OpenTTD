@@ -163,4 +163,30 @@ bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p) { return this->
 bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
 bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
 
+/**
+ * Helper to get the subdirectory a #ContentInfo is located in.
+ * @param type The type of content.
+ * @return The subdirectory the content is located in.
+ */
+Subdirectory GetContentInfoSubDir(ContentType type)
+{
+	switch (type) {
+		default: return NO_DIRECTORY;
+		case CONTENT_TYPE_AI:           return AI_DIR;
+		case CONTENT_TYPE_AI_LIBRARY:   return AI_LIBRARY_DIR;
+		case CONTENT_TYPE_GAME:         return GAME_DIR;
+		case CONTENT_TYPE_GAME_LIBRARY: return GAME_LIBRARY_DIR;
+		case CONTENT_TYPE_NEWGRF:       return NEWGRF_DIR;
+
+		case CONTENT_TYPE_BASE_GRAPHICS:
+		case CONTENT_TYPE_BASE_SOUNDS:
+		case CONTENT_TYPE_BASE_MUSIC:
+			return BASESET_DIR;
+
+		case CONTENT_TYPE_SCENARIO:
+		case CONTENT_TYPE_HEIGHTMAP:
+			return SCENARIO_DIR;
+	}
+}
+
 #endif /* ENABLE_NETWORK */

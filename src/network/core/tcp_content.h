@@ -206,6 +206,8 @@ public:
 	void ReceivePackets();
 };
 
+Subdirectory GetContentInfoSubDir(ContentType type);
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_CONTENT_H */

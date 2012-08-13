@@ -384,20 +384,8 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
  */
 static char *GetFullFilename(const ContentInfo *ci, bool compressed)
 {
-	Subdirectory dir;
-	switch (ci->type) {
-		default: return NULL;
-		case CONTENT_TYPE_BASE_GRAPHICS: dir = BASESET_DIR;    break;
-		case CONTENT_TYPE_BASE_MUSIC:    dir = BASESET_DIR;    break;
-		case CONTENT_TYPE_BASE_SOUNDS:   dir = BASESET_DIR;    break;
-		case CONTENT_TYPE_NEWGRF:        dir = NEWGRF_DIR;     break;
-		case CONTENT_TYPE_AI:            dir = AI_DIR;         break;
-		case CONTENT_TYPE_AI_LIBRARY:    dir = AI_LIBRARY_DIR; break;
-		case CONTENT_TYPE_SCENARIO:      dir = SCENARIO_DIR;   break;
-		case CONTENT_TYPE_HEIGHTMAP:     dir = HEIGHTMAP_DIR;  break;
-		case CONTENT_TYPE_GAME:          dir = GAME_DIR;       break;
-		case CONTENT_TYPE_GAME_LIBRARY:  dir = GAME_LIBRARY_DIR; break;
-	}
+	Subdirectory dir = GetContentInfoSubDir(ci->type);
+	if (dir == NO_DIRECTORY) return NULL;
 
 	static char buf[MAX_PATH];
 	FioGetFullPath(buf, lengthof(buf), SP_AUTODOWNLOAD_DIR, dir, ci->filename);
@@ -544,41 +532,8 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	if (GunzipFile(this->curInfo)) {
 		unlink(GetFullFilename(this->curInfo, true));
 
-		Subdirectory sd = NO_DIRECTORY;
-		switch (this->curInfo->type) {
-			case CONTENT_TYPE_AI:
-				sd = AI_DIR;
-				break;
-
-			case CONTENT_TYPE_AI_LIBRARY:
-				sd = AI_LIBRARY_DIR;
-				break;
-
-			case CONTENT_TYPE_GAME:
-				sd = GAME_DIR;
-				break;
-
-			case CONTENT_TYPE_GAME_LIBRARY:
-				sd = GAME_LIBRARY_DIR;
-				break;
-
-			case CONTENT_TYPE_BASE_GRAPHICS:
-			case CONTENT_TYPE_BASE_SOUNDS:
-			case CONTENT_TYPE_BASE_MUSIC:
-				sd = BASESET_DIR;
-				break;
-
-			case CONTENT_TYPE_NEWGRF:
-				sd = NEWGRF_DIR;
-				break;
-
-			case CONTENT_TYPE_SCENARIO:
-			case CONTENT_TYPE_HEIGHTMAP:
-				sd = SCENARIO_DIR;
-				break;
-
-			default: NOT_REACHED();
-		}
+		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
+		if (sd == NO_DIRECTORY) NOT_REACHED();
 
 		TarScanner ts;
 		ts.AddFile(sd, GetFullFilename(this->curInfo, false));
