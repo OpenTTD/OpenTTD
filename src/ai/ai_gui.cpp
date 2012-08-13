@@ -646,8 +646,6 @@ struct ScriptTextfileWindow : public TextfileWindow {
 
 	ScriptTextfileWindow(TextfileType file_type, CompanyID slot) : TextfileWindow(file_type), slot(slot)
 	{
-		this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-
 		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
 		this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 	}

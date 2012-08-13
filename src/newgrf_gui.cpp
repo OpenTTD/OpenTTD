@@ -542,8 +542,6 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 
 	NewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c) : TextfileWindow(file_type), grf_config(c)
 	{
-		this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-
 		const char *textfile = this->grf_config->GetTextfile(file_type);
 		this->LoadTextfile(textfile, NEWGRF_DIR);
 	}
