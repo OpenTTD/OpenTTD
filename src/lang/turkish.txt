@@ -756,26 +756,26 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Genel b
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Halk kutlama yaptı . . .{} {STATION} istasyonuna ilk kez tren geldi!
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Halk kutlama yatı . . .{}{STATION} durağına ilk otobüs geldi!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} durağına ilk kamyon geldi!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}Şuraya ilk kez gemi geldi: {STATION}!
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez uçak geldi!
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen treni kutladı!
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK} {} Halk {STATION} durağına ilk gelen otobüsü kutladı!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK} {} Halk {STATION} durağına ilk gelen kamyonu kutladı!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen yolcu tramvayı kutladı!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK} {} Halk {STATION} istasyonuna ilk gelen yük tramvayını kutladı!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK} {} Halk {STATION} rıhtımına ilk gelen gemiyi kutladı!
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK} {} Halk {STATION} havaalanına ilk gelen uçağı kutladı!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tren Kazasi!{}{COMMA} ölü var.
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Uçak Kazasi!{}{COMMA} ölü var - {STATION}
+STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Tren Kazası!!! Talihsiz kazada {}{COMMA} kişi öldü...
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Trafik kazası!{}Trenle çarpışan aracın şoförü feci şekilde can verdi...
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Trafik kazası!{}{COMMA} kişi patlamadan kurtulamadı...
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Uçak Kazası!{}{COMMA} kişinin öldüğü yer {STATION}
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Uçak Kazası!{}Uçağın havada yakıtı bitti, {COMMA} kişi hayatını kaybetti
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeplin düştü - {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}{STATION} yakınlarına bir zeplin düştü !
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}UFO'yla çarpışan araba parçalandı!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}{TOWN} yakınlarındaki petrol rafinerisi patladı!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}{TOWN} yakınlarındaki fabrika kundaklandı!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}{TOWN} yakınlarına UFO kondu!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} yakınlarındaki kömür madeninde patlama oldu!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}{TOWN} yakınlarına UFO indi!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}{TOWN} yakınlarındaki kömür madeninde grizu patlaması oldu!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Sel baskını!{}En az {COMMA} kayıp var, hepsinin öldüğü tahmin ediliyor!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Şirket tehlikede!
@@ -796,37 +796,37 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLAC
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} her an kapanabileceğini duyurdu!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} kaynak sorunları yüzünden kapanıyor!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Yakında ağaç olmadığı için {STRING} kapanıyor!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}Yakınında ağaç olmadığı için {STRING} kapanıyor!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Avro kullanılacak!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi güçlendikçe ticaretin artması sanayicilere güven veriyor!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} üretimi arttırdi!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}{INDUSTRY}nde yeni kömür rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}ndeki yeni tarim tekniklerinin üretimi ikiye katlamasi bekleniyor!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY}ndeki yeni tarım tekniklerinin üretimi ikiye katlaması bekleniyor!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} arttı!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} üretimi %50 düşürdü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} bölgesine böcek sürüsü girdi !{} Üretim %50 düştü
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{1:INDUSTRY}'nin {BLACK}{0:STRING} üretimi %{2:COMMA} azaldı!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} garajda bekliyor
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} tren hangarında bekliyor
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} garajda bekliyor
-STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} barınakta bekliyor
+STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} tersanede bekliyor
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} hangarda bekliyor
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} aracının programında çok az emir var
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} aracının boş bir emri var
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} emirleri arasında aynı olanlar var
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} emirleri arasında tekrarlanmış olanlar var
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} aracının geçersiz emirleri var
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} eskiyor
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} çok eskidi
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} çok eskiyor ve acilen değiştirilmesi gerekiyor
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} çok eskidi ve acilen değiştirilmesi gerekiyor
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} devam edecek bir yol bulamıyor
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kayboldu
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} aracının geçen yıl karı {CURRENCY_LONG} idi
@@ -837,10 +837,10 @@ STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Otomatik
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}{STRING} artık kullanılabilir!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} artık kullanılabilir!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} artık kullanılabilir :  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} artık {STRING} istemiyor
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} artık {STRING} ve {STRING} istemiyor
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} artık {STRING} veya {STRING} istemiyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} artık {STRING} istiyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 
@@ -853,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca dört kat fazla gelir sağlayacak!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Taşımacılıkta tekel!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} şehri yetkilileri {STRING} ile bir yıllığına şehrin tüm taşımacılık haklarını vermek üzere anlaştı!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
@@ -869,84 +871,87 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Para bir
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Sterlin (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar ($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :Avro (€)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Yen (¥)
 STR_GAME_OPTIONS_CURRENCY_ATS                                   :Avusturya Şilini (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belcika Frangı (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :İsviçre Frangı (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Çek Koruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Çek Korunası (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Alman markı (DEM)
 STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danimarka Kronu (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Peseta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Fin Markka (FIM)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Fin Markkası (FIM)
 STR_GAME_OPTIONS_CURRENCY_FRF                                   :Fransız Frankı (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Yunan Drachma (GRD)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Yunan Drahmisi (GRD)
 STR_GAME_OPTIONS_CURRENCY_HUF                                   :Macar Forinti (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Iceland Kronasi (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :İtalyan Lirasi (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollanda Guilder (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norweç Krone (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polon Zilotu (PLN)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :İzlanda Kronası (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :İtalyan Lirası (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Hollanda Guilderi (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveç Kronu (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Polonya Zilotisi (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Romanya Leusu (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rus Rublesi (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenya Toları (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :İsveç Kronasi (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türk Lirasi (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Korunasi (SKK)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :İsveç Kronası (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Türk Lirası (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovak Korunası (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brezilya Reali (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonya Kronu (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanya Litası (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Güney Kore Vonu (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Güney Afrika Randı (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Özel...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü Birimleri
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Ölçü birimleri
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Ölçü birimi seçimi
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Amerikan
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :İngiliz
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Metrik
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Trafik akış yönünü seçin
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan gidişli
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan gidişli
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan trafik
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan trafik
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Şehir isimleri
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri stilini seçin
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Şehir isimleri için bir tür seçin
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngilizce (Orjinal)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fransizca
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Almanca
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :İngilizce (Modifiye)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikanca
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Saçma İngilizce
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :İsveççe
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollandaca
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fince
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonca
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovakça
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norveççe
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Macarca
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Avusturyaca
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romanca
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Çekçe
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :İsviçrece
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danimarkaca
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türkçe
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italyanca
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanca
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :İngiliz (Orjinal)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Fransız
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alman
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :İngiliz (İlave)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latin-Amerikan
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Saçmasapan (İngilizce)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :İsveç
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollanda
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fin
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Leh
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Slovak
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norveç
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Macar
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Avusturya
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romen
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Çek
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :İsviçre
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danimarka
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türk
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italyan
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalan
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otokaydet
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otokaydetme aralığını seçin
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Otokaydetme sıklığını seçin
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Kapalı
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Her ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Her 3 ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Her 6 ay
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Her 12 ay
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Her üç ayda bir
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Her altı ayda bir
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Her oniki ayda bir
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Dil
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Görünen dili seçin
@@ -988,13 +993,13 @@ STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Bir Ster
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Para biriminiz için ondalık ayıracı belirleyin
 
-STR_CURRENCY_PREFIX                                             :{LTBLUE}Önek: {ORANGE}{STRING}
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Ön ek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Para biriminiz için ön ek belirleyin
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sonek: {ORANGE}{STRING}
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Son ek: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Para biriminiz için son ek belirleyin
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Euro'ya geç: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Euro'ya geç: {ORANGE}hiçbir zaman
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Avro'ya geç: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Avro'ya geç: {ORANGE}hiçbir zaman
 STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Avro'ya geçiş yılını seçin
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Avro'ya daha erken geç
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Avro'ya daha sonra geç
@@ -1013,7 +1018,7 @@ STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Zor
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Özel
 ############ range for difficulty levels ends
 
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Punaları Göster
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Skor tablosunu göster
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Kaydet
 
 ############ range for difficulty settings starts
@@ -1027,7 +1032,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Rakip i
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Araç bozulmaları: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Teşvik çarpanı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}İnşa fiyatları: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Yer tipi: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Yeryüzü tipi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Su miktarı: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomi: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Tren ters dönüşü: {ORANGE}{STRING}

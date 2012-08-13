@@ -3340,7 +3340,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 �
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요. 컨트롤+클릭하여 목적지를 볼 수 있습니다.
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는중 / 내리는중
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는 중 / 내리는 중
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}떠남
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
