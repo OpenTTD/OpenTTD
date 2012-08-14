@@ -219,8 +219,9 @@ detect_params() {
 
 
 
-			--prefix-dir)                 prevp_p="prefix-dir";;
-			--prefix-dir=*)               prefix_dir="$optarg";;
+			# Alias --prefix with --prefix-dir, for compatibility with GNU autotools
+			--prefix-dir | --prefix)      prevp_p="prefix-dir";;
+			--prefix-dir=* | --prefix=*)  prefix_dir="$optarg";;
 
 			--binary-dir)                 prevp_p="binary-dir";;
 			--binary-dir=*)               binary_dir="$optarg";;
