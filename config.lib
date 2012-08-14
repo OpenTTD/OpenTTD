@@ -197,21 +197,21 @@ detect_params() {
 			--cpu-type)                   prev_p="cpu_type";;
 			--cpu-type=*)                 cpu_type="$optarg";;
 
-			--cc-build)                   prevp_p="cc_build";;
+			--cc-build)                   prev_p="cc_build";;
 			--cc-build=*)                 cc_build="$optarg";;
-			--cc-host)                    prevp_p="cc_host";;
+			--cc-host)                    prev_p="cc_host";;
 			--cc-host=*)                  cc_host="$optarg";;
-			--cxx-build)                  prevp_p="cxx_build";;
+			--cxx-build)                  prev_p="cxx_build";;
 			--cxx-build=*)                cxx_build="$optarg";;
-			--cxx-host)                   prevp_p="cxx_host";;
+			--cxx-host)                   prev_p="cxx_host";;
 			--cxx-host=*)                 cxx_host="$optarg";;
-			--windres)                    prevp_p="windres";;
+			--windres)                    prev_p="windres";;
 			--windres=*)                  windres="$optarg";;
-			--awk)                        prevp_p="awk";;
+			--awk)                        prev_p="awk";;
 			--awk=*)                      awk="$optarg";;
-			--strip)                      prevp_p="strip";;
+			--strip)                      prev_p="strip";;
 			--strip=*)                    strip="$optarg";;
-			--lipo)                       prevp_p="lipo";;
+			--lipo)                       prev_p="lipo";;
 			--lipo=*)                     lipo="$optarg";;
 
 			--endian)                     prev_p="endian";;
@@ -220,52 +220,52 @@ detect_params() {
 
 
 			# Alias --prefix with --prefix-dir, for compatibility with GNU autotools
-			--prefix-dir | --prefix)      prevp_p="prefix-dir";;
+			--prefix-dir | --prefix)      prev_p="prefix_dir";;
 			--prefix-dir=* | --prefix=*)  prefix_dir="$optarg";;
 
-			--binary-dir)                 prevp_p="binary-dir";;
+			--binary-dir)                 prev_p="binary_dir";;
 			--binary-dir=*)               binary_dir="$optarg";;
 
-			--data-dir)                   prevp_p="data-dir";;
+			--data-dir)                   prev_p="data_dir";;
 			--data-dir=*)                 data_dir="$optarg";;
 
-			--doc-dir)                    prevp_p="doc-dir";;
+			--doc-dir)                    prev_p="doc_dir";;
 			--doc-dir=*)                  doc_dir="$optarg";;
 
-			--icon-dir)                   prevp_p="icon-dir";;
+			--icon-dir)                   prev_p="icon_dir";;
 			--icon-dir=*)                 icon_dir="$optarg";;
 
-			--icon-theme-dir)             prevp_p="icon-theme-dir";;
+			--icon-theme-dir)             prev_p="icon_theme_dir";;
 			--icon-theme-dir=*)           icon_theme_dir="$optarg";;
 			--without-icon-theme)         icon_theme_dir="";;
 
-			--menu-dir)                   prevp_p="menu_dir";;
+			--menu-dir)                   prev_p="menu_dir";;
 			--menu-dir=*)                 menu_dir="$optarg";;
 			--without-menu-entry)         menu_dir="";;
 
-			--menu-name)                  prevp_p="menu_name";;
+			--menu-name)                  prev_p="menu_name";;
 			--menu-name=*)                menu_name="$optarg";;
 
-			--binary-name)                prevp_p="binary_name";;
+			--binary-name)                prev_p="binary_name";;
 			--binary-name=*)              binary_name="$optarg";;
 
-			--man-dir)                    prevp_p="man_dir";;
+			--man-dir)                    prev_p="man_dir";;
 			--man-dir=*)                  man_dir="$optarg";;
 
-			--personal-dir)               prevp_p="personal-dir";;
+			--personal-dir)               prev_p="personal_dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
 			--without-personal-dir)       personal_dir="";;
 
-			--shared-dir)                 prevp_p="shared-dir";;
+			--shared-dir)                 prev_p="shared_dir";;
 			--shared-dir=*)               shared_dir="$optarg";;
 			--without-shared-dir)         shared_dir="";;
 
-			--install-dir)                prevp_p="install-dir";;
+			--install-dir)                prev_p="install_dir";;
 			--install-dir=*)              install_dir="$optarg";;
 
 
 
-			--menu-group)                 prevp_p="menu_group";;
+			--menu-group)                 prev_p="menu_group";;
 			--menu-group=*)               menu_group="$optarg";;
 
 
