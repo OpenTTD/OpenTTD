@@ -1149,6 +1149,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Ângulo de incl
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Ângulo de inclinação de um quadrado para um comboio. Valores mais elevados tornam a subida mais difícil
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Ângulo de inclínação para veículos rodoviários: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Declive de um quadrado inclinado para um veiculo de estrada. Valores mais altos tornam mais difícil de subir.
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Proibir comboios e barcos fazer curvas de 90º: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar estações não adjacentes: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
