@@ -1,6 +1,11 @@
+1.2.2 (2012-08-16)
+------------------------------------------------------------------------
+(None)
+
+
 1.2.2-RC1 (2012-08-01)
 ------------------------------------------------------------------------
-- Fix: In some cases ships could be covered with land [FS#5254] (r24449, r24439)
+- Fix: In some cases ships could be covered with land [CVE-2012-3436] [FS#5254] (r24449, r24439)
 - Fix: Copy constructor and assignment operator cannot be implicit template specialisations [FS#5255] (r24448)
 - Fix: Make (non-refittable) vehicles with invalid default cargo unavailable [FS#5256] (r24438)
 - Fix: CFLAGS/CXXFLAGS ignored for helper binaries (r24432, r24429, r24427, r24365)
