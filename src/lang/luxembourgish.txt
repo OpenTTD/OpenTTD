@@ -1204,12 +1204,19 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Erlaabt Firmen 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Erlaabt d'Schécken vun Suen un aner Firmen: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Erlaabt den Transfert vun Geld tëschent Firmen am Multiplayermodus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Leet den Impakt fest den schwéier Fracht op Zich huet. En méi héigen Wert bréngt d'Zich éischter un d'Schaffen, speziell bei Bierger
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Fligergeschwindegkeetsfaktor: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Leet d'relativ Geschwindegkeet vun Fligeren am Verglach mat aneren Gefierer fest, fir d'Akommen vum Transport vun Fligeren ze reduzéiren
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Unzuel Fligercrashen: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Leet d'Chance fir en Fliger-Crash fest
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :keng
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reduzéiert
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Stad: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Erlaabt d'Bauen vun säitlechen Busarrêten op Stroossen déi der Stad gehéieren
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Erlaabt d'Iwwerfueren vun Stopschëlder op Stroossen vun der Konkurrenz: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Erlaabt d'Bauen vun säitlechen Busarrêten op Stroossen déi enger anerer Firma gehéieren
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Erlaabt ugrenzent Statiounen: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Erlaabt verschiddenen Statiounen sech ze beréiren
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :E puer NewGRF-Päk aktivéiren: {STRING}
@@ -1224,19 +1231,38 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Wann ugeschalt,
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Warnen wann en Gefier verluer ass: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Messagen uweisen wann Gefierer keen Wee op hiert Ziel fannen
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Opträg vun den Gefierer nopréifen: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Wann ugeschalt, ginn d'Opträg vun Gefierer periodesch kontrolléiert, an e puer evident Fehler ginn mat enger Noriichtenmessage gemellt wann se fonnt ginn
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jo, mee net déi gestoppten Gefierer
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vun allen Gefierer
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Warnen wann en Gefiert en negativen Akommes huet: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Wann ugeschalt, gëtt eng Noorichtenmessage gesent , wann en Gefier een Joer laang keen Profit gemeet huet
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Gefierer lafen nie of: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Wann ugeschalt, bleiwen all Modeller vun Gefierer éiweg verfügbar
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Gefiert automatesch ernéieren wann ët aal gët: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Wann ugeschalt, gëtt e Gefier wat un säin Lafzäitenn kënnt, automatesch ausgetosch
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automatesch erneieren wann d'Gefier maximal {STRING} Joer al ass
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relativen Alter wann en Gefier an Fro kennt fir auto-erneiert ze ginn
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} M{P ount éint} firdrun
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} M{P ount éint} dono
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Minimalen Budget fir d'automatesch Erneierung: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimalt Geld wat um Konto muss bleiwen, iert en Gefier kann ausgetosch ginn
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Dauer vun der Feelermeldung: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Zäit déi eng Feelermeldung an enger rouder Fënster ugewisen gëtt. E puer kritesch Meldungen ginn net zougemeet
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} Sekonn{P 0 "" en}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Weis Tooltips: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Verzögerung bis d'Tooltips ugewsien ginn, wann een mat der Maus iwwert en Element geet. Alternativ kënnen d'Tooltips och op d'riets Maustast geluet ginn
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Fir {COMMA} Sekonn{P 0 "" en} dropbleiwen
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Rietsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Weist Bewunnerzuel am Numm vun der Stadt: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Weis d'Awunnerzuel vun Stied an deenen hirem Label un op der Kaart
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Déckt vunn de Linnen vun den Graphen: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Breed vun den Linnen an den Grafiken. Eng dënn Linn kann méi präzis gelies ginn, eng méi déck kann besser gesinn ginn an d'Faarwen sinn besser ze ënnerscheeden
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz vum Kaartenenn bis zu enger Uelegraffinerie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Uelëgraffinerien ginn nëmmen um Bord gebaut, dat ass un der Küst fir Inselkaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schnéigrenz Héicht: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum terrain (nëmmen TerraGenesis) : {STRING}
@@ -1257,7 +1283,10 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Wann ausgeschal
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een oder méi Felder um nördlechsten Bord sinn net eidel
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een oder méi Felder op engem Eck sinn keen Waasser
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Maximal Ausdehnung vun Statiounen: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximal Distanz déi eenzel Statiounsdeeler dierfen auseneenleien. Méi héich Wäerter maachen d'Spill méi lues
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatesch Maintenance vun Helicopteren: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Schéck Helikopter no all Landung an d'Revisioun, och wann keen Schapp um Fluchhafen ass
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Landschaft-Toolbar op Zuch/Stroos/Schëff/Fluchhafen-Toolbar linken: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landfaarw déi op der klénger Kaart benotzt get: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gréng
