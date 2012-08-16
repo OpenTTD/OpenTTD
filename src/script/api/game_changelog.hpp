@@ -27,6 +27,14 @@
  * \li GSStation::IsAirportClosed
  * \li GSStation::OpenCloseAirport
  *
+ * \b 1.2.2
+ *
+ * No changes
+ *
+ * \b 1.2.1
+ *
+ * No changes
+ *
  * \b 1.2.0
  * \li First stable release with the NoGo framework.
  */

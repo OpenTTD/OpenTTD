@@ -25,6 +25,14 @@
  * \li AIStation::IsAirportClosed
  * \li AIStation::OpenCloseAirport
  *
+ * \b 1.2.2
+ *
+ * No changes
+ *
+ * \b 1.2.1
+ *
+ * No changes
+ *
  * \b 1.2.0
  *
  * API additions:

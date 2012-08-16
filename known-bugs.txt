@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2012-04-15
-Release version: 1.2.0
+Last updated:    2012-06-01
+Release version: 1.2.1
 ------------------------------------------------------------------------
 
 
@@ -39,7 +39,6 @@ officially supporting Mac OS X again. For now it remains unsupported and
 we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
-- 5154	Crash about old language when there is an error in misc settings
 - 4857	[OSX] No support for detecting mono space font
 - 4847	[OSX] No support for bootstrap downloading of base graphics
 - 4744  [OSX] Crash when switching to full screen with OS X Lion
