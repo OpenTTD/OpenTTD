@@ -1288,11 +1288,14 @@ STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Maximal Distanz
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatesch Maintenance vun Helicopteren: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Schéck Helikopter no all Landung an d'Revisioun, och wann keen Schapp um Fluchhafen ass
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Landschaft-Toolbar op Zuch/Stroos/Schëff/Fluchhafen-Toolbar linken: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Wann eng Toolbar fir Konstruktiounen opgemeet gëtt, gëtt och d'Toolbar fir d'Terrainverännerung opgemeet
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Landfaarw déi op der klénger Kaart benotzt get: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Faarf vum Terrain vun der klenger Kaart
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Donkelgréng
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Moof
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Deen aneren Wee scrollen: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Verhalen beim Scrollen vun der Kaart mat der rietser Maustast. Wann ausgeschalt, beweegt d'Maus d'Kamera. Wann ugeschalt, beweegt d'Maus d'Kaart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feinen Scrolling: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidden Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Weis Firmentracht: {STRING}
