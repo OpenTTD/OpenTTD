@@ -1146,10 +1146,10 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Selecteer de ph
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Wegvoertuig acceleratie model: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Selecteer de physics model voor wegvoertuigacceleratie. Het "originele" model straft hellingen gelijk voor alle voertuigen. Het "realistische" model bestraft hellingen, afhankelijk van verschillende eigenschappen van het voertuig, bijvoorbeeld 'trekkracht'
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Hellingsterkte voor treinen: {STRING}
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steilheid van een schuine tegel voor een trein. Hogere waarden maken het moeilijker om een ​​heuvel te beklimmen
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Steilheid van een schuine tegel voor een trein. Hogere waarden maken het moeilijker om een heuvel te beklimmen
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Hellingsterkte voor wegvoertuigen: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een ​​heuvel te beklimmen
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Steilheid van een schuine tegel voor een wegvoertuig. Hogere waarden maken het moeilijker om een heuvel te beklimmen
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Verbied treinen en schepen om 90° te draaien: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graden draaien treden op wanneer een horizontale baan direct gevolgd door een verticale baan stuk op de aangrenzende tegel, waardoor de trein daarna 90 graad wanneer het doorlopen van de tegel rand plaats van de gebruikelijke 45 graden voor andere spoor combinaties. Dit geldt ook voor de draaicirkel van schepen
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Sta het samenvoegen van niet direct aaneensluitende stations toe: {STRING}
