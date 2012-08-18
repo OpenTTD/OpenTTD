@@ -50,8 +50,6 @@ void RebuildTownCaches()
 		UpdateTownCargoes(town);
 	}
 	UpdateTownCargoBitmap();
-
-	RebuildSubsidisedSourceAndDestinationCache();
 }
 
 /**

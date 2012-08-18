@@ -60,7 +60,7 @@
 #include "game/game.hpp"
 #include "game/game_config.hpp"
 #include "town.h"
-
+#include "subsidy_func.h"
 
 
 #include <stdarg.h>
@@ -1158,6 +1158,7 @@ static void CheckCaches()
 
 	extern void RebuildTownCaches();
 	RebuildTownCaches();
+	RebuildSubsidisedSourceAndDestinationCache();
 
 	uint i = 0;
 	FOR_ALL_TOWNS(t) {
