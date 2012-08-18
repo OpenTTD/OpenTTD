@@ -384,9 +384,13 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 
 
 /**
- * returns the track to choose on the next tile, or -1 when it's better to
- * reverse. The tile given is the tile we are about to enter, enterdir is the
- * direction in which we are entering the tile
+ * Runs the pathfinder to choose a track to continue along.
+ *
+ * @param v Ship to navigate
+ * @param tile Tile, the ship is about to enter
+ * @param enterdir Direction of entering
+ * @param tracks Available track choices on \a tile
+ * @return Track to choose, or INVALID_TRACK when to reverse.
  */
 static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
