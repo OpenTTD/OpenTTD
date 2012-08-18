@@ -50,6 +50,13 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found);
 
 /**
+ * Returns true if it is better to reverse the ship before leaving depot using NPF.
+ * @param v the ship leaving the depot
+ * @return true if reversing is better
+ */
+bool NPFShipCheckReverse(const Ship *v);
+
+/**
  * Used when user sends train to the nearest depot or if train needs servicing using NPF
  * @param v            train that needs to go to some depot
  * @param max_penalty  max max_penalty (in pathfinder penalty) from the current train position

@@ -1178,6 +1178,23 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	return TrackdirToTrack(ftd.best_trackdir);
 }
 
+bool NPFShipCheckReverse(const Ship *v)
+{
+	NPFFindStationOrTileData fstd;
+	NPFFoundTargetData ftd;
+
+	NPFFillWithOrderData(&fstd, v);
+
+	Trackdir trackdir = v->GetVehicleTrackdir();
+	Trackdir trackdir_rev = ReverseTrackdir(trackdir);
+	assert(trackdir != INVALID_TRACKDIR);
+	assert(trackdir_rev != INVALID_TRACKDIR);
+
+	ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, v->tile, trackdir_rev, false, &fstd, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
+	/* If we didn't find anything, just keep on going straight ahead, otherwise take the reverse flag */
+	return ftd.best_bird_dist == 0 && NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE);
+}
+
 /*** Trains ***/
 
 FindDepotData NPFTrainFindNearestDepot(const Train *v, int max_penalty)

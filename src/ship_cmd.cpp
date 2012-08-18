@@ -310,13 +310,34 @@ static bool CheckShipLeaveDepot(Ship *v)
 	TileIndex tile = v->tile;
 	Axis axis = GetShipDepotAxis(tile);
 
-	/* Check first (north) side */
-	if (DiagdirReachesTracks((DiagDirection)axis) & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
-		v->direction = ReverseDir(AxisToDirection(axis));
-	/* Check second (south) side */
-	} else if (DiagdirReachesTracks((DiagDirection)(axis + 2)) & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
-		v->direction = AxisToDirection(axis);
+	DiagDirection north_dir = ReverseDiagDir(AxisToDiagDir(axis));
+	TileIndex north_neighbour = TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis]));
+	DiagDirection south_dir = AxisToDiagDir(axis);
+	TileIndex south_neighbour = TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis]));
+
+	TrackBits north_tracks = DiagdirReachesTracks(north_dir) & GetTileShipTrackStatus(north_neighbour);
+	TrackBits south_tracks = DiagdirReachesTracks(south_dir) & GetTileShipTrackStatus(south_neighbour);
+	if (north_tracks && south_tracks) {
+		/* Ask pathfinder for best direction */
+		bool reverse = false;
+		bool path_found;
+		switch (_settings_game.pf.pathfinder_for_ships) {
+			case VPF_OPF: reverse = OPFShipChooseTrack(v, north_neighbour, north_dir, north_tracks, path_found) == INVALID_TRACK; break; // OPF always allows reversing
+			case VPF_NPF: reverse = NPFShipCheckReverse(v); break;
+			case VPF_YAPF: reverse = YapfShipCheckReverse(v); break;
+			default: NOT_REACHED();
+		}
+		if (reverse) north_tracks = TRACK_BIT_NONE;
+	}
+
+	if (north_tracks) {
+		/* Leave towards north */
+		v->direction = DiagDirToDir(north_dir);
+	} else if (south_tracks) {
+		/* Leave towards south */
+		v->direction = DiagDirToDir(south_dir);
 	} else {
+		/* Both ways blocked */
 		return false;
 	}
 

@@ -98,6 +98,42 @@ public:
 		}
 		return next_trackdir;
 	}
+
+	/**
+	 * Check whether a ship should reverse to reach its destination.
+	 * Called when leaving depot.
+	 * @param v Ship
+	 * @param tile Current position
+	 * @param td1 Forward direction
+	 * @param td2 Reverse direction
+	 * @return true if the reverse direction is better
+	 */
+	static bool CheckShipReverse(const Ship *v, TileIndex tile, Trackdir td1, Trackdir td2)
+	{
+		/* get available trackdirs on the destination tile */
+		TrackdirBits dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
+
+		/* create pathfinder instance */
+		Tpf pf;
+		/* set origin and destination nodes */
+		pf.SetOrigin(tile, TrackdirToTrackdirBits(td1) | TrackdirToTrackdirBits(td2));
+		pf.SetDestination(v->dest_tile, dest_trackdirs);
+		/* find best path */
+		if (!pf.FindPath(v)) return false;
+
+		Node *pNode = pf.GetBestNode();
+		if (pNode == NULL) return false;
+
+		/* path was found
+		 * walk through the path back to the origin */
+		while (pNode->m_parent != NULL) {
+			pNode = pNode->m_parent;
+		}
+
+		Trackdir best_trackdir = pNode->GetTrackdir();
+		assert(best_trackdir == td1 || best_trackdir == td2);
+		return best_trackdir == td2;
+	}
 };
 
 /** Cost Provider module of YAPF for ships */
@@ -196,4 +232,25 @@ Track YapfShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir,
 
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks, path_found);
 	return (td_ret != INVALID_TRACKDIR) ? TrackdirToTrack(td_ret) : INVALID_TRACK;
+}
+
+bool YapfShipCheckReverse(const Ship *v)
+{
+	Trackdir td = v->GetVehicleTrackdir();
+	Trackdir td_rev = ReverseTrackdir(td);
+	TileIndex tile = v->tile;
+
+	typedef bool (*PfnCheckReverseShip)(const Ship*, TileIndex, Trackdir, Trackdir);
+	PfnCheckReverseShip pfnCheckReverseShip = CYapfShip2::CheckShipReverse; // default: ExitDir, allow 90-deg
+
+	/* check if non-default YAPF type needed */
+	if (_settings_game.pf.forbid_90_deg) {
+		pfnCheckReverseShip = &CYapfShip3::CheckShipReverse; // Trackdir, forbid 90-deg
+	} else if (_settings_game.pf.yapf.disable_node_optimization) {
+		pfnCheckReverseShip = &CYapfShip1::CheckShipReverse; // Trackdir, allow 90-deg
+	}
+
+	bool reverse = pfnCheckReverseShip(v, tile, td, td_rev);
+
+	return reverse;
 }
