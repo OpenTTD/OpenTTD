@@ -313,7 +313,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Schinnen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Stroossen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Schëffhafen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafen bauen
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschafts-Toolbar opman fir Land ze erhéigen/senken, Beem planzen, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschafts-Toolbar opman fir Land ze erhéijen/senken, Beem planzen, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musék Fënster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Weis déi lescht Meldung/Neiegkeet, oder d'Astellungen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informatiounen zum Land, Konsole, Script debug, Screenshots, iwwer OpenTTD
@@ -711,7 +711,7 @@ STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}All unsc
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héicht uweisen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Keng Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}All Industrien op der Kaart uweisen
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héigtenkaart
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héichtenkaart
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Weis keen Besëtz vun der Firma op der Kaart un
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Weis den ganzen Besëtz vun der Firma op der Kaart un
 
@@ -1204,7 +1204,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Erlaabt Firmen 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Erlaabt d'Schécken vun Suen un aner Firmen: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Erlaabt den Transfert vun Geld tëschent Firmen am Multiplayermodus
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Leet den Impakt fest den schwéier Fracht op Zich huet. En méi héigen Wert bréngt d'Zich éischter un d'Schaffen, speziell bei Bierger
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Leet den Impakt fest den schwéier Fracht op Zich huet. En méi héijen Wäert bréngt d'Zich éischter un d'Schaffen, speziell bei Bierger
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fligergeschwindegkeetsfaktor: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Leet d'relativ Geschwindegkeet vun Fligeren am Verglach mat aneren Gefierer fest, fir d'Akommen vum Transport vun Fligeren ze reduzéiren
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1297,7 +1297,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Moof
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Deen aneren Wee scrollen: {STRING}
 STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Verhalen beim Scrollen vun der Kaart mat der rietser Maustast. Wann ausgeschalt, beweegt d'Maus d'Kamera. Wann ugeschalt, beweegt d'Maus d'Kaart
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feinen Scrolling: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidden Bau-Tools benotzt ginn: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
 STR_CONFIG_SETTING_LIVERIES                                     :Weis Firmentracht: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
@@ -2730,7 +2732,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Strooss
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eng Statu zur Éier vun der Firma bauen.{} Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Den Bau vun neien Kommerzgebaier finanzéieren.{} Käschten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaft fir 1 Joer exklusiv Transportrechter an dëser Stad. D'Gemeng erlabt den Transport vun Passagéier an Wueren nëmmen ärer Firma.{} Käschten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewertung ze erhéigen, mam Risque fir eng grouss Bestrofung, falls der erwëscht gidd.{} Käschten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemeng bestiechen fir d'Bewäertung ze erhéijen, mam Risiko fir eng grouss Bestrofung, falls der erwëscht gitt.{} Käschten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Zieler
@@ -3172,39 +3174,39 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_CAPACITY_RUNCOST:{BLACK}Käscht
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_RANGE_CAPACITY_RUNCOST        :{BLACK}Käschten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY} Distanz: {COMMA} Felder{}Kapazitéit: {CARGO_LONG}{}Betribskäschten: {CURRENCY_LONG}/Jr
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacéier{STRING} - {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Tausch{STRING} - {STRING} aus
 STR_REPLACE_VEHICLE_TRAIN                                       :Zuch
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Stroossengefihr
 STR_REPLACE_VEHICLE_SHIP                                        :Schëff
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Fliger
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wielt den Maschinentyp fir ze remplacéiren
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wielt den Maschinentyp fir auszetauschen
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wielt den neien Typ den benotzt soll ginn amplaz vun der lénks gewielter Maschin
 
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefierterremplacement
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Gefieraustosch
 STR_REPLACE_VEHICLES_NOW                                        :All Gefier elo ersetzen
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :Nëmmen al Gefierer ersetzen
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drécken fir den Remplacement vun der lénker mat der rietser Maschin unzefenken
-STR_REPLACE_NOT_REPLACING                                       :{BLACK}Net remplacéiert:
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drécken fir den Austosch vun der lénker mat der rietser Maschin unzefenken
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Net ausgetosch:
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Keen gefier gewielt
 STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} wann aal
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefierterremplacement
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir Remplacement ze stoppen
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop Gefieraustosch
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drécken fir den Austosch ze stoppen
 
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Remplacéiren: {ORANGE}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Wagonremplac. Fënster
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Tauschen aus: {ORANGE}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Wiessel tëscht Maschin- an Wagonaustosch. Fënster
 STR_REPLACE_ENGINES                                             :Motoren
 STR_REPLACE_WAGONS                                              :Wagonen
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen remplacéiert ginn
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Maschin vun der lénks selectéierter Maschin remplacéiert soll gin, wann et zoutrëfft
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wielt den Schinnentyp fir den Maschinen ausgetosch ginn
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Weist un wellech Maschin vun der lénks selectéierter Maschin ausgetosch soll ginn, wann et zoutrëfft
 STR_REPLACE_RAIL_VEHICLES                                       :Schinnengefierter
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektresch Schinnen Gefierer
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Gefierer
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Gefierer
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon raushuelen: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mecht dass den Autoremplacement d'Lengt vum Zuch behält, andems en Wagonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mecht
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mëscht dass d'automatescht Austauschen d'Lengt vum Zuch behält, an dem en Wagonen (vun lénks un) wechhëllt, wann d'Lok den Zuch ze laang mëscht
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3304,7 +3306,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Transfer
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}Deeg{BLACK}   Lescht Revisioun: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Revisiounsintervall: {LTBLUE}{COMMA}%{BLACK}  Lescht Revisioun: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erhéigen. Ctrl+Klick erhéigt Intervall em 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erhéijen. Ctrl+Klick erhéicht Intervall em 5
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Revisiounsintervall em 10 erofsetzen. Ctrl+Klick setzt den Intervall em 5 rof
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Zuch benennen

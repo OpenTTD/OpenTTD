@@ -2729,7 +2729,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMP
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}의 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이 경우 자동 교체시 개조에 실패할 수도 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 함수 {1:HEX}가 알 수없는/잘못된 결과값 {2:HEX}을 반환했습니다.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<인식오류 화물>
@@ -2773,10 +2773,10 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난�
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 배달됨
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요합니다.
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 수송됨
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (화물이 더 필요함)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (배달됨)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (수송됨)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.(도시에 투자중)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
