@@ -1523,6 +1523,7 @@ public:
 		WID_NCL_SELECT_ALL                   = ::WID_NCL_SELECT_ALL,                   ///< 'Select all' button.
 		WID_NCL_SELECT_UPDATE                = ::WID_NCL_SELECT_UPDATE,                ///< 'Select updates' button.
 		WID_NCL_UNSELECT                     = ::WID_NCL_UNSELECT,                     ///< 'Unselect all' button.
+		WID_NCL_TEXTFILE                     = ::WID_NCL_TEXTFILE,                     ///< Open textfile (readme, changelog (+1) or license (+2)) of some content.
 		WID_NCL_OPEN_URL                     = ::WID_NCL_OPEN_URL,                     ///< 'Open url' button.
 		WID_NCL_CANCEL                       = ::WID_NCL_CANCEL,                       ///< 'Cancel' button.
 		WID_NCL_DOWNLOAD                     = ::WID_NCL_DOWNLOAD,                     ///< 'Download' button.

@@ -91,6 +91,7 @@ struct ContentInfo {
 	size_t Size() const;
 	bool IsSelected() const;
 	bool IsValid() const;
+	const char *GetTextfile(TextfileType type) const;
 };
 
 /** Base socket handler for all Content TCP sockets */

@@ -14,6 +14,13 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
+#include "../../textfile_gui.h"
+#include "../../fileio_func.h"
+#include "../../newgrf_config.h"
+#include "../../base_media_base.h"
+#include "../../ai/ai.hpp"
+#include "../../game/game.hpp"
+#include "../../fios.h"
 #include "tcp_content.h"
 
 /** Clear everything in the struct */
@@ -84,6 +91,50 @@ bool ContentInfo::IsSelected() const
 bool ContentInfo::IsValid() const
 {
 	return this->state < ContentInfo::INVALID && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
+}
+
+/**
+ * Search a textfile file next to this file in the content list.
+ * @param type The type of the textfile to search for.
+ * @return The filename for the textfile, \c NULL otherwise.
+ */
+const char *ContentInfo::GetTextfile(TextfileType type) const
+{
+	if (this->state == INVALID) return NULL;
+	const char *tmp;
+	switch (this->type) {
+		default: NOT_REACHED();
+		case CONTENT_TYPE_AI:
+			tmp = AI::GetScannerInfo()->FindMainScript(this, true);
+			break;
+		case CONTENT_TYPE_AI_LIBRARY:
+			tmp = AI::GetScannerLibrary()->FindMainScript(this, true);
+			break;
+		case CONTENT_TYPE_GAME:
+			tmp = Game::GetScannerInfo()->FindMainScript(this, true);
+			break;
+		case CONTENT_TYPE_GAME_LIBRARY:
+			tmp = Game::GetScannerLibrary()->FindMainScript(this, true);
+			break;
+		case CONTENT_TYPE_NEWGRF:
+			tmp = FindGRFConfig(BSWAP32(this->unique_id), FGCM_EXACT, this->md5sum)->filename;
+			break;
+		case CONTENT_TYPE_BASE_GRAPHICS:
+			tmp = TryGetBaseSetFile(this, true, BaseGraphics::GetAvailableSets());
+			break;
+		case CONTENT_TYPE_BASE_SOUNDS:
+			tmp = TryGetBaseSetFile(this, true, BaseSounds::GetAvailableSets());
+			break;
+		case CONTENT_TYPE_BASE_MUSIC:
+			tmp = TryGetBaseSetFile(this, true, BaseMusic::GetAvailableSets());
+			break;
+		case CONTENT_TYPE_SCENARIO:
+		case CONTENT_TYPE_HEIGHTMAP:
+			tmp = FindScenario(this, true);
+			break;
+	}
+	if (tmp == NULL) return NULL;
+	return ::GetTextfile(type, GetContentInfoSubDir(this->type), tmp);
 }
 
 void NetworkContentSocketHandler::Close()

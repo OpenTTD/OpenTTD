@@ -22,11 +22,54 @@
 #include "../stringfilter_type.h"
 #include "../querystring_gui.h"
 #include "../core/geometry_func.hpp"
+#include "../textfile_gui.h"
 #include "network_content_gui.h"
 
 
 #include "table/strings.h"
 #include "../table/sprites.h"
+
+/** Window for displaying the textfile of an item in the content list. */
+struct ContentTextfileWindow : public TextfileWindow {
+	const ContentInfo *ci; ///< View the textfile of this ContentInfo.
+
+	ContentTextfileWindow(TextfileType file_type, const ContentInfo *ci) : TextfileWindow(file_type), ci(ci)
+	{
+		const char *textfile = this->ci->GetTextfile(file_type);
+		this->LoadTextfile(textfile, GetContentInfoSubDir(this->ci->type));
+	}
+
+	StringID GetTypeString() const
+	{
+		switch (this->ci->type) {
+			case CONTENT_TYPE_NEWGRF:        return STR_CONTENT_TYPE_NEWGRF;
+			case CONTENT_TYPE_BASE_GRAPHICS: return STR_CONTENT_TYPE_BASE_GRAPHICS;
+			case CONTENT_TYPE_BASE_SOUNDS:   return STR_CONTENT_TYPE_BASE_SOUNDS;
+			case CONTENT_TYPE_BASE_MUSIC:    return STR_CONTENT_TYPE_BASE_MUSIC;
+			case CONTENT_TYPE_AI:            return STR_CONTENT_TYPE_AI;
+			case CONTENT_TYPE_AI_LIBRARY:    return STR_CONTENT_TYPE_AI_LIBRARY;
+			case CONTENT_TYPE_GAME:          return STR_CONTENT_TYPE_GAME_SCRIPT;
+			case CONTENT_TYPE_GAME_LIBRARY:  return STR_CONTENT_TYPE_GS_LIBRARY;
+			case CONTENT_TYPE_SCENARIO:      return STR_CONTENT_TYPE_SCENARIO;
+			case CONTENT_TYPE_HEIGHTMAP:     return STR_CONTENT_TYPE_HEIGHTMAP;
+			default: NOT_REACHED();
+		}
+	}
+
+	/* virtual */ void SetStringParameters(int widget) const
+	{
+		if (widget == WID_TF_CAPTION) {
+			SetDParam(0, this->GetTypeString());
+			SetDParamStr(1, this->ci->name);
+		}
+	}
+};
+
+void ShowContentTextfileWindow(TextfileType file_type, const ContentInfo *ci)
+{
+	DeleteWindowByClass(WC_TEXTFILE);
+	new ContentTextfileWindow(file_type, ci);
+}
 
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_network_content_download_status_window_widgets[] = {
@@ -611,6 +654,13 @@ public:
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		if (widget >= WID_NCL_TEXTFILE && widget < WID_NCL_TEXTFILE + TFT_END) {
+			if (this->selected == NULL || this->selected->state != ContentInfo::ALREADY_HERE) return;
+
+			ShowContentTextfileWindow((TextfileType)(widget - WID_NCL_TEXTFILE), this->selected);
+			return;
+		}
+
 		switch (widget) {
 			case WID_NCL_MATRIX: {
 				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NCL_MATRIX);
@@ -820,6 +870,9 @@ public:
 		this->SetWidgetDisabledState(WID_NCL_SELECT_ALL, !show_select_all);
 		this->SetWidgetDisabledState(WID_NCL_SELECT_UPDATE, !show_select_upgrade);
 		this->SetWidgetDisabledState(WID_NCL_OPEN_URL, this->selected == NULL || StrEmpty(this->selected->url));
+		for (TextfileType tft = TFT_BEGIN; tft < TFT_END; tft++) {
+			this->SetWidgetDisabledState(WID_NCL_TEXTFILE + tft, this->selected == NULL || this->selected->state != ContentInfo::ALREADY_HERE || this->selected->GetTextfile(tft) == NULL);
+		}
 
 		this->GetWidget<NWidgetCore>(WID_NCL_CANCEL)->widget_data = this->filesize_sum == 0 ? STR_AI_SETTINGS_CLOSE : STR_AI_LIST_CANCEL;
 	}
@@ -873,6 +926,11 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 			/* Right side. */
 			NWidget(NWID_VERTICAL),
 				NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NCL_DETAILS), SetResize(1, 1), SetFill(1, 1), EndContainer(),
+				NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_TEXTFILE + TFT_README), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_README, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_TEXTFILE + TFT_CHANGELOG), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_CHANGELOG, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NCL_TEXTFILE + TFT_LICENSE), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_TEXTFILE_VIEW_LICENCE, STR_NULL),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 7), SetResize(1, 0),
