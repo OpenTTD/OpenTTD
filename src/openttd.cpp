@@ -159,7 +159,7 @@ static void ShowHelp()
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
 #if defined(ENABLE_NETWORK)
-		"  -n [ip:port#company]= Start networkgame\n"
+		"  -n [ip:port#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
 		"  -P password         = Password to join company\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
