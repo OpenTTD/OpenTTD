@@ -253,3 +253,12 @@
 }
 
 #endif /* defined(ENABLE_NETWORK) */
+
+/* static */ GameScannerInfo *Game::GetScannerInfo()
+{
+	return Game::scanner_info;
+}
+/* static */ GameScannerLibrary *Game::GetScannerLibrary()
+{
+	return Game::scanner_library;
+}

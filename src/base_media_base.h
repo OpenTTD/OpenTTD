@@ -201,6 +201,8 @@ public:
 		return num + fs.Scan(GetExtension(), BASESET_DIR, Tbase_set::SEARCH_IN_TARS);
 	}
 
+	static Tbase_set *GetAvailableSets();
+
 	static bool SetSet(const char *name);
 	static char *GetSetsList(char *p, const char *last);
 	static int GetNumSets();
@@ -217,6 +219,15 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
+/**
+ * Check whether there's a base set matching some information.
+ * @param ci The content info to compare it to.
+ * @param md5sum Should the MD5 checksum be tested as well?
+ * @param s The list with sets.
+ * @return The filename of the first file of the base set, or \c NULL if there is no match.
+ */
+template <class Tbase_set>
+const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s);
 
 /** Types of graphics in the base graphics set */
 enum GraphicsFileType {

@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "company_base.h"
 #include "newgrf_config.h"
+#include "network/core/tcp_content.h"
 
 
 typedef SmallMap<uint, CompanyProperties *> CompanyPropertiesMap;
@@ -179,5 +180,7 @@ extern const TextColour _fios_colours[];
 
 void BuildFileList();
 void SetFiosType(const byte fiostype);
+
+const char *FindScenario(const ContentInfo *ci, bool md5sum);
 
 #endif /* FIOS_H */

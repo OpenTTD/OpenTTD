@@ -14,6 +14,7 @@
 
 #include "../script/api/script_event_types.hpp"
 #include "../core/string_compare_type.hpp"
+#include "ai_scanner.hpp"
 #include <map>
 
 /** A list that maps AI names to their AIInfo object. */
@@ -140,6 +141,12 @@ public:
 	 * found it is removed from the config.
 	 */
 	static void Rescan();
+
+	/** Gets the ScriptScanner instance that is used to find AIs */
+	static AIScannerInfo *GetScannerInfo();
+	/** Gets the ScriptScanner instance that is used to find AI Libraries */
+	static AIScannerLibrary *GetScannerLibrary();
+
 #if defined(ENABLE_NETWORK)
 	/** Wrapper function for AIScanner::HasAI */
 	static bool HasAI(const struct ContentInfo *ci, bool md5sum);

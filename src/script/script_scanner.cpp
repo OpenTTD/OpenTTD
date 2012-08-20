@@ -271,4 +271,12 @@ bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
 	return false;
 }
 
+const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
+{
+	for (ScriptInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
+		if (IsSameScript(ci, md5sum, (*it).second, this->GetDirectory())) return (*it).second->GetMainScript();
+	}
+	return NULL;
+}
+
 #endif /* ENABLE_NETWORK */

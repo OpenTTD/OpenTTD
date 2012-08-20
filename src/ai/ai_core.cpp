@@ -352,3 +352,14 @@
 }
 
 #endif /* defined(ENABLE_NETWORK) */
+
+/* static */ AIScannerInfo *AI::GetScannerInfo()
+{
+	return AI::scanner_info;
+}
+
+/* static */ AIScannerLibrary *AI::GetScannerLibrary()
+{
+	return AI::scanner_library;
+}
+

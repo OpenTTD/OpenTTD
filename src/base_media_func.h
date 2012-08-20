@@ -7,7 +7,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file base_media_func.h Generic function implementations for base data (graphics, sounds). */
+/**
+ * @file base_media_func.h Generic function implementations for base data (graphics, sounds).
+ * @note You should _never_ include this file due to the SET_TYPE define.
+ */
 
 #include "base_media_base.h"
 #include "debug.h"
@@ -274,19 +277,13 @@ template <class Tbase_set>
 #if defined(ENABLE_NETWORK)
 #include "network/network_content.h"
 
-/**
- * Check whether there's a base set matching some information.
- * @param ci The content info to compare it to.
- * @param md5sum Should the MD5 checksum be tested as well?
- * @param s The list with sets.
- */
-template <class Tbase_set> bool HasBaseSet(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
+template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
 {
 	for (; s != NULL; s = s->next) {
 		if (s->GetNumMissing() != 0) continue;
 
 		if (s->shortname != ci->unique_id) continue;
-		if (!md5sum) return true;
+		if (!md5sum) return  s->files[0].filename;
 
 		byte md5[16];
 		memset(md5, 0, sizeof(md5));
@@ -295,20 +292,25 @@ template <class Tbase_set> bool HasBaseSet(const ContentInfo *ci, bool md5sum, c
 				md5[j] ^= s->files[i].hash[j];
 			}
 		}
-		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return true;
+		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return s->files[0].filename;
 	}
-
-	return false;
+	return NULL;
 }
 
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
 {
-	return HasBaseSet(ci, md5sum, BaseMedia<Tbase_set>::available_sets) ||
-			HasBaseSet(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets);
+	return (TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::available_sets) != NULL) ||
+			(TryGetBaseSetFile(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets) != NULL);
 }
 
 #else
+
+template <class Tbase_set>
+const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
+{
+	return NULL;
+}
 
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
@@ -375,6 +377,16 @@ template <class Tbase_set>
 }
 
 /**
+ * Return the available sets.
+ * @return The available sets.
+ */
+template <class Tbase_set>
+/* static */ Tbase_set *BaseMedia<Tbase_set>::GetAvailableSets()
+{
+	return BaseMedia<Tbase_set>::available_sets;
+}
+
+/**
  * Force instantiation of methods so we don't get linker errors.
  * @param repl_type the type of the BaseMedia to instantiate
  * @param set_type  the type of the BaseSet to instantiate
@@ -390,5 +402,6 @@ template <class Tbase_set>
 	template int repl_type::GetIndexOfUsedSet(); \
 	template const set_type *repl_type::GetSet(int index); \
 	template const set_type *repl_type::GetUsedSet(); \
-	template bool repl_type::DetermineBestSet();
+	template bool repl_type::DetermineBestSet(); \
+	template set_type *repl_type::GetAvailableSets();
 
