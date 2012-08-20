@@ -1134,7 +1134,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Se ligado, linh
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permitir formação de terras debaixo de edifícios e linhas sem os remover
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista de áreas de abrangência: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover das cidades mais estradas, pontes e túneis: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir remover mais mais estradas, pontes e túneis detidos pela cidade: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitar a remoçar de edifícios e infraestruturas detidas pela cidade
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de comboios: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Assignar o tamanho máximo dos comboios
@@ -1155,6 +1155,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Permitir juntar
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Usar algoritmo de carregamento melhorado: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Carregar veículos gradualmente: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflação: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Ativar inflação na economia, para que os preços subam ligeiramente mais rápido do que os pagamentos
 STR_CONFIG_SETTING_SELECTGOODS                                  :Entregar carga a uma estação só quando houver procura: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Tamanho máximo de ponte: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Tamanho máximo para construção de pontes
@@ -1166,13 +1167,16 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mesmo método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecção
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Área plana à volta das industrias: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permitir várias indústrias semelhantes por cidade: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalmente, uma cidade não aceita mais do que uma indústria de cada tipo. Com esta configuração, será possível ter várias indústrias do mesmo tipo na mesma cidade
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Mostrar sínais: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Escolha em que lado da via colocar sinais
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Na esquerda
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Do lado da condução
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Na direita
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Mostrar janela das finanças no fim do ano: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, os pops up de finanças ao final de cada ano permitem fácil inspeção do estado financeiro da empresa
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo parará em cada estação por que passe. Ao ligar esta configuração, passará sem parar por todas as estações parando apenas no destino final. Nota que isto só tem efeito para novas rotas. No entanto rotas existentes podem ser alteradas explicitamente para funcionarem assim também.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
@@ -1355,7 +1359,11 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :em todo o lado
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Posição da barra de estado: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :desligado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Número máximo de janelas não-pegajosas: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :desligado
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível maximo de ampliação: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível maximo de redução da câmara: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1365,13 +1373,19 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Ritmo de crescimento de cidades: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade de crescimento de vilas
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lento
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proporção de vilas que chegarão a cidades: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 em {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :nenhum
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicador inicial para dimensão da metrópole: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Tamanho relativo das cidades em relação ao tamanho normal das mesmas aquando o inicio do jogo
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Remover partes absurdas durante a constr. de estradas: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Remover blocos de estrada sem ligação aquando do financiamento de reconstrução
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Construção
