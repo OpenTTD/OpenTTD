@@ -957,6 +957,23 @@ void ShowAIConfigWindow()
 }
 
 /**
+ * Set the widget colour of a button based on the
+ * state of the script. (dead or alive)
+ * @param button the button to update.
+ * @param dead true if the script is dead, otherwise false.
+ * @return true if the colour was changed and the window need to be marked as dirty.
+ */
+static bool SetScriptButtonColour(NWidgetCore &button, bool dead)
+{
+	Colours colour = dead ? COLOUR_RED : COLOUR_GREY;
+	if (button.colour != colour) {
+		button.colour = colour;
+		return true;
+	}
+	return false;
+}
+
+/**
  * Window with everything an AI prints via ScriptLog.
  */
 struct AIDebugWindow : public QueryStringBaseWindow {
@@ -1082,13 +1099,11 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				dirty = true;
 			}
 
+			/* Mark dead AIs by red background. */
 			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
-			Colours colour = dead ? COLOUR_RED : COLOUR_GREY;
-			if (button->colour != colour) {
-				/* Mark dead AIs by red background */
-				button->colour = colour;
-				dirty = true;
-			}
+			/* Re-paint if the button was updated.
+			 * (note that it is intentional that SetScriptButtonColour is always called) */
+			dirty = SetScriptButtonColour(*button, dead) || dirty;
 
 			/* Do we need a repaint? */
 			if (dirty) this->SetDirty();
@@ -1097,6 +1112,15 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 			byte offset = (i == ai_debug_company) ? 1 : 0;
 			DrawCompanyIcon(i, button->pos_x + button->current_x / 2 - 7 + offset, this->GetWidget<NWidgetBase>(WID_AID_COMPANY_BUTTON_START + i)->pos_y + 2 + offset);
+		}
+
+		/* Set button colour for Game Script. */
+		GameInstance *game = Game::GetInstance();
+		bool dead = game != NULL && game->IsDead();
+		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_AID_SCRIPT_GAME);
+		if (SetScriptButtonColour(*button, dead)) {
+			/* Re-paint if the button was updated. */
+			this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
 		}
 
 		/* If there are no active companies, don't display anything else. */
