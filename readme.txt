@@ -650,6 +650,7 @@ The OpenTTD team (in alphabetical order):
   Zdeněk Sojka (SmatZ)            - Bug finder and fixer
   José Soler (Terkhen)            - General coding
   Thijs Marinussen (Yexo)         - AI Framework
+  Leif Linse (Zuu)                - AI/Game Script
 
 Inactive Developers:
   Bjarni Corfitzen (Bjarni)       - MacOSX port, coder and vehicles

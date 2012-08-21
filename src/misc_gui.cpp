@@ -381,6 +381,7 @@ static const char * const _credits[] = {
 	"  Zden\xC4\x9Bk Sojka (SmatZ) - Bug finder and fixer",
 	"  Jos\xC3\xA9 Soler (Terkhen) - General coding",
 	"  Thijs Marinussen (Yexo) - AI Framework",
+	"  Leif Linse (Zuu) - AI/Game Script",
 	"",
 	"Inactive Developers:",
 	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
