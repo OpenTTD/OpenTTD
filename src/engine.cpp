@@ -146,12 +146,12 @@ Engine::~Engine()
 }
 
 /**
- * Checks whether the engine spec is properly initialised.
+ * Checks whether the engine is a valid (non-articulated part of an) engine.
  * @return true if enabled
  */
 bool Engine::IsEnabled() const
 {
-	return this->info.string_id != STR_NEWGRF_INVALID_ENGINE;
+	return this->info.string_id != STR_NEWGRF_INVALID_ENGINE && HasBit(this->info.climates, _settings_game.game_creation.landscape);
 }
 
 /**
@@ -998,8 +998,14 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	/* check if it's an engine of specified type */
 	if (e->type != type) return false;
 
-	/* check if it's available */
-	if (company != OWNER_DEITY && !HasBit(e->company_avail, company)) return false;
+	/* check if it's available ... */
+	if (company == OWNER_DEITY) {
+		/* ... for any company (preview does not count) */
+		if (!(e->flags & ENGINE_AVAILABLE) || e->company_avail == 0) return false;
+	} else {
+		/* ... for this company */
+		if (!HasBit(e->company_avail, company)) return false;
+	}
 
 	if (!e->IsEnabled()) return false;
 
