@@ -130,6 +130,7 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 			break;
 		case CONTENT_TYPE_SCENARIO:
 		case CONTENT_TYPE_HEIGHTMAP:
+			extern const char *FindScenario(const ContentInfo *ci, bool md5sum);
 			tmp = FindScenario(this, true);
 			break;
 	}

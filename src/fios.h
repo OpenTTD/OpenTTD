@@ -181,6 +181,4 @@ extern const TextColour _fios_colours[];
 void BuildFileList();
 void SetFiosType(const byte fiostype);
 
-const char *FindScenario(const ContentInfo *ci, bool md5sum);
-
 #endif /* FIOS_H */
