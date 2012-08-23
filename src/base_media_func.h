@@ -403,5 +403,6 @@ template <class Tbase_set>
 	template const set_type *repl_type::GetSet(int index); \
 	template const set_type *repl_type::GetUsedSet(); \
 	template bool repl_type::DetermineBestSet(); \
-	template set_type *repl_type::GetAvailableSets();
+	template set_type *repl_type::GetAvailableSets(); \
+	template const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const set_type *s);
 
