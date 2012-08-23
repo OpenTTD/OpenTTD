@@ -1305,30 +1305,39 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :All Firmen
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferéier Teamchat mat <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Wiessel d'Firmen-intern Chat-Tast an Effentlechen-Chat op <ENTER> resp. <Ctrl-ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Fonktioun vum Scrollrad: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Schalt d'Scrollen mat zwee-dimensionalen Mausrieder un
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Kaart Zoomen
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaart Scrollen
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Map Scrollrad Geschw. : {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Kontrolléier d'Sensitivitéit vum Mausrad-scrollen
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Rietsklickemulatioun: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Wiel d'Method aus fir déi riets Maustast ze emuléiren
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :COMM+Klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+Klick
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Lénksklickscroll: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Schalt d'Scrollen vun der Kaart un, wann se mat der lénker Maustast gezunn gëtt
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Benotz {STRING} Datumsformat fir Späichernimm
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format vum Datum am Numm vum Späicherstand
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :laang (31ten Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kuerz (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Standard Palette fir NewGRFen déi keng spezifësch Palette hunn: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Standardpalette fir NewGRFen déi net definéiert hunn wéi eng se brauchen
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS Palette
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows Palette
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatesch Pausen beim Start vun enger neier Partie: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Wann ugeschalt, pauséiert d'Spill automatesch wann en neit Spill gestart gëtt, wat erlaabt d'Kaart besser ze studéieren
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Wann Paus ass, erlab: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Wielt aus, wat kann gemeet wann d'Spill pauséiert gouf
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :keng Aktiounen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all Net-Bauaktiounen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all ausser Landëmformungen
