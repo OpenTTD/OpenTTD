@@ -1236,6 +1236,16 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 		return;
 	}
 
+	bool use_autorefit = front->current_order.IsRefit() && front->current_order.GetRefitCargo() == CT_AUTO_REFIT;
+	CargoArray consist_capleft;
+	if (use_autorefit) {
+		/* Sum cargo, that can be loaded without refitting */
+		for (Vehicle *v = front; v != NULL; v = v->Next()) {
+			int cap_left = v->cargo_cap - v->cargo.Count();
+			if (cap_left > 0) consist_capleft[v->cargo_type] += cap_left;
+		}
+	}
+
 	int unloading_time = 0;
 	bool dirty_vehicle = false;
 	bool dirty_station = false;
@@ -1352,6 +1362,13 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 			CargoID new_cid = front->current_order.GetRefitCargo();
 			byte new_subtype = front->current_order.GetRefitSubtype();
 
+			/* Remove old capacity from consist capacity */
+			consist_capleft[v_start->cargo_type] -= v_start->cargo_cap;
+			for (Vehicle *w = v_start; w->HasArticulatedPart(); ) {
+				w = w->GetNextArticulatedPart();
+				consist_capleft[w->cargo_type] -= w->cargo_cap;
+			}
+
 			Backup<CompanyByte> cur_company(_current_company, front->owner, FILE_LINE);
 
 			/* Check if all articulated parts are empty and collect refit mask. */
@@ -1368,13 +1385,15 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 				int amount = 0;
 				CargoID cid;
 				FOR_EACH_SET_CARGO_ID(cid, refit_mask) {
-					if (cargo_left[cid] > amount) {
+					/* Consider refitting to this cargo, if other vehicles of the consist cannot
+					 * already take the cargo without refitting */
+					if (cargo_left[cid] > (int)consist_capleft[cid] + amount) {
 						/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 						 * the returned refit capacity will be greater than zero. */
 						new_subtype = GetBestFittingSubType(v, v, cid);
 						DoCommand(v_start->tile, v_start->index, cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_QUERY_COST, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 						if (_returned_refit_capacity > 0) {
-							amount = cargo_left[cid];
+							amount = cargo_left[cid] - consist_capleft[cid];
 							new_cid = cid;
 						}
 					}
@@ -1386,6 +1405,13 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 				CommandCost cost = DoCommand(v_start->tile, v_start->index, new_cid | 1U << 6 | new_subtype << 8 | 1U << 16, DC_EXEC, GetCmdRefitVeh(v_start)); // Auto-refit and only this vehicle including artic parts.
 				if (cost.Succeeded()) front->profit_this_year -= cost.GetCost() << 8;
 				ge = &st->goods[v->cargo_type];
+			}
+
+			/* Add new capacity to consist capacity */
+			consist_capleft[v_start->cargo_type] += v_start->cargo_cap;
+			for (Vehicle *w = v_start; w->HasArticulatedPart(); ) {
+				w = w->GetNextArticulatedPart();
+				consist_capleft[w->cargo_type] += w->cargo_cap;
 			}
 
 			cur_company.Restore();
@@ -1438,7 +1464,17 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 				/* Don't load stuff that is already 'reserved' for other vehicles */
 				cap = min((uint)cargo_left[v->cargo_type], cap);
 				count = cargo_left[v->cargo_type];
-				cargo_left[v->cargo_type] -= cap;
+				if (use_autorefit) {
+					/* When using autorefit, reserve all cargo for this wagon to prevent other wagons
+					 * from feeling the need to refit. */
+					int total_cap_left = v->cargo_cap - v->cargo.Count();
+					cargo_left[v->cargo_type] -= total_cap_left;
+					consist_capleft[v->cargo_type] -= total_cap_left;
+				} else {
+					/* Update cargo left; but don't reserve everything yet, so other wagons
+					 * of the same consist load in parallel. */
+					cargo_left[v->cargo_type] -= cap;
+				}
 			}
 
 			/* Store whether the maximum possible load amount was loaded or not.*/
@@ -1489,11 +1525,13 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 	/* Only set completely_emptied, if we just unloaded all remaining cargo */
 	completely_emptied &= anything_unloaded;
 
-	/* We update these variables here, so gradual loading still fills
-	 * all wagons at the same time instead of using the same 'improved'
-	 * loading algorithm for the wagons (only fill wagon when there is
-	 * enough to fill the previous wagons) */
-	if (_settings_game.order.improved_load && (front->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
+	/* For consists without autorefit-order we adjust the reserved cargo at the station after loading,
+	 * so that all wagons start loading if the consist is the first consist.
+	 *
+	 * If we use autorefit otoh, we only want to load/refit a vehicle if the other wagons cannot already hold the cargo,
+	 * to keep the option to still refit the vehicle when new cargo of different type shows up.
+	 */
+	if (_settings_game.order.improved_load && (front->current_order.GetLoadType() & OLFB_FULL_LOAD) && !use_autorefit) {
 		/* Update left cargo */
 		for (Vehicle *v = front; v != NULL; v = v->Next()) {
 			int cap_left = v->cargo_cap - v->cargo.Count();
