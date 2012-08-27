@@ -1131,11 +1131,18 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :De
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Caniatáu adeiladu a'r lethrau ac arfordiroedd {STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir, gellir adeiladu traciau a gorsafoedd ar y rhan helaeth o lethrau. Os yr analluogir, feu caniateir ar lethrau sy'n gweddu at lwybr y trac yn unig (h.y. heb angen eu tanseilio)
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, etc. (awtolethru): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
 STR_CONFIG_SETTING_CATCHMENT                                    :Caniatáu ardaloedd dalgylch mwy realistig eu maint: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Caniatáu chwalu mwy o ffyrdd, pontydd ayb. sy'n berthyn i drefi: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hwyluso chwalu tanadeiledd ac adeiladau sy'n eiddo i drefi
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Hyd uchafsymol trenau: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Gosod yr hyd ychafsymol ar gyfer trenau
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teil
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Faint o fŵg/sbarciau gan gerbydau: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Gosod faint o fwg neu sawl sbarc a allyrrir gan gerbydau
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model cyflymu trenau: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model cyflymiad cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Rhwystro trenau a llongau rhag troi 90 gradd: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Defnyddio'r algorithm llwytho gwell: {STRING}
