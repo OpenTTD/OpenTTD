@@ -190,7 +190,7 @@ struct GoalListWindow : Window {
 		num = 0;
 
 		FOR_ALL_GOALS(s) {
-			if (s->company == _local_company) {
+			if (s->company == _local_company && s->company != INVALID_COMPANY) {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Display the goal */
 					SetDParamStr(0, s->text);
