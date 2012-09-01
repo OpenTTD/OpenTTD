@@ -1040,7 +1040,7 @@ STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведска�
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецкая лира (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Словацкая крона (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразильский реал (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонские кроны (EEK)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона (EEK)
 STR_GAME_OPTIONS_CURRENCY_LTL                                   :Литовский лит (LTL)
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Южнокорейская вона (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафриканский ранд (ZAR)
@@ -1079,7 +1079,7 @@ STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словацк�
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Норвежские
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгерские
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австрийские
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынский
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынские
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чешские
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швейцарские
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датские
