@@ -1072,6 +1072,14 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 					break;
 				}
 			}
+
+			/* If no AI is available, see if there is a game script. */
+			if (ai_debug_company == INVALID_COMPANY && Game::GetInstance() != NULL) {
+				/* Lower the widget corresponding to the game script. */
+				this->LowerWidget(WID_AID_SCRIPT_GAME);
+
+				ai_debug_company = OWNER_DEITY;
+			}
 		}
 
 		/* Update "Reload AI" and "AI settings" buttons */
