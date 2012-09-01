@@ -408,7 +408,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 
 	/* Handle cargo variables with parameter, 0x60 to 0x65 and 0x69 */
 	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
-		CargoID c = GetCargoTranslation(parameter, object->u.station.statspec->grf_prop.grffile);
+		CargoID c = GetCargoTranslation(parameter, object->grffile);
 
 		if (c == CT_INVALID) return 0;
 		const GoodsEntry *ge = &this->goods[c];
