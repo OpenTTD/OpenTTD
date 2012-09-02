@@ -2640,7 +2640,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용 안
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 변경
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}리셋
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 파라미터를 기본값으로 설정
@@ -2663,17 +2663,17 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF �
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}다음의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트로 이동
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트로 이동합니다. 만약 정상적인 스프라이트가 아닐경우, 다음 정상 스프라이트로 이동합니다.
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전의 스프라이트
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}이전의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 집어들기
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 선택
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}화면에서 스프라이트를 끌어옵니다.
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}스프라이트로 이동
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}스프라이트 번호 입력
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
