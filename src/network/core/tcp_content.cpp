@@ -116,9 +116,11 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 		case CONTENT_TYPE_GAME_LIBRARY:
 			tmp = Game::GetScannerLibrary()->FindMainScript(this, true);
 			break;
-		case CONTENT_TYPE_NEWGRF:
-			tmp = FindGRFConfig(BSWAP32(this->unique_id), FGCM_EXACT, this->md5sum)->filename;
+		case CONTENT_TYPE_NEWGRF: {
+			const GRFConfig *gc = FindGRFConfig(BSWAP32(this->unique_id), FGCM_EXACT, this->md5sum);
+			tmp = gc != NULL ? gc->filename : NULL;
 			break;
+		}
 		case CONTENT_TYPE_BASE_GRAPHICS:
 			tmp = TryGetBaseSetFile(this, true, BaseGraphics::GetAvailableSets());
 			break;
