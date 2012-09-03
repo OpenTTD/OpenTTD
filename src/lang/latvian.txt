@@ -671,7 +671,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Rādīt 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Rādīt pārvadājumu maršrutus uz kartes
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Rādīt augu valsti uz kartes
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Rādīt zemes īpašniekus uz kartes
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikšķināt uz rūpnīcas tipa lai pārslēgtu tā atainošanu. Ctrl+klikšķis atslēdz visas rūpnīcas, izņemot izvēlēto tipu. Atkārtots Ctrl+klikšķis uz tā ieslēgs visus rūpnīcu tipus
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikšķināt uz rūpnīcas veida, lai pārslēgtu tā atainošanu. Ctrl+klikšķis atslēdz visas rūpnīcas, izņemot izvēlēto veidu. Atkārtots Ctrl+klikšķis uz tā ieslēgs visus rūpnīcu veidus
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikšķināt uz uzņēmuma, lai pārslēgtu tā īpašumu attēlošanu. Ctrl+klikšķis atslēdz visus uzņēmumus, izņemot izvēlēto. Atkārtots Ctrl+klikšķis uz tā ieslēgs visus uzņēmumus
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Ceļi
@@ -1196,7 +1196,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt lidap
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut braukt cauri pilsētai piederošiem slēgtiem ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut caurbraucamas pieturas uz pilsētai piederošiem ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt būvēt caurbraucamas pieturas uz pilsētai piederošiem ceļiem
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Atļauj atšķirīgas stacijas piekļaut vienu otrai
@@ -1224,15 +1225,16 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automātiski at
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Nosacītais vecums, kad transportlīdzeklis ir uzskatāms par automātiski atjaunojamu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mēne{P 0 si šus šu} pirms
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mēne{P 0 si šus šu} pēc
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski atjaunot minimālo naudu atjaunošanai: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimālā naudas summa kas atliek bankā, pirms apsver transportlīdzekļu automātisko atjaunošanu
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Automātiski papildināt minimālo naudas daudzumu atjaunošanai: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimālais naudas atlikuma lielums bankā, pirms apsver transportlīdzekļu automātisko atjaunošanu
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņojuma ilgums: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kļūdas ziņojuma sarkanā logā rādīšanas ilgums. Jāņem vērā ka daži (kritiskie) kļūdu ziņojumi pēc šī laika netiek slēgti automātiski, bet tos ir jāaizver manuāli
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :labais klikšķis
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma apzīmējuma: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rāda pilsētu iedzīvotāju daudzumu pie to apzīmējuma uz kartes
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rāda pilsētu iedzīvotāju daudzumu pie to apzīmējumiem uz kartes
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Diagrammu līniju platums. Šauras līnijas ir precīzāk nolasāmas, platākas vieglāk saskatīt un atšķirt to krāsas
 
@@ -1280,6 +1282,7 @@ STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :visiem uzņēmumiem
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Dot priekšroku komandas tērzēšanai ar <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Ieslēgt uzņēmuma iekšējās tērzēšanas piesaisti ar <ENTER> un publiskās ar <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Peles ritenīša funkcija: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Ieslēgt ritināšanu ar divdimensiju peles ritenīti
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :pietuvināt karti
@@ -1357,7 +1360,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi,
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vilcienu apkopju noklusējuma starplaiks: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jauniem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja transportlīdzeklim tas nav noteikts
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jaunajiem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja tiem tas nav noteikts
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P 0 a as u}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :izslēgts
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Autotransporta līdzekļu apkopju noklusējuma starplaiks: {STRING}
@@ -1423,7 +1426,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Galvenās rīkj
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Stāvokļa joslas novietojums: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Stāvokļa joslas horizontālais novietojums ekrāna apakšējā daļā
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Logu pielipšanas rādiuss: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Attālums starp logiem, kad pārvietojamais logs tiek automātiski pielīdzināts tuvākajiem logiem
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Attālums starp logiem, kad pārvietojamais logs tiek automātiski pielīdzināts tuvākajiem
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pikse{P 0 lis ļi ļu}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :izslēgts
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maksimālais logu skaits: {STRING}
@@ -1431,7 +1434,7 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Atvērtu nepiel
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :izslēgts
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maksimālais pietuvinājuma līmenis: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimālais pietuvinājuma līmenis skatvietām. Ir jāievēro ka paaugstinot pietuvinājuma līmeni, pieaug atmiņas prasības
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maksimālais pietuvinājuma līmenis skatvietām. Ir jāievēro ka paaugstinot pietuvinājuma līmeni, pieaug operatīvās atmiņas izlietojums
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maksimālais attālinājuma līmenis: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maksimālais attālinājuma līmenis skatvietām. Lielāka attālinājuma līmeņa pielietošana var būt iemesls aizkavējumiem
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
