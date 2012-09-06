@@ -1319,7 +1319,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visas, izņemot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visas darbības
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Lietot papildināto transportlīdzekļu sarakstu: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Ieslēgt papildināto transportlīdzekļu sarakstu grupētiem transportlīdzekļiem
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lietot piekraušanas indikatorus: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :Lietot piekraušanas rādītājus: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Izvēlēties piekraušanas rādītāju attēlošanu virs iekraujamiem un izkraujamiem transportlīdzekļiem
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Kustības sarakstu rādīt mirkļos nevis dienās: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Kustības sarakstos laikus rādīt spēles mirkļos, nevis dienās
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Kustības sarakstos rādīt pienākšanu un atiešanu: {STRING}
@@ -2054,7 +2055,7 @@ STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Pārslē
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Pārslēgt tiltu caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Pārslēgt caurspīdību tādām celtnēm kā bākas un antenas. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Pārslēgt piekartroses caurspīdību. Ctrl+klikšķis, lai slēgtu
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt ielādes indikatoru caurspīdību. Ctrl+klikšķis, lai slēgtu
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Pārslēgt piekraušanas rādītāju caurspīdību. Ctrl+klikšķis, lai slēgtu
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Caurspīdības vietā objektus padarīt neredzamus
 
 # Base for station construction window(s)
