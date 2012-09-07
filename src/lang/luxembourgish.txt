@@ -1343,15 +1343,22 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :all Net-Bauakti
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :all ausser Landëmformungen
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :all Aktiounen
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Benotzt d'erweidert Gefiererlëscht: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Schalt d'erweidert Gefiererlëscht un fir Gefierer ze gruppéieren
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Weist den Luedstatus un: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wielt aus, ob Luedindikatoren iwwert engem Gefier ugewisen ginn oder net, wann et belueden gëtt
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Weis de Zäitplang an Intervallen amplaz vun Deeg: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Weist d'Transportdauer an der Zäittafel als Gameticks un, amplaz an Deeg
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Weis Arrivée an Départ am Zaitplang un: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Weis d'geplangten Departen an Arrivéeën an der Zäittafel un
 STR_CONFIG_SETTING_QUICKGOTO                                    :Schnellkreatiounvun Gefieropträg: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Wiel den 'géi op Zeiger' un, wann d'Optragsfënster opgemeet gëtt
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Standard Schinnentyp (no neiem Spill/geluedenem Spill): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Schinnentyp den gewielt gëtt nom starten oder lueden vun engem Spill. 'éischt verfügbar' wielt den eelsten Typ Schinnen, 'lescht verfügbar' wielt den neisten Typ Schinnen, an 'meescht gebraucht' wielt den Typ den grad am meeschten gebraucht gëtt
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Ëischt verfügbar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Läscht verfügbar
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht benotzten
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Weis reservéiert Strecken: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Fierf reservéiert Schinnen an enger anerer Faarf fir engem ze hëllefen wann Zich refuséieren fir an Wee-baséiert Bléck ze fueren
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Bau-Tools nom Gebrauch aktiv loossen: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ausgaben vun der Firma an der Finanzfënster gruppéiren: {STRING}
 
