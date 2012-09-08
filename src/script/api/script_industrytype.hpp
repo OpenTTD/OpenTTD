@@ -65,11 +65,31 @@ public:
 
 	/**
 	 * Is this industry type a raw industry?
+	 * Raw industries usually produce cargo without any prerequisites.
+	 * ("Usually" means that advanced NewGRF industry concepts might not fit the "raw"/"processing"
+	 * classification, so it's up to the interpretation of the NewGRF author.)
 	 * @param industry_type The type of the industry.
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return True if it should be handled as a raw industry.
+	 * @note Industries might be neither raw nor processing.
+	 *       This is usually the case for industries which produce nothing (e.g. power plants),
+	 *       but also for weird industries like temperate banks and tropic lumber mills.
 	 */
 	static bool IsRawIndustry(IndustryType industry_type);
+
+	/**
+	 * Is this industry type a processing industry?
+	 * Processing industries usually produce cargo when delivered with input cargo.
+	 * ("Usually" means that advanced NewGRF industry concepts might not fit the "raw"/"processing"
+	 * classification, so it's up to the interpretation of the NewGRF author.)
+	 * @param industry_type The type of the industry.
+	 * @pre IsValidIndustryType(industry_type).
+	 * @return True if it is a processing industry.
+	 * @note Industries might be neither raw nor processing.
+	 *       This is usually the case for industries which produce nothing (e.g. power plants),
+	 *       but also for weird industries like temperate banks and tropic lumber mills.
+	 */
+	static bool IsProcessingIndustry(IndustryType industry_type);
 
 	/**
 	 * Can the production of this industry increase?

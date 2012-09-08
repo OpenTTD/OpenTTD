@@ -2722,8 +2722,17 @@ void InitializeIndustries()
  */
 bool IndustrySpec::IsRawIndustry() const
 {
-	/* Lumber mills are extractive/organic, but can always be built like a non-raw industry */
-	return (this->life_type & (INDUSTRYLIFE_EXTRACTIVE | INDUSTRYLIFE_ORGANIC)) != 0 &&
+	return (this->life_type & (INDUSTRYLIFE_EXTRACTIVE | INDUSTRYLIFE_ORGANIC)) != 0;
+}
+
+/**
+ * Is an industry with the spec a processing industry?
+ * @return true if it should be handled as a processing industry
+ */
+bool IndustrySpec::IsProcessingIndustry() const
+{
+	/* Lumber mills are neither raw nor processing */
+	return (this->life_type & INDUSTRYLIFE_PROCESSING) != 0 &&
 			(this->behaviour & INDUSTRYBEH_CUT_TREES) == 0;
 }
 

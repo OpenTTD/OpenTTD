@@ -25,6 +25,7 @@
  * \li GSEventExclusiveTransportRights
  * \li GSEventRoadReconstruction
  * \li GSNews::NT_ACCIDENT, GSNews::NT_COMPANY_INFO, GSNews::NT_ADVICE, GSNews::NT_ACCEPTANCE
+ * \li GSIndustryType::IsProcessingIndustry
  * \li GSStation::IsAirportClosed
  * \li GSStation::OpenCloseAirport
  *

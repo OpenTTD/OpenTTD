@@ -136,6 +136,7 @@ struct IndustrySpec {
 	GRFFileProps grf_prop;                ///< properties related to the grf file
 
 	bool IsRawIndustry() const;
+	bool IsProcessingIndustry() const;
 	Money GetConstructionCost() const;
 	Money GetRemovalCost() const;
 	bool UsesSmoothEconomy() const;

@@ -32,6 +32,13 @@
 	return ::GetIndustrySpec(industry_type)->IsRawIndustry();
 }
 
+/* static */ bool ScriptIndustryType::IsProcessingIndustry(IndustryType industry_type)
+{
+	if (!IsValidIndustryType(industry_type)) return false;
+
+	return ::GetIndustrySpec(industry_type)->IsProcessingIndustry();
+}
+
 /* static */ bool ScriptIndustryType::ProductionCanIncrease(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return false;
