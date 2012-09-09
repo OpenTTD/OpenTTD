@@ -147,11 +147,6 @@ struct StringListReader : StringReader {
 
 		return buffer;
 	}
-
-	/* virtual */ void HandlePragma(char *str)
-	{
-		strgen_fatal("unknown pragma '%s'", str);
-	}
 };
 
 /** Class for writing an encoded language. */

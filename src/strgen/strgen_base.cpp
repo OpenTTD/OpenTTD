@@ -783,6 +783,17 @@ void StringReader::HandleString(char *str)
 	}
 }
 
+void StringReader::HandlePragma(char *str)
+{
+	if (!memcmp(str, "plural ", 7)) {
+		_lang.plural_form = atoi(str + 7);
+		if (_lang.plural_form >= lengthof(_plural_forms)) {
+			strgen_fatal("Invalid pluralform %d", _lang.plural_form);
+		}
+	} else {
+		strgen_fatal("unknown pragma '%s'", str);
+	}
+}
 
 static void rstrip(char *buf)
 {

@@ -147,11 +147,6 @@ void FileStringReader::HandlePragma(char *str)
 		strecpy(_lang.own_name, str + 8, lastof(_lang.own_name));
 	} else if (!memcmp(str, "isocode ", 8)) {
 		strecpy(_lang.isocode, str + 8, lastof(_lang.isocode));
-	} else if (!memcmp(str, "plural ", 7)) {
-		_lang.plural_form = atoi(str + 7);
-		if (_lang.plural_form >= lengthof(_plural_forms)) {
-			error("Invalid pluralform %d", _lang.plural_form);
-		}
 	} else if (!memcmp(str, "textdir ", 8)) {
 		if (!memcmp(str + 8, "ltr", 3)) {
 			_lang.text_dir = TD_LTR;
@@ -208,7 +203,7 @@ void FileStringReader::HandlePragma(char *str)
 			_lang.num_cases++;
 		}
 	} else {
-		error("unknown pragma '%s'", str);
+		StringReader::HandlePragma(str);
 	}
 }
 

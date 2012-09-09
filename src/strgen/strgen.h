@@ -81,7 +81,7 @@ struct StringReader {
 	 * Handle the pragma of the file.
 	 * @param str    The pragma string to parse.
 	 */
-	virtual void HandlePragma(char *str) = 0;
+	virtual void HandlePragma(char *str);
 
 	/**
 	 * Start parsing the file.
