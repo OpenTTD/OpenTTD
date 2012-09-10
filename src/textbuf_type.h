@@ -39,6 +39,7 @@ struct Textbuf {
 	void UpdateSize();
 
 private:
+	bool CanDelChar(bool backspace);
 	void DelChar(bool backspace);
 	bool CanMoveCaretLeft();
 	WChar MoveCaretLeft();

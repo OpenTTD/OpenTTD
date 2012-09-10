@@ -27,11 +27,27 @@ bool GetClipboardContents(char *buffer, size_t buff_len);
 int _caret_timer;
 
 
-/* Delete a character at the caret position in a text buf.
- * If backspace is set, delete the character before the caret,
- * else delete the character after it. */
+/**
+ * Checks if it is possible to delete a character.
+ * @param backspace if set, delete the character before the caret,
+ * otherwise, delete the character after it.
+ * @return true if a character can be deleted in the given direction.
+ */
+bool Textbuf::CanDelChar(bool backspace)
+{
+	return backspace ? this->caretpos != 0 : this->caretpos < this->bytes - 1;
+}
+
+/**
+ * Delete a character at the caret position in a text buf.
+ * @param backspace if set, delete the character before the caret,
+ * else delete the character after it.
+ * @warning You should ensure Textbuf::CanDelChar returns true before calling this function.
+ */
 void Textbuf::DelChar(bool backspace)
 {
+	assert(this->CanDelChar(backspace));
+
 	WChar c;
 	char *s = this->buf + this->caretpos;
 
@@ -60,12 +76,13 @@ void Textbuf::DelChar(bool backspace)
  */
 bool Textbuf::DeleteChar(int delmode)
 {
-	if (delmode == WKC_BACKSPACE && this->caretpos != 0) {
-		this->DelChar(true);
-		return true;
-	} else if (delmode == WKC_DELETE && this->caretpos < this->bytes - 1) {
-		this->DelChar(false);
-		return true;
+	if (delmode == WKC_BACKSPACE || delmode == WKC_DELETE) {
+		bool backspace = delmode == WKC_BACKSPACE;
+		if (CanDelChar(backspace)) {
+			this->DelChar(backspace);
+			return true;
+		}
+		return false;
 	}
 
 	return false;
