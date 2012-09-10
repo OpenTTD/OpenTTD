@@ -40,6 +40,7 @@ struct Textbuf {
 
 private:
 	bool CanDelChar(bool backspace);
+	WChar GetNextDelChar(bool backspace);
 	void DelChar(bool backspace);
 	bool CanMoveCaretLeft();
 	WChar MoveCaretLeft();

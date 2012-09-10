@@ -39,6 +39,29 @@ bool Textbuf::CanDelChar(bool backspace)
 }
 
 /**
+ * Get the next character that will be removed by DelChar.
+ * @param backspace if set, delete the character before the caret,
+ * otherwise, delete the character after it.
+ * @return the next character that will be removed by DelChar.
+ * @warning You should ensure Textbuf::CanDelChar returns true before calling this function.
+ */
+WChar Textbuf::GetNextDelChar(bool backspace)
+{
+	assert(this->CanDelChar(backspace));
+
+	const char *s;
+	if (backspace) {
+		s = Utf8PrevChar(this->buf + this->caretpos);
+	} else {
+		s = this->buf + this->caretpos;
+	}
+
+	WChar c;
+	Utf8Decode(&c, s);
+	return c;
+}
+
+/**
  * Delete a character at the caret position in a text buf.
  * @param backspace if set, delete the character before the caret,
  * else delete the character after it.
@@ -83,6 +106,35 @@ bool Textbuf::DeleteChar(int delmode)
 			return true;
 		}
 		return false;
+	}
+
+	if (delmode == (WKC_CTRL | WKC_BACKSPACE) || delmode == (WKC_CTRL | WKC_DELETE)) {
+		bool backspace = delmode == (WKC_CTRL | WKC_BACKSPACE);
+
+		if (!CanDelChar(backspace)) return false;
+
+		/* Unconditionally delete one char to the left. */
+		this->DelChar(backspace);
+		if (!CanDelChar(backspace)) return false;
+		WChar c = this->GetNextDelChar(backspace);
+
+		/* Backspace: Delete left whitespaces.
+		 * Delete:    Delete right word.
+		 */
+		while (backspace ? IsWhitespace(c) : !IsWhitespace(c)) {
+			this->DelChar(backspace);
+			if (!this->CanDelChar(backspace)) return true;
+			c = this->GetNextDelChar(backspace);
+		}
+		/* Backspace: Delete left word.
+		 * Delete:    Delete right whitespaces.
+		 */
+		while (backspace ? !IsWhitespace(c) : IsWhitespace(c)) {
+			this->DelChar(backspace);
+			if (!this->CanDelChar(backspace)) return true;
+			c = this->GetNextDelChar(backspace);
+		}
+		return true;
 	}
 
 	return false;

@@ -740,6 +740,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			break;
 
 		case WKC_BACKSPACE: case WKC_DELETE:
+		case WKC_CTRL | WKC_BACKSPACE: case WKC_CTRL | WKC_DELETE:
 			if (this->text.DeleteChar(keycode)) w->SetWidgetDirty(wid);
 			break;
 
