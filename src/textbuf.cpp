@@ -152,6 +152,59 @@ bool Textbuf::InsertClipboard()
 }
 
 /**
+ * Checks if it is possible to move carret to the left
+ * @return true if the caret can be moved to the left, otherwise false.
+ */
+bool Textbuf::CanMoveCaretLeft()
+{
+	return this->caretpos != 0;
+}
+
+/**
+ * Moves the caret to the left.
+ * @pre Ensure that Textbuf::CanMoveCaretLeft returns true
+ * @return The character under the caret.
+ */
+WChar Textbuf::MoveCaretLeft()
+{
+	assert(this->CanMoveCaretLeft());
+
+	WChar c;
+	const char *s = Utf8PrevChar(this->buf + this->caretpos);
+	Utf8Decode(&c, s);
+	this->caretpos    = s - this->buf;
+	this->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
+
+	return c;
+}
+
+/**
+ * Checks if it is possible to move carret to the right
+ * @return true if the caret can be moved to the right, otherwise false.
+ */
+bool Textbuf::CanMoveCaretRight()
+{
+	return this->caretpos < this->bytes - 1;
+}
+
+/**
+ * Moves the caret to the right.
+ * @pre Ensure that Textbuf::CanMoveCaretRight returns true
+ * @return The character under the caret.
+ */
+WChar Textbuf::MoveCaretRight()
+{
+	assert(this->CanMoveCaretRight());
+
+	WChar c;
+	this->caretpos   += (uint16)Utf8Decode(&c, this->buf + this->caretpos);
+	this->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
+
+	Utf8Decode(&c, this->buf + this->caretpos);
+	return c;
+}
+
+/**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next characer interaction will occur
  * @param navmode Direction in which navigation occurs WKC_LEFT, WKC_RIGHT, WKC_END, WKC_HOME
@@ -161,24 +214,15 @@ bool Textbuf::MovePos(int navmode)
 {
 	switch (navmode) {
 		case WKC_LEFT:
-			if (this->caretpos != 0) {
-				WChar c;
-				const char *s = Utf8PrevChar(this->buf + this->caretpos);
-				Utf8Decode(&c, s);
-				this->caretpos    = s - this->buf; // -= (this->buf + this->caretpos - s)
-				this->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
-
+			if (this->CanMoveCaretLeft()) {
+				this->MoveCaretLeft();
 				return true;
 			}
 			break;
 
 		case WKC_RIGHT:
-			if (this->caretpos < this->bytes - 1) {
-				WChar c;
-
-				this->caretpos   += (uint16)Utf8Decode(&c, this->buf + this->caretpos);
-				this->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
-
+			if (this->CanMoveCaretRight()) {
+				this->MoveCaretRight();
 				return true;
 			}
 			break;

@@ -12,6 +12,8 @@
 #ifndef TEXTBUF_TYPE_H
 #define TEXTBUF_TYPE_H
 
+#include "string_type.h"
+
 /** Helper/buffer for input fields. */
 struct Textbuf {
 	char *buf;                ///< buffer in which text is saved
@@ -38,6 +40,11 @@ struct Textbuf {
 
 private:
 	void DelChar(bool backspace);
+	bool CanMoveCaretLeft();
+	WChar MoveCaretLeft();
+	bool CanMoveCaretRight();
+	WChar MoveCaretRight();
+
 };
 
 #endif /* TEXTBUF_TYPE_H */
