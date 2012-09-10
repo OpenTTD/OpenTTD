@@ -744,6 +744,7 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			break;
 
 		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+		case WKC_CTRL | WKC_LEFT: case WKC_CTRL | WKC_RIGHT:
 			if (this->text.MovePos(keycode)) w->SetWidgetDirty(wid);
 			break;
 

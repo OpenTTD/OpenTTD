@@ -224,7 +224,7 @@ WChar Textbuf::MoveCaretRight()
 /**
  * Handle text navigation with arrow keys left/right.
  * This defines where the caret will blink and the next characer interaction will occur
- * @param navmode Direction in which navigation occurs WKC_LEFT, WKC_RIGHT, WKC_END, WKC_HOME
+ * @param navmode Direction in which navigation occurs (WKC_CTRL |) WKC_LEFT, (WKC_CTRL |) WKC_RIGHT, WKC_END, WKC_HOME
  * @return Return true on successful change of Textbuf, or false otherwise
  */
 bool Textbuf::MovePos(int navmode)
@@ -237,12 +237,50 @@ bool Textbuf::MovePos(int navmode)
 			}
 			break;
 
+		case WKC_CTRL | WKC_LEFT: {
+			if (!this->CanMoveCaretLeft()) break;
+
+			/* Unconditionally move one char to the left. */
+			WChar c = this->MoveCaretLeft();
+			/* Consume left whitespaces. */
+			while (IsWhitespace(c)) {
+				if (!this->CanMoveCaretLeft()) return true;
+				c = this->MoveCaretLeft();
+			}
+			/* Consume left word. */
+			while (!IsWhitespace(c)) {
+				if (!this->CanMoveCaretLeft()) return true;
+				c = this->MoveCaretLeft();
+			}
+			/* Place caret at the begining of the left word. */
+			this->MoveCaretRight();
+			return true;
+		}
+
 		case WKC_RIGHT:
 			if (this->CanMoveCaretRight()) {
 				this->MoveCaretRight();
 				return true;
 			}
 			break;
+
+		case WKC_CTRL | WKC_RIGHT: {
+			if (!this->CanMoveCaretRight()) break;
+
+			/* Unconditionally move one char to the right. */
+			WChar c = this->MoveCaretRight();
+			/* Continue to consume current word. */
+			while (!IsWhitespace(c)) {
+				if (!this->CanMoveCaretRight()) return true;
+				c = this->MoveCaretRight();
+			}
+			/* Consume right whitespaces. */
+			while (IsWhitespace(c)) {
+				if (!this->CanMoveCaretRight()) return true;
+				c = this->MoveCaretRight();
+			}
+			return true;
+		}
 
 		case WKC_HOME:
 			this->caretpos = 0;
