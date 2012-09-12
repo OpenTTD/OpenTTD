@@ -132,7 +132,7 @@ static char **_langpack_offs;
 static LanguagePack *_langpack;
 static uint _langtab_num[TAB_COUNT];   ///< Offset into langpack offs
 static uint _langtab_start[TAB_COUNT]; ///< Offset into langpack offs
-static bool _keep_gender_data = false;  ///< Should we retain the gender data in the current string?
+static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender of the current string? (instead of formatting it)
 
 
 const char *GetStringPtr(StringID string)
@@ -879,11 +879,11 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 					/* Now do the string formatting. */
 					char buf[256];
-					bool old_kgd = _keep_gender_data;
-					_keep_gender_data = true;
+					bool old_sgd = _scan_for_gender_data;
+					_scan_for_gender_data = true;
 					StringParameters tmp_params(args->GetPointerToOffset(offset), args->num_param - offset, NULL);
 					p = FormatString(buf, input, &tmp_params, lastof(buf));
-					_keep_gender_data = old_kgd;
+					_scan_for_gender_data = old_sgd;
 					*p = '\0';
 
 					/* And determine the string. */
@@ -899,7 +899,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 			/* This sets up the gender for the string.
 			 * We just ignore this one. It's used in {G 0 Der Die Das} to determine the case. */
 			case SCC_GENDER_INDEX: // {GENDER 0}
-				if (_keep_gender_data) {
+				if (_scan_for_gender_data) {
 					buff += Utf8Encode(buff, SCC_GENDER_INDEX);
 					*buff++ = *str++;
 				} else {
