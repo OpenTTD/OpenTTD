@@ -1313,11 +1313,18 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				const Industry *i = Industry::GetIfValid(args->GetInt32(SCC_INDUSTRY_NAME));
 				if (i == NULL) break;
 
-				/* First print the town name and the industry type name. */
-				int64 args_array[2] = {i->town->index, GetIndustrySpec(i->type)->name};
-				StringParameters tmp_params(args_array);
+				if (_scan_for_gender_data) {
+					/* Gender is defined by the industry type.
+					 * STR_FORMAT_INDUSTRY_NAME may have the town first, so it would result in the gender of the town name */
+					StringParameters tmp_params(NULL, 0, NULL);
+					buff = FormatString(buff, GetStringPtr(GetIndustrySpec(i->type)->name), &tmp_params, last, next_substr_case_index);
+				} else {
+					/* First print the town name and the industry type name. */
+					int64 args_array[2] = {i->town->index, GetIndustrySpec(i->type)->name};
+					StringParameters tmp_params(args_array);
 
-				buff = FormatString(buff, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), &tmp_params, last, next_substr_case_index);
+					buff = FormatString(buff, GetStringPtr(STR_FORMAT_INDUSTRY_NAME), &tmp_params, last, next_substr_case_index);
+				}
 				next_substr_case_index = 0;
 				break;
 			}
