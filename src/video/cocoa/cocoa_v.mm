@@ -241,7 +241,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 	CocoaSubdriver *ret;
 #endif
 
-#ifdef ENABLE_COCOA_QUARTZ && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
+#if defined(ENABLE_COCOA_QUARTZ) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 	/* The reason for the version mismatch is due to the fact that the 10.4 binary needs to work on 10.5 as well. */
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
 		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
@@ -254,7 +254,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 	if (ret != NULL) return ret;
 #endif
 
-#ifdef ENABLE_COCOA_QUARTZ && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
+#if defined(ENABLE_COCOA_QUARTZ) && (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
 	/*
 	 * If we get here we are running 10.4 or earlier and either openttd was compiled without the QuickDraw driver
 	 * or it failed to load for some reason. Fall back to Quartz if possible even though that driver is slower.
