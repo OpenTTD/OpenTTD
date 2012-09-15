@@ -1330,7 +1330,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sl
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezervētās sliedes: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezerves sliežu ceļus: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Būvniecības rīkus pēc lietošanas paturēt darbīgus: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pēc lietošanas patur atvērtus tiltu, tuneļu un citus būvniecības rīkus
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finanšu informācijas logā: {STRING}
@@ -1467,7 +1467,7 @@ STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacija
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Sāncenši
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna opcijas
-STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Saziņa
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Mijiedarbība
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Kravu pārvietošana
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Nespēlētāju tēli (datora vadīti)
