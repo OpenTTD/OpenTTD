@@ -645,7 +645,12 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 				Vehicle *u = v->Move((int32)GetRegister(0x10F));
 				if (u == NULL) return 0;
 
-				return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
+				if (parameter == 0x5F) {
+					/* This seems to be the only variable that makes sense to access via var 61, but is not handled by VehicleGetVariable */
+					return (u->random_bits << 8) | u->waiting_triggers;
+				} else {
+					return VehicleGetVariable(u, object, parameter, GetRegister(0x10E), available);
+				}
 			}
 			return 0;
 
