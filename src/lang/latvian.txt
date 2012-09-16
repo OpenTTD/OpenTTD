@@ -1143,9 +1143,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} lauciņ
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Transportlīdzekļu izmešu efektu daudzums: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Nosaka transportlīdzekļu izmesto dūmu un dzirksteļu daudzumu
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Vilcienu paātrinājuma modelis: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Autotransporta līdzekļu paātrinājuma fizikas modeļa izvēle. "Sākotnējais" modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. "Reālistiskais" modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām dzinēja īpašībām. Piemēram, no vilcējspēka
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vilcienu paātrinājuma fizikas modeļa izvēle. 'Sākotnējais' modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. 'Reālistiskais' modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām sastāva īpašībām. Piemēram, no garuma un vilcējspēka
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Autotransporta līdzekļu paātrinājuma modelis: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Izvēlēties autotransporta līdzekļu paātrinājuma fizikas modeli. "Sākotnējais" modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. "Reālistiskais" modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām dzinēja īpašībām. Piemēram, no vilcējspēka
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Autotransporta līdzekļu paātrinājuma fizikas modeļa izvēle. 'Sākotnējais' modelis apgrūtina pārvietošanos nogāzēs visiem transportlīdzekļiem vienādi. 'Reālistiskais' modelis apgrūtina pārvietošanos nogāzēs un līkumos atkarībā no dažādām dzinēja īpašībām. Piemēram, no vilcējspēka
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Slīpu lauciņu nogāžu stāvums vilcieniem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1174,6 +1174,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pus
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Transportlīdzeklis parasti pietur pie katras caurbraucamās stacijas. Ieslēdzot šo iestatījumu, tas dosies cauri visām ceļa stacijām uz savu galamērķi bez pieturām. Ņemiet vērā, ka šis iestatījums nosaka noklusējuma vērtību tikai jaunajiem rīkojumiem. Tomēr ir iespējams katru rīkojumu iestatīt arī atsevišķi
 STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklusējuma rīkojumi liek apstāties platformas {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :beigu tuvumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
@@ -1211,7 +1212,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo 
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Brīdināt, ja transportlīdzeklis ir noklīdis: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Ieslēgt ziņojumus par transportlīdzekļiem kas nespēj atrast ceļu uz norīkoto galamērķi
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārskatīt transportlīdzekļu rīkojumus: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Pārbaudīt transportlīdzekļu rīkojumus: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Ja ieslēgts, tad transportlīdzekļu rīkojumus pastāvīgi pārbauda, un par dažām atklātajām problēmām tiek saņemti ziņojumi
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apturētajiem
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :visiem transportlīdzekļiem
@@ -1327,6 +1329,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Kustības sarak
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kustības sarakstos rādīt paredzamos pienākšanas un atiešanas laikus
 STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu veids (pēc jaunas spēles/spēles ielādes): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Izvēlētais sliežu veids sākot vai ielādējot spēli. 'Pirmās pieejamās' ir vecākā veida, 'pēdējās pieejamās' ir jaunākā veida, un 'visbiežāk lietotās' ir pašlaik visvairāk lietoto sliežu ceļu izvēlnes
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
@@ -1337,6 +1340,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevum
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Noteikt uzņēmuma izdevumu loga izkārtojumu
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Atspējot infrastruktūras būvēšanu, ja nav piemērotu transportlīdzekļu: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ja ieslēgts, infrastruktūra ir pieejama tikai tad, ja tur ir pieejami arī transportlīdzekļi, novēršot laika un naudas izšķiešanu par nelietojamu infrastruktūru
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maksimālais vilcienu skaits uzņēmumā: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maksimālais vilcienu skaits, kas var piederēt uzņēmumam
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maksimālais autotransporta līdzekļu skaits uzņēmumā: {STRING}

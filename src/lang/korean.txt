@@ -2726,8 +2726,8 @@ STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGI
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}의 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이 경우 자동 교체시 개조에 실패할 수도 있습니다.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' (이)가 잘못된 정보를 제공하고 있습니다.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다.
 

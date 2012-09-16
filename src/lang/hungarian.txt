@@ -340,8 +340,8 @@ STR_SORT_BY_LIFE_TIME                                           :Élettartamból
 STR_SORT_BY_TIMETABLE_DELAY                                     :Menetrendi késés
 STR_SORT_BY_FACILITY                                            :Állomástípus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
-STR_SORT_BY_RATING_MAX                                          :Legtöbb rakomány szerint
-STR_SORT_BY_RATING_MIN                                          :Legkevesebb rakomány szerint
+STR_SORT_BY_RATING_MAX                                          :Legjobb vélemény szerint
+STR_SORT_BY_RATING_MIN                                          :Legrosszabb vélemény szerint
 STR_SORT_BY_ENGINE_ID                                           :JárműID
 STR_SORT_BY_COST                                                :Ár
 STR_SORT_BY_POWER                                               :Telj.
