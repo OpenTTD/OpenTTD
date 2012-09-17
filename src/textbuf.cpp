@@ -112,10 +112,6 @@ bool Textbuf::DeleteChar(int delmode)
 		bool backspace = delmode == (WKC_CTRL | WKC_BACKSPACE);
 
 		if (!CanDelChar(backspace)) return false;
-
-		/* Unconditionally delete one char to the left. */
-		this->DelChar(backspace);
-		if (!CanDelChar(backspace)) return false;
 		WChar c = this->GetNextDelChar(backspace);
 
 		/* Backspace: Delete left whitespaces.
