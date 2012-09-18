@@ -59,6 +59,7 @@ public:
 	 *   After all, it is a random function.
 	 * @param out How many times it should return true.
 	 * @param max Out of this many times.
+	 * @pre \a out is at most equal to \a max.
 	 * @return True if the chance worked out.
 	 */
 	static bool Chance(uint out, uint max);
