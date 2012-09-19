@@ -1255,6 +1255,27 @@ public:
 		this->SetDirty();
 	}
 
+	/**
+	 * Determines the mouse position on the legend.
+	 * @param pt Mouse position.
+	 * @return Legend item under the mouse.
+	 */
+	int GetPositionOnLegend(Point pt)
+	{
+		const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND);
+		uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
+		uint columns = this->GetNumberColumnsLegend(wi->current_x);
+		uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
+		if (line >= number_of_rows) return -1;
+
+		bool rtl = _current_text_dir == TD_RTL;
+		int x = pt.x - wi->pos_x;
+		if (rtl) x = wi->current_x - x;
+		uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
+
+		return (column * number_of_rows) + line;
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		/* User clicked something, notify the industry chain window to stop sending newly selected industries. */
@@ -1322,22 +1343,11 @@ public:
 
 			case WID_SM_LEGEND: // Legend
 				if (this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) {
-					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(WID_SM_LEGEND); // Label panel
-					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
-					uint columns = this->GetNumberColumnsLegend(wi->current_x);
-					uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
-					if (line >= number_of_rows) break;
-
-					bool rtl = _current_text_dir == TD_RTL;
-					int x = pt.x - wi->pos_x;
-					if (rtl) x = wi->current_x - x;
-					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
-
 					/* If industry type small map*/
 					if (this->map_type == SMT_INDUSTRY) {
 						/* If click on industries label, find right industry type and enable/disable it. */
-						int industry_pos = (column * number_of_rows) + line;
-						if (industry_pos < _smallmap_industry_count) {
+						int industry_pos = GetPositionOnLegend(pt);
+						if (industry_pos >= 0 && industry_pos < _smallmap_industry_count) {
 							if (_ctrl_pressed) {
 								/* Disable all, except the clicked one. */
 								bool changes = false;
@@ -1360,7 +1370,7 @@ public:
 						}
 					} else if (this->map_type == SMT_OWNER) {
 						/* If click on companies label, find right company and enable/disable it. */
-						int company_pos = (column * number_of_rows) + line;
+						int company_pos = GetPositionOnLegend(pt);
 						if (company_pos < NUM_NO_COMPANY_ENTRIES) break;
 						if (company_pos < _smallmap_company_count) {
 							if (_ctrl_pressed) {
