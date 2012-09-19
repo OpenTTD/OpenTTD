@@ -158,6 +158,10 @@ static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 /** Show heightmap in industry and owner mode of smallmap window. */
 static bool _smallmap_show_heightmap = false;
+/** Highlight a specific industry type */
+static IndustryType _smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
+/** State of highlight blinking */
+static bool _smallmap_industry_highlight_state;
 /** For connecting company ID to position in owner list (small map legend) */
 static uint _company_to_list_pos[MAX_COMPANIES];
 
@@ -441,8 +445,10 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 {
 	if (t == MP_INDUSTRY) {
 		/* If industry is allowed to be seen, use its colour on the map */
-		if (_legend_from_industries[_industry_to_list_pos[Industry::GetByTile(tile)->type]].show_on_map) {
-			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
+		IndustryType type = Industry::GetByTile(tile)->type;
+		if (_legend_from_industries[_industry_to_list_pos[type]].show_on_map &&
+				(_smallmap_industry_highlight_state || type != _smallmap_industry_highlight)) {
+			return (type == _smallmap_industry_highlight ? PC_WHITE : GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour) * 0x01010101;
 		} else {
 			/* Otherwise, return the colour which will make it disappear */
 			t = (IsTileOnWater(tile) ? MP_WATER : MP_CLEAR);
@@ -595,7 +601,8 @@ class SmallMapWindow : public Window {
 	int32 subscroll; ///< Number of pixels (0..3) between the right end of the base tile and the pixel at the top-left corner of the smallmap display.
 	int zoom;        ///< Zoom level. Bigger number means more zoom-out (further away).
 
-	static const uint8 FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
+	static const uint FORCE_REFRESH_PERIOD = 0x1F; ///< map is redrawn after that many ticks
+	static const uint BLINK_PERIOD         = 0x0F; ///< highlight blinking interval
 	uint8 refresh; ///< refresh counter, zeroed every FORCE_REFRESH_PERIOD ticks
 
 	inline Point SmallmapRemapCoords(int x, int y) const
@@ -1053,6 +1060,7 @@ public:
 
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(), refresh(FORCE_REFRESH_PERIOD)
 	{
+		_smallmap_industry_highlight = INVALID_INDUSTRYTYPE;
 		this->InitNested(desc, window_number);
 		this->LowerWidget(this->map_type + WID_SM_CONTOUR);
 
@@ -1202,6 +1210,8 @@ public:
 						i = 1;
 					}
 
+					uint8 legend_colour = tbl->colour;
+
 					if (this->map_type == SMT_INDUSTRY) {
 						/* Industry name must be formatted, since it's not in tiny font in the specs.
 						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
@@ -1212,6 +1222,9 @@ public:
 							 * This will enforce the idea of the disabled item */
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 						} else {
+							if (tbl->type == _smallmap_industry_highlight) {
+								legend_colour = _smallmap_industry_highlight_state ? PC_WHITE : PC_BLACK;
+							}
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK); // Outer border of the legend colour
 						}
@@ -1232,7 +1245,7 @@ public:
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, PC_BLACK);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);
 					}
-					GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, tbl->colour); // Legend colour
+					GfxFillRect(x + blob_left + 1, y + 2, x + blob_right - 1, y + row_height - 2, legend_colour); // Legend colour
 
 					y += row_height;
 				}
@@ -1274,6 +1287,23 @@ public:
 		uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
 
 		return (column * number_of_rows) + line;
+	}
+
+	virtual void OnMouseOver(Point pt, int widget)
+	{
+		IndustryType new_highlight = INVALID_INDUSTRYTYPE;
+		if (widget == WID_SM_LEGEND && this->map_type == SMT_INDUSTRY) {
+			int industry_pos = GetPositionOnLegend(pt);
+			if (industry_pos >= 0 && industry_pos < _smallmap_industry_count) {
+				new_highlight = _legend_from_industries[industry_pos].type;
+			}
+		}
+		if (new_highlight != _smallmap_industry_highlight) {
+			_smallmap_industry_highlight = new_highlight;
+			this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
+			_smallmap_industry_highlight_state = true;
+			this->SetDirty();
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1489,7 +1519,9 @@ public:
 		/* Update the window every now and then */
 		if (--this->refresh != 0) return;
 
-		this->refresh = FORCE_REFRESH_PERIOD;
+		_smallmap_industry_highlight_state = !_smallmap_industry_highlight_state;
+
+		this->refresh = _smallmap_industry_highlight != INVALID_INDUSTRYTYPE ? BLINK_PERIOD : FORCE_REFRESH_PERIOD;
 		this->SetDirty();
 	}
 
