@@ -570,15 +570,12 @@ static void ShipController(Ship *v)
 				}
 			}
 		} else {
-			DiagDirection diagdir;
 			/* New tile */
-			if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY()) {
-				goto reverse_direction;
-			}
+			if (!IsValidTile(gp.new_tile)) goto reverse_direction;
 
 			dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
 			assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
-			diagdir = DirToDiagDir(dir);
+			DiagDirection diagdir = DirToDiagDir(dir);
 			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
 			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
 
