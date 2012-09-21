@@ -54,9 +54,9 @@ ScriptInstance::ScriptInstance(const char *APIName) :
 	instance(NULL),
 	is_started(false),
 	is_dead(false),
-	is_paused(false),
 	is_save_data_on_stack(false),
 	suspend(0),
+	is_paused(false),
 	callback(NULL)
 {
 	this->storage = new ScriptStorage();
