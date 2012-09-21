@@ -15,10 +15,14 @@
 #include "../../rev.h"
 
 #include "script_controller.hpp"
+#include "script_error.hpp"
 #include "../script_fatalerror.hpp"
 #include "../script_info.hpp"
 #include "../script_instance.hpp"
 #include "script_log.hpp"
+#include "../../ai/ai_gui.hpp"
+#include "../../settings_type.h"
+#include "../../network/network.h"
 
 /* static */ void ScriptController::SetCommandDelay(int ticks)
 {
@@ -38,6 +42,26 @@
 	}
 
 	throw Script_Suspend(ticks, NULL);
+}
+
+/* static */ bool ScriptController::Break(const char* message)
+{
+#ifdef ENABLE_NETWORK
+	if (!_network_dedicated) return false;
+#endif
+	if (!_settings_client.gui.ai_developer_tools) return false;
+
+	ScriptObject::GetActiveInstance()->Pause();
+
+	char log_message[1024];
+	snprintf(log_message, sizeof(log_message), "Break: %s", message);
+	ScriptLog::Log(ScriptLog::LOG_SQ_ERROR, log_message);
+
+	/* Inform script developer that his script has been paused and
+	 * needs manual action to continue. */
+	ShowAIDebugWindow(ScriptObject::GetRootCompany());
+
+	return true;
 }
 
 /* static */ void ScriptController::Print(bool error_msg, const char *message)

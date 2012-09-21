@@ -105,6 +105,18 @@ public:
 	static void Sleep(int ticks);
 
 	/**
+	 * Break execution of the script when script developer tools are active. For
+	 * other users, nothing will happen when you call this function. To resume
+	 * the script, you have to click on the continue button in the AI debug
+	 * window. It is not recommended to leave calls to this function in scripts
+	 * that you publish or upload to bananas.
+	 * @param message to print in the AI debug window when the break occurs.
+	 * @note gui.ai_developer_tools setting must be enabled or the break is
+	 * ignored.
+	 */
+	static bool Break(const char* message);
+
+	/**
 	 * When Squirrel triggers a print, this function is called.
 	 *  Squirrel calls this when 'print' is used, or when the script made an error.
 	 * @param error_msg If true, it is a Squirrel error message.

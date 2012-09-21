@@ -20,6 +20,7 @@ void SQAIController_Register(Squirrel *engine)
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetOpsTillSuspend, "GetOpsTillSuspend", 1, ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::SetCommandDelay,   "SetCommandDelay",   2, ".i");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::Sleep,             "Sleep",             2, ".i");
+	SQAIController.DefSQStaticMethod(engine, &ScriptController::Break,             "Break",             2, ".s");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetSetting,        "GetSetting",        2, ".s");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::GetVersion,        "GetVersion",        1, ".");
 	SQAIController.DefSQStaticMethod(engine, &ScriptController::Print,             "Print",             3, ".bs");
