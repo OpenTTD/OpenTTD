@@ -458,8 +458,8 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 	byte entry_z = GetSlopePixelZ(entry_x, entry_y);
 
 	/* Compute middle of the tile. */
-	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
-	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
+	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
+	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + TILE_SIZE / 2;
 	byte middle_z = GetSlopePixelZ(middle_x, middle_y);
 
 	/* middle_z == entry_z, no height change. */
