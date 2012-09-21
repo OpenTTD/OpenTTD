@@ -47,6 +47,26 @@ public:
 	static void Uninitialize(bool keepConfig);
 
 	/**
+	 * Suspends the Game Script and then pause the execution of the script. The
+	 * script will not be resumed from its suspended state until the script
+	 * has been unpaused.
+	 */
+	static void Pause();
+
+	/**
+	 * Resume execution of the Game Script. This function will not actually execute
+	 * the script, but set a flag so that the script is executed my the usual
+	 * mechanism that executes the script.
+	 */
+	static void Unpause();
+
+	/**
+	 * Checks if the Game Script is paused.
+	 * @return true if the Game Script is paused, otherwise false.
+	 */
+	static bool IsPaused();
+
+	/**
 	 * Queue a new event for a Game Script.
 	 */
 	static void NewEvent(class ScriptEvent *event);

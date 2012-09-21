@@ -112,14 +112,35 @@
 	DeleteWindowById(WC_AI_SETTINGS, company);
 }
 
-/* static */ void AI::Suspend(CompanyID company)
+/* static */ void AI::Pause(CompanyID company)
 {
-	if (_networking && !_network_server) return;
+	/* The reason why dedicated servers are forbidden to execute this
+	 * command is not because it is unsafe, but because there is no way
+	 * for the server owner to unpause the script again. */
+	if (_network_dedicated) return;
 
 	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
-	Company::Get(company)->ai_instance->Suspend();
+	Company::Get(company)->ai_instance->Pause();
 
 	cur_company.Restore();
+}
+
+/* static */ void AI::Unpause(CompanyID company)
+{
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	Company::Get(company)->ai_instance->Unpause();
+
+	cur_company.Restore();
+}
+
+/* static */ bool AI::IsPaused(CompanyID company)
+{
+	Backup<CompanyByte> cur_company(_current_company, company, FILE_LINE);
+	bool paused = Company::Get(company)->ai_instance->IsPaused();
+
+	cur_company.Restore();
+
+	return paused;
 }
 
 /* static */ void AI::KillAll()

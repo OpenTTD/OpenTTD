@@ -140,12 +140,24 @@ public:
 	static void LoadEmpty();
 
 	/**
-	 * Reduces the number of opcodes the script have left to zero. Unless
-	 * the script is in a state where it cannot suspend it will be suspended
-	 * for the reminder of the current tick. This function is safe to
-	 * call from within a function called by the script.
+	 * Suspends the script for the current tick and then pause the execution
+	 * of script. The script will not be resumed from its suspended state
+	 * until the script has been unpaused.
 	 */
-	void Suspend();
+	void Pause();
+
+	/**
+	 * Checks if the script is paused.
+	 * @return true if the script is paused, otherwise false
+	 */
+	bool IsPaused();
+
+	/**
+	 * Resume execution of the script. This function will not actually execute
+	 * the script, but set a flag so that the script is executed my the usual
+	 * mechanism that executes the script.
+	 */
+	void Unpause();
 
 	/**
 	 * Get the number of operations the script can execute before being suspended.
@@ -171,7 +183,8 @@ public:
 
 	/**
 	 * Check if the instance is sleeping, which either happened because the
-	 *  script executed a DoCommand, or executed this.Sleep().
+	 *  script executed a DoCommand, executed this.Sleep() or it has been
+	 *  paused.
 	 */
 	bool IsSleeping() { return this->suspend != 0; }
 
@@ -216,6 +229,7 @@ private:
 	bool is_dead;                         ///< True if the script has been stopped.
 	bool is_save_data_on_stack;           ///< Is the save data still on the squirrel stack?
 	int suspend;                          ///< The amount of ticks to suspend this script before it's allowed to continue.
+	bool is_paused;                       ///< Is the script paused? (a paused script will not be executed until unpaused)
 	Script_SuspendCallbackProc *callback; ///< Callback that should be called in the next tick the script runs.
 
 	/**

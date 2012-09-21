@@ -54,6 +54,7 @@ ScriptInstance::ScriptInstance(const char *APIName) :
 	instance(NULL),
 	is_started(false),
 	is_dead(false),
+	is_paused(false),
 	is_save_data_on_stack(false),
 	suspend(0),
 	callback(NULL)
@@ -165,6 +166,7 @@ void ScriptInstance::GameLoop()
 		this->Died();
 		return;
 	}
+	if (this->is_paused) return;
 	this->controller->ticks++;
 
 	if (this->suspend   < -1) this->suspend++; // Multiplayer suspend, increase up to -1.
@@ -520,10 +522,23 @@ void ScriptInstance::Save()
 	}
 }
 
-void ScriptInstance::Suspend()
+void ScriptInstance::Pause()
 {
+	/* Suspend script. */
 	HSQUIRRELVM vm = this->engine->GetVM();
 	Squirrel::DecreaseOps(vm, _settings_game.script.script_max_opcode_till_suspend);
+
+	this->is_paused = true;
+}
+
+void ScriptInstance::Unpause()
+{
+	this->is_paused = false;
+}
+
+bool ScriptInstance::IsPaused()
+{
+	return this->is_paused;
 }
 
 /* static */ bool ScriptInstance::LoadObjects(HSQUIRRELVM vm)

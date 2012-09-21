@@ -117,6 +117,21 @@
 	}
 }
 
+/* static */ void Game::Pause()
+{
+	if (Game::instance != NULL) Game::instance->Pause();
+}
+
+/* static */ void Game::Unpause()
+{
+	if (Game::instance != NULL) Game::instance->Unpause();
+}
+
+/* static */ bool Game::IsPaused()
+{
+	return Game::instance != NULL? Game::instance->IsPaused() : false;
+}
+
 /* static */ void Game::NewEvent(ScriptEvent *event)
 {
 	/* AddRef() and Release() need to be called at least once, so do it here */

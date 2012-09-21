@@ -961,11 +961,15 @@ void ShowAIConfigWindow()
  * state of the script. (dead or alive)
  * @param button the button to update.
  * @param dead true if the script is dead, otherwise false.
+ * @param paused true if the script is paused, otherwise false.
  * @return true if the colour was changed and the window need to be marked as dirty.
  */
-static bool SetScriptButtonColour(NWidgetCore &button, bool dead)
+static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 {
-	Colours colour = dead ? COLOUR_RED : COLOUR_GREY;
+	/* Dead scripts are indicated with red background and
+	 * paused scripts are indicated with yellow background. */
+	Colours colour = dead ? COLOUR_RED :
+			(paused ? COLOUR_YELLOW : COLOUR_GREY);
 	if (button.colour != colour) {
 		button.colour = colour;
 		return true;
@@ -1035,8 +1039,10 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* Restore button state from static class variables */
 		if (ai_debug_company == OWNER_DEITY) {
 			this->LowerWidget(WID_AID_SCRIPT_GAME);
+			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !Game::IsPaused());
 		} else if (ai_debug_company != INVALID_COMPANY) {
 			this->LowerWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
+			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !AI::IsPaused(ai_debug_company));
 		}
 		this->SetWidgetLoweredState(WID_AID_BREAK_STR_ON_OFF_BTN, this->break_check_enabled);
 		this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
@@ -1107,11 +1113,12 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				dirty = true;
 			}
 
-			/* Mark dead AIs by red background. */
+			/* Mark dead/paused AIs by setting the background colour. */
 			bool dead = valid && Company::Get(i)->ai_instance->IsDead();
+			bool paused = valid && Company::Get(i)->ai_instance->IsPaused();
 			/* Re-paint if the button was updated.
 			 * (note that it is intentional that SetScriptButtonColour is always called) */
-			dirty = SetScriptButtonColour(*button, dead) || dirty;
+			dirty = SetScriptButtonColour(*button, dead, paused) || dirty;
 
 			/* Do we need a repaint? */
 			if (dirty) this->SetDirty();
@@ -1125,8 +1132,9 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		/* Set button colour for Game Script. */
 		GameInstance *game = Game::GetInstance();
 		bool dead = game != NULL && game->IsDead();
+		bool paused = game != NULL && game->IsPaused();
 		NWidgetCore *button = this->GetWidget<NWidgetCore>(WID_AID_SCRIPT_GAME);
-		if (SetScriptButtonColour(*button, dead)) {
+		if (SetScriptButtonColour(*button, dead, paused)) {
 			/* Re-paint if the button was updated. */
 			this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
 		}
@@ -1243,10 +1251,13 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		if (ai_debug_company == OWNER_DEITY) {
 			this->LowerWidget(WID_AID_SCRIPT_GAME);
+			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !Game::IsPaused());
 		} else {
 			this->LowerWidget(ai_debug_company + WID_AID_COMPANY_BUTTON_START);
+			this->SetWidgetDisabledState(WID_AID_CONTINUE_BTN, !AI::IsPaused(ai_debug_company));
 		}
 
+		this->highlight_row = -1; // The highlight of one AI make little sense for another AI.
 		this->autoscroll = true;
 		this->last_vscroll_pos = this->vscroll->GetPosition();
 		this->SetDirty();
@@ -1292,8 +1303,35 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				break;
 
 			case WID_AID_CONTINUE_BTN:
-				/* Unpause */
-				DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+				/* Unpause current AI / game script and mark the corresponding script button dirty. */
+				if (ai_debug_company == OWNER_DEITY) {
+					Game::Unpause();
+					this->SetWidgetDirty(WID_AID_SCRIPT_GAME);
+				} else {
+					AI::Unpause(ai_debug_company);
+					this->SetWidgetDirty(WID_AID_COMPANY_BUTTON_START + ai_debug_company);
+				}
+
+				/* If the last AI/Game Script is unpaused, unpause the game too. */
+				if ((_pause_mode & PM_PAUSED_NORMAL) == PM_PAUSED_NORMAL) {
+					bool all_unpaused = !Game::IsPaused();
+					if (all_unpaused) {
+						Company *c;
+						FOR_ALL_COMPANIES(c) {
+							if (c->is_ai && AI::IsPaused(c->index)) {
+								all_unpaused = false;
+								break;
+							}
+						}
+						if (all_unpaused) {
+							/* All scripts have been unpaused => unpause the game. */
+							DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE);
+						}
+					}
+				}
+
+				this->highlight_row = -1;
+				this->SetWidgetDirty(WID_AID_LOG_PANEL);
 				this->DisableWidget(WID_AID_CONTINUE_BTN);
 				this->RaiseWidget(WID_AID_CONTINUE_BTN); // Disabled widgets don't raise themself
 				break;
@@ -1334,9 +1372,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		if (gui_scope && data == -2) {
 			/* The continue button should be disabled when the game is unpaused and
-			 * it was previously paused by the break string ( = a line in the log
-			 * was highlighted )*/
-			if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED && this->highlight_row != -1) {
+			 * it was previously paused. */
+			if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED && !this->IsWidgetDisabled(WID_AID_CONTINUE_BTN)) {
 				this->DisableWidget(WID_AID_CONTINUE_BTN);
 				this->SetWidgetDirty(WID_AID_CONTINUE_BTN);
 				this->SetWidgetDirty(WID_AID_LOG_PANEL);
@@ -1346,7 +1383,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
-		if (ai_debug_company != OWNER_DEITY && !gui_scope && data == ai_debug_company && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
+		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {
 			/* Get the log instance of the active company */
 			ScriptLog::LogData *log = this->GetLogPointer();
 
@@ -1354,7 +1391,14 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				this->break_string_filter.ResetState();
 				this->break_string_filter.AddLine(log->lines[log->pos]);
 				if (this->break_string_filter.GetState()) {
-					AI::Suspend(ai_debug_company);
+					/* Pause execution of script. */
+					if (ai_debug_company == OWNER_DEITY) {
+						Game::Pause();
+					} else {
+						AI::Pause(ai_debug_company);
+					}
+
+					/* Pause the game. */
 					if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
 						DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 					}

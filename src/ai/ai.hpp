@@ -68,13 +68,30 @@ public:
 	static void Stop(CompanyID company);
 
 	/**
-	 * Suspend an AI for the reminder of the current tick. If the AI is
-	 * in a state when it cannot be suspended, it will continue to run
-	 * until it can be suspended.
-	 * @param company The company for which the AI should be suspended.
+	 * Suspend the AI and then pause execution of the script. The script
+	 * will not be resumed from its suspended state until the script has
+	 * been unpaused.
+	 * @param company The company for which the AI should be paused.
 	 * @pre Company::IsValidAiID(company)
 	 */
-	static void Suspend(CompanyID company);
+	static void Pause(CompanyID company);
+
+	/**
+	 * Resume execution of the AI. This function will not actually execute
+	 * the script, but set a flag so that the script is executed my the usual
+	 * mechanism that executes the script.
+	 * @param company The company for which the AI should be unpaused.
+	 * @pre Company::IsValidAiID(company)
+	 */
+	static void Unpause(CompanyID company);
+
+	/**
+	 * Checks if the AI is paused.
+	 * @param company The company for which to check if the AI is paused.
+	 * @pre Company::IsValidAiID(company)
+	 * @return true if the AI is paused, otherwise false.
+	 */
+	static bool IsPaused(CompanyID company);
 
 	/**
 	 * Kill any and all AIs we manage.
