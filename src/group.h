@@ -94,18 +94,6 @@ static inline bool IsAllGroupID(GroupID id_g)
 #define FOR_ALL_GROUPS_FROM(var, start) FOR_ALL_ITEMS_FROM(Group, group_index, var, start)
 #define FOR_ALL_GROUPS(var) FOR_ALL_GROUPS_FROM(var, 0)
 
-/**
- * Get the current size of the GroupPool
- */
-static inline uint GetGroupArraySize()
-{
-	const Group *g;
-	uint num = 0;
-
-	FOR_ALL_GROUPS(g) num++;
-
-	return num;
-}
 
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
