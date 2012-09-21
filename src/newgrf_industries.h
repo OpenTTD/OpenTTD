@@ -24,7 +24,7 @@ enum IndustryTrigger {
 	INDUSTRY_TRIGGER_CARGO_DELIVERY   = 4,
 };
 
-/** From where is callback CBID_INDUSTRY_PROBABILITY been called */
+/** From where has callback #CBID_INDUSTRY_PROBABILITY been called */
 enum IndustryAvailabilityCallType {
 	IACT_MAPGENERATION,    ///< during random map generation
 	IACT_RANDOMCREATION,   ///< during creation of random ingame industry

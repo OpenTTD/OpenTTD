@@ -900,6 +900,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 }
 
+/** Monthly update of the availability, reliability, and preview offers of the engines. */
 void EnginesMonthlyLoop()
 {
 	if (_cur_year < _year_engine_aging_stops) {
@@ -932,6 +933,11 @@ void EnginesMonthlyLoop()
 	}
 }
 
+/**
+ * Is \a name still free as name for an engine?
+ * @param name New name of an engine.
+ * @return \c false if the name is being used already, else \c true.
+ */
 static bool IsUniqueEngineName(const char *name)
 {
 	const Engine *e;

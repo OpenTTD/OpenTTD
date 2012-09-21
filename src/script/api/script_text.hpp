@@ -30,7 +30,7 @@ public:
 };
 
 /**
- * Interal used class to create a raw text in a Text object.
+ * Internally used class to create a raw text in a Text object.
  * @api -all
  */
 class RawText : public Text {
@@ -105,7 +105,7 @@ public:
 #else
 	/**
 	 * Set the parameter to a value.
-	 * @param parameter Which parameter t oset.
+	 * @param parameter Which parameter to set.
 	 * @param value The value of the parameter. Has to be string, integer or an instance of the class ScriptText.
 	 */
 	void SetParam(int parameter, Object value);

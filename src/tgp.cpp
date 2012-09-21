@@ -53,7 +53,7 @@
  * using a simple (0, 0) to (X, Y), with a varying seed.
  *
  *
- * Other things i have had to do: mountainous wasnt mountainous enough, and
+ * Other things i have had to do: mountainous wasn't mountainous enough, and
  * since we only have 0..15 heights available, I add a second generated map
  * (with a modified seed), onto the original. This generally raises the
  * terrain, which then needs scaling back down. Overall effect is a general
@@ -62,8 +62,8 @@
  * However, the values on the top of mountains are then almost guaranteed to go
  * too high, so large flat plateaus appeared at height 15. To counter this, I
  * scale all heights above 12 to proportion up to 15. It still makes the
- * mountains have flatish tops, rather than craggy peaks, but at least they
- * arent smooth as glass.
+ * mountains have flattish tops, rather than craggy peaks, but at least they
+ * aren't smooth as glass.
  *
  *
  * For a full discussion of Perlin Noise, please visit:
@@ -81,12 +81,12 @@
  *
  * The following implementation uses optimized algorithm that should produce
  * the same quality result with much less computations, but more memory accesses.
- * The overal speedup should be 300% to 800% depending on CPU and memory speed.
+ * The overall speedup should be 300% to 800% depending on CPU and memory speed.
  *
  * I will try to explain it on the example below:
  *
- * Have a map of 4 x 4 tiles, our simplifiead noise generator produces only two
- * values -1 and +1, use 3 octaves with wave lenght 1, 2 and 4, with amplitudes
+ * Have a map of 4 x 4 tiles, our simplified noise generator produces only two
+ * values -1 and +1, use 3 octaves with wave length 1, 2 and 4, with amplitudes
  * 3, 2, 1. Original algorithm produces:
  *
  * h00 = lerp(lerp(-3, 3, 0/4), lerp(3, -3, 0/4), 0/4) + lerp(lerp(-2,  2, 0/2), lerp( 2, -2, 0/2), 0/2) + -1 = lerp(-3.0,  3.0, 0/4) + lerp(-2,  2, 0/2) + -1 = -3.0  + -2 + -1 = -6.0
@@ -290,7 +290,7 @@ static inline height_t RandomHeight(amplitude_t rMax)
  * One interpolation and noise round
  *
  * The heights on the map are generated in an iterative process.
- * We start off with a frequency of 1 (log_frequency == 0), and generate heights only for corners on the most coarsly mesh
+ * We start off with a frequency of 1 (log_frequency == 0), and generate heights only for corners on the most coarsely mesh
  * (i.e. only for x/y coordinates which are multiples of the minimum edge length).
  *
  * After this initial step the frequency is doubled (log_frequency incremented) each iteration to generate corners on the next finer mesh.
@@ -688,8 +688,8 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 /**
  * This routine sculpts in from the edge a random amount, again a Perlin
  * sequence, to avoid the rigid flat-edge slopes that were present before. The
- * Perlin noise map doesnt know where we are going to slice across, and so we
- * often cut straight through high terrain. the smoothing routine makes it
+ * Perlin noise map doesn't know where we are going to slice across, and so we
+ * often cut straight through high terrain. The smoothing routine makes it
  * legal, gradually increasing up from the edge to the original terrain height.
  * By cutting parts of this away, it gives a far more irregular edge to the
  * map-edge. Sometimes it works beautifully with the existing sea & lakes, and

@@ -58,7 +58,7 @@
  *
  * Contains portions of documentation by TTDPatch team.
  * Thanks especially to Josef Drexler for the documentation as well as a lot
- * of help at #tycoon. Also thanks to Michael Blunck for is GRF files which
+ * of help at #tycoon. Also thanks to Michael Blunck for his GRF files which
  * served as subject to the initial testing of this codec. */
 
 /** List of all loaded GRF files */
@@ -284,7 +284,7 @@ static const uint MAX_STATIONS = 256;
 
 /** Temporary engine data used when loading only */
 struct GRFTempEngineData {
-	/** Summary state of refitability properties */
+	/** Summary state of refittability properties */
 	enum Refittability {
 		UNSET    =  0,  ///< No properties assigned. Default refit masks shall be activated.
 		EMPTY,          ///< GRF defined vehicle as not-refittable. The vehicle shall only carry the default cargo.
@@ -1970,7 +1970,7 @@ static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, ByteRead
 	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (id + numinfo > CF_END) {
-		grfmsg(1, "CanalChangeInfo: Canal feature %u is invalid, max %u, ignoreing", id + numinfo, CF_END);
+		grfmsg(1, "CanalChangeInfo: Canal feature %u is invalid, max %u, ignoring", id + numinfo, CF_END);
 		return CIR_INVALID_ID;
 	}
 

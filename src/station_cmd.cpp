@@ -1618,7 +1618,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 
 /**
  * Remove a rail station
- * @param tile TileIndex been queried
+ * @param tile Tile of the station.
  * @param flags operation to perform
  * @return cost or failure of operation
  */
@@ -1639,7 +1639,7 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 
 /**
  * Remove a rail waypoint
- * @param tile TileIndex been queried
+ * @param tile Tile of the waypoint.
  * @param flags operation to perform
  * @return cost or failure of operation
  */
@@ -1655,7 +1655,7 @@ static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 
 
 /**
- * @param truck_station Determines whether a stop is ROADSTOP_BUS or ROADSTOP_TRUCK
+ * @param truck_station Determines whether a stop is #ROADSTOP_BUS or #ROADSTOP_TRUCK
  * @param st The Station to do the whole procedure for
  * @return a pointer to where to link a new RoadStop*
  */
@@ -1695,12 +1695,12 @@ static CommandCost FindJoiningRoadStop(StationID existing_stop, StationID statio
  * @param tile Northernmost tile of the stop.
  * @param flags Operation to perform.
  * @param p1 bit 0..7: Width of the road stop.
- *           bit 8..15: Lenght of the road stop.
+ *           bit 8..15: Length of the road stop.
  * @param p2 bit 0: 0 For bus stops, 1 for truck stops.
  *           bit 1: 0 For normal stops, 1 for drive-through.
  *           bit 2..3: The roadtypes.
  *           bit 5: Allow stations directly adjacent to other stations.
- *           bit 6..7: Entrance direction (DiagDirection).
+ *           bit 6..7: Entrance direction (#DiagDirection).
  *           bit 16..31: Station ID to join (NEW_STATION if build new one).
  * @param text Unused.
  * @return The cost of this operation or an error.
@@ -1720,7 +1720,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	/* Check if the requested road stop is too big */
 	if (width > _settings_game.station.station_spread || lenght > _settings_game.station.station_spread) return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
-	/* Check for incorrect width / lenght. */
+	/* Check for incorrect width / length. */
 	if (width == 0 || lenght == 0) return CMD_ERROR;
 	/* Check if the first tile and the last tile are valid */
 	if (!IsValidTile(tile) || TileAddWrap(tile, width - 1, lenght - 1) == INVALID_TILE) return CMD_ERROR;

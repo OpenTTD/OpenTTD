@@ -47,7 +47,7 @@ struct GoodsEntry {
 
 	byte acceptance_pickup; ///< Status of this cargo, see #GoodsEntryStatus.
 	byte days_since_pickup; ///< Number of days since the last pickup for this cargo (up to 255).
-	byte rating;            ///< Station rating for this cargo.
+	byte rating;            ///< %Station rating for this cargo.
 	byte last_speed;        ///< Maximum speed of the last vehicle that picked up this cargo (up to 255).
 	byte last_age;          ///< Age in years of the last vehicle that picked up this cargo.
 	byte amount_fract;      ///< Fractional part of the amount in the cargo list
@@ -59,7 +59,7 @@ struct Airport : public TileArea {
 	Airport() : TileArea(INVALID_TILE, 0, 0) {}
 
 	uint64 flags;       ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	byte type;          ///< Type of this airport, @see AirportTypes.
+	byte type;          ///< Type of this airport, @see AirportTypes
 	byte layout;        ///< Airport layout number.
 	Direction rotation; ///< How this airport is rotated.
 

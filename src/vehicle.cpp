@@ -1633,10 +1633,10 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 
 /**
  * Determines the #LiveryScheme for a vehicle.
- * @param engine_type EngineID of the vehicle
- * @param parent_engine_type EngineID of the front vehicle. INVALID_VEHICLE if vehicle is at front itself.
- * @param v the vehicle. NULL if in purchase list etc.
- * @return livery scheme to use
+ * @param engine_type Engine of the vehicle.
+ * @param parent_engine_type Engine of the front vehicle, #INVALID_ENGINE if vehicle is at front itself.
+ * @param v the vehicle, \c NULL if in purchase list etc.
+ * @return livery scheme to use.
  */
 LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v)
 {
