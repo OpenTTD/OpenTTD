@@ -342,11 +342,8 @@ public:
 				max_icon_height = max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_DELETE_GROUP)->widget_data).height);
 				max_icon_height = max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data).height);
 
-				/* ... plus the statusbar below the vehicle list */
-				if (max_icon_height > FONT_HEIGHT_NORMAL) max_icon_height -= FONT_HEIGHT_NORMAL;
-
-				/* The size must be a multiple of tiny_step_height for the resizing to work */
-				size->height -= this->tiny_step_height * CeilDiv(max_icon_height, this->tiny_step_height);
+				/* Get a multiple of tiny_step_height of that amount */
+				size->height = Ceil(size->height - max_icon_height, tiny_step_height);
 				break;
 			}
 
