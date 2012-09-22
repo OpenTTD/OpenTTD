@@ -600,14 +600,25 @@ struct RefitWindow : public Window {
 		SetDParam(0, option->cargo);
 		SetDParam(1, _returned_refit_capacity);
 
+		Money money = cost.GetCost();
 		if (_returned_mail_refit_capacity > 0) {
 			SetDParam(2, CT_MAIL);
 			SetDParam(3, _returned_mail_refit_capacity);
-			SetDParam(4, cost.GetCost());
-			return STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT;
+			if (money <= 0) {
+				SetDParam(4, -money);
+				return STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT;
+			} else {
+				SetDParam(4, money);
+				return STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT;
+			}
 		} else {
-			SetDParam(2, cost.GetCost());
-			return STR_REFIT_NEW_CAPACITY_COST_OF_REFIT;
+			if (money <= 0) {
+				SetDParam(2, -money);
+				return STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT;
+			} else {
+				SetDParam(2, money);
+				return STR_REFIT_NEW_CAPACITY_COST_OF_REFIT;
+			}
 		}
 	}
 
