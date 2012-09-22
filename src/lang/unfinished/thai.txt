@@ -2631,7 +2631,7 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}ปร�
 
 
 # Vehicle refit
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}ความจุใหม่: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}มูลค่าการเปลี่ยน: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}ความจุใหม่: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}มูลค่าการเปลี่ยน: {RED}{CURRENCY_LONG}
 
 
 
