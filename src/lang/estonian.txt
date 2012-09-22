@@ -3352,8 +3352,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kandevõ
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Seadista ümber)
 STR_REFIT_TITLE                                                 :{GOLD}Vali veetav veoseliik:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ümberseadistamise maksumus: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}{}{BLACK}Laeva ümberseadistamise hind: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Uus kandevõime: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ümberseadistamise maksumus: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vali ümberseadistatavad sõidukid. Hiirega lohistades saab valida mitu sõidukit. Klõpsates tühjal kohal valitakse terve sõiduk. Ctrl+klõps valib sõiduki ja temale järgneva keti
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vali rongi veetav veoseliik

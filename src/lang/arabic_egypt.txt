@@ -3153,8 +3153,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السع
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} )تغيير(
 STR_REFIT_TITLE                                                 :{GOLD}اختر نوع الحمولة ...
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}{}{BLACK}تكلفة التغيير: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}تكلفة اعادة التهيئة: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}{}{BLACK}تكلفة التغيير: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}تكلفة اعادة التهيئة: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}اختر العربة لاعادة تهيئتها. اسحب بالفارة لاختيار عدة عربات. اضغط على مساحة خالية لاختيار كل العربات. اضغط + كنترول لاختيار العربة الحالية وما بعدها.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}اختر نوع البضاعة لينقلها القطار

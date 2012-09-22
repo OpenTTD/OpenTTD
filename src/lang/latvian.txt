@@ -3397,8 +3397,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ietilpī
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pielāgot)
 STR_REFIT_TITLE                                                 :{GOLD}Izvēlēties pārvadājamās kravas veidu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izvēlēties transportlīdzekļus pielāgošanai. Vilkšana ar peli ļauj izvēlēties vairākus transportlīdzekļus. Klikšķināšana tukšumā atzīmēs visus transportlīdzekļus. Ctrl+klikšķis atzīmēs izvēlēto un visus tam sekojošus transportlīdzekļus
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izvēlēties, kuru kravas veidu vilciens pārvadās

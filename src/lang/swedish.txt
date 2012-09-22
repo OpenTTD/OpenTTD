@@ -3417,8 +3417,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Anpassa)
 STR_REFIT_TITLE                                                 :{GOLD}Välj godstyp att frakta:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Anpassningens kostnad: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Välj vilka fordon som ska anpassas. Genom att dra med musen kan flera fordon väljas. Klicka på en tom yta för att välja hela fordonet. Ctrl+Klick på ett fordon kommer att välja hela resterande kedjan
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Välj godstyp för tåget att bära

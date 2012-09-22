@@ -3246,8 +3246,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Modifiye)
 STR_REFIT_TITLE                                                 :{GOLD}Tasinacak kargo türünü seçin:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Modifiye bedeli: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}{}{BLACK}Modifiye fiyatı: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Yeni kapasite: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Modifiye bedeli: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dönüşecek araçları seçin. Fare ile sürüklemek birden fazla aracı seçmeye izin verir. Boş alana tıklamak tüm aracı seçtirir. Ctrl+tık bir aracı ve takip eden katarı seçmeye olan sağlar
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin

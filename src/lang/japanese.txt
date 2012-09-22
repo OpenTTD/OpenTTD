@@ -3112,8 +3112,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改装)
 STR_REFIT_TITLE                                                 :{GOLD}運送する貨物の種類を選択：
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}改装後の積載量：{GOLD}{CARGO_LONG}{}{BLACK}改装費用：{GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新しいキャパシティ: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}レフィットの価格: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}改装後の積載量：{GOLD}{CARGO_LONG}{}{BLACK}改装費用：{RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新しいキャパシティ: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}レフィットの価格: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}レフィットが行う車両を選択して下さい。マウスでドラーグをすると、複数の車両を選択できます。空スペースにクリックすると車両内すべての物を選択します。（コントロール＋クリック）をすると車両内の物とその後のチェーンを選択します。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択

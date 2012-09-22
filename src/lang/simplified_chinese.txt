@@ -3229,8 +3229,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO_LONG}{}{BLACK}改装费用：{GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装所需： {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO_LONG}{}{BLACK}改装费用：{RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新的运载类型： {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}改装所需： {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型

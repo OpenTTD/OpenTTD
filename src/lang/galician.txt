@@ -2928,7 +2928,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Reaxustar)
 STR_REFIT_TITLE                                                 :{GOLD}Selecciona-lo tipo de carga a levar:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova Capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo do reaxuste: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova Capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo do reaxuste: {RED}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona o tipo de carga que levará o tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona o tipo de carga que levará este vehículo de estrada

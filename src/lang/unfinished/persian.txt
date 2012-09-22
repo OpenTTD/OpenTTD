@@ -3031,7 +3031,7 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}مجمو
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تعمیر مجدد)
 STR_REFIT_TITLE                                                 :{GOLD}انتخاب محموله قابل حمل:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO_LONG}{}{BLACK} بهای تعمیر مجدد: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}ظرفیت جدید : {GOLD}{CARGO_LONG}{}{BLACK} بهای تعمیر مجدد: {RED}{CURRENCY_LONG}
 
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}انتخاب نوع محموله ای که این کشتی باید حمل کند
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}انتخاب نوع جدید محموله برای حمل با هواپیما

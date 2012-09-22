@@ -3428,8 +3428,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapazit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Umrüsten)
 STR_REFIT_TITLE                                                 :{GOLD}Neue Fracht wählen:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosten für Umrüstung: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}{}{BLACK}Kosten der Umrüstung: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Neue Kapazität: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosten für Umrüstung: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Umzurüstendes Fahrzeug auswählen. Ziehen mit der Maus erlaubt das Auswählen mehrerer Fahrzeuge gleichzeitig. Freifläche anklicken wählt das gesamte Fahrzeug aus. Strg+Klick wählt das Fahrzeug und alle nachfolgenden aus.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Die Fracht auswählen, die der Zug befördern soll

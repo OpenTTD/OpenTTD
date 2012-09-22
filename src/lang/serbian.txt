@@ -3442,8 +3442,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prepravljanje)
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prepravke: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Obeležavanje vozila za prepravku. Povlačenjem miša moguće je obležiti više vozila. Klikom na prazan prostor obležava celo vozilo. Sa Ctrl+Klik će se obeležiti vozilo i prateći lanac
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza

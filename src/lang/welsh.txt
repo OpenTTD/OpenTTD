@@ -3261,8 +3261,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Cynhwyse
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w gario:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO_LONG}{}{BLACK}Côst o ailffitio: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost ailffitio: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO_LONG}{}{BLACK}Côst o ailffitio: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost ailffitio: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dewisiwch y cerbydau i ailffitio. Mae llusgo'r llygoden yn galluogi dewis sawl cerbyd. Mae clicio ar wagle'n dewis y cerbydres gyfan. Mae Ctrl+Clic yn dewis cerbyd a phob un ar ei hôl
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario

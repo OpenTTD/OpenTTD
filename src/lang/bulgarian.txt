@@ -3094,8 +3094,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капа
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Преустройване)
 STR_REFIT_TITLE                                                 :{GOLD}Изберете вид товар за превозване:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}{}{BLACK}Цена за преустройство: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова вместимост: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Цена за преоборудване: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}{}{BLACK}Цена за преустройство: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова вместимост: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Цена за преоборудване: {RED}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Избор тип на товар за влак
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Избор тип това за автомобила да превозва

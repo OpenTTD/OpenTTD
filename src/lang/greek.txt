@@ -3509,8 +3509,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Χωρη
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Μετατροπή)
 STR_REFIT_TITLE                                                 :{GOLD}Επιλέξτε τύπο εμπορεύματος για μεταφορά:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Κόστος μετατροπής: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέγει το όχημα για μετατροπή. Σύροντας με το ποντίκι επιτρέπει επιλογή πολλαπλών οχημάτων. Κάνοντας κλικ σε άδειο χώρο θα επιλέξει όλο το όχημα. Ctrl+κλικ θα γίνει επιλογή του οχήματος και την επόμενης αλυσίδας
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο

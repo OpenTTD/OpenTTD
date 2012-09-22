@@ -3495,8 +3495,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavat)
 STR_REFIT_TITLE                                                 :{GOLD}Vyber typ nákladu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vyber vozidlo k prestavbe. Ťah myšou umožní vybrať viacej vozidiel. Kliknutie do voľného mista vybere celé vozidlo. Ctrl+Klik vyberie vozidlo a následujúci reťaz
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vybrat typ prepravovaneho nakladu

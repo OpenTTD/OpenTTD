@@ -3499,8 +3499,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Přestavět)
 STR_REFIT_TITLE                                                 :{GOLD}Zvolit druh nákladu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena za předělání: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena přestavby: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena za předělání: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vybere vozidla k obnově. Tažení myší vybere více vozidel. Kliknutí na prázdné místo vybere celé vozidlo. Ctrl+Click vybere vozidlo a následující řetěz
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zvolit typ nákladu, na který vlak přestavět

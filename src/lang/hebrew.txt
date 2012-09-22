@@ -2997,7 +2997,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK} :קיב
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}(התאם) {VEHICLE}
 STR_REFIT_TITLE                                                 :{GOLD}בחר את סוג המטען עבור כלי שייט זה
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{GOLD}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{RED}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}בחר את סוג המשא עבור הרכבת
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}בחר את סוג המטען לנשיאה

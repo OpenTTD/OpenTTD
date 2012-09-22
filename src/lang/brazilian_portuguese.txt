@@ -3428,8 +3428,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Adaptar)
 STR_REFIT_TITLE                                                 :{GOLD}Selecionar tipo de carga:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecione os veículos para recuperar. Arrastar com o mouse permite a seleção de vários veículos. Clicar em espaço vazio selecionará todo o veículo. Ctrl+Clique selecionará um veículo e a lista de construção em seguida
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem

@@ -3313,8 +3313,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Adaptar)
 STR_REFIT_TITLE                                                 :{GOLD}Seleccionar tipo de carga:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Custo da adaptação: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos a reaparelhar. Arrastando com o rato permite selecionar vários veículos. Clicando sobre um espaço vazio irá selecionar todo o veículo. Ctrl+Clique irá selecionar um veículo e composição
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Seleccionar tipo de carga do comboio

@@ -1541,8 +1541,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капа
 
 # Vehicle refit
 STR_REFIT_TITLE                                                 :{GOLD}Одбери тип на товар за носење:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK} Цена на ремонтирам: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}{}{BLACK}Пренамената чини: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нов капацитет: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK} Цена на ремонтирам: {RED}{CURRENCY_LONG}
 
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Одбери тип на товар што ќе го носи бродот
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Одбери тип на товар за авионот

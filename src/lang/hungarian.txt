@@ -3491,8 +3491,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} átalakítása
 STR_REFIT_TITLE                                                 :{GOLD}Átalakítás, hogy szállíthasson:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}{}{BLACK}Átalakítás költsége: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Új kapacitás: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Átalakítás költsége: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Átalakítandó járművek kiválasztása. Egérrel húzva több jármű választható ki. Üres helyre kattintva az egész jármű jelölhető ki. Ctrl+Kattintással a jármű és az azt követő szerelvény jelölhető ki
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonat által szállítandó rakomány kiválasztása

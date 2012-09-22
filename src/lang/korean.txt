@@ -3428,8 +3428,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}수송�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요

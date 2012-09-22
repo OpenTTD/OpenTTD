@@ -3232,8 +3232,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Vel varetype:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Ombyggjingskostnader: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Ombyggjingskostnader: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Velg køyretyg for ombygging. Dra med musa for å velje fleire køyretyg. Klikk på eit tomt område for å velje heile køyretyget. Ctrl+klikk vil velje eit køyretyg og den føgjande kjeda.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte

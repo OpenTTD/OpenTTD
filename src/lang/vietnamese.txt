@@ -3321,8 +3321,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức ch
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Cải biến)
 STR_REFIT_TITLE                                                 :{GOLD}Chọn loại hàng hoá để chở:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Chi phí cải biến: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Giá thành: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Chi phí cải biến: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Giá thành: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Chọn các phương tiện để cải biến. Kéo chuột để chọn nhiều phương tiện. Click vào khoảng trống để chọn tất cả. Ctrl+Click sẽ chọn một phương tiện và các thứ nó kéo theo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển

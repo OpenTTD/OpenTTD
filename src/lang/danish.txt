@@ -3247,8 +3247,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombyg)
 STR_REFIT_TITLE                                                 :{GOLD}Vælg den lasttype der skal transporteres:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nye kapacitet: {GOLD}{CARGO_LONG},{GOLD}{CARGO_LONG}{}{BLACK}Pris for at ombygge: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Pris for ombyggelse: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nye kapacitet: {GOLD}{CARGO_LONG},{GOLD}{CARGO_LONG}{}{BLACK}Pris for at ombygge: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vælg køretøjer der skal ombygges. klik og træk med musen for at vælge flere køretøjer. Klik på et tomt felt for at vælge hele køretøjet. Ctrl + klik vælger et køretøj og den efterfølgende kæde
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med

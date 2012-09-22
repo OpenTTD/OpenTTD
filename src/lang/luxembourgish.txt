@@ -3356,8 +3356,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapazit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Refit)
 STR_REFIT_TITLE                                                 :{GOLD}Wielt den Luedungstyp:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir ëmzebauen: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir den Embau: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir ëmzebauen: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir den Embau: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wiel d'Gefierer fir den Embau. Mat der Maus zéien erlabt den Embau vun méi Gefierer. Op eng eidel Plaz klicken wielt d'ganzt Gefiert. Ctrl+Klick wielt e Gefiert an de Rescht vun der Ketten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn

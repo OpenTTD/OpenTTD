@@ -3041,8 +3041,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Transformu)
 STR_REFIT_TITLE                                                 :{GOLD}Elektu ŝarĝotipon por porti:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova kapablo: {GOLD}{CARGO_LONG}{}{BLACK}Transformkosto: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova enhavebelco: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosto de transformo: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova kapablo: {GOLD}{CARGO_LONG}{}{BLACK}Transformkosto: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova enhavebelco: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kosto de transformo: {RED}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la trajno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la stratveturilo

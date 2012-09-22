@@ -3296,8 +3296,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Schimbă marfa)
 STR_REFIT_TITLE                                                 :{GOLD}Alege tipul încărcăturii:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Costul transformării: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Costul transformării: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seletează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren

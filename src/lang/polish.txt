@@ -3813,8 +3813,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ładowno
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa ładowność: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Koszt przebudowy: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg

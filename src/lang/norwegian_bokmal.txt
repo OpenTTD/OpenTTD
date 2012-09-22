@@ -3232,8 +3232,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Velg varetype:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Velg kjøretøy for ombygging. Dra med musen for å velge flere kjøretøy. Klikk på et tomt område for å velge hele kjøretøyet. Ctrl+klikk vil velge et kjøretøy og den følgende kjeden
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Velg hvilken varetype toget skal frakte

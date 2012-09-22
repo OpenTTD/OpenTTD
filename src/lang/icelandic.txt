@@ -3027,7 +3027,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Rými: {
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Breyta)
 STR_REFIT_TITLE                                                 :{GOLD}Veldu farm sem á að flytja:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ný burðargeta: {GOLD}{CARGO_LONG}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ný burðargeta: {GOLD}{CARGO_LONG}{}{BLACK}Breytingarkostnaður: {RED}{CURRENCY_LONG}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Veldu hvernig farm lestin á að flytja
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veldu tegund farms sem bifreið mun flytja

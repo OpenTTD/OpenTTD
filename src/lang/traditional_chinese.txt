@@ -3123,8 +3123,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改裝)
 STR_REFIT_TITLE                                                 :{GOLD}選擇要運送的貨物種類：
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新容量：{GOLD}{CARGO_LONG}{}{BLACK}改裝費用：{GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新容量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}整修成本: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新容量：{GOLD}{CARGO_LONG}{}{BLACK}改裝費用：{RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新容量: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}整修成本: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}選擇交通工具以進行整修。以滑鼠拖曳可以選擇多個交通工具。選空白的區域將選擇整個交通工具。按住Ctrl再點選將選擇交通工具以及與其後串接的車廂
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}選擇要運輸的貨物種類

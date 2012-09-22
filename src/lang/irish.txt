@@ -3077,8 +3077,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Toillead
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Athfeistigh)
 STR_REFIT_TITLE                                                 :{GOLD}Roghnaigh an lastas le hiompar:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Toilleadh nua: {GOLD}{CARGO_LONG}{}{BLACK}Costas an aisfheistithe: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Toilleadh nua: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costas athfheistithe: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Toilleadh nua: {GOLD}{CARGO_LONG}{}{BLACK}Costas an aisfheistithe: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Toilleadh nua: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costas athfheistithe: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Roghnaigh na feithiclí le hathfheistiú. Is féidir níos mó ná feithicil amháin a roghnú trí tharraingt leis an luch. Roghnófar an fheithicil iomlán má chliceáltar ar spás folamh. Roghnófar feithicil agus an slabhra ina dhiaidh le Ctrl+Cliceáil
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Roghnaigh an cineál lastais a iompróidh an traein

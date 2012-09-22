@@ -3204,8 +3204,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Renovasi)
 STR_REFIT_TITLE                                                 :{GOLD}Pilih jenis kargo yang akan dibawa:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Biaya modifikasi: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}{}{BLACK}Biaya ubah kargo: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Biaya modifikasi: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kendaraan yg akan dimodifikasi. Drag untuk memilih sekaligus beberapa kendaraan. Klik pada ruang kosong untuk memilih semua kendaraan. Ctrl+Klik untuk memilih kendaraan berikut rangkaiannya
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta

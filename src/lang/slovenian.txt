@@ -3562,8 +3562,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Zmogljiv
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Preuredi)
 STR_REFIT_TITLE                                                 :{GOLD}Izberi tip tovora:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova zmogljivost: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena preureditve: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izberi vozila za preureditev. Povleci z miško, da izbereš več vozil. Klik na prazen prostor bo izbral celotno vozilo. Ctrl+Klik bo izbral vozilo in tista, ki mu sledijo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi nov tip tovora za prevoz z vlakom

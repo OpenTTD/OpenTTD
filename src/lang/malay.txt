@@ -3231,8 +3231,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Muatan: 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ubahsuai)
 STR_REFIT_TITLE                                                 :{GOLD}Pilih jenis kargo untuk dibawa:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Muatan Baru: {GOLD}{CARGO_LONG}{}{BLACK}Kos ubahsuai: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasiti baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Harga kos penukaran: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Muatan Baru: {GOLD}{CARGO_LONG}{}{BLACK}Kos ubahsuai: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasiti baru: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Harga kos penukaran: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kenderaan untuk diubahsuai. Mengheret tetikus membolehkan memilih beberapa kenderaan. Klik pada kawasan kosong akan memilih keseluruhan kenderaan. Ctrl+Klik akan memilih kenderaan dan rangkaian yang berikut
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo untuk dibawa oleh keretapi

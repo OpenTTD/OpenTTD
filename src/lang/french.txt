@@ -3428,8 +3428,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacit�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Réaménager)
 STR_REFIT_TITLE                                                 :{GOLD}Choisir le type de cargaison à transporter{NBSP}:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prix du réaménagement{NBSP}: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Sélectionner les véhicules à réaménager.{}Glisser avec la souris pour sélectionner plusieurs véhicules.{}Cliquer sur un espace vide pour sélectionner l'ensemble complet.{}Ctrl-clic pour sélectionner un véhicule et la chaine qui suit.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Choisir le type de cargaison à transporter
