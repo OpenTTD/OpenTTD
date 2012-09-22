@@ -3621,8 +3621,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ёмко
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переоборудование)
 STR_REFIT_TITLE                                                 :{GOLD}Выберите тип груза для перевозки:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Новая емкость: {GOLD}{CARGO_LONG}{}{BLACK}Прибыль от переоборудования: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Новая емкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Доход от переоборудования: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Выберите вагоны для переоборудования. Можно обвести мышью несколько вагонов. Щелчок за пределами состава выберет весь состав. Ctrl+щелчок выберет вагоны до конца состава.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберите тип груза для перевозки

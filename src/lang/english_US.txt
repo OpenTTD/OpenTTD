@@ -3427,8 +3427,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacity
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Refit)
 STR_REFIT_TITLE                                                 :{GOLD}Select cargo type to carry:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}New capacity: {GOLD}{CARGO_LONG}{}{BLACK}Cost of refit: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}New capacity: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost of refit: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}New capacity: {GOLD}{CARGO_LONG}{}{BLACK}Cost of refit: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}New capacity: {GOLD}{CARGO_LONG}{}{BLACK}Income from refit: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}New capacity: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost of refit: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}New capacity: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Income from refit: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Select the vehicles to refit. Dragging with the mouse allows to select multiple vehicles. Clicking on an empty space will select the whole vehicle. Ctrl+Click will select a vehicle and the following chain
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Select type of cargo for train to carry
