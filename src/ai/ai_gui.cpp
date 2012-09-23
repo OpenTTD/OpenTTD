@@ -1370,17 +1370,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	{
 		if (data == -1 || ai_debug_company == data) this->SetDirty();
 
-		if (gui_scope && data == -2) {
-			/* The continue button should be disabled when the game is unpaused and
-			 * it was previously paused. */
-			if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED && !this->IsWidgetDisabled(WID_AID_CONTINUE_BTN)) {
-				this->DisableWidget(WID_AID_CONTINUE_BTN);
-				this->SetWidgetDirty(WID_AID_CONTINUE_BTN);
-				this->SetWidgetDirty(WID_AID_LOG_PANEL);
-				this->highlight_row = -1;
-			}
-		}
-
 		/* If the log message is related to the active company tab, check the break string.
 		 * This needs to be done in gameloop-scope, so the AI is suspended immediately. */
 		if (!gui_scope && data == ai_debug_company && this->break_check_enabled && !this->break_string_filter.IsEmpty()) {

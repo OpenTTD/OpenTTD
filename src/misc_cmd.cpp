@@ -178,7 +178,6 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 			} else {
 				_pause_mode = _pause_mode | p1;
 			}
-			InvalidateWindowClassesData(WC_AI_DEBUG, -2);
 
 #ifdef ENABLE_NETWORK
 			NetworkHandlePauseChange(prev_mode, (PauseMode)p1);
