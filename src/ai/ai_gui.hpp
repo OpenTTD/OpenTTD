@@ -14,7 +14,7 @@
 
 #include "../company_type.h"
 
-void ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
+Window* ShowAIDebugWindow(CompanyID show_company = INVALID_COMPANY);
 void ShowAIConfigWindow();
 void ShowAIDebugWindowIfAIError();
 void InitializeAIGui();

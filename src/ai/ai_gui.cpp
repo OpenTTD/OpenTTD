@@ -27,6 +27,7 @@
 #include "../textfile_gui.h"
 #include "../widgets/dropdown_type.h"
 #include "../widgets/dropdown_func.h"
+#include "../hotkeys.h"
 
 #include "ai.hpp"
 #include "../script/api/script_log.hpp"
@@ -1353,10 +1354,35 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state) != HEBR_NOT_FOCUSED) {
-			/* Save the current string to static member so it can be restored next time the window is opened */
-			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
-			break_string_filter.SetFilterTerm(this->break_string);
+		switch (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state)) {
+			case HEBR_EDITING:
+				/* Save the current string to static member so it can be restored next time the window is opened. */
+				strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
+				break_string_filter.SetFilterTerm(this->break_string);
+				break;
+
+			case HEBR_CANCEL:
+				/* Unfocus the text box. */
+				this->UnfocusFocusedWidget();
+				break;
+
+			case HEBR_NOT_FOCUSED: {
+				/* Edit boxs is not globally foused => handle hotkeys of AI Debug window. */
+				int num = CheckHotkeyMatch(aidebug_hotkeys, keycode, this);
+				if (num == -1) return ES_NOT_HANDLED;
+				if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
+					this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
+					SetFocusedWindow(this);
+					state = ES_HANDLED;
+				} else if (this->show_break_box || num < WID_AID_BREAK_STRING_WIDGETS) {
+					this->OnClick(Point(), num, 1);
+					state = ES_HANDLED;
+				}
+				break;
+			}
+
+			default:
+				break;
 		}
 		return state;
 	}
@@ -1407,6 +1433,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_AID_LOG_PANEL);
 	}
+
+	static Hotkey<AIDebugWindow> aidebug_hotkeys[];
 };
 
 const int AIDebugWindow::top_offset = WD_FRAMERECT_TOP + 2;
@@ -1422,6 +1450,33 @@ NWidgetBase *MakeCompanyButtonRowsAIDebug(int *biggest_index)
 {
 	return MakeCompanyButtonRows(biggest_index, WID_AID_COMPANY_BUTTON_START, WID_AID_COMPANY_BUTTON_END, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
 }
+
+Hotkey<AIDebugWindow> AIDebugWindow::aidebug_hotkeys[] = {
+	Hotkey<AIDebugWindow>('1', "company_1", WID_AID_COMPANY_BUTTON_START),
+	Hotkey<AIDebugWindow>('2', "company_2", WID_AID_COMPANY_BUTTON_START + 1),
+	Hotkey<AIDebugWindow>('3', "company_3", WID_AID_COMPANY_BUTTON_START + 2),
+	Hotkey<AIDebugWindow>('4', "company_4", WID_AID_COMPANY_BUTTON_START + 3),
+	Hotkey<AIDebugWindow>('5', "company_5", WID_AID_COMPANY_BUTTON_START + 4),
+	Hotkey<AIDebugWindow>('6', "company_6", WID_AID_COMPANY_BUTTON_START + 5),
+	Hotkey<AIDebugWindow>('7', "company_7", WID_AID_COMPANY_BUTTON_START + 6),
+	Hotkey<AIDebugWindow>('8', "company_8", WID_AID_COMPANY_BUTTON_START + 7),
+	Hotkey<AIDebugWindow>('9', "company_9", WID_AID_COMPANY_BUTTON_START + 8),
+	Hotkey<AIDebugWindow>((uint16)0, "company_10", WID_AID_COMPANY_BUTTON_START + 9),
+	Hotkey<AIDebugWindow>((uint16)0, "company_11", WID_AID_COMPANY_BUTTON_START + 10),
+	Hotkey<AIDebugWindow>((uint16)0, "company_12", WID_AID_COMPANY_BUTTON_START + 11),
+	Hotkey<AIDebugWindow>((uint16)0, "company_13", WID_AID_COMPANY_BUTTON_START + 12),
+	Hotkey<AIDebugWindow>((uint16)0, "company_14", WID_AID_COMPANY_BUTTON_START + 13),
+	Hotkey<AIDebugWindow>((uint16)0, "company_15", WID_AID_COMPANY_BUTTON_START + 14),
+	Hotkey<AIDebugWindow>('S', "settings", WID_AID_SETTINGS),
+	Hotkey<AIDebugWindow>('0', "game_script", WID_AID_SCRIPT_GAME),
+	Hotkey<AIDebugWindow>((uint16)0, "reload", WID_AID_RELOAD_TOGGLE),
+	Hotkey<AIDebugWindow>('B', "break_toggle", WID_AID_BREAK_STR_ON_OFF_BTN),
+	Hotkey<AIDebugWindow>('F', "break_string", WID_AID_BREAK_STR_EDIT_BOX),
+	Hotkey<AIDebugWindow>('C', "match_case", WID_AID_MATCH_CASE_BTN),
+	Hotkey<AIDebugWindow>(WKC_RETURN, "continue", WID_AID_CONTINUE_BTN),
+	HOTKEY_LIST_END(AIDebugWindow)
+};
+Hotkey<AIDebugWindow> *_aidebug_hotkeys = AIDebugWindow::aidebug_hotkeys;
 
 /** Widgets for the AI debug window. */
 static const NWidgetPart _nested_ai_debug_widgets[] = {
@@ -1479,15 +1534,30 @@ static const WindowDesc _ai_debug_desc(
  * Open the AI debug window and select the given company.
  * @param show_company Display debug information about this AI company.
  */
-void ShowAIDebugWindow(CompanyID show_company)
+Window *ShowAIDebugWindow(CompanyID show_company)
 {
 	if (!_networking || _network_server) {
 		AIDebugWindow *w = (AIDebugWindow *)BringWindowToFrontById(WC_AI_DEBUG, 0);
 		if (w == NULL) w = new AIDebugWindow(&_ai_debug_desc, 0);
 		if (show_company != INVALID_COMPANY) w->ChangeToAI(show_company);
+		return w;
 	} else {
 		ShowErrorMessage(STR_ERROR_AI_DEBUG_SERVER_ONLY, INVALID_STRING_ID, WL_INFO);
 	}
+
+	return NULL;
+}
+
+/**
+ * Handler for global AI debug window hotkeys.
+ */
+EventState AIDebugGlobalHotkeys(uint16 key, uint16 keycode)
+{
+	int num = CheckHotkeyMatch<AIDebugWindow>(_aidebug_hotkeys, keycode, NULL, true);
+	if (num == -1) return ES_NOT_HANDLED;
+	Window *w = ShowAIDebugWindow(INVALID_COMPANY);
+	if (w == NULL) return ES_NOT_HANDLED;
+	return w->OnKeyPress(key, keycode);
 }
 
 /**

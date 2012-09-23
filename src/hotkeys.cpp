@@ -249,6 +249,7 @@ struct BuildDocksToolbarWindow;
 struct BuildRailToolbarWindow;
 struct BuildRoadToolbarWindow;
 struct SignListWindow;
+struct AIDebugWindow;
 
 static void SaveLoadHotkeys(bool save)
 {
@@ -273,6 +274,7 @@ static void SaveLoadHotkeys(bool save)
 	SL_HOTKEYS(railtoolbar, BuildRailToolbarWindow);
 	SL_HOTKEYS(roadtoolbar, BuildRoadToolbarWindow);
 	SL_HOTKEYS(signlist, SignListWindow);
+	SL_HOTKEYS(aidebug, AIDebugWindow);
 
 
 #undef SL_HOTKEYS
@@ -303,6 +305,7 @@ GlobalHotkeyHandler TerraformToolbarEditorGlobalHotkeys;
 GlobalHotkeyHandler RoadToolbarGlobalHotkeys;
 GlobalHotkeyHandler RoadToolbarEditorGlobalHotkeys;
 GlobalHotkeyHandler SignListGlobalHotkeys;
+GlobalHotkeyHandler AIDebugGlobalHotkeys;
 
 
 GlobalHotkeyHandler *_global_hotkey_handlers[] = {
@@ -312,6 +315,7 @@ GlobalHotkeyHandler *_global_hotkey_handlers[] = {
 	TerraformToolbarGlobalHotkeys,
 	RoadToolbarGlobalHotkeys,
 	SignListGlobalHotkeys,
+	AIDebugGlobalHotkeys,
 };
 
 GlobalHotkeyHandler *_global_hotkey_handlers_editor[] = {
