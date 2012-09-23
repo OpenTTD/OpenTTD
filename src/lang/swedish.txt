@@ -1105,6 +1105,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna å
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerade inställningar
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen förklaring tillgänglig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardvärde: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Typ av inställning: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klientinställning (sparas ej i spel-filer och påverkar alla spel)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinställning (sparad i spel-fil och påverkar enbart nya spel)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinställning (sparad i spel-fil och påverkar enbart nuvarande spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Företagsinställning (sparad i spel-fil och påverkar enbart nya spel)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Företagsinställning (sparad i spel-fil och påverkar enbart nuvarande företag)
 
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
@@ -1543,6 +1549,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel me
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :okänd
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... kompressionsnivån '{STRING}' är inte giltig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... filformatet '{STRING}' är inte tillgängligt. Återgår till '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorerar grafikpaketet '{STRING}': hittades ej
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorerar grundljudpaketet '{STRING}': hittades ej
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorerar musikpaket '{STRING}': hittades ej
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3267,6 +3276,7 @@ STR_REPLACE_VEHICLES_WHEN_OLD                                   :Byt endast ut g
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryck för att börja byta ut fordonstypen vald på vänster sida med fordonstypen på höger sida
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Byter inte ut
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Inget fordon valt
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} vid hög ålder
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta byta ut fordon
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryck för att sluta byta ut fordonstypen vald på vänster sida
 
@@ -3418,7 +3428,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Anpassa)
 STR_REFIT_TITLE                                                 :{GOLD}Välj godstyp att frakta:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Anpassningens kostnad: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad för anpassning: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}. {GOLD}{CARGO_LONG}{}{BLACK}Inkomstens vinst: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Välj vilka fordon som ska anpassas. Genom att dra med musen kan flera fordon väljas. Klicka på en tom yta för att välja hela fordonet. Ctrl+Klick på ett fordon kommer att välja hela resterande kedjan
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Välj godstyp för tåget att bära

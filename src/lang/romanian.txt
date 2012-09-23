@@ -1105,6 +1105,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Această
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări avansate
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(descrierea nu este disponibilă)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valoare implicită: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tip setare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Setare client (nu se stochează în salvări; se aplică pentru toate jocurile)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Setări joc (stocate în fişierele de salvare; afectează doar jocurile noi)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Setări joc (stocate în fişierul de salvare; afectează doar jocul curent)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Setări companie (stocate în fişierele de salvare; afectează doar jocurile noi)
@@ -1155,27 +1157,35 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Permite adăuga
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Foloseşte algoritm de încărcare îmbunătăţit: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Dacă este activată, încărcarea vehiculelor care aşteaptă în aceeaşi staţie se va face în secvenţă. Încărcarea următorului vehicul începe doar dacă există destul cargo pentru a umple complet primul vehicul
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Încarcă vehiculele gradual: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Încarcă vehiculele gradual folosind duratele de încarcare specifice fiecărui vehicul, în loc să se încarce totul dintr-o dată folosind o durată fixată în funcţie de cantitatea de cargo încărcată
 STR_CONFIG_SETTING_INFLATION                                    :Inflaţia: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Activează inflaţia în economie, unde costurile cresc ceva mai rapid decât plăţile
 STR_CONFIG_SETTING_SELECTGOODS                                  :Livrează marfa doar în staţiile unde aceasta este cerută: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Livrează cargo doar către o staţie unde există cereri de la vehicule pentru încărcare. Aceasta previne rating-uri slabe pentru cargo care nu este ridicat din staţie
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Lungimea maximă a podurilor: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de poduri
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Lungimea maximă a tunelurilor: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Lungimea maximă pentru construcţia de tuneluri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metoda manuală de construcţie a industriilor primare: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metoda de finanţare a industriilor primare. 'nici una' înseamnă că nu este posibile să se finanţeze nici una, 'prospectare' înseamnă ca finanţarea este posibilă, dar construcţia se realizează intr-un loc aleator şi poate eşua, 'la fel ca celelalte industrii' inseamnă că industriile de materie primă pot fi construite de către companii la fel ca industriile procesatoare, în orice locaţie doresc
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospecţie
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Zonă plată în jurul industriilor: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Suprafaţa zonei plate din jurul industriilor. Aceasta asigură că există spaţiu liber în jurul industriilor pentru construcţia de şine, etc
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Permite mai multe industrii similare în acelaşi oras: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :De obicei, un oraş nu doreşte mai multe industrii de acelaşi tip. Cu această setare, se permin mai multe industrii de acelaşi tip în acelaşi oraş
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Arată semnalele: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Selectează pe care parte a şinei să fie plasate semnalele
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Pe partea stângă
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :În direcţia de mers
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Pe partea dreaptă
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Afişează finanţele la sfârşitul fiecărui an: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Dacă este activat, fereastra de finanţe apare automat la sfârşitul fiecărui an pentru a permite inspectarea facilă a stării financiale a companiei
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ordinele noi sunt implicit 'fără oprire': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :În mod obişnuit, un vehicul va opri în fiecare staţie prin care trece. Prin activarea acestei setări, va trece prin toate staţiile în drumul către destinaţia finală, fără a oprii. Notă: această setare are efect doar asupra valorii implicite pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordinele noi pentru trenuri opresc implicit la {STRING} platformei
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Locul unde un tren va oprii pe platformă. La 'capătul apropiat' inseamnă că trenul va oprii aproape de locul de intrare, 'mijloc' inseamnă mijlocul platformei, iar 'capătul îndepărtat' înseamnă departe de locul de intrare. Notă: această setare are efect doar pentru comenzile noi. Comenzile individuale pot fi configurate explicit cu oricare din variante
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :capătul apropiat al
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mijlocul
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :capătul îndepartat al
@@ -1421,6 +1431,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :incompatibil cu
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :necunoscut
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... nivelul de compresie '{STRING}' nu este valid
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... formatul salvărilor '{STRING}' nu este disponibil. Revenire la '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... setul de bază pentru grafică '{STRING}' este ignorat: nu a fost găsit
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... setul de bază pentru sunete '{STRING}' este ignorat: nu a fost găsit
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... setul de bază pentru muzică '{STRING}' este ignorat: nu a fost găsit
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3296,8 +3309,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Schimbă marfa)
 STR_REFIT_TITLE                                                 :{GOLD}Alege tipul încărcăturii:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Costul transformării: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costul schimbării: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Capacitate nouă: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Venituri din schimbare: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seletează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren

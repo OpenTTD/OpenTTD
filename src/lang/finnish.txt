@@ -3428,7 +3428,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (sovita)
 STR_REFIT_TITLE                                                 :{GOLD}Valitse kuljetettava rahtityyppi:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}{}{BLACK}Sovituksen kustannus: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}{}{BLACK}Tulot sovittamisesta: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Sovituksen kustannus: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Tulot sovittamisesta: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Valitse sovitettavat kulkuneuvot. Hiirellä vetäminen sallii useamman kulkuneuvon valinnan. Tyhjän alueen klikkaus valitsee koko kulkuneuvon. Ctrl+Klik valitsee kulkuneuvon ja sitä seuraavan ketjun
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Valitse junan rahtityyppi

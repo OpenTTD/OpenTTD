@@ -390,7 +390,7 @@ STR_SUBSIDIES_MENU_GOAL                                         :Obiettivi
 
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico margine operativo
-STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico incassi
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico ricavi
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico carichi consegnati
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafico storico prestazioni
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafico valore compagnie
@@ -529,7 +529,7 @@ STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STR
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Grafico margine operativo
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico incassi
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Grafico ricavi
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità di merce consegnate
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore delle compagnie
@@ -574,8 +574,8 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visualiz
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veicoli:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stazioni:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profitto min:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Incasso min:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Incasso max:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ricavo min:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Ricavo max:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Consegnato:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carichi:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denaro:
@@ -584,7 +584,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Numero di veicoli che hanno realizzato un profitto lo scorso anno. Sono inclusi automezzi, treni, navi e aeromobili.
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Numero di blocchi stazione serviti di recente. Sono contate tutte le parti di una stazione (es. stazione ferroviaria, stazione autobus, aeroporto), anche se connesse insieme a formare un'unica stazione
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitto del veicolo con l'incasso minore (sono considerati solo i veicoli più vecchi di due anni)
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Profitto del veicolo con ricavi minori (sono considerati solo i veicoli più vecchi di due anni)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il minimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Ammontare di denaro guadagnato nel trimestre con il massimo profitto degli ultimi 12 trimestri
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unità di merce consegnate negli ultimi quattro trimestri
@@ -1230,7 +1230,7 @@ STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Consente il tra
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Moltiplicatore di peso per simulare treni merci pesanti: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Seleziona l'impatto del trasporto di merci nei treni. I valori elevati rendono il trasporto di merci più impegnativo per i treni, specialmente in collina
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Fattore di velocità degli aerei: {STRING}
-STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Imposta la velocità relativa degli aeroplani in confronto agli altri tipi di veicolo, in modo da ridurre gli incassi del trasporto via aria
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Imposta la velocità relativa degli aeroplani in confronto agli altri tipi di veicolo, in modo da ridurre i ricavi del trasporto via aria
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Numero di incidenti aerei: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Imposta la probabilità del verificarsi di un incidente aereo
@@ -1441,7 +1441,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Se abilitata, l
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permetti l'acquisto di azioni di altre compagnie: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se abilitata, consente l'acquisto e la vendita di azioni delle compagnie. Le azioni sono disponibili solo per le compagnie che hanno raggiunto una certa età minima
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentuale profitto da pagare per una tappa di trasferimento: {STRING}
-STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentuale dell'incasso assegnata ai tratti secondari di una catena di trasferimenti. In questo modo è consentito un migliore controllo degli incassi
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentuale di ricavi assegnata ai tratti secondari di una catena di trasferimenti. In questo viene dato un maggiore controllo sulla situazione dei ricavi
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Trascinando il cursore, piazza i segnali ogni: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Imposta la distanza da utilizzare, quando si trascina, per costruire i segnali su un binario separandoli dall'ostacolo successivo (segnale, scambio)
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} riquadr{P 0 o i}
@@ -1881,7 +1881,7 @@ STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nome co
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inaugurazione: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Valore compagnia: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Saldo corrente: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Incassi anno scorso: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Ricavi anno scorso: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestazioni: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Veicoli: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
@@ -3025,7 +3025,7 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambia i
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra il 25% delle azioni
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendi il 25% delle azioni
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra una quota del 25% di questa compagnia. MAIUSC+clic mostra il costo stimato senza comprare azioni
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia. MAIUSC+clic mostra l'incasso stimato senza vendere azioni
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia. MAIUSC+clic mostra il ricavo stimato senza vendere azioni
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome della compagnia
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presidente
@@ -3456,7 +3456,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Riadatta)
 STR_REFIT_TITLE                                                 :{GOLD}Selezionare il tipo di carico da trasportare:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}{}{BLACK}Costo riadattamento: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}{}{BLACK}Ricavo dal riadattamento: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo riadattamento: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nuova capacità: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ricavo dal riadattamento: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seleziona i veicoli da riadattare. Trascinare col mouse per selezionare più veicoli. Fare clic sullo spazio vuoto per selezionarli tutti. CTRL+clic seleziona anche la parte successiva della composizione
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico da far trasportare al treno
@@ -3787,12 +3789,12 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Costo: {CURRENCY_LONG}
 STR_INCOME_FLOAT_COST                                           :{RED}Costo: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Incasso: {CURRENCY_LONG}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Incasso: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Ricavo: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Ricavo: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Trasferiti: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}Trasferiti: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Costo stimato: {CURRENCY_LONG}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Incasso stimato: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ricavo stimato: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvataggio in corso,{}prego attenderne la fine!
