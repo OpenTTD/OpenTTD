@@ -3785,7 +3785,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ёміс
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Пераабсталяваньне)
 STR_REFIT_TITLE                                                 :{GOLD}Выберыце тып грузу для перавозкі:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Новая ўмяшчальнасьць: {GOLD}{CARGO_LONG}{}{BLACK}Даход ад пераабсталяваньня: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Новая ўмяшчальнасьць: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Даход ад пераабсталяваньня: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Абярыце ваґоны для пераабсталяваньня. Можна абвесьці мышшу некалькі ваґонаў. Пстрычка па-за межамі састава абярэ ўвесь састаў. Ctrl+пстрычка абярэ ваґоны да канца састава.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберыце тып грузу для перавозкі

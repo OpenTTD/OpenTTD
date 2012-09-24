@@ -3524,7 +3524,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prenamijeni)
 STR_REFIT_TITLE                                                 :{GOLD}Odaberi vrstu tereta za prijevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO_LONG}{}{BLACK}Cijena prenamjene: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Prihod od remonta: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Trošak remonta: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Novi kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Prihod od remonta: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Odaberi vozila za remont. Povlačenje mišem dozvoljava odabir više vozila. Klik na prazninu će označiti cijelo vozilo. Ctrl+Klik će označiti vozilo i niz koji slijedi.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Odaberi vrstu tereta koju će vlak prevoziti

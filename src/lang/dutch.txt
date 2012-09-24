@@ -3428,7 +3428,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombouwen)
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}{}{BLACK}Ombouwkosten: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}{}{BLACK}Inkomsten na ombouwen: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ombouwkosten: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Inkomsten na ombouwen: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteert het hele voertuig. Ctrl+klik selecteert een voertuig en de volgende keten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies goederentype dat deze trein moet vervoeren
