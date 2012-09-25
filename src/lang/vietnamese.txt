@@ -1294,10 +1294,14 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Phân nhóm thu
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Tắt việc xây dựng hạ tầng nếu không có phương tiện thích hợp nào sẵn có: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Số tàu hỏa tối đa mỗi người chơi: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Số xe ôtô tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Số lượng ôtô tối đa mà một công ty có thể có
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Số máy bay tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Số lượng máy bay tối đa mà một công ty có thể có
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Số tàu thủy tối đa mỗi người chơi: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Số lượng tàu thủy tối đa mà một công ty có thể có
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Nhân vật máy không được mua tàu hoả: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Bật thiết lập này làm máy không thể xây dựng tàu hỏa
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Nhân vật máy không được mua xe ôtô: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Nhân vật máy không được mua máy bay: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Nhân vật máy không được mua tàu thủy: {STRING}
