@@ -46,7 +46,7 @@
 
 /* static */ bool ScriptController::Break(const char* message)
 {
-	if (!_network_dedicated || !_settings_client.gui.ai_developer_tools) return false;
+	if (_network_dedicated || !_settings_client.gui.ai_developer_tools) return false;
 
 	ScriptObject::GetActiveInstance()->Pause();
 
