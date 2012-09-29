@@ -1573,8 +1573,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Näita r
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Näita mootorsõidukite värvistikke
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Näita laevavärvistikke
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Näita lennukivärvistikke
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vali põhivärv värvistikule
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vali teine värv valitud värvistikule
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vali põhivärv värvistikule. Ctrl+Klikk valib selle värvi tervele värvistikule
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vali teine värv valitud värvistikule. Ctrl+Klõps valib selle värvi tervele värvistikule
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vali muudetav värvivalik - või mitu Ctrl+klõps abil. Klõpsa kastil, et muuta värvivaliku kasutust
 
 STR_LIVERY_DEFAULT                                              :Firmavärv
@@ -3616,7 +3616,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge �
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehismõistuse / GameScript-i silumise akent saab vaadata ainult server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Tehismõistuse / Mängu seadistus
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Tehismõistuse / Mängu skriptide seadistus
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript-id mis laetakse järgmise mänguga
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Tehismõistused mis laetakse järgmise mänguga
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
