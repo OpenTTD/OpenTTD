@@ -434,7 +434,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Gulšči
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus, bėgius ar kitus objektus pasirinktame žemės plote. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Nutylint
+STR_BUTTON_DEFAULT                                              :{BLACK}Numatytas
 STR_BUTTON_CANCEL                                               :{BLACK}Atšaukti
 STR_BUTTON_OK                                                   :{BLACK}Gerai
 
@@ -561,7 +561,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Permatomi stoč
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Išsaugoti žaidimą
 STR_FILE_MENU_LOAD_GAME                                         :Įkelti žaidimą
-STR_FILE_MENU_QUIT_GAME                                         :Sustabdyti žaidimą
+STR_FILE_MENU_QUIT_GAME                                         :Palikti žaidimą
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Išeiti
 ############ range ends here
@@ -1150,7 +1150,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kas 12 mėnesi�
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Visu ekranu
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Per visą ekraną
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visu ekranu
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrano raiška
@@ -1519,7 +1519,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Left-click scrolling: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Slinkti žemėlapį velkant jį nuspaudus kairįjį pelės klavišą. Naudinga, jei žaidžiama kompiuteriuose su lietimui jautriais ekranais
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Naudoti {STRING} datos formatą pavadinimuose, saugant žaidimą
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Išsaugant žaidimą, pavadinimuose naudoti {STRING} datos formatą
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Datos formatas išsaugoto žaidimo failo pavadinime
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ilgąjį (31 Gruo 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :trumpąjį (31-12-2008)
@@ -1622,7 +1622,7 @@ STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatiškai s
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Metai, kuriais elektriniai signalai pakeičia semaforus (abiejų rūšių signalai veikia visiškai vienodai, tik skirtingai atrodo)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Įgalinti signalų pasirinkimo langą: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Pasirinkus signalų statymo įrankį, bus atvertas signalų pasirinkimo langas (senasis būdas, kuomet signalų tipas parenkamas pakartotinai spragsint pele laikant nuspaustą Ctrl klavišą, taip pat veiks)
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signalai pagal nutylėjimą: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Numatytas signalų statymas: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Numatytas signalo tipas naudojimui
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokiniai signalai (tradiciniai)
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Kelio signalai
@@ -1656,7 +1656,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Savaiminis med�
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Savaiminio medžių išdygimo nuostatos. Atkreipkite dėmesį, kad šios nuostatos gali paveikti kai kurių pramonės įmonių, pvz., lentpjūvių, darbą
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nėra {RED}(trukdo lentpjūvėms)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :betkur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pagrindinės įrankių juostos pozicija: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pagrindinės įrankių lentelės horizontali padėtis ekrano viršuje
@@ -1702,7 +1702,7 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. pri
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Priešininkai
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Rodyti parinktis
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
@@ -1807,7 +1807,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Nutraukti žaidimą
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Palikti Žaidimą
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ar tikrai norite išeiti iš žaidimo?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
 
@@ -2225,7 +2225,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymė
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pažymėti visą turinį, atnaujinimui skirtą turinį atsisiuntimui
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nieko nežymėti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Pažymėti visą turinį kaip neatsisiųstą
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtro pavadinimas:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Žymės/pavadinimo filtravimas:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Aplankyti svetainę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Aplankyti šio turinio svetainę
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Atsisiųsti
@@ -3661,7 +3661,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Talpa: {
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pertvarkymas)
 STR_REFIT_TITLE                                                 :{GOLD}Pasirinkite krovinio tipą:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pajamos iš pertvarkymo: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pajamos iš pertvarkymo: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias pertvarkysite. Vilkdami galite pažymėti keletą jų. Spragtelėję tuščiame plote, pasirinksite visas transporto priemones. Spragtelėję laikydami nuspaustą Ctrl klavišą, pasirinksite transporto priemonę ir visas, esančias už jos
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirinkite traukiniu gabenamo krovinio tipą
