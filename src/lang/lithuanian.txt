@@ -1580,7 +1580,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Įjungus šį n
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Uždrausti kompiuteriui laivus: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Įjungus šį nustatymą, statyti laivų kompiuterio žaidėjui bus neįmanoma
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti AIs Interneto režime: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Leisti DI Interneto režime: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Leisti DI kompiuterio žaidėjus dalyvauti Interneto režime
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opkodai prieš skriptus yra nevykdomi: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimalus skaičius skaičiavimų žingsnių, kuriuos scenarijus vykdo viename ėjime
@@ -2218,7 +2218,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipas
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Turinio tipas
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Vardas
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Turinio vardas
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Paspauskite kad pamatyti smulkmenas{}Pažymėkite checkbox atsisiųntimui
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Paspauskite detalesnei informacijai{}Atsisiuntimui - pažymėkite varnele
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pažymėti viską
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Pažymėti visą turinį atsisiuntimui
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymėti atnaujinimus
@@ -2232,8 +2232,8 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Atsisių
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Pradedama siųsti pažymėta turinį
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Bendras siuntimo dydis: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}TURINIO INFORMACIJA
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs nepasirinkote tai, kad atsisiųsti
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs pasirinkote tai atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs nepasirinkote atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs pasirinkote atsisiųsti
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ši priklausomybė buvo pasirinkta atsisiuntimui
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tu jau tai turi
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šis turinys yra nežinomas ir negali būti parsiųstas su OpenTTD
@@ -2495,9 +2495,9 @@ STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pasirinkite medžio rūšį
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinktos rūšies, medžiai
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai tempiant
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodinti atsitiktinės rūšies medžius. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai betkur
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Atsitiktinai apsodinti sausumą medžiais
 
 # Land generation window (SE)
@@ -2755,8 +2755,8 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Įveskite atsitiktinį skaičių
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti snieko linijos aukštį
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradzios metus
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti sniego linijos aukštį
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenarijaus tipas

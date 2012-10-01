@@ -1133,6 +1133,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Os y galluogir,
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, etc. (awtolethru): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
 STR_CONFIG_SETTING_CATCHMENT                                    :Caniatáu ardaloedd dalgylch mwy realistig eu maint: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Defnyddio dalgylchoedd o feintiau gwahanol ar gyfer gwahanol fathau o orsafoedd a meysydd awyr
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Caniatáu chwalu mwy o ffyrdd, pontydd ayb. sy'n berthyn i drefi: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hwyluso chwalu tanadeiledd ac adeiladau sy'n eiddo i drefi
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Hyd uchafsymol trenau: {STRING}
@@ -1141,8 +1142,14 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} teil
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Faint o fŵg/sbarciau gan gerbydau: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Gosod faint o fwg neu sawl sbarc a allyrrir gan gerbydau
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model cyflymu trenau: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Dewis y model ffiseg ar gyfer cyflymiad trenau. Mae'r model "gwreiddiol" yn arafu cerbydau ar lethrau'n unfath. Mae'r model "realistig" yn arafu cerbydau ar lethrau a throeon yn ôl amryw baramedrau'r trên, megis ei hyd a'i rym tynnu
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model cyflymiad cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Dewis y model ffiseg ar gyfer cerbydau ffordd. Mae'r model "gwreiddiol" yn arafu cerbydau ar lethrau'n unfath. Mae'r model "realistig" yn arafu cerbydau ar lethrau a throeon yn ôl amryw baramedrau'r injan, megis ei 'rym tynnu'
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Serthrwydd llethrau ar gyfer trenau: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Serthrwydd teil llethr ar gyfer trên. Mae gwerthoedd uwch yn ei gwneud yn anoddach i ddringo allt
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Serthrwydd llethrau ar gyfer cerbydau ffordd: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Serthrwydd teil llethr ar gyfer cerbyd ffordd. Mae gwerthoedd uwch yn ei gwneud yn anoddach i ddringo allt
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Rhwystro trenau a llongau rhag troi 90 gradd: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Defnyddio'r algorithm llwytho gwell: {STRING}
@@ -1239,7 +1246,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Cyflymder olwyn
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Efelychu de-glicio: {STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-clic
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-clic
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Clic
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :I ffwrdd
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Sgrolio Clic-chwith: {STRING}
@@ -1481,8 +1488,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Dangos c
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Dangos cynllun lliw cerbydau ffordd
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Dangos cynllun lliw llongau
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Dangos cynllun lliw awyrennau
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Dewiswch brif lliw y cynllun sydd wedi'i ddewis
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Dewiswch ail liw y cynllun sydd wedi'i ddewis
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Dewiswch brif lliw y cynllun sydd wedi'i ddewis. Bydd Ctrl+Clic yn gosod y lliw yma ar gyfer pob cynllun
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Dewiswch ail liw y cynllun sydd wedi'i ddewis. Bydd Ctrl+Clic yn gosod y lliw yma ar gyfer pob cynllun
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Dewiswch gynllun lliw i'w newid, neu nifer o gynlluniau lliw trwy glicio ar CTRL+clic. Cliciwch ar y bocs i doglu defnydd y cynllun
 
 STR_LIVERY_DEFAULT                                              :Lifrau cyffredin
@@ -2761,7 +2768,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Newid en
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Golygu enw pwynt llwybro
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Cyllid {BLACK}{COMPANY_NUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Cyllid {COMPANY}{BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Gwariant/Incwm
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Adeiladu
@@ -3262,7 +3269,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Cynhwyse
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ailffitio)
 STR_REFIT_TITLE                                                 :{GOLD}Dewiswch y math o lwyth i'w gario:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}bellach yn gallu cario: {GOLD}{CARGO_LONG}{}{BLACK}Côst o ailffitio: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}{}{BLACK}Incwm drwy ailffitio: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost ailffitio: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Cynhwysedd newydd: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Incwm drwy ailffitio: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dewisiwch y cerbydau i ailffitio. Mae llusgo'r llygoden yn galluogi dewis sawl cerbyd. Mae clicio ar wagle'n dewis y cerbydres gyfan. Mae Ctrl+Clic yn dewis cerbyd a phob un ar ei hôl
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
