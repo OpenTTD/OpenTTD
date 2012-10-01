@@ -562,7 +562,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, ui
 	if (flags & DC_EXEC) {
 		g->replace_protection = HasBit(p2, 0);
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
+		SetWindowDirty(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type);
 	}
 
