@@ -1017,7 +1017,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	if (flags & DC_EXEC) {
 		free(v->name);
 		v->name = reset ? NULL : strdup(text);
-		InvalidateWindowClassesData(WC_TRAINS_LIST, 1);
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 1);
 		MarkWholeScreenDirty();
 	}
 
