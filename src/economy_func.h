@@ -40,7 +40,7 @@ Money GetPrice(Price index, uint cost_factor, const struct GRFFile *grf_file, in
 
 void InitializeEconomy();
 void RecomputePrices();
-void AddInflation(bool check_year = true);
+bool AddInflation(bool check_year = true);
 
 /**
  * Is the economy in recession?

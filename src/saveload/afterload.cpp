@@ -2171,7 +2171,7 @@ bool AfterLoadGame()
 
 		/* Simulate the inflation, so we also get the payment inflation */
 		while (_economy.inflation_prices < aimed_inflation) {
-			AddInflation(false);
+			if (AddInflation(false)) break;
 		}
 	}
 
