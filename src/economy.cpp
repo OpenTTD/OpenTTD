@@ -1326,8 +1326,8 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 			if ((front->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) && (!accepted || v->cargo.Count() == cargo_count)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded, front->current_order.GetUnloadType() & OUFB_TRANSFER ? VehicleCargoList::MTA_TRANSFER : VehicleCargoList::MTA_UNLOAD, payment);
 				if (!HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP)) {
-					InvalidateWindowData(WC_STATION_LIST, last_visited);
 					SetBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP);
+					InvalidateWindowData(WC_STATION_LIST, last_visited);
 				}
 
 				dirty_vehicle = dirty_station = true;
