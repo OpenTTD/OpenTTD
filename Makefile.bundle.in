@@ -10,13 +10,9 @@
 #
 
 # The revision is needed for the bundle name and creating an OSX application bundle.
-ifdef REVISION
-REV := $(REVISION)
-else
 # Detect the revision
 VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
 REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
-endif
 
 # Make sure we have something in REV
 ifeq ($(REV),)

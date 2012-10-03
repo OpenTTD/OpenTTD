@@ -41,7 +41,6 @@ TTDS        = $(SRC_DIRS:%=%/$(TTD))
 OS          = !!OS!!
 OSXAPP      = !!OSXAPP!!
 LIPO        = !!LIPO!!
-REVISION    = !!REVISION!!
 AWK         = !!AWK!!
 SORT        = !!SORT!!
 DISTCC      = !!DISTCC!!
