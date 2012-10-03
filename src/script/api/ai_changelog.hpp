@@ -25,6 +25,7 @@
  * \li AIIndustryType::IsProcessingIndustry
  * \li AIStation::IsAirportClosed
  * \li AIStation::OpenCloseAirport
+ * \li AIController::Break
  *
  * \b 1.2.2
  *

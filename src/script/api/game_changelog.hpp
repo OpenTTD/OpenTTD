@@ -28,6 +28,7 @@
  * \li GSIndustryType::IsProcessingIndustry
  * \li GSStation::IsAirportClosed
  * \li GSStation::OpenCloseAirport
+ * \li GSController::Break
  *
  * \b 1.2.2
  *
