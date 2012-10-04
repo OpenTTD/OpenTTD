@@ -1488,6 +1488,9 @@ make_cflags_and_ldflags() {
 			if [ $cc_version -ge 44 ]; then
 				LDFLAGS_BUILD="$LDFLAGS_BUILD -static-libgcc -static-libstdc++"
 			fi
+			if [ $cc_version -ge 47 ]; then
+				CFLAGS="$CFLAGS -mno-ms-bitfields"
+			fi
 		fi
 	fi
 
