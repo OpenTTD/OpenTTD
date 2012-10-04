@@ -57,7 +57,7 @@ static inline int OTTDgetnameinfo(const struct sockaddr *sa, socklen_t salen, ch
 
 	if (getnameinfo != NULL) return getnameinfo(sa, salen, host, hostlen, serv, servlen, flags);
 
-	strncpy(host, inet_ntoa(((struct sockaddr_in *)sa)->sin_addr), hostlen);
+	strncpy(host, inet_ntoa(((const struct sockaddr_in *)sa)->sin_addr), hostlen);
 	return 0;
 }
 #define getnameinfo OTTDgetnameinfo
