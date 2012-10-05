@@ -44,9 +44,9 @@
 	throw Script_Suspend(ticks, NULL);
 }
 
-/* static */ bool ScriptController::Break(const char* message)
+/* static */ void ScriptController::Break(const char* message)
 {
-	if (_network_dedicated || !_settings_client.gui.ai_developer_tools) return false;
+	if (_network_dedicated || !_settings_client.gui.ai_developer_tools) return;
 
 	ScriptObject::GetActiveInstance()->Pause();
 
@@ -57,8 +57,6 @@
 	/* Inform script developer that his script has been paused and
 	 * needs manual action to continue. */
 	ShowAIDebugWindow(ScriptObject::GetRootCompany());
-
-	return true;
 }
 
 /* static */ void ScriptController::Print(bool error_msg, const char *message)

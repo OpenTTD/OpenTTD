@@ -114,7 +114,7 @@ public:
 	 * @note gui.ai_developer_tools setting must be enabled or the break is
 	 * ignored.
 	 */
-	static bool Break(const char* message);
+	static void Break(const char* message);
 
 	/**
 	 * When Squirrel triggers a print, this function is called.
