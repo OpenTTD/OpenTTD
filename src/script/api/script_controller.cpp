@@ -57,6 +57,10 @@
 	/* Inform script developer that his script has been paused and
 	 * needs manual action to continue. */
 	ShowAIDebugWindow(ScriptObject::GetRootCompany());
+
+	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
+		ScriptObject::DoCommand(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
+	}
 }
 
 /* static */ void ScriptController::Print(bool error_msg, const char *message)
