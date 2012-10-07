@@ -107,7 +107,7 @@ public:
 				break;
 
 			case WID_W_SHOW_VEHICLES: // show list of vehicles having this waypoint in their orders
-				ShowVehicleListWindow(this->owner, this->vt, this->wp->index);
+				ShowVehicleListWindow(this->wp->owner, this->vt, this->wp->index);
 				break;
 		}
 	}
