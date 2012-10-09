@@ -1259,6 +1259,8 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 	if (colour != NULL) {
 		if (unloading == 0 && loading) {
 			*colour = STR_PERCENT_UP;
+		} else if (unloading == 0 && !loading) {
+			*colour = STR_PERCENT_NONE;
 		} else if (cars == unloading || !loading) {
 			*colour = STR_PERCENT_DOWN;
 		} else {
