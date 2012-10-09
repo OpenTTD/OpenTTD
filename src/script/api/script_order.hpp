@@ -588,8 +588,10 @@ public:
 	 * @param vehicle_type The vehicle type to get the distance for.
 	 * @param origin_tile Origin, can be any tile or a tile of a specific station.
 	 * @param dest_tile Destination, ca be any tile or a tile of a specific station.
-	 * @return The square of the distance between the origin and the
-	 *         destination for a vehicle of the given vehicle type.
+	 * @return The distance between the origin and the destination for a
+	 *         vehicle of the given vehicle type.
+	 * @note   The unit of the order distances is unspecified and should
+	 *         not be compared with map distances
 	 * @see ScriptEngine::GetMaximumOrderDistance and ScriptVehicle::GetMaximumOrderDistance
 	 */
 	static uint GetOrderDistance(ScriptVehicle::VehicleType vehicle_type, TileIndex origin_tile, TileIndex dest_tile);

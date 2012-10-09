@@ -551,8 +551,10 @@ public:
 	 * Get the maximum allowed distance between two orders for a vehicle.
 	 * @param vehicle_id The vehicle to get the distance for.
 	 * @pre IsValidVehicle(vehicle_id).
-	 * @return The square of the maximum distance between two orders for
-	 *         this vehicle or 0 if the distance is unlimited.
+	 * @return The maximum distance between two orders for this vehicle
+	 *         or 0 if the distance is unlimited.
+	 * @note   The unit of the order distances is unspecified and should
+	 *         not be compared with map distances
 	 * @see ScriptOrder::GetOrderDistance
 	 */
 	static uint GetMaximumOrderDistance(VehicleID vehicle_id);
