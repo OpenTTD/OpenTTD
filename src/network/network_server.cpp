@@ -2052,7 +2052,16 @@ uint NetworkServerKickOrBanIP(ClientID client_id, bool ban)
 uint NetworkServerKickOrBanIP(const char *ip, bool ban)
 {
 	/* Add address to ban-list */
-	if (ban) *_network_ban_list.Append() = strdup(ip);
+	if (ban) {
+		bool contains = false;
+		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
+			if (strcmp(*iter, ip) == 0) {
+				contains = true;
+				break;
+			}
+		}
+		if (!contains) *_network_ban_list.Append() = strdup(ip);
+	}
 
 	uint n = 0;
 
