@@ -34,7 +34,7 @@ public:
 		/** Destination of new order is to far away from the previous order */
 		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
 
-		/* Aircraft has not enough range to copy/share orders. */
+		/** Aircraft has not enough range to copy/share orders. */
 		ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,                 // [STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE]
 	};
 
@@ -585,9 +585,13 @@ public:
 
 	/**
 	 * Get the distance between two points for a vehicle type.
+	 * Use this function to compute the distance between two tiles wrt. a vehicle type.
+	 * These vehicle-type specific distances are indepenent from other map distances, you may
+	 * use the result of this function to compare it with the result of
+	 * ScriptEngine::GetMaximumOrderDistance or ScriptVehicle::GetMaximumOrderDistance.
 	 * @param vehicle_type The vehicle type to get the distance for.
 	 * @param origin_tile Origin, can be any tile or a tile of a specific station.
-	 * @param dest_tile Destination, ca be any tile or a tile of a specific station.
+	 * @param dest_tile Destination, can be any tile or a tile of a specific station.
 	 * @return The distance between the origin and the destination for a
 	 *         vehicle of the given vehicle type.
 	 * @note   The unit of the order distances is unspecified and should

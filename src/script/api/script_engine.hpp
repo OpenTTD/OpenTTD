@@ -255,6 +255,9 @@ public:
 
 	/**
 	 * Get the maximum allowed distance between two orders for an engine.
+	 * The distance returned is a vehicle-type specific distance indepenent from other
+	 * map distances, you may use the result of this function to compare it
+	 * with the result of ScriptOrder::GetOrderDistance.
 	 * @param engine_id The engine to get the max distance for.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The maximum distance between two orders for the engine
