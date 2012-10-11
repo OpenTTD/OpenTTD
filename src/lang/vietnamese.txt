@@ -1151,71 +1151,118 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Sự giảm tốc tại dốc của ôtô: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Sự giảm tốc cho ôtô tại một ô dốc. Giá trị càng cao thì càng khó leo dốc
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :quay 90 độ chỉ xảy ra khi một ray ngang nối với một ray dọc ở 2 ô liền kề, khiến cho tàu hỏa cua 90 khi đến ô rẽ thay vì 45 độ như bình thường. Việc này cũng áp dụng với tàu thủy.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Cho phép gộp ga, bến, cảng không sát nhau: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Cho phép thêm đoạn vào ga mà không phải sửa cái hiện có. Phải bấm Ctrl+Click để thêm đoạn vào ga
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Sử dụng thuật toán bốc/dỡ hàng cải tiến: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Nếu mở, các toa xe ở ga được bốc xếp tuần tự. Toa xe tiếp theo chỉ được bốc hàng khi tòa đầu tiên đã đầy hàng hóa
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Bốc/dỡ hàng lên phương tiện dần dần: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Bốc xết tuần tự lên toa xe với thời gian được chỉ ra, thay vì bốc xếp tất cả mọi thứ một lúc thì thời gian bốc xếp định sẵn theo khối lượng hàng hóa mang theo
 STR_CONFIG_SETTING_INFLATION                                    :Lạm phát: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Cho phép lạm phát đối với kinh tế, khi mà chi phí tăng nhanh hơn một chút so với khoản thu
 STR_CONFIG_SETTING_SELECTGOODS                                  :Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Chỉ có hàng hóa chỉ định cho ga/bến mới được bốc xếp. Tùy chọn này ngăn việc đặt tỉ lệ xấu cho hàng hóa không phục vụ tại ga/bến đó
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Độ dài tối đa của cầu: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Độ dài tối đa khi xây cầu
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Độ dài tối đa của hầm: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Độ dài tối đa khi xây hầm
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Tuỳ chỉnh phương thức xây dựng nhà máy: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Phương thức đầu tư xây tổ hợp công nghiệp. 'không' là không thể đầu tư, 'prospecting' là có thể, nhưng vị trí sẽ ngẫu nhiên trên bản đồ và việc xây dựng có thể không thành công, 'as other industries' nghĩa là các nhà máy thô có thể được xây dựng bởi công ty như nhà máy chế biến ở bất kỳ vị trí nào muốn
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Vùng đất phẳng xung quanh nhà máy: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Khoảng không gian bằng phẳng quanh nhà máy. Điều này đảm bảo rằng không gian trống quanh nhà máy để xây đường ray và công trình
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Bình thường mỗi đo thị không có quá một nhà máy mỗi loại. Tùy chọn này cho phép nhiều nhà máy cùng một loại trong phạm vi mỗi đô thị
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Hiện đèn báo: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Chọn bên của đường ray để đặt đèn tín hiệu
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Phía bên trái
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Phía xe chạy
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Phía bên phải
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Hiện bảng tài chính vào cuối năm: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Nếu được bật, cửa số báo cáo tài chính sẽ tự bật lên cuối mỗi năm để có thể nhìn trạng thái tài chính công ty
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Bình thường tàu sẽ dừng tại tất cả các ga nó đi qua. Tùy chọn này sẽ khiến tàu chạy qua tất cả các ga không dừng cho tới điểm đích. Lưu ý, tùy chọn này chỉ là đặt giá trị mặc định khi tạo mới lộ trình, vẫn có thể thay đổi đối với từng lộ trình cụ thể
 STR_CONFIG_SETTING_STOP_LOCATION                                :Lộ trình tàu hoả mặc định sẽ dừng lại vị trí {STRING} tại sân ga
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Vị trí mà tàu hỏa sẽ dừng trong ga. 'đầu gần' dừng ở điểm gần, 'giữa' dừng ở giữa, 'đầu xa' dừng ở xa cửa vào nhất. Giá trị này chỉ là giá trị mặc định khi tạo lộ trình mới, có thể điều chỉnh riêng lẻ với mỗi lộ trình
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :đầu gần
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :giữa
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu xa
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Xe ôtô xếp hàng (với hiệu ứng quantum): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Tùy chọn sẽ khiến ôtô đứng đợi ở trước điểm dừng cho tới khi có chỗ vào
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Cuộn cửa sổ chính khi con trỏ gần mép: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Khi bật, màn hình chính sẽ cuộc khi con trỏ chuột tới lề của cửa sổ
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Nếu một công ty mua quyền vân tải độc quyền tại địa phương, thì các trạm của đối thủ sẽ không nhận được hàng hóa và hành khách trong vòng 1 năm
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Cho phép góp vốn cho các công trình: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Cho phép công ty đầu tư xây nhà mới tại địa phương
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Cho phép đầu tư hạ tầng giao thông địa phương : {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Cho phép công ty góp tièn xây lại đường xá đô thị, việc xây dựng sẽ làm giao thông rối loạn một thời gian
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Cho phép chuyển tiền cho các công ty khác: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Cho phép chuyển tiền giữa các công ty trong chế độ nhiều người chơi
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Thiết lập mức độ ảnh hưởng sức nặng hàng hóa đối với tàu hỏa, giá trị cao hơn sẽ làm tàu tăng tốc chậm hơn, đặc biệt là leo đồi núi
+STR_CONFIG_SETTING_PLANE_SPEED                                  :Tỉ lệ tốc độ của máy bay: {STRING}
+STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Thiết lập tốc độ tương đối của máy bay với phương tiện khác, nhằm giảm thu nhập của việc vận chuyển đường hàng không
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Số vụ tai nạn máy bay: {STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Tỉ lệ xác suất xảy ra tai nạn máy bay
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :không
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :giảm bớt
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :bình thường
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Cho phép xây điểm dừng xe buýt trên đường của thị trấn: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Cho phép xây dựng điểm dừng xe bus trên đường sở hữu bởi địa phương
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Cho phép xây điểm dừng xe buýt trên đường của đối thủ: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Cho phép xây dựng điểm dừng xe bus trên đường sở hữu bởi công ty khác
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Cho phép xây ga, bến, cảng sát nhau: {STRING}
+STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Cho phép các ga bến khác nhau có thể chạm vào nhau
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Bật chạy nhiều gói NewGRF cho phương tiện: {STRING}
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_HELPTEXT                     :Tùy chọn tương thích với NewGRFs cũ. Không nên tắt tùy chọn này trừ khi bạn hiểu vấn đề là gì!
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không thể đổi thiết đặt này khi vẫn còn các phương tiện giao thông.
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Phí bảo trì cơ sở hạ tầng: {STRING}
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì hạ tầng công ty sẽ sinh ra chi phí bảo trì. Chi phí sẽ tăng theo mạng lưới giao thông bạn xây dựng, và sẽ tiêu tốn của công ty lớn nhiều hơn công ty nhỏ
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Cảnh báo nếu phương tiện bị thất lạc: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Tùy chọn bật thông báo khi một phương tiện không thể tìm được đường đi tới đích mong muốn
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Kiểm soát lộ trình của các phương tiện: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Khi mở, lộ trình của phương tiện sẽ được kiểm tra định kỳ, và có vấn đề gì thì có thông báo
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các phương tiện đang dừng
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị âm: {STRING}
+STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nếu bật, sẽ có một thông báo nếu một phương tiện nào đó không có lãi trong một năm
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ thành đồ cổ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu nó hết tuổi: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nếu bật, phương tiện gần hết hạn sẽ được tự động thay mới và điều kiện thay mới được thỏa mãn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Tự động thay mới nếu phương tiện đạt {STRING} tuổi
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Tuổi tương đối để coi như phương tiện hết hạn sử dụng và được thay mới
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} tháng trước
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} tháng sau
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Số tiền tối thiểu cần cho việc tự thay mới phương tiện: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Số dư tiền tối thiểu phải có để hành động tự động thay mới được thực hiện
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :Khoảng thời gian thông báo lỗi xuất hiện trên màn hình: {STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Khoảng thời gian hiện thị thông báo trong cửa sổ màu đỏ. Lưu ý rằng cửa sổ thông báo sẽ tự đóng khi sau khoảng thời gian này, hoặc là được đóng bằng tay
+STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} giây
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Hiện thông báo: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Khoảng thời gian trễ mà hướng dẫn hiện lên khi di chuột tới đối tượng, có thể hiện hướng dẫn bằng bấm nút phải chuột
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Thời gian để con trỏ lên đối tượng {COMMA} giây
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Bấm phải chuột
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Hiện dân số đô thị trong nhãn tên của đô thị: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Hiển thị dân số của đô thị trên nhãn của nó trên bản đồ
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm của đường kẻ trong đồ thị: {STRING}
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Độ đậm của đường vẽ trên đồ thị. Một đường mảnh sẽ chính xác hơn, trong khi đó đường đậm sẽ dễ nhìn hơn và màu sắc dễ phân biệt hơn
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Tạo nền đất: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Nguyên Bản
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Khoảng cách tối đa từ lề bản đồ tới nhà máy lọc dầu: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Nhà máy hóa dầu chỉ có thể xây gần rìa bản đồ, tương ứng là ven biển với những bản đồ dạng đảo
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất (cho TerraGenesis) : {STRING}
@@ -1236,53 +1283,76 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Nếu tắt, r�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Một hoặc nhiều ô đất ở mép bản đồ phía bắc không được trống
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một hoặc nhiều ô đất ở mép bản không phải là biển
 
+STR_CONFIG_SETTING_STATION_SPREAD                               :Độ trải rộng của ga/bến tối đa: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Khoảng diện tích tối đa mà mỗi ga/bến đơn có thể trả rộng. Giá trị cao quá sẽ làm chậm trò chơi
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Bảo trì trực thăng ở sân bay trực thăng một cách tự động: {STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Bảo trì máy bay trực thăng mỗi khi hạ cánh, thậm chí là không có nhà sửc máy bay ở sân bay đó
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Neo c.cụ tôn tạo nền đất vào c.cụ tàu hoả/xe/tàu thủy/máy bay: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Khi mở thanh công cụ xây dựng một loại đường nào đó, thì mở luôn thanh công cụ nâng hạ đất nền
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Màu đất hiển thị tại bản đồ nhỏ: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Màu sắc của các dạng đất trên bản đồ nhỏ
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Lục
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Lục tối
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Tím
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Đảo ngược hướng cuộn: {STRING}
+STR_CONFIG_SETTING_REVERSE_SCROLLING_HELPTEXT                   :Phản ứng khi cuộc bản đồ bằng nút chuột phải. Nếu tắt, thì chuột di chuyển theo vùng nhìn. Nếu bật thì chuột di chuyển theo bản đồ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Cuộn uyển chuyển cửa sổ: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Điều khiển cách màn hình chính cuộn tới vị trí cụ thể khi nháy chuột vào bản đồ nhỏ hoặc khi gõ lệnh cuộn tới đối tượng trên bản đồ. Nếu bật, thì sẽ cuộn trượt, nếu tắt thì nhảy thẳng tới vị trí đó.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Hiện bảng chú giải đo lường khi dùng các công cụ xây dựng: {STRING}
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Hiển thị khoảng cách ô và chênh lệch độ cao khi kéo thả trong khi xây dựng
 STR_CONFIG_SETTING_LIVERIES                                     :Hiện màu cờ sắc áo của công ty: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Điều khiển việc sử dụng màu sắc theo kiểu phương tiện thay vì màu cờ công ty
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Không
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Công ty đang giữ
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :Tất cả công ty
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Bắt đầu tán gẫu nội nhóm với phím <ENTER>: {STRING}
+STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Chuyển đổi chế đố chát nội bộ trong công ty (nhiều người chơi) thay vì công cộng bằng nút <Ctrl+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Chức năng nút cuộn trên chuột: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Cho phép cuộc bằng chuột có bánh xe cuộn hai chiều
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Phóng to bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Cuộn bản đồ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Tắt
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Tốc độ cuộn bản đồ bằng chuột: {STRING}
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Điều chỉnh độ nhạy của bánh xe cuộn
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Giả lập click chuột phải: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Chọn phương thức giả lập nút phải chuột
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Tắt
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :Cuộn chuột trái: {STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :Cho phép cuộn bản đồ bằng cách kéo với nút trái chuột. Tùy chọn này sẽ hữu ích khi dùng màn hình cảm ứng
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Sử dụng định dạng ngày {STRING} cho tên file lưu ván chơi.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Định dạng ngày trong tên file lưu
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :đầy đủ (31 T12 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ngắn (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :Bảng màu mặc định cho những NewGRF chưa đặt sẵn bảng màu: {STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_HELPTEXT              :Bảng palette mặc định cho NewGRF với NewGRF không chỉ rõ palette
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :Bảng màu DOS
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Bảng màu Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Tự động tạm dừng khi bắt đầu game mới: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Khi bật, ván chơi sẽ tự động tạm dừng khi bắt đầu ván chơi, cho phép xem xét trước bản đồ
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Khi tạm dừng thì cho phép: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Lựa chọn các hành động có thể làm khi ván chơi đang tạm dừng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :không có thao tác nào
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :tất cả những thao tác không liên quan đến xây dựng
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tất cả ngoại trừ chỉnh sửa địa hình
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tất cả thao tác
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Danh sách phương tiện nâng cao: {STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Cho phép sử dụng danh mục nâng cao các loại phương tiện để nhóm chúng lại
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Hiển thị quá trình nạp hàng: {STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Lựa chọn liệu có chỉ thị tỉ lệ bốc xếp hiển thị khi bốc xếp hàng
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Hiện lịch trình ở dạng số nhịp thay vì ngày: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Hiển thị thời gian trong bảng lịch trình bằng bộ đếm trò chơi thay vì ngày
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Hiển thị nơi đến và nơi đi trên lịch trình: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Hiển thị thời gian đi và đến trong bảng lịch trình
 STR_CONFIG_SETTING_QUICKGOTO                                    :Tạo nhanh lộ trình cho phương tiện: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Lựa chọn trước 'đi tới con trỏ' khi mở cửa số lập lộ trình
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Loại đường ray mặc định (sau game mới/nạp game): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Có trước tiên
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Có sau cùng
@@ -3326,7 +3396,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Sức ch
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Cải biến)
 STR_REFIT_TITLE                                                 :{GOLD}Chọn loại hàng hoá để chở:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Chi phí cải biến: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}{}{BLACK}Thu từ việc chuyển đổi: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Giá thành: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Sức chứa mới: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Thu từ việc chuyển đổi: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Chọn các phương tiện để cải biến. Kéo chuột để chọn nhiều phương tiện. Click vào khoảng trống để chọn tất cả. Ctrl+Click sẽ chọn một phương tiện và các thứ nó kéo theo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Chọn loại hàng mà tàu sẽ vận chuyển
@@ -3653,6 +3725,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Chi phí: {CURRENCY_LONG}
