@@ -581,7 +581,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lån:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}I alt:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Antal af køretøjer der gav afkast sidste år; dette inkludere vejkøretøjer, tog, skibe og fly
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antallet af sidst servicerede stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Antal nyligt servicerede stationer. Togstationer, busstoppesteder, lufthavne og så videre tælles separat, selv om de tilhører den samme station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Indkomst i kvartallet med det laveste afkast i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Indkomst i kvartallet med det højeste afkast i de sidste 12 kvartaler
@@ -974,7 +974,7 @@ STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Basis-ly
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Vælg basis-lydsættet der skal bruges
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Mere information om basis-lydsættet
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basismusik-sæt
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Basis-musiksæt
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Vælg basismusik-sæt
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} beskadiget fil{P "" s}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Yderligere information om basismusik-sættet
@@ -1105,6 +1105,12 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne ha
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerede indstillinger
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Indstillingstype: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient indstilling (ikke lagret i gemt spil, påvirker alle spil)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spil indstilling (lagret i gemt spil, påvirker kun nye spil)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Firma indstilling (lagret i gemt spil, påvirker kun det aktuelle spil)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
 
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til
@@ -1123,24 +1129,59 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Center
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Højre
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillad bygning på skråninger og kyster: {STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Hvis den er aktiveret, kan spor og stationer bygges på de fleste skråninger. Hvis den er deaktiveret, er de kun tilladt på skråninger, som svarer til retningen af sporet og kræver derfor ikke fundament
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillad landskabsformning under bygninger, spor, etc. (autoslope): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillad landskabsformning under bygninger og spor uden at fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillad mere realistisk størrelse på stationernes opland: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Har forskellige størrelser oplande til forskellige typer af stationer og lufthavne
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillad nedriving af flere by-ejede veje, broer og tunneler: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Gør det nemmere at fjerne by-ejede infrastruktur og bygninger
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Den maksimale længde af tog: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Indstil den maksimale længde af tog
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} felt{P 0 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mængde af røg fra køretøj: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Indstil, hvor meget røg, eller hvor mange gnister udsendes af køretøjer
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Accelerationsmodel for tog: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Vælg fysik model for tog acceleration. Den "oprindelige" model straffer skråninger lige for alle køretøjer. Den "realistisk" model straffer skråninger og kurver afhængigt af forskellige egenskaber, så som længde og trækkraft
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Køretøjs accelerations model: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Vælg fysik model for køretøj acceleration. Den "oprindelige" model straffer skråninger lige for alle køretøjer. Den "realistisk" model straffer skråninger afhængigt af forskellige egenskaber af motoren, for eksempel 'trækkraft'
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Skrånings stejlhed for tog: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Stejlhed af skrå felter for et tog. Højere værdier gør det vanskeligere at bestige en bakke
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Skrånings stejlhed for vejkøretøjer: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Stejlhed af skrå felter for vej køretøjer. Højere værdier gør det vanskeligere at bestige en bakke
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forbyd skibe og tog at dreje 90 grader: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 graders drejninger forekommer når et horisontalt spor er direkte efterfulgt af et lodret spor stykke på det tilstødende felt, hvorved toget drejer 90 grader ved kørsel på feltets kant stedet for de sædvanlige 45 grader for andre spor kombinationer. Dette gælder også for drejeradius af skibe
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Tillad at tilføje dele til en station uden direkte at berøre eksisterende dele. Ctrl+Klik for at sætte nye dele
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Brug forbedret indlæsningsalgoritme: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Hvis aktiveret, er flere køretøjer ventende på en station indlæst sekventielt. Lastning af det næste køretøj kun starter, når der er nok fragt der venter på at fylde det første køretøj
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Last køretøjer gradvist: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Gradvist last køretøjer ved brug af specifikke laste varigheder, i stedet for at laste alting på én gang med en fast tid afhængigt af kun lastet mængde gods
 STR_CONFIG_SETTING_INFLATION                                    :Inflation: {STRING}
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Aktiver inflation i økonomien, hvor omkostningerne er lidt hurtigere stigende end betalinger
 STR_CONFIG_SETTING_SELECTGOODS                                  :Aflever kun last til en station hvis der er en forespørgsel: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Kun aflevere last til en station, der er blevet anmodet af et køretøj. Dette forhindrer dårlige bedømmelse af laster, der ikke serviceres på en station
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal bro længde: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal længde af broer
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnel længde: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal længde af tunneler
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Metode til manuel opførsel af primær industri: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Metode til finansiering af en primær industri. 'Ingen' betyder, at det ikke er muligt at finansiere nogen, 'efterforskning' betyder finansiering er mulig, men byggeriet sker et tilfældigt sted på kortet, og kan lige så godt slå fejl, "som andre industrier" betyder rå industrier kan konstrueres af firmaer ligesom forarbejdningsindustrier i enhver position de ønsker
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :efterforskning
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Fladt område omkring industier: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mængden af ​​fladt område omkring en industri. Dette sikrer tom plads vil forblive tilgængelige omkring en industri for bygge spor osv.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillad flere af samme slags industri per by: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalt vil en by ikke vil have mere end en industri af hver type. Med denne indstilling, vil det give flere industrier af samme type i samme by
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Vis signaler: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Vælge hvilken side af sporet signaler skal placeres på
+STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :På venstre
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På køresiden
+STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På højre
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Vis finansvinduet i slutningen af året: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Hvis aktiveret, dukker finansiering vinduet op ved udgangen af hvert år, for at gøre det lettere at inspicere den finansielle status af firmaet
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordrer er 'uden stop' som standard: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :Nye togordrer stopper som standard ved {STRING} af perronen
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :den nærmeste ende
@@ -1150,6 +1191,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kødannelse af 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Panorér vindue når musen er ved kanten: {STRING}
 STR_CONFIG_SETTING_BRIBE                                        :Tillad bestikkelse af de lokale myndigheder: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillad køb af eksklusive transportrettigheder: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Hvis et firma køber eksklusive transport rettigheder til en by, vil modstandernes stationer (passagerer og fragt) ikke modtage nogen fragt i et helt år
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillad sponsorer bygninger: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillad finansiering af vejfornyelse: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillad at sende penge til andre firmaer: {STRING}
@@ -1182,6 +1224,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetykkelse i
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskabs generator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderier er kun opføres nær kortets grænse, det er ved kysten for kort med øer
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snelinjehøjden: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Tærrenets hårdhed (kun TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
@@ -1279,7 +1322,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farvede nyheder
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start dato: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiver rolig økonomi (flere små ændringer): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillad at købe aktier i andre selskaber: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  : Når der trækkes, hold fastlagt afstand mellem signaler: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Når der trækkes, hold fastlagt afstand mellem signaler: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Byg automatisk semaforer før: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Vis signalvælgeren som standard: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Signaltype der bygges som standard: {STRING}
@@ -1374,6 +1417,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel me
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ukendt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... komprimeringsniveau '{STRING}' er ikke gyldigt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... savegame format '{STRING}' er ikke tilgængeligt. Går tilbage til '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorere Basis Grafik sæt '{STRING}': ikke fundet
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorere Basis Lyde sæt '{STRING}': ikke fundet
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorere Basis Musik sæt '{STRING}': ikke fundet
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1463,8 +1509,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vis farv
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Vis farveskemaer for køretøjer
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Vis farveskemaer for skibe
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Vis farveskemaer for fly
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vælg den primære farve for det valgte farveskema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vælg den sekundære farve for det valgte farveskema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Vælg den primære farve for det valgte farveskema. Ctrl+Click vil sætte denne farve for alle farveskemaer
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Vælg den sekundære farve for det valgte farveskema. Ctrl+Click vil sætte denne farve for alle farveskemaer
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Vælg et farveskema, som skal ændres, eller flere farveskemaer vha. CTRL+klik. Klik på boksen for at slå brug af farveskemaet til/fra
 
 STR_LIVERY_DEFAULT                                              :Standardfarver
@@ -2409,7 +2455,7 @@ STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægene
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generer råt og stenet område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargør spil
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører flise-løkken
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører felt-løkken
 STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Kørende script
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Forbereder spil
 
@@ -3105,7 +3151,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skift im
 STR_REPLACE_ENGINES                                             :Lokomotiver
 STR_REPLACE_WAGONS                                              :Vogne
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinnetype, hvor du vil udskifte lokomotiver
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinne type, du ønsker at udskifte lokomotiver til
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
 STR_REPLACE_RAIL_VEHICLES                                       :Jernbane
 STR_REPLACE_ELRAIL_VEHICLES                                     :Eltog
@@ -3248,7 +3294,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombyg)
 STR_REFIT_TITLE                                                 :{GOLD}Vælg den lasttype der skal transporteres:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Pris for ombyggelse: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra ombygning: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nye kapacitet: {GOLD}{CARGO_LONG},{GOLD}{CARGO_LONG}{}{BLACK}Pris for at ombygge: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapacitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Indtægt fra ombygning: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vælg køretøjer der skal ombygges. klik og træk med musen for at vælge flere køretøjer. Klik på et tomt felt for at vælge hele køretøjet. Ctrl + klik vælger et køretøj og den efterfølgende kæde
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med
@@ -3575,6 +3623,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Pris: {CURRENCY_LONG}
@@ -3706,7 +3756,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... kun 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan kun bygges i byer med mindst 1200 indbyggere
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan kun bygges i regnskovsområder
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan kun bygges i ørkenområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan kun bygges i byer (erstat huse)
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan kun bygges i byer (erstatter huse)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan kun bygges nær centrum af byer
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan kun bygges i lavtliggende områder
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun placeres nær kanten af kortet
@@ -3815,7 +3865,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... der er ikke noget spor
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... der er ingen signaler
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke ombygge jernbanetype her...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Det er nødvendigt at fjerne vejen først
