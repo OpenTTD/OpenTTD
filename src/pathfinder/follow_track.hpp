@@ -92,7 +92,7 @@ struct CFollowTrackT
 	inline bool IsTram() { return IsRoadTT() && HasBit(RoadVehicle::From(m_veh)->compatible_roadtypes, ROADTYPE_TRAM); }
 	inline static bool IsRoadTT() { return TT() == TRANSPORT_ROAD; }
 	inline static bool Allow90degTurns() { return T90deg_turns_allowed_; }
-	inline static bool DoTrackMasking() { return IsRailTT() && Tmask_reserved_tracks; }
+	inline static bool DoTrackMasking() { return Tmask_reserved_tracks; }
 
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 	inline DiagDirection GetSingleTramBit(TileIndex tile)
