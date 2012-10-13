@@ -1193,6 +1193,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cues d'automòbils (amb efectes quàntics): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fes que un vehicle esperi davant d'una parada plena fins que estigui lliure
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, les vistes començaran a desplaçar-se quan el ratolí sigui a prop la vora de la finestra
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :desactivat
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :vista principal, només pantalla completa
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :vista principal
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :cada vista
 STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn es detectat per un inspector, la companyia no podrà actuar al poble durant sis mesos
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}
@@ -3746,7 +3751,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixm
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registra de canvis
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registre de canvis
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
 
 
