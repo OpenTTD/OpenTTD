@@ -1216,7 +1216,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :alla fine
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Accodamento automezzi fuori da una stazione occupata: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fa attendere gli automezzi davanti alle fermate occupate finché non si liberano
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Scorri la visuale quando il mouse è su un bordo: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Se abilitato, la visuale principale inzia a scorrere quando il mouse è vicino al bordo dello schermo
 STR_CONFIG_SETTING_BRIBE                                        :Consenti la corruzione dell'autorità locale: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Consente alle compagnie di provare a corrompere l'autorità locale delle città. Se il tentativo viene notato da un ispettore, la compagnia è interdetta dall'operare nella città per sei mesi
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Consenti l'acquisto dell'esclusiva sui trasporti: {STRING}

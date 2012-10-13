@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ver einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Pad voertuig toustaan (met kwantum effekte): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Maak 'n pad voertuig wag by besette padstoppe totdat hulle leeg is
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Rol skerm as muis by die kant is: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer geaktiveer, sal die hoof skerm begin om te beweeg wanneer die muis naby die rand van die skerm is
 STR_CONFIG_SETTING_BRIBE                                        :Laat omkooping van die plaaslike raad toe: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Laat maatskappye die plaaslike dorpsraad probeer omkoop. Indien 'n inspekteur die omkoopgeld opgemerk, sal die maatskappy nie in staat wees om in die dorp te werk vir ses maande.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Laat die koop van eksklusief vervoer regte toe: {STRING}

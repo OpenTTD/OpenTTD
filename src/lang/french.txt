@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :{G=f}tête
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mise en file des véhicules routiers (+ effets quantiques){NBSP}: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Les véhicules routiers attendront à l'entrée des arrêts occupés jusqu'à ce qu'ils ne le soient plus
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Faire défiler la vue quand le pointeur est au bord de l'écran{NBSP}: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si activé, la vue principale commencera a défiler quand la souris sera proche des bords de l'écran
 STR_CONFIG_SETTING_BRIBE                                        :Permettre la corruption de la municipalité{NBSP}: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Autoriser les compagnies à essayer de corrompre la municipalité. Si la corruption est découverte par un enquêteur, la compagnie ne pourra rien faire dans la ville pendant six mois
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Autoriser l'achat des droits de transport exclusifs{NBSP}: {STRING}

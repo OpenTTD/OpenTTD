@@ -34,6 +34,13 @@
 #include "error.h"
 #include "game/game.hpp"
 
+/** Values for _settings_client.gui.auto_scrolling */
+enum ViewportAutoscrolling {
+	VA_DISABLED,                  //!< Do not autoscroll when mouse is at edge of viewport.
+	VA_MAIN_VIEWPORT_FULLSCREEN,  //!< Scroll main viewport at edge when using fullscreen.
+	VA_MAIN_VIEWPORT,             //!< Scroll main viewport at edge.
+	VA_EVERY_VIEWPORT,            //!< Scroll all viewports at their edges.
+};
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
 static Window *_mouseover_last_w = NULL; ///< Window of the last #MOUSEOVER event.
@@ -2291,12 +2298,14 @@ static int _input_events_this_tick = 0;
 static void HandleAutoscroll()
 {
 	if (_game_mode == GM_MENU || HasModalProgress()) return;
-	if (!_settings_client.gui.autoscroll) return;
+	if (_settings_client.gui.auto_scrolling == VA_DISABLED) return;
+	if (_settings_client.gui.auto_scrolling == VA_MAIN_VIEWPORT_FULLSCREEN && !_fullscreen) return;
 
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
 	Window *w = FindWindowFromPt(x, y);
 	if (w == NULL || w->flags & WF_DISABLE_VP_SCROLL) return;
+	if (_settings_client.gui.auto_scrolling != VA_EVERY_VIEWPORT && w->window_class != WC_MAIN_WINDOW) return;
 
 	ViewPort *vp = IsPtInWindowViewport(w, x, y);
 	if (vp == NULL) return;

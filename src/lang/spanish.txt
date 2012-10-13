@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lejos del fin
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cola de vehículos de carretera (con efecto cuantificador): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Hace que los vehículos de carretera esperen en frente de las paradas ocupadas hasta que queden libres
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Desplazar ventana mediante el cursor en los bordes: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si se activa, la pantalla principal se desplazará cuando el ratón se coloque cerca de los bordes de la pantalla
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos a la autoridad local: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite a las compañías intentar sobornar a las autoridades locales. Si el soborno es descubierto por un inspector, la compañía no podrá actuar en el pueblo durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir comprar derechos de transporte exclusivos: {STRING}

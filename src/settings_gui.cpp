@@ -1461,7 +1461,7 @@ static SettingEntry _settings_ui_interaction[] = {
 	SettingEntry("gui.window_soft_limit"),
 	SettingEntry("gui.link_terraform_toolbar"),
 	SettingEntry("gui.prefer_teamchat"),
-	SettingEntry("gui.autoscroll"),
+	SettingEntry("gui.auto_scrolling"),
 	SettingEntry("gui.reverse_scroll"),
 	SettingEntry("gui.smooth_scroll"),
 	SettingEntry("gui.left_mouse_btn_scrolling"),

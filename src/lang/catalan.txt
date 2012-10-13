@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :a l'extrem més
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cues d'automòbils (amb efectes quàntics): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Fes que un vehicle esperi davant d'una parada plena fins que estigui lliure
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Finestra d'avis quan el ratolí és al marc del programa: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Quan està activat, la finestra principal començarà a desplaçar-se quan el ratolí sigui a prop de la vora de la pantalla
 STR_CONFIG_SETTING_BRIBE                                        :Permet subornar a les autoritats locals: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permet a les companyies intentar subornar a l'autoritat local. Si el suborn es detectat per un inspector, la companyia no podrà actuar al poble durant sis mesos
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permet comprar els drets del transport en exclusiva: {STRING}

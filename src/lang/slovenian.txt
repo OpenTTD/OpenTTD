@@ -1335,7 +1335,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :koncu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Cestna vozila v vrsti (s quantum efekti): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Cestno vozila naj čaka pred zasedenim postankom/oviro dokler ni odstranjena.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Premakni okno, ko je miška na robu: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ko je aktivna, nastavitev omogoča avtomatsko premikanje slike z miško na robu.
 STR_CONFIG_SETTING_BRIBE                                        :Dovoli podkupovanje mestnih oblasti: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Dovoli družbam poskus podkupovanja mestne oblasti. Če bo inšpektor odkril podkupovanje, bo družba mirovala v tistem mestu za 6 mesecev.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dovoli nakup ekskluzivnih prevoznih dovoljenj: {STRING}

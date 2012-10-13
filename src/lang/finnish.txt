@@ -1192,7 +1192,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aivan loppuun
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ajoneuvohen jonotus (tehostein): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Ajoneuvot odottavat pysäkkien edessä kunnes ne vapautuvat
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vieritä ikkunaa, kun hiiri osuu reunaan: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Mikäli käytössä, päänäkymä siirtyy hiiren ollessa lähellä ruudun reunoja
 STR_CONFIG_SETTING_BRIBE                                        :Salli viranomaisten lahjominen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Salli yhtiöiden yrittää paikallisviranomaisten lahjontaa. Jos lahjontayritys paljastuu, yhtiö ei voi toimia kaupungissa kuuteen kuukauteen
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Salli kuljetusyksinoikeuksien ostaminen: {STRING}

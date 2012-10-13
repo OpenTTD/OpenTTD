@@ -1192,7 +1192,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :far end
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Road vehicle queueing (with quantum effects): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Make road vehicle wait in front of occupied road stops until they are cleared
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pan window when mouse is at the edge: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :When enabled, the main display will start to scroll when the mouse is near the edge of the screen
 STR_CONFIG_SETTING_BRIBE                                        :Allow bribing of the local authority: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Allow companies to try bribing the local town authority. If the bribe is noticed by an inspector, the company will not be able to act in the town for six months
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Allow buying exclusive transport rights: {STRING}

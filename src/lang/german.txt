@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :am Ende
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fahrzeugwarteschlange (mit Überlagerung): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Lässt Straßenfahrzeuge so lange vor einer besetzten Haltestelle warten, bis sie frei wird
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Scrolle die Karte automatisch, wenn der Mauszeiger nahe des Bildschirmrands ist
 STR_CONFIG_SETTING_BRIBE                                        :Bestechen der Stadtverwaltung erlauben: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Firmen das Bestechen von lokalen Behörden erlauben. Wenn die Bestechung von einem Staatsanwalt bemerkt wird, wird die Firma für die nächsten sechs Monate in der Stadt keine weiteren Aktionen starten können.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Den Erwerb exklusiver Transportrechte erlauben: {STRING}

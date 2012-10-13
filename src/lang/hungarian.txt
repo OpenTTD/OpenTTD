@@ -1256,7 +1256,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :vége
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Közúti járművek sorbanállása: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Közúti járművek megállítása foglalt útszakasz előtt, míg az fel nem szabadul
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Ablakmozgatás, ha az egér a képernyő szélén van: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Bekapcsolva a főképernyő mozogni kezd, ha az egér a képernyő széléhez közel van
 STR_CONFIG_SETTING_BRIBE                                        :Önkormányzatok megvesztegethetősége: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Önkormányzatok megvesztegethetőségének engedélyezése. Ha a megvesztegetési kisérletedet leleplezi egy felügyelő, a vállalatod nem építkezhet a településen hat hónapig
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kizárólagos szállítási jogok vásárlásának engedélyezése: {STRING}

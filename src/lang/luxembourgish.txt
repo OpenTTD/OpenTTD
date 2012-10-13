@@ -1192,7 +1192,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :um Enn
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefiererschlaang (mat Quanteneffekter): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Looss Stroossgefierer am Ufank vun engem besaten Stroossestopp waarden, bis se eidel sinn.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wann ugeschalt, scrollt d'Haaptfënster wann d'Maus um Rand vum Schierm ass
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt Bestiechung vun den Gemengen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}

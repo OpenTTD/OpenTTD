@@ -1192,7 +1192,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :đầu xa
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Xe ôtô xếp hàng (với hiệu ứng quantum): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Tùy chọn sẽ khiến ôtô đứng đợi ở trước điểm dừng cho tới khi có chỗ vào
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Cuộn cửa sổ chính khi con trỏ gần mép: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Khi bật, màn hình chính sẽ cuộc khi con trỏ chuột tới lề của cửa sổ
 STR_CONFIG_SETTING_BRIBE                                        :Cho phép hối lộ chính quyền địa phương: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Cho phép công ty thử hối lộ quan chức địa phương. Nếu việc hối lộ bị phát giác, công ty sẽ không được làm gì ở địa phương đó 6 tháng
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Cho phép mua quyền vận tải độc quyền: {STRING}

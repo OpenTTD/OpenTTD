@@ -1572,7 +1572,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :końcu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ustawianie się samochodów w kolejkach (z efektem quantum): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Każ pojazdom drogowych czekać przed zajętymi przystankami dopóki nie zostaną zwolnione
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Przesuń okno, kiedy kursor jest przy krawędzi: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Jeśli włączone, główny widok zacznie się przesuwać, kiedy myszka jest przy krawędzi ekranu
 STR_CONFIG_SETTING_BRIBE                                        :Pozwól dawać łapówki lokalnym władzom: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Pozwalaj firmom na próby przekupienia lokalnych władz miast. Jeśli przekupstwo zostanie wykryte przez inspektora, firma nie będzie mogła działać w danym mieście przez 6 miesięcy
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Pozwól na kupno wyłączności transportowej: {STRING}

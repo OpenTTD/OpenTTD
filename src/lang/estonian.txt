@@ -1243,7 +1243,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :täiesti lõpus
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Mootorsõidukite järjekorrad (koos mahuefektidega): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Pane sõiduk ootama hõivatud peatuse ees kuni need on vabastatud
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaate kerimine osutiga ekraaniserva puudutamisel: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kui lubatud, alustab põhiekraani kerimist, kui hiir on ekraani serva lähedal
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Luba anda altkäemaksu kohalikule linnavõimule. Kui altkäemaks on inspektori poolt avastatud, siis ei saa ettevõte 6 kuu jooksul linnas mitte midagi ette võtta
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}

@@ -1193,7 +1193,6 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fim
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Fila de automóveis (com efeitos de quantidade): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Faz com que automóveis aguardem na frente de paradas de rua até que sejam liberados
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Deslocar janela quando o cursor está na borda do mapa: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Se ativado, a tela irá rolar se o mouse encostar na borda da tela
 STR_CONFIG_SETTING_BRIBE                                        :Permitir o suborno da prefeitura: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companhias subornar prefeituras. Se o suborno for notado por um inspetor, a companhia não poderá subornar a prefeitura por seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permtir compra de direitos exclusivos de transporte: {STRING}
