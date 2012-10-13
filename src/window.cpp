@@ -2290,31 +2290,33 @@ static int _input_events_this_tick = 0;
  */
 static void HandleAutoscroll()
 {
-	if (_settings_client.gui.autoscroll && _game_mode != GM_MENU && !HasModalProgress()) {
-		int x = _cursor.pos.x;
-		int y = _cursor.pos.y;
-		Window *w = FindWindowFromPt(x, y);
-		if (w == NULL || w->flags & WF_DISABLE_VP_SCROLL) return;
-		ViewPort *vp = IsPtInWindowViewport(w, x, y);
-		if (vp != NULL) {
-			x -= vp->left;
-			y -= vp->top;
+	if (_game_mode == GM_MENU || HasModalProgress()) return;
+	if (!_settings_client.gui.autoscroll) return;
 
-			/* here allows scrolling in both x and y axis */
+	int x = _cursor.pos.x;
+	int y = _cursor.pos.y;
+	Window *w = FindWindowFromPt(x, y);
+	if (w == NULL || w->flags & WF_DISABLE_VP_SCROLL) return;
+
+	ViewPort *vp = IsPtInWindowViewport(w, x, y);
+	if (vp == NULL) return;
+
+	x -= vp->left;
+	y -= vp->top;
+
+	/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
-			if (x - 15 < 0) {
-				w->viewport->dest_scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
-			} else if (15 - (vp->width - x) > 0) {
-				w->viewport->dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
-			}
-			if (y - 15 < 0) {
-				w->viewport->dest_scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
-			} else if (15 - (vp->height - y) > 0) {
-				w->viewport->dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
-			}
-#undef scrollspeed
-		}
+	if (x - 15 < 0) {
+		w->viewport->dest_scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
+	} else if (15 - (vp->width - x) > 0) {
+		w->viewport->dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
 	}
+	if (y - 15 < 0) {
+		w->viewport->dest_scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
+	} else if (15 - (vp->height - y) > 0) {
+		w->viewport->dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
+	}
+#undef scrollspeed
 }
 
 enum MouseClick {
