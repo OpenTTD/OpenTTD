@@ -207,10 +207,12 @@ private:
 	 */
 	void DrawGroupInfo(int y, int left, int right, GroupID g_id, bool protection = false) const
 	{
-		/* Highlight the group if a vehicle is dragged over it and it isn't selected. */
-		if (g_id == this->group_over && g_id != this->vli.index) {
+		/* Highlight the group if a vehicle is dragged over it */
+		if (g_id == this->group_over) {
 			GfxFillRect(left + WD_FRAMERECT_LEFT, y + WD_FRAMERECT_TOP, right - WD_FRAMERECT_RIGHT, y + this->tiny_step_height - WD_FRAMERECT_BOTTOM - WD_MATRIX_TOP, _colour_gradient[COLOUR_GREY][7]);
 		}
+
+		if (g_id == NEW_GROUP) return;
 
 		/* draw the selected group in white, else we draw it in black */
 		TextColour colour = g_id == this->vli.index ? TC_WHITE : TC_BLACK;
@@ -509,6 +511,9 @@ public:
 
 					y1 += this->tiny_step_height;
 				}
+				if (this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.Length()) {
+					DrawGroupInfo(y1, r.left, r.right, NEW_GROUP);
+				}
 				break;
 			}
 
@@ -624,7 +629,6 @@ public:
 	virtual void OnDragDrop(Point pt, int widget)
 	{
 		switch (widget) {
-			case WID_GL_ALL_VEHICLES: // All vehicles
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
 				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
 
@@ -747,24 +751,19 @@ public:
 		/* A vehicle is dragged over... */
 		GroupID new_group_over = INVALID_GROUP;
 		switch (widget) {
-			case WID_GL_ALL_VEHICLES: // ... the 'all' group.
-				/* Moving a vehicle from the all group to the default group
-				 * is a no-op, so do not highlight then. */
-				if (!IsDefaultGroupID(Vehicle::Get(vehicle_sel)->group_id)) new_group_over = ALL_GROUP;
-				break;
-
 			case WID_GL_DEFAULT_VEHICLES: // ... the 'default' group.
-				/* Moving a vehicle from the default group to the all group
-				 * is a no-op, so do not highlight then. */
-				if (!IsDefaultGroupID(Vehicle::Get(vehicle_sel)->group_id)) new_group_over = DEFAULT_GROUP;
+				new_group_over = DEFAULT_GROUP;
 				break;
 
 			case WID_GL_LIST_GROUP: { // ... the list of custom groups.
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
-				if (id_g < this->groups.Length()) new_group_over = this->groups[id_g]->index;
+				new_group_over = id_g >= this->groups.Length() ? NEW_GROUP : this->groups[id_g]->index;
 				break;
 			}
 		}
+
+		/* Do not highlight when dragging over the current group */
+		if (Vehicle::Get(vehicle_sel)->group_id == new_group_over) new_group_over = INVALID_GROUP;
 
 		/* Mark widgets as dirty if the group changed. */
 		if (new_group_over != this->group_over) {
