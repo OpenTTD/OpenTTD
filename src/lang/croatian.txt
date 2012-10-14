@@ -1288,6 +1288,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :kraja
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Nizanje cestovnih vozila (s kvantnim učincima): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Cestovna vozila moraju čekati ispred zauzetih raskrižja dok se ne rasčiste
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Pomakni prozor kada je miš na rubu: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kada je uključeno, prikazna polja će se početi pomicati kada se miš nalazi blizu ruba prozora
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :isključeno
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :glavno prikazno polje, samo prikaz na punom ekranu
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :glavno prikazno polje
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :svako prikazno polje
 STR_CONFIG_SETTING_BRIBE                                        :Dopusti potkupljivanje lokalne samouprave: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Omogućiti tvrtkama pokušavanje podmićivanja lokalne gradske vlasti. Ako mito je primjećeno od strane inspektora, tvrtka neće biti u mogućnosti djelovati u gradu na šest mjeseci
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Dopusti kupovinu ekskluzivnih prijevoznih prava: {STRING}
@@ -3852,6 +3857,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Cijena: {CURRENCY_LONG}

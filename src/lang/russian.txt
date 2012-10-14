@@ -1348,6 +1348,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в конце
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Автотранспорт строится в очередь у станции: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Если остановка или грузовой терминал заняты, то автотранспорт будет ждать своей очереди у въезда на станцию.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Смещать обзор, когда курсор находится у края экрана: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Включает смещение обзора при приближении указателя мыши к краю экрана
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :нет
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :в основном окне при полноэкранном режиме
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :в основном окне
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :во всех окнах
 STR_CONFIG_SETTING_BRIBE                                        :Разрешить подкупать местные власти: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Позволять компаниям подкупать городскую администрацию. Если факт подкупа раскроется, рейтинг компании в городе падает и взимодействие с местной администрацией прекращается на 6 месяцев.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Разрешить покупать эксклюзивные транспортные права: {STRING}

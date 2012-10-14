@@ -1193,6 +1193,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :먼쪽
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :획기적인 방법으로 자동차를 대기: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :자동차가 사용중인 차량 정거장이 빌 때까지 그 앞쪽에서 기다리도록 합니다.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :가장자리에 마우스를 가져가면 화면 움직이기: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :이 옵션을 켜면, 마우스를 게임 및 외부 화면 창의 가장자리에 가까이 가져가면 화면을 이동시킵니다.
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :사용 안 함
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :전체 화면에서 주 게임 화면만
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :주 게임 화면만
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :모든 화면에서
 STR_CONFIG_SETTING_BRIBE                                        :지역 당국에 뇌물을 주는 행위 허용: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :회사가 지역 도시 당국에 뇌물을 주는 것을 허용합니다. 뇌물 행위가 적발되는 경우, 회사는 해당 도시에서 6개월간 아무 행동도 할 수 없습니다.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :독점 운송권 구입 허용: {STRING}
@@ -3757,6 +3762,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}가격: {CURRENCY_LONG}
