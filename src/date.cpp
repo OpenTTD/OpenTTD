@@ -277,24 +277,28 @@ void IncreaseDate()
 	if (_date_fract < DAY_TICKS) return;
 	_date_fract = 0;
 
-	/* increase day counter and call various daily loops */
+	/* increase day counter */
 	_date++;
-	OnNewDay();
 
 	YearMonthDay ymd;
+	ConvertDateToYMD(_date, &ymd);
 
 	/* check if we entered a new month? */
-	ConvertDateToYMD(_date, &ymd);
-	if (ymd.month == _cur_month) return;
-
-	/* yes, call various monthly loops */
-	_cur_month = ymd.month;
-	OnNewMonth();
+	bool new_month = ymd.month != _cur_month;
 
 	/* check if we entered a new year? */
-	if (ymd.year == _cur_year) return;
+	bool new_year = ymd.year != _cur_year;
+
+	/* update internal variables before calling the daily/monthly/yearly loops */
+	_cur_month = ymd.month;
+	_cur_year  = ymd.year;
+
+	/* yes, call various daily loops */
+	OnNewDay();
+
+	/* yes, call various monthly loops */
+	if (new_month) OnNewMonth();
 
 	/* yes, call various yearly loops */
-	_cur_year = ymd.year;
-	OnNewYear();
+	if (new_year) OnNewYear();
 }
