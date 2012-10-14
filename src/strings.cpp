@@ -62,6 +62,24 @@ void StringParameters::ClearTypeInformation()
 	MemSetT(this->type, 0, this->num_param);
 }
 
+
+/**
+ * Read an int64 from the argument array. The offset is increased
+ * so the next time GetInt64 is called the next value is read.
+ */
+int64 StringParameters::GetInt64(WChar type)
+{
+	if (this->offset >= this->num_param) {
+		DEBUG(misc, 0, "Trying to read invalid string parameter");
+		return 0;
+	}
+	if (this->type != NULL) {
+		assert(this->type[this->offset] == 0 || this->type[this->offset] == type);
+		this->type[this->offset] = type;
+	}
+	return this->data[this->offset++];
+}
+
 /**
  * Shift all data in the data array by the given amount to make
  * room for some extra parameters.
@@ -780,7 +798,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 				}
 
 				int i = 0;
-				while (*p != '\0') {
+				while (*p != '\0' && i < 20) {
 					uint64 param;
 					s = ++p;
 
