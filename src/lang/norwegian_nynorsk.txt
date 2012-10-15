@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :i andre enden
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Køyretøykøar (med kvantumseffektar): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på vindauget dersom pila er nær ytterkantane på skjermen: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :deaktivert
 STR_CONFIG_SETTING_BRIBE                                        :Tillet bestikkelse av bystyret: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillet kjøp av eksklusive transportretter: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat sponsing av bygningar: {STRING}
@@ -2697,6 +2698,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Aksepter
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Syne liste over godtekne varer
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtek: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Syne stasjonsvurdering
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Lokal vurdering av transporttenester:
@@ -2722,6 +2724,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Syne all
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Syne alle skip som har denne stasjonen på ruteplanen sin
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre namnet på stasjon/lasteterminal
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -3233,7 +3236,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Vel varetype:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Ombyggjingskostnader: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}{}{BLACK}Inntekt frå ombygging: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Kostnad for ombygging: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Ny kapasitet: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Inntekter frå ombygging: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Velg køyretyg for ombygging. Dra med musa for å velje fleire køyretyg. Klikk på eit tomt område for å velje heile køyretyget. Ctrl+klikk vil velje eit køyretyg og den føgjande kjeda.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vel kva type varer toget skal frakte
@@ -3560,6 +3565,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostnad: {CURRENCY_LONG}

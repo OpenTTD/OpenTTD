@@ -1509,6 +1509,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ў канцы
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Аўтатранспарт зьбіраецца ў чаргу каля прыпынка: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Аўтатранспарт будзе чакаць перад прыпынкам, пакуль ён вызваліцца ад іншых машынаў.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Перамяшчаць агляд, калі курсор знаходзіцца на краі экрана: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Уключае зрушваньне агляду пры набліжэньні паказальніка мышы да краю экрана
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :няма
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :у асноўным акне пры поўнаэкранным рэжыме
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :у асноўным акне
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :ва ўсіх вокнах
 STR_CONFIG_SETTING_BRIBE                                        :Дазволіць падкупляць мясцовыя ўлады: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дазволіць кампаніям спрабаваць даць хабар мясцовай адміністрацыі. Калі хабар будзе выкрыты інспэктарам, кампанія ўвогуле ня зможа дзейнічаць у гэтым населеным пункце на працягу 6-ці месяцаў.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дазволіць купляць эксклюзыўныя трансп. правы: {STRING}

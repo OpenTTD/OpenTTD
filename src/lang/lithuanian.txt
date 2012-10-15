@@ -1387,6 +1387,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ties tolimuoju 
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Automobilių vilkstinė (su kvantavimo efektu): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Jei kelyje pasitaikys kliūtis (ar tiesiog krovos aikštelė bus užimta), automobiliai nebandys grūstis, o stos į tvarkingą eilę
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Slinkti vaizdą pelei esant prie krašto: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Pelės žymikliui priartėjus prie pagrindinio ar papildomo peržiūros langų krašto, vaizdas jame gali būti slenkamas.
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :neslinkti
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :pagrindiniame lange, jei jis užima visą ekraną
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :pagrindiniame lange
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :visuose peržiūros languose
 STR_CONFIG_SETTING_BRIBE                                        :Leisti papirkinėti miesto valdžią: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Leisti kompanijoms papirkinėti vietinę valdžią. Jei bandymas papirti bus išaiškintas, kompanijai šešiems mėnesiams bus atimta galimybė vykdyti veiklą mieste (pvz., pradėti reklamos kampanija, remontuoti kelius ir pan.)
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Leisti pirkti išskirtines transporto teises: {STRING}
