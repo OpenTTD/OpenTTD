@@ -136,7 +136,7 @@ public:
 		return ComposeColour(0xFF, colour, colour, colour);
 	}
 
-	static const int DEFAULT_BRIGHTNESS = 64;
+	static const int DEFAULT_BRIGHTNESS = 128;
 
 	static inline uint32 AdjustBrightness(uint32 colour, uint8 brightness)
 	{
