@@ -239,7 +239,7 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	 * http://www.gamedev.net/community/forums/topic.asp?topic_id=294070&whichpage=1&#1860504
 	 * XXX - not entirely correct, since filetimes on FAT aren't UTC but local,
 	 * this won't entirely be correct, but we use the time only for comparsion. */
-	sb->st_mtime = (time_t)((*(uint64*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
+	sb->st_mtime = (time_t)((*(const uint64*)&fd->ftLastWriteTime - posix_epoch_hns) / 1E7);
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
 
 	return true;
@@ -560,7 +560,7 @@ bool GetClipboardContents(char *buffer, size_t buff_len)
 		cbuf = GetClipboardData(CF_UNICODETEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		const char *ret = convert_from_fs((wchar_t*)ptr, buffer, buff_len);
+		const char *ret = convert_from_fs((const wchar_t*)ptr, buffer, buff_len);
 		GlobalUnlock(cbuf);
 		CloseClipboard();
 

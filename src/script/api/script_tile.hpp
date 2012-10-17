@@ -400,7 +400,7 @@ public:
 	/**
 	 * Level all tiles in the rectangle between start_tile and end_tile so they
 	 *  are at the same height. All tiles will be raised or lowered until
-	 *  they are at height ScriptTile::GetHeight(start_tile).
+	 *  they are at height ScriptTile::GetCornerHeight(start_tile, ScriptTile::CORNER_N).
 	 * @param start_tile One corner of the rectangle to level.
 	 * @param end_tile The opposite corner of the rectangle.
 	 * @pre start_tile < ScriptMap::GetMapSize().

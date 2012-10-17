@@ -480,9 +480,11 @@ static inline void DrawResizeBox(const Rect &r, Colours colour, bool at_left, bo
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 	if (at_left) {
-		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + WD_RESIZEBOX_RIGHT + clicked, r.top + WD_RESIZEBOX_TOP + clicked);
+		DrawSprite(SPR_WINDOW_RESIZE_LEFT, PAL_NONE, r.left + WD_RESIZEBOX_RIGHT + clicked,
+				 r.bottom - WD_RESIZEBOX_BOTTOM - GetSpriteSize(SPR_WINDOW_RESIZE_LEFT).height + clicked);
 	} else {
-		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + WD_RESIZEBOX_LEFT + clicked, r.top + WD_RESIZEBOX_TOP + clicked);
+		DrawSprite(SPR_WINDOW_RESIZE_RIGHT, PAL_NONE, r.left + WD_RESIZEBOX_LEFT + clicked,
+				 r.bottom - WD_RESIZEBOX_BOTTOM - GetSpriteSize(SPR_WINDOW_RESIZE_RIGHT).height + clicked);
 	}
 }
 
