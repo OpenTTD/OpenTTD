@@ -1201,7 +1201,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}اتج�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE} السماح بتعديل الحدود الحرة للخريطة: {ORANGE} {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE} السماح بتعديل الحدود الحرة للخريطة:  {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}مربع او اكثر غير فارغ في الحدود الشمالية
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}مربع او اكثر من حدود الخريطة لا يكون بحر
 
@@ -3182,8 +3182,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السع
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} )تغيير(
 STR_REFIT_TITLE                                                 :{GOLD}اختر نوع الحمولة ...
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}{}{BLACK}تكلفة التغيير: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}تكلفة اعادة التهيئة: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}{}{BLACK}تكلفة التغيير: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}تكلفة اعادة التهيئة: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}اختر العربة لاعادة تهيئتها. اسحب بالفارة لاختيار عدة عربات. اضغط على مساحة خالية لاختيار كل العربات. اضغط + كنترول لاختيار العربة الحالية وما بعدها.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}اختر نوع البضاعة لينقلها القطار

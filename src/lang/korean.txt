@@ -786,7 +786,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}새 운송회사 등장!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING}{G 0 "이" "가"} {TOWN}에서 공사를 시작했습니다!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING}의 관리권이 {STRING}(으)로 넘어갔습니다!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(매니저)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(사장)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING}은(는) 새로운 도시 {TOWN}을(를) 건설했습니다!
 
@@ -817,7 +817,7 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로가 하나밖에 지정되어 있지 않습니다
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}에 경로를 하나 이상 지정해주십시오
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
@@ -826,7 +826,7 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE}{P "가" "이"} 오래되었습니다
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로의 경로를 찾을 수 없습니다.
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY_LONG} 입니다.
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
@@ -1130,7 +1130,7 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션(화폐가치하락) 켜기: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을 때만 화물을 역에 옮겨놓음: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}다리의 최대 길이: {ORANGE}{STRING} 타일
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
@@ -1155,7 +1155,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}지역 
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}화물 무게가중치 (무거운 열차를 구현할 때 사용): {ORANGE}{STRING}배
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행기 속도 조절: {ORANGE}(실제속도) x {STRING}분의 1
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}비행기 추락 횟수: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}항공기 추락 빈도수: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :없음
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :적음
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :보통
@@ -1177,7 +1177,7 @@ STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}차량�
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량을 사라지지 않고 계속 만들 수 있게 함: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}차량 자동교체시 최소 추가요구 자금: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}자동 교체를 위해 최소한으로 갖고 있어야 할 자금: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시: {ORANGE}{STRING}초 동안
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}마우스를 갖다 댈때 도구팁이 뜨는 데 걸리는 시간: {ORANGE}오른쪽 클릭으로 바로
@@ -1203,8 +1203,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오의 평지 높이: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}지도 가장자리의 지형 변경을 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}북쪽 가장자리에 있는 한 개 이상의 타일이 비어있지 않습니다
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}가장자리에 있는 한 개 이상의 타일이 물이 아닙니다
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}지도 북쪽 맨 가장자리에 있는 지형의 칸 한 개 이상이 비어있지 않습니다.
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}지도 맨 가장자리에 있는 칸 한 개 이상이 물이 아닙니다.
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 값을 너무 크게 설정하면 게임이 느려집니다!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검: {ORANGE}{STRING}
@@ -1239,9 +1239,9 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
 
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}기본으로 설정할 NewGRF 팔레트: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS 팔레트
-STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows 팔레트
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE                       :{LTBLUE}기본으로 설정할 NewGRF 색상표: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :DOS 색상표
+STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :Windows 색상표
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}새 게임을 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}일시정지시 가능한 행동: {ORANGE}{STRING}
@@ -1249,8 +1249,8 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :아무 것도 �
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :모든 비건설적 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :지형 편집을 제외한 모든 행동
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :모든 행동
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}고급화된 차량 목록 사용: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}적재율 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}열차 시간표의 1일을 74틱으로 바꿔 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}시간표에서 출발일과 도착일 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}행선지 설정 후 계속해서 행선지 지정: {ORANGE}{STRING}
@@ -1289,7 +1289,7 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}고장�
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{ORANGE}{STRING}{LTBLUE}년부터 컬러로 된 뉴스가 나옴
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}{ORANGE}{STRING}년부터 컬러로 된 뉴스가 나옴
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}시작 연도: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제(더욱 작은 변화) 옵션 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}다른 회사의 지분을 사는 것을 허용: {ORANGE}{STRING}
@@ -1300,7 +1300,7 @@ STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호�
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :경로 신호기
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :단방향 경로 신호기
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ctrl+신호기 건설시 바뀌는 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :경로 신호기만
@@ -1347,8 +1347,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :빠름
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :매우 빠름
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}대도시가 되는 도시의 비율: {ORANGE}{STRING}개 중에 1개
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}대도시가 되는 도시의 비율: {ORANGE}없음
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기의 도시 크기 배수: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}도로 건설 중 부조리한 도로 요소를 제거: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기 대도시 크기 비율: 일반 도시보다 {ORANGE}{STRING}배 크게 시작
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}도로 재건설 중 불필요한 도로 요소를 제거: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}인터페이스
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}건설
@@ -1361,7 +1361,7 @@ STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}조작 
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}신호기
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}화물
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}컴퓨터 옵션
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동교체
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}자동 교체
 STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}점검
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}경로탐색
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}열차
@@ -1373,9 +1373,9 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :오리지널
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(추천)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차에 사용할 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}차량을 위한 경로탐색: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박을 위한 경로탐색: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}선박에 사용할 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}신호기 앞에서 회차: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
@@ -2168,9 +2168,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}이 작�
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}도시 만들기
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}새 도시
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}새 도시를 건설합니다. SHIFT+클릭으로 예상 가격을 볼 수 있습니다.
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위 도시 건설
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}무작위로 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}무작위 위치에 도시를 건설합니다.
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 도시 건설
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}무작위로 여러 도시 건설
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}무작위로 도시를 건설합니다.
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}도시 이름:
@@ -2467,8 +2467,8 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}색상�
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}NewGRF의 색상표를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}변경사항 적용
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}빠져있는 콘텐츠를 온라인으로 찾습니다.
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}빠져있는 콘텐츠를 온라인으로 찾을 수 있는지 검사합니다.
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}온라인에서 없는 파일 검색
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}온라인에서 없는 파일을 검색하여 다운로드할 수 있는지 확인합니다.
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2484,9 +2484,9 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용 안
 STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTTD 버전과 맞지 않습니다...
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 변경
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
-STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}리셋
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}초기화
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 파라미터를 기본값으로 설정
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -2507,17 +2507,17 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF �
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}스프라이트 정렬 {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}다음 스프라이트
 STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}다음의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
-STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트로 이동
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}스프라이트 번호 입력
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}입력한 스프라이트로 이동합니다. 만약 정상적인 스프라이트가 아닐경우, 다음 정상 스프라이트로 이동합니다.
-STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전의 스프라이트
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}이전 스프라이트
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}이전의 정상 스프라이트로 이동합니다, 이때 pseudo/recolour/font 스프라이트는 건너뛰고 원래 설정으로 다시 채워집니다.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}현재 선택된 스프라이트를 표시합니다. 이 스프라이트가 그려졌을때의 정렬은 무시합니다.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}X축이나 Y축 방향으로 스프라이트를 이동시킵니다.
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X축: {NUM}, Y축: {NUM}
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 집어들기
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}스프라이트 선택
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}화면에서 스프라이트를 끌어옵니다.
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}스프라이트로 이동
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}스프라이트 번호 입력
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2553,8 +2553,8 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 추가 불가: 중복된 GRF 아이디
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치되는 파일을 찾을 수 없음 (호환되는 GRF 불러옴)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}빠진 파일 대신에 호환되는 GRF를 불러왔습니다
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용이 불가능합니다
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}없는 파일 대신에 호환되는 GRF를 불러왔습니다.
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}나에게 없는 GRF 파일은 비활성화되었습니다.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 
@@ -2570,10 +2570,10 @@ STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGI
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' 의 정보가 잘못되었습니다
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}의 화물/개조 정보가 건설 후 구매 목록과 다릅니다. 이 경우 자동 교체시 개조에 실패할 수도 있습니다.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' (이)가 잘못된 정보를 제공하고 있습니다.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGINE}(을)를 만들기 이전과 이후의 화물/개조 정보가 현재의 구매 목록과 다릅니다. 이 경우 자동 교체시 열차 개조에 실패할 수도 있습니다.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
-STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback 함수 {1:HEX}가 알 수없는/잘못된 결과값 {2:HEX}을 반환했습니다.
+STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}콜백 함수({1:HEX})가 알 수 없거나 잘못된 결과 값({2:HEX})을 반환했습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<인식오류 화물>
@@ -2617,10 +2617,10 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}지난�
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}지난달 우편수: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}도시가 성장하기 위해 필요한 화물:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED}{G 0 "이" "가"} 필요함
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :냉대 기후에서 {ORANGE}{STRING}{BLACK}가 필요합니다.
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 배달됨
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :겨울에는 {ORANGE}{STRING}{BLACK}{G 0 "이" "가"} 필요합니다.
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} 수송됨
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (화물이 더 필요함)
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (배달됨)
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (수송됨)
 STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}도시는 {ORANGE}{COMMA}{BLACK}일마다 1번씩 성장중입니다.(도시에 투자중)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}도시는 {RED}성장하지 않고{BLACK} 있습니다.
@@ -2795,7 +2795,7 @@ STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}기반�
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANY_NUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(매니저)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENT_NAME}{}{GOLD}(사장)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}설립: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}색상:
@@ -2816,22 +2816,22 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}공항 {
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}없음
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}본사(HQ) 건설
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 지부 건설
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}회사 본사를 건설합니다.
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}본사 보기
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 지부 보기.
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}회사 본사 위치로 이동합니다.
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 위치 변경
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭하면 예상 가격을 볼 수 있습니다.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}매니저의 얼굴을 선택합니다.
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}사장의 얼굴을 선택합니다.
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}색상
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}회사 차량의 색상을 변경합니다.
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}회사 이름
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}회사 이름을 변경합니다.
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}매니저 이름
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}매니저의 이름을 변경합니다.
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}사장 이름
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}사장의 이름을 변경합니다.
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}회사 지분의 25%를 매입
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}회사 지분의 25%를 매도
@@ -2839,7 +2839,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}이 회�
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회사 지분의 25%를 매도합니다. SHIFT+클릭으로 예상 매도 가격을 볼 수 있습니다.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :매니저 이름
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :사장 이름
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
@@ -3175,7 +3175,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}현재 �
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요. 컨트롤+클릭하여 목적지를 볼 수 있습니다.
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는중 / 내리는중
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}싣는 중 / 내리는 중
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}떠남
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
@@ -3263,8 +3263,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}수송�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
@@ -3682,7 +3684,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... 이�
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}회사 이름을 바꿀 수 없습니다...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}매니저 이름을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}사장의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... 허용된 최대 대출금은 {CURRENCY_LONG} 입니다.
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}더이상 돈을 빌릴 수 없습니다...
@@ -4136,7 +4138,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (전
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :승객 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :우편 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :석탄 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :석유 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :석유 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :가축 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :상품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :곡물 수송차량
@@ -4147,14 +4149,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :귀금속 수�
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :식품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :종이 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :구리 광석 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :물 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :물 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :과일 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :설탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :솜사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :태피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :거품 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :콜라 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :장난감 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :배터리 수송차량
@@ -4166,7 +4168,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :승객 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :우편 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :석탄 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :석유 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :석유 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :가축 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :상품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :곡물 수송차량
@@ -4177,14 +4179,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :귀금속 수�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :식품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :종이 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :구리 광석 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :물 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :물 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :과일 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :설탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :솜사탕
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :태피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :거품 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :콜라 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :장난감 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :배터리 수송차량
@@ -4198,7 +4200,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocket
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :승객 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :우편 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :석탄 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :석유 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :석유 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :가축 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :상품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :곡물 수송차량
@@ -4209,14 +4211,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :귀금속 수�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :식품 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :종이 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :구리 광석 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :물 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :물 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :과일 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :고무 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :설탕 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :솜사탕
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :솜사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :태피 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :거품 수송차량
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :콜라 탱크
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :콜라 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :사탕 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :장난감 수송차량
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :배터리 수송차량
@@ -4238,9 +4240,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry 우편 �
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover 우편 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught 우편 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow 우편 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 석유 탱크차
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 석유 탱크차
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 석유 탱크차
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_OIL_TANKER               :Witcombe 유조차
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_OIL_TANKER                 :Foster 유조차
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_OIL_TANKER                  :Perry 유조차
 STR_VEHICLE_NAME_ROAD_VEHICLE_TALBOTT_LIVESTOCK_VAN             :Talbott 가축 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_LIVESTOCK_VAN                 :Uhl 가축 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster 가축 수송차
@@ -4271,9 +4273,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS 종이 수�
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :MPS 구리 광석 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Uhl 구리 광석 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Goss 구리 광석 수송차
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 물 탱크
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 물 탱크
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 물 탱크
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Uhl 물 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Balogh 물 수송차
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS 물 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh 과일 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl 과일 수송차
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling 과일 수송차
@@ -4310,11 +4312,11 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow 플라
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover 거품 트럭
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught 거품 트럭
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow 거품 트럭
-STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS 석유 탱크
-STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. 석유 탱크
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS 유조선
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :㈜CS사 유조선
 STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS 여객선
 STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP 여객선
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 호버크래프트
 STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug 여객선
 STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake 여객선
 STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate 화물선

@@ -1149,12 +1149,12 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}החלפ
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}בטל התיישנות נמלי תעופה: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :{ORANGE}{STRING}{LTBLUE} :בדוק מסלולי נסיעה
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}{ORANGE}{STRING} :בדוק מסלולי נסיעה
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :לא
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :כן,למעט עבור רכבים שבעצירה
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :עבור כל הרכבים
-STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{ORANGE}{STRING}{LTBLUE} :התרע על רכבים בעלי הכנסה שלילית
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{ORANGE}{STRING}{LTBLUE} :בטל התיישנות כלי רכב
+STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}{ORANGE}{STRING} :התרע על רכבים בעלי הכנסה שלילית
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}{ORANGE}{STRING} :בטל התיישנות כלי רכב
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}חידוש עצמי של רכב כשהוא נהיה ישן: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}חידוש עצמי של כלי רכב כשהוא {ORANGE}{STRING}{LTBLUE} חודשים לפני\אחרי הגיל המקסימלי.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}סכום הכסף המינימלי הנדרש בשביל חידוש: {ORANGE}{STRING}
@@ -1328,9 +1328,9 @@ STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}תעש�
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(מומלץ)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבות
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לרכבים
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING}{LTBLUE} :אלגורתם איתור נתיב לכלי שייט
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}{ORANGE}{STRING} :אלגורתם איתור נתיב לרכבות
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}{ORANGE}{STRING} :אלגורתם איתור נתיב לרכבים
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}{ORANGE}{STRING} :אלגורתם איתור נתיב לכלי שייט
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
@@ -3022,7 +3022,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK} :קיב
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}(התאם) {VEHICLE}
 STR_REFIT_TITLE                                                 :{GOLD}בחר את סוג המטען עבור כלי שייט זה
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{GOLD}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{RED}{1:CURRENCY_LONG}{BLACK} :עלות ההתאמה {}{GOLD}{0:CARGO_LONG}{BLACK} :קיבולת
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}בחר את סוג המשא עבור הרכבת
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}בחר את סוג המטען לנשיאה

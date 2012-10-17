@@ -1317,8 +1317,8 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ہر جگہ
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}بنیادی ٹول بار کی جگہ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}اسٹیٹس بار کی جگہ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE} قریب سے دیکھنے کی حد: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE} دور سے دیکھنے کی حد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}قریب سے دیکھنے کی حد: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}دور سے دیکھنے کی حد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :عمومی

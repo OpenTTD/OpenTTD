@@ -1030,14 +1030,14 @@ STR_GAME_OPTIONS_CURRENCY_ITL                                   :Итальян�
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нидерландский гульден (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвежская крона (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польский злотый (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Римский лей (RON)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынский лей (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Российский рубль (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Словенский толар (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведская крона (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецкая лира (TRY)
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Словацкая крона (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Бразильский реал (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонские кроны (EEK)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Эстонская крона (EEK)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 ############ end of currency region
 
@@ -1073,7 +1073,7 @@ STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Словацк�
 STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Норвежские
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Венгерские
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Австрийские
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Римские
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынские
 STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чешские
 STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швейцарские
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Датские
@@ -1304,7 +1304,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в конце
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Автотранспорт строится в очередь у станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать местные власти: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные транспортные права: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Разрешить финансирование строительства зданий: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Разрешить финансирование реконструкции дорог: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
@@ -1364,12 +1364,12 @@ STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. размер станции: {ORANGE}{STRING} клет{P 0:1 ка ки ок} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет земли на миникарте: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет ландшафта на миникарте: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зелёный
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перемещения обзора мышью: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавный скроллинг окна просмотра: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Плавное смещение обзора: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Показывать индивидуальную окраску транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :нет
@@ -1382,12 +1382,12 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :для смещ
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :не использовать
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Скорость смещения обзора прокруткой колеса мыши: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Эмуляция правого клика мыши: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Эмуляция нажатия правой кнопки мыши: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команд.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол.
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
-STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по клику левой кнопкой мыши: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Смещение обзора по нажатию левой кнопки мыши: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имён сохранений
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31-е дек 2008 г.)
@@ -1406,7 +1406,7 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :все дейс
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :все действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Показывать индикатор загрузки: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в «тиках», а не днях: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Графики движения в «тиках», а не днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показывать время прибытия и отправления в графиках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Быстрое создание заданий транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип рельсов по умолчанию (после старта/загрузки): {ORANGE}{STRING}
@@ -1475,9 +1475,9 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :запреще�
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :разрешено
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :разрешено с выбором сети дорог
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Высадка деревьев в игре: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Размножение деревьев в игре: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :отключена {RED}(лесопилки не смогут работать)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в лесах
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в тропических лесах
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
@@ -1490,7 +1490,7 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Мак�
 STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максимальный уровень удаления: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нормальный
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :нормальный
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
@@ -1503,7 +1503,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :очень вы
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Количество мегаполисов: {ORANGE}1 из {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Количество мегаполисов: {ORANGE}нет
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Стартовый множитель размера мегаполисов: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Удалять бесполезные элементы во время постройки дорог: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Удалять бесполезные элементы дорог во время реконструкции: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Строительство
@@ -3457,8 +3457,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ёмко
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переоборудование)
 STR_REFIT_TITLE                                                 :{GOLD}Выберите тип груза для перевозки:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}{}{BLACK}Прибыль от переоборудования: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Стоимость переоборудования: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Новая ёмкость: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Прибыль от переоборудования: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Выберите вагоны для переоборудования. Можно обвести мышью несколько вагонов. Щелчок за пределами состава выберет весь состав. Ctrl+щелчок выберет вагоны до конца состава.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберите тип груза для перевозки

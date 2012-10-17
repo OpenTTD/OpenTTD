@@ -1220,8 +1220,8 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Па якім баку дарогі рухаецца аўтатранспарт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць па левым
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Езьдзіць па правым
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць леваруч
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Езьдзіць праваруч
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На якой мове будуць назвы населеных пунктаў
@@ -1424,7 +1424,7 @@ STR_CONFIG_SETTING_COMPANIES_OWN                                :для сваё
 STR_CONFIG_SETTING_COMPANIES_ALL                                :для ўсіх кампаніяў
 
 STR_CONFIG_SETTING_NONE                                         :няма
-STR_CONFIG_SETTING_ORIGINAL                                     :арыгiнальная
+STR_CONFIG_SETTING_ORIGINAL                                     :арыґiнальная
 STR_CONFIG_SETTING_REALISTIC                                    :рэалістычная
 
 STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :леваруч
@@ -1441,7 +1441,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Мад�
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Мадэль паскарэньня аўтатранспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутасьць сьхілаў для цягнікоў: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутасьць сьхілаў для аўтатранспарту: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-градусныя павароты: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-ґрадусныя павароты: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Выкарыстоўваць палепшаны алгарытм загрузкі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Паступовая загрузка транспарту: {ORANGE}{STRING}
@@ -1500,8 +1500,8 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Пак�
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Паказваць колькасьць жыхароў горада ў назьве: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Таўшчыня лiнiяў у графiках: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генэратар зямлі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :арыгінальны
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Ґенэратар зямлі: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Арыґінальны
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. дыстанцыя ад краю мапы да нафтаперапрацоўчых заводаў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Вышыня сьнегавой лініі: {ORANGE}{STRING}
@@ -1510,10 +1510,10 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Вельмі г
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкі
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубы
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Вельмі грубы
-STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Альгарытм расстаноўкі дрэваў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :няма
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :арыгінальны
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :палепшаны
+STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Альґарытм расстаноўкі дрэваў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Няма
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Арыґінальны
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Палепшаны
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Кручэньне мапы вышыняў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :супраць руху гадзіньнікавай стрэлкі
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :па гадзіньнікавай стрэлцы
@@ -1523,7 +1523,7 @@ STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. працялегласьць аб'яднанай станцыі: {ORANGE}{STRING} клет{P 0:1 ка кi ак} {RED}(вялікія значэньні запавольваюць гульню)
-STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Уключыць абслугоўваньне на верталётных пляцоўках: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Уключыць абслугоўваньне на шрубалётных пляцоўках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Зьвязаць ляндшафтную панэль з транспартнай: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Колер зямлі на мінімапе: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :зялёны
@@ -1532,7 +1532,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фіялета�
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Перавярнуць напрамак зрушэньня прагляду мышшу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Павольная пракрутка ў вакне прагляду: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Паказваць замеры пры будаўніцтве: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Паказваць індывідуальныя афарбоўкі кампаніяў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Паказваць індывідуальныя афарбоўкі транспарту (два фірмовыя колеры): {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :не
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :толькі для сваёй кампаніі
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :для ўсіх кампаніяў
@@ -1560,9 +1560,9 @@ STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_DOS                   :палітру 
 STR_CONFIG_SETTING_NEWGRF_DEFAULT_PALETTE_WIN                   :палітру Windows
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Аўтаматычнае ўключэньне паўзы напачатку гульні: {ORANGE}{STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Падчас паўзы дазволiць: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Падчас паўзы дазволіць: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :нiчога
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :усе дзеяньнi, акрамя будаўнiцтва
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :усе дзеяньні, акрамя будаўніцтва
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :усе дзеяньнi, акрамя зьмяненьня ляндшафту
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :усе дзеяньнi
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Выкарыстоўваць пашыраны сьпіс транспорту: {ORANGE}{STRING}
@@ -1674,7 +1674,7 @@ STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Эка�
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Канкурэнты
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Наладкі відарысу
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Узаемадзеяньне
-STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сыгналы
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сыґналы
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Перамяшчэньне грузаў
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Кампутарныя гульцы
 STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Аўтаабнаўленьне
@@ -1685,14 +1685,14 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Нас�
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Прамысловасьць
 STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}Скрыпты
 
-STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыгінальны
+STR_CONFIG_SETTING_PATHFINDER_OPF                               :арыґінальны
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рэкамэндуецца)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Альгарытм пошуку шляху для цягнікоў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Альгарытм пошуку шляху для аўтатранспарту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Альгарытм пошуку шляху для караблёў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Аўтаматычны разварот перад сыгналамi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Альґарытм пошуку шляху для цягнікоў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Альґарытм пошуку шляху для аўтатранспарту: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Альґарытм пошуку шляху для караблёў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Аўтаматычны разварот перад сыґналамi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -1710,9 +1710,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несумяш�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невядомы
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... узровень сьцiсканьня (кампрэсii) '{STRING}' няправiльны
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... фармат захаванай гульнi '{STRING}' недаступны. Зварот да '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор графікі "{STRING}" не знойдзены
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" не знойдзены
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" не знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... набор графікі "{STRING}" ня знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... набор гукаў "{STRING}" ня знойдзены
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... набор музыкі "{STRING}" ня знойдзены
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3620,8 +3620,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ёміс
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Пераабсталяваньне)
 STR_REFIT_TITLE                                                 :{GOLD}Выберыце тып грузу для перавозкі:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Новая ўмяшчальнасьць: {GOLD}{CARGO_LONG}{}{BLACK}Даход ад пераабсталяваньня: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмістасьць: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Кошт пераабсталяваньня: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Новая ўмяшчальнасьць: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Даход ад пераабсталяваньня: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Абярыце ваґоны для пераабсталяваньня. Можна абвесьці мышшу некалькі ваґонаў. Пстрычка па-за межамі састава абярэ ўвесь састаў. Ctrl+пстрычка абярэ ваґоны да канца састава.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберыце тып грузу для перавозкі

@@ -260,7 +260,7 @@ STR_ABBREV_COAL                                                 :{TINY_FONT}ВГ
 STR_ABBREV_MAIL                                                 :{TINY_FONT}ПШ
 STR_ABBREV_OIL                                                  :{TINY_FONT}НФ
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}ХД
-STR_ABBREV_GOODS                                                :{TINY_FONT}ТО
+STR_ABBREV_GOODS                                                :{TINY_FONT}ТВ
 STR_ABBREV_GRAIN                                                :{TINY_FONT}ЗЕ
 STR_ABBREV_WOOD                                                 :{TINY_FONT}ДР
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}ЗЛ
@@ -345,9 +345,9 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Введіть рядок фільтру
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Введіть ключове слово для фільтраціі списку
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Виберіть порядок сортування (спадаючий/зростаючий)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Виберіть критерій сортування
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Оберіть критерій виборки
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Оберіть напрямок сортування (спадаючий/зростаючий)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Оберіть критерій сортування
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Оберіть критерій фільтру
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортувати
 STR_BUTTON_LOCATION                                             :{BLACK}Показати
 STR_BUTTON_RENAME                                               :{BLACK}Назва
@@ -355,7 +355,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Назв
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрити вікно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Заголовок вікна - потягніть для переміщення вікна
 STR_TOOLTIP_SHADE                                               :{BLACK}Згорнути вікно - показувати тільки заголовок
-STR_TOOLTIP_DEBUG                                               :{BLACK}Показати дебагову інформацію NewGRF
+STR_TOOLTIP_DEBUG                                               :{BLACK}Показати інформацію для відлагодження NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Закріпити вікно - воно не буде закриватися командою "Закрити всі вікна"
 STR_TOOLTIP_RESIZE                                              :{BLACK}Натисніть і тягніть для зміни розміру вікна
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Розмір вікна великий/малий
@@ -374,9 +374,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|�
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Довжина: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Ділянка: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Площа: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довжина: {NUM}{}Різниця висот: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площа: {NUM} x {NUM}{}Різниця висот: {HEIGHT}
 
 
 # These are used in buttons
@@ -387,7 +387,7 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}за д�
 STR_SORT_BY_NAME                                                :за назвою
 STR_SORT_BY_PRODUCTION                                          :за продуктивністю
 STR_SORT_BY_TYPE                                                :за типом
-STR_SORT_BY_TRANSPORTED                                         :за перевезенням
+STR_SORT_BY_TRANSPORTED                                         :за обсягом перевезень
 STR_SORT_BY_NUMBER                                              :за номером
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :за прибутком минулого року
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :за прибутком цього року
@@ -401,16 +401,16 @@ STR_SORT_BY_LENGTH                                              :за довжи
 STR_SORT_BY_LIFE_TIME                                           :за залишком строку служби
 STR_SORT_BY_TIMETABLE_DELAY                                     :за відхиленням від розкладу
 STR_SORT_BY_FACILITY                                            :за типом станції
-STR_SORT_BY_WAITING                                             :за ціною вантажу
+STR_SORT_BY_WAITING                                             :за кількістю вантажу
 STR_SORT_BY_RATING_MAX                                          :за найвищим рейтингом
 STR_SORT_BY_RATING_MIN                                          :за найнижчим рейтингом
-STR_SORT_BY_ENGINE_ID                                           :за ID (класичне)
+STR_SORT_BY_ENGINE_ID                                           :за ID (класичний порядок)
 STR_SORT_BY_COST                                                :за ціною
 STR_SORT_BY_POWER                                               :за потужністю
 STR_SORT_BY_TRACTIVE_EFFORT                                     :за силою тяги
 STR_SORT_BY_INTRO_DATE                                          :за датою випуску
 STR_SORT_BY_RUNNING_COST                                        :за вартістю експлуатації
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експлуатації
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експ.
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
 STR_SORT_BY_RANGE                                               :за дальністю
 
@@ -428,13 +428,13 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Голо
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Показати графіки
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Показати таблицю компаній
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Фінансувати будівництво нової промисловості
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показати список поїздів компанії. Ctrl+клік переключає відкриття групи/списку поїздів
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показати список автомобілів компанії. Ctrl+клік переключає відкриття групи/списку автомобілів.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показати список кораблів компанії. Ctrl+клік переключає відкриття групи/списку кораблів
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показати список літаків компанії. Ctrl+клік переключає відкриття групи/списку літаків
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Показати список поїздів компанії. Ctrl+клік переключає відкриття звичайного/розширенного списку
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Показати список дорожнього транспорту компанії. Ctrl+клік переключає відкриття звичайного/розширенного списку.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Показати список кораблів компанії. Ctrl+клік переключає відкриття звичайного/розширенного списку.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Показати список повітряного транспорту компанії. Ctrl+клік переключає відкриття звичайного/розширенного списку.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Збільшити
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Зменшити
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізничну колію
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будувати залізницю
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будувати дороги
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будувати порти
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будувати аеропорти
@@ -457,8 +457,8 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Ство
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Створення виробництва
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будівництво доріг
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Насадження дерев. Утримуйте Shift для показу витрат на висаджування
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Позначити місце
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Помістити об'єкт. Утримуйте Shift для показу витрат на розміщення
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Встановити позначку
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Встановити об'єкт. Утримуйте Shift для показу витрат на розміщення
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Зберегти сценарій
@@ -480,7 +480,7 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Налашту�
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показувати назви міст
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показувати назви станцій
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показувати назви точок маршруту
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показувати позначення
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показувати позначки
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Показувати назви та імена конкурентів
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Повна анімація
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Повна деталізація
@@ -491,7 +491,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Прозорі 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Зберегти гру
 STR_FILE_MENU_LOAD_GAME                                         :Завантажити гру
-STR_FILE_MENU_QUIT_GAME                                         :Покинути гру
+STR_FILE_MENU_QUIT_GAME                                         :Залишити гру
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Вихід
 ############ range ends here
@@ -499,7 +499,7 @@ STR_FILE_MENU_EXIT                                              :Вихід
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта світу
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Додаткове вікно
-STR_MAP_MENU_SIGN_LIST                                          :Список позначень
+STR_MAP_MENU_SIGN_LIST                                          :Список позначок
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список міст
 ############ end of the 'Display map' dropdown
@@ -527,7 +527,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Детальн�
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Список підприємств
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Нове підприємство
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Заснувати підприємство
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -538,7 +538,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будівни�
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будівництво автодоріг
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будівництво автомобільних доріг
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будівництво трамвайних доріг
 ############ range ends here
 
@@ -553,7 +553,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Будівни�
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ландшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Посадка дерев
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Розміщення позначок
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Встановлення позначок
 ############ range ends here
 
 ############ range for music menu starts
@@ -947,9 +947,9 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} має невірну станцію в завданнях
 # end of order system
 
-STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} зістарився
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже зістарився
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} дуже зістарився і потребує негайної заміни
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} застарів
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже застарів
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} дуже застарів та потребує негайної заміни
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} загубився
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} торік приніс {CURRENCY_LONG} прибутку
@@ -1027,11 +1027,11 @@ STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Вибе
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Імперська
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :Метрична
-STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :СІ
+STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Міжнародна
 ############ end of measuring units region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дорожній транспорт
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Виберіть, по якій стороні рухається автотранспорт
+STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Сторона руху транспорту
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Виберіть, по якій стороні рухається дорожній транспорт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :лівосторонній рух
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :правосторонній рух
 
@@ -1084,7 +1084,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат знімків екрану
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Виберіть формат для створення копій екрану
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Основна графіка
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ій іх іх}/пошкоджен{P ий их их} файл{P "" а ів}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Додаткова інформація про базовий набір графіки
@@ -1159,7 +1159,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Від�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :нема
-STR_FUNDING_ONLY                                                :фінансувати власноруч
+STR_FUNDING_ONLY                                                :засновувати власноруч
 STR_MINIMAL                                                     :мінімально
 STR_NUM_VERY_LOW                                                :дуже мало
 STR_NUM_LOW                                                     :мало
@@ -1471,8 +1471,8 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :швидка
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дуже швидка
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Доля мегаполісів серед всіх міст: {ORANGE}1 з {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Доля мегаполісів серед всіх міст: {ORANGE}нема
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коефіцієнт розміру мегаполісів: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Прибрати безглузді елементи доріг під час будівництва доріг: {ORANGE}{STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множник розміру мегаполісів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Прибрати безглузді елементи доріг під час їх будівництва: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Інтерфейс
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Будівництво
@@ -1484,9 +1484,9 @@ STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Пар�
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Параметри взаємодії
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Обробка вантажів
-STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Комп'ютерні гравці
-STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автооновлення
-STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Обслуговування
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Віртуальні гравці
+STR_CONFIG_SETTING_VEHICLES_AUTORENEW                           :{ORANGE}Автозаміна
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}Техогляд
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Маршрути
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Поїзди
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Міста
@@ -1497,9 +1497,9 @@ STR_CONFIG_SETTING_PATHFINDER_OPF                               :стандар�
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(рекомендовано)
 
-STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Шукач шляху для поїздів: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Шукач шляху для автомобілів: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Шукач шляху для кораблів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм пошуку шляху для поїздів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :{LTBLUE}Алгоритм пошуку шляху для автомобілів: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алгоритм пошуку шляху для кораблів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Автоматично розвертатися біля сигналів: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Змініть значення
@@ -1518,6 +1518,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :несуміс�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :невідомий
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... невірний рівень стискання '{STRING}'
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... формат сейвів '{STRING}' недоступний. Повертаюся до '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... базовий набір графіки '{STRING}' не знайдено
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... базовий набір звуків '{STRING}' не знайдено
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... базовий набір музики '{STRING}' не знайдено
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2098,7 +2101,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Буду
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Будувати/демонтувати колію, сигнали, точки маршруту і станції. Утримання Ctrl також демонтує колію з точок маршрутів і станцій
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Модернізувати колію. Утримуйте Shift для показу витрат на модернізацію
 
-STR_RAIL_NAME_RAILROAD                                          :Неелектрифікована колія
+STR_RAIL_NAME_RAILROAD                                          :Звичайна колія
 STR_RAIL_NAME_ELRAIL                                            :Електрифікована колія
 STR_RAIL_NAME_MONORAIL                                          :Монорельсова колія
 STR_RAIL_NAME_MAGLEV                                            :Магнітна колія
@@ -3233,7 +3236,7 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Почати оновлення
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч, на потяги, що вибрані праворуч
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Не можна оновити
-STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Не вибрано машину
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Не вибрано транспортного засобу
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Зупинити оновлення
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів, що вибрані ліворуч
 
@@ -3270,7 +3273,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Купи
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Купити копію корабля. Утримуйте Ctrl для спільного завдання. Утримуйте Shift для показу витрат на придбання
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Купити копію літака. Утримуйте Ctrl для спільного завдання. Утримуйте Shift для показу витрат на придбання
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Ігнорувати червоне світло семафору!
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Примусити проігнорувати сигнал!
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Переобладнати поїзд для перевезення іншого виду вантажу
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Переобладнати авто для перевезення інших вантажів
@@ -3296,14 +3299,14 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Пото
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Поточна дія літака - натисніть для руху/зупинки літака. Утримуйте Ctrl, щоб показати пункт призначення
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Завантажуюся/Розвантажуюся
-STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Відправляється
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Вантаження
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Відходить
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Аварія!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Зламався
-STR_VEHICLE_STATUS_STOPPED                                      :{RED}Зупинений
+STR_VEHICLE_STATUS_STOPPED                                      :{RED}Зупинено
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Зупиняється, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Не достатньо потужності
-STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Чекає, поки звільниться шлях
+STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Очікування вільного шляху
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Занадто далеко до наступного місця призначення
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Прямує до {STATION}, {VELOCITY}
@@ -3384,8 +3387,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Міст
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переобладнання)
 STR_REFIT_TITLE                                                 :{GOLD}Виберіть вид вантажу для перевезення:-
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}{}{BLACK}Прибуток від переобладнання: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Вартість переобладнання: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Нова місткість: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Прибуток від переобладнання: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Вибрати транспорт для переобладнання. Перетягування мишкою дозволяє виділити декілька одиниць транспорту. Клік на порожньому місці виділить усю одиницю транспорту. Ctrl+клік мишкою виділить транспорт та ланцюжок перевезень за ним
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Виберіть вид вантажу для перевезення
@@ -3693,14 +3698,14 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Ігровий 
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрити
 STR_AI_SETTINGS_RESET                                           :{BLACK}Скидання
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Кількість днів, після яких запускати цей АІ після попереднього АІ: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Кількість днів до запуску цього АІ після запуску попереднього АІ: {ORANGE}{STRING}
 
 
 # Textfile window
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}Документація до {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Зміни в {STRING} {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Ліцензія до {STRING} {STRING}
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Переглянути інструкцію
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Інструкція
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Зміни
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Ліцензія
 
@@ -4228,7 +4233,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE.z                                  :цукрову 
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Без назви
 STR_SV_TRAIN_NAME                                               :Поїзд №{COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Авто №{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Автотранспорт №{COMMA}
 STR_SV_SHIP_NAME                                                :Судно №{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Борт №{COMMA}
 
@@ -4265,38 +4270,38 @@ STR_SV_STNAME_FALLBACK                                          :{STRING}, ст�
 ##id 0x8000
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (паровий)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Дизель)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (дизельний)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Mightymover Choo-Choo
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Пар)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Пар)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Пар)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Пар)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Дизель)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Електричка)
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажирський
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Поштовий
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вугільний
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Нафтовий
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (паровий)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (паровий)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (паровий)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (паровий)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (дизельний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (електричний)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажирський вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Поштовий вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вагон для вугілля
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Цистерна для нафти
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон для худоби
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Товарний
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Товарний вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Вагон для зерна
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон для деревини
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для залізної руди
@@ -4315,78 +4320,78 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Цистерна для коли
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Вагон для цукерок
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон для іграшок
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :вантажівка для батарейок
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :вантажівка для газованої води
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :вантажівка для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Електричка)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарейок
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газованої води
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для пластиліну
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (електричний)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажирський
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Вагон для пошти
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажирський вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Поштовий вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Вагон для вугілля
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Цистерна для нафти
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :вантажівка для худоби
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :вантажівка для товарів
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :вагон для зерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :лісовоз
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :вагон для залізної руди
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :вантажівка для сталі
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :броньоване авто
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :вагон для продуктів
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :вантажівка для паперу
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :вагон для мідної руди
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Танкер для води
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :вантажівка для фруктів
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :вантажівка для каучуку
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :вантажівка для цукру
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :вагон для цукрової вати
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :вагон для ірисок
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :вагон для бульбашок
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Танкер для коли
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :вагон для цукерок
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :вагон для іграшок
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :вагон для батарейок
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :вантажівка для газованої води
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :вантажівка для пластиліну
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електричка)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електричка)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон для худоби
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Товарний вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Вагон для зерна
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для деревини
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для залізної руди
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Платформа для сталі
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Броньований вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Вагон для продуктів
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Вагон для паперу
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Вагон для мідної руди
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Цистерна для води
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Вагон для фруктів
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон для каучуку
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон для цукру
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Вагон для цукрової вати
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Вагон для ірисок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Вагон для бульбашок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Цистерна для коли
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Вагон для цукерок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон для іграшок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарейок
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газованої води
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластиліну
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (електричний)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (електричний)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :пасажирський вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :поштовий вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :вагон для вугілля
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :нафтова цистерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :вагон для худоби
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :товарний вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :вагон для зерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :лісовоз
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :вагон для залізної руди
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :платформа для сталі
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :броньований вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :вагон для їжі
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :платформа для паперу
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :вагон для мідної руди
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :цистерна для води
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :фургон для фруктів
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :платформа для каучуку
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :вагон для цукру
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :вагон для цукрової вати
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :вагон для ірису
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :вагон для кульок
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :вагон для коли
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :вагон для цукерок
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :вагон для іграшок
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :вагон для батарейок
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :вагон для газованої води
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :вагон для пластиліну
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :MPS Regal автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Hereford Leopard автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Foster автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Foster MkII автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Ploddyphut MkI автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Ploddyphut MkII автобус
-STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkIII автобус
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажирський вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Поштовий вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Вагон для вугілля
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Цистерна для нафти
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон для худоби
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Товарний вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Вагон для зерна
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для деревини
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для залізної руди
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Платформа для сталі
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Броньований вагон
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Вагон для продуктів
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Вагон для паперу
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Вагон для мідної руди
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Цистерна для води
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Вагон для фруктів
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Вагон для каучуку
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон для цукру
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Вагон для цукрової вати
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Вагон для ірисок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Вагон для кульок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Вагон для коли
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Вагон для цукерок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Вагон для іграшок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Вагон для батарейок
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Вагон для газованої води
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Вагон для пластиліну
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Автобус MPS Regal
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Автобус Hereford Leopard
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Автобус Foster
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_MKII_SUPERBUS              :Автобус Foster MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKI_BUS                :Автобус Ploddyphut MkI
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKII_BUS               :Автобус Ploddyphut MkII
+STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Автобус Ploddyphut MkIII
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh вугільний фургон
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl вугільний фургон
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW вугільний фургон
@@ -4468,17 +4473,17 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow ван
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover вантажівка для кульок
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught вантажівка для кульок
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow вантажівка для кульок
-STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS цистерна для нафти
-STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. цистерна для нафти
-STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS для пасажирів
-STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP для пасажирів
-STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
-STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug для пасажирів
-STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake для пасажирів
-STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate вантажний корабель
-STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell вантажний корабель
-STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover вантажний корабель
-STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut вантажний корабель
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :Танкер MPS
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :Танкер CS-Inc.
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :Пасажирський пором MPS
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :Пасажирський пором FFP
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Судно на повітряній подушці Bakewell 300
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Пасажирский пором Chugger-Chug
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Пасажирский пором Shivershake
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Вантажний корабель Yate
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Вантажний корабель Bakewell
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Вантажний корабель Mightymover
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Вантажний корабель Powernaut
 STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
@@ -4517,9 +4522,9 @@ STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
 STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
-STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario гелікоптер
-STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 гелікоптер
-STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut гелікоптер
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Гелікоптер Tricario
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Гелікоптер Guru X2
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Гелікоптер Powernaut
 
 ##id 0x8800
 # Formatting of some strings
@@ -4545,7 +4550,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} �
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар {STATION}
 
 STR_UNKNOWN_STATION                                             :невідома станція
-STR_DEFAULT_SIGN_NAME                                           :Позначення
+STR_DEFAULT_SIGN_NAME                                           :Позначка
 STR_COMPANY_SOMEONE                                             :дехто
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

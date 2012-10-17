@@ -434,7 +434,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Gulšči
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus, bėgius ar kitus objektus pasirinktame žemės plote. Velkant laikant nuspaudus Ctrl klavišą, plotas bus žymimas įstrižai. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}Nutylint
+STR_BUTTON_DEFAULT                                              :{BLACK}Numatytas
 STR_BUTTON_CANCEL                                               :{BLACK}Atšaukti
 STR_BUTTON_OK                                                   :{BLACK}Gerai
 
@@ -561,7 +561,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Permatomi stoč
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Išsaugoti žaidimą
 STR_FILE_MENU_LOAD_GAME                                         :Įkelti žaidimą
-STR_FILE_MENU_QUIT_GAME                                         :Sustabdyti žaidimą
+STR_FILE_MENU_QUIT_GAME                                         :Palikti žaidimą
 STR_FILE_MENU_SEPARATOR                                         :
 STR_FILE_MENU_EXIT                                              :Išeiti
 ############ range ends here
@@ -1144,7 +1144,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kas 12 mėnesi�
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kalba
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pasirinkite aplinkos kalbą
 
-STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Visu ekranu
+STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Per visą ekraną
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visu ekranu
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrano raiška
@@ -1293,8 +1293,8 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šis vei
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
 
-STR_CONFIG_SETTING_OFF                                          :Išjungta
-STR_CONFIG_SETTING_ON                                           :Įjungta
+STR_CONFIG_SETTING_OFF                                          :Ne
+STR_CONFIG_SETTING_ON                                           :Taip
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Išjungta
@@ -1408,12 +1408,12 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamsiai žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetinė
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Priešinga slinkties kryptis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Tolydi žemėlapio slinktis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Tolydi vaizdo slinktis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rodyti kompanijos ženklus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LIVERIES_NONE                                :Jokių
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :Savo kompanijos
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :Visų kompanijų
+STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Rodyti skiriamuosius ženklus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LIVERIES_NONE                                :nerodyti
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :nuosavos kompanijos
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :visų kompanijų
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :{LTBLUE}Rašyti komandai naudojant <ĮVESTI> (ENTER): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Pelės rutuliuko funkcija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Artinti žemėlapį
@@ -1443,16 +1443,16 @@ STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :jokių veiksmų
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :visi ne statybiniai veiksmai
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :visi, išskyrus landšafto, modifikavimo veiksmai
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :visi pasirinkimai
-STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti išplėstinį transporto priemonių sąrašą: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Rodyti krovos indikatorius: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Tvarkaraščio trukmes matuoti vidiniais impulsais, o ne dienomis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Rodyti arvykimą ir išvykimą tvarkaraščiuose: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Greitas tr. priemonių paskyrimų kūrimas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Transporto priemonių užduotys kuriamos sparčiuoju būdu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Numatytoji bėgių rūšis (po žaidimo paleidimo): {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Pirmas galimas
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Paskutinis įmanomas
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Dažniausiai naudojamas
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Parodyti užimtus bėgius: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :anksčiausiai atsiradusi
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :vėliausiai atsiradusi
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :daugiausiai naudojama
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rodyti rezervuotus bėgius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Palikti statymo priemones aktyviomis po panaudojimo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupuoti išlaidas finansinės ataskaitos lange: {ORANGE}{STRING}
 
@@ -1517,7 +1517,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :leista, pasirin
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Savaiminis medžių atsiradimas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nėra {RED}(trukdo lentpjūvėms)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :betkur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pagrindinės įrankių juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Būsenos juostos vieta: {ORANGE}{STRING}
@@ -1550,7 +1550,7 @@ STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Tr. pri
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stotelės
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Priešininkai
-STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Rodyti parinktis
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Vaizdo nustatymai
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Sąveika
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Signalai
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}Krovinų valdymas
@@ -1651,7 +1651,7 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Nutraukti žaidimą
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Palikti Žaidimą
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Ar tikrai norite išeiti iš žaidimo?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ar tikrai norite išeiti iš šio scenarijaus?
 
@@ -2062,22 +2062,22 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipas
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Turinio tipas
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Vardas
 STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Turinio vardas
-STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Paspauskite kad pamatyti smulkmenas{}Pažymėkite checkbox atsisiųntimui
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Paspauskite detalesnei informacijai{}Atsisiuntimui - pažymėkite varnele
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pažymėti viską
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Pažymėti visą turinį atsisiuntimui
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pažymėti atnaujinimus
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Pažymėti visą turinį, atnaujinimui skirtą turinį atsisiuntimui
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nieko nežymėti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Pažymėti visą turinį kaip neatsisiųstą
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtro pavadinimas:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Žymės/pavadinimo filtravimas:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Aplankyti svetainę
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Aplankyti šio turinio svetainę
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Atsisiųsti
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Pradedama siųsti pažymėta turinį
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Bendras siuntimo dydis: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}TURINIO INFORMACIJA
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs nepasirinkote tai, kad atsisiųsti
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs pasirinkote tai atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Jūs nepasirinkote atsisiųsti
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Jūs pasirinkote atsisiųsti
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ši priklausomybė buvo pasirinkta atsisiuntimui
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tu jau tai turi
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šis turinys yra nežinomas ir negali būti parsiųstas su OpenTTD
@@ -2339,9 +2339,9 @@ STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pasirinkite medžio rūšį
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinktos rūšies, medžiai
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai tempiant
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sodinti atsitiktinės rūšies medžius. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Atsitiktiniai medžiai betkur
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Atsitiktinai apsodinti sausumą medžiais
 
 # Land generation window (SE)
@@ -2599,8 +2599,8 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Įveskite atsitiktinį skaičių
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti snieko linijos aukštį
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradzios metus
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti sniego linijos aukštį
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Scenarijaus tipas
@@ -3495,8 +3495,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Talpa: {
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pertvarkymas)
 STR_REFIT_TITLE                                                 :{GOLD}Pasirinkite krovinio tipą:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}{}{BLACK}Pajamos iš pertvarkymo: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pertvarkymo kaina: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nauja talpa: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pajamos iš pertvarkymo: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pasirinkite transporto priemones, kurias pertvarkysite. Vilkdami galite pažymėti keletą jų. Spragtelėję tuščiame plote, pasirinksite visas transporto priemones. Spragtelėję laikydami nuspaustą Ctrl klavišą, pasirinksite transporto priemonę ir visas, esančias už jos
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pasirinkite traukiniu gabenamo krovinio tipą

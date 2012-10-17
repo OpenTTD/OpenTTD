@@ -3263,8 +3263,10 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Remodela)
 STR_REFIT_TITLE                                                 :{GOLD}Selecciona el tipus de càrrega a transportar:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost de remodelació: {GOLD}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}{}{BLACK}Cost de la remodelació: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}{}{BLACK}Retorn de la remodelació: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cost de remodelació: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nova capacitat: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Retorn de la remodelació: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecciona els vehicles a remodelar. Arrossegant amb el ratolí permet la selecció de múltiples vehicles. Clicant en un espai buit es seleccionarà el vehicle sencer. Ctrl+Clic seleccionarà un vehicle i la cadena següent
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
@@ -3580,7 +3582,7 @@ STR_TEXTFILE_README_CAPTION                                     :{WHITE}Llegeixm
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Registre de canvis del {STRING} de {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Llicència del {STRING} de {STRING}
 STR_TEXTFILE_VIEW_README                                        :{BLACK}Veure llegeixme
-STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registra de canvis
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Registre de canvis
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Llicència
 
 
