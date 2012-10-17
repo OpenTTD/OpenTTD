@@ -443,9 +443,9 @@ detect_params() {
 			CFLAGS=* | --CFLAGS=*)        CFLAGS="$optarg";;
 			CXXFLAGS=* | --CXXFLAGS=*)    CXXFLAGS="$optarg";;
 			LDFLAGS=* | --LDFLAGS=*)      LDFLAGS="$optarg";;
-			CFLAGS_BUILD=* | --CFLAGS_BUILD=*)     CFLAGS_BUILD="$optarg";;
-			CXXFLAGS_BUILD=* | --CXXFLAGS_BUILD=*) CXXFLAGS_BUILD="$optarg";;
-			LDFLAGS_BUILD=* | --LDFLAGS_BUILD=*)   LDFLAGS_BUILD="$optarg";;
+			CFLAGS_BUILD=* | --CFLAGS_BUILD=* | --CFLAGS-BUILD=*)     CFLAGS_BUILD="$optarg";;
+			CXXFLAGS_BUILD=* | --CXXFLAGS_BUILD=* | --CXXFLAGS-BUILD=*) CXXFLAGS_BUILD="$optarg";;
+			LDFLAGS_BUILD=* | --LDFLAGS_BUILD=* | --LDFLAGS-BUILD=*)   LDFLAGS_BUILD="$optarg";;
 
 			--ignore-extra-parameters)    ignore_extra_parameters="1";;
 
