@@ -2147,6 +2147,30 @@ check_makedepend() {
 	log 1 "checking makedepend... $makedepend"
 }
 
+check_version() {
+	# $1 - requested version (major.minor)
+	# $2 - version we got (major.minor)
+
+	if [ -z "$2" ]; then
+		return 0
+	fi
+
+	req_major=`echo $1 | cut -d. -f1`
+	got_major=`echo $2 | cut -d. -f1`
+	if [ $got_major -lt $req_major ]; then
+		return 0
+	elif [ $got_major -gt $req_major ]; then
+		return 1
+	fi
+
+	req_minor=`echo $1 | cut -d. -f2`
+	got_minor=`echo $2 | cut -d. -f2`
+	if [ $got_minor -lt $req_minor ]; then
+		return 0
+	fi
+	return 1
+}
+
 detect_awk() {
 	# Not all awks allow gsub(), so we test for that here! It is in fact all we need...
 
@@ -2832,13 +2856,14 @@ detect_fontconfig() {
 
 	version=`$fontconfig_config --modversion 2>/dev/null`
 	ret=$?
-	shortversion=`echo $version | cut -c 1,3`
+	check_version '2.3' "$version"
+	version_ok=$?
 	log 2 "executing $fontconfig_config --modversion"
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -le "22" ]; then
-		if [ -n "$shortversion" ] && [ "$shortversion" -le "22" ]; then
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version_ok" != "1" ]; then
+		if [ -n "$version" ] && [ "$version_ok" != "1" ]; then
 			log 1 "checking libfontconfig... needs at least version 2.3.0, fontconfig NOT enabled"
 		else
 			log 1 "checking libfontconfig... not found"
@@ -2881,13 +2906,14 @@ detect_icu() {
 
 	version=`$icu_config --version 2>/dev/null`
 	ret=$?
-	shortversion=`echo $version | cut -d\. -f1,2 | sed "s/\.//g" | cut -c1-2`
+	check_version '3.6' "$version"
+	version_ok=$?
 	log 2 "executing $icu_config --version"
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "36" ]; then
-		if [ -n "$shortversion" ] && [ "$shortversion" -lt "36" ]; then
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$version_ok" != "1" ]; then
+		if [ -n "$version" ] && [ "$version_ok" != "1" ]; then
 			log 1 "checking libicu... needs at least version 3.6.0, icu NOT enabled"
 		else
 			log 1 "checking libicu... not found"
