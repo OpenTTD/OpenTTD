@@ -650,8 +650,9 @@ static void CompaniesGenStatistics()
 /**
  * Add monthly inflation
  * @param check_year Shall the inflation get stopped after 170 years?
+ * @return true if inflation is maxed and nothing was changed
  */
-void AddInflation(bool check_year)
+bool AddInflation(bool check_year)
 {
 	/* The cargo payment inflation differs from the normal inflation, so the
 	 * relative amount of money you make with a transport decreases slowly over
@@ -668,15 +669,22 @@ void AddInflation(bool check_year)
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if (check_year && (_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
+	if (check_year && (_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return true;
+
+	if (_economy.inflation_prices == MAX_INFLATION || _economy.inflation_payment == MAX_INFLATION) return true;
 
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
 	 * 12 -> months per year
 	 * This is only a good approxiamtion for small values
 	 */
-	_economy.inflation_prices  += min((_economy.inflation_prices  * _economy.infl_amount    * 54) >> 16, MAX_INFLATION);
-	_economy.inflation_payment += min((_economy.inflation_payment * _economy.infl_amount_pr * 54) >> 16, MAX_INFLATION);
+	_economy.inflation_prices  += (_economy.inflation_prices  * _economy.infl_amount    * 54) >> 16;
+	_economy.inflation_payment += (_economy.inflation_payment * _economy.infl_amount_pr * 54) >> 16;
+
+	if (_economy.inflation_prices > MAX_INFLATION) _economy.inflation_prices = MAX_INFLATION;
+	if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;
+
+	return false;
 }
 
 /**

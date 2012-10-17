@@ -2167,7 +2167,7 @@ bool AfterLoadGame()
 
 		/* Simulate the inflation, so we also get the payment inflation */
 		while (_economy.inflation_prices < aimed_inflation) {
-			AddInflation(false);
+			if (AddInflation(false)) break;
 		}
 	}
 
@@ -2730,6 +2730,12 @@ bool AfterLoadGame()
 			SetRoadOwner(t, ROADTYPE_ROAD, o);
 			SetRoadOwner(t, ROADTYPE_TRAM, o);
 		}
+	}
+
+	if (IsSavegameVersionBefore(177)) {
+		/* Fix too high inflation rates */
+		if (_economy.inflation_prices > MAX_INFLATION) _economy.inflation_prices = MAX_INFLATION;
+		if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;
 	}
 
 	/* Road stops is 'only' updating some caches */
