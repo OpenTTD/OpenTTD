@@ -853,6 +853,8 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie gitt til {STRING}!{}{}Transport av {STRING} fra {STRING} til {STRING} vil gi firedobbel fortjeneste det neste året!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Traffikkaos i {TOWN}!{}{}Veiarbeid finansiert av {STRING} medfører 6 måneders irritasjon for bilistene!
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transport monopol!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokal myndighet i {TOWN} signerer kontrakt med {STRING} for ett år med eksklusift transport rettigheter!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindu {COMMA}
@@ -1099,6 +1101,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne ha
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillinger
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard verdi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instillings type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient innstilling (ikke lagret i lagringsfilene, påvirker alle spill)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Selskapet innstilling (lagret i lagringsfilene, påvirker bare nye spill)
@@ -1148,6 +1151,10 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midten
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :enden
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Kjøretøykø (med kvantumseffekter): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :deaktivert
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hoved tillegsvindu, bare fullskjerm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoved tillegsvindu
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle tillegsvindu
 STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikkelser av bystyret: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillat kjøp av eksklusive transportrettigheter: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat finansiering av bygninger: {STRING}
@@ -1182,6 +1189,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graflinjenes ty
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Landskapsgenerator: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Orginal
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olje rafinerier er bare bygd nær kartets kanter, det er ved kysten på øy kart
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ulendthet på terreng (kun TerraGenesis): {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veldig jevnt
@@ -1197,6 +1205,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Høydenivå et flatt scenariokart får: {STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :Tillat landskapsendring av ruter ved endene på kartet: {STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :Når deaktivert, kartets kanter vil altid være hav
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller flere ruter ved den nordlige kanten av kartet er ikke tom(me)
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller flere ruter ved en av kantene på kartet er ikke vann
 
@@ -1372,6 +1381,8 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel me
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ukjent
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... komprimeringsnivå '{STRING}' er ikke gyldig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... lagrede spills format '{STRING}' er ikke tilgjengelig. Vender tilbake til '{STRING}'
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignorerer Grunn Graffik set '{STRING}': ikke funnet
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignorerer Grunn Lyd set '{STRING}': ikke funnet
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorerer Grunn Musikk set '{STRING}': ikke funnet
 
 # Intro window
@@ -1462,7 +1473,7 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Vis togf
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Vis kjøretøyfargetemaer
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Vis skipsfargetemaer
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Vis luftfartøyfargetemaer
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Velg primærfarge for valgte tema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Velg primærfarge for valgte tema. Ctrl+Klikk vil bruke denne fargen på alt
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Velg sekundærfarge for valgte tema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Velg fargetemaet du ønsker å endre, eller flere fargetemaer med Ctrl+klikk. Klikk på boksen for å vise bruken av fargetemaene
 
@@ -3088,9 +3099,12 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Velg lok
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Velg lokomotivtypen du ønsker at skal erstatte den du har valgt til venstre
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start erstatning av kjøretøy
+STR_REPLACE_VEHICLES_NOW                                        :Bytt ut alle kjøretøy nå
+STR_REPLACE_VEHICLES_WHEN_OLD                                   :Bytt ut bare gamle kjøretøy
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klikk denne knappen hvis du vil erstatte det valgte lokomotivet på venstresiden med det valgte lokomotivet på høyresiden
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}Erstatter ikke
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Ingen kjøretøy valgt
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} når gammel
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopp erstatning av kjøretøy
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klikk denne knappen for å stoppe erstatning av lokomotivet som er valgt på venstresiden
 
@@ -3571,6 +3585,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kostnad: {CURRENCY_LONG}
@@ -3641,6 +3657,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}...{NBSP
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området eies av et annet firma
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... grense for landskapsendring er nådd
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruterensingens grense nådd
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... tre planterings grense nådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navn må være unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i veien
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke tillatt mens spillet er på pause
@@ -3702,6 +3719,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...{NBSP
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...{NBSP}kan kun bygges i regnskogområder
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan kun bygges i ørkenområder
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...{NBSP}kan kun bygges i byer
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan bare bli bygd nær midten av byer
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan kun bygges i lavtliggende områder
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun plasseres i nærheten av kartkanten
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... skog kan bare plantes over snøgrensen
