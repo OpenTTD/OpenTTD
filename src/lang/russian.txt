@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :слева
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :посередине
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :справа
 
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и берегах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрешить снос (почти) всех городских объектов: {ORANGE}{STRING}
@@ -1329,14 +1329,14 @@ STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не прове
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если доход ТС отрицателен: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплутации: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автоозамена изношенного транспорта: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплуатации: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автозамена изношенного транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING} месяц{P 0:1 "" а ев}{LTBLUE} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Показывать подсказки: {ORANGE}наведением и задержкой на {STRING} секунд{P 0:1 у ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Показывать подсказки: {ORANGE}щелчком правой кнопкой мыши
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей в названии города: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :{LTBLUE}Толщина линий графиков: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафта: {ORANGE}{STRING}
@@ -1444,24 +1444,24 @@ STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Не о
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Учитывать ограничение скорости у вагонов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Выключить электрифицированную железную дорогу: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветные газеты появляются {ORANGE}в {STRING} году
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Цветные газеты появляются в {ORANGE}{STRING} году
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Год начала игры: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (частые, небольшие изменения): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Часть прибыли, начисляемая за частичную перевозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке сигналов линией, ставить кажд{P 0:1 ую ые ые}: {ORANGE}{STRING} клет{P 0:1 ку ки ок}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: до {ORANGE}{STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигналов по умолчанию: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :обычные
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутные
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :одностор. маршрутные
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбор сигналов (Ctrl+клик): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбор сигналов (Ctrl+щелчок): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :только обычные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :только маршрутные
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :все
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тип сети городских дорог для новых городов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тип дорожной сети для новых городов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :старый алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2

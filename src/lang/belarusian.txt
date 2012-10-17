@@ -1452,7 +1452,7 @@ STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Мак�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Мэтад стварэньня сыравінных прадпрыемстваў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геалягiчная разьведка
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ґеалягiчная разьведка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Пляскаты рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы на баку руху: {ORANGE}{STRING}
@@ -1462,7 +1462,7 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Па з
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :на пачатку
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ў сярэдзіне
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ў канцы
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Аўтатранспарт зьбiраецца ў чаргу каля прыпынка: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Аўтатранспарт зьбіраецца ў чаргу каля прыпынка: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Перамяшчаць агляд, калі курсор знаходзіцца на краі экрана: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дазволіць падкупляць мясцовыя ўлады: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Дазволіць купляць эксклюзыўныя трансп. правы: {ORANGE}{STRING}
@@ -1602,29 +1602,29 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Абс�
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Інтэрвал абслугоўваньня караблёў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Абслугоўваньне караблёў: {ORANGE}адключана
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Адключыць абслугоўваньне, калі скасаваны паломкі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Уключыць абмежаваньне хуткасьці вагонаў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Уключыць абмежаваньне хуткасьці ваґонаў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Адключыць электрыфікаваную чыгунку: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Каляровыя газэты з'яўляюцца {ORANGE}ў {STRING} годзе
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Каляровыя ґазэты з'яўляюцца ў {ORANGE}{STRING} годзе
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Год пачатку гульні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Уключыць лагодную эканоміку (больш дробных зьменаў): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Дазволіць купляць акцыі іншых кампаніяў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Частка прыбытку, якая налічваецца за частковую перавозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Пры ўсталяваньні сыгналаў лініяй, ставіць кожн{P 0:1 ую ыя ыя}: {ORANGE}{STRING} клет{P 0:1 ку кі ак}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Будаваць сэмафоры (сыгналы старога стылю): {ORANGE}да {STRING} года
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Уключыць адмысловае мэню сыгналаў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тып сыгналаў па змоўчаньні: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Будаваць сэмафоры (сыґналы старога стылю): да {ORANGE}{STRING} года
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Уключыць адмысловае мэню сыґналаў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тып сыґналаў па змоўчаньні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :звычайныя
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :маршрутныя (PMS)
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :аднабаковыя маршрутныя (PMS)
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбар сыгналаў (Ctrl+клік): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбар сыґналаў (Ctrl+клік): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :толькі звычайныя
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :толькі маршрутныя (PMS)
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :усе
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Тып дарожнай сеткі для новых горадоў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :арыгінальны альгарытм
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :палепшаны альгарытм
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :арыґінальны альґарытм
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :палепшаны альґарытм
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :краты 2×2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :краты 3×3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :адвольная забудова
@@ -1638,7 +1638,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :дазволе�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Расстаноўка дрэваў у гульні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :адключана {RED}(пільні ня змогуць працавацьl)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :толькі ў трапічных джунглях
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :толькі ў трапічных джунґлях
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Разьмяшчэньне галоўнай панэлі: {ORANGE}{STRING}
@@ -1648,7 +1648,7 @@ STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Рад�
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}не абмежавана
 STR_CONFIG_SETTING_ZOOM_MIN                                     :{LTBLUE}Максымальны ўзровень набліжэньня: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максымальны ўзровень падаленьня: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ZOOM_MAX                                     :{LTBLUE}Максымальны ўзровень аддаленьня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Нармальны

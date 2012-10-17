@@ -1208,17 +1208,17 @@ STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden 
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}A vonatok az állomások {ORANGE}{STRING}{LTBLUE} állnak meg
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :elején
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :közepén
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :végén
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :vége
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kizárólagos szállítási jogok vételének engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok megvesztegethetősége: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kizárólagos szállítási jogok vásárlásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :{LTBLUE}Új épületek építtetésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Helyi útfelújítások finanszírozásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pénz küldésének engedélyezése másik vállalatok részére: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
-STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhanó repülőgépek száma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Repülőgép-szerencsétlenségek száma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
@@ -1339,7 +1339,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :{LTBLUE}Szkriptek felfüggesztéséhez szükséges opcode mennyiség: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Javítási intervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett javítási időköz vonatoknak: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Alapértelmezett javítási időköz járműveknek: {ORANGE}{STRING} nap/%
@@ -1348,7 +1348,7 @@ STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Alapér
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett javítási időköz hajóknak: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Ne legyen javítás ha lerobbanások sincsenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Villamosított vágányok letiltása: {ORANGE}{STRING}
 

@@ -1167,16 +1167,16 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :{LTBLUE}Underh�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flygplatser blir aldrig gamla: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varna om forden är vilse: {ORANGE}{STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varna om fordon är vilse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
-STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fordon
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, förutom för stannade fordon
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Ja, för alla fordon
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varna om ett fordons inkomst är negativ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när de blir gamla: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minsta mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månad{P 0:1 "" er} före/efter maximal ålder
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING} sekund{P 0:1 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Visa tooltips: {ORANGE}Efter {STRING} sekund{P 0:1 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Visa tooltips: {ORANGE}högerklicka
@@ -1312,19 +1312,19 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :slumpmässig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Städer tillåts bygga vägar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Städer är tillåtna att bygga planskilda korsningar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Städer är tillåtna att bygga plankorsningar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillåt stadskontrollerade bullernivåer för flygplatser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Grunda städer i spelet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillåten, vanlig stads-layout
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Spelläges placering av träd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Placering av träd i spelläge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :inga {RED}(förstör sågverk)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bara i regnskogar
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :överallt
 
-STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Verktygsradens position: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusradens position: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} pix{P 0:1 el lar}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
