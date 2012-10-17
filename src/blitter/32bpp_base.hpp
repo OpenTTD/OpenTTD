@@ -131,7 +131,7 @@ public:
 		return Colour(grey, grey, grey);
 	}
 
-	static const int DEFAULT_BRIGHTNESS = 64;
+	static const int DEFAULT_BRIGHTNESS = 128;
 
 	static inline Colour AdjustBrightness(Colour colour, uint8 brightness)
 	{
