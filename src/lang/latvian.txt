@@ -1161,12 +1161,15 @@ STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais ti
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Būvējamo tuneļu maksimālais garums
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Svarīgāko ražotņu manuālā būvniecības metode: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Izejvielu ražotņu manuālā būvniecības metode: {STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Izejvielu ražotņu finansēšanas metode. 'nav' nozīmē ka nav iespējams finansēt jebkuru ražotni. Izvēloties 'ģeoloģiskā izpēte' finansējums ir iespējams, bet būvniecība notiek nejaušās kartes vietās, un var arī neizdoties. Ja ir iestatīts 'kā citām ražotnēm', tad uzņēmumi būvē izejvielu ražotnes tāpat kā pārstrādes, izvēloties jebkuru vēlamo vietu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citām ražotnēm
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ģeoloģiskā izpēte
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Līdzens laukums ap ražotnēm: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Līdzenas platības lielums ap ražotni. Tas nodrošina ka ap ražotni būs pieejama tukša platība ceļu utt. būvniecībai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Atļaut vairākas līdzīgas ražotnes vienā pilsētā: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Parasti pilsēta nevēlas vairāk par vienu ražotni no katra veida. Šis iestatījums atļaus vairākas vienāda veida ražotnes tajā pašā pilsētā
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Rādīt signālus: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Izvēlēties kurā ceļa pusē izvietot signālierīces
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kreisajā pusē
@@ -1181,13 +1184,18 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindošana (ar daudzuma efektiem): {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ja iespējots, skatvieta sāk ritināties kad peles kursors ir pie loga malas
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :atspējots
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :galveno skatvietu, tikai pilnekrāna spēlei
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :galveno skatvietu
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :katru skatvietu
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu pilsētām jaunu ēku finansēšanai
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļaut pārsūtīt naudu starp uzņēmumiem vairākspēlētāju spēlēs
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļauj naudas pārskaitījumus starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidmašīnu nosacīto ātrumu salīdzinājumā ar citu veidu transportlīdzekļiem, lai samazinātu lidaparātu ienākumus
@@ -1385,7 +1393,9 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avī�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk drukāt krāsainas avīzes. Pirms šā gada tās ir melnbaltas
 STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ja ieslēgts, ražošanas izmaiņas notiek biežāk un ar mazākiem soļiem. Šim iestatījumam parasti nav ietekmes, ja ražotņu veidi ir ieviesti ar NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ja iespējots, ir atļauts pirkt un pārdodot uzņēmumu akcijas. Akcijas būs pieejamas tikai atbilstošu vecumu sasniegušiem uzņēmumiem
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālierīces uz katra: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
@@ -3398,7 +3408,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ietilpī
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pielāgot)
 STR_REFIT_TITLE                                                 :{GOLD}Izvēlēties pārvadājamās kravas veidu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}{}{BLACK}Ienākumi no pielāgošanas: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Pielāgošanas izmaksas: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Jaunā ietilpība: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ienākumi no pielāgošanas: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izvēlēties transportlīdzekļus pielāgošanai. Vilkšana ar peli ļauj izvēlēties vairākus transportlīdzekļus. Klikšķināšana tukšumā atzīmēs visus transportlīdzekļus. Ctrl+klikšķis atzīmēs izvēlēto un visus tam sekojošus transportlīdzekļus
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izvēlēties, kuru kravas veidu vilciens pārvadās
@@ -3725,6 +3737,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Izmaksas: {CURRENCY_LONG}
