@@ -1567,7 +1567,7 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Opciones
 STR_INTRO_DIFFICULTY                                            :{BLACK}Dificultad ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Opciones Avanzadas
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Configuración NewGRF
-STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Consultar Contenido Online
+STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contenido Online
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuración de Scripts
 STR_INTRO_QUIT                                                  :{BLACK}Salir
 

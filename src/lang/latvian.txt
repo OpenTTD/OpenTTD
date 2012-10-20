@@ -300,7 +300,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Rādīt 
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Rādīt pilsētu sarakstu
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Rādīt subsīdijas
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Rādīt uzņēmuma staciju sarakstu
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finansiālo stāvokli
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Rādīt uzņēmuma finanšu stāvokli
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Rādīt uzņēmuma vispārējo informāciju
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rādīt diagrammas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rādīt uzņēmumu rangu sarakstu
@@ -1176,6 +1176,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :kreisajā pusē
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :braukšanas pusē
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :labajā pusē
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās rādīt finanšu pārskatu: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ja ieslēgts, katra gada beigās uznirst finanšu logs, lai varētu viegli pārbaudīt uzņēmuma finansiālo stāvokli
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Transportlīdzeklis parasti pietur pie katras caurbraucamās stacijas. Ieslēdzot šo iestatījumu, tas dosies cauri visām ceļa stacijām uz savu galamērķi bez pieturām. Ņemiet vērā, ka šis iestatījums nosaka noklusējuma vērtību tikai jaunajiem rīkojumiem. Tomēr ir iespējams katru rīkojumu iestatīt arī atsevišķi
 STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklusējuma rīkojumi liek apstāties platformas {STRING}
@@ -1241,6 +1242,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Kļūdas ziņoj
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Kļūdas ziņojuma sarkanā logā rādīšanas ilgums. Jāņem vērā ka daži (kritiskie) kļūdu ziņojumi pēc šī laika netiek slēgti automātiski, bet tos ir jāaizver manuāli
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Rādīt rīku padomus: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Aizkaves ilgums, pirms tiek rādīti rīku padomi, kad peles kursors atrodas virs kāda saskarnes elementa. Rīku padomu rādīšanu pārmaiņus var saistīt ar peles labās pogas klikšķi
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekun{P 0 di des žu}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :labais klikšķis
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Rādīt pilsētas iedzīvotāju skaitu pie tās nosaukuma apzīmējuma: {STRING}
