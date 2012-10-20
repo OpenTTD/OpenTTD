@@ -523,7 +523,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
-	if (c->money >= 0) {
+	if (c->money - c->current_loan >= -_economy.max_loan) {
 		c->quarters_of_bankruptcy = 0;
 		c->bankrupt_asked = 0;
 		return;
