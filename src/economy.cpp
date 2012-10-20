@@ -774,8 +774,14 @@ static void CompaniesPayInterest()
 		 * what (total) should have been paid up to this month and you subtract
 		 * whatever has been paid in the previous months. This will mean one month
 		 * it'll be a bit more and the other it'll be a bit less than the average
-		 * monthly fee, but on average it will be exact. */
+		 * monthly fee, but on average it will be exact.
+		 * In order to prevent cheating or abuse (just not paying interest by not
+		 * taking a loan we make companies pay interest on negative cash as well
+		 */
 		Money yearly_fee = c->current_loan * _economy.interest_rate / 100;
+		if (c->money < 0) {
+			yearly_fee += -c->money *_economy.interest_rate / 100;
+		}
 		Money up_to_previous_month = yearly_fee * _cur_month / 12;
 		Money up_to_this_month = yearly_fee * (_cur_month + 1) / 12;
 
