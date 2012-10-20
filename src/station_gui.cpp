@@ -293,9 +293,10 @@ public:
 		this->FinishInitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
 
-		CargoID cid;
-		FOR_EACH_SET_CARGO_ID(cid, this->cargo_filter) {
-			if (CargoSpec::Get(cid)->IsValid()) this->LowerWidget(WID_STL_CARGOSTART + cid);
+		const CargoSpec *cs;
+		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+			if (!HasBit(this->cargo_filter, cs->Index())) continue;
+			this->LowerWidget(WID_STL_CARGOSTART + index);
 		}
 
 		if (this->cargo_filter == this->cargo_filter_max) this->cargo_filter = _cargo_mask;
@@ -360,13 +361,10 @@ public:
 
 			default:
 				if (widget >= WID_STL_CARGOSTART) {
-					const CargoSpec *cs = CargoSpec::Get(widget - WID_STL_CARGOSTART);
-					if (cs->IsValid()) {
-						Dimension d = GetStringBoundingBox(cs->abbrev);
-						d.width  += padding.width + 2;
-						d.height += padding.height;
-						*size = maxdim(*size, d);
-					}
+					Dimension d = GetStringBoundingBox(_sorted_cargo_specs[widget - WID_STL_CARGOSTART]->abbrev);
+					d.width  += padding.width + 2;
+					d.height += padding.height;
+					*size = maxdim(*size, d);
 				}
 				break;
 		}
@@ -406,8 +404,9 @@ public:
 					x += rtl ? -5 : 5;
 
 					/* show cargo waiting and station ratings */
-					for (CargoID j = 0; j < NUM_CARGO; j++) {
-						if (!st->goods[j].cargo.Empty()) {
+					for (uint j = 0; j < _sorted_standard_cargo_specs_size; j++) {
+						CargoID cid = _sorted_cargo_specs[j]->Index();
+						if (!st->goods[cid].cargo.Empty()) {
 							/* For RTL we work in exactly the opposite direction. So
 							 * decrement the space needed first, then draw to the left
 							 * instead of drawing to the left and then incrementing
@@ -416,7 +415,7 @@ public:
 								x -= 20;
 								if (x < r.left + WD_FRAMERECT_LEFT) break;
 							}
-							StationsWndShowStationRating(x, x + 16, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
+							StationsWndShowStationRating(x, x + 16, y, cid, st->goods[cid].cargo.Count(), st->goods[cid].rating);
 							if (!rtl) {
 								x += 20;
 								if (x > r.right - WD_FRAMERECT_RIGHT) break;
@@ -453,12 +452,10 @@ public:
 
 			default:
 				if (widget >= WID_STL_CARGOSTART) {
-					const CargoSpec *cs = CargoSpec::Get(widget - WID_STL_CARGOSTART);
-					if (cs->IsValid()) {
-						int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
-						GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.right - 2 + cg_ofst, r.bottom - 2 + cg_ofst, cs->rating_colour);
-						DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_HOR_CENTER);
-					}
+					const CargoSpec *cs = _sorted_cargo_specs[widget - WID_STL_CARGOSTART];
+					int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
+					GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.right - 2 + cg_ofst, r.bottom - 2 + cg_ofst, cs->rating_colour);
+					DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_HOR_CENTER);
 				}
 				break;
 		}
@@ -522,9 +519,8 @@ public:
 				break;
 
 			case WID_STL_CARGOALL: {
-				for (uint i = 0; i < NUM_CARGO; i++) {
-					const CargoSpec *cs = CargoSpec::Get(i);
-					if (cs->IsValid()) this->LowerWidget(WID_STL_CARGOSTART + i);
+				for (uint i = 0; i < _sorted_standard_cargo_specs_size; i++) {
+					this->LowerWidget(WID_STL_CARGOSTART + i);
 				}
 				this->LowerWidget(WID_STL_NOCARGOWAITING);
 
@@ -551,9 +547,8 @@ public:
 					this->include_empty = !this->include_empty;
 					this->ToggleWidgetLoweredState(WID_STL_NOCARGOWAITING);
 				} else {
-					for (uint i = 0; i < NUM_CARGO; i++) {
-						const CargoSpec *cs = CargoSpec::Get(i);
-						if (cs->IsValid()) this->RaiseWidget(WID_STL_CARGOSTART + i);
+					for (uint i = 0; i < _sorted_standard_cargo_specs_size; i++) {
+						this->RaiseWidget(WID_STL_CARGOSTART + i);
 					}
 
 					this->cargo_filter = 0;
@@ -568,16 +563,14 @@ public:
 			default:
 				if (widget >= WID_STL_CARGOSTART) { // change cargo_filter
 					/* Determine the selected cargo type */
-					const CargoSpec *cs = CargoSpec::Get(widget - WID_STL_CARGOSTART);
-					if (!cs->IsValid()) break;
+					const CargoSpec *cs = _sorted_cargo_specs[widget - WID_STL_CARGOSTART];
 
 					if (_ctrl_pressed) {
 						ToggleBit(this->cargo_filter, cs->Index());
 						this->ToggleWidgetLoweredState(widget);
 					} else {
-						for (uint i = 0; i < NUM_CARGO; i++) {
-							const CargoSpec *cs = CargoSpec::Get(i);
-							if (cs->IsValid()) this->RaiseWidget(WID_STL_CARGOSTART + i);
+						for (uint i = 0; i < _sorted_standard_cargo_specs_size; i++) {
+							this->RaiseWidget(WID_STL_CARGOSTART + i);
 						}
 						this->RaiseWidget(WID_STL_NOCARGOWAITING);
 
@@ -677,24 +670,15 @@ static NWidgetBase *CargoWidgets(int *biggest_index)
 {
 	NWidgetHorizontal *container = new NWidgetHorizontal();
 
-	for (uint i = 0; i < NUM_CARGO; i++) {
-		const CargoSpec *cs = CargoSpec::Get(i);
-		if (cs->IsValid()) {
-			NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_STL_CARGOSTART + i);
-			panel->SetMinimalSize(14, 11);
-			panel->SetResize(0, 0);
-			panel->SetFill(0, 1);
-			panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
-			container->Add(panel);
-		} else {
-			NWidgetLeaf *nwi = new NWidgetLeaf(WWT_EMPTY, COLOUR_GREY, WID_STL_CARGOSTART + i, 0x0, STR_NULL);
-			nwi->SetMinimalSize(0, 11);
-			nwi->SetResize(0, 0);
-			nwi->SetFill(0, 1);
-			container->Add(nwi);
-		}
+	for (uint i = 0; i < _sorted_standard_cargo_specs_size; i++) {
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, WID_STL_CARGOSTART + i);
+		panel->SetMinimalSize(14, 11);
+		panel->SetResize(0, 0);
+		panel->SetFill(0, 1);
+		panel->SetDataTip(0, STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE);
+		container->Add(panel);
 	}
-	*biggest_index = WID_STL_CARGOSTART + NUM_CARGO;
+	*biggest_index = WID_STL_CARGOSTART + _sorted_standard_cargo_specs_size;
 	return container;
 }
 
