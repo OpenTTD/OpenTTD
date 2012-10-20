@@ -2746,6 +2746,11 @@ bool AfterLoadGame()
 		/* Fix too high inflation rates */
 		if (_economy.inflation_prices > MAX_INFLATION) _economy.inflation_prices = MAX_INFLATION;
 		if (_economy.inflation_payment > MAX_INFLATION) _economy.inflation_payment = MAX_INFLATION;
+
+		/* We have to convert the quarters of bankruptcy into months of bankruptcy */
+		FOR_ALL_COMPANIES(c) {
+			c->months_of_bankruptcy = 3 * c->months_of_bankruptcy;
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */

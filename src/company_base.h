@@ -78,7 +78,7 @@ struct CompanyProperties {
 
 	Year inaugurated_year;           ///< Year of starting the company.
 
-	byte quarters_of_bankruptcy;     ///< Number of quarters (a quarter is 3 months) that the company has a negative balance.
+	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
 	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;

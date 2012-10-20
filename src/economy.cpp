@@ -524,19 +524,29 @@ static void CompanyCheckBankrupt(Company *c)
 {
 	/*  If the company has money again, it does not go bankrupt */
 	if (c->money - c->current_loan >= -_economy.max_loan) {
-		c->quarters_of_bankruptcy = 0;
+		c->months_of_bankruptcy = 0;
 		c->bankrupt_asked = 0;
 		return;
 	}
 
-	c->quarters_of_bankruptcy++;
+	c->months_of_bankruptcy++;
 
-	switch (c->quarters_of_bankruptcy) {
+	switch (c->months_of_bankruptcy) {
+		/* All the boring cases (months) with a bad balance where no action is taken */
 		case 0:
 		case 1:
+		case 2:
+		case 3:
+
+		case 5:
+		case 6:
+
+		case 8:
+		case 9:
 			break;
 
-		case 2: {
+		/* Warn about bancruptcy after 3 months */
+		case 4: {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 			cni->FillData(c);
 			SetDParam(0, STR_NEWS_COMPANY_IN_TROUBLE_TITLE);
@@ -548,8 +558,9 @@ static void CompanyCheckBankrupt(Company *c)
 			break;
 		}
 
-		case 3: {
-			/* Check if the company has any value.. if not, declare it bankrupt
+		/* Offer company for sale after 6 months */
+		case 7: {
+			/* Check if the company has any value. If not, declare it bankrupt
 			 *  right now */
 			Money val = CalculateCompanyValue(c, false);
 			if (val > 0) {
@@ -558,10 +569,13 @@ static void CompanyCheckBankrupt(Company *c)
 				c->bankrupt_timeout = 0;
 				break;
 			}
-			/* FALL THROUGH to case 4... */
+			/* FALL THROUGH  to case 10 */
 		}
+
+		/* Bancrupt company after 6 months (if the company has no value) or latest
+		 * after 9 months (if it still had value after 6 months) */
 		default:
-		case 4:
+		case 10: {
 			if (!_networking && _local_company == c->index) {
 				/* If we are in offline mode, leave the company playing. Eg. there
 				 * is no THE-END, otherwise mark the client as spectator to make sure
@@ -582,6 +596,7 @@ static void CompanyCheckBankrupt(Company *c)
 			 * company and thus we won't be moved. */
 			if (!_networking || _network_server) DoCommandP(0, 2 | (c->index << 16), CRR_BANKRUPT, CMD_COMPANY_CTRL);
 			break;
+		}
 	}
 }
 
@@ -625,6 +640,11 @@ static void CompaniesGenStatistics()
 	}
 	cur_company.Restore();
 
+	/* Check for bankruptcy each month */
+	FOR_ALL_COMPANIES(c) {
+		CompanyCheckBankrupt(c);
+	}
+
 	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
@@ -637,7 +657,6 @@ static void CompaniesGenStatistics()
 
 		UpdateCompanyRatingAndValue(c, true);
 		if (c->block_preview != 0) c->block_preview--;
-		CompanyCheckBankrupt(c);
 	}
 
 	SetWindowDirty(WC_INCOME_GRAPH, 0);

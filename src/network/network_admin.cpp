@@ -365,7 +365,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 	p->Send_string(manager_name);
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
-	p->Send_uint8 (c->quarters_of_bankruptcy);
+	p->Send_uint8 (c->months_of_bankruptcy);
 
 	for (size_t i = 0; i < lengthof(c->share_owners); i++) {
 		p->Send_uint8(c->share_owners[i]);
