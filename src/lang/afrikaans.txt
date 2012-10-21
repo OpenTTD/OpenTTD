@@ -538,7 +538,7 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLA
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Betaaling vir aflewering van 10 eenhuide (of 10,000 liters) van vrag 'n afstand van 20 blokkies
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Skakel alles aan
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Skakel alles af
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Toon alle vragte op die vrag betalingskostes grafiek
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Vertoon alle vragte op die vrag koste grafiek
 STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Vertoon geen vragte op die vrag betalingskostes grafiek
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Skakel grafiek vir vrag tipe aan/af
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
@@ -582,7 +582,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nommer van voertuie wat 'n profyt gemaak het laas jaar; dit sluit in pad voertuie, treine, skepe en vliegtuie
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal stasie parte wat onlangs regemaak was. Elke deel van 'n stasie (b.v. trein stasie, bushalte, lughawe) is getel, selfs as hulle as een stasie gekonnekteer is
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal stasies wat onlangs herstel is. Treinstasies, busstasies, lughawens ensovoorts word apart getel selfs al behoort hulle aan dieselfde stasie
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Die wins van die voertuig met die laagste inkomste (van alle voertuie ouer as 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
@@ -1598,8 +1598,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Wys trei
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Toon pad voertuig kleur skemas
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Toon skip kleur skemas
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Toon vliegtuig kleurskemas
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies die premere kleur vir die verkieste skema
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies die sekondere kleur vir die verkieste skema
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Kies die primêre kleur vir die gekose skema. Ctrl+Click sal hierdie kleur kies vir elke skema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Kies die sekondêre kleur vir die gekose skema. Ctrl+Click sal hierdie kleur kies vir elke skema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Kies 'n kleur skema te verander, of veelvoud skemas met CTRL+kliek. Kliek op die boks te skakel gebruik van skema
 
 STR_LIVERY_DEFAULT                                              :Standaard Lewery
@@ -1638,17 +1638,17 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Kies vro
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nuwe Gesig
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genereer nuwe lukrake gesig
 STR_FACE_ADVANCED                                               :{BLACK}Voorlopend
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Voorloopend gesig keuse.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Gevordere gesig stellings
 STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudig
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudig gesig keuse.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudige gesig stellings
 STR_FACE_LOAD                                                   :{BLACK}Laai
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laai gunsteling gesig
 STR_FACE_LOAD_DONE                                              :{WHITE}Jou gunsteling gesig is van die OpenTTD stellings lêer gelaai.
 STR_FACE_FACECODE                                               :{BLACK}Speler gesig no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Toon en/of stel speler gesig nommer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Toon en/of stel speler gesig nommer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nuwe gesig nommer kode is gestel.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Kon nie speler gesig nommer stel - moet numeries wees tussen 0 en 4,294,967,295!
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vertoon en/of stel speler gesig nommer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekyk en/of stel speler gesig nommer
+STR_FACE_FACECODE_SET                                           :{WHITE}Nuwe gesig nommer kode is verstel
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kon nie speler gesig nommer stel nie - moet 'n nommer tussen 0 en 4,294,967,295 wees!
 STR_FACE_SAVE                                                   :{BLACK}Spaar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Spaar gunsteling gesig
 STR_FACE_SAVE_DONE                                              :{WHITE}Die gesig sal as u gunsteling gesig in die OpenTTD stellings lêer gespaar word.
@@ -1711,14 +1711,14 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Die bedi
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Die bedienaar wat jy laaste op gespeel het
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPEL INFORMASIE
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliente:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
-STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal:  {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Kliënte: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Taal: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landskap: {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaart groote:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verskaffer hersiening:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Verskaffer adres:  {WHITE}{STRING}
-STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Begin datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Kaart groote: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Verskaffer weergawe: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Verskaffer adres: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Begin datum: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Huidige datum: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Wagwoord beskerm!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}VERSKAFFER AFLYN
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}VERSKAFFER VOL
@@ -1732,7 +1732,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Vervris 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Soek bediener
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Versoek netwerk vir 'n verskaffer
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg bediender by
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voeg 'n verskaffer tot die lys wat sal altyd wees gemerk vir loopende speletjies.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voeg 'n verskaffer by die lys wat altyd ondersoek sal word vir speletjies wat reeds aan die gang is
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Begin bediener
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Begin u eie verskaffer
 
@@ -1806,20 +1806,20 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multispeler spel tuiste
 
-STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Voorberei om te verbind:   {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Berei tans voor om te verbind: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}'n Lys van alle ondernemings tans in hierdie speletjie. U kan een van beide sluit aan een of begin 'n nuwe een indien daar is 'n vry maatskappy gleuf
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}MAATSKAPPY INFORMASIE
-STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Maatskappy naam:  {WHITE}{STRING}
-STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inwyding:  {WHITE}{NUM}
-STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Maatskappy waarde:  {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Hudige balans:  {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Verlede jaar se inkome:  {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Prestasie:  {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Maatskappy naam: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inwyding: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Maatskappy boekwaarde: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}Huidige kontantvloei: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}Vorige jaar se inkomste: {WHITE}{CURRENCY_LONG}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}Werkverrignting: {WHITE}{NUM}
 
-STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Voertuie:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stasies:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
-STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spelers:  {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}Voertuie: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}Stasies: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Spelers: {WHITE}{STRING}
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nuwe Maatskappy
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Skep 'n nuwe maatskappy
@@ -1832,15 +1832,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Hulp om 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Besig om the konnek...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Konnek...
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Gemagtiging...
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbind tans...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Word tans geverifieer...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Wagtend...
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Laai kaart af...
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerk Data...
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreer...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Laai tans kaart af...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Data word tans verwerk...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreer tans...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haal spel informasie...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haal maatskappy informasie...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spel inligting word verkry...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Maatskappy inligting word verkry...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Klient{P "" e} voor jou
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} afgelaai tot dusver
@@ -1854,7 +1854,7 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskap
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Klient Lys
 STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Toeskou
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe Maatskapy
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuwe maatskapy
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Skop
@@ -1881,7 +1881,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gebruik 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Bind
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Bind en speel as maatskapy
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wagwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beskerm maatskappy met wagwoord om te verhoed dat ongemagtigde spelers toegang verkry
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Stel maatskappy wagwoord
 
 # Network chat
@@ -1964,7 +1964,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :speletjie skrif
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verlaat
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} het by die spel aangesluit
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} het die spel aangesluit (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} het by besigheid  #{2:NUM} aangesluit
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} het by maatskappy #{2:NUM} aangesluit
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} het aangesluit by die spektators
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} begin 'n nuwe maatskappy (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} het die spel verlaat ({2:STRING})
@@ -2079,15 +2079,15 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Enkelspoor Kons
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magneetsweeftrein Konstruksie
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bou spoore. Ctrl skakel Bou/verwydering van spoorweg knstruksie. Shift skakel Bou/wys koste beraming
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bou spoorweg spoor met die Outospoor metode
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou trein skuur (vir die bou en diens van treine)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Verander spoor na wegwyser. Ctrl laat wegwyser verbinding toe
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gebruik Outo-bou om spoorweg te bou. Ctrl kies tussen bou/verwyder. Shift kies tussen bou/kwotasie
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bou trein stoor (om treine te koop en te diens). Shift kies tussen bou/kwotasie
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Verander treinspoor na baken. Druk Ctrl om bakens saam te voeg. Shift kies tussen bou/kwotasie
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bou spoorweg stasie. Ctrl voeg stasies saam. Shift skakel Bou/wys koste beraming
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bou spoorweg seinligte
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bou treinspoor aanwysers. Ctrl kies tussen seinpaal/robot{} Kliek en trek om aanwysers al langs 'n reguit treinspoor te bou. Druk Ctrl om aanwysers tot by die volgende aansluiting te bou{}Ctrl+Kliek maak die aanwyser stelling boks oop. Shift kies tussen bou/kwotasie
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bou spoorweg brug. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bou spoorweg tonnel. Shift skakel Bou/wys koste beraming
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skakel bou/verwyder vir spoore en seinligte
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verdoel/Opgradeer die spoor tipe
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander die treinspoor tipe. Shift kies tussen bou/kwotasie
 
 STR_RAIL_NAME_RAILROAD                                          :Spoorweg
 STR_RAIL_NAME_ELRAIL                                            :Elektrifiseerde spoorweg
@@ -2121,8 +2121,8 @@ STR_STATION_CLASS_WAYP                                          :Wegpunte
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sein seleksie
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sein (semafoor){}Heirde is die mees basiese tipe sein, wat net een trein in 'n block op 'n tyd toelaat.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangs-Sein (semafoor){}Groen so lank as daar een of meer groen uitgang-siene is van enige agtervolgende treinspoorgedeelte is. Anderste is dit rooi.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok aanwyser (seinpaal){}Die eenvoudigste tipe aanwyser, laat slegs een trein in 'n blok toe
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingang-aanwyser (seinpaal){}Wys groen so lank die volgende gedeelte treinspoor 'n groen uitgang-aanwyser het, anders wys dit rooi
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang-Sein (semafoor){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasie-Sein (semafoor){}Die kombinasie-sein is beide 'n ingang- en uitgang-sein. Die laat jou toe om groot "bome" van voor-seine te bou.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pad Sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
@@ -3242,7 +3242,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Skakel t
 STR_REPLACE_ENGINES                                             :Enjin
 STR_REPLACE_WAGONS                                              :Waens
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die spoortipe waarvoor jy die enjins wil vervang
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Kies die soort spoor waarvoor lokomotiewe vervang moet word
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Toon aan watter enjin die linker gekose enjin mee vervang moet word , indien enige
 STR_REPLACE_RAIL_VEHICLES                                       :Spoort voertuie
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifiseerde Spoor Voertuie
@@ -3952,7 +3952,7 @@ STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan nie 
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... daar is geen trein spoor
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... daar is geen seine
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan nie spoor tipe hier verdoel nie...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan nie spoor tipe hier verander nie...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Moet pad eers verwyder word

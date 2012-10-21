@@ -2215,7 +2215,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 �
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}승객 전차역을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}화물 전차 정거장을 짓습니다. Ctrl을 누르면 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 활성/비활성화
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}일방통행 도로 건설 모드를 켜거나 끕니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}다리를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}전차교를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}터널을 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
@@ -2599,8 +2599,8 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}게임 �
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRF 상세 정보
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}활성화된 NewGRF 파일
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}비활성화된 NewGRF 파일
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}사용 중인 NewGRF 파일
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}사용하지 않고 있는 NewGRF 파일
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}프리셋 선택:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}검색할 문자열:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}선택한 프리셋을 불러옵니다
@@ -3432,9 +3432,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}수송�
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (개조)
 STR_REFIT_TITLE                                                 :{GOLD}수송할 화물 선택:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}새 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 가격: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
-STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}새 화물: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하시면 전체 차량을 선택 가능합니다.
 
@@ -3681,7 +3681,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 설�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}AI의 설정 변경
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AI 로그 메세지가 중단 문자열과 일치할때 AI 중단을 활성화/비활성화
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}AI 로그 메세지가 break 문자열을 만날 때 AI를 중단할지 여부를 켜거나 끕니다.
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}중단:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}중단
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}인공지능 로그 메시지가 이 문자열과 일치하면 게임을 일시정지시킵니다.
