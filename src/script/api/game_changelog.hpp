@@ -29,6 +29,7 @@
  * \li GSStation::IsAirportClosed
  * \li GSStation::OpenCloseAirport
  * \li GSController::Break
+ * \li GSIndustryType::BuildIndustry, GSIndustryType::CanBuildIndustry, GSIndustryType::ProspectIndustry and GSIndustryType::CanProspectIndustry when outside GSCompanyMode scope
  *
  * \b 1.2.2
  *

@@ -94,7 +94,9 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	if (::GetIndustryProbabilityCallback(industry_type, IACT_USERCREATION, 1) == 0) return false;
+	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
+	if (deity) return true;
 	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return true;
 
 	/* raw_industry_construction == 1 means "Build as other industries" */
@@ -105,26 +107,25 @@
 {
 	if (!IsValidIndustryType(industry_type)) return false;
 
-	if (!::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
-	if (::GetIndustryProbabilityCallback(industry_type, IACT_USERCREATION, 1) == 0) return false;
+	const bool deity = ScriptObject::GetCompany() == OWNER_DEITY;
+	if (!deity && !::GetIndustrySpec(industry_type)->IsRawIndustry()) return false;
+	if (::GetIndustryProbabilityCallback(industry_type, deity ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) return false;
 
 	/* raw_industry_construction == 2 means "prospect" */
-	return _settings_game.construction.raw_industry_construction == 2;
+	return deity || _settings_game.construction.raw_industry_construction == 2;
 }
 
 /* static */ bool ScriptIndustryType::BuildIndustry(IndustryType industry_type, TileIndex tile)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, CanBuildIndustry(industry_type));
 	EnforcePrecondition(false, ScriptMap::IsValidTile(tile));
 
 	uint32 seed = ::InteractiveRandom();
-	return ScriptObject::DoCommand(tile, (::InteractiveRandomRange(::GetIndustrySpec(industry_type)->num_table) << 8) | industry_type, seed, CMD_BUILD_INDUSTRY);
+	return ScriptObject::DoCommand(tile, (1 << 16) | (::InteractiveRandomRange(::GetIndustrySpec(industry_type)->num_table) << 8) | industry_type, seed, CMD_BUILD_INDUSTRY);
 }
 
 /* static */ bool ScriptIndustryType::ProspectIndustry(IndustryType industry_type)
 {
-	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
 	EnforcePrecondition(false, CanProspectIndustry(industry_type));
 
 	uint32 seed = ::InteractiveRandom();

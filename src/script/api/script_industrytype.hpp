@@ -113,6 +113,9 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return True if you can build this type of industry at locations of your choice.
 	 * @note Returns false if you can only prospect this type of industry, or not build it at all.
+	 * @game @note If no valid ScriptCompanyMode active in scope, the script can
+	 * @game build as long as the industry type can be built. (a NewGRF can for example
+	 * @game reject construction based on current year)
 	 */
 	static bool CanBuildIndustry(IndustryType industry_type);
 
@@ -123,6 +126,9 @@ public:
 	 * @return True if you can prospect this type of industry.
 	 * @note If the setting "Manual primary industry construction method" is set
 	 * to either "None" or "as other industries" this function always returns false.
+	 * @game @note If no valid ScriptCompanyMode active in scope, the script can
+	 * @game prospect as long as the industry type can be built. (a NewGRF can for
+	 * @game example reject construction based on current year)
 	 */
 	static bool CanProspectIndustry(IndustryType industry_type);
 
@@ -131,7 +137,6 @@ public:
 	 * @param industry_type The type of the industry to build.
 	 * @param tile The tile to build the industry on.
 	 * @pre CanBuildIndustry(industry_type).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if the industry was successfully build.
 	 */
 	static bool BuildIndustry(IndustryType industry_type, TileIndex tile);
@@ -141,10 +146,12 @@ public:
 	 * an industry on a random place on the map.
 	 * @param industry_type The type of the industry.
 	 * @pre CanProspectIndustry(industry_type).
-	 * @game @pre Valid ScriptCompanyMode active in scope.
 	 * @return True if no error occurred while trying to prospect.
 	 * @note Even if true is returned there is no guarantee a new industry is build.
 	 * @note If true is returned the money is paid, whether a new industry was build or not.
+	 * @game @note if no valid ScriptCompanyMode exist in scope, prospection will not fail
+	 * @game due to the general chance that prospection may fail. However prospection can still
+	 * @game fail if OpenTTD is unable to find a suitable location to place the industry.
 	 */
 	static bool ProspectIndustry(IndustryType industry_type);
 

@@ -1827,6 +1827,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
  * @param p1 various bitstuffed elements
  * - p1 = (bit  0 -  7) - industry type see build_industry.h and see industry.h
  * - p1 = (bit  8 - 15) - first layout to try
+ * - p1 = (bit 16     ) - 0 = prospect, 1 = fund (only valid if current company is DEITY)
  * @param p2 seed to use for desyncfree randomisations
  * @param text unused
  * @return the cost of this operation or an error
@@ -1843,11 +1844,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	/* If the setting for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
-	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, IACT_USERCREATION, 1) == 0) {
+	if (_game_mode != GM_EDITOR && GetIndustryProbabilityCallback(it, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, 1) == 0) {
 		return CMD_ERROR;
 	}
 
@@ -1857,16 +1858,17 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	uint32 random_var8f = randomizer.Next();
 	int num_layouts = indspec->num_table;
 	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
+	const bool deity_prospect = _current_company == OWNER_DEITY && !HasBit(p1, 16);
 
 	Industry *ind = NULL;
-	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
+	if (deity_prospect || (_game_mode != GM_EDITOR && _current_company != OWNER_DEITY && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry())) {
 		if (flags & DC_EXEC) {
 			/* Prospected industries are build as OWNER_TOWN to not e.g. be build on owned land of the founder */
 			Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
 			 * is nothing we can really do about that. */
-			if (Random() <= indspec->prospecting_chance) {
+			if (deity_prospect || Random() <= indspec->prospecting_chance) {
 				for (int i = 0; i < 5000; i++) {
 					/* We should not have more than one Random() in a function call
 					 * because parameter evaluation order is not guaranteed in the c++ standard
@@ -1877,7 +1879,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					/* Check now each layout, starting with the random one */
 					for (int j = 0; j < num_layouts; j++) {
 						layout = (layout + 1) % num_layouts;
-						ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, cur_company.GetOriginalValue(), IACT_PROSPECTCREATION, &ind);
+						ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, cur_company.GetOriginalValue(), _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_PROSPECTCREATION, &ind);
 						if (ret.Succeeded()) break;
 					}
 					if (ret.Succeeded()) break;
@@ -1892,7 +1894,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		/* Check subsequently each layout, starting with the given layout in p1 */
 		for (int i = 0; i < num_layouts; i++) {
 			layout = (layout + 1) % num_layouts;
-			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
+			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, _current_company == OWNER_DEITY ? IACT_RANDOMCREATION : IACT_USERCREATION, &ind);
 			if (ret.Succeeded()) break;
 		}
 
