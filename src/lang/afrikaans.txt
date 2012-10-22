@@ -2123,7 +2123,7 @@ STR_STATION_CLASS_WAYP                                          :Wegpunte
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sein seleksie
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok aanwyser (seinpaal){}Die eenvoudigste tipe aanwyser, laat slegs een trein in 'n blok toe
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingang-aanwyser (seinpaal){}Wys groen so lank die volgende gedeelte treinspoor 'n groen uitgang-aanwyser het, anders wys dit rooi
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang-Sein (semafoor){}Gedra dieselfde as 'n blok-sein maar is nodig om die regte kleur op ingangs- & combinasie-voor-seine te laat wys.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgang aanwyser (seinpaal){}Werk soos 'n blok aanwyser maar word benodig om die regte kleur te aktiveer op kombinasie & ingang aanwysers
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinasie-Sein (semafoor){}Die kombinasie-sein is beide 'n ingang- en uitgang-sein. Die laat jou toe om groot "bome" van voor-seine te bou.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pad Sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Standaarde pad seine kan nie van die agterkant verby gevat word nie.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Een-rigting pad sein (semafoor){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie van die agterkant verby gevat word nie.

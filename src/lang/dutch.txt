@@ -1192,6 +1192,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :aan het einde
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Wachtrijvorming bij wegvoertuigen (met bijwerkingen): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Wegvoertuigen laten stoppen voor een bezet wegstation tot ze toestemming krijgen om door te gaan.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Verschuif scherm als muis aan de rand is: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wanneer aan, subvenster start met scrollen wanneer de muis vlak bij de rand van de window komt
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :uit
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :hoofd kijkvenster, alleen volledigscherm
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoofd kijkvenster
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Elk kijkvenster
 STR_CONFIG_SETTING_BRIBE                                        :Omkopen van de gemeente toestaan: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Toestaan dat bedrijven mogen proberen de plaatselijke gemeente autoriteit om te kopen. Als de omkoping wordt opgemerkt door een inspecteur, zal de onderneming niet in staat zijn om in de stad actie te ondernemen voor zes maanden
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Kopen van exclusieve transportrechten toestaan: {STRING}
@@ -3756,6 +3761,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kosten: {CURRENCY_LONG}
