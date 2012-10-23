@@ -440,8 +440,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :நிலா �
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :முனையத்தை மாற்று
 STR_ABOUT_MENU_AI_DEBUG                                         :AI சரிபார்
-STR_ABOUT_MENU_SCREENSHOT                                       :திரைபடம்
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தை படம் எடு
+STR_ABOUT_MENU_SCREENSHOT                                       :திரைபிடிப்பு
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :முழு வரைபடத்தையும் திரைபிடிப்பு செய்
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' பற்றி
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ஸ்ரைட்டு அலைனர்
 ############ range ends here
@@ -610,11 +610,14 @@ STR_SMALLMAP_TYPE_CONTOURS                                      :அமைப்
 STR_SMALLMAP_TYPE_VEHICLES                                      :வாகனங்கள்
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :தொழிற்சாலைகள்
 STR_SMALLMAP_TYPE_ROUTES                                        :வழித்தடங்கள்
+STR_SMALLMAP_TYPE_VEGETATION                                    :தாவரங்கள்
 STR_SMALLMAP_TYPE_OWNERS                                        :சொந்தக்காரர்கள்
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}நில அமைப்புகளை படத்தில் காட்டு
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}வரைபடத்தில் வாகனங்களை காட்டு
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}வரைபடத்தில் தொழிற்சாலைகளை காட்டு
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}வரைபடத்தில் வழித்தடங்களை காட்டு
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}வரைபடத்தில் தாவரங்களைக் காட்டு
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}வரைபடத்தில் நிலங்களின் சொந்தக்காரர்களைக் காட்டு
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}சாலைகள்
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}இரயில்வே
@@ -630,11 +633,16 @@ STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}இரயில் நிலையம்
 STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}சரக்கு ஏற்றும் இடம்
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}பேருந்து நிலையம்
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}விமான/வானூர்தி தளம்
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}துறைமுகம்
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}சமமற்ற நிலம்
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}புல்வெளி
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}பொறம்போக்கு நிலம்
+STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}வயல்வெளிகள்
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}மரங்கள்
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}பாறைகள்
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}நீர்
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}யாரும் உரிமை கோரவில்லை
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}நகரங்கள்
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}தொழிற்சாலைகள்
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}பாலைவனம்
@@ -643,6 +651,8 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}அனைத்தையும் செயலிழக்க செய்
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK} அனைத்தையும் செயல்படுத்து
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}உயரத்தை காட்டு
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}எந்த ஆலைகளையும் வரைபடத்தில் காட்டாதே
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}அனைத்து ஆலைகளையும் வரைபடத்தில் காட்டு
@@ -664,10 +674,13 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}செய்தி
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}செய்தி அமைப்புகள்
+STR_NEWS_MESSAGES_OFF                                           :நிறுத்து
 STR_NEWS_MESSAGES_SUMMARY                                       :தொகுப்பு
 STR_NEWS_MESSAGES_FULL                                          :முழு
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}செய்தி வகைகள்:
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}விளையாடுபவரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}போட்டியாளரின் நிலையத்திற்கு முதல் வாகனம் வருகை புரிந்தது
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}விபத்துகள் / பேரழிவுகள்
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}நிறுவனத்தின் விவரம்
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}தொழிற்சாலைகளின் திறப்பு
@@ -740,6 +753,8 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} இப்போது {STRING} {STRING} ஆகியவற்றை ஏற்றுக்கொள்கிறது
 
 
+STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}போக்குவரத்து தனியுரிமை!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} நகராட்சியின் முழு போக்குவரத்து உரிமைகளையும் ஒரு வருடத்திற்கு {STRING} வாங்கியுள்ளது!
 
 # Extra view window
 
@@ -926,6 +941,10 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :தடத்த
 # Advanced settings window
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}இயல்பான மதிப்பு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}அமைப்பு வகை: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :ஆட்டத்தின் அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ஆட்டத்தின் அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய ஆட்டத்தினை மட்டுமே மாற்றும்)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய நிறுவனத்தை மட்டுமே மாற்றும்)
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -954,6 +973,10 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :மற்ற �
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :ஒரே மாதிரியான தொழிற்சாலைகளை அதே நகரத்தில் நிறுவ அனுமதி: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :நிதிநிலைமை அறிக்கையை ஒவ்வொரு ஆண்டின் இறுதியிலும் காட்டு: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :நடு
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :செயலிழக்க செய்யப்பட்டது
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :முக்கிய திரைபார்வை, முழுத்திரையில் மட்டும்
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :முக்கிய திரைபார்வை
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :ஒவ்வொரு திரைபார்வையும்
 STR_CONFIG_SETTING_BRIBE                                        :நகராட்சிக்கு கையூட்டுத் தர அனுமதி: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :கட்டடங்களை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {STRING}
@@ -985,6 +1008,7 @@ STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES_HELPTEXT               :முடக்கப்பட்டால், வரைபடத்தின் எல்லைகள் கடலாகவே இருக்கும்
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை
@@ -1042,6 +1066,9 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :சிக்ன
 
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... அடிப்படை அசைவூட்டத் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... அடிப்படை ஒளித் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... அடிப்படை இசைத் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1306,6 +1333,7 @@ STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... க�
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :அடிப்படை அசையூட்டம்
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_SCENARIO                                       :திரைக்காட்சி
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :அடிப்படை ஒலிகள்
 STR_CONTENT_TYPE_BASE_MUSIC                                     :அடிப்படை இசை
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :விளையாட்டின் ஸ்கிரிப்ட்
@@ -1314,7 +1342,9 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :GS காப்
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}பதிவிறக்கமாகிறது...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}கோப்புகள் கேட்கப்படுகின்றன...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}தற்போது {STRING} பதிவிறக்கமாகிறது ({NUM} of {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}பதிவிறக்கம் முடிந்தது
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} இல் {BYTES} பதிவிறக்கமாகியுள்ளது ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}பதிவிறக்கம் ரத்தானது...
@@ -1328,10 +1358,17 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல�
 # Transparency settings window
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}நிறுத்து
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}இயக்கு
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}ஏற்றுக்கொள்பவை: {GOLD}{CARGO_LIST}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}விநியோகிப்பவை: {GOLD}{CARGO_LIST}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}நிலையத்தினை இணை
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}தனியாக ஒரு நிலையத்தினை கட்டு
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}பாதைப்புள்ளியினை இணை
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}தனியொரு பாதைப்புள்ளிடினை கட்டு
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :இரயில்வே கட்டுமானம்
@@ -1352,41 +1389,62 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}பா�
 
 # Rail station construction window
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}தடங்களின் எண்ணிக்கை
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}நிலையத்தின் நீளம்
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}இரயில் நிலையத்தின் நீளத்தினை தேர்ந்தெடு
 
 
+STR_STATION_CLASS_WAYP                                          :பாதைப்புள்ளிகள்
 
 # Signal window
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}இரயில்வே பாலத்தினை தேர்ந்தெடு
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}சாலைப் பாலத்தினை தேர்ந்தெடு
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :தொங்குபாலம், எஃகு
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :உத்திரம்பாலம் , எஃகு
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :நெடுங்கைபாலம், எஃகு
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :தொங்குபாலம், சிமிட்டி
 STR_BRIDGE_NAME_WOODEN                                          :மர
-STR_BRIDGE_NAME_CONCRETE                                        :சிமண்ட்
+STR_BRIDGE_NAME_CONCRETE                                        :சிமிட்டி
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :குழாய்பாலம், எஃகு
+STR_BRIDGE_TUBULAR_SILICON                                      :குழாய்பாலம், சிலிக்கான்
 
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}சாலை கட்டுமானம்
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}ட்ரேம்வே கட்டுமானம்
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}ஒருவழிப்பாதைகளை செயல்படுத்து/முடக்கு
 
 # Road depot construction window
 
 # Road vehicle station construction window
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}கடல்வழி போக்குவரத்து கட்டுமானம்
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}கடல்வழி போக்குவரத்து
 
 # Ship depot construction window
 
 # Dock construction window
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}துறைமுகம்
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}விமான நிலையங்கள்
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}விமான நிலைய வகை
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}அமைப்பு {NUM}
 
 STR_AIRPORT_SMALL                                               :சிறிய
 STR_AIRPORT_CITY                                                :மாநகர
 STR_AIRPORT_METRO                                               :மாநகர
 STR_AIRPORT_INTERNATIONAL                                       :சர்வதேச
+STR_AIRPORT_COMMUTER                                            :பயணிகள்
 STR_AIRPORT_HELIPORT                                            :ஹெலிபோர்ட்
+STR_AIRPORT_HELIDEPOT                                           :வானூர்தி பணிமனை
+STR_AIRPORT_HELISTATION                                         :வானூர்தி நிலையம்
 
 STR_AIRPORT_CLASS_SMALL                                         :சிறிய விமான நிலையங்கள்
 STR_AIRPORT_CLASS_LARGE                                         :பெரிய விமான நிலையங்கள்
@@ -1402,6 +1460,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}அள�
 STR_OBJECT_CLASS_LTHS                                           :கலங்கரைவிளக்கு
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}மரங்கள்
 
 # Land generation window (SE)
 
@@ -1411,6 +1470,8 @@ STR_FOUND_TOWN_CAPTION                                          :{WHITE}நக�
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}புதிய நகரம்
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}நகரத்தின் பெயர்:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}நகரத்தின் பெயரினை இடு
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}நகரத்தின் பெயரினை இட இங்கே சொடுக்கவும்
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}ஏதோ ஒரு பெயர்
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}புதிய பெயர் ஒன்றை உருவாக்கு
 
@@ -1443,15 +1504,19 @@ STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}வீ�
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}நிலப் பகுதி விவரம்
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}சொந்தக்காரர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}சாலையின் உரிமையாளர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}இரயில்வே உரிமையாளர்: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ஒன்றுமில்லை
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}கட்டப்பட்டது: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}விமான நிலைய வகுப்பு: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}விமான நிலைய பெயர்: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :கற்கள்
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :புல்
+STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :வயல்வெளிகள்
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :பனி-படர்ந்த நிலம்
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :பாலைவனம்
 
@@ -1467,6 +1532,7 @@ STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :ட்ரேம
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (கட்டுமானம் நடக்கிறது)
 
 STR_LAI_TREE_NAME_TREES                                         :மரங்கள்
+STR_LAI_TREE_NAME_RAINFOREST                                    :மழைக்காடு
 STR_LAI_TREE_NAME_CACTUS_PLANTS                                 :கள்ளிச் செடிகள்
 
 STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :இரயில் நிலையம்
@@ -1489,10 +1555,25 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :கப்பல
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :சுரங்க ரயில் பாதை
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :சுரங்கச் சாலை
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :எஃகு தொங்கு இரயில்வே பாலம்
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :எஃகு தூண் இரயில்வே பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :எஃகு நெடுங்கை இரயில்வே பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :உறுதிப்படுத்தப்பட்ட சிமிட்டி இரயில்வே பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :மர இரயில்வே பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :சிமிட்டி இரயில்வே பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :குழாய் இரயில்வே பாலம்
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :எஃகு தொங்கு பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :எஃகு உத்திரம் பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :எஃகு நெடுங்கை பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :உறுதிப்படுத்தப்பட்ட சிமிட்டி பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :மர பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :சிமிட்டி பாலம்
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :குழாய் பாலம்
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :நீர்க்கட்டுக் கால்வாய்
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :அனுப்பும் கருவி
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :கலங்கரை விளக்கு
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :நிறுவனத்தின் தலைமைச் செயலகம்
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :நிறுவனத்திற்குச் சொந்தமான நிலம்
@@ -1506,6 +1587,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}ஆட்டத்தை பதிவு செய்
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}பதிவு செய்த ஆட்டத்தை தொடரு
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}வரைபடத்தினை சேமி
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} காலி
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}அழி
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}சேமி
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ஏற்று
@@ -1537,27 +1619,47 @@ STR_MAPGEN_BORDER_WATER                                         :{BLACK}தண�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}அளவு:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}பனிக் கோடின் உயரத்தினை மாற்று
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}தொடங்கும் வருடத்தினை மாற்று
 
 # SE Map generation
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}சம் நிலம்
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}சம நிலத்தின் உயரம்:
 
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}சம நிலத்தின் உயரத்தினை மாற்று
 
 # Map generation progress
+STR_GENERATION_ABORT                                            :{BLACK}நிறுத்து
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% முடிந்துள்ளது
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}உலகம் உருவாக்குதல்
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}ஆறு உருவாக்குதல்
+STR_GENERATION_TREE_GENERATION                                  :{BLACK}மரங்கள் உருவாக்குதல்
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}ஆட்டம் தயாராகிறது
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}சேர்
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோப்புகளை மறுபடியும் ஆராய்
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}நீக்கு
 
+STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}மாற்றங்களை செயலாக்கு
 
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}இல்லாதவற்றை இணையத்தில் தேடு
 
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}கோப்புப்பெயர்: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}எந்தத் தகவலும் இல்லை
+STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}செயலிழக்க செய்யப்பட்டது
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}மூடு
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :இரயில்வே வகை
 
 
 # Sprite aligner window
@@ -1565,6 +1667,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}கோ�
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}எச்சரிக்கை: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}பிழை: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING}, {STRING}ஆல் செயலிழக்க செய்யப்பட்டது
 
 # NewGRF related 'general' warnings
@@ -1930,6 +2034,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}கொ�
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (மாற்றியமை)
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்ததனால் வருமானம்: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்ததனால் வருமானம்: {GREEN}{CURRENCY_LONG}
 
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}இரயிலை மாற்றியமை
@@ -2116,6 +2222,8 @@ STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}அன�
 
 
 # Vehicle loading indicators
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}மதிப்பிடப்பட்டுள்ள செலவு: {CURRENCY_LONG}
@@ -2126,6 +2234,7 @@ STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}பத�
 
 # Map generation messages
 
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... கோப்பு கிடைக்கவில்லை
 
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... படம் ரொம்ப பெரியதாக உள்ளது.
@@ -2134,6 +2243,8 @@ STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... ப�
 # Soundset messages
 
 # Screenshot related messages
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}திரைபிடிப்பு வெற்றிகரமாக '{STRING}' என பதிவு செய்யப்பட்டது
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}திரைபிடிப்பு தோல்வியடைந்தது!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}தகவல்
@@ -2267,10 +2378,13 @@ STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}ஏற�
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}மற்றொரு பாதைப்புள்ளியின் அருகில் உள்ளது
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}இங்கே இரயில்வே பாதைப்புள்ளியினைக் கட்ட இயலாது...
+STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}மிதவையினை இங்கே வைக்க இயலாது...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}பாதைப்புள்ளியின் பெயரினை மாற்ற இயலாது...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}இந்த இரயில்வே பாதைப்புள்ளியினை நீக்க இயலாது...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}முதலில் இரயில்வே பாதைப்புள்ளியினை நீக்க வேண்டும்
+STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... மிதவை வழியில் உள்ளது
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... மிதவையினை மற்றொரு நிறுவனம் பயன்படுத்துகின்றது!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}இங்கே இரயில்வே பணிமனையினைக் கட்ட இயலாது...
@@ -2308,6 +2422,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}மு�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}தக்க இரயில் தடம் ஏதும் இல்லை
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}முதலில் இரயில்வே தடத்தினை எடுக்க வேண்டும்
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}சாலை ஒருவழிப்பாதை அல்லது மறிக்கப்பட்டுள்ளது
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}இங்கே சிக்னல்களை நிறுவ இயலாது...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}இங்கே இரயில்வே தடங்களை பதிய முடியாது...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}இங்கிருந்து இரயில்வே தடங்களை அகற்ற முடியாது...
@@ -2575,7 +2690,7 @@ STR_SV_STNAME_EXCHANGE                                          :{STRING} பர
 STR_SV_STNAME_AIRPORT                                           :{STRING} விமான நிலையம்
 STR_SV_STNAME_OILFIELD                                          :{STRING} எண்ணெய் வயல்
 STR_SV_STNAME_MINES                                             :{STRING} சுரங்கங்கள்
-STR_SV_STNAME_DOCKS                                             :{STRING} துறைமுக மேடைகள்
+STR_SV_STNAME_DOCKS                                             :{STRING} துறைமுகங்கள்
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
