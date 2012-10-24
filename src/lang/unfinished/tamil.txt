@@ -524,6 +524,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம�
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}சரக்கு விற்பனை விலை
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}எடுத்துச் செல்லுதல் நாட்கள்
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}10 யூனிட்டு (அல்லது 10000 லிட்டர்) சரக்குகளை 20 கட்டங்களுக்கு நகர்த்தியதற்கான வருவாய்
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}அனைத்தையும் செயலாக்கு
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}அனைத்தையும் செயலிளக்கவை
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}அனைத்து சரக்குகளையும் சரக்கு விலை வரைபடத்தில் காண்பி
@@ -1005,6 +1006,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :வரைபட
 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :எண்ணெய் சுத்திகரிப்பு நிலையங்கள் வரைபடத்தின் எல்லைகளில் மட்டுமே கட்ட இயலும், அதாவது தீவு வரைபடங்களில் கடற்கரைகளில் கட்ட இயலும்
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
@@ -1026,8 +1028,15 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :தகுந்
 
 
 
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} நாள்{P "நாள்" நாட்கள்}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :செயலிழக்க செய்யப்பட்டது
 
+STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்கும் வருடம்: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :அனைத்தும்
 
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :நல்ல சாலைகள்
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 கட்டங்கள்
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 கட்டங்கள்
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :நகரங்கள் சாலைகளை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :ஆட்டத்தில் நகரங்களை நிறுவ அனுமதி: {STRING}
@@ -1037,26 +1046,37 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமத
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :எங்கும்
 
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} பிக்சல்{P 0 "" கள்}
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :}செயலிழக்க செய்யப்பட்டது
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :செயலிழக்க செய்யப்பட்டது
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :இயல்பான
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :மெதுவாக
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :சாதாரணமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :வேகமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :அதிவேகமாக
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்றுமில்லை
 
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}வாகனங்கள்
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}நிலையங்கள்
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}பொருளாதாரம்
 STR_CONFIG_SETTING_AI                                           :{ORANGE}போட்டியாளர்கள்
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}திரை அமைப்புகள்
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}சிக்னல்கள்
 STR_CONFIG_SETTING_STATIONS_CARGOHANDLING                       :{ORANGE}சரக்கு பரிமாற்றம்
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}கணினி வீரர்கள்
+STR_CONFIG_SETTING_VEHICLES_SERVICING                           :{ORANGE}பராமரிப்பு
 STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}இரயில் வண்டிகள்
 STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}நகரங்கள்
 STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}தொழிற்சாலைகள்
+STR_CONFIG_SETTING_ECONOMY_SCRIPTS                              :{ORANGE}வரிவடிவங்கள்
 
 STR_CONFIG_SETTING_PATHFINDER_OPF                               :அசல்
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
@@ -1064,8 +1084,12 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(ப
 
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :சிக்னல்களில் தானியங்கி மீட்சி: {STRING}
 
+STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}அமைப்பின் மதிப்பினை மாற்று
 
 # Config errors
+STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :கிடைக்கவில்லை
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :கணினி NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :தெரியவில்லை
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... அடிப்படை அசைவூட்டத் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... அடிப்படை ஒளித் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... அடிப்படை இசைத் தொகுப்பு '{STRING}' தவிர்கப்பட்டது: கிடைக்கவில்லை
@@ -1074,7 +1098,9 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... அ�
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}புது விளையாட்டு
+STR_INTRO_LOAD_GAME                                             :{BLACK}ஆட்டத்தை ஏற்று
 
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}ஆட்டத்தின் அமைப்புகள்
 STR_INTRO_DIFFICULTY                                            :{BLACK}கடினம் ({STRING})
 STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}அமைப்புகள்
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF அமைப்புகள்
@@ -1085,6 +1111,10 @@ STR_INTRO_QUIT                                                  :{BLACK}வி�
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}பதிவு செய்யப்பட்ட விளையாட்டை ஏற்று
 
 
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}ஆட்டம் அமைப்புகளைக் காட்டு
+STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}சிறப்பு அமைப்புகளைக் காட்டு
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}NewGRF அமைப்புகளைக் காட்டு
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}AI/வரிவடிவங்கள் அமைப்புகளைக் காட்டு
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK} 'OpenTTD'ஐ விட்டு வெளியேறு
 
 STR_INTRO_TRANSLATION                                           :{BLACK}இந்த மொழிபெயர்ப்பில் {NUM} இல்லை {P "" s}.மொழிபெயர்பாளராக பதிவு செய்து OpenTTDவிற்கு உதவவும். மேலும் விவரங்கள் அறிய readme.txt ஐ பார்க்கவும்..
@@ -1113,16 +1143,23 @@ STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட�
 STR_CHEATS                                                      :{WHITE}ஏமாற்றுகள்
 STR_CHEAT_MONEY                                                 :{LTBLUE}{CURRENCY_LONG} ஆக பணத்தை உயர்த்து
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}இந்த நிறுவனமாக ஆடுகிறீர்கள்: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}அதிசய நிலச்சமனி (தொழிற்சாலைகள் மற்றும் பொருட்களை நீக்குவதற்கு): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}சுரங்கங்கள் ஒன்றுக்கொன்று குறுக்கிடலாம்: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}சிறிய விமான நிலையங்களில் ஜெட்விமானங்கள் நொறுங்காது: {ORANGE}{STRING}
-STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலத்தோற்றம்
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலத்தோற்றம்
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலவெளி
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலவெளி
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}தேதியை மாற்று: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நடப்பு வருடத்தை மாற்று
 
 # Livery window
 
 
+STR_LIVERY_STEAM                                                :புகை பொறி
+STR_LIVERY_DIESEL                                               :டீசல் பொறி
+STR_LIVERY_ELECTRIC                                             :மின்சார பொறி
+STR_LIVERY_MONORAIL                                             :மோனோ இரயில் பொறி
+STR_LIVERY_MAGLEV                                               :மேக்லெவ் பொறி
+STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :பயணிகள் பெட்டி (புகை)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :பயணிகள் பெட்டி (டீசல்)
@@ -1141,13 +1178,22 @@ STR_LIVERY_PASSENGER_TRAM                                       :பயணிக
 STR_LIVERY_FREIGHT_TRAM                                         :சரக்கு ட்ராம்
 
 # Face selection window
+STR_FACE_CAPTION                                                :{WHITE}முகம் தேர்ந்தெடுத்தல்
+STR_FACE_CANCEL_TOOLTIP                                         :{BLACK}புதிய முக தேர்ந்தெடுத்தலை இரத்து செய்
+STR_FACE_OK_TOOLTIP                                             :{BLACK}புதிய முக தேந்தெடுத்தலை ஏற்றுக்கொள்
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}ஆண்
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}ஆண் முகங்களை தேர்ந்தெடு
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}பெண்
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}பெண் முகங்களை தேர்ந்தெடு
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}புதிய முகம்
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}புதிய முகத்தை உருவாக்கு
+STR_FACE_ADVANCED                                               :{BLACK}சிறப்பு
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}சிறப்பு முகம் தேர்ந்தெடுத்தல்
 STR_FACE_SIMPLE                                                 :{BLACK}எளிது
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}எளிதான முகம் தேர்ந்தெடுத்தல்
 STR_FACE_LOAD                                                   :{BLACK}ஏற்று
+STR_FACE_LOAD_TOOLTIP                                           :{BLACK}பிடித்த முகத்தினை பதிவேற்று
 STR_FACE_SAVE                                                   :{BLACK}சேமி\
 STR_FACE_AFRICAN                                                :{BLACK}ஆப்ரிக்கன்
 STR_FACE_HAIR                                                   :முடி:
@@ -1315,6 +1361,8 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}அன�
 STR_CONTENT_OPEN_URL                                            :{BLACK}இணையதளத்தினை பார்வையிடு
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}பதிவிறக்கு
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}தேர்ந்தெடுக்கப்பட்டனவை பதிவிறக்க ஆரம்பி
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}மொத்த பதிவிறக்க அளவு: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}கொப்புகளின் விவரம்
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கவில்லை
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}நீங்கள் இதை பதிவிறக்கம் செய்ய தேர்ந்தேடுத்துள்ளீர்கள்
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}இது ஏற்கனவே உங்களிடம் உள்ளது
@@ -1506,15 +1554,24 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}சொந்தக்காரர்: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}சாலையின் உரிமையாளர்: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}இரயில்வே உரிமையாளர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}நகராட்சி: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ஒன்றுமில்லை
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}அச்சுத் தூரங்கள்: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}கட்டப்பட்டது: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}நிலையத்தின் பிரிவு: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}நிலையத்தின் வகை: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}விமான நிலைய வகுப்பு: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}விமான நிலைய பெயர்: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}விமான நிலைய பெயர்: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}ஏற்றுக்கொள்ளப்படும் சரக்குகள்: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}இரயில் வேகத் தடை: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :கற்கள்
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :சமமற்ற நிலம்
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :பொறம்போக்கு நிலம்
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :புல்
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :வயல்வெளிகள்
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :பனி-படர்ந்த நிலம்
@@ -1589,21 +1646,27 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}பத�
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}வரைபடத்தினை சேமி
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} காலி
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}அழி
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}தற்போது தேர்ந்தெடுக்கப்பட்ட பதிவு-ஆட்டத்தினை நீக்கு
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}சேமி
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ஏற்று
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}தேர்ந்தெடுக்கப்பட்ட ஆட்டத்தினை ஏற்று
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ஆட்டத்தின் விவரங்கள்
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}எந்த தகவலும் கிடைக்கவில்லை
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
+STR_SAVELOAD_OSKTITLE                                           :{BLACK}பதிவு-ஆட்டத்திற்கு பெயர் ஒன்றினை இடு
 
 # World generation
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}உலகம் உருவாக்குதல்
 STR_MAPGEN_MAPSIZE                                              :{BLACK}வரைபடத்தின் அளவு:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}நகரங்களின் எண்ணிக்கை:
 STR_MAPGEN_DATE                                                 :{BLACK}தேதி:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}தொழிற்சாலைகளின் எண்ணிக்கை:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}பனிக் கோடின் உயரம்:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி உயர்த்து
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி இறக்கு
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}கடல் மட்டம்:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}ஆறுகள்:
 STR_MAPGEN_GENERATE                                             :{WHITE}உருவாக்கு
@@ -1880,7 +1943,7 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}வி�
 
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}பணிமனையில் உள்ள இரயில்களை விற்று விடு
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}பணிமனைஇல உள்ள சாலை வாகனங்களை விற்று விடு
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}பணிமனையில் உள்ள சாலை வாகனங்களை விற்று விடு
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}பணிமனையில் உள்ள அனைத்து கப்பல்களையும் விற்றுவிடு
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}பணிமனையில் உள்ள அனைத்து விமானங்களையும் விற்றுவிடு
 
@@ -1936,6 +1999,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :விமான
 STR_REPLACE_VEHICLES_START                                      :{BLACK}வாகனங்களை மாற்றுவதை ஆரம்பி
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}மாற்றல் நடைபெறவில்லை
 STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}எந்த வாகனமும் தேர்ந்தெடுக்கப்படவில்லை
+STR_REPLACE_REPLACING_WHEN_OLD                                  :{ENGINE} காலாவதியான பிறகு
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}வாகனங்களை மாற்றுவதை நிறுத்தவும்
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}மாற்றல்: {ORANGE}{STRING}
@@ -1957,14 +2021,26 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}இரயிலின் கட்டளைகளை பார்வையிடு. Ctrl+Click இரயிலின் நேர அட்டவனையினை காட்டும்
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}விமானத்தின் கட்டளைகளைக் காட்டு. Ctrl+Click விமானத்தின் கால அட்டவணையினைக் காட்டும்
 
+STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}இரயிலின் விவரங்களைக் காட்டு
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}சாலை வாகனத்தின் விவரங்களைக் காட்டு
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}கப்பலின் விவரங்களைக் காட்டு
+STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}விமானத்தின் விவரங்களைக் காட்டு
 
 
 # Messages in the start stop button in the vehicle view
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}சரக்கு ஏற்றம் / இறக்கம்
+STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}விட்டுச்செல்கிறது
+STR_VEHICLE_STATUS_CRASHED                                      :{RED}மோதியது!
+STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}பழுதானது
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}நின்றுவிட்டது
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}நிறுத்தப்படுகின்றது, {VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}திறன் இல்லை
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}வழிக்காக காத்துக்கொண்டிருக்கிறது
+STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}செல்லுமிடம் நெடுந்தொலைவிலுள்ளது
 
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} இற்கு செல்கிறது, {VELOCITY}
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}எந்த கட்டளைகளும் இல்லை, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {WAYPOINT}-இற்கு செல்கிறது, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} {DEPOT}-இற்கு செல்கிறது, {VELOCITY}
@@ -1996,6 +2072,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}எட�
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}அதி. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}இந்த வருட இலாபம்: {LTBLUE}{CURRENCY_LONG} (சென்ற வருடம்: {CURRENCY_LONG})
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}நம்பகத்தன்மை: {LTBLUE}{COMMA}%  {BLACK}கடைசிப் பராமரிப்பிற்குப் பின் ஏற்ப்பட்ட பழுதுகள்: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}கட்டப்பட்டது: {LTBLUE}{NUM}{BLACK} மதிப்பு: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}கொள்ளளவு: {LTBLUE}ஒன்றுமில்லை{STRING}
@@ -2003,7 +2080,10 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}கொ�
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}கொள்ளளவு: {LTBLUE}{CARGO_LONG}, {CARGO_LONG}{STRING}
 
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}இடமாற்றம் வரவுகள்: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}நாட்கள்{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}பராமரிப்புகளுக்கிடையேயான காலம்: {LTBLUE}{COMMA}%{BLACK}   கடைசி பராமரிப்பு: {LTBLUE}{DATE_LONG}
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}இரயிலிற்கு பெயரிடு
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}சாலை வாகனத்திற்கு பெயரிடு
@@ -2029,21 +2109,37 @@ STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}இர�
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}கொள்ளளவுகள்
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}ஒவ்வொரு வாகனத்தின் கொள்ளளவினை காட்டு
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}மொத்த சரக்கு
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}இரயிலின் மொத்தக் கொள்ளளவினைக் காட்டு, சரக்கு வகைப்படி பிரித்தவாறு
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}கொள்ளளவு: {LTBLUE}
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (மாற்றியமை)
+STR_REFIT_TITLE                                                 :{GOLD}சரக்கு வகையினை தேர்ந்தெடு:
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்தல் செலவு: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்ததனால் வருமானம்: {GREEN}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்தல் செலவு: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}புதிய கொள்ளளவு: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}மாற்றியமைத்ததனால் வருமானம்: {GREEN}{CURRENCY_LONG}
 
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}இந்த இரயில் எடுத்துச்செல்ல வேண்டிய சரக்கு வகையினை தேர்ந்தெடு
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}இந்த சாலை வாகனம் எடுத்துச்செல்ல வேண்டிய சரக்கு வகையினை தேர்ந்தெடு
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}இந்த கப்பல் எடுத்துச்செல்ல வேண்டிய சரக்கு வகையினை தேர்ந்தெடு
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}இந்த விமானம் எடுத்துச்செல்ல வேண்டிய சரக்கு வகையினை தேர்ந்தெடு
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}இரயிலை மாற்றியமை
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}சாலை வாகனத்தை மாற்றியமை
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}கப்பலை மாற்றியமை
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}விமானத்தை மாற்றியமை
 
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}குறிப்பிடப்பட்ட சரக்கு வகையிற்கு ஏற்றவாறு இரயிலினை மாற்றியமை
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}குறிப்பிடப்பட்ட சரக்கு வகையிற்கு ஏற்றவாறு சாலை வாகனத்தை மாற்றியமை
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}குறிப்பிடப்பட்ட சரக்கு வகையிற்கு ஏற்றவாறு கப்பலினை மாற்றியமை
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}குறிப்பிடப்பட்ட சரக்கு வகையிற்கு ஏற்றவாறு விமானத்தை மாற்றியமை
 
 # Order view
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (கட்டளைகள்)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}நேர அட்டவணை
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}கால அட்டவணை பார்வைக்கு மாறு
 
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
@@ -2067,6 +2163,7 @@ STR_ORDER_DROP_NO_LOADING                                       :எதையு
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}அனைத்தையும் இறக்கு
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :ஏற்றுக்கொண்டால் இறக்கு
 STR_ORDER_DROP_UNLOAD                                           :அனைத்தையும் இறக்கு
+STR_ORDER_DROP_TRANSFER                                         :இடமாற்றம்
 STR_ORDER_DROP_NO_UNLOADING                                     :எதையும் இறக்காதே
 
 STR_ORDER_REFIT                                                 :{BLACK}மாற்றியமை
@@ -2074,10 +2171,14 @@ STR_ORDER_REFIT_AUTO                                            :{BLACK}தா�
 STR_ORDER_DROP_REFIT_AUTO                                       :குறிப்பிட்ட சரக்கு
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :கிடைக்கும் சரக்கு
 
+STR_ORDER_SERVICE                                               :{BLACK}பராமரிப்பு
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :எப்போதும் செல்
+STR_ORDER_DROP_SERVICE_DEPOT                                    :தேவைப்பட்டால் பராமரிப்பிற்கு செல்
 STR_ORDER_DROP_HALT_DEPOT                                       :நிறுத்து
 
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :சுமை அளவு
 STR_ORDER_CONDITIONAL_RELIABILITY                               :நம்பகத்தன்மை
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :அதிகபட்ச வேகம்
 STR_ORDER_CONDITIONAL_AGE                                       :வயது (வருடங்கள்)
@@ -2132,6 +2233,8 @@ STR_ORDER_FULL_LOAD                                             :(முழு �
 STR_ORDER_FULL_LOAD_ANY                                         :(எந்த சரக்கையும் முழுமையாக ஏற்று)
 STR_ORDER_NO_LOAD                                               :(எதையும் ஏற்றாதே)
 STR_ORDER_UNLOAD                                                :(இறக்கிவிட்டு சரக்கை ஏற்று)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(சரக்குகளை இறக்கு, முழு கொள்ளளவு அடையும் வரை காத்திரு)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(சரக்குகளை இறக்கு, எந்த சரக்கினையும் முழு கொள்ளளவு அடையும் வரை காத்திரு)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(இறக்கிவிட்டு காலியாக கிளம்பு)
 STR_ORDER_NO_UNLOAD                                             :(எதையும் இறக்காமல் சரக்குகளை ஏற்றிக்கொண்டுச் செல்)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(எதையும் இறக்காமல் சரக்குகளை முழுமையாக ஏற்றிக்கொண்டுச் செல்)
@@ -2139,10 +2242,22 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(எதைய�
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(லோடிங் அன்லோடிங் தடைசெய்யப்பட்டுள்ளது)
 
 STR_ORDER_AUTO_REFIT                                            :({STRING}-இற்கு தானாக மாற்றிவிடு)
+STR_ORDER_FULL_LOAD_REFIT                                       :(சரக்குகளை முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(எந்த சரக்கினையும் முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_UNLOAD_REFIT                                          :(சரக்குகளை இறக்கு, சரக்குகளை ஏற்று, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(சரக்குகளை இறக்கு, முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(சரக்குகளை இறக்கு, முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(எதையும் இறக்காதே, இருக்கும் சரக்குகளை ஏற்று, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(எதையும் இறக்காதே, முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(எதையும் இறக்காதே, முழு கொள்ளளவு அடையும் வரை காத்திரு, மேலும் {STRING} இற்கு மாற்றியமை)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :கிடைக்கும் சரக்கு
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[கிட்ட முடிவில்]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[நடுவில்]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[தூரமுடிவில்]
 
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (அடுத்த இடம் எல்லைக்கு அப்பால் உள்ளது)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :{COMMA} கட்டளைக்கு தாண்டி செல்லவும்
 
@@ -2156,11 +2271,22 @@ STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}கட�
 STR_TIMETABLE_NO_TRAVEL                                         :எந்த பயணமும் இல்லை
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம் (தானியங்கி; அடுத்த கால அட்டவணையில் மனிதனால் இயக்க)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :பயணம் (நேர அட்டவணை இடப்படாதது)
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} காலத்திற்கு பயணி
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} காலத்திற்கு பயணி, அதிகபட்ச வேகம் {VELOCITY}
 STR_TIMETABLE_DAYS                                              :{COMMA} நாள்{P "" கள்}
+STR_TIMETABLE_TICKS                                             :{COMMA} நொடி{P "" கள்}
 
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}இந்த கால அட்டவணை முடிய {STRING} காலமாகும்
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}இந்த கால அட்டவணை முடிய குரைந்தபட்சம் {STRING} காலமாவது ஆகும்.(ஏனெனில் அனைத்தும் கால அட்டவணைபடவில்லை)
 
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}இந்த வாகனம் காலதாமதமின்றி சென்றுக்கொண்டிருக்கிறது
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}இந்த வாகனம் {STRING} காலதாமதமாக ஓடிக்கொண்டிருக்கிறது
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}இந்த வாகனம் {STRING} சீக்கிரமாக ஓடிக்கொண்டிருக்கிறது
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}கால அட்டவணை இன்னும் தொடங்கவில்லை
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}இந்த கால அட்டவணை {STRING} அன்று தொடங்கும்
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}ஆரம்ப தேதி
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}கால அட்டவணையின் தொடக்க தேதியினை தேர்ந்தெடுக்கவும்
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}நேரத்தை மாற்று
 
@@ -2168,6 +2294,7 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}நே�
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}வேக எல்லையை மாற்று
 
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}வேகத்தடையை நீக்கு
 
 
 
@@ -2189,56 +2316,120 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}வர�
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}ஸ்கிரிப்டின் பெயர்
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}அமைப்புகள்
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}ஸ்க்ரிப்டின் அமைப்புகளை மாற்று
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}வரிவடிவத்தின் அமைப்புகளை மாற்று
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI-ஐ மறுபடியும் ஏற்று
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}தொடரு
 STR_AI_GAME_SCRIPT                                              :{BLACK}விளையாட்டின் ஸ்கிரிப்ட்
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}வரிவடிவத்தின் பதிவேட்டினை பார்
 
 
 # AI configuration window
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/வரிவடிவம் ஏற்றபடி அமை
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}வரிவடிவம் அடுத்த ஆட்டங்களிலிருந்து பதிவேற்றப்படும்
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}அடுத்த ஆட்டங்களில் பதிவேற்றப்படும் AI-கள்
+STR_AI_CONFIG_HUMAN_PLAYER                                      :மனித வீரர்
+STR_AI_CONFIG_RANDOM_AI                                         :ஏதொவொரு AI
 STR_AI_CONFIG_NONE                                              :(none)
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}மேல் நகர்த்து
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}தேரந்தெடுக்கப்பட்ட AI-இனை பட்டியலில் மேல் நகர்த்து
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}கீழ் இறக்கு
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}தேரந்தெடுக்கப்பட்ட AI-இனை பட்டியலில் கீழே நகர்த்து
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}விளையாட்டின் ஸ்கிரிப்ட்
 STR_AI_CONFIG_AI                                                :{SILVER}AIகள்
 
+STR_AI_CONFIG_CHANGE                                            :{BLACK}தேர்ந்தெடு {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :விளையாட்டின் ஸ்கிரிப்ட்
+STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}மற்றொறு வரிவடிவத்தினை பதிவேற்று
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}ஏற்றபடி அமை
+STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}வரிவடிவத்தின் குணாதிசயங்களை மாற்று
 
 # Available AIs window
+STR_AI_LIST_CAPTION                                             :{WHITE}இருக்கிறது {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AIகள்
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :விளையாட்டின் ஸ்கிரிப்ட்கள்
+STR_AI_LIST_TOOLTIP                                             :{BLACK}ஓர் வரிவடிவத்தினை தேர்ந்தெடுக்க சொடுக்கவும்
 
+STR_AI_LIST_AUTHOR                                              :{LTBLUE}எழுதியவர்: {ORANGE}{STRING}
+STR_AI_LIST_VERSION                                             :{LTBLUE}பதிப்பு: {ORANGE}{NUM}
+STR_AI_LIST_URL                                                 :{LTBLUE}URL: {ORANGE}{STRING}
 
+STR_AI_LIST_ACCEPT                                              :{BLACK}ஏற்றுக்கொள்
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}குறிக்கப்பட்ட வரிவடிவத்தினை தேர்ந்தெடு
+STR_AI_LIST_CANCEL                                              :{BLACK}இரத்து செய்
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}வரிவடிவத்தினை மாற்றாதே
 
 # AI Parameters
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} குணாதிசயங்கள்
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :விளையாட்டின் ஸ்கிரிப்ட்
+STR_AI_SETTINGS_CLOSE                                           :{BLACK}மூடு
+STR_AI_SETTINGS_RESET                                           :{BLACK}முன்னிருந்தமாதிரி மாற்று
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :இந்த AI-இனை தொடங்குவதற்கான நாட்கள், முந்தின AI-இற்கு பிறகு: {ORANGE}{STRING}
 
 
 # Textfile window
+STR_TEXTFILE_VIEW_README                                        :{BLACK}படிக்க வேண்டியதை பார்வையிடு
+STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}மாற்றங்கள் பதிவேடு
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}அனுமதி
 
 
 # Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UP_ARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}செலவு: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}செலவு: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}வருவாய்: {CURRENCY_LONG}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}வருவாய்: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}இடமாற்றம்: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}இடமாற்றம்: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}மதிப்பிடப்பட்டுள்ள செலவு: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}மதிப்பிடப்பட்டுள்ள வரவு: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}பதிவாகிக்கொண்டிருக்கிறது,{}சிறிது நேரம் பொறுங்கள்,!
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}தானியங்கிபதிவு தோல்வியடைந்தது
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}கணினி சேமிப்பகத்தினை படிக்க இயலவில்லை
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}ஆட்டத்தின் படிவு தோல்வியடைந்தது{}{STRING}
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}கோப்பினை நீக்க இயலவில்லை
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}ஆட்டம் பதிவேறுவது தோல்வியடைந்தது{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :உள்பிழை: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :உடைந்த பதிவுஆட்டம் - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :புதிய பதிப்பினால் பதிவுஆட்டம் உருவாக்கப்பட்டுள்ளது
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :கோப்பினை படிக்க இயலவில்லை
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :கோப்பில் எழுத இயலவில்லை
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :தகவல் முழுமை சரிபார்த்தல் தோல்வியடைந்தது
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<கிடைக்கவில்லை>
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}ஆட்டம் ட்ராம் துணையில்லாத பதிப்புடன் பதிவு செய்யப்பட்டது. ஆதலால் அனைத்து ட்ராம்களும் நீக்கப்பட்டுள்ளன.
 
 # Map generation messages
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}வரைபடம் உருவாக்குதல் முடக்கப்பட்டது...{}... நகரங்கள் அமைப்பதற்கு சரியான இடங்கள் இல்லை
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... இந்த திரைக்காட்சியில் எந்த நகரமும் இல்லை
 
+STR_ERROR_PNGMAP                                                :{WHITE}PNG இலிருந்து நிலவெளியை பதிவேற்ற இயலவில்லை...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... கோப்பு கிடைக்கவில்லை
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... பட வகையினை மாற்ற இயலவில்லை. 8 அல்லது 24-பிட் PNG படம் வேண்டும்
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... எங்கேயோ தவறு நடந்துவிட்டது (பொதுவாக பிழையான கோப்பாக தான் இருக்கும்)
 
+STR_ERROR_BMPMAP                                                :{WHITE}BMP இலிருந்து நிலவெளியை பதிவேற்ற இயலவில்லை...
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... பட வகையை மாற்ற இயலவில்லை
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... படம் ரொம்ப பெரியதாக உள்ளது.
 
+STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}ஒப்பளவு எச்சரிக்கை
+STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}மூல வரைபடத்தின் அளவினை மாற்றுவது விருப்பத்தக்கது இல்லை. தொடரட்டுமா?
 
 # Soundset messages
 
@@ -2273,6 +2464,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}ஆட�
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} நகராட்சி இதை அனுமதிக்க மறுக்கிறது
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} நகராட்சி மேலும் ஒரு விமான நிலையத்தினை கட்டுவதற்கான அனுமதியை மறுத்தது.
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} ஒலி இரைச்சல் பிரச்சனைகளால் விமான நிலையம் கட்டுவதற்கு நகராட்சி அனுமதி மறுக்கிறது
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}உங்களின் லஞ்சம் லஞ்ச ஒழிப்புத் துறையிடம் மாட்டிக்கொண்டது
 
 # Levelling errors

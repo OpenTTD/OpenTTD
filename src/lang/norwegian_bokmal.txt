@@ -455,6 +455,7 @@ STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skjermbilde av 
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Vis/skjul markeringsramme
+STR_ABOUT_MENU_TOGGLE_DIRTY_BLOCKS                              :Veksle mellom farger på skitne blokker
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -897,6 +898,9 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Tyrkisk lire (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovakisk koruna (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brasiliansk real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estlandsk krone (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litauiske litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Sørkoreanske won (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Sørafrikanske rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Egendefinert...
 ############ end of currency region
 
@@ -1101,6 +1105,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne ha
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avanserte innstillinger
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgjengelig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard verdi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instillings type: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Klient innstilling (ikke lagret i lagringsfilene, påvirker alle spill)
@@ -1127,9 +1132,16 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Høyre
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Tillat bygging på skråninger og i vannkanten: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillat landskapsendring under bygninger, spor, osv.: {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillat endring av landskapet under bygninger og spor uten å fjerne dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Mer realistisk størrelse på oppfangingsområder: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Ha oppsamlingsområder i forskjellige størrelser for forskjellige typer stasjoner og lufthavner
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Tillat fjerning av flere veier, broer osv. eid av byene: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Gjør det enklere å fjerne infrastruktur og bygninger som tilhører byer
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimal toglengde: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Sett maksimumlengde for tog
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} rute{P 0 "" r}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Mengde med kjøretøyrøyk/gnister: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Velg hvor mye røyk og hvor mange gnister som kommer fra kjøretøy
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjonstype: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kjøretøyers akselerasjonstype: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjøre 90° svinger: {STRING}
@@ -1157,6 +1169,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :hoved tillegsvi
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :alle tillegsvindu
 STR_CONFIG_SETTING_BRIBE                                        :Tillat bestikkelser av bystyret: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Tillat kjøp av eksklusive transportrettigheter: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Om et firma kjøper eksklusive transportrettigheter for en by, vil ikke motstandernes stasjoner motta varer eller passasjorer på ett år.
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillat finansiering av bygninger: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillat finansiering av lokal veikonstruksjon: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillat pengeoverføring til andre firmaer: {STRING}
@@ -1216,7 +1229,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Grønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Mørkegrønn
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fiolett
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :Snu rulleretningen: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk rulling i tilleggsvindu: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Myk rulling: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Vis målingsverktøy ved bruk av byggingsverktøy: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :Vis firmaovertakelser: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Ingen
@@ -2608,8 +2621,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} levert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (fortsatt nødvendig)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (levert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK} dag
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}{BLACK} dag (finansiert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Byen vokser hver {ORANGE}{COMMA}.{BLACK} dag (finansiert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Byen vokser {RED}ikke{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Byens støygrense: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Gå til by. Ctrl+klikk åpner et nytt tilleggsvindu over byen
@@ -3718,7 +3731,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}...{NBSP
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}...{NBSP}kan kun bygges i byer med minst 1{NBSP}200 innbyggere
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}...{NBSP}kan kun bygges i regnskogområder
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan kun bygges i ørkenområder
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...{NBSP}kan kun bygges i byer
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}...{NBSP}kan kun bygges i byer (erstatter hus)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan bare bli bygd nær midten av byer
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan kun bygges i lavtliggende områder
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan kun plasseres i nærheten av kartkanten

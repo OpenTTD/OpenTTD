@@ -1183,7 +1183,8 @@ STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu 
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :beigu tuvumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
-STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta rindošana (ar daudzuma efektiem): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta līdzekļu rindošana (ar daudzuma efektiem): {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Autotransporta līdzekļiem likt gaidīt pirms aizņemtas pieturvietas, līdz tā tiek atbrīvota
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ja iespējots, skatvieta sāk ritināties kad peles kursors ir pie loga malas
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :atspējots
@@ -1206,9 +1207,10 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Iestatīt lidap
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :neviena
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :samazināts
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :parasts
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut caurbraucamas pieturas uz pilsētai piederošiem ceļiem: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt būvēt caurbraucamas pieturas uz pilsētai piederošiem ceļiem
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturas uz sāncenšu ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Atļaut caurbraucamas pieturvietas uz pilsētai piederošiem ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Ļauj būvēt caurbraucamas pieturvietas uz pilsētai piederošiem ceļiem
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Atļaut caurbraucamas pieturvietas uz sāncenšu ceļiem: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Ļauj būvēt caurbraucamas pieturvietas uz citiem uzņēmumiem piederošiem ceļiem
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :Atļaut būvēt vienu otrai piekļautas stacijas: {STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS_HELPTEXT                   :Atļauj atšķirīgas stacijas piekļaut vienu otrai
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :Atļaut vairākus NewGRF transportlīdzekļu komplektus: {STRING}
@@ -2181,10 +2183,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Būvēt 
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Būvēt tramvaju sliedes izmantojot automātisko paņēmienu. Ctrl pārslēdz tramvaju sliežu būvēšanu/nojaukšanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Būvēt autotransporta depo (autotransporta līdzekļu pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Būvēt tramvaju depo (tramvaju pirkšanai un apkopei). Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusa pieturu. Ctrl ieslēdz staciju apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaju pieturu. Ctrl ieslēdz pieturu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Būvēt autobusu pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Būvēt pasažieru tramvaju pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Būvēt kravas automobiļu iekraušanas laukumu. Ctrl ieslēdz iekraušanas laukumu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaju pieturu. Ctrl ieslēdz pieturu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Būvēt kravas tramvaju pieturvietu. Ctrl ieslēdz pieturvietu apvienošanu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ieslēgt/izslēgt vienvirziena ceļus
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Būvēt ceļa tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Būvēt tramvaju tiltu. Shift pārslēdz būvēšanu/izmaksu tāmes rādīšanu
@@ -2204,10 +2206,10 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Autoosta
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Izvēlēties autoostas virzienu
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Kravas stacijas virziens
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Izvēlēties kravas iekraušanas laukuma virzienu
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaju pieturas virziens
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties pasažieru tramvaju pieturas virzienu
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaju pieturas virziens
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlēties kravas tramvaju pieturas virzienu
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Pasažieru tramvaju pieturvietasas virziens
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Izvēlēties pasažieru tramvaju pieturvietas virzienu
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kravas tramvaju pieturvietas virziens
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izvēlēties kravas tramvaju pieturvietas virzienu
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Ūdensceļu būvniecība
@@ -3882,10 +3884,10 @@ STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... var 
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Šeit nevar būvēt dzelzceļa staciju...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar būvēt autobusa pieturu...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nevar būvēt autobusu pieturvietu...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nevar būvēt kravas automobiļu staciju...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nevar būvēt pasažieru tramvaju pieturu...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nevar būvēt kravas tramvaju pieturu...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nevar būvēt pasažieru tramvaju pieturvietu...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nevar būvēt kravas tramvaju pieturvietu...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Šeit nevar būvēt piestātni...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit nevar būvēt lidostu...
 
@@ -3893,7 +3895,7 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Blakus a
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļa stacijas daļu
-STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturu
+STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pārāk daudz autobusu pieturvietu
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Pārāk daudz kravas automobiļu staciju
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Pārāk tuvu citai piestātnei
@@ -3907,18 +3909,18 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... caur
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nevar noņemt daļu stacijas...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Virspirms ir jānoņem staciju
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nevar noņemt autobusa pieturu...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Nevar noņemt autobusu pieturvietu...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Nevar noņemt kravas automobiļu staciju...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nevar noņemt pasažieru tramvaju pieturu...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nevar noņemt kravas tramvaju pieturu...
-STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vispirms ir jānoņem pieturu
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nevar noņemt pasažieru tramvaju pieturvietu...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nevar noņemt kravas tramvaju pieturvietu...
+STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Vispirms ir jānoņem pieturvietu
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... tur nav stacijas
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Vispirms ir jānojauc dzelzceļa staciju
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Virpirms ir jānojauc autoostu
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Vispirms ir jānojauc kravas staciju
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vispirms ir jānojauc pasažieru tramvaju pieturu
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vispirms ir jānojauc kravas tramvaju pieturu
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Vispirms ir jānojauc pasažieru tramvaju pieturvietu
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Vispirms ir jānojauc kravas tramvaju pieturvietu
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Vispirms ir jānojauc piestātni
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Vispirms ir jānojauc lidostu
 
@@ -3968,7 +3970,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(naudas limits)
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Neiespējama sliežu kombinācija
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vispirms ir jānoņem signālus
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Vispirms ir jānoņem signālierīces
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nav piemērota sliežu ceļa
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Vispirms ir jānoņem dzelzceļa sliedes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Ceļs ir bloķēts vai vienvirziena
