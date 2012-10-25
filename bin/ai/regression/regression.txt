@@ -7384,7 +7384,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
     GetNeighbourRoadCount():       2
-    RemoveRoad():                  true
+    RemoveRoad():                  false
     RemoveRoad():                  true
     RemoveRoad():                  false
     RemoveRoad():                  true
@@ -8951,7 +8951,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetWagonEngineType(): 27
   GetWagonAge():        1
   GetWagonEngineType(): 27
-  GetWagonAge():        1
+  GetWagonAge():        0
   GetWagonEngineType(): 65535
   GetWagonAge():        -1
   --Errors--
