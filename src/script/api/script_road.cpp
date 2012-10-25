@@ -537,6 +537,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 /* static */ bool ScriptRoad::RemoveRoad(TileIndex start, TileIndex end)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));
@@ -548,6 +549,7 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 /* static */ bool ScriptRoad::RemoveRoadFull(TileIndex start, TileIndex end)
 {
 	EnforcePrecondition(false, ScriptObject::GetCompany() != OWNER_DEITY);
+	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start));
 	EnforcePrecondition(false, ::IsValidTile(end));
 	EnforcePrecondition(false, ::TileX(start) == ::TileX(end) || ::TileY(start) == ::TileY(end));

@@ -418,6 +418,7 @@ public:
 	 * Removes a road from the center of tile start to the center of tile end.
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
+	 * @pre 'start' is not equal to 'end'.
 	 * @pre ScriptMap::IsValidTile(start).
 	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
@@ -437,6 +438,7 @@ public:
 	 *  included).
 	 * @param start The start tile of the road.
 	 * @param end The end tile of the road.
+	 * @pre 'start' is not equal to 'end'.
 	 * @pre ScriptMap::IsValidTile(start).
 	 * @pre ScriptMap::IsValidTile(end).
 	 * @pre 'start' and 'end' are in a straight line, i.e.
