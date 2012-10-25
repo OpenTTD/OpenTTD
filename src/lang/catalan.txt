@@ -106,27 +106,27 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} d
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de fusta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de mineral de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} d'acer
-STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} de valors
+STR_QUANTITY_VALUABLES                                          :{G=Masculin}{COMMA} sac{P "" s} de valors
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de mineral de coure
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de blat de moro
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fruita
 STR_QUANTITY_DIAMONDS                                           :{COMMA} boss{P a es} de diamants
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de queviures
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de paper
-STR_QUANTITY_GOLD                                               :{COMMA} sa{P ca ques} d'or
+STR_QUANTITY_GOLD                                               :{G=Femenin}{COMMA} sa{P ca ques} d'or
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} d'aigua
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de blat
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de cautxú
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de sucre
 STR_QUANTITY_TOYS                                               :{COMMA} joguin{P a es}
-STR_QUANTITY_SWEETS                                             :{COMMA} boss{P a es} de dolços
+STR_QUANTITY_SWEETS                                             :{G=Femenin}{COMMA} boss{P a es} de dolços
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de refrescs
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de cotó de sucre
 STR_QUANTITY_BUBBLES                                            :{COMMA} bomboll{P a es}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel{P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} pil{P a es}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plàstic
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} begud{P a es} gasosa
+STR_QUANTITY_FIZZY_DRINKS                                       :{G=Femenin}{COMMA} begud{P a es} gasos{P a es}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
