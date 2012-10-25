@@ -511,7 +511,7 @@ public:
 
 					y1 += this->tiny_step_height;
 				}
-				if (this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.Length()) {
+				if ((uint)this->group_sb->GetPosition() + this->group_sb->GetCapacity() > this->groups.Length()) {
 					DrawGroupInfo(y1, r.left, r.right, NEW_GROUP);
 				}
 				break;

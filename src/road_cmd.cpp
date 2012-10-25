@@ -795,7 +795,7 @@ do_clear:;
 static bool CanConnectToRoad(TileIndex tile, RoadType rt, DiagDirection dir)
 {
 	RoadBits bits = GetAnyRoadBits(tile + TileOffsByDiagDir(dir), rt, false);
-	return (bits & DiagDirToRoadBits(ReverseDiagDir(dir)));
+	return (bits & DiagDirToRoadBits(ReverseDiagDir(dir))) != 0;
 }
 
 /**
