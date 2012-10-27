@@ -55,6 +55,8 @@ enum GameSettingsWidgets {
 	WID_GS_OPTIONSPANEL, ///< Panel widget containing the option lists.
 	WID_GS_SCROLLBAR,    ///< Scrollbar.
 	WID_GS_HELP_TEXT,    ///< Information area to display help text of the selected option.
+	WID_GS_EXPAND_ALL,   ///< Expand all button.
+	WID_GS_COLLAPSE_ALL, ///< Collapse all button.
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */

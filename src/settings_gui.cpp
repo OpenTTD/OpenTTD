@@ -1005,9 +1005,12 @@ struct SettingEntry {
 
 	void Init(byte level, bool last_field);
 	void FoldAll();
+	void UnFoldAll();
 	void SetButtons(byte new_val);
 
 	uint Length() const;
+	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
+	bool IsVisible(const SettingEntry *item) const;
 	SettingEntry *FindEntry(uint row, uint *cur_row);
 	uint GetMaxHelpHeight(int maxw);
 
@@ -1036,8 +1039,11 @@ struct SettingsPage {
 
 	void Init(byte level = 0);
 	void FoldAll();
+	void UnFoldAll();
 
 	uint Length() const;
+	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
+	bool IsVisible(const SettingEntry *item) const;
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 	uint GetMaxHelpHeight(int maxw);
 
@@ -1112,6 +1118,66 @@ void SettingEntry::FoldAll()
 	}
 }
 
+/** Recursively open all folds of sub-pages */
+void SettingEntry::UnFoldAll()
+{
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
+			break;
+
+		case SEF_SUBTREE_KIND:
+			this->d.sub.folded = false;
+			this->d.sub.page->UnFoldAll();
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Recursively accumulate the folding state of the tree.
+ * @param[in,out] all_folded Set to false, if one entry is not folded.
+ * @param[in,out] all_unfolded Set to false, if one entry is folded.
+ */
+void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
+{
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
+			break;
+
+		case SEF_SUBTREE_KIND:
+			if (this->d.sub.folded) {
+				all_unfolded = false;
+			} else {
+				all_folded = false;
+			}
+			this->d.sub.page->GetFoldingState(all_folded, all_unfolded);
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Check whether an entry is visible and not folded away.
+ * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
+ * @param item Entry to search for.
+ * @return true if entry is visible.
+ */
+bool SettingEntry::IsVisible(const SettingEntry *item) const
+{
+	if (this == item) return true;
+
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND:
+			return false;
+
+		case SEF_SUBTREE_KIND:
+			return !this->d.sub.folded && this->d.sub.page->IsVisible(item);
+
+		default: NOT_REACHED();
+	}
+}
 
 /**
  * Set the button-depressed flags (#SEF_LEFT_DEPRESSED and #SEF_RIGHT_DEPRESSED) to a specified value
@@ -1363,6 +1429,40 @@ void SettingsPage::FoldAll()
 	for (uint field = 0; field < this->num; field++) {
 		this->entries[field].FoldAll();
 	}
+}
+
+/** Recursively open all folds of sub-pages */
+void SettingsPage::UnFoldAll()
+{
+	for (uint field = 0; field < this->num; field++) {
+		this->entries[field].UnFoldAll();
+	}
+}
+
+/**
+ * Recursively accumulate the folding state of the tree.
+ * @param[in,out] all_folded Set to false, if one entry is not folded.
+ * @param[in,out] all_unfolded Set to false, if one entry is folded.
+ */
+void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
+{
+	for (uint field = 0; field < this->num; field++) {
+		this->entries[field].GetFoldingState(all_folded, all_unfolded);
+	}
+}
+
+/**
+ * Check whether an entry is visible and not folded away.
+ * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
+ * @param item Entry to search for.
+ * @return true if entry is visible.
+ */
+bool SettingsPage::IsVisible(const SettingEntry *item) const
+{
+	for (uint field = 0; field < this->num; field++) {
+		if (this->entries[field].IsVisible(item)) return true;
+	}
+	return false;
 }
 
 /** Return number of rows needed to display the whole page */
@@ -1729,7 +1829,7 @@ struct GameSettingsWindow : Window {
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
 
-		this->vscroll->SetCount(_settings_main_page.Length());
+		this->InvalidateData();
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -1822,6 +1922,18 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		switch (widget) {
+			case WID_GS_EXPAND_ALL:
+				_settings_main_page.UnFoldAll();
+				this->InvalidateData();
+				break;
+
+			case WID_GS_COLLAPSE_ALL:
+				_settings_main_page.FoldAll();
+				this->InvalidateData();
+				break;
+		}
+
 		if (widget != WID_GS_OPTIONSPANEL) return;
 
 		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET);
@@ -1839,8 +1951,7 @@ struct GameSettingsWindow : Window {
 			this->SetDisplayedHelpText(NULL);
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-			this->vscroll->SetCount(_settings_main_page.Length());
-			this->SetDirty();
+			this->InvalidateData();
 			return;
 		}
 
@@ -2032,6 +2143,23 @@ struct GameSettingsWindow : Window {
 		this->SetDirty();
 	}
 
+	virtual void OnInvalidateData(int data = 0, bool gui_scope = true)
+	{
+		if (!gui_scope) return;
+
+		this->vscroll->SetCount(_settings_main_page.Length());
+
+		if (this->last_clicked != NULL && !_settings_main_page.IsVisible(this->last_clicked)) {
+			this->SetDisplayedHelpText(NULL);
+		}
+
+		bool all_folded = true;
+		bool all_unfolded = true;
+		_settings_main_page.GetFoldingState(all_folded, all_unfolded);
+		this->SetWidgetDisabledState(WID_GS_EXPAND_ALL, all_unfolded);
+		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
+	}
+
 	virtual void OnResize()
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_GS_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET);
@@ -2055,7 +2183,13 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GS_HELP_TEXT), SetMinimalSize(300, 25), SetFill(1, 1), SetResize(1, 0),
 				SetPadding(WD_FRAMETEXT_TOP, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_BOTTOM, WD_FRAMETEXT_LEFT),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER, INVALID_COLOUR), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_PANEL, COLOUR_MAUVE),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_EXPAND_ALL), SetDataTip(STR_CONFIG_SETTING_EXPAND_ALL, STR_NULL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, WID_GS_COLLAPSE_ALL), SetDataTip(STR_CONFIG_SETTING_COLLAPSE_ALL, STR_NULL),
+					NWidget(NWID_SPACER, INVALID_COLOUR), SetFill(1, 1), SetResize(1, 0),
+				EndContainer(),
+			EndContainer(),
 			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 		EndContainer(),
 	EndContainer(),
@@ -2064,7 +2198,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 static const WindowDesc _settings_selection_desc(
 	WDP_CENTER, 510, 450,
 	WC_GAME_OPTIONS, WC_NONE,
-	0,
+	WDF_UNCLICK_BUTTONS,
 	_nested_settings_selection_widgets, lengthof(_nested_settings_selection_widgets)
 );
 
