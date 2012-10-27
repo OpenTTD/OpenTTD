@@ -1896,6 +1896,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
 
 	StringFilter string_filter;        ///< Text filter for settings.
+	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
 
 	Scrollbar *vscroll;
 
@@ -1918,6 +1919,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->last_clicked = NULL;
 		this->valuedropdown_entry = NULL;
 		this->closing_dropdown = false;
+		this->manually_changed_folding = false;
 
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
@@ -2022,11 +2024,13 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	{
 		switch (widget) {
 			case WID_GS_EXPAND_ALL:
+				this->manually_changed_folding = true;
 				_settings_main_page.UnFoldAll();
 				this->InvalidateData();
 				break;
 
 			case WID_GS_COLLAPSE_ALL:
+				this->manually_changed_folding = true;
 				_settings_main_page.FoldAll();
 				this->InvalidateData();
 				break;
@@ -2048,6 +2052,8 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
 			this->SetDisplayedHelpText(NULL);
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
+
+			this->manually_changed_folding = true;
 
 			this->InvalidateData();
 			return;
@@ -2278,6 +2284,11 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	virtual void OnOSKInput(int wid)
 	{
 		string_filter.SetFilterTerm(this->edit_str_buf);
+		if (!string_filter.IsEmpty() && !this->manually_changed_folding) {
+			/* User never expanded/collapsed single pages and entered a filter term.
+			 * Expand everything, to save weird expand clicks, */
+			_settings_main_page.UnFoldAll();
+		}
 		this->InvalidateData();
 	}
 
