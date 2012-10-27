@@ -13,6 +13,7 @@
 #define STRINGFILTER_TYPE_H
 
 #include "core/smallvec_type.hpp"
+#include "strings_type.h"
 
 /**
  * String filter and state.
@@ -61,6 +62,7 @@ public:
 
 	void ResetState();
 	void AddLine(const char *str);
+	void AddLine(StringID str);
 
 	/**
 	 * Get the matching state of the current item.

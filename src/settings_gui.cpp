@@ -35,7 +35,8 @@
 #include "blitter/factory.hpp"
 #include "language.h"
 #include "textfile_gui.h"
-
+#include "stringfilter_type.h"
+#include "querystring_gui.h"
 
 
 static const StringID _units_dropdown[] = {
@@ -968,6 +969,7 @@ enum SettingEntryFlags {
 	SEF_BUTTONS_MASK = (SEF_LEFT_DEPRESSED | SEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
 
 	SEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
+	SEF_FILTERED   = 0x08, ///< Entry is hidden by the string filter
 
 	/* Entry kind */
 	SEF_SETTING_KIND = 0x10, ///< Entry kind: Entry is a setting
@@ -1003,16 +1005,25 @@ struct SettingEntry {
 	SettingEntry(const char *nm);
 	SettingEntry(SettingsPage *sub, StringID title);
 
-	void Init(byte level, bool last_field);
+	void Init(byte level);
 	void FoldAll();
 	void UnFoldAll();
 	void SetButtons(byte new_val);
+
+	/**
+	 * Set whether this is the last visible entry of the parent node.
+	 * @param last_field Value to set
+	 */
+	void SetLastField(bool last_field) { if (last_field) SETBITS(this->flags, SEF_LAST_FIELD); else CLRBITS(this->flags, SEF_LAST_FIELD); }
 
 	uint Length() const;
 	void GetFoldingState(bool &all_folded, bool &all_unfolded) const;
 	bool IsVisible(const SettingEntry *item) const;
 	SettingEntry *FindEntry(uint row, uint *cur_row);
 	uint GetMaxHelpHeight(int maxw);
+
+	bool IsFiltered() const;
+	bool UpdateFilterState(StringFilter &filter, bool force_visible);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected);
 
@@ -1046,6 +1057,8 @@ struct SettingsPage {
 	bool IsVisible(const SettingEntry *item) const;
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 	uint GetMaxHelpHeight(int maxw);
+
+	bool UpdateFilterState(StringFilter &filter, bool force_visible);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, SettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
 };
@@ -1083,12 +1096,10 @@ SettingEntry::SettingEntry(SettingsPage *sub, StringID title)
 /**
  * Initialization of a setting entry
  * @param level      Page nesting level of this entry
- * @param last_field Boolean indicating this entry is the last at the (sub-)page
  */
-void SettingEntry::Init(byte level, bool last_field)
+void SettingEntry::Init(byte level)
 {
 	this->level = level;
-	if (last_field) this->flags |= SEF_LAST_FIELD;
 
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
@@ -1102,9 +1113,10 @@ void SettingEntry::Init(byte level, bool last_field)
 	}
 }
 
-/** Recursively close all folds of sub-pages */
+/** Recursively close all (filtered) folds of sub-pages */
 void SettingEntry::FoldAll()
 {
+	if (this->IsFiltered()) return;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			break;
@@ -1118,9 +1130,10 @@ void SettingEntry::FoldAll()
 	}
 }
 
-/** Recursively open all folds of sub-pages */
+/** Recursively open all (filtered) folds of sub-pages */
 void SettingEntry::UnFoldAll()
 {
+	if (this->IsFiltered()) return;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			break;
@@ -1135,12 +1148,13 @@ void SettingEntry::UnFoldAll()
 }
 
 /**
- * Recursively accumulate the folding state of the tree.
+ * Recursively accumulate the folding state of the (filtered) tree.
  * @param[in,out] all_folded Set to false, if one entry is not folded.
  * @param[in,out] all_unfolded Set to false, if one entry is folded.
  */
 void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 {
+	if (this->IsFiltered()) return;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			break;
@@ -1159,13 +1173,14 @@ void SettingEntry::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 }
 
 /**
- * Check whether an entry is visible and not folded away.
+ * Check whether an entry is visible and not folded or filtered away.
  * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
  * @param item Entry to search for.
  * @return true if entry is visible.
  */
 bool SettingEntry::IsVisible(const SettingEntry *item) const
 {
+	if (this->IsFiltered()) return false;
 	if (this == item) return true;
 
 	switch (this->flags & SEF_KIND_MASK) {
@@ -1190,9 +1205,10 @@ void SettingEntry::SetButtons(byte new_val)
 	this->flags = (this->flags & ~SEF_BUTTONS_MASK) | new_val;
 }
 
-/** Return numbers of rows needed to display the entry */
+/** Return numbers of rows needed to display the (filtered) entry */
 uint SettingEntry::Length() const
 {
+	if (this->IsFiltered()) return 0;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND:
 			return 1;
@@ -1208,10 +1224,11 @@ uint SettingEntry::Length() const
  * Find setting entry at row \a row_num
  * @param row_num Index of entry to return
  * @param cur_row Current row number
- * @return The requested setting entry or \c NULL if it not found
+ * @return The requested setting entry or \c NULL if it not found (folded or filtered)
  */
 SettingEntry *SettingEntry::FindEntry(uint row_num, uint *cur_row)
 {
+	if (this->IsFiltered()) return NULL;
 	if (row_num == *cur_row) return this;
 
 	switch (this->flags & SEF_KIND_MASK) {
@@ -1246,6 +1263,61 @@ uint SettingEntry::GetMaxHelpHeight(int maxw)
 }
 
 /**
+ * Check whether an entry is hidden due to filters
+ * @return true if hidden.
+ */
+bool SettingEntry::IsFiltered() const
+{
+	return this->flags & SEF_FILTERED;
+}
+
+/**
+ * Update the filter state.
+ * @param filter String filter
+ * @param force_visible Whether to force all items visible, no matter what
+ * @return true if item remains visible
+ */
+bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible)
+{
+	CLRBITS(this->flags, SEF_FILTERED);
+
+	bool visible = true;
+	switch (this->flags & SEF_KIND_MASK) {
+		case SEF_SETTING_KIND: {
+			if (force_visible || filter.IsEmpty()) break;
+
+			filter.ResetState();
+
+			const SettingDesc *sd = this->d.entry.setting;
+			const SettingDescBase *sdb = &sd->desc;
+
+			SetDParam(0, STR_EMPTY);
+			filter.AddLine(sdb->str);
+
+			filter.AddLine(this->GetHelpText());
+
+			visible = filter.GetState();
+			break;
+		}
+		case SEF_SUBTREE_KIND: {
+			if (!force_visible && !filter.IsEmpty()) {
+				filter.ResetState();
+				filter.AddLine(this->d.sub.title);
+				force_visible = filter.GetState();
+			}
+			visible = this->d.sub.page->UpdateFilterState(filter, force_visible);
+			break;
+		}
+		default: NOT_REACHED();
+	}
+
+	if (!visible) SETBITS(this->flags, SEF_FILTERED);
+	return visible;
+}
+
+
+
+/**
  * Draw a row in the settings panel.
  *
  * See SettingsPage::Draw() for an explanation about how drawing is performed.
@@ -1274,6 +1346,7 @@ uint SettingEntry::GetMaxHelpHeight(int maxw)
  */
 uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected)
 {
+	if (this->IsFiltered()) return cur_row;
 	if (cur_row >= max_row) return cur_row;
 
 	bool rtl = _current_text_dir == TD_RTL;
@@ -1419,7 +1492,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 void SettingsPage::Init(byte level)
 {
 	for (uint field = 0; field < this->num; field++) {
-		this->entries[field].Init(level, field + 1 == num);
+		this->entries[field].Init(level);
 	}
 }
 
@@ -1452,7 +1525,26 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
 }
 
 /**
- * Check whether an entry is visible and not folded away.
+ * Update the filter state.
+ * @param filter String filter
+ * @param force_visible Whether to force all items visible, no matter what
+ * @return true if item remains visible
+ */
+bool SettingsPage::UpdateFilterState(StringFilter &filter, bool force_visible)
+{
+	bool visible = force_visible;
+	bool first_visible = true;
+	for (int field = this->num - 1; field >= 0; field--) {
+		visible |= this->entries[field].UpdateFilterState(filter, force_visible);
+		this->entries[field].SetLastField(first_visible);
+		if (visible && first_visible) first_visible = false;
+	}
+	return visible;
+}
+
+
+/**
+ * Check whether an entry is visible and not folded or filtered away.
  * Note: This does not consider the scrolling range; it might still require scrolling ot make the setting really visible.
  * @param item Entry to search for.
  * @return true if entry is visible.
@@ -1789,7 +1881,7 @@ static SettingEntry _settings_main[] = {
 /** Main page, holding all advanced settings */
 static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
 
-struct GameSettingsWindow : Window {
+struct GameSettingsWindow : QueryStringBaseWindow {
 	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
 	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
 	static const int SETTINGTREE_TOP_OFFSET    = 5; ///< Position of top edge of setting values
@@ -1803,9 +1895,11 @@ struct GameSettingsWindow : Window {
 	SettingEntry *valuedropdown_entry; ///< If non-NULL, pointer to the value for which a dropdown window is currently opened.
 	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
 
+	StringFilter string_filter;        ///< Text filter for settings.
+
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : Window()
+	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50)
 	{
 		static bool first_time = true;
 
@@ -1828,6 +1922,9 @@ struct GameSettingsWindow : Window {
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
+
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
+		this->SetFocusedWidget(WID_GS_FILTER);
 
 		this->InvalidateData();
 	}
@@ -1871,6 +1968,7 @@ struct GameSettingsWindow : Window {
 			this->valuedropdown_entry = NULL;
 		}
 		this->DrawWidgets();
+		this->DrawEditBox(WID_GS_FILTER);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -2147,6 +2245,8 @@ struct GameSettingsWindow : Window {
 	{
 		if (!gui_scope) return;
 
+		_settings_main_page.UpdateFilterState(string_filter, false);
+
 		this->vscroll->SetCount(_settings_main_page.Length());
 
 		if (this->last_clicked != NULL && !_settings_main_page.IsVisible(this->last_clicked)) {
@@ -2158,6 +2258,27 @@ struct GameSettingsWindow : Window {
 		_settings_main_page.GetFoldingState(all_folded, all_unfolded);
 		this->SetWidgetDisabledState(WID_GS_EXPAND_ALL, all_unfolded);
 		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(WID_GS_FILTER);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		/* Handle editbox input */
+		EventState state = ES_NOT_HANDLED;
+		if (this->HandleEditBoxKey(WID_GS_FILTER, key, keycode, state) == HEBR_EDITING) {
+			this->OnOSKInput(WID_GS_FILTER);
+		}
+		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		string_filter.SetFilterTerm(this->edit_str_buf);
+		this->InvalidateData();
 	}
 
 	virtual void OnResize()
@@ -2172,6 +2293,14 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_CONFIG_SETTING_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_MAUVE),
+		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
+				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_CONFIG_SETTING_FILTER_TITLE, STR_NULL),
+			NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_GS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),
+					SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_MAUVE, WID_GS_OPTIONSPANEL), SetMinimalSize(400, 174), SetScrollbar(WID_GS_SCROLLBAR), EndContainer(),
