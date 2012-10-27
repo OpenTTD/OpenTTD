@@ -864,12 +864,25 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவ
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}திரைப்பிடிப்பு ஃபார்மேட்
 
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}அடிப்படை அசைவூட்டம்
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் அடிப்படை அசைவூட்டத்தினை தேர்ந்தெடுக்கவும்
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} இல்லாத/பிழையான கோப்பு{P "" கள்}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}அடிப்படை அசைவூட்டத்தினை பற்றிய கூடுதல் தகவல்
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}அடிப்படை ஒலிகள் தொகுப்பு
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் அடிப்படை ஒலிகள் தொகுப்பினைத் தேர்ந்தெடுக்கவும்
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}அடிப்படை ஒலிகள் தொகுப்பு பற்றிய கூடுதல் தகவல்
 
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}அடிப்படை இசைத் தொகுப்பு
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}பயன்படுத்தப்போகும் அடிப்படை இசைத் தொகுப்பினைத் தேர்ந்தெடுக்கவும்
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} பிழையான கோப்பு{P "" கள்}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}அடிப்படை இசைத் தொகுப்பு பற்றிய கூடுதல் தகவல்கள்
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}முழுத்திரை நிலை தோல்வியடைந்தது
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}புது நாணயம்
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}நாணயமாற்று விகிதம்: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 
 
@@ -879,24 +892,34 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}பி�
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}உங்கள் நாணயத்தின் பின் ஒட்டத்தினை அமையுங்கள்
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}யுரோவிற்கு மாற்றுங்கள்: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}யுரோவிற்கு மாறுங்கள்: {ORANGE}என்றுமில்லை
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}யூரோவிற்கு மாறப்போகும் வருடத்தினைத் தேர்ந்தெடுக்கவும்
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}யூரோவிற்கு முன்னமே மாறுங்கள்
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}யூரோவிற்கு தாமதமாக மாறுங்கள்
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}முன்னோட்டம்: {ORANGE}{CURRENCY_LONG}
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}கடினத்தின் அளவு
 
 ############ range for difficulty levels starts
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}எளிது
 STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}நடுத்தரம்
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}அதிகம்
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}மாற்றியமைத்தது
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}மதிப்பெண் விளக்க அட்டவணையைக் காட்டு
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}சேமி
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}அதிகபட்ச போட்டியாளர்கள்: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}நகரங்களின் எண்ணிக்கை: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}தொழிற்சாலைகளின் எண்ணிக்கை: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}அதிகபட்சக் கடன் தொகை: {ORANGE}{CURRENCY_LONG}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}ஆரம்ப வட்டி சதவிகிதம்: {ORANGE}{COMMA}%
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}வாகன ஓட்டும் செலவுகள்: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}போட்டியாளர்களின் கட்டுமான வேகம்: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}கட்டுமானத்திற்கான செலவு: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}பொருளாதாரம்: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}பேரழிவுகள்: {ORANGE}{STRING}
@@ -1821,8 +1844,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} சேர்க்கப்பட்டவை
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (இன்னும் தேவை)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (சேர்க்கப்பட்டது)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}நகரம் ஒவ்வொரு {ORANGE}{COMMA}{BLACK} நாட்களுக்கும்{P "" } வளர்கிறது
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}நகரம் ஒவ்வொரு {ORANGE}{COMMA}{BLACK} நாட்களுக்கும்{P "" } வளர்கிறது (நிதியதவியால்)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}நகரம் ஒவ்வொரு {ORANGE}{COMMA}{BLACK} நாட்களுக்கும் வளர்கிறது
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}நகரம் ஒவ்வொரு {ORANGE}{COMMA}{BLACK} நாட்களுக்கும் வளர்கிறது (நிதியதவியால்)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}நகரம் {RED}வளருவதில்லை{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}நகரத்தில் ஒலி இரைச்சல் அளவு: {ORANGE}{COMMA}{BLACK}  அதிகம்: {ORANGE}{COMMA}
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}நகராட்சி

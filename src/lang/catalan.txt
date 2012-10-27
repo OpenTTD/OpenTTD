@@ -166,66 +166,66 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NO
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passatger{P "" s}
-STR_BAGS                                                        :{COMMA} sac{P "" s}
-STR_TONS                                                        :{COMMA} ton{P a es}
-STR_LITERS                                                      :{COMMA} litre{P "" s}
-STR_ITEMS                                                       :{COMMA} cap{P "" s}
-STR_CRATES                                                      :{COMMA} palet{P "" s}
+STR_PASSENGERS                                                  :{G=Masculin}{COMMA} passatger{P "" s}
+STR_BAGS                                                        :{G=Masculin}{COMMA} sac{P "" s}
+STR_TONS                                                        :{G=Femenin}{COMMA} ton{P a es}
+STR_LITERS                                                      :{G=Masculin}{COMMA} litre{P "" s}
+STR_ITEMS                                                       :{G=Masculin}{COMMA} cap{P "" s}
+STR_CRATES                                                      :{G=Masculin}{COMMA} palet{P "" s}
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :Blau Fosc
-STR_COLOUR_PALE_GREEN                                           :Verd Pàl·lid
-STR_COLOUR_PINK                                                 :Rosa
-STR_COLOUR_YELLOW                                               :Groc
-STR_COLOUR_RED                                                  :Vermell
-STR_COLOUR_LIGHT_BLUE                                           :Blau Cel
-STR_COLOUR_GREEN                                                :Verd
-STR_COLOUR_DARK_GREEN                                           :Verd Fosc
-STR_COLOUR_BLUE                                                 :Blau
-STR_COLOUR_CREAM                                                :Crema
-STR_COLOUR_MAUVE                                                :Malva
-STR_COLOUR_PURPLE                                               :Lila
-STR_COLOUR_ORANGE                                               :Taronja
-STR_COLOUR_BROWN                                                :Marró
-STR_COLOUR_GREY                                                 :Gris
-STR_COLOUR_WHITE                                                :Blanc
+STR_COLOUR_DARK_BLUE                                            :{G=Masculin}Blau Fosc
+STR_COLOUR_PALE_GREEN                                           :{G=Masculin}Verd Pàl·lid
+STR_COLOUR_PINK                                                 :{G=Masculin}Rosa
+STR_COLOUR_YELLOW                                               :{G=Masculin}Groc
+STR_COLOUR_RED                                                  :{G=Masculin}Vermell
+STR_COLOUR_LIGHT_BLUE                                           :{G=Masculin}Blau Cel
+STR_COLOUR_GREEN                                                :{G=Masculin}Verd
+STR_COLOUR_DARK_GREEN                                           :{G=Masculin}Verd Fosc
+STR_COLOUR_BLUE                                                 :{G=Masculin}Blau
+STR_COLOUR_CREAM                                                :{G=Masculin}Crema
+STR_COLOUR_MAUVE                                                :{G=Masculin}Malva
+STR_COLOUR_PURPLE                                               :{G=Masculin}Lila
+STR_COLOUR_ORANGE                                               :{G=Masculin}Taronja
+STR_COLOUR_BROWN                                                :{G=Masculin}Marró
+STR_COLOUR_GREY                                                 :{G=Masculin}Gris
+STR_COLOUR_WHITE                                                :{G=Masculin}Blanc
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}CV
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a es}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{G=Femenin}{COMMA} ton{P a es}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_SI                                       :{G=Masculin}{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_METRIC                                    :{G=Masculin}{COMMA} litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{G=Masculin}{COMMA} m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{G=Masculin}{COMMA} kN
 
 STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
-STR_UNITS_HEIGHT_SI                                             :{COMMA} m
+STR_UNITS_HEIGHT_SI                                             :{G=Masculin}{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Introdueix una cadena de filtre
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introdueix una paraula clau per filtrar la llista de
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona criteri de classificació
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecciona l'ordre de classificació (descendent/ascendent)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona el criteri de classificació
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona el criteri de filtratge
-STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar per
-STR_BUTTON_LOCATION                                             :{BLACK}Situació
+STR_BUTTON_SORT_BY                                              :{BLACK}Ordena per
+STR_BUTTON_LOCATION                                             :{G=Masculin}{BLACK}Lloc
 STR_BUTTON_RENAME                                               :{BLACK}Canvia el nom
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
@@ -233,7 +233,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol d
 STR_TOOLTIP_SHADE                                               :{BLACK}Ombra de la finestra - mostra només la barra de títol
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostra la informació de depuració NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
-STR_TOOLTIP_RESIZE                                              :{BLACK}Prem i arrossega per canviar la mida de la finestra
+STR_TOOLTIP_RESIZE                                              :{BLACK}Clica i arrossega per redimensionar aquesta finestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista amunt/avall
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista dreta/esquerra
