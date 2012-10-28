@@ -91,7 +91,9 @@ struct ContentInfo {
 	size_t Size() const;
 	bool IsSelected() const;
 	bool IsValid() const;
+#ifndef OPENTTD_MSU
 	const char *GetTextfile(TextfileType type) const;
+#endif /* OPENTTD_MSU */
 };
 
 /** Base socket handler for all Content TCP sockets */
@@ -207,7 +209,9 @@ public:
 	void ReceivePackets();
 };
 
+#ifndef OPENTTD_MSU
 Subdirectory GetContentInfoSubDir(ContentType type);
+#endif /* OPENTTD_MSU */
 
 #endif /* ENABLE_NETWORK */
 
