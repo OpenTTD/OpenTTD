@@ -967,6 +967,8 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :மிகவும் சமமான
+STR_TERRAIN_TYPE_FLAT                                           :சமமான
 STR_TERRAIN_TYPE_HILLY                                          :உயர்ந்து
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :மலைகளாக
 
@@ -979,6 +981,8 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :தடத்த
 
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}சிறப்பு அமைப்புகள்
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(எந்த விவரமும் இல்லை)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}இயல்பான மதிப்பு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}அமைப்பு வகை: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :ஆட்டத்தின் அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
@@ -1003,6 +1007,9 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :நடு
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :வலது
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :கரைகளிலும் சரிவுகளிலும் கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :இரயில்களின் அதிகபட்ச நீளம்: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :இரயில்களின் அதிகபட்ச நீளத்தினை அமை
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} கட்டம்{P 0 "கட்டம்" "கட்டங்கள்"}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :இரயில் மற்றும் கப்பல்களை 90° வளைவுகள் எடுப்பதை அனுமதிக்காதே: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :நேரடியாக இணைக்கப்படாத நிலையங்களை இணைக்க அனுமதி: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :பொறுமையாக வாகனங்களை ஏற்று: {STRING}

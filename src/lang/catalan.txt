@@ -1104,6 +1104,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Aquesta 
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmetres avançats
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Femenin}{BLACK}Cadena filtrant:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplega-ho tot
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho tot
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(Cap explicació disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
@@ -2790,7 +2793,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autorita
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Mostra informació de l'autoritat local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Canvia el nom de la població
 
-STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Expandeix
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Desplega
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Incrementa la mida de la població
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Esborra
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Esborra totalment aquesta població

@@ -1104,6 +1104,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Esta acc
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones avanzadas
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Patrón de filtrado:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todos
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todos
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}

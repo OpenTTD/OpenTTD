@@ -1105,6 +1105,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Šī rī
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildu iestatījumi
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtra virkne:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Izvērst visu
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sakļaut visu
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(skaidrojums nav pieejams)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Noklusējuma vērtība: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Iestatījuma veids: {ORANGE}{STRING}
@@ -1193,9 +1196,11 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :galveno skatvie
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :katru skatvietu
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu pilsētām jaunu ēku finansēšanai
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Atļaut uzņēmumiem dot pilsētām naudu ceļu rekonstrukcijai, lai kaitētu ceļu pakalpojumiem pilsētās
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļauj naudas pārskaitījumus starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}

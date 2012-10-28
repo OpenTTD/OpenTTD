@@ -1104,6 +1104,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}이 행�
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 설정
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색할 문자열:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}설정 종류: {ORANGE}{STRING}
@@ -3166,12 +3169,12 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}이름 �
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}차량 타입의 이름을 다시 지정
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}자동차 타입의 이름 지정
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}선박 타입의 이름 지정
-STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기 타입의 이름 지정
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}항공기의 이름을 변경합니다.
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}열차 차량 타입 이름 재지정
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}자동차 타입의 이름 지정
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}선박 타입의 이름 지정
-STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기 타입의 이름 지정
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}항공기의 이름을 변경합니다.
 
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
@@ -4103,7 +4106,7 @@ STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}항공�
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}선박 타입의 이름을 재지정할 수 없습니다...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기 타입의 이름을 지정할 수 없습니다...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}항공기의 이름을 바꿀 수 없습니다...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}열차를 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동차를 팔 수 없습니다...

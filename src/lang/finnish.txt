@@ -1103,6 +1103,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tehty to
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäasetukset
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suodatinteksti:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Avaa kaikki
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulje kaikki
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Asetuksen tyyppi: {ORANGE}{STRING}

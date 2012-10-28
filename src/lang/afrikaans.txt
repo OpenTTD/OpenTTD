@@ -31,31 +31,31 @@ STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Passasiers
 STR_CARGO_PLURAL_COAL                                           :Steenkool
 STR_CARGO_PLURAL_MAIL                                           :Pos
-STR_CARGO_PLURAL_OIL                                            :Ru-Olie
+STR_CARGO_PLURAL_OIL                                            :Olie
 STR_CARGO_PLURAL_LIVESTOCK                                      :Lewende Hawe
 STR_CARGO_PLURAL_GOODS                                          :Goedere
 STR_CARGO_PLURAL_GRAIN                                          :Graan
 STR_CARGO_PLURAL_WOOD                                           :Hout
 STR_CARGO_PLURAL_IRON_ORE                                       :Yster Erts
 STR_CARGO_PLURAL_STEEL                                          :Staal
-STR_CARGO_PLURAL_VALUABLES                                      :Kosbaarhede
+STR_CARGO_PLURAL_VALUABLES                                      :Edelmetale
 STR_CARGO_PLURAL_COPPER_ORE                                     :Koper Erts
 STR_CARGO_PLURAL_MAIZE                                          :Mielies
 STR_CARGO_PLURAL_FRUIT                                          :Vrugte
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamante
-STR_CARGO_PLURAL_FOOD                                           :Voedsel
+STR_CARGO_PLURAL_FOOD                                           :Kos
 STR_CARGO_PLURAL_PAPER                                          :Papier
 STR_CARGO_PLURAL_GOLD                                           :Goud
 STR_CARGO_PLURAL_WATER                                          :Water
 STR_CARGO_PLURAL_WHEAT                                          :Koring
-STR_CARGO_PLURAL_RUBBER                                         :Gomlastiek
+STR_CARGO_PLURAL_RUBBER                                         :Rubber
 STR_CARGO_PLURAL_SUGAR                                          :Suiker
 STR_CARGO_PLURAL_TOYS                                           :Speelgoed
 STR_CARGO_PLURAL_CANDY                                          :Lekkers
-STR_CARGO_PLURAL_COLA                                           :Cola
+STR_CARGO_PLURAL_COLA                                           :Kola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Spookasem
 STR_CARGO_PLURAL_BUBBLES                                        :Borrels
-STR_CARGO_PLURAL_TOFFEE                                         :Tameletjie
+STR_CARGO_PLURAL_TOFFEE                                         :Toffie
 STR_CARGO_PLURAL_BATTERIES                                      :Batterye
 STR_CARGO_PLURAL_PLASTIC                                        :Plastiek
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gas Koeldrank
@@ -72,27 +72,27 @@ STR_CARGO_SINGULAR_GRAIN                                        :Graan
 STR_CARGO_SINGULAR_WOOD                                         :Hout
 STR_CARGO_SINGULAR_IRON_ORE                                     :Yster Erts
 STR_CARGO_SINGULAR_STEEL                                        :Staal
-STR_CARGO_SINGULAR_VALUABLES                                    :Kosbaarhede
+STR_CARGO_SINGULAR_VALUABLES                                    :Edelmetale
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Koper Erts
 STR_CARGO_SINGULAR_MAIZE                                        :Mielie
 STR_CARGO_SINGULAR_FRUIT                                        :Vrug
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
-STR_CARGO_SINGULAR_FOOD                                         :Voedsel
+STR_CARGO_SINGULAR_FOOD                                         :Kos
 STR_CARGO_SINGULAR_PAPER                                        :Papier
 STR_CARGO_SINGULAR_GOLD                                         :Goud
 STR_CARGO_SINGULAR_WATER                                        :Water
 STR_CARGO_SINGULAR_WHEAT                                        :Koring
-STR_CARGO_SINGULAR_RUBBER                                       :Gomlastiek
+STR_CARGO_SINGULAR_RUBBER                                       :Rubber
 STR_CARGO_SINGULAR_SUGAR                                        :Suiker
-STR_CARGO_SINGULAR_TOY                                          :Speelgoed
+STR_CARGO_SINGULAR_TOY                                          :Speelding
 STR_CARGO_SINGULAR_CANDY                                        :Lekker
-STR_CARGO_SINGULAR_COLA                                         :Cola
+STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Spookasem
 STR_CARGO_SINGULAR_BUBBLE                                       :Borrel
-STR_CARGO_SINGULAR_TOFFEE                                       :Tameletjie
+STR_CARGO_SINGULAR_TOFFEE                                       :Toffie
 STR_CARGO_SINGULAR_BATTERY                                      :Battery
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastiek
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Koeldrank
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gas Koeldrank
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -100,13 +100,13 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} passasi
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} steenkool
 STR_QUANTITY_MAIL                                               :{COMMA} sak{P "" ke} pos
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} olie
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} eenhe{P id de} lewende hawe
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s} lewende hawe
 STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" te} goedere
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} hout
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} yster erts
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} staal
-STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} kosbaarhede
+STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P "" ke} waardevolle artikels
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} koper erts
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} graan
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} vrugte
@@ -116,14 +116,14 @@ STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} p
 STR_QUANTITY_GOLD                                               :{COMMA} sak{P "" ke} goud
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} water
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} koring
-STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} gomlastiek
+STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} suiker
-STR_QUANTITY_TOYS                                               :{COMMA} speel{P ding goed}
+STR_QUANTITY_TOYS                                               :{COMMA} ton speel{P ding goed}
 STR_QUANTITY_SWEETS                                             :{COMMA} sak{P "" ke} lekkers
-STR_QUANTITY_COLA                                               :{VOLUME_LONG} cola
+STR_QUANTITY_COLA                                               :{VOLUME_LONG} Kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} spookasem
 STR_QUANTITY_BUBBLES                                            :{COMMA} borrel{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} tameletjie {P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} toffie {P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} batter{P y ye}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastiek
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} koeldran{P k ke}
@@ -131,46 +131,46 @@ STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PA
+STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
 STR_ABBREV_COAL                                                 :{TINY_FONT}SK
 STR_ABBREV_MAIL                                                 :{TINY_FONT}PS
 STR_ABBREV_OIL                                                  :{TINY_FONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LH
-STR_ABBREV_GOODS                                                :{TINY_FONT}GS
+STR_ABBREV_GOODS                                                :{TINY_FONT}GD
 STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}HT
 STR_ABBREV_IRON_ORE                                             :{TINY_FONT}YE
 STR_ABBREV_STEEL                                                :{TINY_FONT}ST
-STR_ABBREV_VALUABLES                                            :{TINY_FONT}KH
+STR_ABBREV_VALUABLES                                            :{TINY_FONT}WA
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}KE
-STR_ABBREV_MAIZE                                                :{TINY_FONT}GR
+STR_ABBREV_MAIZE                                                :{TINY_FONT}ML
 STR_ABBREV_FRUIT                                                :{TINY_FONT}VR
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
 STR_ABBREV_FOOD                                                 :{TINY_FONT}KO
 STR_ABBREV_PAPER                                                :{TINY_FONT}PR
 STR_ABBREV_GOLD                                                 :{TINY_FONT}GD
 STR_ABBREV_WATER                                                :{TINY_FONT}WR
-STR_ABBREV_WHEAT                                                :{TINY_FONT}GR
-STR_ABBREV_RUBBER                                               :{TINY_FONT}GL
+STR_ABBREV_WHEAT                                                :{TINY_FONT}KR
+STR_ABBREV_RUBBER                                               :{TINY_FONT}RB
 STR_ABBREV_SUGAR                                                :{TINY_FONT}SK
 STR_ABBREV_TOYS                                                 :{TINY_FONT}SG
 STR_ABBREV_SWEETS                                               :{TINY_FONT}LE
-STR_ABBREV_COLA                                                 :{TINY_FONT}CL
+STR_ABBREV_COLA                                                 :{TINY_FONT}KL
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}SA
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BO
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}TL
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}KD
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}GK
 STR_ABBREV_NONE                                                 :{TINY_FONT}NS
 STR_ABBREV_ALL                                                  :{TINY_FONT}ALMAL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passasiers{P "" s}
-STR_BAGS                                                        :{COMMA} sakke{P "" s}
-STR_TONS                                                        :{COMMA} ton{P "" s}
-STR_LITERS                                                      :{COMMA} liters{P "" s}
-STR_ITEMS                                                       :{COMMA} items{P "" s}
+STR_PASSENGERS                                                  :{COMMA} passasier{P "" s}
+STR_BAGS                                                        :{COMMA} sak{P "" ke}
+STR_TONS                                                        :{COMMA} ton{P "" ""}
+STR_LITERS                                                      :{COMMA} liter{P "" s}
+STR_ITEMS                                                       :{COMMA} item{P "" s}
 STR_CRATES                                                      :{COMMA} krat{P "" te}
 
 # Colours, do not shuffle
@@ -192,12 +192,12 @@ STR_COLOUR_GREY                                                 :Grys
 STR_COLOUR_WHITE                                                :Wit
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpu
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/u
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}pk
+STR_UNITS_POWER_METRIC                                          :{COMMA}pk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -214,24 +214,24 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} vt
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel 'n filter string
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Sleutel 'n sleutelwoord in om die lys te filter
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sleutel filter string in
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Tik 'n sleutelwoord in om die lys te filter
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selekteer sorteer orde (dalende/stygende)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selekteer sorterings maatstaf
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekteer filtrering kriteria
-STR_BUTTON_SORT_BY                                              :{BLACK}Sorteer by
-STR_BUTTON_LOCATION                                             :{BLACK}Lokasie
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Kies hoe om te rangskik (dalende/stygende)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Kies kriterea om volgens te rangskik
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Kies kriteria om volgens te filter
+STR_BUTTON_SORT_BY                                              :{BLACK}Sorteer volgens
+STR_BUTTON_LOCATION                                             :{BLACK}Ligging
 STR_BUTTON_RENAME                                               :{BLACK}Hernoem
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Maak venster toe
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Venster titel - sleep om venster te beweeg
-STR_TOOLTIP_SHADE                                               :{BLACK}Skerm venster - Slegs die titelstaaf sal vertoon word
-STR_TOOLTIP_DEBUG                                               :{BLACK}Toon NewGRF debug informasie
+STR_TOOLTIP_SHADE                                               :{BLACK}Versteek venster - wys slegs titel staaf
+STR_TOOLTIP_DEBUG                                               :{BLACK}Vertoon NewGRF ontfout inligting
 STR_TOOLTIP_STICKY                                              :{BLACK}Merk die venster as ontoemaakbaar met die"Sluit Alle Vensters" sleutel
 STR_TOOLTIP_RESIZE                                              :{BLACK}Kliek en sleep om venster te vergroot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Skakel groot/klein venster groote
@@ -3105,10 +3105,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koop Voe
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Bou skip
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koop vliegtuig
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Bou die verlig trein voertuig
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Bou die verlig pad voertuig
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Bou die verlig skip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Bou die verlig vliegtuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop die gekose lokomtief/trok. Shift+Kliek vir kwotasie
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop die gekose voertuig. Shift+Kliek vir kwotasie
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop die gekose skip. Shift+Kliek vir kwotasie
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop die gekose vliegtuig. Shift+Kliek vir kwotasie
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
@@ -3163,25 +3163,25 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nuwe Voe
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuwe Skepe
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nuwe Vliegtuig
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Bou nuwe trein voertuig
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Bou nuwe pad voertuig
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Bou nuwe skip
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Bou nuwe vliegtuig
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Koop nuwe lokomotief/trok
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Koop nuwe voertuig
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Koop nuwe skip
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Koop nuwe vliegtuig
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Kloon Trein
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon Voertuig
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon Skip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon Vliegtuig
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dit sal 'n kopie van 'n trein bou insluitend alle trokke. Kliek die knoppie en dan op 'n trein binne of buite die depot. Control-kliek sal die opdrae deel
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dit sal 'n kopie van 'n pad voertuig bou. Kliek die knoppie en dan op 'n pad voertuig binne of buite die depot. Control-kliek sal die opdrae deel
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dit sal 'n kopie van 'n skip bou. Kliek die knoppie en dan op 'n skip binne of buite die depot. Control-kliek sal die opdrae deel
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dit sal 'n kopie van 'n vliegtuig bou. Kliek die knoppie en dan op 'n vliegtuig binne of buite die hangar. Control-kliek sal die opdrae deel
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Kliek hier en dan op 'n bestaande trein om 'n kopie van die bestaande trein te koop. Shift+Kliek vir kwotasie
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Kliek hier en dan op 'n bestaande voertuig om 'n kopie van die bestaande voertuig te koop. Shift+Kliek vir kwotasie
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Kliek hier en dan op 'n bestaande skip om 'n kopie van die bestaande skip te koop. Shift+Kliek vir kwotasie
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Kliek hier en dan op 'n bestaande vliegtuig om 'n kopie van die bestaande vliegtuig te koop. Shift+Kliek vir kwotasie
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Senter skerm op trein depot
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Senter skerm op pad voertuig depot
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Senter skerm op skip depot
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Senter skerm op hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Skuif skerm na trein diensstasie. Ctrl+Kliek om 'n nuwe venster oor die trein diensstasie oop te maak
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Skuif skerm na voertuig diensstasie. Ctrl+Kliek om 'n nuwe venster oor die voertuig diensstasie oop te maak
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Skuif skerm na skeepswerf. Ctrl+Kliek om 'n nuwe venster oor die skeepswerf oop te maak
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Skuif skerm na loods. Ctrl+Kliek om 'n nuwe venster oor die loods oop te maak
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Kry 'n lys van alle treine met die huidige depot in sy opdrae
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Kry 'n lys van alle pad voertuie met die huidige depot in sy opdrae
@@ -3255,20 +3255,20 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak aut
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Senter skerm op trein
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Senter skerm op voertuig
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Senter skerm op skip
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Senter skerm op vliegtuig
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Skuif skerm na trein. Ctrl+Kliek om die skerm die trein te laat volg
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Skuif skerm na voertuig. Ctrl+Kliek om die skerm die voertuig te laat volg
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Skuif skerm na skip. Ctrl+Kliek om die skerm die skip te laat volg
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Skuif skerm na vliegtuig. Ctrl+Kliek om die skerm die vliegtuig te laat volg
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein na depot. CTRL+kliek sal net diens
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur voertuig na depot. CTRL+kliek sal net diens
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur skip na depot
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig na hangar. CTRL+kliek sal net diens
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dit sa 'n kopie van die trein bou insluitend alle trokke. Control-kliek sal die opdrae deel
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dit sal 'n kopie van die pad voertuig bou. Control-kliek sal die opdrae deel
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dit sal 'n kopie van die skip bou. Control-kliek sal die opdrae deel
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dit sal 'n kopie van die vliegtuig bou. Control-kliek sal die opdrae deel
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Die sal 'n kopie van die trein koop. Shift+Kliek vir kwotasie
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Die sal 'n kopie van die voertuig koop. Shift+Kliek vir kwotasie
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Die sal 'n kopie van die skip koop. Shift+Kliek vir kwotasie
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Die sal 'n kopie van die voertuig koop. Shift+Kliek vir kwotasie
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forseer trein om voort te gaan sonder om vir sien die uit te klaar
 
@@ -3350,8 +3350,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}oordra K
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}dae{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Diens tussentyd: {LTBLUE}{COMMA}%{BLACK}   Laaste diens: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vergroot diens tussentyd
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Verminder diens tussentyd
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae meer. Ctrl+Kliek om interval met 5 dae meer te maak
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Maak diens interval met 10 dae minder. Ctrl+Kliek om interval met 5 dae minder te maak
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Benoem trein
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Benoem pad voertuig
@@ -3408,7 +3408,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rooster
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skakel na die rooster uitsig
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Opdraglys - kliek op 'n opdrag om dit te verlig. CTRL + kliek senter op stasie
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Roete lys - Kliek op 'n bestemming om dit te kies. Ctrl+Kliek skuif die skerm na die bestemming
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -3526,7 +3526,7 @@ STR_ORDER_TRANSFER                                              :(Verplaas en va
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Verplaas en wag vir 'n vol vrag)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Verplaas en wag vir enige vol vrag)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Verplaas en verlaat leeg)
-STR_ORDER_NO_UNLOAD                                             :(Geen aflaai en vat vrag)
+STR_ORDER_NO_UNLOAD                                             :(Moenie aflaai en laai vrag)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Geen aflaai en wag vir vol vrag)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Geen aflaai en wag vir enige vol vrag)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Geen aflaai en geen laai)
@@ -3563,7 +3563,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Bevele
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Verander na die bevel lys
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te selekteer
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - Kliek op 'n bestemming om dit te kies
 
 STR_TIMETABLE_NO_TRAVEL                                         :Geen reis
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reis (outomaties; getabuleer volgens eiehandige bevel)
@@ -3624,10 +3624,10 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selektee
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}AI ontfout
+STR_AI_DEBUG                                                    :{WHITE}Rekenaar speler/Korrigeer Spel Skrip foute
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
-STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van die AI
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI stellings
+STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van skrip
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Verstellings
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Verander die stellings van die skrif
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaai AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maak die AI dood, herlaai die skrif en herlaai die AI
@@ -3643,13 +3643,13 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Kyk na d
 STR_AI_GAME_SCRIPT                                              :{BLACK}Speletjie Skrif
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Nagaan die Spel Skrif log
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Geen geskikte KI gevind om te laai.{}Die KI is 'n dom KI en doen niks.{}Jy kan verskeie KI's aflaai deur middel van die 'Aanlyn Inhoud' stelsel.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Daar was n fout met een van die AIs. Rapporteer assblief aan die skrywer met n skermkiekie van die AI Ontfout Venster.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Die SpeletjieSkrif ontfout venster is net beskikbaar vir die server
+STR_ERROR_AI_NO_AI_FOUND                                        :Geen geskikte Rekenaar Speler wat gelaai kon word nie.{}Hierdie Rekernaar Speler is 'dood' en gaan niks doen nie.{}Rekenaar Spelers kan by 'Aanlyn Inhoud' afgelaai word
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van die lopende skripte het verongeluk. Raporteer dit asseblief aan die skrip skrywer saam met 'n skermkiekie van die Rekenaar Speler/Spel Skrip Ontfout Venster
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Rekenaar Speler/Spel Skrip Ontfout venster is slegs beskikbaar aan die verskaffer
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Spel Konfigurasie
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Die Speletjieskrif wat volgende gelaai word vir die volgende spel
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Spel Skrip wat in die volgende spel gelaai sal word
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Die AIs wat om die volgende spel gelaai sal word
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mens Speler
 STR_AI_CONFIG_RANDOM_AI                                         :Lukraak AI
@@ -3660,13 +3660,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Beweeg g
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Beweeg af
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Beweeg gekose AI af in die lys
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SpeletjieSkrif
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Spel Skrip
 STR_AI_CONFIG_AI                                                :{SILVER}AIs
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selekteer {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SpeletjieSkrif
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Spel Skrip
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Laai nog 'n script
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigureer
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Konfigureer die parameters van skrif
@@ -3737,7 +3737,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Lêer nie leesb
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Lêer nie skryfbaar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integriteit het misluk
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nie beskikbaar>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Speeletjie was gesoor in 'n weergawe sonder trem toelaating. Alle tremme was verwyder.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was in 'n weergawe sonder trem ondersteuning gestoor. Alle tremme was verwyder
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaart generasie het gestaak...{}... geen geskikde plekke vir dorpe was gevind nie
@@ -3745,11 +3745,11 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... daar
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan nie landskap van PNG laai nie...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... leêr nie gevind nie
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kan nie prent tipe verdoel. 8 of 24-bit PNG prent vereis.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... iets het verkeerd gegaan. Jammer. (moontlik korrup lêer)
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon nie prent tipe verander nie. 8 of 24-greep PNG prent benodig
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... iets het skeef geloop (moontlik 'n korrupte lêer)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan nie landskap van BMP laai nie...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan nie beeld tipe verdoel nie.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kon nie prent tipe verander nie.
 
 STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}... beeld is te groot
 
@@ -3757,7 +3757,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skaal wa
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Om die kaart te veel te verstel is nie aanbeveel. Gaan voort met die generasie?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Slegs 'n terugval klankstel was gevind. As jy klank wil hê, installeer 'n klankstel deur middel van die inhoud aflaai stelsel.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kon slegs 'n nood klank stel op spoor. Gaan na 'Aanlyn Inhoud' om klank stelle af te laai
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skermkiekie suksesvol gestoor as '{STRING}'
@@ -3827,7 +3827,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te n
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te naby aan 'n ander dorp
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel dorpe
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... daar is nie meer spasie oor op die kaart nie
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp sal nie paaie bou nie. You can enable building of roads via Gevorderde Stellings->Ekonomie->Dorpe.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Die dorp gaan nie paaie bou nie. Gaan na Gevorderde Verstellings->Ekonomie->Dorpe om dit te verander
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Pad werke in verloop
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan nie die dorp verwyder nie... {}'n Stasie of depot verwys na die dorp of die blok wat deur die dorp besit word kan nie verwyder word nie.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... daar is geen plek vir 'n standbeeld in die middel van die dorp
@@ -3843,7 +3843,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... sleg
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... kan slegs in dorpe met te minste 1200 mense gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... kan slegs in reënwoud gebiede gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... kan slegs in woestyn gebiede gebou word
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan slegs in dorpe gebou word
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... kan slegs in dorpe gebou word (vervang huise)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... kan slegs naby die middestad gebou word
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... kan slegs gebou word in lae areas
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... kan net naby aan kant van fkaart geplaas word
@@ -3914,15 +3914,15 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Skip dep
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan nie depot hernoem nie...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trein moet binne in 'n depot gestop word
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestop binne 'n pad voertuig depot wees
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skip moet in 'n depot gestop wees
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... kan slegs in 'n diensstasie gestop word
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... kan slegs in 'n diensstasie gestop word
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... kan slegs in 'n skeepswerf gestoor word
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... moet binne hangar gestop word
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treine kan slegs verander word as hulle in die depot gestop is
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lank
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan nie rigting van voertuig verander nie...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan nie voertuie van veel deele draai nie
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... bestaan uit verskeie eenhede
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Onversoenbare spoor tipes
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan nie voertuig beweeg nie...
@@ -3934,7 +3934,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerde depot
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lank na vervanging
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}geen outo-vervang/hernu reëls toegepas nie
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Outo-vervang verstellings nie gelaai nie
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(geld perk)
 
 # Rail construction errors
@@ -4140,7 +4140,7 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Stadion
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Kantoore
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Huise
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kinema
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Inkoopies winkelplein
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Winkelsentrum
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Igloo
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Tepees
 STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Teepot-Huis
