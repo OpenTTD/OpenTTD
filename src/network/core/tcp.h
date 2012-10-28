@@ -50,6 +50,12 @@ public:
 
 	bool CanSendReceive();
 
+	/**
+	 * Whether there is something pending in the send queue.
+	 * @return true when someting is pending in the send queue.
+	 */
+	bool HasSendQueue() { return this->packet_queue != NULL; }
+
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET);
 	~NetworkTCPSocketHandler();
 };
