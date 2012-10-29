@@ -1343,7 +1343,7 @@ bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible, R
 	bool visible = true;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND: {
-			if (force_visible !! !filter.IsEmpty()) {
+			if (force_visible || !filter.IsEmpty()) {
 				/* Process the search text filter for this item. */
 				filter.ResetState();
 
