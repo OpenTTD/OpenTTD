@@ -1138,6 +1138,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES_HELPTEXT                       :Ja ieslēgts, c
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
 STR_CONFIG_SETTING_CATCHMENT                                    :Atļaut realistiskākas, palielinātas apkalpojamās platības: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Atšķirīga lieluma apkalpojamās platības dažādu veidu stacijām un lidostām
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Atļaut pilsētai piederošo ceļu, tiltu un tuneļu nojaukšanu: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Padara vieglāku pilsētai piederošas infrastruktūras un ēku nojaukšanu
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maksimālais vilcienu garums: {STRING}
@@ -1195,6 +1196,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :galveno skatvie
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :galveno skatvietu
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :katru skatvietu
 STR_CONFIG_SETTING_BRIBE                                        :Atļaut piekukuļot vietējās pašvaldības: {STRING}
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Lauj uzņēmumiem mēģināt piekukuļot pilsētu vietējo pašvaldību. Ja inspektors paziņo par kukuli, tad uzņēmums pilsētā nevarēs darboties sešus mēnešus
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
@@ -1430,6 +1432,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :nejaušs
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Pilsētām ir atļauts būvēt ceļus: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ļauj pilsētām būvēt ceļus izaugsmes sekmēšanai. Izslēgt, lai pilsētu vietējās pašvaldības pašas nebūvētu ceļus
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Šā iestatījuma ieslēgšana pilsētām atļauj būvēt vienlīmeņa krustojumus
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {STRING}

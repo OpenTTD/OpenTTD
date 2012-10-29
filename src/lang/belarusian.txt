@@ -1420,6 +1420,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Вашы
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашыраныя наладкі
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Разгарнуць усё
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згарнуць усё
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(няма тлумачэньня)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Значэньне па змоўчаньні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Тып наладак: {ORANGE}{STRING}

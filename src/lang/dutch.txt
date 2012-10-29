@@ -1103,6 +1103,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze act
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavanceerde instellingen
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtertekst:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles uitvouwen
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles inklappen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaard waarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instellingstype: {ORANGE}{STRING}
