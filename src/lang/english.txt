@@ -1118,8 +1118,8 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Company setting
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Show:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restricts the list below showing only changed settings
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :All settings
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Game and company settings with a different value than the default
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Game settings that have a different value than the default
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Settings with a different value than the default
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Non-client settings with a different value than the default
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Settings with a different value than your new-game settings
 
 STR_CONFIG_SETTING_OFF                                          :Off
