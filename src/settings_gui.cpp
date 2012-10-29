@@ -65,6 +65,8 @@ int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Nu
 static StringID *_grf_names = NULL; ///< Pointer to town names defined by NewGRFs.
 static int _nb_grf_names = 0;       ///< Number of town names defined by NewGRFs.
 
+static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd);
+
 /** Allocate memory for the NewGRF town names. */
 void InitGRFTownGeneratorNames()
 {
@@ -993,6 +995,15 @@ struct SettingEntrySetting {
 	uint index;                 ///< Index of the setting in the settings table
 };
 
+/** How the list of advanced settings is filtered. */
+enum RestrictionMode {
+	RM_ALL,                              ///< List all settings regardless of the default/newgame/... values.
+	RM_CHANGED_AGAINST_DEFAULT,          ///< Show only settings which are different compared to default values.
+	RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL, ///< Show only non-local settings which are different compared to default values.
+	RM_CHANGED_AGAINST_NEW,              ///< Show only settings which are different compared to the user's new game setting values.
+	RM_END,                              ///< End for iteration.
+};
+
 /** Data structure describing a single setting in a tab */
 struct SettingEntry {
 	byte flags; ///< Flags of the setting entry. @see SettingEntryFlags
@@ -1023,7 +1034,7 @@ struct SettingEntry {
 	uint GetMaxHelpHeight(int maxw);
 
 	bool IsFiltered() const;
-	bool UpdateFilterState(StringFilter &filter, bool force_visible);
+	bool UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, uint cur_row, uint parent_last, SettingEntry *selected);
 
@@ -1041,6 +1052,7 @@ struct SettingEntry {
 
 private:
 	void DrawSetting(GameSettings *settings_ptr, int x, int y, int max_x, int state, bool highlight);
+	bool IsVisibleByRestrictionMode(RestrictionMode mode) const;
 };
 
 /** Data structure describing one page of settings in the settings window. */
@@ -1058,7 +1070,7 @@ struct SettingsPage {
 	SettingEntry *FindEntry(uint row, uint *cur_row) const;
 	uint GetMaxHelpHeight(int maxw);
 
-	bool UpdateFilterState(StringFilter &filter, bool force_visible);
+	bool UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode);
 
 	uint Draw(GameSettings *settings_ptr, int base_x, int base_y, int max_x, uint first_row, uint max_row, SettingEntry *selected, uint cur_row = 0, uint parent_last = 0) const;
 };
@@ -1272,31 +1284,79 @@ bool SettingEntry::IsFiltered() const
 }
 
 /**
+ * Checks whether an entry shall be made visible based on the restriction mode.
+ * @param mode The current status of the restriction drop down box.
+ * @return true if the entry shall be visible.
+ */
+bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
+{
+	/* There shall not be any restriction, i.e. all settings shall be visible. */
+	if (mode == RM_ALL) return true;
+
+	GameSettings *settings_ptr = &GetGameSettings();
+	assert((this->flags & SEF_KIND_MASK) == SEF_SETTING_KIND);
+	const SettingDesc *sd = this->d.entry.setting;
+
+	if (mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL && (sd->save.conv & SLF_NO_NETWORK_SYNC) != 0) {
+		/* Hide local settings when comparing our settings against those of the server. */
+		return false;
+	}
+
+	/* Read the current value. */
+	const void *var = ResolveVariableAddress(settings_ptr, sd);
+	int64 current_value = ReadValue(var, sd->save.conv);
+
+	int64 filter_value;
+
+	if (mode == RM_CHANGED_AGAINST_DEFAULT || mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL) {
+		/* This entry shall only be visible, if the value deviates from its default value. */
+
+		/* Read the default value. */
+		filter_value = ReadValue(&sd->desc.def, sd->save.conv);
+	} else {
+		assert(mode == RM_CHANGED_AGAINST_NEW);
+		/* This entry shall only be visible, if the value deviates from
+		 * its value is used when starting a new game. */
+
+		/* Make sure we're not comparing the new game settings against itself. */
+		assert(settings_ptr != &_settings_newgame);
+
+		/* Read the new game's value. */
+		var = ResolveVariableAddress(&_settings_newgame, sd);
+		filter_value = ReadValue(var, sd->save.conv);
+	}
+
+	return current_value != filter_value;
+}
+
+/**
  * Update the filter state.
  * @param filter String filter
- * @param force_visible Whether to force all items visible, no matter what
+ * @param force_visible Whether to force all items visible, no matter what (due to filter text; not affected by restriction drop down box).
+ * @param mode Additional way of filtering only changed settings on this screen (see restriction drop down box).
  * @return true if item remains visible
  */
-bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible)
+bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode)
 {
 	CLRBITS(this->flags, SEF_FILTERED);
 
 	bool visible = true;
 	switch (this->flags & SEF_KIND_MASK) {
 		case SEF_SETTING_KIND: {
-			if (force_visible || filter.IsEmpty()) break;
+			if (force_visible !! !filter.IsEmpty()) {
+				/* Process the search text filter for this item. */
+				filter.ResetState();
 
-			filter.ResetState();
+				const SettingDesc *sd = this->d.entry.setting;
+				const SettingDescBase *sdb = &sd->desc;
 
-			const SettingDesc *sd = this->d.entry.setting;
-			const SettingDescBase *sdb = &sd->desc;
+				SetDParam(0, STR_EMPTY);
+				filter.AddLine(sdb->str);
+				filter.AddLine(this->GetHelpText());
 
-			SetDParam(0, STR_EMPTY);
-			filter.AddLine(sdb->str);
-
-			filter.AddLine(this->GetHelpText());
-
-			visible = filter.GetState();
+				visible = filter.GetState();
+			}
+			visible = visible && this->IsVisibleByRestrictionMode(mode);
 			break;
 		}
 		case SEF_SUBTREE_KIND: {
@@ -1305,7 +1365,7 @@ bool SettingEntry::UpdateFilterState(StringFilter &filter, bool force_visible)
 				filter.AddLine(this->d.sub.title);
 				force_visible = filter.GetState();
 			}
-			visible = this->d.sub.page->UpdateFilterState(filter, force_visible);
+			visible = this->d.sub.page->UpdateFilterState(filter, force_visible, mode);
 			break;
 		}
 		default: NOT_REACHED();
@@ -1528,14 +1588,15 @@ void SettingsPage::GetFoldingState(bool &all_folded, bool &all_unfolded) const
  * Update the filter state.
  * @param filter String filter
  * @param force_visible Whether to force all items visible, no matter what
+ * @param mode Additional way of filtering only changed settings on this screen (see restriction drop down box).
  * @return true if item remains visible
  */
-bool SettingsPage::UpdateFilterState(StringFilter &filter, bool force_visible)
+bool SettingsPage::UpdateFilterState(StringFilter &filter, bool force_visible, RestrictionMode mode)
 {
-	bool visible = force_visible;
+	bool visible = false;
 	bool first_visible = true;
 	for (int field = this->num - 1; field >= 0; field--) {
-		visible |= this->entries[field].UpdateFilterState(filter, force_visible);
+		visible |= this->entries[field].UpdateFilterState(filter, force_visible, mode);
 		this->entries[field].SetLastField(first_visible);
 		if (visible && first_visible) first_visible = false;
 	}
@@ -1881,6 +1942,14 @@ static SettingEntry _settings_main[] = {
 /** Main page, holding all advanced settings */
 static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
 
+static const StringID _game_settings_restrict_dropdown[] = {
+	STR_CONFIG_SETTING_RESTRICT_ALL,                              // RM_ALL
+	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT,          // RM_CHANGED_AGAINST_DEFAULT
+	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL, // RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL
+	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW,              // RM_CHANGED_AGAINST_NEW
+};
+assert_compile(lengthof(_game_settings_restrict_dropdown) == RM_END);
+
 struct GameSettingsWindow : QueryStringBaseWindow {
 	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
 	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
@@ -1898,9 +1967,11 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	StringFilter string_filter;        ///< Text filter for settings.
 	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
 
+	RestrictionMode cur_restriction_mode; ///< Currently selected index of the drop down list for the restrict drop down.
+
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50)
+	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode(RM_ALL)
 	{
 		static bool first_time = true;
 
@@ -1973,6 +2044,34 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->DrawEditBox(WID_GS_FILTER);
 	}
 
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case WID_GS_RESTRICT_DROPDOWN:
+				SetDParam(0, _game_settings_restrict_dropdown[this->cur_restriction_mode]);
+				break;
+		}
+	}
+
+	DropDownList *BuildDropDownList(int widget) const
+	{
+		DropDownList *list = NULL;
+		switch (widget) {
+			case WID_GS_RESTRICT_DROPDOWN:
+				list = new DropDownList();
+
+				for (int mode = 0; mode != RM_END; mode++) {
+					/* If we are in adv. settings screen for the new game's settings,
+					 * we don't want to allow comparing with new game's settings. */
+					bool disabled = mode == RM_CHANGED_AGAINST_NEW && settings_ptr == &_settings_newgame;
+
+					list->push_back(new DropDownListStringItem(_game_settings_restrict_dropdown[mode], mode, disabled));
+				}
+				break;
+		}
+		return list;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -2034,6 +2133,13 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 				_settings_main_page.FoldAll();
 				this->InvalidateData();
 				break;
+
+			case WID_GS_RESTRICT_DROPDOWN: {
+				DropDownList *list = this->BuildDropDownList(widget);
+				if (list != NULL) {
+					ShowDropDownList(this, list, this->cur_restriction_mode, widget);
+				}
+			}
 		}
 
 		if (widget != WID_GS_OPTIONSPANEL) return;
@@ -2223,6 +2329,14 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
+		if (widget == WID_GS_RESTRICT_DROPDOWN) {
+			this->cur_restriction_mode = (RestrictionMode)index;
+			_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+			this->SetDirty();
+			return;
+		}
+
+		/* Deal with drop down boxes on the panel. */
 		assert(this->valuedropdown_entry != NULL);
 		const SettingDesc *sd = this->valuedropdown_entry->d.entry.setting;
 		assert(sd->desc.flags & SGF_MULTISTRING);
@@ -2238,6 +2352,19 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 
 	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close)
 	{
+		if (widget == WID_GS_RESTRICT_DROPDOWN) {
+			/* Normally the default implementation of OnDropdownClose() takes care of
+			 * a few things. We want that behaviour here too, but only for this one
+			 * "normal" dropdown box. The special dropdown boxes added for every
+			 * setting that needs one can't have this call. */
+			Window::OnDropdownClose(pt, widget, index, instant_close);
+
+			if (!this->manually_changed_folding) _settings_main_page.UnFoldAll();
+
+			this->InvalidateData();
+			return;
+		}
+
 		/* We cannot raise the dropdown button just yet. OnClick needs some hint, whether
 		 * the same dropdown button was clicked again, and then not open the dropdown again.
 		 * So, we only remember that it was closed, and process it on the next OnPaint, which is
@@ -2251,7 +2378,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	{
 		if (!gui_scope) return;
 
-		_settings_main_page.UpdateFilterState(string_filter, false);
+		_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
 
 		this->vscroll->SetCount(_settings_main_page.Length());
 
@@ -2307,6 +2434,11 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE),
 		NWidget(NWID_HORIZONTAL), SetPadding(WD_TEXTPANEL_TOP, 0, WD_TEXTPANEL_BOTTOM, 0),
+				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
+			NWidget(WWT_TEXT, COLOUR_MAUVE, WID_GS_RESTRICT_LABEL), SetDataTip(STR_CONFIG_SETTING_RESTRICT_LABEL, STR_NULL),
+			NWidget(WWT_DROPDOWN, COLOUR_MAUVE, WID_GS_RESTRICT_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT), SetFill(1, 0), SetResize(1, 0),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL), SetPadding(0, 0, WD_TEXTPANEL_BOTTOM, 0),
 				SetPIP(WD_FRAMETEXT_LEFT, WD_FRAMETEXT_RIGHT, WD_FRAMETEXT_RIGHT),
 			NWidget(WWT_TEXT, COLOUR_MAUVE), SetFill(0, 1), SetDataTip(STR_CONFIG_SETTING_FILTER_TITLE, STR_NULL),
 			NWidget(WWT_EDITBOX, COLOUR_MAUVE, WID_GS_FILTER), SetFill(1, 0), SetMinimalSize(50, 12), SetResize(1, 0),

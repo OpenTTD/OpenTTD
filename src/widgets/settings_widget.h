@@ -52,12 +52,14 @@ enum GameDifficultyWidgets {
 
 /** Widgets of the #GameSettingsWindow class. */
 enum GameSettingsWidgets {
-	WID_GS_FILTER,       ///< Text filter.
-	WID_GS_OPTIONSPANEL, ///< Panel widget containing the option lists.
-	WID_GS_SCROLLBAR,    ///< Scrollbar.
-	WID_GS_HELP_TEXT,    ///< Information area to display help text of the selected option.
-	WID_GS_EXPAND_ALL,   ///< Expand all button.
-	WID_GS_COLLAPSE_ALL, ///< Collapse all button.
+	WID_GS_FILTER,             ///< Text filter.
+	WID_GS_OPTIONSPANEL,       ///< Panel widget containing the option lists.
+	WID_GS_SCROLLBAR,          ///< Scrollbar.
+	WID_GS_HELP_TEXT,          ///< Information area to display help text of the selected option.
+	WID_GS_EXPAND_ALL,         ///< Expand all button.
+	WID_GS_COLLAPSE_ALL,       ///< Collapse all button.
+	WID_GS_RESTRICT_LABEL,     ///< Label upfront to drop down box to restrict the list of settings to show
+	WID_GS_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
 };
 
 /** Widgets of the #CustomCurrencyWindow class. */
