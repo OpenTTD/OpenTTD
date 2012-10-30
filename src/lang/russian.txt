@@ -1269,6 +1269,12 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Настрой�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Настройки компании (содержатся в файлах сохранений; действительны только для новых игр)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Настройки компании (содержатся в файлах сохранений; действительны только для текущей игры)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Показывать:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Отображать в списке только изменённые настройки
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Все настройки
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Настройки со значениями, отличающимися от значений по умолчанию
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Настройки со значениями, отличающимися от настроек новой игры
+
 STR_CONFIG_SETTING_OFF                                          :нет
 STR_CONFIG_SETTING_ON                                           :да
 STR_CONFIG_SETTING_DISABLED                                     :отключено

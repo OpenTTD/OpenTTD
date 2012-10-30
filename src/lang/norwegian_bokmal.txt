@@ -1114,6 +1114,7 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Selskapet innst
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Selskapet innstilling (lagret i lagringsfilen, påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innstilling (lagret i lagringsfilen, påvirker bare gjeldende selskap)
 
+
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :deaktivert
@@ -2463,15 +2464,15 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}En liste
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Sett parametre
 STR_NEWGRF_SETTINGS_SHOW_PARAMETERS                             :{BLACK}Vis parametre
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Vis/skjul palett
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Vis/skjul paletten på valgte NewGRF.{}Gjør dette når grafikken fra denne NewGRFen ser rosa ut i spillet
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Endre palett
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Endre paletten på valgte NewGRF.{}Gjør dette når grafikken fra denne NewGRFen ser rosa ut i spillet
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Bruk endringene
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Finn manglende innhold på nettet
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sjekk om manglende innhold kan bli funnet på nettet
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Filnavn: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versjon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel versjon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
