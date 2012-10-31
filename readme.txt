@@ -1,6 +1,6 @@
 OpenTTD readme
-Last updated:    2012-10-17
-Release version: 1.2.3-RC1
+Last updated:    2012-11-01
+Release version: 1.2.3
 ------------------------------------------------------------------------
 
 
@@ -650,6 +650,7 @@ The OpenTTD team (in alphabetical order):
   Zdeněk Sojka (SmatZ)            - Bug finder and fixer
   José Soler (Terkhen)            - General coding
   Thijs Marinussen (Yexo)         - AI Framework
+  Leif Linse (Zuu)                - AI/Game Script
 
 Inactive Developers:
   Bjarni Corfitzen (Bjarni)       - MacOSX port, coder and vehicles
