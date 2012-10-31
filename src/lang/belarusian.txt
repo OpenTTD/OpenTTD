@@ -1432,6 +1432,13 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Наладкі 
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Наладкі кампаніі (утрымліваюцца ў файлах захаваньняў; сапраўдныя толькі для новых гульняў)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Наладкі кампаніі (утрымліваюцца ў файлах захаваньняў; сапраўдныя толькі для бягучай гульні)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Паказваць:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Адлюстроўваць у сьпісе толькі зьмененыя наладкі
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Усе наладкі
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Наладкі са значэньнямі, якія адрозніваюцца ад значэньняў па змаўчаньні
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Някліенцкія наладкi са значэньнямі, адрознымі ад значэньняў па змаўчаньні
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Наладкі са значэньнямі, якія адрозніваюцца ад наладак новай гульні
+
 STR_CONFIG_SETTING_OFF                                          :не
 STR_CONFIG_SETTING_ON                                           :так
 STR_CONFIG_SETTING_DISABLED                                     :адключана

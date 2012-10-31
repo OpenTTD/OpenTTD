@@ -1117,6 +1117,13 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Impostazione di
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Impostazione della compagnia (conservata nei salvataggi; influenza solo le nuove partite)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione della compagnia (conservata nel salvataggio; influenza solo la compagnia corrente)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostra:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante alle sole impostazioni con valore modificato
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni con un valore diverso da quello predefinito
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Impostazioni non relative ai client con un valore diverso da quello predefinito
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita
+
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_OFF.ms                                       :No
 STR_CONFIG_SETTING_OFF.mp                                       :No

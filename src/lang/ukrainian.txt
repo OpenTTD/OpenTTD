@@ -1228,6 +1228,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Змін
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Розширені налаштування
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фільтр:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Розгорнути всі
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Згорнути всі
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(пояснення відсутнє)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Стандартне значення: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Тип: {ORANGE}{STRING}
@@ -1236,6 +1239,13 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Налашту�
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Налаштування гри (знаходяться в збережених іграх; впливають тільки на поточну гру)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Налаштування компанії (знаходяться в збережених іграх; впливають тільки на нову гру)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Налаштування компанії (знаходяться в збережених іграх; впливають тільки на поточну гру)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Показати:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Показати лише налаштування, які було змінено
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Усі налаштування
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Налаштування, що відрізняються від дефолтних
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Неклієнтскі налаштування, що відрізняються від дефолтних
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Налаштування, що відрізняються від налаштувань нової гри
 
 STR_CONFIG_SETTING_OFF                                          :ні
 STR_CONFIG_SETTING_ON                                           :так
@@ -1317,6 +1327,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :наприкі�
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Автотранспорт шикується в чергу на зупинках: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :При включенні дорожній транспорт буде очікувати в черзі перед зайнятими зупинками.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Прокручувати вікно, коли курсор з краю: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :При включенні вміст вікон огляду буде прокручуватись при підведенні курсора до краю вікна
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :вимкнено
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :головне вікно тільки в повноекранному режимі
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :головне вікно
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :кожне вікно огляду
 STR_CONFIG_SETTING_BRIBE                                        :Дозволити підкуп місцевої влади: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Дозволяє компаніям давати хабарі місцевій владі. Якщо підкуп буде викрито, протягом 6 місяців компанія не матиме змоги взаємодіяти з владою міста.
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Дозволити придбання ексклюзивних прав: {STRING}
@@ -3881,6 +3896,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Витрачено: {CURRENCY_LONG}

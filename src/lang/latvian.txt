@@ -1117,6 +1117,13 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :spēles iestat�
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :uzņēmuma iestatījums (tiek iekļauts saglabājumos, ietekmē tikai jaunās spēles)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :uzņēmuma iestatījums (tiek iekļauts saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rādīt:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ierobežo turpmāko sarakstu, rādot tikai izmainītos iestatījumus
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Visus iestatījumus
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Uz klienta programmu neattiecošies iestatījumi ar atšķirīgu vērtību nekā noklusējuma
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
+
 STR_CONFIG_SETTING_OFF                                          :izslēgts
 STR_CONFIG_SETTING_ON                                           :ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
