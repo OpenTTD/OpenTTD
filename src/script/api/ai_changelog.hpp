@@ -27,6 +27,10 @@
  * \li AIStation::OpenCloseAirport
  * \li AIController::Break
  *
+ * \b 1.2.3
+ *
+ * No changes
+ *
  * \b 1.2.2
  *
  * No changes

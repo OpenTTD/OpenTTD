@@ -31,6 +31,10 @@
  * \li GSController::Break
  * \li GSIndustryType::BuildIndustry, GSIndustryType::CanBuildIndustry, GSIndustryType::ProspectIndustry and GSIndustryType::CanProspectIndustry when outside GSCompanyMode scope
  *
+ * \b 1.2.3
+ *
+ * No changes
+ *
  * \b 1.2.2
  *
  * No changes

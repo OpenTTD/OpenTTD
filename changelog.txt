@@ -1,3 +1,42 @@
+1.2.3 (2012-11-01)
+------------------------------------------------------------------------
+(None)
+
+
+1.2.3-RC1 (2012-10-17)
+------------------------------------------------------------------------
+- Change: [NewGRF] Set the reference brightness of 32bpp mask recolouring to 128 (r24610)
+- Fix: Configure script did not properly handle _BUILD flags during reconfigure (r24601)
+- Fix: Configure script failed to detect libfontconfig 2.10 as newer than 2.3 (r24598)
+- Fix: When fontconfig is not available, the bootstrap download crashed [FS#5336] (r24597)
+- Fix: Crash when a gamescript provided too many parameters to a GSText object [FS#5333] (r24593)
+- Fix: [Script] API documentation mistakes/omissions (r24584)
+- Fix: Do not add duplicates to the ban list [FS#5308] (r24580)
+- Fix: Draw the window resize sprite bottom-aligned [FS#5324] (r24577)
+- Fix: Vehicle list at buoys did no longer work [FS#5319] (r24576)
+- Fix: [Windows] Do not cast away const in OS specific code (r24572, r24571)
+- Fix: Naming of bundles was somewhat broken (r24569)
+- Fix: Non-train vehicle lists were not resorted when vehicles were renamed [FS#5261] (r24567)
+- Fix: Stop both price and payment inflation if either of them has reached MAX_INFLATION (r24565)
+- Fix: Limiting the inflation did not quite work [FS#5312] (r24564)
+- Fix: Do not show profit from refits as cost in the refit window [FS#5297] (r24544)
+- Fix: Do not limit to reading one UDP packet per game loop (r24532)
+- Fix: Max script chance was too big (r24531)
+- Fix: [NewGRF] RandomAction 84 should interpret register 100 as signed (r24528)
+- Fix: [OSX] Some compile problems in mac-only code [FS#5296] (r24524)
+- Fix: The gender of an industry name is defined by the industry-type part of the name, not by the town-name part, even if it comes first (r24523, r24522)
+- Fix: GStexts were compiled incompletely when containing certain string codes (r24516, r24515)
+- Fix: The mousewheel did not work in the build waypoint window [FS#5285] (r24507)
+- Fix: [NewGRF] Airport variables 60 to 65 and 69 used the wrong cargo translation table for translations (r24506)
+- Fix: Do not show the global goals as company goals for spectators (r24500)
+- Fix: Clarify description of command line option -n (r24485)
+- Fix: Do not call RebuildSubsidisedSourceAndDestinationCache() before subsidy savegame conversion is finished [FS#5232] (r24482)
+- Fix: Trains were unable to reverse in stations when using NPF (r24479)
+- Fix: The --xxx yyy format (instead of --xxx=yyy) for configure did not work (r24471)
+- Fix: --prefix was not accepted by configure (r24470)
+- Fix: Changing auto-refit for a 'goto station' order was inadvertently modifying the full load state [FS#5264] (r24457)
+
+
 1.2.2 (2012-08-16)
 ------------------------------------------------------------------------
 (None)
