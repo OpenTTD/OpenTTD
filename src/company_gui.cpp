@@ -1281,11 +1281,7 @@ public:
 				break;
 
 			case WID_SCMF_TIE_EARRING:
-				if (this->is_female) { // Only for female faces
-					this->DrawFaceStringLabel(WID_SCMF_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
-				} else { // Only for male faces
-					this->DrawFaceStringLabel(WID_SCMF_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
-				}
+				this->DrawFaceStringLabel(WID_SCMF_TIE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING, this->ge), false);
 				break;
 
 			case WID_SCMF_LIPS_MOUSTACHE:
