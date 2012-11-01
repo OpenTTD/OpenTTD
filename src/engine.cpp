@@ -781,6 +781,25 @@ static CompanyID GetBestCompany(uint8 pp)
 	return best_company;
 }
 
+/**
+ * Checks if a vehicle type is disabled for all/ai companies.
+ * @param type The vehicle type which shall be checked.
+ * @param ai If true, check if the type is disabled for AI companies, otherwise check if
+ *           the vehicle type is disabled for human companies.
+ * @return Whether or not a vehicle type is disabled.
+ */
+static bool IsVehicleTypeDisabled(VehicleType type, bool ai)
+{
+	switch (type) {
+		case VEH_TRAIN:    return _settings_game.vehicle.max_trains == 0   || (ai && _settings_game.ai.ai_disable_veh_train);
+		case VEH_ROAD:     return _settings_game.vehicle.max_roadveh == 0  || (ai && _settings_game.ai.ai_disable_veh_roadveh);
+		case VEH_SHIP:     return _settings_game.vehicle.max_ships == 0    || (ai && _settings_game.ai.ai_disable_veh_ship);
+		case VEH_AIRCRAFT: return _settings_game.vehicle.max_aircraft == 0 || (ai && _settings_game.ai.ai_disable_veh_aircraft);
+
+		default: NOT_REACHED();
+	}
+}
+
 /** Daily check to offer an exclusive engine preview to the companies. */
 void EnginesDailyLoop()
 {
@@ -808,7 +827,12 @@ void EnginesDailyLoop()
 
 				e->flags |= ENGINE_OFFER_WINDOW_OPEN;
 				e->preview_wait = 20;
-				AI::NewEvent(best_company, new ScriptEventEnginePreview(i));
+				/* AIs are intentionally not skipped for preview even if they cannot build a certain
+				 * vehicle type. This is done to not give poor performing human companies an "unfair"
+				 * boost that they wouldn't have gotten against other human companies. The check on
+				 * the line below is just to make AIs not notice that they have a preview if they
+				 * cannot build the vehicle. */
+				if (!IsVehicleTypeDisabled(e->type, true)) AI::NewEvent(best_company, new ScriptEventEnginePreview(i));
 				if (IsInteractiveCompany(best_company)) ShowEnginePreviewWindow(i);
 			}
 		}
@@ -889,11 +913,15 @@ static void NewVehicleAvailable(Engine *e)
 		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
-	AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
+	/* Only broadcast event if AIs are able to build this vehicle type. */
+	if (!IsVehicleTypeDisabled(e->type, true)) AI::BroadcastNewEvent(new ScriptEventEngineAvailable(index));
 
-	SetDParam(0, GetEngineCategoryName(index));
-	SetDParam(1, index);
-	AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
+	/* Only provide the "New Vehicle available" news paper entry, if engine can be built. */
+	if (!IsVehicleTypeDisabled(e->type, false)) {
+		SetDParam(0, GetEngineCategoryName(index));
+		SetDParam(1, index);
+		AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NT_NEW_VEHICLES, NF_VEHICLE, NR_ENGINE, index);
+	}
 
 	/* Update the toolbar. */
 	if (e->type == VEH_ROAD) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
@@ -919,7 +947,13 @@ void EnginesMonthlyLoop()
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE | ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
-				/* Introduction date has passed.. show introducing dialog to one companies. */
+				/* Introduction date has passed...
+				 * Check if it is allowed to build this vehicle type at all
+				 * based on the current game settings. If not, it does not
+				 * make sense to show the preview dialog to any company. */
+				if (IsVehicleTypeDisabled(e->type, false)) continue;
+
+				/* Show preview dialog to one of the companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 
 				/* Do not introduce new rail wagons */
