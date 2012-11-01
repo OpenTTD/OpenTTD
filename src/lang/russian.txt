@@ -1273,7 +1273,7 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Пока
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Отображать в списке только изменённые настройки
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Все настройки
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Настройки со значениями, отличающимися от значений по умолчанию
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Неклиентские настройки со значениями, отличными от значений по умолчанию
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Неклиентские настройки со значениями, отличающимися от значений по умолчанию
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Настройки со значениями, отличающимися от настроек новой игры
 
 STR_CONFIG_SETTING_OFF                                          :нет

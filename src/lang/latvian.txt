@@ -962,7 +962,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Noklikš
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrāna izšķirtspēja
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna izšķirtspējas izvēle
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :cita
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Cita
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekrānuzņēmumu formāts
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Ekrānuzņēmumu formāta izvēle
@@ -1160,7 +1160,8 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Autotransporta 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nogāžu stāvums vilcieniem: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Slīpu lauciņu nogāžu stāvums vilcieniem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
-STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nogāžu stāvums autotransportam: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nogāžu stāvums autotransporta līdzekļiem: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Slīpu lauciņu nogāžu stāvums autotransporta līdzekļiem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
