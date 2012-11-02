@@ -1110,11 +1110,18 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 �
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}설정 종류: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :접속자 설정 (세이브 파일에 저장 안됨; 모든 게임에 영향이 있음)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :게임 설정 (세이브 파일에 저장; 새 게임에만 영향이 있음)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :게임 설정 (세이브 파일에 저장; 현재 게임에만 영향이 있음)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :회사 설정 (세이브 파일에 저장; 새 게임에 영향이 있음)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (세이브 파일에 저장; 현재 회사에만 영향이 있음)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :접속자 설정 (게임 저장 파일에 저장되지 않음; 모든 게임에 적용됨)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :게임 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :게임 설정 (게임 저장 파일에 저장됨; 현재 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}표시:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}설정 값이 변경된 설정만 목록에 표시하도록 할 수 있습니다.
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :모든 설정
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :기본값과 다른 값을 가진 설정
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :기본값과 다른 값을 가진 (게임 저장 파일에 저장되는) 설정
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :이 게임 내에서 다른 값을 가진 설정
 
 STR_CONFIG_SETTING_OFF                                          :아니오
 STR_CONFIG_SETTING_ON                                           :예
@@ -1308,7 +1315,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :외부 화면�
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :소형 지도를 클릭하여 특정 지역으로 스크롤되거나 지도 상의 특정 장소로 이동하는 경우에 주 화면이 어떻게 스크롤 되는지를 설정합니다. 이 옵션을 켜면 화면이 목표지점까지 부드럽게 이동하며, 옵션을 끄면 목표 화면으로 곧바로 넘어가게 됩니다.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :건설도구 사용시 거리 툴팁 표시: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :철도/도로 등의 기반시설을 건설할 때 거리와 높이 차이 등을 표시합니다.
-STR_CONFIG_SETTING_LIVERIES                                     :회사 고유 색상 표시: {STRING}
+STR_CONFIG_SETTING_LIVERIES                                     :차량 종류에 따라 회사의 색상을 구분하여 표시: {STRING}
 STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :회사 고유 색상을 따르지 않고 차량 종류에 따라 다른 차량 색상을 사용하는 것을 허용합니다.
 STR_CONFIG_SETTING_LIVERIES_NONE                                :없음
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :내 회사
@@ -1332,8 +1339,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :마우스 왼쪽 버튼으로 스크롤: {STRING}
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING_HELPTEXT            :왼쪽 마우스 버튼을 드래그하여 지도를 스크롤 할 수 있도록 합니다. 터치 스크린 환경에서 이 옵션을 켜면 매우 유용합니다.
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{STRING} 날짜 형식을 세이브 이름으로 사용합니다.
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 세이브 파일명에 사용할 날짜의 형식을 선택합니다.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일의 이름으로 {STRING} 날짜 형식을 사용합니다.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1월 1일)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :국제표준규격 (2012-01-01)
@@ -1432,7 +1439,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA}칸 간�
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 때, 신호기 사이의 거리를 계속 고정: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 Ctrl+드래그 하여 설치할 때의 행동을 선택합니다. 이 옵션을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 설치될 것입니다. 이 옵션을 켜면, 신호기는 평행한 선로에 정렬하기 쉽도록 매 N개의 칸마다 설치될 것입니다.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 비전자식 까치발 신호기만 사용 가능합니다. (두 신호등은 기능적으로는 동일하나 외관이 다릅니다.)
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호등은 기능적으로는 동일하고 모습만 다릅니다.)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :신호기 설치시 신호기 선택 창을 띄움: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :설치할 신호기 종류를 고를 수 있는 신호기 선택 창을 표시합니다. 이 옵션을 끄면 윈도우 없이 Ctrl+클릭 만으로 신호기의 종류를 바꿔야 합니다.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :기본적으로 만들 신호기 종류: {STRING}
@@ -1955,7 +1962,7 @@ STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}서버�
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}네트워크와 게임을 동기화하는 데 실패하였습니다.
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}네트워크와 연결이 끊어졌습니다.
-STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}세이브 게임을 불러올 수 없습니다
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}게임 저장 파일을 불러올 수 없습니다
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버를 시작할 수 없습니다
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}연결 #{NUM}가 시간초과되었습니다.
@@ -2131,10 +2138,10 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :자기부상열
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}철로를 건설합니다. Ctrl키는 철로의 건설/제거를 전환합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}철로 자동건설 모드로 철로를 만듭니다. Ctrl키는 철로의 건설/제거를 전환합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}(열차 구매와 점검을 위한) 차량기지를 건설합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}철로를 경유지로 바꿉니다. Ctrl을 눌러 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. Ctrl을 눌러 역간 결합을 사용합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}철도 신호기를 짓습니다. Ctrl을 누르면 까치발/전등 신호기 사이를 전환합니다.{}곧게 뻗은 철로 위에 마우스를 드래그하십시오. CTRL을 사용하면 다음 분기점까지 신호기를 건설합니다.{}CTRL+클릭을 사용하면 신호기 선택 창을 전환합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL 키를 사용하면 역간 결합을 사용할 수 있습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}철도 신호기를 짓습니다. Ctrl을 누르면 구식/전등 신호기 사이를 전환합니다.{}곧게 뻗은 철로 위에 마우스를 드래그하십시오. CTRL을 사용하면 다음 분기점까지 신호기를 건설합니다.{}CTRL+클릭을 사용하면 신호기 선택 창을 전환합니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}철교를 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}터널을 짓습니다. SHIFT를 사용하면 예상 가격을 볼 수 있습니다.
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}철로, 신호기, 경유지, 역 건설/제거툴 켜기/끄기. Ctrl을 누르면 경유지와 역에서 철로를 제거합니다.
@@ -2172,12 +2179,12 @@ STR_STATION_CLASS_WAYP                                          :{G=f}경유지
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}신호기 선택
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}폐색 신호기 (까치발){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 신호기 (까치발){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구-신호기 (까치발){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보-신호기 (까치발){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}단방향 경로 신호기 (까치발){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}폐색 신호기 (구식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}출구-신호기 (구식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 전면신호기의 거대한 "나뭇가지 구조"를 건설할 수 있게 도와줍니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}단방향 경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 단방향 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
@@ -2513,9 +2520,9 @@ STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Heightma
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}기본 저장/불러오기 폴더로 이동하려면 여기를 클릭하세요
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} 남음
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
-STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}저장될 세이브 파일의 이름입니다.
+STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}현재 입력된 게임 저장 파일의 이름입니다.
 STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}파일 삭제
-STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}선택된 세이브 파일을 삭제합니다.
+STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}현재 선택한 게임 저장 파일을 삭제합니다.
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}저장
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}선택한 이름으로 현재 게임을 저장합니다
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}불러오기
@@ -3786,8 +3793,8 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}게임 �
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}파일을 삭제할 수 없음
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}게임 불러오기 실패{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :내부 오류: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 세이브 게임 - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버젼의 세이브 게임입니다
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 게임 저장 파일 - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버전의 게임 저장 파일입니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :파일을 읽을 수 없습니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :파일을 쓸 수 없습니다
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터 무결성 검사 실패
