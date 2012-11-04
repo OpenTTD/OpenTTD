@@ -1199,6 +1199,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova je r
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne postavke
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtriraj slijed:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otvori sve
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zatvori sve
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nema dostupnog pojašnjenja)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Osnovna vrijednost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Vrsta postavki: {ORANGE}{STRING}
@@ -1207,6 +1210,13 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Postavke igre (
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Postavke igre (pohranjene u snimljenoj datoteci; utječu samo na trenutnu igru)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na nove igre)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Postavke kompanije (pohranjene u snimljenoj datoteci; utječu samo na trenutnu kompaniju)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Prikaži:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Sužava doljnju listu prikazom samo izmijenjenih postavki
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Sve postavke
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Postavke sa drugačijim vrijednostima od osnovnih
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Postavke ne-klijenta sa drugačijim vrijednostima od osnovnih
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Postavke sa drugačijim vrijednostima od postavki vaše nove igre
 
 STR_CONFIG_SETTING_OFF                                          :Isključeno
 STR_CONFIG_SETTING_ON                                           :Uključeno
