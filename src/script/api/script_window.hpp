@@ -78,6 +78,11 @@
  *  good rule of thumb is: either the number is always 0, or the ID of the
  *  object in question.
  * In the comment at the widget enum, it is mentioned how the number is used.
+ *
+ * Note, that the detailed window layout is very version specific.
+ * Enum values might be added, changed or removed in future versions without notice
+ * in the changelog, and there won't be any means of compatibility.
+ *
  * @api game
  */
 class ScriptWindow : public ScriptObject {
