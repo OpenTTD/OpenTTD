@@ -125,6 +125,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::QueryStringWidgets>(HSQUIRRELVM vm, ScriptWindow::QueryStringWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::QueryWidgets GetParam(ForceType<ScriptWindow::QueryWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::QueryWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::QueryWidgets>(HSQUIRRELVM vm, ScriptWindow::QueryWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::TextfileWidgets GetParam(ForceType<ScriptWindow::TextfileWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::TextfileWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::TextfileWidgets>(HSQUIRRELVM vm, ScriptWindow::TextfileWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::MusicTrackSelectionWidgets GetParam(ForceType<ScriptWindow::MusicTrackSelectionWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::MusicTrackSelectionWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::MusicTrackSelectionWidgets>(HSQUIRRELVM vm, ScriptWindow::MusicTrackSelectionWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::MusicWidgets GetParam(ForceType<ScriptWindow::MusicWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::MusicWidgets)tmp; }
@@ -159,8 +161,6 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::NewGRFStateWidgets>(HSQUIRRELVM vm, ScriptWindow::NewGRFStateWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::ScanProgressWidgets GetParam(ForceType<ScriptWindow::ScanProgressWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::ScanProgressWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::ScanProgressWidgets>(HSQUIRRELVM vm, ScriptWindow::ScanProgressWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline ScriptWindow::TextfileWidgets GetParam(ForceType<ScriptWindow::TextfileWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::TextfileWidgets)tmp; }
-	template <> inline int Return<ScriptWindow::TextfileWidgets>(HSQUIRRELVM vm, ScriptWindow::TextfileWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::NewsWidgets GetParam(ForceType<ScriptWindow::NewsWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::NewsWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::NewsWidgets>(HSQUIRRELVM vm, ScriptWindow::NewsWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::MessageHistoryWidgets GetParam(ForceType<ScriptWindow::MessageHistoryWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::MessageHistoryWidgets)tmp; }
@@ -209,8 +209,8 @@ namespace SQConvert {
 	template <> inline int Return<ScriptWindow::StationListWidgets>(HSQUIRRELVM vm, ScriptWindow::StationListWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::JoinStationWidgets GetParam(ForceType<ScriptWindow::JoinStationWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::JoinStationWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::JoinStationWidgets>(HSQUIRRELVM vm, ScriptWindow::JoinStationWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
-	template <> inline ScriptWindow::StatusbarWidget GetParam(ForceType<ScriptWindow::StatusbarWidget>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::StatusbarWidget)tmp; }
-	template <> inline int Return<ScriptWindow::StatusbarWidget>(HSQUIRRELVM vm, ScriptWindow::StatusbarWidget res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> inline ScriptWindow::StatusbarWidgets GetParam(ForceType<ScriptWindow::StatusbarWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::StatusbarWidgets)tmp; }
+	template <> inline int Return<ScriptWindow::StatusbarWidgets>(HSQUIRRELVM vm, ScriptWindow::StatusbarWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::SubsidyListWidgets GetParam(ForceType<ScriptWindow::SubsidyListWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::SubsidyListWidgets)tmp; }
 	template <> inline int Return<ScriptWindow::SubsidyListWidgets>(HSQUIRRELVM vm, ScriptWindow::SubsidyListWidgets res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> inline ScriptWindow::TerraformToolbarWidgets GetParam(ForceType<ScriptWindow::TerraformToolbarWidgets>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (ScriptWindow::TerraformToolbarWidgets)tmp; }
