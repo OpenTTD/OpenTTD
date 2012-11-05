@@ -56,7 +56,7 @@ enum WindowClass {
 
 	/**
 	 * Statusbar (at the bottom of your screen); %Window numbers:
-	 *   - 0 = #StatusbarWidget
+	 *   - 0 = #StatusbarWidgets
 	 */
 	WC_STATUS_BAR,
 
