@@ -1163,6 +1163,7 @@ STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Nogāžu stāvums autotransporta līdzekļiem: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Slīpu lauciņu nogāžu stāvums autotransporta līdzekļiem. Augstākas vērtības apgrūtina uzbraukšanu uzkalnā
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grādu pagriezieni rodas, ja horizontālam sliežu ceļa posmam tieši seko vertikāls sliežu ceļa posms uz blakus esošā lauciņa. Tādējādi vilciens, šķērsojot lauciņu malas, veic 90 grādu pagriezienu, nevis parasto 45 grādu kā citām sliežu ceļu kombinācijām. Tas attiecas arī uz kuģu pagrieziena lenķiem
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
@@ -1307,6 +1308,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plūdena skatvi
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rādīt mērījumu rīkjoslu, izmantojot dažādus būvniecības rīkus: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Rāda lauciņu attālumus un augstuma starpības, ar vilkšanu veicot būvniecības darbības
 STR_CONFIG_SETTING_LIVERIES                                     :Rādīt uzņēmuma identitātes krāsas: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Atšķirīga krāsojuma izmantošana dažādiem transportlīdzekļu veidiem (pretēji uzņēmuma identifikācijas krāsām)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :nerādīt
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :savam uzņēmumam
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :visiem uzņēmumiem
@@ -1361,6 +1363,7 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejam
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :pēdējās pieejamās
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :visbiežāk lietotās
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Rādīt rezerves sliežu ceļus: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Piešķirt rezerves sliežu ceļiem atšķirīgu krāsojumu, lai palīdzētu grūtībās ar atteikumiem vilcieniem iebraukt ceļu blokos
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Būvniecības rīkus pēc lietošanas paturēt darbīgus: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pēc lietošanas patur atvērtus tiltu, tuneļu un citus būvniecības rīkus
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupēt izdevumu sadaļas uzņēmuma finanšu informācijas logā: {STRING}
@@ -1421,6 +1424,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attā
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkot paturēt vienādu attālumu starp signālierīcēm: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automātiski būvēt semaforus pirms: {STRING} gada
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Izvēlēties gadu, kad ceļiem sāks izmantot elektriskās signālierīces. Pirms šā gada tiks izmantotas neelektriskās signālierīces (kam ir tieši tāda pati funkcija, bet ar atšķirīgu izskatu)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ieslēgt signālierīču grafisko lietotāja saskarni: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Noklusējuma signālu veids: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Izmantotais noklusējuma signālu veids
