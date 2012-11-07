@@ -109,6 +109,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	if (!cs->IsValid()) return;
 
 	int colour = cs->rating_colour;
+	TextColour tc = GetContrastColour(colour);
 	uint w = (minu(amount, units_full) + 5) / 36;
 
 	int height = GetCharacterHeight(FS_SMALL);
@@ -126,7 +127,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 		}
 	}
 
-	DrawString(left + 1, right, y, cs->abbrev, TC_BLACK);
+	DrawString(left + 1, right, y, cs->abbrev, tc);
 
 	/* Draw green/red ratings bar (fits into 14 pixels) */
 	y += height + 2;
@@ -455,7 +456,8 @@ public:
 					const CargoSpec *cs = _sorted_cargo_specs[widget - WID_STL_CARGOSTART];
 					int cg_ofst = HasBit(this->cargo_filter, cs->Index()) ? 2 : 1;
 					GfxFillRect(r.left + cg_ofst, r.top + cg_ofst, r.right - 2 + cg_ofst, r.bottom - 2 + cg_ofst, cs->rating_colour);
-					DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, cs->abbrev, TC_BLACK, SA_HOR_CENTER);
+					TextColour tc = GetContrastColour(cs->rating_colour);
+					DrawString(r.left + cg_ofst, r.right + cg_ofst, r.top + cg_ofst, cs->abbrev, tc, SA_HOR_CENTER);
 				}
 				break;
 		}

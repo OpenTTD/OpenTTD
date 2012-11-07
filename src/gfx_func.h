@@ -177,6 +177,8 @@ static inline byte GetCharacterHeight(FontSize size)
 
 extern DrawPixelInfo *_cur_dpi;
 
+TextColour GetContrastColour(uint8 background);
+
 /**
  * All 16 colour gradients
  * 8 colours per gradient from darkest (0) to lightest (7)

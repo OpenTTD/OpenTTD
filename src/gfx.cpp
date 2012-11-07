@@ -1546,6 +1546,20 @@ void DoPaletteAnimations()
 	}
 }
 
+/**
+ * Determine a contrasty text colour for a coloured background.
+ * @param background Background colour.
+ * @return TC_BLACK or TC_WHITE depending on what gives a better contrast.
+ */
+TextColour GetContrastColour(uint8 background)
+{
+	Colour c = _cur_palette.palette[background];
+	/* Compute brightness according to http://www.w3.org/TR/AERT#color-contrast.
+	 * The following formula computes 1000 * brightness^2, with brightness being in range 0 to 255. */
+	uint sq1000_brightness = c.r * c.r * 299 + c.g * c.g * 587 + c.b * c.b * 114;
+	/* Compare with threshold brightness 128 (50%) */
+	return sq1000_brightness < 128 * 128 * 1000 ? TC_WHITE : TC_BLACK;
+}
 
 /**
  * Initialize _stringwidth_table cache
