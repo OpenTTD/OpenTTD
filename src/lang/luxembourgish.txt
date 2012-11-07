@@ -1103,6 +1103,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Des Akti
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweidert Astellungen
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter-String:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles erweideren
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles reduzéiren
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keng Erklärung verfügbar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwert: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Astellungstyp: {ORANGE}{STRING}
@@ -1111,6 +1114,13 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spillastellung 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spillastellung (am Save gespäichert; betrëfft just aktuellt Spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmenastellung (am Save gespäichert; betrëfft just nei Spiller)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmenastellung (am Save gespäichert; betrëfft just déi aktuell Firma)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Weis:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitéiert d'Lëscht dass nëmmen geännert Astellungen gewisen ginn
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :All Astellungen
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Astellungen mat engem aneren Wäert wéi den Standardwäert
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Nët-Client Astellungen mat engem aneren Wäert wéi den Standardwäert
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Astellungen mat engem aneren Wäert wéi d'Neit-Spill-Astellungen
 
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
@@ -1192,6 +1202,11 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :um Enn
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Stroossengefiererschlaang (mat Quanteneffekter): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Looss Stroossgefierer am Ufank vun engem besaten Stroossestopp waarden, bis se eidel sinn.
 STR_CONFIG_SETTING_AUTOSCROLL                                   :D'Fënster schwenken wann d'Maus um Rand ass: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Wann ugeschalt, scrollt d'Usiicht wann d'Maus no um Rand vun der Fënster ass
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :ausgeschalt
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Haptusiicht, nëmmen Vollbild
+STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Haptusiicht
+STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :all Usiicht
 STR_CONFIG_SETTING_BRIBE                                        :Erlaabt Bestiechung vun den Gemengen: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Erlaabt Firmen d'Stad ze bestiechen. Wann et opflitt, kann d'Firma während 6 Méint net mat der Stad agéiren
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Erlaabt exklusiv Transportrechter ze kafen: {STRING}
@@ -2876,9 +2891,9 @@ STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Kontosta
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Kredit
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max Kredit: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
-STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Léinen {CURRENCY_LONG}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}{CURRENCY_LONG} léinen
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Erhéicht den Kredit. Ctrl+Klick léint den Maximum
-STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Zeréckbezuelen {CURRENCY_LONG}
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}{CURRENCY_LONG} zeréckbezuelen
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Bezuelt en Deel vum Kredit zeréck. Ctrl+Klick bezillt sou vill wéi méglech zréck
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktur
 
@@ -3683,6 +3698,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
+STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Käschten: {CURRENCY_LONG}

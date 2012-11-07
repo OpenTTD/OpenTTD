@@ -2668,7 +2668,7 @@ STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Atlasīt
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pārvietot gariņu, lai mainītu X un Y vērtības
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X garums: {NUM}, Y garums: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Paņemt gariņu
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Paņemiet gariņu no jebkuras vietas ekrānā
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Paņemt gariņu no jebkuras vietas ekrānā
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Iet pie gariņa
 
@@ -3447,10 +3447,10 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Pielāgo
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Pielāgot kuģi
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Pielāgot lidaparātu
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pielāgot vilcienu izceltā kravas veida pārvadāšanai
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pielāgot autotransporta līdzakli, lai pārvadātu iezīmēto kravas veidu
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pielāgot kuģi, lai pārvadātu iezīmēto kravas veidu
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pielāgot lidaparātu, lai pārvadātu iezīmēto kravas veidu
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Pielāgot vilcienu iezīmētā kravas veida pārvadāšanai
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Pielāgot autotransporta līdzekli iezīmētā kravas veida pārvadāšanai
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Pielāgot kuģi iezīmētā kravas veida pārvadāšanai
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Pielāgot lidaparātu iezīmētā kravas veida pārvadāšanai
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Rīkojumi)
