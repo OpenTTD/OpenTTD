@@ -2331,8 +2331,15 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	{
 		if (widget == WID_GS_RESTRICT_DROPDOWN) {
 			this->cur_restriction_mode = (RestrictionMode)index;
-			_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
-			this->SetDirty();
+			if (!this->manually_changed_folding &&
+					(this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
+					this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
+					this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW)) {
+				/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
+				_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+				_settings_main_page.UnFoldAll();
+			}
+			this->InvalidateData();
 			return;
 		}
 
@@ -2358,10 +2365,6 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 			 * "normal" dropdown box. The special dropdown boxes added for every
 			 * setting that needs one can't have this call. */
 			Window::OnDropdownClose(pt, widget, index, instant_close);
-
-			if (!this->manually_changed_folding) _settings_main_page.UnFoldAll();
-
-			this->InvalidateData();
 			return;
 		}
 
