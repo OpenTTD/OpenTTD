@@ -1117,7 +1117,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstell
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Toon:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Filters de onstaande lijst op alleen gewijzigde instellingen
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :All instellingen
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Gewone instellingen
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Geavanceerde instellingen
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Geavanceerde instellingen / Alle instellingen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Instellingen met een andere waarde dan de standaard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Non-client instellingen met een andere waarde dan de standaard
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Instellingen met een andere waarde dan je 'nieuw spel' instellingen

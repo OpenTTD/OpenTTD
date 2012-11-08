@@ -1119,7 +1119,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :uzņēmuma iest
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rādīt:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ierobežo turpmāko sarakstu, rādot tikai izmainītos iestatījumus
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Visus iestatījumus
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pamatiestatījumi
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Papildu iestatījumi
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumus / visus iestatījumus
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Uz klienta programmu neattiecošies iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
@@ -1166,10 +1168,13 @@ STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcie
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grādu pagriezieni rodas, ja horizontālam sliežu ceļa posmam tieši seko vertikāls sliežu ceļa posms uz blakus esošā lauciņa. Tādējādi vilciens, šķērsojot lauciņu malas, veic 90 grādu pagriezienu, nevis parasto 45 grādu kā citām sliežu ceļu kombinācijām. Tas attiecas arī uz kuģu pagrieziena lenķiem
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ja ir ieslēgts, vairāki transportlīdzekļi gaida stacijā uz secīgu piekraušanu. Nākamā transportlīdzekļa piekraušana sākas tikai tad, kad ir pietiekami daudz kravas, lai pilnībā piepildītu pirmo transportlīdzekli
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING_HELPTEXT                     :Transportlīdzekļi tiek piekrauti pakāpeniski, izmantojot tam raksturīgos ilgumus. Nevis piekrauj visu uzreiz ar fiksētu laiku, tikai atkarībā no kravas daudzuma
 STR_CONFIG_SETTING_INFLATION                                    :Inflācija: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Atļaut inflāciju ekonomikā, kur izmaksu celšanās nedaudz apsteidz ienākumus
-STR_CONFIG_SETTING_SELECTGOODS                                  :Piegādāt kravu uz staciju tikai tad, ja ir pieprasījums: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :Nogādāt kravu stacijā tikai tad, ja ir pieprasījums: {STRING}
+STR_CONFIG_SETTING_SELECTGOODS_HELPTEXT                         :Tikai nogādā kravu līdz stacijai, kas tika pieprasīts piekraujot transportlīdzekli. Tas novērš sliktus vērtējumus stacijā neapkalpotām kravām
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimālais tiltu garums: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Būvējamo tiltu maksimālais garums
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimālais tuneļu garums: {STRING}
@@ -1192,10 +1197,11 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Gada beigās r�
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ja ieslēgts, katra gada beigās uznirst finanšu logs, lai varētu viegli pārbaudīt uzņēmuma finansiālo stāvokli
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Jaunie rīkojumi noklusējumā ir 'bez pieturām': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Transportlīdzeklis parasti pietur pie katras caurbraucamās stacijas. Ieslēdzot šo iestatījumu, tas dosies cauri visām ceļa stacijām uz savu galamērķi bez pieturām. Ņemiet vērā, ka šis iestatījums nosaka noklusējuma vērtību tikai jaunajiem rīkojumiem. Tomēr ir iespējams katru rīkojumu iestatīt arī atsevišķi
-STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunu vilcienu noklusējuma rīkojumi liek apstāties platformas {STRING}
-STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :beigu tuvumā
+STR_CONFIG_SETTING_STOP_LOCATION                                :Jaunie vilcienu rīkojumi noklusējumā liek apstāties perona {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Vieta, kur vilciens apstāsies pie perona noklusējumā. 'Sākumā' ir pie ieejas stacijā, 'vidū' nozīmē perona vidū, un 'beigās' ir tālu prom no ieejas. Ņemiet vērā, ka šis iestatījums nosaka noklusējuma vērtību tikai jaunajiem rīkojumiem. Taču individuālos rīkojumos var noteikt atšķirīgu rīcību
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :sākumā
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :vidū
-STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :tālākajā galā
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :beigās
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Autotransporta līdzekļu rindošana (ar daudzuma efektiem): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Autotransporta līdzekļiem likt gaidīt pirms aizņemtas pieturvietas, līdz tā tiek atbrīvota
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Bīdīt logu, kad peles kursors atrodas tā malā: {STRING}
@@ -2705,7 +2711,7 @@ STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Nederīgs/nezin
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uzmanību!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs grasāties veikt izmaiņas palaistai spēlei. Tas var izraisīt OpenTTD avāriju vai salauzt spēles stāvokli. Par šīm problēmām kļūdu ziņojumus nesūtiet.{}Vai jūs esat par to pilnībā pārliecināts?
 
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nevar pievienot failu: vienādas GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nevar pievienot failu: vienādi GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atbilstošs fails nav atrasts (ielādēts saderīgs GRF)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Saderīgs GRF(s) ielādēts pazudušajiem failiem
@@ -2715,7 +2721,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Atpauzē
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nekas
-STR_NEWGRF_LIST_ALL_FOUND                                       :Visi faili pieejami
+STR_NEWGRF_LIST_ALL_FOUND                                       :Visi faili ir pieejami
 STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Atrasti savietojami faili
 STR_NEWGRF_LIST_MISSING                                         :{RED}Trūkst faili
 

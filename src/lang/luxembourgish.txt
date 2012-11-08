@@ -231,7 +231,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fënster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fënstertitel - hei zéien fir d'Fënster ze bewegen
 STR_TOOLTIP_SHADE                                               :{BLACK}Shade Fenster - Weis nëmmen Titelbar
 STR_TOOLTIP_DEBUG                                               :{BLACK}Weis NewGRF Debug Informatioun
-STR_TOOLTIP_STICKY                                              :{BLACK}Markéier dës Fënster als net zouzemaachen vun dem "All Fënsteren zoumaachen" Knäppchen
+STR_TOOLTIP_STICKY                                              :{BLACK}Markéier dës Fënster fir net zougemet ze ginn vun dem "All Fënsteren zoumaachen" Knäppchen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken an zéihen fir d'Fënstergréisst ze änneren
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wiesselt grouss/kleng Fënstergréisst
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scrollbar - scrollt d'Lëscht erop/erof
@@ -312,7 +312,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Verkleng
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Schinnen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Stroossen bauen
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Schëffhafen bauen
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Flughafen bauen
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Fluchhafen bauen
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Landschafts-Toolbar opman fir Land ze erhéijen/senken, Beem planzen, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Sound/Musék Fënster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Weis déi lescht Meldung/Neiegkeet, oder d'Astellungen
@@ -829,7 +829,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kann den Wee fir weider ze fueren net fannen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ass verluer
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dëm {VEHICLE} säin Profit vum leschten Joer war {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann nët op d'nächst Destinatioun kommen, se ass ze wäit ewech
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} kann net op d'nächst Destinatioun kommen, se ass ze wäit ewech
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} huet gestoppt well eng Optragennerung net geklappt huet
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Fehler beim Autoerneieren vun {VEHICLE}{}{STRING}
@@ -1046,7 +1046,7 @@ STR_NUM_VERY_LOW                                                :Ganz niddreg
 STR_NUM_LOW                                                     :Wéineg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Vill
-STR_NUM_CUSTOM                                                  :Benotzerdéfineiert
+STR_NUM_CUSTOM                                                  :Benotzerdefineiert
 STR_NUM_CUSTOM_NUMBER                                           :Eegen ({NUM})
 
 STR_VARIETY_NONE                                                :Keng
@@ -1119,7 +1119,7 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Weis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limitéiert d'Lëscht dass nëmmen geännert Astellungen gewisen ginn
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :All Astellungen
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Astellungen mat engem aneren Wäert wéi den Standardwäert
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Nët-Client Astellungen mat engem aneren Wäert wéi den Standardwäert
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Net-Client Astellungen mat engem aneren Wäert wéi den Standardwäert
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Astellungen mat engem aneren Wäert wéi d'Neit-Spill-Astellungen
 
 STR_CONFIG_SETTING_OFF                                          :Aus
@@ -1315,6 +1315,7 @@ STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert 
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidden Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
 STR_CONFIG_SETTING_LIVERIES                                     :Weis Firmentracht: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Definéiert de Gebrauch vun gefierspezifesch Lackéiren fir Gefierer (am Géigensaz zu firmenspezifëschen Lackéiren)
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Keng
 STR_CONFIG_SETTING_LIVERIES_OWN                                 :Eegen Firma
 STR_CONFIG_SETTING_LIVERIES_ALL                                 :All Firmen
@@ -1374,67 +1375,124 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meescht benotzt
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Weis reservéiert Strecken: {STRING}
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Fierf reservéiert Schinnen an enger anerer Faarf fir engem ze hëllefen wann Zich refuséieren fir an Wee-baséiert Bléck ze fueren
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Bau-Tools nom Gebrauch aktiv loossen: {STRING}
+STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Looss d'Bauoptiounen fir Brécken, Tunnelen etc. nom Gebrauch op
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ausgaben vun der Firma an der Finanzfënster gruppéiren: {STRING}
+STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definéiert den Layout fir d'Firmenausgabenfënster
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Gebai ausschalten wann keng passend Gefierer verfügbar sinn: {STRING}
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Wann ugeschalt, ass d'Infrastruktur just verfügbar, wann och Gefierer verfügbar sinn, fir dass keen Geld an keng Zäit verschwend gëtt, sënnlos Infrastrukturen ze bauen
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Max Zich pro Firma: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximal Unzuel un Zich déi eng Firma kann hunn
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Max Stroossengefierer pro Firma: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximal Unzuel un Gefierer déi eng Firma kann hunn
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Max Fligeren pro Firma: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximal Unzuel un Fligeren déi eng Firma kann hunn
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Max Schëffer pro Firma: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximal Unzuel un Schëffer déi eng Firma kann hunn
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Zich fir den Computer ausschalten: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Zich bauen
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Stroossengefierer fir den Computer ausschalten: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Gefierer bauen
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Fligeren fir den Computer ausschalten: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Fligeren bauen
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Schëffer fir den Computer ausschalten: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, kann en Computergéigner keng Schëffer bauen
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Erlaabt KI am Multiplayer: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Erlabt Computergéigner an Multiplayer Spiller matzeman
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes befier den Script suspendéiert gëtt: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maximal Unzuel un Rechenschrëtt déi en Script kann an engem Tuer man
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Revisiounsintervalen an Prozenter: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Revisiounsintervallen an Prozenter: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Wiel op eng Revisioun ausgeléist durch Zäit déi säit der leschter Revisioun vergangen ass oder well Zouverlessëgkeet en gewëssen Prozentsaz vun der maximaler Zouverlässëgkeet erofgaang ass
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Standard Revisiounsintervall fir Zich: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Definéiert den Standardrevisiounsintervall fir nei Zich, wann keen expliziten Revisiounsintervall uginn ass
+STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} D{P 0 ag eeg}/%
+STR_CONFIG_SETTING_SERVINT_DISABLED                             :ausgeschalt
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Standard Revisiounsintervall fir Gefierer: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Definéiert den Standardrevisiounsintervall fir nei Gefierer, wann keen spezifëschen Revisiounsintervall uginn ass
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Standard Revisiounsintervall fir Fligeren: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Definéiert den Standardrevisiounsintervall fir nei Fligeren, wann keen expliziten Revisiounsintervall uginn ass
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Standard Revisiounsintervall fir Schëffer: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Definéiert den Standardrevisiounsintervall fir nei Schëffer, wann keen expliziten Revisiounsintervall uginn ass
 STR_CONFIG_SETTING_NOSERVICE                                    :Revisiounen ausschalten wann Pannen op "Keng" gestallt sinn: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Wann ugeschalt, ginn Gefierer net an d'Revisioun geschéckt, wann se keng Pann kënnen kréien
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Geschwindegkeetsbegrenzungen fir Wagongen: {STRING}
+STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Wann ugeschalt, benotz och Geschwindegkeetslimitatiounen fir Wagonen fir d'maximal Geschwindegkeet vun engem Zuch ze definéiren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Elecktreschschinnen ausschalten: {STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Wann dës Astellung ugeschalt ass, ginn keng elektresch Schinnen gebrauch fir mat elektreschen Zich ze fueren
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Faarweg News ab: {STRING}
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Joer vun dem uns d'Zeitung farweg rauskënnt. Firun dësem Joer ass se schwarz/wäiss
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startjoer: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gläichméisseg Economie aschalten (méi oft an kleg Wiessel): {STRING}
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wann ugeschalt, ännert d'Industrieproduktioun méi oft, an méi kléngen Schrëtter. Dës Astellung huet keng Auswierkung op NewGRF-Industrien
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firmen kafen: {STRING}
+STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wann ugeschalt, dierfen Aktien vun Firmen kaf an verkaf ginn. Aktien sinn just fir Firmen verfügbar, déi en gewëssen Alter erregt hunn
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prozentsaz vum Etappenrofit den am Feeder-System bezuelt gëtt: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Prozentsaz vum Akomms déi un d'Zwëschenetappen an engem Feeder-System ginn ginn, wat méi Kontroll iwwert d'Akommes erméiglegt
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Wann gezunn gëtt, setz en Signal all: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Definéiert d'Distanz an däer Signaler gesat ginn, bis zum nächsten Obstakel (Signal, Kräizung), wann Signaler gezunn ginn
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} Feld{P 0 "" er}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Beim Zéien, behal eng fix Distanz tëscht Signaler: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Wielt d'Verhalen vum Signalsetzen, wann mat Ctrl gezunn gëtt. Wann ausgeschalt, ginn Signaler firun laangen Streckenabschnitter wéi Brécken an Tunnelen gesat. Wann ugeschalt, ginn Signaler all N Felder gesat, fir en parallelt Setzen vun Signaler ze erméiglechen
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatesch Diksen bauen firun: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Definéiert d'Joer wou elektresch Signaler benotzt ginn. Firun dësem Joer ginn nët-elektresch Signaler benotzt (déi déi selwescht Funktioun hunn, an just anescht ausgesinn)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Signal GUI erlaaben: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Weist eng Fënster an däer den Typ vun Signaler déi gebaut ginn gewielt kënnen ginn, amplaz ouni Fënster an durch Ctrl-klicken op d'Signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Standard Signal-Typ: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Standard Signaltyp den soll benotzt ginn
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blocksignaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Wee-Signaler
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Einbahn-Wee-Signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Wiessel duerch Signal-Typen: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Wielt Signaltypen déi durchgewielt ginn, wann een mat Ctrl op d'Signalbauen dréckt
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Nëmmen Blocksignaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Nëmmen Wee-Signaler
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Alleguerten
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Stroossenlayout an neien Stied: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Layout fir d'Stroossennetz vun enger Stad
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :besser Stroossen
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zoufälleg
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Stied därfen Stroossen bauen: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Erlabt Stied Stroossen ze bauen fir ze wuessen. Ausschalten fir d'Stiedréid dorun ze hënneren fir Stroossen selwer ze bauen
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Stied dierfen héich Kräizungen bauen: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Wann dës Astellung ugeschalt ass, kënnen Stied Strossen iwwert Schinnen bauen
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Erlaab stadkontrolléiert Kaméidisniveau fir Fluchhäfen: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Wann dës Astellung ausgeschalt ass, kënnen zwee Fluchhäfen an all Stad gebaut ginn. Wann dës Astellung ugeschalt ass, henkt et vun der Fluchhafengréisst, Distanz, Kaméidisniveau of wéivill Fluchhäfen kënnen gebaut ginn
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stiedgrënnung am Spill: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wann dës Astellung ugeschalt ass, kënnen Spiller nei Stied am Spill grënnen
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbueden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :erlabt
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :erlabt, custom Stad-Layout
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrolléiert zoufälleg Optauchen vun Beem während dem Spill. Dëst kann Industrien beaflossen, déi op d'Wuessen vun Beem ugewisen sinn
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :keng{RED}(zerstéiert Bauholzfabrik)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nëmmen am Reebësch
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :iwwerall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positioun vun der Haapt-Toolbar: {STRING}
+STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal Positioun vun der Hapt-Toolbar uewen um Schierm
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Positioun vun der Statusbar: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximal Unzuel vun non-sticky Fënster: {STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontal Positioun vun der Statusbar ënnen um Schierm
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :Radius wou d'Fënsteren uschnapen: {STRING}
+STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Distanz tëscht Fënsteren befier d'Fënsteren automatesch alignéiert ginn
+STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} Pixel
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :ausgeschalt
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximal Unzuel vun net-gepinnten Fënster: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Unzuel un net-gepinnten openen Fënster befier al Fënsteren automatesch zougemaach ginn fir nei Plaz ze man fir nei Fënsteren
+STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :ausgeschalt
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximalen Ranzoom Level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximal Ranzoomstuf fir Usiichtsfënsteren. Et gëtt méi Späicher gebraucht wann d'Stufen ze grouss ginn
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximalen Rauszoom Level: {STRING}
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximal Rauszoom-Stuf fir Usiichtsfënsteren. Méi grouss Rauszoom-Stufen kënnen Ruckeler verursaachen
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
@@ -1442,13 +1500,20 @@ STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Stad-Wuestum: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Geschwindegkeet mat däer Stied wuessen
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lues
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Schnell
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Ganz schnell
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportioun vun Dierfer déi kënnen Stied ginn: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Unzuel un Dierfer déi eng Stad kënnen ginn, folglesch start en Duerf méi grouss an wiisst méi séier
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 zu {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :keen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Ufangs-Gréisst vun Stied mulitiplizéiren mat: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Duerchschnëttsgréisst vun Stied an Proportioun zu normalen Dierfer um Spillstart
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Beim Stroossebau absurd Stroossenelementer ofrappen: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Huel Sakgaassen ewech wann d'Stroossen renovéiert ginn
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interface
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruktioun
@@ -1474,9 +1539,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(recommandéiert)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Pfadfinder fir Zich: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Pfadfinder den fir Zich benotzt gëtt
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Pfadfinder fir Stroossengefierer: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Pfadfinder den fir Gefierer benotzt gëtt
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Pfadfinder fir Schëffer: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Pfadfinder den fir Schëffer benotzt gëtt
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatëscht Emdréinen bei Signaler: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlab Zich bei engem Signal emzedréinen, wann se eng laang Zäit geward hunn
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
 
@@ -1494,9 +1563,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :net mat dëser 
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :onbekannt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressiounslevel '{STRING}' ass net gültëg.
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... Savegameformat '{STRING}' gëtt et net. Revertéiren zu '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': nët fonnt
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': nët fonnt
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Music Set '{STRING}': nët fonnt
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoréiren Basis Grafik Set '{STRING}': net fonnt
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoréiren Basis Sound Set '{STRING}': net fonnt
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoréiren Basis Music Set '{STRING}': net fonnt
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1982,7 +2051,7 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Start den Download vum ausgewielten Inhalt
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total Downloadgréisst: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Dir hudd dëst net fir den Download gewielt
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Dëst gouf net fir den Download gewielt
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dir hudd dëst fir den Download gewielt
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dës Ofhängegkeet gouf ausgewielt fir den download
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dir hudd dëst schon
@@ -2023,7 +2092,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Konnt net op den content server konnektéiren...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloading mësslong...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Konnektioun verluer
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datei net schreiwbar
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei net beschreiwbar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Konnt den downgeload net dekompriméiren
 
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlend Grafiken
@@ -2828,6 +2897,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepté
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Weis d'Lëscht vun den acceptéierten Wueren
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acceptéiert: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Dës Statioun huet exklusiv Transportrechter an dëser Stad
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} huet exklusiv Transportrechter an dëser Stad kaf.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Bewertungen
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'Statiounsbewertungen
@@ -3371,7 +3442,9 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapazit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Refit)
 STR_REFIT_TITLE                                                 :{GOLD}Wielt den Luedungstyp:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir ëmzebauen: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}{}{BLACK}Akommes vum Embau: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Käschten fir den Embau: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nei Kapazitéit: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Akommes vum Embau: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wiel d'Gefierer fir den Embau. Mat der Maus zéien erlabt den Embau vun méi Gefierer. Op eng eidel Plaz klicken wielt d'ganzt Gefiert. Ctrl+Klick wielt e Gefiert an de Rescht vun der Ketten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selectéiert d'Luedung déi transportéiert soll ginn
@@ -3413,7 +3486,7 @@ STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Voll lue
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lueden wann méiglech
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Alles voll lueden
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Voll lueden mat der Wuer
-STR_ORDER_DROP_NO_LOADING                                       :Nët belueden
+STR_ORDER_DROP_NO_LOADING                                       :Net belueden
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Wiesselt Lueden vun dem ungewielten Optrag
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles entlueden
@@ -3449,7 +3522,7 @@ STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Reschtlaafzäit
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Wéi Gefiertsdaten verglach sollen ginn
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ass gläich
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ass nët gläich
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ass net gläich
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ass manner wéi
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ass manner oder gläich wéi
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ass méi wéi
@@ -3514,7 +3587,7 @@ STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferéiere
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferéieren an eidel loosen)
 STR_ORDER_NO_UNLOAD                                             :(Net entlueden an Wueren lueden)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net entlueden an op voll Beluedung warden)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden an op all voll Beluedung warden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden an op iergendeng voll Beluedung warden)
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Keen Ent- an Belueden)
 
 STR_ORDER_AUTO_REFIT                                            :(Auto-Embauen zu {STRING})
@@ -3580,11 +3653,11 @@ STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Änner Z
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Zäit läschen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Lesch Zäit fir den gewielten Optrag
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Änner de Geschwindëgkeetslimit
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Änner de Geschwindegkeetslimit
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Änner d'maximal Reesgeschwindëgkeet fir den gewielten Optrag
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Geschwindëgkeetslimit leschen
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Maximal Reesgeschwindëgkeet vum gewielten Optrag leschen
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Geschwindegkeetslimit leschen
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Maximal Reesgeschwindegkeet vum gewielten Optrag leschen
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Verspeidungszieler zerécksetzen
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Setzt den Verspéidungszieler zréck, sou dass d'Gefiert mat Zäit ukënnt
@@ -3778,7 +3851,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net erla
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} d'Gemeng wëll dat net erlaaben
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} d'Gemeng erlabt keen weideren Fluchhafen an der Stad
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}er Gemeng refüséiert den Bau fir den Flughafen wéinst Kaméidi
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN}er Gemeng refüséiert den Bau fir den Fluchhafen wéinst Kaméidi
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}D'Bestiechung as enger regionaler Ennersichung opgefall
 
 # Levelling errors
@@ -3972,7 +4045,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Kann d'B
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Kann d'Bréck net hei bauen...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Musst d'Bréck fir d'éischt ofrapen
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kann nët op der selweschter Plaz unfänken an ophalen
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kann net op der selweschter Plaz unfänken an ophalen
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Bréckenenner net op der selwechter Héicht
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bréckass ze déif fir dësen Terrain
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start an Enn mussen op enger Linn sinn
@@ -4197,7 +4270,7 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING}er Bier
 STR_SV_STNAME_WOODS                                             :{STRING} beim Bësch
 STR_SV_STNAME_LAKESIDE                                          :{STRING} um Séi
 STR_SV_STNAME_EXCHANGE                                          :{STRING}er Wiessel
-STR_SV_STNAME_AIRPORT                                           :{STRING}er Flughafen
+STR_SV_STNAME_AIRPORT                                           :{STRING}er Fluchhafen
 STR_SV_STNAME_OILFIELD                                          :{STRING}er Uelegfeld
 STR_SV_STNAME_MINES                                             :{STRING}er Minnen
 STR_SV_STNAME_DOCKS                                             :{STRING} Hafen
