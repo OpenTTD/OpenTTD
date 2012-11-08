@@ -1282,7 +1282,7 @@ uint SettingEntry::GetMaxHelpHeight(int maxw)
  */
 bool SettingEntry::IsFiltered() const
 {
-	return this->flags & SEF_FILTERED;
+	return (this->flags & SEF_FILTERED) != 0;
 }
 
 /**
