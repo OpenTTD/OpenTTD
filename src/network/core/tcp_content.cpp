@@ -241,9 +241,8 @@ Subdirectory GetContentInfoSubDir(ContentType type)
 		case CONTENT_TYPE_BASE_MUSIC:
 			return BASESET_DIR;
 
-		case CONTENT_TYPE_SCENARIO:
-		case CONTENT_TYPE_HEIGHTMAP:
-			return SCENARIO_DIR;
+		case CONTENT_TYPE_SCENARIO:     return SCENARIO_DIR;
+		case CONTENT_TYPE_HEIGHTMAP:    return HEIGHTMAP_DIR;
 	}
 }
 #endif /* OPENTTD_MSU */
