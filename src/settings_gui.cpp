@@ -997,6 +997,8 @@ struct SettingEntrySetting {
 
 /** How the list of advanced settings is filtered. */
 enum RestrictionMode {
+	RM_BASIC,                            ///< Display settings associated to the "basic" list.
+	RM_ADVANCED,                         ///< Display settings associated to the "advanced" list.
 	RM_ALL,                              ///< List all settings regardless of the default/newgame/... values.
 	RM_CHANGED_AGAINST_DEFAULT,          ///< Show only settings which are different compared to default values.
 	RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL, ///< Show only non-local settings which are different compared to default values.
@@ -1301,6 +1303,9 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		/* Hide local settings when comparing our settings against those of the server. */
 		return false;
 	}
+
+	if (mode == RM_BASIC) return (this->d.entry.setting->desc.cat & SC_BASIC_LIST) != 0;
+	if (mode == RM_ADVANCED) return (this->d.entry.setting->desc.cat & SC_ADVANCED_LIST) != 0;
 
 	/* Read the current value. */
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
@@ -1942,6 +1947,8 @@ static SettingEntry _settings_main[] = {
 static SettingsPage _settings_main_page = {_settings_main, lengthof(_settings_main)};
 
 static const StringID _game_settings_restrict_dropdown[] = {
+	STR_CONFIG_SETTING_RESTRICT_BASIC,                            // RM_BASIC
+	STR_CONFIG_SETTING_RESTRICT_ADVANCED,                         // RM_ADVANCED
 	STR_CONFIG_SETTING_RESTRICT_ALL,                              // RM_ALL
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT,          // RM_CHANGED_AGAINST_DEFAULT
 	STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL, // RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL
@@ -1970,7 +1977,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode(RM_ALL)
+	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode(RM_BASIC)
 	{
 		static bool first_time = true;
 
