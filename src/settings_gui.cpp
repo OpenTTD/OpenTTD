@@ -1977,7 +1977,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode(RM_BASIC)
+	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode((RestrictionMode)_settings_client.gui.settings_restriction_mode)
 	{
 		static bool first_time = true;
 
@@ -2337,13 +2337,18 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	{
 		if (widget == WID_GS_RESTRICT_DROPDOWN) {
 			this->cur_restriction_mode = (RestrictionMode)index;
-			if (!this->manually_changed_folding &&
-					(this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
+			if (this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT ||
 					this->cur_restriction_mode == RM_CHANGED_AGAINST_DEFAULT_WO_LOCAL ||
-					this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW)) {
-				/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
-				_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
-				_settings_main_page.UnFoldAll();
+					this->cur_restriction_mode == RM_CHANGED_AGAINST_NEW) {
+
+				if (!this->manually_changed_folding) {
+					/* Expand all when selecting 'changes'. Update the filter state first, in case it becomes less restrictive in some cases. */
+					_settings_main_page.UpdateFilterState(string_filter, false, this->cur_restriction_mode);
+					_settings_main_page.UnFoldAll();
+				}
+			} else {
+				/* Non-'changes' filter. Save as default. */
+				_settings_client.gui.settings_restriction_mode = this->cur_restriction_mode;
 			}
 			this->InvalidateData();
 			return;

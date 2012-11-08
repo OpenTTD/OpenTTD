@@ -131,6 +131,7 @@ struct GUISettings {
 	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools and allow modifying NewGRFs in an existing game
 	bool   ai_developer_tools;               ///< activate AI developer tools
 	bool   scenario_developer;               ///< activate scenario developer: allow modifying NewGRFs in an existing game
+	uint8  settings_restriction_mode;        ///< selected restriction mode in adv. settings GUI. @see RestrictionMode
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
 	uint8  newgrf_default_palette;           ///< default palette to use for NewGRFs without action 14 palette information
 
