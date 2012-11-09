@@ -448,8 +448,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Canvia al terminal
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuració de la IA/Scripts del joc
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoom màxim en la captura de pantalla
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Zoom predeterminat en les captures de pantalla
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura de pantalla amb el zoom màxim
+STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Captura de pantalla amb el zoom predeterminat
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de pantalla de tot el mapa
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Quant a 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador d'sprite
@@ -1118,7 +1118,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetres de 
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostra:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Restringeix la llista de sota mostrant només els paràmetres canviats
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tots els paràmetres
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Paràmetres bàsics
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Paràmetres avançats
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Paràmetres per experts / tots els paràmetres
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Paràmetres amb un valor diferent del predeterminat
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Paràmetres aliens al client amb un valor diferent del predeterminat
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Paràmetres amb un valor diferent dels paràmetres del joc nou

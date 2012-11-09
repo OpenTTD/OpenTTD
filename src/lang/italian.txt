@@ -1119,7 +1119,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Impostazione de
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostra:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Limita la lista sottostante alle sole impostazioni con valore modificato
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Impostazioni di base
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Impostazioni avanzate
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Tutte le impostazioni (utenti esperti)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Impostazioni con un valore diverso da quello predefinito
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Impostazioni non relative ai client con un valore diverso da quello predefinito
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Impostazioni con un valore diverso di quello impostato a inizio partita

@@ -1119,6 +1119,8 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innst
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Viser kun endrede innstillinger i listen nedenfor
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grunnleggende innstillinger
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avanserte innstillinger
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Alle innstillinger
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Innstillinger med annen verdi enn standarden
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Innstillinger hos andre enn klienten som har annen verdi enn standard
@@ -1156,6 +1158,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Velg hvor mye r
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Togakselerasjonstype: {STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Velg fysikkmodell for togakselerasjon. Originalmodellen gjør at alle tog går saktere i oppoverbakke, mens den realistiske modellen tar flere faktorer i betraktning.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Kjøretøyers akselerasjonstype: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Velg fysikkmodell for kjøretøyakselerasjon. Originalmodellen gjør at alle kjøretøy går sakte i motbakke. Den realistiske modellen tar flere forhold med kjøretøyene i betraktning.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA} %
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Forby tog og skip å gjøre 90° svinger: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Tillat sammenslåing av stasjoner som ikke ligger inntil hverandre: {STRING}
@@ -1361,8 +1364,12 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Rask
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veldig rask
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 av {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ingen
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Innledende bystørrelsesmultiplikator: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Gjennomsnittsstørrelse på (stor)byer i forhold til vanlige byer ved begynnelsen av spillet
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :Fjern absurde veielementer under veikonstruksjon: {STRING}
+STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD_HELPTEXT               :Fjern blindveier under finansiert veikonstruksjon
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Grensesnitt
 STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstruksjon
@@ -1388,9 +1395,13 @@ STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Anbefalt)
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Veifinner for tog: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Stifinner som skal brukes for tog
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Veifinner for kjøretøy: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Stifinner som skal brukes for kjøretøyer
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Veifinner for skip: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Stifinner som brukes for skip
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatisk reversering ved signaler: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :La tog reversere ved signaler om de har ventet der lenge
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre verdi
 
@@ -2266,12 +2277,12 @@ STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Jorder
 STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Snødekket land
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Ørken
 
-STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING} spor
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING} spor med blokksignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING} spor med forsignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING} spor med utgangssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING} spor med kombinasjonssignaler
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING} spor med avanserte signaler
+STR_LAI_RAIL_DESCRIPTION_TRACK                                  :{STRING}spor
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :{STRING}spor med blokksignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :{STRING}spor med forsignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :{STRING}spor med utgangssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :{STRING}spor med kombinasjonssignaler
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :{STRING}spor med avanserte signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :{STRING} spor med enveis avanserte signaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :{STRING} spor med blokk- og forsignaler
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :{STRING} spor med blokk- og utgangssignaler
@@ -2351,7 +2362,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Firma-eid lando
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opprinnelig opphavsbeskyttet {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheter reservert
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}. Oversatt til norsk av Thor Morten Skogrand med flere.
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2012 OpenTTD-teamet
 
 # Save/load game/scenario
@@ -2742,6 +2753,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Godtar
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Vis liste over godtatte varer
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Godtar: {WHITE}{CARGO_LIST}
 
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Denne stasjonen har eksklusive transportrettigheter i denne byen.
+STR_STATIOV_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} kjøpte eksklusive transportrettigheter i denne byen.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Vurderinger
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stasjonsvurdering
@@ -2769,6 +2782,8 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Vis alle
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endre navnet til stasjon/lasteterminal
 
+STR_STATION_VIEW_CLOSE_AIRPORT                                  :{BLACK}Steng flyplass
+STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Hindre fly i å lande på denne flyplassen.
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}

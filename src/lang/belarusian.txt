@@ -1434,7 +1434,9 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Наладкі 
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Паказваць:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Адлюстроўваць у сьпісе толькі зьмененыя наладкі
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Усе наладкі
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Базавыя наладкі
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Пашыраныя наладкі
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Спецыяльныя наладкі / усе наладкі
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Наладкі са значэньнямі, якія адрозніваюцца ад значэньняў па змаўчаньні
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Някліенцкія наладкi са значэньнямі, адрознымі ад значэньняў па змаўчаньні
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Наладкі са значэньнямі, якія адрозніваюцца ад наладак новай гульні
