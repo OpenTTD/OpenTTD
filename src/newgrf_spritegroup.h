@@ -359,13 +359,6 @@ struct ResolverObject {
 		} vehicle;
 		struct {
 			TileIndex tile;
-			struct BaseStation *st;
-			const struct StationSpec *statspec;
-			CargoID cargo_type;
-			Axis axis;                     ///< Station axis, used only for the slope check callback.
-		} station;
-		struct {
-			TileIndex tile;
 			Industry *ind;
 			IndustryGfx gfx;
 			IndustryType type;

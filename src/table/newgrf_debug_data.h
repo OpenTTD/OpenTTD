@@ -126,7 +126,12 @@ class NIHStation : public NIHelper {
 	const void *GetSpec(uint index) const                { return GetStationSpec(index); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_STATION_NAME, GetStationIndex(index), index); }
 	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetStationSpec(index)->grf_prop.grffile->grfid : 0; }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetStationResolver(ResolverObject *ro, uint index); GetStationResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		StationResolverObject ro(GetStationSpec(index), Station::GetByTile(index), index);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 };
 
 static const NIFeature _nif_station = {

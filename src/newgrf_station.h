@@ -19,6 +19,54 @@
 #include "cargo_type.h"
 #include "station_type.h"
 #include "rail_type.h"
+#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
+
+struct StationScopeResolver : public ScopeResolver {
+	TileIndex tile;
+	struct BaseStation *st;
+	const struct StationSpec *statspec;
+	CargoID cargo_type;
+	Axis axis;                     ///< Station axis, used only for the slope check callback.
+
+	StationScopeResolver(ResolverObject *ro, const StationSpec *statspec, BaseStation *st, TileIndex tile);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetTriggers() const;
+	/* virtual */ void SetTriggers(int triggers) const;
+
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+};
+
+struct StationResolverObject : public ResolverObject {
+	StationScopeResolver station_scope;
+	TownScopeResolver *town_scope;
+
+	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+	~StationResolverObject();
+
+	TownScopeResolver *GetTown();
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF:
+				return &this->station_scope;
+
+			case VSG_SCOPE_PARENT: {
+				TownScopeResolver *tsr = this->GetTown();
+				if (tsr != NULL) return tsr;
+				/* FALL-THROUGH */
+			}
+
+			default:
+				return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value
