@@ -379,9 +379,6 @@ struct ResolverObject {
 			IndustryType type;
 		} industry;
 		struct {
-			const struct CargoSpec *cs;
-		} cargo;
-		struct {
 			CargoID cargo_type;
 			uint8 default_selection;
 			uint8 src_industry;            ///< Source industry substitute type. 0xFF for "town", 0xFE for "unknown".

@@ -13,34 +13,18 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 
-static uint32 CargoGetRandomBits(const ResolverObject *object)
-{
-	return 0;
-}
+struct CargoResolverObject : public ResolverObject {
+	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		return &this->default_scope; //XXX ResolverObject::GetScope(scope, relative);
+	}
 
-static uint32 CargoGetTriggers(const ResolverObject *object)
-{
-	return 0;
-}
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
-
-static void CargoSetTriggers(const ResolverObject *object, int triggers)
-{
-	return;
-}
-
-
-static uint32 CargoGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
-{
-	DEBUG(grf, 1, "Unhandled cargo variable 0x%X", variable);
-
-	*available = false;
-	return UINT_MAX;
-}
-
-
-static const SpriteGroup *CargoResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
+/* virtual */ const SpriteGroup *CargoResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
 	/* Cargo action 2s should always have only 1 "loaded" state, but some
 	 * times things don't follow the spec... */
@@ -50,34 +34,15 @@ static const SpriteGroup *CargoResolveReal(const ResolverObject *object, const R
 	return NULL;
 }
 
-
-static void NewCargoResolver(ResolverObject *res, const CargoSpec *cs)
+CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2)
 {
-	res->GetRandomBits = &CargoGetRandomBits;
-	res->GetTriggers   = &CargoGetTriggers;
-	res->SetTriggers   = &CargoSetTriggers;
-	res->GetVariable   = &CargoGetVariable;
-	res->ResolveRealMethod = &CargoResolveReal;
-
-	res->u.cargo.cs = cs;
-
-	res->callback        = CBID_NO_CALLBACK;
-	res->callback_param1 = 0;
-	res->callback_param2 = 0;
-	res->ResetState();
-
-	res->grffile         = cs->grffile;
 }
-
 
 SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 {
-	const SpriteGroup *group;
-	ResolverObject object;
-
-	NewCargoResolver(&object, cs);
-
-	group = SpriteGroup::Resolve(cs->group, &object);
+	CargoResolverObject object(cs);
+	const SpriteGroup *group = SpriteGroup::Resolve(cs->group, &object);
 	if (group == NULL) return 0;
 
 	return group->GetResult();
@@ -86,15 +51,8 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 
 uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const CargoSpec *cs)
 {
-	ResolverObject object;
-	const SpriteGroup *group;
-
-	NewCargoResolver(&object, cs);
-	object.callback = callback;
-	object.callback_param1 = param1;
-	object.callback_param2 = param2;
-
-	group = SpriteGroup::Resolve(cs->group, &object);
+	CargoResolverObject object(cs, callback, param1, param2);
+	const SpriteGroup *group = SpriteGroup::Resolve(cs->group, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
