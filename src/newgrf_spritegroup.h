@@ -350,15 +350,6 @@ struct ResolverObject {
 
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
 
-	union {
-		struct {
-			const struct Vehicle *self;
-			const struct Vehicle *parent;
-			EngineID self_type;
-			bool info_view;                ///< Indicates if the item is being drawn in an info window
-		} vehicle;
-	} u;
-
 	uint32 (*GetRandomBits)(const struct ResolverObject*);
 	uint32 (*GetTriggers)(const struct ResolverObject*);
 	void (*SetTriggers)(const struct ResolverObject*, int);

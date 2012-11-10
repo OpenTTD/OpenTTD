@@ -18,6 +18,37 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "gfx_type.h"
+#include "newgrf_spritegroup.h"
+
+struct VehicleScopeResolver : public ScopeResolver {
+	const struct Vehicle *v;
+	EngineID self_type;
+	bool info_view;          ///< Indicates if the item is being drawn in an info window
+
+	VehicleScopeResolver(ResolverObject *ro, EngineID engine_type, const Vehicle *v, bool info_view);
+
+	void SetVehicle(const Vehicle *v) { this->v = v; }
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	/* virtual */ uint32 GetTriggers() const;
+	/* virtual */ void SetTriggers(int triggers) const;
+};
+
+struct VehicleResolverObject : public ResolverObject {
+	VehicleScopeResolver self_scope;
+	VehicleScopeResolver parent_scope;
+
+	VehicleScopeResolver relative_scope;
+	byte cached_relative_count;
+
+	VehicleResolverObject(EngineID engine_type, const Vehicle *v, bool info_view = false,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0);
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
 static const uint ROADVEHINFO_DEFAULT_VEHICLE_WIDTH = 32;

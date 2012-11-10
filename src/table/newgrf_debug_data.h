@@ -10,6 +10,7 @@
 /** @file newgrf_debug_data.h Data 'tables' for NewGRF debugging. */
 
 #include "../newgrf_house.h"
+#include "../newgrf_engine.h"
 
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
@@ -69,7 +70,13 @@ class NIHVehicle : public NIHelper {
 	const void *GetSpec(uint index) const                { return Vehicle::Get(index)->GetEngine(); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_VEHICLE_NAME, index); }
 	uint32 GetGRFID(uint index) const                    { return Vehicle::Get(index)->GetGRFID(); }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetVehicleResolver(ResolverObject *ro, uint index); GetVehicleResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		Vehicle *v = Vehicle::Get(index);
+		VehicleResolverObject ro(v->engine_type, v);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 };
 
 static const NIFeature _nif_vehicle = {

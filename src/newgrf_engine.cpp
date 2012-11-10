@@ -340,78 +340,77 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 }
 
 
-/* Vehicle Resolver Functions */
-static inline const Vehicle *GRV(const ResolverObject *object)
+/* virtual */ uint32 VehicleScopeResolver::GetRandomBits() const
 {
-	switch (object->scope) {
-		default: NOT_REACHED();
-		case VSG_SCOPE_SELF: return object->u.vehicle.self;
-		case VSG_SCOPE_PARENT: return object->u.vehicle.parent;
-		case VSG_SCOPE_RELATIVE: {
-			if (object->u.vehicle.self == NULL) return NULL;
-
-			int32 count = GB(object->count, 0, 4);
-			if (count == 0) count = GetRegister(0x100);
-
-			const Vehicle *v = NULL;
-			switch (GB(object->count, 6, 2)) {
-				default: NOT_REACHED();
-				case 0x00: // count back (away from the engine), starting at this vehicle
-					v = object->u.vehicle.self;
-					break;
-				case 0x01: // count forward (toward the engine), starting at this vehicle
-					v = object->u.vehicle.self;
-					count = -count;
-					break;
-				case 0x02: // count back, starting at the engine
-					v = object->u.vehicle.parent;
-					break;
-				case 0x03: { // count back, starting at the first vehicle in this chain of vehicles with the same ID, as for vehicle variable 41
-					const Vehicle *self = object->u.vehicle.self;
-					for (const Vehicle *u = self->First(); u != self; u = u->Next()) {
-						if (u->engine_type != self->engine_type) {
-							v = NULL;
-						} else {
-							if (v == NULL) v = u;
-						}
-					}
-					if (v == NULL) v = self;
-					break;
-				}
-			}
-			return v->Move(count);
-		}
-	}
+	return this->v == NULL ? 0 : this->v->random_bits;
 }
 
-
-static uint32 VehicleGetRandomBits(const ResolverObject *object)
+/* virtual */ uint32 VehicleScopeResolver::GetTriggers() const
 {
-	return GRV(object) == NULL ? 0 : GRV(object)->random_bits;
+	return this->v == NULL ? 0 : this->v->waiting_triggers;
 }
 
-
-static uint32 VehicleGetTriggers(const ResolverObject *object)
-{
-	return GRV(object) == NULL ? 0 : GRV(object)->waiting_triggers;
-}
-
-
-static void VehicleSetTriggers(const ResolverObject *object, int triggers)
+/* virtual */ void VehicleScopeResolver::SetTriggers(int triggers) const
 {
 	/* Evil cast to get around const-ness. This used to be achieved by an
 	 * innocent looking function pointer cast... Currently I cannot see a
 	 * way of avoiding this without removing consts deep within gui code.
 	 */
-	Vehicle *v = const_cast<Vehicle *>(GRV(object));
+	Vehicle *v = const_cast<Vehicle *>(this->v);
 
 	/* This function must only be called when processing triggers -- any
 	 * other time is an error. */
-	assert(object->trigger != 0);
+	assert(this->ro->trigger != 0);
 
 	if (v != NULL) v->waiting_triggers = triggers;
 }
 
+
+/* virtual */ ScopeResolver *VehicleResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
+{
+	switch (scope) {
+		case VSG_SCOPE_SELF:   return &this->self_scope;
+		case VSG_SCOPE_PARENT: return &this->parent_scope;
+		case VSG_SCOPE_RELATIVE: {
+			int32 count = GB(relative, 0, 4);
+			if (this->self_scope.v != NULL && (relative != this->cached_relative_count || count == 0)) {
+				/* Note: This caching only works as long as the VSG_SCOPE_RELATIVE cannot be used in
+				 *       VarAct2 with procedure calls. */
+				if (count == 0) count = GetRegister(0x100);
+
+				const Vehicle *v = NULL;
+				switch (GB(relative, 6, 2)) {
+					default: NOT_REACHED();
+					case 0x00: // count back (away from the engine), starting at this vehicle
+						v = this->self_scope.v;
+						break;
+					case 0x01: // count forward (toward the engine), starting at this vehicle
+						v = this->self_scope.v;
+						count = -count;
+						break;
+					case 0x02: // count back, starting at the engine
+						v = this->parent_scope.v;
+						break;
+					case 0x03: { // count back, starting at the first vehicle in this chain of vehicles with the same ID, as for vehicle variable 41
+						const Vehicle *self = this->self_scope.v;
+						for (const Vehicle *u = self->First(); u != self; u = u->Next()) {
+							if (u->engine_type != self->engine_type) {
+								v = NULL;
+							} else {
+								if (v == NULL) v = u;
+							}
+						}
+						if (v == NULL) v = self;
+						break;
+					}
+				}
+				this->relative_scope.SetVehicle(v->Move(count));
+			}
+			return &this->relative_scope;
+		}
+		default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+	}
+}
 
 /**
  * Determines the livery of an engine.
@@ -464,7 +463,7 @@ static uint32 PositionHelper(const Vehicle *v, bool consecutive)
 	return chain_before | chain_after << 8 | (chain_before + chain_after + consecutive) << 16;
 }
 
-static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte variable, uint32 parameter, bool *available)
+static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object, byte variable, uint32 parameter, bool *available)
 {
 	/* Calculated vehicle parameters */
 	switch (variable) {
@@ -547,7 +546,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			/* Unlike everywhere else the cargo translation table is only used since grf version 8, not 7.
 			 * Note: The grffile == NULL case only happens if this function is called for default vehicles.
 			 *       And this is only done by CheckCaches(). */
-			const GRFFile *grffile = object->grffile;
+			const GRFFile *grffile = object->ro->grffile;
 			uint8 common_bitnum = (common_cargo_type == CT_INVALID) ? 0xFF :
 				(grffile == NULL || grffile->grf_version < 8) ? CargoSpec::Get(common_cargo_type)->bitnum : grffile->cargo_map[common_cargo_type];
 
@@ -618,7 +617,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		case 0x4A: {
 			if (v->type != VEH_TRAIN) return 0;
 			RailType rt = GetTileRailType(v->tile);
-			return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->grffile);
+			return (HasPowerOnRail(Train::From(v)->railtype, rt) ? 0x100 : 0) | GetReverseRailTypeTranslation(rt, object->ro->grffile);
 		}
 
 		case 0x4B: // Long date of last service
@@ -644,8 +643,8 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 			if (!v->IsGroundVehicle() || parameter == 0x61) return 0;
 
 			/* Only allow callbacks that don't change properties to avoid circular dependencies. */
-			if (object->callback == CBID_NO_CALLBACK || object->callback == CBID_RANDOM_TRIGGER || object->callback == CBID_TRAIN_ALLOW_WAGON_ATTACH ||
-					object->callback == CBID_VEHICLE_START_STOP_CHECK || object->callback == CBID_VEHICLE_32DAY_CALLBACK || object->callback == CBID_VEHICLE_COLOUR_MAPPING) {
+			if (object->ro->callback == CBID_NO_CALLBACK || object->ro->callback == CBID_RANDOM_TRIGGER || object->ro->callback == CBID_TRAIN_ALLOW_WAGON_ATTACH ||
+					object->ro->callback == CBID_VEHICLE_START_STOP_CHECK || object->ro->callback == CBID_VEHICLE_32DAY_CALLBACK || object->ro->callback == CBID_VEHICLE_COLOUR_MAPPING) {
 				Vehicle *u = v->Move((int32)GetRegister(0x10F));
 				if (u == NULL) return 0;
 
@@ -757,7 +756,7 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 		case 0x1C: return v->y_pos;
 		case 0x1D: return GB(v->y_pos, 8, 8);
 		case 0x1E: return v->z_pos;
-		case 0x1F: return object->u.vehicle.info_view ? DIR_W : v->direction;
+		case 0x1F: return object->info_view ? DIR_W : v->direction;
 		case 0x28: return 0; // cur_image is a potential desyncer due to Action1 in static NewGRFs.
 		case 0x29: return 0; // cur_image is a potential desyncer due to Action1 in static NewGRFs.
 		case 0x32: return v->vehstatus;
@@ -872,17 +871,15 @@ static uint32 VehicleGetVariable(Vehicle *v, const ResolverObject *object, byte 
 	return UINT_MAX;
 }
 
-static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
+/* virtual */ uint32 VehicleScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
-	Vehicle *v = const_cast<Vehicle*>(GRV(object));
-
-	if (v == NULL) {
+	if (this->v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return GetCompanyInfo(_current_company, LiveryHelper(object->u.vehicle.self_type, NULL)); // Owner information
+			case 0x43: return GetCompanyInfo(_current_company, LiveryHelper(this->self_type, NULL)); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x47: { // Vehicle cargo info
-				const Engine *e = Engine::Get(object->u.vehicle.self_type);
+				const Engine *e = Engine::Get(this->self_type);
 				CargoID cargo_type = e->GetDefaultCargoType();
 				if (cargo_type != CT_INVALID) {
 					const CargoSpec *cs = CargoSpec::Get(cargo_type);
@@ -891,7 +888,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, ui
 					return 0x000000FF;
 				}
 			}
-			case 0x48: return Engine::Get(object->u.vehicle.self_type)->flags; // Vehicle Type Info
+			case 0x48: return Engine::Get(this->self_type)->flags; // Vehicle Type Info
 			case 0x49: return _cur_year; // 'Long' format build year
 			case 0x4B: return _date; // Long date of last service
 			case 0x92: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF); // Date of last service
@@ -905,13 +902,13 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, ui
 		return UINT_MAX;
 	}
 
-	return VehicleGetVariable(v, object, variable, parameter, available);
+	return VehicleGetVariable(const_cast<Vehicle*>(this->v), this, variable, parameter, available);
 }
 
 
-static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
+/* virtual */ const SpriteGroup *VehicleResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	const Vehicle *v = object->u.vehicle.self;
+	const Vehicle *v = this->self_scope.v;
 
 	if (v == NULL) {
 		if (group->num_loading > 0) return group->loading[0];
@@ -931,30 +928,34 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	return in_motion ? group->loaded[set] : group->loading[set];
 }
 
-
-static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type, const Vehicle *v)
+VehicleScopeResolver::VehicleScopeResolver(ResolverObject *ro, EngineID engine_type, const Vehicle *v, bool info_view)
+		: ScopeResolver(ro)
 {
-	res->GetRandomBits = &VehicleGetRandomBits;
-	res->GetTriggers   = &VehicleGetTriggers;
-	res->SetTriggers   = &VehicleSetTriggers;
-	res->GetVariable   = &VehicleGetVariable;
-	res->ResolveRealMethod = &VehicleResolveReal;
-
-	res->u.vehicle.self   = v;
-	res->u.vehicle.parent = (v != NULL) ? v->First() : v;
-
-	res->u.vehicle.self_type = engine_type;
-	res->u.vehicle.info_view = false;
-
-	res->callback        = CBID_NO_CALLBACK;
-	res->callback_param1 = 0;
-	res->callback_param2 = 0;
-	res->ResetState();
-
-	const Engine *e = Engine::Get(engine_type);
-	res->grffile         = (e != NULL ? e->GetGRF() : NULL);
+	this->v = v;
+	this->self_type = engine_type;
+	this->info_view = info_view;
 }
 
+/**
+ * Get the grf file associated with an engine type.
+ * @param engine_type Engine to query.
+ * @return grf file associated with the engine.
+ */
+static const GRFFile *GetEngineGrfFile(EngineID engine_type)
+{
+	const Engine *e = Engine::Get(engine_type);
+	return (e != NULL) ? e->GetGRF() : NULL;
+}
+
+VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle *v, bool info_view,
+		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+	: ResolverObject(GetEngineGrfFile(engine_type), callback, callback_param1, callback_param2),
+	self_scope(this, engine_type, v, info_view),
+	parent_scope(this, engine_type, ((v != NULL) ? v->First() : v), info_view),
+	relative_scope(this, engine_type, v, info_view),
+	cached_relative_count(0)
+{
+}
 
 /**
  * Retrieve the SpriteGroup for the specified vehicle.
@@ -1001,14 +1002,8 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction, EngineImageType image_type)
 {
-	const SpriteGroup *group;
-	ResolverObject object;
-
-	NewVehicleResolver(&object, engine, v);
-
-	object.callback_param1 = image_type;
-
-	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v), &object);
+	VehicleResolverObject object(engine, v, false, CBID_NO_CALLBACK, image_type);
+	const SpriteGroup *group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
 
 	return group->GetResult() + (direction % group->GetNumResults());
@@ -1023,13 +1018,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Aircraft *v, bool info_vi
 	assert(e->type == VEH_AIRCRAFT);
 	assert(!(e->u.air.subtype & AIR_CTOL));
 
-	ResolverObject object;
-
-	NewVehicleResolver(&object, engine, v);
-
-	object.callback_param1 = image_type;
-	object.u.vehicle.info_view = info_view;
-
+	VehicleResolverObject object(engine, v, info_view, CBID_NO_CALLBACK, image_type);
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = SpriteGroup::Resolve(group, &object);
 
@@ -1063,16 +1052,8 @@ bool UsesWagonOverride(const Vehicle *v)
  */
 uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
-	const SpriteGroup *group;
-	ResolverObject object;
-
-	NewVehicleResolver(&object, engine, v);
-
-	object.callback        = callback;
-	object.callback_param1 = param1;
-	object.callback_param2 = param2;
-
-	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
+	VehicleResolverObject object(engine, v, false, callback, param1, param2);
+	const SpriteGroup *group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -1090,18 +1071,10 @@ uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, Eng
  */
 uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
 {
-	const SpriteGroup *group;
-	ResolverObject object;
+	VehicleResolverObject object(engine, v, false, callback, param1, param2);
+	object.parent_scope.SetVehicle(parent);
 
-	NewVehicleResolver(&object, engine, v);
-
-	object.callback        = callback;
-	object.callback_param1 = param1;
-	object.callback_param2 = param2;
-
-	object.u.vehicle.parent = parent;
-
-	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -1126,21 +1099,16 @@ uint GetEngineProperty(EngineID engine, PropertyID property, uint orig_value, co
 
 static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
 {
-	const SpriteGroup *group;
-	ResolverObject object;
-	byte new_random_bits;
-
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != NULL);
 
-	NewVehicleResolver(&object, v->engine_type, v);
-	object.callback = CBID_RANDOM_TRIGGER;
+	VehicleResolverObject object(v->engine_type, v, false, CBID_RANDOM_TRIGGER);
 	object.trigger = trigger;
 
-	group = SpriteGroup::Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
 	if (group == NULL) return;
 
-	new_random_bits = Random();
+	byte new_random_bits = Random();
 	uint32 reseed = object.GetReseedSum(); // The scope only affects triggers, not the reseeding
 	v->random_bits &= ~reseed;
 	v->random_bits |= (first ? new_random_bits : base_random_bits) & reseed;
@@ -1296,25 +1264,12 @@ void CommitVehicleListOrderChanges()
 }
 
 /**
- * Resolve an engine's spec and such so we can get a variable.
- * @param ro    The resolver object to fill.
- * @param index The vehicle to get the data from.
- */
-void GetVehicleResolver(ResolverObject *ro, uint index)
-{
-	Vehicle *v = Vehicle::Get(index);
-	NewVehicleResolver(ro, v->engine_type, v);
-}
-
-/**
  * Fill the grf_cache of the given vehicle.
  * @param v The vehicle to fill the cache for.
  */
 void FillNewGRFVehicleCache(const Vehicle *v)
 {
-	ResolverObject ro;
-	memset(&ro, 0, sizeof(ro));
-	GetVehicleResolver(&ro, v->index);
+	VehicleResolverObject ro(v->engine_type, v);
 
 	/* These variables we have to check; these are the ones with a cache. */
 	static const int cache_entries[][2] = {
