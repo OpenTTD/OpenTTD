@@ -153,7 +153,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 	}
 
 	if (v->index == selection) {
-		DrawFrameRect((rtl ? px : left) - 1, y - 1, (rtl ? px : right) - 1, y + 12, COLOUR_WHITE, FR_BORDERONLY);
+		DrawFrameRect((rtl ? px : 0), 0, (rtl ? max_width : px) - 1, 12, COLOUR_WHITE, FR_BORDERONLY);
 	}
 
 	_cur_dpi = old_dpi;
