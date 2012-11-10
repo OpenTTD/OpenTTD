@@ -16,6 +16,35 @@
 #include "station_map.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
+#include "newgrf_spritegroup.h"
+
+struct AirportTileScopeResolver : public ScopeResolver {
+	struct Station *st;  ///< Station of the airport for which the callback is run, or \c NULL for build gui.
+	byte airport_id;     ///< Type of airport for which the callback is run.
+	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
+
+	AirportTileScopeResolver(ResolverObject *ro, const AirportTileSpec *ats, TileIndex tile, Station *st);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+};
+
+struct AirportTileResolverObject : public ResolverObject {
+	AirportTileScopeResolver tiles_scope;
+
+	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF: return &tiles_scope;
+			default: return &this->default_scope; // XXX return ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 /**
  * Defines the data structure of each indivudual tile of an airport.
