@@ -143,9 +143,10 @@ TempScopeResolver::TempScopeResolver(ResolverObject *ro) : ScopeResolver(ro) {}
 	if (this->ro->StorePSA != NULL) this->ro->StorePSA(this->ro, reg, value);
 }
 
-ResolverObject::ResolverObject() : temp_scope(this) {} // XXX Temporary
+ResolverObject::ResolverObject() : default_scope(this), temp_scope(this) {} // XXX Temporary
 
-ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2) : temp_scope(this)
+ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+		: default_scope(this), temp_scope(this)
 {
 	this->callback = callback;
 	this->callback_param1 = callback_param1;

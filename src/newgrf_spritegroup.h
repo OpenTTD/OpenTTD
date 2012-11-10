@@ -333,6 +333,7 @@ struct ResolverObject {
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 	virtual ~ResolverObject();
 
+	ScopeResolver default_scope; ///< Default implementation of the grf scope.
 	TempScopeResolver temp_scope; ///< Temporary scope resolver to refer back to the methods of #ResolverObject.
 
 	CallbackID callback;

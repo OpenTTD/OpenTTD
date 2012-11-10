@@ -12,7 +12,18 @@
 #include "stdafx.h"
 #include "debug.h"
 #include "town.h"
-#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
+
+TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly) : ScopeResolver(ro)
+{
+	this->t = t;
+	this->readonly = readonly;
+}
+
+/* virtual */ uint32 TownScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
+{
+	return TownGetVariable(variable, parameter, available, this->t, this->ro->grffile);
+}
 
 /**
  * This function implements the town variables that newGRF defines.
@@ -126,6 +137,12 @@ uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t
 	return UINT_MAX;
 }
 
+/* virtual */ void TownScopeResolver::StorePSA(uint pos, int32 value)
+{
+	if (this->readonly) return;
+	TownStorePSA(this->t, this->ro->grffile, pos, value);
+}
+
 /**
  * Store a value in town persistent storage.
  * @param t Town owning the persistent storage.
@@ -162,3 +179,9 @@ void TownStorePSA(Town *t, const GRFFile *caller_grffile, uint pos, int32 value)
 	psa->StoreValue(pos, value);
 	t->psa_list.push_back(psa);
 }
+
+TownResolverObject::TownResolverObject(const struct GRFFile *grffile, Town *t, bool readonly)
+		: ResolverObject(grffile), town_scope(this, t, readonly)
+{
+}
+
