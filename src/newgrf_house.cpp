@@ -423,7 +423,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->GetTriggers   = HouseGetTriggers;
 	res->SetTriggers   = HouseSetTriggers;
 	res->GetVariable   = HouseGetVariable;
-	res->ResolveReal   = HouseResolveReal;
+	res->ResolveRealMethod = HouseResolveReal;
 	res->StorePSA      = HouseStorePSA;
 
 	res->u.house.tile     = tile;

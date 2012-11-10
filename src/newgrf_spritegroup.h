@@ -301,8 +301,40 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 	uint8 again;
 };
 
+struct ResolverObject;
+
+struct ScopeResolver {
+	ResolverObject *ro;
+
+	ScopeResolver(ResolverObject *ro);
+	virtual ~ScopeResolver();
+
+	virtual uint32 GetRandomBits() const;
+	virtual uint32 GetTriggers() const;
+	virtual void SetTriggers(int triggers) const;
+
+	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	virtual void StorePSA(uint reg, int32 value);
+};
+
+struct TempScopeResolver : public ScopeResolver {
+	TempScopeResolver(ResolverObject *ro);
+
+	virtual uint32 GetRandomBits() const;
+	virtual uint32 GetTriggers() const;
+	virtual void SetTriggers(int triggers) const;
+
+	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	virtual void StorePSA(uint reg, int32 value);
+};
 
 struct ResolverObject {
+	ResolverObject();
+	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+	virtual ~ResolverObject();
+
+	TempScopeResolver temp_scope; ///< Temporary scope resolver to refer back to the methods of #ResolverObject.
+
 	CallbackID callback;
 	uint32 callback_param1;
 	uint32 callback_param2;
@@ -382,8 +414,12 @@ struct ResolverObject {
 	uint32 (*GetTriggers)(const struct ResolverObject*);
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject *object, byte variable, uint32 parameter, bool *available);
-	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const RealSpriteGroup*);
+	const SpriteGroup *(*ResolveRealMethod)(const struct ResolverObject*, const RealSpriteGroup*);
 	void (*StorePSA)(struct ResolverObject*, uint, int32);
+
+	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+
+	virtual ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0);
 
 	/**
 	 * Returns the OR-sum of all bits that need reseeding

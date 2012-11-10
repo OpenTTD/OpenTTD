@@ -130,7 +130,7 @@ static inline void NewGenericResolver(ResolverObject *res, bool ai_callback)
 	res->GetTriggers   = &GenericCallbackGetTriggers;
 	res->SetTriggers   = &GenericCallbackSetTriggers;
 	res->GetVariable   = ai_callback ? &GenericAiCallbackGetVariable : &GenericCallbackGetVariable;
-	res->ResolveReal   = &GenericCallbackResolveReal;
+	res->ResolveRealMethod = &GenericCallbackResolveReal;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;

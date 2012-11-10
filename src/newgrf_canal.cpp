@@ -82,7 +82,7 @@ static void NewCanalResolver(ResolverObject *res, TileIndex tile, const GRFFile 
 	res->GetTriggers   = &CanalGetTriggers;
 	res->SetTriggers   = &CanalSetTriggers;
 	res->GetVariable   = &CanalGetVariable;
-	res->ResolveReal   = &CanalResolveReal;
+	res->ResolveRealMethod = &CanalResolveReal;
 
 	res->u.canal.tile = tile;
 

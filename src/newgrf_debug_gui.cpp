@@ -162,7 +162,7 @@ public:
 		ResolverObject ro;
 		memset(&ro, 0, sizeof(ro));
 		this->Resolve(&ro, index);
-		return ro.GetVariable(&ro, var, param, avail);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
 	}
 
 	/**

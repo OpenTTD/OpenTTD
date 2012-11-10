@@ -57,7 +57,7 @@ static void NewCargoResolver(ResolverObject *res, const CargoSpec *cs)
 	res->GetTriggers   = &CargoGetTriggers;
 	res->SetTriggers   = &CargoSetTriggers;
 	res->GetVariable   = &CargoGetVariable;
-	res->ResolveReal   = &CargoResolveReal;
+	res->ResolveRealMethod = &CargoResolveReal;
 
 	res->u.cargo.cs = cs;
 

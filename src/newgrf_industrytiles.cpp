@@ -176,7 +176,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->GetTriggers   = IndustryTileGetTriggers;
 	res->SetTriggers   = IndustryTileSetTriggers;
 	res->GetVariable   = IndustryTileGetVariable;
-	res->ResolveReal   = IndustryTileResolveReal;
+	res->ResolveRealMethod = IndustryTileResolveReal;
 	res->StorePSA      = IndustryTileStorePSA;
 
 	res->u.industry.tile = tile;

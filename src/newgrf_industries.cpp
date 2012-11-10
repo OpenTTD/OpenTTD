@@ -410,7 +410,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->GetTriggers   = IndustryGetTriggers;
 	res->SetTriggers   = IndustrySetTriggers;
 	res->GetVariable   = IndustryGetVariable;
-	res->ResolveReal   = IndustryResolveReal;
+	res->ResolveRealMethod = IndustryResolveReal;
 	res->StorePSA      = IndustryStorePSA;
 
 	res->u.industry.tile = tile;

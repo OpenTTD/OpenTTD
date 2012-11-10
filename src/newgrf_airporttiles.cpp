@@ -226,7 +226,7 @@ static void AirportTileResolver(ResolverObject *res, const AirportTileSpec *ats,
 	res->GetTriggers   = NULL;
 	res->SetTriggers   = NULL;
 	res->GetVariable   = AirportTileGetVariable;
-	res->ResolveReal   = AirportTileResolveReal;
+	res->ResolveRealMethod = AirportTileResolveReal;
 	res->StorePSA      = NULL;
 
 	assert(st != NULL);

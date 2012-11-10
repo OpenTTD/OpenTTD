@@ -550,7 +550,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->GetTriggers   = StationGetTriggers;
 	res->SetTriggers   = StationSetTriggers;
 	res->GetVariable   = StationGetVariable;
-	res->ResolveReal   = StationResolveReal;
+	res->ResolveRealMethod = StationResolveReal;
 	res->StorePSA      = StationStorePSA;
 
 	res->u.station.st       = st;

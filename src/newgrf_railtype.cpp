@@ -83,7 +83,7 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, Tile
 	res->GetTriggers   = &RailTypeGetTriggers;
 	res->SetTriggers   = &RailTypeSetTriggers;
 	res->GetVariable   = &RailTypeGetVariable;
-	res->ResolveReal   = &RailTypeResolveReal;
+	res->ResolveRealMethod = &RailTypeResolveReal;
 
 	res->u.routes.tile = tile;
 	res->u.routes.context = context;

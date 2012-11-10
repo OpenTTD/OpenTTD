@@ -398,7 +398,7 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, Objec
 	res->GetTriggers   = ObjectGetTriggers;
 	res->SetTriggers   = ObjectSetTriggers;
 	res->GetVariable   = ObjectGetVariable;
-	res->ResolveReal   = ObjectResolveReal;
+	res->ResolveRealMethod = ObjectResolveReal;
 	res->StorePSA      = ObjectStorePSA;
 
 	res->u.object.o    = o;

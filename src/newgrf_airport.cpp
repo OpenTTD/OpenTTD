@@ -217,7 +217,7 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->GetTriggers   = AirportGetTriggers;
 	res->SetTriggers   = AirportSetTriggers;
 	res->GetVariable   = AirportGetVariable;
-	res->ResolveReal   = AirportResolveReal;
+	res->ResolveRealMethod = AirportResolveReal;
 	res->StorePSA      = AirportStorePSA;
 
 	res->u.airport.st         = st;
