@@ -390,11 +390,6 @@ struct ResolverObject {
 			byte layout;                   ///< Layout of the airport to build.
 			TileIndex tile;                ///< Tile for the callback, only valid for airporttile callbacks.
 		} airport;
-		struct {
-			struct Object *o;              ///< The object the callback is ran for.
-			TileIndex tile;                ///< The tile related to the object.
-			uint8 view;                    ///< The view of the object.
-		} object;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

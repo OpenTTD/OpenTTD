@@ -13,6 +13,8 @@
 #define NEWGRF_OBJECT_H
 
 #include "newgrf_callbacks.h"
+#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
 #include "economy_func.h"
 #include "date_type.h"
 #include "object_type.h"
@@ -88,6 +90,48 @@ struct ObjectSpec {
 
 	static const ObjectSpec *Get(ObjectType index);
 	static const ObjectSpec *GetByTile(TileIndex tile);
+};
+
+struct ObjectScopeResolver : public ScopeResolver {
+	struct Object *obj; ///< The object the callback is ran for.
+	TileIndex tile;     ///< The tile related to the object.
+	uint8 view;         ///< The view of the object.
+
+	ObjectScopeResolver(ResolverObject *ro, Object *obj, TileIndex tile, uint8 view = 0);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+};
+
+/** A resolver object to be used with feature 0F spritegroups. */
+struct ObjectResolverObject : public ResolverObject {
+	ObjectScopeResolver object_scope;
+	TownScopeResolver *town_scope;
+
+	ObjectResolverObject(const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view = 0,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0);
+	~ObjectResolverObject();
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF:
+				return &this->object_scope;
+
+			case VSG_SCOPE_PARENT: {
+				TownScopeResolver *tsr = this->GetTown();
+				if (tsr != NULL) return tsr;
+				/* FALL-THROUGH */
+			}
+
+			default: return &this->default_scope; // XXX return &ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+
+private:
+	TownScopeResolver *GetTown();
 };
 
 /** Struct containing information relating to station classes. */

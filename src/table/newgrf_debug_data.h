@@ -361,7 +361,12 @@ class NIHObject : public NIHelper {
 	const void *GetSpec(uint index) const                { return ObjectSpec::GetByTile(index); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT, INVALID_STRING_ID, index); }
 	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? ObjectSpec::GetByTile(index)->grf_prop.grffile->grfid : 0; }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetObjectResolver(ResolverObject *ro, uint index); GetObjectResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		ObjectResolverObject ro(ObjectSpec::GetByTile(index), Object::GetByTile(index), index);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 };
 
 static const NIFeature _nif_object = {
