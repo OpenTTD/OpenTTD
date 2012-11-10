@@ -18,9 +18,10 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 
+/** Scope resolver for houses. */
 struct HouseScopeResolver : public ScopeResolver {
-	HouseID house_id;
-	TileIndex tile;
+	HouseID house_id;              ///< Type of house being queried.
+	TileIndex tile;                ///< Tile of this house.
 	Town *town;                    ///< Town of this house.
 	bool not_yet_constructed;      ///< True for construction check.
 	uint16 initial_random_bits;    ///< Random bits during construction checks.

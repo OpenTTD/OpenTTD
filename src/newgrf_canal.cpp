@@ -18,8 +18,9 @@
 /** Table of canal 'feature' sprite groups */
 WaterFeature _water_feature[CF_END];
 
+/** Scope resolver of a canal tile. */
 struct CanalScopeResolver : public ScopeResolver {
-	TileIndex tile;
+	TileIndex tile; ///< Tile containing the canal.
 
 	CanalScopeResolver(ResolverObject *ro, TileIndex tile);
 
@@ -89,8 +90,12 @@ CanalScopeResolver::CanalScopeResolver(ResolverObject *ro, TileIndex tile) : Sco
 }
 
 /**
- * @param tile Tile index of canal.
+ * Canal resolver constructor.
  * @param grffile Grf file.
+ * @param tile Tile index of canal.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
  */
 CanalResolverObject::CanalResolverObject(const GRFFile *grffile, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)

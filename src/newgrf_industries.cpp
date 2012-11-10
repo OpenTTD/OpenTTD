@@ -404,6 +404,16 @@ static const GRFFile *GetGrffile(IndustryType type)
 	return (indspec != NULL) ? indspec->grf_prop.grffile : NULL;
 }
 
+/**
+ * Constructor of the industries resolver.
+ * @param tile %Tile owned by the industry.
+ * @param industry %Industry being resolved.
+ * @param type Type of the industry.
+ * @param random_bits Random bits of the new industry.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 IndustriesResolverObject::IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32 random_bits,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(GetGrffile(type), callback, callback_param1, callback_param2),
@@ -436,6 +446,14 @@ TownScopeResolver *IndustriesResolverObject::GetTown()
 	return this->town_scope;
 }
 
+/**
+ * Scope resolver for industries.
+ * @param ro Surrounding resolver.
+ * @param tile %Tile owned by the industry.
+ * @param industry %Industry being resolved.
+ * @param type Type of the industry.
+ * @param random_bits Random bits of the new industry.
+ */
 IndustriesScopeResolver::IndustriesScopeResolver(ResolverObject *ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits)
 	: ScopeResolver(ro)
 {

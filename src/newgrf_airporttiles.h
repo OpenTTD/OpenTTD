@@ -18,8 +18,9 @@
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 
+/** Scope resolver for handling the tiles of an airport. */
 struct AirportTileScopeResolver : public ScopeResolver {
-	struct Station *st;  ///< Station of the airport for which the callback is run, or \c NULL for build gui.
+	struct Station *st;  ///< %Station of the airport for which the callback is run, or \c NULL for build gui.
 	byte airport_id;     ///< Type of airport for which the callback is run.
 	TileIndex tile;      ///< Tile for the callback, only valid for airporttile callbacks.
 
@@ -29,8 +30,9 @@ struct AirportTileScopeResolver : public ScopeResolver {
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 };
 
+/** Resolver for tiles of an airport. */
 struct AirportTileResolverObject : public ResolverObject {
-	AirportTileScopeResolver tiles_scope;
+	AirportTileScopeResolver tiles_scope; ///< Scope resolver for the tiles.
 
 	AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

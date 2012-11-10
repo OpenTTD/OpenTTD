@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "newgrf_spritegroup.h"
 
+/** Resolver of cargo. */
 struct CargoResolverObject : public ResolverObject {
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
@@ -29,11 +30,23 @@ struct CargoResolverObject : public ResolverObject {
 	return NULL;
 }
 
+/**
+ * Constructor of the cargo resolver.
+ * @param cs Cargo being resolved.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2)
 {
 }
 
+/**
+ * Get the custom sprite for the given cargo type.
+ * @param cs Cargo being queried.
+ * @return Custom sprite to draw, or \c 0 if not available.
+ */
 SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 {
 	CargoResolverObject object(cs);

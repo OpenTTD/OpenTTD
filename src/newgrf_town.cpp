@@ -14,6 +14,12 @@
 #include "town.h"
 #include "newgrf_town.h"
 
+/**
+ * Resolver of a town scope.
+ * @param ro Surrounding resolver.
+ * @param t %Town of the scope.
+ * @param readonly Scope may change persistent storage of the town.
+ */
 TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly) : ScopeResolver(ro)
 {
 	this->t = t;
@@ -154,6 +160,12 @@ TownScopeResolver::TownScopeResolver(ResolverObject *ro, Town *t, bool readonly)
 	t->psa_list.push_back(psa);
 }
 
+/**
+ * Resolver for a town.
+ * @param grffile NewGRF file associated with the town.
+ * @param t %Town of the scope.
+ * @param readonly Scope may change persistent storage of the town.
+ */
 TownResolverObject::TownResolverObject(const struct GRFFile *grffile, Town *t, bool readonly)
 		: ResolverObject(grffile), town_scope(this, t, readonly)
 {

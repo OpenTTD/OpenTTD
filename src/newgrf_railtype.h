@@ -16,7 +16,7 @@
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 
-
+/** Resolver for the railtype scope. */
 struct RailTypeScopeResolver : public ScopeResolver {
 	TileIndex tile;      ///< Tracktile. For track on a bridge this is the southern bridgehead.
 	TileContext context; ///< Are we resolving sprites for the upper halftile, or on a bridge?
@@ -29,7 +29,7 @@ struct RailTypeScopeResolver : public ScopeResolver {
 
 /** Resolver object for rail types. */
 struct RailTypeResolverObject : public ResolverObject {
-	RailTypeScopeResolver railtype_scope;
+	RailTypeScopeResolver railtype_scope; ///< Resolver for the railtype scope.
 
 	RailTypeResolverObject(TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1 = 0, uint32 param2 = 0);
 

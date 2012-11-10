@@ -15,13 +15,15 @@
 #include "town_type.h"
 #include "newgrf_spritegroup.h"
 
-/* Currently there is no direct town resolver; we only need to get town
- * variable results from inside stations, house tiles and industries,
- * and to check the town's persistent storage.
+/**
+ * Scope resolver for a town.
+ * @note Currently there is no direct town resolver; we only need to get town
+ *       variable results from inside stations, house tiles and industries,
+ *       and to check the town's persistent storage.
  */
 struct TownScopeResolver : public ScopeResolver {
-	Town *t;
-	bool readonly;
+	Town *t;       ///< %Town of the scope.
+	bool readonly; ///< When set, persistent storage of the town is read-only,
 
 	TownScopeResolver(ResolverObject *ro, Town *t, bool readonly);
 
@@ -29,8 +31,9 @@ struct TownScopeResolver : public ScopeResolver {
 	virtual void StorePSA(uint reg, int32 value);
 };
 
+/** Resolver of town properties. */
 struct TownResolverObject : public ResolverObject {
-	TownScopeResolver town_scope;
+	TownScopeResolver town_scope; ///< Scope resolver specific for towns.
 
 	TownResolverObject(const struct GRFFile *grffile, Town *t, bool readonly);
 

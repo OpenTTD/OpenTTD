@@ -116,6 +116,13 @@ bool NewGRFClass<Tspec, Tid, Tmax>::IsUIAvailable(uint index) const
 
 INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX)
 
+/**
+ * Constructor of an object scope resolver.
+ * @param ro Surrounding resolver.
+ * @param obj Object being resolved.
+ * @param tile %Tile of the object.
+ * @param view View of the object.
+ */
 ObjectScopeResolver::ObjectScopeResolver(ResolverObject *ro, Object *obj, TileIndex tile, uint8 view)
 		: ScopeResolver(ro)
 {
@@ -355,6 +362,15 @@ static const SpriteGroup *GetObjectSpriteGroup(const ObjectSpec *spec, const Obj
 
 }
 
+/**
+ * Constructor of the object resolver.
+ * @param obj Object being resolved.
+ * @param tile %Tile of the object.
+ * @param view View of the object.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 ObjectResolverObject::ObjectResolverObject(const ObjectSpec *spec, Object *obj, TileIndex tile, uint8 view,
 		CallbackID callback, uint32 param1, uint32 param2)
 	: ResolverObject(spec->grf_prop.grffile, callback, param1, param2), object_scope(this, obj, tile, view)

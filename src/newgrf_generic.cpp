@@ -134,11 +134,20 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
 	return group->loaded[0];
 }
 
-
+/**
+ * Generic resolver.
+ * @param ai_callback Callback comes from the AI.
+ * @param callback Callback ID.
+ */
 GenericResolverObject::GenericResolverObject(bool ai_callback, CallbackID callback) : ResolverObject(NULL, callback), generic_scope(this, ai_callback)
 {
 }
 
+/**
+ * Generic scope resolver.
+ * @param ro Surrounding resolver.
+ * @param ai_callback Callback comes from the AI.
+ */
 GenericScopeResolver::GenericScopeResolver(ResolverObject *ro, bool ai_callback) : ScopeResolver(ro)
 {
 	this->cargo_type = 0;

@@ -20,10 +20,11 @@
 #include "gfx_type.h"
 #include "newgrf_spritegroup.h"
 
+/** Resolver for a vehicle scope. */
 struct VehicleScopeResolver : public ScopeResolver {
-	const struct Vehicle *v;
-	EngineID self_type;
-	bool info_view;          ///< Indicates if the item is being drawn in an info window
+	const struct Vehicle *v; ///< The vehicle being resolved.
+	EngineID self_type;      ///< Type of the vehicle.
+	bool info_view;          ///< Indicates if the item is being drawn in an info window.
 
 	VehicleScopeResolver(ResolverObject *ro, EngineID engine_type, const Vehicle *v, bool info_view);
 
@@ -35,12 +36,13 @@ struct VehicleScopeResolver : public ScopeResolver {
 	/* virtual */ void SetTriggers(int triggers) const;
 };
 
+/** Resolver for a vehicle (chain) */
 struct VehicleResolverObject : public ResolverObject {
-	VehicleScopeResolver self_scope;
-	VehicleScopeResolver parent_scope;
+	VehicleScopeResolver self_scope;     ///< Scope resolver for the indicated vehicle.
+	VehicleScopeResolver parent_scope;   ///< Scope resolver for its parent vehicle.
 
-	VehicleScopeResolver relative_scope;
-	byte cached_relative_count;
+	VehicleScopeResolver relative_scope; ///< Scope resolver for an other vehicle in the chain.
+	byte cached_relative_count;          ///< Relative position of the other vehicle.
 
 	VehicleResolverObject(EngineID engine_type, const Vehicle *v, bool info_view = false,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

@@ -22,12 +22,13 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 
+/** Scope resolver for stations. */
 struct StationScopeResolver : public ScopeResolver {
-	TileIndex tile;
-	struct BaseStation *st;
-	const struct StationSpec *statspec;
-	CargoID cargo_type;
-	Axis axis;                     ///< Station axis, used only for the slope check callback.
+	TileIndex tile;                     ///< %Tile of the station.
+	struct BaseStation *st;             ///< Instance of the station.
+	const struct StationSpec *statspec; ///< Station (type) specification.
+	CargoID cargo_type;                 ///< Type of cargo of the station.
+	Axis axis;                          ///< Station axis, used only for the slope check callback.
 
 	StationScopeResolver(ResolverObject *ro, const StationSpec *statspec, BaseStation *st, TileIndex tile);
 
@@ -38,9 +39,10 @@ struct StationScopeResolver : public ScopeResolver {
 	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
 };
 
+/** Station resolver. */
 struct StationResolverObject : public ResolverObject {
-	StationScopeResolver station_scope;
-	TownScopeResolver *town_scope;
+	StationScopeResolver station_scope; ///< The station scope resolver.
+	TownScopeResolver *town_scope;      ///< The town scope resolver (created on the first call).
 
 	StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

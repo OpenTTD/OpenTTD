@@ -14,11 +14,12 @@
 
 #include "newgrf_town.h"
 
+/** Resolver for industry scopes. */
 struct IndustriesScopeResolver : public ScopeResolver {
-	TileIndex tile;
-	Industry *industry;
-	IndustryType type;
-	uint32 random_bits;       ///< Random bits of the new industry.
+	TileIndex tile;     ///< Tile owned by the industry.
+	Industry *industry; ///< %Industry being resolved.
+	IndustryType type;  ///< Type of the industry.
+	uint32 random_bits; ///< Random bits of the new industry.
 
 	IndustriesScopeResolver(ResolverObject *ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits = 0);
 
@@ -29,9 +30,10 @@ struct IndustriesScopeResolver : public ScopeResolver {
 	/* virtual */ void StorePSA(uint pos, int32 value);
 };
 
+/** Resolver for industries. */
 struct IndustriesResolverObject : public ResolverObject {
-	IndustriesScopeResolver industries_scope;
-	TownScopeResolver *town_scope;
+	IndustriesScopeResolver industries_scope; ///< Scope resolver for the industry.
+	TownScopeResolver *town_scope;            ///< Scope resolver for the associated town (if needed and available, else \c NULL).
 
 	IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32 random_bits = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

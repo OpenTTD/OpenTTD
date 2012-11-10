@@ -65,12 +65,26 @@
 	return NULL;
 }
 
+/**
+ * Constructor of the railtype scope resolvers.
+ * @param ro Surrounding resolver.
+ * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
+ * @param context Are we resolving sprites for the upper halftile, or on a bridge?
+ */
 RailTypeScopeResolver::RailTypeScopeResolver(ResolverObject *ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
 {
 	this->tile = tile;
 	this->context = context;
 }
 
+/**
+ * Resolver object for rail types.
+ * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
+ * @param context Are we resolving sprites for the upper halftile, or on a bridge?
+ * @param grffile The GRF to do the lookup for.
+ * @param param1 Extra parameter (first parameter of the callback, except railtypes do not have callbacks).
+ * @param param2 Extra parameter (second parameter of the callback, except railtypes do not have callbacks).
+ */
 RailTypeResolverObject::RailTypeResolverObject(TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1, uint32 param2)
 	: ResolverObject(grffile, CBID_NO_CALLBACK, param1, param2), railtype_scope(this, tile, context)
 {

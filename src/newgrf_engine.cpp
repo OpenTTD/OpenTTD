@@ -928,6 +928,13 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 	return in_motion ? group->loaded[set] : group->loading[set];
 }
 
+/**
+ * Scope resolver of a single vehicle.
+ * @param ro Surrounding resolver.
+ * @param engine_type Engine type
+ * @param v %Vehicle being resolved.
+ * @param info_view Indicates if the item is being drawn in an info window.
+ */
 VehicleScopeResolver::VehicleScopeResolver(ResolverObject *ro, EngineID engine_type, const Vehicle *v, bool info_view)
 		: ScopeResolver(ro)
 {
@@ -947,6 +954,15 @@ static const GRFFile *GetEngineGrfFile(EngineID engine_type)
 	return (e != NULL) ? e->GetGRF() : NULL;
 }
 
+/**
+ * Resolver of a vehicle (chain).
+ * @param engine_type Engine type
+ * @param v %Vehicle being resolved.
+ * @param info_view Indicates if the item is being drawn in an info window.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 VehicleResolverObject::VehicleResolverObject(EngineID engine_type, const Vehicle *v, bool info_view,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(GetEngineGrfFile(engine_type), callback, callback_param1, callback_param2),

@@ -523,6 +523,15 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject *object, byte variable, 
 	return group->loading[0];
 }
 
+/**
+ * Resolver for stations.
+ * @param statspec Station (type) specification.
+ * @param st Instance of the station.
+ * @param tile %Tile of the station.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseStation *st, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject((statspec != NULL ? statspec->grf_prop.grffile : NULL), callback, callback_param1, callback_param2),
@@ -537,6 +546,13 @@ StationResolverObject::~StationResolverObject()
 	delete this->town_scope;
 }
 
+/**
+ * Constructor for station scopes.
+ * @param ro Surrounding resolver.
+ * @param statspec Station (type) specification.
+ * @param st Instance of the station.
+ * @param tile %Tile of the station.
+ */
 StationScopeResolver::StationScopeResolver(ResolverObject *ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
 	: ScopeResolver(ro)
 {

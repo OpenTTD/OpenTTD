@@ -132,6 +132,15 @@ static const GRFFile *GetIndTileGrffile(IndustryGfx gfx)
 	return (its != NULL) ? its->grf_prop.grffile : NULL;
 }
 
+/**
+ * Constructor of the industry tiles scope resolver.
+ * @param gfx Graphics of the industry.
+ * @param tile %Tile of the industry.
+ * @param indus %Industry owning the tile.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(GetIndTileGrffile(gfx), callback, callback_param1, callback_param2),
@@ -140,6 +149,12 @@ IndustryTileResolverObject::IndustryTileResolverObject(IndustryGfx gfx, TileInde
 {
 }
 
+/**
+ * Constructor of the scope resolver for the industry tile.
+ * @param ro Surrounding resolver.
+ * @param industry %Industry owning the tile.
+ * @param tile %Tile of the industry.
+ */
 IndustryTileScopeResolver::IndustryTileScopeResolver(ResolverObject *ro, Industry *industry, TileIndex tile) : ScopeResolver(ro)
 {
 	this->industry = industry;

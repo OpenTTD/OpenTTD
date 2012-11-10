@@ -115,7 +115,13 @@ ScopeResolver::~ScopeResolver() {}
  */
 /* virtual */ void ScopeResolver::StorePSA(uint reg, int32 value) {}
 
-
+/**
+ * Resolver constructor.
+ * @param grffile NewGRF file asscoiated with the object (or \c NULL if none).
+ * @param callback Callback code being resolved (default value is #CBID_NO_CALLBACK).
+ * @param callback_param1 First parameter (var 10) of the callback (only used when \a callback is also set).
+ * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
+ */
 ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 		: default_scope(this)
 {
@@ -129,16 +135,21 @@ ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint
 
 ResolverObject::~ResolverObject() {}
 
+/**
+ * Get the real sprites of the grf.
+ * @param group Group to get.
+ * @return The available sprite group.
+ */
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
 	return NULL;
 }
 
 /**
- * Get a specific ScopeResolver.
+ * Get a resolver for the \a scope.
  * @param scope Scope to return.
  * @param relative Additional parameter for #VSG_SCOPE_RELATIVE.
- * @return ScopeResolver.
+ * @return The resolver for the requested scope.
  */
 /* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
 {

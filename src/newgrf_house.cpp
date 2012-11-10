@@ -29,7 +29,16 @@ static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
-
+/**
+ * Constructor of a house scope resolver.
+ * @param ro Surrounding resolver.
+ * @param house_id Houe type being queried.
+ * @param tile %Tile containing the house.
+ * @param town %Town containing the house.
+ * @param not_yet_constructed House is still under construction.
+ * @param initial_random_bits Random bits during construction checks.
+ * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
+ */
 HouseScopeResolver::HouseScopeResolver(ResolverObject *ro, HouseID house_id, TileIndex tile, Town *town,
 			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
 		: ScopeResolver(ro)
@@ -53,6 +62,18 @@ static const GRFFile *GetHouseSpecGrf(HouseID house_id)
 	return (hs != NULL) ? hs->grf_prop.grffile : NULL;
 }
 
+/**
+ * Construct a resolver for a house.
+ * @param house_id House to query.
+ * @param tile %Tile containing the house.
+ * @param town %Town containing the house.
+ * @param callback Callback ID.
+ * @param param1 First parameter (var 10) of the callback.
+ * @param param2 Second parameter (var 18) of the callback.
+ * @param not_yet_constructed House is still under construction.
+ * @param initial_random_bits Random bits during construction checks.
+ * @param watched_cargo_triggers Cargo types that triggered the watched cargo callback.
+ */
 HouseResolverObject::HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
 		CallbackID callback, uint32 param1, uint32 param2,
 		bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)

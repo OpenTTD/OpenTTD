@@ -17,6 +17,7 @@
 #include "station_base.h"
 #include "newgrf_class_func.h"
 
+/** Resolver for the airport scope. */
 struct AirportScopeResolver : public ScopeResolver {
 	struct Station *st; ///< Station of the airport for which the callback is run, or \c NULL for build gui.
 	byte airport_id;    ///< Type of airport for which the callback is run.
@@ -222,12 +223,30 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	this->st->airport.psa->StoreValue(pos, value);
 }
 
+/**
+ * Constructor of the airport resolver.
+ * @param tile %Tile for the callback, only valid for airporttile callbacks.
+ * @param st %Station of the airport for which the callback is run, or \c NULL for build gui.
+ * @param airport_id Type of airport for which the callback is run.
+ * @param layout Layout of the airport to build.
+ * @param callback Callback ID.
+ * @param param1 First parameter (var 10) of the callback.
+ * @param param2 Second parameter (var 18) of the callback.
+ */
 AirportResolverObject::AirportResolverObject(TileIndex tile, Station *st, byte airport_id, byte layout,
 		CallbackID callback, uint32 param1, uint32 param2)
 	: ResolverObject(AirportSpec::Get(airport_id)->grf_prop.grffile, callback, param1, param2), airport_scope(this, tile, st, airport_id, layout)
 {
 }
 
+/**
+ * Constructor of the scope resolver for an airport.
+ * @param ro Surrounding resolver.
+ * @param tile %Tile for the callback, only valid for airporttile callbacks.
+ * @param st %Station of the airport for which the callback is run, or \c NULL for build gui.
+ * @param airport_id Type of airport for which the callback is run.
+ * @param layout Layout of the airport to build.
+ */
 AirportScopeResolver::AirportScopeResolver(ResolverObject *ro, TileIndex tile, Station *st, byte airport_id, byte layout) : ScopeResolver(ro)
 {
 	this->st = st;

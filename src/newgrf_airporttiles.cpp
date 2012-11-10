@@ -204,12 +204,27 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 	return (this->st == NULL ? 0 : this->st->random_bits) | (this->tile == INVALID_TILE ? 0 : GetStationTileRandomBits(this->tile) << 16);
 }
 
+/**
+ * Constructor of the resolver for airport tiles.
+ * @param ats Specification of the airport tiles.
+ * @param tile %Tile for the callback, only valid for airporttile callbacks.
+ * @param st Station of the airport for which the callback is run, or \c NULL for build gui.
+ * @param callback Callback ID.
+ * @param callback_param1 First parameter (var 10) of the callback.
+ * @param callback_param2 Second parameter (var 18) of the callback.
+ */
 AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats, TileIndex tile, Station *st,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
 	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2), tiles_scope(this, ats, tile, st)
 {
 }
 
+/**
+ * Constructor of the scope resolver specific for airport tiles.
+ * @param ats Specification of the airport tiles.
+ * @param tile %Tile for the callback, only valid for airporttile callbacks.
+ * @param st Station of the airport for which the callback is run, or \c NULL for build gui.
+ */
 AirportTileScopeResolver::AirportTileScopeResolver(ResolverObject *ro, const AirportTileSpec *ats, TileIndex tile, Station *st) : ScopeResolver(ro)
 {
 	assert(st != NULL);

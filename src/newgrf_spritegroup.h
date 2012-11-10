@@ -303,8 +303,14 @@ struct IndustryProductionSpriteGroup : SpriteGroup {
 
 struct ResolverObject;
 
+/**
+ * Interface to query and set values specific to a single #VarSpriteGroupScope (action 2 scope).
+ *
+ * Multiple of these interfaces are combined into a #ResolverObject to allow access
+ * to different game entities from a #SpriteGroup-chain (action 1-2-3 chain).
+ */
 struct ScopeResolver {
-	ResolverObject *ro;
+	ResolverObject *ro; ///< Surrounding resolver object.
 
 	ScopeResolver(ResolverObject *ro);
 	virtual ~ScopeResolver();
@@ -317,15 +323,21 @@ struct ScopeResolver {
 	virtual void StorePSA(uint reg, int32 value);
 };
 
+/**
+ * Interface for #SpriteGroup-s to access the gamestate.
+ *
+ * Using this interface #SpriteGroup-chains (action 1-2-3 chains) can be resolved,
+ * to get the results of callbacks, rerandomisations or normal sprite lookups.
+ */
 struct ResolverObject {
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 	virtual ~ResolverObject();
 
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
 
-	CallbackID callback;
-	uint32 callback_param1;
-	uint32 callback_param2;
+	CallbackID callback;        ///< Callback being resolved.
+	uint32 callback_param1;     ///< First parameter (var 10) of the callback.
+	uint32 callback_param2;     ///< Second parameter (var 18) of the callback.
 
 	byte trigger;
 

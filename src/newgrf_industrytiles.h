@@ -16,9 +16,10 @@
 #include "newgrf_industries.h"
 #include "core/random_func.hpp"
 
+/** Resolver for the industry tiles scope. */
 struct IndustryTileScopeResolver : public ScopeResolver {
-	Industry *industry;
-	TileIndex tile;
+	Industry *industry; ///< Industry owning the tiles.
+	TileIndex tile;     ///< %Tile being resolved.
 
 	IndustryTileScopeResolver(ResolverObject *ro, Industry *industry, TileIndex tile);
 
@@ -28,9 +29,10 @@ struct IndustryTileScopeResolver : public ScopeResolver {
 	/* virtual */ void SetTriggers(int triggers) const;
 };
 
+/** Resolver for industry tiles. */
 struct IndustryTileResolverObject : public ResolverObject {
-	IndustryTileScopeResolver indtile_scope;
-	IndustriesScopeResolver ind_scope;
+	IndustryTileScopeResolver indtile_scope; ///< Scope resolver for the industry tile.
+	IndustriesScopeResolver ind_scope;       ///< Scope resolver for the industry owning the tile.
 
 	IndustryTileResolverObject(IndustryGfx gfx, TileIndex tile, Industry *indus,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);

@@ -92,6 +92,7 @@ struct ObjectSpec {
 	static const ObjectSpec *GetByTile(TileIndex tile);
 };
 
+/** Object scope resolver. */
 struct ObjectScopeResolver : public ScopeResolver {
 	struct Object *obj; ///< The object the callback is ran for.
 	TileIndex tile;     ///< The tile related to the object.
@@ -105,8 +106,8 @@ struct ObjectScopeResolver : public ScopeResolver {
 
 /** A resolver object to be used with feature 0F spritegroups. */
 struct ObjectResolverObject : public ResolverObject {
-	ObjectScopeResolver object_scope;
-	TownScopeResolver *town_scope;
+	ObjectScopeResolver object_scope; ///< The object scope resolver.
+	TownScopeResolver *town_scope;    ///< The town scope resolver (created on the first call).
 
 	ObjectResolverObject(const ObjectSpec *spec, Object *o, TileIndex tile, uint8 view = 0,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0);
