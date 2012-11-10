@@ -98,13 +98,6 @@ StationGfx GetTranslatedAirportTileID(StationGfx gfx)
 	return it->grf_prop.override == INVALID_AIRPORTTILE ? gfx : it->grf_prop.override;
 }
 
-
-/* virtual */ const SpriteGroup *AirportTileResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* AirportTile do not have 'real' groups. */
-	return NULL;
-}
-
 /**
  * Based on newhouses/newindustries equivalent, but adapted for airports.
  * @param parameter from callback. It's in fact a pair of coordinates

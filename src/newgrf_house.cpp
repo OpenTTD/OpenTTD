@@ -411,12 +411,6 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseI
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *HouseResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* Houses do not have 'real' groups */
-	return NULL;
-}
-
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile,
 		bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers)
 {

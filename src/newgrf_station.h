@@ -61,7 +61,7 @@ struct StationResolverObject : public ResolverObject {
 			}
 
 			default:
-				return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+				return ResolverObject::GetScope(scope, relative);
 		}
 	}
 

@@ -408,7 +408,7 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 			}
 			return &this->relative_scope;
 		}
-		default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		default: return ResolverObject::GetScope(scope, relative);
 	}
 }
 

@@ -160,13 +160,7 @@ public:
 	 * @param avail Return whether the variable is available.
 	 * @return The resolved variable's value.
 	 */
-	virtual uint Resolve(uint index, uint var, uint param, bool *avail) const
-	{
-		ResolverObject ro;
-		memset(&ro, 0, sizeof(ro));
-		this->Resolve(&ro, index);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
-	}
+	virtual uint Resolve(uint index, uint var, uint param, bool *avail) const = 0;
 
 	/**
 	 * Used to decide if the PSA needs a parameter or not.
@@ -200,14 +194,6 @@ public:
 	}
 
 protected:
-	/**
-	 * Actually execute the real resolving for a given (instance) index.
-	 * @param ro    The resolver object to fill with everything
-	 *              needed to be able to resolve a variable.
-	 * @param index The (instance) index of the to-be-resolved variable.
-	 */
-	virtual void Resolve(ResolverObject *ro, uint index) const {}
-
 	/**
 	 * Helper to make setting the strings easier.
 	 * @param string the string to actually draw.

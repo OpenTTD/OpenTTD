@@ -39,11 +39,9 @@ struct AirportTileResolverObject : public ResolverObject {
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &tiles_scope;
-			default: return &this->default_scope; // XXX return ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 };
 
 /**

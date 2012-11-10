@@ -41,7 +41,7 @@ struct AirportResolverObject : public ResolverObject {
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->airport_scope;
-			default: return &this->default_scope; // XXX return ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
 

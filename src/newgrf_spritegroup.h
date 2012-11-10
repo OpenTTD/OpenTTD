@@ -317,24 +317,11 @@ struct ScopeResolver {
 	virtual void StorePSA(uint reg, int32 value);
 };
 
-struct TempScopeResolver : public ScopeResolver {
-	TempScopeResolver(ResolverObject *ro);
-
-	virtual uint32 GetRandomBits() const;
-	virtual uint32 GetTriggers() const;
-	virtual void SetTriggers(int triggers) const;
-
-	virtual uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
-	virtual void StorePSA(uint reg, int32 value);
-};
-
 struct ResolverObject {
-	ResolverObject();
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 	virtual ~ResolverObject();
 
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
-	TempScopeResolver temp_scope; ///< Temporary scope resolver to refer back to the methods of #ResolverObject.
 
 	CallbackID callback;
 	uint32 callback_param1;
@@ -349,13 +336,6 @@ struct ResolverObject {
 	byte count;                 ///< Additional scope for RandomizedSpriteGroup
 
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
-
-	uint32 (*GetRandomBits)(const struct ResolverObject*);
-	uint32 (*GetTriggers)(const struct ResolverObject*);
-	void (*SetTriggers)(const struct ResolverObject*, int);
-	uint32 (*GetVariable)(const struct ResolverObject *object, byte variable, uint32 parameter, bool *available);
-	const SpriteGroup *(*ResolveRealMethod)(const struct ResolverObject*, const RealSpriteGroup*);
-	void (*StorePSA)(struct ResolverObject*, uint, int32);
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 

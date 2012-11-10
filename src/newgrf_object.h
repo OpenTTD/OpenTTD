@@ -124,11 +124,9 @@ struct ObjectResolverObject : public ResolverObject {
 				/* FALL-THROUGH */
 			}
 
-			default: return &this->default_scope; // XXX return &ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 
 private:
 	TownScopeResolver *GetTown();

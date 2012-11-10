@@ -18,10 +18,7 @@
 /* Currently there is no direct town resolver; we only need to get town
  * variable results from inside stations, house tiles and industries,
  * and to check the town's persistent storage.
- * XXX Remove the functions. */
-uint32 TownGetVariable(byte variable, uint32 parameter, bool *available, Town *t, const struct GRFFile *caller_grffile);
-void TownStorePSA(Town *t, const struct GRFFile *caller_grffile, uint pos, int32 value);
-
+ */
 struct TownScopeResolver : public ScopeResolver {
 	Town *t;
 	bool readonly;
@@ -41,7 +38,7 @@ struct TownResolverObject : public ResolverObject {
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &town_scope;
-			default: return &this->default_scope; // XXX return ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
 };

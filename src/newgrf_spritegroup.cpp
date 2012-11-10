@@ -116,37 +116,8 @@ ScopeResolver::~ScopeResolver() {}
 /* virtual */ void ScopeResolver::StorePSA(uint reg, int32 value) {}
 
 
-TempScopeResolver::TempScopeResolver(ResolverObject *ro) : ScopeResolver(ro) {}
-
-/* virtual */ uint32 TempScopeResolver::GetRandomBits() const
-{
-	return this->ro->GetRandomBits(this->ro);
-}
-
-/* virtual */ uint32 TempScopeResolver::GetTriggers() const
-{
-	return this->ro->GetTriggers(this->ro);
-}
-
-/* virtual */ void TempScopeResolver::SetTriggers(int triggers) const
-{
-	this->ro->SetTriggers(this->ro, triggers);
-}
-
-/* virtual */ uint32 TempScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
-{
-	return this->ro->GetVariable(this->ro, variable, parameter, available);
-}
-
-/* virtual */ void TempScopeResolver::StorePSA(uint reg, int32 value)
-{
-	if (this->ro->StorePSA != NULL) this->ro->StorePSA(this->ro, reg, value);
-}
-
-ResolverObject::ResolverObject() : default_scope(this), temp_scope(this) {} // XXX Temporary
-
 ResolverObject::ResolverObject(const GRFFile *grffile, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: default_scope(this), temp_scope(this)
+		: default_scope(this)
 {
 	this->callback = callback;
 	this->callback_param1 = callback_param1;
@@ -160,7 +131,7 @@ ResolverObject::~ResolverObject() {}
 
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	return this->ResolveRealMethod(this, group);
+	return NULL;
 }
 
 /**
@@ -171,7 +142,7 @@ ResolverObject::~ResolverObject() {}
  */
 /* virtual */ ScopeResolver *ResolverObject::GetScope(VarSpriteGroupScope scope, byte relative)
 {
-	return &this->temp_scope;
+	return &this->default_scope;
 }
 
 /**

@@ -337,12 +337,6 @@ unhandled:
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *ObjectResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* Objects do not have 'real' groups */
-	return NULL;
-}
-
 /**
  * Get the object's sprite group.
  * @param spec The specification to get the sprite group from.

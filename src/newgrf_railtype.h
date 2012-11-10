@@ -37,7 +37,7 @@ struct RailTypeResolverObject : public ResolverObject {
 	{
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &this->railtype_scope;
-			default:             return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+			default:             return ResolverObject::GetScope(scope, relative);
 		}
 	}
 

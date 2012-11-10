@@ -491,9 +491,14 @@ class NIHTown : public NIHelper {
 	const void *GetSpec(uint index) const                { return NULL; }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_TOWN_NAME, index); }
 	uint32 GetGRFID(uint index) const                    { return 0; }
-	uint Resolve(uint index, uint var, uint param, bool *avail) const { return TownGetVariable(var, param, avail, Town::Get(index), NULL); }
 	bool PSAWithParameter() const                        { return true; }
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		TownResolverObject ro(NULL, Town::Get(index), true);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 
 	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const
 	{

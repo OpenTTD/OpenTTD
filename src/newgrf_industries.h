@@ -48,11 +48,9 @@ struct IndustriesResolverObject : public ResolverObject {
 				if (tsr != NULL) return tsr;
 				/* FALL-THROUGH */
 			}
-			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 };
 
 /** When should the industry(tile) be triggered for random bits? */

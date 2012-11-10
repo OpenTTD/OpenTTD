@@ -99,12 +99,6 @@ uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *IndustryTileResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* IndustryTile do not have 'real' groups.  Or do they?? */
-	return NULL;
-}
-
 /* virtual */ uint32 IndustryTileScopeResolver::GetRandomBits() const
 {
 	assert(this->industry != NULL && IsValidTile(this->tile));

@@ -49,11 +49,9 @@ struct HouseResolverObject : public ResolverObject {
 		switch (scope) {
 			case VSG_SCOPE_SELF:   return &this->house_scope;
 			case VSG_SCOPE_PARENT: return &this->town_scope;
-			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 };
 
 /**

@@ -40,11 +40,9 @@ struct IndustryTileResolverObject : public ResolverObject {
 		switch (scope) {
 			case VSG_SCOPE_SELF: return &indtile_scope;
 			case VSG_SCOPE_PARENT: return &ind_scope;
-			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+			default: return ResolverObject::GetScope(scope, relative);
 		}
 	}
-
-	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 };
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds);

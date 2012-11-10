@@ -359,12 +359,6 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *IndustriesResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* IndustryTile do not have 'real' groups */
-	return NULL;
-}
-
 /* virtual */ uint32 IndustriesScopeResolver::GetRandomBits() const
 {
 	return this->industry != NULL ? this->industry->random : 0;

@@ -16,11 +16,6 @@
 struct CargoResolverObject : public ResolverObject {
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
-	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
-	{
-		return &this->default_scope; //XXX ResolverObject::GetScope(scope, relative);
-	}
-
 	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
 };
 
