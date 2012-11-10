@@ -1483,6 +1483,7 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Zmienion
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawienia zaawansowane
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrowanie po frazie:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Otwórz wszystko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zamknij wszystko
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(wyjaśnienie niedostępne)
@@ -1499,6 +1500,9 @@ STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ogranicz
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Ustawienia podstawowe
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Ustawienia zaawansowane
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ustawienia eksperta / wszystkie ustawienia
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Ustawienie z inną wartością niż domyślna
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ustawienia inne niż klienta z wartością inną niż domyślna
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Ustawienia z wartościami innymi niż twoje ustawienia dla nowej gry
 
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
@@ -1580,6 +1584,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :końcu
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :Ustawianie się samochodów w kolejkach (z efektem quantum): {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING_HELPTEXT               :Każ pojazdom drogowych czekać przed zajętymi przystankami dopóki nie zostaną zwolnione
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Przesuń okno, kiedy kursor jest przy krawędzi: {STRING}
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Kiedy włączone, okna podglądu będą się przewijać, gdy kursor znajdzie się przy krańcu okna
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :wyłączone
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :główne okno podglądu, tylko w trybie pełnego ekran
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :główne okno podglądu

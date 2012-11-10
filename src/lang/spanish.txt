@@ -1118,6 +1118,8 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empr
 
 STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Mostrar:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Muestra solamente las opciones modificadas en la lista
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Opciones básicas
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Opciones avanzadas
 STR_CONFIG_SETTING_RESTRICT_ALL                                 :Todas las opciones
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Opciones con un valor diferente al valor por defecto
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Opciones de servidor con un valor diferente al de por defecto

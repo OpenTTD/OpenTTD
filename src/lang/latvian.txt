@@ -1121,7 +1121,7 @@ STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Rādīt:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Ierobežo turpmāko sarakstu, rādot tikai izmainītos iestatījumus
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pamatiestatījumi
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Papildu iestatījumi
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumus / visus iestatījumus
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Lietpratēju iestatījumi / visi iestatījumi
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Uz klienta programmu neattiecošies iestatījumi ar atšķirīgu vērtību nekā noklusējuma
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Iestatījumi ar atšķirīgu vērtību nekā jūsu jaunajai spēlei
@@ -1167,6 +1167,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Slīpu lauciņu
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Aizliegt vilcieniem un kuģiem veikt 90 grādu pagriezienus: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90 grādu pagriezieni rodas, ja horizontālam sliežu ceļa posmam tieši seko vertikāls sliežu ceļa posms uz blakus esošā lauciņa. Tādējādi vilciens, šķērsojot lauciņu malas, veic 90 grādu pagriezienu, nevis parasto 45 grādu kā citām sliežu ceļu kombinācijām. Tas attiecas arī uz kuģu pagrieziena lenķiem
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Atļaut savienot stacijas, kas neatrodas tieši blakus: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Atļaut pievienot staciju daļas, tām nesaskaroties ar jau esošajām. Novietojot jaunās daļas, ir nepieciešams nospiest Ctrl+klikšķis
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Lietot uzlabotu piekraušanas algoritmu: {STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD_HELPTEXT                        :Ja ir ieslēgts, vairāki transportlīdzekļi gaida stacijā uz secīgu piekraušanu. Nākamā transportlīdzekļa piekraušana sākas tikai tad, kad ir pietiekami daudz kravas, lai pilnībā piepildītu pirmo transportlīdzekli
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Transportlīdzekļus piekraut pakāpeniski: {STRING}
@@ -1221,6 +1222,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Atļaut uzņēm
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Atļauj naudas pārskaitījumus starp uzņēmumiem vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Svara koeficients kravām, lai simulētu smagus vilcienus: {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Iestatīt pārvadājamo kravu ietekmi uz vilcieniem. Lielāka vērtība izvirza augstākas kravnesības prasības vilcieniem, sevišķi kalnos
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lidmašīnu ātruma pakāpe: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Iestatīt lidmašīnu nosacīto ātrumu salīdzinājumā ar citu veidu transportlīdzekļiem, lai samazinātu lidaparātu ienākumus
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
@@ -1329,6 +1331,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Peles ritenīš
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Vadīt peles ritenīša ritināšanas jutīgumu
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Labā klikšķa emulēšana: {STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Izvēlēties peles labās pogas klikšķu emulēšanas paņēmienu
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komanda+klikšķis
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikšķis
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
@@ -1362,7 +1365,7 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Kustības sarak
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Kustības sarakstos laikus rādīt spēles mirkļos, nevis dienās
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Kustības sarakstos rādīt pienākšanu un atiešanu: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Kustības sarakstos rādīt paredzamos pienākšanas un atiešanas laikus
-STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu norīkojumu ātrā veidošana: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :Transportlīdzekļu rīkojumu ātrā veidošana: {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Noklusējuma sliežu veids (pēc jaunas spēles/spēles ielādes): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Izvēlētais sliežu veids sākot vai ielādējot spēli. 'Pirmās pieejamās' ir vecākā veida, 'pēdējās pieejamās' ir jaunākā veida, un 'visbiežāk lietotās' ir pašlaik visvairāk lietoto sliežu ceļu izvēlnes
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :pirmās pieejamās
@@ -1399,7 +1402,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Atļaut MI vair
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Atļaut MI nespēlētāju tēliem (datora vadītiem) piedalīties vairākspēlētāju spēlēs
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#darbību kodi, pirms skripti tiek apstādināti: {STRING}
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiks procentos: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Apkopju starplaiki procentos: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Vilcienu apkopju noklusējuma starplaiks: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Izvēlēties jaunajiem sliežu transportlīdzekļiem apkopju noklusējuma starplaiku, ja tiem tas nav noteikts
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} dien{P 0 a as u}/%
@@ -1454,6 +1457,7 @@ STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Ļauj pilsētā
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Pilsētam ir atļauts būvēt vienlīmeņa krustojumus: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Šā iestatījuma ieslēgšana pilsētām atļauj būvēt vienlīmeņa krustojumus
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ja šis iestatījums ir izslēgts, tad katrā pilsētā var būt divas lidostas. Ja šis iestatījums ir ieslēgts, tad lidostu daudzums pilsētā ir ierobežots ar pilsētas piekrišanu troksnim, kas ir atkarīga no iedzīvotāju skaita, lidostas lieluma un attāluma
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Pilsētu dibināšana: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Šā iestatījuma ieslēgšana atļauj spēlētājiem spēlē nodibināt jaunas pilsētas
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
@@ -3472,7 +3476,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koplietojam
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Nestāties
-STR_ORDER_GO_TO                                                 :Braukt uz
+STR_ORDER_GO_TO                                                 :Doties uz
 STR_ORDER_GO_NON_STOP_TO                                        :Braukt bez pieturām uz
 STR_ORDER_GO_VIA                                                :Braukt caur
 STR_ORDER_GO_NON_STOP_VIA                                       :Braukt bez pieturām caur

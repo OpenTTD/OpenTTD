@@ -1103,6 +1103,9 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denne ha
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancerede indstillinger
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filter streng:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Udvid alle
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgængelig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Indstillingstype: {ORANGE}{STRING}
@@ -1111,6 +1114,15 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spil indstillin
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Firma indstilling (lagret i gemt spil, påvirker kun det aktuelle spil)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firma indstilling (lagret i gemt spil; påvirker kun nye spil)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firma indstilling (lagret i gemt spil; påvirker kun aktuelt selskab)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Vis:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Begrænser listen nedenfor så den kun viser ændrede indstillinger
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Grund Indstillinger
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Avancerede indstillinger
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Ekspert indstillinger / alle indstillinger
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Indstillinger med en anden værdi end standard
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Ikke-klient indstillinger med en anden værdi end standard
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Indstillinger med en anden værdi end dine nyt-spil indstillinger
 
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til
@@ -1372,7 +1384,9 @@ STR_CONFIG_SETTING_MAX_SHIPS                                    :Maks. antal ski
 STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maksimum antal skibe et firma kan have
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Deaktiver toge for computeren: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Aktivering af denne indstilling gør bygning af tog umuligt for en computer modstander
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Deaktiver køretøjer for computeren: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Aktivering af denne indstilling gør bygning af vejkøretøjer umuligt for en computer modstander
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Deaktiver fly for computeren: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Deaktiver skibe for computeren: {STRING}
 
