@@ -308,7 +308,14 @@ class NIHIndustry : public NIHelper {
 	const void *GetSpec(uint index) const                { return GetIndustrySpec(Industry::Get(index)->type); }
 	void SetStringParameters(uint index) const           { this->SetSimpleStringParameters(STR_INDUSTRY_NAME, index); }
 	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetIndustrySpec(Industry::Get(index)->type)->grf_prop.grffile->grfid : 0; }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryResolver(ResolverObject *ro, uint index); GetIndustryResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		Industry *i = Industry::Get(index);
+		IndustriesResolverObject ro(i->location.tile, i, i->type);
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
+
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
 
 	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const

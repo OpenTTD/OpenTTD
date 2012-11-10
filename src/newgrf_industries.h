@@ -12,7 +12,48 @@
 #ifndef NEWGRF_INDUSTRIES_H
 #define NEWGRF_INDUSTRIES_H
 
-#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
+
+struct IndustriesScopeResolver : public ScopeResolver {
+	TileIndex tile;
+	Industry *industry;
+	IndustryType type;
+	uint32 random_bits;       ///< Random bits of the new industry.
+
+	IndustriesScopeResolver(ResolverObject *ro, TileIndex tile, Industry *industry, IndustryType type, uint32 random_bits = 0);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	/* virtual */ uint32 GetTriggers() const;
+	/* virtual */ void SetTriggers(int triggers) const;
+	/* virtual */ void StorePSA(uint pos, int32 value);
+};
+
+struct IndustriesResolverObject : public ResolverObject {
+	IndustriesScopeResolver industries_scope;
+	TownScopeResolver *town_scope;
+
+	IndustriesResolverObject(TileIndex tile, Industry *indus, IndustryType type, uint32 random_bits = 0,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+	~IndustriesResolverObject();
+
+	TownScopeResolver *GetTown();
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF: return &industries_scope;
+			case VSG_SCOPE_PARENT: {
+				TownScopeResolver *tsr = this->GetTown();
+				if (tsr != NULL) return tsr;
+				/* FALL-THROUGH */
+			}
+			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 /** When should the industry(tile) be triggered for random bits? */
 enum IndustryTrigger {

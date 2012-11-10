@@ -33,6 +33,7 @@
 #include "newgrf_station.h"
 #include "newgrf_town.h"
 #include "newgrf_railtype.h"
+#include "newgrf_industries.h"
 
 #include "widgets/newgrf_debug_widget.h"
 
