@@ -363,16 +363,6 @@ struct ResolverObject {
 			IndustryGfx gfx;
 			IndustryType type;
 		} industry;
-		struct {
-			CargoID cargo_type;
-			uint8 default_selection;
-			uint8 src_industry;            ///< Source industry substitute type. 0xFF for "town", 0xFE for "unknown".
-			uint8 dst_industry;            ///< Destination industry substitute type. 0xFF for "town", 0xFE for "unknown".
-			uint8 distance;
-			AIConstructionEvent event;
-			uint8 count;
-			uint8 station_size;
-		} generic;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);
