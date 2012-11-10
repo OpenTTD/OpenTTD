@@ -32,6 +32,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_station.h"
 #include "newgrf_town.h"
+#include "newgrf_railtype.h"
 
 #include "widgets/newgrf_debug_widget.h"
 

@@ -14,6 +14,35 @@
 
 #include "rail.h"
 #include "newgrf_commons.h"
+#include "newgrf_spritegroup.h"
+
+
+struct RailTypeScopeResolver : public ScopeResolver {
+	TileIndex tile;      ///< Tracktile. For track on a bridge this is the southern bridgehead.
+	TileContext context; ///< Are we resolving sprites for the upper halftile, or on a bridge?
+
+	RailTypeScopeResolver(ResolverObject *ro, TileIndex tile, TileContext context);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+};
+
+/** Resolver object for rail types. */
+struct RailTypeResolverObject : public ResolverObject {
+	RailTypeScopeResolver railtype_scope;
+
+	RailTypeResolverObject(TileIndex tile, TileContext context, const GRFFile *grffile, uint32 param1 = 0, uint32 param2 = 0);
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF: return &this->railtype_scope;
+			default:             return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL);
 SpriteID GetCustomSignalSprite(const RailtypeInfo *rti, TileIndex tile, SignalType type, SignalVariant var, SignalState state, bool gui = false);
