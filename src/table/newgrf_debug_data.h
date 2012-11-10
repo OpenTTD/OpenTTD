@@ -241,7 +241,12 @@ class NIHIndustryTile : public NIHelper {
 	const void *GetSpec(uint index) const                { return GetIndustryTileSpec(GetIndustryGfx(index)); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_INDUSTRY_NAME, GetIndustryIndex(index), index); }
 	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? GetIndustryTileSpec(GetIndustryGfx(index))->grf_prop.grffile->grfid : 0; }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetIndustryTileResolver(ResolverObject *ro, uint index); GetIndustryTileResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		IndustryTileResolverObject ro(GetIndustryGfx(index), index, Industry::GetByTile(index));
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 };
 
 static const NIFeature _nif_industrytile = {

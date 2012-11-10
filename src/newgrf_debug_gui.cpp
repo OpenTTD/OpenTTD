@@ -34,6 +34,7 @@
 #include "newgrf_town.h"
 #include "newgrf_railtype.h"
 #include "newgrf_industries.h"
+#include "newgrf_industrytiles.h"
 
 #include "widgets/newgrf_debug_widget.h"
 

@@ -357,12 +357,6 @@ struct ResolverObject {
 			EngineID self_type;
 			bool info_view;                ///< Indicates if the item is being drawn in an info window
 		} vehicle;
-		struct {
-			TileIndex tile;
-			Industry *ind;
-			IndustryGfx gfx;
-			IndustryType type;
-		} industry;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);
