@@ -15,50 +15,58 @@
 #include "newgrf_canal.h"
 #include "water_map.h"
 
-
 /** Table of canal 'feature' sprite groups */
 WaterFeature _water_feature[CF_END];
 
+struct CanalScopeResolver : public ScopeResolver {
+	TileIndex tile;
 
-/* Random bits and triggers are not supported for canals, so the following
- * three functions are stubs. */
-static uint32 CanalGetRandomBits(const ResolverObject *object)
+	CanalScopeResolver(ResolverObject *ro, TileIndex tile);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+};
+
+/** Resolver object for canals. */
+struct CanalResolverObject : public ResolverObject {
+	CanalScopeResolver canal_scope;
+
+	CanalResolverObject(const GRFFile *grffile, TileIndex tile,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF: return &this->canal_scope;
+			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
+
+/* virtual */ uint32 CanalScopeResolver::GetRandomBits() const
 {
 	/* Return random bits only for water tiles, not station tiles */
-	return IsTileType(object->u.canal.tile, MP_WATER) ? GetWaterTileRandomBits(object->u.canal.tile) : 0;
+	return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 }
 
-
-static uint32 CanalGetTriggers(const ResolverObject *object)
+/* virtual */ uint32 CanalScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
-	return 0;
-}
-
-
-static void CanalSetTriggers(const ResolverObject *object, int triggers)
-{
-	return;
-}
-
-
-static uint32 CanalGetVariable(const ResolverObject *object, byte variable, uint32 parameter, bool *available)
-{
-	TileIndex tile = object->u.canal.tile;
-
 	switch (variable) {
 		/* Height of tile */
 		case 0x80: {
-			int z = GetTileZ(tile);
+			int z = GetTileZ(this->tile);
 			/* Return consistent height within locks */
-			if (IsTileType(tile, MP_WATER) && IsLock(tile) && GetLockPart(tile) == LOCK_PART_UPPER) z--;
+			if (IsTileType(this->tile, MP_WATER) && IsLock(this->tile) && GetLockPart(this->tile) == LOCK_PART_UPPER) z--;
 			return z;
 		}
 
 		/* Terrain type */
-		case 0x81: return GetTerrainType(tile);
+		case 0x81: return GetTerrainType(this->tile);
 
 		/* Random data for river or canal tiles, otherwise zero */
-		case 0x83: return IsTileType(tile, MP_WATER) ? GetWaterTileRandomBits(tile) : 0;
+		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 	}
 
 	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);
@@ -68,47 +76,38 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, uint
 }
 
 
-static const SpriteGroup *CanalResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
+/* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
 	if (group->num_loaded == 0) return NULL;
 
 	return group->loaded[0];
 }
 
-
-static void NewCanalResolver(ResolverObject *res, TileIndex tile, const GRFFile *grffile)
+CanalScopeResolver::CanalScopeResolver(ResolverObject *ro, TileIndex tile) : ScopeResolver(ro)
 {
-	res->GetRandomBits = &CanalGetRandomBits;
-	res->GetTriggers   = &CanalGetTriggers;
-	res->SetTriggers   = &CanalSetTriggers;
-	res->GetVariable   = &CanalGetVariable;
-	res->ResolveRealMethod = &CanalResolveReal;
-
-	res->u.canal.tile = tile;
-
-	res->callback        = CBID_NO_CALLBACK;
-	res->callback_param1 = 0;
-	res->callback_param2 = 0;
-	res->ResetState();
-
-	res->grffile         = grffile;
+	this->tile = tile;
 }
 
+/**
+ * @param tile Tile index of canal.
+ * @param grffile Grf file.
+ */
+CanalResolverObject::CanalResolverObject(const GRFFile *grffile, TileIndex tile,
+		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
+		: ResolverObject(grffile, callback, callback_param1, callback_param2), canal_scope(this, tile)
+{
+}
 
 /**
  * Lookup the base sprite to use for a canal.
  * @param feature Which canal feature we want.
  * @param tile Tile index of canal, if appropriate.
- * @return Base sprite returned by GRF, or 0 if none.
+ * @return Base sprite returned by GRF, or \c 0 if none.
  */
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
-	ResolverObject object;
-	const SpriteGroup *group;
-
-	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
-
-	group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
+	CanalResolverObject object(_water_feature[feature].grffile, tile);
+	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
 	if (group == NULL) return 0;
 
 	return group->GetResult();
@@ -121,20 +120,12 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
  * @param param2   Callback parameter 2.
  * @param feature  For which feature to run the callback.
  * @param tile     Tile index of canal.
- * @return Callback result or CALLBACK_FAILED if the callback failed.
+ * @return Callback result or #CALLBACK_FAILED if the callback failed.
  */
 static uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
 {
-	ResolverObject object;
-	const SpriteGroup *group;
-
-	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
-
-	object.callback = callback;
-	object.callback_param1 = param1;
-	object.callback_param2 = param2;
-
-	group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
+	CanalResolverObject object(_water_feature[feature].grffile, tile, callback, param1, param2);
+	const SpriteGroup *group = SpriteGroup::Resolve(_water_feature[feature].group, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
