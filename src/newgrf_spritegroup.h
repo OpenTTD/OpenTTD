@@ -366,14 +366,6 @@ struct ResolverObject {
 		} station;
 		struct {
 			TileIndex tile;
-			Town *town;                    ///< Town of this house
-			HouseID house_id;
-			uint16 initial_random_bits;    ///< Random bits during construction checks
-			bool not_yet_constructed;      ///< True for construction check
-			uint32 watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
-		} house;
-		struct {
-			TileIndex tile;
 			Industry *ind;
 			IndustryGfx gfx;
 			IndustryType type;

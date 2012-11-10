@@ -15,6 +15,46 @@
 #include "newgrf_callbacks.h"
 #include "tile_cmd.h"
 #include "house_type.h"
+#include "newgrf_spritegroup.h"
+#include "newgrf_town.h"
+
+struct HouseScopeResolver : public ScopeResolver {
+	HouseID house_id;
+	TileIndex tile;
+	Town *town;                    ///< Town of this house.
+	bool not_yet_constructed;      ///< True for construction check.
+	uint16 initial_random_bits;    ///< Random bits during construction checks.
+	uint32 watched_cargo_triggers; ///< Cargo types that triggered the watched cargo callback.
+
+	HouseScopeResolver(ResolverObject *ro, HouseID house_id, TileIndex tile, Town *town,
+			bool not_yet_constructed, uint8 initial_random_bits, uint32 watched_cargo_triggers);
+
+	/* virtual */ uint32 GetRandomBits() const;
+	/* virtual */ uint32 GetVariable(byte variable, uint32 parameter, bool *available) const;
+	/* virtual */ uint32 GetTriggers() const;
+	/* virtual */ void SetTriggers(int triggers) const;
+};
+
+/** Resolver object to be used for houses (feature 07 spritegroups). */
+struct HouseResolverObject : public ResolverObject {
+	HouseScopeResolver house_scope;
+	TownScopeResolver  town_scope;
+
+	HouseResolverObject(HouseID house_id, TileIndex tile, Town *town,
+			CallbackID callback = CBID_NO_CALLBACK, uint32 param1 = 0, uint32 param2 = 0,
+			bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
+
+	/* virtual */ ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0)
+	{
+		switch (scope) {
+			case VSG_SCOPE_SELF:   return &this->house_scope;
+			case VSG_SCOPE_PARENT: return &this->town_scope;
+			default: return &this->default_scope; // XXX ResolverObject::GetScope(scope, relative);
+		}
+	}
+
+	/* virtual */ const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;
+};
 
 /**
  * Makes class IDs unique to each GRF file.
@@ -44,7 +84,8 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
 void AnimateNewHouseConstruction(TileIndex tile);
 
-uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile,
+		bool not_yet_constructed = false, uint8 initial_random_bits = 0, uint32 watched_cargo_triggers = 0);
 void WatchedCargoCallback(TileIndex tile, uint32 trigger_cargoes);
 
 bool CanDeleteHouse(TileIndex tile);

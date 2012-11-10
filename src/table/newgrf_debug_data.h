@@ -9,6 +9,8 @@
 
 /** @file newgrf_debug_data.h Data 'tables' for NewGRF debugging. */
 
+#include "../newgrf_house.h"
+
 /* Helper for filling property tables */
 #define NIP(prop, base, variable, type, name) { name, cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
 #define NIP_END() { NULL, 0, 0, 0, 0 }
@@ -184,7 +186,12 @@ class NIHHouse : public NIHelper {
 	const void *GetSpec(uint index) const                { return HouseSpec::Get(GetHouseType(index)); }
 	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_TOWN_NAME, GetTownIndex(index), index); }
 	uint32 GetGRFID(uint index) const                    { return (this->IsInspectable(index)) ? HouseSpec::Get(GetHouseType(index))->grf_prop.grffile->grfid : 0; }
-	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetHouseResolver(ResolverObject *ro, uint index); GetHouseResolver(ro, index); }
+
+	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
+	{
+		HouseResolverObject ro(GetHouseType(index), index, Town::GetByTile(index));
+		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+	}
 };
 
 static const NIFeature _nif_house = {
