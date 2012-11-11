@@ -2610,7 +2610,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid indust
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skanner NewGRFer
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skanner NewGRFer. Avhengig av mengde kan dette ta litt tid...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" er} skannet, ut av {NUM} NewGRF{P "" er} totalt
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" er} skannet, av totalt {NUM}.
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skanner etter arkiv
 
 # Sign list window
