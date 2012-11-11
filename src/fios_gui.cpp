@@ -712,7 +712,7 @@ public:
 static const WindowDesc _load_dialog_desc(
 	WDP_CENTER, 500, 294,
 	WC_SAVELOAD, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_load_dialog_widgets, lengthof(_nested_load_dialog_widgets)
 );
 
@@ -720,7 +720,7 @@ static const WindowDesc _load_dialog_desc(
 static const WindowDesc _load_heightmap_dialog_desc(
 	WDP_CENTER, 257, 320,
 	WC_SAVELOAD, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_load_heightmap_dialog_widgets, lengthof(_nested_load_heightmap_dialog_widgets)
 );
 
@@ -728,7 +728,7 @@ static const WindowDesc _load_heightmap_dialog_desc(
 static const WindowDesc _save_dialog_desc(
 	WDP_CENTER, 500, 294,
 	WC_SAVELOAD, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_save_dialog_widgets, lengthof(_nested_save_dialog_widgets)
 );
 

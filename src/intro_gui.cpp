@@ -265,7 +265,7 @@ static const NWidgetPart _nested_select_game_widgets[] = {
 static const WindowDesc _select_game_desc(
 	WDP_CENTER, 0, 0,
 	WC_SELECT_GAME, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_select_game_widgets, lengthof(_nested_select_game_widgets)
 );
 

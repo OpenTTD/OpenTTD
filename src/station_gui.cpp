@@ -713,7 +713,7 @@ static const NWidgetPart _nested_company_stations_widgets[] = {
 static const WindowDesc _company_stations_desc(
 	WDP_AUTO, 358, 162,
 	WC_STATION_LIST, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_company_stations_widgets, lengthof(_nested_company_stations_widgets)
 );
 
@@ -1173,7 +1173,7 @@ struct StationViewWindow : public Window {
 static const WindowDesc _station_view_desc(
 	WDP_AUTO, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_station_view_widgets, lengthof(_nested_station_view_widgets)
 );
 

@@ -1628,7 +1628,7 @@ static void DecreaseWindowCounters()
 			CLRBITS(w->flags, WF_TIMEOUT);
 
 			w->OnTimeout();
-			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons(true);
+			w->RaiseButtons(true);
 		}
 	}
 }

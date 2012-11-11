@@ -1077,7 +1077,7 @@ static const NWidgetPart _nested_message_history[] = {
 static const WindowDesc _message_history_desc(
 	WDP_AUTO, 400, 140,
 	WC_MESSAGE_HISTORY, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_message_history, lengthof(_nested_message_history)
 );
 
@@ -1342,7 +1342,7 @@ static const NWidgetPart _nested_message_options_widgets[] = {
 static const WindowDesc _message_options_desc(
 	WDP_AUTO, 0, 0,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_message_options_widgets, lengthof(_nested_message_options_widgets)
 );
 

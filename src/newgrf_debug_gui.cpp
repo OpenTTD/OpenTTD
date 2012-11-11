@@ -521,7 +521,7 @@ static const NWidgetPart _nested_newgrf_inspect_widgets[] = {
 static const WindowDesc _newgrf_inspect_desc(
 	WDP_AUTO, 400, 300,
 	WC_NEWGRF_INSPECT, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_newgrf_inspect_widgets, lengthof(_nested_newgrf_inspect_widgets)
 );
 
@@ -875,7 +875,7 @@ static const NWidgetPart _nested_sprite_aligner_widgets[] = {
 static const WindowDesc _sprite_aligner_desc(
 	WDP_AUTO, 400, 300,
 	WC_SPRITE_ALIGNER, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_sprite_aligner_widgets, lengthof(_nested_sprite_aligner_widgets)
 );
 

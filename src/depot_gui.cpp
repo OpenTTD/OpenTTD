@@ -80,28 +80,28 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 static const WindowDesc _train_depot_desc(
 	WDP_AUTO, 362, 123,
 	WC_VEHICLE_DEPOT, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
 static const WindowDesc _road_depot_desc(
 	WDP_AUTO, 316, 97,
 	WC_VEHICLE_DEPOT, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
 static const WindowDesc _ship_depot_desc(
 	WDP_AUTO, 306, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 
 static const WindowDesc _aircraft_depot_desc(
 	WDP_AUTO, 332, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_train_depot_widgets, lengthof(_nested_train_depot_widgets)
 );
 

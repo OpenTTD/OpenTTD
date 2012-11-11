@@ -1408,7 +1408,7 @@ struct BuildVehicleWindow : Window {
 static const WindowDesc _build_vehicle_desc(
 	WDP_AUTO, 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets)
 );
 

@@ -1747,7 +1747,7 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 static const WindowDesc _smallmap_desc(
 	WDP_AUTO, 446, 314,
 	WC_SMALLMAP, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_smallmap_widgets, lengthof(_nested_smallmap_widgets)
 );
 

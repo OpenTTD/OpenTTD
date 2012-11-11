@@ -2078,7 +2078,7 @@ static const NWidgetPart _nested_toolb_scen_widgets[] = {
 static WindowDesc _toolb_scen_desc(
 	WDP_MANUAL, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
-	WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
+	WDF_NO_FOCUS,
 	_nested_toolb_scen_widgets, lengthof(_nested_toolb_scen_widgets)
 );
 

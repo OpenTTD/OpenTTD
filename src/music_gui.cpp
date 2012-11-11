@@ -498,7 +498,7 @@ static const NWidgetPart _nested_music_track_selection_widgets[] = {
 static const WindowDesc _music_track_selection_desc(
 	WDP_AUTO, 0, 0,
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_music_track_selection_widgets, lengthof(_nested_music_track_selection_widgets)
 );
 
@@ -761,7 +761,7 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 static const WindowDesc _music_window_desc(
 	WDP_AUTO, 0, 0,
 	WC_MUSIC_WINDOW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_music_window_widgets, lengthof(_nested_music_window_widgets)
 );
 

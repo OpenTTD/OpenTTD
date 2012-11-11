@@ -526,7 +526,7 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 static const WindowDesc _newgrf_parameters_desc(
 	WDP_CENTER, 500, 208,
 	WC_GRF_PARAMETERS, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_newgrf_parameter_widgets, lengthof(_nested_newgrf_parameter_widgets)
 );
 
@@ -1884,7 +1884,7 @@ static const NWidgetPart _nested_newgrf_widgets[] = {
 static const WindowDesc _newgrf_desc(
 	WDP_CENTER, 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_newgrf_widgets, lengthof(_nested_newgrf_widgets)
 );
 
@@ -1955,7 +1955,7 @@ static const NWidgetPart _nested_scan_progress_widgets[] = {
 static const WindowDesc _scan_progress_desc(
 	WDP_CENTER, 0, 0,
 	WC_MODAL_PROGRESS, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_scan_progress_widgets, lengthof(_nested_scan_progress_widgets)
 );
 

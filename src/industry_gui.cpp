@@ -1015,7 +1015,7 @@ static const NWidgetPart _nested_industry_view_widgets[] = {
 static const WindowDesc _industry_view_desc(
 	WDP_AUTO, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_industry_view_widgets, lengthof(_nested_industry_view_widgets)
 );
 
@@ -1386,7 +1386,7 @@ const StringID IndustryDirectoryWindow::sorter_names[] = {
 static const WindowDesc _industry_directory_desc(
 	WDP_AUTO, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_industry_directory_widgets, lengthof(_nested_industry_directory_widgets)
 );
 

@@ -968,7 +968,7 @@ static const NWidgetPart _nested_network_content_list_widgets[] = {
 static const WindowDesc _network_content_list_desc(
 	WDP_CENTER, 630, 460,
 	WC_NETWORK_WINDOW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_network_content_list_widgets, lengthof(_nested_network_content_list_widgets)
 );
 

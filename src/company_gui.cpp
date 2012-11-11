@@ -466,7 +466,7 @@ Money CompanyFinancesWindow::max_money = INT32_MAX;
 static const WindowDesc _company_finances_desc(
 	WDP_AUTO, 0, 0,
 	WC_FINANCES, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_company_finances_widgets, lengthof(_nested_company_finances_widgets)
 );
 
@@ -1482,7 +1482,7 @@ const StringID SelectCompanyManagerFaceWindow::PART_TEXTS[] = {
 static const WindowDesc _select_company_manager_face_desc(
 	WDP_AUTO, 0, 0,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_select_company_manager_face_widgets, lengthof(_nested_select_company_manager_face_widgets)
 );
 
@@ -1836,7 +1836,7 @@ struct CompanyInfrastructureWindow : Window
 static const WindowDesc _company_infrastructure_desc(
 	WDP_AUTO, 0, 0,
 	WC_COMPANY_INFRASTRUCTURE, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_company_infrastructure_widgets, lengthof(_nested_company_infrastructure_widgets)
 );
 
@@ -2401,7 +2401,7 @@ struct CompanyWindow : Window
 static const WindowDesc _company_desc(
 	WDP_AUTO, 0, 0,
 	WC_COMPANY, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_company_widgets, lengthof(_nested_company_widgets)
 );
 

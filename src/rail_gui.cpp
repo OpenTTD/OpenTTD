@@ -1617,7 +1617,7 @@ static const NWidgetPart _nested_signal_builder_widgets[] = {
 static const WindowDesc _signal_builder_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_signal_builder_widgets, lengthof(_nested_signal_builder_widgets)
 );
 

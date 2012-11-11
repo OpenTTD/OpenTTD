@@ -1108,7 +1108,7 @@ static const NWidgetPart _nested_query_widgets[] = {
 static const WindowDesc _query_desc(
 	WDP_CENTER, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WDF_UNCLICK_BUTTONS | WDF_MODAL,
+	WDF_MODAL,
 	_nested_query_widgets, lengthof(_nested_query_widgets)
 );
 

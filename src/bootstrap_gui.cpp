@@ -118,7 +118,7 @@ static const NWidgetPart _bootstrap_query_widgets[] = {
 static const WindowDesc _bootstrap_query_desc(
 	WDP_CENTER, 0, 0,
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_bootstrap_query_widgets, lengthof(_bootstrap_query_widgets)
 );
 

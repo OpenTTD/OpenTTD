@@ -917,7 +917,7 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 static const WindowDesc _vehicle_refit_desc(
 	WDP_AUTO, 240, 174,
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_vehicle_refit_widgets, lengthof(_nested_vehicle_refit_widgets)
 );
 
@@ -1614,7 +1614,7 @@ public:
 static WindowDesc _vehicle_list_desc(
 	WDP_AUTO, 260, 246,
 	WC_INVALID, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
 
@@ -2073,7 +2073,7 @@ struct VehicleDetailsWindow : Window {
 static const WindowDesc _train_vehicle_details_desc(
 	WDP_AUTO, 405, 178,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_train_vehicle_details_widgets, lengthof(_nested_train_vehicle_details_widgets)
 );
 
@@ -2081,7 +2081,7 @@ static const WindowDesc _train_vehicle_details_desc(
 static const WindowDesc _nontrain_vehicle_details_desc(
 	WDP_AUTO, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_nontrain_vehicle_details_widgets, lengthof(_nested_nontrain_vehicle_details_widgets)
 );
 
@@ -2140,7 +2140,7 @@ static const NWidgetPart _nested_vehicle_view_widgets[] = {
 static const WindowDesc _vehicle_view_desc(
 	WDP_AUTO, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 
@@ -2151,7 +2151,7 @@ static const WindowDesc _vehicle_view_desc(
 static const WindowDesc _train_view_desc(
 	WDP_AUTO, 250, 134,
 	WC_VEHICLE_VIEW, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_vehicle_view_widgets, lengthof(_nested_vehicle_view_widgets)
 );
 

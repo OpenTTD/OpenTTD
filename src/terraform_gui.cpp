@@ -344,7 +344,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 static const WindowDesc _terraform_desc(
 	WDP_MANUAL, 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 

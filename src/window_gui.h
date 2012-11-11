@@ -185,9 +185,8 @@ struct WindowDesc : ZeroedMemoryAllocator {
  */
 enum WindowDefaultFlag {
 	WDF_CONSTRUCTION    =   1 << 0, ///< This window is used for construction; close it whenever changing company.
-	WDF_UNCLICK_BUTTONS =   1 << 1, ///< Unclick buttons when the window event times out
-	WDF_MODAL           =   1 << 2, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
-	WDF_NO_FOCUS        =   1 << 3, ///< This window won't get focus/make any other window lose focus when click
+	WDF_MODAL           =   1 << 1, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
+	WDF_NO_FOCUS        =   1 << 2, ///< This window won't get focus/make any other window lose focus when click
 };
 
 /**

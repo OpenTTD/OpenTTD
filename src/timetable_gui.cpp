@@ -692,7 +692,7 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 static const WindowDesc _timetable_desc(
 	WDP_AUTO, 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
-	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
+	WDF_CONSTRUCTION,
 	_nested_timetable_widgets, lengthof(_nested_timetable_widgets)
 );
 

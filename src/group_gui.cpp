@@ -801,14 +801,14 @@ public:
 static WindowDesc _other_group_desc(
 	WDP_AUTO, 460, 246,
 	WC_INVALID, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
 static const WindowDesc _train_group_desc(
 	WDP_AUTO, 525, 246,
 	WC_TRAINS_LIST, WC_NONE,
-	WDF_UNCLICK_BUTTONS,
+	0,
 	_nested_group_widgets, lengthof(_nested_group_widgets)
 );
 
