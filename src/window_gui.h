@@ -175,7 +175,7 @@ struct WindowDesc : ZeroedMemoryAllocator {
 	int16 default_height;          ///< Prefered initial height of the window.
 	WindowClass cls;               ///< Class of the window, @see WindowClass.
 	WindowClass parent_cls;        ///< Class of the parent window. @see WindowClass
-	uint32 flags;                  ///< Flags. @see WindowDefaultFlags
+	uint32 flags;                  ///< Flags. @see WindowDefaultFlag
 	const NWidgetPart *nwid_parts; ///< Nested widget parts describing the window.
 	int16 nwid_length;             ///< Length of the #nwid_parts array.
 };

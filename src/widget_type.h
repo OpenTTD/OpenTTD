@@ -49,11 +49,11 @@ enum WidgetType {
 
 	WWT_PANEL,      ///< Simple depressed panel
 	WWT_INSET,      ///< Pressed (inset) panel, most commonly used as combo box _text_ area
-	WWT_IMGBTN,     ///< Button with image
-	WWT_IMGBTN_2,   ///< Button with diff image when clicked
-	WWT_ARROWBTN,   ///< Button with an arrow
-	WWT_TEXTBTN,    ///< Button with text
-	WWT_TEXTBTN_2,  ///< Button with diff text when clicked
+	WWT_IMGBTN,     ///< (Toggle) Button with image
+	WWT_IMGBTN_2,   ///< (Toggle) Button with diff image when clicked
+	WWT_ARROWBTN,   ///< (Toggle) Button with an arrow
+	WWT_TEXTBTN,    ///< (Toggle) Button with text
+	WWT_TEXTBTN_2,  ///< (Toggle) Button with diff text when clicked
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
 	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues
@@ -98,10 +98,10 @@ enum WidgetType {
 
 	WWB_PUSHBUTTON    = 1 << 7,
 
-	WWT_PUSHBTN       = WWT_PANEL    | WWB_PUSHBUTTON,
-	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,
-	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,
-	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,
+	WWT_PUSHBTN       = WWT_PANEL    | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with custom drawing
+	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with text caption
+	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with image caption
+	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,    ///< Normal push-button (no toggle button) with arrow caption
 	NWID_PUSHBUTTON_DROPDOWN = NWID_BUTTON_DROPDOWN | WWB_PUSHBUTTON,
 };
 
