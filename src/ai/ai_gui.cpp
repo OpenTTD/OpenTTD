@@ -1301,6 +1301,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 			case WID_AID_MATCH_CASE_BTN:
 				this->case_sensitive_break_check = !this->case_sensitive_break_check;
 				this->SetWidgetLoweredState(WID_AID_MATCH_CASE_BTN, this->case_sensitive_break_check);
+				this->SetWidgetDirty(WID_AID_MATCH_CASE_BTN);
 				break;
 
 			case WID_AID_CONTINUE_BTN:
@@ -1334,16 +1335,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				this->highlight_row = -1;
 				this->SetWidgetDirty(WID_AID_LOG_PANEL);
 				this->DisableWidget(WID_AID_CONTINUE_BTN);
-				this->RaiseWidget(WID_AID_CONTINUE_BTN); // Disabled widgets don't raise themself
 				break;
 		}
-	}
-
-	virtual void OnTimeout()
-	{
-		this->RaiseWidget(WID_AID_RELOAD_TOGGLE);
-		this->RaiseWidget(WID_AID_SETTINGS);
-		this->SetDirty();
 	}
 
 	virtual void OnMouseLoop()
@@ -1490,7 +1483,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		NWidgetFunction(MakeCompanyButtonRowsAIDebug), SetPadding(0, 2, 1, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_SCRIPT_GAME), SetMinimalSize(100, 20), SetResize(1, 0), SetDataTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AID_SCRIPT_GAME), SetMinimalSize(100, 20), SetResize(1, 0), SetDataTip(STR_AI_GAME_SCRIPT, STR_AI_GAME_SCRIPT_TOOLTIP),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AID_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_SETTINGS), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_SETTINGS, STR_AI_DEBUG_SETTINGS_TOOLTIP),
 		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_RELOAD_TOGGLE), SetMinimalSize(100, 20), SetDataTip(STR_AI_DEBUG_RELOAD, STR_AI_DEBUG_RELOAD_TOOLTIP),
@@ -1510,7 +1503,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 							NWidget(WWT_EDITBOX, COLOUR_WHITE, WID_AID_BREAK_STR_EDIT_BOX), SetFill(1, 1), SetResize(1, 0), SetPadding(2, 2, 2, 2), SetDataTip(STR_AI_DEBUG_BREAK_STR_OSKTITLE, STR_AI_DEBUG_BREAK_STR_TOOLTIP),
 						EndContainer(),
 					EndContainer(),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_AID_MATCH_CASE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_MATCH_CASE, STR_AI_DEBUG_MATCH_CASE_TOOLTIP),
 					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_AID_CONTINUE_BTN), SetMinimalSize(100, 0), SetFill(0, 1), SetDataTip(STR_AI_DEBUG_CONTINUE, STR_AI_DEBUG_CONTINUE_TOOLTIP),
 				EndContainer(),
 			EndContainer(),
@@ -1526,7 +1519,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 static const WindowDesc _ai_debug_desc(
 	WDP_AUTO, 600, 450,
 	WC_AI_DEBUG, WC_NONE,
-	0,
+	WDF_UNCLICK_BUTTONS,
 	_nested_ai_debug_widgets, lengthof(_nested_ai_debug_widgets)
 );
 
