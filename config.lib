@@ -1350,6 +1350,12 @@ make_compiler_cflags() {
 			cxxflags="$cxxflags -std=gnu++0x"
 		fi
 
+		if [ $cc_version -eq 45 ]; then
+			# Prevent optimisation supposing enums are in a range specified by the standard
+			# For details, see http://gcc.gnu.org/PR43680
+			flags="$flags -fno-tree-vrp"
+		fi
+
 		if [ $cc_version -ge 47 ]; then
 			# Disable -Wnarrowing which gives many warnings, such as:
 			# warning: narrowing conversion of '...' from 'unsigned int' to 'int' inside { } [-Wnarrowing]
