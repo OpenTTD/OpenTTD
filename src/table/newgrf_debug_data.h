@@ -75,7 +75,7 @@ class NIHVehicle : public NIHelper {
 	{
 		Vehicle *v = Vehicle::Get(index);
 		VehicleResolverObject ro(v->engine_type, v);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -137,7 +137,7 @@ class NIHStation : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		StationResolverObject ro(GetStationSpec(index), Station::GetByTile(index), index);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -202,7 +202,7 @@ class NIHHouse : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		HouseResolverObject ro(GetHouseType(index), index, Town::GetByTile(index));
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -252,7 +252,7 @@ class NIHIndustryTile : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		IndustryTileResolverObject ro(GetIndustryGfx(index), index, Industry::GetByTile(index));
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -325,7 +325,7 @@ class NIHIndustry : public NIHelper {
 	{
 		Industry *i = Industry::Get(index);
 		IndustriesResolverObject ro(i->location.tile, i, i->type);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
 	uint GetPSASize(uint index, uint32 grfid) const      { return cpp_lengthof(PersistentStorage, storage); }
@@ -389,7 +389,7 @@ class NIHObject : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		ObjectResolverObject ro(ObjectSpec::GetByTile(index), Object::GetByTile(index), index);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -423,7 +423,7 @@ class NIHRailType : public NIHelper {
 		/* There is no unique GRFFile for the tile. Multiple GRFs can define different parts of the railtype.
 		 * However, currently the NewGRF Debug GUI does not display variables depending on the GRF (like 0x7F) anyway. */
 		RailTypeResolverObject ro(index, TCX_NORMAL, NULL);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -457,7 +457,7 @@ class NIHAirportTile : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		AirportTileResolverObject ro(AirportTileSpec::GetByTile(index), index, Station::GetByTile(index));
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 };
 
@@ -497,7 +497,7 @@ class NIHTown : public NIHelper {
 	/* virtual */ uint Resolve(uint index, uint var, uint param, bool *avail) const
 	{
 		TownResolverObject ro(NULL, Town::Get(index), true);
-		return ro.GetScope(ro.scope)->GetVariable(var, param, avail);
+		return ro.GetScope(VSG_SCOPE_SELF)->GetVariable(var, param, avail);
 	}
 
 	const int32 *GetPSAFirstPosition(uint index, uint32 grfid) const

@@ -174,7 +174,7 @@ static uint32 RotateRight(uint32 val, uint32 rot)
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObject *object, U last_value, uint32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver *scope, U last_value, uint32 value)
 {
 	value >>= adjust->shift_num;
 	value  &= adjust->and_mask;
@@ -204,7 +204,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObjec
 		case DSGA_OP_XOR:  return last_value ^ value;
 		case DSGA_OP_STO:  _temp_store.StoreValue((U)value, (S)last_value); return last_value;
 		case DSGA_OP_RST:  return value;
-		case DSGA_OP_STOP: object->GetScope(object->scope)->StorePSA((U)value, (S)last_value); return last_value;
+		case DSGA_OP_STOP: scope->StorePSA((U)value, (S)last_value); return last_value;
 		case DSGA_OP_ROR:  return RotateRight(last_value, value);
 		case DSGA_OP_SCMP: return ((S)last_value == (S)value) ? 1 : ((S)last_value < (S)value ? 0 : 2);
 		case DSGA_OP_UCMP: return ((U)last_value == (U)value) ? 1 : ((U)last_value < (U)value ? 0 : 2);
@@ -222,7 +222,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 	uint32 value = 0;
 	uint i;
 
-	object->scope = this->var_scope;
+	ScopeResolver *scope = object->GetScope(this->var_scope);
 
 	for (i = 0; i < this->num_adjusts; i++) {
 		DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
@@ -237,13 +237,11 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 				value = subgroup->GetCallbackResult();
 			}
 
-			/* Reset values to current scope.
-			 * Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
-			object->scope = this->var_scope;
+			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
 		} else if (adjust->variable == 0x7B) {
-			value = GetVariable(object, object->GetScope(this->var_scope), adjust->parameter, last_value, &available);
+			value = GetVariable(object, scope, adjust->parameter, last_value, &available);
 		} else {
-			value = GetVariable(object, object->GetScope(this->var_scope), adjust->variable, adjust->parameter, &available);
+			value = GetVariable(object, scope, adjust->variable, adjust->parameter, &available);
 		}
 
 		if (!available) {
@@ -253,9 +251,9 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 		}
 
 		switch (this->size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, object, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, object, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, object, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, scope, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, scope, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, scope, last_value, value); break;
 			default: NOT_REACHED();
 		}
 		last_value = value;
@@ -283,9 +281,6 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 
 const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject *object) const
 {
-	object->scope = this->var_scope;
-	object->count = this->count;
-
 	ScopeResolver *scope = object->GetScope(this->var_scope, this->count);
 	if (object->trigger != 0) {
 		/* Handle triggers */

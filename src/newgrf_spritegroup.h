@@ -344,9 +344,6 @@ struct ResolverObject {
 	uint32 last_value;          ///< Result of most recent DeterministicSpriteGroup (including procedure calls)
 	uint32 reseed[VSG_END];     ///< Collects bits to rerandomise while triggering triggers.
 
-	VarSpriteGroupScope scope;  ///< Scope of currently resolved DeterministicSpriteGroup resp. RandomizedSpriteGroup
-	byte count;                 ///< Additional scope for RandomizedSpriteGroup
-
 	const GRFFile *grffile;     ///< GRFFile the resolved SpriteGroup belongs to
 
 	virtual const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const;

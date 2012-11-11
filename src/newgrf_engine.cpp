@@ -1301,7 +1301,7 @@ void FillNewGRFVehicleCache(const Vehicle *v)
 		/* Only resolve when the cache isn't valid. */
 		if (HasBit(v->grf_cache.cache_valid, cache_entries[i][1])) continue;
 		bool stub;
-		ro.GetScope(ro.scope)->GetVariable(cache_entries[i][0], 0, &stub);
+		ro.GetScope(VSG_SCOPE_SELF)->GetVariable(cache_entries[i][0], 0, &stub);
 	}
 
 	/* Make sure really all bits are set. */
