@@ -923,15 +923,15 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 		NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_NEW_TOWN), SetMinimalSize(156, 12), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_NEW_TOWN_BUTTON, STR_FOUND_TOWN_NEW_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_RANDOM_TOWN), SetMinimalSize(156, 12), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_RANDOM_TOWN), SetMinimalSize(156, 12), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_RANDOM_TOWN_BUTTON, STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP), SetPadding(0, 2, 1, 2),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_MANY_RANDOM_TOWNS), SetMinimalSize(156, 12), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_MANY_RANDOM_TOWNS), SetMinimalSize(156, 12), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_MANY_RANDOM_TOWNS, STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP), SetPadding(0, 2, 0, 2),
 		/* Town name selection. */
 		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(156, 14), SetPadding(0, 2, 0, 2), SetDataTip(STR_FOUND_TOWN_NAME_TITLE, STR_NULL),
 		NWidget(WWT_EDITBOX, COLOUR_WHITE, WID_TF_TOWN_NAME_EDITBOX), SetMinimalSize(156, 12), SetPadding(0, 2, 3, 2),
 										SetDataTip(STR_FOUND_TOWN_NAME_EDITOR_TITLE, STR_FOUND_TOWN_NAME_EDITOR_HELP),
-		NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_TF_TOWN_NAME_RANDOM), SetMinimalSize(78, 12), SetPadding(0, 2, 0, 2), SetFill(1, 0),
+		NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_TF_TOWN_NAME_RANDOM), SetMinimalSize(78, 12), SetPadding(0, 2, 0, 2), SetFill(1, 0),
 										SetDataTip(STR_FOUND_TOWN_NAME_RANDOM_BUTTON, STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP),
 		/* Town size selection. */
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
@@ -1070,7 +1070,6 @@ public:
 				break;
 
 			case WID_TF_RANDOM_TOWN:
-				this->HandleButtonClick(WID_TF_RANDOM_TOWN);
 				this->ExecuteFoundTownCommand(0, true, STR_ERROR_CAN_T_GENERATE_TOWN, CcFoundRandomTown);
 				break;
 
@@ -1080,8 +1079,6 @@ public:
 				break;
 
 			case WID_TF_MANY_RANDOM_TOWNS:
-				this->HandleButtonClick(WID_TF_MANY_RANDOM_TOWNS);
-
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns(this->town_layout)) {
@@ -1108,13 +1105,6 @@ public:
 				this->UpdateButtons(false);
 				break;
 		}
-	}
-
-	virtual void OnTimeout()
-	{
-		this->RaiseWidget(WID_TF_RANDOM_TOWN);
-		this->RaiseWidget(WID_TF_MANY_RANDOM_TOWNS);
-		this->SetDirty();
 	}
 
 	virtual void OnMouseLoop()
@@ -1157,7 +1147,7 @@ public:
 static const WindowDesc _found_town_desc(
 	WDP_AUTO, 160, 162,
 	WC_FOUND_TOWN, WC_NONE,
-	WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_found_town_widgets, lengthof(_nested_found_town_widgets)
 );
 

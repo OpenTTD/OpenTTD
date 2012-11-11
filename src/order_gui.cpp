@@ -1500,21 +1500,6 @@ public:
 		this->vscroll->SetCapacityFromWidget(this, WID_O_ORDER_LIST);
 	}
 
-	virtual void OnTimeout()
-	{
-		static const int raise_widgets[] = {
-			WID_O_TIMETABLE_VIEW, WID_O_SKIP, WID_O_DELETE, WID_O_STOP_SHARING, WID_O_REFIT, WID_O_SHARED_ORDER_LIST, WIDGET_LIST_END,
-		};
-
-		/* Unclick all buttons in raise_widgets[]. */
-		for (const int *widnum = raise_widgets; *widnum != WIDGET_LIST_END; widnum++) {
-			if (this->IsWidgetLowered(*widnum)) {
-				this->RaiseWidget(*widnum);
-				this->SetWidgetDirty(*widnum);
-			}
-		}
-	}
-
 	static Hotkey<OrdersWindow> order_hotkeys[];
 };
 
@@ -1568,7 +1553,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 															SetDataTip(STR_ORDER_SERVICE, STR_ORDER_SERVICE_TOOLTIP), SetResize(1, 0),
 				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_O_SEL_TOP_RIGHT),
-					NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_O_EMPTY), SetMinimalSize(93, 12), SetFill(1, 0),
+					NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_O_EMPTY), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetDataTip(STR_ORDER_REFIT, STR_ORDER_REFIT_TOOLTIP), SetResize(1, 0),
 					NWidget(NWID_BUTTON_DROPDOWN, COLOUR_GREY, WID_O_REFIT_DROPDOWN), SetMinimalSize(93, 12), SetFill(1, 0),
 															SetDataTip(STR_ORDER_REFIT_AUTO, STR_ORDER_REFIT_AUTO_TOOLTIP), SetResize(1, 0),
@@ -1607,7 +1592,7 @@ static const NWidgetPart _nested_orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_orders_train_widgets, lengthof(_nested_orders_train_widgets)
 );
 
@@ -1678,7 +1663,7 @@ static const NWidgetPart _nested_orders_widgets[] = {
 static const WindowDesc _orders_desc(
 	WDP_AUTO, 384, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_orders_widgets, lengthof(_nested_orders_widgets)
 );
 

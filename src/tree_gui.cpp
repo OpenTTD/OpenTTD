@@ -134,8 +134,6 @@ public:
 				break;
 
 			case WID_BT_MANY_RANDOM: // place trees randomly over the landscape
-				this->LowerWidget(WID_BT_MANY_RANDOM);
-				this->SetTimeout();
 				SndPlayFx(SND_15_BEEP);
 				PlaceTreesRandomly();
 				MarkWholeScreenDirty();
@@ -168,12 +166,6 @@ public:
 	{
 		this->base  = _tree_base_by_landscape[_settings_game.game_creation.landscape];
 		this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
-	}
-
-	virtual void OnTimeout()
-	{
-		this->RaiseWidget(WID_BT_MANY_RANDOM);
-		this->SetWidgetDirty(WID_BT_MANY_RANDOM);
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -238,7 +230,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_TYPE_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BT_MANY_RANDOM), SetMinimalSize(139, 12), SetDataTip(STR_TREES_RANDOM_TREES_BUTTON, STR_TREES_RANDOM_TREES_TOOLTIP),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 2),
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
@@ -249,7 +241,7 @@ static const NWidgetPart _nested_build_trees_widgets[] = {
 static const WindowDesc _build_trees_desc(
 	WDP_AUTO, 0, 0,
 	WC_BUILD_TREES, WC_NONE,
-	WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_build_trees_widgets, lengthof(_nested_build_trees_widgets)
 );
 

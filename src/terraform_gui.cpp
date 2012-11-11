@@ -197,8 +197,6 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case WID_TT_PLANT_TREES: // Plant trees button
-				/* This button is NOT a place-push-button, so don't treat it as such */
-				this->HandleButtonClick(WID_TT_PLANT_TREES);
 				ShowBuildTreesToolbar();
 				break;
 
@@ -218,12 +216,6 @@ struct TerraformToolbarWindow : Window {
 
 			default: NOT_REACHED();
 		}
-	}
-
-	virtual void OnTimeout()
-	{
-		this->RaiseWidget(WID_TT_PLANT_TREES);
-		this->SetWidgetDirty(WID_TT_PLANT_TREES);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -338,7 +330,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 								SetFill(0, 1), SetDataTip(SPR_IMG_DYNAMITE, STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_BUY_LAND), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_BUY_LAND, STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND),
-		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_PLANT_TREES), SetMinimalSize(22, 22),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_DARK_GREEN, WID_TT_PLANT_TREES), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_TT_PLACE_SIGN), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
@@ -352,7 +344,7 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 static const WindowDesc _terraform_desc(
 	WDP_MANUAL, 0, 0,
 	WC_SCEN_LAND_GEN, WC_NONE,
-	WDF_CONSTRUCTION,
+	WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_nested_terraform_widgets, lengthof(_nested_terraform_widgets)
 );
 
