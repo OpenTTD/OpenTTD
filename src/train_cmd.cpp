@@ -208,12 +208,13 @@ void Train::ConsistChanged(bool same_length)
 		if (e_u->GetGRF() != NULL && e_u->GetGRF()->grf_version >= 8) {
 			/* Use callback 36 */
 			veh_len = GetVehicleProperty(u, PROP_TRAIN_SHORTEN_FACTOR, CALLBACK_FAILED);
+
+			if (veh_len != CALLBACK_FAILED && veh_len >= VEHICLE_LENGTH) {
+				ErrorUnknownCallbackResult(e_u->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
+			}
 		} else if (HasBit(e_u->info.callback_mask, CBM_VEHICLE_LENGTH)) {
 			/* Use callback 11 */
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
-		}
-		if (veh_len != CALLBACK_FAILED && veh_len >= VEHICLE_LENGTH) {
-			ErrorUnknownCallbackResult(e_u->GetGRFID(), CBID_VEHICLE_LENGTH, veh_len);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
 		veh_len = VEHICLE_LENGTH - Clamp(veh_len, 0, VEHICLE_LENGTH - 1);
