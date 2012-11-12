@@ -411,17 +411,28 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 	if ((variable >= 0x60 && variable <= 0x65) || variable == 0x69) {
 		CargoID c = GetCargoTranslation(parameter, object->grffile);
 
-		if (c == CT_INVALID) return 0;
+		if (c == CT_INVALID) {
+			switch (variable) {
+				case 0x62: return 0xFFFFFFFF;
+				case 0x64: return 0xFF00;
+				default:   return 0;
+			}
+		}
 		const GoodsEntry *ge = &this->goods[c];
 
 		switch (variable) {
 			case 0x60: return min(ge->cargo.Count(), 4095);
-			case 0x61: return ge->days_since_pickup;
-			case 0x62: return ge->rating;
+			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->days_since_pickup : 0;
+			case 0x62: return HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP) ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->cargo.DaysInTransit();
-			case 0x64: return ge->last_speed | (ge->last_age << 8);
+			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
 			case 0x65: return GB(ge->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
-			case 0x69: return GB(ge->acceptance_pickup, GoodsEntry::GES_EVER_ACCEPTED, 4);
+			case 0x69: {
+				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
+				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
+				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
+				return GB(ge->acceptance_pickup, GoodsEntry::GES_EVER_ACCEPTED, 4);
+			}
 		}
 	}
 
