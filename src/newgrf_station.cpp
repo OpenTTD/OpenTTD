@@ -394,7 +394,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HasBit(this->goods[cargo_type].acceptance_pickup, GoodsEntry::GES_PICKUP)) SetBit(value, cargo_type);
+				if (HasBit(this->goods[cargo_type].acceptance_pickup, GoodsEntry::GES_ACCEPTANCE)) SetBit(value, cargo_type);
 			}
 			return value;
 		}
