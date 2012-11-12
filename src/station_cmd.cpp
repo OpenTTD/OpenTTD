@@ -2652,6 +2652,7 @@ static void DrawTile_Station(TileInfo *ti)
 			if (!HasFoundationNW(ti->tile, slope, z)) SetBit(edge_info, 0);
 			if (!HasFoundationNE(ti->tile, slope, z)) SetBit(edge_info, 1);
 			SpriteID image = GetCustomStationFoundationRelocation(statspec, st, ti->tile, tile_layout, edge_info);
+			if (image == 0) goto draw_default_foundation;
 
 			if (HasBit(statspec->flags, SSF_EXTENDED_FOUNDATIONS)) {
 				/* Station provides extended foundations. */

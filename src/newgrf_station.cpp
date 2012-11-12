@@ -630,7 +630,7 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, BaseStation *st
  * @param tile Station tile being drawn
  * @param layout Spritelayout as returned by previous callback
  * @param edge_info Information about northern tile edges; whether they need foundations or merge into adjacent tile's foundations.
- * @return First sprite of a set of foundation sprites for various slopes.
+ * @return First sprite of a set of foundation sprites for various slopes, or 0 if default foundations shall be drawn.
  */
 SpriteID GetCustomStationFoundationRelocation(const StationSpec *statspec, BaseStation *st, TileIndex tile, uint layout, uint edge_info)
 {
