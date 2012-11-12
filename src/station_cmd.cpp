@@ -2345,7 +2345,7 @@ CommandCost CmdOpenCloseAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	if (!Station::IsValidID(p1)) return CMD_ERROR;
 	Station *st = Station::Get(p1);
 
-	if (!(st->facilities & FACIL_AIRPORT)) return CMD_ERROR;
+	if (!(st->facilities & FACIL_AIRPORT) || st->owner == OWNER_NONE) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(st->owner);
 	if (ret.Failed()) return ret;
