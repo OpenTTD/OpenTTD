@@ -1240,9 +1240,14 @@ uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 	int unloading = 0;
 	bool loading = false;
 
+	bool is_loading = front->current_order.IsType(OT_LOADING);
+
 	/* The station may be NULL when the (colour) string does not need to be set. */
 	const Station *st = Station::GetIfValid(front->last_station_visited);
-	assert(colour == NULL || st != NULL);
+	assert(colour == NULL || (st != NULL && is_loading));
+
+	bool order_no_load = is_loading && (front->current_order.GetLoadType() & OLFB_NO_LOAD);
+	bool order_full_load = is_loading && (front->current_order.GetLoadType() & OLFB_FULL_LOAD);
 
 	/* Count up max and used */
 	for (const Vehicle *v = front; v != NULL; v = v->Next()) {
@@ -1250,7 +1255,9 @@ uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0 && colour != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
-			loading |= !(front->current_order.GetLoadType() & OLFB_NO_LOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
+			loading |= !order_no_load &&
+					(order_full_load || HasBit(st->goods[v->cargo_type].acceptance_pickup, GoodsEntry::GES_PICKUP)) &&
+					!HasBit(v->vehicle_flags, VF_LOADING_FINISHED) && !HasBit(v->vehicle_flags, VF_STOP_LOADING);
 			cars++;
 		}
 	}
