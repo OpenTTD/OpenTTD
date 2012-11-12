@@ -2550,6 +2550,63 @@ const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
 	return &_station_display_datas[st][gfx];
 }
 
+/**
+ * Check whether a sprite is a track sprite, which can be replaced by a non-track ground sprite and a rail overlay.
+ * If the ground sprite is suitable, \a ground is replaced with the new non-track ground sprite, and \a overlay_offset
+ * is set to the overlay to draw.
+ * @param          ti             Positional info for the tile to decide snowyness etc. May be NULL.
+ * @param [in,out] ground         Groundsprite to draw.
+ * @param [out]    overlay_offset Overlay to draw.
+ * @return true if overlay can be drawn.
+ */
+static bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, RailTrackOffset *overlay_offset)
+{
+	bool snow_desert;
+	switch (*ground) {
+		case SPR_RAIL_TRACK_X:
+			snow_desert = false;
+			*overlay_offset = RTO_X;
+			break;
+
+		case SPR_RAIL_TRACK_Y:
+			snow_desert = false;
+			*overlay_offset = RTO_Y;
+			break;
+
+		case SPR_RAIL_TRACK_X_SNOW:
+			snow_desert = true;
+			*overlay_offset = RTO_X;
+			break;
+
+		case SPR_RAIL_TRACK_Y_SNOW:
+			snow_desert = true;
+			*overlay_offset = RTO_Y;
+			break;
+
+		default:
+			return false;
+	}
+
+	if (ti != NULL) {
+		/* Decide snow/desert from tile */
+		switch (_settings_game.game_creation.landscape) {
+			case LT_ARCTIC:
+				snow_desert = ti->z > GetSnowLine();
+				break;
+
+			case LT_TROPIC:
+				snow_desert = GetTropicZone(ti->tile) == TROPICZONE_DESERT;
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	*ground = snow_desert ? SPR_FLAT_SNOW_DESERT_TILE : SPR_FLAT_GRASS_TILE;
+	return true;
+}
+
 static void DrawTile_Station(TileInfo *ti)
 {
 	const NewGRFSpriteLayout *layout = NULL;
@@ -2753,14 +2810,15 @@ draw_default_foundation:
 
 		SpriteID image = t->ground.sprite;
 		PaletteID pal  = t->ground.pal;
-		if (rti != NULL && rti->UsesOverlay() && (image == SPR_RAIL_TRACK_X || image == SPR_RAIL_TRACK_Y)) {
+		RailTrackOffset overlay_offset;
+		if (rti != NULL && rti->UsesOverlay() && SplitGroundSpriteForOverlay(ti, &image, &overlay_offset)) {
 			SpriteID ground = GetCustomRailSprite(rti, ti->tile, RTSG_GROUND);
-			DrawGroundSprite(SPR_FLAT_GRASS_TILE, PAL_NONE);
-			DrawGroundSprite(ground + (image == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PAL_NONE);
+			DrawGroundSprite(image, PAL_NONE);
+			DrawGroundSprite(ground + overlay_offset, PAL_NONE);
 
 			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasStationReservation(ti->tile)) {
 				SpriteID overlay = GetCustomRailSprite(rti, ti->tile, RTSG_OVERLAY);
-				DrawGroundSprite(overlay + (image == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PALETTE_CRASH);
+				DrawGroundSprite(overlay + overlay_offset, PALETTE_CRASH);
 			}
 		} else {
 			image += HasBit(image, SPRITE_MODIFIER_CUSTOM_SPRITE) ? ground_relocation : total_offset;
@@ -2804,10 +2862,11 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	}
 
 	SpriteID img = t->ground.sprite;
-	if ((img == SPR_RAIL_TRACK_X || img == SPR_RAIL_TRACK_Y) && rti->UsesOverlay()) {
+	RailTrackOffset overlay_offset;
+	if (rti->UsesOverlay() && SplitGroundSpriteForOverlay(NULL, &img, &overlay_offset)) {
 		SpriteID ground = GetCustomRailSprite(rti, INVALID_TILE, RTSG_GROUND);
-		DrawSprite(SPR_FLAT_GRASS_TILE, PAL_NONE, x, y);
-		DrawSprite(ground + (img == SPR_RAIL_TRACK_X ? RTO_X : RTO_Y), PAL_NONE, x, y);
+		DrawSprite(img, PAL_NONE, x, y);
+		DrawSprite(ground + overlay_offset, PAL_NONE, x, y);
 	} else {
 		DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOUR) ? pal : PAL_NONE, x, y);
 	}
