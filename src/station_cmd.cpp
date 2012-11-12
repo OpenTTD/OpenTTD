@@ -3529,14 +3529,6 @@ void BuildOilRig(TileIndex tile)
 
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
-	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		st->goods[j].acceptance_pickup = 0;
-		st->goods[j].days_since_pickup = 255;
-		st->goods[j].rating = INITIAL_STATION_RATING;
-		st->goods[j].last_speed = 0;
-		st->goods[j].last_age = 255;
-	}
-
 	st->UpdateVirtCoord();
 	UpdateStationAcceptance(st, false);
 	st->RecomputeIndustriesNear();
