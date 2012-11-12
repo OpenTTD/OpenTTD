@@ -107,6 +107,13 @@ struct GoodsEntry {
 
 	byte amount_fract;      ///< Fractional part of the amount in the cargo list
 	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
+
+	/**
+	 * Reports whether a vehicle has ever tried to load the cargo at this station.
+	 * This does not imply that there was cargo available for loading. Refer to GES_PICKUP for that.
+	 * @return true if vehicle tried to load.
+	 */
+	bool HasVehicleEverTriedLoading() const { return this->last_speed != 0; }
 };
 
 /** All airport-related information. Only valid if tile != INVALID_TILE. */

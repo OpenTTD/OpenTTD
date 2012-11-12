@@ -3138,8 +3138,7 @@ static void UpdateStationRating(Station *st)
 				 * waiting cargo ratings must not be executed. */
 
 				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
-				uint last_speed = ge->last_speed;
-				if (last_speed == 0) last_speed = 0xFF;
+				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
 
 				uint32 var18 = min(ge->days_since_pickup, 0xFF) | (min(waiting, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
 				/* Convert to the 'old' vehicle types */
@@ -3456,7 +3455,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 
 		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
 
-		if (_settings_game.order.selectgoods && st->goods[type].last_speed == 0) continue; // Selectively servicing stations, and not this one
+		if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) continue; // Selectively servicing stations, and not this one
 
 		if (IsCargoInClass(type, CC_PASSENGERS)) {
 			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
