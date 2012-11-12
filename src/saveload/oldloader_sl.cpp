@@ -687,7 +687,7 @@ static uint8  _cargo_days;
 
 static const OldChunks goods_chunk[] = {
 	OCL_VAR ( OC_UINT16, 1,          &_waiting_acceptance ),
-	OCL_SVAR(  OC_UINT8, GoodsEntry, days_since_pickup ),
+	OCL_SVAR(  OC_UINT8, GoodsEntry, time_since_pickup ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, rating ),
 	OCL_VAR (  OC_UINT8, 1,          &_cargo_source ),
 	OCL_VAR (  OC_UINT8, 1,          &_cargo_days ),

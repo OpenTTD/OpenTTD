@@ -3187,7 +3187,7 @@ static void UpdateStationRating(Station *st)
 
 		/* Only change the rating if we are moving this cargo */
 		if (HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP)) {
-			byte_inc_sat(&ge->days_since_pickup);
+			byte_inc_sat(&ge->time_since_pickup);
 
 			bool skip = false;
 			int rating = 0;
@@ -3200,7 +3200,7 @@ static void UpdateStationRating(Station *st)
 				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
 				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
 
-				uint32 var18 = min(ge->days_since_pickup, 0xFF) | (min(waiting, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
+				uint32 var18 = min(ge->time_since_pickup, 0xFF) | (min(waiting, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
 				/* Convert to the 'old' vehicle types */
 				uint32 var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
 				uint16 callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
@@ -3217,12 +3217,12 @@ static void UpdateStationRating(Station *st)
 				int b = ge->last_speed - 85;
 				if (b >= 0) rating += b >> 2;
 
-				byte days = ge->days_since_pickup;
-				if (st->last_vehicle_type == VEH_SHIP) days >>= 2;
-				(days > 21) ||
-				(rating += 25, days > 12) ||
-				(rating += 25, days > 6) ||
-				(rating += 45, days > 3) ||
+				byte waittime = ge->time_since_pickup;
+				if (st->last_vehicle_type == VEH_SHIP) waittime >>= 2;
+				(waittime > 21) ||
+				(rating += 25, waittime > 12) ||
+				(rating += 25, waittime > 6) ||
+				(rating += 45, waittime > 3) ||
 				(rating += 35, true);
 
 				(rating -= 90, waiting > 1500) ||

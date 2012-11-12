@@ -422,7 +422,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 
 		switch (variable) {
 			case 0x60: return min(ge->cargo.Count(), 4095);
-			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->days_since_pickup : 0;
+			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return HasBit(ge->acceptance_pickup, GoodsEntry::GES_PICKUP) ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
@@ -442,7 +442,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->cargo.Count();
 			case 1: return GB(min(g->cargo.Count(), 4095), 0, 4) | (GB(g->acceptance_pickup, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
-			case 2: return g->days_since_pickup;
+			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->cargo.Source();
 			case 5: return g->cargo.DaysInTransit();

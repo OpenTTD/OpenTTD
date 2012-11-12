@@ -247,7 +247,7 @@ const SaveLoad *GetGoodsDesc()
 		SLEG_CONDVAR(            _waiting_acceptance, SLE_UINT16,                  0, 67),
 		 SLE_CONDVAR(GoodsEntry, acceptance_pickup,   SLE_UINT8,                  68, SL_MAX_VERSION),
 		SLE_CONDNULL(2,                                                           51, 67),
-		     SLE_VAR(GoodsEntry, days_since_pickup,   SLE_UINT8),
+		     SLE_VAR(GoodsEntry, time_since_pickup,   SLE_UINT8),
 		     SLE_VAR(GoodsEntry, rating,              SLE_UINT8),
 		SLEG_CONDVAR(            _cargo_source,       SLE_FILE_U8 | SLE_VAR_U16,   0, 6),
 		SLEG_CONDVAR(            _cargo_source,       SLE_UINT16,                  7, 67),

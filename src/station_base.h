@@ -71,7 +71,7 @@ struct GoodsEntry {
 
 	GoodsEntry() :
 		acceptance_pickup(0),
-		days_since_pickup(255),
+		time_since_pickup(255),
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
 		last_age(255)
@@ -84,7 +84,7 @@ struct GoodsEntry {
 	 * The unit used is STATION_RATING_TICKS.
 	 * This does not imply there was any cargo to load.
 	 */
-	byte days_since_pickup;
+	byte time_since_pickup;
 
 	byte rating;            ///< %Station rating for this cargo.
 
