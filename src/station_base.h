@@ -29,12 +29,44 @@ static const byte INITIAL_STATION_RATING = 175;
 struct GoodsEntry {
 	/** Status of this cargo for the station. */
 	enum GoodsEntryStatus {
-		GES_ACCEPTANCE,       ///< This cargo is currently being accepted by the station.
-		GES_PICKUP,           ///< This cargo has been picked up at this station at least once.
-		GES_EVER_ACCEPTED,    ///< The cargo has been accepted at least once.
-		GES_LAST_MONTH,       ///< The cargo was accepted last month.
-		GES_CURRENT_MONTH,    ///< The cargo was accepted this month.
-		GES_ACCEPTED_BIGTICK, ///< The cargo has been accepted since the last periodic processing.
+		/**
+		 * Set when the station accepts the cargo currently for final deliveries.
+		 * It is updated every STATION_ACCEPTANCE_TICKS ticks by checking surrounding tiles for acceptance >= 8/8.
+		 */
+		GES_ACCEPTANCE,
+
+		/**
+		 * Set when the cargo was ever waiting at the station.
+		 * It is set when cargo supplied by surrounding tiles is moved to the station, or when
+		 * arriving vehicles unload/transfer cargo without it being a final delivery.
+		 * This also indicates, whether a cargo has a rating at the station.
+		 * This flag is never cleared.
+		 */
+		GES_PICKUP,
+
+		/**
+		 * Set when a vehicle ever delivered cargo to the station for final delivery.
+		 * This flag is never cleared.
+		 */
+		GES_EVER_ACCEPTED,
+
+		/**
+		 * Set when cargo was delivered for final delivery last month.
+		 * This flag is set to the value of GES_CURRENT_MONTH at the start of each month.
+		 */
+		GES_LAST_MONTH,
+
+		/**
+		 * Set when cargo was delivered for final delivery this month.
+		 * This flag is reset on the beginning of every month.
+		 */
+		GES_CURRENT_MONTH,
+
+		/**
+		 * Set when cargo was delivered for final delivery during the current STATION_ACCEPTANCE_TICKS interval.
+		 * This flag is reset every STATION_ACCEPTANCE_TICKS ticks.
+		 */
+		GES_ACCEPTED_BIGTICK,
 	};
 
 	GoodsEntry() :
@@ -46,10 +78,33 @@ struct GoodsEntry {
 	{}
 
 	byte acceptance_pickup; ///< Status of this cargo, see #GoodsEntryStatus.
-	byte days_since_pickup; ///< Number of days since the last pickup for this cargo (up to 255).
+
+	/**
+	 * Number of rating-intervals (up to 255) since the last vehicle tried to load this cargo.
+	 * The unit used is STATION_RATING_TICKS.
+	 * This does not imply there was any cargo to load.
+	 */
+	byte days_since_pickup;
+
 	byte rating;            ///< %Station rating for this cargo.
-	byte last_speed;        ///< Maximum speed of the last vehicle that picked up this cargo (up to 255).
-	byte last_age;          ///< Age in years of the last vehicle that picked up this cargo.
+
+	/**
+	 * Maximum speed (up to 255) of the last vehicle that tried to load this cargo.
+	 * This does not imply there was any cargo to load.
+	 * The unit used is a special vehicle-specific speed unit for station ratings.
+	 *  - Trains: km-ish/h
+	 *  - RV: km-ish/h
+	 *  - Ships: 0.5 * km-ish/h
+	 *  - Aircraft: 8 * mph
+	 */
+	byte last_speed;
+
+	/**
+	 * Age in years (up to 255) of the last vehicle that tried to load this cargo.
+	 * This does not imply there was any cargo to load.
+	 */
+	byte last_age;
+
 	byte amount_fract;      ///< Fractional part of the amount in the cargo list
 	StationCargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
