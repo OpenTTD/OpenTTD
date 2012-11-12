@@ -1228,11 +1228,11 @@ void AgeVehicle(Vehicle *v)
 
 /**
  * Calculates how full a vehicle is.
- * @param v The Vehicle to check. For trains, use the first engine.
+ * @param front The front vehicle of the consist to check.
  * @param colour The string to show depending on if we are unloading or loading
  * @return A percentage of how full the Vehicle is.
  */
-uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
+uint8 CalcPercentVehicleFilled(const Vehicle *front, StringID *colour)
 {
 	int count = 0;
 	int max = 0;
@@ -1240,18 +1240,17 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 	int unloading = 0;
 	bool loading = false;
 
-	const Vehicle *u = v;
 	/* The station may be NULL when the (colour) string does not need to be set. */
-	const Station *st = Station::GetIfValid(v->last_station_visited);
+	const Station *st = Station::GetIfValid(front->last_station_visited);
 	assert(colour == NULL || st != NULL);
 
 	/* Count up max and used */
-	for (; v != NULL; v = v->Next()) {
+	for (const Vehicle *v = front; v != NULL; v = v->Next()) {
 		count += v->cargo.Count();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0 && colour != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
-			loading |= !(u->current_order.GetLoadType() & OLFB_NO_LOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
+			loading |= !(front->current_order.GetLoadType() & OLFB_NO_LOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
 	}
