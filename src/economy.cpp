@@ -1471,7 +1471,7 @@ static void LoadUnloadVehicle(Vehicle *front, int *cargo_left)
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = min(t, 255);
-		ge->last_age = _cur_year - front->build_year;
+		ge->last_age = min(_cur_year - front->build_year, 255);
 		ge->days_since_pickup = 0;
 
 		/* If there's goods waiting at the station, and the vehicle
