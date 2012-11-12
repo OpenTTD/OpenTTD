@@ -717,6 +717,8 @@ bool AfterLoadGame()
 	 *   But this exeption is not true for non dedicated network_servers! */
 	if (!Company::IsValidID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated))) {
 		DoStartupNewCompany(false);
+		Company *c = Company::Get(COMPANY_FIRST);
+		c->settings = _settings_client.company;
 	}
 
 	/* Fix the cache for cargo payments. */
