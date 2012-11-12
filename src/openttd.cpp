@@ -1055,7 +1055,8 @@ void SwitchToMode(SwitchMode new_mode)
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
 				if (_saveload_mode == SLD_LOAD_SCENARIO) {
-					StartupEngines();
+					/* Reset engine pool to simplify changing engine NewGRFs in scenario editor. */
+					EngineOverrideManager::ResetToCurrentNewGRFConfig();
 				}
 				/* Update the local company for a loaded game. It is either always
 				 * company #1 (eg 0) or in the case of a dedicated server a spectator */
