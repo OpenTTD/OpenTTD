@@ -349,7 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan tingkat kesulitan
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Pengaturan AI / Permainan
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Pengaturan AI / Skrip Permainan
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Tampilan penand
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animasi penuh
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Detail penuh
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Bangunan tembus pandang
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparasikan palang stasiun
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparankan tanda-tanda
 ############ range ends here
 
 ############ range for file menu starts
@@ -893,6 +893,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Lira Turki (TRY
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Koruna Slovakia (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Real Brazilia (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :Krooni Estonia (EEK)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Afrika Selatan (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Atur sendiri...
 ############ end of currency region
 
@@ -1097,6 +1098,17 @@ STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tindakan
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengaturan lanjutan
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyaring kata:
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
+
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}Perlihatkan:
+STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Hambat daftar dibawah, hanya tampilkan aturan yang diubah
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pengaturan dasar
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pengaturan lanjut
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Pengaturan mahir / semua aturan
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Pengaturan dengan nilai berbeda dari nilai asli
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT_WO_LOCAL    :Pengaturan non-klien dengan nilai berbeda dari nilai asli
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Pengaturan dengan nilai berbeda dari pengaturan permainan baru
 
 STR_CONFIG_SETTING_OFF                                          :Tidak
 STR_CONFIG_SETTING_ON                                           :Ya
@@ -1116,13 +1128,29 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Kanan
 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :Ijinkan pembangunan di lereng dan pantai: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {STRING}
+STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ijinkan pembentukan tanah dibawah bangunan dan trek tanpa merusaknya
 STR_CONFIG_SETTING_CATCHMENT                                    :Ijinkan ukuran jangkauan wilayah lebih realistik: {STRING}
+STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Gunakan area penarikan berbeda untuk tipe stasiun dan airport yang berbeda
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Ijinkan menggusur lebih banyak jalan, jembatan, terowongan milik kota, dsb: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Permudah membuang infrasturktur yang dimiliki kota
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Panjang kereta maksimum: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Atur panjang kereta maksimum
+STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ubin
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Banyaknya asap / percikan lokomotif: {STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Atur berapa banyak asap dan api dari kendaraan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model akselerasi kereta: {STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Pilih model fisik dari percepatan kereta. Model asli mengurangi kecepatan kendaraan dalam tikungan/tanjakan jumlah sama. Model realistis mengurangi kecepatan dalam tikungan/tanjakan berdasarkan berbagai hal seperti panjang kendaraan dan kekuatan traksi.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model kendaraan percepatan: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Pilih model fisik untuk asklerasi kendaraan. Model asli mengurangi kecepatan kendaraan dalam tikungan/tanjakan jumlah sama. Model realistis mengurangi kecepatan dalam tikungan/tanjakan berdasarkan berbagai hal seperti panjang kendaraan dan kekuatan traksi.
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Kemiringan untuk kereta: {STRING}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Kemiringan untuk kereta. Nilai yang lebih tinggi membuat lebih sulit menaiki bukit
+STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :Kemiringan untuk kendaraan: {STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS_HELPTEXT        :Kemiringan untuk kendaraan. Nilai yang lebih tinggi membuat lebih sulit menaiki bukit
 STR_CONFIG_SETTING_FORBID_90_DEG                                :Kereta dan kapal dilarang belok 90 derajat: {STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :Putar balik terjadi ketika trek horizontal diikuti langsung oleh trek vertikal di ubin berikutnya, jadi membuatnya berputar balik di ujung ubin daripada memutar 45 derajat ke kombinasi trek lain. Ini juga berlaku pada radius putaran kapal.
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Ijinkan menggabung stasiun meski tdk menempel: {STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Ijinkan penambahan bagian dari stasiun tanpa menyentuh bagian yang sudah ada. Perlu Ctrl+Klik ketika menambahkan bagian baru.
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Gunakan algoritma pengangkutan terbaru : {STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Angkut secara bertahap: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasi: {STRING}
@@ -1453,8 +1481,8 @@ STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Tampilka
 STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Tampilkan skema warna kendaraan
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Tampilkan skema warna kapal
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Tampilkan skema warna pesawat
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pilih warna utama untuk skema terpilih
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pilih warna kedua untuk skema terpilih
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pilih warna utama untuk skema terpilih, Ctrl+Klik akan mengatur warna ini di semua skema
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pilih warna kedua untuk skema terpilih. Ctrl+Klik akan mengatur warna ini di semua skema
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pilih skema warna untuk diganti, atau banyak skema dengan CTRL+klik. Klik pada kotak untuk berganti dari skema warna yang digunakan
 
 STR_LIVERY_DEFAULT                                              :Warna Standar
@@ -1899,7 +1927,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Tidak, t
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pengaturan Transparasi
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi tanda-tanda. CTRL+klik untuk mengunci
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci
@@ -2110,7 +2138,7 @@ STR_OBJECT_CLASS_TRNS                                           :Pemancar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pepohonan
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pohon untuk ditanam
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pohon untuk ditanam. Jika pohon sudah tertanam, ini akan menambah jenis pohon secara acak dari tipe yang sama.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon secara acak
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tempatkan tipe tumbuhan secara acak. Shift untuk menampilkan perkiraan biaya
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pohon Acak
@@ -2669,6 +2697,7 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Menerima
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Tampilkan daftar kargo yang bisa diterima
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima: {WHITE}{CARGO_LIST}
 
+
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Peringkat
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tampilkna peringkat dari stasiun
 STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Peringkat layanan transportasi (lokal):
@@ -2694,6 +2723,7 @@ STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Tampilka
 STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Tampilkan semua kapal yang memiliki jadwal menuju pelabuhan ini.
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Ubah nama stasiun/area bongkar muat
+
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
@@ -2776,8 +2806,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nam
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham perusahaan
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham perusahaan
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham perusahaan ini. Shift+klik untuk menampilkan perkiraan biaya tanpa membeli saham.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya tanpa menjual saham
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
@@ -2997,7 +3027,7 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya tanpa membeli
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 
@@ -3469,7 +3499,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Jendela
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}SkripPermainan yang akan di jalankan di permainan berikutnya
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skrip Permainan yang akan di jalankan di permainan berikutnya
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI yg akan dijalankan pada permainan berikutnya
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Pemain Manusia
 STR_AI_CONFIG_RANDOM_AI                                         :AI Acak
@@ -3480,13 +3510,13 @@ STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Naikkan 
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Turunkan
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Turunkan AI terpilih dalam daftar
 
-STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}SkripPermainan
+STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Skrip Permainan
 STR_AI_CONFIG_AI                                                :{SILVER}AI
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Pilih {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
-STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :SkripPermainan
+STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skrip Permainan
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Muat skrip yang lain
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Konfigurasikan
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonfigurasi parameter skrip AI
@@ -3494,7 +3524,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Mengkonf
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Tersedia {STRING}
 STR_AI_LIST_CAPTION_AI                                          :AI
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :SkripPermainan
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Skrip Permainan
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klik untuk memilih skrip AI
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Pembuat: {ORANGE}{STRING}
@@ -3509,7 +3539,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan m
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
-STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :SkripPermainan
+STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Skrip Permainan
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3662,7 +3692,7 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... hany
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... hanya dapat dibangun di area hutan hujan
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... hanya dapat dibangun di area gurun
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya dapat dibangun di kota
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... hanya dapat dibangun di kota (menggantikan rumah)
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... hanya dapat dibangun di daerah rendah
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... hanya dapat diletakkan didekat batas peta
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... hutan hanya dapat ditanam diatas batas salju
