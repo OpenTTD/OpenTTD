@@ -757,6 +757,9 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 			}
 	}
 
+	Window *osk = FindWindowById(WC_OSK, 0);
+	if (osk != NULL && osk->parent == w) osk->InvalidateData();
+
 	return HEBR_EDITING;
 }
 
@@ -810,7 +813,15 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 
 HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state)
 {
-	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
+	HandleEditBoxResult result = this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
+	switch (result) {
+		case HEBR_EDITING:
+			this->OnOSKInput(wid);
+			break;
+
+		default: break;
+	}
+	return result;
 }
 
 void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
@@ -898,16 +909,10 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	{
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(WID_QS_TEXT, key, keycode, state)) {
-			default: NOT_REACHED();
-			case HEBR_EDITING: {
-				Window *osk = FindWindowById(WC_OSK, 0);
-				if (osk != NULL && osk->parent == this) osk->InvalidateData();
-				break;
-			}
+			default: break;
 			case HEBR_CONFIRM: this->OnOk();
 				/* FALL THROUGH */
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
-			case HEBR_NOT_FOCUSED: break;
 		}
 		return state;
 	}

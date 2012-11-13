@@ -1265,9 +1265,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 			default: {
 				/* Handle editbox input */
 				EventState state = ES_NOT_HANDLED;
-				if (this->HandleEditBoxKey(WID_NS_FILTER, key, keycode, state) == HEBR_EDITING) {
-					this->OnOSKInput(WID_NS_FILTER);
-				}
+				this->HandleEditBoxKey(WID_NS_FILTER, key, keycode, state);
 				return state;
 			}
 		}

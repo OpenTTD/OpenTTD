@@ -847,11 +847,7 @@ public:
 				}
 				break;
 
-			case HEBR_CONFIRM:
-				break;
-
 			default:
-				this->OnOSKInput(WID_NG_CLIENT);
 				break;
 		}
 
@@ -1184,16 +1180,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_NSS_GAMENAME, key, keycode, state)) {
-			case HEBR_CONFIRM:
-			case HEBR_NOT_FOCUSED:
-				break;
-
-			default:
-				this->OnOSKInput(WID_NSS_GAMENAME);
-				break;
-		}
-
+		this->HandleEditBoxKey(WID_NSS_GAMENAME, key, keycode, state);
 		return state;
 	}
 

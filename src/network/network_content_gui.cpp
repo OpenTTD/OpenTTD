@@ -766,10 +766,7 @@ public:
 			default: {
 				/* Handle editbox input */
 				EventState state = ES_NOT_HANDLED;
-				if (this->HandleEditBoxKey(WID_NCL_FILTER, key, keycode, state) == HEBR_EDITING) {
-					this->OnOSKInput(WID_NCL_FILTER);
-				}
-
+				this->HandleEditBoxKey(WID_NCL_FILTER, key, keycode, state);
 				return state;
 			}
 		}

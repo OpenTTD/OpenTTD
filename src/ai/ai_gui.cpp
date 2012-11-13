@@ -1341,10 +1341,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	{
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state)) {
-			case HEBR_EDITING:
-				this->OnOSKInput(WID_AID_BREAK_STR_EDIT_BOX);
-				break;
-
 			case HEBR_CANCEL:
 				/* Unfocus the text box. */
 				this->UnfocusFocusedWidget();

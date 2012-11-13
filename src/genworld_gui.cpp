@@ -697,7 +697,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->HandleEditBoxKey(WID_GL_RANDOM_EDITBOX, key, keycode, state) == HEBR_EDITING) this->OnOSKInput(WID_GL_RANDOM_EDITBOX);
+		this->HandleEditBoxKey(WID_GL_RANDOM_EDITBOX, key, keycode, state);
 		return state;
 	}
 

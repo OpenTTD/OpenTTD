@@ -511,17 +511,11 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		} else {
 			_chat_tab_completion_active = false;
 			switch (this->HandleEditBoxKey(WID_NC_TEXTBOX, key, keycode, state)) {
-				default: NOT_REACHED();
-				case HEBR_EDITING: {
-					Window *osk = FindWindowById(WC_OSK, 0);
-					if (osk != NULL && osk->parent == this) osk->InvalidateData();
-					break;
-				}
+				default: break;
 				case HEBR_CONFIRM:
 					SendChat(this->text.buf, this->dtype, this->dest);
 					/* FALL THROUGH */
 				case HEBR_CANCEL: delete this; break;
-				case HEBR_NOT_FOCUSED: break;
 			}
 		}
 		return state;
