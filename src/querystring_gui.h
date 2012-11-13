@@ -77,8 +77,6 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	{
 		free(this->edit_str_buf);
 	}
-
-	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button);

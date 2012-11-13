@@ -2234,6 +2234,46 @@ static bool MaybeBringWindowToFront(Window *w)
 }
 
 /**
+ * Process keypress for editbox widget.
+ * @param wid Editbox widget.
+ * @param key     the Unicode value of the key.
+ * @param keycode the untranslated key code including shift state.
+ * @return #ES_HANDLED if the key press has been handled and no other
+ *         window should receive the event.
+ */
+EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
+{
+	EventState state = ES_NOT_HANDLED;
+
+	QueryString *query = dynamic_cast<QueryString*>(this);
+	if (query == NULL) return state;
+
+	switch (query->HandleEditBoxKey(this, wid, key, keycode, state)) {
+		case HEBR_EDITING:
+			this->OnEditboxChanged(wid);
+			break;
+
+		case HEBR_CONFIRM:
+			if (query->ok_button >= 0) {
+				this->OnClick(Point(), query->ok_button, 1);
+			}
+			break;
+
+		case HEBR_CANCEL:
+			if (query->cancel_button >= 0) {
+				this->OnClick(Point(), query->cancel_button, 1);
+			} else {
+				this->UnfocusFocusedWidget();
+			}
+			break;
+
+		default: break;
+	}
+
+	return state;
+}
+
+/**
  * Handle keyboard input.
  * @param raw_key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
  */
@@ -2267,8 +2307,7 @@ void HandleKeypress(uint32 raw_key)
 		if (_focused_window->window_class == WC_CONSOLE) {
 			if (_focused_window->OnKeyPress(key, keycode) == ES_HANDLED) return;
 		} else {
-			QueryStringBaseWindow *query = dynamic_cast<QueryStringBaseWindow*>(_focused_window);
-			if (query != NULL && query->HandleEditBoxKey(_focused_window->nested_focus->index, key, keycode) == ES_HANDLED) return;
+			if (_focused_window->HandleEditBoxKey(_focused_window->nested_focus->index, key, keycode) == ES_HANDLED) return;
 		}
 	}
 

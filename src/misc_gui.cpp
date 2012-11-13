@@ -811,33 +811,6 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	_cur_dpi = old_dpi;
 }
 
-EventState QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
-{
-	EventState state = ES_NOT_HANDLED;
-	switch (this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state)) {
-		case HEBR_EDITING:
-			this->OnEditboxChanged(wid);
-			break;
-
-		case HEBR_CONFIRM:
-			if (this->ok_button >= 0) {
-				this->OnClick(Point(), this->ok_button, 1);
-			}
-			break;
-
-		case HEBR_CANCEL:
-			if (this->cancel_button >= 0) {
-				this->OnClick(Point(), this->cancel_button, 1);
-			} else {
-				this->UnfocusFocusedWidget();
-			}
-			break;
-
-		default: break;
-	}
-	return state;
-}
-
 /** Class for the string query window. */
 struct QueryStringWindow : public QueryStringBaseWindow
 {
