@@ -694,13 +694,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_GL_RANDOM_EDITBOX, key, keycode, state);
-		return state;
-	}
-
 	virtual void OnOSKInput(int wid)
 	{
 		if (wid == WID_GL_RANDOM_EDITBOX) {

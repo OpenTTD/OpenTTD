@@ -1262,12 +1262,8 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 				this->avail_pos = this->avails.Length() - 1;
 				break;
 
-			default: {
-				/* Handle editbox input */
-				EventState state = ES_NOT_HANDLED;
-				this->HandleEditBoxKey(WID_NS_FILTER, key, keycode, state);
-				return state;
-			}
+			default:
+				return ES_NOT_HANDLED;
 		}
 
 		if (this->avails.Length() == 0) this->avail_pos = -1;

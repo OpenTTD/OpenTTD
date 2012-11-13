@@ -1101,13 +1101,6 @@ public:
 		}
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_TF_TOWN_NAME_EDITBOX, key, keycode, state);
-		return state;
-	}
-
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		this->ExecuteFoundTownCommand(tile, false, STR_ERROR_CAN_T_FOUND_TOWN_HERE, CcFoundTown);

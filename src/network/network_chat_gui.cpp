@@ -510,11 +510,13 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		if (keycode == WKC_TAB) {
 			ChatTabCompletion();
 			state = ES_HANDLED;
-		} else {
-			_chat_tab_completion_active = false;
-			this->HandleEditBoxKey(WID_NC_TEXTBOX, key, keycode, state);
 		}
 		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		_chat_tab_completion_active = false;
 	}
 
 	/**

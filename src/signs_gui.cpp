@@ -306,12 +306,10 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->HandleEditBoxKey(WID_SIL_FILTER_TEXT, key, keycode, state) == HEBR_NOT_FOCUSED) {
-			if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
-				this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
-				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-				state = ES_HANDLED;
-			}
+		if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
+			this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
+			SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+			state = ES_HANDLED;
 		}
 
 		return state;
@@ -539,13 +537,6 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				delete this;
 				break;
 		}
-	}
-
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_QES_TEXT, key, keycode, state);
-		return state;
 	}
 };
 

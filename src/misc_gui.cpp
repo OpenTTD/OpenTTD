@@ -811,10 +811,10 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	_cur_dpi = old_dpi;
 }
 
-HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state)
+EventState QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 {
-	HandleEditBoxResult result = this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
-	switch (result) {
+	EventState state = ES_NOT_HANDLED;
+	switch (this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state)) {
 		case HEBR_EDITING:
 			this->OnOSKInput(wid);
 			break;
@@ -835,7 +835,7 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 
 		default: break;
 	}
-	return result;
+	return state;
 }
 
 /** Class for the string query window. */
@@ -914,13 +914,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 				delete this;
 				break;
 		}
-	}
-
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_QS_TEXT, key, keycode, state);
-		return state;
 	}
 
 	~QueryStringWindow()

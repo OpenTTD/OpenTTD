@@ -78,7 +78,7 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 		free(this->edit_str_buf);
 	}
 
-	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
+	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
 
 	/**
 	 * Callback for when on input has been entered with the OSK.

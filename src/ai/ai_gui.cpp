@@ -1340,10 +1340,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state) == HEBR_NOT_FOCUSED) {
-			/* Edit boxs is not globally foused => handle hotkeys of AI Debug window. */
-			int num = CheckHotkeyMatch(aidebug_hotkeys, keycode, this);
-			if (num == -1) return ES_NOT_HANDLED;
+		int num = CheckHotkeyMatch(aidebug_hotkeys, keycode, this);
+		if (num != -1) {
 			if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
 				this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
 				SetFocusedWindow(this);

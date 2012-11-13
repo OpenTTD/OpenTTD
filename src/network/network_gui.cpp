@@ -835,14 +835,12 @@ public:
 			return ES_HANDLED;
 		}
 
-		if (this->HandleEditBoxKey(WID_NG_CLIENT, key, keycode, state) == HEBR_NOT_FOCUSED) {
-			if (this->server != NULL) {
-				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
-					NetworkGameListRemoveItem(this->server);
-					if (this->server == this->last_joined) this->last_joined = NULL;
-					this->server = NULL;
-					this->list_pos = SLP_INVALID;
-				}
+		if (this->server != NULL) {
+			if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
+				NetworkGameListRemoveItem(this->server);
+				if (this->server == this->last_joined) this->last_joined = NULL;
+				this->server = NULL;
+				this->list_pos = SLP_INVALID;
 			}
 		}
 
@@ -1170,13 +1168,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		}
 
 		this->SetDirty();
-	}
-
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_NSS_GAMENAME, key, keycode, state);
-		return state;
 	}
 
 	virtual void OnOSKInput(int wid)
@@ -2150,13 +2141,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				this->SetDirty();
 				break;
 		}
-	}
-
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_NCP_PASSWORD, key, keycode, state);
-		return state;
 	}
 };
 

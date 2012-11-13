@@ -622,10 +622,7 @@ public:
 			return ES_HANDLED;
 		}
 
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_SL_SAVE_OSK_TITLE, key, keycode, state);
-
-		return state;
+		return ES_NOT_HANDLED;
 	}
 
 	virtual void OnTimeout()

@@ -2406,14 +2406,6 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
 	}
 
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
-	{
-		/* Handle editbox input */
-		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_GS_FILTER, key, keycode, state);
-		return state;
-	}
-
 	virtual void OnOSKInput(int wid)
 	{
 		if (wid == WID_GS_FILTER) {

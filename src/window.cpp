@@ -2263,8 +2263,13 @@ void HandleKeypress(uint32 raw_key)
 
 	/* Check if the focused window has a focused editbox */
 	if (EditBoxInGlobalFocus()) {
-		/* All input will in this case go to the focused window */
-		if (_focused_window->OnKeyPress(key, keycode) == ES_HANDLED) return;
+		/* All input will in this case go to the focused editbox */
+		if (_focused_window->window_class == WC_CONSOLE) {
+			if (_focused_window->OnKeyPress(key, keycode) == ES_HANDLED) return;
+		} else {
+			QueryStringBaseWindow *query = dynamic_cast<QueryStringBaseWindow*>(_focused_window);
+			if (query != NULL && query->HandleEditBoxKey(_focused_window->nested_focus->index, key, keycode) == ES_HANDLED) return;
+		}
 	}
 
 	/* Call the event, start with the uppermost window, but ignore the toolbar. */

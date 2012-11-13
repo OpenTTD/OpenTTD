@@ -763,12 +763,8 @@ public:
 				}
 				/* FALL THROUGH, space is pressed and filter isn't focused. */
 
-			default: {
-				/* Handle editbox input */
-				EventState state = ES_NOT_HANDLED;
-				this->HandleEditBoxKey(WID_NCL_FILTER, key, keycode, state);
-				return state;
-			}
+			default:
+				return ES_NOT_HANDLED;
 		}
 
 		if (_network_content_client.Length() == 0) return ES_HANDLED;
