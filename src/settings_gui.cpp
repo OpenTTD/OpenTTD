@@ -2418,13 +2418,15 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 
 	virtual void OnOSKInput(int wid)
 	{
-		string_filter.SetFilterTerm(this->edit_str_buf);
-		if (!string_filter.IsEmpty() && !this->manually_changed_folding) {
-			/* User never expanded/collapsed single pages and entered a filter term.
-			 * Expand everything, to save weird expand clicks, */
-			_settings_main_page.UnFoldAll();
+		if (wid == WID_GS_FILTER) {
+			string_filter.SetFilterTerm(this->edit_str_buf);
+			if (!string_filter.IsEmpty() && !this->manually_changed_folding) {
+				/* User never expanded/collapsed single pages and entered a filter term.
+				 * Expand everything, to save weird expand clicks, */
+				_settings_main_page.UnFoldAll();
+			}
+			this->InvalidateData();
 		}
-		this->InvalidateData();
 	}
 
 	virtual void OnResize()

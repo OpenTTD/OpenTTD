@@ -298,7 +298,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(WID_SIL_FILTER_TEXT, key, keycode, state)) {
 			case HEBR_EDITING:
-				this->SetFilterString(this->text.buf);
+				this->OnOSKInput(WID_SIL_FILTER_TEXT);
 				break;
 
 			case HEBR_CONFIRM: // Enter pressed -> goto first sign in list
@@ -324,8 +324,6 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 			default:
 				NOT_REACHED();
 		}
-
-		if (state == ES_HANDLED) OnOSKInput(WID_SIL_FILTER_TEXT);
 
 		return state;
 	}

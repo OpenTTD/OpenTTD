@@ -788,10 +788,12 @@ public:
 
 	virtual void OnOSKInput(int wid)
 	{
-		this->string_filter.SetFilterTerm(this->edit_str_buf);
-		this->content.SetFilterState(!this->string_filter.IsEmpty());
-		this->content.ForceRebuild();
-		this->InvalidateData();
+		if (wid == WID_NCL_FILTER) {
+			this->string_filter.SetFilterTerm(this->edit_str_buf);
+			this->content.SetFilterState(!this->string_filter.IsEmpty());
+			this->content.ForceRebuild();
+			this->InvalidateData();
+		}
 	}
 
 	virtual void OnResize()
