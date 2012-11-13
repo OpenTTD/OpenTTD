@@ -79,12 +79,6 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	}
 
 	EventState HandleEditBoxKey(int wid, uint16 key, uint16 keycode);
-
-	/**
-	 * Callback for when on input has been entered with the OSK.
-	 * @param wid The widget the OSK was attached to.
-	 */
-	virtual void OnOSKInput(int wid) {}
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button);

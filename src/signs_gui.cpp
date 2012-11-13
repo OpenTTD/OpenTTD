@@ -315,7 +315,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		return state;
 	}
 
-	virtual void OnOSKInput(int widget)
+	virtual void OnEditboxChanged(int widget)
 	{
 		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->text.buf);
 	}

@@ -694,7 +694,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_GL_RANDOM_EDITBOX) {
 			/* the seed is unsigned, therefore atoi cannot be used.

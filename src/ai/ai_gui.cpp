@@ -1354,7 +1354,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		return state;
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_AID_BREAK_STR_EDIT_BOX) {
 			/* Save the current string to static member so it can be restored next time the window is opened. */

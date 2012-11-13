@@ -2406,7 +2406,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_GS_FILTER) {
 			string_filter.SetFilterTerm(this->edit_str_buf);

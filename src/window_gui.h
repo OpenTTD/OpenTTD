@@ -667,6 +667,12 @@ public:
 	virtual void OnDropdownClose(Point pt, int widget, int index, bool instant_close);
 
 	/**
+	 * The text in an editbox has been edited.
+	 * @param widget The widget of the editbox.
+	 */
+	virtual void OnEditboxChanged(int widget) {}
+
+	/**
 	 * The query window opened from this window has closed.
 	 * @param str the new value of the string, NULL if the window
 	 *            was cancelled or an empty string when the default

@@ -779,7 +779,7 @@ public:
 		return ES_HANDLED;
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NCL_FILTER) {
 			this->string_filter.SetFilterTerm(this->edit_str_buf);

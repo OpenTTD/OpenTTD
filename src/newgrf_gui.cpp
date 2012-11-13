@@ -1276,7 +1276,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		return ES_HANDLED;
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (!this->editable) return;
 

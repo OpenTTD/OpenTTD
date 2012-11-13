@@ -816,7 +816,7 @@ EventState QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 k
 	EventState state = ES_NOT_HANDLED;
 	switch (this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state)) {
 		case HEBR_EDITING:
-			this->OnOSKInput(wid);
+			this->OnEditboxChanged(wid);
 			break;
 
 		case HEBR_CONFIRM:

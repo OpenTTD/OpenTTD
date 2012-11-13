@@ -514,7 +514,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		return state;
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		_chat_tab_completion_active = false;
 	}

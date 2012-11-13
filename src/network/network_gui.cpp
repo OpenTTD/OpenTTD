@@ -847,7 +847,7 @@ public:
 		return state;
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NG_CLIENT) {
 			/* The name is only allowed when it starts with a letter! */
@@ -1170,7 +1170,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		this->SetDirty();
 	}
 
-	virtual void OnOSKInput(int wid)
+	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NSS_GAMENAME) {
 			strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));

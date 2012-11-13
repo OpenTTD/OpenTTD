@@ -203,8 +203,7 @@ struct OskWindow : public Window {
 
 	void InvalidateParent()
 	{
-		QueryStringBaseWindow *w = dynamic_cast<QueryStringBaseWindow*>(this->parent);
-		if (w != NULL) w->OnOSKInput(this->text_btn);
+		this->parent->OnEditboxChanged(this->text_btn);
 
 		this->SetWidgetDirty(WID_OSK_TEXT);
 		if (this->parent != NULL) this->parent->SetWidgetDirty(this->text_btn);
