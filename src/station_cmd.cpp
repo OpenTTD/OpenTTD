@@ -2591,7 +2591,7 @@ static bool SplitGroundSpriteForOverlay(const TileInfo *ti, SpriteID *ground, Ra
 		/* Decide snow/desert from tile */
 		switch (_settings_game.game_creation.landscape) {
 			case LT_ARCTIC:
-				snow_desert = ti->z > GetSnowLine();
+				snow_desert = (uint)ti->z > GetSnowLine() * TILE_HEIGHT;
 				break;
 
 			case LT_TROPIC:
