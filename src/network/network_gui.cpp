@@ -775,11 +775,6 @@ public:
 		this->SetDirty();
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_NG_CLIENT);
-	}
-
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -1177,11 +1172,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		}
 
 		this->SetDirty();
-	}
-
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_NSS_GAMENAME);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -2162,11 +2152,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				this->SetDirty();
 				break;
 		}
-	}
-
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_NCP_PASSWORD);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)

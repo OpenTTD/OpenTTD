@@ -1101,11 +1101,6 @@ public:
 		}
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_TF_TOWN_NAME_EDITBOX);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;

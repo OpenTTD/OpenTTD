@@ -813,11 +813,6 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
 }
 
-void QueryStringBaseWindow::HandleEditBox(int wid)
-{
-	this->QueryString::HandleEditBox(this, wid);
-}
-
 void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 {
 	ShowOnScreenKeyboard(this, wid, 0, 0);
@@ -897,11 +892,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 				delete this;
 				break;
 		}
-	}
-
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_QS_TEXT);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)

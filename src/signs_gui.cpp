@@ -335,11 +335,6 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->text.buf);
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_SIL_FILTER_TEXT);
-	}
-
 	void BuildSortSignList()
 	{
 		if (this->signs.NeedRebuild()) {
@@ -572,11 +567,6 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 		}
 		return state;
-	}
-
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_QES_TEXT);
 	}
 
 	virtual void OnOpenOSKWindow(int wid)

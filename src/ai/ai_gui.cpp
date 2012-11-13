@@ -1337,11 +1337,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_AID_BREAK_STR_EDIT_BOX);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;

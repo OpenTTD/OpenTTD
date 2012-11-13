@@ -723,11 +723,6 @@ public:
 		}
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_NCL_FILTER);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		switch (keycode) {

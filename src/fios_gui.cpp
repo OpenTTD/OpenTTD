@@ -609,13 +609,6 @@ public:
 		}
 	}
 
-	virtual void OnMouseLoop()
-	{
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) {
-			this->HandleEditBox(WID_SL_SAVE_OSK_TITLE);
-		}
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		if (keycode == WKC_ESC) {

@@ -2406,11 +2406,6 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->SetWidgetDisabledState(WID_GS_COLLAPSE_ALL, all_folded);
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_GS_FILTER);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		/* Handle editbox input */

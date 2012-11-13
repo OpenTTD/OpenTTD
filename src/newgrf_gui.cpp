@@ -1227,11 +1227,6 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
 
-	virtual void OnMouseLoop()
-	{
-		if (this->editable) this->HandleEditBox(WID_NS_FILTER);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		if (!this->editable) return ES_NOT_HANDLED;

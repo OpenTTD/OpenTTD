@@ -76,7 +76,6 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 		free(this->edit_str_buf);
 	}
 
-	void HandleEditBox(int wid);
 	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 
 	/**

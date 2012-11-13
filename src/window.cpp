@@ -1620,6 +1620,16 @@ static void DecreaseWindowCounters()
 				}
 			}
 		}
+
+		/* Handle editboxes */
+		for (uint i = 0; i < w->nested_array_size; i++) {
+			NWidgetBase *nwid = w->nested_array[i];
+			if (nwid != NULL && nwid->type == WWT_EDITBOX) {
+				QueryString *query = dynamic_cast<QueryString*>(w);
+				if (query != NULL) query->HandleEditBox(w, i);
+			}
+		}
+
 		w->OnMouseLoop();
 	}
 

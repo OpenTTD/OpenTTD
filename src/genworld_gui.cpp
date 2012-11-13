@@ -694,11 +694,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual void OnMouseLoop()
-	{
-		this->HandleEditBox(WID_GL_RANDOM_EDITBOX);
-	}
-
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
