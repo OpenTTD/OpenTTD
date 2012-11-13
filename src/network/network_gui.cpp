@@ -835,20 +835,15 @@ public:
 			return ES_HANDLED;
 		}
 
-		switch (this->HandleEditBoxKey(WID_NG_CLIENT, key, keycode, state)) {
-			case HEBR_NOT_FOCUSED:
-				if (this->server != NULL) {
-					if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
-						NetworkGameListRemoveItem(this->server);
-						if (this->server == this->last_joined) this->last_joined = NULL;
-						this->server = NULL;
-						this->list_pos = SLP_INVALID;
-					}
+		if (this->HandleEditBoxKey(WID_NG_CLIENT, key, keycode, state) == HEBR_NOT_FOCUSED) {
+			if (this->server != NULL) {
+				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
+					NetworkGameListRemoveItem(this->server);
+					if (this->server == this->last_joined) this->last_joined = NULL;
+					this->server = NULL;
+					this->list_pos = SLP_INVALID;
 				}
-				break;
-
-			default:
-				break;
+			}
 		}
 
 		return state;
@@ -2160,17 +2155,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_NCP_PASSWORD, key, keycode, state)) {
-			default: break;
-
-			case HEBR_CONFIRM:
-				this->OnOk();
-				/* FALL THROUGH */
-
-			case HEBR_CANCEL:
-				delete this;
-				break;
-		}
+		this->HandleEditBoxKey(WID_NCP_PASSWORD, key, keycode, state);
 		return state;
 	}
 };

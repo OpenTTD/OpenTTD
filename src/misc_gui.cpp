@@ -819,6 +819,20 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 			this->OnOSKInput(wid);
 			break;
 
+		case HEBR_CONFIRM:
+			if (this->ok_button >= 0) {
+				this->OnClick(Point(), this->ok_button, 1);
+			}
+			break;
+
+		case HEBR_CANCEL:
+			if (this->cancel_button >= 0) {
+				this->OnClick(Point(), this->cancel_button, 1);
+			} else {
+				this->UnfocusFocusedWidget();
+			}
+			break;
+
 		default: break;
 	}
 	return result;
@@ -905,12 +919,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_QS_TEXT, key, keycode, state)) {
-			default: break;
-			case HEBR_CONFIRM: this->OnOk();
-				/* FALL THROUGH */
-			case HEBR_CANCEL: delete this; break; // close window, abandon changes
-		}
+		this->HandleEditBoxKey(WID_QS_TEXT, key, keycode, state);
 		return state;
 	}
 

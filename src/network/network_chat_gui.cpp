@@ -512,13 +512,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			state = ES_HANDLED;
 		} else {
 			_chat_tab_completion_active = false;
-			switch (this->HandleEditBoxKey(WID_NC_TEXTBOX, key, keycode, state)) {
-				default: break;
-				case HEBR_CONFIRM:
-					SendChat(this->text.buf, this->dtype, this->dest);
-					/* FALL THROUGH */
-				case HEBR_CANCEL: delete this; break;
-			}
+			this->HandleEditBoxKey(WID_NC_TEXTBOX, key, keycode, state);
 		}
 		return state;
 	}

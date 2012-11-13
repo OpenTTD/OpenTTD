@@ -156,6 +156,8 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->SetWidgetLoweredState(WID_SIL_FILTER_MATCH_CASE_BTN, SignList::match_case);
 
 		/* Initialize the text edit widget */
+		this->ok_button = WID_SIL_FILTER_ENTER_BTN;
+		this->cancel_button = WID_SIL_FILTER_CLEAR_BTN;
 		this->afilter = CS_ALPHANUMERAL;
 		this->text.Initialize(this->edit_str_buf, MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS);
 		ClearFilterTextWidget();
@@ -254,6 +256,14 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				break;
 			}
+
+			case WID_SIL_FILTER_ENTER_BTN:
+				if (this->signs.Length() >= 1) {
+					const Sign *si = this->signs[0];
+					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
+				}
+				break;
+
 			case WID_SIL_FILTER_CLEAR_BTN:
 				this->ClearFilterTextWidget(); // Empty the text in the EditBox widget
 				this->SetFilterString("");     // Use empty text as filter text (= view all signs)
@@ -296,29 +306,12 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_SIL_FILTER_TEXT, key, keycode, state)) {
-			case HEBR_CONFIRM: // Enter pressed -> goto first sign in list
-				if (this->signs.Length() >= 1) {
-					const Sign *si = this->signs[0];
-					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-				}
-				return state;
-
-			case HEBR_CANCEL: // ESC pressed, clear filter.
-				this->OnClick(Point(), WID_SIL_FILTER_CLEAR_BTN, 1); // Simulate click on clear button.
-				this->UnfocusFocusedWidget();                    // Unfocus the text box.
-				return state;
-
-			case HEBR_NOT_FOCUSED: // The filter text box is not globaly focused.
-				if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
-					this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
-					SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
-					state = ES_HANDLED;
-				}
-				break;
-
-			default:
-				break;
+		if (this->HandleEditBoxKey(WID_SIL_FILTER_TEXT, key, keycode, state) == HEBR_NOT_FOCUSED) {
+			if (CheckHotkeyMatch(signlist_hotkeys, keycode, this) == SLHK_FOCUS_FILTER_BOX) {
+				this->SetFocusedWidget(WID_SIL_FILTER_TEXT);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				state = ES_HANDLED;
+			}
 		}
 
 		return state;
@@ -551,17 +544,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_QES_TEXT, key, keycode, state)) {
-			default: break;
-
-			case HEBR_CONFIRM:
-				if (RenameSign(this->cur_sign, this->text.buf)) break;
-				/* FALL THROUGH */
-
-			case HEBR_CANCEL: // close window, abandon changes
-				delete this;
-				break;
-		}
+		this->HandleEditBoxKey(WID_QES_TEXT, key, keycode, state);
 		return state;
 	}
 };

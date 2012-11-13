@@ -262,6 +262,7 @@ public:
 			default:                break;
 		}
 
+		this->ok_button = WID_SL_SAVE_GAME;
 		this->afilter = CS_ALPHANUMERAL;
 		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
@@ -604,7 +605,12 @@ public:
 				}
 				break;
 
-			case WID_SL_DELETE_SELECTION: case WID_SL_SAVE_GAME: // Delete, Save game
+			case WID_SL_DELETE_SELECTION: // Delete
+				break;
+
+			case WID_SL_SAVE_GAME: // Save game
+				/* Note, this is also called via the OSK; and we need to lower the button. */
+				this->HandleButtonClick(WID_SL_SAVE_GAME);
 				break;
 		}
 	}
@@ -617,10 +623,7 @@ public:
 		}
 
 		EventState state = ES_NOT_HANDLED;
-		if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) &&
-				this->HandleEditBoxKey(WID_SL_SAVE_OSK_TITLE, key, keycode, state) == HEBR_CONFIRM) {
-			this->HandleButtonClick(WID_SL_SAVE_GAME);
-		}
+		this->HandleEditBoxKey(WID_SL_SAVE_OSK_TITLE, key, keycode, state);
 
 		return state;
 	}

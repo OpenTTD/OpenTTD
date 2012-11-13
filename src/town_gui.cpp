@@ -1104,9 +1104,7 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->HandleEditBoxKey(WID_TF_TOWN_NAME_EDITBOX, key, keycode, state) == HEBR_CANCEL) {
-			this->UnfocusFocusedWidget();
-		}
+		this->HandleEditBoxKey(WID_TF_TOWN_NAME_EDITBOX, key, keycode, state);
 		return state;
 	}
 

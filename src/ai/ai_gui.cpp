@@ -1340,29 +1340,18 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		switch (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state)) {
-			case HEBR_CANCEL:
-				/* Unfocus the text box. */
-				this->UnfocusFocusedWidget();
-				break;
-
-			case HEBR_NOT_FOCUSED: {
-				/* Edit boxs is not globally foused => handle hotkeys of AI Debug window. */
-				int num = CheckHotkeyMatch(aidebug_hotkeys, keycode, this);
-				if (num == -1) return ES_NOT_HANDLED;
-				if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
-					this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
-					SetFocusedWindow(this);
-					state = ES_HANDLED;
-				} else if (this->show_break_box || num < WID_AID_BREAK_STRING_WIDGETS) {
-					this->OnClick(Point(), num, 1);
-					state = ES_HANDLED;
-				}
-				break;
+		if (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state) == HEBR_NOT_FOCUSED) {
+			/* Edit boxs is not globally foused => handle hotkeys of AI Debug window. */
+			int num = CheckHotkeyMatch(aidebug_hotkeys, keycode, this);
+			if (num == -1) return ES_NOT_HANDLED;
+			if (this->show_break_box && num == WID_AID_BREAK_STR_EDIT_BOX) {
+				this->SetFocusedWidget(WID_AID_BREAK_STR_EDIT_BOX);
+				SetFocusedWindow(this);
+				state = ES_HANDLED;
+			} else if (this->show_break_box || num < WID_AID_BREAK_STRING_WIDGETS) {
+				this->OnClick(Point(), num, 1);
+				state = ES_HANDLED;
 			}
-
-			default:
-				break;
 		}
 		return state;
 	}
