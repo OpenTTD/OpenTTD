@@ -546,6 +546,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :தட மே�
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :நிறுவனர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :நிறுவனர்
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :ஜனாதிபதி
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :டைகூன்
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}விவரமான செயல்திறன் மதிப்பீடு
@@ -573,6 +574,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}இந�
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}இந்த நிறுவனத்தின் கடன் தொகை
 
 # Music window
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}ஜாஸ் இசைக்கருவி
 STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLACK}அனைத்தும்
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}பழைய பாணி
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}புதிய பாணி
@@ -589,6 +591,8 @@ STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKG
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}இசைத்தடம்
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}தலைப்பு
+STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}வெவேறு பாடல்கள்
+STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}புரோகிராம்
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}இசையை நிறுத்து
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}இசையினை ஆரம்பி
 
@@ -982,6 +986,9 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :தடத்த
 
 # Advanced settings window
 STR_CONFIG_SETTING_CAPTION                                      :{WHITE}சிறப்பு அமைப்புகள்
+STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}வடிகட்டி:
+STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}அனைத்தையும் விரிவாக்கு
+STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}அனைத்தையும் மூடு
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(எந்த விவரமும் இல்லை)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}இயல்பான மதிப்பு: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}அமைப்பு வகை: {ORANGE}{STRING}
@@ -990,6 +997,10 @@ STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :ஆட்டத
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; புதிய ஆட்டங்களை மட்டுமே மாற்றும்)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :நிறுவன அமைப்புகள் (பதிவு செய்யப்பட்டது; தற்போதைய நிறுவனத்தை மட்டுமே மாற்றும்)
 
+STR_CONFIG_SETTING_RESTRICT_LABEL                               :{BLACK}காட்டு:
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :அடிப்படை அமைப்புகள்
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :சிறப்பு அமைப்புகள்
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :அதிக / அனைத்து அமைப்புகள்
 
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
@@ -2535,6 +2546,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}அம�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}வரிவடிவத்தின் அமைப்புகளை மாற்று
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI-ஐ மறுபடியும் ஏற்று
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}தொடரு
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI இனை தொடரு
 STR_AI_GAME_SCRIPT                                              :{BLACK}விளையாட்டின் ஸ்கிரிப்ட்
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}வரிவடிவத்தின் பதிவேட்டினை பார்
 
