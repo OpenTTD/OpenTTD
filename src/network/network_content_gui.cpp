@@ -489,9 +489,6 @@ public:
 
 		this->DrawWidgets();
 
-		/* Edit box to filter for keywords */
-		this->DrawEditBox(WID_NCL_FILTER);
-
 		switch (this->content.SortType()) {
 			case WID_NCL_CHECKBOX - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_CHECKBOX, arrow); break;
 			case WID_NCL_TYPE     - WID_NCL_CHECKBOX: this->DrawSortButtonState(WID_NCL_TYPE,     arrow); break;

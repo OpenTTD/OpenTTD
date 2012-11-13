@@ -204,7 +204,6 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	{
 		if (this->signs.NeedRebuild()) this->BuildSortSignList();
 		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawEditBox(WID_SIL_FILTER_TEXT);
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -521,12 +520,6 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				SetDParam(0, this->caption);
 				break;
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawEditBox(WID_QES_TEXT);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

@@ -55,7 +55,7 @@ struct QueryString {
 private:
 	bool HasEditBoxFocus(const Window *w, int wid) const;
 public:
-	void DrawEditBox(Window *w, int wid);
+	void DrawEditBox(const Window *w, int wid) const;
 	void HandleEditBox(Window *w, int wid);
 	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state);
 };
@@ -76,7 +76,6 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 		free(this->edit_str_buf);
 	}
 
-	void DrawEditBox(int wid);
 	void HandleEditBox(int wid);
 	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 

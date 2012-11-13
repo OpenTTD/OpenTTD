@@ -736,12 +736,6 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		if (this->editable) this->DrawEditBox(WID_NS_FILTER);
-	}
-
 	/**
 	 * Pick the palette for the sprite of the grf to display.
 	 * @param c grf to display.

@@ -1099,8 +1099,6 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 		if (this->IsShaded()) return; // Don't draw anything when the window is shaded.
 
-		if (this->show_break_box) this->DrawEditBox(WID_AID_BREAK_STR_EDIT_BOX);
-
 		/* Paint the company icons */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 			NWidgetCore *button = this->GetWidget<NWidgetCore>(i + WID_AID_COMPANY_BUTTON_START);

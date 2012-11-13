@@ -2047,7 +2047,6 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 			this->valuedropdown_entry = NULL;
 		}
 		this->DrawWidgets();
-		this->DrawEditBox(WID_GS_FILTER);
 	}
 
 	virtual void SetStringParameters(int widget) const

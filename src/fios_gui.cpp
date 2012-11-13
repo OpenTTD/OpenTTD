@@ -491,10 +491,6 @@ public:
 
 		this->vscroll->SetCount(_fios_items.Length());
 		this->DrawWidgets();
-
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) {
-			this->DrawEditBox(WID_SL_SAVE_OSK_TITLE);
-		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

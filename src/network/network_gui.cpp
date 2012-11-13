@@ -588,8 +588,6 @@ public:
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == NULL || !sel->online || sel->info.grfconfig == NULL || !sel->info.version_compatible || sel->info.compatible);
 
 		this->DrawWidgets();
-		/* Edit box to set client name */
-		this->DrawEditBox(WID_NG_CLIENT);
 	}
 
 	void DrawDetails(const Rect &r) const
@@ -1068,15 +1066,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				/* if password is set, draw red '*' next to 'Set password' button */
 				if (!StrEmpty(_settings_client.network.server_password)) DrawString(r.right + WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, r.top, "*", TC_RED);
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		/* draw basic widgets */
-		this->DrawWidgets();
-
-		/* editbox to set game name */
-		this->DrawEditBox(WID_NSS_GAMENAME);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -2153,12 +2142,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		}
 
 		NetworkChangeCompanyPassword(_local_company, this->edit_str_buf);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		this->DrawEditBox(WID_NCP_PASSWORD);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

@@ -773,7 +773,7 @@ void QueryString::HandleEditBox(Window *w, int wid)
 	}
 }
 
-void QueryString::DrawEditBox(Window *w, int wid)
+void QueryString::DrawEditBox(const Window *w, int wid) const
 {
 	const NWidgetBase *wi = w->GetWidget<NWidgetBase>(wid);
 
@@ -816,11 +816,6 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 void QueryStringBaseWindow::HandleEditBox(int wid)
 {
 	this->QueryString::HandleEditBox(this, wid);
-}
-
-void QueryStringBaseWindow::DrawEditBox(int wid)
-{
-	this->QueryString::DrawEditBox(this, wid);
 }
 
 void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
@@ -868,13 +863,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			resize->width = 0;
 			size->width = 0;
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-
-		this->DrawEditBox(WID_QS_TEXT);
 	}
 
 	virtual void SetStringParameters(int widget) const

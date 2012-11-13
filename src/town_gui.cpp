@@ -1056,12 +1056,6 @@ public:
 		if (success) this->RandomTownName();
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		if (!this->IsShaded()) this->DrawEditBox(WID_TF_TOWN_NAME_EDITBOX);
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {

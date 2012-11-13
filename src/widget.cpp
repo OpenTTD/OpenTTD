@@ -18,6 +18,7 @@
 #include "transparency.h"
 #include "core/geometry_func.hpp"
 #include "settings_type.h"
+#include "querystring_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -2364,9 +2365,12 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawMatrix(r, this->colour, clicked, this->widget_data);
 			break;
 
-		case WWT_EDITBOX:
+		case WWT_EDITBOX: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, FR_LOWERED | FR_DARKENED);
+			const QueryString *query = dynamic_cast<const QueryString*>(w);
+			if (query != NULL) query->DrawEditBox(w, this->index);
 			break;
+		}
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);

@@ -463,12 +463,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		free(pre_buf);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-		this->DrawEditBox(WID_NC_TEXTBOX);
-	}
-
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
 		Point pt = { 0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
