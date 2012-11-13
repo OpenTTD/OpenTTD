@@ -697,13 +697,19 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		this->HandleEditBoxKey(WID_GL_RANDOM_EDITBOX, key, keycode, state);
-		/* the seed is unsigned, therefore atoi cannot be used.
-		 * As UINT32_MAX is a 'magic' value (use random seed) it
-		 * should not be possible to be entered into the input
-		 * field; the generate seed button can be used instead. */
-		_settings_newgame.game_creation.generation_seed = minu(strtoul(this->edit_str_buf, NULL, 10), UINT32_MAX - 1);
+		if (this->HandleEditBoxKey(WID_GL_RANDOM_EDITBOX, key, keycode, state) == HEBR_EDITING) this->OnOSKInput(WID_GL_RANDOM_EDITBOX);
 		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		if (wid == WID_GL_RANDOM_EDITBOX) {
+			/* the seed is unsigned, therefore atoi cannot be used.
+			 * As UINT32_MAX is a 'magic' value (use random seed) it
+			 * should not be possible to be entered into the input
+			 * field; the generate seed button can be used instead. */
+			_settings_newgame.game_creation.generation_seed = minu(strtoul(this->edit_str_buf, NULL, 10), UINT32_MAX - 1);
+		}
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)

@@ -851,16 +851,23 @@ public:
 				break;
 
 			default:
-				/* The name is only allowed when it starts with a letter! */
-				if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-					strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
-				} else {
-					strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
-				}
+				this->OnOSKInput(WID_NG_CLIENT);
 				break;
 		}
 
 		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		if (wid == WID_NG_CLIENT) {
+			/* The name is only allowed when it starts with a letter! */
+			if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
+				strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
+			} else {
+				strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
+			}
+		}
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -1183,11 +1190,18 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				break;
 
 			default:
-				strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
+				this->OnOSKInput(WID_NSS_GAMENAME);
 				break;
 		}
 
 		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		if (wid == WID_NSS_GAMENAME) {
+			strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
+		}
 	}
 
 	virtual void OnTimeout()

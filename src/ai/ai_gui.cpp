@@ -1342,9 +1342,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(WID_AID_BREAK_STR_EDIT_BOX, key, keycode, state)) {
 			case HEBR_EDITING:
-				/* Save the current string to static member so it can be restored next time the window is opened. */
-				strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
-				break_string_filter.SetFilterTerm(this->break_string);
+				this->OnOSKInput(WID_AID_BREAK_STR_EDIT_BOX);
 				break;
 
 			case HEBR_CANCEL:
@@ -1371,6 +1369,15 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 				break;
 		}
 		return state;
+	}
+
+	virtual void OnOSKInput(int wid)
+	{
+		if (wid == WID_AID_BREAK_STR_EDIT_BOX) {
+			/* Save the current string to static member so it can be restored next time the window is opened. */
+			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
+			break_string_filter.SetFilterTerm(this->break_string);
+		}
 	}
 
 	/**
