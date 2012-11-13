@@ -2123,6 +2123,8 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		this->InitNested(desc, 0);
 
 		this->parent = parent;
+		this->cancel_button = WID_NCP_CANCEL;
+		this->ok_button = WID_NCP_OK;
 		this->afilter = CS_ALPHANUMERAL;
 		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
@@ -2170,11 +2172,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				break;
 		}
 		return state;
-	}
-
-	virtual void OnOpenOSKWindow(int wid)
-	{
-		ShowOnScreenKeyboard(this, wid, WID_NCP_CANCEL, WID_NCP_OK);
 	}
 };
 

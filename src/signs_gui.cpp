@@ -446,6 +446,8 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
 		this->caption = STR_EDIT_SIGN_CAPTION;
+		this->cancel_button = WID_QES_CANCEL;
+		this->ok_button = WID_QES_OK;
 		this->afilter = CS_ALPHANUMERAL;
 
 		this->InitNested(desc, WN_QUERY_STRING_SIGN);
@@ -561,11 +563,6 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 		}
 		return state;
-	}
-
-	virtual void OnOpenOSKWindow(int wid)
-	{
-		ShowOnScreenKeyboard(this, wid, WID_QES_CANCEL, WID_QES_OK);
 	}
 };
 

@@ -824,11 +824,6 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 	return result;
 }
 
-void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
-{
-	ShowOnScreenKeyboard(this, wid, -1, -1);
-}
-
 /** Class for the string query window. */
 struct QueryStringWindow : public QueryStringBaseWindow
 {
@@ -849,6 +844,8 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
 
 		this->caption = caption;
+		this->cancel_button = WID_QS_CANCEL;
+		this->ok_button = WID_QS_OK;
 		this->afilter = afilter;
 		this->flags = flags;
 		this->text.Initialize(this->edit_str_buf, max_bytes, max_chars);
@@ -915,11 +912,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
 		}
 		return state;
-	}
-
-	virtual void OnOpenOSKWindow(int wid)
-	{
-		ShowOnScreenKeyboard(this, wid, WID_QS_CANCEL, WID_QS_OK);
 	}
 
 	~QueryStringWindow()

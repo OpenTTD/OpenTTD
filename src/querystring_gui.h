@@ -32,6 +32,8 @@ enum HandleEditBoxResult
  */
 struct QueryString {
 	StringID caption;
+	int ok_button;      ///< Widget button of parent window to simulate when pressing OK in OSK.
+	int cancel_button;  ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
 	Textbuf text;
 	const char *orig;
 	CharSetFilter afilter;
@@ -40,7 +42,7 @@ struct QueryString {
 	/**
 	 * Make sure everything gets initialized properly.
 	 */
-	QueryString() : orig(NULL)
+	QueryString() : ok_button(-1), cancel_button(-1), orig(NULL)
 	{
 	}
 
@@ -79,19 +81,13 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 
 	/**
-	 * Callback for when the OSK window is opened.
-	 * @param wid The widget the OSK is opened of.
-	 */
-	virtual void OnOpenOSKWindow(int wid);
-
-	/**
 	 * Callback for when on input has been entered with the OSK.
 	 * @param wid The widget the OSK was attached to.
 	 */
 	virtual void OnOSKInput(int wid) {}
 };
 
-void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel, int ok);
+void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button);
 void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button);
 
 #endif /* QUERYSTRING_GUI_H */

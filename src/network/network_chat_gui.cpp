@@ -299,6 +299,8 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	{
 		this->dtype   = type;
 		this->dest    = dest;
+		this->cancel_button = WID_NC_CLOSE;
+		this->ok_button = WID_NC_SENDBUTTON;
 		this->afilter = CS_ALPHANUMERAL;
 		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
@@ -519,11 +521,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			}
 		}
 		return state;
-	}
-
-	virtual void OnOpenOSKWindow(int wid)
-	{
-		ShowOnScreenKeyboard(this, wid, WID_NC_CLOSE, WID_NC_SENDBUTTON);
 	}
 
 	/**

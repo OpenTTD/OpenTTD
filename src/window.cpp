@@ -452,7 +452,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 				/* Open the OSK window if clicked on an edit box */
 				QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
 				if (qs != NULL) {
-					qs->OnOpenOSKWindow(widget_index);
+					ShowOnScreenKeyboard(qs, widget_index);
 				}
 			}
 			break;
