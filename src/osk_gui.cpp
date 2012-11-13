@@ -36,8 +36,8 @@ struct OskWindow : public Window {
 	StringID caption;      ///< the caption for this window.
 	QueryString *qs;       ///< text-input
 	int text_btn;          ///< widget number of parent's text field
-	int ok_btn;            ///< widget number of parent's ok button (=0 when ok shouldn't be passed on)
-	int cancel_btn;        ///< widget number of parent's cancel button (=0 when cancel shouldn't be passed on; text will be reverted to original)
+	int ok_btn;            ///< widget number of parent's ok button (-1 when ok shouldn't be passed on)
+	int cancel_btn;        ///< widget number of parent's cancel button (-1 when cancel shouldn't be passed on; text will be reverted to original)
 	Textbuf *text;         ///< pointer to parent's textbuffer (to update caret position)
 	char *orig_str_buf;    ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
@@ -177,7 +177,7 @@ struct OskWindow : public Window {
 			case WID_OSK_OK:
 				if (this->qs->orig == NULL || strcmp(this->qs->text.buf, this->qs->orig) != 0) {
 					/* pass information by simulating a button press on parent window */
-					if (this->ok_btn != 0) {
+					if (this->ok_btn >= 0) {
 						this->parent->OnClick(pt, this->ok_btn, 1);
 						/* Window gets deleted when the parent window removes itself. */
 						return;
@@ -187,7 +187,7 @@ struct OskWindow : public Window {
 				break;
 
 			case WID_OSK_CANCEL:
-				if (this->cancel_btn != 0) { // pass a cancel event to the parent window
+				if (this->cancel_btn >= 0) { // pass a cancel event to the parent window
 					this->parent->OnClick(pt, this->cancel_btn, 1);
 					/* Window gets deleted when the parent window removes itself. */
 					return;
@@ -428,9 +428,9 @@ void GetKeyboardLayout()
  * Show the on-screen keyboard (osk) associated with a given textbox
  * @param parent pointer to the Window where this keyboard originated from
  * @param button widget number of parent's textbox
- * @param cancel widget number of parent's cancel button (0 if cancel events
+ * @param cancel widget number of parent's cancel button (-1 if cancel events
  *               should not be passed)
- * @param ok     widget number of parent's ok button  (0 if ok events should not
+ * @param ok     widget number of parent's ok button  (-1 if ok events should not
  *               be passed)
  */
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel, int ok)

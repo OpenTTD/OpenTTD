@@ -826,7 +826,7 @@ HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key,
 
 void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
 {
-	ShowOnScreenKeyboard(this, wid, 0, 0);
+	ShowOnScreenKeyboard(this, wid, -1, -1);
 }
 
 /** Class for the string query window. */
