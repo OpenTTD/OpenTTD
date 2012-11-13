@@ -1268,12 +1268,12 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		/* Also called for hotkeys, so check for disabledness */
+		if (this->IsWidgetDisabled(widget)) return;
+
 		/* Check which button is clicked */
 		if (IsInsideMM(widget, WID_AID_COMPANY_BUTTON_START, WID_AID_COMPANY_BUTTON_END + 1)) {
-			/* Is it no on disable? */
-			if (!this->IsWidgetDisabled(widget)) {
-				ChangeToAI((CompanyID)(widget - WID_AID_COMPANY_BUTTON_START));
-			}
+			ChangeToAI((CompanyID)(widget - WID_AID_COMPANY_BUTTON_START));
 		}
 
 		switch (widget) {
