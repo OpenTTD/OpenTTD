@@ -217,7 +217,6 @@ protected:
 	/* Constants for sorting servers */
 	static GUIGameServerList::SortFunction * const sorter_funcs[];
 
-	byte field;                   ///< selected text-field
 	NetworkGameList *server;      ///< selected server
 	NetworkGameList *last_joined; ///< the last joined server
 	GUIGameServerList servers;    ///< list with game servers.
@@ -450,7 +449,6 @@ public:
 		this->text.Initialize(this->edit_str_buf, this->edit_str_size, 120);
 		this->SetFocusedWidget(WID_NG_CLIENT);
 
-		this->field = WID_NG_CLIENT;
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
 		if (this->last_joined != NULL) NetworkUDPQueryServer(this->last_joined->address);
@@ -663,7 +661,6 @@ public:
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		this->field = widget;
 		switch (widget) {
 			case WID_NG_CANCEL: // Cancel button
 				DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
@@ -780,7 +777,7 @@ public:
 
 	virtual void OnMouseLoop()
 	{
-		if (this->field == WID_NG_CLIENT) this->HandleEditBox(WID_NG_CLIENT);
+		this->HandleEditBox(WID_NG_CLIENT);
 	}
 
 	/**
@@ -843,26 +840,31 @@ public:
 			return ES_HANDLED;
 		}
 
-		if (this->field != WID_NG_CLIENT) {
-			if (this->server != NULL) {
-				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
-					NetworkGameListRemoveItem(this->server);
-					if (this->server == this->last_joined) this->last_joined = NULL;
-					this->server = NULL;
-					this->list_pos = SLP_INVALID;
+		switch (this->HandleEditBoxKey(WID_NG_CLIENT, key, keycode, state)) {
+			case HEBR_NOT_FOCUSED:
+				if (this->server != NULL) {
+					if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
+						NetworkGameListRemoveItem(this->server);
+						if (this->server == this->last_joined) this->last_joined = NULL;
+						this->server = NULL;
+						this->list_pos = SLP_INVALID;
+					}
 				}
-			}
-			return state;
+				break;
+
+			case HEBR_CONFIRM:
+				break;
+
+			default:
+				/* The name is only allowed when it starts with a letter! */
+				if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
+					strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
+				} else {
+					strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
+				}
+				break;
 		}
 
-		if (this->HandleEditBoxKey(WID_NG_CLIENT, key, keycode, state) == HEBR_CONFIRM) return state;
-
-		/* The name is only allowed when it starts with a letter! */
-		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-			strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
-		} else {
-			strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
-		}
 		return state;
 	}
 
@@ -1007,7 +1009,6 @@ void ShowNetworkGameWindow()
 }
 
 struct NetworkStartServerWindow : public QueryStringBaseWindow {
-	byte field;                  ///< Selected text-field
 	byte widget_id;              ///< The widget that has the pop-up input menu
 
 	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH)
@@ -1019,8 +1020,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		this->afilter = CS_ALPHANUMERAL;
 		this->text.Initialize(this->edit_str_buf, this->edit_str_size, 160);
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
-
-		this->field = WID_NSS_GAMENAME;
 	}
 
 	virtual void SetStringParameters(int widget) const
@@ -1070,7 +1069,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		this->field = widget;
 		switch (widget) {
 			case WID_NSS_CANCEL: // Cancel button
 				ShowNetworkGameWindow();
@@ -1183,16 +1181,20 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	virtual void OnMouseLoop()
 	{
-		if (this->field == WID_NSS_GAMENAME) this->HandleEditBox(WID_NSS_GAMENAME);
+		this->HandleEditBox(WID_NSS_GAMENAME);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->field == WID_NSS_GAMENAME) {
-			if (this->HandleEditBoxKey(WID_NSS_GAMENAME, key, keycode, state) == HEBR_CONFIRM) return state;
+		switch (this->HandleEditBoxKey(WID_NSS_GAMENAME, key, keycode, state)) {
+			case HEBR_CONFIRM:
+			case HEBR_NOT_FOCUSED:
+				break;
 
-			strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
+			default:
+				strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
+				break;
 		}
 
 		return state;
