@@ -54,6 +54,19 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param key key to find
 	 * @return &Pair(key, data) if found, this->End() if not
 	 */
+	inline const Pair *Find(const T &key) const
+	{
+		for (uint i = 0; i < this->items; i++) {
+			if (key == this->data[i].first) return &this->data[i];
+		}
+		return this->End();
+	}
+
+	/**
+	 * Finds given key in this map
+	 * @param key key to find
+	 * @return &Pair(key, data) if found, this->End() if not
+	 */
 	inline Pair *Find(const T &key)
 	{
 		for (uint i = 0; i < this->items; i++) {
@@ -67,7 +80,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 * @param key key to test
 	 * @return true iff the item is present
 	 */
-	inline bool Contains(const T &key)
+	inline bool Contains(const T &key) const
 	{
 		return this->Find(key) != this->End();
 	}
