@@ -2004,6 +2004,7 @@ struct GameSettingsWindow : Window {
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
 
 		this->querystrings[WID_GS_FILTER] = &this->filter_editbox;
+		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->SetFocusedWidget(WID_GS_FILTER);
 
 		this->InvalidateData();

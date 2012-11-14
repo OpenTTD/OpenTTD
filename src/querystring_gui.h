@@ -31,6 +31,11 @@ enum HandleEditBoxResult
  * Data stored about a string that can be modified in the GUI
  */
 struct QueryString {
+	/* Special actions when hitting ENTER or ESC. (only keyboard, not OSK) */
+	static const int ACTION_NOTHING  = -1; ///< Nothing.
+	static const int ACTION_DESELECT = -2; ///< Deselect editbox.
+	static const int ACTION_CLEAR    = -3; ///< Clear editbox.
+
 	StringID caption;
 	int ok_button;      ///< Widget button of parent window to simulate when pressing OK in OSK.
 	int cancel_button;  ///< Widget button of parent window to simulate when pressing CANCEL in OSK.
@@ -44,7 +49,7 @@ struct QueryString {
 	 * @param size Maximum size in bytes.
 	 * @param chars Maximum size in chars.
 	 */
-	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(-1), cancel_button(-1), text(size, chars), orig(NULL)
+	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(ACTION_NOTHING), cancel_button(ACTION_DESELECT), text(size, chars), orig(NULL)
 	{
 	}
 

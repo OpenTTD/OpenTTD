@@ -2265,6 +2265,8 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 	QueryString *query = this->GetQueryString(wid);
 	if (query == NULL) return state;
 
+	int action = QueryString::ACTION_NOTHING;
+
 	switch (query->HandleEditBoxKey(this, wid, key, keycode, state)) {
 		case HEBR_EDITING:
 			this->OnEditboxChanged(wid);
@@ -2273,6 +2275,8 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 		case HEBR_CONFIRM:
 			if (query->ok_button >= 0) {
 				this->OnClick(Point(), query->ok_button, 1);
+			} else {
+				action = query->ok_button;
 			}
 			break;
 
@@ -2280,11 +2284,26 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 			if (query->cancel_button >= 0) {
 				this->OnClick(Point(), query->cancel_button, 1);
 			} else {
-				this->UnfocusFocusedWidget();
+				action = query->cancel_button;
 			}
 			break;
 
 		default: break;
+	}
+
+	switch (action) {
+		case QueryString::ACTION_DESELECT:
+			this->UnfocusFocusedWidget();
+			break;
+
+		case QueryString::ACTION_CLEAR:
+			query->text.DeleteAll();
+			this->SetWidgetDirty(wid);
+			this->OnEditboxChanged(wid);
+			break;
+
+		default:
+			break;
 	}
 
 	return state;

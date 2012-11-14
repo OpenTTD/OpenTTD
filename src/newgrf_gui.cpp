@@ -639,6 +639,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_NEWGRF_STATE);
 
 		this->querystrings[WID_NS_FILTER] = &this->filter_editbox;
+		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->SetFocusedWidget(WID_NS_FILTER);
 
 		this->avails.SetListing(this->last_sorting);
