@@ -303,22 +303,24 @@ static const StringID _variety[]     = {STR_VARIETY_NONE, STR_VARIETY_VERY_LOW, 
 
 assert_compile(lengthof(_num_inds) == ID_END + 1);
 
-struct GenerateLandscapeWindow : public QueryStringBaseWindow {
+struct GenerateLandscapeWindow : public Window {
 	uint widget_id;
 	uint x;
 	uint y;
 	char name[64];
 	GenenerateLandscapeWindowMode mode;
+	QueryString seed_editbox;
 
-	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(11)
+	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : seed_editbox(11)
 	{
 		this->InitNested(desc, number);
 
 		this->LowerWidget(_settings_newgame.game_creation.landscape + WID_GL_TEMPERATE);
 
-		this->text.Print("%u", _settings_newgame.game_creation.generation_seed);
-		this->caption = STR_NULL;
-		this->afilter = CS_NUMERAL;
+		this->querystrings[WID_GL_RANDOM_EDITBOX] = &this->seed_editbox;
+		this->seed_editbox.text.Print("%u", _settings_newgame.game_creation.generation_seed);
+		this->seed_editbox.caption = STR_NULL;
+		this->seed_editbox.afilter = CS_NUMERAL;
 
 		this->mode = (GenenerateLandscapeWindowMode)this->window_number;
 
@@ -547,7 +549,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case WID_GL_RANDOM_BUTTON: // Random seed
 				_settings_newgame.game_creation.generation_seed = InteractiveRandom();
-				this->text.Print("%u", _settings_newgame.game_creation.generation_seed);
+				this->seed_editbox.text.Print("%u", _settings_newgame.game_creation.generation_seed);
 				this->SetDirty();
 				break;
 
@@ -698,7 +700,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			 * As UINT32_MAX is a 'magic' value (use random seed) it
 			 * should not be possible to be entered into the input
 			 * field; the generate seed button can be used instead. */
-			_settings_newgame.game_creation.generation_seed = minu(strtoul(this->text.buf, NULL, 10), UINT32_MAX - 1);
+			_settings_newgame.game_creation.generation_seed = minu(strtoul(this->seed_editbox.text.buf, NULL, 10), UINT32_MAX - 1);
 		}
 	}
 

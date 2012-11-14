@@ -812,30 +812,33 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 }
 
 /** Class for the string query window. */
-struct QueryStringWindow : public QueryStringBaseWindow
+struct QueryStringWindow : public Window
 {
+	QueryString editbox;    ///< Editbox.
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
 
 	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
-			QueryStringBaseWindow(max_bytes, max_chars)
+			editbox(max_bytes, max_chars)
 	{
-		GetString(this->text.buf, str, &this->text.buf[this->text.max_bytes - 1]);
-		str_validate(this->text.buf, &this->text.buf[this->text.max_bytes - 1], SVS_NONE);
+		char *last_of = &this->editbox.text.buf[this->editbox.text.max_bytes - 1];
+		GetString(this->editbox.text.buf, str, last_of);
+		str_validate(this->editbox.text.buf, last_of, SVS_NONE);
 
 		/* Make sure the name isn't too long for the text buffer in the number of
 		 * characters (not bytes). max_chars also counts the '\0' characters. */
-		while (Utf8StringLength(this->text.buf) + 1 > this->text.max_chars) {
-			*Utf8PrevChar(this->text.buf + strlen(this->text.buf)) = '\0';
+		while (Utf8StringLength(this->editbox.text.buf) + 1 > this->editbox.text.max_chars) {
+			*Utf8PrevChar(this->editbox.text.buf + strlen(this->editbox.text.buf)) = '\0';
 		}
 
-		this->text.UpdateSize();
+		this->editbox.text.UpdateSize();
 
-		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->text.buf);
+		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->editbox.orig = strdup(this->editbox.text.buf);
 
-		this->caption = caption;
-		this->cancel_button = WID_QS_CANCEL;
-		this->ok_button = WID_QS_OK;
-		this->afilter = afilter;
+		this->querystrings[WID_QS_TEXT] = &this->editbox;
+		this->editbox.caption = caption;
+		this->editbox.cancel_button = WID_QS_CANCEL;
+		this->editbox.ok_button = WID_QS_OK;
+		this->editbox.afilter = afilter;
 		this->flags = flags;
 
 		this->InitNested(desc, WN_QUERY_STRING);
@@ -858,20 +861,20 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == WID_QS_CAPTION) SetDParam(0, this->caption);
+		if (widget == WID_QS_CAPTION) SetDParam(0, this->editbox.caption);
 	}
 
 	void OnOk()
 	{
-		if (this->orig == NULL || strcmp(this->text.buf, this->orig) != 0) {
+		if (this->editbox.orig == NULL || strcmp(this->editbox.text.buf, this->editbox.orig) != 0) {
 			/* If the parent is NULL, the editbox is handled by general function
 			 * HandleOnEditText */
 			if (this->parent != NULL) {
-				this->parent->OnQueryTextFinished(this->text.buf);
+				this->parent->OnQueryTextFinished(this->editbox.text.buf);
 			} else {
-				HandleOnEditText(this->text.buf);
+				HandleOnEditText(this->editbox.text.buf);
 			}
-			this->handled = true;
+			this->editbox.handled = true;
 		}
 	}
 
@@ -879,7 +882,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	{
 		switch (widget) {
 			case WID_QS_DEFAULT:
-				this->text.buf[0] = '\0';
+				this->editbox.text.DeleteAll();
 				/* FALL THROUGH */
 			case WID_QS_OK:
 				this->OnOk();
@@ -892,7 +895,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 
 	~QueryStringWindow()
 	{
-		if (!this->handled && this->parent != NULL) {
+		if (!this->editbox.handled && this->parent != NULL) {
 			Window *parent = this->parent;
 			this->parent = NULL; // so parent doesn't try to delete us again
 			parent->OnQueryTextFinished(NULL);

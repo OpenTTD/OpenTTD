@@ -209,7 +209,7 @@ public:
 	}
 };
 
-class NetworkGameWindow : public QueryStringBaseWindow {
+class NetworkGameWindow : public Window {
 protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
@@ -222,6 +222,7 @@ protected:
 	GUIGameServerList servers;    ///< list with game servers.
 	ServerListPosition list_pos;  ///< position of the selected server
 	Scrollbar *vscroll;
+	QueryString name_editbox;     ///< Client name editbox.
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -435,7 +436,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_CLIENT_NAME_LENGTH)
+	NetworkGameWindow(const WindowDesc *desc) : name_editbox(NETWORK_CLIENT_NAME_LENGTH)
 	{
 		this->list_pos = SLP_INVALID;
 		this->server = NULL;
@@ -444,8 +445,9 @@ public:
 		this->vscroll = this->GetScrollbar(WID_NG_SCROLLBAR);
 		this->FinishInitNested(desc, WN_NETWORK_WINDOW_GAME);
 
-		this->text.Assign(_settings_client.network.client_name);
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_NG_CLIENT] = &this->name_editbox;
+		this->name_editbox.text.Assign(_settings_client.network.client_name);
+		this->name_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NG_CLIENT);
 
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
@@ -850,8 +852,8 @@ public:
 	{
 		if (wid == WID_NG_CLIENT) {
 			/* The name is only allowed when it starts with a letter! */
-			if (!StrEmpty(this->text.buf) && this->text.buf[0] != ' ') {
-				strecpy(_settings_client.network.client_name, this->text.buf, lastof(_settings_client.network.client_name));
+			if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
+				strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
 			} else {
 				strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
 			}
@@ -998,16 +1000,18 @@ void ShowNetworkGameWindow()
 	new NetworkGameWindow(&_network_game_window_desc);
 }
 
-struct NetworkStartServerWindow : public QueryStringBaseWindow {
+struct NetworkStartServerWindow : public Window {
 	byte widget_id;              ///< The widget that has the pop-up input menu
+	QueryString name_editbox;    ///< Server name editbox.
 
-	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH)
+	NetworkStartServerWindow(const WindowDesc *desc) : name_editbox(NETWORK_NAME_LENGTH)
 	{
 		this->InitNested(desc, WN_NETWORK_WINDOW_START);
 
-		this->text.Assign(_settings_client.network.server_name);
+		this->querystrings[WID_NSS_GAMENAME] = &this->name_editbox;
+		this->name_editbox.text.Assign(_settings_client.network.server_name);
 
-		this->afilter = CS_ALPHANUMERAL;
+		this->name_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
 
@@ -1171,7 +1175,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NSS_GAMENAME) {
-			strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
+			strecpy(_settings_client.network.server_name, this->name_editbox.text.buf, lastof(_settings_client.network.server_name));
 		}
 	}
 
@@ -2101,25 +2105,28 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 	ShowQueryString(STR_EMPTY, caption, NETWORK_PASSWORD_LENGTH, w, CS_ALPHANUMERAL, QSF_NONE);
 }
 
-struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
-	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(lengthof(_settings_client.network.default_company_pass))
+struct NetworkCompanyPasswordWindow : public Window {
+	QueryString password_editbox; ///< Password editbox.
+
+	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : password_editbox(lengthof(_settings_client.network.default_company_pass))
 	{
 		this->InitNested(desc, 0);
 
 		this->parent = parent;
-		this->cancel_button = WID_NCP_CANCEL;
-		this->ok_button = WID_NCP_OK;
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_NCP_PASSWORD] = &this->password_editbox;
+		this->password_editbox.cancel_button = WID_NCP_CANCEL;
+		this->password_editbox.ok_button = WID_NCP_OK;
+		this->password_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
 	}
 
 	void OnOk()
 	{
 		if (this->IsWidgetLowered(WID_NCP_SAVE_AS_DEFAULT_PASSWORD)) {
-			strecpy(_settings_client.network.default_company_pass, this->text.buf, lastof(_settings_client.network.default_company_pass));
+			strecpy(_settings_client.network.default_company_pass, this->password_editbox.text.buf, lastof(_settings_client.network.default_company_pass));
 		}
 
-		NetworkChangeCompanyPassword(_local_company, this->text.buf);
+		NetworkChangeCompanyPassword(_local_company, this->password_editbox.text.buf);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

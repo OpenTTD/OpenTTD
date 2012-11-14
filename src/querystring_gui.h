@@ -64,14 +64,7 @@ public:
 	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state);
 };
 
-struct QueryStringBaseWindow : public Window, public QueryString {
-	QueryStringBaseWindow(uint16 size, uint16 chars = UINT16_MAX) : Window(), QueryString(size, chars)
-	{
-	}
-
-};
-
-void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button);
-void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button);
+void ShowOnScreenKeyboard(Window *parent, int button);
+void UpdateOSKOriginalText(const Window *parent, int button);
 
 #endif /* QUERYSTRING_GUI_H */

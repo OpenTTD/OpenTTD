@@ -18,6 +18,7 @@
 #include "tile_type.h"
 #include "widget_type.h"
 #include "core/smallvec_type.hpp"
+#include "core/smallmap_type.hpp"
 
 /** State of handling an event. */
 enum EventState {
@@ -240,6 +241,8 @@ struct ViewportData : ViewPort {
 	int32 dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 };
 
+struct QueryString;
+
 /**
  * Data structure for an opened window
  */
@@ -295,6 +298,7 @@ public:
 	ViewportData *viewport;          ///< Pointer to viewport data, if present.
 	uint32 desc_flags;               ///< Window/widgets default flags setting. @see WindowDefaultFlag
 	const NWidgetCore *nested_focus; ///< Currently focused nested widget, or \c NULL if no nested widget has focus.
+	SmallMap<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.
 	NWidgetBase *nested_root;        ///< Root of the nested tree.
 	NWidgetBase **nested_array;      ///< Array of pointers into the tree. Do not access directly, use #Window::GetWidget() instead.
 	uint nested_array_size;          ///< Size of the nested array.
@@ -314,6 +318,9 @@ public:
 
 	const Scrollbar *GetScrollbar(uint widnum) const;
 	Scrollbar *GetScrollbar(uint widnum);
+
+	const QueryString *GetQueryString(uint widnum) const;
+	QueryString *GetQueryString(uint widnum);
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);

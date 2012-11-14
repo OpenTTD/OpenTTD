@@ -228,8 +228,9 @@ static void MakeSortedSaveGameList()
 	QSortT(_fios_items.Get(sort_start), s_amount, CompareFiosItems);
 }
 
-struct SaveLoadWindow : public QueryStringBaseWindow {
+struct SaveLoadWindow : public Window {
 private:
+	QueryString filename_editbox; ///< Filename editbox.
 	FiosItem o_dir;
 	const FiosItem *selected;
 	Scrollbar *vscroll;
@@ -238,11 +239,11 @@ public:
 	/** Generate a default save filename. */
 	void GenerateFileName()
 	{
-		GenerateDefaultSaveName(this->text.buf, &this->text.buf[this->text.max_bytes - 1]);
-		this->text.UpdateSize();
+		GenerateDefaultSaveName(this->filename_editbox.text.buf, &this->filename_editbox.text.buf[this->filename_editbox.text.max_bytes - 1]);
+		this->filename_editbox.text.UpdateSize();
 	}
 
-	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(64)
+	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : filename_editbox(64)
 	{
 		static const StringID saveload_captions[] = {
 			STR_SAVELOAD_LOAD_CAPTION,
@@ -259,12 +260,13 @@ public:
 		switch (mode) {
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
 			case SLD_SAVE_HEIGHTMAP:
-			case SLD_SAVE_SCENARIO: this->text.Assign("UNNAMED"); break;
+			case SLD_SAVE_SCENARIO: this->filename_editbox.text.Assign("UNNAMED"); break;
 			default:                break;
 		}
 
-		this->ok_button = WID_SL_SAVE_GAME;
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_SL_SAVE_OSK_TITLE] = &this->filename_editbox;
+		this->filename_editbox.ok_button = WID_SL_SAVE_GAME;
+		this->filename_editbox.afilter = CS_ALPHANUMERAL;
 
 		this->CreateNestedTree(desc, true);
 		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -567,7 +569,7 @@ public:
 						}
 						if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) {
 							/* Copy clicked name to editbox */
-							this->text.Assign(file->title);
+							this->filename_editbox.text.Assign(file->title);
 							this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 						}
 					} else if (!_load_check_data.HasErrors()) {
@@ -631,7 +633,7 @@ public:
 		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP)) return;
 
 		if (this->IsWidgetLowered(WID_SL_DELETE_SELECTION)) { // Delete button clicked
-			if (!FiosDelete(this->text.buf)) {
+			if (!FiosDelete(this->filename_editbox.text.buf)) {
 				ShowErrorMessage(STR_ERROR_UNABLE_TO_DELETE_FILE, INVALID_STRING_ID, WL_ERROR);
 			} else {
 				this->InvalidateData();
@@ -641,10 +643,10 @@ public:
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (_saveload_mode  == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 				_switch_mode = SM_SAVE_GAME;
-				FiosMakeSavegameName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
+				FiosMakeSavegameName(_file_to_saveload.name, this->filename_editbox.text.buf, sizeof(_file_to_saveload.name));
 			} else {
 				_switch_mode = SM_SAVE_HEIGHTMAP;
-				FiosMakeHeightmapName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
+				FiosMakeHeightmapName(_file_to_saveload.name, this->filename_editbox.text.buf, sizeof(_file_to_saveload.name));
 			}
 
 			/* In the editor set up the vehicle engines correctly (date might have changed) */

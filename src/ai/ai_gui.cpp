@@ -981,7 +981,7 @@ static bool SetScriptButtonColour(NWidgetCore &button, bool dead, bool paused)
 /**
  * Window with everything an AI prints via ScriptLog.
  */
-struct AIDebugWindow : public QueryStringBaseWindow {
+struct AIDebugWindow : public Window {
 	static const int top_offset;    ///< Offset of the text at the top of the WID_AID_LOG_PANEL.
 	static const int bottom_offset; ///< Offset of the text at the bottom of the WID_AID_LOG_PANEL.
 
@@ -994,6 +994,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	bool show_break_box;                                   ///< Whether the break/debug box is visible.
 	static bool break_check_enabled;                       ///< Stop an AI when it prints a matching string
 	static char break_string[MAX_BREAK_STR_STRING_LENGTH]; ///< The string to match to the AI output
+	QueryString break_editbox;                             ///< Break editbox
 	static StringFilter break_string_filter;               ///< Log filter for break.
 	static bool case_sensitive_break_check;                ///< Is the matching done case-sensitive
 	int highlight_row;                                     ///< The output row that matches the given string, or -1
@@ -1010,7 +1011,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	 * @param desc The description of the window.
 	 * @param number The window number (actually unused).
 	 */
-	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : QueryStringBaseWindow(MAX_BREAK_STR_STRING_LENGTH)
+	AIDebugWindow(const WindowDesc *desc, WindowNumber number) : break_editbox(MAX_BREAK_STR_STRING_LENGTH)
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_AID_SCROLLBAR);
@@ -1032,8 +1033,10 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->autoscroll = true;
 		this->highlight_row = -1;
 
+		this->querystrings[WID_AID_BREAK_STR_EDIT_BOX] = &this->break_editbox;
+
 		/* Restore the break string value from static variable */
-		this->text.Assign(this->break_string);
+		this->break_editbox.text.Assign(this->break_string);
 
 		/* Restore button state from static class variables */
 		if (ai_debug_company == OWNER_DEITY) {
@@ -1356,7 +1359,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	{
 		if (wid == WID_AID_BREAK_STR_EDIT_BOX) {
 			/* Save the current string to static member so it can be restored next time the window is opened. */
-			strecpy(this->break_string, this->text.buf, lastof(this->break_string));
+			strecpy(this->break_string, this->break_editbox.text.buf, lastof(this->break_string));
 			break_string_filter.SetFilterTerm(this->break_string);
 		}
 	}

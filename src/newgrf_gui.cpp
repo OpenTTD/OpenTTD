@@ -585,7 +585,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed);
 /**
  * Window for showing NewGRF files
  */
-struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
+struct NewGRFWindow : public Window, NewGRFScanCallback {
 	typedef GUIList<const GRFConfig *, StringFilter &> GUIGRFConfigList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50;
@@ -599,6 +599,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	const GRFConfig *avail_sel; ///< Currently selected available grf. \c NULL is none is selected.
 	int avail_pos;              ///< Index of #avail_sel if existing, else \c -1.
 	StringFilter string_filter; ///< Filter for available grf.
+	QueryString filter_editbox; ///< Filter editbox;
 
 	GRFConfig *actives;         ///< Temporary active grf list to which changes are made.
 	GRFConfig *active_sel;      ///< Selected active grf item.
@@ -613,7 +614,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
 
-	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : QueryStringBaseWindow(EDITBOX_MAX_SIZE)
+	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool execute, GRFConfig **orig_list) : filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->avail_sel   = NULL;
 		this->avail_pos   = -1;
@@ -637,6 +638,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 		this->GetWidget<NWidgetStacked>(WID_NS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : this->show_params ? 1 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_NEWGRF_STATE);
 
+		this->querystrings[WID_NS_FILTER] = &this->filter_editbox;
 		this->SetFocusedWidget(WID_NS_FILTER);
 
 		this->avails.SetListing(this->last_sorting);
@@ -1279,7 +1281,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	{
 		if (!this->editable) return;
 
-		string_filter.SetFilterTerm(this->text.buf);
+		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
 		this->avails.SetFilterState(!string_filter.IsEmpty());
 		this->avails.ForceRebuild();
 		this->InvalidateData(0);

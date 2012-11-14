@@ -227,6 +227,28 @@ Scrollbar *Window::GetScrollbar(uint widnum)
 	return this->GetWidget<NWidgetScrollbar>(widnum);
 }
 
+/**
+ * Return the querystring associated to a editbox.
+ * @param widnum Editbox widget index
+ * @return QueryString or NULL.
+ */
+const QueryString *Window::GetQueryString(uint widnum) const
+{
+	const SmallMap<int, QueryString*>::Pair *query = this->querystrings.Find(widnum);
+	return query != this->querystrings.End() ? query->second : NULL;
+}
+
+/**
+ * Return the querystring associated to a editbox.
+ * @param widnum Editbox widget index
+ * @return QueryString or NULL.
+ */
+QueryString *Window::GetQueryString(uint widnum)
+{
+	SmallMap<int, QueryString*>::Pair *query = this->querystrings.Find(widnum);
+	return query != this->querystrings.End() ? query->second : NULL;
+}
+
 
 /**
  * Set the window that has the focus
@@ -450,9 +472,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		case WWT_EDITBOX:
 			if (!focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
 				/* Open the OSK window if clicked on an edit box */
-				QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow *>(w);
-				if (qs != NULL) {
-					ShowOnScreenKeyboard(qs, widget_index);
+				if (w->querystrings.Contains(widget_index)) {
+					ShowOnScreenKeyboard(w, widget_index);
 				}
 			}
 			break;
@@ -1622,12 +1643,8 @@ static void DecreaseWindowCounters()
 		}
 
 		/* Handle editboxes */
-		for (uint i = 0; i < w->nested_array_size; i++) {
-			NWidgetBase *nwid = w->nested_array[i];
-			if (nwid != NULL && nwid->type == WWT_EDITBOX) {
-				QueryString *query = dynamic_cast<QueryString*>(w);
-				if (query != NULL) query->HandleEditBox(w, i);
-			}
+		for (SmallMap<int, QueryString*>::Pair *it = w->querystrings.Begin(); it != w->querystrings.End(); ++it) {
+			it->second->HandleEditBox(w, it->first);
 		}
 
 		w->OnMouseLoop();
@@ -2245,7 +2262,7 @@ EventState Window::HandleEditBoxKey(int wid, uint16 key, uint16 keycode)
 {
 	EventState state = ES_NOT_HANDLED;
 
-	QueryString *query = dynamic_cast<QueryString*>(this);
+	QueryString *query = this->GetQueryString(wid);
 	if (query == NULL) return state;
 
 	switch (query->HandleEditBoxKey(this, wid, key, keycode, state)) {

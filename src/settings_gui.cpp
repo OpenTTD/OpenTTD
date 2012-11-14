@@ -1956,7 +1956,7 @@ static const StringID _game_settings_restrict_dropdown[] = {
 };
 assert_compile(lengthof(_game_settings_restrict_dropdown) == RM_END);
 
-struct GameSettingsWindow : QueryStringBaseWindow {
+struct GameSettingsWindow : Window {
 	static const int SETTINGTREE_LEFT_OFFSET   = 5; ///< Position of left edge of setting values
 	static const int SETTINGTREE_RIGHT_OFFSET  = 5; ///< Position of right edge of setting values
 	static const int SETTINGTREE_TOP_OFFSET    = 5; ///< Position of top edge of setting values
@@ -1971,13 +1971,14 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	bool closing_dropdown;             ///< True, if the dropdown list is currently closing.
 
 	StringFilter string_filter;        ///< Text filter for settings.
+	QueryString filter_editbox;        ///< Filter editbox;
 	bool manually_changed_folding;     ///< Whether the user expanded/collapsed something manually.
 
 	RestrictionMode cur_restriction_mode; ///< Currently selected index of the drop down list for the restrict drop down.
 
 	Scrollbar *vscroll;
 
-	GameSettingsWindow(const WindowDesc *desc) : QueryStringBaseWindow(50), cur_restriction_mode((RestrictionMode)_settings_client.gui.settings_restriction_mode)
+	GameSettingsWindow(const WindowDesc *desc) : filter_editbox(50), cur_restriction_mode((RestrictionMode)_settings_client.gui.settings_restriction_mode)
 	{
 		static bool first_time = true;
 
@@ -2002,6 +2003,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
 
+		this->querystrings[WID_GS_FILTER] = &this->filter_editbox;
 		this->SetFocusedWidget(WID_GS_FILTER);
 
 		this->InvalidateData();
@@ -2408,7 +2410,7 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_GS_FILTER) {
-			string_filter.SetFilterTerm(this->text.buf);
+			string_filter.SetFilterTerm(this->filter_editbox.text.buf);
 			if (!string_filter.IsEmpty() && !this->manually_changed_folding) {
 				/* User never expanded/collapsed single pages and entered a filter term.
 				 * Expand everything, to save weird expand clicks, */

@@ -978,23 +978,25 @@ static const NWidgetPart _nested_found_town_widgets[] = {
 };
 
 /** Found a town window class. */
-struct FoundTownWindow : QueryStringBaseWindow {
+struct FoundTownWindow : Window {
 private:
 	TownSize town_size;     ///< Selected town size
 	TownLayout town_layout; ///< Selected town layout
 	bool city;              ///< Are we building a city?
+	QueryString townname_editbox; ///< Townname editbox
 	bool townnamevalid;     ///< Is generated town name valid?
 	uint32 townnameparts;   ///< Generated town name
 	TownNameParams params;  ///< Town name parameters
 
 public:
 	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
-			QueryStringBaseWindow(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS),
 			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
+			townname_editbox(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS),
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
+		this->querystrings[WID_TF_TOWN_NAME_EDITBOX] = &this->townname_editbox;
 		this->RandomTownName();
 		this->UpdateButtons(true);
 	}
@@ -1004,10 +1006,10 @@ public:
 		this->townnamevalid = GenerateTownName(&this->townnameparts);
 
 		if (!this->townnamevalid) {
-			this->text.DeleteAll();
+			this->townname_editbox.text.DeleteAll();
 		} else {
-			GetTownName(this->text.buf, &this->params, this->townnameparts, &this->text.buf[this->text.max_bytes - 1]);
-			this->text.UpdateSize();
+			GetTownName(this->townname_editbox.text.buf, &this->params, this->townnameparts, &this->townname_editbox.text.buf[this->townname_editbox.text.max_bytes - 1]);
+			this->townname_editbox.text.UpdateSize();
 		}
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
@@ -1041,12 +1043,12 @@ public:
 		const char *name = NULL;
 
 		if (!this->townnamevalid) {
-			name = this->text.buf;
+			name = this->townname_editbox.text.buf;
 		} else {
 			/* If user changed the name, send it */
 			char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 			GetTownName(buf, &this->params, this->townnameparts, lastof(buf));
-			if (strcmp(buf, this->text.buf) != 0) name = this->text.buf;
+			if (strcmp(buf, this->townname_editbox.text.buf) != 0) name = this->townname_editbox.text.buf;
 		}
 
 		bool success = DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,

@@ -144,11 +144,12 @@ enum SignListHotkeys {
 	SLHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
 };
 
-struct SignListWindow : QueryStringBaseWindow, SignList {
+struct SignListWindow : Window, SignList {
+	QueryString filter_editbox; ///< Filter editbox;
 	int text_offset; ///< Offset of the sign text relative to the left edge of the WID_SIL_LIST widget.
 	Scrollbar *vscroll;
 
-	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
+	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : filter_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(WID_SIL_SCROLLBAR);
@@ -156,9 +157,10 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->SetWidgetLoweredState(WID_SIL_FILTER_MATCH_CASE_BTN, SignList::match_case);
 
 		/* Initialize the text edit widget */
-		this->ok_button = WID_SIL_FILTER_ENTER_BTN;
-		this->cancel_button = WID_SIL_FILTER_CLEAR_BTN;
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_SIL_FILTER_TEXT] = &this->filter_editbox;
+		this->filter_editbox.ok_button = WID_SIL_FILTER_ENTER_BTN;
+		this->filter_editbox.cancel_button = WID_SIL_FILTER_CLEAR_BTN;
+		this->filter_editbox.afilter = CS_ALPHANUMERAL;
 
 		/* Initialize the filtering variables */
 		this->SetFilterString("");
@@ -175,7 +177,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	 */
 	void ClearFilterTextWidget()
 	{
-		this->text.DeleteAll();
+		this->filter_editbox.text.DeleteAll();
 
 		this->SetWidgetDirty(WID_SIL_FILTER_TEXT);
 	}
@@ -314,7 +316,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 	virtual void OnEditboxChanged(int widget)
 	{
-		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->text.buf);
+		if (widget == WID_SIL_FILTER_TEXT) this->SetFilterString(this->filter_editbox.text.buf);
 	}
 
 	void BuildSortSignList()
@@ -428,15 +430,17 @@ static bool RenameSign(SignID index, const char *text)
 	return remove;
 }
 
-struct SignWindow : QueryStringBaseWindow, SignList {
+struct SignWindow : Window, SignList {
+	QueryString name_editbox;
 	SignID cur_sign;
 
-	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
+	SignWindow(const WindowDesc *desc, const Sign *si) : name_editbox(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
-		this->caption = STR_EDIT_SIGN_CAPTION;
-		this->cancel_button = WID_QES_CANCEL;
-		this->ok_button = WID_QES_OK;
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_QES_TEXT] = &this->name_editbox;
+		this->name_editbox.caption = STR_EDIT_SIGN_CAPTION;
+		this->name_editbox.cancel_button = WID_QES_CANCEL;
+		this->name_editbox.ok_button = WID_QES_OK;
+		this->name_editbox.afilter = CS_ALPHANUMERAL;
 
 		this->InitNested(desc, WN_QUERY_STRING_SIGN);
 
@@ -450,9 +454,9 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		/* Display an empty string when the sign hasnt been edited yet */
 		if (si->name != NULL) {
 			SetDParam(0, si->index);
-			this->text.Assign(STR_SIGN_NAME);
+			this->name_editbox.text.Assign(STR_SIGN_NAME);
 		} else {
-			this->text.DeleteAll();
+			this->name_editbox.text.DeleteAll();
 		}
 
 		this->cur_sign = si->index;
@@ -492,7 +496,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	{
 		switch (widget) {
 			case WID_QES_CAPTION:
-				SetDParam(0, this->caption);
+				SetDParam(0, this->name_editbox.caption);
 				break;
 		}
 	}
@@ -523,7 +527,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 
 			case WID_QES_OK:
-				if (RenameSign(this->cur_sign, this->text.buf)) break;
+				if (RenameSign(this->cur_sign, this->name_editbox.text.buf)) break;
 				/* FALL THROUGH */
 
 			case WID_QES_CANCEL:

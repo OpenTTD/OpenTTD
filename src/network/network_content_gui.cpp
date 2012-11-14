@@ -276,7 +276,7 @@ public:
 };
 
 /** Window that lists the content that's at the content server */
-class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
+class NetworkContentListWindow : public Window, ContentCallback {
 	/** List with content infos. */
 	typedef GUIList<const ContentInfo *, StringFilter &> GUIContentList;
 
@@ -289,6 +289,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	GUIContentList content;      ///< List with content
 	bool auto_select;            ///< Automatically select all content when the meta-data becomes available
 	StringFilter string_filter;  ///< Filter for content list
+	QueryString filter_editbox;  ///< Filter editbox;
 
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
@@ -405,8 +406,8 @@ public:
 	 * @param select_all Whether the select all button is allowed or not.
 	 */
 	NetworkContentListWindow(const WindowDesc *desc, bool select_all) :
-			QueryStringBaseWindow(EDITBOX_MAX_SIZE),
 			auto_select(select_all),
+			filter_editbox(EDITBOX_MAX_SIZE),
 			selected(NULL),
 			list_pos(0)
 	{
@@ -416,7 +417,8 @@ public:
 
 		this->GetWidget<NWidgetStacked>(WID_NCL_SEL_ALL_UPDATE)->SetDisplayedPlane(select_all);
 
-		this->afilter = CS_ALPHANUMERAL;
+		this->querystrings[WID_NCL_FILTER] = &this->filter_editbox;
+		this->filter_editbox.afilter = CS_ALPHANUMERAL;
 		this->SetFocusedWidget(WID_NCL_FILTER);
 
 		_network_content_client.AddCallback(this);
@@ -780,7 +782,7 @@ public:
 	virtual void OnEditboxChanged(int wid)
 	{
 		if (wid == WID_NCL_FILTER) {
-			this->string_filter.SetFilterTerm(this->text.buf);
+			this->string_filter.SetFilterTerm(this->filter_editbox.text.buf);
 			this->content.SetFilterState(!this->string_filter.IsEmpty());
 			this->content.ForceRebuild();
 			this->InvalidateData();

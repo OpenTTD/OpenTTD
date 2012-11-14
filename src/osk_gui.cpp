@@ -40,18 +40,19 @@ struct OskWindow : public Window {
 	char *orig_str_buf;    ///< Original string.
 	bool shift;            ///< Is the shift effectively pressed?
 
-	OskWindow(const WindowDesc *desc, QueryStringBaseWindow *parent, int button) : Window()
+	OskWindow(const WindowDesc *desc, Window *parent, int button) : Window()
 	{
 		this->parent = parent;
 		assert(parent != NULL);
 
 		NWidgetCore *par_wid = parent->GetWidget<NWidgetCore>(button);
 		assert(par_wid != NULL);
-		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : parent->caption;
 
-		this->qs         = parent;
+		assert(parent->querystrings.Contains(button));
+		this->qs         = parent->querystrings.Find(button)->second;
+		this->caption = (par_wid->widget_data != STR_NULL) ? par_wid->widget_data : this->qs->caption;
 		this->text_btn   = button;
-		this->text       = &parent->text;
+		this->text       = &this->qs->text;
 
 		/* make a copy in case we need to reset later */
 		this->orig_str_buf = strdup(this->qs->text.buf);
@@ -423,7 +424,7 @@ void GetKeyboardLayout()
  * @param parent pointer to the Window where this keyboard originated from
  * @param button widget number of parent's textbox
  */
-void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button)
+void ShowOnScreenKeyboard(Window *parent, int button)
 {
 	DeleteWindowById(WC_OSK, 0);
 
@@ -438,10 +439,10 @@ void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button)
  * @param parent window that just updated its orignal text
  * @param button widget number of parent's textbox to update
  */
-void UpdateOSKOriginalText(const QueryStringBaseWindow *parent, int button)
+void UpdateOSKOriginalText(const Window *parent, int button)
 {
 	OskWindow *osk = dynamic_cast<OskWindow *>(FindWindowById(WC_OSK, 0));
-	if (osk == NULL || osk->qs != parent || osk->text_btn != button) return;
+	if (osk == NULL || osk->parent != parent || osk->text_btn != button) return;
 
 	free(osk->orig_str_buf);
 	osk->orig_str_buf = strdup(osk->qs->text.buf);
