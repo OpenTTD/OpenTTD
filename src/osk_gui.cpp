@@ -188,8 +188,7 @@ struct OskWindow : public Window {
 					/* Window gets deleted when the parent window removes itself. */
 					return;
 				} else { // or reset to original string
-					strcpy(qs->text.buf, this->orig_str_buf);
-					qs->text.UpdateSize();
+					qs->text.Assign(this->orig_str_buf);
 					qs->text.MovePos(WKC_END);
 					this->InvalidateParent();
 					delete this;

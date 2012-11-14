@@ -567,8 +567,7 @@ public:
 						}
 						if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO || _saveload_mode == SLD_SAVE_HEIGHTMAP) {
 							/* Copy clicked name to editbox */
-							ttd_strlcpy(this->text.buf, file->title, this->text.max_bytes);
-							this->text.UpdateSize();
+							this->text.Assign(file->title);
 							this->SetWidgetDirty(WID_SL_SAVE_OSK_TITLE);
 						}
 					} else if (!_load_check_data.HasErrors()) {

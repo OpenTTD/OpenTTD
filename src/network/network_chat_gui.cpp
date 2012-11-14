@@ -437,13 +437,10 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 				/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
 				if (pre_buf == tb_buf) {
-					snprintf(tb->buf, this->edit_str_size, "%s: ", cur_name);
+					this->text.Print("%s: ", cur_name);
 				} else {
-					snprintf(tb->buf, this->edit_str_size, "%s %s", pre_buf, cur_name);
+					this->text.Print("%s %s", pre_buf, cur_name);
 				}
-
-				/* Update the textbuffer */
-				this->text.UpdateSize();
 
 				this->SetDirty();
 				free(pre_buf);
@@ -453,11 +450,8 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 		if (second_scan) {
 			/* We walked all posibilities, and the user presses tab again.. revert to original text */
-			strcpy(tb->buf, _chat_tab_completion_buf);
+			this->text.Assign(_chat_tab_completion_buf);
 			_chat_tab_completion_active = false;
-
-			/* Update the textbuffer */
-			this->text.UpdateSize();
 
 			this->SetDirty();
 		}

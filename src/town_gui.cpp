@@ -1004,11 +1004,11 @@ public:
 		this->townnamevalid = GenerateTownName(&this->townnameparts);
 
 		if (!this->townnamevalid) {
-			this->edit_str_buf[0] = '\0';
+			this->text.DeleteAll();
 		} else {
 			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
+			this->text.UpdateSize();
 		}
-		this->text.UpdateSize();
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
 
 		this->SetWidgetDirty(WID_TF_TOWN_NAME_EDITBOX);

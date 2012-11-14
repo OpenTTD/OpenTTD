@@ -175,8 +175,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	 */
 	void ClearFilterTextWidget()
 	{
-		this->edit_str_buf[0] = '\0';
-		this->text.UpdateSize();
+		this->text.DeleteAll();
 
 		this->SetWidgetDirty(WID_SIL_FILTER_TEXT);
 	}

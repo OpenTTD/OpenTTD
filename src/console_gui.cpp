@@ -451,11 +451,10 @@ static void IConsoleHistoryNavigate(int direction)
 	if (direction > 0 && _iconsole_history[_iconsole_historypos] == NULL) _iconsole_historypos--;
 
 	if (_iconsole_historypos == -1) {
-		*_iconsole_cmdline.buf = '\0';
+		_iconsole_cmdline.DeleteAll();
 	} else {
-		ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[_iconsole_historypos], _iconsole_cmdline.max_bytes);
+		_iconsole_cmdline.Assign(_iconsole_history[_iconsole_historypos]);
 	}
-	_iconsole_cmdline.UpdateSize();
 }
 
 /**

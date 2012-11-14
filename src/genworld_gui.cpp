@@ -547,8 +547,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case WID_GL_RANDOM_BUTTON: // Random seed
 				_settings_newgame.game_creation.generation_seed = InteractiveRandom();
-				snprintf(this->edit_str_buf, this->edit_str_size, "%u", _settings_newgame.game_creation.generation_seed);
-				this->text.UpdateSize();
+				this->text.Print("%u", _settings_newgame.game_creation.generation_seed);
 				this->SetDirty();
 				break;
 
