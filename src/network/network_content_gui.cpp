@@ -281,7 +281,6 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	typedef GUIList<const ContentInfo *, StringFilter &> GUIContentList;
 
 	static const uint EDITBOX_MAX_SIZE   =  50; ///< Maximum size of the editbox in characters.
-	static const uint EDITBOX_MAX_LENGTH = 300; ///< Maximum size of the editbox in pixels.
 
 	static Listing last_sorting;     ///< The last sorting setting.
 	static Filtering last_filtering; ///< The last filtering setting.
@@ -418,7 +417,7 @@ public:
 		this->GetWidget<NWidgetStacked>(WID_NCL_SEL_ALL_UPDATE)->SetDisplayedPlane(select_all);
 
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NCL_FILTER);
 
 		_network_content_client.AddCallback(this);

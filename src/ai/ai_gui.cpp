@@ -1031,7 +1031,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		this->last_vscroll_pos = 0;
 		this->autoscroll = true;
 		this->highlight_row = -1;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size, MAX_BREAK_STR_STRING_LENGTH);
+		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
 		/* Restore the break string value from static variable */
 		strecpy(this->edit_str_buf, this->break_string, this->edit_str_buf + MAX_BREAK_STR_STRING_LENGTH);
