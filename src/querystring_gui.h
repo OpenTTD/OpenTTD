@@ -65,6 +65,7 @@ private:
 	bool HasEditBoxFocus(const Window *w, int wid) const;
 public:
 	void DrawEditBox(const Window *w, int wid) const;
+	void ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed);
 	void HandleEditBox(Window *w, int wid);
 	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, EventState &state);
 };

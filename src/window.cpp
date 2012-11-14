@@ -463,20 +463,19 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 
 	if ((widget_type & ~WWB_PUSHBUTTON) < WWT_LAST && (widget_type & WWB_PUSHBUTTON)) w->HandleButtonClick(widget_index);
 
+	Point pt = { x, y };
+
 	switch (widget_type) {
 		case NWID_VSCROLLBAR:
 		case NWID_HSCROLLBAR:
 			ScrollbarClickHandler(w, nw, x, y);
 			break;
 
-		case WWT_EDITBOX:
-			if (!focused_widget_changed) { // Only open the OSK window if clicking on an already focused edit box
-				/* Open the OSK window if clicked on an edit box */
-				if (w->querystrings.Contains(widget_index)) {
-					ShowOnScreenKeyboard(w, widget_index);
-				}
-			}
+		case WWT_EDITBOX: {
+			QueryString *query = w->GetQueryString(widget_index);
+			if (query != NULL) query->ClickEditBox(w, pt, widget_index, click_count, focused_widget_changed);
 			break;
+		}
 
 		case WWT_CLOSEBOX: // 'X'
 			delete w;
@@ -520,7 +519,6 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 		Game::NewEvent(new ScriptEventWindowWidgetClick((ScriptWindow::WindowClass)w->window_class, w->window_number, widget_index));
 	}
 
-	Point pt = { x, y };
 	w->OnClick(pt, widget_index, click_count);
 }
 

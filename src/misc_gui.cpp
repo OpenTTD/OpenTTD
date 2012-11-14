@@ -811,6 +811,14 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	_cur_dpi = old_dpi;
 }
 
+void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed)
+{
+	if (!focus_changed && w->window_class != WC_OSK) {
+		/* Open the OSK window if clicked on an edit box, while not changing focus */
+		ShowOnScreenKeyboard(w, wid);
+	}
+}
+
 /** Class for the string query window. */
 struct QueryStringWindow : public Window
 {
