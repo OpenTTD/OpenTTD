@@ -10,8 +10,11 @@
 /** @file textbuf.cpp Textbuffer handling. */
 
 #include "stdafx.h"
+#include <stdarg.h>
+
 #include "textbuf_type.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "window_func.h"
@@ -376,6 +379,39 @@ void Textbuf::Initialize(char *buf, uint16 max_bytes, uint16 max_chars)
 	this->caret      = true;
 	this->UpdateSize();
 }
+
+/**
+ * Render a string into the textbuffer.
+ * @param string String
+ */
+void Textbuf::Assign(StringID string)
+{
+	GetString(this->buf, string, &this->buf[this->max_bytes - 1]);
+	this->UpdateSize();
+}
+
+/**
+ * Copy a string into the textbuffer.
+ * @param text Source.
+ */
+void Textbuf::Assign(const char *text)
+{
+	ttd_strlcpy(this->buf, text, this->max_bytes);
+	this->UpdateSize();
+}
+
+/**
+ * Print a formatted string into the textbuffer.
+ */
+void Textbuf::Print(const char *format, ...)
+{
+	va_list va;
+	va_start(va, format);
+	vsnprintf(this->buf, this->max_bytes, format, va);
+	va_end(va);
+	this->UpdateSize();
+}
+
 
 /**
  * Update Textbuf type with its actual physical character and screenlength

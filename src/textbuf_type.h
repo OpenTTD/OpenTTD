@@ -13,6 +13,7 @@
 #define TEXTBUF_TYPE_H
 
 #include "string_type.h"
+#include "strings_type.h"
 
 /** Helper/buffer for input fields. */
 struct Textbuf {
@@ -28,6 +29,10 @@ struct Textbuf {
 
 	void Initialize(char *buf, uint16 max_bytes);
 	void Initialize(char *buf, uint16 max_bytes, uint16 max_chars);
+
+	void Assign(StringID string);
+	void Assign(const char *text);
+	void CDECL Print(const char *format, ...) WARN_FORMAT(2, 3);
 
 	void DeleteAll();
 	bool DeleteChar(int delmode);
