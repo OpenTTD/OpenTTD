@@ -819,18 +819,18 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
 			QueryStringBaseWindow(max_bytes, max_chars)
 	{
-		GetString(this->edit_str_buf, str, &this->edit_str_buf[max_bytes - 1]);
-		str_validate(this->edit_str_buf, &this->edit_str_buf[max_bytes - 1], SVS_NONE);
+		GetString(this->text.buf, str, &this->text.buf[this->text.max_bytes - 1]);
+		str_validate(this->text.buf, &this->text.buf[this->text.max_bytes - 1], SVS_NONE);
 
 		/* Make sure the name isn't too long for the text buffer in the number of
 		 * characters (not bytes). max_chars also counts the '\0' characters. */
-		while (Utf8StringLength(this->edit_str_buf) + 1 > max_chars) {
-			*Utf8PrevChar(this->edit_str_buf + strlen(this->edit_str_buf)) = '\0';
+		while (Utf8StringLength(this->text.buf) + 1 > this->text.max_chars) {
+			*Utf8PrevChar(this->text.buf + strlen(this->text.buf)) = '\0';
 		}
 
 		this->text.UpdateSize();
 
-		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
+		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->text.buf);
 
 		this->caption = caption;
 		this->cancel_button = WID_QS_CANCEL;

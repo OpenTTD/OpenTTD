@@ -1006,7 +1006,7 @@ public:
 		if (!this->townnamevalid) {
 			this->text.DeleteAll();
 		} else {
-			GetTownName(this->edit_str_buf, &this->params, this->townnameparts, &this->edit_str_buf[this->edit_str_size - 1]);
+			GetTownName(this->text.buf, &this->params, this->townnameparts, &this->text.buf[this->text.max_bytes - 1]);
 			this->text.UpdateSize();
 		}
 		UpdateOSKOriginalText(this, WID_TF_TOWN_NAME_EDITBOX);
@@ -1041,12 +1041,12 @@ public:
 		const char *name = NULL;
 
 		if (!this->townnamevalid) {
-			name = this->edit_str_buf;
+			name = this->text.buf;
 		} else {
 			/* If user changed the name, send it */
 			char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 			GetTownName(buf, &this->params, this->townnameparts, lastof(buf));
-			if (strcmp(buf, this->edit_str_buf) != 0) name = this->edit_str_buf;
+			if (strcmp(buf, this->text.buf) != 0) name = this->text.buf;
 		}
 
 		bool success = DoCommandP(tile, this->town_size | this->city << 2 | this->town_layout << 3 | random << 6,

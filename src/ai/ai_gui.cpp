@@ -1356,7 +1356,7 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 	{
 		if (wid == WID_AID_BREAK_STR_EDIT_BOX) {
 			/* Save the current string to static member so it can be restored next time the window is opened. */
-			strecpy(this->break_string, this->edit_str_buf, lastof(this->break_string));
+			strecpy(this->break_string, this->text.buf, lastof(this->break_string));
 			break_string_filter.SetFilterTerm(this->break_string);
 		}
 	}

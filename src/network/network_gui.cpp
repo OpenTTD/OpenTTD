@@ -850,8 +850,8 @@ public:
 	{
 		if (wid == WID_NG_CLIENT) {
 			/* The name is only allowed when it starts with a letter! */
-			if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-				strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
+			if (!StrEmpty(this->text.buf) && this->text.buf[0] != ' ') {
+				strecpy(_settings_client.network.client_name, this->text.buf, lastof(_settings_client.network.client_name));
 			} else {
 				strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
 			}
@@ -2116,10 +2116,10 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	void OnOk()
 	{
 		if (this->IsWidgetLowered(WID_NCP_SAVE_AS_DEFAULT_PASSWORD)) {
-			snprintf(_settings_client.network.default_company_pass, lengthof(_settings_client.network.default_company_pass), "%s", this->edit_str_buf);
+			strecpy(_settings_client.network.default_company_pass, this->text.buf, lastof(_settings_client.network.default_company_pass));
 		}
 
-		NetworkChangeCompanyPassword(_local_company, this->edit_str_buf);
+		NetworkChangeCompanyPassword(_local_company, this->text.buf);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

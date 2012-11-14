@@ -1279,7 +1279,7 @@ struct NewGRFWindow : public QueryStringBaseWindow, NewGRFScanCallback {
 	{
 		if (!this->editable) return;
 
-		string_filter.SetFilterTerm(this->edit_str_buf);
+		string_filter.SetFilterTerm(this->text.buf);
 		this->avails.SetFilterState(!string_filter.IsEmpty());
 		this->avails.ForceRebuild();
 		this->InvalidateData(0);

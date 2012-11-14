@@ -238,7 +238,7 @@ public:
 	/** Generate a default save filename. */
 	void GenerateFileName()
 	{
-		GenerateDefaultSaveName(this->edit_str_buf, &this->edit_str_buf[this->edit_str_size - 1]);
+		GenerateDefaultSaveName(this->text.buf, &this->text.buf[this->text.max_bytes - 1]);
 		this->text.UpdateSize();
 	}
 

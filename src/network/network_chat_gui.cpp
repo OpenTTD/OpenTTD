@@ -383,7 +383,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	void ChatTabCompletion()
 	{
 		static char _chat_tab_completion_buf[NETWORK_CHAT_LENGTH];
-		assert(this->edit_str_size == lengthof(_chat_tab_completion_buf));
+		assert(this->text.max_bytes == lengthof(_chat_tab_completion_buf));
 
 		Textbuf *tb = &this->text;
 		size_t len, tb_len;
