@@ -159,8 +159,6 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 		this->ok_button = WID_SIL_FILTER_ENTER_BTN;
 		this->cancel_button = WID_SIL_FILTER_CLEAR_BTN;
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS);
-		ClearFilterTextWidget();
 
 		/* Initialize the filtering variables */
 		this->SetFilterString("");
@@ -450,19 +448,15 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	void UpdateSignEditWindow(const Sign *si)
 	{
-		char *last_of = &this->edit_str_buf[this->edit_str_size - 1]; // points to terminating '\0'
-
 		/* Display an empty string when the sign hasnt been edited yet */
 		if (si->name != NULL) {
 			SetDParam(0, si->index);
-			GetString(this->edit_str_buf, STR_SIGN_NAME, last_of);
+			this->text.Assign(STR_SIGN_NAME);
 		} else {
-			GetString(this->edit_str_buf, STR_EMPTY, last_of);
+			this->text.DeleteAll();
 		}
-		*last_of = '\0';
 
 		this->cur_sign = si->index;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size, this->max_chars);
 
 		this->SetWidgetDirty(WID_QES_TEXT);
 		this->SetFocusedWidget(WID_QES_TEXT);

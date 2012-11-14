@@ -126,7 +126,7 @@ struct IConsoleLine {
 
 
 /* ** main console cmd buffer ** */
-static Textbuf _iconsole_cmdline;
+static Textbuf _iconsole_cmdline(ICON_CMDLN_SIZE);
 static char *_iconsole_history[ICON_HISTORY_SIZE];
 static int _iconsole_historypos;
 IConsoleModes _iconsole_mode;
@@ -356,10 +356,6 @@ void IConsoleGUIInit()
 	IConsoleLine::Reset();
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
-	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
-	_iconsole_cmdline.max_bytes = ICON_CMDLN_SIZE;
-	_iconsole_cmdline.max_chars = ICON_CMDLN_SIZE;
-
 	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
 	IConsolePrint(CC_WHITE,  "------------------------------------");
 	IConsolePrint(CC_WHITE,  "use \"help\" for more information");
@@ -374,7 +370,6 @@ void IConsoleClearBuffer()
 
 void IConsoleGUIFree()
 {
-	free(_iconsole_cmdline.buf);
 	IConsoleClearBuffer();
 }
 

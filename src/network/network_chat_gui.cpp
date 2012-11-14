@@ -302,7 +302,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->cancel_button = WID_NC_CLOSE;
 		this->ok_button = WID_NC_SENDBUTTON;
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
 		static const StringID chat_captions[] = {
 			STR_NETWORK_CHAT_ALL_CAPTION,

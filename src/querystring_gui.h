@@ -40,9 +40,11 @@ struct QueryString {
 	bool handled;
 
 	/**
-	 * Make sure everything gets initialized properly.
+	 * Initialize string.
+	 * @param size Maximum size in bytes.
+	 * @param chars Maximum size in chars.
 	 */
-	QueryString() : ok_button(-1), cancel_button(-1), orig(NULL)
+	QueryString(uint16 size, uint16 chars = UINT16_MAX) : ok_button(-1), cancel_button(-1), text(size, chars), orig(NULL)
 	{
 	}
 
@@ -67,16 +69,10 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	const uint16 edit_str_size; ///< Maximum length of string (in bytes), including terminating '\0'.
 	const uint16 max_chars;     ///< Maximum length of string (in characters), including terminating '\0'.
 
-	QueryStringBaseWindow(uint16 size, uint16 chars = UINT16_MAX) : Window(), edit_str_size(size), max_chars(chars == UINT16_MAX ? size : chars)
+	QueryStringBaseWindow(uint16 size, uint16 chars = UINT16_MAX) : Window(), QueryString(size, chars), edit_str_buf(text.buf), edit_str_size(text.max_bytes), max_chars(text.max_chars)
 	{
-		assert(size != 0);
-		this->edit_str_buf = CallocT<char>(size);
 	}
 
-	~QueryStringBaseWindow()
-	{
-		free(this->edit_str_buf);
-	}
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button);

@@ -2002,7 +2002,6 @@ struct GameSettingsWindow : QueryStringBaseWindow {
 		this->vscroll = this->GetScrollbar(WID_GS_SCROLLBAR);
 		this->FinishInitNested(desc, WN_GAME_OPTIONS_GAME_SETTINGS);
 
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_GS_FILTER);
 
 		this->InvalidateData();

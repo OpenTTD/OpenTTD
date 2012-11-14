@@ -17,7 +17,7 @@
 
 /** Helper/buffer for input fields. */
 struct Textbuf {
-	char *buf;                ///< buffer in which text is saved
+	char * const buf;         ///< buffer in which text is saved
 	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
 	uint16 max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
 	uint16 bytes;             ///< the current size of the string in bytes (including terminating '\0')
@@ -27,8 +27,8 @@ struct Textbuf {
 	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
 	uint16 caretxoffs;        ///< the current position of the caret in pixels
 
-	void Initialize(char *buf, uint16 max_bytes);
-	void Initialize(char *buf, uint16 max_bytes, uint16 max_chars);
+	explicit Textbuf(uint16 max_bytes, uint16 max_chars = UINT16_MAX);
+	~Textbuf();
 
 	void Assign(StringID string);
 	void Assign(const char *text);

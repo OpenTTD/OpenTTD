@@ -239,6 +239,7 @@ public:
 	void GenerateFileName()
 	{
 		GenerateDefaultSaveName(this->edit_str_buf, &this->edit_str_buf[this->edit_str_size - 1]);
+		this->text.UpdateSize();
 	}
 
 	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(64)
@@ -258,13 +259,12 @@ public:
 		switch (mode) {
 			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
 			case SLD_SAVE_HEIGHTMAP:
-			case SLD_SAVE_SCENARIO: strecpy(this->edit_str_buf, "UNNAMED", &this->edit_str_buf[edit_str_size - 1]); break;
+			case SLD_SAVE_SCENARIO: this->text.Assign("UNNAMED"); break;
 			default:                break;
 		}
 
 		this->ok_button = WID_SL_SAVE_GAME;
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 
 		this->CreateNestedTree(desc, true);
 		if (mode == SLD_LOAD_GAME) this->GetWidget<NWidgetStacked>(WID_SL_CONTENT_DOWNLOAD_SEL)->SetDisplayedPlane(SZSP_HORIZONTAL);
@@ -639,8 +639,6 @@ public:
 				/* Reset file name to current date on successful delete */
 				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
 			}
-
-			this->text.UpdateSize();
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (_saveload_mode  == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 				_switch_mode = SM_SAVE_GAME;

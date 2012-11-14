@@ -18,6 +18,7 @@
 #include "gfx_type.h"
 #include "gfx_func.h"
 #include "window_func.h"
+#include "core/alloc_func.hpp"
 
 /**
  * Try to retrive the current clipboard contents.
@@ -355,29 +356,23 @@ bool Textbuf::MovePos(int navmode)
  * and the maximum length of this buffer
  * @param buf the buffer that will be holding the data for input
  * @param max_bytes maximum size in bytes, including terminating '\0'
- */
-void Textbuf::Initialize(char *buf, uint16 max_bytes)
-{
-	this->Initialize(buf, max_bytes, max_bytes);
-}
-
-/**
- * Initialize the textbuffer by supplying it the buffer to write into
- * and the maximum length of this buffer
- * @param buf the buffer that will be holding the data for input
- * @param max_bytes maximum size in bytes, including terminating '\0'
  * @param max_chars maximum size in chars, including terminating '\0'
  */
-void Textbuf::Initialize(char *buf, uint16 max_bytes, uint16 max_chars)
+Textbuf::Textbuf(uint16 max_bytes, uint16 max_chars)
+	: buf(MallocT<char>(max_bytes))
 {
 	assert(max_bytes != 0);
 	assert(max_chars != 0);
 
-	this->buf        = buf;
 	this->max_bytes  = max_bytes;
-	this->max_chars  = max_chars;
+	this->max_chars  = max_chars == UINT16_MAX ? max_bytes : max_chars;
 	this->caret      = true;
-	this->UpdateSize();
+	this->DeleteAll();
+}
+
+Textbuf::~Textbuf()
+{
+	free(this->buf);
 }
 
 /**

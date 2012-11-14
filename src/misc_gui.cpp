@@ -828,6 +828,8 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			*Utf8PrevChar(this->edit_str_buf + strlen(this->edit_str_buf)) = '\0';
 		}
 
+		this->text.UpdateSize();
+
 		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
 
 		this->caption = caption;
@@ -835,7 +837,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->ok_button = WID_QS_OK;
 		this->afilter = afilter;
 		this->flags = flags;
-		this->text.Initialize(this->edit_str_buf, max_bytes, max_chars);
 
 		this->InitNested(desc, WN_QUERY_STRING);
 

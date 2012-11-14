@@ -444,9 +444,8 @@ public:
 		this->vscroll = this->GetScrollbar(WID_NG_SCROLLBAR);
 		this->FinishInitNested(desc, WN_NETWORK_WINDOW_GAME);
 
-		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
+		this->text.Assign(_settings_client.network.client_name);
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NG_CLIENT);
 
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
@@ -1006,10 +1005,9 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	{
 		this->InitNested(desc, WN_NETWORK_WINDOW_START);
 
-		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, this->edit_str_size);
+		this->text.Assign(_settings_client.network.server_name);
 
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
 
@@ -2112,7 +2110,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		this->cancel_button = WID_NCP_CANCEL;
 		this->ok_button = WID_NCP_OK;
 		this->afilter = CS_ALPHANUMERAL;
-		this->text.Initialize(this->edit_str_buf, this->edit_str_size);
 		this->SetFocusedWidget(WID_NCP_PASSWORD);
 	}
 
