@@ -367,8 +367,10 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 void Window::RaiseButtons(bool autoraise)
 {
 	for (uint i = 0; i < this->nested_array_size; i++) {
-		if (this->nested_array[i] != NULL && ((this->nested_array[i]->type & ~WWB_PUSHBUTTON) < WWT_LAST || this->nested_array[i]->type == NWID_PUSHBUTTON_DROPDOWN) &&
-				(!autoraise || (this->nested_array[i]->type & WWB_PUSHBUTTON)) && this->IsWidgetLowered(i)) {
+		if (this->nested_array[i] == NULL) continue;
+		WidgetType type = this->nested_array[i]->type;
+		if (((type & ~WWB_PUSHBUTTON) < WWT_LAST || type == NWID_PUSHBUTTON_DROPDOWN) &&
+				(!autoraise || (type & WWB_PUSHBUTTON) || type == WWT_EDITBOX) && this->IsWidgetLowered(i)) {
 			this->RaiseWidget(i);
 			this->SetWidgetDirty(i);
 		}

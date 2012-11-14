@@ -781,10 +781,22 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
 
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
-	int left   = wi->pos_x;
-	int right  = wi->pos_x + wi->current_x - 1;
+
+	bool rtl = _current_text_dir == TD_RTL;
+	Dimension sprite_size = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT);
+	int clearbtn_width = sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+
+	int clearbtn_left  = wi->pos_x + (rtl ? 0 : wi->current_x - clearbtn_width);
+	int clearbtn_right = wi->pos_x + (rtl ? clearbtn_width : wi->current_x) - 1;
+	int left   = wi->pos_x + (rtl ? clearbtn_width : 0);
+	int right  = wi->pos_x + (rtl ? wi->current_x : wi->current_x - clearbtn_width) - 1;
+
 	int top    = wi->pos_y;
 	int bottom = wi->pos_y + wi->current_y - 1;
+
+	DrawFrameRect(clearbtn_left, top, clearbtn_right, bottom, wi->colour, wi->IsLowered() ? FR_LOWERED : FR_NONE);
+	DrawSprite(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT, PAL_NONE, clearbtn_left + WD_IMGBTN_LEFT + (wi->IsLowered() ? 1 : 0), (top + bottom - sprite_size.height) / 2 + (wi->IsLowered() ? 1 : 0));
+	if (this->text.bytes == 1) GfxFillRect(clearbtn_left + 1, top + 1, clearbtn_right - 1, bottom - 1, _colour_gradient[wi->colour & 0xF][2], FILLRECT_CHECKER);
 
 	DrawFrameRect(left, top, right, bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, PC_BLACK);
@@ -814,6 +826,24 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 
 void QueryString::ClickEditBox(Window *w, Point pt, int wid, int click_count, bool focus_changed)
 {
+	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
+
+	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+
+	bool rtl = _current_text_dir == TD_RTL;
+	int clearbtn_width = GetSpriteSize(rtl ? SPR_IMG_DELETE_RIGHT : SPR_IMG_DELETE_LEFT).width;
+
+	int clearbtn_left  = wi->pos_x + (rtl ? 0 : wi->current_x - clearbtn_width);
+
+	if (IsInsideBS(pt.x, clearbtn_left, clearbtn_width)) {
+		if (this->text.bytes > 1) {
+			this->text.DeleteAll();
+			w->HandleButtonClick(wid);
+			w->OnEditboxChanged(wid);
+		}
+		return;
+	}
+
 	if (!focus_changed && w->window_class != WC_OSK) {
 		/* Open the OSK window if clicked on an edit box, while not changing focus */
 		ShowOnScreenKeyboard(w, wid);

@@ -56,7 +56,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 166;
+static const uint16 OPENTTD_SPRITE_COUNT = 168;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -153,6 +153,9 @@ static const SpriteID SPR_TOWN_RATING_MEDIOCRE       = SPR_OPENTTD_BASE + 164;
 static const SpriteID SPR_TOWN_RATING_GOOD           = SPR_OPENTTD_BASE + 165;
 
 static const SpriteID SPR_IMG_SWITCH_TOOLBAR = SPR_OPENTTD_BASE + 144;
+
+static const SpriteID SPR_IMG_DELETE_LEFT            = SPR_OPENTTD_BASE + 166;
+static const SpriteID SPR_IMG_DELETE_RIGHT           = SPR_OPENTTD_BASE + 167;
 
 static const SpriteID SPR_SIGNALS_BASE  = SPR_OPENTTD_BASE + OPENTTD_SPRITE_COUNT;
 static const uint16 PRESIGNAL_SPRITE_COUNT                   =  48;
