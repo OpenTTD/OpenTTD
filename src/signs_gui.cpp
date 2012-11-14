@@ -444,7 +444,6 @@ struct SignWindow : Window, SignList {
 
 		this->InitNested(desc, WN_QUERY_STRING_SIGN);
 
-		this->LowerWidget(WID_QES_TEXT);
 		UpdateSignEditWindow(si);
 		this->SetFocusedWidget(WID_QES_TEXT);
 	}

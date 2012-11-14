@@ -855,7 +855,6 @@ struct QueryStringWindow : public Window
 		this->parent = parent;
 
 		this->SetFocusedWidget(WID_QS_TEXT);
-		this->LowerWidget(WID_QS_TEXT);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)

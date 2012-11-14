@@ -85,7 +85,6 @@ struct OskWindow : public Window {
 		}
 		this->SetWidgetDisabledState(WID_OSK_SPACE, !IsValidChar(' ', this->qs->afilter));
 
-		this->LowerWidget(WID_OSK_TEXT);
 		this->SetWidgetLoweredState(WID_OSK_SHIFT, HasBit(_keystate, KEYS_SHIFT));
 		this->SetWidgetLoweredState(WID_OSK_CAPS, HasBit(_keystate, KEYS_CAPS));
 	}
