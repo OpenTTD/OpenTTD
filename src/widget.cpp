@@ -2366,7 +2366,6 @@ void NWidgetLeaf::Draw(const Window *w)
 			break;
 
 		case WWT_EDITBOX: {
-			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, FR_LOWERED | FR_DARKENED);
 			const QueryString *query = w->GetQueryString(this->index);
 			if (query != NULL) query->DrawEditBox(w, this->index);
 			break;

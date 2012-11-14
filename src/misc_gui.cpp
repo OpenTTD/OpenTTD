@@ -778,7 +778,7 @@ void QueryString::HandleEditBox(Window *w, int wid)
 
 void QueryString::DrawEditBox(const Window *w, int wid) const
 {
-	const NWidgetBase *wi = w->GetWidget<NWidgetBase>(wid);
+	const NWidgetLeaf *wi = w->GetWidget<NWidgetLeaf>(wid);
 
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 	int left   = wi->pos_x;
@@ -786,6 +786,7 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	int top    = wi->pos_y;
 	int bottom = wi->pos_y + wi->current_y - 1;
 
+	DrawFrameRect(left, top, right, bottom, wi->colour, FR_LOWERED | FR_DARKENED);
 	GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, PC_BLACK);
 
 	/* Limit the drawing of the string inside the widget boundaries */
