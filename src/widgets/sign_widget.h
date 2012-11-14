@@ -20,7 +20,6 @@ enum SignListWidgets {
 	WID_SIL_SCROLLBAR,             ///< Scrollbar of list.
 	WID_SIL_FILTER_TEXT,           ///< Text box for typing a filter string.
 	WID_SIL_FILTER_MATCH_CASE_BTN, ///< Button to toggle if case sensitive filtering should be used.
-	WID_SIL_FILTER_CLEAR_BTN,      ///< Button to clear the filter.
 	WID_SIL_FILTER_ENTER_BTN,      ///< Scroll to first sign.
 };
 

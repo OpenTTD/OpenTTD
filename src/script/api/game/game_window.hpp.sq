@@ -1020,7 +1020,6 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SIL_SCROLLBAR,                         "WID_SIL_SCROLLBAR");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SIL_FILTER_TEXT,                       "WID_SIL_FILTER_TEXT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SIL_FILTER_MATCH_CASE_BTN,             "WID_SIL_FILTER_MATCH_CASE_BTN");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SIL_FILTER_CLEAR_BTN,                  "WID_SIL_FILTER_CLEAR_BTN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_SIL_FILTER_ENTER_BTN,                  "WID_SIL_FILTER_ENTER_BTN");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QES_CAPTION,                           "WID_QES_CAPTION");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WID_QES_TEXT,                              "WID_QES_TEXT");

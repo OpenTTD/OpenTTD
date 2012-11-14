@@ -172,17 +172,6 @@ struct SignListWindow : Window, SignList {
 	}
 
 	/**
-	 * Empties the string buffer that is edited by the filter text edit widget.
-	 * It also triggers the redraw of the widget so it become visible that the string has been made empty.
-	 */
-	void ClearFilterTextWidget()
-	{
-		this->filter_editbox.text.DeleteAll();
-
-		this->SetWidgetDirty(WID_SIL_FILTER_TEXT);
-	}
-
-	/**
 	 * This function sets the filter string of the sign list. The contents of
 	 * the edit widget is not updated by this function. Depending on if the
 	 * new string is zero-length or not the clear button is made
@@ -192,10 +181,6 @@ struct SignListWindow : Window, SignList {
 	{
 		/* check if there is a new filter string */
 		this->string_filter.SetFilterTerm(new_filter_string);
-		this->SetWidgetDisabledState(WID_SIL_FILTER_CLEAR_BTN, StrEmpty(new_filter_string));
-
-		/* Repaint the clear button since its disabled state may have changed */
-		this->SetWidgetDirty(WID_SIL_FILTER_CLEAR_BTN);
 
 		/* Rebuild the list of signs */
 		this->InvalidateData();
@@ -261,11 +246,6 @@ struct SignListWindow : Window, SignList {
 					const Sign *si = this->signs[0];
 					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				}
-				break;
-
-			case WID_SIL_FILTER_CLEAR_BTN:
-				this->ClearFilterTextWidget(); // Empty the text in the EditBox widget
-				this->SetFilterString("");     // Use empty text as filter text (= view all signs)
 				break;
 
 			case WID_SIL_FILTER_MATCH_CASE_BTN:
@@ -379,7 +359,6 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 							SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 				EndContainer(),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_SIL_FILTER_MATCH_CASE_BTN), SetDataTip(STR_SIGN_LIST_MATCH_CASE, STR_SIGN_LIST_MATCH_CASE_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SIL_FILTER_CLEAR_BTN), SetDataTip(STR_SIGN_LIST_CLEAR, STR_SIGN_LIST_CLEAR_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
