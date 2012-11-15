@@ -1167,10 +1167,16 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :Bruk forbedret 
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :Last kjøretøy gradvis: {STRING}
 STR_CONFIG_SETTING_INFLATION                                    :Inflasjon: {STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :Lever varer til en stasjon kun hvis det er etterspørsel: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimal brolengde: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimal lengde for broer
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimal tunnellengde: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimal lengde for tunneller
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Konstruksjonsmetode for primærindustri: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andre næringer
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterer
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Flatt område rundt industrier: {STRING}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Mengde flatmark rundt en industri. Dette sikrer at det er plass til å bygge spor og stasjoner i nærheten av industrien.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Tillat flere like industrier i samme by: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Vis regnskap ved nyttår: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nye ordre er 'direkte' som standard: {STRING}
@@ -4122,25 +4128,25 @@ STR_SV_STNAME_CENTRAL                                           :{STRING} sentru
 STR_SV_STNAME_TRANSFER                                          :{STRING}ruta
 STR_SV_STNAME_HALT                                              :{STRING} holdeplass
 STR_SV_STNAME_VALLEY                                            :{STRING}dalen
-STR_SV_STNAME_HEIGHTS                                           :{STRING}toppen
-STR_SV_STNAME_WOODS                                             :{STRING} skogholt
+STR_SV_STNAME_HEIGHTS                                           :{STRING}haugen
+STR_SV_STNAME_WOODS                                             :{STRING}vollen
 STR_SV_STNAME_LAKESIDE                                          :{STRING}sjøen
-STR_SV_STNAME_EXCHANGE                                          :{STRING}krysset
+STR_SV_STNAME_EXCHANGE                                          :{STRING}moen
 STR_SV_STNAME_AIRPORT                                           :{STRING} lufthavn
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefelt
-STR_SV_STNAME_MINES                                             :{STRING} gruver
+STR_SV_STNAME_MINES                                             :{STRING}gruva
 STR_SV_STNAME_DOCKS                                             :{STRING} havn
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} anneks
+STR_SV_STNAME_ANNEXE                                            :{STRING}moen
 STR_SV_STNAME_SIDINGS                                           :{STRING}veien
-STR_SV_STNAME_BRANCH                                            :{STRING} torg
+STR_SV_STNAME_BRANCH                                            :{STRING}lia
 STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterplass
 STR_SV_STNAME_FOREST                                            :{STRING}skogen
-STR_SV_STNAME_FALLBACK                                          :{STRING} Stasjon #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} stasjon #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
